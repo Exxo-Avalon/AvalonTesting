@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ExxoAvalonOrigins.Projectiles.Summon;
+using System.Linq;
 using Terraria.ModLoader;
 
 namespace ExxoAvalonOrigins.Players;
@@ -7,16 +7,17 @@ namespace ExxoAvalonOrigins.Players;
 public class ExxoSummonPlayer : ModPlayer
 {
     private readonly List<bool> daggerSummons = new();
+    public int DaggerSummonCount => daggerSummons.Count(val => val);
 
     public int HandleDaggerSummon()
     {
-        if (Player.ownedProjectileCounts[ModContent.ProjectileType<AdamantiteDagger>()] > daggerSummons.Count)
+        int index = daggerSummons.FindIndex(val => !val);
+        if (index == -1)
         {
             daggerSummons.Add(true);
             return daggerSummons.Count - 1;
         }
 
-        int index = daggerSummons.FindIndex(val => !val);
         daggerSummons[index] = true;
         return index;
     }
@@ -33,12 +34,11 @@ public class ExxoSummonPlayer : ModPlayer
         }
     }
 
-    public void CheckDaggerSummon()
+    public void CheckDaggerSummon(int index)
     {
-        int diff = Player.ownedProjectileCounts[ModContent.ProjectileType<AdamantiteDagger>()] - daggerSummons.Count;
+        int diff = index + 1 - daggerSummons.Count;
         if (diff > 0)
         {
-            daggerSummons.Capacity = Player.ownedProjectileCounts[ModContent.ProjectileType<AdamantiteDagger>()];
             for (int i = 0; i < diff; i++)
             {
                 daggerSummons.Add(true);
