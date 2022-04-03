@@ -1,8 +1,8 @@
-﻿using ExxoAvalonOrigins.Players;
+﻿using AvalonTesting.Players;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Buffs;
+namespace AvalonTesting.Buffs;
 
 public abstract class BaseDagger<T> : ModBuff where T : ModProjectile
 {

@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class BronzeOre : ModTile
 {
@@ -18,7 +18,7 @@ public class BronzeOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 215;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.BronzeOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.BronzeOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.BronzeDust>();

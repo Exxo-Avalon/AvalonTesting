@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class BismuthOre : ModTile
 {
@@ -18,7 +18,7 @@ public class BismuthOre : ModTile
         Main.tileOreFinderPriority[Type] = 275;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.BismuthOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.BismuthOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.BismuthDust>();

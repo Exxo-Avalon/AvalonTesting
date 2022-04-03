@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Buffs;
+﻿using AvalonTesting.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Weapons.Summon;
+namespace AvalonTesting.Items.Weapons.Summon;
 
 public class PlatinumDaggerStaff : ModItem
 {

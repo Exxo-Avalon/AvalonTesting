@@ -1,9 +1,9 @@
-﻿using ExxoAvalonOrigins.Systems;
+﻿using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Players;
+namespace AvalonTesting.Players;
 
 public class ExxoBiomePlayer : ModPlayer
 {

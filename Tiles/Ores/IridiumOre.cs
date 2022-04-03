@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class IridiumOre : ModTile
 {
@@ -18,7 +18,7 @@ public class IridiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 440;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.IridiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.IridiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.IridiumDust>();

@@ -1,4 +1,4 @@
-﻿namespace ExxoAvalonOrigins.Projectiles.Summon;
+﻿namespace AvalonTesting.Projectiles.Summon;
 
 public class AdamantiteDagger : BaseDagger<Buffs.AdamantiteDagger>
 {

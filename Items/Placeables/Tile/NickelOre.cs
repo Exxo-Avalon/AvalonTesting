@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
-class ShroomiteOre : ModItem
+class NickelOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Shroomite Ore");
+        DisplayName.SetDefault("Nickel Ore");
     }
 
     public override void SetDefaults()
@@ -17,14 +17,13 @@ class ShroomiteOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.ShroomiteOre>();
-        Item.rare = ItemRarityID.Lime;
+        Item.createTile = ModContent.TileType<Tiles.Ores.NickelOre>();
         Item.width = dims.Width;
-        Item.useTurn = true;
         Item.useTime = 10;
+        Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
-        Item.value = Item.sellPrice(0, 0, 40, 0);
+        Item.value = Item.sellPrice(0, 0, 1, 25);
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

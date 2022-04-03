@@ -1,5 +1,5 @@
-﻿//using ExxoAvalonOrigins.Items.Accessories;
-//using ExxoAvalonOrigins.Items.Material;
+﻿//using AvalonTesting.Items.Accessories;
+//using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class DarkMatterSlime : ModNPC
 {

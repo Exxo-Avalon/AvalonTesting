@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Systems;
+namespace AvalonTesting.Systems;
 
 public class KeybindSystem : ModSystem
 {

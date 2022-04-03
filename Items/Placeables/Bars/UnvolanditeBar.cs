@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Bars;
+namespace AvalonTesting.Items.Placeables.Bars;
 
 class UnvolanditeBar : ModItem
 {
@@ -19,7 +19,7 @@ class UnvolanditeBar : ModItem
         Item.useTurn = true;
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.PlacedBars>();
+        Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 6;
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;

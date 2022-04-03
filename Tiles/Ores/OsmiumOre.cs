@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Dusts;
+﻿using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class OsmiumOre : ModTile
 {
@@ -19,7 +19,7 @@ public class OsmiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 430;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.OsmiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.OsmiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 60;

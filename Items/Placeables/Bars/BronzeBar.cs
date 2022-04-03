@@ -1,9 +1,9 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Bars;
+namespace AvalonTesting.Items.Placeables.Bars;
 
 class BronzeBar : ModItem
 {
@@ -19,7 +19,7 @@ class BronzeBar : ModItem
         Item.useTurn = true;
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.PlacedBars>();
+        Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 18;
         Item.width = dims.Width;
         Item.useTime = 10;

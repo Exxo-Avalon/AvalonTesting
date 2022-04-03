@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class RhodiumOre : ModTile
 {
@@ -19,7 +19,7 @@ public class RhodiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 420;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.RhodiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.RhodiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 60;

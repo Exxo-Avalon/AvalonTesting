@@ -1,4 +1,4 @@
-﻿namespace ExxoAvalonOrigins.Buffs;
+﻿namespace AvalonTesting.Buffs;
 
 public class TitaniumDagger : BaseDagger<Projectiles.Summon.TitaniumDagger>
 {

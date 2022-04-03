@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Dusts;
+﻿using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class TroxiniumOre : ModTile
 {
@@ -20,7 +20,7 @@ public class TroxiniumOre : ModTile
         Main.tileOreFinderPriority[Type] = 660;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 875;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.TroxiniumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.TroxiniumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 150;

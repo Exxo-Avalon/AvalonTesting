@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class HydrolythOre : ModTile
 {
@@ -15,7 +15,7 @@ public class HydrolythOre : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.HydrolythOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.HydrolythOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 300;

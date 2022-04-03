@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Bars;
+namespace AvalonTesting.Items.Placeables.Bars;
 
 class OblivionBar : ModItem
 {
@@ -19,7 +19,7 @@ class OblivionBar : ModItem
         Item.useTurn = true;
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.PlacedBars>();
+        Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 1;
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;

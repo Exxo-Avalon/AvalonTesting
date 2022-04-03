@@ -1,12 +1,12 @@
-﻿using ExxoAvalonOrigins.Buffs;
-using ExxoAvalonOrigins.Items.Placeables.Bars;
+﻿using AvalonTesting.Buffs;
+using AvalonTesting.Items.Placeables.Bars;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Weapons.Summon;
+namespace AvalonTesting.Items.Weapons.Summon;
 
 public class TroxiniumDaggerStaff : ModItem
 {

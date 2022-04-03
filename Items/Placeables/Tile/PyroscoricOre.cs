@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
 class PyroscoricOre : ModItem
 {
@@ -17,7 +17,7 @@ class PyroscoricOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.PyroscoricOre>();
+        Item.createTile = ModContent.TileType<Tiles.Ores.PyroscoricOre>();
         Item.rare = ItemRarityID.Yellow;
         Item.width = dims.Width;
         Item.useTime = 10;

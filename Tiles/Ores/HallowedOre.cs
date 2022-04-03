@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class HallowedOre : ModTile
 {
@@ -18,7 +18,7 @@ public class HallowedOre : ModTile
         Main.tileOreFinderPriority[Type] = 690;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.HallowedOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.HallowedOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 185;

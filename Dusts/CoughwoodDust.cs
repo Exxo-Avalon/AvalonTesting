@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Dusts;
+namespace AvalonTesting.Dusts;
 
 public class CoughwoodDust : ModDust
 {

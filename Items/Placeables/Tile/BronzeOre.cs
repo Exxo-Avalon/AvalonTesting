@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
-class BacciliteOre : ModItem
+class BronzeOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Baccilite Ore");
+        DisplayName.SetDefault("Bronze Ore");
     }
 
     public override void SetDefaults()
@@ -17,14 +17,13 @@ class BacciliteOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.BacciliteOre>();
-        Item.rare = ItemRarityID.Blue;
+        Item.createTile = ModContent.TileType<Tiles.Ores.BronzeOre>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
-        Item.value = Item.sellPrice(0, 0, 7, 0);
+        Item.value = Item.sellPrice(0, 0, 0, 80);
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

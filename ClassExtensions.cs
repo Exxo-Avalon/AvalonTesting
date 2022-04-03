@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins;
+namespace AvalonTesting;
 
 public static class ClassExtensions
 {

@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class BacciliteOre : ModTile
 {
@@ -19,7 +19,7 @@ public class BacciliteOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileOreFinderPriority[Type] = 320;
         Main.tileLighted[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.BacciliteOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.BacciliteOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.JungleSpore;

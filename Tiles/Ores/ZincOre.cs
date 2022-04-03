@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class ZincOre : ModTile
 {
@@ -18,7 +18,7 @@ public class ZincOre : ModTile
         Main.tileOreFinderPriority[Type] = 255;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.ZincOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.ZincOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.ZincDust>();

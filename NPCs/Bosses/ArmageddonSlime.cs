@@ -1,8 +1,8 @@
 ﻿using System;
-//using ExxoAvalonOrigins.Items.Placeable.Tile;
-//using ExxoAvalonOrigins.Items.Placeable.Trophy;
-//using ExxoAvalonOrigins.Items.Potions;
-//using ExxoAvalonOrigins.Items.Vanity;
+//using AvalonTesting.Items.Placeable.Tile;
+//using AvalonTesting.Items.Placeable.Trophy;
+//using AvalonTesting.Items.Potions;
+//using AvalonTesting.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +12,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs.Bosses;
+namespace AvalonTesting.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class ArmageddonSlime : ModNPC
@@ -55,7 +55,7 @@ public class ArmageddonSlime : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        Music = ExxoAvalonOrigins.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/ArmageddonSlime");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/ArmageddonSlime");
         //music = mod.GetSoundSlot(SoundType.Music, "Music/ArmageddonSlime");
         //bossBag = ModContent.ItemType<Items.BossBags.ArmageddonSlimeBossBag>();
 

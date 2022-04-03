@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class SolariumOre : ModTile
 {
@@ -19,7 +19,7 @@ public class SolariumOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 730;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.SolariumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.SolariumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 210;

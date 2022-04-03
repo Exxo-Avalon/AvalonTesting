@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
-class HallowedOre : ModItem
+class ZincOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Hallowed Ore");
+        DisplayName.SetDefault("Zinc Ore");
     }
 
     public override void SetDefaults()
@@ -17,20 +17,14 @@ class HallowedOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.HallowedOre>();
-        Item.rare = ItemRarityID.Pink;
+        Item.createTile = ModContent.TileType<Tiles.Ores.ZincOre>();
         Item.width = dims.Width;
-        Item.useTurn = true;
         Item.useTime = 10;
+        Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
-        Item.value = Item.sellPrice(0, 0, 50, 0);
+        Item.value = Item.sellPrice(0, 0, 1, 95);
         Item.useAnimation = 15;
         Item.height = dims.Height;
-    }
-
-    public override void AddRecipes()
-    {
-        CreateRecipe(1).AddIngredient(this, 5).AddTile(TileID.AdamantiteForge).ReplaceResult(ItemID.HallowedBar);
     }
 }

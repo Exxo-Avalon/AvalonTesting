@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class PyroscoricOre : ModTile
 {
@@ -17,7 +17,7 @@ public class PyroscoricOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileLighted[Type] = true;
         Main.tileOreFinderPriority[Type] = 820;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.PyroscoricOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.PyroscoricOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.InfernoFork;

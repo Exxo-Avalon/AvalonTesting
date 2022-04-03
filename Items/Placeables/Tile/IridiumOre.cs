@@ -3,28 +3,28 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
-class TritanoriumOre : ModItem
+class IridiumOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Tritanorium Ore");
+        DisplayName.SetDefault("Iridium Ore");
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.TritanoriumOre>();
         Item.consumable = true;
-        Item.rare = ItemRarityID.Purple;
+        Item.createTile = ModContent.TileType<Tiles.Ores.IridiumOre>();
+        Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.maxStack = 999;
+        Item.value = Item.sellPrice(0, 0, 5, 0);
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

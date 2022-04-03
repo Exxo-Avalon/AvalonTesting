@@ -1,10 +1,10 @@
-﻿using ExxoAvalonOrigins.Items.Placeables.Tiles;
+﻿using AvalonTesting.Items.Placeables.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Bars;
+namespace AvalonTesting.Items.Placeables.Bars;
 
 class BacciliteBar : ModItem
 {
@@ -20,7 +20,7 @@ class BacciliteBar : ModItem
         Item.useTurn = true;
         Item.maxStack = 999;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.PlacedBars>();
+        Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 12;
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;

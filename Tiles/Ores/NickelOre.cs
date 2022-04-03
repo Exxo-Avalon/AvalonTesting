@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class NickelOre : ModTile
 {
@@ -18,7 +18,7 @@ public class NickelOre : ModTile
         Main.tileOreFinderPriority[Type] = 235;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.NickelOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.NickelOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.NickelDust>();

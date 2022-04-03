@@ -1,8 +1,8 @@
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Dusts;
+namespace AvalonTesting.Dusts;
 
 public class BismuthDust : ModDust
 {
-
+    public override string Texture => "AvalonTesting/Dusts/BismuthDust";
 }

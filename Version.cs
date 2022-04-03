@@ -1,4 +1,4 @@
-﻿namespace ExxoAvalonOrigins;
+﻿namespace AvalonTesting;
 
 public class Version
 {

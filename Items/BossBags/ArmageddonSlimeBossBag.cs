@@ -1,10 +1,10 @@
-﻿//using ExxoAvalonOrigins.Items.Consumables;
-//using ExxoAvalonOrigins.Items.Placeable.Tile;
+﻿//using AvalonTesting.Items.Consumables;
+//using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.BossBags;
+namespace AvalonTesting.Items.BossBags;
 
 public class ArmageddonSlimeBossBag : ModItem
 {

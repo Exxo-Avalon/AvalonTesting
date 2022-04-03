@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Dusts;
+namespace AvalonTesting.Dusts;
 
 public class ContagionWaterSplash : ModDust
 {

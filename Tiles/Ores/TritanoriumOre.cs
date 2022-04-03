@@ -1,4 +1,4 @@
-﻿using ExxoAvalonOrigins.Dusts;
+﻿using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class TritanoriumOre : ModTile
 {
@@ -18,7 +18,7 @@ public class TritanoriumOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileLighted[Type] = true;
         Main.tileOreFinderPriority[Type] = 830;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.TritanoriumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.TritanoriumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 210;

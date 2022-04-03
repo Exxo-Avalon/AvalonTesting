@@ -2,7 +2,7 @@
 using System.Linq;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Players;
+namespace AvalonTesting.Players;
 
 public class ExxoSummonPlayer : ModPlayer
 {

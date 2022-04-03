@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace ExxoAvalonOrigins.Systems;
+namespace AvalonTesting.Systems;
 public class DownedBossSystem : ModSystem
 {
     public static bool downedBacteriumPrime = false;

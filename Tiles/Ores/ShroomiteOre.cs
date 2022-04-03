@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class ShroomiteOre : ModTile
 {
@@ -18,7 +18,7 @@ public class ShroomiteOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1400;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.ShroomiteOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.ShroomiteOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 205;

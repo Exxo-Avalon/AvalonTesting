@@ -1,11 +1,11 @@
 ﻿using System.IO;
-using ExxoAvalonOrigins.Players;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Projectiles.Summon;
+namespace AvalonTesting.Projectiles.Summon;
 
 // TODO: Improve implementation of DaggerSummon handling and fix dagger stopping before reaching target
 public abstract class BaseDagger<T> : ModProjectile where T : ModBuff

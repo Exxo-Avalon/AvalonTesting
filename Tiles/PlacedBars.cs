@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Items.Placeables.Bars;
+﻿using AvalonTesting.Items.Placeables.Bars;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace ExxoAvalonOrigins.Tiles;
+namespace AvalonTesting.Tiles;
 
 public class PlacedBars : ModTile
 {

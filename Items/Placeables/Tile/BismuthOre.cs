@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Items.Placeables.Tiles;
+namespace AvalonTesting.Items.Placeables.Tile;
 
-class NaquadahOre : ModItem
+class BismuthOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Naquadah Ore");
+        DisplayName.SetDefault("Bismuth Ore");
     }
 
     public override void SetDefaults()
@@ -17,14 +17,13 @@ class NaquadahOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<global::ExxoAvalonOrigins.Tiles.Ores.NaquadahOre>();
-        Item.rare = ItemRarityID.Orange;
+        Item.createTile = ModContent.TileType<Tiles.Ores.BismuthOre>();
         Item.width = dims.Width;
-        Item.useTurn = true;
         Item.useTime = 10;
+        Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
-        Item.value = Item.sellPrice(0, 0, 14, 0);
+        Item.value = Item.sellPrice(0, 0, 3, 75);
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

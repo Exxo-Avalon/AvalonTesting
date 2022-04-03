@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Dusts;
+﻿using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Tiles.Ores;
+namespace AvalonTesting.Tiles.Ores;
 
 public class NaquadahOre : ModTile
 {
@@ -20,7 +20,7 @@ public class NaquadahOre : ModTile
         Main.tileOreFinderPriority[Type] = 635;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tiles.NaquadahOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.NaquadahOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 110;

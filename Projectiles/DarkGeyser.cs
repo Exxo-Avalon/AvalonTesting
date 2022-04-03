@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Projectiles;
+namespace AvalonTesting.Projectiles;
 
 public class DarkGeyser : ModProjectile
 {
