@@ -30,18 +30,20 @@ public class AvalonTesting : Mod
             ModLoader.TryGetMod("AvalonMusic", out MusicMod);
             TextureAssets.Logo = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
             TextureAssets.Logo2 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
+            TextureAssets.Logo3 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
+            TextureAssets.Logo4 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
             if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
             {
                 TextureAssets.Logo = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
                 TextureAssets.Logo2 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
+                TextureAssets.Logo3 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
+                TextureAssets.Logo4 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
             }
-            Players.ExxoPlayer.spectrumArmorTextures = new Texture2D[]
+            Players.ExxoPlayer.spectrumArmorTextures = new ReLogic.Content.Asset<Texture2D>[]
             {
-                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
-                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Body_Glow").Value,
-                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Arms_Glow").Value,
-                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_FemaleBody_Glow").Value,
-                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumGreaves_Legs_Glow").Value,
+                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumHelmet_Glow_Head"),
+                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumBreastplate_Body_Glow"),
+                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumGreaves_Legs_Glow")
             };
             TextureAssets.Item[ItemID.HallowedKey] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/HallowedKey");
             TextureAssets.Item[ItemID.MagicDagger] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/MagicDagger");

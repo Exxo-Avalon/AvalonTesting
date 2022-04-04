@@ -5,5 +5,5 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Players;
 public class ExxoPlayer : ModPlayer
 {
-    public static Texture2D[] spectrumArmorTextures;
+    public static ReLogic.Content.Asset<Texture2D>[] spectrumArmorTextures;
 }
