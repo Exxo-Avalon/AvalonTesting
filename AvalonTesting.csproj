@@ -10,4 +10,10 @@
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Items\Placeables\Wall\" />
+    <Folder Include="Walls\" />
+    <Folder Include="World\Passes\" />
+    <Folder Include="World\Structures\" />
+  </ItemGroup>
 </Project>

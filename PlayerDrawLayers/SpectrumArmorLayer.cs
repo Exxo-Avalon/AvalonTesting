@@ -103,8 +103,7 @@ public class SpectrumArmorLayer : PlayerDrawLayer
             int num55 = drawInfo.armorAdjust;
             bodyFrame2.X += num55;
             bodyFrame2.Width -= num55;
-            var dd = default(DrawData);
-            dd = new DrawData(ExxoPlayer.spectrumArmorTextures[1].Value, new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - p.bodyFrame.Width / 2 + p.width / 2) + num55, (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) + p.bodyPosition + new Vector2(p.bodyFrame.Width / 2, p.bodyFrame.Height / 2), new Rectangle?(bodyFrame2), rb, p.bodyRotation, origin, 1f, spriteEffects, 0);
+            var dd = new DrawData(ExxoPlayer.spectrumArmorTextures[1].Value, new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - p.bodyFrame.Width / 2 + p.width / 2) + num55, (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) + p.bodyPosition + new Vector2(p.bodyFrame.Width / 2, p.bodyFrame.Height / 2), new Rectangle?(bodyFrame2), rb, p.bodyRotation, origin, 1f, spriteEffects, 0);
             drawInfo.DrawDataCache.Add(dd);
         }
         if (p.legs == AvalonTesting.Mod.GetEquipSlot("SpectrumGreaves", EquipType.Legs))
