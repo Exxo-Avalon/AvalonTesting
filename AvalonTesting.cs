@@ -35,6 +35,14 @@ public class AvalonTesting : Mod
                 TextureAssets.Logo = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
                 TextureAssets.Logo2 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
             }
+            Players.ExxoPlayer.spectrumArmorTextures = new Texture2D[]
+            {
+                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
+                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Body_Glow").Value,
+                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Arms_Glow").Value,
+                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_FemaleBody_Glow").Value,
+                Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumGreaves_Legs_Glow").Value,
+            };
             TextureAssets.Item[ItemID.HallowedKey] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/HallowedKey");
             TextureAssets.Item[ItemID.MagicDagger] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/MagicDagger");
             TextureAssets.Tile[TileID.CopperCoinPile] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/CopperCoin");
