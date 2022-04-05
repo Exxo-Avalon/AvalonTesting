@@ -7,11 +7,12 @@ namespace AvalonTesting.Projectiles;
 
 public class DarkGeyser : ModProjectile
 {
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    //public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dark Geyser");
     }
+
     public override void SetDefaults()
     {
         //Rectangle dims = //ExxoAvalonOrigins.GetDims("Projectiles/DarkGeyser");
@@ -29,6 +30,7 @@ public class DarkGeyser : ModProjectile
         Projectile.usesIDStaticNPCImmunity = true;
         Projectile.idStaticNPCHitCooldown = 10;
     }
+
     public override void AI()
     {
         if (Projectile.ai[0] > 1f)
@@ -46,15 +48,22 @@ public class DarkGeyser : ModProjectile
             {
                 num418 = 0.75f;
             }
+
             Projectile.ai[0] += 1f;
             int num419 = 6;
             if (num419 == 6 || Main.rand.Next(3) == 0)
             {
                 for (int num420 = 0; num420 < 1; num420++)
                 {
-                    var num150 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X, Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
+                    var num150 = Dust.NewDust(
+                        new Vector2(Projectile.position.X + Projectile.velocity.X,
+                            Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height,
+                        DustID.Enchanted_Pink, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
                     Main.dust[num150].noGravity = true;
-                    var num151 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X, Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height, DustID.Ash, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
+                    var num151 = Dust.NewDust(
+                        new Vector2(Projectile.position.X + Projectile.velocity.X,
+                            Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height,
+                        DustID.Ash, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
                     Main.dust[num151].noGravity = true;
                     var randomDust = 0;
                     Dust dust98;
@@ -74,6 +83,7 @@ public class DarkGeyser : ModProjectile
                         Main.dust[randomDust].velocity.X *= 2f;
                         Main.dust[randomDust].velocity.Y *= 2f;
                     }
+
                     dust98 = Main.dust[randomDust];
                     dust189 = dust98;
                     dust189.scale *= 1.5f;
@@ -89,12 +99,15 @@ public class DarkGeyser : ModProjectile
         {
             Projectile.ai[0] += 1f;
         }
+
         Projectile.rotation += 0.3f * (float)Projectile.direction;
     }
+
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
         //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 240, false);
     }
+
     public override void ModifyDamageHitbox(ref Rectangle hitbox)
     {
         int size = 20;

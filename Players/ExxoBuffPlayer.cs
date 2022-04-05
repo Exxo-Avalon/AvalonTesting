@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
@@ -26,11 +27,15 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
     {
-        if (newPlayer)
-        {
-            ModPacket packet = Mod.GetPacket();
-            packet.Write(DaggerStaffRotation);
-            packet.Send(toWho, fromWho);
-        }
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.BuffPlayerSyncPlayer);
+        packet.Write((byte)Player.whoAmI);
+        packet.Write(DaggerStaffRotation);
+        packet.Send(toWho, fromWho);
+    }
+
+    public void HandleSyncPlayer(BinaryReader reader)
+    {
+        DaggerStaffRotation = reader.ReadSingle();
     }
 }

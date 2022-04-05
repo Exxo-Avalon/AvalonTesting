@@ -1,48 +1,52 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
 
 public class ExxoSummonPlayer : ModPlayer
 {
-    private readonly List<bool> daggerSummons = new();
-    public int DaggerSummonCount => daggerSummons.Count(val => val);
+    public LinkedList<int> DaggerSummons { get; private set; }
+    public override bool CloneNewInstances => false;
 
-    public int HandleDaggerSummon()
+    public override void Initialize()
     {
-        int index = daggerSummons.FindIndex(val => !val);
-        if (index == -1)
-        {
-            daggerSummons.Add(true);
-            return daggerSummons.Count - 1;
-        }
-
-        daggerSummons[index] = true;
-        return index;
+        DaggerSummons = new LinkedList<int>();
     }
 
-    public void RemoveDaggerSummon(int index)
+    public LinkedListNode<int> HandleDaggerSummon()
     {
-        if (index == daggerSummons.Count - 1)
-        {
-            daggerSummons.RemoveAt(index);
-        }
-        else
-        {
-            daggerSummons[index] = false;
-        }
+        return DaggerSummons.AddLast(DaggerSummons.Count);
     }
 
-    public void CheckDaggerSummon(int index)
+    public void RemoveDaggerSummon(LinkedListNode<int> linkedListNode)
     {
-        int diff = index + 1 - daggerSummons.Count;
+        LinkedListNode<int> nextNode = linkedListNode.Next;
+        while (nextNode != null)
+        {
+            nextNode.Value--;
+            nextNode = nextNode.Next;
+        }
+
+        DaggerSummons.Remove(linkedListNode);
+    }
+
+    public LinkedListNode<int> ObtainExistingDaggerSummon(int index)
+    {
+        int diff = index + 1 - DaggerSummons.Count;
         if (diff > 0)
         {
             for (int i = 0; i < diff; i++)
             {
-                daggerSummons.Add(true);
+                DaggerSummons.AddLast(DaggerSummons.Count);
             }
+
+            return DaggerSummons.Last;
+        }
+        else
+        {
+            return DaggerSummons.Find(index);
         }
     }
 }

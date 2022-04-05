@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -7,11 +8,10 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Projectiles.Summon;
 
-// TODO: Improve implementation of DaggerSummon handling and fix dagger stopping before reaching target
 public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
 {
-    private int id = -1;
-    private bool justSynced = true;
+    private LinkedListNode<int> positionNode;
+    private int hostPosition = -1;
 
     public override void SetStaticDefaults()
     {
@@ -50,21 +50,20 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
 
     public override void SendExtraAI(BinaryWriter writer)
     {
-        writer.Write(id);
+        ExxoSummonPlayer summonPlayer = Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>();
+        positionNode ??= summonPlayer.HandleDaggerSummon();
+        writer.Write(positionNode.Value);
     }
 
     public override void ReceiveExtraAI(BinaryReader reader)
     {
         base.ReceiveExtraAI(reader);
-        id = reader.ReadInt32();
-        justSynced = true;
+        hostPosition = reader.ReadInt32();
     }
 
     public override void Kill(int timeLeft)
     {
-        Player player = Main.player[Projectile.owner];
-        ExxoSummonPlayer summonPlayer = player.GetModPlayer<ExxoSummonPlayer>();
-        summonPlayer.RemoveDaggerSummon(id);
+        Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>().RemoveDaggerSummon(positionNode);
         base.Kill(timeLeft);
     }
 
@@ -85,14 +84,13 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
         }
 
 
-        if (id == -1)
+        if (hostPosition == -1)
         {
-            id = summonPlayer.HandleDaggerSummon();
+            positionNode ??= summonPlayer.HandleDaggerSummon();
         }
-        else if (justSynced)
+        else
         {
-            summonPlayer.CheckDaggerSummon(id);
-            justSynced = false;
+            positionNode ??= summonPlayer.ObtainExistingDaggerSummon(hostPosition);
         }
 
         #region movement
@@ -103,8 +101,9 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
             int radius = 50;
             float speed = 0.1f;
             Vector2 target = player.Center +
-                             (Vector2.One.RotatedBy((MathHelper.TwoPi / summonPlayer.DaggerSummonCount * id) +
-                                                    buffPlayer.DaggerStaffRotation) * radius);
+                             (Vector2.One.RotatedBy(
+                                 ((MathHelper.TwoPi / summonPlayer.DaggerSummons.Count) * positionNode.Value) +
+                                 buffPlayer.DaggerStaffRotation) * radius);
             Vector2 error = target - Projectile.Center;
 
             Projectile.velocity = player.velocity + (error * speed);
