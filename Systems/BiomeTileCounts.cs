@@ -1,4 +1,6 @@
 ﻿using System;
+using AvalonTesting.Players;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Systems;
@@ -7,7 +9,7 @@ public class BiomeTileCounts : ModSystem
 {
     public int ContagionTiles { get; private set; }
     public int TropicsTiles { get; private set; }
-    public int HellCastleTiles { get; private set; }
+    public int HellcastleTiles { get; private set; }
     public int DarkTiles { get; private set; }
     public int CaesiumTiles { get; private set; }
     public int SkyFortressTiles { get; private set; }
@@ -30,7 +32,7 @@ public class BiomeTileCounts : ModSystem
         //                tileCounts[ModContent.TileType<TropicalMud>()] +
         //                tileCounts[ModContent.TileType<TropicalGrass>()];
         //
-        // HellCastleTiles = tileCounts[ModContent.TileType<ImperviousBrick>()];
+        HellcastleTiles = tileCounts[ModContent.TileType<Tiles.ImperviousBrick>()];
         //
         // DarkTiles = tileCounts[ModContent.TileType<DarkMatter>()] +
         //             tileCounts[ModContent.TileType<DarkMatterSand>()] +
@@ -44,6 +46,6 @@ public class BiomeTileCounts : ModSystem
         // SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         // CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];
 
-        //Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().UpdateZones(this);
+        Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().UpdateZones(this);
     }
 }

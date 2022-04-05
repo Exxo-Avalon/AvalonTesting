@@ -11,7 +11,7 @@ public class ExxoBiomePlayer : ModPlayer
     public bool ZoneCaesium { get; private set; }
     public bool ZoneCrystal { get; private set; }
     public bool ZoneDarkMatter { get; private set; }
-    public bool ZoneHellCastle { get; private set; }
+    public bool ZoneHellcastle { get; private set; }
     public bool ZoneSkyFortress { get; private set; }
     public bool ZoneTropics { get; private set; }
     public bool ZoneTuhrtlOutpost { get; private set; }
@@ -25,8 +25,8 @@ public class ExxoBiomePlayer : ModPlayer
         // ZoneCaesium = biomeTileCounts.CaesiumTiles > 200 && Player.ZoneUnderworldHeight;
         // ZoneCrystal = biomeTileCounts.CrystalTiles > 100;
         // ZoneDarkMatter = biomeTileCounts.DarkTiles > 300;
-        // ZoneHellCastle = biomeTileCounts.HellCastleTiles > 350 &&
-        //                  wallType == ModContent.WallType<ImperviousBrickWallUnsafe>() && Player.ZoneUnderworldHeight;
+        ZoneHellcastle = biomeTileCounts.HellcastleTiles > 350 &&
+                         wallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() && Player.ZoneUnderworldHeight;
         // ZoneSkyFortress = biomeTileCounts.SkyFortressTiles > 50 && Player.ZoneSkyHeight;
         // ZoneTropics = biomeTileCounts.TropicsTiles > 50;
         // ZoneTuhrtlOutpost = ZoneTropics && wallType == ModContent.WallType<TuhrtlBrickWallUnsafe>() &&

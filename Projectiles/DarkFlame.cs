@@ -54,6 +54,6 @@ public class DarkFlame : ModProjectile
 
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
-        //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 240);
+        target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 240);
     }
 }

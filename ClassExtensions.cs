@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -29,6 +30,11 @@ public static class ClassExtensions
         }
 
         return closest;
+    }
+
+    public static ExxoPlayer Avalon(this Player p)
+    {
+        return p.GetModPlayer<ExxoPlayer>();
     }
 
     public static Asset<Texture2D> GetTexture(this ModTexturedType texturedType)

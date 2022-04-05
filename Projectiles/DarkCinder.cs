@@ -82,6 +82,6 @@ public class DarkCinder : ModProjectile
     }
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
-        //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 120);
+        target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 120);
     }
 }

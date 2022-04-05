@@ -11,7 +11,10 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Items\Consumables\" />
+    <Folder Include="Items\Tools\" />
     <Folder Include="Items\Placeables\Wall\" />
+    <Folder Include="Biomes\" />
     <Folder Include="Walls\" />
     <Folder Include="World\Passes\" />
     <Folder Include="World\Structures\" />

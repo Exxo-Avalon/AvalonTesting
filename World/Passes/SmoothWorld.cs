@@ -17,12 +17,10 @@ class SmoothWorld
         {
             for (int j = y; j <= y + 99; j++)
             {
-                if (Main.tile[i, j].TileType == (ushort)ModContent.TileType<Tiles.ResistantWoodPlatform>())
-                { }
-                else
+                if (Main.tile[i, j].TileType != (ushort)ModContent.TileType<Tiles.ResistantWoodPlatform>())
                 {
                     Tile t = Main.tile[i, j];
-                    t.BlockType = Terraria.ID.BlockType.Solid;
+                    t.IsHalfBlock = false;
                     t.Slope = Terraria.ID.SlopeType.Solid;
                 }
             }

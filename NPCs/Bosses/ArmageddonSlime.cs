@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs.Bosses;
 
@@ -371,34 +372,34 @@ public class ArmageddonSlime : ModNPC
 
         #region projectiles / slime spawn
 
-        //ExxoAvalonOriginsModPlayer myModPlayer = Main.player[Main.myPlayer].Avalon();
+        ExxoPlayer myModPlayer = Main.player[Main.myPlayer].Avalon();
 
-        //if (ExxoAvalonOriginsCollisions.SolidCollisionArma(NPC.position, (int)(NPC.width * NPC.scale), (int)(NPC.height * NPC.scale)) && NPC.oldVelocity.Y > 0f)
-        //{
-        //    if (newLanding && Vector2.Distance(NPC.position, Main.player[Main.myPlayer].position) <= 100 * 16)
-        //    {
-        //        newLanding = false;
-        //        myModPlayer.screenShakeTimer = 10;
-        //    }
-        //    if (!cindersOnce)
-        //    {
-        //        for (int i = 0; i < 4 + Main.rand.Next(3); i++)
-        //        {
-        //            Vector2 origin = new Vector2(NPC.Center.X + Main.rand.Next(-(NPC.width / 2), (NPC.width / 2) + 1), NPC.Center.Y + (NPC.height / 2));
-        //            Vector2 velocity = new Vector2(NPC.velocity.X / 4, Main.rand.NextFloat(-3f, -5f)).RotatedBy(MathHelper.ToRadians(Main.rand.Next(-5, 6)));
-        //            Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), origin, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f, NPC.target);
-        //        }
-        //        cindersOnce = true;
-        //    }
-        //}
-        //else
-        //{
-        //    newLanding = true;
-        //}
+        if (AvalonTestingCollisions.TouchingTile(NPC.position, (int)(NPC.width * NPC.scale), (int)(NPC.height * NPC.scale)) && NPC.oldVelocity.Y > 0f)
+        {
+            if (newLanding && Vector2.Distance(NPC.position, Main.player[Main.myPlayer].position) <= 100 * 16)
+            {
+                newLanding = false;
+                myModPlayer.screenShakeTimer = 10;
+            }
+            if (!cindersOnce)
+            {
+                for (int i = 0; i < 4 + Main.rand.Next(3); i++)
+                {
+                    Vector2 origin = new Vector2(NPC.Center.X + Main.rand.Next(-(NPC.width / 2), (NPC.width / 2) + 1), NPC.Center.Y + (NPC.height / 2));
+                    Vector2 velocity = new Vector2(NPC.velocity.X / 4, Main.rand.NextFloat(-3f, -5f)).RotatedBy(MathHelper.ToRadians(Main.rand.Next(-5, 6)));
+                    Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), origin, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f, NPC.target);
+                }
+                cindersOnce = true;
+            }
+        }
+        else
+        {
+            newLanding = true;
+        }
 
         if (Vector2.Distance(NPC.Center, Main.player[Main.myPlayer].Center) < 5000)
         {
-            //Main.player[Main.myPlayer].AddBuff(ModContent.BuffType<Buffs.CurseofIcarus>(), 300);
+            Main.player[Main.myPlayer].AddBuff(ModContent.BuffType<Buffs.CurseofIcarus>(), 300);
         }
 
         var dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.t_Slime, NPC.velocity.X, NPC.velocity.Y, 255, new Color(0, 80, 255, 80), NPC.scale * 1.2f);
@@ -600,6 +601,6 @@ public class ArmageddonSlime : ModNPC
 
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
-        //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 300);
+        target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 300);
     }
 }

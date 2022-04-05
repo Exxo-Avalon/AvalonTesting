@@ -5,6 +5,7 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
+using AvalonTesting.Hooks;
 
 namespace AvalonTesting;
 
@@ -28,6 +29,7 @@ public partial class AvalonTesting : Mod
 
     public override void Load()
     {
+        HooksManager.ApplyHooks();
         if (Main.netMode != NetmodeID.Server)
         {
             ModLoader.TryGetMod("AvalonMusic", out MusicMod);
@@ -42,7 +44,6 @@ public partial class AvalonTesting : Mod
                 TextureAssets.Logo3 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
                 TextureAssets.Logo4 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
             }
-
             Players.ExxoPlayer.spectrumArmorTextures = new ReLogic.Content.Asset<Texture2D>[]
             {
                 ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumHelmet_Glow_Head"),

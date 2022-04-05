@@ -206,6 +206,6 @@ public class DarkMotherSlime : ModNPC
     }
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
-        //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 300);
+        target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 300);
     }
 }

@@ -105,7 +105,7 @@ public class DarkGeyser : ModProjectile
 
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
-        //target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 240, false);
+        target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 240, false);
     }
 
     public override void ModifyDamageHitbox(ref Rectangle hitbox)

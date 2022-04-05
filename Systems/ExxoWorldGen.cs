@@ -9,10 +9,6 @@ public class ExxoWorldGen : ModSystem
     public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
     {
         int vines = tasks.FindIndex(genpass => genpass.Name == "Vines");
-        if (vines != -1)
-        {
-            tasks.Insert(vines + 1, new PassLegacy("Impvines", World.Passes.Impvines.Method));
-        }
         int underworld = tasks.FindIndex(genpass => genpass.Name == "Underworld");
         if (underworld != -1)
         {
@@ -22,6 +18,10 @@ public class ExxoWorldGen : ModSystem
         if (smoothWorld != -1)
         {
             tasks.Insert(smoothWorld + 1, new PassLegacy("Unsmoothing Hellcastle", World.Passes.SmoothWorld.Method));
+        }
+        if (vines != -1)
+        {
+            tasks.Insert(vines + 1, new PassLegacy("Impvines", World.Passes.Impvines.Method));
         }
     }
 }
