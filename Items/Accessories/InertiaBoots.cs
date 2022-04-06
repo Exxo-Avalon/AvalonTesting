@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Rarities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,9 +17,8 @@ class InertiaBoots : ModItem
 
     public override void SetDefaults()
     {
-        //Rectangle dims = ExxoAvalonOrigins.GetDims("Items/Accessories/InertiaBoots");
         Item.defense = 4;
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<BlahRarity>();
         Item.width = 30;
         Item.value = Item.sellPrice(0, 16, 45, 0);
         Item.accessory = true;

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Items\Consumables\" />
+    <Folder Include="Items\Material\" />
     <Folder Include="Items\Tools\" />
     <Folder Include="Items\Placeables\Wall\" />
     <Folder Include="Biomes\" />

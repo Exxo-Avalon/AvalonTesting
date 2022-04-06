@@ -40,6 +40,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (curseOfIcarus)
         {
+            Player.rocketTimeMax = 42;
             Player.wingsLogic = 0;
             if (Player.mount.CanFly() || Player.mount.CanHover()) // Setting player.mount._flyTime does not work for all mounts. Bye-bye mounts!
             {
