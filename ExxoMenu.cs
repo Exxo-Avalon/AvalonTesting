@@ -4,6 +4,7 @@ using ReLogic.Content;
 using Terraria.ModLoader;
 
 namespace AvalonTesting;
+
 public class ExxoMenu : ModMenu
 {
     public override Asset<Texture2D> Logo
@@ -12,9 +13,10 @@ public class ExxoMenu : ModMenu
         {
             if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
             {
-                return ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
+                return Mod.Assets.Request<Texture2D>("Sprites/EAOLogoAprilFools");
             }
-            return ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
+
+            return Mod.Assets.Request<Texture2D>("Sprites/EAOLogo");
         }
     }
 }

@@ -33,17 +33,6 @@ public partial class AvalonTesting : Mod
         if (Main.netMode != NetmodeID.Server)
         {
             ModLoader.TryGetMod("AvalonMusic", out MusicMod);
-            TextureAssets.Logo = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
-            TextureAssets.Logo2 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
-            TextureAssets.Logo3 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
-            TextureAssets.Logo4 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogo");
-            if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
-            {
-                TextureAssets.Logo = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
-                TextureAssets.Logo2 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
-                TextureAssets.Logo3 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
-                TextureAssets.Logo4 = ModContent.Request<Texture2D>("AvalonTesting/Sprites/EAOLogoAprilFools");
-            }
             Players.ExxoPlayer.spectrumArmorTextures = new ReLogic.Content.Asset<Texture2D>[]
             {
                 ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumHelmet_Glow_Head"),
@@ -91,16 +80,20 @@ public partial class AvalonTesting : Mod
         {
             return Similarity.None;
         }
+
         if (check.TileType == myType || Main.tileMerge[myType][check.TileType])
         {
             return Similarity.Same;
         }
+
         if (check.TileType == mergeType)
         {
             return Similarity.Merge;
         }
+
         return Similarity.None;
     }
+
     public static void MergeWith(int type1, int type2, bool merge = true)
     {
         if (type1 != type2)
@@ -120,13 +113,18 @@ public partial class AvalonTesting : Mod
         }
     }
 
-    public static void MergeWithFrameExplicit(int x, int y, int myType, int mergeType, out bool mergedUp, out bool mergedLeft, out bool mergedRight, out bool mergedDown, bool forceSameDown = false, bool forceSameUp = false, bool forceSameLeft = false, bool forceSameRight = false, bool resetFrame = true)
+    public static void MergeWithFrameExplicit(int x, int y, int myType, int mergeType, out bool mergedUp,
+                                              out bool mergedLeft, out bool mergedRight, out bool mergedDown,
+                                              bool forceSameDown = false, bool forceSameUp = false,
+                                              bool forceSameLeft = false, bool forceSameRight = false,
+                                              bool resetFrame = true)
     {
         if (Main.tile[x, y] == null || x < 0 || x >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
         {
             mergedUp = (mergedLeft = (mergedRight = (mergedDown = false)));
             return;
         }
+
         Main.tileMerge[myType][mergeType] = false;
         Tile tileLeft = Main.tile[x - 1, y];
         Tile tileRight = Main.tile[x + 1, y];
@@ -155,6 +153,7 @@ public partial class AvalonTesting : Mod
         {
             randomFrame = Main.tile[x, y].TileFrameNumber;
         }
+
         mergedDown = (mergedLeft = (mergedRight = (mergedUp = false)));
         switch (leftSim)
         {
@@ -180,6 +179,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 90, 18 * randomFrame);
                                         break;
                                 }
+
                                 break;
 
                             case Similarity.Merge:
@@ -199,6 +199,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 126, 90 + (18 * randomFrame));
                                         break;
                                 }
+
                                 break;
 
                             default:
@@ -210,8 +211,10 @@ public partial class AvalonTesting : Mod
                                 {
                                     SetFrame(x, y, 108 + (18 * randomFrame), 54);
                                 }
+
                                 break;
                         }
+
                         break;
 
                     case Similarity.Merge:
@@ -234,6 +237,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 126, 144 + (18 * randomFrame));
                                         break;
                                 }
+
                                 break;
 
                             case Similarity.Merge:
@@ -253,6 +257,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 108, 216 + (18 * randomFrame));
                                         break;
                                 }
+
                                 break;
 
                             default:
@@ -271,8 +276,10 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 108, 144 + (18 * randomFrame));
                                         break;
                                 }
+
                                 break;
                         }
+
                         break;
 
                     default:
@@ -284,6 +291,7 @@ public partial class AvalonTesting : Mod
                                     SetFrame(x, y, 36 * randomFrame, 54);
                                     break;
                                 }
+
                                 _ = 1;
                                 SetFrame(x, y, 108 + (18 * randomFrame), 0);
                                 break;
@@ -304,6 +312,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 108, 90 + (18 * randomFrame));
                                         break;
                                 }
+
                                 break;
 
                             default:
@@ -322,10 +331,13 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 162 + (18 * randomFrame), 54);
                                         break;
                                 }
+
                                 break;
                         }
+
                         break;
                 }
+
                 return;
 
             case Similarity.Merge:
@@ -353,6 +365,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 234 + (18 * randomFrame), 54);
                                         break;
                                 }
+
                                 break;
 
                             case Similarity.Merge:
@@ -372,6 +385,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 108 + (18 * randomFrame), 54);
                                         break;
                                 }
+
                                 break;
 
                             default:
@@ -384,8 +398,10 @@ public partial class AvalonTesting : Mod
                                 {
                                     SetFrame(x, y, 108 + (18 * randomFrame), 54);
                                 }
+
                                 break;
                         }
+
                         break;
 
                     case Similarity.Merge:
@@ -408,6 +424,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 108 + (18 * randomFrame), 0);
                                         break;
                                 }
+
                                 break;
 
                             case Similarity.Merge:
@@ -427,6 +444,7 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 162 + (18 * randomFrame), 54);
                                         break;
                                 }
+
                                 break;
 
                             default:
@@ -438,8 +456,10 @@ public partial class AvalonTesting : Mod
                                 {
                                     SetFrame(x, y, 162 + (18 * randomFrame), 54);
                                 }
+
                                 break;
                         }
+
                         break;
 
                     default:
@@ -456,6 +476,7 @@ public partial class AvalonTesting : Mod
                                     _ = 1;
                                     SetFrame(x, y, 108 + (18 * randomFrame), 0);
                                 }
+
                                 break;
 
                             case Similarity.Merge:
@@ -464,6 +485,7 @@ public partial class AvalonTesting : Mod
                                     SetFrame(x, y, 162, 18 * randomFrame);
                                     break;
                                 }
+
                                 _ = 1;
                                 SetFrame(x, y, 162 + (18 * randomFrame), 54);
                                 break;
@@ -486,12 +508,16 @@ public partial class AvalonTesting : Mod
                                         SetFrame(x, y, 18 * randomFrame, 234);
                                         break;
                                 }
+
                                 break;
                         }
+
                         break;
                 }
+
                 return;
         }
+
         switch (upSim)
         {
             case Similarity.Same:
@@ -501,7 +527,8 @@ public partial class AvalonTesting : Mod
                         switch (rightSim)
                         {
                             case Similarity.Same:
-                                if (topLeftSim == Similarity.Merge || topRightSim == Similarity.Merge || bottomLeftSim == Similarity.Merge || bottomRightSim == Similarity.Merge)
+                                if (topLeftSim == Similarity.Merge || topRightSim == Similarity.Merge ||
+                                    bottomLeftSim == Similarity.Merge || bottomRightSim == Similarity.Merge)
                                 {
                                     if (bottomRightSim == Similarity.Merge)
                                     {
@@ -519,8 +546,10 @@ public partial class AvalonTesting : Mod
                                     {
                                         SetFrame(x, y, 18, 108 + (36 * randomFrame));
                                     }
+
                                     break;
                                 }
+
                                 switch (topLeftSim)
                                 {
                                     case Similarity.Same:
@@ -538,12 +567,15 @@ public partial class AvalonTesting : Mod
                                             {
                                                 SetFrame(x, y, 108 + (18 * randomFrame), 36);
                                             }
+
                                             return;
                                         }
+
                                         if (bottomLeftSim != 0)
                                         {
                                             break;
                                         }
+
                                         if (bottomRightSim == Similarity.Same)
                                         {
                                             if (topRightSim == Similarity.Merge)
@@ -559,6 +591,7 @@ public partial class AvalonTesting : Mod
                                         {
                                             SetFrame(x, y, 198, 18 * randomFrame);
                                         }
+
                                         return;
 
                                     case Similarity.None:
@@ -577,8 +610,10 @@ public partial class AvalonTesting : Mod
                                         {
                                             SetFrame(x, y, 18 + (18 * randomFrame), 18);
                                         }
+
                                         return;
                                 }
+
                                 SetFrame(x, y, 18 + (18 * randomFrame), 18);
                                 break;
 
@@ -591,6 +626,7 @@ public partial class AvalonTesting : Mod
                                 SetFrame(x, y, 72, 18 * randomFrame);
                                 break;
                         }
+
                         break;
 
                     case Similarity.Merge:
@@ -611,6 +647,7 @@ public partial class AvalonTesting : Mod
                                 SetFrame(x, y, 90, 90 + (18 * randomFrame));
                                 break;
                         }
+
                         break;
 
                     default:
@@ -629,8 +666,10 @@ public partial class AvalonTesting : Mod
                                 SetFrame(x, y, 18 + (36 * randomFrame), 72);
                                 break;
                         }
+
                         break;
                 }
+
                 return;
 
             case Similarity.Merge:
@@ -654,6 +693,7 @@ public partial class AvalonTesting : Mod
                                 SetFrame(x, y, 90, 144 + (18 * randomFrame));
                                 break;
                         }
+
                         break;
 
                     case Similarity.Merge:
@@ -673,6 +713,7 @@ public partial class AvalonTesting : Mod
                                 SetFrame(x, y, 216, 18 * randomFrame);
                                 break;
                         }
+
                         break;
 
                     default:
@@ -685,10 +726,13 @@ public partial class AvalonTesting : Mod
                         {
                             SetFrame(x, y, 216, 18 * randomFrame);
                         }
+
                         break;
                 }
+
                 return;
         }
+
         switch (downSim)
         {
             case Similarity.Same:
@@ -707,6 +751,7 @@ public partial class AvalonTesting : Mod
                         SetFrame(x, y, 18 + (36 * randomFrame), 54);
                         break;
                 }
+
                 break;
 
             case Similarity.Merge:
@@ -719,6 +764,7 @@ public partial class AvalonTesting : Mod
                 {
                     SetFrame(x, y, 216, 18 * randomFrame);
                 }
+
                 break;
 
             default:
@@ -737,13 +783,16 @@ public partial class AvalonTesting : Mod
                         SetFrame(x, y, 216, 18 * randomFrame);
                         break;
                 }
+
                 break;
         }
     }
 
-    public static void MergeWithFrame(int x, int y, int myType, int mergeType, bool forceSameDown = false, bool forceSameUp = false, bool forceSameLeft = false, bool forceSameRight = false, bool resetFrame = true)
+    public static void MergeWithFrame(int x, int y, int myType, int mergeType, bool forceSameDown = false,
+                                      bool forceSameUp = false, bool forceSameLeft = false, bool forceSameRight = false,
+                                      bool resetFrame = true)
     {
-        MergeWithFrameExplicit(x, y, myType, mergeType, out _, out _, out _, out _, forceSameDown, forceSameUp, forceSameLeft, forceSameRight, resetFrame);
+        MergeWithFrameExplicit(x, y, myType, mergeType, out _, out _, out _, out _, forceSameDown, forceSameUp,
+            forceSameLeft, forceSameRight, resetFrame);
     }
-
 }
