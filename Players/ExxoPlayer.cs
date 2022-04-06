@@ -14,6 +14,7 @@ public class ExxoPlayer : ModPlayer
     public int screenShakeTimer;
     public bool spikeImmune = false;
     public bool trapImmune = false;
+    public bool caesiumPoison = false;
 
     public override void ResetEffects()
     {
@@ -21,6 +22,7 @@ public class ExxoPlayer : ModPlayer
         curseOfIcarus = false;
         trapImmune = false;
         spikeImmune = false;
+        caesiumPoison = false;
     }
     public override void PostUpdate()
     {
@@ -62,6 +64,15 @@ public class ExxoPlayer : ModPlayer
             }
             Player.lifeRegenTime = 0;
             Player.lifeRegen -= 16;
+        }
+        if (caesiumPoison)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            Player.lifeRegen -= 20;
         }
     }
 }

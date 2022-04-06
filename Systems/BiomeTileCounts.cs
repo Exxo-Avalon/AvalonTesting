@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Players;
+using AvalonTesting.Tiles;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -32,7 +33,7 @@ public class BiomeTileCounts : ModSystem
         //                tileCounts[ModContent.TileType<TropicalMud>()] +
         //                tileCounts[ModContent.TileType<TropicalGrass>()];
         //
-        HellcastleTiles = tileCounts[ModContent.TileType<Tiles.ImperviousBrick>()];
+        HellcastleTiles = tileCounts[ModContent.TileType<ImperviousBrick>()];
         //
         // DarkTiles = tileCounts[ModContent.TileType<DarkMatter>()] +
         //             tileCounts[ModContent.TileType<DarkMatterSand>()] +
@@ -42,7 +43,7 @@ public class BiomeTileCounts : ModSystem
         //             tileCounts[ModContent.TileType<Darksandstone>()] +
         //             tileCounts[ModContent.TileType<DarkMatterGrass>()];
         //
-        // CaesiumTiles = tileCounts[ModContent.TileType<BlackBlaststone>()];
+        CaesiumTiles = tileCounts[ModContent.TileType<BlastedStone>()];
         // SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         // CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];
 

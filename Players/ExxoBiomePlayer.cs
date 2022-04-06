@@ -22,7 +22,7 @@ public class ExxoBiomePlayer : ModPlayer
         ushort wallType = Main.tile[tileCoordinates.X, tileCoordinates.Y].WallType;
 
         // ZoneContagion = biomeTileCounts.ContagionTiles > 200;
-        // ZoneCaesium = biomeTileCounts.CaesiumTiles > 200 && Player.ZoneUnderworldHeight;
+        ZoneCaesium = biomeTileCounts.CaesiumTiles > 200 && Player.ZoneUnderworldHeight;
         // ZoneCrystal = biomeTileCounts.CrystalTiles > 100;
         // ZoneDarkMatter = biomeTileCounts.DarkTiles > 300;
         ZoneHellcastle = biomeTileCounts.HellcastleTiles > 350 &&

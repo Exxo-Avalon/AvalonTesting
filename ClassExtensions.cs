@@ -36,7 +36,10 @@ public static class ClassExtensions
     {
         return p.GetModPlayer<ExxoPlayer>();
     }
-
+    public static ExxoBiomePlayer AvalonBiome(this Player p)
+    {
+        return p.GetModPlayer<ExxoBiomePlayer>();
+    }
     public static Asset<Texture2D> GetTexture(this ModTexturedType texturedType)
     {
         return ModContent.Request<Texture2D>(texturedType.Texture);

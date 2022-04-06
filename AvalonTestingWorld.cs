@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Tiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -40,6 +41,50 @@ public class AvalonTestingWorld : ModSystem
             }
             if (Main.tile[num5, num6] != null)
             {
+                #region lazite grass
+                if (Main.tile[num5, num6].TileType == ModContent.TileType<LaziteGrass>())
+                {
+                    int num14 = Main.tile[num5, num6].TileType;
+                    // where lazite tallgrass would grow
+                    if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.Next(5) == 0 && num14 == ModContent.TileType<LaziteGrass>())
+                    {
+                        WorldGen.PlaceTile(num5, num9, ModContent.TileType<LaziteShortGrass>(), true, false, -1, 0);
+                        Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 10) * 18);
+                        if (Main.tile[num5, num9].HasTile)
+                        {
+                            //Main.tile[num5, num9].TileColor = (Main.tile[num5, num6].TileColor);
+                        }
+                        if (Main.netMode == NetmodeID.Server && Main.tile[num5, num9].HasTile)
+                        {
+                            NetMessage.SendTileSquare(-1, num5, num9, 1);
+                        }
+                    }
+                    bool flag2 = false;
+                    for (int m = num7; m < num8; m++)
+                    {
+                        for (int n = num9; n < num10; n++)
+                        {
+                            if ((num5 != m || num6 != n) && Main.tile[m, n].HasTile)
+                            {
+                                if (Main.tile[m, n].TileType == ModContent.TileType<BlastedStone>())
+                                {
+                                    WorldGen.SpreadGrass(m, n, ModContent.TileType<BlastedStone>(), ModContent.TileType<LaziteGrass>(), false, Main.tile[num5, num6].TileColor);
+                                }
+                                if (Main.tile[m, n].TileType == num14)
+                                {
+                                    WorldGen.SquareTileFrame(m, n, true);
+                                    flag2 = true;
+                                }
+                            }
+                        }
+                    }
+                    if (Main.netMode == NetmodeID.Server && flag2)
+                    {
+                        NetMessage.SendTileSquare(-1, num5, num6, 3);
+                    }
+                }
+                #endregion
+
                 #region impgrass growing
                 if (Main.tile[num5, num6].TileType == ModContent.TileType<Tiles.Impgrass>())
                 {
