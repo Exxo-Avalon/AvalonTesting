@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Players;
+﻿using System;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -10,21 +11,21 @@ namespace AvalonTesting;
 
 public static class ClassExtensions
 {
-    public static int FindClosestNPC(this Projectile p, float dist)
+    public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
-        float last = dist;
+        float lastDistance = maxDistance;
         for (int i = 0; i < Main.npc.Length; i++)
         {
-            NPC n = Main.npc[i];
-            if (!n.active || n.townNPC || n.dontTakeDamage)
+            NPC npc = Main.npc[i];
+            if (invalidNPCPredicate.Invoke(npc))
             {
                 continue;
             }
 
-            if (Vector2.Distance(p.Center, n.Center) < last)
+            if (Vector2.Distance(entity.Center, npc.Center) < lastDistance)
             {
-                last = Vector2.Distance(p.Center, n.Center);
+                lastDistance = Vector2.Distance(entity.Center, npc.Center);
                 closest = i;
             }
         }
@@ -36,10 +37,12 @@ public static class ClassExtensions
     {
         return p.GetModPlayer<ExxoPlayer>();
     }
+
     public static ExxoBiomePlayer AvalonBiome(this Player p)
     {
         return p.GetModPlayer<ExxoBiomePlayer>();
     }
+
     public static Asset<Texture2D> GetTexture(this ModTexturedType texturedType)
     {
         return ModContent.Request<Texture2D>(texturedType.Texture);
