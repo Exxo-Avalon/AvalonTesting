@@ -35,6 +35,26 @@ public class DeathMessages
         NetworkText result = NetworkText.Empty;
         NetworkText empty = NetworkText.Empty;
         empty = NetworkText.FromKey(Language.RandomFromCategory("DeathTextGeneric").Key, deadPlayerName, Main.worldName);
+        if (Main.rand.Next(4) == 0)
+        {
+            int msg = Main.rand.Next(4);
+            if (msg == 0)
+            {
+                empty = NetworkText.FromLiteral(deadPlayerName + " was tickled to smithereens");
+            }
+            if (msg == 1)
+            {
+                empty = NetworkText.FromLiteral(deadPlayerName + " was reduced to a fine paste");
+            }
+            if (msg == 2)
+            {
+                empty = NetworkText.FromLiteral(deadPlayerName + " became a tombstone dispenser");
+            }
+            if (msg == 3)
+            {
+                empty = NetworkText.FromLiteral(deadPlayerName + ".exe has stopped working. Program was closed");
+            }
+        }
         if (flag2)
         {
             result = NetworkText.FromKey("DeathSource.Player", empty, networkText3, flag ? networkText : networkText4);
