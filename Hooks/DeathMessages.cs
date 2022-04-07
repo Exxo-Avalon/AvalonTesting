@@ -69,6 +69,7 @@ public class DeathMessages
         }
         else
         {
+            #region falling
             if (other == 0)
             {
                 int rn = Main.rand.Next(9) + 1;
@@ -103,6 +104,8 @@ public class DeathMessages
                         break;
                 }
             }
+            #endregion
+            #region drowing
             else if (other == 1)
             {
                 int rn = Main.rand.Next(7) + 1;
@@ -131,6 +134,8 @@ public class DeathMessages
                         break;
                 }
             }
+            #endregion
+            #region lava
             else if (other == 2)
             {
                 int rn = Main.rand.Next(7) + 1;
@@ -159,6 +164,49 @@ public class DeathMessages
                         break;
                 }
             }
+            #endregion
+            #region petrification
+            else if (other == 5)
+            {
+                int rn = Main.rand.Next(5) + 1;
+                switch (rn)
+                {
+                    case 1:
+                        result = NetworkText.FromKey("DeathText.Petrified_1", deadPlayerName);
+                        break;
+                    case 2:
+                        result = NetworkText.FromKey("DeathText.Petrified_2", deadPlayerName);
+                        break;
+                    case 3:
+                        result = NetworkText.FromKey("DeathText.Petrified_3", deadPlayerName);
+                        break;
+                    case 4:
+                        result = NetworkText.FromKey("DeathText.Petrified_4", deadPlayerName);
+                        break;
+                    case 5:
+                        result = NetworkText.FromLiteral(deadPlayerName + " was stoned.");
+                        break;
+                }
+            }
+            #endregion
+            #region electrocution
+            else if (other == 10)
+            {
+                int rn = Main.rand.Next(3) + 1;
+                switch (rn)
+                {
+                    case 1:
+                        result = NetworkText.FromKey("DeathText.Electrocuted", deadPlayerName);
+                        break;
+                    case 2:
+                        result = NetworkText.FromLiteral(deadPlayerName + " got zzzzapped.");
+                        break;
+                    case 3:
+                        result = NetworkText.FromLiteral(deadPlayerName + " had an electrifying personality.");
+                        break;
+                }
+            }
+            #endregion
             else
             {
                 switch (other)
@@ -168,9 +216,6 @@ public class DeathMessages
                         break;
                     case 4:
                         result = NetworkText.FromKey("DeathText.Slain", deadPlayerName);
-                        break;
-                    case 5:
-                        result = NetworkText.FromKey("DeathText.Petrified_" + (Main.rand.Next(4) + 1), deadPlayerName);
                         break;
                     case 6:
                         result = NetworkText.FromKey("DeathText.Stabbed", deadPlayerName);
@@ -183,9 +228,6 @@ public class DeathMessages
                         break;
                     case 9:
                         result = NetworkText.FromKey("DeathText.Poisoned", deadPlayerName);
-                        break;
-                    case 10:
-                        result = NetworkText.FromKey("DeathText.Electrocuted", deadPlayerName);
                         break;
                     case 11:
                         result = NetworkText.FromKey("DeathText.TriedToEscape", deadPlayerName);
