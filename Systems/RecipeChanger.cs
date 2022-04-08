@@ -13,6 +13,11 @@ public class RecipeChanger : ModSystem
         {
             Item q;
             Recipe recipe = Main.recipe[i];
+            if (recipe.HasResult(ItemID.TerrasparkBoots))
+            {
+                recipe.RemoveRecipe();
+                i--;
+            }
             if (recipe.HasResult(ItemID.FrostHelmet))
             {
                 if (recipe.TryGetIngredient(ItemID.AdamantiteBar, out Item ing))
