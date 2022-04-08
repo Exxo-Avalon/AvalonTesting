@@ -6,6 +6,6 @@ public static class HooksManager
     {
         On.Terraria.Collision.HurtTiles += TrapCollision.OnHurtTiles;
         On.Terraria.Lang.CreateDeathMessage += DeathMessages.OnCreateDeathMessage;
-        On.Terraria.Item.IsAPrefixableAccessory += DeathMessages.OnIsAPrefixableAccessory;
+        On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
     }
 }

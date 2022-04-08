@@ -7,20 +7,6 @@ using Terraria.Localization;
 namespace AvalonTesting.Hooks;
 public class DeathMessages
 {
-    public static bool OnIsAPrefixableAccessory(On.Terraria.Item.orig_IsAPrefixableAccessory orig, Item self)
-    {
-        if (self.IsArmor()) return true;
-        return self.accessory && !self.vanity && ItemID.Sets.CanGetPrefixes[self.type];
-    }
-    public static bool OnPrefix(On.Terraria.Item.orig_Prefix orig, Item self, int pre)
-    {
-        if (AvalonTestingGlobalItemInstance.allowedPrefixes.ContainsValue(pre) && !orig(self, pre))
-        {
-            self.prefix = pre;
-            return true;
-        }
-        return orig(self, pre);
-    }
     public static NetworkText OnCreateDeathMessage(On.Terraria.Lang.orig_CreateDeathMessage orig, string deadPlayerName, int plr = -1, int npc = -1, int proj = -1, int other = -1, int projType = 0, int plrItemType = 0)
     {
         NetworkText networkText = NetworkText.Empty;
