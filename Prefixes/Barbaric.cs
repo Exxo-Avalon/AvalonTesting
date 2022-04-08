@@ -3,31 +3,35 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Slimy : ArmorPrefix
+public class Barbaric : ArmorPrefix
 {
-    public Slimy()
+    public Barbaric()
     {
 
     }
-    public override PrefixCategory Category => PrefixCategory.Custom;
-    public override float RollChance(Item item)
-    {
-        return 3f;
-    }
+
     public override bool CanRoll(Item item)
     {
         return IsArmor(item);
-    } 
+    }
+
+    public override void ModifyValue(ref float valueMult)
+    {
+        valueMult *= 1.25f;
+    }
+
     // public override bool Autoload(ref string name)
     // {
     //     if (base.Autoload(ref name))
     //     {
-    //         Mod.AddPrefix("Slimy", new Slimy());
+    //         Mod.AddPrefix("Barbaric", new Barbaric());
     //     }
     //     return false;
     // }
     public override void UpdateEquip(Player player)
     {
-        player.endurance += 0.03f;
+        player.GetDamage<GenericDamageClass>() += 0.04f;
+        //player.Avalon().bonusKB = 1.06f;
+        //player.inventory[player.selectedItem].knockBack += 0.06f;
     }
 }

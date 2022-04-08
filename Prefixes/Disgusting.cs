@@ -1,33 +1,35 @@
 ﻿using Terraria;
-using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Slimy : ArmorPrefix
+public class Disgusting : ArmorPrefix
 {
-    public Slimy()
+    public Disgusting()
     {
 
     }
-    public override PrefixCategory Category => PrefixCategory.Custom;
-    public override float RollChance(Item item)
-    {
-        return 3f;
-    }
+
     public override bool CanRoll(Item item)
     {
         return IsArmor(item);
-    } 
+    }
+
+    public override void ModifyValue(ref float valueMult)
+    {
+        valueMult *= 0.9f;
+    }
+
     // public override bool Autoload(ref string name)
     // {
     //     if (base.Autoload(ref name))
     //     {
-    //         Mod.AddPrefix("Slimy", new Slimy());
+    //         Mod.AddPrefix("Disgusting", new Disgusting());
     //     }
     //     return false;
     // }
     public override void UpdateEquip(Player player)
     {
-        player.endurance += 0.03f;
+        player.statDefense -= 2;
+        player.stinky = true;
     }
 }

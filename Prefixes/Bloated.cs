@@ -3,31 +3,29 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Slimy : ArmorPrefix
+public class Bloated : ArmorPrefix
 {
-    public Slimy()
+    public Bloated()
     {
 
     }
-    public override PrefixCategory Category => PrefixCategory.Custom;
-    public override float RollChance(Item item)
-    {
-        return 3f;
-    }
+
     public override bool CanRoll(Item item)
     {
         return IsArmor(item);
-    } 
+    }
+
     // public override bool Autoload(ref string name)
     // {
     //     if (base.Autoload(ref name))
     //     {
-    //         Mod.AddPrefix("Slimy", new Slimy());
+    //         Mod.AddPrefix("Bloated", new Confused());
     //     }
     //     return false;
     // }
     public override void UpdateEquip(Player player)
     {
-        player.endurance += 0.03f;
+        player.GetDamage(DamageClass.Melee) += 0.05f;
+        player.meleeSpeed -= 0.02f;
     }
 }

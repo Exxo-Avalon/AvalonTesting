@@ -11,6 +11,8 @@ namespace AvalonTesting;
 
 public static class ClassExtensions
 {
+
+
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
@@ -32,7 +34,14 @@ public static class ClassExtensions
 
         return closest;
     }
-
+    public static bool IsArmor(this Item item)
+    {
+        if (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1)
+        {
+            return !item.vanity;
+        }
+        return false;
+    }
     public static ExxoPlayer Avalon(this Player p)
     {
         return p.GetModPlayer<ExxoPlayer>();

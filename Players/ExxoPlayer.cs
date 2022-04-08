@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Prefixes;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
@@ -38,6 +39,14 @@ public class ExxoPlayer : ModPlayer
     }
     public override void PostUpdateEquips()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            ArmorPrefix prefix;
+            if ((prefix = PrefixLoader.GetPrefix(Player.armor[i].prefix) as ArmorPrefix) != null)
+            {
+                prefix.UpdateEquip(Player);
+            }
+        }
         if (curseOfIcarus)
         {
             Player.rocketTimeMax = 42;
