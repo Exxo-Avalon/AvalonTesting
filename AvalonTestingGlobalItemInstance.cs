@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
@@ -35,13 +36,6 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         { 14, ModContent.PrefixType<Prefixes.Slimy>() }
 
     };
-    //public override void OnCreate(Item item, ItemCreationContext context)
-    //{
-    //    if (item.IsArmor())
-    //    {
-    //        item.accessory = false;
-    //    }
-    //}
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
     {
         if (item.IsArmor() && pre == -3)
@@ -59,18 +53,18 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         return base.ChoosePrefix(item, rand);
     }
 
-    //public override bool AllowPrefix(Item item, int pre)
-    //{
-    //    if (item.IsArmor())
-    //    {
-    //        if (pre >= 62 && pre < 81)
-    //        {
-    //            pre = allowedPrefixes[Main.rand.Next(15)];
-    //            return base.AllowPrefix(item, pre);
-    //        }
-    //    }
-    //    return base.AllowPrefix(item, pre);
-    //}
+    public override bool AllowPrefix(Item item, int pre)
+    {
+        if (item.IsArmor())
+        {
+            if (pre >= PrefixID.Hard && pre < PrefixID.Legendary)
+            {
+                pre = allowedPrefixes[Main.rand.Next(15)];
+                return base.AllowPrefix(item, pre);
+            }
+        }
+        return base.AllowPrefix(item, pre);
+    }
 
     public override void PostReforge(Item item)
     {

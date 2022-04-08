@@ -15,6 +15,7 @@ public class AvalonTestingGlobalItem : GlobalItem
     public override void SetDefaults(Item item)
     {
         if (item.IsArmor()) ItemID.Sets.CanGetPrefixes[item.type] = true;
+        if (item.accessory) item.canBePlacedInVanityRegardlessOfConditions = true;
     }
     public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
     {

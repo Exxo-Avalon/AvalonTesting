@@ -17,6 +17,7 @@
     <Folder Include="Items\Placeables\Wall\" />
     <Folder Include="Biomes\" />
     <Folder Include="Gores\" />
+    <Folder Include="Items\Weapons\Melee\" />
     <Folder Include="Walls\" />
     <Folder Include="World\Passes\" />
     <Folder Include="World\Structures\" />
