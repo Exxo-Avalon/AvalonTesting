@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +34,7 @@ class BlahsWings : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().blahWings = true;
-        player.Avalon().noSticky = true;
+        player.GetModPlayer<ExxoBuffPlayer>().NoSticky = true;
         player.pStone = true;
         player.Avalon().bubbleBoost = true;
         player.Avalon().trapImmune =

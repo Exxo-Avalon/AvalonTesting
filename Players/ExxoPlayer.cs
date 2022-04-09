@@ -95,6 +95,16 @@ public class ExxoPlayer : ModPlayer
         {
             Player.AddBuff(ModContent.BuffType<Varefolk>(), 60);
         }
+
+        for (int k = 13; k < 18 + Player.extraAccessorySlots; k++)
+        {
+            Item item = Player.armor[k];
+            if (item.Exists() &&
+                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity)
+            {
+                item.ModItem.UpdateVanity(Player);
+            }
+        }
     }
 
     public override void UpdateBadLifeRegen()

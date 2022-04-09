@@ -20,6 +20,8 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         ModContent.PrefixType<Protective>(), ModContent.PrefixType<Silly>(), ModContent.PrefixType<Slimy>()
     };
 
+    public bool UpdateInvisibleVanity;
+
     public override bool InstancePerEntity => true;
 
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)

@@ -16,6 +16,8 @@ public class ExxoBuffPlayer : ModPlayer
 {
     public bool AdvancedBattle;
     public bool AstralProject;
+
+    public bool BadgeOfBacteria;
     private bool daggerBuffLock;
     public int DeleriumCount;
     public bool EarthInsignia;
@@ -25,7 +27,10 @@ public class ExxoBuffPlayer : ModPlayer
     public bool Lucky;
     public bool Malaria;
     public bool Melting;
+    public bool NoSticky;
     public int OldFallStart;
+
+    public bool SlimeBand;
     public float DaggerStaffRotation { get; private set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
@@ -56,6 +61,9 @@ public class ExxoBuffPlayer : ModPlayer
         Lucky = false;
         Malaria = false;
         Melting = false;
+        BadgeOfBacteria = false;
+        SlimeBand = false;
+        NoSticky = false;
     }
 
     public override void PreUpdateBuffs()
@@ -190,5 +198,60 @@ public class ExxoBuffPlayer : ModPlayer
         {
             NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
         }
+    }
+
+    public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
+    {
+        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
+        {
+            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
+        }
+    }
+
+    public void FloorVisualsAvalon()
+    {
+        int num = (int)((Player.position.X + (Player.width / 2)) / 16f);
+        int num2 = (int)((Player.position.Y + Player.height) / 16f);
+        int num3 = -1;
+        if (Main.tile[num, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num, num2].TileType])
+        {
+            num3 = Main.tile[num, num2].TileType;
+        }
+        else if (Main.tile[num - 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num - 1, num2].TileType])
+        {
+            num3 = Main.tile[num - 1, num2].TileType;
+        }
+        else if (Main.tile[num + 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num + 1, num2].TileType])
+        {
+            num3 = Main.tile[num + 1, num2].TileType;
+        }
+
+        if (num3 > -1)
+        {
+            if (num3 == 229 && !NoSticky)
+            {
+                Player.sticky = true;
+            }
+            else
+            {
+                Player.sticky = false;
+            }
+
+            if (SlimeBand)
+            {
+                Player.slippy = true;
+                Player.slippy2 = true;
+            }
+            else
+            {
+                Player.slippy = false;
+                Player.slippy2 = false;
+            }
+        }
+    }
+
+    public override void PostUpdateRunSpeeds()
+    {
+        FloorVisualsAvalon();
     }
 }

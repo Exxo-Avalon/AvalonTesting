@@ -22,7 +22,7 @@ class Omnibag : ModItem
         Item.vanity = true;
         Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.height = dims.Height;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().updateInvisibleVanity = true;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
     public override void AddRecipes()
     {

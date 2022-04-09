@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BandofSlime : ModItem
+internal class BandofSlime : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -15,7 +16,7 @@ class BandofSlime : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Accessories/BandofSlime");
+        Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.accessory = true;
@@ -25,7 +26,7 @@ class BandofSlime : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().slimeBand = true;
+        player.GetModPlayer<ExxoBuffPlayer>().SlimeBand = true;
         player.endurance += 0.05f;
         player.noFallDmg = true;
         player.slippy2 = true;

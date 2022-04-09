@@ -78,4 +78,9 @@ public static class ClassExtensions
                     Main.tile[(int)(player.position.X / 16f) + 1, (int)(player.position.Y / 16f) + 3].TileType] &&
                 player.velocity.Y == 0f);
     }
+
+    public static bool Exists(this Item item)
+    {
+        return item.type > ItemID.None && item.stack > 0;
+    }
 }

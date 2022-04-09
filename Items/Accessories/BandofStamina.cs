@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BandofStamina : ModItem
+internal class BandofStamina : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -25,6 +26,6 @@ class BandofStamina : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().statStamMax2 += 90;
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2 += 90;
     }
 }

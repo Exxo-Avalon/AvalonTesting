@@ -22,13 +22,12 @@ public class AegisDash : ModItem
         Item.width = dims.Width;
         Item.knockBack = 10f;
         Item.accessory = true;
-        Item.value = Item.sellPrice(0, 7, 0, 0);
+        Item.value = Item.sellPrice(0, 7);
         Item.height = dims.Height;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.dash = 2;
-        player.Avalon().dashIntoMob = true;
     }
 }

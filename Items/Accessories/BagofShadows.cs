@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BagofShadows : ModItem
+internal class BagofShadows : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,41 +20,52 @@ class BagofShadows : ModItem
         Item.width = dims.Width;
         Item.accessory = true;
         Item.vanity = true;
-        Item.value = Item.sellPrice(0, 1, 0, 0);
+        Item.value = Item.sellPrice(0, 1);
         Item.height = dims.Height;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().updateInvisibleVanity = true;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         if (player.controlRight)
         {
-            var num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num12].noGravity = true;
         }
+
         if (player.controlLeft)
         {
-            var num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num13].noGravity = true;
         }
+
         if (player.controlJump)
         {
-            var num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
+                100, Color.White, 2f);
             Main.dust[num14].noGravity = true;
         }
+
         if (player.controlRight)
         {
-            var num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num55].noGravity = true;
         }
+
         if (player.controlLeft)
         {
-            var num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num56].noGravity = true;
         }
+
         if (player.controlJump)
         {
-            var num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
+                100, Color.White, 2f);
             Main.dust[num57].noGravity = true;
         }
     }
@@ -63,32 +74,43 @@ class BagofShadows : ModItem
     {
         if (player.controlRight)
         {
-            var num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num12].noGravity = true;
         }
+
         if (player.controlLeft)
         {
-            var num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num13].noGravity = true;
         }
+
         if (player.controlJump)
         {
-            var num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
+                100, Color.White, 2f);
             Main.dust[num14].noGravity = true;
         }
+
         if (player.controlRight)
         {
-            var num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num55].noGravity = true;
         }
+
         if (player.controlLeft)
         {
-            var num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+                Color.White, 2f);
             Main.dust[num56].noGravity = true;
         }
+
         if (player.controlJump)
         {
-            var num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f, 100, Color.White, 2f);
+            int num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
+                100, Color.White, 2f);
             Main.dust[num57].noGravity = true;
         }
     }
