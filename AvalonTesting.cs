@@ -31,41 +31,40 @@ public partial class AvalonTesting : Mod
     public override void Load()
     {
         HooksManager.ApplyHooks();
-        if (Main.netMode != NetmodeID.Server)
+        
+        if (Main.netMode == NetmodeID.Server)
         {
-            ModLoader.TryGetMod("AvalonMusic", out MusicMod);
-            Players.ExxoPlayer.spectrumArmorTextures = new ReLogic.Content.Asset<Texture2D>[]
-            {
-                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumHelmet_Glow_Head"),
-                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumBreastplate_Body_Glow"),
-                ModContent.Request<Texture2D>("AvalonTesting/Items/Armor/SpectrumGreaves_Legs_Glow")
-            };
-            TextureAssets.Item[ItemID.HallowedKey] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/HallowedKey");
-            TextureAssets.Item[ItemID.MagicDagger] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/MagicDagger");
-            TextureAssets.Tile[TileID.CopperCoinPile] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/CopperCoin");
-            TextureAssets.Tile[TileID.SilverCoinPile] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/SilverCoin");
-            TextureAssets.Tile[TileID.GoldCoinPile] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/GoldCoin");
-            TextureAssets.Tile[TileID.PlatinumCoinPile] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/PlatinumCoin");
-            TextureAssets.Item[ItemID.PaladinBanner] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/PaladinBanner");
-            TextureAssets.Item[ItemID.PossessedArmorBanner] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/PossessedArmorBanner");
-            TextureAssets.Item[ItemID.BoneLeeBanner] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/BoneLeeBanner");
-            TextureAssets.Item[ItemID.AngryTrapperBanner] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/AngryTrapperBanner");
-            TextureAssets.Item[ItemID.Deathweed] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/Deathweed");
-            TextureAssets.Item[ItemID.WaterleafSeeds] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/WaterleafSeeds");
-            TextureAssets.Projectile[ProjectileID.MagicDagger] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/MagicDagger");
-            TextureAssets.Tile[TileID.Banners] = ModContent.Request<Texture2D>("AvalonTesting/Sprites/VanillaBanners");
-            TextureAssets.Tile[TileID.Containers] =
-                ModContent.Request<Texture2D>("AvalonTesting/Sprites/VanillaChests");
+            return;
         }
+        
+        ModLoader.TryGetMod("AvalonMusic", out MusicMod);
+        
+        // Vanilla texture replacements
+        TextureAssets.Item[ItemID.HallowedKey] = Mod.Assets.Request<Texture2D>("Sprites/HallowedKey");
+        TextureAssets.Item[ItemID.MagicDagger] = Mod.Assets.Request<Texture2D>("Sprites/MagicDagger");
+        TextureAssets.Tile[TileID.CopperCoinPile] =
+            Mod.Assets.Request<Texture2D>("Sprites/CopperCoin");
+        TextureAssets.Tile[TileID.SilverCoinPile] =
+            Mod.Assets.Request<Texture2D>("Sprites/SilverCoin");
+        TextureAssets.Tile[TileID.GoldCoinPile] = Mod.Assets.Request<Texture2D>("Sprites/GoldCoin");
+        TextureAssets.Tile[TileID.PlatinumCoinPile] =
+            Mod.Assets.Request<Texture2D>("Sprites/PlatinumCoin");
+        TextureAssets.Item[ItemID.PaladinBanner] =
+            Mod.Assets.Request<Texture2D>("Sprites/PaladinBanner");
+        TextureAssets.Item[ItemID.PossessedArmorBanner] =
+            Mod.Assets.Request<Texture2D>("Sprites/PossessedArmorBanner");
+        TextureAssets.Item[ItemID.BoneLeeBanner] =
+            Mod.Assets.Request<Texture2D>("Sprites/BoneLeeBanner");
+        TextureAssets.Item[ItemID.AngryTrapperBanner] =
+            Mod.Assets.Request<Texture2D>("Sprites/AngryTrapperBanner");
+        TextureAssets.Item[ItemID.Deathweed] = Mod.Assets.Request<Texture2D>("Sprites/Deathweed");
+        TextureAssets.Item[ItemID.WaterleafSeeds] =
+            Mod.Assets.Request<Texture2D>("Sprites/WaterleafSeeds");
+        TextureAssets.Projectile[ProjectileID.MagicDagger] =
+            Mod.Assets.Request<Texture2D>("Sprites/MagicDagger");
+        TextureAssets.Tile[TileID.Banners] = Mod.Assets.Request<Texture2D>("Sprites/VanillaBanners");
+        TextureAssets.Tile[TileID.Containers] =
+            Mod.Assets.Request<Texture2D>("Sprites/VanillaChests");
     }
 
     public enum Similarity
