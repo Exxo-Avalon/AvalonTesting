@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +22,7 @@ class LesserStaminaPotion : ModItem
         Item.useTurn = true;
         Item.useTime = 17;
         Item.useStyle = ItemUseStyleID.EatFood;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().healStamina = 35;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina = 35;
         Item.maxStack = 30;
         Item.value = 400;
         Item.useAnimation = 17;
@@ -34,16 +35,16 @@ class LesserStaminaPotion : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        if (player.Avalon().StatStam >= player.Avalon().StatStamMax2) return false;
+        if (player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2) return false;
         return true;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().StatStam += 35;
-        player.Avalon().StaminaHealEffect(35, true);
-        if (player.Avalon().StatStam > player.Avalon().StatStamMax2)
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStam += 35;
+        player.GetModPlayer<ExxoStaminaPlayer>().StaminaHealEffect(35, true);
+        if (player.GetModPlayer<ExxoStaminaPlayer>().StatStam > player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2)
         {
-            player.Avalon().StatStam = player.Avalon().StatStamMax2;
+            player.GetModPlayer<ExxoStaminaPlayer>().StatStam = player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2;
         }
         return true;
     }

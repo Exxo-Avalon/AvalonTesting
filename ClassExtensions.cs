@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,6 +8,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace AvalonTesting;
 
@@ -17,7 +20,7 @@ public static class ClassExtensions
     /// <param name="spinningpoint">The origin.</param>
     /// <param name="radians">The angle in radians to rotate the Vector2 by.</param>
     /// <param name="center"></param>
-    /// <returns>Returns the rotated Vector2.</returns>
+    /// <returns>The rotated Vector2.</returns>
     public static Vector2 Rotate(this Vector2 spinningpoint, double radians, Vector2 center = default)
     {
         float num = (float)Math.Cos(radians);
@@ -27,6 +30,24 @@ public static class ClassExtensions
         result.X += (vector.X * num) - (vector.Y * num2);
         result.Y += (vector.X * num2) + (vector.Y * num);
         return result;
+    }
+    /// <summary>
+    ///     Checks if the current player has an item in their armor/accessory slots.
+    /// </summary>
+    /// <param name="p">The player.</param>
+    /// <param name="type">The item ID to check.</param>
+    /// <returns>Whether or not the item is found.</returns>
+    public static bool HasItemInArmor(this Player p, int type)
+    {
+        for (int i = 0; i < p.armor.Length; i++)
+        {
+            if (type == p.armor[i].type)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
@@ -48,6 +69,29 @@ public static class ClassExtensions
         }
 
         return closest;
+    }
+    /// <summary>
+    ///     Helper method for Vampire Teeth and Blah's Knives lifesteal.
+    /// </summary>
+    /// <param name="p">The player.</param>
+    /// <param name="dmg">The damage to use in the lifesteal calculation.</param>
+    /// <param name="position">The position to spawn the lifesteal projectile at.</param>
+    public static void VampireHeal(this Player p, int dmg, Vector2 position)
+    {
+        float num = dmg * 0.075f;
+        if ((int)num == 0)
+        {
+            return;
+        }
+
+        if (p.lifeSteal <= 0f)
+        {
+            return;
+        }
+
+        p.lifeSteal -= num;
+        int num2 = p.whoAmI;
+        Projectile.NewProjectile(p.GetProjectileSource_Accessory(new Item(ModContent.ItemType<Items.Accessories.VampireTeeth>())), position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
     }
     /// <summary>
     /// Helper method for checking if the current item is an armor piece - used for armor prefixes.
@@ -88,7 +132,7 @@ public static class ClassExtensions
     ///     A helper method to check if the given Player is touching the ground.
     /// </summary>
     /// <param name="player"></param>
-    /// <returns>Returns true if the player is touching the ground.</returns>
+    /// <returns>True if the player is touching the ground, false otherwise.</returns>
     public static bool IsOnGround(this Player player)
     {
         return (Main.tile[(int)(player.position.X / 16f), (int)(player.position.Y / 16f) + 3].HasTile &&
@@ -103,5 +147,29 @@ public static class ClassExtensions
     public static bool Exists(this Item item)
     {
         return item.type > ItemID.None && item.stack > 0;
+    }
+
+    public static TagCompound Save<TKey, TValue>(this Dictionary<TKey, TValue> dictionary)
+    {
+        TKey[] keys = dictionary.Keys.ToArray();
+        TValue[] values = dictionary.Values.ToArray();
+        var tag = new TagCompound();
+        tag.Set("keys", keys);
+        tag.Set("values", values);
+        return tag;
+    }
+
+    public static void Load<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TagCompound tag)
+    {
+        if (tag.ContainsKey("keys") && tag.ContainsKey("values"))
+        {
+            TKey[] keys = tag.Get<TKey[]>("keys");
+            TValue[] values = tag.Get<TValue[]>("values");
+
+            for (int i = 0; i < keys.Length; i++)
+            {
+                dictionary[keys[i]] = values[i];
+            }
+        }
     }
 }

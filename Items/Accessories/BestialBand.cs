@@ -31,7 +31,7 @@ internal class BestialBand : ModItem
         bool flag2 = Collision.LavaCollision(player.position, player.width, player.height);
         if (flag2)
         {
-            //player.Avalon().mermanLava = true;
+            player.Avalon().hadesCross = true;
             player.merman = true;
             player.accFlipper = true;
             player.lavaImmune = true;

@@ -25,7 +25,7 @@ class JungleTorch : ModItem
         Item.flame = true;
         Item.rare = ItemRarityID.Orange;
         Item.ammo = 8;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 13;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 13;
     }
     public override void AddRecipes()
     {

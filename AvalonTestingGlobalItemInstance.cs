@@ -11,7 +11,9 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {
-
+    public int HealStamina;
+    public bool WasWiring = false;
+    public bool Tome = false;
 
     public static readonly int[] AllowedPrefixes =
     {

@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Potions;
 
-class LuckPotion : ModItem
+class CloverPotion : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Luck Potion");
+        DisplayName.SetDefault("Clover Potion");
         Tooltip.SetDefault("Doubles rare drop chance");
     }
 
@@ -30,7 +30,7 @@ class LuckPotion : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.FakeFourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Holybird>()).AddIngredient(ItemID.Fireblossom).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<LuckPotion>());
-        CreateRecipe(20).AddIngredient(ModContent.ItemType<Material.FourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>(), 20).AddIngredient(ModContent.ItemType<Material.Holybird>(), 20).AddIngredient(ItemID.Fireblossom, 20).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<LuckPotion>());
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.FakeFourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Holybird>()).AddIngredient(ItemID.Fireblossom).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<CloverPotion>());
+        CreateRecipe(20).AddIngredient(ModContent.ItemType<Material.FourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>(), 20).AddIngredient(ModContent.ItemType<Material.Holybird>(), 20).AddIngredient(ItemID.Fireblossom, 20).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<CloverPotion>());
     }
 }

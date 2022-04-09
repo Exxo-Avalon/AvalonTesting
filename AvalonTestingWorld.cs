@@ -6,6 +6,12 @@ using Terraria.ModLoader;
 namespace AvalonTesting;
 public class AvalonTestingWorld : ModSystem
 {
+    public bool SuperHardmode { get; private set; }
+    public static int wosT;
+    public static int wosB;
+    public static int wosF = 0;
+    public static int wos = -1;
+    public static bool jungleLocationKnown = false;
     public override void PostUpdateEverything()
     {
         Items.Armor.SpectrumHelmet.StaticUpdate();

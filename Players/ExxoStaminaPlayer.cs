@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
@@ -29,6 +30,12 @@ public class ExxoStaminaPlayer : ModPlayer
     public bool SwimmingUnlocked = false;
     public bool TeleportUnlocked = false;
 
+    public override void ResetEffects()
+    {
+        StaminaDrain = false;
+        StamFlower = false;
+        StaminaRegen = 1000;
+    }
     public void QuickStamina(int stamNeeded = 0) // todo: make stamina flower not allow you to consume stam pots that wouldn't allow you to continue using stamina
     {
         if (Player.noItems)
@@ -45,9 +52,9 @@ public class ExxoStaminaPlayer : ModPlayer
         for (int i = 0; i < 58; i++)
         {
             Item potionChecked = Player.inventory[i];
-            if (potionChecked.stack > 0 && potionChecked.type > 0 && potionChecked.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().healStamina > 0)
+            if (potionChecked.stack > 0 && potionChecked.type > 0 && potionChecked.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina > 0)
             {
-                int num3 = potionChecked.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().healStamina - num;
+                int num3 = potionChecked.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina - num;
                 if (num2 < 0)
                 {
                     if (num3 > num2)
@@ -67,20 +74,20 @@ public class ExxoStaminaPlayer : ModPlayer
         {
             return;
         }
-        if (potionToBeUsed.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().healStamina < stamNeeded && stamNeeded != 0)
+        if (potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina < stamNeeded && stamNeeded != 0)
         {
             return;
         }
         SoundEngine.PlaySound(SoundID.Item, (int)Player.position.X, (int)Player.position.Y, 3);
-        StatStam += potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().healStamina;
+        StatStam += potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina;
         if (StatStam > StatStamMax2)
         {
             StatStam = StatStamMax2;
         }
-        if (potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().healStamina > 0 && Main.myPlayer == Player.whoAmI)
+        if (potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina > 0 && Main.myPlayer == Player.whoAmI)
         {
             Player.AddBuff(ModContent.BuffType<StaminaDrain>(), 8 * 60);
-            StaminaHealEffect(potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().healStamina, true);
+            StaminaHealEffect(potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina, true);
         }
         potionToBeUsed.stack--;
         if (potionToBeUsed.stack <= 0)

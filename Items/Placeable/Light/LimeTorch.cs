@@ -24,7 +24,7 @@ class LimeTorch : ModItem
         Item.notAmmo = true;
         Item.flame = true;
         Item.ammo = 8;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 17;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 17;
     }
     public override void AddRecipes()
     {

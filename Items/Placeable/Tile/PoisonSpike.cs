@@ -28,7 +28,7 @@ class PoisonSpike : ModItem
         Item.height = dims.Height;
         Item.notAmmo = true;
         Item.ammo = ItemID.Spike;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().spike = 6;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().spike = 6;
     }
     public override void AddRecipes()
     {

@@ -21,7 +21,7 @@ class ThePlumHarvest : ModItem
         Item.width = dims.Width;
         Item.value = 150000;
         Item.height = dims.Height;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().tome = true;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().Tome = true;
     }
 
     //Update Accs not needed - ammo done in ModPlayer

@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AvalonTesting.Buffs;
 using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Consumables;
 using AvalonTesting.Items.Tomes;
 using AvalonTesting.Items.Tools;
+using AvalonTesting.Items.Weapons.Melee;
+using AvalonTesting.Logic;
 using AvalonTesting.Prefixes;
 using AvalonTesting.Projectiles;
 using AvalonTesting.Systems;
@@ -14,6 +19,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -405,11 +411,8 @@ public class ExxoPlayer : ModPlayer
         luckTome = false;
         blahWings = false;
         spikeImmune = false;
-        staminaDrain = false;
         snotOrb = false;
         shockWave = false;
-        stamFlower = false;
-        staminaRegen = 1000;
         quackJump = false;
         bOfBacteria = false;
         stingerPack = false;
@@ -660,22 +663,22 @@ public class ExxoPlayer : ModPlayer
     }
     public void WOSTongue()
     {
-        if (ExxoAvalonOriginsWorld.wos >= 0 && Main.npc[ExxoAvalonOriginsWorld.wos].active)
+        if (AvalonTestingWorld.wos >= 0 && Main.npc[AvalonTestingWorld.wos].active)
         {
-            float num = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + 40f;
-            if (Main.npc[ExxoAvalonOriginsWorld.wos].direction > 0)
+            float num = Main.npc[AvalonTestingWorld.wos].position.X + 40f;
+            if (Main.npc[AvalonTestingWorld.wos].direction > 0)
             {
                 num -= 96f;
             }
             if (Player.position.X + Player.width > num && Player.position.X < num + 140f && Player.gross)
             {
                 Player.noKnockback = false;
-                Player.Hurt(PlayerDeathReason.ByNPC(ExxoAvalonOriginsWorld.wos), 50, Main.npc[ExxoAvalonOriginsWorld.wos].direction);
+                Player.Hurt(PlayerDeathReason.ByNPC(AvalonTestingWorld.wos), 50, Main.npc[AvalonTestingWorld.wos].direction);
             }
             if (!Player.gross && Player.position.Y > (Main.maxTilesY - 250) * 16 && Player.position.X > num - 1920f && Player.position.X < num + 1920f)
             {
                 Player.AddBuff(37, 10, true);
-                //Main.PlaySound(4, (int)Main.npc[ExxoAvalonOriginsWorld.wos].position.X, (int)Main.npc[ExxoAvalonOriginsWorld.wos].position.Y, 10);
+                //Main.PlaySound(4, (int)Main.npc[AvalonTestingWorld.wos].position.X, (int)Main.npc[AvalonTestingWorld.wos].position.Y, 10);
             }
             if (Player.gross)
             {
@@ -683,14 +686,14 @@ public class ExxoPlayer : ModPlayer
                 {
                     Player.AddBuff(38, 10, true);
                 }
-                if (Main.npc[ExxoAvalonOriginsWorld.wos].direction < 0)
+                if (Main.npc[AvalonTestingWorld.wos].direction < 0)
                 {
-                    if (Player.position.X + Player.width / 2 > Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2 + 40f)
+                    if (Player.position.X + Player.width / 2 > Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2 + 40f)
                     {
                         Player.AddBuff(38, 10, true);
                     }
                 }
-                else if (Player.position.X + Player.width / 2 < Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2 - 40f)
+                else if (Player.position.X + Player.width / 2 < Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2 - 40f)
                 {
                     Player.AddBuff(38, 10, true);
                 }
@@ -707,19 +710,19 @@ public class ExxoPlayer : ModPlayer
                     }
                 }
                 var vector = new Vector2(Player.position.X + Player.width * 0.5f, Player.position.Y + Player.height * 0.5f);
-                float num2 = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2 - vector.X;
-                float num3 = Main.npc[ExxoAvalonOriginsWorld.wos].position.Y + Main.npc[ExxoAvalonOriginsWorld.wos].height / 2 - vector.Y;
+                float num2 = Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2 - vector.X;
+                float num3 = Main.npc[AvalonTestingWorld.wos].position.Y + Main.npc[AvalonTestingWorld.wos].height / 2 - vector.Y;
                 float num4 = (float)Math.Sqrt(num2 * num2 + num3 * num3);
                 if (num4 > 3000f)
                 {
                     //player.lastPosBeforeDeath = this.position;
-                    Player.KillMe(PlayerDeathReason.ByNPC(ExxoAvalonOriginsWorld.wos), 1000.0, 0, false);
+                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonTestingWorld.wos), 1000.0, 0, false);
                     return;
                 }
-                if (Main.npc[ExxoAvalonOriginsWorld.wos].position.X < 608f || Main.npc[ExxoAvalonOriginsWorld.wos].position.X > (Main.maxTilesX - 38) * 16)
+                if (Main.npc[AvalonTestingWorld.wos].position.X < 608f || Main.npc[AvalonTestingWorld.wos].position.X > (Main.maxTilesX - 38) * 16)
                 {
                     //this.lastPosBeforeDeath = this.position;
-                    Player.KillMe(PlayerDeathReason.ByNPC(ExxoAvalonOriginsWorld.wos), 1000.0, 0, false);
+                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonTestingWorld.wos), 1000.0, 0, false);
                 }
             }
         }
@@ -824,7 +827,7 @@ public class ExxoPlayer : ModPlayer
         if (Player.inventory[Player.selectedItem].DamageType == DamageClass.Melee && bloodyWhetstone)
         {
             target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
-            target.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().isBleedingHMBleed = true;
+            target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().IsBleedingHMBleed = true;
         }
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -963,7 +966,7 @@ public class ExxoPlayer : ModPlayer
             {
                 if (N2.position.X >= x - 620 && N2.position.X <= x + 620 && N2.position.Y >= y - 620 && N2.position.Y <= y + 620)
                 {
-                    if (!N2.active || N2.dontTakeDamage || N2.townNPC || N2.life < 1 || N2.boss || N2.realLife >= 0 || N2.type == ModContent.NPCType<NPCs.Juggernaut>())
+                    if (!N2.active || N2.dontTakeDamage || N2.townNPC || N2.life < 1 || N2.boss || N2.realLife >= 0) //|| N2.type == ModContent.NPCType<NPCs.Juggernaut>())
                     {
                         continue;
                     }
@@ -1139,7 +1142,7 @@ public class ExxoPlayer : ModPlayer
     public int MultiplyCritDamage(int dmg) // dmg = damage befor crit application
     {
         int bonusDmg = -dmg;
-        bonusDmg += (int)((dmg * (critDamageMult + 1f)) / 2);
+        bonusDmg += (int)((dmg * (CritDamageMult + 1f)) / 2);
         return bonusDmg;
     }
     public override void SaveData(TagCompound tag)
@@ -1148,18 +1151,18 @@ public class ExxoPlayer : ModPlayer
         {
             { "ExxoAvalonOrigins:TomeSlot", ItemIO.Save(tomeItem) },
             { "ExxoAvalonOrigins:CrystalHealth", crystalHealth },
-            { "ExxoAvalonOrigins:Stamina", StatStamMax},
+            { "ExxoAvalonOrigins:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
             { "ExxoAvalonOrigins:SHMAcc", shmAcc },
             { "ExxoAvalonOrigins:HerbTier", (int)herbTier },
             { "ExxoAvalonOrigins:HerbTotal", herbTotal },
             { "ExxoAvalonOrigins:PotionTotal", potionTotal },
             { "ExxoAvalonOrigins:HerbCounts", herbCounts.Save() },
             { "ExxoAvalonOrigins:SpiritPoppyUseCount", spiritPoppyUseCount },
-            { "ExxoAvalonOrigins:RocketJumpUnlocked", rocketJumpUnlocked },
-            { "ExxoAvalonOrigins:TeleportUnlocked", teleportUnlocked},
-            { "ExxoAvalonOrigins:SwimmingUnlocked", swimmingUnlocked },
-            { "ExxoAvalonOrigins:SprintUnlocked", sprintUnlocked },
-            { "ExxoAvalonOrigins:FlightRestoreUnlocked", flightRestoreUnlocked },
+            { "ExxoAvalonOrigins:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
+            { "ExxoAvalonOrigins:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
+            { "ExxoAvalonOrigins:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
+            { "ExxoAvalonOrigins:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
+            { "ExxoAvalonOrigins:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
         };
     }
     public override void LoadData(TagCompound tag)
@@ -1185,7 +1188,7 @@ public class ExxoPlayer : ModPlayer
 
         if (tag.ContainsKey("ExxoAvalonOrigins:Stamina"))
         {
-            StatStamMax = tag.GetAsInt("ExxoAvalonOrigins:Stamina");
+            Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("ExxoAvalonOrigins:Stamina");
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:SHMAcc"))
         {
@@ -1220,23 +1223,23 @@ public class ExxoPlayer : ModPlayer
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:RocketJumpUnlocked"))
         {
-            rocketJumpUnlocked = tag.Get<bool>("ExxoAvalonOrigins:RocketJumpUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("ExxoAvalonOrigins:RocketJumpUnlocked");
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:TeleportUnlocked"))
         {
-            teleportUnlocked = tag.Get<bool>("ExxoAvalonOrigins:TeleportUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("ExxoAvalonOrigins:TeleportUnlocked");
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:SwimmingUnlocked"))
         {
-            swimmingUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SwimmingUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SwimmingUnlocked");
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:SprintUnlocked"))
         {
-            sprintUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SprintUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SprintUnlocked");
         }
         if (tag.ContainsKey("ExxoAvalonOrigins:FlightRestoreUnlocked"))
         {
-            flightRestoreUnlocked = tag.Get<bool>("ExxoAvalonOrigins:FlightRestoreUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("ExxoAvalonOrigins:FlightRestoreUnlocked");
         }
     }
     public override void PostUpdate()
@@ -1349,7 +1352,7 @@ public class ExxoPlayer : ModPlayer
         if (ZoneMight) Player.GetDamage(DamageClass.Generic) += 0.06f;
         if (ZoneNight) Player.wolfAcc = true;
         if (ZoneTime) Player.accWatch = 3;
-        if (ZoneTorture) Player.AllCrit(6);
+        if (ZoneTorture) Player.GetCritChance(DamageClass.Generic) += 6;
         if (ZoneSight) Player.detectCreature = Player.dangerSense = Player.nightVision = true;
         if (ZoneDelight) Player.lifeRegen += 3;
         if (ZoneHumidity) Player.resistCold = true;
@@ -1357,7 +1360,7 @@ public class ExxoPlayer : ModPlayer
 
         #region rift goggles
 
-        if (Player.ZoneCrimson || Player.ZoneCorrupt || ZoneContagion)
+        /*if (Player.ZoneCrimson || Player.ZoneCorrupt || Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
         {
             if (Main.rand.Next(3000) == 0 && riftGoggles)
             {
@@ -1403,7 +1406,7 @@ public class ExxoPlayer : ModPlayer
                     Main.dust[num893].fadeIn = 3f;
                 }
             }
-        }
+        }*/
 
         #endregion rift goggles
 
@@ -1427,11 +1430,11 @@ public class ExxoPlayer : ModPlayer
         if (Player.tongued)
         {
             bool flag21 = false;
-            if (ExxoAvalonOriginsWorld.wos >= 0)
+            if (AvalonTestingWorld.wos >= 0)
             {
-                float num159 = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2;
-                num159 += Main.npc[ExxoAvalonOriginsWorld.wos].direction * 200;
-                float num160 = Main.npc[ExxoAvalonOriginsWorld.wos].position.Y + Main.npc[ExxoAvalonOriginsWorld.wos].height / 2;
+                float num159 = Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2;
+                num159 += Main.npc[AvalonTestingWorld.wos].direction * 200;
+                float num160 = Main.npc[AvalonTestingWorld.wos].position.Y + Main.npc[AvalonTestingWorld.wos].height / 2;
                 var vector5 = new Vector2(Player.position.X + Player.width * 0.5f, Player.position.Y + Player.height * 0.5f);
                 float num161 = num159 - vector5.X;
                 float num162 = num160 - vector5.Y;
@@ -1547,7 +1550,7 @@ public class ExxoPlayer : ModPlayer
                                     target.townNPC ||
                                     target.life < 1 ||
                                     target.boss ||
-                                    target.target == ModContent.NPCType<NPCs.Juggernaut>() ||
+                                    //target.type == ModContent.NPCType<NPCs.Juggernaut>() ||
                                     target.realLife >= 0)
                                 {
                                     continue;
@@ -1615,16 +1618,10 @@ public class ExxoPlayer : ModPlayer
     }
     public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
     {
-        if (AvalonTesting.GodMode)
-        {
-            return false;
-        }
-
-        if (spectrumBlur && Player.whoAmI == Main.myPlayer && Main.rand.Next(10) == 0)
-        {
-            SpectrumDodge();
-            return false;
-        }
+        //if (AvalonTesting.GodMode)
+        //{
+        //    return false;
+        //}
         return true;
     }
     public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -1912,13 +1909,13 @@ public class ExxoPlayer : ModPlayer
             return;
         }
         int amt = 60;
-        if (staminaDrain)
+        if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
         {
-            amt *= (int)(staminaDrainStacks * staminaDrainMult);
+            amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
         }
         if (stamDashKey && Player.dash == 0 && Player.dashDelay >= 0)
         {
-            if (StatStam > amt)
+            if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam > amt)
             {
                 int num2 = 0;
                 bool flag = false;
@@ -1937,7 +1934,7 @@ public class ExxoPlayer : ModPlayer
                         num2 = 1;
                         flag = true;
                         Player.dashTime = 0;
-                        StatStam -= amt;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                     }
                     else
                     {
@@ -1951,7 +1948,7 @@ public class ExxoPlayer : ModPlayer
                         num2 = -1;
                         flag = true;
                         Player.dashTime = 0;
-                        StatStam -= amt;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                     }
                     else
                     {
@@ -1982,10 +1979,10 @@ public class ExxoPlayer : ModPlayer
                     Main.gore[num4].velocity *= 0.4f;
                 }
             }
-            else if (stamFlower)
+            else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
             {
-                QuickStamina(amt);
-                if (StatStam > amt)
+                Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina(amt);
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam > amt)
                 {
                     int num2 = 0;
                     bool flag = false;
@@ -2004,7 +2001,7 @@ public class ExxoPlayer : ModPlayer
                             num2 = 1;
                             flag = true;
                             Player.dashTime = 0;
-                            StatStam -= amt;
+                            Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                         }
                         else
                         {
@@ -2018,7 +2015,7 @@ public class ExxoPlayer : ModPlayer
                             num2 = -1;
                             flag = true;
                             Player.dashTime = 0;
-                            StatStam -= amt;
+                            Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                         }
                         else
                         {
@@ -2056,42 +2053,42 @@ public class ExxoPlayer : ModPlayer
     {
         if (ModContent.GetInstance<KeybindSystem>().QuickStaminaHotkey.JustPressed)
         {
-            QuickStamina();
+            Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina();
         }
-        if (ModContent.GetInstance<KeybindSystem>().FlightTimeRestoreHotkey.JustPressed && Player.wingsLogic > 0 && Player.wingTime == 0 && flightRestoreUnlocked && stamFlightRestoreCD >= 60 * 60)
+        if (ModContent.GetInstance<KeybindSystem>().FlightTimeRestoreHotkey.JustPressed && Player.wingsLogic > 0 && Player.wingTime == 0 && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreCooldown>= 60 * 60)
         {
             int amt = 150;
-            if (staminaDrain)
+            if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
             {
-                amt *= (int)(staminaDrainStacks * staminaDrainMult);
+                amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
             }
-            if (StatStam >= amt)
+            if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
             {
-                StatStam -= amt;
-                stamFlightRestoreCD = 0;
+                Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
+                Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreCooldown = 0;
                 Player.wingTime = Player.wingTimeMax;
             }
-            else if (stamFlower)
+            else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
             {
-                QuickStamina(amt);
-                if (StatStam >= amt)
+                Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina(amt);
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                 {
-                    StatStam -= amt;
-                    stamFlightRestoreCD = 0;
+                    Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
+                    Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreCooldown = 0;
                     Player.wingTime = Player.wingTimeMax;
                 }
             }
         }
-        if (KeybindSystem.ShadowHotkey.JustPressed && tpStam && tpCD >= 300 && teleportUnlocked)
+        if (ModContent.GetInstance<KeybindSystem>().ShadowHotkey.JustPressed && tpStam && tpCD >= 300 && Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked)
         {
             int amt = 90;
-            if (staminaDrain)
+            if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
             {
-                amt *= (int)(staminaDrainStacks * staminaDrainMult);
+                amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
             }
-            if (StatStam >= amt)
+            if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
             {
-                StatStam -= amt;
+                Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                 tpCD = 0;
                 if (Main.tile[(int)(Main.mouseX + Main.screenPosition.X) / 16, (int)(Main.mouseY + Main.screenPosition.Y) / 16].WallType != ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() &&
                     Main.tile[(int)(Main.mouseX + Main.screenPosition.X) / 16, (int)(Main.mouseY + Main.screenPosition.Y) / 16].WallType != WallID.LihzahrdBrickUnsafe)
@@ -2108,12 +2105,12 @@ public class ExxoPlayer : ModPlayer
                     }
                 }
             }
-            else if (stamFlower)
+            else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
             {
-                QuickStamina(amt);
-                if (StatStam >= amt)
+                Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina(amt);
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                 {
-                    StatStam -= amt;
+                    Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                     tpCD = 0;
                     if (Main.tile[(int)(Main.mouseX + Main.screenPosition.X) / 16, (int)(Main.mouseY + Main.screenPosition.Y) / 16].WallType != ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() &&
                         Main.tile[(int)(Main.mouseX + Main.screenPosition.X) / 16, (int)(Main.mouseY + Main.screenPosition.Y) / 16].WallType != WallID.LihzahrdBrickUnsafe &&
@@ -2133,7 +2130,7 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        else if (KeybindSystem.ShadowHotkey.JustPressed && (teleportV || teleportVWasTriggered) && tpCD >= 300)
+        else if (ModContent.GetInstance<KeybindSystem>().ShadowHotkey.JustPressed && (teleportV || teleportVWasTriggered) && tpCD >= 300)
         {
             teleportVWasTriggered = false;
             tpCD = 0;
@@ -2152,7 +2149,7 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        if (KeybindSystem.AstralHotkey.JustPressed && astralProject)
+        if (ModContent.GetInstance<KeybindSystem>().AstralHotkey.JustPressed && astralProject)
         {
             if (astralStart)
             {
@@ -2172,49 +2169,49 @@ public class ExxoPlayer : ModPlayer
         }
 
         #region other hotkeys
-        if (KeybindSystem.RocketJumpHotkey.JustPressed && rocketJumpUnlocked)
+        if (ModContent.GetInstance <KeybindSystem>().RocketJumpHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked)
         {
             activateRocketJump = !activateRocketJump;
             Main.NewText(!activateRocketJump ? "Rocket Jump Off" : "Rocket Jump On");
         }
 
-        if (KeybindSystem.SprintHotkey.JustPressed && sprintUnlocked)
+        if (ModContent.GetInstance<KeybindSystem>().SprintHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked)
         {
             activateSprint = !activateSprint;
             Main.NewText(!activateSprint ? "Sprinting Off" : "Sprinting On");
         }
 
-        if (KeybindSystem.DashHotkey.JustPressed)
+        if (ModContent.GetInstance<KeybindSystem>().DashHotkey.JustPressed)
         {
             stamDashKey = !stamDashKey;
             Main.NewText(!stamDashKey ? "Dashing Off" : "Dashing On");
         }
 
-        if (KeybindSystem.QuintupleHotkey.JustPressed)
+        if (ModContent.GetInstance<KeybindSystem>().QuintupleHotkey.JustPressed)
         {
             quintJump = !quintJump;
             Main.NewText(!quintJump ? "Quintuple Jump Off" : "Quintuple Jump On");
         }
 
-        if (KeybindSystem.SwimHotkey.JustPressed && swimmingUnlocked)
+        if (ModContent.GetInstance<KeybindSystem>().SwimHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked)
         {
             activateSwim = !activateSwim;
             Main.NewText(!activateSwim ? "Swimming Off" : "Swimming On");
         }
 
-        if (KeybindSystem.WallSlideHotkey.JustPressed)
+        if (ModContent.GetInstance<KeybindSystem>().WallSlideHotkey.JustPressed)
         {
             activateSlide = !activateSlide;
             Main.NewText(!activateSlide ? "Wall Sliding Off" : "Wall Sliding On");
         }
 
-        if (KeybindSystem.BubbleBoostHotkey.JustPressed)
+        if (ModContent.GetInstance<KeybindSystem>().BubbleBoostHotkey.JustPressed)
         {
             activateBubble = !activateBubble;
             Main.NewText(!activateBubble ? "Bubble Boost Off" : "Bubble Boost On");
         }
         #endregion
-        if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() && KeybindSystem.ModeChangeHotkey.JustPressed)
+        if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() && ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
         {
             speed = !speed;
             if (!speed)
@@ -2228,7 +2225,7 @@ public class ExxoPlayer : ModPlayer
         }
 
         if (Main.netMode != NetmodeID.SinglePlayer && Player.inventory[Player.selectedItem].type == ModContent.ItemType<EideticMirror>() &&
-            KeybindSystem.ModeChangeHotkey.JustPressed)
+            ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
         {
             int newPlayer = teleportToPlayer;
             int numPlayersCounted = 0;
@@ -2258,7 +2255,7 @@ public class ExxoPlayer : ModPlayer
         if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<ShadowMirror>())
         {
             Player.noFallDmg = true; //TODO: Replace with better anti-fall-damage mechanism.
-            if (KeybindSystem.ModeChangeHotkey.JustPressed)
+            if (ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
             {
                 shadowWP++;
                 shadowWP %= 7;
@@ -2273,7 +2270,7 @@ public class ExxoPlayer : ModPlayer
                         break;
 
                     case 2:
-                        Main.NewText("Mirror Mode: Jungle/Tropics" + (ExxoAvalonOriginsWorld.jungleLocationKnown ? "" : " (approx. pos)"));
+                        Main.NewText("Mirror Mode: Jungle/Tropics" + (AvalonTestingWorld.jungleLocationKnown ? "" : " (approx. pos)"));
                         break;
 
                     case 3:
@@ -2318,7 +2315,7 @@ public class ExxoPlayer : ModPlayer
             SoundEngine.PlaySound(SoundID.Zombie, Player.position, 12);
             Player.velocity.Y = -Player.jumpSpeed * Player.gravDir;
             Player.jump = (int)(Player.jumpHeight * 1.25);
-            int num8 = Dust.NewDust(new Vector2(Player.position.X - 4f, Player.position.Y + h), Player.width + 8, 4, 188, -Player.velocity.X * 0.5f, Player.velocity.Y * 0.5f, DustID.FartInAJar, default, 1.5f);
+            int num8 = Dust.NewDust(new Vector2(Player.position.X - 4f, Player.position.Y + h), Player.width + 8, 4, DustID.FartInAJar, -Player.velocity.X * 0.5f, Player.velocity.Y * 0.5f, DustID.FartInAJar, default, 1.5f);
             Main.dust[num8].velocity.X = Main.dust[num8].velocity.X * 0.5f - Player.velocity.X * 0.1f;
             Main.dust[num8].velocity.Y = Main.dust[num8].velocity.Y * 0.5f - Player.velocity.Y * 0.3f;
             Main.dust[num8].velocity *= 0.5f;
@@ -2423,20 +2420,20 @@ public class ExxoPlayer : ModPlayer
     {
         //Main.NewText("PostUpdateRunSpeeds " + slimeBand.ToString());
         FloorVisualsAvalon(Player.velocity.Y > Player.gravity);
-        if (activateRocketJump && rocketJumpUnlocked)
+        if (activateRocketJump && Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked)
         {
             if (Player.controlUp && Player.releaseUp)
             {
-                if (Player.isOnGround())
+                if (Player.IsOnGround())
                 {
                     int amt = 70;
-                    if (staminaDrain)
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
                     {
-                        amt *= (int)(staminaDrainStacks * staminaDrainMult);
+                        amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
                     }
-                    if (StatStam >= amt)
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                     {
-                        StatStam -= amt;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                         float yDestination = Player.position.Y - 360f;
                         int num6 = Gore.NewGore(new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                         Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
@@ -2450,12 +2447,12 @@ public class ExxoPlayer : ModPlayer
                         SoundEngine.PlaySound(2, Player.Center, 11);
                         Player.velocity.Y -= 16.5f;
                     }
-                    else if (stamFlower)
+                    else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
                     {
-                        QuickStamina(amt);
-                        if (StatStam >= amt)
+                        Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina(amt);
+                        if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                         {
-                            StatStam -= amt;
+                            Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                             float yDestination = Player.position.Y - 360f;
                             int num6 = Gore.NewGore(new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                             Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
@@ -2480,33 +2477,33 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        if (Player.wet && Player.velocity != Vector2.Zero && !Player.accMerman && activateSwim && swimmingUnlocked)
+        if (Player.wet && Player.velocity != Vector2.Zero && !Player.accMerman && activateSwim && Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked)
         {
             bool flag15 = true;
             staminaCD++;
-            stamRegenCount = 0;
+            Player.GetModPlayer<ExxoStaminaPlayer>().StaminaRegenCount = 0;
             if (staminaCD >= 10)
             {
                 int amt = 1;
-                if (staminaDrain)
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
                 {
-                    amt *= (int)(staminaDrainStacks * staminaDrainMult);
+                    amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
                 }
-                if (StatStam >= amt)
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                 {
-                    StatStam -= amt;
+                    Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                 }
-                else if (stamFlower)
+                else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
                 {
-                    QuickStamina();
-                    if (StatStam >= amt)
+                    Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina();
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                     {
-                        StatStam -= amt;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                     }
                 }
-                if (StatStam <= 0)
+                if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam <= 0)
                 {
-                    StatStam = 0;
+                    Player.GetModPlayer<ExxoStaminaPlayer>().StatStam = 0;
                     flag15 = false;
                 }
                 staminaCD = 0;
@@ -2522,29 +2519,29 @@ public class ExxoPlayer : ModPlayer
             {
                 bool flag17 = true;
                 staminaCD2++;
-                stamRegenCount = 0;
+                Player.GetModPlayer<ExxoStaminaPlayer>().StaminaRegenCount = 0;
                 if (staminaCD2 >= 30)
                 {
                     int amt = 2;
-                    if (staminaDrain)
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
                     {
-                        amt *= (int)(staminaDrainStacks * staminaDrainMult);
+                        amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks * Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainMult);
                     }
-                    if (StatStam >= amt)
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                     {
-                        StatStam -= amt;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                     }
-                    else if (stamFlower)
+                    else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
                     {
-                        QuickStamina();
-                        if (StatStam >= amt)
+                        Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina();
+                        if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam >= amt)
                         {
-                            StatStam -= amt;
+                            Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                         }
                     }
-                    if (StatStam <= 0)
+                    if (Player.GetModPlayer<ExxoStaminaPlayer>().StatStam <= 0)
                     {
-                        StatStam = 0;
+                        Player.GetModPlayer<ExxoStaminaPlayer>().StatStam = 0;
                         flag17 = false;
                     }
                     staminaCD2 = 0;
@@ -2594,7 +2591,7 @@ public class ExxoPlayer : ModPlayer
     {
         #region Contagion Fish
 
-        if (ZoneContagion && Main.rand.NextBool(10))
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.rand.NextBool(10))
         {
             itemDrop = ModContent.ItemType<Items.Fish.NauSeaFish>();
         }

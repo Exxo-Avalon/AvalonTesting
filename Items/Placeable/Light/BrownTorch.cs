@@ -24,7 +24,7 @@ class BrownTorch : ModItem
         Item.notAmmo = true;
         Item.flame = true;
         Item.ammo = 8;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 18;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 18;
     }
     public override void AddRecipes()
     {

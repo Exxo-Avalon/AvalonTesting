@@ -21,7 +21,7 @@ public class LoveUpandDown : ModItem
         Item.width = dims.Width;
         Item.value = 150000;
         Item.height = dims.Height;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().tome = true;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().Tome = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

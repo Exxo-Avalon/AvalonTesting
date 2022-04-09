@@ -131,7 +131,7 @@ public class ContagionPot : ModTile
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.LuckPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CloverPotion>(), 1, false, 0, false);
                         }
                         else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 290, 1, false, 0, false);
                     }

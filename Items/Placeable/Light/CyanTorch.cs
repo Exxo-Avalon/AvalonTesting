@@ -24,7 +24,7 @@ class CyanTorch : ModItem
         Item.notAmmo = true;
         Item.flame = true;
         Item.ammo = 8;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 16;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 16;
     }
     public override void AddRecipes()
     {

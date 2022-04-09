@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting;
@@ -6,6 +6,7 @@ namespace AvalonTesting;
 public class AvalonTestingGlobalNPCInstance : GlobalNPC
 {
     public bool Malaria;
+    public bool IsBleedingHMBleed = false;
     public override bool InstancePerEntity => true;
 
     public override void ResetEffects(NPC npc)
