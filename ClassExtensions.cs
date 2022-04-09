@@ -32,6 +32,10 @@ public static class ClassExtensions
         result.Y += (vector.X * num2) + (vector.Y * num);
         return result;
     }
+    public static Rectangle NewRectVector2(Vector2 v, Vector2 wH)
+    {
+        return new Rectangle((int)v.X, (int)v.Y, (int)wH.X, (int)wH.Y);
+    }
     /// <summary>
     ///     Checks if the current player has an item in their armor/accessory slots.
     /// </summary>

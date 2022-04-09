@@ -20,7 +20,7 @@ public class EctoplasmSink : ModTile
         AddMapEntry(new Color(191, 142, 111), Language.GetText("MapObject.Sink"));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Sinks };
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

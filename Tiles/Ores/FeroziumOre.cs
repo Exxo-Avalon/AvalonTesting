@@ -22,7 +22,7 @@ public class FeroziumOre : ModTile
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         minPick = 180;
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
     public override bool CanExplode(int i, int j)
     {

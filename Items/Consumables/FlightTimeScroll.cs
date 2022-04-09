@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,11 +32,11 @@ class FlightTimeScroll : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().flightRestoreUnlocked;
+        return !player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().flightRestoreUnlocked = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = true;
         return true;
     }
 }

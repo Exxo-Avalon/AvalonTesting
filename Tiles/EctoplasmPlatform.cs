@@ -32,7 +32,7 @@ public class EctoplasmPlatform : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.EctoplasmPlatform>();
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Platforms };
-        DustType = DustID.UltraBrightTorch;
+        DustType = DustID.UltraBrightTorchTorch;
     }
 
     public override void PostSetDefaults()

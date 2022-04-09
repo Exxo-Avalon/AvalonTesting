@@ -29,7 +29,6 @@ class NastySpike : ModItem
         Item.height = dims.Height;
         Item.notAmmo = true;
         Item.ammo = ItemID.Spike;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().spike = 3;
     }
     public override void AddRecipes()
     {

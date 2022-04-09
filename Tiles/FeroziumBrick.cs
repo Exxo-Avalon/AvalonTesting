@@ -19,6 +19,6 @@ public class FeroziumBrick : ModTile
         ItemDrop = Mod.Find<ModItem>("FeroziumBrick").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 }

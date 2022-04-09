@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +13,7 @@ public class Phantoplasm : ModTile
         AddMapEntry(Color.Red);
         Main.tileSolid[Type] = true;
         ItemDrop = Mod.Find<ModItem>("Phantoplasm").Type;
-        DustType = DustID.TheDestoryer;
+        DustType = DustID.TheDestroyer;
     }
     public override bool KillSound(int i, int j)
     {

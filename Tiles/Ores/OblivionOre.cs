@@ -10,7 +10,7 @@ public class OblivionOre : ModTile
 {
     public override void SetStaticDefaults()
     {
-        mineResist = 8f;
+        MineResist = 8f;
         AddMapEntry(new Color(127, 0, 110), LanguageManager.Instance.GetText("Oblivion Ore"));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
@@ -20,8 +20,8 @@ public class OblivionOre : ModTile
         ItemDrop = Mod.Find<ModItem>("OblivionOre").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 300;
-        DustType = DustID.Adamantine;
+        MinPick = 300;
+        DustType = DustID.Adamantite;
     }
 
     public override bool CanExplode(int i, int j)

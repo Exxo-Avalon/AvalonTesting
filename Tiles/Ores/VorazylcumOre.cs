@@ -10,7 +10,7 @@ public class VorazylcumOre : ModTile
 {
     public override void SetStaticDefaults()
     {
-        mineResist = 8f;
+        MineResist = 8f;
         AddMapEntry(new Color(140, 130, 196), LanguageManager.Instance.GetText("Vorazylcum"));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
@@ -22,8 +22,8 @@ public class VorazylcumOre : ModTile
         ItemDrop = Mod.Find<ModItem>("VorazylcumOre").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 250;
-        DustType = DustID.CorruptGibsPowder;
+        MinPick = 250;
+        DustType = DustID.VilePowder;
     }
     public override bool CanExplode(int i, int j)
     {

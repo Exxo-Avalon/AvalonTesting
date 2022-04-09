@@ -19,7 +19,7 @@ public class EctoplasmBathtub : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Ectoplasm Bathtub");
         AddMapEntry(new Color(144, 148, 144), name);
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

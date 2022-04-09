@@ -13,8 +13,8 @@ public class XanthophyteOre : ModTile
     {
         AddMapEntry(xanthophyteColor, LanguageManager.Instance.GetText("Xanthophyte"));
         Main.tileSolid[Type] = true;
-        global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
-        global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
+        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
+        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 775;
         Main.tileSpelunker[Type] = true;
@@ -23,8 +23,8 @@ public class XanthophyteOre : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        DustType = DustID.Moss_Yellow;
-        minPick = 200;
+        DustType = DustID.Confetti_Yellow;
+        MinPick = 200;
     }
     public override bool CanExplode(int i, int j)
     {
@@ -32,7 +32,7 @@ public class XanthophyteOre : ModTile
     }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        global::AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
+        AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
         return false;
     }
 }

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +18,7 @@ public class Ectoplasm : ModTile
         ItemDrop = ItemID.Ectoplasm;
         soundType = SoundID.NPCHit;
         SoundStyle = 1;
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
     public override bool KillSound(int i, int j)
     {

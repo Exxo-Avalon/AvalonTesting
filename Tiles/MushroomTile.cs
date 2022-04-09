@@ -14,6 +14,6 @@ public class MushroomTile : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileMergeDirt[Type] = true;
         ItemDrop = ItemID.Mushroom;
-        DustType = DustID.Amber;
+        DustType = DustID.GemAmber;
     }
 }

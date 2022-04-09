@@ -16,6 +16,6 @@ public class VoltBrick : ModTile
         ItemDrop = Mod.Find<ModItem>("VoltBrick").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        DustType = DustID.CorruptGibsPowder;
+        DustType = DustID.VilePowder;
     }
 }

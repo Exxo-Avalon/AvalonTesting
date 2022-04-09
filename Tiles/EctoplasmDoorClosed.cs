@@ -45,7 +45,7 @@ public class EctoplasmDoorClosed : ModTile
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.ClosedDoor };
         OpenDoorID = Mod.Find<ModTile>("EctoplasmDoorOpen").Type;
-        DustType = DustID.UltraBrightTorch;
+        DustType = DustID.UltraBrightTorchTorch;
     }
 
     public override bool HasSmartInteract()

@@ -33,7 +33,7 @@ public class EctoplasmClock : ModTile
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.GrandfatherClocks };
-        DustType = DustID.UltraBrightTorch;
+        DustType = DustID.UltraBrightTorchTorch;
     }
 
     public override bool HasSmartInteract()

@@ -18,6 +18,6 @@ public class OblivionBrick : ModTile
         ItemDrop = Mod.Find<ModItem>("OblivionBrick").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        DustType = DustID.Adamantine;
+        DustType = DustID.Adamantite;
     }
 }

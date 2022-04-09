@@ -26,7 +26,7 @@ public class EctoplasmLantern : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Ectoplasm Lantern");
         AddMapEntry(new Color(251, 235, 127), name);
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

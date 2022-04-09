@@ -25,7 +25,6 @@ class PathogenTorch : ModItem
         Item.flame = true;
         Item.rare = ItemRarityID.Orange;
         Item.ammo = 8;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 14;
     }
     public override void AddRecipes()
     {

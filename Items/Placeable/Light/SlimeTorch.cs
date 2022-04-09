@@ -24,7 +24,6 @@ class SlimeTorch : ModItem
         Item.notAmmo = true;
         Item.flame = true;
         Item.ammo = 8;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 15;
     }
     public override void HoldItem(Player player)
     {

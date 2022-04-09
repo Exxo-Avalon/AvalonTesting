@@ -29,7 +29,6 @@ class BloodiedSpike : ModItem
         Item.height = dims.Height;
         Item.notAmmo = true;
         Item.ammo = ItemID.Spike;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().spike = 2;
     }
     public override void AddRecipes()
     {

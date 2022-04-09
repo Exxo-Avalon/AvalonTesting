@@ -22,7 +22,7 @@ public class EctoplasmTable : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Ectoplasm Table");
         AddMapEntry(new Color(191, 142, 111), name);
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
