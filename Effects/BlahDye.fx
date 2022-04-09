@@ -23,7 +23,20 @@ float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLO
 	if (!any(color))
 		return color;
 
-	return color * sampleColor;
+	const float threshold = 0.46;
+    float gray = dot(color.rgb, float3(0.2, 0.75, 0.15));
+    color = float4(float3(gray, gray, gray), 1);
+
+    if (color.r > threshold || color.g > threshold || color.b > threshold)
+    {
+        color.rgb *= float3(0.79, 0.79, 0.79);
+    }
+    else
+    {
+        color.rgb *= float3(1, 0.855, 0.5) * 1.7;
+    }
+
+    return color * sampleColor;
 }
     
 technique Technique1

@@ -23,6 +23,7 @@ float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLO
     if (!any(color))
         return color;
 
+    const float blackThreshold = 0.3;
     const float threshold = 0.46;
     float gray = dot(color.rgb, float3(0.2, 0.75, 0.15));
     color = float4(float3(gray, gray, gray), 1);
@@ -31,9 +32,13 @@ float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLO
     {
         color.rgb *= float3(0.29, 1, 0.984);
     }
-    else
+    else if (color.r > blackThreshold || color.g > blackThreshold || color.b > blackThreshold)
     {
         color.rgb *= float3(0.957, 0.266, 0.474) * 1.7;
+    }
+    else
+    {
+        color.rgb *= float3(0.957, 0.266, 0.474) * 1.2;
     }
 
     return color * sampleColor;
