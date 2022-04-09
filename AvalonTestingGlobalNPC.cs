@@ -1,4 +1,6 @@
-﻿using AvalonTesting.Buffs.AdvancedBuffs;
+﻿using System.Linq;
+using AvalonTesting.Buffs;
+using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -12,6 +14,12 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalNPC : GlobalNPC
 {
+    public static readonly int[] Hornets =
+    {
+        NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,
+        NPCID.HornetStingy
+    };
+
     /// <summary>
     ///     A method to choose a random Town NPC death messages.
     /// </summary>
@@ -1052,5 +1060,15 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             spawnRate = (int)(spawnRate * AdvCalming.RateMultiplier);
             maxSpawns = (int)(maxSpawns * AdvCalming.SpawnMultiplier);
         }
+    }
+
+    public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
+    {
+        if (target.HasBuff<BeeSweet>() && Hornets.Contains(npc.type))
+        {
+            return false;
+        }
+
+        return base.CanHitPlayer(npc, target, ref cooldownSlot);
     }
 }

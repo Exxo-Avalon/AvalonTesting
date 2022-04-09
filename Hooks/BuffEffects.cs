@@ -1,4 +1,5 @@
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Players;
 using On.Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.Utilities;
@@ -23,7 +24,7 @@ public static class BuffEffects
         CommonCode.orig_DropItemForEachInteractingPlayerOnThePlayer orig, NPC npc, int itemId, UnifiedRandom rng,
         int chanceNumerator, int chanceDenominator, int stack, bool interactionRequired)
     {
-        if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].HasBuff<AdvLuck>())
+        if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<ExxoBuffPlayer>().Lucky)
         {
             chanceNumerator += (int)(chanceNumerator * AdvLuck.PercentIncrease);
         }

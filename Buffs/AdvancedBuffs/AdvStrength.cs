@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs.AdvancedBuffs;
@@ -21,6 +22,6 @@ public class AdvStrength : ModBuff
         player.GetCritChance<GenericDamageClass>() += CritChancePercentIncrease;
         player.statDefense += DefenseIncrease;
         player.lifeRegen++;
-        //player.Avalon().critDamageMult += 0.1f;
+        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.1f;
     }
 }
