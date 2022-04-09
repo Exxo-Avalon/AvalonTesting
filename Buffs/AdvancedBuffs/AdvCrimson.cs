@@ -1,45 +1,36 @@
-﻿using Terraria.ModLoader;
+﻿using AvalonTesting.Players;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvCrimson : ModBuff
 {
+    private const int FrameInterval = 50;
+    private const int MaxDistance = 620;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Aura Drain");
         Description.SetDefault("On-screen enemies take damage");
     }
 
-    // public override void Update(Player player, ref int buffIndex)
-    // {
-    //     int num7 = (int)player.position.X;
-    //     int num8 = (int)player.position.Y;
-    //     for (int num9 = 0; num9 < Main.npc.Length; num9++)
-    //     {
-    //         NPC nPC3 = Main.npc[num9];
-    //         if (!nPC3.townNPC && nPC3.active && !nPC3.dontTakeDamage && !nPC3.friendly && nPC3.life >= 1 &&
-    //             nPC3.position.X >= num7 - 620 && nPC3.position.X <= num7 + 620 && nPC3.position.Y >= num8 - 620 &&
-    //             nPC3.position.Y <= num8 + 620)
-    //         {
-    //             player.Avalon().crimsonCount++;
-    //             if (player.Avalon().crimsonCount % 50 == 0)
-    //             {
-    //                 NPC[] npc = Main.npc;
-    //                 for (int l = 0; l < npc.Length; l++)
-    //                 {
-    //                     NPC nPC4 = npc[l];
-    //                     if (nPC4.position.X >= num7 - 620 && nPC4.position.X <= num7 + 620 &&
-    //                         nPC4.position.Y >= num8 - 620 && nPC4.position.Y <= num8 + 620 && nPC4.active &&
-    //                         !nPC4.dontTakeDamage && !nPC4.townNPC && nPC4.life >= 1 && !nPC4.boss &&
-    //                         nPC4.realLife < 0 && nPC4.type != NPCID.GrayGrunt)
-    //                     {
-    //                         nPC4.StrikeNPC(2, 0f, 1);
-    //                     }
-    //                 }
-    //
-    //                 player.Avalon().crimsonCount = 0;
-    //             }
-    //         }
-    //     }
-    // }
+    public override void Update(Player player, ref int buffIndex)
+    {
+        if (player.GetModPlayer<ExxoBuffPlayer>().FrameCount % FrameInterval != 0)
+        {
+            return;
+        }
+
+        foreach (NPC npc in Main.npc)
+        {
+            if (!npc.townNPC && npc.active && !npc.dontTakeDamage && !npc.friendly && npc.life >= 1 &&
+                npc.position.Distance(player.position) < MaxDistance && !npc.boss && npc.realLife < 0 &&
+                npc.type != NPCID.GrayGrunt)
+            {
+                npc.StrikeNPC(2, 0f, 1);
+            }
+        }
+    }
 }

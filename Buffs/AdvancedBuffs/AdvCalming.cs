@@ -4,6 +4,9 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvCalming : ModBuff
 {
+    public const float RateMultiplier = 1.5f; // Lower means more spawns as rate is the delay in time
+    public const float SpawnMultiplier = 0.65f;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Calm");

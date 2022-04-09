@@ -5,6 +5,9 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvBuilder : ModBuff
 {
+    private const float SpeedIncrease = 0.3f;
+    private const int BlockRangeIncrease = 2;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Builder");
@@ -13,8 +16,8 @@ public class AdvBuilder : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.tileSpeed += 0.3f;
-        player.wallSpeed += 0.3f;
-        player.blockRange += 2;
+        player.tileSpeed += SpeedIncrease;
+        player.wallSpeed += SpeedIncrease;
+        player.blockRange += BlockRangeIncrease;
     }
 }

@@ -11,8 +11,6 @@ namespace AvalonTesting;
 
 public static class ClassExtensions
 {
-
-
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
@@ -34,14 +32,17 @@ public static class ClassExtensions
 
         return closest;
     }
+
     public static bool IsArmor(this Item item)
     {
         if (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1)
         {
             return !item.vanity;
         }
+
         return false;
     }
+
     public static ExxoPlayer Avalon(this Player p)
     {
         return p.GetModPlayer<ExxoPlayer>();
@@ -60,5 +61,21 @@ public static class ClassExtensions
     public static Rectangle GetDims(this ModTexturedType texturedType)
     {
         return Main.netMode == NetmodeID.Server ? Rectangle.Empty : texturedType.GetTexture().Frame();
+    }
+
+    /// <summary>
+    ///     A helper method to check if the given Player is touching the ground.
+    /// </summary>
+    /// <param name="player"></param>
+    /// <returns>Returns true if the player is touching the ground.</returns>
+    public static bool IsOnGround(this Player player)
+    {
+        return (Main.tile[(int)(player.position.X / 16f), (int)(player.position.Y / 16f) + 3].HasTile &&
+                Main.tileSolid
+                    [Main.tile[(int)(player.position.X / 16f), (int)(player.position.Y / 16f) + 3].TileType]) ||
+               (Main.tile[(int)(player.position.X / 16f) + 1, (int)(player.position.Y / 16f) + 3].HasTile &&
+                Main.tileSolid[
+                    Main.tile[(int)(player.position.X / 16f) + 1, (int)(player.position.Y / 16f) + 3].TileType] &&
+                player.velocity.Y == 0f);
     }
 }

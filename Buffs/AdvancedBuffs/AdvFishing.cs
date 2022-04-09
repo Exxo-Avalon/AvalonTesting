@@ -5,6 +5,8 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvFishing : ModBuff
 {
+    private const int FishingIncrease = 30;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Fishing");
@@ -13,6 +15,6 @@ public class AdvFishing : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.fishingSkill += 30;
+        player.fishingSkill += FishingIncrease;
     }
 }

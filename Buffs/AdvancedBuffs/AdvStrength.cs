@@ -1,21 +1,26 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvStrength : ModBuff
 {
+    private const float DamagePercentIncrease = 0.13f;
+    private const int CritChancePercentIncrease = 2;
+    private const int DefenseIncrease = 7;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Strength");
         Description.SetDefault("Increases stats");
     }
 
-    // public override void Update(Player player, ref int buffIndex)
-    // {
-    //     player.GetDamage(DamageClass.Generic) += 0.13f;
-    //     player.AllCrit(2);
-    //     player.statDefense += 7;
-    //     player.lifeRegen++;
-    //     player.Avalon().critDamageMult += 0.1f;
-    // }
+    public override void Update(Player player, ref int buffIndex)
+    {
+        player.GetDamage(DamageClass.Generic) += DamagePercentIncrease;
+        player.GetCritChance<GenericDamageClass>() += CritChancePercentIncrease;
+        player.statDefense += DefenseIncrease;
+        player.lifeRegen++;
+        //player.Avalon().critDamageMult += 0.1f;
+    }
 }

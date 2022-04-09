@@ -5,6 +5,7 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvFeatherfall : ModBuff
 {
+    // TODO: IMPLEMENT
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Featherfall");

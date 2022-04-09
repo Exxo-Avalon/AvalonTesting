@@ -5,14 +5,16 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvEndurance : ModBuff
 {
+    private const float PercentIncrease = 0.15f;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Endurance");
-        Description.SetDefault("15% reduced damage taken");
+        Description.SetDefault($"{PercentIncrease * 100}% reduced damage taken");
     }
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.endurance += 0.15f;
+        player.endurance += PercentIncrease;
     }
 }

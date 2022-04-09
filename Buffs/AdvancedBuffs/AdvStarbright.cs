@@ -4,6 +4,7 @@ namespace AvalonTesting.Buffs.AdvancedBuffs;
 
 public class AdvStarbright : ModBuff
 {
+    // TODO: IMPLEMENT
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Starbright");
