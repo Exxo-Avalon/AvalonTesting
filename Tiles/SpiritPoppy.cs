@@ -17,12 +17,13 @@ public class SpiritPoppy : ModTile
         Main.tileObsidianKill[Type] = true;
         Main.tileNoAttach[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        soundType = SoundID.Shatter;
+        SoundType = SoundID.Shatter;
         SoundStyle = 1;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Consumables.SpiritPoppy>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16,
+            ModContent.ItemType<Items.Consumables.SpiritPoppy>());
     }
 }

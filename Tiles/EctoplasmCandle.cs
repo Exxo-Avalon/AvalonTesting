@@ -25,7 +25,7 @@ public class EctoplasmCandle : ModTile
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Ectoplasm Candle");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.UltraBrightTorchTorch;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void MouseOver(int i, int j)

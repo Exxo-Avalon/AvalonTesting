@@ -17,12 +17,12 @@ public class WaspLarva : ModTile
         Main.tileLavaDeath[Type] = true;
         Main.tileWaterDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        animationFrameHeight = 54;
+        AnimationFrameHeight = 54;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
         TileObjectData.addTile(Type);
         DustType = DustID.Stone;
         SoundStyle = 1;
-        soundType = SoundID.NPCKilled;
+        SoundType = SoundID.NPCKilled;
         AddMapEntry(new Color(172, 154, 131));
     }
 

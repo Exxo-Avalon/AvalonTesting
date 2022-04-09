@@ -10,7 +10,7 @@ public class UnvolanditeOre : ModTile
 {
     public override void SetStaticDefaults()
     {
-        mineResist = 8f;
+        MineResist = 8f;
         AddMapEntry(new Color(78, 79, 41), LanguageManager.Instance.GetText("Unvolandite"));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
@@ -22,7 +22,7 @@ public class UnvolanditeOre : ModTile
         ItemDrop = Mod.Find<ModItem>("UnvolanditeOre").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 250;
+        MinPick = 250;
     }
     public override bool CanExplode(int i, int j)
     {

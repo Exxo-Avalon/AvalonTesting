@@ -16,7 +16,7 @@ public class GreenIce : ModTile
         Main.tileMerge[Type][TileID.IceBlock] = true;
         Main.tileMerge[TileID.IceBlock][Type] = true;
         Main.tileShine2[Type] = true;
-        soundType = SoundID.Item;
+        SoundType = SoundID.Item;
         SoundStyle = 50;
         DustType = DustID.TerraBlade;
         TileID.Sets.Conversion.Ice[Type] = true;

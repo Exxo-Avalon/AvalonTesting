@@ -23,7 +23,7 @@ public class Sweetstem : ModTile
         Main.tileSpelunker[Type] = true;
         AddMapEntry(new Color(216, 161, 50), LanguageManager.Instance.GetText("Sweetstem"));
         SoundStyle = 1;
-        soundType = SoundID.Grass;
+        SoundType = SoundID.Grass;
         TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
         TileObjectData.newTile.AnchorValidTiles = new int[]
         {
@@ -57,11 +57,11 @@ public class Sweetstem : ModTile
         //Only drop items if the herb is grown
         if (stage == PlantStage.Grown)
         {
-            Item.NewItem(new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<SweetstemSeeds>(), Main.rand.Next(3) + 1);
-            Item.NewItem(new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<Items.Material.Sweetstem>(), 1);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<SweetstemSeeds>(), Main.rand.Next(3) + 1);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<Items.Material.Sweetstem>(), 1);
         }
         if (stage == PlantStage.Growing)
-            Item.NewItem(new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<Items.Material.Sweetstem>(), 1);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),new Vector2(i, j).ToWorldCoordinates(), ModContent.ItemType<Items.Material.Sweetstem>(), 1);
 
         return false;
     }

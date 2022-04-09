@@ -10,7 +10,7 @@ public class FeroziumOre : ModTile
 {
     public override void SetStaticDefaults()
     {
-        mineResist = 2f;
+        MineResist = 2f;
         AddMapEntry(new Color(0, 0, 250), LanguageManager.Instance.GetText("Ferozium"));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
@@ -21,7 +21,7 @@ public class FeroziumOre : ModTile
         ItemDrop = Mod.Find<ModItem>("FeroziumOre").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 180;
+        MinPick = 180;
         DustType = DustID.UltraBrightTorch;
     }
     public override bool CanExplode(int i, int j)

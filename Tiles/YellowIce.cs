@@ -22,7 +22,7 @@ public class YellowIce : ModTile
         TileID.Sets.Conversion.Ice[Type] = true;
         ItemDrop = Mod.Find<ModItem>("YellowIceBlock").Type;
         global::AvalonTesting.MergeWith(Type, TileID.SnowBlock);
-        soundType = SoundID.Item;
+        SoundType = SoundID.Item;
         SoundStyle = 50;
         DustType = ModContent.DustType<Dusts.ContagionSpray>();
     }

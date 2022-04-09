@@ -65,7 +65,7 @@ public class PlacedBars : ModTile
                 break;
             case 5:
                 toDrop = ModContent.ItemType<FeroziumBar>();
-                DustType = DustID.UltraBrightTorchTorch;
+                DustType = DustID.UltraBrightTorch;
                 break;
             case 6:
                 toDrop = ModContent.ItemType<UnvolanditeBar>();

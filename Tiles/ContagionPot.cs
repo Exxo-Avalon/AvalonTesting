@@ -23,7 +23,7 @@ public class ContagionPot : ModTile
         name.SetDefault("Pot");
         AddMapEntry(new Color(33, 38, 97), name);
         DustType = 29;
-        soundType = 13;
+        SoundType = 13;
     }
 	
     public override bool CreateDust(int i, int j, ref int type)
@@ -187,7 +187,7 @@ public class ContagionPot : ModTile
                 else if (num10 == 2)
                 {
                     int stack = Main.rand.Next(1, 6);
-                    if (Main.tile[i, j].liquid > 0)
+                    if (Main.tile[i, j].LiquidAmount > 0)
                     {
                         Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 282, stack, false, 0, false);
                     }

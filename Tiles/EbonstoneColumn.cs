@@ -32,11 +32,11 @@ public class EbonstoneColumn : ModTile
     {
         return (Main.tile[i, j - 1].HasTile || Main.tile[i, j + 1].HasTile || Main.tile[i, j].WallType != 0 && !Main.tile[i, j].HasTile);
     }
-    public int CanPlaceAlter(int i, int j, int type, int style, int direction)
+    public int CanPlaceAlter(int i, int j, int type, int style, int direction, int alternate)
     {
         return 1;
     }
-    public static int AfterPlacement(int i, int j, int type, int style, int direction)
+    public static int AfterPlacement(int i, int j, int type, int style, int direction, int alternate)
     {
         if (Main.netMode == NetmodeID.MultiplayerClient)
         {
