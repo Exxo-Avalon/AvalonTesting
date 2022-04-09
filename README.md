@@ -50,3 +50,24 @@ Stay updated and join the discord community: <https://discord.gg/rtm99Uq>
 ### Easier Recipes
 
 * Chlorophyte armor and weapons
+
+# Compiling shaders on linux
+
+Download fxcompiler and reach
+from https://github.com/tModLoader/tModLoader/wiki/Expert-Shader-Guide#compiling-your-shader
+
+Extract fxcompiler.zip and move the fxcompiler_reach.exe to the fxcompiler folder
+
+Create a new wineprefix using the following commnand `WINEPREFIX=~/.dotnet winecfg`
+
+Open winetricks using the command `WINEPREFIX=~/.dotnet winetricks` and select default wineprefix and install component
+xna40
+
+Use the the following command to now run fxcompiler_reach.exe `WINEPREFIX=~/.dotnet wine ./fxcompiler_reach.exe`
+
+You can also create a helper shell script containing the following:
+
+```shell
+#!/bin/sh
+WINEPREFIX=~/.dotnet wine ./fxcompiler_reach.exe
+```

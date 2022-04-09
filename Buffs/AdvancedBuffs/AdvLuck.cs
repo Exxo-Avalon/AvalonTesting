@@ -1,0 +1,19 @@
+﻿using Terraria.ModLoader;
+
+namespace AvalonTesting.Buffs.AdvancedBuffs;
+
+public class AdvLuck : ModBuff
+{
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Advanced Luck");
+        Description.SetDefault("Doubles rare drop chance");
+    }
+
+    // public override void Update(Player player, ref int buffIndex)
+    // {
+    //     player.Avalon().lucky = true;
+    //     player.enemySpawns = true;
+    //     player.Avalon().enemySpawns2 = true;
+    // }
+}

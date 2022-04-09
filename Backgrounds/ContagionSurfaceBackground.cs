@@ -29,18 +29,18 @@ public class ContagionSurfaceBackground : ModSurfaceBackgroundStyle
 
     public override int ChooseFarTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/ContagionSurfaceBackground2");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground2");
     }
 
     public override int ChooseMiddleTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/ContagionSurfaceBackground3");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground3");
     }
 
     public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
     {
         b -= 75;
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/ContagionSurfaceBackground1");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground1");
     }
 
     //private static int SurfaceFrameCounter;
@@ -55,13 +55,13 @@ public class ContagionSurfaceBackground : ModSurfaceBackgroundStyle
     //    switch (SurfaceFrame)
     //    {
     //        case 0:
-    //            return mod.GetBackgroundSlot("Backgrounds/ExampleBiomeSurfaceMid0");
+    //            return mod.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ExampleBiomeSurfaceMid0");
     //        case 1:
-    //            return mod.GetBackgroundSlot("Backgrounds/ExampleBiomeSurfaceMid1");
+    //            return mod.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ExampleBiomeSurfaceMid1");
     //        case 2:
-    //            return mod.GetBackgroundSlot("Backgrounds/ExampleBiomeSurfaceMid2");
+    //            return mod.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ExampleBiomeSurfaceMid2");
     //        case 3:
-    //            return mod.GetBackgroundSlot("Backgrounds/ExampleBiomeSurfaceMid3");
+    //            return mod.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ExampleBiomeSurfaceMid3");
     //        default:
     //            return -1;
     //    }

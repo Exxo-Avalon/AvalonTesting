@@ -35,7 +35,7 @@ public class TropicsSurfaceBackground : ModSurfaceBackgroundStyle
     // Also this displays too low down.
     public override int ChooseFarTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/TropicsSurfaceBackground3");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/TropicsSurfaceBackground3");
     }
 
     public override int ChooseMiddleTexture()
@@ -46,12 +46,12 @@ public class TropicsSurfaceBackground : ModSurfaceBackgroundStyle
             SurfaceFrameCounter = 0;
         }
 
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/TropicsSurfaceBackground2");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/TropicsSurfaceBackground2");
     }
 
     public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
     {
         b -= 200;
-        return BackgroundTextureLoader.GetBackgroundSlot("Backgrounds/TropicsSurfaceBackground1");
+        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/TropicsSurfaceBackground1");
     }
 }

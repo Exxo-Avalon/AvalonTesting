@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Dyes;
@@ -18,7 +18,9 @@ public class BerserkerDye : ModItem
             // The following code creates an effect (shader) reference and associates it with this item's type Id.
             GameShaders.Armor.BindShader(
                 Item.type,
-                new ArmorShaderData(new Ref<Effect>(Mod.Assets.Request<Effect>("Sprites/BerserkerDye", AssetRequestMode.ImmediateLoad).Value), "BerserkerDye") // Be sure to update the effect path and pass name here.
+                new ArmorShaderData(
+                    new Ref<Effect>(Mod.Assets.Request<Effect>("Effects/BerserkerDye", AssetRequestMode.ImmediateLoad)
+                        .Value), "BerserkerDye") // Be sure to update the effect path and pass name here.
             );
         }
 
@@ -31,7 +33,8 @@ public class BerserkerDye : ModItem
         // This code here remembers Item.dye so that information isn't lost during CloneDefaults.
         int dye = Item.dye;
 
-        Item.CloneDefaults(ItemID.GelDye); // Makes the item copy the attributes of the item "Gel Dye" Change "GelDye" to whatever dye type you want.
+        Item.CloneDefaults(ItemID
+            .GelDye); // Makes the item copy the attributes of the item "Gel Dye" Change "GelDye" to whatever dye type you want.
 
         Item.dye = dye;
     }
