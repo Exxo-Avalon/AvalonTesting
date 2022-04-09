@@ -36,7 +36,7 @@ public class TropicalSapling : ModTile
         modTranslation.SetDefault("Sapling");
         AddMapEntry(new Color(200, 200, 200), modTranslation);
         DustType = DustID.ScourgeOfTheCorruptor;
-        adjTiles = new int[1] { TileID.Saplings };
+        AdjTiles = new int[1] { TileID.Saplings };
     }
 
     public override void RandomUpdate(int i, int j)

@@ -33,8 +33,8 @@ public class DarkSlimeCandle : ModTile
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Light.DarkSlimeCandle>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Light.DarkSlimeCandle>();
     }
 
     public override bool RightClick(int i, int j)

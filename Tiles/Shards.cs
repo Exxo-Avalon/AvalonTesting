@@ -63,7 +63,7 @@ public class Shards : ModTile
                 toDrop = ModContent.ItemType<SacredShard>();
                 break;
         }
-        Item.NewItem(i * 16, j * 16, 16, 16, toDrop);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, toDrop);
     }
 
     // copy from the vanilla tileframe for placed gems

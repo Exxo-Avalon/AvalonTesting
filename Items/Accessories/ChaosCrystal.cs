@@ -24,6 +24,6 @@ class ChaosCrystal : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().critDamageMult += 0.15f;
+        player.Avalon().CritDamageMult += 0.15f;
     }
 }

@@ -22,7 +22,7 @@ class SuperStaminaPotion : ModItem
         Item.useTurn = true;
         Item.useTime = 17;
         Item.useStyle = ItemUseStyleID.EatFood;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().healStamina = 120;
+        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().healStamina = 120;
         Item.maxStack = 99;
         Item.value = 4000;
         Item.useAnimation = 17;
@@ -36,16 +36,16 @@ class SuperStaminaPotion : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        if (player.Avalon().statStam >= player.Avalon().statStamMax2) return false;
+        if (player.Avalon().StatStam >= player.Avalon().StatStamMax2) return false;
         return true;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().statStam += 120;
+        player.Avalon().StatStam += 120;
         player.Avalon().StaminaHealEffect(120, true);
-        if (player.Avalon().statStam > player.Avalon().statStamMax2)
+        if (player.Avalon().StatStam > player.Avalon().StatStamMax2)
         {
-            player.Avalon().statStam = player.Avalon().statStamMax2;
+            player.Avalon().StatStam = player.Avalon().StatStamMax2;
         }
         return true;
     }

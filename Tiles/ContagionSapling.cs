@@ -16,6 +16,8 @@ public class ContagionSapling : ModTile
         Main.tileFrameImportant[Type] = true;
         Main.tileNoAttach[Type] = true;
         Main.tileLavaDeath[Type] = true;
+        TileID.Sets.CommonSapling[Type] = true;
+        TileID.Sets.TreeSapling[Type] = true;
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 2;
         TileObjectData.newTile.Origin = new Point16(0, 1);
@@ -31,12 +33,11 @@ public class ContagionSapling : ModTile
         TileObjectData.newTile.LavaDeath = true;
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.addTile(Type);
-        sapling = true;
         ModTranslation modTranslation = CreateMapEntryName();
         modTranslation.SetDefault("Sapling");
         AddMapEntry(new Color(200, 200, 200), modTranslation);
         DustType = ModContent.DustType<Dusts.CoughwoodDust>();
-        adjTiles = new int[1] { TileID.Saplings };
+        AdjTiles = new int[1] { TileID.Saplings };
     }
 
     public override void RandomUpdate(int i, int j)

@@ -30,8 +30,8 @@ public class DarkSlimePlatform : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         AddMapEntry(new Color(200, 200, 200));
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DarkSlimePlatform>();
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Platforms };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Platforms };
         DustType = DustID.UnholyWater;
     }
 

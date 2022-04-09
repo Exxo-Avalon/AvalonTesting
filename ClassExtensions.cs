@@ -11,6 +11,23 @@ namespace AvalonTesting;
 
 public static class ClassExtensions
 {
+    /// <summary>
+    ///     Rotate a Vector2.
+    /// </summary>
+    /// <param name="spinningpoint">The origin.</param>
+    /// <param name="radians">The angle in radians to rotate the Vector2 by.</param>
+    /// <param name="center"></param>
+    /// <returns>Returns the rotated Vector2.</returns>
+    public static Vector2 Rotate(this Vector2 spinningpoint, double radians, Vector2 center = default)
+    {
+        float num = (float)Math.Cos(radians);
+        float num2 = (float)Math.Sin(radians);
+        Vector2 vector = spinningpoint - center;
+        Vector2 result = center;
+        result.X += (vector.X * num) - (vector.Y * num2);
+        result.Y += (vector.X * num2) + (vector.Y * num);
+        return result;
+    }
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
@@ -32,7 +49,11 @@ public static class ClassExtensions
 
         return closest;
     }
-
+    /// <summary>
+    /// Helper method for checking if the current item is an armor piece - used for armor prefixes.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns>Whether or not the item is an armor piece.</returns>
     public static bool IsArmor(this Item item)
     {
         if (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1)

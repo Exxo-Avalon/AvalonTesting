@@ -15,7 +15,7 @@ class ContagionTree : ModTree
 
     public override int DropWood()
     {
-        return Mod.Find<ModItem>("Coughwood").Type;
+        return ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
     }
 
     public override Texture2D GetTexture()

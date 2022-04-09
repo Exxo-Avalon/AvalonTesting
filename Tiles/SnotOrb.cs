@@ -61,20 +61,20 @@ public class SnotOrb : ModTile
             }
             if (num3 == 0)
             {
-                Item.NewItem(i * 16, j * 16, 32, 32, ModContent.ItemType<PeeShooter>(), 1, false, -1, false);
-                Item.NewItem(i * 16, j * 16, 32, 32, 97, 100, false, 0, false);
+                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<PeeShooter>(), 1, false, -1, false);
+                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, 97, 100, false, 0, false);
             }
             else if (num3 == 1)
             {
-                Item.NewItem(i * 16, j * 16, 32, 32, ModContent.ItemType<VirulentPike>(), 1, false, -1, false);
+                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<VirulentPike>(), 1, false, -1, false);
             }
             else if (num3 == 2)
             {
-                Item.NewItem(i * 16, j * 16, 32, 32, ModContent.ItemType<BandofStamina>(), 1, false, -1, false);
+                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<BandofStamina>(), 1, false, -1, false);
             }
             else if (num3 == 3)
             {
-                Item.NewItem(i * 16, j * 16, 32, 32, ModContent.ItemType<Items.Other.SnotOrb>(), 1, false, -1, false);
+                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, ModContent.ItemType<Items.Other.SnotOrb>(), 1, false, -1, false);
             }
             WorldGen.shadowOrbSmashed = true;
             WorldGen.shadowOrbCount++;

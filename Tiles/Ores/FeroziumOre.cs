@@ -15,7 +15,7 @@ public class FeroziumOre : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
-        Main.tileValue[Type] = 690;
+        Main.tileOreFinderPriority[Type] = 690;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
         ItemDrop = Mod.Find<ModItem>("FeroziumOre").Type;

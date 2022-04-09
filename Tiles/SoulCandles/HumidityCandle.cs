@@ -33,13 +33,13 @@ public class HumidityCandle : ModTile
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Light.HumidityCandle>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Light.HumidityCandle>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Light.HumidityCandle>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Light.HumidityCandle>());
     }
 
     public override bool RightClick(int i, int j)

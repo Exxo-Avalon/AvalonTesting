@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,6 +13,8 @@ public class ResistantWoodBed : ModTile
         Main.tileFrameImportant[Type] = true;
         Main.tileLavaDeath[Type] = false;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.CanBeSleptIn[Type] = true;
+        TileID.Sets.IsValidSpawnPoint[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
         TileObjectData.newTile.CoordinateHeights = new[] {16, 18};
         TileObjectData.newTile.LavaDeath = false;
@@ -20,9 +22,8 @@ public class ResistantWoodBed : ModTile
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Resistant Wood Bed");
         AddMapEntry(new Color(191, 142, 111), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] {TileID.Beds};
-        bed = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] {TileID.Beds};
         DustType = DustID.Wraith;
     }
 
@@ -33,39 +34,53 @@ public class ResistantWoodBed : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodBed>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodBed>());
     }
 
-    public override void RightClick(int i, int j)
+    public override bool RightClick(int i, int j)
     {
         Player player = Main.LocalPlayer;
         Tile tile = Main.tile[i, j];
-        int spawnX = i - (tile.TileFrameX / 18);
+        int spawnX = (i - (tile.TileFrameX / 18)) + (tile.TileFrameX >= 72 ? 5 : 2);
         int spawnY = j + 2;
-        spawnX += tile.TileFrameX >= 72 ? 5 : 2;
+
         if (tile.TileFrameY % 38 != 0)
         {
             spawnY--;
         }
 
-        player.FindSpawn();
-        if (player.SpawnX == spawnX && player.SpawnY == spawnY)
+        if (!Player.IsHoveringOverABottomSideOfABed(i, j))
         {
-            player.RemoveSpawn();
-            Main.NewText("Spawn point removed!", 255, 240, 20, false);
+            if (player.IsWithinSnappngRangeToTile(i, j, Terraria.GameContent.PlayerSleepingHelper.BedSleepingMaxDistance))
+            {
+                player.GamepadEnableGrappleCooldown();
+                player.sleeping.StartSleeping(player, i, j);
+            }
         }
-        else if (Player.CheckSpawn(spawnX, spawnY))
+        else
         {
-            player.ChangeSpawn(spawnX, spawnY);
-            Main.NewText("Spawn point set!", 255, 240, 20, false);
+            player.FindSpawn();
+
+            if (player.SpawnX == spawnX && player.SpawnY == spawnY)
+            {
+                player.RemoveSpawn();
+                Main.NewText(Terraria.Localization.Language.GetTextValue("Game.SpawnPointRemoved"), byte.MaxValue, 240, 20);
+            }
+            else if (Player.CheckSpawn(spawnX, spawnY))
+            {
+                player.ChangeSpawn(spawnX, spawnY);
+                Main.NewText(Terraria.Localization.Language.GetTextValue("Game.SpawnPointSet"), byte.MaxValue, 240, 20);
+            }
         }
+
+        return true;
     }
 
     public override void MouseOver(int i, int j)
     {
         Player player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodBed>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodBed>();
     }
 }

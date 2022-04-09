@@ -30,8 +30,8 @@ public class CoughwoodPlatform : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         AddMapEntry(new Color(191, 142, 111));
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.CoughwoodPlatform>();
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Platforms };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Platforms };
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 

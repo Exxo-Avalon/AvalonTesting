@@ -39,7 +39,7 @@ class Emperor : ModItem
         player.statDefense += 14;
         player.statLifeMax2 += 100;
         player.statManaMax2 += 200;
-        player.Avalon().statStamMax2 += 90;
+        player.Avalon().StatStamMax2 += 90;
     }
 
     public override void AddRecipes()

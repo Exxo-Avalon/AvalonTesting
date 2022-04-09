@@ -17,23 +17,24 @@ public class DragonAltar : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
         TileObjectData.addTile(Type);
         Main.tileFrameImportant[Type] = true;
-        minPick = 250;
+        MinPick = 250;
     }
     public override bool CanKillTile(int i, int j, ref bool blockDamaged)
     {
-        if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && !Main.hardMode && !ExxoAvalonOriginsWorld.downedDragonLord) blockDamaged = false;
-        return ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode && ExxoAvalonOriginsWorld.downedDragonLord;
+        return true;
+        //if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && !Main.hardMode && !ExxoAvalonOriginsWorld.downedDragonLord) blockDamaged = false;
+        //return ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode && ExxoAvalonOriginsWorld.downedDragonLord;
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Crafting.DragonAltar>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Crafting.DragonAltar>());
     }
     public override void MouseOver(int i, int j)
     {
         Player player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Consumables.DragonSpine>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Consumables.DragonSpine>();
     }
     public override bool RightClick(int i, int j)
     {

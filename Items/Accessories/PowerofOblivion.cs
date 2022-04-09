@@ -28,7 +28,7 @@ class PowerofOblivion : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().statStamMax2 += 60;
+        player.Avalon().StatStamMax2 += 60;
         player.manaFlower = true;
         player.Avalon().stamFlower = true;
         player.pStone = true;

@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Placeable.Crafting;
+﻿using AvalonTesting.Items.Placeable.Crafting;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -23,13 +23,13 @@ public class CoughwoodWorkbench : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Coughwood Work Bench");
         AddMapEntry(new Color(191, 142, 111), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.WorkBenches };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.WorkBenches };
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<CoughwoodWorkBench>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<CoughwoodWorkBench>());
     }
 }

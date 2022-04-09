@@ -34,6 +34,6 @@ class DivineLightJerkin : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Ranged) += 10;
-        player.Avalon().critDamageMult += 0.25f;
+        player.Avalon().CritDamageMult += 0.25f;
     }
 }

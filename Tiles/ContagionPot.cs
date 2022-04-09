@@ -14,7 +14,7 @@ public class ContagionPot : ModTile
         Main.tileFrameImportant[Type] = true;
         Main.tileLavaDeath[Type] = true;
         Main.tileWaterDeath[Type] = false;
-        Main.tileValue[Type] = 100;
+        Main.tileOreFinderPriority[Type] = 100;
         Main.tileSpelunker[Type] = true;
         Main.tileCut[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
@@ -51,53 +51,53 @@ public class ContagionPot : ModTile
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.SummoningPotion, 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.SummoningPotion, 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 292, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 292, 1, false, 0, false);
                     }
                     if (num6 == 1)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
                     }
                     if (num6 == 2)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.AmmoReservationPotion, 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.AmmoReservationPotion, 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 299, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 299, 1, false, 0, false);
                     }
                     if (num6 == 3)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.ShockwavePotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.ShockwavePotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 290, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 290, 1, false, 0, false);
                     }
                     if (num6 == 4)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.TimeShiftPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.TimeShiftPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 2322, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2322, 1, false, 0, false);
                     }
                     if (num6 == 5)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2324, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2324, 1, false, 0, false);
                     }
                     if (num6 == 6)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2325, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2325, 1, false, 0, false);
                     }
                     if (num6 == 7)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2350, 1, false, 0, false);
                     }
                 }
                 else if ((double)j < Main.rockLayer)
@@ -107,69 +107,69 @@ public class ContagionPot : ModTile
                     {
                         if (WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.ShockwavePotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.ShockwavePotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 289, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 289, 1, false, 0, false);
                     }
                     if (num7 == 1)
                     {
                         if (WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
                     }
                     if (num7 == 2)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.BloodCastPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.BloodCastPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 299, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 299, 1, false, 0, false);
                     }
                     if (num7 == 3)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.LuckPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.LuckPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 290, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 290, 1, false, 0, false);
                     }
                     if (num7 == 4)
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.AmmoReservationPotion, 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.AmmoReservationPotion, 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 303, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 303, 1, false, 0, false);
                     }
                     if (num7 == 5)
                     {
                         if (WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ItemID.WrathPotion, 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.WrathPotion, 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 291, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 291, 1, false, 0, false);
                     }
                     if (num7 == 6)
                     {
                         if (WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.GPSPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.GPSPotion>(), 1, false, 0, false);
                         }
-                        else Item.NewItem(i * 16, j * 16, 16, 16, 304, 1, false, 0, false);
+                        else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 304, 1, false, 0, false);
                     }
                     if (num7 == 7)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2322, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2322, 1, false, 0, false);
                     }
                     if (num7 == 8)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2329, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2329, 1, false, 0, false);
                     }
                     if (num7 == 9)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 2350, 1, false, 0, false);
                     }
                 }
             }
@@ -178,22 +178,22 @@ public class ContagionPot : ModTile
                 int num10 = Main.rand.Next(9);
                 if (num10 == 0 && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].statLife < Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].statLifeMax2)
                 {
-                    Item.NewItem(i * 16, j * 16, 16, 16, 58, 1, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 58, 1, false, 0, false);
                 }
                 else if (num10 == 1 && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].statMana < Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].statManaMax2)
                 {
-                    Item.NewItem(i * 16, j * 16, 16, 16, 184, 1, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 184, 1, false, 0, false);
                 }
                 else if (num10 == 2)
                 {
                     int stack = Main.rand.Next(1, 6);
                     if (Main.tile[i, j].liquid > 0)
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 282, stack, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 282, stack, false, 0, false);
                     }
                     else
                     {
-                        Item.NewItem(i * 16, j * 16, 16, 16, 8, stack, false, 0, false);
+                        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 8, stack, false, 0, false);
                     }
                 }
                 else if (num10 == 3)
@@ -232,7 +232,7 @@ public class ContagionPot : ModTile
                             else if (ExxoAvalonOriginsWorld.contagion) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>(); // contagion arrow
                         }
                     }
-                    Item.NewItem(i * 16, j * 16, 16, 16, type2, stack2, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, type2, stack2, false, 0, false);
                 }
                 else if (num10 == 4)
                 {
@@ -245,17 +245,17 @@ public class ContagionPot : ModTile
                     {
                         type3 = ItemID.HealingPotion;
                     }
-                    Item.NewItem(i * 16, j * 16, 16, 16, type3, 1, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, type3, 1, false, 0, false);
                 }
                 else if (num10 == 5 && j > Main.rockLayer)
                 {
                     int stack3 = Main.rand.Next(4) + 1;
-                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Bomb, stack3, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.Bomb, stack3, false, 0, false);
                 }
                 else if (num10 == 6 && j < Main.maxTilesY - 200 && !Main.hardMode)
                 {
                     int stack4 = Main.rand.Next(20, 41);
-                    Item.NewItem(i * 16, j * 16, 16, 16, ItemID.Rope, stack4, false, 0, false);
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.Rope, stack4, false, 0, false);
                 }
                 else
                 {
@@ -307,7 +307,7 @@ public class ContagionPot : ModTile
                                 num12 /= Main.rand.Next(3) + 1;
                             }
                             num11 -= 1000000 * num12;
-                            Item.NewItem(i * 16, j * 16, 16, 16, 74, num12, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 74, num12, false, 0, false);
                         }
                         else if (num11 > 10000f)
                         {
@@ -321,7 +321,7 @@ public class ContagionPot : ModTile
                                 num13 /= Main.rand.Next(3) + 1;
                             }
                             num11 -= 10000 * num13;
-                            Item.NewItem(i * 16, j * 16, 16, 16, 73, num13, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 73, num13, false, 0, false);
                         }
                         else if (num11 > 100f)
                         {
@@ -335,7 +335,7 @@ public class ContagionPot : ModTile
                                 num14 /= Main.rand.Next(3) + 1;
                             }
                             num11 -= 100 * num14;
-                            Item.NewItem(i * 16, j * 16, 16, 16, 72, num14, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 72, num14, false, 0, false);
                         }
                         else
                         {
@@ -353,7 +353,7 @@ public class ContagionPot : ModTile
                                 num15 = 1;
                             }
                             num11 -= num15;
-                            Item.NewItem(i * 16, j * 16, 16, 16, 71, num15, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 71, num15, false, 0, false);
                         }
                     }
                 }

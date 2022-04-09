@@ -62,9 +62,9 @@ public class OpenTuhrtlDoor : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Tuhrtl Door Open");
         AddMapEntry(new Color(119, 105, 79), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.OpenDoor };
-        closeDoorID = Mod.Find<ModTile>("ClosedTuhrtlDoor").Type;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.OpenDoor };
+        CloseDoorID = Mod.Find<ModTile>("ClosedTuhrtlDoor").Type;
         DustType = DustID.Silt;
     }
 
@@ -76,14 +76,14 @@ public class OpenTuhrtlDoor : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<TuhrtlDoor>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<TuhrtlDoor>());
     }
 
     public override void MouseOver(int i, int j)
     {
         var player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<TuhrtlDoor>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<TuhrtlDoor>();
     }
 }

@@ -34,16 +34,16 @@ class LesserStaminaPotion : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        if (player.Avalon().statStam >= player.Avalon().statStamMax2) return false;
+        if (player.Avalon().StatStam >= player.Avalon().StatStamMax2) return false;
         return true;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().statStam += 35;
+        player.Avalon().StatStam += 35;
         player.Avalon().StaminaHealEffect(35, true);
-        if (player.Avalon().statStam > player.Avalon().statStamMax2)
+        if (player.Avalon().StatStam > player.Avalon().StatStamMax2)
         {
-            player.Avalon().statStam = player.Avalon().statStamMax2;
+            player.Avalon().StatStam = player.Avalon().StatStamMax2;
         }
         return true;
     }

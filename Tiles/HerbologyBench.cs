@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,8 +18,8 @@ public class HerbologyBench : ModTile
         TileID.Sets.HasOutlines[Type] = true;
         Main.tileFrameImportant[Type] = true;
         AddMapEntry(new Color(153, 77, 86), LanguageManager.Instance.GetText("Herbology Bench"));
-        adjTiles = new int[] { TileID.Bottles };
-        disableSmartCursor = true;
+        AdjTiles = new int[] { TileID.Bottles };
+        TileID.Sets.DisableSmartCursor[Type] = true;
     }
 
     public override bool HasSmartInteract()
@@ -28,11 +29,11 @@ public class HerbologyBench : ModTile
 
     public override bool RightClick(int i, int j)
     {
-        Main.playerInventory = true;
+        //Main.playerInventory = true;
 
-        Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herb = !Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herb;
-        Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herbX = i;
-        Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herbY = j;
+        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb = !Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb;
+        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbX = i;
+        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbY = j;
 
         return true;
     }
@@ -40,11 +41,11 @@ public class HerbologyBench : ModTile
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>();
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>());
     }
 }

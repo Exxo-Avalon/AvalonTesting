@@ -19,13 +19,13 @@ public class ResistantWoodSink : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddMapEntry(new Color(191, 142, 111), Language.GetText("MapObject.Sink"));
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Sinks };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Sinks };
         DustType = DustID.Wraith;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodSink>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodSink>());
     }
 }

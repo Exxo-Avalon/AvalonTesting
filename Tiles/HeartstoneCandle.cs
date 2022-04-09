@@ -32,8 +32,8 @@ public class HeartstoneCandle : ModTile
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Light.HeartstoneCandle>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Light.HeartstoneCandle>();
     }
 
     public override bool RightClick(int i, int j)
@@ -41,7 +41,7 @@ public class HeartstoneCandle : ModTile
         WorldGen.KillTile(i, j);
         if (!Main.tile[i, j].HasTile && Main.netMode != NetmodeID.SinglePlayer)
         {
-            NetMessage.SendData(MessageID.TileChange, -1, -1, null, 0, i, j);
+            NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
         }
         return true;
     }

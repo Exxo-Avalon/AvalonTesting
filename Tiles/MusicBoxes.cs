@@ -1,6 +1,7 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -17,7 +18,7 @@ public class MusicBoxes : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.newTile.DrawYOffset = 2;
         TileObjectData.addTile(Type);
-        disableSmartCursor = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Music Box");
         AddMapEntry(new Color(200, 200, 200), name);
@@ -59,7 +60,7 @@ public class MusicBoxes : ModTile
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxTuhrtlOutpost>();
                 break;
         }
-        Item.NewItem(i * 16, j * 16, 16, 48, item);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, item);
     }
 
     public override void MouseOver(int i, int j)
@@ -100,7 +101,7 @@ public class MusicBoxes : ModTile
         }
         Player player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = item;
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = item;
     }
 }

@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
+using Terraria.IO;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -32,7 +33,7 @@ public class Statues : ModTile
         AddMapEntry(new Color(201, 188, 170), Language.GetText("MapObject.Vase"));
         AddMapEntry(new Color(13, 47, 84));
         DustType = DustID.Stone;
-        disableSmartCursor = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
     }
 
     public override ushort GetMapOption(int i, int j)
@@ -115,7 +116,7 @@ public class Statues : ModTile
         }
         if (item > 0)
         {
-            Item.NewItem(i * 16, j * 16, 48, 48, item);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, item);
         }
     }
 
@@ -139,14 +140,14 @@ public class Statues : ModTile
     }
 }
 
-public class ExampleStatueModWorld : ModWorld
+public class ExampleStatueModWorld : ModSystem
 {
     public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
     {
         int ResetIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Reset"));
         if (ResetIndex != -1)
         {
-            tasks.Insert(ResetIndex + 1, new PassLegacy("Avalon Statue Setup", delegate (GenerationProgress progress)
+            tasks.Insert(ResetIndex + 1, new PassLegacy("Avalon Statue Setup", delegate (GenerationProgress progress, GameConfiguration config)
             {
                 progress.Message = "Adding Avalon Statues";
 

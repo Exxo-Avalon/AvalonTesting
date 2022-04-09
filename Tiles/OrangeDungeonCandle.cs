@@ -32,8 +32,8 @@ public class OrangeDungeonCandle : ModTile
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Light.OrangeDungeonCandle>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Light.OrangeDungeonCandle>();
     }
 
     public override bool RightClick(int i, int j)
@@ -59,7 +59,7 @@ public class OrangeDungeonCandle : ModTile
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Light.OrangeDungeonCandle>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Light.OrangeDungeonCandle>());
     }
 
     public override void HitWire(int i, int j)

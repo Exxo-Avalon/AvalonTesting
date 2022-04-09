@@ -22,7 +22,7 @@ public class EvilAltarsPlaced : ModTile
         TileObjectData.addTile(Type);
         Main.tileLighted[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        adjTiles = new int[] { TileID.DemonAltar };
+        AdjTiles = new int[] { TileID.DemonAltar };
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
@@ -41,6 +41,6 @@ public class EvilAltarsPlaced : ModTile
                 break;
         }
         if (item > 0)
-            Item.NewItem(i * 16, j * 16, 48, 32, item);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, item);
     }
 }

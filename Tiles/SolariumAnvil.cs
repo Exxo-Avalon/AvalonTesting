@@ -17,11 +17,11 @@ public class SolariumAnvil : ModTile
         Main.tileObsidianKill[Type] = true;
         Main.tileNoAttach[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        adjTiles = new int[] { TileID.Anvils, TileID.MythrilAnvil };
+        AdjTiles = new int[] { TileID.Anvils, TileID.MythrilAnvil };
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.SolariumAnvil>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.SolariumAnvil>());
     }
 }

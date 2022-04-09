@@ -27,7 +27,7 @@ public class Paintings : ModTile
         TileObjectData.newTile.AnchorWall = true;
         TileObjectData.addTile(Type);
         DustType = 7;
-        disableSmartCursor = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Painting");
         AddMapEntry(new Color(120, 85, 60), name);
@@ -80,7 +80,7 @@ public class Paintings : ModTile
         }
         if (item > 0)
         {
-            Item.NewItem(i * 16, j * 16, 48, 48, item);
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, item);
         }
     }
 }

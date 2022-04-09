@@ -39,7 +39,7 @@ class CorruptedThornBodyarmor : ModItem
         player.GetCritChance(DamageClass.Melee) += 10;
         player.GetCritChance(DamageClass.Ranged) += 10;
         player.GetCritChance(DamageClass.Throwing) += 10;
-        player.Avalon().critDamageMult += 0.2f;
+        player.Avalon().CritDamageMult += 0.2f;
         player.statLifeMax2 += 40;
     }
 }

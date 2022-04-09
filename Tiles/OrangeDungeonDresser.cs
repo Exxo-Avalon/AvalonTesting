@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -25,8 +25,8 @@ public class OrangeDungeonDresser : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
         TileObjectData.newTile.Origin = new Point16(1, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
-        TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
-        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
+        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook((Chest.FindEmptyChest), -1, 0, true);
+        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook((Chest.AfterPlacement_Hook), -1, 0, false);
         TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;
@@ -36,10 +36,10 @@ public class OrangeDungeonDresser : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Dresser");
         AddMapEntry(new Color(191, 142, 111), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Dressers };
-        dresser = "Orange Dungeon Dresser";
-        dresserDrop = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Dressers };
+        ContainerName.SetDefault("Orange Dungeon Dresser");
+        DresserDrop = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
         DustType = DustID.Coralstone;
     }
 
@@ -48,7 +48,7 @@ public class OrangeDungeonDresser : ModTile
         return true;
     } */
 
-    public override void RightClick(int i, int j)
+    public override bool RightClick(int i, int j)
     {
         var player = Main.LocalPlayer;
         if (Main.tile[Player.tileTargetX, Player.tileTargetY].TileFrameY == 0)
@@ -93,7 +93,7 @@ public class OrangeDungeonDresser : ModTile
             }
             else
             {
-                player.flyingPigChest = -1;
+                //player.flyingPigChest = -1;
                 var num213 = Chest.FindChest(left, top);
                 if (num213 != -1)
                 {
@@ -131,10 +131,11 @@ public class OrangeDungeonDresser : ModTile
             Main.playerInventory = false;
             player.chest = -1;
             Recipe.FindRecipes();
-            Main.dresserX = Player.tileTargetX;
-            Main.dresserY = Player.tileTargetY;
+            Main.interactedDresserTopLeftX = Player.tileTargetX;
+            Main.interactedDresserTopLeftY = Player.tileTargetY;
             Main.OpenClothesWindow();
         }
+        return true;
     }
 
     public override void MouseOverFar(int i, int j)
@@ -149,33 +150,33 @@ public class OrangeDungeonDresser : ModTile
             top--;
         }
         var chestIndex = Chest.FindChest(left, top);
-        player.showItemIcon2 = -1;
+        player.cursorItemIconID = -1;
         if (chestIndex < 0)
         {
-            player.showItemIconText = Language.GetTextValue("LegacyDresserType.0");
+            player.cursorItemIconText = Language.GetTextValue("LegacyDresserType.0");
         }
         else
         {
             if (Main.chest[chestIndex].name != "")
             {
-                player.showItemIconText = Main.chest[chestIndex].name;
+                player.cursorItemIconText = Main.chest[chestIndex].name;
             }
             else
             {
-                player.showItemIconText = chest;
+                player.cursorItemIconText = ContainerName.ToString();
             }
-            if (player.showItemIconText == chest)
+            if (player.cursorItemIconText == ContainerName.ToString())
             {
-                player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
-                player.showItemIconText = "";
+                player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
+                player.cursorItemIconText = "";
             }
         }
         player.noThrow = 2;
-        player.showItemIcon = true;
-        if (player.showItemIconText == "")
+        player.cursorItemIconEnabled = true;
+        if (player.cursorItemIconText == "")
         {
-            player.showItemIcon = false;
-            player.showItemIcon2 = 0;
+            player.cursorItemIconEnabled = false;
+            player.cursorItemIconID = 0;
         }
     }
 
@@ -191,32 +192,32 @@ public class OrangeDungeonDresser : ModTile
             top--;
         }
         var num138 = Chest.FindChest(left, top);
-        player.showItemIcon2 = -1;
+        player.cursorItemIconID = -1;
         if (num138 < 0)
         {
-            player.showItemIconText = Language.GetTextValue("LegacyDresserType.0");
+            player.cursorItemIconText = Language.GetTextValue("LegacyDresserType.0");
         }
         else
         {
             if (Main.chest[num138].name != "")
             {
-                player.showItemIconText = Main.chest[num138].name;
+                player.cursorItemIconText = Main.chest[num138].name;
             }
             else
             {
-                player.showItemIconText = chest;
+                player.cursorItemIconText = ContainerName.ToString();
             }
-            if (player.showItemIconText == chest)
+            if (player.cursorItemIconText == ContainerName.ToString())
             {
-                player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
-                player.showItemIconText = "";
+                player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Storage.OrangeDungeonDresser>();
+                player.cursorItemIconText = "";
             }
         }
         player.noThrow = 2;
-        player.showItemIcon = true;
+        player.cursorItemIconEnabled = true;
         if (Main.tile[Player.tileTargetX, Player.tileTargetY].TileFrameY > 0)
         {
-            player.showItemIcon2 = ItemID.FamiliarShirt;
+            player.cursorItemIconID = ItemID.FamiliarShirt;
         }
     }
 
@@ -227,7 +228,7 @@ public class OrangeDungeonDresser : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 48, 32, dresserDrop);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, DresserDrop);
         Chest.DestroyChest(i, j);
     }
 }

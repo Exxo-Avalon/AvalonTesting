@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Placeable.Furniture;
+﻿using AvalonTesting.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -62,9 +62,9 @@ public class DarkSlimeDoorOpen : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Dark Slime Door Open");
         AddMapEntry(new Color(119, 105, 79), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.OpenDoor };
-        closeDoorID = Mod.Find<ModTile>("DarkSlimeDoorClosed").Type;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.OpenDoor };
+        CloseDoorID = Mod.Find<ModTile>("DarkSlimeDoorClosed").Type;
         DustType = DustID.UnholyWater;
     }
 
@@ -80,14 +80,14 @@ public class DarkSlimeDoorOpen : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 48, ModContent.ItemType<DarkSlimeDoor>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 48, ModContent.ItemType<DarkSlimeDoor>());
     }
 
     public override void MouseOver(int i, int j)
     {
         var player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<DarkSlimeDoor>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<DarkSlimeDoor>();
     }
 }

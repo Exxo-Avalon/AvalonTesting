@@ -25,15 +25,15 @@ public class EctoplasmCandle : ModTile
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Ectoplasm Candle");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Ultrabright;
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void MouseOver(int i, int j)
     {
         Player player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Light.EctoplasmCandle>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Light.EctoplasmCandle>();
     }
 
     public override bool RightClick(int i, int j)

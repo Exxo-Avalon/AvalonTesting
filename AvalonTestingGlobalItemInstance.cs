@@ -11,6 +11,8 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {
+
+
     public static readonly int[] AllowedPrefixes =
     {
         ModContent.PrefixType<Barbaric>(), ModContent.PrefixType<Boosted>(), ModContent.PrefixType<Busted>(),

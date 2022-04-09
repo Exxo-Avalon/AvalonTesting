@@ -19,7 +19,7 @@ public class ContagionShortGrass : ModTile
         Main.tileFrameImportant[Type] = true;
         DustType = ModContent.DustType<Dusts.ContagionDust>();
         SoundStyle = 1;
-        soundType = SoundID.Grass;
+        SoundType = SoundID.Grass;
         AddMapEntry(new Color(133, 150, 39));
     }
 
@@ -27,10 +27,10 @@ public class ContagionShortGrass : ModTile
     {
         if (Main.tile[i, j].TileFrameX / 18 == 10)
         {
-            Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<ContaminatedMushroom>());
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<ContaminatedMushroom>());
         }
     }
-    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
     {
         offsetY = 2;
     }

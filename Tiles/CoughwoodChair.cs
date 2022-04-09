@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
@@ -28,13 +28,13 @@ public class CoughwoodChair : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Coughwood Chair");
         AddMapEntry(new Color(191, 142, 111), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Chairs };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Chairs };
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.CoughwoodChair>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 32, ModContent.ItemType<Items.Placeable.Furniture.CoughwoodChair>());
     }
 }

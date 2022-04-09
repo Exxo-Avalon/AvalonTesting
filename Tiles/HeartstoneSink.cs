@@ -18,13 +18,13 @@ public class HeartstoneSink : ModTile
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
         TileObjectData.addTile(Type);
         AddMapEntry(new Color(191, 142, 111), Language.GetText("MapObject.Sink"));
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Sinks };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Sinks };
         DustType = DustID.Confetti_Pink;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Furniture.HeartstoneSink>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Furniture.HeartstoneSink>());
     }
 }

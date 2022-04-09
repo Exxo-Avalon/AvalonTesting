@@ -30,11 +30,11 @@ public class DevilsScythe : ModTile
     {
         Player player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Weapons.Magic.DevilsScythe>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Weapons.Magic.DevilsScythe>();
     }
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        Item.NewItem(i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Weapons.Magic.DevilsScythe>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Weapons.Magic.DevilsScythe>());
     }
 }

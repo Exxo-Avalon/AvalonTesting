@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -15,6 +15,7 @@ public class ResistantWoodClock : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileLavaDeath[Type] = false;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.Clock[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
         TileObjectData.newTile.Height = 5;
         TileObjectData.newTile.CoordinateHeights = new int[]
@@ -30,8 +31,8 @@ public class ResistantWoodClock : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Resistant Wood Clock");
         AddMapEntry(new Color(191, 142, 111), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.GrandfatherClocks };
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.GrandfatherClocks };
         DustType = DustID.Wraith;
     }
 
@@ -44,11 +45,11 @@ public class ResistantWoodClock : ModTile
     {
         var player = Main.player[Main.myPlayer];
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodClock>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodClock>();
     }
 
-    public override void RightClick(int x, int y)
+    public override bool RightClick(int x, int y)
     {
         {
             var text = "AM";
@@ -86,14 +87,7 @@ public class ResistantWoodClock : ModTile
             var newText = string.Concat("Time: ", intTime, ":", text2, " ", text);
             Main.NewText(newText, 255, 240, 20);
         }
-    }
-
-    public override void NearbyEffects(int i, int j, bool closer)
-    {
-        if (closer)
-        {
-            Main.clock = true;
-        }
+        return true;
     }
 
     public override void NumDust(int i, int j, bool fail, ref int num)
@@ -103,6 +97,6 @@ public class ResistantWoodClock : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodClock>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Furniture.ResistantWoodClock>());
     }
 }

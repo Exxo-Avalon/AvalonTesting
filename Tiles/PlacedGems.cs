@@ -53,7 +53,7 @@ public class PlacedGems : ModTile
                 toDrop = ModContent.ItemType<Items.Placeable.Tile.Peridot>();
                 break;
         }
-        if (toDrop > 0) Item.NewItem(i * 16, j * 16, 16, 16, toDrop);
+        if (toDrop > 0) Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, toDrop);
     }
 
     // copy from the vanilla tileframe for placed gems
@@ -68,9 +68,9 @@ public class PlacedGems : ModTile
         var bottomType = -1;
         var leftType = -1;
         var rightType = -1;
-        if (topTile.HasTile && !topTile.bottomSlope())
+        if (topTile.HasTile && !topTile.BottomSlope)
             bottomType = topTile.TileType;
-        if (bottomTile.HasTile && !bottomTile.IsHalfBlock && !bottomTile.topSlope())
+        if (bottomTile.HasTile && !bottomTile.IsHalfBlock && !bottomTile.TopSlope)
             topType = bottomTile.TileType;
         if (leftTile.HasTile)
             leftType = leftTile.TileType;
@@ -112,8 +112,7 @@ public class PlacedGems : ModTile
     //{
     //    Main.tile[i, j].frameX = (short)(item.placeStyle * 18);
     //}
-
-    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
     {
         if (Main.tile[i, j].TileFrameY / 18 < 3)
             offsetY = 2;

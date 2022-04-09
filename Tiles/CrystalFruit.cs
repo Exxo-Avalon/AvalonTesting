@@ -23,7 +23,7 @@ public class CrystalFruit : ModTile
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
         TileObjectData.addTile(Type);
         AddMapEntry(new Color(159, 190, 224), LanguageManager.Instance.GetText("Crystal Fruit"));
-        disableSmartCursor = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
         soundType = SoundID.Shatter;
         SoundStyle = 1;
         //DustType = DustID.BlueCrystalShard;
@@ -52,6 +52,6 @@ public class CrystalFruit : ModTile
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Consumables.CrystalFruit>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Consumables.CrystalFruit>());
     }
 }

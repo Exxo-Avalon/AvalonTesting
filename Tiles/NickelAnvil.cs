@@ -21,11 +21,11 @@ public class NickelAnvil : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileFrameImportant[Type] = true;
         DustType = ModContent.DustType<Dusts.NickelDust>();
-        adjTiles = new int[] { TileID.Anvils };
+        AdjTiles = new int[] { TileID.Anvils };
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.NickelAnvil>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.NickelAnvil>());
     }
 }

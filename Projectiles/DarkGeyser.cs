@@ -15,7 +15,7 @@ public class DarkGeyser : ModProjectile
 
     public override void SetDefaults()
     {
-        //Rectangle dims = //ExxoAvalonOrigins.GetDims("Projectiles/DarkGeyser");
+        //Rectangle dims = //AvalonTesting.GetDims("Projectiles/DarkGeyser");
         Projectile.width = 8;
         Projectile.height = 8;
         Projectile.hostile = true;

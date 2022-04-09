@@ -30,14 +30,14 @@ class StaminaCrystal : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return player.Avalon().statStamMax < 300;
+        return player.Avalon().StatStamMax < 300;
     }
 
     public override bool? UseItem(Player player)
     {
-        player.Avalon().statStamMax += 30;
-        player.Avalon().statStamMax2 += 30;
-        player.Avalon().statStam += 30;
+        player.Avalon().StatStamMax += 30;
+        player.Avalon().StatStamMax2 += 30;
+        player.Avalon().StatStam += 30;
         return true;
     }
 }

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,9 +30,9 @@ public class EctoplasmPlatform : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         AddMapEntry(new Color(191, 142, 111));
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.EctoplasmPlatform>();
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Platforms };
-        DustType = DustID.Ultrabright;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Platforms };
+        DustType = DustID.UltraBrightTorch;
     }
 
     public override void PostSetDefaults()

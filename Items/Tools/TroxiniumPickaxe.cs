@@ -32,10 +32,10 @@ public class TroxiniumPickaxe : ModItem
         Item.value = Item.sellPrice(0, 2, 28, 0);
         Item.useAnimation = 20;
         Item.height = dims.Height;
-        if (!Main.dedServ)
-        {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        }
+        //if (!Main.dedServ)
+        //{
+        //    Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        //}
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {

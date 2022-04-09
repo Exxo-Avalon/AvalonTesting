@@ -67,6 +67,6 @@ public class LargeHerbsStage1 : ModTile
                 item = ModContent.ItemType<LargeHolybirdSeed>();
                 break;
         }
-        if (item > 0) Item.NewItem(i * 16, j * 16, 16, 48, item);
+        if (item > 0) Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, item);
     }
 }

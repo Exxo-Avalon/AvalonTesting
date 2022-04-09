@@ -25,7 +25,7 @@ public class CaesiumOre : ModTile
         AvalonTesting.MergeWith(Type, TileID.Ash);
         AvalonTesting.MergeWith(Type, ModContent.TileType<Impgrass>());
         DustType = ModContent.DustType<Dusts.CaesiumDust>();
-        //ExxoAvalonOrigins.MergeWith(TileID.Ash, Type);
+        //AvalonTesting.MergeWith(TileID.Ash, Type);
     }
     public override bool CanExplode(int i, int j)
     {

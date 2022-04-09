@@ -19,13 +19,13 @@ public class ContagionChest : ModTile
         Main.tileContainer[Type] = true;
         Main.tileFrameImportant[Type] = true;
         Main.tileNoAttach[Type] = true;
-        Main.tileValue[Type] = 500;
+        Main.tileOreFinderPriority[Type] = 500;
         TileID.Sets.HasOutlines[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.Origin = new Point16(0, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
-        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
-        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
+        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook((Chest.FindEmptyChest), -1, 0, true);
+        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook((Chest.AfterPlacement_Hook), -1, 0, false);
         TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;
@@ -34,10 +34,10 @@ public class ContagionChest : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Contagion Chest");
         AddMapEntry(new Color(174, 129, 92), name, MapChestName);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Containers };
-        chest = "Contagion Chest";
-        chestDrop = ModContent.ItemType<Items.Placeable.Storage.ContagionChest>();
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Containers };
+        ContainerName.SetDefault("Contagion Chest");
+        ChestDrop = ModContent.ItemType<Items.Placeable.Storage.ContagionChest>();
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 

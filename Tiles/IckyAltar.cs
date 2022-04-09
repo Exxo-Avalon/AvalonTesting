@@ -23,7 +23,7 @@ public class IckyAltar : ModTile
         Main.tileHammer[Type] = true;
         Main.tileLighted[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        adjTiles = new int[] { TileID.DemonAltar };
+        AdjTiles = new int[] { TileID.DemonAltar };
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

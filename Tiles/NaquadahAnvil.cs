@@ -26,11 +26,11 @@ public class NaquadahAnvil : ModTile
         Main.tileFrameImportant[Type] = true;
         Main.placementPreview = true;
         DustType = ModContent.DustType<Dusts.NaquadahDust>();
-        adjTiles = new int[] { TileID.Anvils, TileID.MythrilAnvil };
+        AdjTiles = new int[] { TileID.Anvils, TileID.MythrilAnvil };
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.NaquadahAnvil>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 16, ModContent.ItemType<Items.Placeable.Crafting.NaquadahAnvil>());
     }
 }

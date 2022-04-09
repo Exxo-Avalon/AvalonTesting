@@ -20,6 +20,9 @@ public class Torches : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileNoFail[Type] = true;
         Main.tileWaterDeath[Type] = true;
+        TileID.Sets.Torch[Type] = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        TileID.Sets.FramesOnKillWall[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.StyleTorch);
         TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
         TileObjectData.newAlternate.CopyFrom(TileObjectData.StyleTorch);
@@ -37,9 +40,7 @@ public class Torches : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         AddMapEntry(new Color(200, 200, 200));
         DustType = DustID.JungleSpore;
-        //disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Torches };
-        torch = true;
+        AdjTiles = new int[] { TileID.Torches };
     }
 
     public override bool Drop(int i, int j)
@@ -68,7 +69,7 @@ public class Torches : ModTile
                 toDrop = ModContent.ItemType<BrownTorch>();
                 break;
         }
-        Item.NewItem(i * 16, j * 16, 0, 0, toDrop);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 0, 0, toDrop);
         return false;
     }
 
@@ -123,8 +124,7 @@ public class Torches : ModTile
             }
         }
     }
-
-    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
     {
         offsetY = 0;
         if (WorldGen.InWorld(i, j - 1) && WorldGen.SolidTile(i, j - 1))
@@ -171,28 +171,28 @@ public class Torches : ModTile
     {
         Player player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
+        player.cursorItemIconEnabled = true;
         var style = Main.tile[i, j].TileFrameY / 22;
 
         switch (style)
         {
             case 0:
-                player.showItemIcon2 = ModContent.ItemType<JungleTorch>();
+                player.cursorItemIconID = ModContent.ItemType<JungleTorch>();
                 break;
             case 1:
-                player.showItemIcon2 = ModContent.ItemType<PathogenTorch>();
+                player.cursorItemIconID = ModContent.ItemType<PathogenTorch>();
                 break;
             case 2:
-                player.showItemIcon2 = ModContent.ItemType<SlimeTorch>();
+                player.cursorItemIconID = ModContent.ItemType<SlimeTorch>();
                 break;
             case 3:
-                player.showItemIcon2 = ModContent.ItemType<CyanTorch>();
+                player.cursorItemIconID = ModContent.ItemType<CyanTorch>();
                 break;
             case 4:
-                player.showItemIcon2 = ModContent.ItemType<LimeTorch>();
+                player.cursorItemIconID = ModContent.ItemType<LimeTorch>();
                 break;
             case 5:
-                player.showItemIcon2 = ModContent.ItemType<BrownTorch>();
+                player.cursorItemIconID = ModContent.ItemType<BrownTorch>();
                 break;
         }
     }

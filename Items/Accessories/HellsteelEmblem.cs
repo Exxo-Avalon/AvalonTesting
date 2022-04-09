@@ -26,7 +26,7 @@ class HellsteelEmblem : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetDamage(DamageClass.Generic) += 0.15f;
-        player.Avalon().critDamageMult += 0.12f;
+        player.Avalon().CritDamageMult += 0.12f;
         player.Avalon().trapImmune = true;
     }
     public override void AddRecipes()

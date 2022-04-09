@@ -43,7 +43,7 @@ public class PlasmaLamp : ModTile
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Light.PlasmaLamp>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Light.PlasmaLamp>());
     }
 
     public override void HitWire(int i, int j)

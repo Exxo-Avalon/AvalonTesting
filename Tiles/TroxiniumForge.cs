@@ -27,7 +27,7 @@ public class TroxiniumForge : ModTile
         Main.tileLighted[Type] = true;
         Main.tileFrameImportant[Type] = true;
         DustType = ModContent.DustType<Dusts.TroxiniumDust>();
-        adjTiles = new int[] { TileID.AdamantiteForge, TileID.Hellforge, TileID.Furnaces };
+        AdjTiles = new int[] { TileID.AdamantiteForge, TileID.Hellforge, TileID.Furnaces };
     }
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
     {
@@ -37,7 +37,7 @@ public class TroxiniumForge : ModTile
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Crafting.TroxiniumForge>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Crafting.TroxiniumForge>());
     }
     public override void RandomUpdate(int i, int j)
     {

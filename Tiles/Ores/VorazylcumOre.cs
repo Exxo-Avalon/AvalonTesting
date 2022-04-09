@@ -15,7 +15,7 @@ public class VorazylcumOre : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileSpelunker[Type] = true;
-        Main.tileValue[Type] = 850;
+        Main.tileOreFinderPriority[Type] = 850;
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1900;

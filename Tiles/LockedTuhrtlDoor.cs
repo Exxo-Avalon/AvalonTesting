@@ -45,9 +45,9 @@ public class LockedTuhrtlDoor : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Locked Tuhrtl Door");
         AddMapEntry(new Color(119, 105, 79), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.ClosedDoor };
-        minPick = 2000;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.ClosedDoor };
+        MinPick = 2000;
         DustType = DustID.Silt;
     }
 
@@ -66,7 +66,7 @@ public class LockedTuhrtlDoor : ModTile
         return false;
     }
 
-    public override void RightClick(int i, int j)
+    public override bool RightClick(int i, int j)
     {
         Player player = Main.LocalPlayer;
         Tile tile = Main.tile[i, j];
@@ -83,6 +83,7 @@ public class LockedTuhrtlDoor : ModTile
                 UnlockDoor(i, j);
             }
         }
+        return true;
     }
     public static void UnlockDoor(int i, int j)
     {
@@ -101,10 +102,6 @@ public class LockedTuhrtlDoor : ModTile
         SoundEngine.PlaySound(SoundID.Unlock, i * 16, num * 16 + 16, 1);
         for (int k = num; k <= num + 2; k++)
         {
-            if (Main.tile[i, k] == null)
-            {
-                Main.tile[i, k] = new Tile();
-            }
             Main.tile[i, k].TileType = (ushort)ModContent.TileType<ClosedTuhrtlDoor>();
             for (int l = 0; l < 4; l++)
             {
@@ -114,14 +111,14 @@ public class LockedTuhrtlDoor : ModTile
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 16, 48, ModContent.ItemType<TuhrtlDoor>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, ModContent.ItemType<TuhrtlDoor>());
     }
 
     public override void MouseOver(int i, int j)
     {
         var player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<OutpostKey>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<OutpostKey>();
     }
 }

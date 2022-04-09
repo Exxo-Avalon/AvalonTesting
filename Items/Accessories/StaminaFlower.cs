@@ -29,6 +29,6 @@ class StaminaFlower : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().stamFlower = true;
-        player.Avalon().statStamMax2 += 90;
+        player.Avalon().StatStamMax2 += 90;
     }
 }

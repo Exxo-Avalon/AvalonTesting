@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Placeable.Furniture;
+﻿using AvalonTesting.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -42,9 +42,9 @@ public class OrangeDungeonDoorClosed : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Door Closed");
         AddMapEntry(new Color(119, 105, 79), name);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.ClosedDoor };
-        openDoorID = Mod.Find<ModTile>("OrangeDungeonDoorOpen").Type;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.ClosedDoor };
+        OpenDoorID = ModContent.TileType<OrangeDungeonDoorOpen>();
         DustType = DustID.Coralstone;
     }
 
@@ -60,14 +60,14 @@ public class OrangeDungeonDoorClosed : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 16, 48, ModContent.ItemType<OrangeDungeonDoor>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, ModContent.ItemType<OrangeDungeonDoor>());
     }
 
     public override void MouseOver(int i, int j)
     {
         var player = Main.LocalPlayer;
         player.noThrow = 2;
-        player.showItemIcon = true;
-        player.showItemIcon2 = ModContent.ItemType<OrangeDungeonDoor>();
+        player.cursorItemIconEnabled = true;
+        player.cursorItemIconID = ModContent.ItemType<OrangeDungeonDoor>();
     }
 }

@@ -19,7 +19,7 @@ public class XanthophyteOre : ModTile
         Main.tileShine[Type] = 775;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileValue[Type] = 705;
+        Main.tileOreFinderPriority[Type] = 705;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;

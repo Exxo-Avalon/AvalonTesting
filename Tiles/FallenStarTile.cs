@@ -20,8 +20,8 @@ public class FallenStarTile : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-        disableSmartCursor = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.FallenStarBlock>();
-        DustType = DustID.TopazBolt;
+        DustType = DustID.GemTopaz;
     }
 }

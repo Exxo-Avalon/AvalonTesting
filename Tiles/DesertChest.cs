@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -19,13 +19,13 @@ public class DesertChest : ModTile
         Main.tileContainer[Type] = true;
         Main.tileFrameImportant[Type] = true;
         Main.tileNoAttach[Type] = true;
-        Main.tileValue[Type] = 500;
+        Main.tileOreFinderPriority[Type] = 500;
         TileID.Sets.HasOutlines[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.Origin = new Point16(0, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
-        TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
-        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.AfterPlacement_Hook), -1, 0, false);
+        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook((Chest.FindEmptyChest), -1, 0, true);
+        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook((Chest.AfterPlacement_Hook), -1, 0, false);
         TileObjectData.newTile.AnchorInvalidTiles = new int[] { 127 };
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.LavaDeath = false;
@@ -34,10 +34,10 @@ public class DesertChest : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Desert Chest");
         AddMapEntry(new Color(174, 129, 92), name, MapChestName);
-        disableSmartCursor = true;
-        adjTiles = new int[] { TileID.Containers };
-        chest = "Desert Chest";
-        chestDrop = ModContent.ItemType<Items.Placeable.Storage.DesertChest>();
+        TileID.Sets.DisableSmartCursor[Type] = true;
+        AdjTiles = new int[] { TileID.Containers };
+        ContainerName.SetDefault("Desert Chest");
+        ChestDrop = ModContent.ItemType<Items.Placeable.Storage.DesertChest>();
         DustType = DustID.SandstormInABottle;
     }
 
@@ -74,11 +74,11 @@ public class DesertChest : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 32, 32, ChestDrop);
         Chest.DestroyChest(i, j);
     }
 
-    public override void RightClick(int i, int j)
+    public override bool RightClick(int i, int j)
     {
         var player = Main.LocalPlayer;
         var tile = Main.tile[i, j];
@@ -157,6 +157,7 @@ public class DesertChest : ModTile
                 Recipe.FindRecipes();
             }
         }
+        return true;
     }
 
     public override void MouseOver(int i, int j)
@@ -174,32 +175,32 @@ public class DesertChest : ModTile
             top--;
         }
         var chest = Chest.FindChest(left, top);
-        player.showItemIcon2 = -1;
+        player.cursorItemIconID = -1;
         if (chest < 0)
         {
-            player.showItemIconText = Language.GetTextValue("LegacyChestType.0");
+            player.cursorItemIconText = Language.GetTextValue("LegacyChestType.0");
         }
         else
         {
-            player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Desert Chest";
-            if (player.showItemIconText == "Desert Chest")
+            player.cursorItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Desert Chest";
+            if (player.cursorItemIconText == "Desert Chest")
             {
-                player.showItemIcon2 = ModContent.ItemType<Items.Placeable.Storage.DesertChest>();
-                player.showItemIconText = "";
+                player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Storage.DesertChest>();
+                player.cursorItemIconText = "";
             }
         }
         player.noThrow = 2;
-        player.showItemIcon = true;
+        player.cursorItemIconEnabled = true;
     }
 
     public override void MouseOverFar(int i, int j)
     {
         MouseOver(i, j);
         var player = Main.LocalPlayer;
-        if (player.showItemIconText == "")
+        if (player.cursorItemIconText == "")
         {
-            player.showItemIcon = false;
-            player.showItemIcon2 = 0;
+            player.cursorItemIconEnabled = false;
+            player.cursorItemIconID = 0;
         }
     }
 }

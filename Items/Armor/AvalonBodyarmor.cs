@@ -28,7 +28,7 @@ class AvalonBodyarmor : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Generic) += 10;
-        player.Avalon().critDamageMult += 0.30f;
+        player.Avalon().CritDamageMult += 0.30f;
         player.longInvince = true;
         player.starCloakItem = Item;
     }
