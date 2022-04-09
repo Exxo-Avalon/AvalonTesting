@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
 using AvalonTesting.Hooks;
+using Terraria.Graphics.Shaders;
 
 namespace AvalonTesting;
 
