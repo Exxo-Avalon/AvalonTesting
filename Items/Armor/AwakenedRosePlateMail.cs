@@ -1,3 +1,4 @@
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,7 +7,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Body)]
-class AwakenedRosePlateMail : ModItem
+internal class AwakenedRosePlateMail : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -21,13 +22,13 @@ class AwakenedRosePlateMail : ModItem
         Item.defense = 21;
         Item.rare = ItemRarityID.Red;
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(0, 40, 0, 0);
+        Item.value = Item.sellPrice(0, 40);
         Item.height = dims.Height;
     }
 
     public override void UpdateEquip(Player player)
     {
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         modPlayer.teleportV = true;
         modPlayer.thornMagic = true;
     }

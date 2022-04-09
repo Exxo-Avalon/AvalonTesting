@@ -16,7 +16,7 @@ public class UltrablivionBuff : ModBuff
 
     // public override void Update(Player player, ref int buffIndex)
     // {
-    //     ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+    //     ExxoPlayer modPlayer = player.Avalon();
     //     if (player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Summon.UltraHMinion>()] > 0 && player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Summon.UltraLMinion>()] > 0 && player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Summon.UltraRMinion>()] > 0)
     //     {
     //         modPlayer.UltraHMinion = true;

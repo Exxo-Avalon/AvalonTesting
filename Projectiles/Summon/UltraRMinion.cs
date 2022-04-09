@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,11 +36,12 @@ public class UltraRMinion : HoverShooter
     public override void CheckActive()
     {
         Player player = Main.player[Projectile.owner];
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         if (player.dead)
         {
             modPlayer.UltraRMinion = false;
         }
+
         if (modPlayer.UltraRMinion)
         {
             Projectile.timeLeft = 2;

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +8,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Accessories;
 
 [AutoloadEquip(EquipType.Wings)]
-class ContagionWings : ModItem
+internal class ContagionWings : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -26,15 +28,18 @@ class ContagionWings : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.Avalon().ZoneContagion)
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
         {
             player.statDefense += 5;
             player.statLifeMax2 += 40;
         }
+
         player.wingTimeMax = 140;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.DemonWings).AddIngredient(ModContent.ItemType<Material.YuckyBit>(), 20).AddIngredient(ModContent.ItemType<Material.Pathogen>(), 25).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe().AddIngredient(ItemID.DemonWings).AddIngredient(ModContent.ItemType<YuckyBit>(), 20)
+            .AddIngredient(ModContent.ItemType<Pathogen>(), 25).AddTile(TileID.MythrilAnvil).Register();
     }
 }

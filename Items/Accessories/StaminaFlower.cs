@@ -1,11 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Potions;
+using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class StaminaFlower : ModItem
+internal class StaminaFlower : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -22,13 +24,17 @@ class StaminaFlower : ModItem
         Item.value = Item.sellPrice(0, 0, 54);
         Item.height = dims.Height;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Potions.StaminaPotion>()).AddIngredient(ModContent.ItemType<BandofStamina>()).AddIngredient(ItemID.JungleRose).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe().AddIngredient(ModContent.ItemType<StaminaPotion>())
+            .AddIngredient(ModContent.ItemType<BandofStamina>()).AddIngredient(ItemID.JungleRose)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().stamFlower = true;
-        player.Avalon().StatStamMax2 += 90;
+        player.GetModPlayer<ExxoStaminaPlayer>().StamFlower = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2 += 90;
     }
 }

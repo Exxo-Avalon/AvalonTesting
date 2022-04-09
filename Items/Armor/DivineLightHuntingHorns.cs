@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +8,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
-class DivineLightHuntingHorns : ModItem
+internal class DivineLightHuntingHorns : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,24 +22,27 @@ class DivineLightHuntingHorns : ModItem
         Item.defense = 10;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(0, 2, 10, 0);
+        Item.value = Item.sellPrice(0, 2, 10);
         Item.height = dims.Height;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1)
+        CreateRecipe()
             .AddIngredient(ItemID.PixieDust, 20)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 20)
+            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 20)
             .AddIngredient(ItemID.SoulofLight, 10).AddTile(TileID.MythrilAnvil).Register();
     }
+
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
-        return body.type == ModContent.ItemType<DivineLightJerkin>() && legs.type == ModContent.ItemType<DivineLightTreads>();
+        return body.type == ModContent.ItemType<DivineLightJerkin>() &&
+               legs.type == ModContent.ItemType<DivineLightTreads>();
     }
 
     public override void UpdateArmorSet(Player player)
     {
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         player.setBonus = "Reckoning: your reckoning level increases as you attack enemies, up to a maximum of ten"
                           + "\nThe greater your reckoning level, the greater your ranged critical strike chance"
                           + "\nYour reckoning level decreases gradually over time"

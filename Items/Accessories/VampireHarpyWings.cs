@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +28,7 @@ class VampireHarpyWings : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.wingTimeMax = 210;
-        if (player.Avalon().ZoneDarkMatter)
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter)
         {
             player.statDefense += 8;
             player.lifeRegen += 5;

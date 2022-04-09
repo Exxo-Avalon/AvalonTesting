@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
-class IridiumHat : ModItem
+internal class IridiumHat : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -32,8 +32,9 @@ class IridiumHat : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "9% increased critical strike chance";
-        player.AllCrit(9);
+        player.GetCritChance<GenericDamageClass>() += 9;
     }
+
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.11f;
