@@ -14,7 +14,7 @@ class BismuthCandle : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Placeable/Light/BismuthCandle");
+        Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.noWet = true;
         Item.consumable = true;

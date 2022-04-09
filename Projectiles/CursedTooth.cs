@@ -16,7 +16,7 @@ public class CursedTooth : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/CursedTooth");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 22;
         Projectile.height = dims.Height * 10 / 22 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

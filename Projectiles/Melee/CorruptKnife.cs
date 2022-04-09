@@ -15,7 +15,7 @@ public class CorruptKnife : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/CorruptKnife");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 30 / 30;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

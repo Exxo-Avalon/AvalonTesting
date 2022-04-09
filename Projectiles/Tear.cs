@@ -14,7 +14,7 @@ public class Tear : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Tear");
+        Rectangle dims = this.GetDims();
         Projectile.penetrate = 1;
         Projectile.width = 12;
         Projectile.height = 12;

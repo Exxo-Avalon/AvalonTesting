@@ -14,7 +14,7 @@ public class BloodyTear : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/BloodyTear");
+        Rectangle dims = this.GetDims();
         Projectile.penetrate = 1;
         Projectile.width = 12;
         Projectile.height = 12;

@@ -15,7 +15,7 @@ public class Minisphere : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Minisphere");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 14 / 20;
         Projectile.height = dims.Height * 14 / 20 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

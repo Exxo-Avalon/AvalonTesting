@@ -15,7 +15,7 @@ public class PhantomKnife : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/PhantomKnife");
+        Rectangle dims = this.GetDims();
         Projectile.width = 30;
         Projectile.height = 30;
         Projectile.aiStyle = -1;

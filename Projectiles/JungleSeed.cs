@@ -16,7 +16,7 @@ public class JungleSeed : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/JungleSeed");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 8 / 14;
         Projectile.height = dims.Height * 8 / 14 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

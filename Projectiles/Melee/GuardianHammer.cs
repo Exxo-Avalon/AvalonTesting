@@ -15,7 +15,7 @@ public class GuardianHammer : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/GuardianHammer");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 28 / 40;
         Projectile.height = dims.Height * 28 / 40 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = 3;

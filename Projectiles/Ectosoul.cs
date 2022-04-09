@@ -16,7 +16,7 @@ public class Ectosoul : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Ectosoul");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 12 / 1;
         Projectile.height = dims.Height * 12 / 1 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

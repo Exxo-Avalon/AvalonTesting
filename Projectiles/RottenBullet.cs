@@ -15,7 +15,7 @@ public class RottenBullet : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/RottenBullet");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 12;
         Projectile.timeLeft = 30;
         Projectile.height = dims.Height * 10 / 12 / Main.projFrames[Projectile.type];

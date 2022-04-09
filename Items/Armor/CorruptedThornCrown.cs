@@ -16,7 +16,7 @@ class CorruptedThornCrown : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Armor/CorruptedThornCrown");
+        Rectangle dims = this.GetDims();
         Item.defense = 7;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;

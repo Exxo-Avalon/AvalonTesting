@@ -14,7 +14,7 @@ public class YuckyKnife : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/YuckyKnife");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 8 / 30;
         Projectile.height = dims.Height * 8 / 30 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

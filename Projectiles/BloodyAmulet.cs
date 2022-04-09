@@ -15,7 +15,7 @@ public class BloodyAmulet : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/BloodyAmulet");
+        Rectangle dims = this.GetDims();
         Projectile.aiStyle = -1;
         Projectile.width = dims.Width;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];

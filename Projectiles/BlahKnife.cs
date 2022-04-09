@@ -15,7 +15,7 @@ public class BlahKnife : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/BlahKnife");
+        Rectangle dims = this.GetDims();
         Projectile.width = 30;
         Projectile.height = 30;
         Projectile.aiStyle = -1;

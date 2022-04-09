@@ -17,7 +17,7 @@ public class FireWave : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/FireWave");
+        Rectangle dims = this.GetDims();
         Projectile.width = 32;
         Projectile.height = 32;
         Projectile.friendly = true;

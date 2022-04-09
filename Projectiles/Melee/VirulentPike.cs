@@ -13,7 +13,7 @@ public class VirulentPike : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/VirulentPike");
+        Rectangle dims = this.GetDims();
         Projectile.width = 18;
         Projectile.height = 18;
         Projectile.aiStyle = 19;

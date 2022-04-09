@@ -15,7 +15,7 @@ class AdvHeartreachPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvHeartreachPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvHeartreach>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;

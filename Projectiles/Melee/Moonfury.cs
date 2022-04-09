@@ -17,7 +17,7 @@ public class Moonfury : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/Moonfury");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 22 / 38;
         Projectile.height = dims.Height * 22 / 38 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

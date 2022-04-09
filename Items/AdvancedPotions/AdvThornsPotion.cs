@@ -15,7 +15,7 @@ class AdvThornsPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvThornsPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvThorns>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;

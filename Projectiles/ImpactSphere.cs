@@ -15,7 +15,7 @@ public class ImpactSphere : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/ImpactSphere");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height * 38 / 220 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

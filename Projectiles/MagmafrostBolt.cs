@@ -15,7 +15,7 @@ public class MagmafrostBolt : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/MagmafrostBolt");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 12 / 16;
         Projectile.height = dims.Height * 12 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -14,7 +14,7 @@ public class CrystalBeam : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/CrystalBeam");
+        Rectangle dims = this.GetDims();
         Projectile.aiStyle = -1;
         Projectile.width = 4;
         Projectile.height = 4;

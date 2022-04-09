@@ -15,7 +15,7 @@ public class CrystalShard : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/CrystalShard");
+        Rectangle dims = this.GetDims();
         Projectile.aiStyle = -1;
         Projectile.width = 20;
         Projectile.height = 20;

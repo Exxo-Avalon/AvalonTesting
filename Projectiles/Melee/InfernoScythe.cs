@@ -15,7 +15,7 @@ public class InfernoScythe : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/InfernoScythe");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height;
         Projectile.aiStyle = -1;

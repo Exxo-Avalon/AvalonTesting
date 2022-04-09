@@ -22,7 +22,7 @@ public class ZirconBolt : ModProjectile
         Projectile.DamageType = DamageClass.Magic;
         Projectile.light = 0.9f;
         Projectile.friendly = true;
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/ZirconBolt");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 16;
         Projectile.height = dims.Height * 10 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

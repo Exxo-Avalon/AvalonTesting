@@ -18,7 +18,7 @@ class AvalonCuisses : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Armor/AvalonCuisses");
+        Rectangle dims = this.GetDims();
         Item.defense = 38;
         Item.rare = ModContent.RarityType<Rarities.AvalonRarity>();
         Item.width = dims.Width;

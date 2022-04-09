@@ -15,7 +15,7 @@ public class KunziteShower : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/KunziteShower");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 32 / 16;
         Projectile.height = dims.Height * 32 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

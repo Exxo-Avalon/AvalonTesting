@@ -18,7 +18,7 @@ public class PeridotBolt : ModProjectile
     public override void SetDefaults()
     {
         Projectile.CloneDefaults(ProjectileID.SapphireBolt);
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/PeridotBolt");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 16;
         Projectile.height = dims.Height * 10 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -15,7 +15,7 @@ public class Shockwave : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Shockwave");
+        Rectangle dims = this.GetDims();
         Projectile.width = 50;
         Projectile.height = 16;
         Projectile.scale = 1f;

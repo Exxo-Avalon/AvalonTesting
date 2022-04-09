@@ -14,7 +14,7 @@ class NauSeaFish : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Fish/NauSeaFish");
+        Rectangle dims = this.GetDims();
         Item.maxStack = 999;
         Item.width = dims.Width;
         Item.height = dims.Height;

@@ -16,7 +16,7 @@ class TheSun : ModProjectile
     public override void SetDefaults()
     {
         Main.projFrames[Projectile.type] = 4;
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/TheSun");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 30 / 40;
         Projectile.height = dims.Height * 30 / 40 / Main.projFrames[Projectile.type];
         Projectile.alpha = 0;

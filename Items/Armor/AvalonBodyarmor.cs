@@ -18,7 +18,7 @@ class AvalonBodyarmor : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Armor/AvalonBodyarmor");
+        Rectangle dims = this.GetDims();
         Item.defense = 42;
         Item.rare = ModContent.RarityType<Rarities.AvalonRarity>();
         Item.width = dims.Width;

@@ -14,7 +14,7 @@ public class AncientSandy : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/AncientSandy");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 20 / 16;
         Projectile.height = dims.Height * 20 / 16 / Main.projFrames[Projectile.type];
         Projectile.scale = 1f;
