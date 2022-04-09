@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Items.Consumables;
 
@@ -29,7 +30,7 @@ class InfestedCarcass : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.BacteriumPrime>()) && player.Avalon().ZoneContagion;
+        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.BacteriumPrime>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion;
     }
 
     public override bool? UseItem(Player player)

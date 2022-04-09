@@ -33,7 +33,7 @@ class SpikeRailgun : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 9;
         Item.height = dims.Height;
-        Item.UseSound = Mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Railgun");
+        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Railgun");
     }
     public override Vector2? HoldoutOffset()
     {

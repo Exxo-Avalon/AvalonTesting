@@ -1,3 +1,4 @@
+﻿using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -30,14 +31,14 @@ class StaminaCrystal : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return player.Avalon().StatStamMax < 300;
+        return player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax < 300;
     }
 
     public override bool? UseItem(Player player)
     {
-        player.Avalon().StatStamMax += 30;
-        player.Avalon().StatStamMax2 += 30;
-        player.Avalon().StatStam += 30;
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax += 30;
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2 += 30;
+        player.GetModPlayer<ExxoStaminaPlayer>().StatStam += 30;
         return true;
     }
 }

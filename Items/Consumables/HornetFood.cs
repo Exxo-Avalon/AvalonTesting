@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Items.Consumables;
 
@@ -30,7 +31,7 @@ class HornetFood : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.KingSting>()) && player.Avalon().ZoneTropics;
+        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.KingSting>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics;
     }
 
     public override bool? UseItem(Player player)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,11 +32,11 @@ class TeleportScroll : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().teleportUnlocked;
+        return !player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().teleportUnlocked = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = true;
         return true;
     }
 }

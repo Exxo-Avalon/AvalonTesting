@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Projectiles;
 
@@ -95,7 +96,7 @@ public class MidairRift : ModProjectile
                 }
                 else if (!WorldGen.crimson && ExxoAvalonOriginsWorld.contagion) // contagion world
                 {
-                    if (p.Avalon().ZoneContagion)
+                    if (p.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
                     {
                         if (Main.rand.Next(2) == 0) // crimson mobs
                         {

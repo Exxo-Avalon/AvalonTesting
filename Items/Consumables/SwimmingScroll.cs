@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,11 +32,11 @@ class SwimmingScroll : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().swimmingUnlocked;
+        return !player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().swimmingUnlocked = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = true;
         return true;
     }
 }

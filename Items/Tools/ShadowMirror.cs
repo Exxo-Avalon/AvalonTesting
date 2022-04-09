@@ -38,7 +38,7 @@ class ShadowMirror : ModItem
     }
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        var assignedKeys = KeybindSystem.ModeChangeHotkey.GetAssignedKeys();
+        var assignedKeys = ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.GetAssignedKeys();
 
         var assignedKeyInfo = new TooltipLine(Mod, "Controls:PromptKey", "Press " + (assignedKeys.Count > 0 ? string.Join(", ", assignedKeys) : "[c/565656:<Unbound>]") + " to change teleportation modes");
         tooltips.Add(assignedKeyInfo);

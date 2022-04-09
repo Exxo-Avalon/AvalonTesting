@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,8 +20,9 @@ class RhodiumLongbow : ModItem
         Item.scale = 1f;
         Item.shootSpeed = 9f;
         Item.useAmmo = AmmoID.Arrow;
-        Item.DamageType = // item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
-            Item.width = dims.Width;
+        Item.DamageType = DamageClass.Ranged;
+        Item.noMelee = true; /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
+        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 1.3f;
         Item.shoot = ProjectileID.WoodenArrowFriendly;

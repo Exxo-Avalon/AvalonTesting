@@ -89,7 +89,7 @@ public class HallowedAltar : ModTile
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) Main.NewText("Your world has been invigorated with Tritanorium!", 117, 158, 107, false);
+                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) Main.NewText("Your world has been invigorated with Tritanorium!", 117, 158, 107);
                 else Main.NewText("Your world has been melted with Pyroscoric!", 187, 35, 0, false);
             }
             else if (Main.netMode == NetmodeID.Server)

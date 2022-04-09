@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,11 +34,11 @@ class SprintScroll : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().sprintUnlocked;
+        return !player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().sprintUnlocked = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = true;
         return true;
     }
 }

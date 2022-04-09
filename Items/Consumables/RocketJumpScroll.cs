@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,11 +36,11 @@ class RocketJumpScroll : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().rocketJumpUnlocked;
+        return !player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked;
     }
     public override bool? UseItem(Player player)
     {
-        player.Avalon().rocketJumpUnlocked = true;
+        player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = true;
         return true;
     }
 }
