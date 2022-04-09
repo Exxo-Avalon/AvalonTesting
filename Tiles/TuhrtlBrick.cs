@@ -20,8 +20,8 @@ public class TuhrtlBrick : ModTile
         SoundStyle = 1;
         MinPick = 210;
         DustType = DustID.Silt;
-        global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
-        global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
+        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
+        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
     }
     public override bool CanExplode(int i, int j)
     {
@@ -29,7 +29,7 @@ public class TuhrtlBrick : ModTile
     }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        global::AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
+        AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
         return false;
     }
 }

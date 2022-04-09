@@ -20,11 +20,11 @@ public class BrownIce : ModTile
         SoundStyle = 50;
         DustType = DustID.Dirt;
         TileID.Sets.Conversion.Ice[Type] = true;
-        global::AvalonTesting.MergeWith(Type, TileID.SnowBlock);
+        AvalonTesting.MergeWith(Type, TileID.SnowBlock);
     }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        global::AvalonTesting.MergeWithFrame(i, j, Type, TileID.SnowBlock, false, false, false, false, resetFrame);
+        AvalonTesting.MergeWithFrame(i, j, Type, TileID.SnowBlock, false, false, false, false, resetFrame);
         return false;
     }
 }

@@ -38,7 +38,7 @@ class PlatinumCrate : ModItem
         var flag4 = true;
         while (flag4)
         {
-            if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && flag4 && Main.rand.Next(50) == 0)
+            if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && flag4 && Main.rand.Next(50) == 0)
             {
                 var number19 = Item.NewItem(player.GetItemSource_OpenItem(Item.type), (int)player.position.X, (int)player.position.Y, player.width, player.height, ModContent.ItemType<IllegalWeaponInstructions>(), 1, false, 0, false);
                 if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -131,7 +131,7 @@ class PlatinumCrate : ModItem
                         num12 = ItemID.TitaniumOre;
                     }
                 }
-                if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.rand.Next(3) == 0)
+                if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(3) == 0)
                 {
                     num12 = Main.rand.Next(6);
                     if (num12 == 0)
@@ -160,7 +160,7 @@ class PlatinumCrate : ModItem
                     }
                 }
                 var stack19 = Main.rand.Next(15, 35);
-                if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode)
+                if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
                 {
                     stack19 = Main.rand.Next(10, 24);
                 }
@@ -236,7 +236,7 @@ class PlatinumCrate : ModItem
                     }
                     num14 -= Main.rand.Next(2);
                 }
-                if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.rand.Next(2) == 0)
+                if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(2) == 0)
                 {
                     num13 = Main.rand.Next(4);
                     if (num13 == 0)
@@ -264,7 +264,7 @@ class PlatinumCrate : ModItem
                 }
                 flag4 = false;
             }
-            if (Main.rand.Next(7) == 0 && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode)
+            if (Main.rand.Next(7) == 0 && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
             {
                 var num15 = Main.rand.Next(10);
                 if (num15 == 0)

@@ -22,8 +22,8 @@ public class DragonAltar : ModTile
     public override bool CanKillTile(int i, int j, ref bool blockDamaged)
     {
         return true;
-        //if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && !Main.hardMode && !ExxoAvalonOriginsWorld.downedDragonLord) blockDamaged = false;
-        //return ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode && ExxoAvalonOriginsWorld.downedDragonLord;
+        //if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode && !AvalonTestingWorld.downedDragonLord) blockDamaged = false;
+        //return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode && AvalonTestingWorld.downedDragonLord;
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {

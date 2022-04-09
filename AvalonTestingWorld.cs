@@ -1,4 +1,7 @@
-﻿using AvalonTesting.Tiles;
+﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Tiles;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,6 +9,131 @@ using Terraria.ModLoader;
 namespace AvalonTesting;
 public class AvalonTestingWorld : ModSystem
 {
+    private Version worldVersion;
+    public static int shmOreTier1 = -1;
+    public static int shmOreTier2 = -1;
+    public static int hallowAltarCount;
+    public static bool contagion = false;
+    public static int hallowedAltarCount = 0;
+    public static bool stopCometDrops = false;
+    public static Vector2 hiddenTemplePos;
+    public static bool retroGenned = false;
+    public static bool generatingBaccilite = false;
+    public static int dungeonSide = 0;
+    public static int jungleX = 0;
+    public static int grassSpread = 0;
+    public static bool contaigonSet = false;
+    public static Vector2 LoK = Vector2.Zero;
+    public static bool downedBacteriumPrime = false;
+    public static bool downedDesertBeak = false;
+    public static bool downedPhantasm = false;
+    public static bool downedDragonLord = false;
+    public static bool downedMechasting = false;
+    public static bool oblivionDead = false;
+    public static bool downedKingSting = false;
+    public static bool stoppedArmageddon = false;
+    public static int specialWireHitCount = 0;
+
+    #region WorldGen Variants
+
+    public enum JungleVariant
+    {
+        jungle,
+        tropics,
+        random
+    }
+
+    public enum CopperVariant
+    {
+        copper,
+        tin,
+        bronze,
+        random
+    }
+
+    public enum IronVariant
+    {
+        iron,
+        lead,
+        nickel,
+        random
+    }
+
+    public enum SilverVariant
+    {
+        silver,
+        tungsten,
+        zinc,
+        random
+    }
+
+    public enum GoldVariant
+    {
+        gold,
+        platinum,
+        bismuth,
+        random
+    }
+
+    public enum RhodiumVariant
+    {
+        rhodium,
+        osmium,
+        iridium,
+        random
+    }
+
+    public enum CobaltVariant
+    {
+        cobalt,
+        palladium,
+        duratanium,
+        random
+    }
+
+    public enum MythrilVariant
+    {
+        mythril,
+        orichalcum,
+        naquadah,
+        random
+    }
+
+    public enum AdamantiteVariant
+    {
+        adamantite,
+        titanium,
+        troxinium,
+        random
+    }
+
+    public enum SHMTier1Variant
+    {
+        tritanorium,
+        pyroscoric,
+        random
+    }
+
+    public enum SHMTier2Variant
+    {
+        unvolandite,
+        vorazylcum,
+        random
+    }
+
+    public static JungleVariant jungleMenuSelection = JungleVariant.random;
+    public static CopperVariant copperOre = CopperVariant.random;
+    public static IronVariant ironOre = IronVariant.random;
+    public static SilverVariant silverOre = SilverVariant.random;
+    public static GoldVariant goldOre = GoldVariant.random;
+    public static RhodiumVariant rhodiumOre = RhodiumVariant.random;
+    public static CobaltVariant cobaltOre = CobaltVariant.cobalt;
+    public static MythrilVariant mythrilOre = MythrilVariant.random;
+    public static AdamantiteVariant adamantiteOre = AdamantiteVariant.random;
+    public static SHMTier1Variant shmTier1Ore = SHMTier1Variant.random;
+    public static SHMTier2Variant shmTier2Ore = SHMTier2Variant.random;
+
+    #endregion WorldGen Variants
     public bool SuperHardmode { get; private set; }
     public static int WorldDarkMatterTiles = 0;
     public static int wosT;
@@ -155,6 +283,123 @@ public class AvalonTestingWorld : ModSystem
                 #endregion impvines growing
             }
             num4++;
+        }
+    }
+    public static void CheckLargeHerb(int x, int y, int type)
+    {
+        if (WorldGen.destroyObject)
+        {
+            return;
+        }
+        Tile t = Main.tile[x, y];
+        int style = t.TileFrameX / 18;
+        bool destroy = false;
+        int fixedY = y;
+        int yframe = Main.tile[x, y].TileFrameY;
+        fixedY -= yframe / 18;
+        if (!WorldGen.SolidTile2(x, fixedY + 3) || !Main.tile[x, fixedY].HasTile ||
+            !Main.tile[x, fixedY + 1].HasTile || !Main.tile[x, fixedY + 2].HasTile)
+        {
+            destroy = true;
+        }
+        if (destroy)
+        {
+            WorldGen.destroyObject = true;
+            for (int u = fixedY; u < fixedY + 3; u++)
+            {
+                WorldGen.KillTile(x, u, false, false, false);
+            }
+            if (type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage1>() || type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage2>() ||
+                type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage3>()) // 469 through 471 are the immature tiles of the large herb; 472 is the mature version
+            {
+                int item = 0;
+                switch (style)
+                {
+                    case 0:
+                        item = ModContent.ItemType<LargeDaybloomSeed>();
+                        break;
+                    case 1:
+                        item = ModContent.ItemType<LargeMoonglowSeed>();
+                        break;
+                    case 2:
+                        item = ModContent.ItemType<LargeBlinkrootSeed>();
+                        break;
+                    case 3:
+                        item = ModContent.ItemType<LargeDeathweedSeed>();
+                        break;
+                    case 4:
+                        item = ModContent.ItemType<LargeWaterleafSeed>();
+                        break;
+                    case 5:
+                        item = ModContent.ItemType<LargeFireblossomSeed>();
+                        break;
+                    case 6:
+                        item = ModContent.ItemType<LargeShiverthornSeed>();
+                        break;
+                    case 7:
+                        item = ModContent.ItemType<LargeBloodberrySeed>();
+                        break;
+                    case 8:
+                        item = ModContent.ItemType<LargeSweetstemSeed>();
+                        break;
+                    case 9:
+                        item = ModContent.ItemType<LargeBarfbushSeed>();
+                        break;
+                    case 10:
+                        item = ModContent.ItemType<LargeHolybirdSeed>();
+                        break;
+                }// 3710 through 3719 are the seeds
+                if (item > 0)
+                {
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(x, y), x * 16, fixedY * 16, 16, 48, item);
+                }
+            }
+            else
+            {
+                int item = 0;
+                switch (style)
+                {
+                    case 0:
+                        item = ModContent.ItemType<LargeDaybloom>();
+                        break;
+                    case 1:
+                        item = ModContent.ItemType<LargeMoonglow>();
+                        break;
+                    case 2:
+                        item = ModContent.ItemType<LargeBlinkroot>();
+                        break;
+                    case 3:
+                        item = ModContent.ItemType<LargeDeathweed>();
+                        break;
+                    case 4:
+                        item = ModContent.ItemType<LargeWaterleaf>();
+                        break;
+                    case 5:
+                        item = ModContent.ItemType<LargeFireblossom>();
+                        break;
+                    case 6:
+                        item = ModContent.ItemType<LargeShiverthorn>();
+                        break;
+                    case 7:
+                        item = ModContent.ItemType<LargeBloodberry>();
+                        break;
+                    case 8:
+                        item = ModContent.ItemType<LargeSweetstem>();
+                        break;
+                    case 9:
+                        item = ModContent.ItemType<LargeBarfbush>();
+                        break;
+                    case 10:
+                        item = ModContent.ItemType<LargeHolybird>();
+                        break;
+                }
+                if (item > 0)
+                {
+                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(x, y), x * 16, fixedY * 16, 16, 48, item);
+                }
+                // 3700 through 3709 are the large herbs
+            }
+            WorldGen.destroyObject = false;
         }
     }
 }

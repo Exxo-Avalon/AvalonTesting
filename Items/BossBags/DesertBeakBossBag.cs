@@ -33,15 +33,15 @@ public class DesertBeakBossBag : ModItem
     {
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ItemID.SandBlock, Main.rand.Next(22, 55));
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<DesertFeather>(), Main.rand.Next(6, 11));
-        if (ExxoAvalonOriginsWorld.rhodiumOre == ExxoAvalonOriginsWorld.RhodiumVariant.rhodium)
+        if (AvalonTestingWorld.rhodiumOre == AvalonTestingWorld.RhodiumVariant.rhodium)
         {
             player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.RhodiumOre>(), Main.rand.Next(20, 31));
         }
-        else if (ExxoAvalonOriginsWorld.rhodiumOre == ExxoAvalonOriginsWorld.RhodiumVariant.osmium)
+        else if (AvalonTestingWorld.rhodiumOre == AvalonTestingWorld.RhodiumVariant.osmium)
         {
             player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.OsmiumOre>(), Main.rand.Next(20, 31));
         }
-        else if (ExxoAvalonOriginsWorld.rhodiumOre == ExxoAvalonOriginsWorld.RhodiumVariant.iridium)
+        else if (AvalonTestingWorld.rhodiumOre == AvalonTestingWorld.RhodiumVariant.iridium)
         {
             player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.IridiumOre>(), Main.rand.Next(20, 31));
         }

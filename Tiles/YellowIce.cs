@@ -21,14 +21,14 @@ public class YellowIce : ModTile
         Main.tileShine2[Type] = true;
         TileID.Sets.Conversion.Ice[Type] = true;
         ItemDrop = Mod.Find<ModItem>("YellowIceBlock").Type;
-        global::AvalonTesting.MergeWith(Type, TileID.SnowBlock);
+        AvalonTesting.MergeWith(Type, TileID.SnowBlock);
         SoundType = SoundID.Item;
         SoundStyle = 50;
         DustType = ModContent.DustType<Dusts.ContagionSpray>();
     }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        global::AvalonTesting.MergeWithFrame(i, j, Type, TileID.SnowBlock, forceSameDown: false, forceSameUp: false, forceSameLeft: false, forceSameRight: false, resetFrame);
+        AvalonTesting.MergeWithFrame(i, j, Type, TileID.SnowBlock, forceSameDown: false, forceSameUp: false, forceSameLeft: false, forceSameRight: false, resetFrame);
         return false;
     }
 }

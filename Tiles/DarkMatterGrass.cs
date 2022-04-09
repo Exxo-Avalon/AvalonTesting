@@ -27,7 +27,7 @@ public class DarkMatterGrass : ModTile
     {
         if (!fail)
         {
-            ExxoAvalonOriginsWorld.WorldDarkMatterTiles--;
+            AvalonTestingWorld.WorldDarkMatterTiles--;
         }
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
     }
