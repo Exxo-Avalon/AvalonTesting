@@ -1,21 +1,11 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using On.Terraria;
 
 namespace AvalonTesting.Hooks;
-public class PrefixChanges
+
+public static class PrefixChanges
 {
-    public static bool OnIsAPrefixableAccessory(On.Terraria.Item.orig_IsAPrefixableAccessory orig, Item self)
+    public static bool OnIsAPrefixableAccessory(Item.orig_IsAPrefixableAccessory orig, Terraria.Item self)
     {
-        if (self.IsArmor()) return true;
-        return self.accessory && !self.vanity && ItemID.Sets.CanGetPrefixes[self.type];
-    }
-    public static bool OnPrefix(On.Terraria.Item.orig_Prefix orig, Item self, int pre)
-    {
-        if (AvalonTestingGlobalItemInstance.allowedPrefixes.ContainsValue(pre) && !orig(self, pre))
-        {
-            self.prefix = pre;
-            return true;
-        }
-        return orig(self, pre);
+        return self.IsArmor() || orig(self);
     }
 }

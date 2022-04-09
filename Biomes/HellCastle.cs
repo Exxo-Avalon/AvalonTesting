@@ -9,17 +9,9 @@ public class HellCastle : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
-    public override int Music
-    {
-        get
-        {
-            if (ModLoader.TryGetMod("AvalonMusic", out AvalonTesting.Mod.MusicMod))
-            {
-                return MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Hellcastle"); 
-            }
-            return MusicID.Dungeon;
-        }
-    }
+    public override int Music => AvalonTesting.Mod.MusicMod != null
+        ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Hellcastle")
+        : MusicID.Dungeon;
 
     public override bool IsBiomeActive(Player player)
     {

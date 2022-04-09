@@ -1,27 +1,38 @@
 ﻿using System.Collections.Generic;
-using Terraria.GameContent.Generation;
+using AvalonTesting.World.Passes;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
 namespace AvalonTesting.Systems;
+
 public class ExxoWorldGen : ModSystem
 {
     public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
     {
-        int vines = tasks.FindIndex(genpass => genpass.Name == "Vines");
-        int underworld = tasks.FindIndex(genpass => genpass.Name == "Underworld");
+        GenPass currentPass;
+
+        int underworld = tasks.FindIndex(genPass => genPass.Name == "Underworld");
         if (underworld != -1)
         {
-            tasks.Insert(underworld + 1, new PassLegacy("Avalon Underworld", World.Passes.Underworld.Method));
+            currentPass = new Underworld();
+            tasks.Insert(underworld + 1, currentPass);
+            totalWeight += currentPass.Weight;
         }
-        int smoothWorld = tasks.FindIndex(genpass => genpass.Name == "Smooth World");
+
+        int smoothWorld = tasks.FindIndex(genPass => genPass.Name == "Smooth World");
         if (smoothWorld != -1)
         {
-            tasks.Insert(smoothWorld + 1, new PassLegacy("Unsmoothing Hellcastle", World.Passes.SmoothWorld.Method));
+            currentPass = new SmoothWorld();
+            tasks.Insert(smoothWorld + 1, currentPass);
+            totalWeight += currentPass.Weight;
         }
+
+        int vines = tasks.FindIndex(genPass => genPass.Name == "Vines");
         if (vines != -1)
         {
-            tasks.Insert(vines + 1, new PassLegacy("Impvines", World.Passes.Impvines.Method));
+            currentPass = new Impvines();
+            tasks.Insert(vines + 1, currentPass);
+            totalWeight += currentPass.Weight;
         }
     }
 }

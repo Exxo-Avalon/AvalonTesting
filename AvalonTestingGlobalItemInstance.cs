@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AvalonTesting.Prefixes;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -10,157 +8,100 @@ using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AvalonTesting;
+
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {
-    public override bool InstancePerEntity => true;
-    public override GlobalItem Clone(Item item, Item itemClone)
+    public static readonly int[] AllowedPrefixes =
     {
-        return base.Clone(item, itemClone);
-    }
-    public static Dictionary<int, int> allowedPrefixes = new Dictionary<int, int>()
-    {
-        { 0, ModContent.PrefixType<Prefixes.Barbaric>() },
-        { 1, ModContent.PrefixType<Prefixes.Boosted>() },
-        { 2, ModContent.PrefixType<Prefixes.Busted>() },
-        { 3, ModContent.PrefixType<Prefixes.Bloated>() },
-        { 4, ModContent.PrefixType<Prefixes.Disgusting>() },
-        { 5, ModContent.PrefixType<Prefixes.Fluidic>() },
-        { 6, ModContent.PrefixType<Prefixes.Glorious>() },
-        { 7, ModContent.PrefixType<Prefixes.Handy>() },
-        { 8, ModContent.PrefixType<Prefixes.Insane>() },
-        { 9, ModContent.PrefixType<Prefixes.Loaded>() },
-        { 10, ModContent.PrefixType<Prefixes.Messy>() },
-        { 11, ModContent.PrefixType<Prefixes.Mythic>() },
-        { 12, ModContent.PrefixType<Prefixes.Protective>() },
-        { 13, ModContent.PrefixType<Prefixes.Silly>() },
-        { 14, ModContent.PrefixType<Prefixes.Slimy>() }
-
+        ModContent.PrefixType<Barbaric>(), ModContent.PrefixType<Boosted>(), ModContent.PrefixType<Busted>(),
+        ModContent.PrefixType<Bloated>(), ModContent.PrefixType<Disgusting>(), ModContent.PrefixType<Fluidic>(),
+        ModContent.PrefixType<Glorious>(), ModContent.PrefixType<Handy>(), ModContent.PrefixType<Insane>(),
+        ModContent.PrefixType<Loaded>(), ModContent.PrefixType<Messy>(), ModContent.PrefixType<Mythic>(),
+        ModContent.PrefixType<Protective>(), ModContent.PrefixType<Silly>(), ModContent.PrefixType<Slimy>()
     };
+
+    public override bool InstancePerEntity => true;
+
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
     {
         if (item.IsArmor() && pre == -3)
         {
             return true;
         }
+
         return base.PrefixChance(item, pre, rand);
     }
+
     public override int ChoosePrefix(Item item, UnifiedRandom rand)
     {
-        if (item.IsArmor())
-        {
-            return allowedPrefixes[rand.Next(allowedPrefixes.Count)];
-        }
-        return base.ChoosePrefix(item, rand);
+        return item.IsArmor() ? AllowedPrefixes[rand.Next(AllowedPrefixes.Length)] : base.ChoosePrefix(item, rand);
     }
 
     public override bool AllowPrefix(Item item, int pre)
     {
-        if (item.IsArmor())
+        if (!item.IsArmor())
         {
-            if (pre >= PrefixID.Hard && pre < PrefixID.Legendary)
-            {
-                pre = allowedPrefixes[Main.rand.Next(15)];
-                return base.AllowPrefix(item, pre);
-            }
+            return base.AllowPrefix(item, pre);
         }
-        return base.AllowPrefix(item, pre);
-    }
 
-    public override void PostReforge(Item item)
-    {
-        if (item.IsArmor())
+        if (pre is < PrefixID.Hard or >= PrefixID.Legendary)
         {
-            switch (Main.rand.Next(15))
-            {
-                case 0:
-                    item.prefix = ModContent.PrefixType<Prefixes.Barbaric>();
-                    break;
-                case 1:
-                    item.prefix = ModContent.PrefixType<Prefixes.Boosted>();
-                    break;
-                case 2:
-                    item.prefix = ModContent.PrefixType<Prefixes.Busted>();
-                    break;
-                case 3:
-                    item.prefix = ModContent.PrefixType<Prefixes.Bloated>();
-                    break;
-                case 4:
-                    item.prefix = ModContent.PrefixType<Prefixes.Disgusting>();
-                    break;
-                case 5:
-                    item.prefix = ModContent.PrefixType<Prefixes.Fluidic>();
-                    break;
-                case 6:
-                    item.prefix = ModContent.PrefixType<Prefixes.Glorious>();
-                    break;
-                case 7:
-                    item.prefix = ModContent.PrefixType<Prefixes.Handy>();
-                    break;
-                case 8:
-                    item.prefix = ModContent.PrefixType<Prefixes.Insane>();
-                    break;
-                case 9:
-                    item.prefix = ModContent.PrefixType<Prefixes.Loaded>();
-                    break;
-                case 10:
-                    item.prefix = ModContent.PrefixType<Prefixes.Messy>();
-                    break;
-                case 11:
-                    item.prefix = ModContent.PrefixType<Prefixes.Mythic>();
-                    break;
-                case 12:
-                    item.prefix = ModContent.PrefixType<Prefixes.Protective>();
-                    break;
-                case 13:
-                    item.prefix = ModContent.PrefixType<Prefixes.Silly>();
-                    break;
-                case 14:
-                    item.prefix = ModContent.PrefixType<Prefixes.Slimy>();
-                    break;
-            }
+            return base.AllowPrefix(item, pre);
         }
+
+        pre = AllowedPrefixes[Main.rand.Next(AllowedPrefixes.Length)];
+        return base.AllowPrefix(item, pre);
     }
 
     public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
     {
-        TooltipLine tooltipLine = tooltips.FirstOrDefault((TooltipLine x) => x.Name == "ItemName" && x.mod == "Terraria");
-        TooltipLine lineKB = tooltips.FirstOrDefault((TooltipLine x) => x.Name == "Knockback" && x.mod == "Terraria");
-        TooltipLine lineSpeed = tooltips.FirstOrDefault((TooltipLine x) => x.Name == "Speed" && x.mod == "Terraria");
-        if (lineKB != null)
+        TooltipLine tooltipLine = tooltips.FirstOrDefault(x => x.Name == "ItemName" && x.mod == "Terraria");
+        TooltipLine lineKnockback = tooltips.FirstOrDefault(x => x.Name == "Knockback" && x.mod == "Terraria");
+        TooltipLine lineSpeed = tooltips.FirstOrDefault(x => x.Name == "Speed" && x.mod == "Terraria");
+        if (lineKnockback != null)
         {
             if (LanguageManager.Instance.ActiveCulture.LegacyId == (int)GameCulture.CultureName.English)
             {
                 if (item.knockBack > 0f && item.knockBack < 1.5f)
                 {
-                    lineKB.text = "Puny knockback";
+                    lineKnockback.text = "Puny knockback";
                 }
+
                 if (item.knockBack > 15f)
                 {
-                    lineKB.text = "Absurd knockback";
+                    lineKnockback.text = "Absurd knockback";
                 }
+
                 if (item.knockBack > 17f)
                 {
-                    lineKB.text = "Ridiculous knockback";
+                    lineKnockback.text = "Ridiculous knockback";
                 }
+
                 if (item.knockBack > 19f)
                 {
-                    lineKB.text = "Godly knockback";
+                    lineKnockback.text = "Godly knockback";
                 }
             }
         }
-        if (lineSpeed != null)
+
+        if (lineSpeed == null)
         {
-            if (LanguageManager.Instance.ActiveCulture.LegacyId == (int)GameCulture.CultureName.English)
-            {
-                if (item.useAnimation <= 5f)
-                {
-                    lineSpeed.text = "Lightning speed";
-                }
-                if (item.useAnimation >= 58f)
-                {
-                    lineSpeed.text = "Slowpoke speed";
-                }
-            }
+            return;
+        }
+
+        if (LanguageManager.Instance.ActiveCulture.LegacyId != (int)GameCulture.CultureName.English)
+        {
+            return;
+        }
+
+        if (item.useAnimation <= 5f)
+        {
+            lineSpeed.text = "Lightning speed";
+        }
+
+        if (item.useAnimation >= 58f)
+        {
+            lineSpeed.text = "Slowpoke speed";
         }
     }
 }

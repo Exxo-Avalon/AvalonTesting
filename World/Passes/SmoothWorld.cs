@@ -1,15 +1,19 @@
-﻿using Terraria;
+﻿using AvalonTesting.Tiles;
+using Terraria;
+using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using Terraria.IO;
 
 namespace AvalonTesting.World.Passes;
 
-class SmoothWorld
+internal class SmoothWorld : GenPass
 {
-    public static void Method(GenerationProgress progress, GameConfiguration configuration)
+    public SmoothWorld() : base("Unsmoothing Hellcastle", 20f) { }
+
+    protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
-        int x = Main.maxTilesX / 3 - 210;
+        int x = (Main.maxTilesX / 3) - 210;
         int y = Main.maxTilesY - 140;
         //int x = Main.maxTilesX / 2;
         //int y = 250;
@@ -17,11 +21,11 @@ class SmoothWorld
         {
             for (int j = y; j <= y + 99; j++)
             {
-                if (Main.tile[i, j].TileType != (ushort)ModContent.TileType<Tiles.ResistantWoodPlatform>())
+                if (Main.tile[i, j].TileType != (ushort)ModContent.TileType<ResistantWoodPlatform>())
                 {
                     Tile t = Main.tile[i, j];
                     t.IsHalfBlock = false;
-                    t.Slope = Terraria.ID.SlopeType.Solid;
+                    t.Slope = SlopeType.Solid;
                 }
             }
         }

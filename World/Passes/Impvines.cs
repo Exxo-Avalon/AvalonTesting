@@ -1,13 +1,16 @@
-﻿using Terraria;
+﻿using AvalonTesting.Tiles;
+using Terraria;
+using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using Terraria.IO;
 
 namespace AvalonTesting.World.Passes;
 
-class Impvines
+internal class Impvines : GenPass
 {
-    public static void Method(GenerationProgress progress, GameConfiguration configuration)
+    public Impvines() : base("Impvines", 897.331f) { }
+
+    protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         for (int num586 = 0; num586 < Main.maxTilesX; num586++)
         {
@@ -23,7 +26,10 @@ class Impvines
                 {
                     num587 = 0;
                 }
-                if (Main.tile[num586, num589].HasTile && Main.tile[num586, num589].TileType == (ushort)ModContent.TileType<Tiles.Impgrass>() && !Main.tile[num586, num589].BottomSlope && WorldGen.genRand.Next(5) < 3)
+
+                if (Main.tile[num586, num589].HasTile &&
+                    Main.tile[num586, num589].TileType == (ushort)ModContent.TileType<Impgrass>() &&
+                    !Main.tile[num586, num589].BottomSlope && WorldGen.genRand.Next(5) < 3)
                 {
                     num587 = WorldGen.genRand.Next(1, 10);
                 }
