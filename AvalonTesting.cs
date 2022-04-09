@@ -35,8 +35,8 @@ public partial class AvalonTesting : Mod
         {
             return;
         }
-
-        MusicMod = ModLoader.GetMod("AvalonMusic");
+        
+        ModLoader.TryGetMod("AvalonMusic", out MusicMod);
         
         // Vanilla texture replacements
         TextureAssets.Item[ItemID.HallowedKey] = Mod.Assets.Request<Texture2D>("Sprites/HallowedKey");
