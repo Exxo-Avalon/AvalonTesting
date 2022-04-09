@@ -55,10 +55,6 @@ public class HeartstoneChandelier : ModTile
         {
             for (int m = y; m < y + 3; m++)
             {
-                if (Main.tile[l, m] == null)
-                {
-                    Main.tile[l, m] = new Tile();
-                }
                 if (Main.tile[l, m].HasTile && Main.tile[l, m].TileType == Type)
                 {
                     if (Main.tile[l, m].TileFrameX < 54)

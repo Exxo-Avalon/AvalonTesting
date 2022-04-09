@@ -33,7 +33,7 @@ public class ContagionPalmSapling : ModTile
         TileObjectData.newTile.LavaDeath = true;
         TileObjectData.newTile.RandomStyleRange = 3;
         TileObjectData.addTile(Type);
-        //sapling = true;
+        //TileID.Sets.TreeSapling[Type] = true;
         ModTranslation modTranslation = CreateMapEntryName();
         modTranslation.SetDefault("Sapling");
         AddMapEntry(new Color(200, 200, 200), modTranslation);

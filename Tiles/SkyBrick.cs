@@ -21,7 +21,7 @@ public class SkyBrick : ModTile
         ItemDrop = Mod.Find<ModItem>("SkyBrick").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 300;
+        MinPick = 300;
         DustType = DustID.Smoke;
     }
     public override bool Slope(int i, int j)

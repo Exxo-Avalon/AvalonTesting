@@ -40,7 +40,7 @@ public class EctoplasmDresser : ModTile
         AdjTiles = new int[] { TileID.Dressers };
         ContainerName.SetDefault("Ectoplasm Dresser");
         DresserDrop = ModContent.ItemType<Items.Placeable.Storage.EctoplasmDresser>();
-        DustType = DustID.UltraBrightTorchTorch;
+        DustType = DustID.UltraBrightTorch;
     }
 
     /* public override bool HasSmartInteract()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,7 +18,7 @@ public class PrimordialOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 815;
         SoundType = SoundID.Tink;
-        minPick = 210;
+        MinPick = 210;
         SoundStyle = 1;
         DustType = DustID.Stone;
     }
@@ -25,21 +26,22 @@ public class PrimordialOre : ModTile
     public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
     {
         Tile tile = Main.tile[i, j];
-        Texture2D texture;
-        if (Main.canDrawColorTile(i, j))
-        {
-            texture = Main.tileAltTexture[Type, tile.color()];
-        }
-        else
-        {
-            texture = Main.tileTexture[Type];
-        }
+        Asset<Texture2D> texture = Terraria.GameContent.TextureAssets.Tile[Type];
+
+        // if (Main.canDrawColorTile(i, j))
+        // {
+        //     texture = Main.tileAltTexture[Type, tile.color()];
+        // }
+        // else
+        // {
+        //     texture = Main.tileTexture[Type];
+        // }
         var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
         if (Main.drawToScreen)
         {
             zero = Vector2.Zero;
         }
-        Main.spriteBatch.Draw(texture, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+        spriteBatch.Draw(texture.Value, new Vector2(i * 16 - (int)Main.screenPosition.X, j * 16 - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16), new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
     }
 
     public override bool Drop(int i, int j)
@@ -64,7 +66,7 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.BronzeOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ore, 5, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), x * 16, y * 16, 16, 16, ore, 5, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 1)
@@ -83,7 +85,7 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.NickelOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ore, 4, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 4, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 2)
@@ -102,7 +104,7 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.ZincOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.SilverOre : ItemID.TungstenOre, 3, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.SilverOre : ItemID.TungstenOre, 3, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 3)
@@ -121,7 +123,7 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.GoldOre : ItemID.PlatinumOre, 2, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.GoldOre : ItemID.PlatinumOre, 2, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 4)
@@ -140,22 +142,22 @@ public class PrimordialOre : ModTile
                 oren = ModContent.ItemType<Items.Placeable.Tile.BacciliteOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, oren, 2, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 2, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 5)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ItemID.Meteorite, 2, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ItemID.Meteorite, 2, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 6)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ItemID.Hellstone, 2, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ItemID.Hellstone, 2, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 7)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ItemID.Obsidian, 2, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ItemID.Obsidian, 2, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 8)
@@ -174,7 +176,7 @@ public class PrimordialOre : ModTile
                 oren = ModContent.ItemType<Items.Placeable.Tile.DurataniumOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, oren, 1, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 9)
@@ -193,7 +195,7 @@ public class PrimordialOre : ModTile
                 oren = ModContent.ItemType<Items.Placeable.Tile.NaquadahOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, oren, 1, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 10)
@@ -212,12 +214,12 @@ public class PrimordialOre : ModTile
                 oren = ModContent.ItemType<Items.Placeable.Tile.TroxiniumOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, oren, 1, false);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 11)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.CaesiumOre>(), 2);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.CaesiumOre>(), 2);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 12)
@@ -236,17 +238,17 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ore, 3);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 3);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 13)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.HydrolythOre>(), 2);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.HydrolythOre>(), 2);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 14)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.Heartstone>(), 3);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.Heartstone>(), 3);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 15)
@@ -261,17 +263,17 @@ public class PrimordialOre : ModTile
                 ore = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
             }
 
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ore, 1);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 1);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 16)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.FeroziumOre>(), 1);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.FeroziumOre>(), 1);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 17)
         {
-            a = Item.NewItem(x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.ShroomiteOre>(), 1);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.ShroomiteOre>(), 1);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         return base.Drop(i, j);

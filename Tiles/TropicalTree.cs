@@ -14,7 +14,7 @@ class TropicalTree : ModTree
     }
     public override int DropWood()
     {
-        return Mod.Find<ModItem>("TropicalWood").Type;
+        return ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
     }
 
     public override Texture2D GetTexture()

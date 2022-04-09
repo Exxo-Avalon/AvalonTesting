@@ -10,7 +10,7 @@ public class PlasmaLamp : ModTile
 {
     public override void SetStaticDefaults()
     {
-        animationFrameHeight = 38;
+        AnimationFrameHeight = 38;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.DrawYOffset = 2;
         TileObjectData.newTile.LavaDeath = false;
@@ -54,10 +54,6 @@ public class PlasmaLamp : ModTile
         {
             for (int m = y; m < y + 2; m++)
             {
-                if (Main.tile[l, m] == null)
-                {
-                    Main.tile[l, m] = new Tile();
-                }
                 if (Main.tile[l, m].HasTile && Main.tile[l, m].TileType == Type)
                 {
                     if (Main.tile[l, m].TileFrameX < 36)
@@ -90,8 +86,8 @@ public class PlasmaLamp : ModTile
         int width = 18;
         int offsetY = 0;
         int offsetX = 1;
-        int height = frameY % animationFrameHeight == 38 ? 18 : 16;
-        int animate = Main.tileFrame[Type] * animationFrameHeight;
+        int height = frameY % AnimationFrameHeight == 38 ? 18 : 16;
+        int animate = Main.tileFrame[Type] * AnimationFrameHeight;
         Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
         if (Main.drawToScreen)
         {

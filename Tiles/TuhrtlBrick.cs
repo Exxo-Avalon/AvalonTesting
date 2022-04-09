@@ -18,7 +18,7 @@ public class TuhrtlBrick : ModTile
         ItemDrop = Mod.Find<ModItem>("TuhrtlBrick").Type;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
-        minPick = 210;
+        MinPick = 210;
         DustType = DustID.Silt;
         global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
         global::AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
