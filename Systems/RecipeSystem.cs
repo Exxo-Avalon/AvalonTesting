@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Systems;
+namespace AvalonTesting.Systems;
 public class RecipeSystem : ModSystem
 {
     public override void AddRecipeGroups()
