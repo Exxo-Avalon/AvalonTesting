@@ -1,13 +1,16 @@
 ﻿using AvalonTesting.Items.Material;
+using AvalonTesting.NPCs.Bosses;
+using AvalonTesting.Players;
+using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace AvalonTesting.Items.Consumables;
 
-class EctoplasmicBeacon : ModItem
+internal class EctoplasmicBeacon : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -31,18 +34,21 @@ class EctoplasmicBeacon : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Phantasm>()) && player.Avalon().ZoneHellcastle && NPC.downedMoonlord && Main.hardMode;
+        return !NPC.AnyNPCs(ModContent.NPCType<Phantasm>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle &&
+               NPC.downedMoonlord && Main.hardMode;
     }
 
     public override bool? UseItem(Player player)
     {
-        NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.Phantasm>());
+        NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<Phantasm>());
         SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
         return true;
     }
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Ectoplasm, 10).AddIngredient(ItemID.LunarBar, 5).AddIngredient(ModContent.ItemType<SolariumStar>(), 8).AddTile(ModContent.TileType<Tiles.LibraryAltar>()).Register();
+        CreateRecipe().AddIngredient(ItemID.Ectoplasm, 10).AddIngredient(ItemID.LunarBar, 5)
+            .AddIngredient(ModContent.ItemType<SolariumStar>(), 8).AddTile(ModContent.TileType<LibraryAltar>())
+            .Register();
     }
 }

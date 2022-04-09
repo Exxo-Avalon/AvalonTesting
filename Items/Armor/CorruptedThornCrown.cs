@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +9,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
-class CorruptedThornCrown : ModItem
+internal class CorruptedThornCrown : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,25 +23,28 @@ class CorruptedThornCrown : ModItem
         Item.defense = 7;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(0, 2, 10, 0);
+        Item.value = Item.sellPrice(0, 2, 10);
         Item.height = dims.Height;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1)
+        CreateRecipe()
             .AddIngredient(ItemID.Spike, 20)
-            .AddIngredient(ModContent.ItemType<Material.CorruptShard>(), 20)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 15)
+            .AddIngredient(ModContent.ItemType<CorruptShard>(), 20)
+            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 15)
             .AddIngredient(ItemID.SoulofNight, 10).AddTile(TileID.MythrilAnvil).Register();
     }
+
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
-        return body.type == ModContent.ItemType<CorruptedThornBodyarmor>() && legs.type == ModContent.ItemType<CorruptedThornGreaves>();
+        return body.type == ModContent.ItemType<CorruptedThornBodyarmor>() &&
+               legs.type == ModContent.ItemType<CorruptedThornGreaves>();
     }
 
     public override void UpdateArmorSet(Player player)
     {
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         player.setBonus = "Blood Casting, Necrotic Aura, 75% increased mana usage";
         modPlayer.bloodCast = true;
         modPlayer.necroticAura = true;

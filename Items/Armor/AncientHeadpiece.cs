@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Players;
+using AvalonTesting.Tiles;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +9,7 @@ using Terraria.ModLoader;
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
-class AncientHeadpiece : ModItem
+internal class AncientHeadpiece : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,24 +23,39 @@ class AncientHeadpiece : ModItem
         Item.defense = 30;
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(0, 50, 0, 0);
+        Item.value = Item.sellPrice(0, 50);
         Item.height = dims.Height;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.SolarFlareHelmet).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.NebulaHelmet).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.StardustHelmet).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.VortexHelmet).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+        CreateRecipe().AddIngredient(ItemID.SolarFlareHelmet).AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<LifeDew>(), 5).AddIngredient(ModContent.ItemType<GhostintheMachine>())
+            .AddTile(ModContent.TileType<CaesiumForge>()).Register();
+        CreateRecipe().AddIngredient(ItemID.NebulaHelmet).AddIngredient(ItemID.FragmentSolar, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<LifeDew>(), 5).AddIngredient(ModContent.ItemType<GhostintheMachine>())
+            .AddTile(ModContent.TileType<CaesiumForge>()).Register();
+        CreateRecipe().AddIngredient(ItemID.StardustHelmet).AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<LifeDew>(), 5).AddIngredient(ModContent.ItemType<GhostintheMachine>())
+            .AddTile(ModContent.TileType<CaesiumForge>()).Register();
+        CreateRecipe().AddIngredient(ItemID.VortexHelmet).AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentSolar, 10)
+            .AddIngredient(ModContent.ItemType<LifeDew>(), 5).AddIngredient(ModContent.ItemType<GhostintheMachine>())
+            .AddTile(ModContent.TileType<CaesiumForge>()).Register();
     }
+
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
-        return body.type == ModContent.ItemType<AncientBodyplate>() && legs.type == ModContent.ItemType<AncientLeggings>();
+        return body.type == ModContent.ItemType<AncientBodyplate>() &&
+               legs.type == ModContent.ItemType<AncientLeggings>();
     }
 
     public override void UpdateArmorSet(Player player)
     {
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         player.setBonus = "Ancient costs 50% less mana"
                           + "\nEnemies killed with a ranged weapon violently explode"
                           + "\nHas a chance to summon a sand vortex that pulls enemies in on true melee hits"

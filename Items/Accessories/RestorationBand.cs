@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using AvalonTesting.Items.Consumables;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class RestorationBand : ModItem
+internal class RestorationBand : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,17 +21,21 @@ class RestorationBand : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.accessory = true;
-        Item.value = Item.sellPrice(0, 1, 0, 0);
+        Item.value = Item.sellPrice(0, 1);
         Item.height = dims.Height;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.LifeCrystal).AddIngredient(ItemID.ManaCrystal).AddIngredient(ModContent.ItemType<Consumables.StaminaCrystal>()).AddIngredient(ItemID.Shackle, 2).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe().AddIngredient(ItemID.LifeCrystal).AddIngredient(ItemID.ManaCrystal)
+            .AddIngredient(ModContent.ItemType<StaminaCrystal>()).AddIngredient(ItemID.Shackle, 2)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.lifeRegen++;
         player.manaRegen++;
-        player.Avalon().staminaRegen = 1700;
+        player.GetModPlayer<ExxoStaminaPlayer>().StaminaRegenCost = 1700;
     }
 }

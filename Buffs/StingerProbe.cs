@@ -16,7 +16,7 @@ public class StingerProbe : ModBuff
 
     // public override void Update(Player player, ref int buffIndex)
     // {
-    //     ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+    //     ExxoPlayer modPlayer = player.Avalon();
     //
     //     if (player.dead || !player.active || !player.HasItemInArmor(ModContent.ItemType<AIController>()))
     //     {

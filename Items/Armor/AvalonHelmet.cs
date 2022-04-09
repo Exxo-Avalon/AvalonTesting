@@ -1,12 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using AvalonTesting.Rarities;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
-class AvalonHelmet : ModItem
+internal class AvalonHelmet : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -21,9 +22,9 @@ class AvalonHelmet : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 40;
-        Item.rare = ModContent.RarityType<Rarities.AvalonRarity>();
+        Item.rare = ModContent.RarityType<AvalonRarity>();
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(0, 41, 0, 0);
+        Item.value = Item.sellPrice(0, 41);
         Item.height = dims.Height;
     }
 
@@ -34,7 +35,7 @@ class AvalonHelmet : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        ExxoAvalonOriginsModPlayer modPlayer = player.Avalon();
+        ExxoPlayer modPlayer = player.Avalon();
         player.setBonus = "Restoration"
                           + "\nDealing a critical hit temporarily gives the 'Blessing of Avalon' buff"
                           + "\nThis buff removes almost all debuffs and greatly increases your stats"
@@ -45,6 +46,7 @@ class AvalonHelmet : ModItem
         modPlayer.avalonRestoration = true;
         modPlayer.avalonRetribution = true;
     }
+
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Generic) += 0.32f;
