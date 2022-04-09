@@ -9,6 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
+using Terraria.Chat;
 
 namespace AvalonTesting.Tiles;
 
@@ -18,7 +19,7 @@ public class SnotOrb : ModTile
     {
         AddMapEntry(new Color(144, 160, 38), LanguageManager.Instance.GetText("Snot Orb"));
         Main.tileFrameImportant[Type] = true;
-        animationFrameHeight = 36;
+        AnimationFrameHeight = 36;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
         TileObjectData.newTile.Width = 2;
         TileObjectData.newTile.Height = 2;
@@ -105,11 +106,11 @@ public class SnotOrb : ModTile
                 }
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
-                    Main.NewText(text, 50, 255, 130, false);
+                    Main.NewText(text, 50, 255, 130);
                 }
                 else if (Main.netMode == NetmodeID.Server)
                 {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(50, 255, 130));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(50, 255, 130));
                 }
             }
             SoundEngine.PlaySound(SoundID.NPCKilled, i * 16, j * 16, 1);

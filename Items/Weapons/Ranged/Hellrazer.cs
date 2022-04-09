@@ -1,4 +1,4 @@
-using AvalonTesting.Logic;
+﻿using AvalonTesting.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -38,7 +38,7 @@ public class Hellrazer : ModItem
         Item.UseSound = SoundID.Item40;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow");
+            Item.GetGlobalItem<ItemUseGlow>().glowTexture = Mod.Assets.Request<Texture2D>(Texture + "_Glow").Value;
         }
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetX = -5;
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetY = 0;
@@ -67,12 +67,11 @@ public class Hellrazer : ModItem
             0f
         );
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
         if (type == ProjectileID.Bullet)
         {
             type = ProjectileID.ExplosiveBullet;
         }
-        return true;
     }
 }

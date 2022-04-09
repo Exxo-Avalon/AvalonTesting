@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ public class DarkMatter : ModTile
     {
         if (!fail)
         {
-            ExxoAvalonOriginsWorld.WorldDarkMatterTiles--;
+            AvalonTestingWorld.WorldDarkMatterTiles--;
         }
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
     }

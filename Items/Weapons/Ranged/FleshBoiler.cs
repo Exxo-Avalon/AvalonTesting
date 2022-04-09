@@ -1,6 +1,7 @@
-using AvalonTesting.Items.Ammo;
+﻿using AvalonTesting.Items.Ammo;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -36,18 +37,17 @@ public class FleshBoiler : ModItem
     {
         return !player.wet;
     }*/
-    public override bool ConsumeAmmo(Player player)
+    public override bool CanConsumeAmmo(Player player)
     {
         return player.itemAnimation >= player.itemAnimationMax - 4;
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
-        Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 54f;
+        Vector2 muzzleOffset = Vector2.Normalize(velocity) * 54f;
         if (Collision.CanHit(position, 6, 6, position + muzzleOffset, 6, 6))
         {
             position += muzzleOffset;
         }
-        return true;
     }
     public override Vector2? HoldoutOffset()
     {

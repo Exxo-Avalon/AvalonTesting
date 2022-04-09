@@ -1,5 +1,6 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,17 +34,15 @@ class HallowedBlowpipe : ModItem
         Item.useAnimation = 30;
         Item.height = dims.Height;
     }
-
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         for (int num200 = 0; num200 < 10; num200++)
         {
-            float num201 = speedX;
-            float num202 = speedY;
-            num201 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            num202 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            Projectile.NewProjectile(position.X, position.Y, num201, num202, type, damage, knockBack, player.whoAmI, 0f, 0f);
+            float num201 = velocity.X;
+            float num202 = velocity.Y;
+            num201 += Main.rand.Next(-35, 36) * 0.05f;
+            num202 += Main.rand.Next(-35, 36) * 0.05f;
+            Projectile.NewProjectile(source, position.X, position.Y, num201, num202, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

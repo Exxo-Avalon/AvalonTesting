@@ -23,11 +23,11 @@ public class Bloodberry : ModTile
         Main.tileSpelunker[Type] = true;
         AddMapEntry(Color.IndianRed, LanguageManager.Instance.GetText("Bloodberry"));
         SoundStyle = 1;
-        soundType = SoundID.Grass;
+        SoundType = SoundID.Grass;
         TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
         TileObjectData.newTile.AnchorValidTiles = new int[]
         {
-            TileID.FleshGrass,
+            TileID.CrimsonPlants,
             TileID.Crimstone
         };
         TileObjectData.newTile.AnchorAlternateTiles = new int[]

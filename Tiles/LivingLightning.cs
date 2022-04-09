@@ -25,7 +25,7 @@ public class LivingLightning : ModTile
         TileObjectData.newTile.CoordinateHeights = new int[1] { 16 };
         TileObjectData.newTile.CoordinateWidth = 16;
         TileObjectData.newTile.CoordinatePadding = 2;
-        TileObjectData.newTile.HookCheck = new PlacementHook(CanPlaceAlter, -1, 0, processedCoordinates: true);
+        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(CanPlaceAlter, -1, 0, processedCoordinates: true);
         TileObjectData.newTile.UsesCustomCanPlace = true;
         TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(AfterPlacement, -1, 0, processedCoordinates: false);
         TileObjectData.addTile(Type);
@@ -39,7 +39,7 @@ public class LivingLightning : ModTile
     {
         if (Main.netMode == NetmodeID.MultiplayerClient)
         {
-            NetMessage.SendTileRange(Main.myPlayer, i, j, 1, 1);
+            NetMessage.SendTileSquare(Main.myPlayer, i, j, 1, 1);
         }
         return 1;
     }

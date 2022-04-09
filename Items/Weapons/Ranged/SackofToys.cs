@@ -1,5 +1,6 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,82 +31,80 @@ class SackofToys : ModItem
         Item.useAnimation = 24;
         Item.height = dims.Height;
     }
-
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         int num164 = Main.rand.Next(14);
         if (num164 == 0)
         {
             for (int num165 = 0; num165 < 2; num165++)
             {
-                float num166 = speedX;
-                float num167 = speedY;
+                float num166 = velocity.X;
+                float num167 = velocity.Y;
                 num166 += (float)Main.rand.Next(-30, 31) * 0.05f;
                 num167 += (float)Main.rand.Next(-30, 31) * 0.05f;
-                Projectile.NewProjectile(position.X, position.Y, num166, num167, ProjectileID.WoodenArrowFriendly, damage, knockBack, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, num166, num167, ProjectileID.WoodenArrowFriendly, damage, knockback, player.whoAmI, 0f, 0f);
             }
         }
         else if (num164 == 1)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.FireArrow, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.FireArrow, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 2)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Shuriken, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.Shuriken, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 3)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.JestersArrow, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.JestersArrow, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 4)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.EnchantedBoomerang, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.EnchantedBoomerang, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 5)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Bullet, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.Bullet, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 6)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BallofFire, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.BallofFire, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 7)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.BallOHurt, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.BallOHurt, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 8)
         {
             for (int num168 = 0; num168 < 2; num168++)
             {
-                float num169 = speedX;
-                float num170 = speedY;
+                float num169 = velocity.X;
+                float num170 = velocity.Y;
                 num169 += (float)Main.rand.Next(-30, 31) * 0.05f;
                 num170 += (float)Main.rand.Next(-30, 31) * 0.05f;
-                Projectile.NewProjectile(position.X, position.Y, num169, num170, ProjectileID.WaterBolt, damage, knockBack, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, num169, num170, ProjectileID.WaterBolt, damage, knockback, player.whoAmI, 0f, 0f);
             }
         }
         else if (num164 == 9)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.Grenade, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.Grenade, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 10)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.ThornChakram, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.ThornChakram, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 11)
         {
-            int num171 = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.HarpyFeather, damage, knockBack, player.whoAmI, 0f, 0f);
+            int num171 = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.HarpyFeather, damage, knockback, player.whoAmI, 0f, 0f);
             Main.projectile[num171].hostile = false;
             Main.projectile[num171].friendly = true;
         }
         else if (num164 == 12)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.DemonScythe, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.DemonScythe, damage, knockback, player.whoAmI, 0f, 0f);
         }
         else if (num164 == 13)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.PoisonedKnife, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileID.PoisonedKnife, damage, knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

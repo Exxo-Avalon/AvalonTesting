@@ -3,10 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.DataStructures;
 
 namespace AvalonTesting.Items.Weapons.Melee;
 
-class PyroscoricLongsword : ModItem
+class PyroscoricFlamesword : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -37,7 +38,7 @@ class PyroscoricLongsword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         SoundEngine.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 20, 0.8f, 0.25f);
         return true;

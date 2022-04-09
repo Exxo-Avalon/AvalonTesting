@@ -1,6 +1,7 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
@@ -27,14 +28,14 @@ public class OpalGemspark : ModTile
     {
         Tile tile = Main.tile[i, j];
         Texture2D texture;
-        if (Main.canDrawColorTile(i, j))
-        {
-            texture = Main.tileAltTexture[Type, (int)tile.color()];
-        }
-        else
-        {
-            texture = Main.tileTexture[Type];
-        }
+        //if (Main.canDrawColorTile(i, j))
+        //{
+        //    texture = Main.tileAltTexture[Type, (int)tile.color()];
+        //}
+        //else
+        //{
+        texture = TextureAssets.Tile[Type].Value;
+        //}
         Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
         if (Main.drawToScreen)
         {

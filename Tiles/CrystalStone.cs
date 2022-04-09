@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.DataStructures;
 
 namespace AvalonTesting.Tiles;
 
@@ -37,39 +38,39 @@ public class CrystalStone : ModTile
         SoundStyle = 1;
         DustType = DustID.PinkCrystalShard;
     }
-    public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref Color drawColor, ref int nextSpecialDrawIndex)
+    public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawInfo)
     {
         if (i % 14 == 0 || i % 14 == 13)
         {
-            drawColor = c1;
+            drawInfo.finalColor = c1;
         }
         else if (i % 14 == 1 || i % 14 == 12)
         {
-            drawColor = c2;
+            drawInfo.finalColor = c2;
         }
         else if (i % 14 == 2 || i % 14 == 11)
         {
-            drawColor = c3;
+            drawInfo.finalColor = c3;
         }
         else if (i % 14 == 3 || i % 14 == 10)
         {
-            drawColor = c4;
+            drawInfo.finalColor = c4;
         }
         else if (i % 14 == 4 || i % 14 == 9)
         {
-            drawColor = c5;
+            drawInfo.finalColor = c5;
         }
         else if (i % 14 == 5 || i % 14 == 8)
         {
-            drawColor = c6;
+            drawInfo.finalColor = c6;
         }
         else if (i % 14 == 6 || i % 14 == 7)
         {
-            drawColor = c7;
+            drawInfo.finalColor = c7;
         }
         else if (i % 14 == 7)
         {
-            drawColor = c8;
+            drawInfo.finalColor = c8;
         }
     }
     public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,5 +27,12 @@ class BerserkerArrow : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 2000;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        CreateRecipe(100)
+            .AddIngredient(ItemID.WoodenArrow, 100)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BerserkerBar>(), 2)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

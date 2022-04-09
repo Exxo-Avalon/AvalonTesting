@@ -31,17 +31,7 @@ class Quack : ModItem
 
     public override bool? UseItem(Player player)
     {
-        Main.PlaySound(SoundID.Zombie, -1, -1, 12);
+        SoundEngine.PlaySound(SoundID.Zombie, -1, -1, 12);
         return true;
-    }
-    public override void ModifyTooltips(List<TooltipLine> tooltips)
-    {
-        foreach (TooltipLine line in tooltips)
-        {
-            if (line.mod == "Terraria" && line.Name == "ItemName")
-            {
-                line.overrideColor = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
-            }
-        }
     }
 }

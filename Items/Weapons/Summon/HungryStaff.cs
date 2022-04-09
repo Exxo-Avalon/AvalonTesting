@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,12 +36,11 @@ class HungryStaff : ModItem
     {
         CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.FleshyTendril>(), 14).AddTile(TileID.Anvils).Register();
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         float posX = (float)Main.mouseX + Main.screenPosition.X;
         float posY = (float)Main.mouseY + Main.screenPosition.Y;
-        int num227 = Projectile.NewProjectile(posX, posY, 0f, 0f, type, damage, knockBack, player.whoAmI, 0f, 0f);
+        int num227 = Projectile.NewProjectile(source, posX, posY, 0f, 0f, type, damage, knockback, player.whoAmI, 0f, 0f);
         if (player.Avalon().fleshLaser)
         {
             Main.projectile[num227].minionSlots = 0.25f;

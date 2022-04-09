@@ -35,7 +35,7 @@ class RhodiumHeadgear : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "9% increased damage";
-        player.allDamage += 0.09f;
+        player.GetDamage(DamageClass.Generic) += 0.09f;
     }
 
     public override void UpdateEquip(Player player)

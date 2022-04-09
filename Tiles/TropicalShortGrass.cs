@@ -27,7 +27,7 @@ public class TropicalShortGrass : ModTile
         TileObjectData.addTile(Type);
         DustType = DustID.Grass;
         SoundStyle = 1;
-        soundType = SoundID.Grass;
+        SoundType = SoundID.Grass;
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
@@ -58,7 +58,7 @@ public class TropicalShortGrass : ModTile
             b = (float)lightColor.B / 200f;
         }
     }
-    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
     {
         offsetY = 2;
     }

@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Chat;
 
 namespace AvalonTesting.Tiles;
 
@@ -93,8 +94,8 @@ public class HallowedAltar : ModTile
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been invigorated with Tritanorium!"), new Color(117, 158, 107));
-                else NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been melted with Pyroscoric!"), new Color(187, 35, 0));
+                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been invigorated with Tritanorium!"), new Color(117, 158, 107));
+                else ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been melted with Pyroscoric!"), new Color(187, 35, 0));
             }
             num = ExxoAvalonOriginsWorld.shmOreTier1;
             num3 *= 1.05f;
@@ -110,11 +111,11 @@ public class HallowedAltar : ModTile
             {
                 if (ExxoAvalonOriginsWorld.shmOreTier2 == 2)
                 {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Unvolandite!"), new Color(171, 119, 75));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Unvolandite!"), new Color(171, 119, 75));
                 }
                 else
                 {
-                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Vorazylcum!"), new Color(123, 95, 126));
+                    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Vorazylcum!"), new Color(123, 95, 126));
                 }
             }
             num = ExxoAvalonOriginsWorld.shmOreTier2;

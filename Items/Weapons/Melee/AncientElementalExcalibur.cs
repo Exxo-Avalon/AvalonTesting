@@ -72,7 +72,7 @@ class AncientElementalExcalibur : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<VertexofExcalibur>()).AddIngredient(ModContent.ItemType<PyroscoricLongsword>()).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 20).AddIngredient(ModContent.ItemType<Material.ElementShard>(), 15).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<VertexofExcalibur>()).AddIngredient(ModContent.ItemType<PyroscoricFlamesword>()).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 20).AddIngredient(ModContent.ItemType<Material.ElementShard>(), 15).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
         CreateRecipe(1).AddIngredient(ModContent.ItemType<VertexofExcalibur>()).AddIngredient(ModContent.ItemType<TritanoriumBroadsword>()).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 20).AddIngredient(ModContent.ItemType<Material.ElementShard>(), 15).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }

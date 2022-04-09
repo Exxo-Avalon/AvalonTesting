@@ -1,6 +1,7 @@
 ﻿using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,14 +34,12 @@ class PrimeStaff : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item44;
     }
-
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(player.Center.X - 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiCannon>(), damage, knockBack, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(player.Center.X + 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiLaser>(), damage, knockBack, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(player.Center.X - 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiSaw>(), damage, knockBack, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(player.Center.X + 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiVice>(), damage, knockBack, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, player.Center.X - 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiCannon>(), damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, player.Center.X + 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiLaser>(), damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, player.Center.X - 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiSaw>(), damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, player.Center.X + 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiVice>(), damage, knockback, player.whoAmI, 0f, 0f);
         return false;
     }
 }

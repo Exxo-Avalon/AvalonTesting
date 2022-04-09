@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Chat;
 
 namespace AvalonTesting.Items.Tools;
 
@@ -73,7 +74,7 @@ class TimechangerMkII : ModItem
             //           if (Main.netMode == NetmodeID.SinglePlayer)
             //               Main.NewText(String.Format("Mode set to {0}.", selectedString), 50, 255, 130, false);
             //           else if (Main.netMode == NetmodeID.Server)
-            //NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(String.Format("Mode set to {0}.", selectedString)), new Color(50, 255, 130));
+            //ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(String.Format("Mode set to {0}.", selectedString)), new Color(50, 255, 130));
         }
         else
         {
@@ -109,7 +110,7 @@ class TimechangerMkII : ModItem
             //if (Main.netMode == NetmodeID.SinglePlayer)
             //	Main.NewText(String.Format("It is now {0}.", selectedString), 50, 255, 130, false);
             //else if (Main.netMode == NetmodeID.Server)
-            //	NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(String.Format("It is now {0}.", selectedString)), new Color(50, 255, 130));
+            //	ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(String.Format("It is now {0}.", selectedString)), new Color(50, 255, 130));
         }
 
         return true;

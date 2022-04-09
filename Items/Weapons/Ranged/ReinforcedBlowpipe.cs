@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -38,16 +39,15 @@ class ReinforcedBlowpipe : ModItem
     {
         CreateRecipe(1).AddRecipeGroup("ExxoAvalonOrigins:SilverBar", 5).AddIngredient(ItemID.Blowpipe).AddTile(TileID.Anvils).Register();
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         for (int num197 = 0; num197 < 2; num197++)
         {
-            float num198 = speedX;
-            float num199 = speedY;
-            num198 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            num199 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            Projectile.NewProjectile(position.X, position.Y, num198, num199, type, damage, knockBack, player.whoAmI, 0f, 0f);
+            float num198 = velocity.X;
+            float num199 = velocity.Y;
+            num198 += Main.rand.Next(-35, 36) * 0.05f;
+            num199 += Main.rand.Next(-35, 36) * 0.05f;
+            Projectile.NewProjectile(source, position.X, position.Y, num198, num199, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

@@ -37,7 +37,7 @@ class Freezethrower : ModItem
     {
         return new Vector2(-10, 0);
     }
-    public override bool ConsumeAmmo(Player player)
+    public override bool CanConsumeAmmo(Player player)
     {
         return player.itemAnimation >= player.HeldItem.useAnimation - 3;
     }

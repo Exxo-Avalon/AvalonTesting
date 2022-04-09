@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -26,5 +26,12 @@ class BerserkerBullet : ModItem
         Item.maxStack = 2000;
         Item.value = 200;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        CreateRecipe(100)
+            .AddIngredient(ItemID.MusketBall, 100)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BerserkerBar>(), 2)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

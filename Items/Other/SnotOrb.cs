@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,7 +12,7 @@ class SnotOrb : ModItem
         DisplayName.SetDefault("Snot Orb");
         Tooltip.SetDefault("Creates a snot orb that provides light");
     }
-    public override void UseStyle(Player player)
+    public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
         {
@@ -20,7 +21,7 @@ class SnotOrb : ModItem
     }
     public override void SetDefaults()
     {
-        Item.CloneDefaults(1183);
+        Item.CloneDefaults(ItemID.WispinaBottle);
         Item.shoot = ModContent.ProjectileType<Projectiles.SnotOrb>();
         Item.buffType = ModContent.BuffType<Buffs.SnotOrb>();
         Item.value = Item.sellPrice(0, 0, 54);

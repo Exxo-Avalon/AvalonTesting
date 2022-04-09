@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,19 +35,19 @@ class TrueAeonsEternity : ModItem
         Item.useAnimation = 20;
         Item.height = dims.Height;
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
         swingCounter += 1;
         if (swingCounter >= 6)
         {
             for (int num185 = 0; num185 < 6; num185++)
             {
-                float num186 = speedX;
-                float num187 = speedY;
+                float num186 = velocity.X;
+                float num187 = velocity.Y;
                 num186 += (float)Main.rand.Next(-40, 41) * 0.05f;
                 num187 += (float)Main.rand.Next(-40, 41) * 0.05f;
-                Projectile.NewProjectile(position.X, position.Y, num186, num187, ProjectileID.Starfury, damage, knockBack, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, num186, num187, ProjectileID.Starfury, damage, knockback, player.whoAmI, 0f, 0f);
             }
             swingCounter = 0;
         }

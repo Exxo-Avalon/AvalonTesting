@@ -42,7 +42,7 @@ public class BorealWoodBeam : ModTile
     {
         if (Main.netMode == NetmodeID.MultiplayerClient)
         {
-            NetMessage.SendTileRange(Main.myPlayer, i, j, 1, 1);
+            NetMessage.SendTileSquare(Main.myPlayer, i, j, 1, 1);
         }
         return 1;
     }

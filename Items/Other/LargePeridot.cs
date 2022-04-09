@@ -27,7 +27,7 @@ class LargePeridot : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D itemTexture = Item.modItem.GetTexture();
+        Texture2D itemTexture = Item.ModItem.GetTexture();
         float num5 = Item.height - itemTexture.Height;
         float num6 = Item.width / 2 - itemTexture.Width / 2;
 

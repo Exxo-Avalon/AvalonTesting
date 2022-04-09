@@ -1,5 +1,6 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,17 +34,15 @@ class SunsShadow : ModItem
         Item.useAnimation = 28;
         Item.height = dims.Height;
     }
-
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         for (int num203 = 0; num203 < 12; num203++)
         {
-            float num204 = speedX;
-            float num205 = speedY;
-            num204 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            num205 += (float)Main.rand.Next(-35, 36) * 0.05f;
-            Projectile.NewProjectile(position.X, position.Y, num204, num205, type, damage, knockBack, player.whoAmI, 0f, 0f);
+            float num204 = velocity.X;
+            float num205 = velocity.Y;
+            num204 += Main.rand.Next(-35, 36) * 0.05f;
+            num205 += Main.rand.Next(-35, 36) * 0.05f;
+            Projectile.NewProjectile(source, position.X, position.Y, num204, num205, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
 
         return false;

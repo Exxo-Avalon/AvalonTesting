@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Material;
+﻿using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ModLoader;
@@ -78,9 +78,9 @@ public class Shards : ModTile
         var bottomType = -1;
         var leftType = -1;
         var rightType = -1;
-        if (topTile.HasTile && !topTile.bottomSlope())
+        if (topTile.HasTile && !topTile.BottomSlope)
             bottomType = topTile.TileType;
-        if (bottomTile.HasTile && !bottomTile.IsHalfBlock && !bottomTile.topSlope())
+        if (bottomTile.HasTile && !bottomTile.IsHalfBlock && !bottomTile.TopSlope)
             topType = bottomTile.TileType;
         if (leftTile.HasTile)
             leftType = leftTile.TileType;
@@ -118,7 +118,7 @@ public class Shards : ModTile
         return WorldGen.SolidTile(i - 1, j) || WorldGen.SolidTile(i + 1, j) || WorldGen.SolidTile(i, j - 1) || WorldGen.SolidTile(i, j + 1);
     }
 
-    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
     {
         if (Main.tile[i, j].TileFrameY / 18 < 3)
             offsetY = 2;

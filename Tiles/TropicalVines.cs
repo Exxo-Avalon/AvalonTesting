@@ -33,7 +33,7 @@ public class TropicalVines : ModTile
     {
         Tile tileAbove = Framing.GetTileSafely(i, j - 1);
         int type = -1;
-        if (tileAbove.HasTile && !tileAbove.bottomSlope())
+        if (tileAbove.HasTile && !tileAbove.BottomSlope)
         {
             type = tileAbove.TileType;
         }
@@ -50,14 +50,14 @@ public class TropicalVines : ModTile
     public override void RandomUpdate(int i, int j)
     {
         Tile tileBelow = Framing.GetTileSafely(i, j + 1);
-        if (WorldGen.genRand.NextBool(15) && !tileBelow.HasTile && !tileBelow.lava())
+        if (WorldGen.genRand.NextBool(15) && !tileBelow.HasTile && tileBelow.LiquidType != LiquidID.Lava)
         {
             bool placeVine = false;
             int yTest = j;
             while (yTest > j - 10)
             {
                 Tile testTile = Framing.GetTileSafely(i, yTest);
-                if (testTile.bottomSlope())
+                if (testTile.BottomSlope)
                 {
                     break;
                 }
@@ -72,7 +72,7 @@ public class TropicalVines : ModTile
             if (placeVine)
             {
                 tileBelow.TileType = Type;
-                tileBelow.active(true);
+                tileBelow.HasTile = true;
                 WorldGen.SquareTileFrame(i, j + 1, true);
                 if (Main.netMode == NetmodeID.Server)
                 {

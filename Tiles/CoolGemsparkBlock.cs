@@ -1,8 +1,9 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
 
 namespace AvalonTesting.Tiles;
 
@@ -26,14 +27,14 @@ public class CoolGemsparkBlock : ModTile
     {
         Tile tile = Main.tile[i, j];
         Texture2D texture;
-        if (Main.canDrawColorTile(i, j))
-        {
-            texture = Main.tileAltTexture[Type, (int)tile.color()];
-        }
-        else
-        {
-            texture = Main.tileTexture[Type];
-        }
+        //if (Main.canDrawColorTile(i, j))
+        //{
+        //    texture = TextureAssets.Tile[Type].Value;
+        //}
+        //else
+        //{
+        texture = TextureAssets.Tile[Type].Value;
+        // }
         Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
         if (Main.drawToScreen)
         {

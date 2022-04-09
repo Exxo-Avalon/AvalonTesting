@@ -14,7 +14,7 @@ public class ContagionVines : ModTile
         Main.tileLavaDeath[Type] = true;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
-        soundType = SoundID.Grass;
+        SoundType = SoundID.Grass;
         DustType = ModContent.DustType<Dusts.ContagionDust>();
 
         AddMapEntry(new Color(117, 131, 37));
@@ -33,7 +33,7 @@ public class ContagionVines : ModTile
     {
         Tile tileAbove = Framing.GetTileSafely(i, j - 1);
         int type = -1;
-        if (tileAbove.HasTile && !tileAbove.bottomSlope())
+        if (tileAbove.HasTile && !tileAbove.BottomSlope)
         {
             type = tileAbove.TileType;
         }
@@ -49,14 +49,14 @@ public class ContagionVines : ModTile
     public override void RandomUpdate(int i, int j)
     {
         Tile tileBelow = Framing.GetTileSafely(i, j + 1);
-        if (WorldGen.genRand.NextBool(15) && !tileBelow.HasTile && !tileBelow.lava())
+        if (WorldGen.genRand.NextBool(15) && !tileBelow.HasTile && tileBelow.LiquidType != LiquidID.Lava)
         {
             bool placeVine = false;
             int yTest = j;
             while (yTest > j - 10)
             {
                 Tile testTile = Framing.GetTileSafely(i, yTest);
-                if (testTile.bottomSlope())
+                if (testTile.BottomSlope)
                 {
                     break;
                 }
@@ -71,7 +71,7 @@ public class ContagionVines : ModTile
             if (placeVine)
             {
                 tileBelow.TileType = Type;
-                tileBelow.active(true);
+                tileBelow.HasTile = true;
                 WorldGen.SquareTileFrame(i, j + 1, true);
                 if (Main.netMode == NetmodeID.Server)
                 {

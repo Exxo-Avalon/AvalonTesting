@@ -7,6 +7,7 @@ namespace AvalonTesting;
 public class AvalonTestingWorld : ModSystem
 {
     public bool SuperHardmode { get; private set; }
+    public static int WorldDarkMatterTiles = 0;
     public static int wosT;
     public static int wosB;
     public static int wosF = 0;

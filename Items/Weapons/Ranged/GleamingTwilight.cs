@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -36,16 +37,15 @@ class GleamingTwilight : ModItem
     {
         CreateRecipe(1).AddIngredient(ItemID.ChlorophyteShotbow).AddIngredient(ItemID.HallowedRepeater).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
-                               ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         for (int num188 = 0; num188 < 5; num188++)
         {
-            float num189 = speedX;
-            float num190 = speedY;
+            float num189 = velocity.X;
+            float num190 = velocity.Y;
             num189 += (float)Main.rand.Next(-40, 41) * 0.05f;
             num190 += (float)Main.rand.Next(-40, 41) * 0.05f;
-            Projectile.NewProjectile(position.X, position.Y, num189, num190, type, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, num189, num190, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
         return false;
     }

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -13,7 +13,7 @@ public class AncientSandstorm : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/AncientSandstorm");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 6 / 16;
         Projectile.height = dims.Height * 6 / 16 / Main.projFrames[Projectile.type];
         Projectile.scale = 1f;

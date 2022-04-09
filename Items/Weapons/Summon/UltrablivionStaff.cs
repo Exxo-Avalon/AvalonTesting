@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 namespace AvalonTesting.Items.Weapons.Summon;
 
@@ -45,13 +46,13 @@ public class UltrablivionStaff : ModItem
         return true;
     }
 
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         if (player.altFunctionUse != 2)
         {
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.Summon.UltraHMinion>(), damage, knockBack, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.Summon.UltraRMinion>(), damage, knockBack, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(position + new Vector2(100, 0), new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.Summon.UltraLMinion>(), damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Summon.UltraHMinion>(), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Summon.UltraRMinion>(), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position + new Vector2(100, 0), velocity, ModContent.ProjectileType<Projectiles.Summon.UltraLMinion>(), damage, knockback, player.whoAmI, 0f, 0f);
         }
         return false;
     }
@@ -60,7 +61,7 @@ public class UltrablivionStaff : ModItem
     {
         if (player.altFunctionUse == 2)
         {
-            player.MinionNPCTargetAim();
+            player.MinionNPCTargetAim(true);
         }
         return base.UseItem(player);
     }

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,12 +38,10 @@ class Thompson : ModItem
     {
         return new Vector2(-12, 0);
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
         SoundEngine.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 11, 0.9f, 0.4f);
-        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
-        speedX = perturbedSpeed.X;
-        speedY = perturbedSpeed.Y;
-        return true;
+        Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(10));
+        velocity = perturbedSpeed;
     }
 }

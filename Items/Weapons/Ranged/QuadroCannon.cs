@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.DataStructures;
 
 namespace AvalonTesting.Items.Weapons.Ranged;
 
@@ -42,21 +43,21 @@ class QuadroCannon : ModItem
     {
         return new Vector2(-10, 0);
     }
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         //sound is weird sometimes?? idk why tho
         for (int num209 = 0; num209 < 4; num209++)
         {
-            float num210 = speedX;
-            float num211 = speedY;
+            float num210 = velocity.X;
+            float num211 = velocity.Y;
             num210 += (float)Main.rand.Next(-24, 25) * 0.05f;
             num211 += (float)Main.rand.Next(-24, 25) * 0.05f;
-            Projectile.NewProjectile(position.X, position.Y, num210, num211, type, damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, num210, num211, type, damage, knockback, player.whoAmI, 0f, 0f);
             SoundEngine.PlaySound(SoundID.Item, -1, -1, 11);
         }
         return false;
     }
-    public override bool ConsumeAmmo(Player player)
+    public override bool CanConsumeAmmo(Player player)
     {
         return player.itemAnimation >= Item.useAnimation - 4;
     }
