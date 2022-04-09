@@ -14,7 +14,7 @@ public class ChaosBolt : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/ChaosBolt");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

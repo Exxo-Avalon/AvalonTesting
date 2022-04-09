@@ -19,7 +19,7 @@ public class DarkFlame : ModProjectile
 
     public override void SetDefaults()
     {
-        //Rectangle dims = AvalonTesting.GetDims("Projectiles/DarkFlame");
+        //Rectangle dims = this.GetDims();
         Projectile.width = 8; // dims.Width;
         Projectile.height = 8; // dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

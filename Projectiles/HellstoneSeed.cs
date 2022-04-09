@@ -16,7 +16,7 @@ public class HellstoneSeed : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/HellstoneSeed");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 8 / 28;
         Projectile.height = dims.Height * 8 / 28 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -15,7 +15,7 @@ class ImmunityCharm : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Accessories/ImmunityCharm");
+        Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 7, 25, 0);

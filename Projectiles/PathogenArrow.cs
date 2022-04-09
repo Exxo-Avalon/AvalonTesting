@@ -15,7 +15,7 @@ public class PathogenArrow : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/PathogenArrow");
+        Rectangle dims = this.GetDims();
         Projectile.penetrate = 4;
         Projectile.width = dims.Width * 10 / 32;
         Projectile.height = dims.Height * 10 / 32 / Main.projFrames[Projectile.type];

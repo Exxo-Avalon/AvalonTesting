@@ -17,7 +17,7 @@ public class HeavensTear : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/HeavensTear");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 22 / 34;
         Projectile.height = dims.Height * 22 / 34 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

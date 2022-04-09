@@ -14,7 +14,7 @@ public class MagicCleaver : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/MagicCleaver");
+        Rectangle dims = this.GetDims();
         Projectile.width = 44;
         Projectile.height = 44;
         Projectile.aiStyle = 2;

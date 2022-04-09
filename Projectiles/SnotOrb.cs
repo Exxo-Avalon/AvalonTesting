@@ -18,7 +18,7 @@ public class SnotOrb : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/SnotOrb");
+        Rectangle dims = this.GetDims();
         Projectile.netImportant = true;
         Projectile.width = 30;
         Projectile.height = 30;

@@ -15,7 +15,7 @@ public class Soundwave : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Soundwave");
+        Rectangle dims = this.GetDims();
         Projectile.width = 20;
         Projectile.height = 28;
         Projectile.scale = 1f;

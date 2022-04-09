@@ -15,7 +15,7 @@ class AdvGauntletPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvGauntletPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvGauntlet>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;

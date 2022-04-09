@@ -14,7 +14,7 @@ class MusicBoxBacteriumPrime : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/MusicBoxes/MusicBoxBacteriumPrime");
+        Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.maxStack = 999;

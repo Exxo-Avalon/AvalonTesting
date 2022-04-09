@@ -17,7 +17,7 @@ public class QuadBall : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/QuadBall");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 32 / 34;
         Projectile.height = dims.Height * 32 / 34 / Main.projFrames[Projectile.type];
         Projectile.friendly = true;

@@ -19,7 +19,7 @@ class AvalonHelmet : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Armor/AvalonHelmet");
+        Rectangle dims = this.GetDims();
         Item.defense = 40;
         Item.rare = ModContent.RarityType<Rarities.AvalonRarity>();
         Item.width = dims.Width;

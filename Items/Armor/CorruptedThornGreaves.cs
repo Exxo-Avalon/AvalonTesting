@@ -18,7 +18,7 @@ class CorruptedThornGreaves : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Armor/CorruptedThornGreaves");
+        Rectangle dims = this.GetDims();
         Item.defense = 15;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;

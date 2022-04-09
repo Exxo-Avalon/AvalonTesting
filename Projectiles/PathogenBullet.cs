@@ -15,7 +15,7 @@ public class PathogenBullet : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/PathogenBullet");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 4 / 20;
         Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -16,7 +16,7 @@ public class Moonerang : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/Moonerang");
+        Rectangle dims = this.GetDims();
         Projectile.width = 18;
         Projectile.height = 18;
         Projectile.aiStyle = 3;

@@ -15,7 +15,7 @@ class AdvSupersonicPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvSupersonicPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvSupersonic>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;

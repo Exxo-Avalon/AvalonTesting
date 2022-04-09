@@ -16,7 +16,7 @@ public class NaquadahDrill : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/NaquadahDrill");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height * 26 / 58 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

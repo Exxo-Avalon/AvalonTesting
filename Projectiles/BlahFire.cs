@@ -14,7 +14,7 @@ public class BlahFire : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/BlahFire");
+        Rectangle dims = this.GetDims();
         Projectile.aiStyle = -1;
         Projectile.width = 20;
         Projectile.height = 20;

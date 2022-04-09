@@ -13,7 +13,7 @@ public class ContagionSpray : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/ContagionSpray");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 6 / 16;
         Projectile.height = dims.Height * 6 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

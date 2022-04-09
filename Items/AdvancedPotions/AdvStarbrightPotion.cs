@@ -15,7 +15,7 @@ class AdvStarbrightPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvStarbrightPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvStarbright>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;

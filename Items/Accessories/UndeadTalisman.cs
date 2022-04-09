@@ -15,7 +15,7 @@ class UndeadTalisman : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Accessories/UndeadTalisman");
+        Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 0, 50, 0);

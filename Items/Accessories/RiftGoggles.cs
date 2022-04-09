@@ -17,7 +17,7 @@ class RiftGoggles : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Accessories/RiftGoggles");
+        Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.accessory = true;

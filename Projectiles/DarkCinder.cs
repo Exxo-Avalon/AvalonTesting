@@ -13,7 +13,7 @@ public class DarkCinder : ModProjectile
 
     public override void SetDefaults()
     {
-        //Rectangle dims = AvalonTesting.GetDims("Projectiles/DarkCinder");
+        //Rectangle dims = this.GetDims();
         Projectile.width = 8;
         Projectile.height = 8;
         Projectile.aiStyle = -1;

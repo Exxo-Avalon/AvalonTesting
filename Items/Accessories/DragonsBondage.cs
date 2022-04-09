@@ -14,7 +14,7 @@ public class DragonsBondage : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Accessories/DragonsBondage");
+        Rectangle dims = this.GetDims();
         Item.rare = -12;
         Item.width = dims.Width;
         Item.accessory = true;

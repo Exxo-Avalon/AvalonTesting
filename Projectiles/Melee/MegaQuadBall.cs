@@ -17,7 +17,7 @@ public class MegaQuadBall : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/MegaQuadBall");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 32 / 68;
         Projectile.height = dims.Height * 32 / 68 / Main.projFrames[Projectile.type];
         Projectile.friendly = true;

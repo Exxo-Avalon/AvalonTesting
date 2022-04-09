@@ -14,7 +14,7 @@ class MusicBoxUndergroundContagion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/MusicBoxes/MusicBoxUndergroundContagion");
+        Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.maxStack = 999;

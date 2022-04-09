@@ -15,7 +15,7 @@ public class MissileBolt : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/MissileBolt");
+        Rectangle dims = this.GetDims();
         Projectile.MaxUpdates = 1;
         Projectile.width = dims.Width * 10 / 38;
         Projectile.height = dims.Height * 10 / 38 / Main.projFrames[Projectile.type];

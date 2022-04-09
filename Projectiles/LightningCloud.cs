@@ -14,7 +14,7 @@ public class LightningCloud : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/LightningCloud");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height;
         Projectile.friendly = true;

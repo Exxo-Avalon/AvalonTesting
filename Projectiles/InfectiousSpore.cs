@@ -14,7 +14,7 @@ public class InfectiousSpore : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/InfectiousSpore");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 16 / 134;
         Projectile.height = dims.Height * 16 / 134 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -13,7 +13,7 @@ public class SacredLyreSplittingNote : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/SacredLyreSplittingNote");
+        Rectangle dims = this.GetDims();
         Projectile.width = 16;
         Projectile.height = 16;
         Projectile.aiStyle = 21;

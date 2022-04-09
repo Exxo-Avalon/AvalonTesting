@@ -13,7 +13,7 @@ class BismuthChandelier : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/Placeable/Light/BismuthChandelier");
+        Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.BismuthChandelier>();

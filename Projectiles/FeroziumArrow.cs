@@ -15,7 +15,7 @@ public class FeroziumArrow : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/FeroziumArrow");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 32;
         Projectile.height = dims.Height * 10 / 32 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

@@ -16,7 +16,7 @@ public class DurataniumChainsaw : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/DurataniumChainsaw");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 18 / 56;
         Projectile.height = dims.Height * 18 / 56 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

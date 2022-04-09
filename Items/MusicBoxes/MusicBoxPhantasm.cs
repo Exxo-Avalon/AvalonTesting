@@ -14,7 +14,7 @@ class MusicBoxPhantasm : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/MusicBoxes/MusicBoxPhantasm");
+        Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.maxStack = 999;

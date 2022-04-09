@@ -16,7 +16,7 @@ public class NaquadahChainsaw : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/NaquadahChainsaw");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height * 18 / 56 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;

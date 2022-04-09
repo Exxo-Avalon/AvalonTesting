@@ -16,7 +16,7 @@ public class PossessedFlamesaw : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/PossessedFlamesaw");
+        Rectangle dims = this.GetDims();
         Projectile.light = 0.9f;
         Projectile.width = dims.Width * 30 / 62;
         Projectile.height = dims.Height * 30 / 62 / Main.projFrames[Projectile.type];

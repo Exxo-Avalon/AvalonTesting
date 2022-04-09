@@ -15,7 +15,7 @@ public class DevilScythe : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/DevilScythe");
+        Rectangle dims = this.GetDims();
         Projectile.width = 48;
         Projectile.height = 48;
         Projectile.alpha = 100;

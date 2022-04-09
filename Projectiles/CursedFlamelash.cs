@@ -16,7 +16,7 @@ public class CursedFlamelash : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/CursedFlamelash");
+        Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 14 / 16;
         Projectile.height = dims.Height * 14 / 16 / Main.projFrames[Projectile.type];
         Projectile.friendly = true;

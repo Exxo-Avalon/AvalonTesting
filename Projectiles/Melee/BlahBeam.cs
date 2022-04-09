@@ -14,7 +14,7 @@ public class BlahBeam : ModProjectile
     }
     public override void SetDefaults()
     {
-        Rectangle dims = AvalonTesting.GetDims("Projectiles/Melee/BlahBeam");
+        Rectangle dims = this.GetDims();
         Projectile.width = 16;
         Projectile.height = 16;
         Projectile.aiStyle = 27;

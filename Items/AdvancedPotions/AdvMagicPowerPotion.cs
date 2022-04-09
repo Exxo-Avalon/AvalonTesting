@@ -15,7 +15,7 @@ class AdvMagicPowerPotion : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = global::AvalonTesting.GetDims("Items/AdvancedPotions/AdvMagicPowerPotion");
+        Rectangle dims = this.GetDims();
         Item.buffType = ModContent.BuffType<Buffs.AdvancedBuffs.AdvMagicPower>();
         Item.UseSound = SoundID.Item3;
         Item.consumable = true;
