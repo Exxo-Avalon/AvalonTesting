@@ -18,7 +18,7 @@ public class CaesiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 720;
         //Main.tileMerge[Type][TileID.Ash] = true;
         //Main.tileMerge[TileID.Ash][Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.CaesiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.CaesiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 200;

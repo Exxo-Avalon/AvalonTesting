@@ -14,7 +14,7 @@ class ResistantTree : ModTree
     }
     public override int DropWood()
     {
-        return ModContent.ItemType<Items.Placeables.Tile.ResistantWood>();
+        return ModContent.ItemType<Items.Placeable.Tile.ResistantWood>();
     }
 
     public override Texture2D GetTexture()

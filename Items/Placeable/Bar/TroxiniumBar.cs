@@ -35,7 +35,7 @@ class TroxiniumBar : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Placeable/Bar/TroxiniumBar_Glow").Value;
+        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Placeable/Bars/TroxiniumBar_Glow").Value;
         spriteBatch.Draw
         (
             texture,

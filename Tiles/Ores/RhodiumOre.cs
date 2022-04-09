@@ -19,7 +19,7 @@ public class RhodiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 420;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.RhodiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 60;

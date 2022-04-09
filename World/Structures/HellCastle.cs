@@ -1,6 +1,4 @@
-﻿using AvalonTesting.Items.Placeables.Bars;
-using AvalonTesting.Items.Placeables.Tile;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 

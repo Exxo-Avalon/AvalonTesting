@@ -1,5 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using AvalonTesting.Items.Placeables.Tile;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;

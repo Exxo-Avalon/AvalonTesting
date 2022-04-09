@@ -18,7 +18,7 @@ public class HallowedOre : ModTile
         Main.tileOreFinderPriority[Type] = 690;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.HallowedOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.HallowedOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 185;

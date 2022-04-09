@@ -26,8 +26,8 @@ class ResistantWood : ModItem
         Item.height = dims.Height;
     }
 
-    public override bool CanBurnInLava()
+    public override bool? CanBurnInLava()
     {
-        return true;
+        return false;
     }
 }

@@ -1,31 +1,28 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeables.Bars;
+namespace AvalonTesting.Items.Placeable.Furniture;
 
-class DurataniumBar : ModItem
+class ResistantWoodBookcase : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Duratanium Bar");
+        DisplayName.SetDefault("Resistant Wood Bookcase");
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
-        Item.useTurn = true;
-        Item.maxStack = 999;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
-        Item.placeStyle = 9;
-        Item.rare = ItemRarityID.LightRed;
+        Item.createTile = ModContent.TileType<Tiles.ResistantWoodBookcase>();
         Item.width = dims.Width;
+        Item.useTurn = true;
         Item.useTime = 10;
-        Item.value = Item.sellPrice(0, 0, 30, 0);
         Item.useStyle = ItemUseStyleID.Swing;
+        Item.maxStack = 99;
+        Item.value = 300;
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

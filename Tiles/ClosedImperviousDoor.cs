@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Furniture;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -59,7 +60,7 @@ public class ClosedImperviousDoor : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, ModContent.ItemType<Items.Placeables.Furniture.ImperviousDoor>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, ModContent.ItemType<ImperviousDoor>());
     }
 
     public override void MouseOver(int i, int j)
@@ -67,6 +68,6 @@ public class ClosedImperviousDoor : ModTile
         var player = Main.LocalPlayer;
         player.noThrow = 2;
         player.cursorItemIconEnabled = true;
-        player.cursorItemIconID = ModContent.ItemType<Items.Placeables.Furniture.ImperviousDoor>();
+        player.cursorItemIconID = ModContent.ItemType<ImperviousDoor>();
     }
 }

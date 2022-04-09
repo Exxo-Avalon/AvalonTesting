@@ -19,7 +19,7 @@ public class OsmiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 430;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.OsmiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 60;

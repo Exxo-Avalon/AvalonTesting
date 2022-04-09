@@ -20,7 +20,7 @@ public class TroxiniumOre : ModTile
         Main.tileOreFinderPriority[Type] = 660;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 875;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.TroxiniumOre>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TroxiniumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 150;

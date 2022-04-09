@@ -2,26 +2,26 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeables.Furniture;
+namespace AvalonTesting.Items.Placeable.Tile;
 
-class ImperviousDoor : ModItem
+public class BlastedStone : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Impervious Door");
+        DisplayName.SetDefault("Blasted Stone");
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
+        Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ClosedImperviousDoor>();
+        Item.createTile = ModContent.TileType<Tiles.BlastedStone>();
         Item.width = dims.Width;
-        Item.useTurn = true;
         Item.useTime = 10;
+        Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.maxStack = 99;
-        Item.value = 200;
+        Item.maxStack = 999;
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }

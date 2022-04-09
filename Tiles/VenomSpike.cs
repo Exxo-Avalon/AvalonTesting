@@ -13,7 +13,7 @@ public class VenomSpike : ModTile
         AddMapEntry(new Color(132, 65, 172), LanguageManager.Instance.GetText("Venom Spike"));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.VenomSpike>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.VenomSpike>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.BismuthDust>();

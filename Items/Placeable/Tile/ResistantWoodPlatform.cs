@@ -26,9 +26,9 @@ class ResistantWoodPlatform : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
-    public override bool CanBurnInLava()
+    public override bool? CanBurnInLava()
     {
-        return true;
+        return false;
     }
     public override void AddRecipes()
     {

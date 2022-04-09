@@ -19,7 +19,7 @@ public class ImperviousBrick : ModTile
         Main.tileMerge[Type][TileID.Ash] = true;
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.ImperviousBrick>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ImperviousBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 300;

@@ -13,7 +13,7 @@ public class BlastedStone : ModTile
         Main.tileSolid[Type] = true;
         Main.tileShine[Type] = 1150;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.BlastedStone>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BlastedStone>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Wraith;

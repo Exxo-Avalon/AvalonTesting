@@ -25,9 +25,6 @@ class VenomSpike : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
         Item.height = dims.Height;
-        Item.notAmmo = true;
-        Item.ammo = ItemID.Spike;
-        Item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().spike = 5;
     }
     public override void AddRecipes()
     {

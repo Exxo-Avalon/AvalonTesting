@@ -1,5 +1,5 @@
 ﻿using AvalonTesting.Buffs;
-using AvalonTesting.Items.Placeables.Bars;
+using AvalonTesting.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

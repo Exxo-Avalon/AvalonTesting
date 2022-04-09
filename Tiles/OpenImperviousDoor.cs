@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeables.Furniture;
+﻿using AvalonTesting.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

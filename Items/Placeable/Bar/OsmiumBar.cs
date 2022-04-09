@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,6 +32,6 @@ class OsmiumBar : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Tile.OsmiumOre>(), 4).AddTile(TileID.Furnaces).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<OsmiumOre>(), 4).AddTile(TileID.Furnaces).Register();
     }
 }

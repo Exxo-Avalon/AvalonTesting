@@ -17,7 +17,7 @@ public class LaziteGrass : ModTile
         Main.tileMergeDirt[Type] = true;
         Main.tileMerge[Type][ModContent.TileType<BlastedStone>()] = true;
         Main.tileMerge[ModContent.TileType<BlastedStone>()][Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeables.Tile.BlastedStone>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BlastedStone>();
         DustType = DustID.GemSapphire;
         SoundType = SoundID.Tink;
         SoundStyle = 1;
