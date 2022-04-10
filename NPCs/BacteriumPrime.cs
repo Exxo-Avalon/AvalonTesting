@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Placeable.Trophy;
 using AvalonTesting.Items.Vanity;
@@ -8,6 +8,8 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
+using AvalonTesting.Systems;
 
 namespace AvalonTesting.NPCs;
 
@@ -37,31 +39,17 @@ public class BacteriumPrime : ModNPC
         NPC.HitSound = SoundID.NPCHit8;
         NPC.DeathSound = SoundID.NPCDeath10;
         NPC.knockBackResist = 0f;
-        bossBag = ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>();
+        //bossBag = ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>();
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        if (Main.rand.Next(10) == 0)
-        {
-            Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacteriumPrimeTrophy>(), 1, false, 0, false);
-        }
-        if (Main.rand.Next(7) == 0)
-        {
-            Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacteriumPrimeMask>(), 1, false, 0, false);
-        }
-
-        if (Main.expertMode)
-        {
-            NPC.DropBossBags();
-        }
-        else
-        {
-            Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacciliteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41), false, 0, false);
-        }
-
-        if (!AvalonTestingWorld.downedBacteriumPrime)
-            AvalonTestingWorld.downedBacteriumPrime = true;
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacteriumPrimeTrophy>(), 10));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacteriumPrimeMask>(), 10));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>()));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacciliteOre>(), 1, 15, 41));
+        if (!DownedBossSystem.downedBacteriumPrime)
+            DownedBossSystem.downedBacteriumPrime = true;
     }
 
     public override void AI()
@@ -88,7 +76,7 @@ public class BacteriumPrime : ModNPC
                 var num900 = NPC.Center.Y;
                 num899 += Main.rand.Next(-NPC.width, NPC.width);
                 num900 += Main.rand.Next(-NPC.height, NPC.height);
-                var num901 = NPC.NewNPC((int)num899, (int)num900, ModContent.NPCType<BactusMinion>(), 0);
+                var num901 = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)num899, (int)num900, ModContent.NPCType<BactusMinion>(), 0);
                 Main.npc[num901].velocity = new Vector2(Main.rand.Next(-30, 31) * 0.1f, Main.rand.Next(-30, 31) * 0.1f);
                 Main.npc[num901].netUpdate = true;
             }
@@ -225,12 +213,6 @@ public class BacteriumPrime : ModNPC
             if (NPC.justHit && Main.netMode != NetmodeID.MultiplayerClient && NPC.type == ModContent.NPCType<BacteriumPrime>())
             {
                 NPC.life = NPC.lifeMax;
-                AvalonTestingGlobalNPC.boogerBossCounter++;
-                if (AvalonTestingGlobalNPC.boogerBossCounter >= 12)
-                {
-                    NPC.NewNPC((int)NPC.position.X - 160, (int)NPC.position.Y - 160, ModContent.NPCType<BactusMinion>(), 0);
-                    AvalonTestingGlobalNPC.boogerBossCounter = 0;
-                }
             }
             var vector110 = new Vector2(NPC.Center.X, NPC.Center.Y);
             var num911 = Main.player[NPC.target].Center.X - vector110.X;
@@ -364,9 +346,9 @@ public class BacteriumPrime : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime1"), 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime2"), 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime3"), 1f);
+            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime1").Type, 1f);
+            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime2").Type, 1f);
+            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime3").Type, 1f);
         }
     }
 }
