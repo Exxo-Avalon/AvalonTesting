@@ -35,6 +35,14 @@ public class Cougher : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CougherBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new FlavorTextBestiaryInfoElement("Watch out for the coughing!")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

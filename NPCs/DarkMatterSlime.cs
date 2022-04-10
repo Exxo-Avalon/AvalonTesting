@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Material;
 
 namespace AvalonTesting.NPCs;
 
@@ -40,18 +42,25 @@ public class DarkMatterSlime : ModNPC
         NPC.knockBackResist = 0.1f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        //Banner = NPC.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.DarkMatterSlimeBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.DarkMatterSlimeBanner>();
     }
-
-    //public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    //{
-    //    if (spawnInfo.player.Avalon().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
-    //    {
-    //        return 1f;
-    //    }
-    //    return 0f;
-    //}
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
+            new FlavorTextBestiaryInfoElement("Gelatinous, but also unstable. Made of dark matter.")
+        });
+    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo)
+    {
+        if (spawnInfo.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        {
+            return 1f;
+        }
+        return 0f;
+    }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -62,8 +71,8 @@ public class DarkMatterSlime : ModNPC
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        //npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DropIfNoArmaAlive(), ModContent.ItemType<DarkMatterGel>(), 1, 2, 4));
-        //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>()));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DropIfNoArmaAlive(), ModContent.ItemType<DarkMatterGel>(), 1, 2, 4));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>()));
     }
     public override void FindFrame(int frameHeight)
     {

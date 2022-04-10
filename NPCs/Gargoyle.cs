@@ -46,6 +46,14 @@ public class Gargoyle : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.GargoyleBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
+            new FlavorTextBestiaryInfoElement("Made of stone, they resemble mythical creatures. They guard the Hellcastle and its treasures.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

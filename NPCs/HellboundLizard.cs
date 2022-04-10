@@ -42,6 +42,14 @@ public class HellboundLizard : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.HellboundLizardBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
+            new FlavorTextBestiaryInfoElement("Similar in appearance to Lihzahrds, they run about in the Hellcastle, seemingly without purpose.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

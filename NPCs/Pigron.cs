@@ -35,6 +35,14 @@ public class Pigron : ModNPC
         NPC.HitSound = SoundID.NPCHit27;
         NPC.DeathSound = SoundID.NPCDeath30;
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new FlavorTextBestiaryInfoElement("This elusive dragon-pig hybrid has excellent stealth capabilities despite its rotund figure. It is uncertain how they came to exist.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f * bossLifeScale);

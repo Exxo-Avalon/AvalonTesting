@@ -39,6 +39,14 @@ public class EctoHand : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.EctoHandBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
+            new FlavorTextBestiaryInfoElement("They reach out, as if to touch their lost life.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

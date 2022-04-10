@@ -54,6 +54,14 @@ public class DarkMotherSlime : ModNPC
             NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NPCs.DarkMatterSlime>(), 0);
         }
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
+            new FlavorTextBestiaryInfoElement("Gelatinous, but also unstable. Made of dark matter.")
+        });
+    }
 
     public override void AI()
     {

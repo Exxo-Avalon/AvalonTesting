@@ -7,7 +7,7 @@ using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
 
-public class Virus : ModNPC
+public class Viris : ModNPC
 {
     public override void SetStaticDefaults()
     {
@@ -39,6 +39,14 @@ public class Virus : ModNPC
     public override void ModifyNPCLoot(NPCLoot loot)
     {
         loot.Add(ItemDropRule.Common(ModContent.ItemType<Pathogen>(), 1, 2, 5));
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new FlavorTextBestiaryInfoElement("Unimplemented")
+        });
     }
     public override void FindFrame(int frameHeight)
     {

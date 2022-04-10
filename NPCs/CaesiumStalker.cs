@@ -46,6 +46,14 @@ public class CaesiumStalker : ModNPC
         //Banner = NPC.type;
         //BannerItem = ModContent.ItemType<Items.Banners.CaesiumStalkerBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
+            new FlavorTextBestiaryInfoElement("Similar to the common Blaze, these creatures are made entirely of crystals.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

@@ -38,6 +38,14 @@ public class OrichalcumSlime : ModNPC
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+        });
+    }
     public override void FindFrame(int frameHeight)
     {
         var num2 = 0;

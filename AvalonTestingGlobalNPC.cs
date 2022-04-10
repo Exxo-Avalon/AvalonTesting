@@ -1,11 +1,28 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Armor;
+using AvalonTesting.Items.Consumables;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Crafting;
+using AvalonTesting.Items.Placeable.Painting;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Potions;
+using AvalonTesting.Items.Tools;
+using AvalonTesting.Items.Vanity;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Items.Weapons.Melee;
+using AvalonTesting.Items.Weapons.Ranged;
+using AvalonTesting.Items.Weapons.Throw;
 using AvalonTesting.Players;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Chat;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -17,6 +34,70 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     public static int boogerBoss = 0;
     public static float endoSpawnRate = 0.25f;
     public static bool savedIceman = false;
+    public static bool initialized = false;
+    public static List<int> slimes = new List<int>();
+    public static List<int> toxic = new List<int>();
+    public static List<int> undead = new List<int>();
+    public static List<int> fiery = new List<int>();
+    public static List<int> watery = new List<int>();
+    public static List<int> earthen = new List<int>();
+    public static List<int> flyer = new List<int>();
+    public static List<int> frozen = new List<int>();
+    public static List<int> wicked = new List<int>();
+    public static List<int> arcane = new List<int>();
+    public static List<int> shmMobs = new List<int>
+    {
+        NPCID.Creeper,
+        NPCID.Pumpking,
+        NPCID.SantaNK1,
+        ModContent.NPCType<NPCs.AegisHallowor>(),
+        ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>(),
+        ModContent.NPCType<NPCs.ArmoredHellTortoise>(),
+        ModContent.NPCType<NPCs.ArmoredWraith>(),
+        ModContent.NPCType<NPCs.BactusMinion>(), // remove later
+        ModContent.NPCType<NPCs.BombBones>(),
+        ModContent.NPCType<NPCs.BombSkeleton>(),
+        ModContent.NPCType<NPCs.CloudBat>(),
+        ModContent.NPCType<NPCs.CometTail>(),
+        ModContent.NPCType<NPCs.CrystalBones>(),
+        ModContent.NPCType<NPCs.CrystalSpectre>(),
+        ModContent.NPCType<NPCs.CursedMagmaSkeleton>(),
+        ModContent.NPCType<NPCs.DarkMatterSlime>(),
+        ModContent.NPCType<NPCs.DarkMotherSlime>(),
+        ModContent.NPCType<NPCs.Dragonfly>(),
+        ModContent.NPCType<NPCs.DragonLordBody>(),
+        ModContent.NPCType<NPCs.DragonLordBody2>(),
+        ModContent.NPCType<NPCs.DragonLordBody3>(),
+        ModContent.NPCType<NPCs.DragonLordHead>(),
+        ModContent.NPCType<NPCs.DragonLordLegs>(),
+        ModContent.NPCType<NPCs.DragonLordTail>(),
+        ModContent.NPCType<NPCs.Ectosphere>(),
+        ModContent.NPCType<NPCs.EyeBones>(),
+        ModContent.NPCType<NPCs.GuardianBones>(),
+        ModContent.NPCType<NPCs.GuardianCorruptor>(),
+        ModContent.NPCType<NPCs.ImpactWizard>(),
+        ModContent.NPCType<NPCs.Juggernaut>(),
+        ModContent.NPCType<NPCs.JuggernautSorcerer>(),
+        ModContent.NPCType<NPCs.MatterMan>(),
+        ModContent.NPCType<NPCs.MechanicalDiggerBody>(),
+        ModContent.NPCType<NPCs.MechanicalDiggerHead>(),
+        ModContent.NPCType<NPCs.MechanicalDiggerTail>(),
+        ModContent.NPCType<NPCs.Bosses.Mechasting>(),
+        ModContent.NPCType<NPCs.ProtectorWheel>(),
+        ModContent.NPCType<NPCs.QuickCaribe>(),
+        ModContent.NPCType<NPCs.RedAegisBonesHelmet>(),
+        ModContent.NPCType<NPCs.RedAegisBonesHorned>(),
+        ModContent.NPCType<NPCs.RedAegisBonesSparta>(),
+        ModContent.NPCType<NPCs.RedAegisBonesSpike>(),
+        ModContent.NPCType<NPCs.UnstableAnomaly>(),
+        ModContent.NPCType<NPCs.UnvolanditeMite>(),
+        ModContent.NPCType<NPCs.UnvolanditeMiteDigger>(),
+        ModContent.NPCType<NPCs.Valkyrie>(),
+        ModContent.NPCType<NPCs.VampireHarpy>(),
+        ModContent.NPCType<NPCs.VorazylcumMite>(),
+        ModContent.NPCType<NPCs.VorazylcumMiteDigger>(),
+    };
+    public static bool imkCompat = false;
     public static readonly int[] Hornets =
     {
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,
@@ -1073,5 +1154,634 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
 
         return base.CanHitPlayer(npc, target, ref cooldownSlot);
+    }
+    public static void InitializeNPCGroups()
+    {
+        slimes.Add(NPCID.BlueSlime);
+        slimes.Add(NPCID.MotherSlime);
+        slimes.Add(NPCID.LavaSlime);
+        slimes.Add(NPCID.DungeonSlime);
+        slimes.Add(NPCID.CorruptSlime);
+        slimes.Add(NPCID.Slimer);
+        slimes.Add(NPCID.IlluminantSlime);
+        slimes.Add(NPCID.IceSlime);
+        slimes.Add(NPCID.Crimslime);
+        slimes.Add(NPCID.SpikedIceSlime);
+        slimes.Add(NPCID.SpikedJungleSlime);
+        slimes.Add(NPCID.UmbrellaSlime);
+        slimes.Add(NPCID.RainbowSlime);
+        slimes.Add(NPCID.SlimeMasked);
+        slimes.Add(NPCID.SlimeRibbonWhite);
+        slimes.Add(NPCID.SlimeRibbonYellow);
+        slimes.Add(NPCID.SlimeRibbonGreen);
+        slimes.Add(NPCID.SlimeRibbonRed);
+        slimes.Add(NPCID.SlimeSpiked);
+        slimes.Add(NPCID.SandSlime);
+        slimes.Add(ModContent.NPCType<NPCs.DarkMotherSlime>());
+        slimes.Add(ModContent.NPCType<NPCs.DarkMatterSlime>());
+        toxic.Add(NPCID.Hornet);
+        toxic.Add(NPCID.ManEater);
+        toxic.Add(NPCID.GiantTortoise);
+        toxic.Add(NPCID.AngryTrapper);
+        toxic.Add(NPCID.MossHornet);
+        toxic.Add(NPCID.SpikedJungleSlime);
+        toxic.Add(NPCID.HornetFatty);
+        toxic.Add(NPCID.HornetHoney);
+        toxic.Add(NPCID.HornetLeafy);
+        toxic.Add(NPCID.HornetSpikey);
+        toxic.Add(NPCID.HornetStingy);
+        toxic.Add(NPCID.JungleCreeper);
+        undead.Add(NPCID.Zombie);
+        undead.Add(NPCID.Skeleton);
+        undead.Add(NPCID.AngryBones);
+        undead.Add(NPCID.DarkCaster);
+        undead.Add(NPCID.CursedSkull);
+        undead.Add(NPCID.UndeadMiner);
+        undead.Add(NPCID.Tim);
+        undead.Add(NPCID.DoctorBones);
+        undead.Add(NPCID.TheGroom);
+        undead.Add(NPCID.ArmoredSkeleton);
+        undead.Add(NPCID.Mummy);
+        undead.Add(NPCID.Wraith);
+        undead.Add(NPCID.SkeletonArcher);
+        undead.Add(NPCID.BaldZombie);
+        undead.Add(NPCID.PossessedArmor);
+        undead.Add(NPCID.VampireBat);
+        undead.Add(NPCID.Vampire);
+        undead.Add(NPCID.ZombieEskimo);
+        undead.Add(NPCID.UndeadViking);
+        undead.Add(NPCID.RuneWizard);
+        undead.Add(NPCID.PincushionZombie);
+        undead.Add(NPCID.SlimedZombie);
+        undead.Add(NPCID.SwampZombie);
+        undead.Add(NPCID.TwiggyZombie);
+        undead.Add(NPCID.ArmoredViking);
+        undead.Add(NPCID.FemaleZombie);
+        undead.Add(NPCID.HeadacheSkeleton);
+        undead.Add(NPCID.MisassembledSkeleton);
+        undead.Add(NPCID.PantlessSkeleton);
+        undead.Add(NPCID.ZombieRaincoat);
+        undead.Add(NPCID.Eyezor);
+        undead.Add(NPCID.Reaper);
+        undead.Add(NPCID.ZombieMushroom);
+        undead.Add(NPCID.ZombieMushroomHat);
+        undead.Add(NPCID.ZombieDoctor);
+        undead.Add(NPCID.ZombieSuperman);
+        undead.Add(NPCID.ZombiePixie);
+        undead.Add(NPCID.SkeletonTopHat);
+        undead.Add(NPCID.SkeletonAstonaut);
+        undead.Add(NPCID.SkeletonAlien);
+        undead.Add(NPCID.ZombieXmas);
+        undead.Add(NPCID.ZombieSweater);
+        fiery.Add(NPCID.FireImp);
+        fiery.Add(NPCID.LavaSlime);
+        fiery.Add(NPCID.Hellbat);
+        fiery.Add(NPCID.Demon);
+        fiery.Add(NPCID.VoodooDemon);
+        fiery.Add(NPCID.Lavabat);
+        fiery.Add(NPCID.RedDevil);
+        fiery.Add(ModContent.NPCType<NPCs.Blaze>());
+        fiery.Add(ModContent.NPCType<NPCs.ArmoredHellTortoise>());
+        watery.Add(NPCID.Piranha);
+        watery.Add(NPCID.BlueJellyfish);
+        watery.Add(NPCID.PinkJellyfish);
+        watery.Add(NPCID.Shark);
+        watery.Add(NPCID.Crab);
+        watery.Add(NPCID.GreenJellyfish);
+        watery.Add(NPCID.Arapaima);
+        watery.Add(NPCID.SeaSnail);
+        watery.Add(NPCID.Squid);
+        watery.Add(NPCID.AnglerFish);
+        earthen.Add(NPCID.GiantWormHead);
+        earthen.Add(NPCID.MotherSlime);
+        earthen.Add(NPCID.ManEater);
+        earthen.Add(NPCID.CaveBat);
+        earthen.Add(NPCID.Snatcher);
+        earthen.Add(NPCID.Antlion);
+        earthen.Add(NPCID.GiantBat);
+        earthen.Add(NPCID.DiggerHead);
+        earthen.Add(NPCID.GiantTortoise);
+        earthen.Add(NPCID.WallCreeper);
+        earthen.Add(NPCID.WallCreeperWall);
+        flyer.Add(NPCID.DemonEye);
+        flyer.Add(NPCID.EaterofSouls);
+        flyer.Add(NPCID.Harpy);
+        flyer.Add(NPCID.CaveBat);
+        flyer.Add(NPCID.JungleBat);
+        flyer.Add(NPCID.Pixie);
+        flyer.Add(NPCID.WyvernHead);
+        flyer.Add(NPCID.GiantBat);
+        flyer.Add(NPCID.Crimera);
+        flyer.Add(NPCID.CataractEye);
+        flyer.Add(NPCID.SleepyEye);
+        flyer.Add(NPCID.DialatedEye);
+        flyer.Add(NPCID.GreenEye);
+        flyer.Add(NPCID.PurpleEye);
+        flyer.Add(NPCID.Moth);
+        flyer.Add(NPCID.FlyingFish);
+        flyer.Add(NPCID.FlyingSnake);
+        flyer.Add(NPCID.AngryNimbus);
+        flyer.Add(ModContent.NPCType<NPCs.VampireHarpy>());
+        flyer.Add(ModContent.NPCType<NPCs.Dragonfly>());
+        frozen.Add(NPCID.IceSlime);
+        frozen.Add(NPCID.IceBat);
+        frozen.Add(NPCID.IceTortoise);
+        frozen.Add(NPCID.Wolf);
+        frozen.Add(NPCID.UndeadViking);
+        frozen.Add(NPCID.IceElemental);
+        frozen.Add(NPCID.PigronCorruption);
+        frozen.Add(NPCID.PigronHallow);
+        frozen.Add(NPCID.PigronCrimson);
+        frozen.Add(NPCID.SpikedIceSlime);
+        frozen.Add(NPCID.SnowFlinx);
+        frozen.Add(NPCID.IcyMerman);
+        frozen.Add(NPCID.IceGolem);
+        wicked.Add(NPCID.EaterofSouls);
+        wicked.Add(NPCID.DevourerHead);
+        wicked.Add(NPCID.CorruptBunny);
+        wicked.Add(NPCID.CorruptGoldfish);
+        wicked.Add(NPCID.DarkMummy);
+        wicked.Add(NPCID.CorruptSlime);
+        wicked.Add(NPCID.CursedHammer);
+        wicked.Add(NPCID.Corruptor);
+        wicked.Add(NPCID.SeekerHead);
+        wicked.Add(NPCID.Clinger);
+        wicked.Add(NPCID.Slimer);
+        wicked.Add(NPCID.PigronCorruption);
+        wicked.Add(NPCID.Crimera);
+        wicked.Add(NPCID.Herpling);
+        wicked.Add(NPCID.CrimsonAxe);
+        wicked.Add(NPCID.PigronCrimson);
+        wicked.Add(NPCID.FaceMonster);
+        wicked.Add(NPCID.FloatyGross);
+        wicked.Add(NPCID.Crimslime);
+        wicked.Add(NPCID.BloodCrawler);
+        wicked.Add(NPCID.BloodCrawlerWall);
+        wicked.Add(NPCID.BloodFeeder);
+        wicked.Add(NPCID.BloodJelly);
+        wicked.Add(NPCID.IchorSticker);
+        wicked.Add(ModContent.NPCType<NPCs.GuardianCorruptor>());
+        wicked.Add(ModContent.NPCType<NPCs.Bactus>());
+        wicked.Add(ModContent.NPCType<NPCs.Cougher>());
+        wicked.Add(ModContent.NPCType<NPCs.PyrasiteHead>());
+        wicked.Add(ModContent.NPCType<NPCs.PyrasiteBody>());
+        wicked.Add(ModContent.NPCType<NPCs.PyrasiteTail>());
+        wicked.Add(ModContent.NPCType<NPCs.Viris>());
+        wicked.Add(ModContent.NPCType<NPCs.Ickslime>());
+        wicked.Add(ModContent.NPCType<NPCs.Pigron>());
+        wicked.Add(ModContent.NPCType<NPCs.GrossyFloat>());
+        arcane.Add(NPCID.Pixie);
+        arcane.Add(NPCID.LightMummy);
+        arcane.Add(NPCID.EnchantedSword);
+        arcane.Add(NPCID.Unicorn);
+        arcane.Add(NPCID.ChaosElemental);
+        arcane.Add(NPCID.Gastropod);
+        arcane.Add(NPCID.IlluminantBat);
+        arcane.Add(NPCID.IlluminantSlime);
+        arcane.Add(NPCID.PigronHallow);
+        arcane.Add(NPCID.RainbowSlime);
+        arcane.Add(ModContent.NPCType<NPCs.Mime>());
+    }
+
+    public override void OnKill(NPC npc)
+    {
+        if (!initialized)
+        {
+            InitializeNPCGroups();
+            initialized = true;
+        }
+        if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
+        {
+            //ExxoAvalonOriginsWorld.GenerateSulphur();
+        }
+        if (npc.type == NPCID.DungeonSpirit && Main.rand.Next(15) == 0 && Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
+        {
+            int proj = Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.position, npc.velocity, ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
+            Main.projectile[proj].velocity.Y = -3.5f;
+            Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;
+        }
+    }
+    public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+    {
+        int maxValue50 = 50;
+        int maxValue700 = 700;
+        int maxValue1000 = 1000;
+        //if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].Avalon().lucky)
+        //{
+        //    maxValue50 = 25;
+        //    maxValue700 = 350;
+        //    maxValue1000 = 500;
+        //}
+        #region blocking imk tokens after phantasm
+        if (imkCompat && DownedBossSystem.downedPhantasm)
+        {
+            Mod imk = ModLoader.GetMod("imkSushisMod");
+            if (imk != null)
+            {
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootMartiansToken").Type);
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootPlanteraToken").Type);
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootHardmodeToken").Type);
+            }
+        }
+        #endregion
+        #region golem drops
+        if (npc.type == NPCID.Golem && !Main.expertMode)
+        {
+            if (!NPC.downedGolemBoss)
+            {
+                Item.NewItem(npc.GetItemSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Picksaw, 1, false, -1, false);
+                var list = new List<int>
+                {
+                    ItemID.Stynger,
+                    ItemID.StaffofEarth,
+                    ItemID.EyeoftheGolem,
+                    ItemID.PossessedHatchet,
+                    ItemID.GolemFist,
+                    ItemID.SunStone,
+                    ItemID.HeatRay,
+                    ModContent.ItemType<Sunstorm>(),
+                    ModContent.ItemType<EarthenInsignia>(),
+                    ModContent.ItemType<HeartoftheGolem>()
+                };
+                int item1 = list.RemoveAtIndex(Main.rand.Next(list.Count));
+                if (item1 == ItemID.Stynger)
+                {
+                    Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ItemID.StyngerBolt, Main.rand.Next(60, 100), false, 0, false);
+                }
+                Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), item1, 1, false, -1, false);
+            }
+            else
+            {
+                var list = new List<int>
+                {
+                    ItemID.Stynger,
+                    ItemID.StaffofEarth,
+                    ItemID.EyeoftheGolem,
+                    ItemID.Picksaw,
+                    ItemID.PossessedHatchet,
+                    ItemID.GolemFist,
+                    ItemID.SunStone,
+                    ItemID.HeatRay,
+                    ModContent.ItemType<Sunstorm>(),
+                    ModContent.ItemType<EarthenInsignia>(),
+                    ModContent.ItemType<HeartoftheGolem>()
+                };
+                int item1 = list.RemoveAtIndex(Main.rand.Next(list.Count));
+                int item2 = list.RemoveAtIndex(Main.rand.Next(list.Count));
+                if (item1 == ItemID.Stynger || item2 == ItemID.Stynger)
+                {
+                    Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ItemID.StyngerBolt, Main.rand.Next(60, 100), false, 0, false);
+                }
+                Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), item1, 1, false, -1, false);
+                Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), item2, 1, false, -1, false);
+            }
+            Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ModContent.ItemType<EarthStone>(), Main.rand.Next(2) + 1, false, 0, false);
+            Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ItemID.BeetleHusk, Main.rand.Next(4, 9), false, 0, false);
+            return;
+        }
+        #endregion
+        if (npc.type == NPCID.WallofFlesh && !Main.expertMode)
+        {
+            NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
+            NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
+            NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
+            NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NullEmblem>()));
+        }
+        if (imkCompat && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.PostPhantasmHellcastleDrop(), ModContent.ItemType<Items.Tokens.HellcastleToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.SuperhardmodePreArmaDrop(), ModContent.ItemType<Items.Tokens.SuperhardmodeToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.PostArmageddonDrop(), ModContent.ItemType<Items.Tokens.DarkMatterToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.PostMechastingDrop(), ModContent.ItemType<Items.Tokens.MechastingToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.TropicsDrop(), ModContent.ItemType<Items.Tokens.TropicsToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.ContagionDrop(), ModContent.ItemType<Items.Tokens.ContagionToken>(), 15));
+        }
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DesertPostBeakDrop(), ModContent.ItemType<AncientTitaniumHeadgear>(), 150));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DesertPostBeakDrop(), ModContent.ItemType<AncientTitaniumPlateMail>(), 150));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DesertPostBeakDrop(), ModContent.ItemType<AncientTitaniumGreaves>(), 150));
+        if (Main.hardMode && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.ContagionDrop(), ItemID.SoulofNight, 5));
+        }
+        if (npc.type == NPCID.AngryBones || npc.type == NPCID.AngryBonesBig || npc.type == NPCID.AngryBonesBigHelmet || npc.type == NPCID.AngryBonesBigMuscle)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlackWhetstone>(), 50));
+        }
+        if (Main.hardMode) npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsBloodMoonAndNotFromStatue(), ModContent.ItemType<BloodyWhetstone>(), 50));
+        if (npc.type == NPCID.KingSlime) npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BandofSlime>(), 3));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.IceBiomeDrop(), ModContent.ItemType<SoulofIce>(), 10));
+        if (npc.type == NPCID.Duck || npc.type == NPCID.Duck2 || npc.type == NPCID.DuckWhite || npc.type == NPCID.DuckWhite2)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Other.Quack>(), maxValue1000));
+        }
+        if (!NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC && Main.hardMode)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DungeonDrop(), ItemID.CobaltShield, 120));
+        }
+        if (!NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        {
+            npcLoot.Add(ItemDropRule.OneFromOptions(600, new int[]
+            {
+                ItemID.EndurancePotion,
+                ItemID.GravitationPotion,
+                ItemID.InfernoPotion,
+                ModContent.ItemType<StarbrightPotion>(),
+                ModContent.ItemType<StrengthPotion>(),
+                ModContent.ItemType<CrimsonPotion>(),
+                ItemID.IronskinPotion,
+                ItemID.SwiftnessPotion,
+                ModContent.ItemType<ShockwavePotion>(),
+                ItemID.MiningPotion,
+                ItemID.ObsidianSkinPotion,
+                ItemID.NightOwlPotion,
+                ItemID.RagePotion,
+                ItemID.RegenerationPotion,
+                ItemID.SpelunkerPotion,
+                ItemID.SonarPotion,
+                ItemID.WrathPotion,
+                ItemID.SummoningPotion,
+                ItemID.HunterPotion,
+                ItemID.FlipperPotion,
+                ModContent.ItemType<GPSPotion>(),
+                ItemID.GillsPotion
+            }));
+        }
+        if (npc.type == NPCID.EaterofSouls)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenEye>(), 7));
+        }
+        if (npc.type == NPCID.DialatedEye)
+        {
+            npcLoot.Add(ItemDropRule.Common(ItemID.BlackLens, 40));
+        }
+        if (npc.type == NPCID.Crimera || npc.type == NPCID.FaceMonster || npc.type == NPCID.BloodCrawler || npc.type == NPCID.BloodCrawlerWall)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 7));
+        }
+        if (npc.type == NPCID.PincushionZombie || npc.type == NPCID.SlimedZombie || npc.type == NPCID.SwampZombie || npc.type == NPCID.TwiggyZombie || npc.type == NPCID.Zombie || npc.type == NPCID.ZombieEskimo || npc.type == NPCID.FemaleZombie || npc.type == NPCID.ZombieRaincoat)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenFlesh>(), 7));
+        }
+        if (npc.type == NPCID.UndeadMiner)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinersPickaxe>(), 30));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinersSword>(), 30));
+        }
+        if (npc.type == NPCID.HellArmoredBones || npc.type == NPCID.HellArmoredBonesSpikeShield || npc.type == NPCID.HellArmoredBonesMace || npc.type == NPCID.HellArmoredBonesSword)
+        {
+            npcLoot.Add(ItemDropRule.OneFromOptions(55, new int[]
+            {
+                ModContent.ItemType<HellArmoredHelmet>(),
+                ModContent.ItemType<HellBlazingChestplate>(),
+                ModContent.ItemType<HellArmoredGreaves>()
+            }));
+        }
+        if (npc.type == NPCID.FloatyGross)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 5, 1, 2));
+        }
+        if (slimes.Contains(npc.type) && Main.hardMode)
+        {
+            npcLoot.Add(ItemDropRule.Common(ItemID.RoyalGel, 500));
+        }
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Rock>(), 600));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PointingLaser>(), 650));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AlienDevice>(), 700));
+        if (npc.type == NPCID.Clinger || npc.type == NPCID.Spazmatism)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreekExtinguisher>(), maxValue50));
+        }
+        if (npc.type == NPCID.RaggedCaster)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>(), maxValue50));
+        }
+        if (npc.type == NPCID.ChaosElemental)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChaosDust>(), 7, 2, 4));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChaosCharm>(), 30));
+        }
+        if (npc.lifeMax >= 100)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.SoulofHumidityDrop(), ModContent.ItemType<SoulofHumidity>(), 9));
+        }
+        if (npc.type == NPCID.BoneSerpentHead)
+        {
+            npcLoot.Add(ItemDropRule.Common(ItemID.Sunfury, 20));
+        }
+        if (undead.Contains(npc.type) && Main.hardMode)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<UndeadTalisman>(), 550));
+        }
+        #region shards
+        if (toxic.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ToxinShard>(), 8));
+        }
+        if (undead.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<UndeadShard>(), 11));
+        }
+        if (fiery.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FireShard>(), 8));
+        }
+        if (watery.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaterShard>(), 8));
+        }
+        if (earthen.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EarthShard>(), 12));
+        }
+        if (flyer.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BreezeShard>(), 13));
+        }
+        if (frozen.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FrostShard>(), 10));
+        }
+        if (wicked.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorruptShard>(), 9));
+        }
+        if (arcane.Contains(npc.type))
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ArcaneShard>(), 7));
+        }
+        #endregion
+        #region tome mats
+        if (npc.type == NPCID.Harpy || npc.type == NPCID.CaveBat || npc.type == NPCID.GiantBat || npc.type == NPCID.JungleBat)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RubybeadHerb>(), 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MysticalClaw>(), 9));
+        }
+        if (npc.type == NPCID.ChaosElemental || npc.type == NPCID.IceElemental || npc.type == NPCID.IchorSticker || npc.type == NPCID.Corruptor || npc.type == ModContent.NPCType<NPCs.Viris>())
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementDiamond>(), 6));
+        }
+        if (npc.type == NPCID.Hornet || npc.type == NPCID.BlackRecluse || npc.type == NPCID.MossHornet || npc.type == NPCID.HornetFatty || npc.type == NPCID.HornetHoney || npc.type == NPCID.HornetLeafy || npc.type == NPCID.HornetSpikey || npc.type == NPCID.HornetStingy || npc.type == NPCID.JungleCreeper || npc.type == NPCID.JungleCreeperWall || npc.type == NPCID.BlackRecluseWall)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrongVenom>(), 7));
+        }
+        if (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism || npc.type == NPCID.SkeletronPrime || npc.type == NPCID.TheDestroyer)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScrollofTome>(), 3));
+        }
+        if (npc.type == NPCID.WyvernHead)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MysticalTotem>(), 2));
+        }
+        if (npc.type == NPCID.ManEater || npc.type == NPCID.Snatcher || npc.type == NPCID.AngryTrapper)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<DewOrb>(), 25, 1, 1, 4));
+        }
+        if (npc.type == NPCID.GiantTortoise || npc.type == NPCID.IceTortoise || npc.type == NPCID.Vulture || npc.type == NPCID.FlyingFish || npc.type == NPCID.Unicorn)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementDust>(), 7));
+        }
+        if (npc.type == NPCID.CorruptSlime || npc.type == NPCID.Gastropod || npc.type == NPCID.IlluminantSlime || npc.type == NPCID.ToxicSludge || npc.type == NPCID.Crimslime || npc.type == NPCID.RainbowSlime || npc.type == NPCID.FloatyGross)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<DewofHerbs>(), 25, 1, 1, 4));
+        }
+        #endregion
+        if (npc.type == NPCID.Corruptor || npc.type == NPCID.SeekerHead)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenEye>(), 3, 1, 2));
+        }
+        if (npc.type == NPCID.Clown)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ClownBomb>(), 3, 2, 6));
+        }
+        if (npc.type == NPCID.Harpy)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsHardmode(), ItemID.ShinyRedBalloon, 50));
+        }
+        if (npc.type == NPCID.Corruptor || npc.type == NPCID.IchorSticker || npc.type == NPCID.ChaosElemental || npc.type == NPCID.IceElemental || npc.type == NPCID.AngryNimbus || npc.type == NPCID.GiantTortoise || npc.type == NPCID.RedDevil)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChaosCrystal>(), 100));
+        }
+        if (npc.type == NPCID.Vulture)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Beak>(), 3));
+        }
+        #region paintings
+        if (npc.type == NPCID.KingSlime)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirthofaMonster>(), 9));
+        }
+        if (npc.type == NPCID.CrimsonAxe || npc.type == NPCID.CursedHammer || npc.type == NPCID.EnchantedSword)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Clash>(), 100));
+        }
+        if (npc.type == NPCID.EaterofSouls)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EvilOuroboros>(), maxValue700));
+        }
+        if (npc.type == NPCID.QueenBee)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FightoftheBumblebee>(), 8));
+        }
+        if (npc.type == NPCID.Plantera)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PlanterasRage>(), 15));
+        }
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.ContagionDrop(), ModContent.ItemType<RingofDisgust>(), maxValue700));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DungeonDrop(), ModContent.ItemType<Trespassing>(), maxValue700));
+        if (Main.hardMode) npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DungeonDrop(), ModContent.ItemType<ACometHasStruckGround>(), maxValue700));
+        if (Main.eclipse) npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EclipseofDoom>(), maxValue700));
+        #endregion
+        if (npc.type == NPCID.GoblinSorcerer)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChaosTome>(), 40));
+        }
+        if (npc.type == NPCID.RedDevil)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ForsakenRelic>(), 20));
+        }
+        if (npc.type == NPCID.PossessedArmor)
+        {
+            npcLoot.Add(ItemDropRule.OneFromOptions(80, new int[]
+            {
+                ModContent.ItemType<PossessedArmorHelmet>(),
+                ModContent.ItemType<PossessedArmorChainmail>(),
+                ModContent.ItemType<PossessedArmorGreaves>()
+            }));
+        }
+        if (npc.type == NPCID.Plantera)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<LifeDew>(), 1, 10, 18));
+        }
+        if (npc.type == NPCID.SkeletonArcher || npc.type == NPCID.LavaSlime || npc.type == NPCID.MeteorHead || npc.type == NPCID.FireImp || npc.type == NPCID.Hellbat || npc.type == NPCID.Demon || npc.type == NPCID.HellArmoredBones || npc.type == NPCID.HellArmoredBonesSpikeShield || npc.type == NPCID.HellArmoredBonesMace || npc.type == NPCID.HellArmoredBonesSword)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Vortex>(), 200));
+        }
+        if (npc.type == NPCID.IchorSticker)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GoldenShield>(), 70));
+        }
+        if (npc.boss)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<StaminaCrystal>(), 4));
+        }
+        if (npc.type == NPCID.DungeonSpirit)
+        {
+            npcLoot.Add(ItemDropRule.OneFromOptions(33, new int[]
+            {
+                ModContent.ItemType<PhantomMask>(),
+                ModContent.ItemType<PhantomShirt>(),
+                ModContent.ItemType<PhantomPants>()
+            }));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Ectoplasm, 5));
+        }
+        if (npc.type == NPCID.Mothron)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenVigilanteTome>(), 5));
+        }
+        if (npc.type == NPCID.AngryNimbus)
+        {
+            NPCLoader.blockLoot.Add(ItemID.NimbusRod);
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LivingLightningBlock>(), 1, 8, 16));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Cloud, 1, 10, 16));
+            npcLoot.Add(ItemDropRule.Common(ItemID.RainCloud, 1, 2, 6));
+        }
+        if (npc.type == NPCID.WallofFlesh)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<FleshyTendril>(), 1, 13, 19));
+        }
+        if (npc.type == NPCID.EyeofCthulhu)
+        {
+            if (!Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodyAmulet>(), 10, 1, 1, 3));
+            if (Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodyAmulet>(), 100, 1, 1, 15));
+            if (Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BloodyAmulet>(), 100, 1, 1, 7));
+        }
+        if (npc.type == NPCID.Plantera)
+        {
+            npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.ChlorophyteOre, 1, 60, 120));
+        }
+        if (npc.type == NPCID.Shark)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DivingSuit>(), 60));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DivingPants>(), 40));
+        }
+        //if (!NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        //{
+        //    if (Main.player[Main.myPlayer].Avalon().ethHeart)
+        //    {
+        //        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Other.PlatinumHeart>(), 30));
+        //    }
+        //    if (Main.player[Main.myPlayer].Avalon().heartGolem)
+        //    {
+        //        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Other.PlatinumHeart>(), 50));
+        //    }
+        //}
+        //if (npc.type == NPCID.EyeofCthulhu && ExxoAvalonOriginsWorld.contagion)
+        //{
+        //    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BacciliteOre>(), 1, 30, 87));
+        //}
     }
 }

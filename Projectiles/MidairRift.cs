@@ -80,7 +80,7 @@ public class MidairRift : ModProjectile
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Virus>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
                                     if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                                 }
                             }
@@ -196,7 +196,7 @@ public class MidairRift : ModProjectile
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Virus>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
                                     if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                                 }
                             }

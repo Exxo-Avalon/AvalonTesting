@@ -40,6 +40,14 @@ public class MagmaSkeleton : ModNPC
         NPC.DeathSound = SoundID.NPCDeath2;
         //TODO: add banner
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("These sturdy skeletons are immune to lava.")
+        });
+    }
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
         if (Main.rand.Next(3) == 0) target.AddBuff(BuffID.OnFire, 60 * 7);

@@ -84,7 +84,7 @@ public class Rift : ModNPC
                             else if (p.ZoneRockLayerHeight)
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.Virus>());
+                                if (t == 0) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.Viris>());
                                 if (t == 1) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                             }
                         }
@@ -194,7 +194,7 @@ public class Rift : ModNPC
                             else if (p.ZoneRockLayerHeight)
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.Virus>());
+                                if (t == 0) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.Viris>());
                                 if (t == 1) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                             }
                         }

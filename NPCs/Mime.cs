@@ -40,6 +40,14 @@ public class Mime : ModNPC
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.75f);
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("This creature is similar in appearance to the player.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofTime>(), 3, 1, 5));
@@ -97,11 +105,11 @@ public class Mime : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Gore/MimeHead").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Gore/Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Gore/Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Gore/Girder2").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Gore/Girder2").Type, 0.9f);
+        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MimeHead").Type, 0.9f);
+        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)

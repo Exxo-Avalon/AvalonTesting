@@ -45,6 +45,14 @@ public class Hallowor : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.HalloworBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheHallow,
+            new FlavorTextBestiaryInfoElement("A guardian of light, this being shoots spit that purifies the world.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55);

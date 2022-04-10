@@ -19,6 +19,6 @@ public class Bogus : ModPrefix
     public override void Apply(Item item)
     {
         Main.player[Main.myPlayer].GetCritChance(DamageClass.Generic) += 3;
-        Main.player[Main.myPlayer].GetModPlayer<ExxoPlayer>().CritDamageMult += 0.03f;
+        //Main.player[Main.myPlayer].GetModPlayer<ExxoPlayer>().CritDamageMult += 0.03f;
     }
 }

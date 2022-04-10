@@ -102,8 +102,8 @@ public class FallenHero : ModNPC
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.OneFromOptions(18, new int[] { ModContent.ItemType<BloodstainedHelmet>(), ModContent.ItemType<Items.Vanity.BloodstainedChestplate>(), ModContent.ItemType<Items.Vanity.BloodstainedGreaves>() }));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Weapons.Melee.MinersSword>(), 12));
+        npcLoot.Add(ItemDropRule.OneFromOptions(30, new int[] { ModContent.ItemType<BloodstainedHelmet>(), ModContent.ItemType<Items.Vanity.BloodstainedChestplate>(), ModContent.ItemType<Items.Vanity.BloodstainedGreaves>() }));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Weapons.Melee.MinersSword>(), 20));
     }
     public override void HitEffect(int hitDirection, double damage)
     {

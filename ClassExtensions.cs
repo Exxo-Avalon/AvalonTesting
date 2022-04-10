@@ -16,6 +16,18 @@ namespace AvalonTesting;
 public static class ClassExtensions
 {
     /// <summary>
+    ///     Removes the specified index of a List of int - used for Golem dropping 2 items from its 11-drop loot table.
+    /// </summary>
+    /// <param name="list">The List of int.</param>
+    /// <param name="index">The index.</param>
+    /// <returns>Returns the item ID of the removed index.</returns>
+    public static int RemoveAtIndex(this List<int> list, int index)
+    {
+        int item = list[index];
+        list.RemoveAt(index);
+        return item;
+    }
+    /// <summary>
     ///     Rotate a Vector2.
     /// </summary>
     /// <param name="spinningpoint">The origin.</param>

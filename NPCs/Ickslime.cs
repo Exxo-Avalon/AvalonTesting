@@ -50,6 +50,14 @@ public class Ickslime : ModNPC
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new FlavorTextBestiaryInfoElement("Gelatinous and icky. Watch out for the large ones!")
+        });
+    }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
         if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && Main.hardMode)

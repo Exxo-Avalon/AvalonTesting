@@ -43,6 +43,14 @@ public class ImpactWizard : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.ImpactWizardBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
+            new FlavorTextBestiaryInfoElement("These monsters are capable of launching a sphere of energy that is extremely dangerous. If you get too close, this energy sphere will shoot bolts at you.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

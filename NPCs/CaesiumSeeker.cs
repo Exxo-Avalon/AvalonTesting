@@ -35,6 +35,14 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
         //Banner = NPC.type;
         //BannerItem = ModContent.ItemType<Items.Banners.CaesiumSeekerBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
+            new FlavorTextBestiaryInfoElement("These worms are some of the longest discovered.")
+        });
+    }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
         if (spawnInfo.player.AvalonBiome().ZoneCaesium && spawnInfo.player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh)) // && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))

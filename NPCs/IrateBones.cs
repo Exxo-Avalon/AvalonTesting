@@ -39,6 +39,14 @@ public class IrateBones : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.IrateBonesBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
+            new FlavorTextBestiaryInfoElement("These skeletons are simply armored Angry Bones.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.7f);

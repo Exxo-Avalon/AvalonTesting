@@ -36,7 +36,14 @@ public class Bactus : ModNPC
         BannerItem = ModContent.ItemType<Items.Banners.BactusBanner>();
         DrawOffsetY = 10;
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new FlavorTextBestiaryInfoElement("Bacti will swarm you if you're not careful. Watch out!")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<YuckyBit>(), 2));

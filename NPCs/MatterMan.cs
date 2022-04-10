@@ -46,7 +46,14 @@ public class MatterMan : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.MatterManBanner>();
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
+            new FlavorTextBestiaryInfoElement("A man that matters.")
+        });
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);

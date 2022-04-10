@@ -29,6 +29,14 @@ public class TitaniumSlime : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.TitaniumSlimeBanner>();
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
         loot.Add(ItemDropRule.Common(ItemID.TitaniumOre, 1, 10, 16));

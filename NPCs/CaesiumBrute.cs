@@ -28,6 +28,14 @@ public class CaesiumBrute : ModNPC
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
+            new FlavorTextBestiaryInfoElement("Unlike normal Demons, these creatures are capable of knocking you far away from them!")
+        });
+    }
     public override void SetDefaults()
     {
         NPC.damage = 62;

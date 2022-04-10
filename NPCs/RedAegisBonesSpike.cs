@@ -17,14 +17,21 @@ public class RedAegisBonesSpike : ModNPC
         NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
         {
             SpecificallyImmuneTo = new int[]
-    {
+            {
                 BuffID.Confused,
                 BuffID.Poisoned
-    }
+            }
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
+            new FlavorTextBestiaryInfoElement("These skeletons are heavily armor, and are nearly impossible to stop.")
+        });
+    }
     public override void SetDefaults()
     {
         NPC.damage = 120;
