@@ -1453,7 +1453,7 @@ public class RecipeCreator : ModSystem
         Mod.CreateRecipe(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("ExxoAvalonOrigins:GoldBar", 5)
+            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
             .AddIngredient(ItemID.SilverOre, 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -1461,7 +1461,7 @@ public class RecipeCreator : ModSystem
         Mod.CreateRecipe(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("ExxoAvalonOrigins:GoldBar", 5)
+            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
             .AddIngredient(ItemID.TungstenOre, 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -1469,7 +1469,7 @@ public class RecipeCreator : ModSystem
         Mod.CreateRecipe(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("ExxoAvalonOrigins:GoldBar", 5)
+            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
             .AddIngredient(ModContent.ItemType<ZincOre>(), 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -1730,7 +1730,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Lens, 5)
             .AddIngredient(ItemID.SoulofLight, 10)
             .AddIngredient(ItemID.SoulofNight, 10)
-            .AddRecipeGroup("ExxoAvalonOrigins:GoldBar", 20)
+            .AddRecipeGroup("AvalonTesting:GoldBar", 20)
             .AddIngredient(ItemID.BlackLens)
             .AddIngredient(ModContent.ItemType<BloodshotLens>(), 4)
             .AddTile(TileID.WorkBenches).Register();
@@ -2422,7 +2422,7 @@ public class RecipeCreator : ModSystem
             .AddRecipeGroup(RecipeGroupID.Wood, 20)
             .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
             .AddRecipeGroup("IronBar", 15)
-            .AddRecipeGroup("ExxoAvalonOrigins:WorkBenches")
+            .AddRecipeGroup("AvalonTesting:WorkBenches")
             .AddTile(TileID.Anvils).Register();
 
         //start stone types

@@ -9,7 +9,7 @@ class ContagionTree : ModTree
     {
         get
         {
-            return ModLoader.GetMod("ExxoAvalonOrigins");
+            return ModLoader.GetMod("AvalonTesting");
         }
     }
 

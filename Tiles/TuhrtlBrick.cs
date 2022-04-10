@@ -15,7 +15,7 @@ public class TuhrtlBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("TuhrtlBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TuhrtlBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 210;

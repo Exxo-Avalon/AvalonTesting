@@ -11,7 +11,7 @@ public class SporeBlock : ModTile
     {
         AddMapEntry(new Color(133, 235, 38));
         Main.tileSolid[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("SporeBlock").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.SporeBlock>();
         DustType = DustID.GreenFairy;
     }
 }

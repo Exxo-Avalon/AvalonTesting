@@ -12,7 +12,7 @@ public class CrystalColumn : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(73, 51, 36));
-        ItemDrop = Mod.Find<ModItem>("CrystalColumn").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.CrystalColumn>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         TileObjectData.newTile.Width = 1;

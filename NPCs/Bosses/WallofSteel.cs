@@ -66,7 +66,7 @@ public class WallofSteel : ModNPC
         NPC.scale = 1.4f;
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath14;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/WallofSteel");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/WallofSteel");
     }
 
     public override void BossLoot(ref string name, ref int potionType)

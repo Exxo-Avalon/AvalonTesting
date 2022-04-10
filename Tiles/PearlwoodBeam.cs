@@ -12,7 +12,7 @@ public class PearlwoodBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(75, 68, 49));
-        ItemDrop = Mod.Find<ModItem>("PearlwoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.PearlwoodBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

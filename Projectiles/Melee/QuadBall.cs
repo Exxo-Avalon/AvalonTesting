@@ -164,7 +164,7 @@ public class QuadBall : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/Melee/QuadBall_Chain");
+        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/QuadBall_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

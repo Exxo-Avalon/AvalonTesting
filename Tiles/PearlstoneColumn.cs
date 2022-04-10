@@ -12,7 +12,7 @@ public class PearlstoneColumn : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(73, 51, 36));
-        ItemDrop = Mod.Find<ModItem>("PearlstoneColumn").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.PearlstoneColumn>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

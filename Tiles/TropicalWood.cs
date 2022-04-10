@@ -13,7 +13,7 @@ public class TropicalWood : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("TropicalWood").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
         DustType = DustID.SnowBlock;
     }
 }

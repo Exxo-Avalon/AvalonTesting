@@ -28,7 +28,7 @@ class EideticMirror : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.MagicMirror).AddRecipeGroup("ExxoAvalonOrigins:GoldBar", 10).AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 4).AddTile(TileID.Anvils).ReplaceResult(ModContent.ItemType<EideticMirror>());
+        CreateRecipe(1).AddIngredient(ItemID.MagicMirror).AddRecipeGroup("AvalonTesting:GoldBar", 10).AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 4).AddTile(TileID.Anvils).ReplaceResult(ModContent.ItemType<EideticMirror>());
 
         //recipe = new ModRecipe(mod);
         //recipe.AddIngredient(ItemID.MagicMirror);

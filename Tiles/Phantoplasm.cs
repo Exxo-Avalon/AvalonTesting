@@ -12,7 +12,7 @@ public class Phantoplasm : ModTile
     {
         AddMapEntry(Color.Red);
         Main.tileSolid[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("Phantoplasm").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Phantoplasm>();
         DustType = DustID.TheDestroyer;
     }
     public override bool KillSound(int i, int j)

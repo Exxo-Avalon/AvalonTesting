@@ -18,7 +18,7 @@ public class SkyBrick : ModTile
         Main.tileMerge[Type][TileID.Cloud] = true;
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("SkyBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.SkyBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 300;

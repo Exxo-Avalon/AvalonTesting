@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,7 +31,7 @@ public class Snotsand : ModTile
         TileID.Sets.Conversion.Sand[Type] = true;
         TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
         TileID.Sets.Falling[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("SnotsandBlock").Type;
+        ItemDrop = ModContent.ItemType<SnotsandBlock>();
         SetModCactus(new IckyCactus());
         SetModPalmTree(new ContagionPalmTree());
         DustType = DustID.ScourgeOfTheCorruptor;

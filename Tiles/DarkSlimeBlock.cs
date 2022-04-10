@@ -14,7 +14,7 @@ public class DarkSlimeBlock : ModTile
         Main.tileMergeDirt[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DarkSlimeBlock").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DarkSlimeBlock>();
         DustType = DustID.UnholyWater;
     }
 }

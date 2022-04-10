@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +22,7 @@ public class HardenedSnotsand : ModTile
         Main.tileMerge[ModContent.TileType<Snotsand>()][Type] = true;
         Main.tileMerge[Type][ModContent.TileType<Snotsand>()] = true;
         TileID.Sets.Conversion.HardenedSand[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("HardenedSnotsandBlock").Type;
+        ItemDrop = ModContent.ItemType<HardenedSnotsandBlock>();
         DustType = DustID.ScourgeOfTheCorruptor;
     }
 }

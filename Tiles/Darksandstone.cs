@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,7 +17,7 @@ public class Darksandstone : ModTile
         Main.tileMerge[TileID.Sandstone][Type] = true;
         Main.tileMerge[Type][TileID.HardenedSand] = true;
         Main.tileMerge[TileID.HardenedSand][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DarksandstoneBlock").Type;
+        ItemDrop = ModContent.ItemType<DarksandstoneBlock>();
         DustType = ModContent.DustType<Dusts.DarkMatterDust>();
     }
 

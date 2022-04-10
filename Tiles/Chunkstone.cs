@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +25,7 @@ public class Chunkstone : ModTile
         Main.tileMerge[TileID.Stone][Type] = true;
         Main.tileMerge[Type][TileID.Mud] = true;
         Main.tileMerge[TileID.Mud][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("ChunkstoneBlock").Type;
+        ItemDrop = ModContent.ItemType<ChunkstoneBlock>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 60;

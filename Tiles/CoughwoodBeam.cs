@@ -12,7 +12,7 @@ public class CoughwoodBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(57, 73, 47));
-        ItemDrop = Mod.Find<ModItem>("CoughwoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.CoughwoodBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

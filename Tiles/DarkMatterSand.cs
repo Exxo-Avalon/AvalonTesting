@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -11,7 +12,7 @@ public class DarkMatterSand : ModTile
         AddMapEntry(new Color(126, 71, 107));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DarkSandBlock").Type;
+        ItemDrop = ModContent.ItemType<DarkSandBlock>();
         DustType = ModContent.DustType<Dusts.DarkMatterDust>();
     }
 

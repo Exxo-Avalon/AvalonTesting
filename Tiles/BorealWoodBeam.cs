@@ -11,7 +11,7 @@ public class BorealWoodBeam : ModTile
 {
     public override void SetStaticDefaults()
     {
-        ItemDrop = Mod.Find<ModItem>("BorealWoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.BorealWoodBeam>();
         AddMapEntry(new Color(85, 68, 57));
         Main.tileSolid[Type] = false;
         Main.tileNoAttach[Type] = false;

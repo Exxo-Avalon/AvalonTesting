@@ -38,7 +38,7 @@ public class Hellrazer : ModItem
         Item.UseSound = SoundID.Item40;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = Mod.Assets.Request<Texture2D>(Texture + "_Glow").Value;
+            Item.GetGlobalItem<ItemUseGlow>().glowTexture = Mod.Assets.Request<Texture2D>("Items/Weapons/Ranged/Hellrazer_Glow").Value;
         }
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetX = -5;
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetY = 0;

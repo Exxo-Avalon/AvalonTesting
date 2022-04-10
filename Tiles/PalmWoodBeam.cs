@@ -12,7 +12,7 @@ public class PalmWoodBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(85, 62, 27));
-        ItemDrop = Mod.Find<ModItem>("PalmWoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.PalmWoodBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

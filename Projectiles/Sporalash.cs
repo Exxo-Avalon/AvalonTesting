@@ -174,7 +174,7 @@ public class Sporalash : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/Sporalash_Chain");
+        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Sporalash_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

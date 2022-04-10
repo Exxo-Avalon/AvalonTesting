@@ -12,7 +12,7 @@ public class ShadewoodBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(41, 47, 50));
-        ItemDrop = Mod.Find<ModItem>("ShadewoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.ShadewoodBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

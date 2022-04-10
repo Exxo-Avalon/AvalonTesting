@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +21,7 @@ public class YellowIce : ModTile
         Main.tileMerge[TileID.FleshIce][Type] = true;
         Main.tileShine2[Type] = true;
         TileID.Sets.Conversion.Ice[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("YellowIceBlock").Type;
+        ItemDrop = ModContent.ItemType<YellowIceBlock>();
         AvalonTesting.MergeWith(Type, TileID.SnowBlock);
         SoundType = SoundID.Item;
         SoundStyle = 50;

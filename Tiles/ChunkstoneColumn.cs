@@ -12,7 +12,7 @@ public class ChunkstoneColumn : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(73, 51, 36));
-        ItemDrop = Mod.Find<ModItem>("ChunkstoneColumn").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.ChunkstoneColumn>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

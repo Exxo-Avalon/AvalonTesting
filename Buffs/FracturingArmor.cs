@@ -31,6 +31,6 @@ public class FracturingArmor : ModBuff
                 player.GetModPlayer<ExxoBuffPlayer>().FracturingArmorLevel += 3;
             }
         }
-        //Main.buffTip[149] = "Decreased defense by " + player.GetModPlayer<ExxoAvalonOriginsGlobalPlayer>(mod).fAlevel;
+        //Main.buffTip[149] = "Decreased defense by " + player.GetModPlayer<AvalonTestingGlobalPlayer>(mod).fAlevel;
     }
 }

@@ -9,7 +9,7 @@ class ContagionPalmTree : ModPalmTree
     {
         get
         {
-            return ModLoader.GetMod("ExxoAvalonOrigins");
+            return ModLoader.GetMod("AvalonTesting");
         }
     }
     public override int DropWood()

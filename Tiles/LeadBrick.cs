@@ -16,7 +16,7 @@ public class LeadBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("LeadBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.LeadBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Lead;

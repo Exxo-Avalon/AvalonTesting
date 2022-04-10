@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ public class BlackIce : ModTile
         AddMapEntry(new Color(127, 104, 135));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("BlackIceBlock").Type;
+        ItemDrop = ModContent.ItemType<BlackIceBlock>();
         Main.tileMerge[Type][TileID.IceBlock] = true;
         Main.tileMerge[TileID.IceBlock][Type] = true;
         Main.tileShine2[Type] = true;

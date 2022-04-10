@@ -31,6 +31,6 @@ class HerbologyBench : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddRecipeGroup(RecipeGroupID.IronBar, 8).AddRecipeGroup(RecipeGroupID.Wood, 45).AddIngredient(ItemID.GrassSeeds, 20).AddRecipeGroup("ExxoAvalonOrigins:Herbs", 15).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddRecipeGroup(RecipeGroupID.IronBar, 8).AddRecipeGroup(RecipeGroupID.Wood, 45).AddIngredient(ItemID.GrassSeeds, 20).AddRecipeGroup("AvalonTesting:Herbs", 15).AddTile(TileID.Anvils).Register();
     }
 }

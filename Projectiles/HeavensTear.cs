@@ -170,7 +170,7 @@ public class HeavensTear : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/HeavensTear_Chain");
+        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/HeavensTear_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

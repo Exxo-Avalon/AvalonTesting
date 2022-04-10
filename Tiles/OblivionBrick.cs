@@ -15,7 +15,7 @@ public class OblivionBrick : ModTile
         Main.tileBrick[Type] = true;
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("OblivionBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OblivionBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Adamantite;

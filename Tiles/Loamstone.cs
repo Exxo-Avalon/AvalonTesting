@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -17,7 +18,7 @@ public class Loamstone : ModTile
         Main.tileMerge[TileID.Stone][Type] = true;
         Main.tileMerge[Type][ModContent.TileType<TropicalMud>()] = true;
         Main.tileMerge[ModContent.TileType<TropicalMud>()][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("LoamstoneBrick").Type;
+        ItemDrop = ModContent.ItemType<LoamstoneBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.TropicalMudDust>();

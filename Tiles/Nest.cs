@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +13,7 @@ public class Nest : ModTile
         AddMapEntry(new Color(198, 175, 132));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("NestBlock").Type;
+        ItemDrop = ModContent.ItemType<NestBlock>();
         DustType = DustID.MarblePot;
         AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
         AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());

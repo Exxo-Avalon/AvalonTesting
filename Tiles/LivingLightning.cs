@@ -1,4 +1,5 @@
 using AvalonTesting.Dusts;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,7 +15,7 @@ public class LivingLightning : ModTile
     {
         Main.tileLighted[Type] = true;
         SoundType = SoundID.Dig;
-        ItemDrop = Mod.Find<ModItem>("LivingLightningBlock").Type;
+        ItemDrop = ModContent.ItemType<LivingLightningBlock>();
         AddMapEntry(new Color(196, 142, 238));
         AnimationFrameHeight = 90;
         Main.tileSolid[Type] = false;

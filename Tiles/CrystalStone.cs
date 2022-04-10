@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
@@ -33,7 +34,7 @@ public class CrystalStone : ModTile
         Main.tileMerge[TileID.Stone][Type] = true;
         Main.tileMerge[Type][TileID.Mud] = true;
         Main.tileMerge[TileID.Mud][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("CrystalStoneBlock").Type;
+        ItemDrop = ModContent.ItemType<CrystalStoneBlock>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.PinkCrystalShard;

@@ -19,7 +19,7 @@ public class CoolGemsparkBlock : ModTile
         AddMapEntry(Color.DarkCyan);
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("CoolGemsparkBlock").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.CoolGemsparkBlock>();
         DustType = DustID.Ebonwood;
     }
 

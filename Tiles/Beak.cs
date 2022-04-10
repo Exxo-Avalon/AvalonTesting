@@ -12,7 +12,7 @@ public class Beak : ModTile
     {
         AddMapEntry((Color.DarkOrange), LanguageManager.Instance.GetText("Beak"));
         Main.tileSolid[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("Beak").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Beak>();
         SoundType = SoundID.NPCHit;
         SoundStyle = 2;
     }

@@ -10,6 +10,6 @@ public class ChocolateCandyCaneBlock : ModTile
     {
         AddMapEntry(Color.Brown);
         Main.tileSolid[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("ChocolateCandyCaneBlock").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ChocolateCandyCaneBlock>();
     }
 }

@@ -13,7 +13,7 @@ public class VoltBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("VoltBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.VoltBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.VilePowder;

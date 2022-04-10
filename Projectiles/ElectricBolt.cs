@@ -23,7 +23,7 @@ public class ElectricBolt : ModProjectile
         Projectile.ignoreWater = true;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.penetrate = 2;
-        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
         Main.projFrames[Projectile.type] = 4;
     }
     public override void OnHitPlayer(Player target, int damage, bool crit)

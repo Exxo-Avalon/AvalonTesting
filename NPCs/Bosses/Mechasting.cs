@@ -37,7 +37,7 @@ public class Mechasting : ModNPC
         NPC.boss = true;
         NPC.lifeMax = 82000;
         NPC.scale = 1.2f;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/Mechasting");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Mechasting");
         //bossBag = ModContent.ItemType<Items.BossBags.MechastingBossBag>();
 
     }

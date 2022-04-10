@@ -12,7 +12,7 @@ public class RichMahoganyBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(99, 49, 52));
-        ItemDrop = Mod.Find<ModItem>("RichMahoganyBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.RichMahoganyBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

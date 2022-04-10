@@ -28,6 +28,11 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
 
     public override bool InstancePerEntity => true;
 
+    public override GlobalItem Clone(Item item, Item itemClone)
+    {
+        return base.Clone(item, itemClone);
+    }
+
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
     {
         if (item.IsArmor() && pre == -3)

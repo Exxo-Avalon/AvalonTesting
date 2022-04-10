@@ -17,7 +17,7 @@ public class DurataniumBrick : ModTile
         Main.tileBrick[Type] = true;
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DurataniumBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DurataniumBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = ModContent.DustType<Dusts.DurataniumDust>();

@@ -16,7 +16,7 @@ public class FeroziumBrick : ModTile
         Main.tileBrick[Type] = true;
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
-        ItemDrop = Mod.Find<ModItem>("FeroziumBrick").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.FeroziumBrick>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.UltraBrightTorch;

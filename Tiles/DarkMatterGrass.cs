@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -13,7 +14,7 @@ public class DarkMatterGrass : ModTile
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileBlendAll[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DarkMatterGrass").Type;
+        ItemDrop = ModContent.ItemType<DarkMatterSoilBlock>();
         DustType = ModContent.DustType<Dusts.DarkMatterDust>();
     }
 

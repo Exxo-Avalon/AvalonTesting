@@ -13,7 +13,7 @@ public class Lifestone : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("Lifestone").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Lifestone>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.GreenFairy;

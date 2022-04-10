@@ -1149,31 +1149,31 @@ public class ExxoPlayer : ModPlayer
     {
         tag = new TagCompound
         {
-            { "ExxoAvalonOrigins:TomeSlot", ItemIO.Save(tomeItem) },
-            { "ExxoAvalonOrigins:CrystalHealth", crystalHealth },
-            { "ExxoAvalonOrigins:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-            { "ExxoAvalonOrigins:SHMAcc", shmAcc },
-            { "ExxoAvalonOrigins:HerbTier", (int)herbTier },
-            { "ExxoAvalonOrigins:HerbTotal", herbTotal },
-            { "ExxoAvalonOrigins:PotionTotal", potionTotal },
-            { "ExxoAvalonOrigins:HerbCounts", herbCounts.Save() },
-            { "ExxoAvalonOrigins:SpiritPoppyUseCount", spiritPoppyUseCount },
-            { "ExxoAvalonOrigins:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-            { "ExxoAvalonOrigins:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-            { "ExxoAvalonOrigins:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-            { "ExxoAvalonOrigins:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-            { "ExxoAvalonOrigins:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
+            { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
+            { "AvalonTesting:CrystalHealth", crystalHealth },
+            { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
+            { "AvalonTesting:SHMAcc", shmAcc },
+            { "AvalonTesting:HerbTier", (int)herbTier },
+            { "AvalonTesting:HerbTotal", herbTotal },
+            { "AvalonTesting:PotionTotal", potionTotal },
+            { "AvalonTesting:HerbCounts", herbCounts.Save() },
+            { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
+            { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
+            { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
+            { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
+            { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
+            { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
         };
     }
     public override void LoadData(TagCompound tag)
     {
-        if (tag.ContainsKey("ExxoAvalonOrigins:TomeSlot"))
+        if (tag.ContainsKey("AvalonTesting:TomeSlot"))
         {
-            tomeItem = ItemIO.Load(tag.Get<TagCompound>("ExxoAvalonOrigins:TomeSlot"));
+            tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:CrystalHealth"))
+        if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
         {
-            crystalHealth = tag.GetAsInt("ExxoAvalonOrigins:CrystalHealth");
+            crystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
             if (crystalHealth > 4)
             {
                 crystalHealth = 4;
@@ -1186,60 +1186,60 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (tag.ContainsKey("ExxoAvalonOrigins:Stamina"))
+        if (tag.ContainsKey("AvalonTesting:Stamina"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("ExxoAvalonOrigins:Stamina");
+            Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:SHMAcc"))
+        if (tag.ContainsKey("AvalonTesting:SHMAcc"))
         {
-            shmAcc = tag.Get<bool>("ExxoAvalonOrigins:SHMAcc");
+            shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:HerbTier"))
+        if (tag.ContainsKey("AvalonTesting:HerbTier"))
         {
-            herbTier = (HerbTier)tag.GetAsInt("ExxoAvalonOrigins:HerbTier");
+            herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:HerbTotal"))
+        if (tag.ContainsKey("AvalonTesting:HerbTotal"))
         {
-            herbTotal = tag.GetAsInt("ExxoAvalonOrigins:HerbTotal");
+            herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:PotionTotal"))
+        if (tag.ContainsKey("AvalonTesting:PotionTotal"))
         {
-            potionTotal = tag.GetAsInt("ExxoAvalonOrigins:PotionTotal");
+            potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:HerbCounts"))
+        if (tag.ContainsKey("AvalonTesting:HerbCounts"))
         {
             try
             {
-                herbCounts.Load(tag.Get<TagCompound>("ExxoAvalonOrigins:HerbCounts"));
+                herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
             }
             catch
             {
                 herbCounts = new Dictionary<int, int>();
             }
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:SpiritPoppyUseCount"))
+        if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
         {
-            spiritPoppyUseCount = tag.Get<int>("ExxoAvalonOrigins:SpiritPoppyUseCount");
+            spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:RocketJumpUnlocked"))
+        if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("ExxoAvalonOrigins:RocketJumpUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:TeleportUnlocked"))
+        if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("ExxoAvalonOrigins:TeleportUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:SwimmingUnlocked"))
+        if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SwimmingUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:SprintUnlocked"))
+        if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("ExxoAvalonOrigins:SprintUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
         }
-        if (tag.ContainsKey("ExxoAvalonOrigins:FlightRestoreUnlocked"))
+        if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("ExxoAvalonOrigins:FlightRestoreUnlocked");
+            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
         }
     }
     public override void PostUpdate()

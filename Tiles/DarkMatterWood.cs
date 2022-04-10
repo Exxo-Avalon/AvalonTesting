@@ -12,7 +12,7 @@ public class DarkMatterWood : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileBrick[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("DarkMatterWood").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DarkMatterWood>();
         DustType = ModContent.DustType<Dusts.DarkMatterWoodDust>();
     }
 }

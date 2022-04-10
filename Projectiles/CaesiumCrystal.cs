@@ -27,7 +27,7 @@ public class CaesiumCrystal : ModProjectile
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
-        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Placeable.Tile;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
@@ -14,7 +15,7 @@ public class OpalGemspark : ModTile
         Main.tileSolid[Type] = true;
         Main.tileLighted[Type] = true;
         Main.tileShine2[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("OpalGemsparkBlock").Type;
+        ItemDrop = ModContent.ItemType<OpalGemsparkBlock>();;
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

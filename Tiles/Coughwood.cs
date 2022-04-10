@@ -11,7 +11,7 @@ public class Coughwood : ModTile
         AddMapEntry(new Color(116, 138, 106));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("Coughwood").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
         DustType = ModContent.DustType<Dusts.CoughwoodDust>();
     }
 }

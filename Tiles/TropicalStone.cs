@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -14,7 +15,7 @@ public class TropicalStone : ModTile
         Main.tileMergeDirt[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("TropicalStoneBlock").Type;
+        ItemDrop = ModContent.ItemType<TropicalStoneBlock>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.SnowBlock;

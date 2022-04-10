@@ -17,7 +17,7 @@ public class WarmGemsparkBlock : ModTile
         AddMapEntry(Color.OrangeRed);
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("WarmGemsparkBlock").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.WarmGemsparkBlock>();
         DustType = DustID.Crimstone;
     }
 

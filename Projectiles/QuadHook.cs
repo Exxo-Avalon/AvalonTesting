@@ -1,13 +1,14 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Projectiles;
 
-class QuadHook : ModProjectile
+internal class QuadHook : ModProjectile
 {
     public override void SetStaticDefaults()
     {
@@ -203,20 +204,26 @@ class QuadHook : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/QuadHook_Chain");
+        Asset<Texture2D> texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/QuadHook_Chain");
 
-        var position = Projectile.Center;
-        var mountedCenter = Main.player[Projectile.owner].MountedCenter;
+        Vector2 position = Projectile.Center;
+        Vector2 mountedCenter = Main.player[Projectile.owner].MountedCenter;
         var sourceRectangle = new Rectangle?();
         var origin = new Vector2(texture.Width() * 0.5f, texture.Height() * 0.5f);
         float num1 = texture.Height();
-        var vector2_4 = mountedCenter - position;
-        var rotation = (float)Math.Atan2(vector2_4.Y, vector2_4.X) - 1.57f;
-        var flag = true;
+        Vector2 vector2_4 = mountedCenter - position;
+        float rotation = (float)Math.Atan2(vector2_4.Y, vector2_4.X) - 1.57f;
+        bool flag = true;
         if (float.IsNaN(position.X) && float.IsNaN(position.Y))
+        {
             flag = false;
+        }
+
         if (float.IsNaN(vector2_4.X) && float.IsNaN(vector2_4.Y))
+        {
             flag = false;
+        }
+
         while (flag)
         {
             if (vector2_4.Length() < num1 + 1.0)
@@ -225,32 +232,37 @@ class QuadHook : ModProjectile
             }
             else
             {
-                var vector2_1 = vector2_4;
+                Vector2 vector2_1 = vector2_4;
                 vector2_1.Normalize();
                 position += vector2_1 * num1;
                 vector2_4 = mountedCenter - position;
-                var color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
+                Color color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
                 color2 = Projectile.GetAlpha(color2);
-                Main.EntitySpriteDraw(texture.Value, position - Main.screenPosition, sourceRectangle, color2, rotation, origin, 1f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(texture.Value, position - Main.screenPosition, sourceRectangle, color2, rotation,
+                    origin, 1f, SpriteEffects.None, 0);
             }
         }
 
         return true;
     }
+
     public override bool? CanUseGrapple(Player player)
     {
-        var hooksOut = 0;
-        for (var l = 0; l < 1000; l++)
+        int hooksOut = 0;
+        for (int l = 0; l < 1000; l++)
         {
-            if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == Projectile.type)
+            if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer &&
+                Main.projectile[l].type == Projectile.type)
             {
                 hooksOut++;
             }
         }
+
         if (hooksOut > 4)
         {
             return false;
         }
+
         return true;
     }
 
@@ -263,6 +275,7 @@ class QuadHook : ModProjectile
     {
         numHooks = 4;
     }
+
     public override void GrappleRetreatSpeed(Player player, ref float speed)
     {
         speed = 21f;

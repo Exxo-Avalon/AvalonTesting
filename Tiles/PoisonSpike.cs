@@ -13,7 +13,7 @@ public class PoisonSpike : ModTile
         AddMapEntry(new Color(95, 95, 36), LanguageManager.Instance.GetText("Poison Spike"));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("PoisonSpike").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.PoisonSpike>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Grass;

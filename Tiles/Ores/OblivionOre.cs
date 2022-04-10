@@ -17,7 +17,7 @@ public class OblivionOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 900;
-        ItemDrop = Mod.Find<ModItem>("OblivionOre").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OblivionOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 300;

@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -10,6 +11,6 @@ public class MintChocCandyCane : ModTile
     {
         AddMapEntry(Color.IndianRed);
         Main.tileSolid[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("MintChocolateCandyCaneBlock").Type;
+        ItemDrop = ModContent.ItemType<MintChocolateCandyCaneBlock>();
     }
 }

@@ -19,7 +19,7 @@ public class VorazylcumOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1900;
-        ItemDrop = Mod.Find<ModItem>("VorazylcumOre").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.VorazylcumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 250;

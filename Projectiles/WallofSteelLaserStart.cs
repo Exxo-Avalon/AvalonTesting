@@ -26,8 +26,9 @@ public class WallofSteelLaserStart : ModProjectile
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
-        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
     }
+
     public override void AI()
     {
         Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;

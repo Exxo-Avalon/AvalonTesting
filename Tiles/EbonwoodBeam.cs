@@ -12,7 +12,7 @@ public class EbonwoodBeam : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(70, 67, 87));
-        ItemDrop = Mod.Find<ModItem>("EbonwoodBeam").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.EbonwoodBeam>();
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

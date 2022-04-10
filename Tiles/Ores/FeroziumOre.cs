@@ -18,7 +18,7 @@ public class FeroziumOre : ModTile
         Main.tileOreFinderPriority[Type] = 690;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
-        ItemDrop = Mod.Find<ModItem>("FeroziumOre").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.FeroziumOre>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         MinPick = 180;

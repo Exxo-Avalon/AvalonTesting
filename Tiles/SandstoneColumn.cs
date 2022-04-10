@@ -12,7 +12,7 @@ public class SandstoneColumn : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(73, 51, 36));
-        ItemDrop = Mod.Find<ModItem>("SandstoneColumn").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.SandstoneColumn>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         TileObjectData.newTile.Width = 1;

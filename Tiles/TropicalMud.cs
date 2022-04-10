@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -15,7 +16,7 @@ public class TropicalMud : ModTile
         Main.tileMerge[Type][TileID.Dirt] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("TropicalMudBlock").Type;
+        ItemDrop = ModContent.ItemType<TropicalMudBlock>();
         DustType = ModContent.DustType<Dusts.TropicalMudDust>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Logic;
@@ -10,17 +11,22 @@ public class ItemUseGlow : GlobalItem
     public Texture2D glowTexture = null;
 
     public override bool InstancePerEntity => true;
+
+    public override GlobalItem Clone(Item item, Item itemClone)
+    {
+        return base.Clone(item, itemClone);
+    }
     //public override bool CloneNewInstances => true;
 }
 // public class PlayerUseGlow : ModPlayer
 // {
-//     public static readonly PlayerLayer ItemUseGlow = new PlayerLayer("ExxoAvalonOrigins", "ItemUseGlow", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
+//     public static readonly PlayerLayer ItemUseGlow = new PlayerLayer("AvalonTesting", "ItemUseGlow", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
 //     {
 //         if (drawInfo.shadow != 0)
 //             return;
 //
 //         Player drawPlayer = drawInfo.drawPlayer;
-//         Mod mod = ModLoader.GetMod("ExxoAvalonOrigins");
+//         Mod mod = ModLoader.GetMod("AvalonTesting");
 //         if (!drawPlayer.HeldItem.IsAir)
 //         {
 //             Item item = drawPlayer.HeldItem;

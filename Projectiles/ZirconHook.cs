@@ -230,7 +230,7 @@ public class ZirconHook : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/ZirconHook_Chain");
+        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/ZirconHook_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

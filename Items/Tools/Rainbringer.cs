@@ -27,6 +27,6 @@ class Rainbringer : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.RainCloud, 50).AddRecipeGroup(RecipeGroup.recipeGroupIDs["ExxoAvalonOrigins:CopperBar"], 10).AddIngredient(ItemID.SoulofNight, 10).AddTile(TileID.MythrilAnvil).ReplaceResult(Item.type);
+        CreateRecipe(1).AddIngredient(ItemID.RainCloud, 50).AddRecipeGroup(RecipeGroup.recipeGroupIDs["AvalonTesting:CopperBar"], 10).AddIngredient(ItemID.SoulofNight, 10).AddTile(TileID.MythrilAnvil).ReplaceResult(Item.type);
     }
 }

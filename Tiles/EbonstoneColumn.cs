@@ -13,7 +13,7 @@ public class EbonstoneColumn : ModTile
     {
         AddMapEntry(new Color(73, 51, 36));
         //Main.tileBeam[Type] = true;
-        ItemDrop = Mod.Find<ModItem>("EbonstoneColumn").Type;
+        ItemDrop = ModContent.ItemType<Items.Placeable.Beam.EbonstoneColumn>();
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         TileObjectData.newTile.Width = 1;

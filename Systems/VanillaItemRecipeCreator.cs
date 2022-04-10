@@ -17,7 +17,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.SorcererEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.WarriorEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.SummonerEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Mod.CreateRecipe(ItemID.Aglet).AddRecipeGroup("ExxoAvalonOrigins:CopperBar").AddIngredient(ItemID.Wood, 6).AddTile(TileID.Anvils).Register();
+        Mod.CreateRecipe(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddIngredient(ItemID.Wood, 6).AddTile(TileID.Anvils).Register();
         Mod.CreateRecipe(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.WorkBenches).Register();
         Mod.CreateRecipe(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.WorkBenches).Register();
         Mod.CreateRecipe(ItemID.PeaceCandle).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 2).AddIngredient(ItemID.PinkTorch).AddTile(TileID.WorkBenches).Register();

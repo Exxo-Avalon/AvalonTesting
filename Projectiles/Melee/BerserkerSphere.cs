@@ -128,7 +128,7 @@ public class BerserkerSphere : ModProjectile
     
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("ExxoAvalonOrigins/Projectiles/Melee/BerserkerSphere_Chain");
+        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/BerserkerSphere_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;
