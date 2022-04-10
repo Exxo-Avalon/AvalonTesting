@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs;
 
@@ -50,8 +51,8 @@ public class Ickslime : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion && !spawnInfo.player.InPillarZone() && Main.hardMode)
-            return (spawnInfo.player.Avalon().ZoneContagion && !spawnInfo.player.InPillarZone() && Main.hardMode) ? 0.7f : 0f;
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && Main.hardMode)
+            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && Main.hardMode) ? 0.7f : 0f;
         return 0f;
     }
     public override void FindFrame(int frameHeight)

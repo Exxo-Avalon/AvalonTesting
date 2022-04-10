@@ -15,6 +15,7 @@ namespace AvalonTesting;
 public class AvalonTestingGlobalNPC : GlobalNPC
 {
     public static float endoSpawnRate = 0.25f;
+    public static bool savedIceman = false;
     public static readonly int[] Hornets =
     {
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,

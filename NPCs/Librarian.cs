@@ -212,7 +212,6 @@ public class Librarian : ModNPC
         }
         var num216 = (int)(NPC.position.X + NPC.width / 2) / 16;
         var num217 = (int)(NPC.position.Y + NPC.height + 1f) / 16;
-        AvalonTestingGlobalNPC.savedIceman = true;
         if (NPC.homeTileX == -1 && NPC.homeTileY == -1 && NPC.velocity.Y == 0f)
         {
             NPC.homeTileX = (int)NPC.Center.X / 16;

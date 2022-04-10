@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs;
 
@@ -114,7 +115,7 @@ public class PoisonDartFrog : ModNPC
             NPC.velocity.X += speedX * NPC.direction;
         }
 
-        if (NPC.collideY && NPC.velocity.Y >= 0 && ExxoAvalonOriginsCollisions.SolidCollisionArma(NPC.position, NPC.width, NPC.height))
+        if (NPC.collideY && NPC.velocity.Y >= 0 && AvalonTestingCollisions.TouchingTile(NPC.position, NPC.width, NPC.height))
         {
             NPC.velocity.X *= 0.7f;
             if (NPC.velocity.X > -0.5 && NPC.velocity.X < 0.5)
@@ -132,7 +133,7 @@ public class PoisonDartFrog : ModNPC
     }
     public override void FindFrame(int frameHeight)
     {
-        if (NPC.collideY && NPC.velocity.Y >= 0 && ExxoAvalonOriginsCollisions.SolidCollisionArma(NPC.position, NPC.width, NPC.height))
+        if (NPC.collideY && NPC.velocity.Y >= 0 && AvalonTestingCollisions.TouchingTile(NPC.position, NPC.width, NPC.height))
         {
             NPC.frame.Y = 0;
         }
@@ -148,7 +149,7 @@ public class PoisonDartFrog : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneTropics && !spawnInfo.player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {

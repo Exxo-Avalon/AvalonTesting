@@ -6,6 +6,7 @@ using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Painting;
 using AvalonTesting.Items.Weapons.Magic;
 using AvalonTesting.Items.Weapons.Ranged;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -129,7 +130,7 @@ public class Iceman : ModNPC
         itemIds.Add(ModContent.ItemType<FrostySpectacle>());
         itemIds.Add(ModContent.ItemType<BagofFrost>());
         itemIds.Add(ItemID.IceTorch);
-        if (AvalonTestingGlobalNPC.oblivionDead) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
+        if (DownedBossSystem.oblivionDead) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
         if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<FreezeBolt>());
         // convert to a list of items
         var items = new List<Item>();
@@ -635,7 +636,7 @@ public class Iceman : ModNPC
                                 NPC.netUpdate = true;
                             }
                         }
-                        else if (NPC.position.Y + NPC.height - num230 * 16 > 20f && Main.tile[num229, num230].HasUnactuatedTile && Main.tileSolid[Main.tile[num229, num230].TileType] && !Main.tile[num229, num230].topSlope())
+                        else if (NPC.position.Y + NPC.height - num230 * 16 > 20f && Main.tile[num229, num230].HasUnactuatedTile && Main.tileSolid[Main.tile[num229, num230].TileType] && !Main.tile[num229, num230].TopSlope)
                         {
                             if ((NPC.direction == 1 && !Collision.SolidTiles(num229 - 2, num229, num230 - 3, num230 - 1)) || (NPC.direction == -1 && !Collision.SolidTiles(num229, num229 + 2, num230 - 3, num230 - 1)))
                             {
@@ -650,38 +651,6 @@ public class Iceman : ModNPC
                         }
                         try
                         {
-                            if (Main.tile[num229, num230 + 1] == null)
-                            {
-                                Main.tile[num229, num230 + 1] = new Tile();
-                            }
-                            if (Main.tile[num229 - NPC.direction, num230 + 1] == null)
-                            {
-                                Main.tile[num229 - NPC.direction, num230 + 1] = new Tile();
-                            }
-                            if (Main.tile[num229, num230 + 2] == null)
-                            {
-                                Main.tile[num229, num230 + 2] = new Tile();
-                            }
-                            if (Main.tile[num229 - NPC.direction, num230 + 2] == null)
-                            {
-                                Main.tile[num229 - NPC.direction, num230 + 2] = new Tile();
-                            }
-                            if (Main.tile[num229, num230 + 3] == null)
-                            {
-                                Main.tile[num229, num230 + 3] = new Tile();
-                            }
-                            if (Main.tile[num229 - NPC.direction, num230 + 3] == null)
-                            {
-                                Main.tile[num229 - NPC.direction, num230 + 3] = new Tile();
-                            }
-                            if (Main.tile[num229, num230 + 4] == null)
-                            {
-                                Main.tile[num229, num230 + 4] = new Tile();
-                            }
-                            if (Main.tile[num229 - NPC.direction, num230 + 4] == null)
-                            {
-                                Main.tile[num229 - NPC.direction, num230 + 4] = new Tile();
-                            }
                             else if (num216 >= NPC.homeTileX - 35 && num216 <= NPC.homeTileX + 35 && (!Main.tile[num229, num230 + 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[num229, num230 + 1].TileType]) && (!Main.tile[num229 - NPC.direction, num230 + 1].HasTile || !Main.tileSolid[Main.tile[num229 - NPC.direction, num230 + 1].TileType]) && (!Main.tile[num229, num230 + 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[num229, num230 + 2].TileType]) && (!Main.tile[num229 - NPC.direction, num230 + 2].HasTile || !Main.tileSolid[Main.tile[num229 - NPC.direction, num230 + 2].TileType]) && (!Main.tile[num229, num230 + 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[num229, num230 + 3].TileType]) && (!Main.tile[num229 - NPC.direction, num230 + 3].HasTile || !Main.tileSolid[Main.tile[num229 - NPC.direction, num230 + 3].TileType]) && (!Main.tile[num229, num230 + 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[num229, num230 + 4].TileType]) && (!Main.tile[num229 - NPC.direction, num230 + 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[num229 - NPC.direction, num230 + 4].TileType]))
                             {
                                 NPC.direction *= -1;
