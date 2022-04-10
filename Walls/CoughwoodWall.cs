@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class CoughwoodWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<CoughwoodWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.CoughwoodWall>();
         AddMapEntry(new Color(106, 116, 90));
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }

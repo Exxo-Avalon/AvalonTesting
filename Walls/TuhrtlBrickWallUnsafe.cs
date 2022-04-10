@@ -9,7 +9,7 @@ public class TuhrtlBrickWallUnsafe : ModWall
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(39, 31, 28));
-        ItemDrop = ModContent.ItemType<TuhrtlBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.TuhrtlBrickWall>();
         DustType = DustID.Silt;
     }
 }

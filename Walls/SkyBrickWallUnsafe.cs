@@ -11,7 +11,7 @@ public class SkyBrickWallUnsafe : ModWall
     {
         Main.wallHouse[Type] = false;
         AddMapEntry(new Color(79, 79, 59));
-        ItemDrop = ModContent.ItemType<SkyBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.SkyBrickWall>();
         DustType = DustID.Smoke;
     }
 }

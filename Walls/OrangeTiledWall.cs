@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class OrangeTiledWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<OrangeTiledWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.OrangeTiledWall>();
         AddMapEntry(new Color(107, 33, 0));
         DustType = DustID.Coralstone;
     }

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class ObsidianLavaTube : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<ObsidianLavaTubeWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.ObsidianLavaTubeWall>();
         AddMapEntry(new Color(51, 47, 96));
         DustType = DustID.Obsidian;
     }

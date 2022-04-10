@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class DarkMatterSlimeBlock : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<DarkSlimeBlockWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.DarkSlimeBlockWall>();
         AddMapEntry(new Color(51, 0, 96));
         DustType = DustID.UnholyWater;
     }

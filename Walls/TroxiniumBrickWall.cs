@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class TroxiniumBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<TroxiniumBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.TroxiniumBrickWall>();
         AddMapEntry(new Color(180, 88, 0));
         DustType = ModContent.DustType<Dusts.TroxiniumDust>();
     }

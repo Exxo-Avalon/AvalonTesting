@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class SapphireGemWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<SapphireGemWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.SapphireWall>();
         AddMapEntry(new Color(50, 82, 125));
         DustType = DustID.Stone;
     }

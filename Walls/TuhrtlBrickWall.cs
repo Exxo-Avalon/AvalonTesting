@@ -11,7 +11,7 @@ public class TuhrtlBrickWall : ModWall
     {
         AddMapEntry(new Color(39, 31, 28));
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<TuhrtlBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.TuhrtlBrickWall>();
         DustType = DustID.Silt;
     }
 }

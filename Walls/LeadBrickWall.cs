@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class LeadBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<LeadBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.LeadBrickWall>();
         AddMapEntry(new Color(42, 62, 94));
     }
 }

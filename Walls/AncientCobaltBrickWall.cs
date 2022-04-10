@@ -10,7 +10,7 @@ public class AncientCobaltBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<AncientCobaltBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.AncientCobaltBrickWall>();
         AddMapEntry(new Color(22, 53, 80));
         DustType = DustID.Cobalt;
     }

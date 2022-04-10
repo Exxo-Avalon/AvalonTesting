@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class DarkMatterWoodWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<DarkMatterWoodWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.DarkMatterWoodWall>();
         AddMapEntry(new Color(56, 40, 63));
         DustType = ModContent.DustType<Dusts.DarkMatterDust>();
     }

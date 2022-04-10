@@ -9,8 +9,8 @@ public class DarkMatterStoneWall : ModWall
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(51, 4, 88));
-        soundType = SoundID.NPCKilled;
-        soundStyle = 1;
+        SoundType = SoundID.NPCKilled;
+        SoundStyle = 1;
         DustType = DustID.UnholyWater;
     }
 }

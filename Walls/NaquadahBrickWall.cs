@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class NaquadahBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<NaquadahBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.NaquadahBrickWall>();
         AddMapEntry(new Color(0, 0, 88));
         DustType = ModContent.DustType<Dusts.NaquadahDust>();
     }

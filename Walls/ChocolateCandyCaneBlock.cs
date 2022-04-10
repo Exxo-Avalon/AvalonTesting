@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class ChocolateCandyCaneBlock : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<ChocolateCandyCaneWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.ChocolateCandyCaneWall>();
         AddMapEntry(Color.SaddleBrown);
     }
 }

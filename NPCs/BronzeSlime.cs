@@ -4,7 +4,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BronzeSlime : ModNPC
 {
@@ -36,7 +36,7 @@ public class BronzeSlime : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<BronzeOre>(), 1, 15, 25)));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.Tile.BronzeOre>(), 1, 15, 25));
     }
 
     public override void FindFrame(int frameHeight)

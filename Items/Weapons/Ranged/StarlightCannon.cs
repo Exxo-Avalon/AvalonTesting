@@ -31,7 +31,7 @@ public class StarlightCannon : ModItem
         Item.knockBack = 7f;
         Item.shoot = ModContent.ProjectileType<Projectiles.ChargingStar>();
         Item.shootSpeed = 6f;
-        Item.UseSound = Mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Charging");
+        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Charging");
         Item.value = 15500000;
     }
 

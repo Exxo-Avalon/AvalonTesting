@@ -10,7 +10,7 @@ public class VoltBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<VoltBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.VoltBrickWall>();
         AddMapEntry(Color.MediumPurple);
         DustType = DustID.PurpleTorch;
     }

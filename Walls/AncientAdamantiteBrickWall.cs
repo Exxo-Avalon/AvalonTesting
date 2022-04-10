@@ -10,8 +10,8 @@ public class AncientAdamantiteBrickWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<AncientAdamantiteBrickWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.AncientAdamantiteBrickWall>();
         AddMapEntry(new Color(148, 57, 101));
-        DustType = DustID.Adamantine;
+        DustType = DustID.Adamantite;
     }
 }

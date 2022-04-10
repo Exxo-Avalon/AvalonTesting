@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class EmeraldGemWall : ModWall
     public override void SetStaticDefaults()
     {
         Main.wallHouse[Type] = true;
-        ItemDrop = ModContent.ItemType<EmeraldGemWall>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Wall.EmeraldWall>();
         AddMapEntry(new Color(26, 97, 58));
         DustType = DustID.Stone;
     }

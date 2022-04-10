@@ -34,7 +34,7 @@ public class TroxiniumRepeater : ModItem
         Item.height = dims.Height;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow");
+            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         }
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetX = -5;
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetY = 0;
@@ -45,7 +45,7 @@ public class TroxiniumRepeater : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow");
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         spriteBatch.Draw
         (
             texture,
