@@ -26,7 +26,7 @@ public class WallofSteelLaserEnd : ModProjectile
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
-        Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
     }
     public override void AI()
     {

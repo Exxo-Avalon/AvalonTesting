@@ -59,5 +59,5 @@ public class OblivionBossBag : ModItem
         }
     }
 
-    public override int BossBagNPC => ModContent.NPCType<NPCs.AncientOblivionHead1>();
+    //public override int BossBagNPC => ModContent.NPCType<NPCs.AncientOblivionHead1>();
 }
