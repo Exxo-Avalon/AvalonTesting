@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -41,7 +42,7 @@ public class Bactus : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion && spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone())
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone())
             return 1;
         return 0;
     }

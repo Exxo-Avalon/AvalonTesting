@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -216,7 +217,7 @@ public class CrystalSpectre : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return !Main.dayTime && Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.5f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return !Main.dayTime && Main.hardMode && spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.5f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)

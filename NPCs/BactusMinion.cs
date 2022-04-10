@@ -37,15 +37,15 @@ public class BactusMinion : ModNPC
         {
             if (Main.rand.Next(3) != 0)
             {
-                Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<Booger>(), Main.rand.Next(1, 4), false, 0, false);
+                Item.NewItem(NPC.GetItemSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<Booger>(), Main.rand.Next(1, 4), false, 0, false);
             }
             if (Main.rand.Next(3) != 0)
             {
-                Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacciliteOre>(), Main.rand.Next(4, 11), false, 0, false);
+                Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacciliteOre>(), Main.rand.Next(4, 11), false, 0, false);
             }
             if (Main.rand.Next(2) == 0 && Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].statLife < Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].statLifeMax2)
             {
-                Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, 1, false, 0, false);
+                Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, 1, false, 0, false);
             }
         }
     }

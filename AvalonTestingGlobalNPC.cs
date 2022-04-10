@@ -14,6 +14,7 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalNPC : GlobalNPC
 {
+    public static int boogerBoss = 0;
     public static float endoSpawnRate = 0.25f;
     public static bool savedIceman = false;
     public static readonly int[] Hornets =

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
@@ -38,6 +39,6 @@ public class CloudBat : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.3f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.3f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

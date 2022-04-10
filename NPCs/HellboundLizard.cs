@@ -1,4 +1,5 @@
 ﻿using System;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
