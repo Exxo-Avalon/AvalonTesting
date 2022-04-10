@@ -44,10 +44,10 @@ class OrangeDungeonWand : ModItem
                 {
                     if (Main.tile[Player.tileTargetX, Player.tileTargetY].WallType == 0 && inrange)
                     {
-                        WorldGen.PlaceWall(Player.tileTargetX, Player.tileTargetY, ExxoAvalonOriginsGlobalItem.DungeonWallItemToBackwallID(type));
+                        WorldGen.PlaceWall(Player.tileTargetX, Player.tileTargetY, BlueDungeonWand.DungeonWallItemToBackwallID(type));
                         if (Main.tile[Player.tileTargetX, Player.tileTargetY].WallType != 0 && Main.netMode != NetmodeID.SinglePlayer)
                         {
-                            NetMessage.SendData(MessageID.TileChange, -1, -1, null, 3, Player.tileTargetX, Player.tileTargetY, ExxoAvalonOriginsGlobalItem.DungeonWallItemToBackwallID(type));
+                            NetMessage.SendData(MessageID.TileChange, -1, -1, null, 3, Player.tileTargetX, Player.tileTargetY, BlueDungeonWand.DungeonWallItemToBackwallID(type));
                         }
                         player.inventory[q].stack--;
                         if (player.inventory[q].stack <= 0)

@@ -25,7 +25,6 @@ class InvincibilityPotion : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
         Item.buffTime = 600;
-        //Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().invince = true;
         Item.UseSound = SoundID.Item3;
     }
 }
