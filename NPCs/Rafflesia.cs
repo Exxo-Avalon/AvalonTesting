@@ -31,7 +31,7 @@ public class Rafflesia : ModNPC
         NPC.knockBackResist = 0f;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.RafflesiaBanner>();
-        //drawOffsetY = 10;
+        //DrawOffsetY = 10;
     }
 
     public override void ModifyNPCLoot(NPCLoot loot)

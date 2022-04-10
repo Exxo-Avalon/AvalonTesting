@@ -254,7 +254,7 @@ public class Dragonfly : ModNPC
         var frameHeightX = 1;
         if (!Main.dedServ)
         {
-            frameHeightX = TextureAssets.Npc[NPC.type].Height / Main.npcFrameCount[NPC.type];
+            frameHeightX = TextureAssets.Npc[NPC.type].Height() / Main.npcFrameCount[NPC.type];
         }
         if (frames == 4 || frames == 68 || frames == 132 || frames == 196 || frames == 260 || frames == 324 || frames == 388)
         {

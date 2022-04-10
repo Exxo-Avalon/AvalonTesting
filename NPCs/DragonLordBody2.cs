@@ -42,7 +42,7 @@ public class DragonLordBody2 : ModNPC
         NPC.buffImmune[BuffID.OnFire] = true;
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.Frostburn] = true;
-        drawOffsetY = 55;
+        DrawOffsetY = 55;
     }
     public override Color? GetAlpha(Color drawColor)
     {
@@ -112,7 +112,7 @@ public class DragonLordBody2 : ModNPC
             {
                 for (var num198 = num195; num198 < num196; num198++)
                 {
-                    if (Main.tile[num197, num198] != null && ((Main.tile[num197, num198].HasUnactuatedTile && (Main.tileSolid[Main.tile[num197, num198].TileType] || (Main.tileSolidTop[Main.tile[num197, num198].TileType] && Main.tile[num197, num198].TileFrameY == 0))) || Main.tile[num197, num198].liquid > 64))
+                    if (Main.tile[num197, num198] != null && ((Main.tile[num197, num198].HasUnactuatedTile && (Main.tileSolid[Main.tile[num197, num198].TileType] || (Main.tileSolidTop[Main.tile[num197, num198].TileType] && Main.tile[num197, num198].TileFrameY == 0))) || Main.tile[num197, num198].LiquidAmount > 64))
                     {
                         Vector2 vector20;
                         vector20.X = num197 * 16;
