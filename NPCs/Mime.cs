@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Accessories;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Mime : ModNPC
 {

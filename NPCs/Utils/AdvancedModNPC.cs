@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs.Utils;
+namespace AvalonTesting.NPCs.Utils;
 
 /// <summary>
 /// An advanced extension of ModNPC which allows for the state system to be easily implemented
@@ -27,25 +27,26 @@ public abstract class AdvancedModNPC<T> : ModNPC where T : StateParent, new()
         MainStateInstance.Read(reader);
     }
 
-    public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+    public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
     {
         MainStateInstance?.PreDraw(spriteBatch);
-        return base.PreDraw(spriteBatch, drawColor);
+        return base.PreDraw(spriteBatch, screenPos, drawColor);
     }
 
-    public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+    public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
     {
         MainStateInstance?.PostDraw(spriteBatch);
-        base.PostDraw(spriteBatch, drawColor);
+        base.PostDraw(spriteBatch, screenPos, drawColor);
     }
 
     public override void AI()
     {
         (MainStateInstance ?? (MainStateInstance = new T())).StartUpdate(this);
     }
-
-    public override void NPCLoot()
+    
+    public override void OnKill()
     {
+        base.OnKill();
         MainStateInstance?.Unload();
     }
 }

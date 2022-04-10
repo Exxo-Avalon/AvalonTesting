@@ -1,8 +1,8 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Placeable.Trophy;
-using ExxoAvalonOrigins.Items.Weapons.Magic;
-using ExxoAvalonOrigins.Items.Weapons.Ranged;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -15,7 +15,7 @@ using Terraria.GameContent;
 using Terraria.DataStructures;
 using ReLogic.Content;
 
-namespace ExxoAvalonOrigins.NPCs.Bosses;
+namespace AvalonTesting.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class WallofSteel : ModNPC
@@ -25,8 +25,8 @@ public class WallofSteel : ModNPC
 
     public override void Load()
     {
-        wosTexture = ExxoAvalonOrigins.Mod.Assets.Request<Texture2D>("Sprites/WallofSteel");
-        mechaHungryChainTexture = ExxoAvalonOrigins.Mod.Assets.Request<Texture2D>("Sprites/MechaHungryChain");
+        wosTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/WallofSteel");
+        mechaHungryChainTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/MechaHungryChain");
     }
 
     public override void SetStaticDefaults()
@@ -66,7 +66,7 @@ public class WallofSteel : ModNPC
         NPC.scale = 1.4f;
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath14;
-        Music = ExxoAvalonOrigins.Mod.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/WallofSteel");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/WallofSteel");
     }
 
     public override void BossLoot(ref string name, ref int potionType)
@@ -87,14 +87,14 @@ public class WallofSteel : ModNPC
 
     public override bool PreDraw(SpriteBatch spriteBatch, Vector2 v, Color drawColor)
     {
-        if (ExxoAvalonOriginsWorld.wos >= 0)
+        if (AvalonTestingWorld.wos >= 0)
         {
             for (int i = 0; i < 255; i++)
             {
                 if (Main.player[i].gross && Main.player[i].active && Main.player[i].tongued && !Main.player[i].dead)
                 {
-                    float num = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2;
-                    float num2 = Main.npc[ExxoAvalonOriginsWorld.wos].position.Y + Main.npc[ExxoAvalonOriginsWorld.wos].height / 2;
+                    float num = Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2;
+                    float num2 = Main.npc[AvalonTestingWorld.wos].position.Y + Main.npc[AvalonTestingWorld.wos].height / 2;
                     var vector = new Vector2(Main.player[i].position.X + Main.player[i].width * 0.5f, Main.player[i].position.Y + Main.player[i].height * 0.5f);
                     float num3 = num - vector.X;
                     float num4 = num2 - vector.Y;
@@ -126,15 +126,15 @@ public class WallofSteel : ModNPC
             {
                 if (Main.npc[j].active && (Main.npc[j].type == ModContent.NPCType<NPCs.MechanicalHungry>() || Main.npc[j].type == ModContent.NPCType<NPCs.MechanicalHungry2>()))
                 {
-                    float num6 = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + Main.npc[ExxoAvalonOriginsWorld.wos].width / 2;
-                    float num7 = Main.npc[ExxoAvalonOriginsWorld.wos].position.Y;
-                    float num8 = ExxoAvalonOriginsWorld.wosB - ExxoAvalonOriginsWorld.wosT;
+                    float num6 = Main.npc[AvalonTestingWorld.wos].position.X + Main.npc[AvalonTestingWorld.wos].width / 2;
+                    float num7 = Main.npc[AvalonTestingWorld.wos].position.Y;
+                    float num8 = AvalonTestingWorld.wosB - AvalonTestingWorld.wosT;
                     bool flag2 = false;
                     if (Main.npc[j].frameCounter > 7.0)
                     {
                         flag2 = true;
                     }
-                    num7 = ExxoAvalonOriginsWorld.wosT + num8 * Main.npc[j].ai[0];
+                    num7 = AvalonTestingWorld.wosT + num8 * Main.npc[j].ai[0];
                     var vector2 = new Vector2(Main.npc[j].position.X + Main.npc[j].width / 2, Main.npc[j].position.Y + Main.npc[j].height / 2);
                     float num9 = num6 - vector2.X;
                     float num10 = num7 - vector2.Y;
@@ -172,8 +172,8 @@ public class WallofSteel : ModNPC
                 }
             }
             int heightOfPartToTile = 120;
-            float num13 = ExxoAvalonOriginsWorld.wosT;
-            float screenYPos = ExxoAvalonOriginsWorld.wosB;
+            float num13 = AvalonTestingWorld.wosT;
+            float screenYPos = AvalonTestingWorld.wosB;
             screenYPos = Main.screenPosition.Y + Main.screenHeight;
             float num15 = (int)((num13 - Main.screenPosition.Y) / heightOfPartToTile) + 1;
             num15 *= heightOfPartToTile;
@@ -182,36 +182,36 @@ public class WallofSteel : ModNPC
                 num13 -= num15;
             }
             float num16 = num13;
-            float wosPosX = Main.npc[ExxoAvalonOriginsWorld.wos].position.X + 20;
+            float wosPosX = Main.npc[AvalonTestingWorld.wos].position.X + 20;
             float num18 = screenYPos - num13;
             bool flag4 = true;
             SpriteEffects effects2 = SpriteEffects.None;
-            if (Main.npc[ExxoAvalonOriginsWorld.wos].spriteDirection == -1)
+            if (Main.npc[AvalonTestingWorld.wos].spriteDirection == -1)
             {
                 wosPosX += 160; // going to the left
             }
-            if (Main.npc[ExxoAvalonOriginsWorld.wos].spriteDirection == 1)
+            if (Main.npc[AvalonTestingWorld.wos].spriteDirection == 1)
             {
                 effects2 = SpriteEffects.FlipHorizontally;
             }
-            if (Main.npc[ExxoAvalonOriginsWorld.wos].direction > 0)
+            if (Main.npc[AvalonTestingWorld.wos].direction > 0)
             {
                 wosPosX -= 110f; // going to the right
             }
             int num19 = 0;
             if (!Main.gamePaused)
             {
-                ExxoAvalonOriginsWorld.wosF++;
+                AvalonTestingWorld.wosF++;
             }
-            if (ExxoAvalonOriginsWorld.wosF > 12)
+            if (AvalonTestingWorld.wosF > 12)
             {
                 num19 = 240;
-                if (ExxoAvalonOriginsWorld.wosF > 17)
+                if (AvalonTestingWorld.wosF > 17)
                 {
-                    ExxoAvalonOriginsWorld.wosF = 0;
+                    AvalonTestingWorld.wosF = 0;
                 }
             }
-            else if (ExxoAvalonOriginsWorld.wosF > 6)
+            else if (AvalonTestingWorld.wosF > 6)
             {
                 num19 = 120;
             }
@@ -255,8 +255,8 @@ public class WallofSteel : ModNPC
         if (NPC.localAI[0] == 0f)
         {
             NPC.localAI[0] = 1f;
-            ExxoAvalonOriginsWorld.wosB = -1;
-            ExxoAvalonOriginsWorld.wosT = -1;
+            AvalonTestingWorld.wosB = -1;
+            AvalonTestingWorld.wosT = -1;
         }
         NPC.localAI[3] += 1f;
         if (NPC.localAI[3] >= 600 + Main.rand.Next(1000))
@@ -264,55 +264,55 @@ public class WallofSteel : ModNPC
             NPC.localAI[3] = -Main.rand.Next(200);
             //Main.PlaySound(4, (int)npc.position.X, (int)npc.position.Y, 10);
         }
-        ExxoAvalonOriginsWorld.wos = NPC.whoAmI;
+        AvalonTestingWorld.wos = NPC.whoAmI;
         int tilePosX = (int)(NPC.position.X / 16f);
         int tilePosXwidth = (int)((NPC.position.X + NPC.width) / 16f);
         int tilePosYCenter = (int)((NPC.position.Y + NPC.height / 2) / 16f);
         int num447 = tilePosYCenter + 7;
         num447 += 4;
-        if (ExxoAvalonOriginsWorld.wosB == -1)
+        if (AvalonTestingWorld.wosB == -1)
         {
-            ExxoAvalonOriginsWorld.wosB = num447 * 16;
+            AvalonTestingWorld.wosB = num447 * 16;
         }
-        else if (ExxoAvalonOriginsWorld.wosB > num447 * 16)
+        else if (AvalonTestingWorld.wosB > num447 * 16)
         {
-            ExxoAvalonOriginsWorld.wosB--;
-            if (ExxoAvalonOriginsWorld.wosB < num447 * 16)
+            AvalonTestingWorld.wosB--;
+            if (AvalonTestingWorld.wosB < num447 * 16)
             {
-                ExxoAvalonOriginsWorld.wosB = num447 * 16;
+                AvalonTestingWorld.wosB = num447 * 16;
             }
         }
-        else if (ExxoAvalonOriginsWorld.wosB < num447 * 16)
+        else if (AvalonTestingWorld.wosB < num447 * 16)
         {
-            ExxoAvalonOriginsWorld.wosB++;
-            if (ExxoAvalonOriginsWorld.wosB > num447 * 16)
+            AvalonTestingWorld.wosB++;
+            if (AvalonTestingWorld.wosB > num447 * 16)
             {
-                ExxoAvalonOriginsWorld.wosB = num447 * 16;
+                AvalonTestingWorld.wosB = num447 * 16;
             }
         }
         num447 = tilePosYCenter - 7;
         num447 -= 4;
-        if (ExxoAvalonOriginsWorld.wosT == -1)
+        if (AvalonTestingWorld.wosT == -1)
         {
-            ExxoAvalonOriginsWorld.wosT = num447 * 16;
+            AvalonTestingWorld.wosT = num447 * 16;
         }
-        else if (ExxoAvalonOriginsWorld.wosT > num447 * 16)
+        else if (AvalonTestingWorld.wosT > num447 * 16)
         {
-            ExxoAvalonOriginsWorld.wosT--;
-            if (ExxoAvalonOriginsWorld.wosT < num447 * 16)
+            AvalonTestingWorld.wosT--;
+            if (AvalonTestingWorld.wosT < num447 * 16)
             {
-                ExxoAvalonOriginsWorld.wosT = num447 * 16;
+                AvalonTestingWorld.wosT = num447 * 16;
             }
         }
-        else if (ExxoAvalonOriginsWorld.wosT < num447 * 16)
+        else if (AvalonTestingWorld.wosT < num447 * 16)
         {
-            ExxoAvalonOriginsWorld.wosT++;
-            if (ExxoAvalonOriginsWorld.wosT > num447 * 16)
+            AvalonTestingWorld.wosT++;
+            if (AvalonTestingWorld.wosT > num447 * 16)
             {
-                ExxoAvalonOriginsWorld.wosT = num447 * 16;
+                AvalonTestingWorld.wosT = num447 * 16;
             }
         }
-        float num450 = (ExxoAvalonOriginsWorld.wosB + ExxoAvalonOriginsWorld.wosT) / 2 - NPC.height / 2;
+        float num450 = (AvalonTestingWorld.wosB + AvalonTestingWorld.wosT) / 2 - NPC.height / 2;
         if (NPC.Center.Y > Main.player[NPC.target].Center.Y)
         {
             if (NPC.velocity.Y > 0)
@@ -412,9 +412,9 @@ public class WallofSteel : ModNPC
                     int fire;
                     float f = 0f;
                     int dmg = Main.expertMode ? 75 : 60;
-                    var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), ExxoAvalonOriginsWorld.wosT);
+                    var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), AvalonTestingWorld.wosT);
                     float rotation = (float)Math.Atan2(laserPos.Y - (Main.player[NPC.target].position.Y + (Main.player[NPC.target].height * 0.5f)), laserPos.X - (Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5f)));
-                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, ExxoAvalonOriginsWorld.wosT, 33);
+                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.wosT, 33);
                     while (f <= .1f)
                     {
                         fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
@@ -438,8 +438,8 @@ public class WallofSteel : ModNPC
                 NPC.ai[2]++;
                 if (NPC.ai[2] == 100)
                 {
-                    int laser = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, ExxoAvalonOriginsWorld.wosB, NPC.velocity.X, NPC.velocity.Y, ProjectileID.DeathLaser, Main.expertMode ? 70 : 55, 4f);
-                    Main.projectile[laser].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, ExxoAvalonOriginsWorld.wosB)) * 5f;
+                    int laser = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosB, NPC.velocity.X, NPC.velocity.Y, ProjectileID.DeathLaser, Main.expertMode ? 70 : 55, 4f);
+                    Main.projectile[laser].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, AvalonTestingWorld.wosB)) * 5f;
                     Main.projectile[laser].hostile = true;
                     Main.projectile[laser].friendly = false;
                     Main.projectile[laser].tileCollide = false;
@@ -454,9 +454,9 @@ public class WallofSteel : ModNPC
                 {
                     int fire;
                     float f = 0f;
-                    var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), ExxoAvalonOriginsWorld.wosT);
+                    var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), AvalonTestingWorld.wosT);
                     float rotation = (float)Math.Atan2(laserPos.Y - (Main.player[NPC.target].position.Y + (Main.player[NPC.target].height * 0.5f)), laserPos.X - (Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5f)));
-                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, ExxoAvalonOriginsWorld.wosT, 33);
+                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.wosT, 33);
                     //while (f <= .1f)
                     //{
                     fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
@@ -518,8 +518,8 @@ public class WallofSteel : ModNPC
                 if (NPC.ai[3] > 100 && NPC.ai[3] < 150)
                 {
                     NPC.defense = 55;
-                    int fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, ExxoAvalonOriginsWorld.wosT, NPC.velocity.X, NPC.velocity.Y, ProjectileID.EyeFire, 45, 4f);
-                    Main.projectile[fire].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, ExxoAvalonOriginsWorld.wosT)) * 20f;
+                    int fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosT, NPC.velocity.X, NPC.velocity.Y, ProjectileID.EyeFire, 45, 4f);
+                    Main.projectile[fire].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, AvalonTestingWorld.wosT)) * 20f;
                     Main.projectile[fire].tileCollide = false;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
@@ -564,11 +564,11 @@ public class WallofSteel : ModNPC
     }
     public override void OnKill()
     {
-        ExxoAvalonOriginsWorld.wos = -1;
-        if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode)
+        AvalonTestingWorld.wos = -1;
+        if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             if (!Main.expertMode) NPC.DropItemInstanced(NPC.position, new Vector2(NPC.width, NPC.height), ModContent.ItemType<Items.Consumables.MechanicalHeart>());
-            ModContent.GetInstance<ExxoAvalonOriginsWorld>().InitiateSuperHardmode();
+            ModContent.GetInstance<AvalonTestingWorld>().InitiateSuperHardmode();
         }
         if (Main.netMode != NetmodeID.MultiplayerClient)
         {

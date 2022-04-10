@@ -7,7 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionLaser : ModNPC
 {
@@ -36,10 +36,10 @@ public class AncientOblivionLaser : ModNPC
         NPC.buffImmune[BuffID.Frostburn] = true;
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.OnFire] = true;
-        NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().noOneHitKill = true;
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().noOneHitKill = true;
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(3, 6), false, 0, false);
         if (Main.expertMode) Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(5, 8), false, 0, false);

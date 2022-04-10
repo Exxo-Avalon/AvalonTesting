@@ -1,11 +1,11 @@
-﻿using ExxoAvalonOrigins.Items.Material;
+﻿using AvalonTesting.Items.Material;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class ArmoredHellTortoise : ModNPC
 {
@@ -66,6 +66,6 @@ public class ArmoredHellTortoise : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && spawnInfo.player.ZoneUnderworldHeight ? 0.125f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneUnderworldHeight ? 0.125f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

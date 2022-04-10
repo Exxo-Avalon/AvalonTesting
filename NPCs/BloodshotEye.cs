@@ -1,11 +1,11 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BloodshotEye : ModNPC
 {
@@ -74,6 +74,6 @@ public class BloodshotEye : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.bloodMoon && !spawnInfo.player.InPillarZone() ? 0.091f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return Main.bloodMoon && !spawnInfo.player.InPillarZone() ? 0.091f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

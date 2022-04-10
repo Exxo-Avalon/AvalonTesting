@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CrystalBones : ModNPC
 {
@@ -75,7 +75,7 @@ public class CrystalBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.8f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void OnKill()
     {

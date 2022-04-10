@@ -1,7 +1,7 @@
 using System;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
-using ExxoAvalonOrigins.Items.Placeable.Trophy;
-using ExxoAvalonOrigins.Items.Vanity;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 [AutoloadBossHead]
 public class BacteriumPrime : ModNPC
@@ -40,7 +40,7 @@ public class BacteriumPrime : ModNPC
         bossBag = ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>();
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         if (Main.rand.Next(10) == 0)
         {
@@ -60,15 +60,15 @@ public class BacteriumPrime : ModNPC
             Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<BacciliteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41), false, 0, false);
         }
 
-        if (!ExxoAvalonOriginsWorld.downedBacteriumPrime)
-            ExxoAvalonOriginsWorld.downedBacteriumPrime = true;
+        if (!AvalonTestingWorld.downedBacteriumPrime)
+            AvalonTestingWorld.downedBacteriumPrime = true;
     }
 
     public override void AI()
     {
         if (NPC.type == ModContent.NPCType<BacteriumPrime>())
         {
-            ExxoAvalonOriginsGlobalNPC.boogerBoss = NPC.whoAmI;
+            AvalonTestingGlobalNPC.boogerBoss = NPC.whoAmI;
         }
         if (Main.player[NPC.target].dead)
         {
@@ -225,11 +225,11 @@ public class BacteriumPrime : ModNPC
             if (NPC.justHit && Main.netMode != NetmodeID.MultiplayerClient && NPC.type == ModContent.NPCType<BacteriumPrime>())
             {
                 NPC.life = NPC.lifeMax;
-                ExxoAvalonOriginsGlobalNPC.boogerBossCounter++;
-                if (ExxoAvalonOriginsGlobalNPC.boogerBossCounter >= 12)
+                AvalonTestingGlobalNPC.boogerBossCounter++;
+                if (AvalonTestingGlobalNPC.boogerBossCounter >= 12)
                 {
                     NPC.NewNPC((int)NPC.position.X - 160, (int)NPC.position.Y - 160, ModContent.NPCType<BactusMinion>(), 0);
-                    ExxoAvalonOriginsGlobalNPC.boogerBossCounter = 0;
+                    AvalonTestingGlobalNPC.boogerBossCounter = 0;
                 }
             }
             var vector110 = new Vector2(NPC.Center.X, NPC.Center.Y);

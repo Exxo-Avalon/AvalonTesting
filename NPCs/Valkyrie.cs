@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Valkyrie : ModNPC
 {
@@ -36,6 +36,6 @@ public class Valkyrie : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.26f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

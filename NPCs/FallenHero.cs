@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Armor;
+using AvalonTesting.Items.Armor;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class FallenHero : ModNPC
 {
@@ -109,6 +109,6 @@ public class FallenHero : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone() && Main.bloodMoon ? 0.1f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone() && Main.bloodMoon ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

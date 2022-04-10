@@ -1,11 +1,11 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class GuardianBones : ModNPC
 {
@@ -43,7 +43,7 @@ public class GuardianBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && ExxoAvalonOriginsWorld.stoppedArmageddon && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.083f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneDungeon && Main.hardMode && AvalonTestingWorld.stoppedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void FindFrame(int frameHeight)
     {

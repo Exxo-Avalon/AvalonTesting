@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using ExxoAvalonOrigins.Items.Accessories;
-using ExxoAvalonOrigins.Items.Consumables;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Placeable.Painting;
-using ExxoAvalonOrigins.Items.Weapons.Magic;
-using ExxoAvalonOrigins.Items.Weapons.Ranged;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Consumables;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Painting;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 [AutoloadHead]
 public class Iceman : ModNPC
@@ -129,7 +129,7 @@ public class Iceman : ModNPC
         itemIds.Add(ModContent.ItemType<FrostySpectacle>());
         itemIds.Add(ModContent.ItemType<BagofFrost>());
         itemIds.Add(ItemID.IceTorch);
-        if (ExxoAvalonOriginsGlobalNPC.oblivionDead) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
+        if (AvalonTestingGlobalNPC.oblivionDead) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
         if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<FreezeBolt>());
         // convert to a list of items
         var items = new List<Item>();
@@ -177,7 +177,7 @@ public class Iceman : ModNPC
         }
         var num216 = (int)(NPC.position.X + NPC.width / 2) / 16;
         var num217 = (int)(NPC.position.Y + NPC.height + 1f) / 16;
-        ExxoAvalonOriginsGlobalNPC.savedIceman = true;
+        AvalonTestingGlobalNPC.savedIceman = true;
         if (NPC.homeTileX == -1 && NPC.homeTileY == -1 && NPC.velocity.Y == 0f)
         {
             NPC.homeTileX = (int)NPC.Center.X / 16;

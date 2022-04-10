@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Bactus : ModNPC
 {

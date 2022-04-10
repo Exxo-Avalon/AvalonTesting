@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Rift : ModNPC
 {
@@ -44,7 +44,7 @@ public class Rift : ModNPC
             if (NPC.ai[0] % 60 == 0)
             {
                 Player p = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)];
-                if (!WorldGen.crimson && !ExxoAvalonOriginsWorld.contagion) // corruption world
+                if (!WorldGen.crimson && !AvalonTestingWorld.contagion) // corruption world
                 {
                     if (Main.rand.Next(2) == 0) // crimson mobs
                     {
@@ -97,7 +97,7 @@ public class Rift : ModNPC
                         }
                     }
                 }
-                else if (!WorldGen.crimson && ExxoAvalonOriginsWorld.contagion) // contagion world
+                else if (!WorldGen.crimson && AvalonTestingWorld.contagion) // contagion world
                 {
                     if (Main.rand.Next(2) == 0) // crimson mobs
                     {

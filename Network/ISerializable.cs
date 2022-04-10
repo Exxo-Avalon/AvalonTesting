@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace ExxoAvalonOrigins.Network;
+namespace AvalonTesting.Network;
 
 public interface ISerializable
 {

@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionPhase1Dead : ModNPC
 {
@@ -34,10 +34,10 @@ public class AncientOblivionPhase1Dead : ModNPC
     public override void AI()
     {
         NPC.life = 1;
-        NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().oRebirth++;
-        if (NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().oRebirth == 300)
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().oRebirth++;
+        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().oRebirth == 300)
         {
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().oRebirth = 0;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().oRebirth = 0;
             NPC.life = 0;
             NPC.active = false;
             NPC.NPCLoot();
@@ -46,7 +46,7 @@ public class AncientOblivionPhase1Dead : ModNPC
         return;
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         NPC.NewNPC((int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<AncientOblivionHead1>(), 0);
         Main.NewText("Ancient Oblivion has been reborn!", 175, 75, 255, false);

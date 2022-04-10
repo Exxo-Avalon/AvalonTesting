@@ -54,6 +54,29 @@ public static class ClassExtensions
 
         return false;
     }
+    public static int GetItemOre(this AvalonTestingWorld.RhodiumVariant osmiumVariant)
+    {
+        switch (osmiumVariant)
+        {
+            case AvalonTestingWorld.RhodiumVariant.osmium:
+                return ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
+            case AvalonTestingWorld.RhodiumVariant.rhodium:
+                return ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
+            case AvalonTestingWorld.RhodiumVariant.iridium:
+                return ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
+            default:
+                return -1;
+        }
+    }
+    public static bool InPillarZone(this Player p)
+    {
+        if (!p.ZoneTowerStardust && !p.ZoneTowerVortex && !p.ZoneTowerSolar)
+        {
+            return p.ZoneTowerNebula;
+        }
+
+        return true;
+    }
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;

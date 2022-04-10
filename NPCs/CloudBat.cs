@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CloudBat : ModNPC
 {
@@ -38,6 +38,6 @@ public class CloudBat : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.3f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.3f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

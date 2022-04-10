@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionSaw : ModNPC
 {
@@ -34,14 +34,14 @@ public class AncientOblivionSaw : ModNPC
         NPC.buffImmune[BuffID.Frostburn] = true;
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.OnFire] = true;
-        NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().noOneHitKill = true;
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().noOneHitKill = true;
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.35f * bossLifeScale);
         NPC.damage = (int)(NPC.damage * 0.3f);
     }
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(3, 6), false, 0, false);
         if (Main.expertMode) Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(5, 8), false, 0, false);

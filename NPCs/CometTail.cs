@@ -1,5 +1,5 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CometTail : ModNPC
 {

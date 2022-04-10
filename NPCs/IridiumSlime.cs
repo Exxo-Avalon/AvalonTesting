@@ -1,10 +1,10 @@
-﻿using ExxoAvalonOrigins.Items.Placeable.Tile;
+﻿using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class IridiumSlime : ModNPC
 {
@@ -86,6 +86,6 @@ public class IridiumSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || ExxoAvalonOriginsWorld.rhodiumOre == ExxoAvalonOriginsWorld.RhodiumVariant.iridium) ? 0.00526f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || AvalonTestingWorld.rhodiumOre == AvalonTestingWorld.RhodiumVariant.iridium) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

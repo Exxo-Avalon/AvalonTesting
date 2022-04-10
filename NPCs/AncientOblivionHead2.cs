@@ -1,5 +1,5 @@
 using System;
-using ExxoAvalonOrigins.Items.Potions;
+using AvalonTesting.Items.Potions;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionHead2 : ModNPC
 {
@@ -42,7 +42,7 @@ public class AncientOblivionHead2 : ModNPC
     }
     public override void AI()
     {
-        var instance = NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>();
+        var instance = NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>();
         NPC.damage = NPC.defDamage;
         NPC.defense = NPC.defDefense;
         Vector2 head1Pos = Main.npc[(int)NPC.ai[3]].position;

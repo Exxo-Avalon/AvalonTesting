@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionCannon : ModNPC
 {
@@ -34,13 +34,13 @@ public class AncientOblivionCannon : ModNPC
         NPC.buffImmune[BuffID.Frostburn] = true;
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.OnFire] = true;
-        NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().noOneHitKill = true;
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().noOneHitKill = true;
     }
-
-    public override void NPCLoot()
+    
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(3, 6), false, 0, false);
-        if (Main.expertMode) Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(5, 8), false, 0, false);
+        Item.NewItem(NPC.GetItemSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(3, 6), false, 0, false);
+        if (Main.expertMode) Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.Heart, Main.rand.Next(5, 8), false, 0, false);
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

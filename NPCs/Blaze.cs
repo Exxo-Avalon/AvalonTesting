@@ -9,7 +9,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Blaze : ModNPC
 {
@@ -272,6 +272,6 @@ public class Blaze : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneUnderworldHeight && Main.hardMode ? 0.1f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneUnderworldHeight && Main.hardMode ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

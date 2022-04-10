@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BlazeOrb : ModNPC
 {
@@ -93,7 +93,7 @@ public class BlazeOrb : ModNPC
                         }
                         else if (tile.TileType == TileID.Hellstone)
                         {
-                            if (Main.rand.Next(5) == 0 && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode)
+                            if (Main.rand.Next(5) == 0 && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
                             {
                                 Main.tile[num290, num291].TileType = (ushort)ModContent.TileType<Tiles.Ores.CaesiumOre>();
                             }

@@ -1,6 +1,6 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Potions;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Potions;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs.Bosses;
+namespace AvalonTesting.NPCs.Bosses;
 
 public class Mechasting : ModNPC
 {
@@ -37,7 +37,7 @@ public class Mechasting : ModNPC
         NPC.boss = true;
         NPC.lifeMax = 82000;
         NPC.scale = 1.2f;
-        Music = ExxoAvalonOrigins.Mod.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/Mechasting");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/Mechasting");
         //bossBag = ModContent.ItemType<Items.BossBags.MechastingBossBag>();
 
     }
@@ -342,8 +342,8 @@ public class Mechasting : ModNPC
     }
     public override void OnKill()
     {
-        if (!ExxoAvalonOriginsWorld.downedMechasting)
-            ExxoAvalonOriginsWorld.downedMechasting = true;
+        if (!AvalonTestingWorld.downedMechasting)
+            AvalonTestingWorld.downedMechasting = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

@@ -10,7 +10,7 @@ using Terraria.ID;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BombBones : ModNPC
 {
