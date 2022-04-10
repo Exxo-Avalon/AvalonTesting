@@ -26,7 +26,7 @@ public class SkyBrick : ModTile
     }
     public override bool Slope(int i, int j)
     {
-        return ExxoAvalonOriginsWorld.downedDragonLord;
+        return AvalonTestingWorld.downedDragonLord;
     }
     public override bool CanExplode(int i, int j)
     {

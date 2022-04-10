@@ -40,13 +40,13 @@ public class HallowedAltar : ModTile
     }
     public override bool CanKillTile(int i, int j, ref bool blockDamaged)
     {
-        if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && !Main.hardMode) blockDamaged = false;
-        return ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode;
+        if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode) blockDamaged = false;
+        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode)
+        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
             SmashHallowAltar(i, j);
     }
 
@@ -66,7 +66,7 @@ public class HallowedAltar : ModTile
         {
             return;
         }
-        if (!ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && !Main.hardMode)
+        if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode)
         {
             return;
         }
@@ -78,8 +78,8 @@ public class HallowedAltar : ModTile
         {
             return;
         }
-        int num = ExxoAvalonOriginsWorld.hallowAltarCount % 2;
-        int num2 = ExxoAvalonOriginsWorld.hallowAltarCount / 2 + 1;
+        int num = AvalonTestingWorld.hallowAltarCount % 2;
+        int num2 = AvalonTestingWorld.hallowAltarCount / 2 + 1;
         float num3 = Main.maxTilesX / 4200;
         int num4 = 1 - num;
         num3 = num3 * 310f - 85 * num;
@@ -89,27 +89,27 @@ public class HallowedAltar : ModTile
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) Main.NewText("Your world has been invigorated with Tritanorium!", 117, 158, 107);
-                else Main.NewText("Your world has been melted with Pyroscoric!", 187, 35, 0, false);
+                if (AvalonTestingWorld.shmOreTier1 == 0) Main.NewText("Your world has been invigorated with Tritanorium!", 117, 158, 107);
+                else Main.NewText("Your world has been melted with Pyroscoric!", 187, 35, 0);
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier1 == 0) ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been invigorated with Tritanorium!"), new Color(117, 158, 107));
+                if (AvalonTestingWorld.shmOreTier1 == 0) ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been invigorated with Tritanorium!"), new Color(117, 158, 107));
                 else ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been melted with Pyroscoric!"), new Color(187, 35, 0));
             }
-            num = ExxoAvalonOriginsWorld.shmOreTier1;
+            num = AvalonTestingWorld.shmOreTier1;
             num3 *= 1.05f;
         }
         else if (num == 1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier2 == 2) Main.NewText("Your world has been blessed with Unvolandite!", 171, 119, 75, false);
-                else Main.NewText("Your world has been blessed with Vorazylcum!", 123, 95, 126, false);
+                if (AvalonTestingWorld.shmOreTier2 == 2) Main.NewText("Your world has been blessed with Unvolandite!", 171, 119, 75);
+                else Main.NewText("Your world has been blessed with Vorazylcum!", 123, 95, 126);
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                if (ExxoAvalonOriginsWorld.shmOreTier2 == 2)
+                if (AvalonTestingWorld.shmOreTier2 == 2)
                 {
                     ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Unvolandite!"), new Color(171, 119, 75));
                 }
@@ -118,7 +118,7 @@ public class HallowedAltar : ModTile
                     ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Vorazylcum!"), new Color(123, 95, 126));
                 }
             }
-            num = ExxoAvalonOriginsWorld.shmOreTier2;
+            num = AvalonTestingWorld.shmOreTier2;
         }
         int num11 = 0;
         while ((float)num11 < num3)
@@ -144,6 +144,6 @@ public class HallowedAltar : ModTile
             WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(5, 9 + num4), WorldGen.genRand.Next(5, 9 + num4), (ushort)num);
             num11++;
         }
-        ExxoAvalonOriginsWorld.hallowAltarCount++;
+        AvalonTestingWorld.hallowAltarCount++;
     }
 }

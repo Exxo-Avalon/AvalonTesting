@@ -17,12 +17,12 @@ public class BlackBlaststone : ModTile
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Wraith;
-        global::AvalonTesting.MergeWith(Type, TileID.Ash);
+        AvalonTesting.MergeWith(Type, TileID.Ash);
     }
 
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        global::AvalonTesting.MergeWithFrame(i, j, Type, TileID.Ash, false, false, false, false, resetFrame);
+        AvalonTesting.MergeWithFrame(i, j, Type, TileID.Ash, false, false, false, false, resetFrame);
         return false;
     }
 }

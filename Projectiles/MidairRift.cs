@@ -38,7 +38,7 @@ public class MidairRift : ModProjectile
             if (Projectile.ai[0] % 60 == 0)
             {
                 Player p = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
-                if (!WorldGen.crimson && !ExxoAvalonOriginsWorld.contagion) // corruption world
+                if (!WorldGen.crimson && !AvalonTestingWorld.contagion) // corruption world
                 {
                     if (p.ZoneCorrupt)
                     {
@@ -94,7 +94,7 @@ public class MidairRift : ModProjectile
                         }
                     }
                 }
-                else if (!WorldGen.crimson && ExxoAvalonOriginsWorld.contagion) // contagion world
+                else if (!WorldGen.crimson && AvalonTestingWorld.contagion) // contagion world
                 {
                     if (p.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
                     {

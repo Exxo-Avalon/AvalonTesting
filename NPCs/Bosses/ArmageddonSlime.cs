@@ -533,10 +533,10 @@ public class ArmageddonSlime : ModNPC
     //}
     //public override void OnKill()
     //{
-    //    if (!ExxoAvalonOriginsWorld.stoppedArmageddon)
+    //    if (!AvalonTestingWorld.stoppedArmageddon)
     //    {
-    //        ModContent.GetInstance<ExxoAvalonOriginsWorld>().GenerateSkyFortress();
-    //        ExxoAvalonOriginsWorld.stoppedArmageddon = true;
+    //        ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress();
+    //        AvalonTestingWorld.stoppedArmageddon = true;
     //    }
     //}
     public override void ModifyNPCLoot(NPCLoot npcLoot)

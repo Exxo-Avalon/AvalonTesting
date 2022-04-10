@@ -227,9 +227,9 @@ public class ContagionPot : ModTile
                         }
                         else
                         {
-                            if (!WorldGen.crimson && !ExxoAvalonOriginsWorld.contagion) type2 = ItemID.UnholyArrow;
+                            if (!WorldGen.crimson && !AvalonTestingWorld.contagion) type2 = ItemID.UnholyArrow;
                             else if (WorldGen.crimson) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>();
-                            else if (ExxoAvalonOriginsWorld.contagion) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>(); // contagion arrow
+                            else if (AvalonTestingWorld.contagion) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>(); // contagion arrow
                         }
                     }
                     Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, type2, stack2, false, 0, false);
@@ -237,11 +237,11 @@ public class ContagionPot : ModTile
                 else if (num10 == 4)
                 {
                     int type3 = ItemID.LesserHealingPotion;
-                    if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && j > Main.rockLayer && Main.rand.Next(2) == 0)
+                    if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && j > Main.rockLayer && Main.rand.Next(2) == 0)
                     {
                         type3 = ItemID.GreaterHealingPotion;
                     }
-                    else if (j > Main.maxTilesY - 200 || (Main.hardMode && !ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode))
+                    else if (j > Main.maxTilesY - 200 || (Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode))
                     {
                         type3 = ItemID.HealingPotion;
                     }

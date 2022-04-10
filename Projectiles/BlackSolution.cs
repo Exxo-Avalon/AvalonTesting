@@ -31,7 +31,7 @@ public class BlackSolution : ModProjectile
         int DustType = ModContent.DustType<Dusts.BlackSolutionDust>();
 
         if (Projectile.owner == Main.myPlayer)
-            ExxoAvalonOriginsWorld.ConvertFromThings((int)(Projectile.position.X + Projectile.width / 2) / 16, (int)(Projectile.position.Y + Projectile.height / 2) / 16, 2);
+            AvalonTestingWorld.ConvertFromThings((int)(Projectile.position.X + Projectile.width / 2) / 16, (int)(Projectile.position.Y + Projectile.height / 2) / 16, 2);
 
         if (Projectile.timeLeft > 133)
             Projectile.timeLeft = 133;
