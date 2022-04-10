@@ -48,7 +48,7 @@ public class Shockwave2 : ModProjectile
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
             var v = Projectile.Center - new Vector2(Projectile.width * Projectile.scale / 2f, Projectile.height * Projectile.scale / 2f);
             var wH = new Vector2(Projectile.width * Projectile.scale, Projectile.height * Projectile.scale);
-            var value2 = AvalonTesting.NewRectVector2(v, wH);
+            var value2 = ClassExtensions.NewRectVector2(v, wH);
             var npc = Main.npc;
             for (var num57 = 0; num57 < npc.Length; num57++)
             {

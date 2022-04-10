@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -39,7 +40,7 @@ public class Rafflesia : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneTropics)
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics)
         {
             if (Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY + 2].TileType == ModContent.TileType<Tiles.TropicalGrass>())
                 //&&

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -36,6 +37,6 @@ public class Valkyrie : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

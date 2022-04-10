@@ -237,7 +237,7 @@ public class PatellaBullet : ModProjectile
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             var v = projectile.Center - new Vector2(projectile.width * projectile.scale / 2f, projectile.height * projectile.scale / 2f);
             var wH = new Vector2(projectile.width * projectile.scale, projectile.height * projectile.scale);
-            var value2 = AvalonTesting.NewRectVector2(v, wH);
+            var value2 = ClassExtensions.NewRectVector2(v, wH);
             var npc = Main.npc;
             for (var num57 = 0; num57 < npc.Length; num57++)
             {

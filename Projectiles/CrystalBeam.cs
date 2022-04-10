@@ -24,7 +24,7 @@ public class CrystalBeam : ModProjectile
         Projectile.MaxUpdates = 100;
         Projectile.alpha = 255;
         Projectile.timeLeft = 100;
-        Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
     }
     public override void AI()
     {

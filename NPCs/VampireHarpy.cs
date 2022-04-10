@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -44,7 +45,7 @@ public class VampireHarpy : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
         {
             return 1f;
         }

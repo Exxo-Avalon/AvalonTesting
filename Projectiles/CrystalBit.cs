@@ -23,7 +23,7 @@ public class CrystalBit : ModProjectile
         Projectile.penetrate = -1;
         Projectile.hostile = true;
         Projectile.timeLeft = 180;
-        Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
         rn = Main.rand.Next(60, 121);
     }
     public override bool OnTileCollide(Vector2 oldVelocity)

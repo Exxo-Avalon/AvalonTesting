@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs;
 
@@ -37,8 +38,8 @@ public class PyrasiteHead : PyrasiteWorm
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight)
-            return (spawnInfo.player.Avalon().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight) ? 0.5f : 0f;
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight)
+            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight) ? 0.5f : 0f;
         return 0f;
     }
     public override void HitEffect(int hitDirection, double damage)

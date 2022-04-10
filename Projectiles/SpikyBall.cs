@@ -33,7 +33,7 @@ public class SpikyBall : ModProjectile
         Projectile.scale = 1f;
         Projectile.timeLeft = 300;
         Projectile.DamageType = DamageClass.Ranged;
-        Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().notReflect = true;
     }
 
     public override void AI()

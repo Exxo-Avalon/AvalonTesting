@@ -1,4 +1,5 @@
 ﻿using AvalonTesting.Buffs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,6 +16,22 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
         }
 
         return base.CanHitPlayer(projectile, target);
+    }
+    public static int FindClosestHostile(Vector2 pos, float dist)
+    {
+        int closest = -1;
+        float last = dist;
+        for (int i = 0; i < Main.projectile.Length; i++)
+        {
+            Projectile p = Main.projectile[i];
+            if (!p.active || !p.hostile) continue;
+            if (Vector2.Distance(pos, p.Center) < last)
+            {
+                last = Vector2.Distance(pos, p.Center);
+                closest = i;
+            }
+        }
+        return closest;
     }
     public static int howManyProjectiles(int min, int max)
     {

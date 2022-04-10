@@ -120,7 +120,7 @@ public class Reflector : ModProjectile
             num421 += (int)Projectile.velocity.X;
         }
         //Collision.StepUp(ref projectile.position, ref projectile.velocity, projectile.width, projectile.height, ref projectile.stepSpeed, ref projectile.gfxOffY, 1, false);
-        int closest = ExxoAvalonOriginsGlobalProjectile.FindClosestHostile(Projectile.Center, 160f);
+        int closest = AvalonTestingGlobalProjectile.FindClosestHostile(Projectile.Center, 160f);
         if (closest != -1)
         {
             Projectile targ = Main.projectile[closest];

@@ -6,6 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs;
 
@@ -475,7 +476,7 @@ public class MatterMan : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
         {
             return 1f;
         }
