@@ -12,12 +12,13 @@ public class Nest : ModTile
     {
         AddMapEntry(new Color(198, 175, 132));
         Main.tileSolid[Type] = true;
+        Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<NestBlock>();
         DustType = DustID.MarblePot;
         TileID.Sets.DoesntGetReplacedWithTileReplacement[Type] = true;
         TileID.Sets.JungleSpecial[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;
-        TileID.Sets.GeneralPlacementTiles[Type] = true;
+        TileID.Sets.GeneralPlacementTiles[Type] = false;
     }
 }

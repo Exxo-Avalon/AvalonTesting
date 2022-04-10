@@ -8,7 +8,8 @@ namespace AvalonTesting.Tiles.Ores;
 
 public class XanthophyteOre : ModTile
 {
-    private Color xanthophyteColor = new Color(210, 217, 0);
+    private readonly Color xanthophyteColor = new(210, 217, 0);
+
     public override void SetStaticDefaults()
     {
         AddMapEntry(xanthophyteColor, LanguageManager.Instance.GetText("Xanthophyte"));
@@ -27,8 +28,10 @@ public class XanthophyteOre : ModTile
         TileID.Sets.ChecksForMerge[Type] = true;
         TileID.Sets.Ore[Type] = true;
         TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
+        // Unlike chlorophyte
         TileID.Sets.OreMergesWithMud[Type] = true;
     }
+
     public override bool CanExplode(int i, int j)
     {
         return false;

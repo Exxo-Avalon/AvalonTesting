@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using AvalonTesting.Dusts;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -13,12 +14,12 @@ public class HardenedDarkSand : ModTile
         AddMapEntry(new Color(63, 0, 63));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileMerge[Type][TileID.Sandstone] = true;
-        Main.tileMerge[TileID.Sandstone][Type] = true;
-        Main.tileMerge[Type][TileID.HardenedSand] = true;
-        Main.tileMerge[TileID.HardenedSand][Type] = true;
+        TileID.Sets.Conversion.HardenedSand[Type] = true;
+        TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
+        TileID.Sets.CanBeClearedDuringGeneration[Type] = false;
+        TileID.Sets.ChecksForMerge[Type] = true;
         ItemDrop = ModContent.ItemType<HardenedDarkSandBlock>();
-        DustType = ModContent.DustType<Dusts.DarkMatterDust>();
+        DustType = ModContent.DustType<DarkMatterDust>();
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -27,6 +28,7 @@ public class HardenedDarkSand : ModTile
         {
             AvalonTestingWorld.WorldDarkMatterTiles--;
         }
+
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
     }
 }

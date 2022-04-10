@@ -1,32 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Ammo;
 
-class BlackSolution : ModItem
+internal class BlackSolution : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Black Solution");
         Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Dark Matter");
+
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
+        Item.width = dims.Width;
+        Item.height = dims.Height;
         Item.ammo = AmmoID.Solution;
         Item.rare = ItemRarityID.Orange;
-        Item.width = dims.Width;
         Item.consumable = true;
         Item.shoot = ModContent.ProjectileType<Projectiles.BlackSolution>() - ProjectileID.PureSpray;
-        Item.value = Item.buyPrice(0, 0, 25, 0);
+        Item.value = Item.buyPrice(0, 0, 25);
         Item.maxStack = 2000;
-        Item.height = dims.Height;
-    }
-    public override bool CanConsumeAmmo(Player player)
-    {
-        return player.itemAnimation >= player.HeldItem.useAnimation - 3;
     }
 }

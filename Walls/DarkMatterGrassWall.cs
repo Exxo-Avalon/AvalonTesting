@@ -12,5 +12,6 @@ public class DarkMatterGrassWall : ModWall
         SoundType = SoundID.Grass;
         SoundStyle = 1;
         DustType = DustID.UnholyWater;
+        WallID.Sets.Conversion.Grass[Type] = true;
     }
 }

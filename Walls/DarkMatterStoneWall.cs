@@ -12,5 +12,6 @@ public class DarkMatterStoneWall : ModWall
         SoundType = SoundID.NPCKilled;
         SoundStyle = 1;
         DustType = DustID.UnholyWater;
+        WallID.Sets.Conversion.Stone[Type] = true;
     }
 }

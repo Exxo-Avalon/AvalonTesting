@@ -1,3 +1,4 @@
+using AvalonTesting.Dusts;
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -12,11 +13,13 @@ public class TropicalMud : ModTile
     {
         AddMapEntry(new Color(95, 38, 12));
         Main.tileSolid[Type] = true;
-        Main.tileMerge[TileID.Dirt][Type] = true;
-        Main.tileMerge[Type][TileID.Dirt] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<TropicalMudBlock>();
-        DustType = ModContent.DustType<Dusts.TropicalMudDust>();
+        DustType = ModContent.DustType<TropicalMudDust>();
+        TileID.Sets.CanBeDugByShovel[Type] = true;
+        TileID.Sets.Mud[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
     }
 }

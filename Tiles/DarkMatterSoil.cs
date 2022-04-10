@@ -1,6 +1,8 @@
+using AvalonTesting.Dusts;
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
@@ -11,10 +13,12 @@ public class DarkMatterSoil : ModTile
     {
         AddMapEntry(new Color(111, 77, 124));
         Main.tileSolid[Type] = true;
-        Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
+        TileID.Sets.CanBeDugByShovel[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
         ItemDrop = ModContent.ItemType<DarkMatterSoilBlock>();
-        DustType = ModContent.DustType<Dusts.DarkMatterDust>();
+        DustType = ModContent.DustType<DarkMatterDust>();
     }
 
     public override int SaplingGrowthType(ref int style)
@@ -29,6 +33,7 @@ public class DarkMatterSoil : ModTile
         {
             AvalonTestingWorld.WorldDarkMatterTiles--;
         }
+
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
     }
 }

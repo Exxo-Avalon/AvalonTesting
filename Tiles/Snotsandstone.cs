@@ -13,15 +13,11 @@ public class Snotsandstone : ModTile
         AddMapEntry(new Color(91, 109, 86));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileMerge[Type][TileID.Sandstone] = true;
-        Main.tileMerge[TileID.Sandstone][Type] = true;
-        Main.tileMerge[Type][TileID.HardenedSand] = true;
-        Main.tileMerge[TileID.HardenedSand][Type] = true;
-        Main.tileMerge[Type][ModContent.TileType<HardenedSnotsand>()] = true;
-        Main.tileMerge[ModContent.TileType<HardenedSnotsand>()][Type] = true;
-        Main.tileMerge[ModContent.TileType<Snotsand>()][Type] = true;
-        Main.tileMerge[Type][ModContent.TileType<Snotsand>()] = true;
         TileID.Sets.Conversion.Sandstone[Type] = true;
+        TileID.Sets.ForAdvancedCollision.ForSandshark[Type] = true;
+        TileID.Sets.isDesertBiomeSand[Type] = true;
+        TileID.Sets.CanBeClearedDuringGeneration[Type] = false;
+        TileID.Sets.ChecksForMerge[Type] = true;
         ItemDrop = ModContent.ItemType<SnotsandstoneBlock>();
         DustType = DustID.ScourgeOfTheCorruptor;
     }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading;
+using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
 using AvalonTesting.Tiles;
+using AvalonTesting.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -12,9 +14,9 @@ using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AvalonTesting;
+
 public class AvalonTestingWorld : ModSystem
 {
-    private Version worldVersion;
     public static int shmOreTier1 = -1;
     public static int shmOreTier2 = -1;
     public static int hallowAltarCount;
@@ -38,118 +40,20 @@ public class AvalonTestingWorld : ModSystem
     public static bool downedKingSting = false;
     public static bool stoppedArmageddon = false;
     public static int specialWireHitCount = 0;
-
-    #region WorldGen Variants
-
-    public enum JungleVariant
-    {
-        jungle,
-        tropics,
-        random
-    }
-
-    public enum CopperVariant
-    {
-        copper,
-        tin,
-        bronze,
-        random
-    }
-
-    public enum IronVariant
-    {
-        iron,
-        lead,
-        nickel,
-        random
-    }
-
-    public enum SilverVariant
-    {
-        silver,
-        tungsten,
-        zinc,
-        random
-    }
-
-    public enum GoldVariant
-    {
-        gold,
-        platinum,
-        bismuth,
-        random
-    }
-
-    public enum RhodiumVariant
-    {
-        rhodium,
-        osmium,
-        iridium,
-        random
-    }
-
-    public enum CobaltVariant
-    {
-        cobalt,
-        palladium,
-        duratanium,
-        random
-    }
-
-    public enum MythrilVariant
-    {
-        mythril,
-        orichalcum,
-        naquadah,
-        random
-    }
-
-    public enum AdamantiteVariant
-    {
-        adamantite,
-        titanium,
-        troxinium,
-        random
-    }
-
-    public enum SHMTier1Variant
-    {
-        tritanorium,
-        pyroscoric,
-        random
-    }
-
-    public enum SHMTier2Variant
-    {
-        unvolandite,
-        vorazylcum,
-        random
-    }
-
-    public static JungleVariant jungleMenuSelection = JungleVariant.random;
-    public static CopperVariant copperOre = CopperVariant.random;
-    public static IronVariant ironOre = IronVariant.random;
-    public static SilverVariant silverOre = SilverVariant.random;
-    public static GoldVariant goldOre = GoldVariant.random;
-    public static RhodiumVariant rhodiumOre = RhodiumVariant.random;
-    public static CobaltVariant cobaltOre = CobaltVariant.cobalt;
-    public static MythrilVariant mythrilOre = MythrilVariant.random;
-    public static AdamantiteVariant adamantiteOre = AdamantiteVariant.random;
-    public static SHMTier1Variant shmTier1Ore = SHMTier1Variant.random;
-    public static SHMTier2Variant shmTier2Ore = SHMTier2Variant.random;
-
-    #endregion WorldGen Variants
-    public bool SuperHardmode { get; private set; }
     public static int WorldDarkMatterTiles = 0;
     public static int wosT;
     public static int wosB;
     public static int wosF = 0;
     public static int wos = -1;
     public static bool jungleLocationKnown = false;
+    private Version worldVersion;
+    public bool SuperHardmode { get; private set; }
+
     public override void PostUpdateEverything()
     {
-        Items.Armor.SpectrumHelmet.StaticUpdate();
+        SpectrumHelmet.StaticUpdate();
     }
+
     public override void PostUpdateWorld()
     {
         float num2 = 3E-05f * (float)WorldGen.GetWorldUpdateRate();
@@ -167,38 +71,47 @@ public class AvalonTestingWorld : ModSystem
             {
                 num7 = 10;
             }
+
             if (num8 > Main.maxTilesX - 10)
             {
                 num8 = Main.maxTilesX - 10;
             }
+
             if (num9 < 10)
             {
                 num9 = 10;
             }
+
             if (num10 > Main.maxTilesY - 10)
             {
                 num10 = Main.maxTilesY - 10;
             }
+
             if (Main.tile[num5, num6] != null)
             {
                 #region lazite grass
+
                 if (Main.tile[num5, num6].TileType == ModContent.TileType<LaziteGrass>())
                 {
                     int num14 = Main.tile[num5, num6].TileType;
                     // where lazite tallgrass would grow
-                    if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.Next(5) == 0 && num14 == ModContent.TileType<LaziteGrass>())
+                    if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
+                        !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
+                        WorldGen.genRand.Next(5) == 0 && num14 == ModContent.TileType<LaziteGrass>())
                     {
-                        WorldGen.PlaceTile(num5, num9, ModContent.TileType<LaziteShortGrass>(), true, false, -1, 0);
+                        WorldGen.PlaceTile(num5, num9, ModContent.TileType<LaziteShortGrass>(), true);
                         Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 10) * 18);
                         if (Main.tile[num5, num9].HasTile)
                         {
                             //Main.tile[num5, num9].TileColor = (Main.tile[num5, num6].TileColor);
                         }
+
                         if (Main.netMode == NetmodeID.Server && Main.tile[num5, num9].HasTile)
                         {
                             NetMessage.SendTileSquare(-1, num5, num9, 1);
                         }
                     }
+
                     bool flag2 = false;
                     for (int m = num7; m < num8; m++)
                     {
@@ -208,25 +121,30 @@ public class AvalonTestingWorld : ModSystem
                             {
                                 if (Main.tile[m, n].TileType == ModContent.TileType<BlastedStone>())
                                 {
-                                    WorldGen.SpreadGrass(m, n, ModContent.TileType<BlastedStone>(), ModContent.TileType<LaziteGrass>(), false, Main.tile[num5, num6].TileColor);
+                                    WorldGen.SpreadGrass(m, n, ModContent.TileType<BlastedStone>(),
+                                        ModContent.TileType<LaziteGrass>(), false, Main.tile[num5, num6].TileColor);
                                 }
+
                                 if (Main.tile[m, n].TileType == num14)
                                 {
-                                    WorldGen.SquareTileFrame(m, n, true);
+                                    WorldGen.SquareTileFrame(m, n);
                                     flag2 = true;
                                 }
                             }
                         }
                     }
+
                     if (Main.netMode == NetmodeID.Server && flag2)
                     {
                         NetMessage.SendTileSquare(-1, num5, num6, 3);
                     }
                 }
+
                 #endregion
 
                 #region impgrass growing
-                if (Main.tile[num5, num6].TileType == ModContent.TileType<Tiles.Impgrass>())
+
+                if (Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>())
                 {
                     int num14 = Main.tile[num5, num6].TileType;
                     bool flag2 = false;
@@ -238,25 +156,33 @@ public class AvalonTestingWorld : ModSystem
                             {
                                 if (Main.tile[m, n].TileType == TileID.Ash)
                                 {
-                                    WorldGen.SpreadGrass(m, n, TileID.Ash, ModContent.TileType<Tiles.Impgrass>(), false, Main.tile[num5, num6].TileColor);
+                                    WorldGen.SpreadGrass(m, n, TileID.Ash, ModContent.TileType<Impgrass>(), false,
+                                        Main.tile[num5, num6].TileColor);
                                 }
+
                                 if (Main.tile[m, n].TileType == num14)
                                 {
-                                    WorldGen.SquareTileFrame(m, n, true);
+                                    WorldGen.SquareTileFrame(m, n);
                                     flag2 = true;
                                 }
                             }
                         }
                     }
+
                     if (Main.netMode == NetmodeID.Server && flag2)
                     {
                         NetMessage.SendTileSquare(-1, num5, num6, 3);
                     }
                 }
+
                 #endregion
 
                 #region impvines growing
-                if ((Main.tile[num5, num6].TileType == ModContent.TileType<Tiles.Impgrass>() || Main.tile[num5, num6].TileType == ModContent.TileType<Tiles.Impvines>()) && WorldGen.genRand.Next(15) == 0 && !Main.tile[num5, num6 + 1].HasTile && Main.tile[num5, num6 + 1].LiquidType != LiquidID.Lava)
+
+                if ((Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>() ||
+                     Main.tile[num5, num6].TileType == ModContent.TileType<Impvines>()) &&
+                    WorldGen.genRand.Next(15) == 0 && !Main.tile[num5, num6 + 1].HasTile &&
+                    Main.tile[num5, num6 + 1].LiquidType != LiquidID.Lava)
                 {
                     bool flag10 = false;
                     for (int num47 = num6; num47 > num6 - 10; num47--)
@@ -266,36 +192,44 @@ public class AvalonTestingWorld : ModSystem
                             flag10 = false;
                             break;
                         }
-                        if (Main.tile[num5, num47].HasTile && Main.tile[num5, num47].TileType == ModContent.TileType<Tiles.Impgrass>() && !Main.tile[num5, num47].BottomSlope)
+
+                        if (Main.tile[num5, num47].HasTile &&
+                            Main.tile[num5, num47].TileType == ModContent.TileType<Impgrass>() &&
+                            !Main.tile[num5, num47].BottomSlope)
                         {
                             flag10 = true;
                             break;
                         }
                     }
+
                     if (flag10)
                     {
                         int num48 = num5;
                         int num49 = num6 + 1;
-                        Main.tile[num48, num49].TileType = (ushort)ModContent.TileType<Tiles.Impvines>();
+                        Main.tile[num48, num49].TileType = (ushort)ModContent.TileType<Impvines>();
                         //Main.tile[num48, num49].active(true);
-                        WorldGen.SquareTileFrame(num48, num49, true);
+                        WorldGen.SquareTileFrame(num48, num49);
                         if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.SendTileSquare(-1, num48, num49, 3);
                         }
                     }
                 }
+
                 #endregion impvines growing
             }
+
             num4++;
         }
     }
+
     public static void CheckLargeHerb(int x, int y, int type)
     {
         if (WorldGen.destroyObject)
         {
             return;
         }
+
         Tile t = Main.tile[x, y];
         int style = t.TileFrameX / 18;
         bool destroy = false;
@@ -307,15 +241,20 @@ public class AvalonTestingWorld : ModSystem
         {
             destroy = true;
         }
+
         if (destroy)
         {
             WorldGen.destroyObject = true;
             for (int u = fixedY; u < fixedY + 3; u++)
             {
-                WorldGen.KillTile(x, u, false, false, false);
+                WorldGen.KillTile(x, u);
             }
-            if (type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage1>() || type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage2>() ||
-                type == (ushort)ModContent.TileType<Tiles.LargeHerbsStage3>()) // 469 through 471 are the immature tiles of the large herb; 472 is the mature version
+
+            if (type == (ushort)ModContent.TileType<LargeHerbsStage1>() ||
+                type == (ushort)ModContent.TileType<LargeHerbsStage2>() ||
+                type == (ushort)ModContent
+                    .TileType<
+                        LargeHerbsStage3>()) // 469 through 471 are the immature tiles of the large herb; 472 is the mature version
             {
                 int item = 0;
                 switch (style)
@@ -353,7 +292,8 @@ public class AvalonTestingWorld : ModSystem
                     case 10:
                         item = ModContent.ItemType<LargeHolybirdSeed>();
                         break;
-                }// 3710 through 3719 are the seeds
+                } // 3710 through 3719 are the seeds
+
                 if (item > 0)
                 {
                     Item.NewItem(WorldGen.GetItemSource_FromTileBreak(x, y), x * 16, fixedY * 16, 16, 48, item);
@@ -398,20 +338,23 @@ public class AvalonTestingWorld : ModSystem
                         item = ModContent.ItemType<LargeHolybird>();
                         break;
                 }
+
                 if (item > 0)
                 {
                     Item.NewItem(WorldGen.GetItemSource_FromTileBreak(x, y), x * 16, fixedY * 16, 16, 48, item);
                 }
                 // 3700 through 3709 are the large herbs
             }
+
             WorldGen.destroyObject = false;
         }
     }
+
     public void InitiateSuperHardmode()
     {
-        ThreadPool.QueueUserWorkItem(new WaitCallback(shmCallback), 1);
+        ThreadPool.QueueUserWorkItem(shmCallback, 1);
     }
-    
+
     public void shmCallback(object threadContext)
     {
         if (SuperHardmode)
@@ -429,10 +372,14 @@ public class AvalonTestingWorld : ModSystem
         }
         else if (Main.netMode == NetmodeID.Server)
         {
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The ancient souls have been disturbed..."), new Color(255, 60, 0));
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The heavens above are rumbling..."), new Color(50, 255, 130));
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with the elements!"), new Color(0, 255, 0));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The ancient souls have been disturbed..."),
+                new Color(255, 60, 0));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The heavens above are rumbling..."),
+                new Color(50, 255, 130));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with the elements!"),
+                new Color(0, 255, 0));
         }
+
         if (Main.netMode == NetmodeID.Server)
         {
             Netplay.ResetSections();
@@ -445,215 +392,51 @@ public class AvalonTestingWorld : ModSystem
         {
             Main.rand = new UnifiedRandom((int)DateTime.Now.Ticks);
         }
+
         // oblivion ore
-        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); a++)
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(5, 9), Main.rand.Next(4, 6), (ushort)ModContent.TileType<Tiles.Ores.OblivionOre>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(5, 9), Main.rand.Next(4, 6),
+                (ushort)ModContent.TileType<OblivionOre>());
         }
+
         // opals
-        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); a++)
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Opal>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Opal>());
         }
+
         // onyx
-        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); a++)
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Onyx>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Onyx>());
         }
+
         // kunzite
-        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); a++)
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Kunzite>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4),
+                (ushort)ModContent.TileType<Kunzite>());
         }
+
         // primordial ore
-        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); a++)
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(3, 6), Main.rand.Next(5, 8), (ushort)ModContent.TileType<Tiles.Ores.PrimordialOre>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(3, 6), Main.rand.Next(5, 8),
+                (ushort)ModContent.TileType<PrimordialOre>());
         }
     }
-    public static void ConvertFromThings(int x, int y, int convert, bool tileframe = true)
-    {
-        Tile tile = Main.tile[x, y];
-        int type = tile.TileType;
-        int wall = tile.WallType;
-        if (!WorldGen.InWorld(x, y, 1))
-        {
-            return;
-        }
-        if (convert == 0)
-        {
-            if (Main.tile[x, y] != null)
-            {
-                if (wall == ModContent.WallType<Walls.ContagionGrassWall>())
-                {
-                    Main.tile[x, y].WallType = WallID.GrassUnsafe;
-                }
-                else if (wall == ModContent.WallType<Walls.ChunkstoneWall>())
-                {
-                    Main.tile[x, y].WallType = WallID.Stone;
-                }
-            }
-            if (Main.tile[x, y] != null)
-            {
-                if (type == ModContent.TileType<Ickgrass>())
-                {
-                    tile.TileType = TileID.Grass;
-                }
-                else if (type == ModContent.TileType<YellowIce>())
-                {
-                    tile.TileType = TileID.IceBlock;
-                }
-                else if (type == ModContent.TileType<Snotsand>())
-                {
-                    tile.TileType = TileID.Sand;
-                }
-                else if (type == ModContent.TileType<Chunkstone>())
-                {
-                    tile.TileType = TileID.Stone;
-                }
-                else if (type == ModContent.TileType<Snotsandstone>())
-                {
-                    tile.TileType = TileID.Sandstone;
-                }
-                else if (type == ModContent.TileType<HardenedSnotsand>())
-                {
-                    tile.TileType = TileID.HardenedSand;
-                }
-                //else if (type == ModContent.TileType<ContagionShortGrass>())
-                //{
-                //    tile.type = TileID.Plants;
-                //}
-                if (TileID.Sets.Conversion.Grass[type] || type == 0)
-                {
-                    WorldGen.SquareTileFrame(x, y);
-                }
-            }
-        }
-        if (convert == 1)
-        {
-            if (Main.tile[x, y] != null)
-            {
-                if (wall == ModContent.WallType<Walls.ContagionGrassWall>() || wall == WallID.CrimsonGrassUnsafe || wall == WallID.CorruptGrassUnsafe || wall == WallID.HallowedGrassUnsafe)
-                {
-                    Main.tile[x, y].WallType = WallID.JungleUnsafe;
-                }
-                else if (wall == WallID.DirtUnsafe)
-                {
-                    Main.tile[x, y].WallType = WallID.MudUnsafe;
-                }
-            }
-            if (Main.tile[x, y] != null)
-            {
-                if (type == ModContent.TileType<Ickgrass>() || type == TileID.CrimsonGrass || type == TileID.CorruptGrass || type == TileID.Grass || type == TileID.HallowedGrass)
-                {
-                    tile.TileType = TileID.JungleGrass;
-                }
-                else if (type == TileID.Dirt)
-                {
-                    tile.TileType = TileID.Mud;
-                }
-                else if (type == ModContent.TileType<Snotsand>() || type == TileID.Sand || type == TileID.Crimsand || type == TileID.Ebonsand || type == TileID.Pearlsand)
-                {
-                    tile.TileType = TileID.Sand;
-                }
-                else if (type == ModContent.TileType<Chunkstone>() || type == TileID.Pearlstone || type == TileID.Crimstone || type == TileID.Ebonstone)
-                {
-                    tile.TileType = TileID.Stone;
-                }
-                else if (type == ModContent.TileType<Snotsandstone>() || type == TileID.HallowSandstone || type == TileID.CrimsonSandstone || type == TileID.CorruptSandstone)
-                {
-                    tile.TileType = TileID.Sandstone;
-                }
-                else if (type == ModContent.TileType<HardenedSnotsand>() || type == TileID.HallowHardenedSand || type == TileID.CrimsonHardenedSand || type == TileID.CorruptHardenedSand)
-                {
-                    tile.TileType = TileID.HardenedSand;
-                }
-                else if (type == ModContent.TileType<YellowIce>() || type == TileID.HallowedIce || type == TileID.FleshIce || type == TileID.CorruptIce || type == TileID.IceBlock)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<GreenIce>();
-                }
-                if (TileID.Sets.Conversion.Grass[type] || type == 0)
-                {
-                    WorldGen.SquareTileFrame(x, y);
-                }
-            }
-        }
-        if (convert == 2 && WorldDarkMatterTiles < 250000)
-        {
-            if (Main.tile[x, y] != null)
-            {
-                if (wall == WallID.JungleUnsafe || wall == WallID.GrassUnsafe || wall == ModContent.WallType<Walls.ContagionGrassWall>() || wall == WallID.CrimsonGrassUnsafe || wall == WallID.CorruptGrassUnsafe || wall == WallID.HallowedGrassUnsafe)
-                {
-                    Main.tile[x, y].WallType = (ushort)ModContent.WallType<Walls.DarkMatterGrassWall>();
-                }
-                else if (wall == WallID.DirtUnsafe)
-                {
-                    Main.tile[x, y].WallType = (ushort)ModContent.WallType<Walls.DarkMatterSoilWall>();
-                }
-                else if (WallID.Sets.Conversion.Stone[wall])
-                {
-                    Main.tile[x, y].WallType = (ushort)ModContent.WallType<Walls.DarkMatterStoneWall>();
-                }
-            }
-            if (Main.tile[x, y] != null)
-            {
-                if (type == ModContent.TileType<Ickgrass>() || type == ModContent.TileType<TropicalGrass>() || type == TileID.JungleGrass || type == TileID.MushroomGrass || type == TileID.CrimsonGrass || type == TileID.CorruptGrass || type == TileID.Grass || type == TileID.HallowedGrass)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<DarkMatterGrass>();
-                }
-                else if (type == TileID.Dirt || type == TileID.ClayBlock || type == TileID.Mud || type == ModContent.TileType<TropicalMud>())
-                {
-                    tile.TileType = (ushort)ModContent.TileType<DarkMatterSoil>();
-                }
-                else if (type == ModContent.TileType<Snotsand>() || type == TileID.Sand || type == TileID.Crimsand || type == TileID.Ebonsand || type == TileID.Pearlsand)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<DarkMatterSand>();
-                }
-                else if (type == ModContent.TileType<Chunkstone>() || type == TileID.Stone || type == TileID.Pearlstone || type == TileID.Crimstone || type == TileID.Ebonstone)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<DarkMatter>();
-                }
-                else if (type == ModContent.TileType<Snotsandstone>() || type == TileID.Sandstone || type == TileID.HallowSandstone || type == TileID.CrimsonSandstone || type == TileID.CorruptSandstone)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<Darksandstone>();
-                }
-                else if (type == ModContent.TileType<HardenedSnotsand>() || type == TileID.HardenedSand || type == TileID.HallowHardenedSand || type == TileID.CrimsonHardenedSand || type == TileID.CorruptHardenedSand)
-                {
-                    tile.TileType = (ushort)ModContent.TileType<HardenedDarkSand>();
-                }
-                else if (type == ModContent.TileType<YellowIce>() || type == TileID.HallowedIce || type == TileID.FleshIce || type == TileID.CorruptIce || type == TileID.IceBlock || type == ModContent.TileType<GreenIce>() || type == ModContent.TileType<BrownIce>())
-                {
-                    tile.TileType = (ushort)ModContent.TileType<BlackIce>();
-                }
-                if (TileID.Sets.Conversion.Grass[type] || type == 0)
-                {
-                    WorldGen.SquareTileFrame(x, y);
-                }
-            }
-        }
-        if (tileframe)
-        {
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                WorldGen.SquareTileFrame(x, y);
-            }
-            else if (Main.netMode == NetmodeID.Server)
-            {
-                NetMessage.SendTileSquare(-1, x, y, 1);
-            }
-        }
-    }
-    
+
     public static void StopRain()
     {
         Main.rainTime = 0;
@@ -755,4 +538,105 @@ public class AvalonTestingWorld : ModSystem
             Main.maxRaining = Main.rand.Next(5, 30) * 0.01f;
         }
     }
+
+    #region WorldGen Variants
+
+    public enum JungleVariant
+    {
+        jungle,
+        tropics,
+        random
+    }
+
+    public enum CopperVariant
+    {
+        copper,
+        tin,
+        bronze,
+        random
+    }
+
+    public enum IronVariant
+    {
+        iron,
+        lead,
+        nickel,
+        random
+    }
+
+    public enum SilverVariant
+    {
+        silver,
+        tungsten,
+        zinc,
+        random
+    }
+
+    public enum GoldVariant
+    {
+        gold,
+        platinum,
+        bismuth,
+        random
+    }
+
+    public enum RhodiumVariant
+    {
+        rhodium,
+        osmium,
+        iridium,
+        random
+    }
+
+    public enum CobaltVariant
+    {
+        cobalt,
+        palladium,
+        duratanium,
+        random
+    }
+
+    public enum MythrilVariant
+    {
+        mythril,
+        orichalcum,
+        naquadah,
+        random
+    }
+
+    public enum AdamantiteVariant
+    {
+        adamantite,
+        titanium,
+        troxinium,
+        random
+    }
+
+    public enum SHMTier1Variant
+    {
+        tritanorium,
+        pyroscoric,
+        random
+    }
+
+    public enum SHMTier2Variant
+    {
+        unvolandite,
+        vorazylcum,
+        random
+    }
+
+    public static JungleVariant jungleMenuSelection = JungleVariant.random;
+    public static CopperVariant copperOre = CopperVariant.random;
+    public static IronVariant ironOre = IronVariant.random;
+    public static SilverVariant silverOre = SilverVariant.random;
+    public static GoldVariant goldOre = GoldVariant.random;
+    public static RhodiumVariant rhodiumOre = RhodiumVariant.random;
+    public static CobaltVariant cobaltOre = CobaltVariant.cobalt;
+    public static MythrilVariant mythrilOre = MythrilVariant.random;
+    public static AdamantiteVariant adamantiteOre = AdamantiteVariant.random;
+    public static SHMTier1Variant shmTier1Ore = SHMTier1Variant.random;
+    public static SHMTier2Variant shmTier2Ore = SHMTier2Variant.random;
+
+    #endregion WorldGen Variants
 }
