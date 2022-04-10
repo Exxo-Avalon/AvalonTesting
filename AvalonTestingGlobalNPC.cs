@@ -1345,11 +1345,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void OnKill(NPC npc)
     {
-        if (!initialized)
-        {
-            InitializeNPCGroups();
-            initialized = true;
-        }
+        
         if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {
             //ExxoAvalonOriginsWorld.GenerateSulphur();
@@ -1363,6 +1359,11 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     }
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
+        if (!initialized)
+        {
+            InitializeNPCGroups();
+            initialized = true;
+        }
         int maxValue50 = 50;
         int maxValue700 = 700;
         int maxValue1000 = 1000;
@@ -1546,8 +1547,8 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             npcLoot.Add(ItemDropRule.Common(ItemID.RoyalGel, 500));
         }
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Rock>(), 600));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PointingLaser>(), 650));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AlienDevice>(), 700));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsHardmode(), ModContent.ItemType<PointingLaser>(), 650));
+        npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.SuperhardmodeDrop(), ModContent.ItemType<AlienDevice>(), 700));
         if (npc.type == NPCID.Clinger || npc.type == NPCID.Spazmatism)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GreekExtinguisher>(), maxValue50));
