@@ -1,5 +1,7 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,21 +29,32 @@ public class BronzeSlime : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         NPC.height = 24;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.BronzeSlimeBanner>();
+        BannerItem = ModContent.ItemType<BronzeSlimeBanner>();
     }
+
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("I'm a bronze slime, meow.")
+        });
+    }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
+
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.Tile.BronzeOre>(), 1, 15, 25));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<BronzeOre>(), 1, 15, 25));
     }
 
     public override void FindFrame(int frameHeight)
     {
-        var num2 = 0;
+        int num2 = 0;
         if (NPC.aiAction == 0)
         {
             if (NPC.velocity.Y < 0f)
@@ -65,20 +78,24 @@ public class BronzeSlime : ModNPC
         {
             num2 = 4;
         }
+
         NPC.frameCounter += 1.0;
         if (num2 > 0)
         {
             NPC.frameCounter += 1.0;
         }
+
         if (num2 == 4)
         {
             NPC.frameCounter += 1.0;
         }
+
         if (NPC.frameCounter >= 8.0)
         {
             NPC.frame.Y = NPC.frame.Y + frameHeight;
             NPC.frameCounter = 0.0;
         }
+
         if (NPC.frame.Y >= frameHeight * Main.npcFrameCount[NPC.type])
         {
             NPC.frame.Y = 0;
@@ -87,6 +104,8 @@ public class BronzeSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon
+            ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate
+            : 0f;
     }
 }

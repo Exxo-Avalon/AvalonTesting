@@ -1,27 +1,17 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.GameContent;
+﻿using AvalonTesting.Hooks;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
-using AvalonTesting.Hooks;
-using Terraria.Graphics.Shaders;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AvalonTesting;
 
 public partial class AvalonTesting : Mod
 {
-#if DEBUG
-    public const bool DevMode = true;
-#else
-    public const bool DevMode = false;
-#endif
-    public new readonly Version Version = new(1, 0, 0, 0, DevMode);
-
     // Reference to the main instance of the mod
     public static AvalonTesting Mod { get; private set; }
-    public Mod MusicMod;
+    public Mod MusicMod { get; private set; }
 
     public AvalonTesting()
     {
@@ -30,41 +20,40 @@ public partial class AvalonTesting : Mod
 
     public override void Load()
     {
+        // ----------- Server/Client ----------- //
         HooksManager.ApplyHooks();
-        
+
         if (Main.netMode == NetmodeID.Server)
         {
             return;
         }
-        
-        ModLoader.TryGetMod("AvalonMusic", out MusicMod);
-        
-        // Vanilla texture replacements
-        TextureAssets.Item[ItemID.HallowedKey] = Mod.Assets.Request<Texture2D>("Sprites/HallowedKey");
-        TextureAssets.Item[ItemID.MagicDagger] = Mod.Assets.Request<Texture2D>("Sprites/MagicDagger");
-        TextureAssets.Tile[TileID.CopperCoinPile] =
-            Mod.Assets.Request<Texture2D>("Sprites/CopperCoin");
-        TextureAssets.Tile[TileID.SilverCoinPile] =
-            Mod.Assets.Request<Texture2D>("Sprites/SilverCoin");
-        TextureAssets.Tile[TileID.GoldCoinPile] = Mod.Assets.Request<Texture2D>("Sprites/GoldCoin");
-        TextureAssets.Tile[TileID.PlatinumCoinPile] =
-            Mod.Assets.Request<Texture2D>("Sprites/PlatinumCoin");
-        TextureAssets.Item[ItemID.PaladinBanner] =
-            Mod.Assets.Request<Texture2D>("Sprites/PaladinBanner");
-        TextureAssets.Item[ItemID.PossessedArmorBanner] =
-            Mod.Assets.Request<Texture2D>("Sprites/PossessedArmorBanner");
-        TextureAssets.Item[ItemID.BoneLeeBanner] =
-            Mod.Assets.Request<Texture2D>("Sprites/BoneLeeBanner");
-        TextureAssets.Item[ItemID.AngryTrapperBanner] =
-            Mod.Assets.Request<Texture2D>("Sprites/AngryTrapperBanner");
-        TextureAssets.Item[ItemID.Deathweed] = Mod.Assets.Request<Texture2D>("Sprites/Deathweed");
-        TextureAssets.Item[ItemID.WaterleafSeeds] =
-            Mod.Assets.Request<Texture2D>("Sprites/WaterleafSeeds");
-        TextureAssets.Projectile[ProjectileID.MagicDagger] =
-            Mod.Assets.Request<Texture2D>("Sprites/MagicDagger");
-        TextureAssets.Tile[TileID.Banners] = Mod.Assets.Request<Texture2D>("Sprites/VanillaBanners");
-        TextureAssets.Tile[TileID.Containers] =
-            Mod.Assets.Request<Texture2D>("Sprites/VanillaChests");
+
+        // ----------- Client Only ----------- //
+        ModLoader.TryGetMod("AvalonMusic", out Mod musicMod);
+        MusicMod = musicMod;
+        ReplaceVanillaTextures();
+    }
+
+    private void ReplaceVanillaTextures()
+    {
+        // Items
+        TextureAssets.Item[ItemID.HallowedKey] = Assets.Request<Texture2D>("Sprites/HallowedKey");
+        TextureAssets.Item[ItemID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
+        TextureAssets.Item[ItemID.PaladinBanner] = Assets.Request<Texture2D>("Sprites/PaladinBanner");
+        TextureAssets.Item[ItemID.PossessedArmorBanner] = Assets.Request<Texture2D>("Sprites/PossessedArmorBanner");
+        TextureAssets.Item[ItemID.BoneLeeBanner] = Assets.Request<Texture2D>("Sprites/BoneLeeBanner");
+        TextureAssets.Item[ItemID.AngryTrapperBanner] = Assets.Request<Texture2D>("Sprites/AngryTrapperBanner");
+        TextureAssets.Item[ItemID.Deathweed] = Assets.Request<Texture2D>("Sprites/Deathweed");
+        TextureAssets.Item[ItemID.WaterleafSeeds] = Assets.Request<Texture2D>("Sprites/WaterleafSeeds");
+        // Tiles
+        TextureAssets.Tile[TileID.CopperCoinPile] = Assets.Request<Texture2D>("Sprites/CopperCoin");
+        TextureAssets.Tile[TileID.SilverCoinPile] = Assets.Request<Texture2D>("Sprites/SilverCoin");
+        TextureAssets.Tile[TileID.GoldCoinPile] = Assets.Request<Texture2D>("Sprites/GoldCoin");
+        TextureAssets.Tile[TileID.PlatinumCoinPile] = Assets.Request<Texture2D>("Sprites/PlatinumCoin");
+        TextureAssets.Tile[TileID.Banners] = Assets.Request<Texture2D>("Sprites/VanillaBanners");
+        TextureAssets.Tile[TileID.Containers] = Assets.Request<Texture2D>("Sprites/VanillaChests");
+        // Projectiles
+        TextureAssets.Projectile[ProjectileID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
     }
 
     public enum Similarity
@@ -121,7 +110,7 @@ public partial class AvalonTesting : Mod
     {
         if (Main.tile[x, y] == null || x < 0 || x >= Main.maxTilesX || y < 0 || y >= Main.maxTilesY)
         {
-            mergedUp = (mergedLeft = (mergedRight = (mergedDown = false)));
+            mergedUp = mergedLeft = mergedRight = mergedDown = false;
             return;
         }
 
@@ -134,10 +123,10 @@ public partial class AvalonTesting : Mod
         Tile tileTopRight = Main.tile[x + 1, y - 1];
         Tile tileBottomLeft = Main.tile[x - 1, y + 1];
         Tile check = Main.tile[x + 1, y + 1];
-        Similarity leftSim = ((!forceSameLeft) ? GetSimilarity(tileLeft, myType, mergeType) : Similarity.Same);
-        Similarity rightSim = ((!forceSameRight) ? GetSimilarity(tileRight, myType, mergeType) : Similarity.Same);
-        Similarity upSim = ((!forceSameUp) ? GetSimilarity(tileUp, myType, mergeType) : Similarity.Same);
-        Similarity downSim = ((!forceSameDown) ? GetSimilarity(tileDown, myType, mergeType) : Similarity.Same);
+        Similarity leftSim = !forceSameLeft ? GetSimilarity(tileLeft, myType, mergeType) : Similarity.Same;
+        Similarity rightSim = !forceSameRight ? GetSimilarity(tileRight, myType, mergeType) : Similarity.Same;
+        Similarity upSim = !forceSameUp ? GetSimilarity(tileUp, myType, mergeType) : Similarity.Same;
+        Similarity downSim = !forceSameDown ? GetSimilarity(tileDown, myType, mergeType) : Similarity.Same;
         Similarity topLeftSim = GetSimilarity(tileTopLeft, myType, mergeType);
         Similarity topRightSim = GetSimilarity(tileTopRight, myType, mergeType);
         Similarity bottomLeftSim = GetSimilarity(tileBottomLeft, myType, mergeType);
@@ -154,7 +143,7 @@ public partial class AvalonTesting : Mod
             randomFrame = Main.tile[x, y].TileFrameNumber;
         }
 
-        mergedDown = (mergedLeft = (mergedRight = (mergedUp = false)));
+        mergedDown = mergedLeft = mergedRight = mergedUp = false;
         switch (leftSim)
         {
             case Similarity.None:
@@ -372,12 +361,12 @@ public partial class AvalonTesting : Mod
                                 switch (rightSim)
                                 {
                                     case Similarity.Same:
-                                        mergedLeft = (mergedDown = true);
+                                        mergedLeft = mergedDown = true;
                                         SetFrame(x, y, 36, 108 + (36 * randomFrame));
                                         break;
 
                                     case Similarity.Merge:
-                                        mergedLeft = (mergedRight = (mergedDown = true));
+                                        mergedLeft = mergedRight = mergedDown = true;
                                         SetFrame(x, y, 198, 144 + (18 * randomFrame));
                                         break;
 
@@ -411,12 +400,12 @@ public partial class AvalonTesting : Mod
                                 switch (rightSim)
                                 {
                                     case Similarity.Same:
-                                        mergedUp = (mergedLeft = true);
+                                        mergedUp = mergedLeft = true;
                                         SetFrame(x, y, 36, 90 + (36 * randomFrame));
                                         break;
 
                                     case Similarity.Merge:
-                                        mergedLeft = (mergedRight = (mergedUp = true));
+                                        mergedLeft = mergedRight = mergedUp = true;
                                         SetFrame(x, y, 198, 90 + (18 * randomFrame));
                                         break;
 
@@ -431,12 +420,12 @@ public partial class AvalonTesting : Mod
                                 switch (rightSim)
                                 {
                                     case Similarity.Same:
-                                        mergedUp = (mergedLeft = (mergedDown = true));
+                                        mergedUp = mergedLeft = mergedDown = true;
                                         SetFrame(x, y, 216, 90 + (18 * randomFrame));
                                         break;
 
                                     case Similarity.Merge:
-                                        mergedDown = (mergedLeft = (mergedRight = (mergedUp = true)));
+                                        mergedDown = mergedLeft = mergedRight = mergedUp = true;
                                         SetFrame(x, y, 108 + (18 * randomFrame), 198);
                                         break;
 
@@ -499,7 +488,7 @@ public partial class AvalonTesting : Mod
                                         break;
 
                                     case Similarity.Merge:
-                                        mergedRight = (mergedLeft = true);
+                                        mergedRight = mergedLeft = true;
                                         SetFrame(x, y, 162 + (18 * randomFrame), 198);
                                         break;
 
@@ -638,7 +627,7 @@ public partial class AvalonTesting : Mod
                                 break;
 
                             case Similarity.Merge:
-                                mergedDown = (mergedRight = true);
+                                mergedDown = mergedRight = true;
                                 SetFrame(x, y, 54, 108 + (36 * randomFrame));
                                 break;
 
@@ -684,7 +673,7 @@ public partial class AvalonTesting : Mod
                                 break;
 
                             case Similarity.Merge:
-                                mergedRight = (mergedUp = true);
+                                mergedRight = mergedUp = true;
                                 SetFrame(x, y, 54, 90 + (36 * randomFrame));
                                 break;
 
@@ -700,12 +689,12 @@ public partial class AvalonTesting : Mod
                         switch (rightSim)
                         {
                             case Similarity.Same:
-                                mergedUp = (mergedDown = true);
+                                mergedUp = mergedDown = true;
                                 SetFrame(x, y, 144 + (18 * randomFrame), 180);
                                 break;
 
                             case Similarity.Merge:
-                                mergedUp = (mergedRight = (mergedDown = true));
+                                mergedUp = mergedRight = mergedDown = true;
                                 SetFrame(x, y, 216, 144 + (18 * randomFrame));
                                 break;
 
@@ -795,6 +784,7 @@ public partial class AvalonTesting : Mod
         MergeWithFrameExplicit(x, y, myType, mergeType, out _, out _, out _, out _, forceSameDown, forceSameUp,
             forceSameLeft, forceSameRight, resetFrame);
     }
+
     public static void StopRain()
     {
         Main.rainTime = 0;
@@ -811,43 +801,53 @@ public partial class AvalonTesting : Mod
         {
             Main.rainTime += Main.rand.Next(0, num2);
         }
+
         if (Main.rand.Next(4) == 0)
         {
             Main.rainTime += Main.rand.Next(0, num2 * 2);
         }
+
         if (Main.rand.Next(5) == 0)
         {
             Main.rainTime += Main.rand.Next(0, num2 * 2);
         }
+
         if (Main.rand.Next(6) == 0)
         {
             Main.rainTime += Main.rand.Next(0, num2 * 3);
         }
+
         if (Main.rand.Next(7) == 0)
         {
             Main.rainTime += Main.rand.Next(0, num2 * 4);
         }
+
         if (Main.rand.Next(8) == 0)
         {
             Main.rainTime += Main.rand.Next(0, num2 * 5);
         }
+
         float num3 = 1f;
         if (Main.rand.Next(2) == 0)
         {
             num3 += 0.05f;
         }
+
         if (Main.rand.Next(3) == 0)
         {
             num3 += 0.1f;
         }
+
         if (Main.rand.Next(4) == 0)
         {
             num3 += 0.15f;
         }
+
         if (Main.rand.Next(5) == 0)
         {
             num3 += 0.2f;
         }
+
         Main.rainTime = (int)(Main.rainTime * num3);
         ChangeRain();
         Main.raining = true;
@@ -862,6 +862,7 @@ public partial class AvalonTesting : Mod
                 Main.maxRaining = Main.rand.Next(20, 90) * 0.01f;
                 return;
             }
+
             Main.maxRaining = Main.rand.Next(40, 90) * 0.01f;
         }
         else if (Main.numClouds > 100.0)
@@ -871,8 +872,8 @@ public partial class AvalonTesting : Mod
                 Main.maxRaining = Main.rand.Next(10, 70) * 0.01f;
                 return;
             }
+
             Main.maxRaining = Main.rand.Next(20, 60) * 0.01f;
-            return;
         }
         else
         {
@@ -881,6 +882,7 @@ public partial class AvalonTesting : Mod
                 Main.maxRaining = Main.rand.Next(5, 40) * 0.01f;
                 return;
             }
+
             Main.maxRaining = Main.rand.Next(5, 30) * 0.01f;
         }
     }
