@@ -13,8 +13,6 @@ public class XanthophyteOre : ModTile
     {
         AddMapEntry(xanthophyteColor, LanguageManager.Instance.GetText("Xanthophyte"));
         Main.tileSolid[Type] = true;
-        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
-        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 775;
         Main.tileSpelunker[Type] = true;
@@ -25,14 +23,14 @@ public class XanthophyteOre : ModTile
         SoundStyle = 1;
         DustType = DustID.Confetti_Yellow;
         MinPick = 200;
+        TileID.Sets.JungleSpecial[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.Ore[Type] = true;
+        TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
+        TileID.Sets.OreMergesWithMud[Type] = true;
     }
     public override bool CanExplode(int i, int j)
     {
-        return false;
-    }
-    public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
-    {
-        AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
         return false;
     }
 }

@@ -17,12 +17,7 @@ public class BlastedStone : ModTile
         SoundType = SoundID.Tink;
         SoundStyle = 1;
         DustType = DustID.Wraith;
-        AvalonTesting.MergeWith(Type, TileID.Ash);
-    }
-
-    public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
-    {
-        AvalonTesting.MergeWithFrame(i, j, Type, TileID.Ash, false, false, false, false, resetFrame);
-        return false;
+        TileID.Sets.HellSpecial[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
     }
 }

@@ -20,16 +20,15 @@ public class TuhrtlBrick : ModTile
         SoundStyle = 1;
         MinPick = 210;
         DustType = DustID.Silt;
-        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalMud>());
-        AvalonTesting.MergeWith(Type, ModContent.TileType<TropicalGrass>());
+        TileID.Sets.AllBlocksWithSmoothBordersToResolveHalfBlockIssue[Type] = true;
+        TileID.Sets.ForcedDirtMerging[Type] = true;
+        TileID.Sets.JungleSpecial[Type] = true;
+        TileID.Sets.GeneralPlacementTiles[Type] = true;
+        TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
     }
     public override bool CanExplode(int i, int j)
     {
-        return false;
-    }
-    public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
-    {
-        AvalonTesting.MergeWithFrame(i, j, Type, ModContent.TileType<TropicalMud>(), false, false, false, false, resetFrame);
         return false;
     }
 }

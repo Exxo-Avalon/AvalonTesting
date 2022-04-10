@@ -14,12 +14,15 @@ public class BlackIce : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<BlackIceBlock>();
-        Main.tileMerge[Type][TileID.IceBlock] = true;
-        Main.tileMerge[TileID.IceBlock][Type] = true;
         Main.tileShine2[Type] = true;
         DustType = DustID.Clentaminator_Purple;
         SoundType = SoundID.Item;
         SoundStyle = 50;
+        TileID.Sets.Conversion.Ice[Type] = true;
+        TileID.Sets.Ices[Type] = true;
+        TileID.Sets.IcesSlush[Type] = true;
+        TileID.Sets.IcesSnow[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
