@@ -63,7 +63,7 @@ public class JungleFire : ModProjectile
             {
                 for (var num152 = 0; num152 < 2; num152++)
                 {
-                    var num153 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.HoneyBubbles, Projectile.velocity.X, Projectile.velocity.Y, 50, default(Color), 1.2f);
+                    var num153 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.t_Honey, Projectile.velocity.X, Projectile.velocity.Y, 50, default(Color), 1.2f);
                     Main.dust[num153].noGravity = true;
                     Main.dust[num153].velocity *= 0.3f;
                 }
