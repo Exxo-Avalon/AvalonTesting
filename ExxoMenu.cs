@@ -14,10 +14,10 @@ public class ExxoMenu : ModMenu
         {
             if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
             {
-                return AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/EAOLogoAprilFools");
+                return Mod.Assets.Request<Texture2D>("Sprites/EAOLogoAprilFools");
             }
 
-            return AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/EAOLogo");
+            return Mod.Assets.Request<Texture2D>("Sprites/EAOLogo");
         }
     }
 

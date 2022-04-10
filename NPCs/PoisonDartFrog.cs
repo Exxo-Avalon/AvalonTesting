@@ -115,7 +115,7 @@ public class PoisonDartFrog : ModNPC
             NPC.velocity.X += speedX * NPC.direction;
         }
 
-        if (NPC.collideY && NPC.velocity.Y >= 0 && AvalonTestingCollisions.TouchingTile(NPC.position, NPC.width, NPC.height))
+        if (NPC.collideY && NPC.velocity.Y >= 0 && Logic.Collision.TouchingTile(NPC.position, NPC.width, NPC.height))
         {
             NPC.velocity.X *= 0.7f;
             if (NPC.velocity.X > -0.5 && NPC.velocity.X < 0.5)
@@ -133,7 +133,7 @@ public class PoisonDartFrog : ModNPC
     }
     public override void FindFrame(int frameHeight)
     {
-        if (NPC.collideY && NPC.velocity.Y >= 0 && AvalonTestingCollisions.TouchingTile(NPC.position, NPC.width, NPC.height))
+        if (NPC.collideY && NPC.velocity.Y >= 0 && Logic.Collision.TouchingTile(NPC.position, NPC.width, NPC.height))
         {
             NPC.frame.Y = 0;
         }

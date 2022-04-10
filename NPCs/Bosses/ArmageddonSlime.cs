@@ -374,7 +374,7 @@ public class ArmageddonSlime : ModNPC
 
         ExxoPlayer myModPlayer = Main.player[Main.myPlayer].Avalon();
 
-        if (AvalonTestingCollisions.TouchingTile(NPC.position, (int)(NPC.width * NPC.scale), (int)(NPC.height * NPC.scale)) && NPC.oldVelocity.Y > 0f)
+        if (Logic.Collision.TouchingTile(NPC.position, (int)(NPC.width * NPC.scale), (int)(NPC.height * NPC.scale)) && NPC.oldVelocity.Y > 0f)
         {
             if (newLanding && Vector2.Distance(NPC.position, Main.player[Main.myPlayer].position) <= 100 * 16)
             {
