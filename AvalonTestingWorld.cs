@@ -40,7 +40,6 @@ public class AvalonTestingWorld : ModSystem
     public static bool downedKingSting = false;
     public static bool stoppedArmageddon = false;
     public static int specialWireHitCount = 0;
-    public static int WorldDarkMatterTiles = 0;
     public static int wosT;
     public static int wosB;
     public static int wosF = 0;

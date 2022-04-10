@@ -1,5 +1,6 @@
 using AvalonTesting.Dusts;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -34,7 +35,7 @@ public class DarkMatterSand : ModTile
     {
         if (!fail)
         {
-            AvalonTestingWorld.WorldDarkMatterTiles--;
+            ModContent.GetInstance<BiomeTileCounts>().WorldDarkMatterTiles--;
         }
 
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);

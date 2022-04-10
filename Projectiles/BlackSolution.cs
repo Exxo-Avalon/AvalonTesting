@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Dusts;
+using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using AvalonTesting.Walls;
 using Microsoft.Xna.Framework;
@@ -95,7 +96,8 @@ public class BlackSolution : ModProjectile
         {
             for (int l = j - size; l <= j + size; l++)
             {
-                if (AvalonTestingWorld.WorldDarkMatterTiles >= 250000)
+                if (ModContent.GetInstance<BiomeTileCounts>().WorldDarkMatterTiles >=
+                    BiomeTileCounts.DarkMatterTilesHardLimit)
                 {
                     return;
                 }
