@@ -1,4 +1,12 @@
-﻿using Terraria;
+﻿using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Consumables;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Potions;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Items.Weapons.Ranged;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -247,36 +255,36 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //int item = WorldGen.genRand.Next(9);
-                                    //if (item == 0)
-                                    //{
-                                    //    item = ModContent.ItemType<Boomlash>();
-                                    //}
-                                    //if (item == 1)
-                                    //{
-                                    //    item = ModContent.ItemType<EctoplasmicBeacon>();
-                                    //}
-                                    //if (item == 2 || item == 3 || item == 4)
-                                    //{
-                                    //    item = ItemID.PlatinumCoin;
-                                    //}
-                                    //if (item == 5)
-                                    //{
-                                    //    item = ModContent.ItemType<CaesiumBar>();
-                                    //}
-                                    //if (item == 6)
-                                    //{
-                                    //    item = ModContent.ItemType<SolariumStar>();
-                                    //}
-                                    //if (item == 7)
-                                    //{
-                                    //    item = ModContent.ItemType<EarthStone>();
-                                    //}
-                                    //if (item == 8)
-                                    //{
-                                    //    item = ModContent.ItemType<Hellrazer>();
-                                    //}
-                                    //AddHellcastleChest(k, l, contain: item);
+                                    int item = WorldGen.genRand.Next(9);
+                                    if (item == 0)
+                                    {
+                                        item = ModContent.ItemType<Boomlash>();
+                                    }
+                                    if (item == 1)
+                                    {
+                                        item = ModContent.ItemType<EctoplasmicBeacon>();
+                                    }
+                                    if (item == 2 || item == 3 || item == 4)
+                                    {
+                                        item = ItemID.PlatinumCoin;
+                                    }
+                                    if (item == 5)
+                                    {
+                                        item = ModContent.ItemType<CaesiumBar>();
+                                    }
+                                    if (item == 6)
+                                    {
+                                        item = ModContent.ItemType<SolariumStar>();
+                                    }
+                                    if (item == 7)
+                                    {
+                                        item = ModContent.ItemType<EarthStone>();
+                                    }
+                                    if (item == 8)
+                                    {
+                                        item = ModContent.ItemType<Hellrazer>();
+                                    }
+                                    AddHellcastleChest(k, l, contain: item);
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -314,7 +322,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodClock>()); // clocks
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodClock>()); // clocks
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -324,7 +332,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodDresser>()); // dressers
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodDresser>()); // dressers
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -334,7 +342,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodChair>()); // chairs
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodChair>()); // chairs
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -344,7 +352,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodTable>()); // tables
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodTable>()); // tables
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -354,7 +362,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodPiano>()); // pianos
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodPiano>()); // pianos
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -372,7 +380,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBed>()); // beds
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBed>()); // beds
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -382,7 +390,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBathtub>());
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBathtub>());
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -408,7 +416,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    //WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.LibraryAltar>(), true, true, -1, 0);
+                                    WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.LibraryAltar>(), true, true, -1, 0);
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -416,21 +424,21 @@ class HellCastle
                                 tile.HasTile = false;
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                //WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 1);
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 1);
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 break;
                             case 29:
                                 tile.HasTile = false;
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                //WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 5);
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 5);
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 break;
                             case 30:
                                 tile.HasTile = false;
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                //WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 2);
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Paintings>(), true, true, -1, 2);
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 break;
                             case 31:
@@ -549,7 +557,7 @@ class HellCastle
             }
         }
     }
-    /*public static bool AddHellcastleChest(int i, int j, int contain = 0, bool notNearOtherChests = false, int Style = -1)
+    public static bool AddHellcastleChest(int i, int j, int contain = 0, bool notNearOtherChests = false, int Style = -1)
     {
         int k = j;
         while (k < Main.maxTilesY)
@@ -593,7 +601,7 @@ class HellCastle
                         }
                         if (n2 == 1)
                         {
-                            Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<LuckPotion>(), false);
+                            Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<CloverPotion>(), false);
                             Main.chest[num2].item[3].stack = WorldGen.genRand.Next(2, 4);
                         }
                         if (n2 == 2)
@@ -635,5 +643,5 @@ class HellCastle
             }
         }
         return false;
-    }*/
+    }
 }
