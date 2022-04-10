@@ -1,4 +1,5 @@
 ﻿using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -187,7 +188,7 @@ public class CorruptVulture : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion || spawnInfo.player.ZoneCorrupt || spawnInfo.player.ZoneCrimson)
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion || spawnInfo.player.ZoneCorrupt || spawnInfo.player.ZoneCrimson)
         {
             if (Main.hardMode)
             {

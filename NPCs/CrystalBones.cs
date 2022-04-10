@@ -1,4 +1,5 @@
 ﻿using System;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -75,7 +76,7 @@ public class CrystalBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void OnKill()
     {

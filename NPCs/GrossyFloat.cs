@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
@@ -76,8 +77,8 @@ public class GrossyFloat : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight)
-            return (spawnInfo.player.Avalon().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight) ? 1f : 0f;
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight)
+            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight) ? 1f : 0f;
         return 0f;
     }
     public override void HitEffect(int hitDirection, double damage)

@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -44,8 +45,8 @@ public class Cougher : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.Avalon().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone())
-            return (spawnInfo.player.Avalon().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone()) ? 1f : 0f;
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone())
+            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone()) ? 1f : 0f;
         return 0f;
     }
     public override void AI()

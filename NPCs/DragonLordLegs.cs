@@ -42,7 +42,7 @@ public class DragonLordLegs : ModNPC
         NPC.buffImmune[BuffID.OnFire] = true;
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.Frostburn] = true;
-        drawOffsetY = 55;
+        DrawOffsetY = 55;
     }
     public override Color? GetAlpha(Color drawColor)
     {
