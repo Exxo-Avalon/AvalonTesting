@@ -29,16 +29,16 @@ public class ContagionSurfaceDesertBackground : ModSurfaceBackgroundStyle
 
     public override int ChooseFarTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground3");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground3");
     }
 
     public override int ChooseMiddleTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground2");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground2");
     }
 
     public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
     {
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground1");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceDesertBackground1");
     }
 }

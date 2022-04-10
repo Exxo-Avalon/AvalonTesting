@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Players;
+﻿using AvalonTesting.Backgrounds;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +15,7 @@ public class Tropics : ModBiome
         : MusicID.Jungle;
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>
-        Mod.Find<ModSurfaceBackgroundStyle>("TropicsSurfaceBackground");
+        ModContent.GetInstance<TropicsSurfaceBackground>();
 
     public override bool IsBiomeActive(Player player)
     {

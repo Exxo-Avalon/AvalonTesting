@@ -9,7 +9,9 @@ namespace AvalonTesting;
 
 public partial class AvalonTesting : Mod
 {
-    // Reference to the main instance of the mod
+    /// <summary>
+    /// Reference to the main instance of the mod
+    /// </summary>
     public static AvalonTesting Mod { get; private set; }
     public Mod MusicMod { get; private set; }
 

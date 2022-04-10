@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Players;
+﻿using AvalonTesting.Backgrounds;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,10 +33,10 @@ public class Contagion : ModBiome
         {
             if (Main.LocalPlayer.ZoneDesert)
             {
-                return Mod.Find<ModSurfaceBackgroundStyle>("ContagionSurfaceDesertBackground");
+                return ModContent.GetInstance<ContagionSurfaceDesertBackground>();
             }
 
-            return Mod.Find<ModSurfaceBackgroundStyle>("ContagionSurfaceBackground");
+            return ModContent.GetInstance<ContagionSurfaceBackground>();
         }
     }
 
@@ -45,10 +46,10 @@ public class Contagion : ModBiome
         {
             if (Main.LocalPlayer.ZoneSnow)
             {
-                return Mod.Find<ModUndergroundBackgroundStyle>("ContagionUndergroundSnowBackground");
+                return ModContent.GetInstance<ContagionUndergroundSnowBackground>();
             }
 
-            return Mod.Find<ModUndergroundBackgroundStyle>("ContagionUndergroundBackground");
+            return ModContent.GetInstance<ContagionUndergroundBackground>();
         }
     }
 

@@ -29,18 +29,18 @@ public class ContagionSurfaceBackground : ModSurfaceBackgroundStyle
 
     public override int ChooseFarTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground2");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground2");
     }
 
     public override int ChooseMiddleTexture()
     {
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground3");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground3");
     }
 
     public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
     {
         b -= 75;
-        return BackgroundTextureLoader.GetBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground1");
+        return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/ContagionSurfaceBackground1");
     }
 
     //private static int SurfaceFrameCounter;
