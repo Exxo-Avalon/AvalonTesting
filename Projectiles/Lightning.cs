@@ -28,7 +28,7 @@ public class Lightning : ModProjectile
         ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
     }
 
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.CultistBossLightningOrbArc;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.CultistBossLightningOrbArc;
 
     public override bool OnTileCollide(Vector2 oldVelocity)
     {

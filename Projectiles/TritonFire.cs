@@ -7,7 +7,7 @@ namespace AvalonTesting.Projectiles;
 
 public class TritonFire : ModProjectile
 {
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Triton Fire");
@@ -124,7 +124,7 @@ public class TritonFire : ModProjectile
 }
 public class TritonFireLinger : ModProjectile
 {
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Triton Fire Linger");

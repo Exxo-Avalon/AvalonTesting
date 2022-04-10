@@ -28,7 +28,7 @@ public class OblivionLaser : ModProjectile
     }
 
     public const uint LifeTime = 100;
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.PhantasmalDeathray;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.PhantasmalDeathray;
 
     public override bool PreDraw(ref Color lightColor)
     {

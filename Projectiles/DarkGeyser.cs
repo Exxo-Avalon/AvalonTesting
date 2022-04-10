@@ -7,7 +7,7 @@ namespace AvalonTesting.Projectiles;
 
 public class DarkGeyser : ModProjectile
 {
-    //public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dark Geyser");
@@ -15,8 +15,7 @@ public class DarkGeyser : ModProjectile
 
     public override void SetDefaults()
     {
-        //Rectangle dims = //AvalonTesting.GetDims("Projectiles/DarkGeyser");
-        Projectile.width = 8;
+        Projectile.width = 0;
         Projectile.height = 8;
         Projectile.hostile = true;
         Projectile.friendly = false;

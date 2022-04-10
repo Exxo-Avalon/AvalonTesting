@@ -7,7 +7,7 @@ namespace AvalonTesting.Projectiles;
 
 public class FleshFire : ModProjectile
 {
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Flesh Fire");
@@ -113,7 +113,7 @@ public class FleshFire : ModProjectile
 }
 public class FleshFireLinger : ModProjectile
 {
-    public override string Texture => "Terraria/Projectile_" + ProjectileID.Flames;
+    public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.Flames;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Flesh Fire Linger");
