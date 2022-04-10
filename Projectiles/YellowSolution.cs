@@ -30,7 +30,7 @@ public class YellowSolution : ModProjectile
     public override void AI()
     {
 
-        int dustType = ModContent.DustType<Dusts.YellowSolutionDust>();
+        int DustType = ModContent.DustType<Dusts.YellowSolutionDust>();
 
         if (Projectile.owner == Main.myPlayer)
             Convert((int)(Projectile.position.X + Projectile.width / 2) / 16, (int)(Projectile.position.Y + Projectile.height / 2) / 16, 2);
@@ -55,7 +55,7 @@ public class YellowSolution : ModProjectile
 
             for (int i = 0; i < 1; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dustType, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100);
+                int dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustType, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100);
                 Dust dust = Main.dust[dustIndex];
                 dust.noGravity = true;
                 dust.scale *= 1.75f;

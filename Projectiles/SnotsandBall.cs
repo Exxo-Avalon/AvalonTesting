@@ -9,7 +9,7 @@ public class SnotsandBall : ModProjectile
 {
     protected bool falling = true;
     protected int tileType;
-    protected int dustType;
+    protected int DustType;
 
     public override void SetStaticDefaults()
     {
@@ -32,7 +32,7 @@ public class SnotsandBall : ModProjectile
 
         if (Main.rand.Next(5) == 0)
         {
-            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType);
+            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustType);
             Main.dust[dust].velocity.X *= 0.4f;
         }
 

@@ -59,7 +59,7 @@ public class SacredLyreHomingNote : ModProjectile
     }
     public override void AI()
     {
-        int closest = Projectile.FindClosestNPC(16 * 15);
+        int closest = Projectile.FindClosestNPC(16 * 15, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5);
         if (closest != -1)
         {
             if (Main.npc[closest].lifeMax > 5 && !Main.npc[closest].friendly && !Main.npc[closest].townNPC)

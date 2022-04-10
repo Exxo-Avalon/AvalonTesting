@@ -217,11 +217,11 @@ public class ArmageddonSlime : ModNPC
             teleporting = false;
         }
         Dust teleportDust;
-        int dustType;
+        int DustType;
         if (Main.rand.NextBool(2))
-            dustType = 58;
+            DustType = 58;
         else
-            dustType = 36;
+            DustType = 36;
         if (NPC.ai[1] == 5f)
         {
             teleporting = true;
@@ -250,7 +250,7 @@ public class ArmageddonSlime : ModNPC
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    int newTeleportDust = Dust.NewDust(NPC.position + Vector2.UnitX * -20f, NPC.width + 40, NPC.height, dustType, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 2f);
+                    int newTeleportDust = Dust.NewDust(NPC.position + Vector2.UnitX * -20f, NPC.width + 40, NPC.height, DustType, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 2f);
                     Main.dust[newTeleportDust].noGravity = true;
                     teleportDust = Main.dust[newTeleportDust];
                     teleportDust.velocity *= 0.5f;
@@ -280,7 +280,7 @@ public class ArmageddonSlime : ModNPC
             }
             for (int i = 0; i < 10; i++)
             {
-                int newTeleportDust = Dust.NewDust(NPC.position + Vector2.UnitX * -20f, NPC.width + 40, NPC.height, dustType, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 2f);
+                int newTeleportDust = Dust.NewDust(NPC.position + Vector2.UnitX * -20f, NPC.width + 40, NPC.height, DustType, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 2f);
                 Main.dust[newTeleportDust].noGravity = true;
                 teleportDust = Main.dust[newTeleportDust];
                 teleportDust.velocity *= 2f;
