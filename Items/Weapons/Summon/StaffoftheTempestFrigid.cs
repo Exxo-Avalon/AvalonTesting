@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Projectiles.Summon;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +25,7 @@ class StaffoftheTempestFrigid : ModItem
         Item.width = dims.Width;
         Item.useTime = 30;
         Item.knockBack = 8.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Summon.IceGolemSummon>();
+        Item.shoot = ModContent.ProjectileType<IceGolemSummon>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.useAnimation = 30;

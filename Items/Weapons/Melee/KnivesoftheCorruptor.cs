@@ -38,7 +38,7 @@ class KnivesoftheCorruptor : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        int numberProjectiles = ExxoAvalonOriginsGlobalProjectile.howManyProjectiles(4, 8);
+        int numberProjectiles = AvalonTestingGlobalProjectile.howManyProjectiles(4, 8);
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));

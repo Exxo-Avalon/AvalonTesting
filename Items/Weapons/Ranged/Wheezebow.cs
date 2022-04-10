@@ -20,7 +20,7 @@ class Wheezebow : ModItem
         Item.scale = 1.1f;
         Item.shootSpeed = 9f;
         Item.useAmmo = AmmoID.Arrow;
-        Item.DamageType = // item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
+        Item.DamageType = DamageClass.Ranged;// item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
             Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.useTime = 20;
