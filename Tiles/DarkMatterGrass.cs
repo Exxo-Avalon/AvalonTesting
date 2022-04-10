@@ -1,6 +1,8 @@
+using AvalonTesting.Dusts;
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
@@ -13,9 +15,17 @@ public class DarkMatterGrass : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileBlendAll[Type] = true;
+        TileID.Sets.Conversion.Grass[Type] = true;
+        TileID.Sets.Conversion.MergesWithDirtInASpecialWay[Type] = true;
+        TileID.Sets.ResetsHalfBrickPlacementAttempt[Type] = false;
+        TileID.Sets.CanBeDugByShovel[Type] = true;
+        TileID.Sets.DoesntPlaceWithTileReplacement[Type] = true;
+        TileID.Sets.SpreadOverground[Type] = true;
+        TileID.Sets.SpreadUnderground[Type] = true;
+        TileID.Sets.Grass[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
         ItemDrop = ModContent.ItemType<DarkMatterSoilBlock>();
-        DustType = ModContent.DustType<Dusts.DarkMatterDust>();
+        DustType = ModContent.DustType<DarkMatterDust>();
     }
 
     public override int SaplingGrowthType(ref int style)
@@ -30,6 +40,7 @@ public class DarkMatterGrass : ModTile
         {
             AvalonTestingWorld.WorldDarkMatterTiles--;
         }
+
         base.KillTile(i, j, ref fail, ref effectOnly, ref noItem);
     }
 }

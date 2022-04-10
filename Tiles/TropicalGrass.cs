@@ -1,6 +1,7 @@
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
@@ -14,9 +15,15 @@ public class TropicalGrass : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileBlendAll[Type] = true;
-        Main.tileMergeDirt[Type] = true;
         ItemDrop = ModContent.ItemType<TropicalMudBlock>();
+        TileID.Sets.Conversion.Grass[Type] = true;
+        TileID.Sets.CanBeDugByShovel[Type] = true;
+        TileID.Sets.ResetsHalfBrickPlacementAttempt[Type] = false;
+        TileID.Sets.GrassSpecial[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.SpreadOverground[Type] = true;
+        TileID.Sets.SpreadUnderground[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
         // do drop
     }
 
@@ -28,6 +35,7 @@ public class TropicalGrass : ModTile
             WorldGen.SquareTileFrame(i, j);
         }
     }
+
     public override int SaplingGrowthType(ref int style)
     {
         style = 0;
