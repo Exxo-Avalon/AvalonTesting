@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Terraria.GameContent.Bestiary;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;

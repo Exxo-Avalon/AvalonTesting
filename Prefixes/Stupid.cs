@@ -1,14 +1,9 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Stupid : ModPrefix
 {
-    public Stupid()
-    {
-
-    }
-
     public override PrefixCategory Category => PrefixCategory.Melee;
 
     public override void ModifyValue(ref float valueMult)
@@ -19,15 +14,6 @@ public class Stupid : ModPrefix
     {
         return true;
     }
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Stupid", new Stupid());
-    //     }
-    //     return false;
-    // }
-
     public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {
         knockbackMult = 1.16f;

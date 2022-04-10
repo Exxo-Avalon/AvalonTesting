@@ -1,15 +1,10 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Automated : ModPrefix
 {
-    public Automated()
-    {
-
-    }
-
     public override PrefixCategory Category => PrefixCategory.Ranged;
 
     public override void ModifyValue(ref float valueMult)
@@ -20,14 +15,6 @@ public class Automated : ModPrefix
     {
         return true;
     }
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Automated", new Automated());
-    //     }
-    //     return false;
-    // }
 
     public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {

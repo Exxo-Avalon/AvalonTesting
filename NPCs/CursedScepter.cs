@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 
@@ -37,6 +38,15 @@ public class CursedScepter : ModNPC
         NPC.DeathSound = SoundID.NPCDeath6;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CursedScepterBanner>();
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheDungeon,
+            
+            new FlavorTextBestiaryInfoElement("Cursed Aqua Scepter.")
+        });
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

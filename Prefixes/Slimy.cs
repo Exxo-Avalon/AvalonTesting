@@ -5,10 +5,6 @@ namespace AvalonTesting.Prefixes;
 
 public class Slimy : ArmorPrefix
 {
-    public Slimy()
-    {
-
-    }
     public override PrefixCategory Category => PrefixCategory.Custom;
     public override float RollChance(Item item)
     {
@@ -18,14 +14,6 @@ public class Slimy : ArmorPrefix
     {
         return IsArmor(item);
     } 
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Slimy", new Slimy());
-    //     }
-    //     return false;
-    // }
     public override void UpdateEquip(Player player)
     {
         player.endurance += 0.03f;

@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Items.Other;
+﻿using Terraria.GameContent.Bestiary;
+using AvalonTesting.Items.Other;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

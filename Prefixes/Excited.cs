@@ -1,14 +1,9 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Excited : ModPrefix
 {
-    public Excited()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Magic; } }
 
     public override void ModifyValue(ref float valueMult)
@@ -19,15 +14,6 @@ public class Excited : ModPrefix
     {
         return true;
     }
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Excited", new Excited());
-    //     }
-    //     return false;
-    // }
-
     public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {
         knockbackMult = 0.9f;

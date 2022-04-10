@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 
@@ -30,6 +31,15 @@ public class BloodshotEye : ModNPC
         NPC.buffImmune[BuffID.Confused] = true;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.BloodshotEyeBanner>();
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+            new FlavorTextBestiaryInfoElement("The bloodiest of eyes, this creature exists in a state of fear.")
+        });
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
@@ -74,6 +84,6 @@ public class BloodshotEye : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.bloodMoon && !spawnInfo.player.InPillarZone() ? 0.091f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.bloodMoon && !spawnInfo.player.InPillarZone() ? 0.121f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

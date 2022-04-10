@@ -1,15 +1,10 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Vigorous : ModPrefix
 {
-    public Vigorous()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Accessory; } }
 
     public override void ModifyValue(ref float valueMult)
@@ -20,14 +15,6 @@ public class Vigorous : ModPrefix
     {
         return true;
     }
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Vigorous", new Vigorous());
-    //     }
-    //     return false;
-    // }
 
     public override void Apply(Item item)
     {

@@ -1,14 +1,9 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Phantasmal : ModPrefix
 {
-    public Phantasmal()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Magic; } }
 
     public override bool CanRoll(Terraria.Item item)

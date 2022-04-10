@@ -1,24 +1,11 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Colossal : ModPrefix
 {
-    public Colossal()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Melee; } }
 
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Colossal", new Colossal());
-    //     }
-    //     return false;
-    // }
     public override bool CanRoll(Terraria.Item item)
     {
         return true;

@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Drunken : ModPrefix
 {
@@ -15,15 +15,6 @@ public class Drunken : ModPrefix
     {
         valueMult *= 0.9f;
     }
-
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Drunken", new Drunken());
-    //     }
-    //     return false;
-    // }
     public override bool CanRoll(Terraria.Item item)
     {
         return true;

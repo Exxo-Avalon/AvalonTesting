@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent;
 using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 
@@ -26,6 +27,14 @@ public class Blaze : ModNPC
             }
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
+            new FlavorTextBestiaryInfoElement("What could this be a reference to?")
+        });
     }
     public override void SetDefaults()
     {

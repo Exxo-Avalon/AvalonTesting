@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using AvalonTesting.Players;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 

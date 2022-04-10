@@ -1,24 +1,11 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Fantastic : ModPrefix
 {
-    public Fantastic()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Ranged; } }
 
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Fantastic", new Fantastic());
-    //     }
-    //     return false;
-    // }
     public override bool CanRoll(Terraria.Item item)
     {
         return true;

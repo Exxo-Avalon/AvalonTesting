@@ -37,7 +37,7 @@ public class BronzeSlime : ModNPC
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("I'm a bronze slime, meow.")
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
         });
     }
 

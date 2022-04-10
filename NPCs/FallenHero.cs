@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Terraria.GameContent.Bestiary;
+using System;
 using AvalonTesting.Items.Armor;
 using Terraria;
 using Terraria.ID;
@@ -23,7 +24,15 @@ public class FallenHero : ModNPC
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
+            new FlavorTextBestiaryInfoElement("A hero, fallen into blood.")
+        });
+    }
     public override void SetDefaults()
     {
         NPC.damage = 30;

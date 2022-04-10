@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
@@ -28,7 +29,14 @@ public class CobaltSlime : ModNPC
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CobaltSlimeBanner>();
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
         loot.Add(ItemDropRule.Common(ItemID.CobaltOre, 1, 20, 32));

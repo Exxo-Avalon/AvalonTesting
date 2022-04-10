@@ -5,25 +5,13 @@ namespace AvalonTesting.Prefixes;
 
 public class Awestruck : ModPrefix
 {
-    public Awestruck()
-    {
-
-    }
     public override float RollChance(Item item)
     {
         return 3f;
     }
     public override PrefixCategory Category { get { return PrefixCategory.Melee; } }
 
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Awestruck", new Awestruck());
-    //     }
-    //     return false;
-    // }
-    public override bool CanRoll(Terraria.Item item)
+    public override bool CanRoll(Item item)
     {
         return true;
     }

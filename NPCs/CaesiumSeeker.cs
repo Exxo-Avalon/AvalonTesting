@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Terraria.Audio;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 

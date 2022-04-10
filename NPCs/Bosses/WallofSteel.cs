@@ -545,22 +545,25 @@ public class WallofSteel : ModNPC
         }
     public override void HitEffect(int hitDirection, double damage)
     {
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore1").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore2").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore4").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore5").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore7").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore8").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore9").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore10").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore11").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore12").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore13").Type, NPC.scale);
-        Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore14").Type, NPC.scale);
+        if (NPC.life <= 0)
+        {
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore1").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore2").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore4").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore5").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore7").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore8").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore9").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore10").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore11").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore12").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore13").Type, NPC.scale);
+            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore14").Type, NPC.scale);
+        }
     }
     public override void OnKill()
     {

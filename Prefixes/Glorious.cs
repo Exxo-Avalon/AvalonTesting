@@ -15,14 +15,6 @@ public class Glorious : ArmorPrefix
         valueMult *= 1.25f;
     }
 
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Glorious", new Glorious());
-    //     }
-    //     return false;
-    // }
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Generic) += 0.04f;

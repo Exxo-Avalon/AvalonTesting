@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Terraria.GameContent.Bestiary;
+using System;
 using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;

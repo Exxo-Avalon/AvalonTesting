@@ -4,10 +4,6 @@ namespace AvalonTesting.Prefixes;
 
 public class Loaded : ArmorPrefix
 {
-    public Loaded()
-    {
-
-    }
 
     public override bool CanRoll(Item item)
     {

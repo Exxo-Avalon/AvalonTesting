@@ -1,14 +1,9 @@
 ﻿using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Woozy : ModPrefix
 {
-    public Woozy()
-    {
-
-    }
-
     public override PrefixCategory Category { get { return PrefixCategory.Ranged; } }
 
     public override void ModifyValue(ref float valueMult)
@@ -19,14 +14,6 @@ public class Woozy : ModPrefix
     {
         return true;
     }
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Woozy", new Woozy());
-    //     }
-    //     return false;
-    // }
 
     public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {

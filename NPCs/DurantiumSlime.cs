@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 
@@ -27,7 +28,14 @@ public class DurantiumSlime : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DurataniumOre>(), 1, 20, 32));

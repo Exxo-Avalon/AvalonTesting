@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Terraria.GameContent.Bestiary;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;

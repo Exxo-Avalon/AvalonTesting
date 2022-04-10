@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Terraria.GameContent.Bestiary;
+using System;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

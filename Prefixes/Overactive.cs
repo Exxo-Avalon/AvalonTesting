@@ -1,33 +1,19 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.Prefixes;
+namespace AvalonTesting.Prefixes;
 
 public class Overactive : ModPrefix
 {
-    public Overactive()
-    {
-
-    }
-
     public override bool CanRoll(Item item)
     {
-        return false;
+        return true;
     }
 
     public override void ModifyValue(ref float valueMult)
     {
         valueMult *= 1.1f;
     }
-
-    // public override bool Autoload(ref string name)
-    // {
-    //     if (base.Autoload(ref name))
-    //     {
-    //         Mod.AddPrefix("Overactive", new Overactive());
-    //     }
-    //     return false;
-    // }
 
     public override void Apply(Item item)
     {

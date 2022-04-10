@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +30,14 @@ public class AdamantiteSlime : ModNPC
         BannerItem = ModContent.ItemType<Items.Banners.AdamantiteSlimeBanner>();
     }
 
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
         loot.Add(ItemDropRule.Common(ItemID.AdamantiteOre, 1, 10, 16));
