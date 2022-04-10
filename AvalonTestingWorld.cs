@@ -653,4 +653,106 @@ public class AvalonTestingWorld : ModSystem
             }
         }
     }
+    
+    public static void StopRain()
+    {
+        Main.rainTime = 0;
+        Main.raining = false;
+        Main.maxRaining = 0f;
+    }
+
+    public static void StartRain()
+    {
+        const int num = 86400;
+        const int num2 = num / 24;
+        Main.rainTime = Main.rand.Next(num2 * 8, num);
+        if (Main.rand.Next(3) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2);
+        }
+
+        if (Main.rand.Next(4) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2 * 2);
+        }
+
+        if (Main.rand.Next(5) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2 * 2);
+        }
+
+        if (Main.rand.Next(6) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2 * 3);
+        }
+
+        if (Main.rand.Next(7) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2 * 4);
+        }
+
+        if (Main.rand.Next(8) == 0)
+        {
+            Main.rainTime += Main.rand.Next(0, num2 * 5);
+        }
+
+        float num3 = 1f;
+        if (Main.rand.Next(2) == 0)
+        {
+            num3 += 0.05f;
+        }
+
+        if (Main.rand.Next(3) == 0)
+        {
+            num3 += 0.1f;
+        }
+
+        if (Main.rand.Next(4) == 0)
+        {
+            num3 += 0.15f;
+        }
+
+        if (Main.rand.Next(5) == 0)
+        {
+            num3 += 0.2f;
+        }
+
+        Main.rainTime = (int)(Main.rainTime * num3);
+        ChangeRain();
+        Main.raining = true;
+    }
+
+    public static void ChangeRain()
+    {
+        if (Main.cloudBGActive >= 1f || Main.numClouds > 150.0)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                Main.maxRaining = Main.rand.Next(20, 90) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(40, 90) * 0.01f;
+        }
+        else if (Main.numClouds > 100.0)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                Main.maxRaining = Main.rand.Next(10, 70) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(20, 60) * 0.01f;
+        }
+        else
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                Main.maxRaining = Main.rand.Next(5, 40) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(5, 30) * 0.01f;
+        }
+    }
 }
