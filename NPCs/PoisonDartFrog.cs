@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class PoisonDartFrog : ModNPC
 {
@@ -148,7 +148,7 @@ public class PoisonDartFrog : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.Avalon().ZoneTropics && !spawnInfo.player.InPillarZone() && Main.hardMode ? 0.083f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.Avalon().ZoneTropics && !spawnInfo.player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {

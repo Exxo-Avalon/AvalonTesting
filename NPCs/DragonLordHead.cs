@@ -1,6 +1,6 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
-using ExxoAvalonOrigins.Items.Placeable.Trophy;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Trophy;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 [AutoloadBossHead]
 public class DragonLordHead : ModNPC
@@ -75,7 +75,7 @@ public class DragonLordHead : ModNPC
             spriteBatch.Draw(texture, new Vector2(npc.oldPos[num99].X - Main.screenPosition.X + (float)(npc.width / 2) - (float)texture.Width * npc.scale / 2f + vector2.X * npc.scale, npc.oldPos[num99].Y - Main.screenPosition.Y + (float)npc.height - (float)texture.Height * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector2.Y * npc.scale), npc.frame, color24, npc.rotation, vector2, npc.scale, SpriteEffects.None, 0f);
         }
     }*/
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         if (Main.rand.Next(7) == 0)
         {
@@ -96,8 +96,8 @@ public class DragonLordHead : ModNPC
             Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
         }
 
-        if (!ExxoAvalonOriginsWorld.downedDragonLord)
-            ExxoAvalonOriginsWorld.downedDragonLord = true;
+        if (!AvalonTestingWorld.downedDragonLord)
+            AvalonTestingWorld.downedDragonLord = true;
     }
 
     public override void AI()
@@ -188,20 +188,20 @@ public class DragonLordHead : ModNPC
         }
         if (Main.rand.Next(275) == 0)
         {
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().dlBreath = true;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath = true;
             SoundEngine.PlaySound(SoundID.Roar, -1, -1, 0);
         }
-        if (NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().dlBreath)
+        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath)
         {
             int p = Projectile.NewProjectile(NPC.position.X + NPC.width / 2f, NPC.position.Y + NPC.height / 2f, NPC.velocity.X * 3f + Main.rand.Next(-2, 3), NPC.velocity.Y * 3f + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f, 255, 0f, 0f);
             Main.projectile[p].hostile = true;
             Main.projectile[p].friendly = false;
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().breathCD--;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD--;
         }
-        if (NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().breathCD <= 0)
+        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD <= 0)
         {
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().dlBreath = false;
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().breathCD = 90;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath = false;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD = 90;
             SoundEngine.PlaySound(SoundID.Item, -1, -1, 20);
         }
         if (NPC.velocity.X < 0f)

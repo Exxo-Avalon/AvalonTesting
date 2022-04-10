@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BoundIceman : ModNPC
 {
@@ -28,7 +28,7 @@ public class BoundIceman : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneRockLayerHeight && !ExxoAvalonOriginsGlobalNPC.savedIceman && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.0526f : 0f;
+        return spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneRockLayerHeight && !AvalonTestingGlobalNPC.savedIceman && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.0526f : 0f;
     }
 
     public override bool CanChat()
@@ -57,7 +57,7 @@ public class BoundIceman : ModNPC
             if (Main.player[i].active && Main.player[i].talkNPC == NPC.whoAmI)
             {
                 NPC.Transform(ModContent.NPCType<Iceman>());
-                ExxoAvalonOriginsGlobalNPC.savedIceman = true;
+                AvalonTestingGlobalNPC.savedIceman = true;
             }
         }
         NPC.TargetClosest(true);

@@ -88,14 +88,14 @@ public class PulseLaser : ModProjectile
         if (p.penetrate == 7)
         {
             // find closest npc to cursor
-            if (ExxoAvalonOriginsGlobalNPC.FindClosest(new Vector2((Main.mouseX + Main.screenPosition.X), (Main.mouseY + Main.screenPosition.Y)), 128) != -1)
+            if (AvalonTestingGlobalNPC.FindClosest(new Vector2((Main.mouseX + Main.screenPosition.X), (Main.mouseY + Main.screenPosition.Y)), 128) != -1)
             {
                 // find closest npc to cursor
-                npcIndex = ExxoAvalonOriginsGlobalNPC.FindClosest(new Vector2((Main.mouseX + Main.screenPosition.X), (Main.mouseY + Main.screenPosition.Y)), 144);
+                npcIndex = AvalonTestingGlobalNPC.FindClosest(new Vector2((Main.mouseX + Main.screenPosition.X), (Main.mouseY + Main.screenPosition.Y)), 144);
                 // end is now the center of the closest npc to cursor
                 End = Main.npc[npcIndex].Center;
                 // find the closest npc to the end of the beam, excluding the current npc
-                int thing = ExxoAvalonOriginsGlobalNPC.FindClosestExcludeAnIndex(End, 144, npcIndex);
+                int thing = AvalonTestingGlobalNPC.FindClosestExcludeAnIndex(End, 144, npcIndex);
                 if (thing != -1)
                 {
                     Vector2 newVel = Vector2.Normalize(p.position - Main.npc[thing].position);
@@ -115,15 +115,15 @@ public class PulseLaser : ModProjectile
         else if (p.penetrate > 1)
         {
             // find closest npc to cursor
-            if (ExxoAvalonOriginsGlobalNPC.FindClosestExcludeAnIndex(Main.npc[(int)p.ai[1]].position, 128, (int)p.ai[1]) != -1)
+            if (AvalonTestingGlobalNPC.FindClosestExcludeAnIndex(Main.npc[(int)p.ai[1]].position, 128, (int)p.ai[1]) != -1)
             {
                 // find closest npc to cursor
-                npcIndex = ExxoAvalonOriginsGlobalNPC.FindClosestExcludeAnIndex(Main.npc[(int)p.ai[1]].position, 144, (int)p.ai[1]);
+                npcIndex = AvalonTestingGlobalNPC.FindClosestExcludeAnIndex(Main.npc[(int)p.ai[1]].position, 144, (int)p.ai[1]);
                 // end is now the center of the closest npc to cursor
                 End = Main.npc[npcIndex].Center;
                 // if beams 0-4
                 // find the closest npc to the end of the beam, excluding the current npc
-                int thing = ExxoAvalonOriginsGlobalNPC.FindClosestExcludeAnIndex(End, 144, npcIndex);
+                int thing = AvalonTestingGlobalNPC.FindClosestExcludeAnIndex(End, 144, npcIndex);
                 if (thing != -1)
                 {
                     Vector2 newVel = Vector2.Normalize(p.position - Main.npc[thing].position);

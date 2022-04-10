@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Cougher : ModNPC
 {

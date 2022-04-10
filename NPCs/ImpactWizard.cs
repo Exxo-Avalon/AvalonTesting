@@ -1,5 +1,5 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class ImpactWizard : ModNPC
 {
@@ -53,7 +53,7 @@ public class ImpactWizard : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ExxoAvalonOriginsWorld.stoppedArmageddon && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && AvalonTestingWorld.stoppedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void AI()
     {
@@ -168,7 +168,7 @@ public class ImpactWizard : ModNPC
                     num258 *= num259;
                     num257 *= 1.4f;
                     num258 *= 1.4f;
-                    if (!NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().silenced)
+                    if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().silenced)
                     {
                         var num262 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector23.X, vector23.Y, num257, num258, ModContent.ProjectileType<Projectiles.ImpactSphere>(), Main.expertMode ? 35 : 65, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[num262].timeLeft = 300;

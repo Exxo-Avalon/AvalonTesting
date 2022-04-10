@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace ExxoAvalonOrigins.NPCs.Utils;
+namespace AvalonTesting.NPCs.Utils;
 
 /// <summary>
 /// A State which calls and manages other states

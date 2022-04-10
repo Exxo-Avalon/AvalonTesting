@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Dragonfly : ModNPC
 {
@@ -264,6 +264,6 @@ public class Dragonfly : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone() && !Main.dayTime && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.05f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone() && !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.05f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

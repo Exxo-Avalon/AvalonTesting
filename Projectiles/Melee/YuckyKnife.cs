@@ -35,7 +35,7 @@ public class YuckyKnife : ModProjectile
         {
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
         }
-        var num81 = ExxoAvalonOriginsGlobalNPC.FindClosest(Projectile.position, 208f);
+        var num81 = AvalonTestingGlobalNPC.FindClosest(Projectile.position, 208f);
         if (num81 != -1 && Main.npc[num81].lifeMax > 5 && !Main.npc[num81].friendly && !Main.npc[num81].townNPC)
         {
             var vector2 = Main.npc[num81].position;

@@ -1,10 +1,10 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Accessories;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Placeable.Painting;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
-using ExxoAvalonOrigins.Items.Placeable.Trophy;
-using ExxoAvalonOrigins.Items.Potions;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Painting;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Potions;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +12,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionHead1 : ModNPC
 {
@@ -53,7 +53,7 @@ public class AncientOblivionHead1 : ModNPC
     }
     public override void AI()
     {
-        ExxoAvalonOriginsGlobalNPCInstance instance = NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>();
+        AvalonTestingGlobalNPCInstance instance = NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>();
         NPC.damage = NPC.defDamage;
         NPC.defense = NPC.defDefense;
         if (NPC.ai[0] == 0f && Main.netMode != NetmodeID.MultiplayerClient)
@@ -265,9 +265,9 @@ public class AncientOblivionHead1 : ModNPC
         }
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        ExxoAvalonOriginsGlobalNPC.oblivionDead = true;
+        AvalonTestingGlobalNPC.oblivionDead = true;
 
         if (Main.rand.Next(7) == 0)
         {
@@ -300,10 +300,10 @@ public class AncientOblivionHead1 : ModNPC
             Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<OblivionOre>(), Main.rand.Next(100, 201), false, 0, false);
         }
 
-        if (!ExxoAvalonOriginsWorld.oblivionDead)
+        if (!AvalonTestingWorld.oblivionDead)
         {
-            ExxoAvalonOriginsWorld.oblivionDead = true;
-            ModContent.GetInstance<ExxoAvalonOriginsWorld>().GenerateCrystalMines();
+            AvalonTestingWorld.oblivionDead = true;
+            ModContent.GetInstance<AvalonTestingWorld>().GenerateCrystalMines();
         }
     }
 

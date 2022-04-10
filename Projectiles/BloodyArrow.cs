@@ -31,9 +31,9 @@ public class BloodyArrow : ModProjectile
         //projectile.velocity *= 0f;
         //projectile.GetGlobalProjectile<ExxoAvalonOriginsGlobalProjectileInstance>().bloodArrowPos = projectile.position;
         target.AddBuff(ModContent.BuffType<Buffs.Bleeding>(), 8 * 60);
-        //if (target.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().bleedStacks < 3)
+        //if (target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleedStacks < 3)
         //{
-        //    target.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().bleedStacks++;
+        //    target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleedStacks++;
         //}
     }
     public override void AI()

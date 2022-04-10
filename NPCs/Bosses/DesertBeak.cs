@@ -1,8 +1,8 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Placeable.Trophy;
-using ExxoAvalonOrigins.Items.Vanity;
-using ExxoAvalonOrigins.Items.Weapons.Magic;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Vanity;
+using AvalonTesting.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +11,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs.Bosses;
+namespace AvalonTesting.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class DesertBeak : ModNPC
@@ -47,7 +47,7 @@ public class DesertBeak : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
-        Music = ExxoAvalonOrigins.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(ExxoAvalonOrigins.Mod.MusicMod, "Sounds/Music/DesertBeak");
+        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/DesertBeak");
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -56,15 +56,15 @@ public class DesertBeak : ModNPC
     }
     public override void OnKill()
     {
-        if (!ExxoAvalonOriginsWorld.downedDesertBeak)
-            ExxoAvalonOriginsWorld.downedDesertBeak = true;
+        if (!AvalonTestingWorld.downedDesertBeak)
+            AvalonTestingWorld.downedDesertBeak = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.SandBlock, 1, 22, 55));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DesertBeakMask>(), 7));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DesertFeather>(), 1, 6, 10));
-        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ExxoAvalonOriginsWorld.rhodiumOre.GetItemOre(), 1, 15, 26));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), AvalonTestingWorld.rhodiumOre.GetItemOre(), 1, 15, 26));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TomeoftheDistantPast>(), 3));
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.DesertBeakBossBag>()));
     }

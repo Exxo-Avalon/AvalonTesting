@@ -1,6 +1,6 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Accessories;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CursedMagmaSkeleton : ModNPC
 {
@@ -66,7 +66,7 @@ public class CursedMagmaSkeleton : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.03f : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.03f : 0f;
     }
 
     public override void AI()

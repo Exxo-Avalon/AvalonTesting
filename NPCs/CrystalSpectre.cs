@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CrystalSpectre : ModNPC
 {
@@ -216,7 +216,7 @@ public class CrystalSpectre : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return !Main.dayTime && Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.5f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return !Main.dayTime && Main.hardMode && spawnInfo.player.Avalon().ZoneCrystal ? 0.5f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)

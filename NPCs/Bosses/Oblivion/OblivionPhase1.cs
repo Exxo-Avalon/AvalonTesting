@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ExxoAvalonOrigins.NPCs.Utils;
+using AvalonTesting.NPCs.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -10,7 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs.Bosses.Oblivion;
+namespace AvalonTesting.NPCs.Bosses.Oblivion;
 
 public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
 {
@@ -61,10 +61,10 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
         }
     }
 
-    public override string[] AltTextures => new string[]
-    {
-        Texture + "_Shadow"
-    };
+    // public override string[] AltTextures => new string[]
+    // {
+    //     Texture + "_Shadow"
+    // };
 
     public override void FindFrame(int frameHeight)
     {
@@ -235,14 +235,14 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     if (CurrentFrame == 1)
                     {
-                        Projectile.NewProjectile(npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 else
                 {
                     if (CurrentFrame < 5)
                     {
-                        Projectile.NewProjectile(npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
             }
@@ -302,7 +302,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
 
         public override void PostDraw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = ExxoAvalonOrigins.Mod.Assets.Request<Texture2D>("NPCs/Bosses/Oblivion/OblivionPhase1_Shadow_Glow").Value;
+            Texture2D texture = AvalonTesting.Mod.Assets.Request<Texture2D>("NPCs/Bosses/Oblivion/OblivionPhase1_Shadow_Glow").Value;
             spriteBatch.Draw
             (
                 texture,
@@ -322,7 +322,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
         {
             if (Main.netMode != NetmodeID.Server) // This all needs to happen client-side!
             {
-                Filters.Scene.Activate(Effects.EffectsManager.SceneKeyOblivionDarkenScreen).GetShader().UseColor(tintColor);
+                //Filters.Scene.Activate(Effects.EffectsManager.SceneKeyOblivionDarkenScreen).GetShader().UseColor(tintColor);
                 ModNPC.NPC.altTexture = 1;
             }
         }
@@ -358,7 +358,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
         {
             if (Main.netMode != NetmodeID.Server) // This all needs to happen client-side!
             {
-                Filters.Scene[Effects.EffectsManager.SceneKeyOblivionDarkenScreen].Deactivate();
+                //Filters.Scene[Effects.EffectsManager.SceneKeyOblivionDarkenScreen].Deactivate();
                 ModNPC.NPC.altTexture = 0;
             }
             ModNPC.NPC.alpha = 0;
@@ -650,7 +650,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
             {
                 for (int i = ActiveDrones.Count; i < MaxDrones; i++)
                 {
-                    ActiveDrones.Add(NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y,
+                    ActiveDrones.Add(NPC.NewNPC(npc.GetSpawnSourceForNPCFromNPCAI(), (int)npc.Center.X, (int)npc.Center.Y,
                         ModContent.NPCType<Oblivion.ShieldDrone>(), 0,
                         npc.whoAmI, i, MaxDrones));
                 }
@@ -659,7 +659,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     if (!Main.npc[ActiveDrones[i]].active)
                     {
-                        ActiveDrones[i] = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y,
+                        ActiveDrones[i] = NPC.NewNPC(npc.GetSpawnSourceForNPCFromNPCAI(),(int)npc.Center.X, (int)npc.Center.Y,
                             ModContent.NPCType<Oblivion.ShieldDrone>(), 0,
                             npc.whoAmI, i, MaxDrones);
                     }
@@ -790,7 +790,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 }
                 spinningPoint = spinningPoint.RotatedBy(-direction * ((float)Math.PI * 2f) / 6f);
 
-                Projectile.NewProjectile(npc.Center, spinningPoint,
+                Projectile.NewProjectile(npc.GetSpawnSourceForNPCFromNPCAI(),npc.Center, spinningPoint,
                     ModContent.ProjectileType<Projectiles.OblivionLaser>(), 50, 0f,
                     Main.myPlayer, direction * ((float)Math.PI * 2f) / 540f, npc.whoAmI);
             }

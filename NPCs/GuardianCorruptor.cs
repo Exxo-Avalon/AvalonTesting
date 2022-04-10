@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class GuardianCorruptor : ModNPC
 {
@@ -256,6 +256,6 @@ public class GuardianCorruptor : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneCorrupt && !spawnInfo.player.InPillarZone() && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.066f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneCorrupt && !spawnInfo.player.InPillarZone() && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.066f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

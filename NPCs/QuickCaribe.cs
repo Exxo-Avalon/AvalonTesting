@@ -6,7 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class QuickCaribe : ModNPC
 {
@@ -281,6 +281,6 @@ public class QuickCaribe : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneJungle && !spawnInfo.player.InPillarZone() && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.041f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneJungle && !spawnInfo.player.InPillarZone() && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.041f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

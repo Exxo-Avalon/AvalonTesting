@@ -1,5 +1,5 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Juggernaut : ModNPC
 {
@@ -37,7 +37,7 @@ public class Juggernaut : ModNPC
     }
     public override void OnKill()
     {
-        NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().jugRunonce = false;
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce = false;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("A Juggernaut has been defeated!", new Color(175, 75, 255));
@@ -62,10 +62,10 @@ public class Juggernaut : ModNPC
     {
         var num441 = 30;
         var flag40 = false;
-        if (!NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().jugRunonce)
+        if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce)
         {
             NPC.position = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].position;
-            NPC.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().jugRunonce = true;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce = true;
             if (Main.netMode == NetmodeID.SinglePlayer) Main.NewText("A Juggernaut has awoken!", new Color(175, 75, 255));
             else if (Main.netMode == NetmodeID.Server) ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A Juggernaut has awoken!"), new Color(175, 75, 255));
         }
@@ -377,6 +377,6 @@ public class Juggernaut : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.015f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.015f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

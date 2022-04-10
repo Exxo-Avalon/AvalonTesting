@@ -1,12 +1,12 @@
 using System;
-using ExxoAvalonOrigins.Items.Material;
-using ExxoAvalonOrigins.Items.Placeable.Tile;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class BactusMinion : ModNPC
 {
@@ -31,7 +31,7 @@ public class BactusMinion : ModNPC
         NPC.knockBackResist = 0.8f;
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         if (NPC.AnyNPCs(ModContent.NPCType<BacteriumPrime>()))
         {
@@ -52,7 +52,7 @@ public class BactusMinion : ModNPC
 
     public override void AI()
     {
-        if (ExxoAvalonOriginsGlobalNPC.boogerBoss < 0)
+        if (AvalonTestingGlobalNPC.boogerBoss < 0)
         {
             NPC.active = false;
             NPC.netUpdate = true;
@@ -61,8 +61,8 @@ public class BactusMinion : ModNPC
         if (NPC.ai[0] == 0f)
         {
             var vector107 = new Vector2(NPC.Center.X, NPC.Center.Y);
-            var num880 = Main.npc[ExxoAvalonOriginsGlobalNPC.boogerBoss].Center.X - vector107.X;
-            var num881 = Main.npc[ExxoAvalonOriginsGlobalNPC.boogerBoss].Center.Y - vector107.Y;
+            var num880 = Main.npc[AvalonTestingGlobalNPC.boogerBoss].Center.X - vector107.X;
+            var num881 = Main.npc[AvalonTestingGlobalNPC.boogerBoss].Center.Y - vector107.Y;
             var num882 = (float)Math.Sqrt(num880 * num880 + num881 * num881);
             if (num882 > 90f)
             {
@@ -96,8 +96,8 @@ public class BactusMinion : ModNPC
         else
         {
             var vector108 = new Vector2(NPC.Center.X, NPC.Center.Y);
-            var num883 = Main.npc[ExxoAvalonOriginsGlobalNPC.boogerBoss].Center.X - vector108.X;
-            var num884 = Main.npc[ExxoAvalonOriginsGlobalNPC.boogerBoss].Center.Y - vector108.Y;
+            var num883 = Main.npc[AvalonTestingGlobalNPC.boogerBoss].Center.X - vector108.X;
+            var num884 = Main.npc[AvalonTestingGlobalNPC.boogerBoss].Center.Y - vector108.Y;
             var num885 = (float)Math.Sqrt(num883 * num883 + num884 * num884);
             if (num885 > 700f || NPC.justHit)
             {

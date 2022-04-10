@@ -1,10 +1,15 @@
-﻿using AvalonTesting.Items.Material;
+﻿using System;
+using System.Threading;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Chat;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace AvalonTesting;
 public class AvalonTestingWorld : ModSystem
@@ -400,6 +405,80 @@ public class AvalonTestingWorld : ModSystem
                 // 3700 through 3709 are the large herbs
             }
             WorldGen.destroyObject = false;
+        }
+    }
+    public void InitiateSuperHardmode()
+    {
+        ThreadPool.QueueUserWorkItem(new WaitCallback(shmCallback), 1);
+    }
+    
+    public void shmCallback(object threadContext)
+    {
+        if (SuperHardmode)
+        {
+            return;
+        }
+
+        GenerateSHMOres();
+        SuperHardmode = true;
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("The ancient souls have been disturbed...", 255, 60, 0);
+            Main.NewText("The heavens above are rumbling...", 50, 255, 130);
+            Main.NewText("Your world has been blessed with the elements!", 0, 255, 0);
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The ancient souls have been disturbed..."), new Color(255, 60, 0));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The heavens above are rumbling..."), new Color(50, 255, 130));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with the elements!"), new Color(0, 255, 0));
+        }
+        if (Main.netMode == NetmodeID.Server)
+        {
+            Netplay.ResetSections();
+        }
+    }
+
+    public static void GenerateSHMOres()
+    {
+        if (Main.rand == null)
+        {
+            Main.rand = new UnifiedRandom((int)DateTime.Now.Ticks);
+        }
+        // oblivion ore
+        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        {
+            int x = Main.rand.Next(100, Main.maxTilesX - 100);
+            int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, Main.rand.Next(5, 9), Main.rand.Next(4, 6), (ushort)ModContent.TileType<Tiles.Ores.OblivionOre>());
+        }
+        // opals
+        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        {
+            int x = Main.rand.Next(100, Main.maxTilesX - 100);
+            int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Opal>());
+        }
+        // onyx
+        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        {
+            int x = Main.rand.Next(100, Main.maxTilesX - 100);
+            int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Onyx>());
+        }
+        // kunzite
+        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        {
+            int x = Main.rand.Next(100, Main.maxTilesX - 100);
+            int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Kunzite>());
+        }
+        // primordial ore
+        for (int a = 0; a < (int)((Main.maxTilesX * Main.maxTilesY) * 0.00012); a++)
+        {
+            int x = Main.rand.Next(100, Main.maxTilesX - 100);
+            int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, Main.rand.Next(3, 6), Main.rand.Next(5, 8), (ushort)ModContent.TileType<Tiles.Ores.PrimordialOre>());
         }
     }
 }

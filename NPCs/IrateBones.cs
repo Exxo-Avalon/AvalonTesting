@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class IrateBones : ModNPC
 {
@@ -83,7 +83,7 @@ public class IrateBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.ZoneDungeon ? 0.6f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.player.ZoneDungeon ? 0.6f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {

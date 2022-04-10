@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 [AutoloadHead]
 public class Librarian : ModNPC
@@ -77,7 +77,7 @@ public class Librarian : ModNPC
         }
         if (NPC.AnyNPCs(NPCID.DyeTrader) && Main.rand.Next(6) == 0)
         {
-            return "Wow, " + Main.npc[ExxoAvalonOriginsGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName + "'s services are free? Where I'm from, you have to pay an arm and a leg to dye clothes...";
+            return "Wow, " + Main.npc[AvalonTestingGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName + "'s services are free? Where I'm from, you have to pay an arm and a leg to dye clothes...";
         }
         switch (Main.rand.Next(11))
         {
@@ -186,12 +186,12 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 3, 50);
             nextSlot++;
         }
-        if (ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode && Main.hardMode)
+        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ScrollofTome>());
             shop.item[nextSlot].value = Item.buyPrice(0, 12, 50);
             nextSlot++;
-            if (ExxoAvalonOriginsWorld.downedDragonLord)
+            if (AvalonTestingWorld.downedDragonLord)
             {
                 shop.item[nextSlot].SetDefaults(ModContent.ItemType<DragonOrb>());
                 shop.item[nextSlot].value = Item.buyPrice(0, 30);
@@ -212,7 +212,7 @@ public class Librarian : ModNPC
         }
         var num216 = (int)(NPC.position.X + NPC.width / 2) / 16;
         var num217 = (int)(NPC.position.Y + NPC.height + 1f) / 16;
-        ExxoAvalonOriginsGlobalNPC.savedIceman = true;
+        AvalonTestingGlobalNPC.savedIceman = true;
         if (NPC.homeTileX == -1 && NPC.homeTileY == -1 && NPC.velocity.Y == 0f)
         {
             NPC.homeTileX = (int)NPC.Center.X / 16;

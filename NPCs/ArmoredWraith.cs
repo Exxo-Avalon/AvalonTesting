@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class ArmoredWraith : ModNPC
 {
@@ -55,7 +55,7 @@ public class ArmoredWraith : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return !Main.dayTime && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.053f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.053f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void FindFrame(int frameHeight)
     {

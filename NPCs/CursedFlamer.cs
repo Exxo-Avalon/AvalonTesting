@@ -1,5 +1,5 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Accessories;
+using AvalonTesting.Items.Accessories;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class CursedFlamer : ModNPC
 {

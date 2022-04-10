@@ -1,12 +1,12 @@
 ﻿using System;
-using ExxoAvalonOrigins.Items.Potions;
+using AvalonTesting.Items.Potions;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class AncientOblivionPhase1 : ModNPC
 {
@@ -524,7 +524,7 @@ public class AncientOblivionPhase1 : ModNPC
     }
 
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         NPC.NewNPC((int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<AncientOblivionPhase1Dead>(), 0);
     }

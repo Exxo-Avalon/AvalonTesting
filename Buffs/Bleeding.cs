@@ -15,6 +15,6 @@ public class Bleeding : ModBuff
 
     // public override void Update(NPC npc, ref int buffIndex)
     // {
-    //     npc.GetGlobalNPC<ExxoAvalonOriginsGlobalNPCInstance>().bleeding = true;
+    //     npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleeding = true;
     // }
 }

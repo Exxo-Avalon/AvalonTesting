@@ -1,12 +1,12 @@
 using System;
-using ExxoAvalonOrigins.Items.Material;
+using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class Infernaspaz : ModNPC
 {
@@ -37,7 +37,7 @@ public class Infernaspaz : ModNPC
         NPC.buffImmune[BuffID.Confused] = true;
     }
 
-    public override void NPCLoot()
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ItemID.SoulofFright, Main.rand.Next(5) + 1, false, 0, false);
         Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<SoulofHumidity>(), Main.rand.Next(5) + 1, false, 0, false);

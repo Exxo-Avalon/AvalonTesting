@@ -38,7 +38,7 @@ public class PumpkingsBeam : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<PumpkingsBeam>())
         {
-            var num974 = ExxoAvalonOriginsGlobalNPC.FindClosest(Projectile.position, 320f);
+            var num974 = AvalonTestingGlobalNPC.FindClosest(Projectile.position, 320f);
             if (num974 != -1 && Main.npc[num974].lifeMax > 5 && !Main.npc[num974].friendly && !Main.npc[num974].townNPC)
             {
                 var vector76 = Main.npc[num974].position;

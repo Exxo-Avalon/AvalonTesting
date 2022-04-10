@@ -1,4 +1,4 @@
-﻿using ExxoAvalonOrigins.Items.Other;
+﻿using AvalonTesting.Items.Other;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace ExxoAvalonOrigins.NPCs;
+namespace AvalonTesting.NPCs;
 
 public class MechanicalDiggerHead : MechanicalDiggerWorm
 {
@@ -27,7 +27,7 @@ public class MechanicalDiggerHead : MechanicalDiggerWorm
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<ExxoAvalonOriginsWorld>().SuperHardmode ? 0.073f * ExxoAvalonOriginsGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.073f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void SetDefaults()
