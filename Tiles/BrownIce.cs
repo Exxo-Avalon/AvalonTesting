@@ -11,10 +11,11 @@ public class BrownIce : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(210, 147, 128));
+        Main.tileBrick[Type] = true;
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<BrownIceBlock>();
         Main.tileShine2[Type] = true;
+        ItemDrop = ModContent.ItemType<BrownIceBlock>();
         SoundType = SoundID.Item;
         SoundStyle = 50;
         DustType = DustID.Dirt;
@@ -23,5 +24,6 @@ public class BrownIce : ModTile
         TileID.Sets.IcesSlush[Type] = true;
         TileID.Sets.IcesSnow[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
     }
 }

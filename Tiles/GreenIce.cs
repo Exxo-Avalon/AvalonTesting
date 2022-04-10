@@ -11,10 +11,11 @@ public class GreenIce : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(41, 200, 0));
+        Main.tileBrick[Type] = true;
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<GreenIceBlock>();
         Main.tileShine2[Type] = true;
+        ItemDrop = ModContent.ItemType<GreenIceBlock>();
         SoundType = SoundID.Item;
         SoundStyle = 50;
         DustType = DustID.TerraBlade;
@@ -23,5 +24,6 @@ public class GreenIce : ModTile
         TileID.Sets.IcesSlush[Type] = true;
         TileID.Sets.IcesSnow[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
     }
 }
