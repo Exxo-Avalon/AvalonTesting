@@ -20,7 +20,7 @@ class ShockwavePotion : ModItem
         Item.rare = ItemRarityID.Green;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = 1000;
         Item.useAnimation = 15;

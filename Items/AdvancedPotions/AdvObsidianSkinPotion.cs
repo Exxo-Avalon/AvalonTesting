@@ -7,6 +7,11 @@ namespace AvalonTesting.Items.AdvancedPotions;
 
 class AdvObsidianSkinPotion : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Obsidian Skin Elixir");
+        Tooltip.SetDefault("Provides immunity to lava");
+    }
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -16,7 +21,7 @@ class AdvObsidianSkinPotion : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 0, 4, 0);
         Item.useAnimation = 15;

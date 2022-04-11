@@ -10,7 +10,7 @@ class AdvTitanskinPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Titanskin Elixir");
-        Tooltip.SetDefault("Increases pickup range for life hearts");
+        Tooltip.SetDefault("-6% damage, +20 defense");
     }
 
     public override void SetDefaults()

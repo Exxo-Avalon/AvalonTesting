@@ -21,7 +21,7 @@ class CrimsonPotion : ModItem
         Item.rare = ItemRarityID.Green;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 0, 3, 0);
         Item.useAnimation = 15;

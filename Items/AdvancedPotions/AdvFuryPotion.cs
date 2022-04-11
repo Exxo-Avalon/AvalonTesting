@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ class AdvFuryPotion : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 0, 4, 0);
         Item.useAnimation = 15;

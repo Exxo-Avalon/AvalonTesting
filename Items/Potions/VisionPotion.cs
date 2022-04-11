@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +21,7 @@ class VisionPotion : ModItem
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.value = 2000;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 30;
         Item.useAnimation = 15;
         Item.height = dims.Height;

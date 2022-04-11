@@ -23,7 +23,7 @@ class FlaskofInfection : ModItem
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.useTime = 17;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.value = Item.sellPrice(0, 0, 5, 0);
         Item.useAnimation = 17;
         Item.height = dims.Height;

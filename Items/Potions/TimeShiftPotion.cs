@@ -21,7 +21,7 @@ class TimeShiftPotion : ModItem
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.value = 2000;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.useAnimation = 15;
         Item.height = dims.Height;

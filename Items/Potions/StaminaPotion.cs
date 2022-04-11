@@ -23,7 +23,7 @@ class StaminaPotion : ModItem
         Item.useTurn = true;
         Item.useTime = 17;
         Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina = 55;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 50;
         Item.value = 900;
         Item.useAnimation = 17;

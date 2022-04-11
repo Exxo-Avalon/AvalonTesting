@@ -93,8 +93,6 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         ModContent.NPCType<VorazylcumMiteDigger>()
     };
 
-    public static bool imkCompat = false;
-
     public static readonly int[] Hornets =
     {
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,

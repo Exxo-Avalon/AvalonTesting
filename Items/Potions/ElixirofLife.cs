@@ -23,7 +23,7 @@ class ElixirofLife : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 17;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.value = 10000;
         Item.useAnimation = 17;
         Item.height = dims.Height;

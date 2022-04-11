@@ -22,7 +22,7 @@ class AdvRagePotion : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 0, 4, 0);
         Item.useAnimation = 15;

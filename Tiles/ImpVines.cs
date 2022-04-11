@@ -23,11 +23,11 @@ public class Impvines : ModTile
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        //Tile tile = Framing.GetTileSafely(i, j + 1);
-        //if (tile.HasTile && tile.TileType == Type)
-        //{
-        //    WorldGen.KillTile(i, j + 1);
-        //}
+        Tile tile = Framing.GetTileSafely(i, j + 1);
+        if (tile.HasTile && tile.TileType == Type)
+        {
+            WorldGen.KillTile(i, j + 1);
+        }
     }
 
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

@@ -7,6 +7,11 @@ namespace AvalonTesting.Items.AdvancedPotions;
 
 class AdvRegenerationPotion : ModItem
 {
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Regeneration Elixir");
+        Tooltip.SetDefault("Increases life regeneration");
+    }
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -16,7 +21,7 @@ class AdvRegenerationPotion : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 0, 4, 0);
         Item.useAnimation = 15;
