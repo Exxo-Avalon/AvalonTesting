@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -27,6 +30,7 @@ public static class ClassExtensions
         list.RemoveAt(index);
         return item;
     }
+
     /// <summary>
     ///     Rotate a Vector2.
     /// </summary>
@@ -44,10 +48,12 @@ public static class ClassExtensions
         result.Y += (vector.X * num2) + (vector.Y * num);
         return result;
     }
+
     public static Rectangle NewRectVector2(Vector2 v, Vector2 wH)
     {
         return new Rectangle((int)v.X, (int)v.Y, (int)wH.X, (int)wH.Y);
     }
+
     /// <summary>
     ///     Checks if the current player has an item in their armor/accessory slots.
     /// </summary>
@@ -66,20 +72,22 @@ public static class ClassExtensions
 
         return false;
     }
+
     public static int GetItemOre(this AvalonTestingWorld.RhodiumVariant osmiumVariant)
     {
         switch (osmiumVariant)
         {
             case AvalonTestingWorld.RhodiumVariant.osmium:
-                return ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
+                return ModContent.ItemType<OsmiumOre>();
             case AvalonTestingWorld.RhodiumVariant.rhodium:
-                return ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
+                return ModContent.ItemType<RhodiumOre>();
             case AvalonTestingWorld.RhodiumVariant.iridium:
-                return ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
+                return ModContent.ItemType<IridiumOre>();
             default:
                 return -1;
         }
     }
+
     public static bool InPillarZone(this Player p)
     {
         if (!p.ZoneTowerStardust && !p.ZoneTowerVortex && !p.ZoneTowerSolar)
@@ -89,6 +97,7 @@ public static class ClassExtensions
 
         return true;
     }
+
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
@@ -110,6 +119,7 @@ public static class ClassExtensions
 
         return closest;
     }
+
     /// <summary>
     ///     Helper method for Vampire Teeth and Blah's Knives lifesteal.
     /// </summary>
@@ -131,10 +141,12 @@ public static class ClassExtensions
 
         p.lifeSteal -= num;
         int num2 = p.whoAmI;
-        Projectile.NewProjectile(p.GetProjectileSource_Accessory(new Item(ModContent.ItemType<Items.Accessories.VampireTeeth>())), position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
+        Projectile.NewProjectile(p.GetProjectileSource_Accessory(new Item(ModContent.ItemType<VampireTeeth>())),
+            position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
     }
+
     /// <summary>
-    /// Helper method for checking if the current item is an armor piece - used for armor prefixes.
+    ///     Helper method for checking if the current item is an armor piece - used for armor prefixes.
     /// </summary>
     /// <param name="item"></param>
     /// <returns>Whether or not the item is an armor piece.</returns>
@@ -212,8 +224,9 @@ public static class ClassExtensions
             }
         }
     }
+
     public static bool DrawFishingLine(this Projectile projectile, int fishingRodType, Color lineColor,
-                                      int xPositionAdditive = 45, float yPositionAdditive = 35f)
+                                       int xPositionAdditive = 45, float yPositionAdditive = 35f)
     {
         Player player = Main.player[projectile.owner];
         Item heldItem = player.HeldItem;
@@ -330,12 +343,20 @@ public static class ClassExtensions
             Color color = Lighting.GetColor((int)playerPosModified.X / 16, (int)playerPosModified.Y / 16, lineColor);
             float rotation = vector2.ToRotation() - ((float)Math.PI / 2f);
             Main.spriteBatch.Draw(TextureAssets.FishingLine.Value,
-                new Vector2(playerPosModified.X - Main.screenPosition.X + (TextureAssets.FishingLine.Value.Width * 0.5f),
+                new Vector2(
+                    playerPosModified.X - Main.screenPosition.X + (TextureAssets.FishingLine.Value.Width * 0.5f),
                     playerPosModified.Y - Main.screenPosition.Y + (TextureAssets.FishingLine.Value.Height * 0.5f)),
                 new Rectangle(0, 0, TextureAssets.FishingLine.Value.Width, (int)num3), color, rotation,
                 new Vector2(TextureAssets.FishingLine.Value.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
         }
 
         return false;
+    }
+
+    public static LeadingConditionRule HideFromBestiary(this IItemDropRule itemDropRule)
+    {
+        var conditionRule = new LeadingConditionRule(new Conditions.NeverTrue());
+        conditionRule.OnFailedConditions(itemDropRule, true);
+        return conditionRule;
     }
 }

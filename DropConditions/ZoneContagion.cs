@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 
 namespace AvalonTesting.DropConditions;
-public class ContagionDrop : IItemDropRuleCondition, IProvideItemConditionDescription
+public class ZoneContagion : IItemDropRuleCondition, IProvideItemConditionDescription
 {
     public bool CanDrop(DropAttemptInfo info)
     {

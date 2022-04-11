@@ -1,18 +1,18 @@
-﻿using AvalonTesting.Systems;
+﻿using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.DropConditions;
 
-public class DesertPostBeakDrop : IItemDropRuleCondition, IProvideItemConditionDescription
+public class HardmodeOnly : IItemDropRuleCondition, IProvideItemConditionDescription
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return DownedBossSystem.downedDesertBeak && info.player.ZoneDesert;
+        return CanShowItemDropInUI();
     }
 
     public bool CanShowItemDropInUI()
     {
-        return DownedBossSystem.downedDesertBeak;
+        return Main.hardMode;
     }
 
     public string GetConditionDescription()

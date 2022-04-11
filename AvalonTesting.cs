@@ -9,16 +9,18 @@ namespace AvalonTesting;
 
 public partial class AvalonTesting : Mod
 {
-    /// <summary>
-    /// Reference to the main instance of the mod
-    /// </summary>
-    public static AvalonTesting Mod { get; private set; }
-    public Mod MusicMod { get; private set; }
-
     public AvalonTesting()
     {
         Mod = this;
     }
+
+    /// <summary>
+    ///     Reference to the main instance of the mod
+    /// </summary>
+    public static AvalonTesting Mod { get; private set; }
+
+    public Mod MusicMod { get; private set; }
+    public Mod ImkSushisMod { get; private set; }
 
     public override void Load()
     {
@@ -31,8 +33,10 @@ public partial class AvalonTesting : Mod
         }
 
         // ----------- Client Only ----------- //
-        ModLoader.TryGetMod("AvalonMusic", out Mod musicMod);
-        MusicMod = musicMod;
+        ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod);
+        MusicMod = obtainedMod;
+        ModLoader.TryGetMod("AvalonMusic", out obtainedMod);
+        ImkSushisMod = obtainedMod;
         ReplaceVanillaTextures();
     }
 
