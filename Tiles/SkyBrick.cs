@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Systems;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +27,7 @@ public class SkyBrick : ModTile
     }
     public override bool Slope(int i, int j)
     {
-        return AvalonTestingWorld.downedDragonLord;
+        return ModContent.GetInstance<DownedBossSytem>().DownedDragonLord;
     }
     public override bool CanExplode(int i, int j)
     {

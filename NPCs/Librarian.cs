@@ -1,5 +1,6 @@
 ﻿using System;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -191,7 +192,7 @@ public class Librarian : ModNPC
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ScrollofTome>());
             shop.item[nextSlot].value = Item.buyPrice(0, 12, 50);
             nextSlot++;
-            if (AvalonTestingWorld.downedDragonLord)
+            if (ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
             {
                 shop.item[nextSlot].SetDefaults(ModContent.ItemType<DragonOrb>());
                 shop.item[nextSlot].value = Item.buyPrice(0, 30);

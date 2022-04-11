@@ -31,14 +31,6 @@ public class AvalonTestingWorld : ModSystem
     public static int grassSpread = 0;
     public static bool contaigonSet = false;
     public static Vector2 LoK = Vector2.Zero;
-    public static bool downedBacteriumPrime = false;
-    public static bool downedDesertBeak = false;
-    public static bool downedPhantasm = false;
-    public static bool downedDragonLord = false;
-    public static bool downedMechasting = false;
-    public static bool oblivionDead = false;
-    public static bool downedKingSting = false;
-    public static bool stoppedArmageddon = false;
     public static int specialWireHitCount = 0;
     public static int wosT;
     public static int wosB;

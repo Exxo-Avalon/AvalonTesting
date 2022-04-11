@@ -3,6 +3,7 @@ using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Trophy;
 using AvalonTesting.Items.Vanity;
 using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -56,8 +57,8 @@ public class DesertBeak : ModNPC
     }
     public override void OnKill()
     {
-        if (!AvalonTestingWorld.downedDesertBeak)
-            AvalonTestingWorld.downedDesertBeak = true;
+        if (!ModContent.GetInstance<DownedBossSytem>().DownedDesertBeak)
+            ModContent.GetInstance<DownedBossSytem>().DownedDesertBeak = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

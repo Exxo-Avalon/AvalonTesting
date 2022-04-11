@@ -429,7 +429,7 @@ public class Phantasm : ModNPC
     }
     public override void OnKill()
     {
-        if (!DownedBossSystem.downedPhantasm)
+        if (!ModContent.GetInstance<DownedBossSytem>().DownedPhantasm)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
@@ -439,7 +439,7 @@ public class Phantasm : ModNPC
             {
                 ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The spirits are stirring in the depths!"), new Color(50, 255, 130));
             }
-            NPC.SetEventFlagCleared(ref DownedBossSystem.downedPhantasm, -1);
+            NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSytem>().DownedPhantasm, -1);
         }
     }
     public override void HitEffect(int hitDirection, double damage)

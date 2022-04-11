@@ -1533,7 +1533,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     {
         if (AvalonTesting.Mod.ImkSushisMod != null)
         {
-            if (DownedBossSystem.downedPhantasm)
+            if (ModContent.GetInstance<DownedBossSytem>().DownedPhantasm)
             {
                 NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("LootMartiansToken").Type);
                 NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("LootPlanteraToken").Type);

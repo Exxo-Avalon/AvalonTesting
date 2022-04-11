@@ -466,7 +466,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         tempWireItem.netDefaults(item.netID);
         tempWireItem = tempWireItem.CloneWithModdedDataFrom(item);
         tempWireItem.stack = item.stack;
-        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !DownedBossSystem.downedDragonLord)
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
         {
             player.InfoAccMechShowWires = false;
             if (item.mech)

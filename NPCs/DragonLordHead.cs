@@ -2,6 +2,7 @@
 using AvalonTesting.Items.BossBags;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -95,8 +96,8 @@ public class DragonLordHead : ModNPC
             Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
         }
 
-        if (!AvalonTestingWorld.downedDragonLord)
-            AvalonTestingWorld.downedDragonLord = true;
+        if (!ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
+            ModContent.GetInstance<DownedBossSytem>().DownedDragonLord = true;
     }
 
     public override void AI()

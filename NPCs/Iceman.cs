@@ -130,7 +130,7 @@ public class Iceman : ModNPC
         itemIds.Add(ModContent.ItemType<FrostySpectacle>());
         itemIds.Add(ModContent.ItemType<BagofFrost>());
         itemIds.Add(ItemID.IceTorch);
-        if (DownedBossSystem.oblivionDead) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
+        if (ModContent.GetInstance<DownedBossSytem>().DownedOblivion) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
         if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<FreezeBolt>());
         // convert to a list of items
         var items = new List<Item>();

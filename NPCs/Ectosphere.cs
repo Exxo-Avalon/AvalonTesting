@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -206,6 +207,6 @@ public class Ectosphere : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && AvalonTestingWorld.stoppedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

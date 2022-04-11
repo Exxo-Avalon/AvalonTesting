@@ -48,8 +48,8 @@ public class BacteriumPrime : ModNPC
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacteriumPrimeMask>(), 10));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.IsExpert(), ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>()));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacciliteOre>(), 1, 15, 41));
-        if (!DownedBossSystem.downedBacteriumPrime)
-            DownedBossSystem.downedBacteriumPrime = true;
+        if (!ModContent.GetInstance<DownedBossSytem>().DownedBacteriumPrime)
+            ModContent.GetInstance<DownedBossSytem>().DownedBacteriumPrime = true;
     }
 
     public override void AI()

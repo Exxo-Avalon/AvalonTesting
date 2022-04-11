@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -44,7 +45,7 @@ public class GuardianBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && AvalonTestingWorld.stoppedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void FindFrame(int frameHeight)
     {

@@ -27,7 +27,7 @@ public class ImperviousBrick : ModTile
     }
     public override bool Slope(int i, int j)
     {
-        return DownedBossSystem.downedPhantasm;
+        return ModContent.GetInstance<DownedBossSytem>().DownedPhantasm;
     }
     public override bool CanExplode(int i, int j)
     {

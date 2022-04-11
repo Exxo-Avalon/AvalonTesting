@@ -1,6 +1,7 @@
 ﻿using System;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Potions;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -342,8 +343,8 @@ public class Mechasting : ModNPC
     }
     public override void OnKill()
     {
-        if (!AvalonTestingWorld.downedMechasting)
-            AvalonTestingWorld.downedMechasting = true;
+        if (!ModContent.GetInstance<DownedBossSytem>().DownedMechasting)
+            ModContent.GetInstance<DownedBossSytem>().DownedMechasting = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

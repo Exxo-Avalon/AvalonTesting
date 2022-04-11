@@ -1,6 +1,7 @@
 ﻿using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -62,7 +63,7 @@ public class ImpactWizard : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && AvalonTestingWorld.stoppedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void AI()
     {

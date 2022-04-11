@@ -1,4 +1,5 @@
 ﻿using System;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -419,7 +420,7 @@ public class KingSting : ModNPC
     }
     public override void OnKill()
     {
-        AvalonTestingWorld.downedKingSting = true;
+        ModContent.GetInstance<DownedBossSytem>().DownedKingSting = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
