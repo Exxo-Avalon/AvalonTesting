@@ -1376,17 +1376,16 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         #region blocking imk tokens after phantasm
         if (imkCompat && DownedBossSystem.downedPhantasm)
         {
-            Mod imk = ModLoader.GetMod("imkSushisMod");
-            if (imk != null)
+            if (ModLoader.TryGetMod("Tokens", out Mod imk))
             {
-                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootMartiansToken").Type);
-                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootPlanteraToken").Type);
-                NPCLoader.blockLoot.Add(imk.Find<ModItem>("LootHardmodeToken").Type);
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("PostMartiansLootToken").Type);
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("PostPlanteraLootToken").Type);
+                NPCLoader.blockLoot.Add(imk.Find<ModItem>("HardmodeLootToken").Type);
             }
         }
         #endregion
         #region golem drops
-        if (npc.type == NPCID.Golem && !Main.expertMode)
+        /*if (npc.type == NPCID.Golem && !Main.expertMode)
         {
             if (!NPC.downedGolemBoss)
             {
@@ -1439,7 +1438,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ModContent.ItemType<EarthStone>(), Main.rand.Next(2) + 1, false, 0, false);
             Item.NewItem(npc.GetItemSource_Loot(), npc.getRect(), ItemID.BeetleHusk, Main.rand.Next(4, 9), false, 0, false);
             return;
-        }
+        }*/
         #endregion
         if (npc.type == NPCID.WallofFlesh && !Main.expertMode)
         {

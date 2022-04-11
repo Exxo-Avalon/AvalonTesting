@@ -11,7 +11,7 @@ public class SkyFortress : ModBiome
 
     public override int Music => AvalonTesting.Mod.MusicMod != null
         ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/SkyFortress")
-        : MusicID.Jungle;
+        : MusicID.Dungeon;
 
     public override bool IsBiomeActive(Player player)
     {

@@ -39,6 +39,8 @@ public class QuickCaribe : ModNPC
         NPC.knockBackResist = 0.8f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.QuickCaribeBanner>();
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {

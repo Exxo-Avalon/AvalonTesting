@@ -45,6 +45,8 @@ public class FallenHero : ModNPC
         NPC.knockBackResist = 0.5f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath2;
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.FallenHeroBanner>();
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

@@ -45,6 +45,8 @@ public class CometTail : ModNPC
         NPC.buffImmune[BuffID.Poisoned] = true;
         NPC.buffImmune[BuffID.OnFire] = true;
         NPC.buffImmune[BuffID.CursedInferno] = true;
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CometTailBanner>();
     }
     public override void ModifyNPCLoot(NPCLoot loot)
     {

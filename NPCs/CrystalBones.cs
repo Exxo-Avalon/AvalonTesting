@@ -29,8 +29,8 @@ public class CrystalBones : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit2;
         NPC.DeathSound = SoundID.NPCDeath2;
-        //Banner = npc.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CrystalBonesBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CrystalBonesBanner>();
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

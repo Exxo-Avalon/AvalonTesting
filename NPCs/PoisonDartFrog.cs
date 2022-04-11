@@ -43,6 +43,8 @@ public class PoisonDartFrog : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         AIInJump = true;
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.PoisonDartFrogBanner>();
     }
 
     private const int AISlotFrame = 0;

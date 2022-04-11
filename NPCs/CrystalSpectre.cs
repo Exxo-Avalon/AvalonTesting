@@ -46,8 +46,8 @@ public class CrystalSpectre : ModNPC
         NPC.HitSound = SoundID.NPCHit54;
         NPC.DeathSound = SoundID.NPCDeath52;
         NPC.knockBackResist = 0.05f;
-        //Banner = npc.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CrystalSpectreBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CrystalSpectreBanner>();
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

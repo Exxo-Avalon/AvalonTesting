@@ -55,8 +55,8 @@ public class CursedFlamer : ModNPC
         NPC.noGravity = true;
         NPC.noTileCollide = false;
         NPC.value = 500;
-        //Banner = npc.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CursedFlamerBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CursedFlamerBanner>();
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {

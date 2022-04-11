@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 
 namespace AvalonTesting.NPCs;
 
-public class CorruptVulture : ModNPC
+public class EvilVulture : ModNPC
 {
     public override void SetStaticDefaults()
     {
@@ -41,8 +41,8 @@ public class CorruptVulture : ModNPC
         NPC.knockBackResist = 0.6f;
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
-        //Banner = npc.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CorruptVultureBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.EvilVultureBanner>();
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

@@ -36,6 +36,8 @@ class BerserkerHeadpiece : ModItem
     {
         player.setBonus = "Melee weapons have a chance to instantly kill your enemies";
         player.Avalon().oblivionKill = true;
+        player.armorEffectDrawOutlines = true;
+        player.meleeScaleGlove = true;
     }
 
     public override void UpdateEquip(Player player)

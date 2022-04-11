@@ -10,7 +10,7 @@ namespace AvalonTesting.Systems;
 public class BiomeTileCounts : ModSystem
 {
     // Remove or not???
-    public const int DarkMatterTilesHardLimit = 25000;
+    public const int DarkMatterTilesHardLimit = 250000;
     public int WorldDarkMatterTiles;
     public int ContagionTiles { get; private set; }
     public int TropicsTiles { get; private set; }

@@ -207,6 +207,45 @@ public class MonsterBanner : ModTile
             case 62:
                 item = ModContent.ItemType<Items.Banners.RafflesiaBanner>();
                 break;
+            case 63:
+                item = ModContent.ItemType<Items.Banners.PoisonDartFrogBanner>();
+                break;
+            case 64:
+                item = ModContent.ItemType<Items.Banners.CometTailBanner>();
+                break;
+            case 65:
+                item = ModContent.ItemType<Items.Banners.EvilVultureBanner>();
+                break;
+            case 66:
+                item = ModContent.ItemType<Items.Banners.CrystalBonesBanner>();
+                break;
+            case 67:
+                item = ModContent.ItemType<Items.Banners.CrystalSpectreBanner>();
+                break;
+            case 68:
+                item = ModContent.ItemType<Items.Banners.CursedFlamerBanner>();
+                break;
+            case 69:
+                item = ModContent.ItemType<Items.Banners.FallenHeroBanner>();
+                break;
+            case 70:
+                item = ModContent.ItemType<Items.Banners.QuickCaribeBanner>();
+                break;
+            case 71:
+                item = ModContent.ItemType<Items.Banners.VorazylcumMiteBanner>();
+                break;
+            case 72:
+                item = ModContent.ItemType<Items.Banners.UnvolanditeMiteBanner>();
+                break;
+            case 73:
+                item = ModContent.ItemType<Items.Banners.JuggernautSorcererBanner>();
+                break;
+            case 74:
+                item = ModContent.ItemType<Items.Banners.JuggernautSwordsmanBanner>();
+                break;
+            case 75:
+                item = ModContent.ItemType<Items.Banners.JuggernautBruteBanner>();
+                break;
             default:
                 return;
         }
@@ -389,6 +428,45 @@ public class MonsterBanner : ModTile
                     break;
                 case 62:
                     type = "Rafflesia";
+                    break;
+                case 63:
+                    type = "PoisonDartFrog";
+                    break;
+                case 64:
+                    type = "CometTail";
+                    break;
+                case 65:
+                    type = "EvilVulture";
+                    break;
+                case 66:
+                    type = "CrystalBones";
+                    break;
+                case 67:
+                    type = "CrystalSpectre";
+                    break;
+                case 68:
+                    type = "CursedFlamer";
+                    break;
+                case 69:
+                    type = "FallenHero";
+                    break;
+                case 70:
+                    type = "QuickCaribe";
+                    break;
+                case 71:
+                    type = "VorazylcumMite";
+                    break;
+                case 72:
+                    type = "UnvolanditeMite";
+                    break;
+                case 73:
+                    type = "JuggernautSorcerer";
+                    break;
+                case 74:
+                    type = "JuggernautSwordsman";
+                    break;
+                case 75:
+                    type = "JuggernautBrute";
                     break;
                 default:
                     return;
