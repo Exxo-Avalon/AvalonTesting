@@ -51,8 +51,8 @@ public class CaesiumBrute : ModNPC
         NPC.DeathSound = SoundID.NPCDeath24;
         NPC.knockBackResist = 0.1f;
         NPC.lavaImmune = true;
-        //Banner = NPC.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CaesiumBruteBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CaesiumBruteBanner>();
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

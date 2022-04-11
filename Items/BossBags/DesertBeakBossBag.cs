@@ -49,10 +49,6 @@ public class DesertBeakBossBag : ModItem
         {
             player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<TomeoftheDistantPast>(), 1);
         }
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.DesertBeak>();

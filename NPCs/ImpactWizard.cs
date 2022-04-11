@@ -63,7 +63,7 @@ public class ImpactWizard : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void AI()
     {

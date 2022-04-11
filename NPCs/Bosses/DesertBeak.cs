@@ -57,8 +57,8 @@ public class DesertBeak : ModNPC
     }
     public override void OnKill()
     {
-        if (!ModContent.GetInstance<DownedBossSytem>().DownedDesertBeak)
-            ModContent.GetInstance<DownedBossSytem>().DownedDesertBeak = true;
+        if (!ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak)
+            ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

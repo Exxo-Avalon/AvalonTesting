@@ -21,6 +21,7 @@ public class VertebraeChest : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileOreFinderPriority[Type] = 500;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.BasicChest[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.Origin = new Point16(0, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
@@ -141,20 +142,12 @@ public class VertebraeChest : ModTile
                 }
                 else if (chest != player.chest && player.chest == -1)
                 {
-                    player.chest = chest;
-                    Main.playerInventory = true;
-                    Main.recBigList = false;
+                    player.OpenChest(left, top, chest);
                     SoundEngine.PlaySound(SoundID.MenuOpen);
-                    player.chestX = left;
-                    player.chestY = top;
                 }
                 else
                 {
-                    player.chest = chest;
-                    Main.playerInventory = true;
-                    Main.recBigList = false;
-                    player.chestX = left;
-                    player.chestY = top;
+                    player.OpenChest(left, top, chest);
                     SoundEngine.PlaySound(SoundID.MenuTick);
                 }
                 Recipe.FindRecipes();

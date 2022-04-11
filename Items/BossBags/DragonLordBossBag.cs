@@ -40,10 +40,6 @@ public class DragonLordBossBag : ModItem
         else if (rand == 2) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Ranged.QuadroCannon>());
         else if (rand == 3) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Magic.MagmafrostBolt>());
         else if (rand == 4) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Summon.ReflectorStaff>());
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.DragonLordHead>();

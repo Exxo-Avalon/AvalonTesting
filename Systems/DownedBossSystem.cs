@@ -5,7 +5,7 @@ using Terraria.ModLoader.IO;
 
 namespace AvalonTesting.Systems;
 
-public class DownedBossSytem : ModSystem
+public class DownedBossSystem : ModSystem
 {
     public bool DownedArmageddon;
     public bool DownedBacteriumPrime;

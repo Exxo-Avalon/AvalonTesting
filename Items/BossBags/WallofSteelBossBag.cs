@@ -53,10 +53,6 @@ public class WallofSteelBossBag : ModItem
         }
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<SoulofBlight>(), Main.rand.Next(40, 56));
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<HellsteelPlate>(), Main.rand.Next(20, 31));
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.WallofSteel>();

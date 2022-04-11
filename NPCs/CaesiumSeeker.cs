@@ -32,8 +32,8 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
         NPC.knockBackResist = 0f;
         NPC.behindTiles = true;
         DrawOffsetY = 25;
-        //Banner = NPC.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CaesiumSeekerBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CaesiumSeekerBanner>();
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
@@ -176,14 +176,15 @@ public abstract class CaesiumSeekerWorm : Worm
             }
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
-        /*var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+        var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
         { // Influences how the NPC looks in the Bestiary
             CustomTexturePath = "AvalonTesting/Sprites/Bestiary/CaesiumSeeker", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
             Position = new Vector2(40f, 24f),
             PortraitPositionXOverride = 0f,
-            PortraitPositionYOverride = 12f
+            PortraitPositionYOverride = 12f,
+            Scale = 0.5f
         };
-        NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);*/
+        NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
     }
 
     public override void Init()

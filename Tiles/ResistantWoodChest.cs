@@ -8,6 +8,9 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
+using Terraria.UI;
+using Terraria.UI.Gamepad;
+using Terraria.GameInput;
 
 namespace AvalonTesting.Tiles;
 
@@ -21,6 +24,7 @@ public class ResistantWoodChest : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileOreFinderPriority[Type] = 500;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.BasicChest[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.Origin = new Point16(0, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
@@ -82,17 +86,17 @@ public class ResistantWoodChest : ModTile
     {
         var player = Main.LocalPlayer;
         var tile = Main.tile[i, j];
+        int num39 = tile.TileFrameX / 18;
+        num39 %= 3;
+        num39 = i - num39;
+        tile = Main.tile[i, j];
+        int num40 = j - tile.TileFrameY / 18;
+        tile = Main.tile[i, j];
+
+        
         Main.mouseRightRelease = false;
-        var left = i;
-        var top = j;
-        if (tile.TileFrameX % 36 != 0)
-        {
-            left--;
-        }
-        if (tile.TileFrameY != 0)
-        {
-            top--;
-        }
+        var left = num39;
+        var top = num40;
         if (player.sign >= 0)
         {
             SoundEngine.PlaySound(SoundID.MenuClose);
@@ -108,7 +112,7 @@ public class ResistantWoodChest : ModTile
         }
         if (player.editedChestName)
         {
-            NetMessage.SendData(33, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
+            NetMessage.SendData(MessageID.SyncPlayerChest, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
             player.editedChestName = false;
         }
         if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -121,14 +125,16 @@ public class ResistantWoodChest : ModTile
             }
             else
             {
-                NetMessage.SendData(31, -1, -1, null, left, top, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(MessageID.RequestChestOpen, -1, -1, null, left, top, 0f, 0f, 0, 0, 0);
                 Main.stackSplit = 600;
             }
         }
         else
         {
+            player.piggyBankProjTracker.Clear();
+            player.voidLensChest.Clear();
             var chest = Chest.FindChest(left, top);
-            if (chest >= 0)
+            if (chest != -1)
             {
                 Main.stackSplit = 600;
                 if (chest == player.chest)
@@ -138,28 +144,20 @@ public class ResistantWoodChest : ModTile
                 }
                 else if (chest != player.chest && player.chest == -1)
                 {
-                    player.chest = chest;
-                    Main.playerInventory = true;
-                    Main.recBigList = false;
+                    player.OpenChest(left, top, chest);
                     SoundEngine.PlaySound(SoundID.MenuOpen);
-                    player.chestX = left;
-                    player.chestY = top;
                 }
                 else
                 {
-                    player.chest = chest;
-                    Main.playerInventory = true;
-                    Main.recBigList = false;
-                    player.chestX = left;
-                    player.chestY = top;
+                    player.OpenChest(left, top, chest);
                     SoundEngine.PlaySound(SoundID.MenuTick);
                 }
                 Recipe.FindRecipes();
+                
             }
         }
         return true;
     }
-
     public override void MouseOver(int i, int j)
     {
         var player = Main.LocalPlayer;

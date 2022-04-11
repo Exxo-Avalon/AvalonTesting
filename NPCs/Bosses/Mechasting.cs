@@ -343,8 +343,8 @@ public class Mechasting : ModNPC
     }
     public override void OnKill()
     {
-        if (!ModContent.GetInstance<DownedBossSytem>().DownedMechasting)
-            ModContent.GetInstance<DownedBossSytem>().DownedMechasting = true;
+        if (!ModContent.GetInstance<DownedBossSystem>().DownedMechasting)
+            ModContent.GetInstance<DownedBossSystem>().DownedMechasting = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

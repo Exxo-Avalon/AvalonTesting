@@ -12,6 +12,7 @@ public static class HooksManager
         Projectile.FishingCheck_RollDropLevels += BuffEffects.OnFishingCheck_RollDropLevels;
         CommonCode.DropItemForEachInteractingPlayerOnThePlayer +=
             BuffEffects.OnDropItemForEachInteractingPlayerOnThePlayer;
+        Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
     }
 }

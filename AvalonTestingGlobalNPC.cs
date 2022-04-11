@@ -977,7 +977,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " got too comfortable with an exotic beast.";
             }
         }
-        /*else if (Type == ModContent.NPCType<NPCs.Iceman>())
+        else if (Type == ModContent.NPCType<Iceman>())
         {
             int r = Main.rand.Next(7);
             if (r == 0) result += " froze.";
@@ -995,14 +995,14 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             if (r == 5) result += " fell into a crevasse";
             if (r == 6) result += " slipped.";
         }
-        else if (Type == ModContent.NPCType<NPCs.Librarian>())
+        else if (Type == ModContent.NPCType<Librarian>())
         {
             int r = Main.rand.Next(4);
             if (r == 0) result += " was nuked by a full squad.";
             if (r == 1) result += " fell victim to toxic world chat.";
             if (r == 2) result += " couldn't afford grade eighteen.";
             if (r == 3) result += " was slain by a boss cone attack.";
-        }*/
+        }
         else
         {
             result += " was slain...";
@@ -1157,7 +1157,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     {
         if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {
-            //ExxoAvalonOriginsWorld.GenerateSulphur();
+            AvalonTestingWorld.GenerateSulphur();
         }
 
         if (npc.type == NPCID.DungeonSpirit && Main.rand.Next(15) == 0 &&
@@ -1533,11 +1533,11 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     {
         if (AvalonTesting.Mod.ImkSushisMod != null)
         {
-            if (ModContent.GetInstance<DownedBossSytem>().DownedPhantasm)
+            if (ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
             {
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("LootMartiansToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("LootPlanteraToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("LootHardmodeToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
             }
         }
 

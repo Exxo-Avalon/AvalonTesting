@@ -48,10 +48,6 @@ public class PhantasmBossBag : ModItem
             player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<EtherealHeart>());
         }
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<GhostintheMachine>(), Main.rand.Next(3, 6));
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.Phantasm>();

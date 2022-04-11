@@ -34,10 +34,6 @@ public class MechastingBossBag : ModItem
 
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<SoulofDelight>(), Main.rand.Next(20, 41));
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Items.Accessories.AIController>(), 1);
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
         int rn = Main.rand.Next(4);
         if (rn == 0)
         {

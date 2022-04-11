@@ -10,7 +10,7 @@ public class SoulofHumidityDrop : IItemDropRuleCondition, IProvideItemConditionD
     public bool CanDrop(DropAttemptInfo info)
     {
         return (info.player.ZoneJungle || info.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics) &&
-               ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon;
+               ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon;
     }
 
     public bool CanShowItemDropInUI()

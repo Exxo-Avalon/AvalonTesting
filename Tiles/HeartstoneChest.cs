@@ -21,6 +21,7 @@ public class HeartstoneChest : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileOreFinderPriority[Type] = 500;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.BasicChest[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
         TileObjectData.newTile.Origin = new Point16(0, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };

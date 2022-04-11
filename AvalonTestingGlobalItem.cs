@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Consumables;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Network;
 using AvalonTesting.Players;
 using AvalonTesting.Prefixes;
@@ -466,7 +471,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         tempWireItem.netDefaults(item.netID);
         tempWireItem = tempWireItem.CloneWithModdedDataFrom(item);
         tempWireItem.stack = item.stack;
-        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
         {
             player.InfoAccMechShowWires = false;
             if (item.mech)
@@ -565,13 +570,13 @@ public class AvalonTestingGlobalItem : GlobalItem
             Point mpTile = player.Avalon().MousePosition.ToTileCoordinates();
 
             if ((Main.tile[mpTile.X, mpTile.Y].TileType == TileID.BloomingHerbs ||
-                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Barfbush>() &&
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Barfbush>() &&
                   Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
-                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Bloodberry>() &&
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Bloodberry>() &&
                   Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
-                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Sweetstem>() &&
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Sweetstem>() &&
                   Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
-                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Holybird>() &&
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Holybird>() &&
                   Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36)) &&
                 (Main.tile[mpTile.X, mpTile.Y + 1].TileType == TileID.ClayPot ||
                  Main.tile[mpTile.X, mpTile.Y + 1].TileType == TileID.PlanterBox) && Main.mouseLeft)
@@ -1078,6 +1083,62 @@ public class AvalonTestingGlobalItem : GlobalItem
                 }
 
                 break;
+        }
+    }
+
+    public override void OpenVanillaBag(string context, Player player, int arg)
+    {
+        if (context == "bossBag")
+        {
+            if (Main.rand.Next(4) == 0)
+            {
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(0), ModContent.ItemType<StaminaCrystal>());
+            }
+        }
+        if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag)
+        {
+            NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
+            NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
+            NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
+            NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
+            player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.WallOfFleshBossBag), ModContent.ItemType<NullEmblem>());
+        }
+        if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
+        {
+            if (Main.rand.Next(3) == 0) player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.KingSlimeBossBag), ModContent.ItemType<BandofSlime>());
+        }
+        if (context == "bossBag" && arg == ItemID.PlanteraBossBag)
+        {
+            player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.PlanteraBossBag), ModContent.ItemType<LifeDew>(), Main.rand.Next(15, 22));
+            player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.PlanteraBossBag), ItemID.ChlorophyteOre, Main.rand.Next(60, 121));
+        }
+        if (context == "bossBag" && arg == ItemID.EyeOfCthulhuBossBag) //keeping it this way because we might add unholy arrow alt
+        {
+            /*if (ExxoAvalonOriginsWorld.contagion)
+            {
+                NPCLoader.blockLoot.Add(ItemID.UnholyArrow);
+                NPCLoader.blockLoot.Add(ItemID.DemoniteOre);
+                NPCLoader.blockLoot.Add(ItemID.CorruptSeeds);
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<BacciliteOre>(), Main.rand.Next(30, 81));
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<IckgrassSeeds>(), Main.rand.Next(1, 3));
+                //player.QuickSpawnItem(ModContent.ItemType<ShitArrow>(), Main.rand.Next(20, 50));
+            }*/
+            if (WorldGen.crimson)
+            {
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<Items.Ammo.BloodyArrow>(), Main.rand.Next(20, 50));
+            }
+            if (!Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(10) < 3)
+            {
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<BloodyAmulet>());
+            }
+            else if (Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(100) < 15)
+            {
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<BloodyAmulet>());
+            }
+            else if (Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(100) < 7)
+            {
+                player.QuickSpawnItem(player.GetItemSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<BloodyAmulet>());
+            }
         }
     }
 }

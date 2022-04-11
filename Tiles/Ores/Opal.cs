@@ -14,7 +14,7 @@ public class Opal : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
-        //ItemDrop = ModContent.ItemType<>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Opal>();
         Main.tileSpelunker[Type] = true;
         Main.tileMerge[TileID.Stone][Type] = true;
         Main.tileMerge[Type][TileID.Stone] = true;

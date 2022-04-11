@@ -7,7 +7,7 @@ public class SuperhardmodePreArmaDrop : IItemDropRuleCondition, IProvideItemCond
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !ModContent.GetInstance<DownedBossSytem>().DownedArmageddon;
+        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !ModContent.GetInstance<DownedBossSystem>().DownedArmageddon;
     }
     public bool CanShowItemDropInUI()
     {

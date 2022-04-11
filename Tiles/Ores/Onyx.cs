@@ -18,7 +18,7 @@ public class Onyx : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        //ItemDrop = ModContent.ItemType<>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Onyx>();
         MinPick = 210;
         SoundType = SoundID.Tink;
         SoundStyle = 1;

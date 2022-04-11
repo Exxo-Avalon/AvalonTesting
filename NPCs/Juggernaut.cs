@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.DataStructures;
 
 namespace AvalonTesting.NPCs;
 
@@ -17,6 +18,17 @@ public class Juggernaut : ModNPC
     {
         DisplayName.SetDefault("Juggernaut");
         Main.npcFrameCount[NPC.type] = 15;
+        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        {
+            SpecificallyImmuneTo = new int[]
+            {
+                BuffID.Confused,
+                BuffID.OnFire,
+                BuffID.CursedInferno,
+                BuffID.Venom
+            }
+        };
+        NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
 
     public override void SetDefaults()

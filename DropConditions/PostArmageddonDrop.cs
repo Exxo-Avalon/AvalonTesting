@@ -8,8 +8,8 @@ public class PostArmageddonDrop : IItemDropRuleCondition, IProvideItemConditionD
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSytem>().DownedArmageddon &&
-               !ModContent.GetInstance<DownedBossSytem>().DownedMechasting;
+        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
+               !ModContent.GetInstance<DownedBossSystem>().DownedMechasting;
     }
 
     public bool CanShowItemDropInUI()

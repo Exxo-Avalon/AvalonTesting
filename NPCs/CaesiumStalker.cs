@@ -43,8 +43,8 @@ public class CaesiumStalker : ModNPC
         {
             NPC.buffImmune[i] = true;
         }
-        //Banner = NPC.type;
-        //BannerItem = ModContent.ItemType<Items.Banners.CaesiumStalkerBanner>();
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<Items.Banners.CaesiumStalkerBanner>();
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {

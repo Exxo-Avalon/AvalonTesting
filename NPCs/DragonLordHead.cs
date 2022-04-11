@@ -96,8 +96,8 @@ public class DragonLordHead : ModNPC
             Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
         }
 
-        if (!ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
-            ModContent.GetInstance<DownedBossSytem>().DownedDragonLord = true;
+        if (!ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
+            ModContent.GetInstance<DownedBossSystem>().DownedDragonLord = true;
     }
 
     public override void AI()

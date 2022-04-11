@@ -33,10 +33,6 @@ public class KingStingBossBag : ModItem
         player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ItemID.BottledHoney, Main.rand.Next(5, 16));
         if (Main.rand.Next(4) == 0) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ItemID.JestersArrow, Main.rand.Next(20, 31));
         if (Main.rand.Next(7) == 0) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Vanity.KingStingMask>());
-        if (Main.rand.Next(4) == 0)
-        {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.StaminaCrystal>());
-        }
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.KingSting>();

@@ -27,7 +27,7 @@ public class PrimordialOre : ModTile
     public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
     {
         Tile tile = Main.tile[i, j];
-        Asset<Texture2D> texture = Terraria.GameContent.TextureAssets.Tile[Type];
+        Asset<Texture2D> texture = TextureAssets.Tile[Type];
 
         // if (Main.canDrawColorTile(i, j))
         // {

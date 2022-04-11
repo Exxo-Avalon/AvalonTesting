@@ -35,7 +35,7 @@ public partial class AvalonTesting : Mod
         // ----------- Client Only ----------- //
         ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod);
         MusicMod = obtainedMod;
-        ModLoader.TryGetMod("AvalonMusic", out obtainedMod);
+        ModLoader.TryGetMod("Tokens", out obtainedMod);
         ImkSushisMod = obtainedMod;
         ReplaceVanillaTextures();
     }

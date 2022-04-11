@@ -246,6 +246,9 @@ public class MonsterBanner : ModTile
             case 75:
                 item = ModContent.ItemType<Items.Banners.JuggernautBruteBanner>();
                 break;
+            case 76:
+                item = ModContent.ItemType<Items.Banners.GuardianCorruptorBanner>();
+                break;
             default:
                 return;
         }
@@ -467,6 +470,9 @@ public class MonsterBanner : ModTile
                     break;
                 case 75:
                     type = "JuggernautBrute";
+                    break;
+                case 76:
+                    type = "GuardianCorruptor";
                     break;
                 default:
                     return;

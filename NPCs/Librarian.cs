@@ -3,6 +3,8 @@ using AvalonTesting.Items.Material;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -22,6 +24,12 @@ public class Librarian : ModNPC
         NPCID.Sets.AttackType[NPC.type] = 0;
         NPCID.Sets.AttackTime[NPC.type] = 50;
         NPCID.Sets.AttackAverageChance[NPC.type] = 10;
+        NPC.Happiness
+            .SetBiomeAffection<ForestBiome>(AffectionLevel.Love)
+            .SetBiomeAffection<JungleBiome>(AffectionLevel.Like)
+            .SetNPCAffection(NPCID.DyeTrader, AffectionLevel.Love)
+            .SetNPCAffection(NPCID.Guide, AffectionLevel.Like)
+            .SetNPCAffection(NPCID.WitchDoctor, AffectionLevel.Hate);
     }
 
     public override void SetDefaults()
@@ -39,6 +47,14 @@ public class Librarian : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         AnimationType = 22;
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+            new FlavorTextBestiaryInfoElement("The Librarian fled his homeland when mysterious otherwordly beings invaded. He seems to be much happier here.")
+        });
     }
     public override string TownNPCName()
     {
@@ -192,7 +208,7 @@ public class Librarian : ModNPC
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ScrollofTome>());
             shop.item[nextSlot].value = Item.buyPrice(0, 12, 50);
             nextSlot++;
-            if (ModContent.GetInstance<DownedBossSytem>().DownedDragonLord)
+            if (ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
             {
                 shop.item[nextSlot].SetDefaults(ModContent.ItemType<DragonOrb>());
                 shop.item[nextSlot].value = Item.buyPrice(0, 30);

@@ -22,6 +22,7 @@ public class OrangeDungeonDresser : ModTile
         Main.tileContainer[Type] = true;
         Main.tileLavaDeath[Type] = true;
         TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.BasicDresser[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
         TileObjectData.newTile.Origin = new Point16(1, 1);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
@@ -93,7 +94,8 @@ public class OrangeDungeonDresser : ModTile
             }
             else
             {
-                //player.flyingPigChest = -1;
+                player.piggyBankProjTracker.Clear();
+                player.voidLensChest.Clear();
                 var num213 = Chest.FindChest(left, top);
                 if (num213 != -1)
                 {
@@ -106,21 +108,13 @@ public class OrangeDungeonDresser : ModTile
                     }
                     else if (num213 != player.chest && player.chest == -1)
                     {
-                        player.chest = num213;
-                        Main.playerInventory = true;
-                        Main.recBigList = false;
+                        player.OpenChest(left, top, num213);
                         SoundEngine.PlaySound(SoundID.MenuOpen);
-                        player.chestX = left;
-                        player.chestY = top;
                     }
                     else
                     {
-                        player.chest = num213;
-                        Main.playerInventory = true;
-                        Main.recBigList = false;
+                        player.OpenChest(left, top, num213);
                         SoundEngine.PlaySound(SoundID.MenuTick);
-                        player.chestX = left;
-                        player.chestY = top;
                     }
                     Recipe.FindRecipes();
                 }

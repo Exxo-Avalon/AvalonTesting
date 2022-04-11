@@ -420,7 +420,7 @@ public class KingSting : ModNPC
     }
     public override void OnKill()
     {
-        ModContent.GetInstance<DownedBossSytem>().DownedKingSting = true;
+        ModContent.GetInstance<DownedBossSystem>().DownedKingSting = true;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

@@ -7,6 +7,8 @@ using AvalonTesting.Items.Placeable.Painting;
 using AvalonTesting.Items.Weapons.Magic;
 using AvalonTesting.Items.Weapons.Ranged;
 using AvalonTesting.Systems;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -28,6 +30,11 @@ public class Iceman : ModNPC
         NPCID.Sets.AttackType[NPC.type] = 0;
         NPCID.Sets.AttackTime[NPC.type] = 50;
         NPCID.Sets.AttackAverageChance[NPC.type] = 10;
+        NPC.Happiness
+            .SetBiomeAffection<OceanBiome>(AffectionLevel.Hate)
+            .SetBiomeAffection<JungleBiome>(AffectionLevel.Hate)
+            .SetBiomeAffection<DesertBiome>(AffectionLevel.Hate)
+            .SetBiomeAffection<SnowBiome>(AffectionLevel.Love);
     }
 
     public override void SetDefaults()
@@ -45,6 +52,14 @@ public class Iceman : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         AnimationType = 22;
+    }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
+            new FlavorTextBestiaryInfoElement("The Iceman uses a translator to speak, as his native language is unknown to most. He comes from a land far to the north, where it is cold year-round. As such, he prefers the cold, and hates the heat.")
+        });
     }
     public override string TownNPCName()
     {
@@ -130,7 +145,7 @@ public class Iceman : ModNPC
         itemIds.Add(ModContent.ItemType<FrostySpectacle>());
         itemIds.Add(ModContent.ItemType<BagofFrost>());
         itemIds.Add(ItemID.IceTorch);
-        if (ModContent.GetInstance<DownedBossSytem>().DownedOblivion) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
+        if (ModContent.GetInstance<DownedBossSystem>().DownedOblivion) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
         if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<FreezeBolt>());
         // convert to a list of items
         var items = new List<Item>();

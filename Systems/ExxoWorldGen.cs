@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AvalonTesting.World.Passes;
+using Terraria.GameContent.Generation;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
@@ -17,6 +18,12 @@ public class ExxoWorldGen : ModSystem
             currentPass = new Underworld();
             tasks.Insert(underworld + 1, currentPass);
             totalWeight += currentPass.Weight;
+        }
+
+        int shinies = tasks.FindIndex(genpass => genpass.Name == "Shinies");
+        if (shinies != -1)
+        {
+            tasks[shinies] = new PassLegacy("Avalon PHM Ore Gen", OreGenPreHardMode.Method);
         }
 
         int smoothWorld = tasks.FindIndex(genPass => genPass.Name == "Smooth World");

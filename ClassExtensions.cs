@@ -13,6 +13,9 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.UI;
+using Terraria.UI.Gamepad;
+using Terraria.GameInput;
 
 namespace AvalonTesting;
 
@@ -30,7 +33,33 @@ public static class ClassExtensions
         list.RemoveAt(index);
         return item;
     }
-
+    /// <summary>
+    /// Helper method for opening a chest. This method exists in vanilla, but is private.
+    /// </summary>
+    /// <param name="p">The player.</param>
+    /// <param name="x">X coordinate of the chest.</param>
+    /// <param name="y">Y coordinate of the chest.</param>
+    /// <param name="newChest">The chest index.</param>
+    public static void OpenChest(this Player p, int x, int y, int newChest)
+    {
+        if (p.chest != -1 && Main.myPlayer == p.whoAmI)
+        {
+            for (int i = 0; i < 40; i++)
+            {
+                ItemSlot.SetGlow(i, -1f, chest: true);
+            }
+        }
+        p.chest = newChest;
+        Main.playerInventory = true;
+        UILinkPointNavigator.ForceMovementCooldown(120);
+        if (PlayerInput.GrappleAndInteractAreShared)
+        {
+            PlayerInput.Triggers.JustPressed.Grapple = false;
+        }
+        Main.recBigList = false;
+        p.chestX = x;
+        p.chestY = y;
+    }
     /// <summary>
     ///     Rotate a Vector2.
     /// </summary>
