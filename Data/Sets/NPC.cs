@@ -4,9 +4,10 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Data.Sets;
 
-public class NPC
+public static class NPC
 {
-    public static bool[] Slimes = NPCID.Sets.Factory.CreateBoolSet(NPCID.BlueSlime
+    public static readonly bool[] Slimes = NPCID.Sets.Factory.CreateBoolSet(
+        NPCID.BlueSlime
         , NPCID.MotherSlime
         , NPCID.LavaSlime
         , NPCID.DungeonSlime
@@ -31,7 +32,8 @@ public class NPC
     );
 
 
-    public static bool[] Toxic = NPCID.Sets.Factory.CreateBoolSet(NPCID.Hornet
+    public static readonly bool[] Toxic = NPCID.Sets.Factory.CreateBoolSet(
+        NPCID.Hornet
         , NPCID.ManEater
         , NPCID.GiantTortoise
         , NPCID.AngryTrapper
@@ -45,7 +47,8 @@ public class NPC
         , NPCID.JungleCreeper
     );
 
-    public static bool[] Undead = NPCID.Sets.Factory.CreateBoolSet(NPCID.Zombie
+    public static readonly bool[] Undead = NPCID.Sets.Factory.CreateBoolSet(
+        NPCID.Zombie
         , NPCID.Skeleton
         , NPCID.AngryBones
         , NPCID.DarkCaster
@@ -89,7 +92,7 @@ public class NPC
         , NPCID.ZombieSweater
     );
 
-    public static bool[] Fiery = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Fiery = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.FireImp
         , NPCID.LavaSlime
         , NPCID.Hellbat
@@ -101,7 +104,7 @@ public class NPC
         ModContent.NPCType<ArmoredHellTortoise>()
     );
 
-    public static bool[] Watery = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Watery = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Piranha
         , NPCID.BlueJellyfish
         , NPCID.PinkJellyfish
@@ -114,7 +117,7 @@ public class NPC
         , NPCID.AnglerFish
     );
 
-    public static bool[] Earthen = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Earthen = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.GiantWormHead
         , NPCID.MotherSlime
         , NPCID.ManEater
@@ -128,7 +131,7 @@ public class NPC
         , NPCID.WallCreeperWall
     );
 
-    public static bool[] Flyer = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Flyer = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.DemonEye
         , NPCID.EaterofSouls
         , NPCID.Harpy
@@ -151,7 +154,7 @@ public class NPC
         ModContent.NPCType<Dragonfly>()
     );
 
-    public static bool[] Frozen = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Frozen = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.IceSlime
         , NPCID.IceBat
         , NPCID.IceTortoise
@@ -167,7 +170,7 @@ public class NPC
         , NPCID.IceGolem
     );
 
-    public static bool[] Wicked = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Wicked = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.EaterofSouls
         , NPCID.DevourerHead
         , NPCID.CorruptBunny
@@ -204,7 +207,7 @@ public class NPC
         ModContent.NPCType<GrossyFloat>()
     );
 
-    public static bool[] Arcane = NPCID.Sets.Factory.CreateBoolSet(
+    public static readonly bool[] Arcane = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Pixie
         , NPCID.LightMummy
         , NPCID.EnchantedSword

@@ -11,10 +11,6 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {
-    public int HealStamina;
-    public bool WasWiring = false;
-    public bool Tome = false;
-
     public static readonly int[] AllowedPrefixes =
     {
         ModContent.PrefixType<Barbaric>(), ModContent.PrefixType<Boosted>(), ModContent.PrefixType<Busted>(),
@@ -24,13 +20,21 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         ModContent.PrefixType<Protective>(), ModContent.PrefixType<Silly>(), ModContent.PrefixType<Slimy>()
     };
 
+    public int HealStamina;
+    public bool Tome;
     public bool UpdateInvisibleVanity;
+    public bool WasWiring;
+
 
     public override bool InstancePerEntity => true;
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {
-        return base.Clone(item, itemClone);
+        var clone = (AvalonTestingGlobalItemInstance)base.Clone(item, itemClone);
+        clone.HealStamina = HealStamina;
+        clone.WasWiring = WasWiring;
+        clone.Tome = Tome;
+        return clone;
     }
 
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)

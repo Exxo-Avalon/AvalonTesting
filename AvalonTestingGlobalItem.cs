@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Network;
 using AvalonTesting.Players;
 using AvalonTesting.Prefixes;
 using AvalonTesting.Systems;
+using AvalonTesting.Tiles;
+using AvalonTesting.Tiles.Herbs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -14,20 +16,6 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalItem : GlobalItem
 {
-    public static List<int> herbSeeds = new List<int>
-    {
-        ItemID.BlinkrootSeeds,
-        ItemID.DaybloomSeeds,
-        ItemID.WaterleafSeeds,
-        ItemID.FireblossomSeeds,
-        ItemID.DeathweedSeeds,
-        ItemID.MoonglowSeeds,
-        ItemID.ShiverthornSeeds,
-        ModContent.ItemType<BarfbushSeeds>(),
-        ModContent.ItemType<BloodberrySeeds>(),
-        ModContent.ItemType<SweetstemSeeds>(),
-        ModContent.ItemType<HolybirdSeeds>()
-    };
     public override void SetDefaults(Item item)
     {
         if (item.IsArmor())
@@ -39,270 +27,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         {
             item.canBePlacedInVanityRegardlessOfConditions = true;
         }
-        int[] to2000 =
-        {
-            ItemID.WoodenArrow,
-            ItemID.FlamingArrow,
-            ItemID.UnholyArrow,
-            ItemID.JestersArrow,
-            ItemID.MusketBall,
-            ItemID.MeteorShot,
-            ItemID.HellfireArrow,
-            ItemID.SilverBullet,
-            ItemID.CrystalBullet,
-            ItemID.HolyArrow,
-            ItemID.CursedArrow,
-            ItemID.CursedBullet,
-            ItemID.RocketI,
-            ItemID.RocketII,
-            ItemID.RocketIII,
-            ItemID.RocketIV,
-            ItemID.FrostburnArrow,
-            ItemID.ChlorophyteBullet,
-            ItemID.StyngerBolt,
-            ItemID.HighVelocityBullet,
-            ItemID.IchorArrow,
-            ItemID.IchorBullet,
-            ItemID.VenomArrow,
-            ItemID.VenomBullet,
-            ItemID.PartyBullet,
-            ItemID.NanoBullet,
-            ItemID.ExplodingBullet,
-            ItemID.GoldenBullet,
-            ItemID.BlueSolution,
-            ItemID.DarkBlueSolution,
-            ItemID.GreenSolution,
-            ItemID.PurpleSolution,
-            ItemID.RedSolution
-        };
-        int[] to999 =
-        {
-            ItemID.Mushroom,
-            ItemID.Torch,
-            ItemID.GoldBar,
-            ItemID.CopperBar,
-            ItemID.SilverBar,
-            ItemID.IronBar,
-            ItemID.Acorn,
-            ItemID.LifeCrystal,
-            ItemID.Bottle,
-            ItemID.Lens,
-            ItemID.DemoniteBar,
-            ItemID.CorruptSeeds,
-            ItemID.VileMushroom,
-            ItemID.GrassSeeds,
-            ItemID.Sunflower,
-            ItemID.PurificationPowder,
-            ItemID.VilePowder,
-            ItemID.RottenChunk,
-            ItemID.WormTooth,
-            ItemID.FallenStar,
-            ItemID.ShadowScale,
-            ItemID.WoodPlatform,
-            ItemID.ManaCrystal,
-            ItemID.MeteoriteBar,
-            ItemID.Hook,
-            ItemID.Book,
-            ItemID.Bomb,
-            ItemID.Grenade,
-            ItemID.HellstoneBar,
-            ItemID.MushroomGrassSeeds,
-            ItemID.JungleGrassSeeds,
-            ItemID.Stinger,
-            ItemID.Vine,
-            ItemID.StickyBomb,
-            ItemID.BlackLens,
-            ItemID.BlackThread,
-            ItemID.GreenThread,
-            ItemID.Leather,
-            ItemID.Glowstick,
-            ItemID.StickyGlowstick,
-            ItemID.DaybloomSeeds,
-            ItemID.MoonglowSeeds,
-            ItemID.BlinkrootSeeds,
-            ItemID.DeathweedSeeds,
-            ItemID.WaterleafSeeds,
-            ItemID.FireblossomSeeds,
-            ItemID.Daybloom,
-            ItemID.Moonglow,
-            ItemID.Blinkroot,
-            ItemID.Deathweed,
-            ItemID.Waterleaf,
-            ItemID.Fireblossom,
-            ItemID.SharkFin,
-            ItemID.Feather,
-            ItemID.AntlionMandible,
-            ItemID.IllegalGunParts,
-            ItemID.GoldenKey,
-            ItemID.JungleSpores,
-            ItemID.TatteredCloth,
-            ItemID.HallowedSeeds,
-            ItemID.CobaltBar,
-            ItemID.MythrilBar,
-            ItemID.AdamantiteBar,
-            ItemID.BlueTorch,
-            ItemID.RedTorch,
-            ItemID.GreenTorch,
-            ItemID.PurpleTorch,
-            ItemID.WhiteTorch,
-            ItemID.YellowTorch,
-            ItemID.DemonTorch,
-            ItemID.PixieDust,
-            ItemID.CursedFlame,
-            ItemID.CursedTorch,
-            ItemID.UnicornHorn,
-            ItemID.DarkShard,
-            ItemID.LightShard,
-            ItemID.EbonwoodPlatform,
-            ItemID.RichMahoganyPlatform,
-            ItemID.PearlwoodPlatform,
-            ItemID.BonePlatform,
-            ItemID.TinBar,
-            ItemID.LeadBar,
-            ItemID.TungstenBar,
-            ItemID.PlatinumBar,
-            ItemID.ShadewoodPlatform,
-            ItemID.Marshmallow,
-            ItemID.IceTorch,
-            ItemID.PinkThread,
-            ItemID.ChlorophyteBar,
-            ItemID.TealMushroom,
-            ItemID.GreenMushroom,
-            ItemID.SkyBlueFlower,
-            ItemID.YellowMarigold,
-            ItemID.BlueBerries,
-            ItemID.LimeKelp,
-            ItemID.PinkPricklyPear,
-            ItemID.OrangeBloodroot,
-            ItemID.RedHusk,
-            ItemID.CyanHusk,
-            ItemID.VioletHusk,
-            ItemID.PurpleMucos,
-            ItemID.BlackInk,
-            ItemID.TempleKey,
-            ItemID.PalladiumBar,
-            ItemID.OrichalcumBar,
-            ItemID.TitaniumBar,
-            ItemID.HallowedBar,
-            ItemID.ChlorophyteArrow,
-            ItemID.OrangeTorch,
-            ItemID.CrimtaneBar,
-            ItemID.LifeFruit,
-            ItemID.LihzahrdPowerCell,
-            ItemID.TurtleShell,
-            ItemID.TissueSample,
-            ItemID.Vertebrae,
-            ItemID.Ichor,
-            ItemID.IchorTorch,
-            ItemID.VialofVenom,
-            ItemID.BlueBrickPlatform,
-            ItemID.PinkBrickPlatform,
-            ItemID.GreenBrickPlatform,
-            ItemID.MetalShelf,
-            ItemID.BrassShelf,
-            ItemID.WoodShelf,
-            ItemID.DungeonShelf,
-            ItemID.ObsidianPlatform,
-            ItemID.Ectoplasm,
-            ItemID.GiantHarpyFeather,
-            ItemID.BoneFeather,
-            ItemID.FireFeather,
-            ItemID.IceFeather,
-            ItemID.BrokenBatWing,
-            ItemID.TatteredBeeWing,
-            ItemID.JungleKey,
-            ItemID.CorruptionKey,
-            ItemID.CrimsonKey,
-            ItemID.HallowedKey,
-            ItemID.FrozenKey,
-            ItemID.ShroomiteBar,
-            ItemID.BrokenHeroSword,
-            ItemID.ButterflyDust,
-            ItemID.GlassPlatform,
-            ItemID.GoodieBag,
-            ItemID.JungleKeyMold,
-            ItemID.CorruptionKeyMold,
-            ItemID.CrimsonKeyMold,
-            ItemID.HallowedKeyMold,
-            ItemID.FrozenKeyMold,
-            ItemID.BlackFairyDust,
-            ItemID.SpookyPlatform,
-            ItemID.PumpkinSeed,
-            ItemID.SpookyTwig,
-            ItemID.Holly,
-            ItemID.Coal,
-            ItemID.CrimsonSeeds,
-            ItemID.BeetleHusk,
-            ItemID.UltrabrightTorch,
-            ItemID.ShiverthornSeeds,
-            ItemID.Shiverthorn,
-            ItemID.BeeWax,
-            ItemID.PalmWoodPlatform,
-            ItemID.MushroomPlatform,
-            ItemID.BorealWoodPlatform,
-            ItemID.SlimePlatform,
-            ItemID.StickyGrenade,
-            ItemID.SpiderFang,
-            ItemID.SteampunkPlatform,
-            ItemID.SkywarePlatform,
-            ItemID.LivingWoodPlatform,
-            ItemID.HoneyPlatform,
-            ItemID.CactusPlatform
-        };
-        int[] to100 =
-        {
-            ItemID.BottledWater,
-            ItemID.Dynamite,
-            ItemID.ObsidianSkinPotion,
-            ItemID.RegenerationPotion,
-            ItemID.SwiftnessPotion,
-            ItemID.GillsPotion,
-            ItemID.IronskinPotion,
-            ItemID.ManaRegenerationPotion,
-            ItemID.MagicPowerPotion,
-            ItemID.FeatherfallPotion,
-            ItemID.SpelunkerPotion,
-            ItemID.InvisibilityPotion,
-            ItemID.ShinePotion,
-            ItemID.NightOwlPotion,
-            ItemID.BattlePotion,
-            ItemID.ThornsPotion,
-            ItemID.WaterWalkingPotion,
-            ItemID.ArcheryPotion,
-            ItemID.HunterPotion,
-            ItemID.GravitationPotion,
-            ItemID.GreaterManaPotion,
-            ItemID.CookedMarshmallow,
-            ItemID.FlaskofVenom,
-            ItemID.FlaskofCursedFlames,
-            ItemID.FlaskofFire,
-            ItemID.FlaskofGold,
-            ItemID.FlaskofIchor,
-            ItemID.FlaskofNanites,
-            ItemID.FlaskofParty,
-            ItemID.FlaskofPoison,
-            ItemID.MiningPotion,
-            ItemID.HeartreachPotion,
-            ItemID.CalmingPotion,
-            ItemID.BuilderPotion,
-            ItemID.TitanPotion,
-            ItemID.FlipperPotion,
-            ItemID.SummoningPotion,
-            ItemID.TrapsightPotion,
-            ItemID.AmmoReservationPotion,
-            ItemID.LifeforcePotion,
-            ItemID.EndurancePotion,
-            ItemID.RagePotion,
-            ItemID.InfernoPotion,
-            ItemID.WrathPotion,
-            ItemID.RecallPotion,
-            ItemID.TeleportationPotion,
-            ItemID.LovePotion,
-            ItemID.StinkPotion,
-            ItemID.FishingPotion,
-            ItemID.SonarPotion,
-            ItemID.CratePotion
-        };
+
         switch (item.type)
         {
             case ItemID.Mushroom:
@@ -311,7 +36,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.useAnimation = 15;
                 item.useTime = 10;
                 item.useTurn = item.autoReuse = true;
-                item.createTile = ModContent.TileType<Tiles.MushroomTile>();
+                item.createTile = ModContent.TileType<MushroomTile>();
                 item.useStyle = ItemUseStyleID.Swing;
                 item.UseSound = null;
                 break;
@@ -330,7 +55,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.consumable = true;
                 item.useTurn = true;
                 item.autoReuse = true;
-                item.createTile = ModContent.TileType<Tiles.RottenChunk>();
+                item.createTile = ModContent.TileType<RottenChunk>();
                 break;
             case ItemID.ShadowScale:
                 item.useTurn = true;
@@ -339,7 +64,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.useTime = 10;
                 item.autoReuse = true;
                 item.consumable = true;
-                item.createTile = ModContent.TileType<Tiles.ShadowScale>();
+                item.createTile = ModContent.TileType<ShadowScale>();
                 break;
             case ItemID.NightmarePickaxe:
                 item.pick = 60;
@@ -370,7 +95,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.useTime = 8;
                 item.autoReuse = true;
                 item.consumable = true;
-                item.createTile = ModContent.TileType<Tiles.VineRope>();
+                item.createTile = ModContent.TileType<VineRope>();
                 item.tileBoost += 3;
                 break;
             case ItemID.LesserRestorationPotion:
@@ -518,13 +243,13 @@ public class AvalonTestingGlobalItem : GlobalItem
                 //item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 10;
                 break;
             case ItemID.SniperRifle:
-                item.value = Item.sellPrice(0, 7, 0, 0);
+                item.value = Item.sellPrice(0, 7);
                 break;
             case ItemID.Uzi:
                 item.value = 250000;
                 break;
             case ItemID.SkeletronMask:
-                item.value = Item.sellPrice(0, 2, 0, 0);
+                item.value = Item.sellPrice(0, 2);
                 break;
             case ItemID.Picksaw:
                 item.tileBoost++;
@@ -560,7 +285,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.consumable = true;
                 item.useTurn = true;
                 item.autoReuse = true;
-                item.createTile = ModContent.TileType<Tiles.Vertebrae>();
+                item.createTile = ModContent.TileType<Vertebrae>();
                 break;
             case ItemID.IchorTorch:
                 item.ammo = 8;
@@ -576,13 +301,13 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.consumable = true;
                 item.useTurn = true;
                 item.autoReuse = true;
-                item.createTile = ModContent.TileType<Tiles.Ectoplasm>();
+                item.createTile = ModContent.TileType<Ectoplasm>();
                 break;
             case ItemID.AnkhCharm:
-                item.value = Item.sellPrice(0, 10, 0, 0);
+                item.value = Item.sellPrice(0, 10);
                 break;
             case ItemID.AnkhShield:
-                item.value = Item.sellPrice(0, 13, 0, 0);
+                item.value = Item.sellPrice(0, 13);
                 break;
             case ItemID.Coal:
                 item.value = 5;
@@ -650,10 +375,10 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.defense = 8;
                 break;
             case ItemID.KingSlimeMask:
-                item.value = Item.sellPrice(0, 2, 0, 0);
+                item.value = Item.sellPrice(0, 2);
                 break;
             case ItemID.DukeFishronMask:
-                item.value = Item.sellPrice(0, 2, 0, 0);
+                item.value = Item.sellPrice(0, 2);
                 break;
             case ItemID.Meowmere:
                 item.damage = 145;
@@ -689,21 +414,25 @@ public class AvalonTestingGlobalItem : GlobalItem
                 //item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 21;
                 break;
         }
-        if (to2000.Contains(item.type))
+
+        if (Data.Sets.Item.StackTo2000[item.type])
         {
             item.maxStack = 2000;
         }
-        if (to999.Contains(item.type))
+
+        if (Data.Sets.Item.StackTo999[item.type])
         {
             item.maxStack = 999;
         }
-        if (to100.Contains(item.type))
+
+        if (Data.Sets.Item.StackTo100[item.type])
         {
             item.maxStack = 100;
         }
+
         if (item.type >= ItemID.BrainMask && item.type <= ItemID.DestroyerMask)
         {
-            item.value = Item.sellPrice(0, 2, 0, 0);
+            item.value = Item.sellPrice(0, 2);
         }
     }
 
@@ -728,10 +457,12 @@ public class AvalonTestingGlobalItem : GlobalItem
 
         base.PickAmmo(weapon, ammo, player, ref type, ref speed, ref damage, ref knockback);
     }
+
     public override void HoldItem(Item item, Player player)
     {
         #region wire disable in sky fortress
-        Item tempWireItem = new Item();
+
+        var tempWireItem = new Item();
         tempWireItem.netDefaults(item.netID);
         tempWireItem = tempWireItem.CloneWithModdedDataFrom(item);
         tempWireItem.stack = item.stack;
@@ -745,76 +476,126 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
             }
         }
-        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring && !player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
+
+        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
         {
             item.netDefaults(tempWireItem.netID);
             item.stack = tempWireItem.stack;
             item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
         }
+
         #endregion
+
         #region barbaric prefix logic
-        Item tempItem = new Item();
+
+        var tempItem = new Item();
         tempItem.netDefaults(item.netID);
         tempItem = tempItem.CloneWithModdedDataFrom(item);
         float kbDiff = 0f;
         if (item.prefix == PrefixID.Superior || item.prefix == PrefixID.Savage || item.prefix == PrefixID.Bulky ||
-            item.prefix == PrefixID.Taboo || item.prefix == PrefixID.Celestial || item.prefix == ModContent.PrefixType<Horrific>()) kbDiff = 0.1f;
-        else if (item.prefix == PrefixID.Forceful || item.prefix == PrefixID.Strong || item.prefix == PrefixID.Unpleasant ||
+            item.prefix == PrefixID.Taboo || item.prefix == PrefixID.Celestial ||
+            item.prefix == ModContent.PrefixType<Horrific>())
+        {
+            kbDiff = 0.1f;
+        }
+        else if (item.prefix == PrefixID.Forceful || item.prefix == PrefixID.Strong ||
+                 item.prefix == PrefixID.Unpleasant ||
                  item.prefix == PrefixID.Godly || item.prefix == PrefixID.Heavy || item.prefix == PrefixID.Legendary ||
-                 item.prefix == PrefixID.Intimidating || item.prefix == PrefixID.Staunch || item.prefix == PrefixID.Unreal ||
-                 item.prefix == PrefixID.Furious || item.prefix == PrefixID.Mythical) kbDiff = 0.15f;
+                 item.prefix == PrefixID.Intimidating || item.prefix == PrefixID.Staunch ||
+                 item.prefix == PrefixID.Unreal ||
+                 item.prefix == PrefixID.Furious || item.prefix == PrefixID.Mythical)
+        {
+            kbDiff = 0.15f;
+        }
         else if (item.prefix == PrefixID.Broken || item.prefix == PrefixID.Weak || item.prefix == PrefixID.Shameful ||
-                 item.prefix == PrefixID.Awkward) kbDiff = -0.2f;
+                 item.prefix == PrefixID.Awkward)
+        {
+            kbDiff = -0.2f;
+        }
         else if (item.prefix == PrefixID.Nasty || item.prefix == PrefixID.Ruthless || item.prefix == PrefixID.Unhappy ||
                  item.prefix == PrefixID.Light || item.prefix == PrefixID.Awful || item.prefix == PrefixID.Deranged ||
-                 item.prefix == ModContent.PrefixType<Excited>()) kbDiff = -0.1f;
-        else if (item.prefix == PrefixID.Shoddy || item.prefix == PrefixID.Terrible) kbDiff = -0.15f;
-        else if (item.prefix == PrefixID.Deadly || item.prefix == PrefixID.Masterful) kbDiff = 0.05f;
-        else if (item.prefix == ModContent.PrefixType<Fantastic>() || item.prefix == ModContent.PrefixType<Awestruck>() ||
-                 item.prefix == ModContent.PrefixType<Phantasmal>()) kbDiff = 0.2f;
-        else if (item.prefix == ModContent.PrefixType<Drunken>() || item.prefix == ModContent.PrefixType<Hectic>()) kbDiff = -0.07f;
-        else if (item.prefix == ModContent.PrefixType<Stupid>()) kbDiff = 0.16f;
+                 item.prefix == ModContent.PrefixType<Excited>())
+        {
+            kbDiff = -0.1f;
+        }
+        else if (item.prefix == PrefixID.Shoddy || item.prefix == PrefixID.Terrible)
+        {
+            kbDiff = -0.15f;
+        }
+        else if (item.prefix == PrefixID.Deadly || item.prefix == PrefixID.Masterful)
+        {
+            kbDiff = 0.05f;
+        }
+        else if (item.prefix == ModContent.PrefixType<Fantastic>() ||
+                 item.prefix == ModContent.PrefixType<Awestruck>() ||
+                 item.prefix == ModContent.PrefixType<Phantasmal>())
+        {
+            kbDiff = 0.2f;
+        }
+        else if (item.prefix == ModContent.PrefixType<Drunken>() || item.prefix == ModContent.PrefixType<Hectic>())
+        {
+            kbDiff = -0.07f;
+        }
+        else if (item.prefix == ModContent.PrefixType<Stupid>())
+        {
+            kbDiff = 0.16f;
+        }
+
         item.knockBack = tempItem.knockBack * (1 + kbDiff);
         item.knockBack *= player.Avalon().bonusKB;
+
         #endregion
+
         #region herb seed block swap
-        if (herbSeeds.Contains(item.type))
+
+        if (Data.Sets.Item.HerbSeeds[item.type])
         {
             Vector2 mousePosition = Main.MouseWorld;
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 player.Avalon().MousePosition = mousePosition;
-                Network.CursorPosition.SendPacket(mousePosition, player.whoAmI);
+                CursorPosition.SendPacket(mousePosition, player.whoAmI);
             }
             else if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 player.Avalon().MousePosition = mousePosition;
             }
+
             Point mpTile = player.Avalon().MousePosition.ToTileCoordinates();
 
             if ((Main.tile[mpTile.X, mpTile.Y].TileType == TileID.BloomingHerbs ||
-                 Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Barfbush>() && Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36 ||
-                 Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Bloodberry>() && Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36 ||
-                 Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Sweetstem>() && Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36 ||
-                 Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Tiles.Herbs.Holybird>() && Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) &&
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Barfbush>() &&
+                  Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Bloodberry>() &&
+                  Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Sweetstem>() &&
+                  Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36) ||
+                 (Main.tile[mpTile.X, mpTile.Y].TileType == ModContent.TileType<Holybird>() &&
+                  Main.tile[mpTile.X, mpTile.Y].TileFrameX == 36)) &&
                 (Main.tile[mpTile.X, mpTile.Y + 1].TileType == TileID.ClayPot ||
                  Main.tile[mpTile.X, mpTile.Y + 1].TileType == TileID.PlanterBox) && Main.mouseLeft)
             {
                 WorldGen.KillTile(mpTile.X, mpTile.Y);
                 if (!Main.tile[mpTile.X, mpTile.Y].HasTile && Main.netMode != NetmodeID.SinglePlayer)
                 {
-                    NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, mpTile.X, mpTile.Y);
+                    NetMessage.SendData(Terraria.ID.MessageID.TileManipulation, -1, -1, null, 0, mpTile.X, mpTile.Y);
                 }
+
                 WorldGen.PlaceTile(mpTile.X, mpTile.Y, item.createTile, style: item.placeStyle);
                 if (Main.tile[mpTile.X, mpTile.Y].HasTile && Main.netMode != NetmodeID.SinglePlayer)
                 {
-                    NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 1, mpTile.X, mpTile.Y, item.createTile, item.placeStyle);
+                    NetMessage.SendData(Terraria.ID.MessageID.TileManipulation, -1, -1, null, 1, mpTile.X, mpTile.Y,
+                        item.createTile, item.placeStyle);
                 }
+
                 item.stack--;
             }
         }
+
         #endregion
     }
+
     public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
     {
         TooltipLine tooltipLine = tooltips.FirstOrDefault(x => x.Name == "ItemName" && x.mod == "Terraria");
@@ -1083,148 +864,150 @@ public class AvalonTestingGlobalItem : GlobalItem
                 }
             }
         }
+
         if (item.accessory && !item.social)
         {
             if (item.prefix == ModContent.PrefixType<Magical>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMaxMana", "+40 mana")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMaxMana", "+40 mana") {isModifier = true});
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Timid>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMeleeSpeed", "-2% melee speed")
-                    {
-                        isModifier = true,
-                        isModifierBad = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMeleeSpeed", "-2% melee speed")
+                        {
+                            isModifier = true, isModifierBad = true
+                        });
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Languid>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMoveSpeed", "-2% movement speed")
-                    {
-                        isModifier = true,
-                        isModifierBad = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMoveSpeed", "-2% movement speed")
+                        {
+                            isModifier = true, isModifierBad = true
+                        });
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Enchanted>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMaxMana", "+20 maximum mana")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccMoveSpeed", "+3% movement speed")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 3, new TooltipLine(Mod, "PrefixAccDefense", "+1 defense")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMaxMana", "+20 maximum mana") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccMoveSpeed", "+3% movement speed") {isModifier = true});
+                    tooltips.Insert(index + 3,
+                        new TooltipLine(Mod, "PrefixAccDefense", "+1 defense") {isModifier = true});
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Bogus>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike chance")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike damage")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike chance") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike damage") {isModifier = true});
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Vigorous>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMeleeSpeed", "+3% melee speed")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccDamage", "+3% damage")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMeleeSpeed", "+3% melee speed") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccDamage", "+3% damage") {isModifier = true});
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Overactive>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMaxMana", "+20 maximum mana")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccDamage", "+4% mana cost")
-                    {
-                        isModifier = true,
-                        isModifierBad = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccMaxMana", "+20 maximum mana") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccDamage", "+4% mana cost")
+                        {
+                            isModifier = true, isModifierBad = true
+                        });
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Robust>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccDefense", "+3 defense")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccDamage", "+3% damage")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccDefense", "+3 defense") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccDamage", "+3% damage") {isModifier = true});
                 }
             }
+
             if (item.prefix == ModContent.PrefixType<Lurid>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.mod.Equals("Terraria") || tt.mod.Equals(Mod.Name))
-                                                         && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                                                         && (tt.Name.Equals("Material") ||
+                                                             tt.Name.StartsWith("Tooltip") ||
+                                                             tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
                 if (index != -1)
                 {
-                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccDefense", "+2 defense")
-                    {
-                        isModifier = true
-                    });
-                    tooltips.Insert(index + 2, new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike chance")
-                    {
-                        isModifier = true
-                    });
+                    tooltips.Insert(index + 1,
+                        new TooltipLine(Mod, "PrefixAccDefense", "+2 defense") {isModifier = true});
+                    tooltips.Insert(index + 2,
+                        new TooltipLine(Mod, "PrefixAccCritChance", "+2% critical strike chance") {isModifier = true});
                 }
             }
         }
+
         switch (item.type)
         {
             case ItemID.Vine:
