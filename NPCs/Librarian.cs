@@ -27,6 +27,7 @@ public class Librarian : ModNPC
         NPC.Happiness
             .SetBiomeAffection<ForestBiome>(AffectionLevel.Love)
             .SetBiomeAffection<JungleBiome>(AffectionLevel.Like)
+            .SetBiomeAffection<HallowBiome>(AffectionLevel.Dislike)
             .SetNPCAffection(NPCID.DyeTrader, AffectionLevel.Love)
             .SetNPCAffection(NPCID.Guide, AffectionLevel.Like)
             .SetNPCAffection(NPCID.WitchDoctor, AffectionLevel.Hate);

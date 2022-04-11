@@ -16,6 +16,7 @@ internal class Underworld : GenPass
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         progress.Message = "Generating Caesium Blastplains";
+        #region caesium blastplains
         //for (var i = 0; i < (int)((Main.maxTilesX * Main.maxTilesY) * 0.0008); i++)
         //{
         //    WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(Main.maxTilesY - 150, Main.maxTilesY), WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 5), (ushort)ModContent.TileType<Tiles.CaesiumOre>());
@@ -125,10 +126,10 @@ internal class Underworld : GenPass
                 }
             }
         }
-
+        #endregion
         progress.Message = "Generating Hellcastle and Ashen Overgrowth";
-        HellCastle.Generate((Main.maxTilesX / 3) - 210, Main.maxTilesY - 140); // change back later
-        for (int hbx = (Main.maxTilesX / 3) - 450; hbx < (Main.maxTilesX / 3) + 500; hbx++)
+        HellCastle.Generate((Main.maxTilesX / 5) - 210, Main.maxTilesY - 140); // change back later
+        for (int hbx = (Main.maxTilesX / 5) - 450; hbx < (Main.maxTilesX / 5) + 500; hbx++)
         {
             for (int hby = Main.maxTilesY - 200; hby < Main.maxTilesY - 50; hby++)
             {
@@ -146,10 +147,10 @@ internal class Underworld : GenPass
                         }
                     }
                 }
-                //if (WorldGen.genRand.Next(70) == 0)
-                //{
-                //    WorldGen.OreRunner(hbx, hby, 4, 4, (ushort)ModContent.TileType<Tiles.BrimstoneBlock>());
-                //}
+                if (WorldGen.genRand.Next(70) == 0)
+                {
+                    WorldGen.OreRunner(hbx, hby, 4, 4, (ushort)ModContent.TileType<BrimstoneBlock>());
+                }
             }
         }
     }

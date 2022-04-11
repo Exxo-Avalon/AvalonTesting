@@ -23,7 +23,7 @@ public class ExxoWorldGen : ModSystem
         int shinies = tasks.FindIndex(genpass => genpass.Name == "Shinies");
         if (shinies != -1)
         {
-            tasks[shinies] = new PassLegacy("Avalon PHM Ore Gen", OreGenPreHardMode.Method);
+            tasks[shinies] = new OreGenPreHardMode();
         }
 
         int smoothWorld = tasks.FindIndex(genPass => genPass.Name == "Smooth World");
@@ -31,6 +31,14 @@ public class ExxoWorldGen : ModSystem
         {
             currentPass = new SmoothWorld();
             tasks.Insert(smoothWorld + 1, currentPass);
+            totalWeight += currentPass.Weight;
+        }
+
+        int iceWalls = tasks.FindIndex(genpass => genpass.Name == "Cave Walls");
+        if (iceWalls != -1)
+        {
+            currentPass = new Shrines();
+            tasks.Insert(iceWalls + 1, currentPass);
             totalWeight += currentPass.Weight;
         }
 

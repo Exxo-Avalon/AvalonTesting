@@ -1,0 +1,40 @@
+Mods: {
+	AvalonTesting: {
+		
+		#This is what displays during all of an NPC's happiness levels. Note that the localization key for these should always be "TownNPCMood.*NPCName*.*Mood*" or else it won't display properly.
+		TownNPCMood: {
+			Iceman: {
+				Content: I'm feeling great. Thank you for providing this wonderful house for me.
+				NoHome: I would very much like a house, all these monsters scare the chunks off me.
+				LoveSpace: This space is... spacious. Get it?
+				FarFromHome: Could you please get me back to my house?
+				DislikeCrowded: There are too many people around. I can't focus on what the ice is saying.
+				HateCrowded: I can't test my mod with so many people around!
+				LikeBiome: "This place is pretty cold. I like it."
+				LoveBiome: "It's perfect here! I love freezing temperatures."
+				DislikeBiome: "{BiomeName}'s temperature is too warm. I might start to melt!"
+				HateBiome: "It's way too hot here in {BiomeName}! I'm melting away..."
+				LikeNPC: ""
+				LoveNPC: "{NPCName} is great! He seems to love the cold, like me!"
+				DislikeNPC: '''"{NPCName}'s clubs scare me. I'm afraid he might use one of them to shatter me."'''
+				HateNPC: "I really hope {NPCName} doesn't melt me with all those fireballs. Please keep him away."
+			}
+			Librarian: {
+				Content: I'm feeling great. Thank you for providing this wonderful house for me.
+				NoHome: I would very much like a house, all these monsters remind me of my homeland.
+				LoveSpace: The space here is very wide.
+				FarFromHome: Could you please take me back to my house?
+				DislikeCrowded: There are too many people around. I can't strategize my next boss nuke!
+				HateCrowded: I can't concentrate. Please, quiet these people down.
+				LikeBiome: "{BiomeName} is super lush. I'd love to live here all the time."
+				LoveBiome: "{BiomeName} is so green! I love it."
+				DislikeBiome: "This place reminds me too much of home, before the invasions. I don't want to see this..."
+				HateBiome: ""
+				LikeNPC: ""
+				LoveNPC: "{NPCName} is amazing! He doesn't charge an arm and a leg for pigments."
+				DislikeNPC: '''""'''
+				HateNPC: "{NPCName} gives me the chills. He reminds me of the monsters that invaded."
+			}
+		}
+	}
+}

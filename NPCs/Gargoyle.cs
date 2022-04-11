@@ -19,12 +19,8 @@ public class Gargoyle : ModNPC
         Main.npcFrameCount[NPC.type] = 5;
         NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
         {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused,
-                BuffID.OnFire,
-                BuffID.CursedInferno
-            }
+            ImmuneToAllBuffsThatAreNotWhips = true,
+            ImmuneToWhips = true
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }

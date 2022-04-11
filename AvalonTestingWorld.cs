@@ -3,6 +3,7 @@ using System.Threading;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using AvalonTesting.Tiles.Ores;
 using Microsoft.Xna.Framework;
@@ -367,6 +368,10 @@ public class AvalonTestingWorld : ModSystem
     {
         ThreadPool.QueueUserWorkItem(shmCallback, 1);
     }
+    public void GenerateSkyFortress()
+    {
+        ThreadPool.QueueUserWorkItem(new WaitCallback(SkyFortressCallback), 1);
+    }
 
     public void shmCallback(object threadContext)
     {
@@ -396,6 +401,34 @@ public class AvalonTestingWorld : ModSystem
         if (Main.netMode == NetmodeID.Server)
         {
             Netplay.ResetSections();
+        }
+    }
+
+    public void SkyFortressCallback(object threadContext)
+    {
+        if (Main.rand == null)
+        {
+            Main.rand = new UnifiedRandom((int)DateTime.Now.Ticks);
+        }
+        if (!ModContent.GetInstance<DownedBossSystem>().DownedArmageddon) return;
+        int x = Main.maxTilesX / 3;
+        int y = 50;
+        if (Main.maxTilesY == 1800) y = 60;
+        if (Main.maxTilesY == 2400) y = 70;
+        if (Main.rand.Next(2) == 0)
+        {
+            x = Main.maxTilesX - Main.maxTilesX / 3;
+
+        }
+        World.Utils.GetSkyFortressXCoord(x, y, 209, 158, ref x);
+        World.Structures.SkyFortress.Generate(x, y);
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("Something is hiding on the top of your world...", 244, 140, 140);
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Something is hiding on the top of your world..."), new Color(244, 140, 140));
         }
     }
 

@@ -12,6 +12,10 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using AvalonTesting.Players;
+using AvalonTesting.Systems;
+using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Vanity;
 
 namespace AvalonTesting.NPCs.Bosses;
 
@@ -527,23 +531,23 @@ public class ArmageddonSlime : ModNPC
         }
     }
 
-    //public override void BossLoot(ref string name, ref int potionType)
-    //{
-    //    potionType = ModContent.ItemType<ElixirofLife>();
-    //}
-    //public override void OnKill()
-    //{
-    //    if (!AvalonTestingWorld.stoppedArmageddon)
-    //    {
-    //        ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress();
-    //        AvalonTestingWorld.stoppedArmageddon = true;
-    //    }
-    //}
+    public override void BossLoot(ref string name, ref int potionType)
+    {
+        potionType = ModContent.ItemType<Items.Potions.ElixirofLife>();
+    }
+    public override void OnKill()
+    {
+        if (!ModContent.GetInstance<DownedBossSystem>().DownedArmageddon)
+        {
+            NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
+            ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress();
+        }
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        //npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DarkMatterSoilBlock>(), 1, 100, 210));
-        //npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ArmageddonSlimeMask>(), 7));
-        //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ArmageddonSlimeTrophy>(), 10));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DarkMatterSoilBlock>(), 1, 100, 210));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ArmageddonSlimeMask>(), 7));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ArmageddonSlimeTrophy>(), 10));
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.ArmageddonSlimeBossBag>()));
     }
     public override void FindFrame(int frameHeight)

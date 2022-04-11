@@ -21,6 +21,10 @@ namespace AvalonTesting;
 
 public static class ClassExtensions
 {
+    public static void active(this Tile t, bool a)
+    {
+        t.HasTile = a;
+    }
     /// <summary>
     ///     Removes the specified index of a List of int - used for Golem dropping 2 items from its 11-drop loot table.
     /// </summary>

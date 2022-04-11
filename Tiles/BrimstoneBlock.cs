@@ -9,7 +9,7 @@ public class BrimstoneBlock : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(61, 49, 53));
+        AddMapEntry(new Color(165, 80, 98));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileMerge[Type][ModContent.TileType<Impgrass>()] = true;

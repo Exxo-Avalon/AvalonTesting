@@ -11,22 +11,23 @@ public class Impvines : ModTile
     {
         Main.tileCut[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileLavaDeath[Type] = true;
+        Main.tileLavaDeath[Type] = false;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
         SoundType = SoundID.Grass;
         DustType = DustID.Torch;
-
+        TileID.Sets.IsVine[Type] = true;
+        TileID.Sets.VineThreads[Type] = true;
         AddMapEntry(new Color(238, 102, 70));
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        Tile tile = Framing.GetTileSafely(i, j + 1);
-        if (tile.HasTile && tile.TileType == Type)
-        {
-            WorldGen.KillTile(i, j + 1);
-        }
+        //Tile tile = Framing.GetTileSafely(i, j + 1);
+        //if (tile.HasTile && tile.TileType == Type)
+        //{
+        //    WorldGen.KillTile(i, j + 1);
+        //}
     }
 
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

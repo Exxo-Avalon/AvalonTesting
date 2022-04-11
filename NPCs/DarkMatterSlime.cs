@@ -72,7 +72,7 @@ public class DarkMatterSlime : ModNPC
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DropIfNoArmaAlive(), ModContent.ItemType<DarkMatterGel>(), 1, 2, 4));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>()));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>(), 70));
     }
     public override void FindFrame(int frameHeight)
     {

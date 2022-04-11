@@ -34,7 +34,10 @@ public class Iceman : ModNPC
             .SetBiomeAffection<OceanBiome>(AffectionLevel.Hate)
             .SetBiomeAffection<JungleBiome>(AffectionLevel.Hate)
             .SetBiomeAffection<DesertBiome>(AffectionLevel.Hate)
-            .SetBiomeAffection<SnowBiome>(AffectionLevel.Love);
+            .SetBiomeAffection<SnowBiome>(AffectionLevel.Love)
+            .SetNPCAffection(NPCID.SantaClaus, AffectionLevel.Love)
+            .SetNPCAffection(NPCID.Wizard, AffectionLevel.Hate)
+            .SetNPCAffection(NPCID.Golfer, AffectionLevel.Dislike);
     }
 
     public override void SetDefaults()
