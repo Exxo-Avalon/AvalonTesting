@@ -75,7 +75,7 @@ class GemWand : ModItem
                         bool subtractFromStack = WorldGen.PlaceTile(mpTile.X, mpTile.Y, GemToTile(t));
                         if (Main.tile[mpTile.X, mpTile.Y].HasTile && Main.netMode != NetmodeID.SinglePlayer && subtractFromStack)
                         {
-                            NetMessage.SendData(MessageID.TileChange, -1, -1, null, 1, mpTile.X, mpTile.Y, GemToTile(t));
+                            NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 1, mpTile.X, mpTile.Y, GemToTile(t));
                         }
                         if (subtractFromStack)
                         {
