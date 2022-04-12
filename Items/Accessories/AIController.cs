@@ -34,7 +34,7 @@ public class AIController : ModItem
     {
         if (!player.HasBuff(Item.buffType))
         {
-            player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 300;
+            player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 0;
         }
 
         player.AddBuff(Item.buffType, 2);
