@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Projectiles;
@@ -13,15 +13,13 @@ public class SnotlineBobber : ModProjectile
 
     public override void SetDefaults()
     {
-        Projectile.width = 14;
-        Projectile.height = 14;
-        Projectile.aiStyle = 61;
-        Projectile.bobber = true;
-        Projectile.penetrate = -1;
+        Projectile.CloneDefaults(ProjectileID.BobberWooden);
+        DrawOriginOffsetY = -8; // Adjusts the draw position
     }
 
-    public override bool PreDrawExtras()
+    public override void ModifyFishingLine(ref Vector2 lineOriginOffset, ref Color lineColor)
     {
-        return Projectile.DrawFishingLine(ModContent.ItemType<Items.Tools.Oblivirod>(), new Color(139, 143, 18));
+        lineOriginOffset = new Vector2(46, -33);
+        lineColor = new Color(139, 143, 18);
     }
 }
