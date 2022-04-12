@@ -99,6 +99,70 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         NPCID.HornetStingy
     };
 
+    public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+    {
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<Valkyrie>(), 0.6f);
+            pool.Add(ModContent.NPCType<CloudBat>(), 0.9f);
+        }
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone())
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<Bactus>(), 1f);
+            pool.Add(ModContent.NPCType<PyrasiteHead>(), 0.1f);
+            if (Main.hardMode)
+            {
+                pool.Add(ModContent.NPCType<Cougher>(), 0.8f);
+                pool.Add(ModContent.NPCType<Ickslime>(), 0.7f);
+                if (spawnInfo.player.ZoneRockLayerHeight)
+                {
+                    pool.Add(ModContent.NPCType<Viris>(), 1f);
+                    pool.Add(ModContent.NPCType<GrossyFloat>(), 0.6f);
+                }
+                if (spawnInfo.player.ZoneDesert)
+                {
+                    pool.Add(NPCID.DarkMummy, 0.3f);
+                    pool.Add(ModContent.NPCType<EvilVulture>(), 0.4f);
+                }
+            }
+        }
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium)
+        {
+            if (Main.hardMode)
+            {
+                pool.Clear();
+                pool.Add(ModContent.NPCType<CaesiumBrute>(), 1f);
+                pool.Add(ModContent.NPCType<CaesiumSeekerHead>(), 0.05f);
+                pool.Add(ModContent.NPCType<CaesiumStalker>(), 0.9f);
+            }
+        }
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone())
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<DarkMotherSlime>(), 0.5f);
+            pool.Add(ModContent.NPCType<DarkMatterSlime>(), 0.9f);
+            pool.Add(ModContent.NPCType<VampireHarpy>(), 0.9f);
+            pool.Add(ModContent.NPCType<MatterMan>(), 0.9f);
+            pool.Add(ModContent.NPCType<UnstableAnomaly>(), 0.9f);
+        }
+        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
+        {
+            pool.Clear();
+            pool.Add(NPCID.Demon, 0.2f);
+            pool.Add(NPCID.RedDevil, 0.2f);
+            pool.Add(ModContent.NPCType<EctoHand>(), 0.3f);
+            pool.Add(ModContent.NPCType<HellboundLizard>(), 1f);
+            pool.Add(ModContent.NPCType<Gargoyle>(), 1f);
+            if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+            {
+                pool.Add(ModContent.NPCType<ArmoredHellTortoise>(), 1f);
+            }
+        }
+    }
+
+
     /// <summary>
     ///     A method to choose a random Town NPC death messages.
     /// </summary>

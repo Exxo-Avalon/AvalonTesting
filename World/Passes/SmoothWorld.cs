@@ -13,7 +13,7 @@ internal class SmoothWorld : GenPass
 
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
-        int x = (Main.maxTilesX / 3) - 210;
+        int x = (Main.maxTilesX / 5) - 210;
         int y = Main.maxTilesY - 140;
         //int x = Main.maxTilesX / 2;
         //int y = 250;
