@@ -57,6 +57,7 @@ public class StingerProbeMinion : ModProjectile
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
         Projectile.netImportant = true;
+        Projectile.DamageType = DamageClass.Summon;
     }
 
     public override bool MinionContactDamage()
@@ -102,6 +103,8 @@ public class StingerProbeMinion : ModProjectile
             Main.gore[num161].velocity.Y += syncedRandom.Next(-1, 2);
         }
 
+        Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>().RemoveStingerProbe(positionNode);
+
         if (Projectile.owner != Main.myPlayer)
         {
             return;
@@ -109,10 +112,8 @@ public class StingerProbeMinion : ModProjectile
 
         int bomb = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position,
             Vector2.Zero, ProjectileID.Grenade, 50, 3f);
-
         Main.projectile[bomb].timeLeft = 1;
 
-        Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>().RemoveStingerProbe(positionNode);
         base.Kill(timeLeft);
     }
 
@@ -270,18 +271,17 @@ public class StingerProbeMinion : ModProjectile
         if (player.itemAnimation != 0 && player.HeldItem.damage != 0 &&
             ProjTimer == 0)
         {
-            SoundEngine.PlaySound(SoundID.Item, Projectile.Center, 12);
-            if (Main.netMode == NetmodeID.Server)
+            if (Projectile.owner == Main.myPlayer)
             {
                 int laser = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center,
                     dirToCursor * 36f, ModContent.ProjectileType<StingerLaser>(), Projectile.damage, 0f,
                     Projectile.owner);
-                Main.projectile[laser].hostile = false;
-                Main.projectile[laser].friendly = true;
-                Main.projectile[laser].tileCollide = false;
-                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, laser);
 
-                player.GetModPlayer<ExxoPlayer>().SyncMouse();
+                if (Main.netMode != NetmodeID.SinglePlayer)
+                {
+                    player.GetModPlayer<ExxoPlayer>().SyncMouse();
+                    player.GetModPlayer<ExxoBuffPlayer>().SyncStingerProbe();
+                }
             }
 
             ProjTimer = 120 + syncedRandom.Next(60);

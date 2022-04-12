@@ -26,6 +26,8 @@ public class AIController : ModItem
         Item.buffType = ModContent.BuffType<StingerProbe>();
         Item.height = dims.Height;
         Item.expert = true;
+        Item.damage = 134;
+        Item.DamageType = DamageClass.Summon;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

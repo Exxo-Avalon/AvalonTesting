@@ -27,6 +27,15 @@ partial class AvalonTesting
                 }
 
                 break;
+            case MessageType.ExxoBuffPlayerSyncStingerProbe:
+                playerIndex = reader.ReadByte();
+                Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncStingerProbe(reader);
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().SyncStingerProbe(whoAmI);
+                }
+
+                break;
             default:
                 Logger.Warn($"Unknown Message type: {msgType}");
                 break;
@@ -36,6 +45,7 @@ partial class AvalonTesting
     internal enum MessageType : byte
     {
         BuffPlayerLazySync,
-        ExxoPlayerManualSyncMouse
+        ExxoPlayerManualSyncMouse,
+        ExxoBuffPlayerSyncStingerProbe
     }
 }

@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Players;
+﻿using AvalonTesting.Items.Accessories;
+using AvalonTesting.Players;
 using AvalonTesting.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -38,8 +39,23 @@ public class StingerProbe : ModBuff
             return;
         }
 
+        int damage = -1;
+        for (int i = 3; i < player.armor.Length; i++)
+        {
+            if (player.armor[i].type == ModContent.ItemType<AIController>())
+            {
+                damage = player.armor[i].damage;
+                break;
+            }
+        }
+
+        if (damage == -1)
+        {
+            return;
+        }
+        
         Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.Center, Vector2.Zero,
-            ModContent.ProjectileType<StingerProbeMinion>(), (int)(player.HeldItem.damage * 0.75f), 0f,
+            ModContent.ProjectileType<StingerProbeMinion>(), damage, 0f,
             player.whoAmI);
         player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 0;
     }

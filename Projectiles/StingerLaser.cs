@@ -17,16 +17,16 @@ public class StingerLaser : ModProjectile
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 4 / 20;
         Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
-        Projectile.aiStyle = 1;
-        Projectile.friendly = false;
-        Projectile.hostile = true;
+        Projectile.friendly = true;
+        Projectile.hostile = false;
         Projectile.penetrate = 1;
         Projectile.light = 0.8f;
         Projectile.alpha = 0;
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 300;
-        Projectile.DamageType = DamageClass.Ranged;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        Projectile.tileCollide = false;
+        Projectile.DamageType = DamageClass.Summon;
+        Projectile.aiStyle = 1;
         AIType = ProjectileID.DeathLaser;
     }
 }

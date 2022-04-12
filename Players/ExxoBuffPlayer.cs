@@ -92,6 +92,20 @@ public class ExxoBuffPlayer : ModPlayer
         StingerProbeTimer = reader.ReadInt32();
     }
 
+    public void SyncStingerProbe(int ignoreClient = -1)
+    {
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.ExxoBuffPlayerSyncStingerProbe);
+        packet.Write((byte)Player.whoAmI);
+        packet.Write(StingerProbeRotation);
+        packet.Send(ignoreClient: ignoreClient);
+    }
+
+    public void HandleSyncStingerProbe(BinaryReader reader)
+    {
+        StingerProbeRotation = reader.ReadSingle();
+    }
+
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
     {
         if (Player.HasBuff<AdvAmmoReservation>() && Main.rand.NextFloat() < AdvAmmoReservation.Chance)
