@@ -8,6 +8,14 @@ namespace AvalonTesting.World;
 
 class Utils
 {
+    /// <summary>
+    /// Helper method to shift the Sky Fortress to the left/right if there are tiles/liquid/walls in the way.
+    /// </summary>
+    /// <param name="x">The X coordinate of the Sky Fortress origin point.</param>
+    /// <param name="y">The Y coordinate of the Sky Fortress origin point.</param>
+    /// <param name="xLength">The width of the Sky Fortress.</param>
+    /// <param name="ylength">The height of the Sky Fortress.</param>
+    /// <param name="xCoord">The X coordinate of the Sky Fortress origin point, passed in again to be modified (the original X coordinate needs to remain the same I think).</param>
     public static void GetSkyFortressXCoord(int x, int y, int xLength, int ylength, ref int xCoord)
     {
         bool leftSideActive = false;
