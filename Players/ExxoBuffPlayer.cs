@@ -18,7 +18,6 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AstralProject;
 
     public bool BadgeOfBacteria;
-    private bool daggerBuffLock;
     public int DeleriumCount;
     public bool EarthInsignia;
     public int FracturingArmorLastRecord;
@@ -31,7 +30,9 @@ public class ExxoBuffPlayer : ModPlayer
     public int OldFallStart;
 
     public bool SlimeBand;
+    public int StingerProbeTimer;
     public float DaggerStaffRotation { get; private set; }
+    public float StingerProbeRotation { get; private set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
     public int AstralCooldown { get; private set; }
@@ -40,17 +41,6 @@ public class ExxoBuffPlayer : ModPlayer
     {
         ShadowCooldown = 300;
         AstralCooldown = 3600;
-    }
-
-    public void UpdateDaggerStaff()
-    {
-        if (daggerBuffLock)
-        {
-            return;
-        }
-
-        DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
-        daggerBuffLock = true;
     }
 
     public override void ResetEffects()
@@ -70,8 +60,9 @@ public class ExxoBuffPlayer : ModPlayer
     {
         FrameCount++;
         ShadowCooldown++;
+        StingerProbeRotation = (StingerProbeRotation % MathHelper.TwoPi) + 0.01f;
+        DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
         AstralCooldown = (int)MathHelper.Min(AstralCooldown++, 3600);
-        daggerBuffLock = false;
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
@@ -86,15 +77,19 @@ public class ExxoBuffPlayer : ModPlayer
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
     {
         ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.BuffPlayerSyncPlayer);
+        packet.Write((byte)AvalonTesting.MessageType.BuffPlayerLazySync);
         packet.Write((byte)Player.whoAmI);
         packet.Write(DaggerStaffRotation);
+        packet.Write(StingerProbeRotation);
+        packet.Write(StingerProbeTimer);
         packet.Send(toWho, fromWho);
     }
 
     public void HandleSyncPlayer(BinaryReader reader)
     {
         DaggerStaffRotation = reader.ReadSingle();
+        StingerProbeRotation = reader.ReadSingle();
+        StingerProbeTimer = reader.ReadInt32();
     }
 
     public override bool CanConsumeAmmo(Item weapon, Item ammo)

@@ -1,18 +1,41 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using AvalonTesting.Buffs;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
 
 namespace AvalonTesting.Projectiles.Summon;
 
 public class StingerProbeMinion : ModProjectile
 {
-    bool initialised = false;
-    int id;
-    int projTimer;
+    private int hostPosition = -1;
+    private LinkedListNode<int> positionNode;
+
+    private Random syncedRandom = new();
+
+    private int syncedRandomSeed;
+
+    private int ProjTimer
+    {
+        get => (int)Projectile.ai[0];
+        set => Projectile.ai[0] = value;
+    }
+
+    private int SyncedRandomSeed
+    {
+        get => syncedRandomSeed;
+        set
+        {
+            syncedRandomSeed = value;
+            syncedRandom = new Random(syncedRandomSeed);
+        }
+    }
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Stinger Probe");
@@ -24,51 +47,110 @@ public class StingerProbeMinion : ModProjectile
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width;
         Projectile.height = dims.Height;
+
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.light = 0.3f;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = false;
-        Projectile.timeLeft = 60;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 60;
+        Projectile.netImportant = true;
     }
 
-    public override bool? CanCutTiles() { return false; }
+    public override bool MinionContactDamage()
+    {
+        return false;
+    }
+
+    public override bool? CanCutTiles()
+    {
+        return false;
+    }
+
+    public override void SendExtraAI(BinaryWriter writer)
+    {
+        SyncedRandomSeed = Main.rand.Next();
+        ExxoSummonPlayer summonPlayer = Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>();
+        positionNode ??= summonPlayer.HandleStingerProbe();
+        writer.Write(positionNode.Value);
+        writer.Write(SyncedRandomSeed);
+    }
+
+    public override void ReceiveExtraAI(BinaryReader reader)
+    {
+        base.ReceiveExtraAI(reader);
+        hostPosition = reader.ReadInt32();
+        SyncedRandomSeed = reader.ReadInt32();
+    }
+
+    public override void Kill(int timeLeft)
+    {
+        SoundEngine.PlaySound(SoundID.NPCKilled, Projectile.position, 14);
+
+        for (int i = 0; i < 2; i++)
+        {
+            int randomSize = syncedRandom.Next(1, 4) / 2;
+            int num161 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default,
+                syncedRandom.Next(61, 64));
+            Gore gore30 = Main.gore[num161];
+            Gore gore40 = gore30;
+            gore40.velocity *= 0.3f;
+            gore40.scale *= randomSize;
+            Main.gore[num161].velocity.X += syncedRandom.Next(-1, 2);
+            Main.gore[num161].velocity.Y += syncedRandom.Next(-1, 2);
+        }
+
+        if (Projectile.owner != Main.myPlayer)
+        {
+            return;
+        }
+
+        int bomb = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position,
+            Vector2.Zero, ProjectileID.Grenade, 50, 3f);
+
+        Main.projectile[bomb].timeLeft = 1;
+
+        Main.player[Projectile.owner].GetModPlayer<ExxoSummonPlayer>().RemoveStingerProbe(positionNode);
+        base.Kill(timeLeft);
+    }
 
     public override void AI()
     {
         Player player = Main.player[Projectile.owner];
-        ExxoPlayer modPlayer = player.Avalon();
+        ExxoBuffPlayer buffPlayer = player.GetModPlayer<ExxoBuffPlayer>();
+        ExxoSummonPlayer summonPlayer = player.GetModPlayer<ExxoSummonPlayer>();
 
-        if (player.HasBuff(ModContent.BuffType<Buffs.StingerProbe>()))
+        // Check if should be alive
+        if (player.dead || !player.active)
+        {
+            player.ClearBuff(ModContent.BuffType<StingerProbe>());
+            return;
+        }
+
+        if (player.HasBuff(ModContent.BuffType<StingerProbe>()))
         {
             Projectile.timeLeft = 2;
         }
 
-        #region Get ID
-        if (!initialised)
+        // Get position in circle
+        if (hostPosition == -1)
         {
-            bool found = false;
-            for (int i = 0; i < modPlayer.StingerProbeActiveIds.Count; i++)
-            {
-                if (!modPlayer.StingerProbeActiveIds[i])
-                {
-                    id = i;
-                    modPlayer.StingerProbeActiveIds[i] = true;
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                id = modPlayer.StingerProbeActiveIds.Count;
-                modPlayer.StingerProbeActiveIds.Add(true);
-            }
-            initialised = true;
+            positionNode ??= summonPlayer.HandleStingerProbe();
         }
-        #endregion
+        else
+        {
+            positionNode ??= summonPlayer.ObtainExistingStingerProbe(hostPosition);
+        }
+
+        if (player.HasBuff(ModContent.BuffType<StingerProbe>()))
+        {
+            Projectile.timeLeft = 2;
+        }
 
         #region reflect
+
         // yoinked from reflex charm
         var projWS = new Rectangle((int)Projectile.Center.X - 32, (int)Projectile.Center.Y - 32, 64, 64);
         foreach (Projectile Pr in Main.projectile)
@@ -81,26 +163,36 @@ public class StingerProbeMinion : ModProjectile
                 Pr.type != ProjectileID.FrostHydra && Pr.type != ProjectileID.InfernoFriendlyBolt &&
                 Pr.type != ProjectileID.InfernoFriendlyBlast && Pr.type != ProjectileID.FlyingPiggyBank &&
                 Pr.type != ProjectileID.PhantasmalDeathray && Pr.type != ProjectileID.SpiritHeal &&
-                Pr.type != ProjectileID.SpectreWrath && Pr.type != ModContent.ProjectileType<Projectiles.Ghostflame>() &&
-                Pr.type != ModContent.ProjectileType<Projectiles.WallofSteelLaser>() && Pr.type != ModContent.ProjectileType<Projectiles.PhantasmLaser>() &&
-                Pr.type != ModContent.ProjectileType<Projectiles.PhantasmLaser>() && Pr.type != ModContent.ProjectileType<Projectiles.ElectricBolt>() &&
-                Pr.type != ModContent.ProjectileType<Projectiles.HomingRocket>() && Pr.type != ModContent.ProjectileType<Projectiles.StingerLaser>() &&
-                Pr.type != ModContent.ProjectileType<Projectiles.SpectreSplit>())
+                Pr.type != ProjectileID.SpectreWrath && Pr.type != ModContent.ProjectileType<Ghostflame>() &&
+                Pr.type != ModContent.ProjectileType<WallofSteelLaser>() &&
+                Pr.type != ModContent.ProjectileType<PhantasmLaser>() &&
+                Pr.type != ModContent.ProjectileType<PhantasmLaser>() &&
+                Pr.type != ModContent.ProjectileType<ElectricBolt>() &&
+                Pr.type != ModContent.ProjectileType<HomingRocket>() &&
+                Pr.type != ModContent.ProjectileType<StingerLaser>() &&
+                Pr.type != ModContent.ProjectileType<SpectreSplit>())
             {
-                Rectangle proj2 = new Rectangle((int)Pr.position.X, (int)Pr.position.Y, Pr.width, Pr.height);
+                var proj2 = new Rectangle((int)Pr.position.X, (int)Pr.position.Y, Pr.width, Pr.height);
                 bool reflect = false, check = false;
 
                 if (proj2.Intersects(projWS) && !reflect)
+                {
                     reflect = true;
+                }
 
-                else check = true;
+                else
+                {
+                    check = true;
+                }
+
                 if (reflect && !check)
                 {
                     for (int thingy = 0; thingy < 5; thingy++)
                     {
-                        int dust = Dust.NewDust(Pr.position, Pr.width, Pr.height, DustID.MagicMirror, 0f, 0f, 100, new Color(), 1f);
+                        int dust = Dust.NewDust(Pr.position, Pr.width, Pr.height, DustID.MagicMirror, 0f, 0f, 100);
                         Main.dust[dust].noGravity = true;
                     }
+
                     Pr.hostile = false;
                     Pr.friendly = true;
                     Pr.velocity.X *= -1f;
@@ -110,25 +202,34 @@ public class StingerProbeMinion : ModProjectile
                 }
             }
         }
+
         foreach (NPC N in Main.npc)
         {
             if (!N.friendly && N.aiStyle == 9)
             {
-                Rectangle npc = new Rectangle((int)N.position.X, (int)N.position.Y, N.width, N.height);
+                var npc = new Rectangle((int)N.position.X, (int)N.position.Y, N.width, N.height);
                 bool reflect = false, check = false;
-                int rn = Main.rand.Next(2);
+                int rn = syncedRandom.Next(2);
                 if (rn == 0)
                 {
-                    if (npc.Intersects(projWS) && !reflect) reflect = true;
+                    if (npc.Intersects(projWS) && !reflect)
+                    {
+                        reflect = true;
+                    }
                 }
-                else check = true;
+                else
+                {
+                    check = true;
+                }
+
                 if (reflect && !check)
                 {
                     for (int varlex = 0; varlex < 5; varlex++)
                     {
-                        int dust = Dust.NewDust(N.position, N.width, N.height, DustID.MagicMirror, 0f, 0f, 100, new Color(), 1f);
+                        int dust = Dust.NewDust(N.position, N.width, N.height, DustID.MagicMirror, 0f, 0f, 100);
                         Main.dust[dust].noGravity = true;
                     }
+
                     N.friendly = true;
                     N.velocity.X *= -1f;
                     N.velocity.Y *= -1f;
@@ -137,59 +238,55 @@ public class StingerProbeMinion : ModProjectile
                 }
             }
         }
+
         #endregion
 
         #region movement
+
         int radius = 75;
         float speed = 0.1f;
-        Vector2 target = player.Center + Vector2.One.RotatedBy(MathHelper.ToRadians(((360f / modPlayer.StingerProbeActiveIds.Where(i => i == true).Count()) * id) + modPlayer.StingerProbeRotTimer)) * radius;
+        Vector2 target = player.Center +
+                         (Vector2.One.RotatedBy(
+                             (MathHelper.TwoPi / summonPlayer.StingerProbes.Count * positionNode.Value) +
+                             buffPlayer.StingerProbeRotation) * radius);
         Vector2 error = target - Projectile.Center;
 
         Projectile.velocity = player.velocity + (error * speed);
         //projectile.Center = target;
+
         #endregion
 
         #region projectile
-        Vector2 dirToCursor = (modPlayer.MousePosition - Projectile.Center).SafeNormalize(-Vector2.UnitY);
+
+        Vector2 dirToCursor =
+            (player.GetModPlayer<ExxoPlayer>().MousePosition - Projectile.Center).SafeNormalize(-Vector2.UnitY);
         Projectile.rotation = dirToCursor.ToRotation() + MathHelper.ToRadians(180f);
 
-        if (projTimer-- < 0)
-            projTimer = 0;
-
-        if (player.itemAnimation != 0 && player.HeldItem.damage != 0 && projTimer == 0)
+        if (ProjTimer-- < 0)
         {
-            int laser = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center, dirToCursor * 36f, ModContent.ProjectileType<Projectiles.StingerLaser>(), Projectile.damage, 0f, Projectile.owner);
-            Main.projectile[laser].hostile = false;
-            Main.projectile[laser].friendly = true;
-            Main.projectile[laser].tileCollide = false;
+            ProjTimer = 0;
+        }
+
+        if (player.itemAnimation != 0 && player.HeldItem.damage != 0 &&
+            ProjTimer == 0)
+        {
             SoundEngine.PlaySound(SoundID.Item, Projectile.Center, 12);
-            projTimer = 120 + Main.rand.Next(60);
+            if (Main.netMode == NetmodeID.Server)
+            {
+                int laser = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center,
+                    dirToCursor * 36f, ModContent.ProjectileType<StingerLaser>(), Projectile.damage, 0f,
+                    Projectile.owner);
+                Main.projectile[laser].hostile = false;
+                Main.projectile[laser].friendly = true;
+                Main.projectile[laser].tileCollide = false;
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, laser);
+
+                player.GetModPlayer<ExxoPlayer>().SyncMouse();
+            }
+
+            ProjTimer = 120 + syncedRandom.Next(60);
         }
+
         #endregion
-    }
-
-    public override void Kill(int timeLeft)
-    {
-        Player player = Main.player[Projectile.owner];
-        ExxoPlayer modPlayer = player.Avalon();
-
-        SoundEngine.PlaySound(SoundID.NPCKilled, Projectile.position, 14);
-
-        for (int i = 0; i < 2; i++)
-        {
-            int randomSize = Main.rand.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64));
-            Gore gore30 = Main.gore[num161];
-            Gore gore40 = gore30;
-            gore40.velocity *= 0.3f;
-            gore40.scale *= randomSize;
-            Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
-            Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
-        }
-        int bomb = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileID.Grenade, 50, 3f);
-        Main.projectile[bomb].timeLeft = 1;
-
-        modPlayer.StingerProbeActiveIds[id] = false;
-        base.Kill(timeLeft);
     }
 }

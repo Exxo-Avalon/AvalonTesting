@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using AvalonTesting.Buffs;
 using AvalonTesting.Items.Accessories;
@@ -495,6 +496,10 @@ public class ExxoPlayer : ModPlayer
         CritDamageMult = 1f;
 
         Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2 = Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax;
+        if (Player.whoAmI == Main.myPlayer)
+        {
+            MousePosition = Main.MouseWorld;
+        }
     }
 
     public override void PostUpdateEquips()
@@ -3195,5 +3200,19 @@ public class ExxoPlayer : ModPlayer
         {
             Dust.NewDust(Player.position, Player.width, Player.height, d, 0f, 0f, 150, default(Color), 1.5f);
         }
+    }
+
+    public void SyncMouse(int ignoreClient = -1)
+    {
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.ExxoPlayerManualSyncMouse);
+        packet.Write((byte)Player.whoAmI);
+        packet.WriteVector2(MousePosition);
+        packet.Send(ignoreClient: ignoreClient);
+    }
+
+    public void HandleSyncMouse(BinaryReader reader)
+    {
+        MousePosition = reader.ReadVector2();
     }
 }
