@@ -14,6 +14,7 @@ public static class HooksManager
         CommonCode.DropItemForEachInteractingPlayerOnThePlayer +=
             BuffEffects.OnDropItemForEachInteractingPlayerOnThePlayer;
         On.Terraria.Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
+        On.Terraria.WorldGen.SmashAltar += EvilAltar.OnSmashAltar;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
     }
 }
