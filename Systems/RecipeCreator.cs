@@ -388,7 +388,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Silk, 5)
             .AddTile(TileID.Sawmill).Register();
 
-        Mod.CreateRecipe(ModContent.ItemType<ImperviousBookcase>())
+        Mod.CreateRecipe(ModContent.ItemType<ResistantWoodBookcase>())
             .AddIngredient(ModContent.ItemType<ResistantWood>(), 20)
             .AddIngredient(ItemID.Book, 10)
             .AddTile(TileID.Sawmill).Register();
