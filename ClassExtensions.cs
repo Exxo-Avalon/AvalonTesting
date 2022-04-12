@@ -41,13 +41,13 @@ public static class ClassExtensions
     /// <summary>
     ///     Helper method for opening a chest. This method exists in vanilla, but is private.
     /// </summary>
-    /// <param name="p">The player.</param>
+    /// <param name="player">The player.</param>
     /// <param name="x">X coordinate of the chest.</param>
     /// <param name="y">Y coordinate of the chest.</param>
     /// <param name="newChest">The chest index.</param>
-    public static void OpenChest(this Player p, int x, int y, int newChest)
+    public static void OpenChest(this Player player, int x, int y, int newChest)
     {
-        if (p.chest != -1 && Main.myPlayer == p.whoAmI)
+        if (player.chest != -1 && Main.myPlayer == player.whoAmI)
         {
             for (int i = 0; i < 40; i++)
             {
@@ -55,7 +55,7 @@ public static class ClassExtensions
             }
         }
 
-        p.chest = newChest;
+        player.chest = newChest;
         Main.playerInventory = true;
         UILinkPointNavigator.ForceMovementCooldown(120);
         if (PlayerInput.GrappleAndInteractAreShared)
@@ -64,8 +64,8 @@ public static class ClassExtensions
         }
 
         Main.recBigList = false;
-        p.chestX = x;
-        p.chestY = y;
+        player.chestX = x;
+        player.chestY = y;
     }
 
     /// <summary>
