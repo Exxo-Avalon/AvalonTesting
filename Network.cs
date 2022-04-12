@@ -27,6 +27,15 @@ partial class AvalonTesting
                 }
 
                 break;
+            case MessageType.ExxoBuffPlayerSyncDaggerStaff:
+                playerIndex = reader.ReadByte();
+                Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncDaggerStaff(reader);
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().SyncDaggerStaff(whoAmI);
+                }
+
+                break;
             case MessageType.ExxoBuffPlayerSyncStingerProbe:
                 playerIndex = reader.ReadByte();
                 Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncStingerProbe(reader);
@@ -46,6 +55,7 @@ partial class AvalonTesting
     {
         BuffPlayerLazySync,
         ExxoPlayerManualSyncMouse,
-        ExxoBuffPlayerSyncStingerProbe
+        ExxoBuffPlayerSyncStingerProbe,
+        ExxoBuffPlayerSyncDaggerStaff
     }
 }
