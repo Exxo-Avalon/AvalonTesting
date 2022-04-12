@@ -81,13 +81,12 @@ public class ExxoDashPlayer : ModPlayer
                 if (dashInfo.Directions.Contains((DashDirection)direction))
                 {
                     activeDashes.Add(sourceItem.Type, new DashData((DashDirection)direction, sourceItem));
+                    break;
                 }
             }
         }
-        else
-        {
-            dashCheckQueue.Clear();
-        }
+
+        dashCheckQueue.Clear();
     }
 
     public override void PreUpdateMovement()
