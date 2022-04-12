@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,22 +14,28 @@ public class AegisDash : ModItem
     {
         DisplayName.SetDefault("Aegis Dash");
         Tooltip.SetDefault("Dash into enemies to damage them");
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+
+        ExxoDashPlayer.RegisterNewDashItem(Type,
+            new ExxoDashPlayer.DashInfo(new[] {ExxoDashPlayer.DashDirection.Left, ExxoDashPlayer.DashDirection.Right},
+                50, 35, 15));
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
+        Item.width = dims.Width;
+        Item.height = dims.Height;
+        Item.DamageType = DamageClass.Melee;
         Item.damage = 70;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.knockBack = 10f;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 7);
-        Item.height = dims.Height;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.dash = 2;
+        player.GetModPlayer<ExxoDashPlayer>().QueueDashEffect(this);
     }
 }
