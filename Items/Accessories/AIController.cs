@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Buffs;
+using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -20,14 +22,19 @@ public class AIController : ModItem
         Item.rare = -12;
         Item.width = dims.Width;
         Item.accessory = true;
-        Item.value = Item.sellPrice(0, 15, 0, 0);
-        Item.buffType = ModContent.BuffType<Buffs.StingerProbe>();
+        Item.value = Item.sellPrice(0, 15);
+        Item.buffType = ModContent.BuffType<StingerProbe>();
         Item.height = dims.Height;
         Item.expert = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.AddBuff(Item.buffType, 2, true);
+        if (!player.HasBuff(Item.buffType))
+        {
+            player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 300;
+        }
+
+        player.AddBuff(Item.buffType, 2);
     }
 }

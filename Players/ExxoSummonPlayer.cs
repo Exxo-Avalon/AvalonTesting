@@ -1,19 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
 
 public class ExxoSummonPlayer : ModPlayer
 {
-    public LinkedList<int> DaggerSummons { get; private set; }
+    public LinkedList<int> DaggerSummons { get; } = new();
+    public LinkedList<int> StingerProbes { get; } = new();
     public override bool CloneNewInstances => false;
-
-    public override void Initialize()
-    {
-        DaggerSummons = new LinkedList<int>();
-    }
 
     public LinkedListNode<int> HandleDaggerSummon()
     {
@@ -44,9 +38,40 @@ public class ExxoSummonPlayer : ModPlayer
 
             return DaggerSummons.Last;
         }
-        else
+
+        return DaggerSummons.Find(index);
+    }
+
+    public LinkedListNode<int> HandleStingerProbe()
+    {
+        return StingerProbes.AddLast(StingerProbes.Count);
+    }
+
+    public void RemoveStingerProbe(LinkedListNode<int> linkedListNode)
+    {
+        LinkedListNode<int> nextNode = linkedListNode.Next;
+        while (nextNode != null)
         {
-            return DaggerSummons.Find(index);
+            nextNode.Value--;
+            nextNode = nextNode.Next;
         }
+
+        StingerProbes.Remove(linkedListNode);
+    }
+
+    public LinkedListNode<int> ObtainExistingStingerProbe(int index)
+    {
+        int diff = index + 1 - StingerProbes.Count;
+        if (diff > 0)
+        {
+            for (int i = 0; i < diff; i++)
+            {
+                StingerProbes.AddLast(StingerProbes.Count);
+            }
+
+            return StingerProbes.Last;
+        }
+
+        return StingerProbes.Find(index);
     }
 }

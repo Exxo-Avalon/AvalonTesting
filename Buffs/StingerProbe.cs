@@ -1,9 +1,11 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using AvalonTesting.Projectiles.Summon;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs;
 
-// TODO: IMPLEMENT
 public class StingerProbe : ModBuff
 {
     public override void SetStaticDefaults()
@@ -14,53 +16,31 @@ public class StingerProbe : ModBuff
         Main.buffNoSave[Type] = true;
     }
 
-    // public override void Update(Player player, ref int buffIndex)
-    // {
-    //     ExxoPlayer modPlayer = player.Avalon();
-    //
-    //     if (player.dead || !player.active || !player.HasItemInArmor(ModContent.ItemType<AIController>()))
-    //     {
-    //         player.DelBuff(buffIndex);
-    //         buffIndex--;
-    //         return;
-    //     }
-    //
-    //     modPlayer.StingerProbeRotTimer += 0.5f;
-    //     if (modPlayer.StingerProbeRotTimer >= 360)
-    //     {
-    //         modPlayer.StingerProbeRotTimer = 0;
-    //     }
-    //
-    //     if (player.whoAmI != Main.myPlayer)
-    //     {
-    //         return;
-    //     }
-    //
-    //     Vector2 mousePosition = Main.MouseWorld;
-    //     if (Main.netMode == NetmodeID.MultiplayerClient)
-    //     {
-    //         modPlayer.MousePosition = mousePosition;
-    //         CursorPosition.SendPacket(mousePosition, player.whoAmI);
-    //     }
-    //     else if (Main.netMode == NetmodeID.SinglePlayer)
-    //     {
-    //         modPlayer.MousePosition = mousePosition;
-    //     }
-    //
-    //     if (player.ownedProjectileCounts[ModContent.ProjectileType<StingerProbeMinion>()] < 4)
-    //     {
-    //         modPlayer.StingerProbeTimer++;
-    //     }
-    //     else
-    //     {
-    //         modPlayer.StingerProbeTimer = 0;
-    //     }
-    //
-    //     if (modPlayer.StingerProbeTimer >= 300)
-    //     {
-    //         Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.Center, Vector2.Zero,
-    //             ModContent.ProjectileType<StingerProbeMinion>(), player.HeldItem.damage / 4 * 3, 0f, player.whoAmI);
-    //         modPlayer.StingerProbeTimer = 0;
-    //     }
-    // }
+    public override void Update(Player player, ref int buffIndex)
+    {
+        if (player.dead || !player.active)
+        {
+            return;
+        }
+
+        if (player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer < 300)
+        {
+            if (player.ownedProjectileCounts[ModContent.ProjectileType<StingerProbeMinion>()] < 4)
+            {
+                player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer++;
+            }
+
+            return;
+        }
+
+        if (player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+
+        Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.Center, Vector2.Zero,
+            ModContent.ProjectileType<StingerProbeMinion>(), (int)(player.HeldItem.damage * 0.75f), 0f,
+            player.whoAmI);
+        player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 0;
+    }
 }

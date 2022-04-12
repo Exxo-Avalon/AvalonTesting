@@ -34,7 +34,10 @@ public class HadesCross : ModItem
         DisplayName.SetDefault("Hades' Cross");
         Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
 
-        SetupDrawing();
+        if (Main.netMode != NetmodeID.Server)
+        {
+            SetupDrawing();
+        }
     }
 
     public override void SetDefaults()

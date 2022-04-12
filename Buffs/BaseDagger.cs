@@ -1,5 +1,4 @@
-﻿using AvalonTesting.Players;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs;
@@ -23,7 +22,5 @@ public abstract class BaseDagger<T> : ModBuff where T : ModProjectile
             player.DelBuff(buffIndex);
             buffIndex--;
         }
-
-        player.GetModPlayer<ExxoBuffPlayer>().UpdateDaggerStaff();
     }
 }
