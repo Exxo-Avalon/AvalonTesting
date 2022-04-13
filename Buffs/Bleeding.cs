@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs;
 
-// TODO: NEEDS IMPLEMENTATION
 public class Bleeding : ModBuff
 {
     public override void SetStaticDefaults()
@@ -13,8 +12,29 @@ public class Bleeding : ModBuff
         Main.debuff[Type] = true;
     }
 
-    // public override void Update(NPC npc, ref int buffIndex)
-    // {
-    //     npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleeding = true;
-    // }
+    public override void Update(NPC npc, ref int buffIndex)
+    {
+        if (npc.lifeRegen > 0)
+        {
+            npc.lifeRegen = 0;
+        }
+
+        int mult = 4;
+        if (Main.hardMode)
+        {
+            mult = 6;
+        }
+
+        npc.lifeRegen -= mult * npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks;
+    }
+
+    public override bool ReApply(NPC npc, int time, int buffIndex)
+    {
+        if (npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks < 3)
+        {
+            npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks++;
+        }
+
+        return false;
+    }
 }

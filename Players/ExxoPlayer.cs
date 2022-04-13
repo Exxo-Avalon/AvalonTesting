@@ -101,87 +101,7 @@ public class ExxoPlayer : ModPlayer
         Checkpoints,
         Team
     }
-
-    public List<int> undead = new List<int>()
-    {
-        NPCID.Zombie,
-        NPCID.Skeleton,
-        NPCID.AngryBones,
-        NPCID.DarkCaster,
-        NPCID.CursedSkull,
-        NPCID.UndeadMiner,
-        NPCID.Tim,
-        NPCID.DoctorBones,
-        NPCID.TheGroom,
-        NPCID.ArmoredSkeleton,
-        NPCID.Mummy,
-        NPCID.Wraith,
-        NPCID.SkeletonArcher,
-        NPCID.BaldZombie,
-        NPCID.PossessedArmor,
-        NPCID.VampireBat,
-        NPCID.Vampire,
-        NPCID.ZombieEskimo,
-        NPCID.UndeadViking,
-        NPCID.RuneWizard,
-        NPCID.PincushionZombie,
-        NPCID.SlimedZombie,
-        NPCID.SwampZombie,
-        NPCID.TwiggyZombie,
-        NPCID.ArmoredViking,
-        NPCID.FemaleZombie,
-        NPCID.HeadacheSkeleton,
-        NPCID.MisassembledSkeleton,
-        NPCID.PantlessSkeleton,
-        NPCID.ZombieRaincoat,
-        NPCID.Eyezor,
-        NPCID.Reaper,
-        NPCID.ZombieMushroom,
-        NPCID.ZombieMushroomHat,
-        NPCID.ZombieDoctor,
-        NPCID.ZombieSuperman,
-        NPCID.ZombiePixie,
-        NPCID.SkeletonTopHat,
-        NPCID.SkeletonAstonaut,
-        NPCID.SkeletonAlien,
-        NPCID.ZombieXmas,
-        NPCID.ZombieSweater
-    };
-
-    public List<int> flyer = new List<int>()
-    {
-        NPCID.DemonEye,
-        NPCID.EaterofSouls,
-        NPCID.Harpy,
-        NPCID.CaveBat,
-        NPCID.JungleBat,
-        NPCID.Pixie,
-        NPCID.WyvernHead,
-        NPCID.GiantBat,
-        NPCID.Crimera,
-        NPCID.CataractEye,
-        NPCID.SleepyEye,
-        NPCID.DialatedEye,
-        NPCID.GreenEye,
-        NPCID.PurpleEye,
-        NPCID.Moth,
-        NPCID.FlyingFish,
-        NPCID.FlyingSnake,
-        NPCID.AngryNimbus,
-        //ModContent.NPCType<NPCs.VampireHarpy>(),
-        //ModContent.NPCType<NPCs.Dragonfly>()
-    };
-
-    public List<int> minionProjectile = new List<int>()
-    {
-        ProjectileID.HornetStinger,
-        ProjectileID.ImpFireball,
-        ProjectileID.MiniRetinaLaser,
-        ProjectileID.PygmySpear,
-        ProjectileID.UFOLaser,
-        ProjectileID.MiniSharkron,
-        ProjectileID.StardustCellMinionShot
-    };
+    
     public static Dictionary<int, int> torches;
 
     public bool inertiaBoots = false;
@@ -199,7 +119,7 @@ public class ExxoPlayer : ModPlayer
     public int infectDmg = 0;
     public bool weaponMinion = false; // remove
     public bool earthInsig = false;
-    public int crystalHealth = 0;
+    public int CrystalHealth;
     public Item tomeItem = new Item();
     public int pl = -1;
     public bool openLocks;
@@ -290,7 +210,6 @@ public class ExxoPlayer : ModPlayer
     public bool avalonRestoration;
     public bool avalonRetribution;
     public int deliriumDuration = 300;
-    public bool hadesCross;
     public int quadroCount;
     public int shadowWP = 0;
     public bool confusionTal;
@@ -335,7 +254,6 @@ public class ExxoPlayer : ModPlayer
     public bool pOmega;
     public bool noSticky;
     public bool vampireTeeth;
-    public bool bloodyWhetstone;
     public bool riftGoggles;
     public bool malaria;
     public bool caesiumPoison;
@@ -347,27 +265,6 @@ public class ExxoPlayer : ModPlayer
     public bool UltraHMinion = false;
     public bool UltraRMinion = false;
     public bool UltraLMinion = false;
-    // Adv Buffs
-    public bool advAmmoBuff;
-
-    public bool advArcheryBuff;
-    public bool advBattleBuff;
-    public bool advCalmingBuff;
-    public bool advCrateBuff;
-
-    #region Stinger Probe Minion AI vars
-
-    public float StingerProbeRotTimer = 0;
-    public int StingerProbeTimer = 0;
-    public List<bool> StingerProbeActiveIds = new List<bool>();
-
-    #endregion Dagger Staff Minion AI vars
-
-    #region dagger staff vars
-    public float daggerStaffRotTimer = 0;
-    public int daggerStaffTimer = 0;
-    public List<bool> daggerStaffActiveIDs = new List<bool>();
-    #endregion
 
     public Vector2 MousePosition = default(Vector2);
 
@@ -424,15 +321,9 @@ public class ExxoPlayer : ModPlayer
         pOmega = false;
         slimeBand = false;
         noSticky = false;
-        advAmmoBuff = false;
-        advArcheryBuff = false;
-        advBattleBuff = false;
-        advCalmingBuff = false;
-        advCrateBuff = false;
         lucky = false;
         enemySpawns2 = false;
         bloodCast = false;
-        hadesCross = false;
         magnet = false;
         bubbleBoost = false;
         darkInferno = false;
@@ -911,17 +802,6 @@ public class ExxoPlayer : ModPlayer
             Player.VanillaUpdateEquip(tomeItem);
         }
     }
-    public override void FrameEffects()
-    {
-        // TODO: Need new hook, FrameEffects doesn't run while paused.
-        if (hadesCross)
-        {
-            HadesCross exampleCostume = ModContent.GetInstance<HadesCross>();
-            Player.head = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Head);
-            Player.body = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Body);
-            Player.legs = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Legs);
-        }
-    }
     public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         #region spike cannon logic
@@ -1133,11 +1013,6 @@ public class ExxoPlayer : ModPlayer
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
     {
         bool consume = true;
-        // 30% chance to not consume ammo
-        if (advAmmoBuff && Main.rand.Next(10) < 3)
-        {
-            consume = false;
-        }
 
         if (tomeItem.type == ModContent.ItemType<CreatorsTome>() && Main.rand.Next(4) == 0)
         {
@@ -1163,14 +1038,7 @@ public class ExxoPlayer : ModPlayer
             return base.CanConsumeAmmo(weapon, ammo);
         }
     }
-    public override void ModifyWeaponDamage(Item item, ref StatModifier damage, ref float flat)
-    {
-        if (item.useAmmo == AmmoID.Arrow && advArcheryBuff)
-        {
-            damage = new StatModifier(0, 1.4f);
-        }
-        base.ModifyWeaponDamage(item, ref damage, ref flat);
-    }
+
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
         if (terraClaws && item.DamageType == DamageClass.Melee)
@@ -1227,17 +1095,12 @@ public class ExxoPlayer : ModPlayer
                 Player.AddBuff(ModContent.BuffType<Buffs.BlessingofAvalon>(), 120);
             }
         }
-        if (Player.inventory[Player.selectedItem].DamageType == DamageClass.Melee && bloodyWhetstone)
-        {
-            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
-            target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().IsBleedingHMBleed = true;
-        }
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (CanBeFrozen.CanFreeze(target))
                 {
@@ -1309,7 +1172,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 target.AddBuff(ModContent.BuffType<Buffs.MinionFrozen>(), 60);
             }
@@ -1397,11 +1260,7 @@ public class ExxoPlayer : ModPlayer
         {
             damage += 15;
         }
-        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
-        {
-            damage += 8;
-        }
-        
+
         if (target.HasBuff(ModContent.BuffType<CurseofAvalon>()))
         {
             damage *= 4;
@@ -1441,10 +1300,6 @@ public class ExxoPlayer : ModPlayer
         if (crystalEdge)
         {
             damage += 15;
-        }
-        if (Player.HasBuff(ModContent.BuffType<Buffs.BacteriaEndurance>()))
-        {
-            damage += 8;
         }
         
         if (target.HasBuff(ModContent.BuffType<Buffs.CurseofAvalon>()) &&
@@ -1496,7 +1351,7 @@ public class ExxoPlayer : ModPlayer
 
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (target.HasBuff(ModContent.BuffType<Buffs.MinionFrozen>()) || !CanBeFrozen.CanFreeze(target))
                 {
@@ -1521,7 +1376,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (target.HasBuff(ModContent.BuffType<Buffs.MinionFrozen>()))
                 {
@@ -1543,100 +1398,108 @@ public class ExxoPlayer : ModPlayer
     }
     public override void SaveData(TagCompound tag)
     {
-        tag = new TagCompound
-        {
-            { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
-            { "AvalonTesting:CrystalHealth", crystalHealth },
-            { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-            { "AvalonTesting:SHMAcc", shmAcc },
-            { "AvalonTesting:HerbTier", (int)herbTier },
-            { "AvalonTesting:HerbTotal", herbTotal },
-            { "AvalonTesting:PotionTotal", potionTotal },
-            { "AvalonTesting:HerbCounts", herbCounts.Save() },
-            { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
-            { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-            { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-            { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-            { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-            { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
-        };
+        tag["CrystalHealth"] = CrystalHealth;
+        // tag = new TagCompound
+        // {
+        //     { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
+        //     { "AvalonTesting:CrystalHealth", CrystalHealth },
+        //     { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
+        //     { "AvalonTesting:SHMAcc", shmAcc },
+        //     { "AvalonTesting:HerbTier", (int)herbTier },
+        //     { "AvalonTesting:HerbTotal", herbTotal },
+        //     { "AvalonTesting:PotionTotal", potionTotal },
+        //     { "AvalonTesting:HerbCounts", herbCounts.Save() },
+        //     { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
+        //     { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
+        //     { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
+        //     { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
+        //     { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
+        //     { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
+        // };
     }
     public override void LoadData(TagCompound tag)
     {
-        if (tag.ContainsKey("AvalonTesting:TomeSlot"))
+        if (tag.ContainsKey("CrystalHealth"))
         {
-            tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
+            CrystalHealth = tag.Get<int>("CrystalHealth");
+            Player.statLifeMax += CrystalHealth * 25;
+            Player.statLifeMax2 += CrystalHealth * 25;
+            Player.statLife += CrystalHealth * 25;
         }
-        if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
-        {
-            crystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
-            if (crystalHealth > 4)
-            {
-                crystalHealth = 4;
-            }
-
-            if (Player.statLifeMax == 500)
-            {
-                Player.statLifeMax += crystalHealth *= 25;
-                Player.statLifeMax2 += crystalHealth *= 25;
-            }
-        }
-
-        if (tag.ContainsKey("AvalonTesting:Stamina"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
-        }
-        if (tag.ContainsKey("AvalonTesting:SHMAcc"))
-        {
-            shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbTier"))
-        {
-            herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbTotal"))
-        {
-            herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
-        }
-        if (tag.ContainsKey("AvalonTesting:PotionTotal"))
-        {
-            potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbCounts"))
-        {
-            try
-            {
-                herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
-            }
-            catch
-            {
-                herbCounts = new Dictionary<int, int>();
-            }
-        }
-        if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
-        {
-            spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
-        }
-        if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
-        }
+        // if (tag.ContainsKey("AvalonTesting:TomeSlot"))
+        // {
+        //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
+        // }
+        // if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
+        // {
+        //     CrystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
+        //     if (CrystalHealth > 4)
+        //     {
+        //         CrystalHealth = 4;
+        //     }
+        //
+        //     if (Player.statLifeMax == 500)
+        //     {
+        //         Player.statLifeMax += CrystalHealth *= 25;
+        //         Player.statLifeMax2 += CrystalHealth *= 25;
+        //     }
+        // }
+        //
+        // if (tag.ContainsKey("AvalonTesting:Stamina"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SHMAcc"))
+        // {
+        //     shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbTier"))
+        // {
+        //     herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbTotal"))
+        // {
+        //     herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:PotionTotal"))
+        // {
+        //     potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbCounts"))
+        // {
+        //     try
+        //     {
+        //         herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
+        //     }
+        //     catch
+        //     {
+        //         herbCounts = new Dictionary<int, int>();
+        //     }
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
+        // {
+        //     spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
+        // }
     }
     public override void PostUpdate()
     {
@@ -2071,10 +1934,6 @@ public class ExxoPlayer : ModPlayer
 
             Player.statLife += hpHealed;
             Player.HealEffect(hpHealed, true);
-        }
-        if (Player.whoAmI == Main.myPlayer && bOfBacteria)
-        {
-            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60, true);
         }
     }
     public static void stayInBounds(Vector2 pos)
@@ -3016,7 +2875,7 @@ public class ExxoPlayer : ModPlayer
         if (undeadTalisman)
         {
             int dmgPlaceholder = npc.damage;
-            if (undead.Contains(npc.type))
+            if (Data.Sets.NPC.Undead[npc.type])
             {
                 if (damage - (Player.statDefense / 2 - 10) <= 0)
                 {

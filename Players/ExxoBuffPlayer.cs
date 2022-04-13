@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Items.Accessories;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -14,22 +15,25 @@ namespace AvalonTesting.Players;
 
 public class ExxoBuffPlayer : ModPlayer
 {
+    public bool AccLavaMerman;
     public bool AdvancedBattle;
+    public bool AdvancedCalming;
     public bool AstralProject;
 
     public bool BadgeOfBacteria;
+    public bool BloodyWhetstone;
     public int DeleriumCount;
     public bool EarthInsignia;
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
     public int InfectDamage;
+    private bool lavaMerman;
     public bool Lucky;
     public bool Malaria;
     public bool Melting;
     public bool NoSticky;
     public int OldFallStart;
 
-    public bool SlimeBand;
     public int StingerProbeTimer;
     public float DaggerStaffRotation { get; private set; }
     public float StingerProbeRotation { get; private set; }
@@ -40,24 +44,27 @@ public class ExxoBuffPlayer : ModPlayer
     public override void ResetEffects()
     {
         AdvancedBattle = false;
+        AdvancedCalming = false;
         AstralProject = false;
         EarthInsignia = false;
         Lucky = false;
         Malaria = false;
         Melting = false;
         BadgeOfBacteria = false;
-        SlimeBand = false;
         NoSticky = false;
+        AccLavaMerman = false;
+        lavaMerman = false;
+        BloodyWhetstone = false;
     }
 
     public override void PreUpdateBuffs()
     {
-        FrameCount++;
-        ShadowCooldown++;
         StingerProbeRotation = (StingerProbeRotation % MathHelper.TwoPi) + 0.01f;
         DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
         if (Player.active)
         {
+            FrameCount++;
+            ShadowCooldown++;
             AstralCooldown++;
         }
     }
@@ -67,6 +74,12 @@ public class ExxoBuffPlayer : ModPlayer
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+        }
+
+        if (AccLavaMerman && Collision.LavaCollision(Player.position, Player.width, Player.height))
+        {
+            lavaMerman = true;
+            Player.merman = true;
         }
     }
 
@@ -138,6 +151,11 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void ProcessTriggers(TriggersSet triggersSet)
     {
+        if (Player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+        
         if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
         {
             if (Player.HasBuff<AstralProjecting>())
@@ -224,14 +242,6 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
-    {
-        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
-        {
-            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
-        }
-    }
-
     public void FloorVisualsAvalon()
     {
         int num = (int)((Player.position.X + (Player.width / 2)) / 16f);
@@ -260,17 +270,6 @@ public class ExxoBuffPlayer : ModPlayer
             {
                 Player.sticky = false;
             }
-
-            if (SlimeBand)
-            {
-                Player.slippy = true;
-                Player.slippy2 = true;
-            }
-            else
-            {
-                Player.slippy = false;
-                Player.slippy2 = false;
-            }
         }
     }
 
@@ -287,6 +286,11 @@ public class ExxoBuffPlayer : ModPlayer
         {
             damage *= 3;
         }
+
+        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
+        {
+            damage += 8;
+        }
     }
 
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
@@ -294,6 +298,50 @@ public class ExxoBuffPlayer : ModPlayer
         if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
         {
             damage *= 3;
+        }
+
+        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
+        {
+            damage += 8;
+        }
+    }
+
+    public override void OnHitByNPC(NPC npc, int damage, bool crit)
+    {
+        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
+        {
+            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
+            npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
+        }
+    }
+
+    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+    {
+        if (Player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+
+        if (item.DamageType == DamageClass.Melee && BloodyWhetstone)
+        {
+            if (!target.HasBuff<Bleeding>())
+            {
+                target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks = 1;
+            }
+
+            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
+        }
+    }
+
+    public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a,
+                                     ref bool fullBright)
+    {
+        if (lavaMerman)
+        {
+            HadesCross hadesCross = ModContent.GetInstance<HadesCross>();
+            Player.head = Mod.GetEquipSlot(hadesCross.Name, EquipType.Head);
+            Player.body = Mod.GetEquipSlot(hadesCross.Name, EquipType.Body);
+            Player.legs = Mod.GetEquipSlot(hadesCross.Name, EquipType.Legs);
         }
     }
 }

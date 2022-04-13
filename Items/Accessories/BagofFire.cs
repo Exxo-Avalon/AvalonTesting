@@ -27,91 +27,21 @@ internal class BagofFire : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.controlRight)
+        if (!hideVisual)
         {
-            int num9 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num9].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num10 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num10].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num11 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num11].noGravity = true;
-        }
-
-        if (player.controlRight)
-        {
-            int num52 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num52].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num53 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num53].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num54 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num54].noGravity = true;
+            UpdateVanity(player);
         }
     }
 
     public override void UpdateVanity(Player player)
     {
-        if (player.controlRight)
+        if (!(player.velocity.Length() > 0))
         {
-            int num9 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num9].noGravity = true;
+            return;
         }
 
-        if (player.controlLeft)
-        {
-            int num10 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num10].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num11 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num11].noGravity = true;
-        }
-
-        if (player.controlRight)
-        {
-            int num52 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num52].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num53 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num53].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num54 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Torch, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num54].noGravity = true;
-        }
+        int dust = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Torch, 0f, 0f, 100,
+            Color.White, 2f);
+        Main.dust[dust].noGravity = true;
     }
 }

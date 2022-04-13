@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BagofBlood : ModItem
+internal class BagofBlood : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,117 +20,33 @@ class BagofBlood : ModItem
         Item.width = dims.Width;
         Item.accessory = true;
         Item.vanity = true;
-        Item.value = Item.sellPrice(0, 1, 0, 0);
+        Item.value = Item.sellPrice(0, 1);
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.controlRight)
+        if (!hideVisual)
         {
-            var num18 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num18].noGravity = true;
-            var num19 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White,
-                1.5f);
-            Main.dust[num19].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            var num20 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num20].noGravity = true;
-            var num21 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White,
-                1.5f);
-            Main.dust[num21].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            var num22 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num22].noGravity = true;
-            var num23 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Blood, 0f, 0f, 100,
-                Color.White, 1.5f);
-            Main.dust[num23].noGravity = true;
-        }
-
-        if (player.controlRight)
-        {
-            var num61 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num61].noGravity = true;
-            var num62 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White,
-                1.5f);
-            Main.dust[num62].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            var num63 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num63].noGravity = true;
-            var num64 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White,
-                1.5f);
-            Main.dust[num64].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            var num65 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.TheDestroyer, 0f, 0f, 100,
-                Color.White, 0.9f);
-            Main.dust[num65].noGravity = true;
-            var num66 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Blood, 0f, 0f, 100,
-                Color.White, 1.5f);
-            Main.dust[num66].noGravity = true;
+            UpdateVanity(player);
         }
     }
 
     public override void UpdateVanity(Player player)
     {
-        if (player.controlRight)
+        if (!(player.velocity.Length() > 0))
         {
-            var num18 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num18].noGravity = true;
-            var num19 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num19].noGravity = true;
+            return;
         }
-        if (player.controlLeft)
-        {
-            var num20 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num20].noGravity = true;
-            var num21 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num21].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num22 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num22].noGravity = true;
-            var num23 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num23].noGravity = true;
-        }
-        if (player.controlRight)
-        {
-            var num61 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num61].noGravity = true;
-            var num62 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num62].noGravity = true;
-        }
-        if (player.controlLeft)
-        {
-            var num63 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num63].noGravity = true;
-            var num64 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num64].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num65 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.TheDestroyer, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num65].noGravity = true;
-            var num66 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Blood, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num66].noGravity = true;
-        }
+
+        int dust1 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.TheDestroyer, 0f, 0f,
+            100,
+            Color.White, 0.9f);
+        Main.dust[dust1].noGravity = true;
+        int dust2 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Blood, 0f, 0f, 100,
+            Color.White,
+            1.5f);
+        Main.dust[dust2].noGravity = true;
     }
 }

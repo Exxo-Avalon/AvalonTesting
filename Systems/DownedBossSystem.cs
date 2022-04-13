@@ -30,14 +30,45 @@ public class DownedBossSystem : ModSystem
 
     public override void LoadWorldData(TagCompound tag)
     {
-        DownedBacteriumPrime = tag.Get<bool>("DownedBacteriumPrime");
-        DownedDesertBeak = tag.Get<bool>("DownedDesertBeak");
-        DownedPhantasm = tag.Get<bool>("DownedPhantasm");
-        DownedDragonLord = tag.Get<bool>("DownedDragonLord");
-        DownedMechasting = tag.Get<bool>("DownedMechasting");
-        DownedOblivion = tag.Get<bool>("DownedOblivion");
-        DownedKingSting = tag.Get<bool>("DownedKingSting");
-        DownedArmageddon = tag.Get<bool>("DownedArmageddon");
+        if (tag.ContainsKey("DownedBacteriumPrime"))
+        {
+            DownedBacteriumPrime = tag.Get<bool>("DownedBacteriumPrime");
+        }
+
+        if (tag.ContainsKey("DownedDesertBeak"))
+        {
+            DownedDesertBeak = tag.Get<bool>("DownedDesertBeak");
+        }
+
+        if (tag.ContainsKey("DownedPhantasm"))
+        {
+            DownedPhantasm = tag.Get<bool>("DownedPhantasm");
+        }
+
+        if (tag.ContainsKey("DownedDragonLord"))
+        {
+            DownedDragonLord = tag.Get<bool>("DownedDragonLord");
+        }
+
+        if (tag.ContainsKey("DownedMechasting"))
+        {
+            DownedMechasting = tag.Get<bool>("DownedMechasting");
+        }
+
+        if (tag.ContainsKey("DownedOblivion"))
+        {
+            DownedOblivion = tag.Get<bool>("DownedOblivion");
+        }
+
+        if (tag.ContainsKey("DownedKingSting"))
+        {
+            DownedKingSting = tag.Get<bool>("DownedKingSting");
+        }
+
+        if (tag.ContainsKey("DownedArmageddon"))
+        {
+            DownedArmageddon = tag.Get<bool>("DownedArmageddon");
+        }
     }
 
     public override void NetSend(BinaryWriter writer)

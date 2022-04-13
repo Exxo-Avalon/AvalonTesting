@@ -1,5 +1,6 @@
 ﻿using IL.Terraria;
 using On.Terraria.GameContent.ItemDropRules;
+using On.Terraria.GameContent.UI.ResourceSets;
 
 namespace AvalonTesting.Hooks;
 
@@ -15,6 +16,7 @@ public static class HooksManager
             BuffEffects.OnDropItemForEachInteractingPlayerOnThePlayer;
         On.Terraria.Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
         On.Terraria.WorldGen.SmashAltar += EvilAltar.OnSmashAltar;
+        ClassicPlayerResourcesDisplaySet.DrawLife += ExtraHealth.OnDrawLife;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
     }
 }

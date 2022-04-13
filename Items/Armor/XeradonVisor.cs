@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +33,7 @@ class XeradonVisor : ModItem
         player.setBonus = "+5 block range and reduced enemy spawns and aggression\nEmitting light";
         Player.tileRangeX += 5;
         Player.tileRangeY += 5;
-        player.Avalon().advCalmingBuff = true;
+        player.GetModPlayer<ExxoBuffPlayer>().AdvancedCalming = true;
         player.aggro -= 250;
         Lighting.AddLight(player.position, 1.5f, 1.5f, 1.5f);
     }

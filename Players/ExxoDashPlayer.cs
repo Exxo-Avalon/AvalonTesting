@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
@@ -19,11 +21,11 @@ public class ExxoDashPlayer : ModPlayer
         Left
     }
 
-    public override bool CloneNewInstances => false;
-
     private static readonly Dictionary<int, DashInfo> RegisteredDashes = new();
     private readonly Dictionary<int, DashData> activeDashes = new();
     private readonly Queue<ModItem> dashCheckQueue = new();
+
+    public override bool CloneNewInstances => false;
 
     /// <summary>
     ///     Register a new dash item and provide metadata for the dash configuration
@@ -46,7 +48,7 @@ public class ExxoDashPlayer : ModPlayer
     /// <param name="sourceItem">The current ModItem instance</param>
     public void QueueDashEffect(ModItem sourceItem)
     {
-        if (!activeDashes.ContainsKey(sourceItem.Type))
+        if (Player.whoAmI == Main.myPlayer && !activeDashes.ContainsKey(sourceItem.Type))
         {
             dashCheckQueue.Enqueue(sourceItem);
         }
@@ -54,6 +56,11 @@ public class ExxoDashPlayer : ModPlayer
 
     public override void ResetEffects()
     {
+        if (Player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+
         DashDirection? direction = null;
         if (Player.controlDown && Player.releaseDown && Player.doubleTapCardinalTimer[(int)DashDirection.Down] < 15)
         {
@@ -82,13 +89,59 @@ public class ExxoDashPlayer : ModPlayer
                 DashInfo dashInfo = RegisteredDashes[sourceItem.Type];
                 if (dashInfo.Directions.Contains((DashDirection)direction))
                 {
-                    activeDashes.Add(sourceItem.Type, new DashData((DashDirection)direction, sourceItem));
+                    activeDashes.Add(sourceItem.Type,
+                        new DashData((DashDirection)direction, sourceItem.Item.damage, sourceItem.Item.knockBack));
+                    SyncDashPlayer(sourceItem.Type);
+
                     break;
                 }
             }
         }
 
         dashCheckQueue.Clear();
+    }
+
+    public void SyncDashPlayer(int key, int ignoreClient = -1)
+    {
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            return;
+        }
+
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncActiveDash);
+        packet.Write((byte)Player.whoAmI);
+        packet.Write(key);
+        packet.Write((byte)activeDashes[key].Direction);
+        // Dont need to send damage or knockback
+        packet.Send(ignoreClient: ignoreClient);
+    }
+
+    public void HandleSyncDashPlayer(int key, BinaryReader reader)
+    {
+        activeDashes.Add(key, new DashData((DashDirection)reader.ReadByte(), 0, 0));
+    }
+
+    public void SyncRemoveDashPlayer(int key, int ignoreClient = -1)
+    {
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            return;
+        }
+
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncRemoveDash);
+        packet.Write((byte)Player.whoAmI);
+        packet.Write(key);
+        packet.Send(ignoreClient: ignoreClient);
+    }
+
+    public void HandleSyncRemoveDashPlayer(int key)
+    {
+        if (activeDashes.ContainsKey(key))
+        {
+            activeDashes.Remove(key);
+        }
     }
 
     public override void PreUpdateMovement()
@@ -100,34 +153,38 @@ public class ExxoDashPlayer : ModPlayer
 
             if (dashData.Delay == 0)
             {
-                Vector2 newVelocity = Player.velocity;
-                switch (dashData.Direction)
+                if (Player.whoAmI == Main.myPlayer)
                 {
-                    // Only apply the dash velocity if our current speed in the wanted direction is less than DashVelocity
-                    case DashDirection.Up when Player.velocity.Y > -dashInfo.Velocity:
-                    case DashDirection.Down when Player.velocity.Y < dashInfo.Velocity:
+                    Vector2 newVelocity = Player.velocity;
+                    switch (dashData.Direction)
                     {
-                        float dashDirection = dashData.Direction == DashDirection.Down ? 1 : -1.3f;
-                        newVelocity.Y = dashDirection * dashInfo.Velocity;
-                        break;
+                        // Only apply the dash velocity if our current speed in the wanted direction is less than DashVelocity
+                        case DashDirection.Up when Player.velocity.Y > -dashInfo.Velocity:
+                        case DashDirection.Down when Player.velocity.Y < dashInfo.Velocity:
+                        {
+                            float dashDirection = dashData.Direction == DashDirection.Down ? 1 : -1.3f;
+                            newVelocity.Y = dashDirection * dashInfo.Velocity;
+                            break;
+                        }
+                        case DashDirection.Left when Player.velocity.X > -dashInfo.Velocity:
+                        case DashDirection.Right when Player.velocity.X < dashInfo.Velocity:
+                        {
+                            float dashDirection = dashData.Direction == DashDirection.Right ? 1 : -1;
+                            newVelocity.X = dashDirection * dashInfo.Velocity;
+                            break;
+                        }
+                        default:
+                            // Not fast enough
+                            activeDashes.Remove(dashKey);
+                            SyncRemoveDashPlayer(dashKey);
+                            continue;
                     }
-                    case DashDirection.Left when Player.velocity.X > -dashInfo.Velocity:
-                    case DashDirection.Right when Player.velocity.X < dashInfo.Velocity:
-                    {
-                        float dashDirection = dashData.Direction == DashDirection.Right ? 1 : -1;
-                        newVelocity.X = dashDirection * dashInfo.Velocity;
-                        break;
-                    }
-                    default:
-                        // Not fast enough
-                        activeDashes.Remove(dashKey);
-                        continue;
+
+                    Player.velocity = newVelocity;
                 }
 
                 dashData.Timer = dashInfo.Duration;
                 dashData.Delay = dashInfo.Cooldown;
-
-                Player.velocity = newVelocity;
             }
 
             if (dashData.Timer > 0)
@@ -141,9 +198,9 @@ public class ExxoDashPlayer : ModPlayer
                     if (npcIndex != -1)
                     {
                         NPC npc = Main.npc[CheckHitCollision()];
-                        float dashDamage = dashData.SourceItem.Item.damage * Player.GetDamage<GenericDamageClass>()
+                        float dashDamage = dashData.Damage * Player.GetDamage<GenericDamageClass>()
                             .CombineWith(Player.GetDamage<MeleeDamageClass>());
-                        float dashKnockBack = dashData.SourceItem.Item.knockBack * Player
+                        float dashKnockBack = dashData.Knockback * Player
                             .GetKnockback<GenericDamageClass>().CombineWith(Player.GetKnockback<MeleeDamageClass>());
                         bool doesCriticalHit = Main.rand.Next(100) < Player.GetCritChance<GenericDamageClass>() +
                             Player.GetCritChance<MeleeDamageClass>();
@@ -176,6 +233,10 @@ public class ExxoDashPlayer : ModPlayer
             if (dashData.Delay == 0)
             {
                 activeDashes.Remove(dashKey);
+                if (Player.whoAmI == Main.myPlayer)
+                {
+                    SyncRemoveDashPlayer(dashKey);
+                }
             }
         }
     }
@@ -214,16 +275,18 @@ public class ExxoDashPlayer : ModPlayer
 
     private class DashData
     {
+        public readonly int Damage;
         public readonly DashDirection Direction;
-        public readonly ModItem SourceItem;
+        public readonly float Knockback;
         public int Delay;
         public bool HasHitEnemy;
         public int Timer;
 
-        public DashData(DashDirection direction, ModItem sourceItem)
+        public DashData(DashDirection direction, int damage, float knockback)
         {
             Direction = direction;
-            SourceItem = sourceItem;
+            Damage = damage;
+            Knockback = knockback;
         }
     }
 

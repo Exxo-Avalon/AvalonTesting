@@ -1,5 +1,4 @@
-﻿using AvalonTesting.Players;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,9 +25,9 @@ internal class BandofSlime : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().SlimeBand = true;
         player.endurance += 0.05f;
         player.noFallDmg = true;
+        player.slippy = true;
         player.slippy2 = true;
     }
 }

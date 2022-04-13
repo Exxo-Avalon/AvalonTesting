@@ -1198,7 +1198,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             maxSpawns = (int)(maxSpawns * AdvBattle.SpawnMultiplier);
         }
 
-        if (player.HasBuff<AdvCalming>())
+        if (player.GetModPlayer<ExxoBuffPlayer>().AdvancedCalming)
         {
             spawnRate = (int)(spawnRate * AdvCalming.RateMultiplier);
             maxSpawns = (int)(maxSpawns * AdvCalming.SpawnMultiplier);
@@ -1642,9 +1642,20 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void DrawEffects(NPC npc, ref Color drawColor)
     {
-        if (npc.HasBuff(ModContent.BuffType<AstralCurse>()))
+        if (npc.HasBuff<AstralCurse>())
         {
             Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
+        }
+        if (npc.HasBuff<BacteriaInfection>())
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.ScourgeOfTheCorruptor);
+        }
+        if (npc.HasBuff<Bleeding>())
+        {
+            for (int i = 0; i < npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks; i++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
+            }
         }
     }
 }

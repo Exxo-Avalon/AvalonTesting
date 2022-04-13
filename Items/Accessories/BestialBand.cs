@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,34 +29,20 @@ internal class BestialBand : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        bool flag2 = Collision.LavaCollision(player.position, player.width, player.height);
-        if (flag2)
-        {
-            player.Avalon().hadesCross = true;
-            player.merman = true;
-            player.accFlipper = true;
-            player.lavaImmune = true;
-        }
-
+        player.GetModPlayer<ExxoBuffPlayer>().AccLavaMerman = true;
         player.fireWalk = true;
         player.ignoreWater = true;
         player.accMerman = true;
+        player.accFlipper = true;
         player.wolfAcc = true;
         player.lavaImmune = true;
         player.waterWalk = true;
         player.lifeRegen += 2;
         player.statDefense += 4;
         player.meleeSpeed += 0.1f;
-        player.GetDamage(DamageClass.Melee) += 0.1f;
-        player.GetCritChance(DamageClass.Melee) += 2;
-        player.GetDamage(DamageClass.Ranged) += 0.1f;
-        player.GetCritChance(DamageClass.Ranged) += 2;
-        player.GetDamage(DamageClass.Magic) += 0.1f;
-        player.GetCritChance(DamageClass.Magic) += 2;
-        player.GetDamage(DamageClass.Throwing) += 0.1f;
-        player.GetCritChance(DamageClass.Throwing) += 2;
+        player.GetDamage(DamageClass.Generic) += 0.1f;
+        player.GetCritChance(DamageClass.Generic) += 2;
         player.pickSpeed -= 0.15f;
-        player.GetDamage(DamageClass.Summon) += 0.1f;
         player.minionKB += 0.5f;
     }
 }
