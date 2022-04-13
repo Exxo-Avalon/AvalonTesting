@@ -10,16 +10,18 @@ partial class AvalonTesting
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
         var msgType = (MessageType)reader.ReadByte();
-        byte playerIndex;
 
         switch (msgType)
         {
             case MessageType.BuffPlayerLazySync:
-                playerIndex = reader.ReadByte();
+            {
+                byte playerIndex = reader.ReadByte();
                 Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncPlayer(reader);
                 break;
+            }
             case MessageType.ExxoPlayerManualSyncMouse:
-                playerIndex = reader.ReadByte();
+            {
+                byte playerIndex = reader.ReadByte();
                 Main.player[playerIndex].GetModPlayer<ExxoPlayer>().HandleSyncMouse(reader);
                 if (Main.netMode == NetmodeID.Server)
                 {
@@ -27,8 +29,10 @@ partial class AvalonTesting
                 }
 
                 break;
+            }
             case MessageType.ExxoBuffPlayerSyncDaggerStaff:
-                playerIndex = reader.ReadByte();
+            {
+                byte playerIndex = reader.ReadByte();
                 Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncDaggerStaff(reader);
                 if (Main.netMode == NetmodeID.Server)
                 {
@@ -36,8 +40,10 @@ partial class AvalonTesting
                 }
 
                 break;
+            }
             case MessageType.ExxoBuffPlayerSyncStingerProbe:
-                playerIndex = reader.ReadByte();
+            {
+                byte playerIndex = reader.ReadByte();
                 Main.player[playerIndex].GetModPlayer<ExxoBuffPlayer>().HandleSyncStingerProbe(reader);
                 if (Main.netMode == NetmodeID.Server)
                 {
@@ -45,6 +51,31 @@ partial class AvalonTesting
                 }
 
                 break;
+            }
+            case MessageType.ExxoDashPlayerSyncActiveDash:
+            {
+                byte playerIndex = reader.ReadByte();
+                int key = reader.ReadInt32();
+                Main.player[playerIndex].GetModPlayer<ExxoDashPlayer>().HandleSyncDashPlayer(key, reader);
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    Main.player[playerIndex].GetModPlayer<ExxoDashPlayer>().SyncDashPlayer(key, whoAmI);
+                }
+
+                break;
+            }
+            case MessageType.ExxoDashPlayerSyncRemoveDash:
+            {
+                byte playerIndex = reader.ReadByte();
+                int key = reader.ReadInt32();
+                Main.player[playerIndex].GetModPlayer<ExxoDashPlayer>().HandleSyncRemoveDashPlayer(key);
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    Main.player[playerIndex].GetModPlayer<ExxoDashPlayer>().SyncRemoveDashPlayer(key, whoAmI);
+                }
+
+                break;
+            }
             default:
                 Logger.Warn($"Unknown Message type: {msgType}");
                 break;
@@ -56,6 +87,8 @@ partial class AvalonTesting
         BuffPlayerLazySync,
         ExxoPlayerManualSyncMouse,
         ExxoBuffPlayerSyncStingerProbe,
-        ExxoBuffPlayerSyncDaggerStaff
+        ExxoBuffPlayerSyncDaggerStaff,
+        ExxoDashPlayerSyncActiveDash,
+        ExxoDashPlayerSyncRemoveDash
     }
 }
