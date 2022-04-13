@@ -17,10 +17,8 @@ public static class HooksManager
         On.Terraria.Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
         On.Terraria.WorldGen.SmashAltar += EvilAltar.OnSmashAltar;
         ClassicPlayerResourcesDisplaySet.DrawLife += ExtraHealth.OnDrawLife;
-        IL.Terraria.GameContent.UI.ResourceSets.HorizontalBarsPlayerReosurcesDisplaySet.LifeFillingDrawer +=
-            ExtraHealth.ILLifeFillingDrawer;
-        IL.Terraria.GameContent.UI.ResourceSets.FancyClassicPlayerResourcesDisplaySet.HeartFillingDrawer +=
-            ExtraHealth.ILHeartFillingDrawer;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
+
+        CaesiumBackground.ILCaesium();
     }
 }

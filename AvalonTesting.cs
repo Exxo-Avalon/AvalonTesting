@@ -24,6 +24,8 @@ public partial class AvalonTesting : Mod
     public Mod MusicMod { get; private set; }
     public Mod ImkSushisMod { get; private set; }
 
+    public static float CaesiumTransition;
+
     public override void Load()
     {
         // ----------- Server/Client ----------- //
