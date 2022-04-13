@@ -20,6 +20,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AstralProject;
 
     public bool BadgeOfBacteria;
+    public bool BloodyWhetstone;
     public int DeleriumCount;
     public bool EarthInsignia;
     public int FracturingArmorLastRecord;
@@ -51,6 +52,7 @@ public class ExxoBuffPlayer : ModPlayer
         NoSticky = false;
         AccLavaMerman = false;
         lavaMerman = false;
+        BloodyWhetstone = false;
     }
 
     public override void PreUpdateBuffs()
@@ -303,6 +305,24 @@ public class ExxoBuffPlayer : ModPlayer
         {
             Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
             npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
+        }
+    }
+
+    public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+    {
+        if (Player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+
+        if (item.DamageType == DamageClass.Melee && BloodyWhetstone)
+        {
+            if (!target.HasBuff<Bleeding>())
+            {
+                target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks = 1;
+            }
+
+            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
         }
     }
 

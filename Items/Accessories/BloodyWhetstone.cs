@@ -1,4 +1,4 @@
-﻿using System;
+﻿using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,13 +6,14 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BloodyWhetstone : ModItem
+internal class BloodyWhetstone : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bloody Whetstone");
         Tooltip.SetDefault("Melee attacks inflict bleeding");
     }
+
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -22,8 +23,9 @@ class BloodyWhetstone : ModItem
         Item.value = Item.sellPrice(0, 3);
         Item.height = dims.Height;
     }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().bloodyWhetstone = true;
+        player.GetModPlayer<ExxoBuffPlayer>().BloodyWhetstone = true;
     }
 }

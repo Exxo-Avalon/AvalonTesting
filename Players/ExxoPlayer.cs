@@ -334,7 +334,6 @@ public class ExxoPlayer : ModPlayer
     public bool pOmega;
     public bool noSticky;
     public bool vampireTeeth;
-    public bool bloodyWhetstone;
     public bool riftGoggles;
     public bool malaria;
     public bool caesiumPoison;
@@ -1213,11 +1212,6 @@ public class ExxoPlayer : ModPlayer
             {
                 Player.AddBuff(ModContent.BuffType<Buffs.BlessingofAvalon>(), 120);
             }
-        }
-        if (Player.inventory[Player.selectedItem].DamageType == DamageClass.Melee && bloodyWhetstone)
-        {
-            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
-            target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().IsBleedingHMBleed = true;
         }
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
