@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -14,15 +15,15 @@ public class ForceField : ModBuff
         ProjectileID.BloodCloudMoving, ProjectileID.BloodCloudRaining, ProjectileID.FrostHydra,
         ProjectileID.InfernoFriendlyBolt, ProjectileID.InfernoFriendlyBlast, ProjectileID.PhantasmalDeathray,
         ProjectileID.FlyingPiggyBank, ProjectileID.Glowstick, ProjectileID.BouncyGlowstick,
-        ProjectileID.SpelunkerGlowstick, ProjectileID.StickyGlowstick, ProjectileID.WaterGun, ProjectileID.SlimeGun
-        // ModContent.ProjectileType<Ghostflame>(), ModContent.ProjectileType<WallofSteelLaser>(),
-        // ModContent.ProjectileType<ElectricBolt>(), ModContent.ProjectileType<HomingRocket>(),
-        // ModContent.ProjectileType<StingerLaser>(), ModContent.ProjectileType<CaesiumFireball>(),
-        // ModContent.ProjectileType<CaesiumCrystal>(), ModContent.ProjectileType<CaesiumGas>(),
-        // ModContent.ProjectileType<SpikyBall>(), ModContent.ProjectileType<Spike>(),
-        // ModContent.ProjectileType<CrystalShard>(), ModContent.ProjectileType<WallofSteelLaserEnd>(),
-        // ModContent.ProjectileType<WallofSteelLaserStart>(), ModContent.ProjectileType<CrystalBit>(),
-        // ModContent.ProjectileType<CrystalBeam>()
+        ProjectileID.SpelunkerGlowstick, ProjectileID.StickyGlowstick, ProjectileID.WaterGun, ProjectileID.SlimeGun,
+         ModContent.ProjectileType<Ghostflame>(), ModContent.ProjectileType<WallofSteelLaser>(),
+         ModContent.ProjectileType<ElectricBolt>(), ModContent.ProjectileType<HomingRocket>(),
+         ModContent.ProjectileType<StingerLaser>(), ModContent.ProjectileType<CaesiumFireball>(),
+         ModContent.ProjectileType<CaesiumCrystal>(), ModContent.ProjectileType<CaesiumGas>(),
+         ModContent.ProjectileType<SpikyBall>(), ModContent.ProjectileType<Spike>(),
+         ModContent.ProjectileType<CrystalShard>(), ModContent.ProjectileType<WallofSteelLaserEnd>(),
+         ModContent.ProjectileType<WallofSteelLaserStart>(), ModContent.ProjectileType<CrystalBit>(),
+         ModContent.ProjectileType<CrystalBeam>()
     };
 
     public override void SetStaticDefaults()

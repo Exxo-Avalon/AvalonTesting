@@ -1,4 +1,4 @@
-using AvalonTesting.Players;
+﻿using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class Berserk : ModBuff
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserk!");
-        Description.SetDefault("True melee weapons deal 150% increased critical damage");
+        Description.SetDefault("True melee weapons deal 150% critical damage");
     }
 
     public override void Update(Player player, ref int buffIndex)
