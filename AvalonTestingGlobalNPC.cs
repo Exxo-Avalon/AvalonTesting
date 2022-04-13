@@ -1198,7 +1198,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             maxSpawns = (int)(maxSpawns * AdvBattle.SpawnMultiplier);
         }
 
-        if (player.HasBuff<AdvCalming>())
+        if (player.GetModPlayer<ExxoBuffPlayer>().AdvancedCalming)
         {
             spawnRate = (int)(spawnRate * AdvCalming.RateMultiplier);
             maxSpawns = (int)(maxSpawns * AdvCalming.SpawnMultiplier);

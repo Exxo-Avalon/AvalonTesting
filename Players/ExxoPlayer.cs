@@ -101,87 +101,7 @@ public class ExxoPlayer : ModPlayer
         Checkpoints,
         Team
     }
-
-    public List<int> undead = new List<int>()
-    {
-        NPCID.Zombie,
-        NPCID.Skeleton,
-        NPCID.AngryBones,
-        NPCID.DarkCaster,
-        NPCID.CursedSkull,
-        NPCID.UndeadMiner,
-        NPCID.Tim,
-        NPCID.DoctorBones,
-        NPCID.TheGroom,
-        NPCID.ArmoredSkeleton,
-        NPCID.Mummy,
-        NPCID.Wraith,
-        NPCID.SkeletonArcher,
-        NPCID.BaldZombie,
-        NPCID.PossessedArmor,
-        NPCID.VampireBat,
-        NPCID.Vampire,
-        NPCID.ZombieEskimo,
-        NPCID.UndeadViking,
-        NPCID.RuneWizard,
-        NPCID.PincushionZombie,
-        NPCID.SlimedZombie,
-        NPCID.SwampZombie,
-        NPCID.TwiggyZombie,
-        NPCID.ArmoredViking,
-        NPCID.FemaleZombie,
-        NPCID.HeadacheSkeleton,
-        NPCID.MisassembledSkeleton,
-        NPCID.PantlessSkeleton,
-        NPCID.ZombieRaincoat,
-        NPCID.Eyezor,
-        NPCID.Reaper,
-        NPCID.ZombieMushroom,
-        NPCID.ZombieMushroomHat,
-        NPCID.ZombieDoctor,
-        NPCID.ZombieSuperman,
-        NPCID.ZombiePixie,
-        NPCID.SkeletonTopHat,
-        NPCID.SkeletonAstonaut,
-        NPCID.SkeletonAlien,
-        NPCID.ZombieXmas,
-        NPCID.ZombieSweater
-    };
-
-    public List<int> flyer = new List<int>()
-    {
-        NPCID.DemonEye,
-        NPCID.EaterofSouls,
-        NPCID.Harpy,
-        NPCID.CaveBat,
-        NPCID.JungleBat,
-        NPCID.Pixie,
-        NPCID.WyvernHead,
-        NPCID.GiantBat,
-        NPCID.Crimera,
-        NPCID.CataractEye,
-        NPCID.SleepyEye,
-        NPCID.DialatedEye,
-        NPCID.GreenEye,
-        NPCID.PurpleEye,
-        NPCID.Moth,
-        NPCID.FlyingFish,
-        NPCID.FlyingSnake,
-        NPCID.AngryNimbus,
-        //ModContent.NPCType<NPCs.VampireHarpy>(),
-        //ModContent.NPCType<NPCs.Dragonfly>()
-    };
-
-    public List<int> minionProjectile = new List<int>()
-    {
-        ProjectileID.HornetStinger,
-        ProjectileID.ImpFireball,
-        ProjectileID.MiniRetinaLaser,
-        ProjectileID.PygmySpear,
-        ProjectileID.UFOLaser,
-        ProjectileID.MiniSharkron,
-        ProjectileID.StardustCellMinionShot
-    };
+    
     public static Dictionary<int, int> torches;
 
     public bool inertiaBoots = false;
@@ -345,27 +265,6 @@ public class ExxoPlayer : ModPlayer
     public bool UltraHMinion = false;
     public bool UltraRMinion = false;
     public bool UltraLMinion = false;
-    // Adv Buffs
-    public bool advAmmoBuff;
-
-    public bool advArcheryBuff;
-    public bool advBattleBuff;
-    public bool advCalmingBuff;
-    public bool advCrateBuff;
-
-    #region Stinger Probe Minion AI vars
-
-    public float StingerProbeRotTimer = 0;
-    public int StingerProbeTimer = 0;
-    public List<bool> StingerProbeActiveIds = new List<bool>();
-
-    #endregion Dagger Staff Minion AI vars
-
-    #region dagger staff vars
-    public float daggerStaffRotTimer = 0;
-    public int daggerStaffTimer = 0;
-    public List<bool> daggerStaffActiveIDs = new List<bool>();
-    #endregion
 
     public Vector2 MousePosition = default(Vector2);
 
@@ -422,11 +321,6 @@ public class ExxoPlayer : ModPlayer
         pOmega = false;
         slimeBand = false;
         noSticky = false;
-        advAmmoBuff = false;
-        advArcheryBuff = false;
-        advBattleBuff = false;
-        advCalmingBuff = false;
-        advCrateBuff = false;
         lucky = false;
         enemySpawns2 = false;
         bloodCast = false;
@@ -1119,11 +1013,6 @@ public class ExxoPlayer : ModPlayer
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
     {
         bool consume = true;
-        // 30% chance to not consume ammo
-        if (advAmmoBuff && Main.rand.Next(10) < 3)
-        {
-            consume = false;
-        }
 
         if (tomeItem.type == ModContent.ItemType<CreatorsTome>() && Main.rand.Next(4) == 0)
         {
@@ -1149,14 +1038,7 @@ public class ExxoPlayer : ModPlayer
             return base.CanConsumeAmmo(weapon, ammo);
         }
     }
-    public override void ModifyWeaponDamage(Item item, ref StatModifier damage, ref float flat)
-    {
-        if (item.useAmmo == AmmoID.Arrow && advArcheryBuff)
-        {
-            damage = new StatModifier(0, 1.4f);
-        }
-        base.ModifyWeaponDamage(item, ref damage, ref flat);
-    }
+
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
         if (terraClaws && item.DamageType == DamageClass.Melee)
@@ -1218,7 +1100,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (CanBeFrozen.CanFreeze(target))
                 {
@@ -1290,7 +1172,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 target.AddBuff(ModContent.BuffType<Buffs.MinionFrozen>(), 60);
             }
@@ -1469,7 +1351,7 @@ public class ExxoPlayer : ModPlayer
 
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (target.HasBuff(ModContent.BuffType<Buffs.MinionFrozen>()) || !CanBeFrozen.CanFreeze(target))
                 {
@@ -1494,7 +1376,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (minionFreeze)
         {
-            if (proj.minion || minionProjectile.Contains(proj.type))
+            if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
             {
                 if (target.HasBuff(ModContent.BuffType<Buffs.MinionFrozen>()))
                 {
@@ -2985,7 +2867,7 @@ public class ExxoPlayer : ModPlayer
         if (undeadTalisman)
         {
             int dmgPlaceholder = npc.damage;
-            if (undead.Contains(npc.type))
+            if (Data.Sets.NPC.Undead[npc.type])
             {
                 if (damage - (Player.statDefense / 2 - 10) <= 0)
                 {

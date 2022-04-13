@@ -17,6 +17,7 @@ public class ExxoBuffPlayer : ModPlayer
 {
     public bool AccLavaMerman;
     public bool AdvancedBattle;
+    public bool AdvancedCalming;
     public bool AstralProject;
 
     public bool BadgeOfBacteria;
@@ -43,6 +44,7 @@ public class ExxoBuffPlayer : ModPlayer
     public override void ResetEffects()
     {
         AdvancedBattle = false;
+        AdvancedCalming = false;
         AstralProject = false;
         EarthInsignia = false;
         Lucky = false;
@@ -57,12 +59,12 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void PreUpdateBuffs()
     {
-        FrameCount++;
-        ShadowCooldown++;
         StingerProbeRotation = (StingerProbeRotation % MathHelper.TwoPi) + 0.01f;
         DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
         if (Player.active)
         {
+            FrameCount++;
+            ShadowCooldown++;
             AstralCooldown++;
         }
     }
@@ -149,6 +151,11 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void ProcessTriggers(TriggersSet triggersSet)
     {
+        if (Player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+        
         if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
         {
             if (Player.HasBuff<AstralProjecting>())
