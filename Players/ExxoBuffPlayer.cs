@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Items.Accessories;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -14,6 +15,7 @@ namespace AvalonTesting.Players;
 
 public class ExxoBuffPlayer : ModPlayer
 {
+    public bool AccLavaMerman;
     public bool AdvancedBattle;
     public bool AstralProject;
 
@@ -23,13 +25,13 @@ public class ExxoBuffPlayer : ModPlayer
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
     public int InfectDamage;
+    private bool lavaMerman;
     public bool Lucky;
     public bool Malaria;
     public bool Melting;
     public bool NoSticky;
     public int OldFallStart;
 
-    public bool SlimeBand;
     public int StingerProbeTimer;
     public float DaggerStaffRotation { get; private set; }
     public float StingerProbeRotation { get; private set; }
@@ -46,8 +48,9 @@ public class ExxoBuffPlayer : ModPlayer
         Malaria = false;
         Melting = false;
         BadgeOfBacteria = false;
-        SlimeBand = false;
         NoSticky = false;
+        AccLavaMerman = false;
+        lavaMerman = false;
     }
 
     public override void PreUpdateBuffs()
@@ -67,6 +70,12 @@ public class ExxoBuffPlayer : ModPlayer
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+        }
+
+        if (AccLavaMerman && Collision.LavaCollision(Player.position, Player.width, Player.height))
+        {
+            lavaMerman = true;
+            Player.merman = true;
         }
     }
 
@@ -252,17 +261,6 @@ public class ExxoBuffPlayer : ModPlayer
             {
                 Player.sticky = false;
             }
-
-            if (SlimeBand)
-            {
-                Player.slippy = true;
-                Player.slippy2 = true;
-            }
-            else
-            {
-                Player.slippy = false;
-                Player.slippy2 = false;
-            }
         }
     }
 
@@ -305,6 +303,18 @@ public class ExxoBuffPlayer : ModPlayer
         {
             Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
             npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
+        }
+    }
+
+    public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a,
+                                     ref bool fullBright)
+    {
+        if (lavaMerman)
+        {
+            HadesCross hadesCross = ModContent.GetInstance<HadesCross>();
+            Player.head = Mod.GetEquipSlot(hadesCross.Name, EquipType.Head);
+            Player.body = Mod.GetEquipSlot(hadesCross.Name, EquipType.Body);
+            Player.legs = Mod.GetEquipSlot(hadesCross.Name, EquipType.Legs);
         }
     }
 }

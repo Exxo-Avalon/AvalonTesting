@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,17 +9,26 @@ public class HadesCross : ModItem
 {
     public override void Load()
     {
-        if (Main.netMode != NetmodeID.Server)
+        if (Main.netMode == NetmodeID.Server)
         {
-            // Add equip textures
-            Mod.AddEquipTexture(new EquipTexture(), this, EquipType.Head, $"{Texture}_{EquipType.Head}");
-            Mod.AddEquipTexture(new EquipTexture(), this, EquipType.Body, $"{Texture}_{EquipType.Body}");
-            Mod.AddEquipTexture(this, EquipType.Legs, $"{Texture}_{EquipType.Legs}");
+            return;
         }
+
+        Mod.AddEquipTexture(this, EquipType.Head, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Head");
+        Mod.AddEquipTexture(this, EquipType.Body, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Body");
+        Mod.AddEquipTexture(this, EquipType.Legs, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Legs");
     }
 
-    private void SetupDrawing()
+    public override void SetStaticDefaults()
     {
+        DisplayName.SetDefault("Hades' Cross");
+        Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
+
+        if (Main.netMode == NetmodeID.Server)
+        {
+            return;
+        }
+
         int equipSlotHead = Mod.GetEquipSlot(Name, EquipType.Head);
         int equipSlotBody = Mod.GetEquipSlot(Name, EquipType.Body);
         int equipSlotLegs = Mod.GetEquipSlot(Name, EquipType.Legs);
@@ -27,17 +37,6 @@ public class HadesCross : ModItem
         ArmorIDs.Body.Sets.HidesTopSkin[equipSlotBody] = true;
         ArmorIDs.Body.Sets.HidesArms[equipSlotBody] = true;
         ArmorIDs.Legs.Sets.HidesBottomSkin[equipSlotLegs] = true;
-    }
-
-    public override void SetStaticDefaults()
-    {
-        DisplayName.SetDefault("Hades' Cross");
-        Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
-
-        if (Main.netMode != NetmodeID.Server)
-        {
-            SetupDrawing();
-        }
     }
 
     public override void SetDefaults()
@@ -53,15 +52,14 @@ public class HadesCross : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-
-        if (Collision.LavaCollision(player.position, player.width, player.height))
-        {
-            player.Avalon().hadesCross = true;
-        }
+        player.GetModPlayer<ExxoBuffPlayer>().AccLavaMerman = true;
         player.lavaImmune = true;
         player.fireWalk = true;
         player.ignoreWater = true;
     }
 
-    public override bool IsVanitySet(int head, int body, int legs) => true;
+    public override bool IsVanitySet(int head, int body, int legs)
+    {
+        return true;
+    }
 }

@@ -290,7 +290,6 @@ public class ExxoPlayer : ModPlayer
     public bool avalonRestoration;
     public bool avalonRetribution;
     public int deliriumDuration = 300;
-    public bool hadesCross;
     public int quadroCount;
     public int shadowWP = 0;
     public bool confusionTal;
@@ -432,7 +431,6 @@ public class ExxoPlayer : ModPlayer
         lucky = false;
         enemySpawns2 = false;
         bloodCast = false;
-        hadesCross = false;
         magnet = false;
         bubbleBoost = false;
         darkInferno = false;
@@ -909,17 +907,6 @@ public class ExxoPlayer : ModPlayer
         if (tomeItem.stack > 0)
         {
             Player.VanillaUpdateEquip(tomeItem);
-        }
-    }
-    public override void FrameEffects()
-    {
-        // TODO: Need new hook, FrameEffects doesn't run while paused.
-        if (hadesCross)
-        {
-            HadesCross exampleCostume = ModContent.GetInstance<HadesCross>();
-            Player.head = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Head);
-            Player.body = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Body);
-            Player.legs = Mod.GetEquipSlot(exampleCostume.Name, EquipType.Legs);
         }
     }
     public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -9,6 +9,8 @@ namespace AvalonTesting;
 
 public partial class AvalonTesting : Mod
 {
+    public const string AssetPath = "AvalonTesting/Assets/";
+
     public AvalonTesting()
     {
         Mod = this;
