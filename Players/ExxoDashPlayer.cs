@@ -19,6 +19,8 @@ public class ExxoDashPlayer : ModPlayer
         Left
     }
 
+    public override bool CloneNewInstances => false;
+
     private static readonly Dictionary<int, DashInfo> RegisteredDashes = new();
     private readonly Dictionary<int, DashData> activeDashes = new();
     private readonly Queue<ModItem> dashCheckQueue = new();

@@ -11,8 +11,8 @@ namespace AvalonTesting.Projectiles.Summon;
 // TODO: Implement AI which throws dagger from circle fast and then slashes fast back and forth a few times and then pulls back, repeat (bezier maybe?)
 public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
 {
-    private LinkedListNode<int> positionNode;
     private int hostPosition = -1;
+    private LinkedListNode<int> positionNode;
 
     public override void SetStaticDefaults()
     {
@@ -81,6 +81,13 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
             return;
         }
 
+        Projectile.ai[0]++;
+        if (Projectile.owner == Main.myPlayer && Main.netMode != NetmodeID.SinglePlayer && Projectile.ai[0] % 300 == 1)
+        {
+            Projectile.netUpdate = true;
+            buffPlayer.SyncDaggerStaff();
+        }
+
         if (player.HasBuff(ModContent.BuffType<T>()))
         {
             Projectile.timeLeft = 2;
@@ -110,7 +117,7 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
             const float speed = 0.1f;
             Vector2 target = player.Center +
                              (Vector2.One.RotatedBy(
-                                 ((MathHelper.TwoPi / summonPlayer.DaggerSummons.Count) * positionNode.Value) +
+                                 (MathHelper.TwoPi / summonPlayer.DaggerSummons.Count * positionNode.Value) +
                                  buffPlayer.DaggerStaffRotation) * radius);
             Vector2 error = target - Projectile.Center;
 
@@ -121,7 +128,6 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
         {
             NPC targetedNPC = Main.npc[targetedNPCIndex];
             float distanceToNPC = Vector2.Distance(targetedNPC.Center, Projectile.Center);
-            ;
 
             Vector2 directionToNPC = (targetedNPC.Center - Projectile.Center).SafeNormalize(Vector2.UnitX);
             Vector2 moveVector = directionToNPC * 8;

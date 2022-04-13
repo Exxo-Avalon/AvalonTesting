@@ -106,6 +106,20 @@ public class ExxoBuffPlayer : ModPlayer
         StingerProbeRotation = reader.ReadSingle();
     }
 
+    public void SyncDaggerStaff(int ignoreClient = -1)
+    {
+        ModPacket packet = Mod.GetPacket();
+        packet.Write((byte)AvalonTesting.MessageType.ExxoBuffPlayerSyncDaggerStaff);
+        packet.Write((byte)Player.whoAmI);
+        packet.Write(DaggerStaffRotation);
+        packet.Send(ignoreClient: ignoreClient);
+    }
+
+    public void HandleSyncDaggerStaff(BinaryReader reader)
+    {
+        DaggerStaffRotation = reader.ReadSingle();
+    }
+
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
     {
         if (Player.HasBuff<AdvAmmoReservation>() && Main.rand.NextFloat() < AdvAmmoReservation.Chance)
