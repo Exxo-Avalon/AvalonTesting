@@ -58,6 +58,9 @@ public class BiomeTileCounts : ModSystem
 
     public override void LoadWorldData(TagCompound tag)
     {
-        WorldDarkMatterTiles = tag.Get<int>("WorldDarkMatterTiles");
+        if (tag.ContainsKey("WorldDarkMatterTiles"))
+        {
+            WorldDarkMatterTiles = tag.Get<int>("WorldDarkMatterTiles");
+        }
     }
 }

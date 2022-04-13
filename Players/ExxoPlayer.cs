@@ -119,7 +119,7 @@ public class ExxoPlayer : ModPlayer
     public int infectDmg = 0;
     public bool weaponMinion = false; // remove
     public bool earthInsig = false;
-    public int crystalHealth = 0;
+    public int CrystalHealth;
     public Item tomeItem = new Item();
     public int pl = -1;
     public bool openLocks;
@@ -1398,100 +1398,108 @@ public class ExxoPlayer : ModPlayer
     }
     public override void SaveData(TagCompound tag)
     {
-        tag = new TagCompound
-        {
-            { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
-            { "AvalonTesting:CrystalHealth", crystalHealth },
-            { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-            { "AvalonTesting:SHMAcc", shmAcc },
-            { "AvalonTesting:HerbTier", (int)herbTier },
-            { "AvalonTesting:HerbTotal", herbTotal },
-            { "AvalonTesting:PotionTotal", potionTotal },
-            { "AvalonTesting:HerbCounts", herbCounts.Save() },
-            { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
-            { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-            { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-            { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-            { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-            { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
-        };
+        tag["CrystalHealth"] = CrystalHealth;
+        // tag = new TagCompound
+        // {
+        //     { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
+        //     { "AvalonTesting:CrystalHealth", CrystalHealth },
+        //     { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
+        //     { "AvalonTesting:SHMAcc", shmAcc },
+        //     { "AvalonTesting:HerbTier", (int)herbTier },
+        //     { "AvalonTesting:HerbTotal", herbTotal },
+        //     { "AvalonTesting:PotionTotal", potionTotal },
+        //     { "AvalonTesting:HerbCounts", herbCounts.Save() },
+        //     { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
+        //     { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
+        //     { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
+        //     { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
+        //     { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
+        //     { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
+        // };
     }
     public override void LoadData(TagCompound tag)
     {
-        if (tag.ContainsKey("AvalonTesting:TomeSlot"))
+        if (tag.ContainsKey("CrystalHealth"))
         {
-            tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
+            CrystalHealth = tag.Get<int>("CrystalHealth");
+            Player.statLifeMax += CrystalHealth * 25;
+            Player.statLifeMax2 += CrystalHealth * 25;
+            Player.statLife += CrystalHealth * 25;
         }
-        if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
-        {
-            crystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
-            if (crystalHealth > 4)
-            {
-                crystalHealth = 4;
-            }
-
-            if (Player.statLifeMax == 500)
-            {
-                Player.statLifeMax += crystalHealth *= 25;
-                Player.statLifeMax2 += crystalHealth *= 25;
-            }
-        }
-
-        if (tag.ContainsKey("AvalonTesting:Stamina"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
-        }
-        if (tag.ContainsKey("AvalonTesting:SHMAcc"))
-        {
-            shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbTier"))
-        {
-            herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbTotal"))
-        {
-            herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
-        }
-        if (tag.ContainsKey("AvalonTesting:PotionTotal"))
-        {
-            potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
-        }
-        if (tag.ContainsKey("AvalonTesting:HerbCounts"))
-        {
-            try
-            {
-                herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
-            }
-            catch
-            {
-                herbCounts = new Dictionary<int, int>();
-            }
-        }
-        if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
-        {
-            spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
-        }
-        if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
-        }
-        if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
-        {
-            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
-        }
+        // if (tag.ContainsKey("AvalonTesting:TomeSlot"))
+        // {
+        //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
+        // }
+        // if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
+        // {
+        //     CrystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
+        //     if (CrystalHealth > 4)
+        //     {
+        //         CrystalHealth = 4;
+        //     }
+        //
+        //     if (Player.statLifeMax == 500)
+        //     {
+        //         Player.statLifeMax += CrystalHealth *= 25;
+        //         Player.statLifeMax2 += CrystalHealth *= 25;
+        //     }
+        // }
+        //
+        // if (tag.ContainsKey("AvalonTesting:Stamina"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SHMAcc"))
+        // {
+        //     shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbTier"))
+        // {
+        //     herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbTotal"))
+        // {
+        //     herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:PotionTotal"))
+        // {
+        //     potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:HerbCounts"))
+        // {
+        //     try
+        //     {
+        //         herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
+        //     }
+        //     catch
+        //     {
+        //         herbCounts = new Dictionary<int, int>();
+        //     }
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
+        // {
+        //     spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
+        // }
+        // if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
+        // {
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
+        // }
     }
     public override void PostUpdate()
     {

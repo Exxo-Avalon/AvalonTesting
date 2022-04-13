@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Consumables;
 
-class CrystalFruit : ModItem
+internal class CrystalFruit : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -23,22 +23,27 @@ class CrystalFruit : ModItem
         Item.useTime = 30;
         Item.maxStack = 999;
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.value = Item.sellPrice(0, 3, 0, 0);
+        Item.value = Item.sellPrice(0, 3);
         Item.useAnimation = 30;
         Item.height = dims.Height;
     }
 
     public override bool CanUseItem(Player player)
     {
-        return player.statLifeMax >= 500 && player.Avalon().crystalHealth < 4;
+        return player.statLifeMax >= 500 && player.Avalon().CrystalHealth < 4;
     }
 
     public override bool? UseItem(Player player)
     {
-        player.Avalon().crystalHealth += 1;
+        player.Avalon().CrystalHealth += 1;
         player.statLifeMax += 25;
-        player.statLife += 25;
         player.statLifeMax2 += 25;
+        player.statLife += 25;
+        if (player.whoAmI == Main.myPlayer)
+        {
+            player.HealEffect(25);
+        }
+
         return true;
     }
 }
