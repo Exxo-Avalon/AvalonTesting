@@ -24,94 +24,24 @@ internal class BagofShadows : ModItem
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
-
+    
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.controlRight)
+        if (!hideVisual)
         {
-            int num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num12].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num13].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
-                100, Color.White, 2f);
-            Main.dust[num14].noGravity = true;
-        }
-
-        if (player.controlRight)
-        {
-            int num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num55].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num56].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
-                100, Color.White, 2f);
-            Main.dust[num57].noGravity = true;
+            UpdateVanity(player);
         }
     }
 
     public override void UpdateVanity(Player player)
     {
-        if (player.controlRight)
+        if (!(player.velocity.Length() > 0))
         {
-            int num12 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num12].noGravity = true;
+            return;
         }
 
-        if (player.controlLeft)
-        {
-            int num13 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num13].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num14 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
-                100, Color.White, 2f);
-            Main.dust[num14].noGravity = true;
-        }
-
-        if (player.controlRight)
-        {
-            int num55 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num55].noGravity = true;
-        }
-
-        if (player.controlLeft)
-        {
-            int num56 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
-                Color.White, 2f);
-            Main.dust[num56].noGravity = true;
-        }
-
-        if (player.controlJump)
-        {
-            int num57 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.Shadowflame, 0f, 0f,
-                100, Color.White, 2f);
-            Main.dust[num57].noGravity = true;
-        }
+        int dust = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Shadowflame, 0f, 0f, 100,
+            Color.White, 2f);
+        Main.dust[dust].noGravity = true;
     }
 }

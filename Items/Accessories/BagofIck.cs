@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-class BagofIck : ModItem
+internal class BagofIck : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,100 +20,31 @@ class BagofIck : ModItem
         Item.width = dims.Width;
         Item.accessory = true;
         Item.vanity = true;
-        Item.value = Item.sellPrice(0, 1, 0, 0);
+        Item.value = Item.sellPrice(0, 1);
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        if (player.controlRight)
+        if (!hideVisual)
         {
-            var num24 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num24].noGravity = true;
-            var num25 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num25].noGravity = true;
-        }
-        if (player.controlLeft)
-        {
-            var num26 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num26].noGravity = true;
-            var num27 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num27].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num28 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num28].noGravity = true;
-            var num29 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num29].noGravity = true;
-        }
-        if (player.controlRight)
-        {
-            var num67 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num67].noGravity = true;
-            var num68 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num68].noGravity = true;
-        }
-        if (player.controlLeft)
-        {
-            var num69 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num69].noGravity = true;
-            var num70 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num70].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num71 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num71].noGravity = true;
-            var num72 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num72].noGravity = true;
+            UpdateVanity(player);
         }
     }
 
     public override void UpdateVanity(Player player)
     {
-        if (player.controlRight)
+        if (!(player.velocity.Length() > 0))
         {
-            var num24 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num24].noGravity = true;
-            var num25 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num25].noGravity = true;
+            return;
         }
-        if (player.controlLeft)
-        {
-            var num26 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num26].noGravity = true;
-            var num27 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num27].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num28 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num28].noGravity = true;
-            var num29 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num29].noGravity = true;
-        }
-        if (player.controlRight)
-        {
-            var num67 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num67].noGravity = true;
-            var num68 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num68].noGravity = true;
-        }
-        if (player.controlLeft)
-        {
-            var num69 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num69].noGravity = true;
-            var num70 = Dust.NewDust(player.position, player.width + 20, player.height, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num70].noGravity = true;
-        }
-        if (player.controlJump)
-        {
-            var num71 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 0.9f);
-            Main.dust[num71].noGravity = true;
-            var num72 = Dust.NewDust(player.position, player.width + 20, player.height + 20, DustID.CorruptGibs, 0f, 0f, 100, Color.White, 1.5f);
-            Main.dust[num72].noGravity = true;
-        }
+
+        int dust1 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100,
+            Color.White, 0.9f);
+        Main.dust[dust1].noGravity = true;
+        int dust2 = Dust.NewDust(player.position, player.width - 20, player.height, DustID.CorruptGibs, 0f, 0f, 100,
+            Color.White, 1.5f);
+        Main.dust[dust2].noGravity = true;
     }
 }
