@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
@@ -102,6 +103,11 @@ public class ExxoDashPlayer : ModPlayer
 
     public void SyncDashPlayer(int key, int ignoreClient = -1)
     {
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            return;
+        }
+
         ModPacket packet = Mod.GetPacket();
         packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncActiveDash);
         packet.Write((byte)Player.whoAmI);
@@ -118,6 +124,11 @@ public class ExxoDashPlayer : ModPlayer
 
     public void SyncRemoveDashPlayer(int key, int ignoreClient = -1)
     {
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            return;
+        }
+
         ModPacket packet = Mod.GetPacket();
         packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncRemoveDash);
         packet.Write((byte)Player.whoAmI);
