@@ -37,12 +37,6 @@ public class ExxoBuffPlayer : ModPlayer
     public int ShadowCooldown { get; private set; }
     public int AstralCooldown { get; private set; }
 
-    public override void OnEnterWorld(Player player)
-    {
-        ShadowCooldown = 300;
-        AstralCooldown = 3600;
-    }
-
     public override void ResetEffects()
     {
         AdvancedBattle = false;
@@ -62,7 +56,14 @@ public class ExxoBuffPlayer : ModPlayer
         ShadowCooldown++;
         StingerProbeRotation = (StingerProbeRotation % MathHelper.TwoPi) + 0.01f;
         DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
-        AstralCooldown = (int)MathHelper.Min(AstralCooldown++, 3600);
+        if (Player.active)
+        {
+            AstralCooldown++;
+        }
+    }
+
+    public override void PostUpdateEquips()
+    {
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
@@ -137,12 +138,12 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void ProcessTriggers(TriggersSet triggersSet)
     {
-        if (AstralProject && ModContent.GetInstance<KeybindSystem>().AstralHotkey.JustPressed)
+        if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
         {
             if (Player.HasBuff<AstralProjecting>())
             {
                 Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
-                AstralCooldown = 3600;
+                AstralCooldown = 0;
             }
             else if (AstralCooldown >= 3600)
             {
@@ -276,5 +277,23 @@ public class ExxoBuffPlayer : ModPlayer
     public override void PostUpdateRunSpeeds()
     {
         FloorVisualsAvalon();
+    }
+
+    public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback,
+                                              ref bool crit,
+                                              ref int hitDirection)
+    {
+        if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
+        {
+            damage *= 3;
+        }
+    }
+
+    public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+    {
+        if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
+        {
+            damage *= 3;
+        }
     }
 }

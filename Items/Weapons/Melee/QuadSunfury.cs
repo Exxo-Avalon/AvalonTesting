@@ -39,7 +39,7 @@ public class QuadSunfury : ModItem
     }
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        List<string> assignedKeys = ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.GetAssignedKeys();
+        List<string> assignedKeys = KeybindSystem.ModeChangeHotkey.GetAssignedKeys();
 
         var assignedKeyInfo = new TooltipLine(Mod, "Controls:PromptKey", "Press " + (assignedKeys.Count > 0 ? string.Join(", ", assignedKeys) : "[c/565656:<Unbound>]") + " to change attack modes");
         tooltips.Add(assignedKeyInfo);
@@ -52,7 +52,7 @@ public class QuadSunfury : ModItem
     }
     public override void HoldItem(Player player)
     {
-        if (ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
+        if (KeybindSystem.ModeChangeHotkey.JustPressed)
         {
             mode++;
             if (mode == 1)

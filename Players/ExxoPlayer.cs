@@ -93,7 +93,6 @@ public class ExxoPlayer : ModPlayer
     public bool herb = false;
     public bool teleportVWasTriggered = false;
     public int screenShakeTimer;
-    public bool astralProject;
     public bool snotOrb;
 
     public enum ShadowMirrorModes
@@ -268,7 +267,6 @@ public class ExxoPlayer : ModPlayer
     public bool teleportV = false;
     public bool tpStam = true;
     public int tpCD;
-    public int astralCD;
     public int bubbleCD;
     public bool ancientLessCost;
     public bool ancientGunslinger;
@@ -336,7 +334,6 @@ public class ExxoPlayer : ModPlayer
     public bool cOmega;
     public bool pOmega;
     public bool noSticky;
-    public bool astralStart;
     public bool vampireTeeth;
     public bool bloodyWhetstone;
     public bool riftGoggles;
@@ -423,12 +420,10 @@ public class ExxoPlayer : ModPlayer
         trapImmune = false;
         undeadTalisman = false;
         vampireTeeth = false;
-        astralStart = false;
         cOmega = false;
         pOmega = false;
         slimeBand = false;
         noSticky = false;
-        astralProject = false;
         advAmmoBuff = false;
         advArcheryBuff = false;
         advBattleBuff = false;
@@ -908,7 +903,6 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("You are using Exxo Avalon: Origins " + AvalonTesting.Mod.Version.ToString());
         Main.NewText("Please note that Exxo Avalon: Origins is in Beta; it may have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
-        //player.GetModPlayer<ExxoBuffPlayer>().AstralCooldown = 3600;
     }
     public override void UpdateEquips()
     {
@@ -1407,10 +1401,7 @@ public class ExxoPlayer : ModPlayer
         {
             damage += 8;
         }
-        if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
-        {
-            damage *= 3;
-        }
+        
         if (target.HasBuff(ModContent.BuffType<CurseofAvalon>()))
         {
             damage *= 4;
@@ -1455,11 +1446,7 @@ public class ExxoPlayer : ModPlayer
         {
             damage += 8;
         }
-
-        if (target.HasBuff(ModContent.BuffType<Buffs.AstralCurse>()))
-        {
-            damage *= 3;
-        }
+        
         if (target.HasBuff(ModContent.BuffType<Buffs.CurseofAvalon>()) &&
             proj.type != ProjectileID.HallowStar &&
             proj.type != ModContent.ProjectileType<Leaves>() &&
@@ -1726,11 +1713,7 @@ public class ExxoPlayer : ModPlayer
         }
         else pSensor[5] = false;
         #endregion
-
-        if (!astralProject && Player.HasBuff(ModContent.BuffType<AstralProjecting>()))
-        {
-            Player.DelBuff(ModContent.BuffType<AstralProjecting>());
-        }
+        
         if (screenShakeTimer == 1)
         {
             SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Stomp"), (int)Player.position.X, (int)Player.position.Y);
@@ -2460,11 +2443,11 @@ public class ExxoPlayer : ModPlayer
     }
     public override void ProcessTriggers(TriggersSet triggersSet)
     {
-        if (ModContent.GetInstance<KeybindSystem>().QuickStaminaHotkey.JustPressed)
+        if (KeybindSystem.QuickStaminaHotkey.JustPressed)
         {
             Player.GetModPlayer<ExxoStaminaPlayer>().QuickStamina();
         }
-        if (ModContent.GetInstance<KeybindSystem>().FlightTimeRestoreHotkey.JustPressed && Player.wingsLogic > 0 && Player.wingTime == 0 && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreCooldown>= 60 * 60)
+        if (KeybindSystem.FlightTimeRestoreHotkey.JustPressed && Player.wingsLogic > 0 && Player.wingTime == 0 && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked && Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreCooldown>= 60 * 60)
         {
             int amt = 150;
             if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
@@ -2488,7 +2471,7 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        if (ModContent.GetInstance<KeybindSystem>().ShadowHotkey.JustPressed && tpStam && tpCD >= 300 && Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked)
+        if (KeybindSystem.ShadowHotkey.JustPressed && tpStam && tpCD >= 300 && Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked)
         {
             int amt = 90;
             if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
@@ -2539,7 +2522,7 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        else if (ModContent.GetInstance<KeybindSystem>().ShadowHotkey.JustPressed && (teleportV || teleportVWasTriggered) && tpCD >= 300)
+        else if (KeybindSystem.ShadowHotkey.JustPressed && (teleportV || teleportVWasTriggered) && tpCD >= 300)
         {
             teleportVWasTriggered = false;
             tpCD = 0;
@@ -2558,69 +2541,51 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }
-        if (ModContent.GetInstance<KeybindSystem>().AstralHotkey.JustPressed && astralProject)
-        {
-            if (astralStart)
-            {
-                if (Player.HasBuff(ModContent.BuffType<AstralProjecting>()))
-                {
-                    Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
-                }
-            }
-            if (astralCD >= 3600)
-            {
-                astralCD = 0;
-                if (!astralStart)
-                {
-                    Player.AddBuff(ModContent.BuffType<AstralProjecting>(), 15 * 60);
-                }
-            }
-        }
 
         #region other hotkeys
-        if (ModContent.GetInstance <KeybindSystem>().RocketJumpHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked)
+        if (KeybindSystem.RocketJumpHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked)
         {
             activateRocketJump = !activateRocketJump;
             Main.NewText(!activateRocketJump ? "Rocket Jump Off" : "Rocket Jump On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().SprintHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked)
+        if (KeybindSystem.SprintHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked)
         {
             activateSprint = !activateSprint;
             Main.NewText(!activateSprint ? "Sprinting Off" : "Sprinting On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().DashHotkey.JustPressed)
+        if (KeybindSystem.DashHotkey.JustPressed)
         {
             stamDashKey = !stamDashKey;
             Main.NewText(!stamDashKey ? "Dashing Off" : "Dashing On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().QuintupleHotkey.JustPressed)
+        if (KeybindSystem.QuintupleHotkey.JustPressed)
         {
             quintJump = !quintJump;
             Main.NewText(!quintJump ? "Quintuple Jump Off" : "Quintuple Jump On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().SwimHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked)
+        if (KeybindSystem.SwimHotkey.JustPressed && Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked)
         {
             activateSwim = !activateSwim;
             Main.NewText(!activateSwim ? "Swimming Off" : "Swimming On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().WallSlideHotkey.JustPressed)
+        if (KeybindSystem.WallSlideHotkey.JustPressed)
         {
             activateSlide = !activateSlide;
             Main.NewText(!activateSlide ? "Wall Sliding Off" : "Wall Sliding On");
         }
 
-        if (ModContent.GetInstance<KeybindSystem>().BubbleBoostHotkey.JustPressed)
+        if (KeybindSystem.BubbleBoostHotkey.JustPressed)
         {
             activateBubble = !activateBubble;
             Main.NewText(!activateBubble ? "Bubble Boost Off" : "Bubble Boost On");
         }
         #endregion
-        if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() && ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
+        if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() && KeybindSystem.ModeChangeHotkey.JustPressed)
         {
             speed = !speed;
             if (!speed)
@@ -2634,7 +2599,7 @@ public class ExxoPlayer : ModPlayer
         }
 
         if (Main.netMode != NetmodeID.SinglePlayer && Player.inventory[Player.selectedItem].type == ModContent.ItemType<EideticMirror>() &&
-            ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
+            KeybindSystem.ModeChangeHotkey.JustPressed)
         {
             int newPlayer = teleportToPlayer;
             int numPlayersCounted = 0;
@@ -2664,7 +2629,7 @@ public class ExxoPlayer : ModPlayer
         if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<ShadowMirror>())
         {
             Player.noFallDmg = true; //TODO: Replace with better anti-fall-damage mechanism.
-            if (ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.JustPressed)
+            if (KeybindSystem.ModeChangeHotkey.JustPressed)
             {
                 shadowWP++;
                 shadowWP %= 7;

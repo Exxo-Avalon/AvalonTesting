@@ -1639,4 +1639,12 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<ACometHasStruckGround>(), RareChance));
         globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
     }
+
+    public override void DrawEffects(NPC npc, ref Color drawColor)
+    {
+        if (npc.HasBuff(ModContent.BuffType<AstralCurse>()))
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
+        }
+    }
 }

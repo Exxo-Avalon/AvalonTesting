@@ -11,13 +11,12 @@ public class AstrallineArtifact : ModItem
     {
         DisplayName.SetDefault("Astralline Artifact");
         Tooltip.SetDefault(
-            "Allows you to astral project\nRun into enemies to mark them while astral projecting\nEnemies marked will take triple damage for 30 seconds");
+            "Allows you to astral project\nRun into enemies to mark them while astral projecting\nEnemies marked will take triple damage for 45 seconds");
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        ;
         Item.rare = -12;
         Item.width = dims.Width;
         Item.accessory = true;

@@ -4,19 +4,19 @@ namespace AvalonTesting.Systems;
 
 public class KeybindSystem : ModSystem
 {
-    public ModKeybind ShadowHotkey { get; private set; }
-    public ModKeybind SprintHotkey { get; private set; }
-    public ModKeybind DashHotkey { get; private set; }
-    public ModKeybind QuintupleHotkey { get; private set; }
-    public ModKeybind SwimHotkey { get; private set; }
-    public ModKeybind WallSlideHotkey { get; private set; }
-    public ModKeybind BubbleBoostHotkey { get; private set; }
-    public ModKeybind ModeChangeHotkey { get; private set; }
-    public ModKeybind AstralHotkey { get; private set; }
-    public ModKeybind RocketJumpHotkey { get; private set; }
-    public ModKeybind QuickStaminaHotkey { get; private set; }
-    public ModKeybind FlightTimeRestoreHotkey { get; private set; }
-    public ModKeybind MinionGuidingHotkey { get; private set; }
+    public static ModKeybind ShadowHotkey { get; private set; }
+    public static ModKeybind SprintHotkey { get; private set; }
+    public static ModKeybind DashHotkey { get; private set; }
+    public static ModKeybind QuintupleHotkey { get; private set; }
+    public static ModKeybind SwimHotkey { get; private set; }
+    public static ModKeybind WallSlideHotkey { get; private set; }
+    public static ModKeybind BubbleBoostHotkey { get; private set; }
+    public static ModKeybind ModeChangeHotkey { get; private set; }
+    public static ModKeybind AstralHotkey { get; private set; }
+    public static ModKeybind RocketJumpHotkey { get; private set; }
+    public static ModKeybind QuickStaminaHotkey { get; private set; }
+    public static ModKeybind FlightTimeRestoreHotkey { get; private set; }
+    public static ModKeybind MinionGuidingHotkey { get; private set; }
 
     public override void Load()
     {

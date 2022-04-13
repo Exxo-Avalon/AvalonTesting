@@ -43,7 +43,7 @@ public class AccelerationDrill : ModItem
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        List<string> assignedKeys = ModContent.GetInstance<KeybindSystem>().ModeChangeHotkey.GetAssignedKeys();
+        List<string> assignedKeys = KeybindSystem.ModeChangeHotkey.GetAssignedKeys();
 
         var assignedKeyInfo = new TooltipLine(Mod, "Controls:PromptKey", "Press " + (assignedKeys.Count > 0 ? string.Join(", ", assignedKeys) : "[c/565656:<Unbound>]") + " to change mining modes");
         tooltips.Add(assignedKeyInfo);

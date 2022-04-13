@@ -16,7 +16,7 @@ public class Shadows : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        if (ModContent.GetInstance<KeybindSystem>().ShadowHotkey.JustPressed &&
+        if (KeybindSystem.ShadowHotkey.JustPressed &&
             player.GetModPlayer<ExxoBuffPlayer>().ShadowCooldown >= 300 && !Main.editChest && !Main.editSign &&
             !Main.drawingPlayerChat)
         {
