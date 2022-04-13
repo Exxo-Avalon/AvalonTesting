@@ -6,13 +6,14 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
 
-internal class PowerofOblivion : ModItem
+internal class RingofReplenishment : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Power of Oblivion");
+        DisplayName.SetDefault("Ring of Replenishment");
         Tooltip.SetDefault(
             "Automatically use mana and stamina potions when needed\nIncreases maximum stamina by 60\nReduces the cooldown of healing potions\nProvides life, mana, and stamina regeneration");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

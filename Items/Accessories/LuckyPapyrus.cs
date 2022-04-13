@@ -11,6 +11,7 @@ class LuckyPapyrus : ModItem
     {
         DisplayName.SetDefault("Lucky Papyrus");
         Tooltip.SetDefault("Provides immunity to Pyroscoric and Tritanorium burns\n7% increased critical strike chance\n40% increased critical strike damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

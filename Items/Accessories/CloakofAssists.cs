@@ -11,6 +11,7 @@ class CloakofAssists : ModItem
     {
         DisplayName.SetDefault("Cloak of Assists");
         Tooltip.SetDefault("Increases movement speed after being damaged and releases bees when injured\nStars fall and lightning strikes when damaged");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

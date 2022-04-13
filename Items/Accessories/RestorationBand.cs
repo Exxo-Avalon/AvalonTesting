@@ -13,6 +13,7 @@ internal class RestorationBand : ModItem
     {
         DisplayName.SetDefault("Restoration Band");
         Tooltip.SetDefault("Provides life, mana, and stamina regeneration");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

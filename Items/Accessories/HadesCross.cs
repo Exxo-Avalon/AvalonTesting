@@ -23,7 +23,7 @@ public class HadesCross : ModItem
     {
         DisplayName.SetDefault("Hades' Cross");
         Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
-
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         if (Main.netMode == NetmodeID.Server)
         {
             return;

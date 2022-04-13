@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +11,7 @@ class GoblinToolbelt : ModItem
     {
         DisplayName.SetDefault("Goblin Toolbelt");
         Tooltip.SetDefault("Increases block placement range by 2, tells time and shows position\nCan craft Tinkerer's Workshop and Work Bench items by hand");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

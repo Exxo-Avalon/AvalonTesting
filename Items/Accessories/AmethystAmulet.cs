@@ -11,6 +11,7 @@ public class AmethystAmulet : ModItem
     {
         DisplayName.SetDefault("Amethyst Amulet");
         Tooltip.SetDefault("5% increased magic damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

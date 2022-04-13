@@ -13,6 +13,7 @@ class BlahsWings : ModItem
     {
         DisplayName.SetDefault("Blah's Wings");
         Tooltip.SetDefault("Allows flight and slow fall and the wearer can run incredibly fast\nThe wearer has a chance to dodge attacks and negates fall damage\nOther various effects");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

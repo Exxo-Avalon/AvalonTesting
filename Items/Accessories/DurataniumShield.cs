@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +11,7 @@ class DurataniumShield : ModItem
     {
         DisplayName.SetDefault("Duratanium Shield");
         Tooltip.SetDefault("Slows the effects of damage over time debuffs");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +11,7 @@ class EtherealHeart : ModItem
     {
         DisplayName.SetDefault("Ethereal Heart");
         Tooltip.SetDefault("Grants a 10% chance for enemies to drop a platinum heart");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

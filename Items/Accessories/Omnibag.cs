@@ -11,6 +11,7 @@ class Omnibag : ModItem
     {
         DisplayName.SetDefault("Omnibag");
         Tooltip.SetDefault("A lot of particles cover you when you move");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

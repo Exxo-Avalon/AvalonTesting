@@ -12,6 +12,7 @@ class TourmalineAmulet : ModItem
     {
         DisplayName.SetDefault("Tourmaline Amulet");
         Tooltip.SetDefault("5% increased critical strike chance");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

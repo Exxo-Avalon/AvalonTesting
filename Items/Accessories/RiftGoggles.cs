@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Material;
+﻿using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,6 +13,7 @@ class RiftGoggles : ModItem
     {
         DisplayName.SetDefault("Rift Goggles");
         Tooltip.SetDefault("Allows you to see rifts into another world");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

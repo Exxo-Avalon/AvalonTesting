@@ -11,6 +11,7 @@ internal class BagofIck : ModItem
     {
         DisplayName.SetDefault("Bag of Ick");
         Tooltip.SetDefault("Icky particles cover you when you move");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

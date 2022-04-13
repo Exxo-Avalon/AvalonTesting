@@ -1,4 +1,4 @@
-using AvalonTesting.Items.Placeable.Tile;
+﻿using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,6 +12,7 @@ class PeridotAmulet : ModItem
     {
         DisplayName.SetDefault("Peridot Amulet");
         Tooltip.SetDefault("5% increased summon damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

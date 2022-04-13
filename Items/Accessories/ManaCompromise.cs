@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +11,7 @@ class ManaCompromise : ModItem
     {
         DisplayName.SetDefault("Mana Compromise");
         Tooltip.SetDefault("Increases maximum mana by 100\n10% decreased magic damage and 7% decreased mana usage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class SandyStormcloudinaBottle : ModItem
     {
         DisplayName.SetDefault("Sandy Stormcloud in a Bottle");
         Tooltip.SetDefault("The holder can quadruple jump");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

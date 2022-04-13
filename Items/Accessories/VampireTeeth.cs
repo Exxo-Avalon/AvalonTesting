@@ -11,6 +11,7 @@ class VampireTeeth : ModItem
     {
         DisplayName.SetDefault("Vampire Teeth");
         Tooltip.SetDefault("Grants the ability for true melee attacks to lifesteal");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

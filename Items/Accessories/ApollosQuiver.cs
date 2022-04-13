@@ -11,6 +11,7 @@ class ApollosQuiver : ModItem
     {
         DisplayName.SetDefault("Apollo's Quiver");
         Tooltip.SetDefault("20% chance to not consume arrows and 15% increased arrow damage\nIncreases arrow speed by 10% and critical strike chance by 5%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

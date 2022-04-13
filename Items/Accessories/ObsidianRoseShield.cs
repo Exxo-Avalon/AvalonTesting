@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +11,7 @@ class ObsidianRoseShield : ModItem
     {
         DisplayName.SetDefault("Obsidian Rose Shield");
         Tooltip.SetDefault("Reduces damage from touching lava\nGrants immunity to fire blocks and knockback");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

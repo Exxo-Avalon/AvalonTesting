@@ -13,6 +13,7 @@ class TitanShield : ModItem
     {
         DisplayName.SetDefault("Titan Shield");
         Tooltip.SetDefault("+15 defense, +3 life regeneration, +15% damage | Absorbs 25% of damage done to players on\nEffects are only active when below 33% health  | your team (only active above 25% life)");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

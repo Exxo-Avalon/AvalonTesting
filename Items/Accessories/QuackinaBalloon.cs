@@ -11,6 +11,7 @@ class QuackinaBalloon : ModItem
     {
         DisplayName.SetDefault("Quack in a Balloon");
         Tooltip.SetDefault("Allows the holder to double jump\nIncreases jump height\n'May annoy others'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

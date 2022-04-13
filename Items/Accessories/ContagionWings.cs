@@ -14,6 +14,7 @@ internal class ContagionWings : ModItem
     {
         DisplayName.SetDefault("Contagion Wings");
         Tooltip.SetDefault("Allows flight and slow fall\nOther bonuses apply when in the Contagion");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class QuackinaBottle : ModItem
     {
         DisplayName.SetDefault("Quack in a Bottle");
         Tooltip.SetDefault("Allows the holder to double jump\n'May annoy others'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

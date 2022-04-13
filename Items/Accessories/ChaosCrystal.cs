@@ -11,6 +11,7 @@ class ChaosCrystal : ModItem
     {
         DisplayName.SetDefault("Chaos Crystal");
         Tooltip.SetDefault("15% increased critical strike damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

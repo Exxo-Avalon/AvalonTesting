@@ -14,6 +14,7 @@ public class AIController : ModItem
         Tooltip.SetDefault("Stinger probe minions circle you"
                            + "\nThis probe will reflect hostile projectiles and explode"
                            + "\nProbes will regenerate over time, to a max of four");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

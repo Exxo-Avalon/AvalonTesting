@@ -13,6 +13,7 @@ internal class StaminaFlower : ModItem
     {
         DisplayName.SetDefault("Stamina Flower");
         Tooltip.SetDefault("Increases maximum stamina by 90\nAutomatically uses stamina potions when needed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

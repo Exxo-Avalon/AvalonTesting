@@ -11,6 +11,7 @@ class ForsakenRelic : ModItem
     {
         DisplayName.SetDefault("Forsaken Relic");
         Tooltip.SetDefault("Increases damage and critical strike chance by 7% while invincible");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

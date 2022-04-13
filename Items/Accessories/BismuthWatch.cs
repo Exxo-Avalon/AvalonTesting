@@ -10,6 +10,7 @@ class BismuthWatch : ModItem
     {
         DisplayName.SetDefault("Bismuth Watch");
         Tooltip.SetDefault("Tells the time");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class ChaosEmblem : ModItem
     {
         DisplayName.SetDefault("Chaos Emblem");
         Tooltip.SetDefault("10% increased critical strike damage\n10% increased damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

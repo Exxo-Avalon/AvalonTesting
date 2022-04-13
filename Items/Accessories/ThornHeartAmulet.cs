@@ -12,6 +12,7 @@ class ThornHeartAmulet : ModItem
     {
         DisplayName.SetDefault("Thorned Heart Amulet");
         Tooltip.SetDefault("Damage increases as your health drops");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

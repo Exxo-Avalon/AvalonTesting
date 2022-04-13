@@ -12,6 +12,7 @@ class AngerTalisman : ModItem
     {
         DisplayName.SetDefault("Anger Talisman");
         Tooltip.SetDefault("27% increased damage\nMinus 10 defense\n'Can you say, \"Grrr!\"?'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

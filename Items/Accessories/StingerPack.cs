@@ -11,6 +11,7 @@ class StingerPack : ModItem
     {
         DisplayName.SetDefault("Stinger Pack");
         Tooltip.SetDefault("Releases a 360 degree spread of stingers when struck");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

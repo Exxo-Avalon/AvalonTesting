@@ -11,6 +11,7 @@ internal class BagofHallows : ModItem
     {
         DisplayName.SetDefault("Bag of Hallows");
         Tooltip.SetDefault("Hallow particles cover you when you move");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

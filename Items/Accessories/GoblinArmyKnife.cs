@@ -11,6 +11,7 @@ class GoblinArmyKnife : ModItem
     {
         DisplayName.SetDefault("Goblin Army Knife");
         Tooltip.SetDefault("Immune time after being damaged increased, provides life/mana regen, +7% dmg and the holder can quintuple jump\nTells time, provides light, shows position, +4 block range, can craft certain items by hand, +2% crit, Shows ores/mobs");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

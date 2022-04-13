@@ -13,6 +13,7 @@ public class AlchemicalSkull : ModItem
         Tooltip.SetDefault("Increases spawn rate and Attackers also take damage"
                            + "\nThe wearer can walk on water and lava"
                            + "\nGrants immunity to knockback and fire blocks");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

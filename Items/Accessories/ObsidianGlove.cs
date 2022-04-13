@@ -11,6 +11,7 @@ class ObsidianGlove : ModItem
     {
         DisplayName.SetDefault("Obsidian Glove");
         Tooltip.SetDefault("The wearer can place blocks and walls in midair and in lava\nProvides immunity to fire blocks");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

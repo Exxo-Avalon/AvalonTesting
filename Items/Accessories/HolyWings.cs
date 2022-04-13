@@ -12,6 +12,7 @@ class HolyWings : ModItem
     {
         DisplayName.SetDefault("Holy Wings");
         Tooltip.SetDefault("Allows flight and slow fall\nOther bonuses apply when in the Hallow");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

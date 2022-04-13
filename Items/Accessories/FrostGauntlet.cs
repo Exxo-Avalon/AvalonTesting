@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class FrostGauntlet : ModItem
     {
         DisplayName.SetDefault("Frost Gauntlet");
         Tooltip.SetDefault("Melee attacks inflict Frostburn and increases damage and melee speed by 9%\nIncreases knockback and puts a damage-reducing shell around the holder when below 25% life");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()
