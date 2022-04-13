@@ -11,7 +11,7 @@ class AngerTalisman : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Anger Talisman");
-        Tooltip.SetDefault("27% increased damage and minus 10 defense\n'Can you say, \"Grrr!\"?'");
+        Tooltip.SetDefault("27% increased damage\nMinus 10 defense\n'Can you say, \"Grrr!\"?'");
     }
 
     public override void SetDefaults()

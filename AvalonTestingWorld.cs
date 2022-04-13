@@ -424,11 +424,11 @@ public class AvalonTestingWorld : ModSystem
         World.Structures.SkyFortress.Generate(x, y);
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
-            Main.NewText("Something is hiding on the top of your world...", 244, 140, 140);
+            Main.NewText("The fortress of ages has descended into the sky...", 244, 140, 140);
         }
         else if (Main.netMode == NetmodeID.Server)
         {
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Something is hiding on the top of your world..."), new Color(244, 140, 140));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The fortress of ages has descended into the sky..."), new Color(244, 140, 140));
         }
     }
 
