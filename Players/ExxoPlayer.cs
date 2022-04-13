@@ -1397,11 +1397,7 @@ public class ExxoPlayer : ModPlayer
         {
             damage += 15;
         }
-        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
-        {
-            damage += 8;
-        }
-        
+
         if (target.HasBuff(ModContent.BuffType<CurseofAvalon>()))
         {
             damage *= 4;
@@ -1441,10 +1437,6 @@ public class ExxoPlayer : ModPlayer
         if (crystalEdge)
         {
             damage += 15;
-        }
-        if (Player.HasBuff(ModContent.BuffType<Buffs.BacteriaEndurance>()))
-        {
-            damage += 8;
         }
         
         if (target.HasBuff(ModContent.BuffType<Buffs.CurseofAvalon>()) &&
@@ -2071,10 +2063,6 @@ public class ExxoPlayer : ModPlayer
 
             Player.statLife += hpHealed;
             Player.HealEffect(hpHealed, true);
-        }
-        if (Player.whoAmI == Main.myPlayer && bOfBacteria)
-        {
-            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60, true);
         }
     }
     public static void stayInBounds(Vector2 pos)

@@ -13,7 +13,6 @@ public class BacteriaEndurance : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.thorns += 0.8f; //effects of this will most likely change
         player.jumpSpeedBoost += 0.2f;
     }
 }

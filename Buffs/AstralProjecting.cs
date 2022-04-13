@@ -19,6 +19,11 @@ public class AstralProjecting : ModBuff
         player.noItems = true;
         player.thorns = 0f;
 
+        if (player.whoAmI != Main.myPlayer)
+        {
+            return;
+        }
+
         foreach (NPC n in Main.npc)
         {
             if (n.townNPC || n.dontTakeDamage)

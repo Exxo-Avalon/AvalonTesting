@@ -224,14 +224,6 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
-    {
-        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
-        {
-            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
-        }
-    }
-
     public void FloorVisualsAvalon()
     {
         int num = (int)((Player.position.X + (Player.width / 2)) / 16f);
@@ -287,6 +279,11 @@ public class ExxoBuffPlayer : ModPlayer
         {
             damage *= 3;
         }
+
+        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
+        {
+            damage += 8;
+        }
     }
 
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
@@ -294,6 +291,20 @@ public class ExxoBuffPlayer : ModPlayer
         if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
         {
             damage *= 3;
+        }
+
+        if (Player.HasBuff(ModContent.BuffType<BacteriaEndurance>()))
+        {
+            damage += 8;
+        }
+    }
+
+    public override void OnHitByNPC(NPC npc, int damage, bool crit)
+    {
+        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
+        {
+            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
+            npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
         }
     }
 }

@@ -1646,5 +1646,9 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         {
             Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
         }
+        if (npc.HasBuff(ModContent.BuffType<BacteriaInfection>()))
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.ScourgeOfTheCorruptor);
+        }
     }
 }
