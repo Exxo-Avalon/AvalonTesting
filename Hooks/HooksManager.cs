@@ -19,6 +19,8 @@ public static class HooksManager
         ClassicPlayerResourcesDisplaySet.DrawLife += ExtraHealth.ILDrawLife;
         HorizontalBarsPlayerReosurcesDisplaySet.LifeFillingDrawer += ExtraHealth.ILLifeFillingDrawer;
         FancyClassicPlayerResourcesDisplaySet.HeartFillingDrawer += ExtraHealth.ILHeartFillingDrawer;
+        On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.ctor += ExtraMana.OnPlayerStatsSnapshotCtor;
+        ClassicPlayerResourcesDisplaySet.DrawMana += ExtraMana.ILClassicDrawMana;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
 
         CaesiumBackground.ILCaesium();
