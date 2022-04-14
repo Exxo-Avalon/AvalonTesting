@@ -1,5 +1,7 @@
 using System;
 using System.Linq.Expressions;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 
 namespace AvalonTesting.Hooks;
 
@@ -19,5 +21,15 @@ public static class Utilities
         return Expression
             .Lambda<Func<TInstance, TResult>>(Expression.PropertyOrField(instanceParameter, fieldName),
                 instanceParameter).Compile();
+    }
+
+    public static void OutputIL(ILContext il)
+    {
+        var c = new ILCursor(il);
+        foreach (Instruction instruction in c.Instrs)
+        {
+            object obj = instruction.Operand == null ? "" : instruction.Operand.ToString();
+            AvalonTesting.Mod.Logger.Debug($"{instruction.Offset} | {instruction.OpCode} | {obj}");
+        }
     }
 }

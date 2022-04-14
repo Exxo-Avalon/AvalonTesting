@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -108,21 +107,6 @@ public static class ClassExtensions
         }
 
         return false;
-    }
-
-    public static int GetItemOre(this AvalonTestingWorld.RhodiumVariant osmiumVariant)
-    {
-        switch (osmiumVariant)
-        {
-            case AvalonTestingWorld.RhodiumVariant.osmium:
-                return ModContent.ItemType<OsmiumOre>();
-            case AvalonTestingWorld.RhodiumVariant.rhodium:
-                return ModContent.ItemType<RhodiumOre>();
-            case AvalonTestingWorld.RhodiumVariant.iridium:
-                return ModContent.ItemType<IridiumOre>();
-            default:
-                return -1;
-        }
     }
 
     public static bool InPillarZone(this Player p)

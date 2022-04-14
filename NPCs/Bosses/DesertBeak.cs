@@ -65,7 +65,7 @@ public class DesertBeak : ModNPC
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.SandBlock, 1, 22, 55));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DesertBeakMask>(), 7));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DesertFeather>(), 1, 6, 10));
-        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), AvalonTestingWorld.rhodiumOre.GetItemOre(), 1, 15, 26));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.GetInstance<ExxoWorldGen>().RhodiumOre.GetRhodiumVariantItemOre(), 1, 15, 26));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TomeoftheDistantPast>(), 3));
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.DesertBeakBossBag>()));
     }

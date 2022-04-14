@@ -18,11 +18,7 @@ namespace AvalonTesting;
 
 public class AvalonTestingWorld : ModSystem
 {
-    public static int shmOreTier1 = -1;
-    public static int shmOreTier2 = -1;
-    public static int hallowAltarCount;
     public static bool contagion = false;
-    public static int hallowedAltarCount = 0;
     public static bool stopCometDrops = false;
     public static Vector2 hiddenTemplePos;
     public static bool retroGenned = false;
@@ -585,104 +581,5 @@ public class AvalonTestingWorld : ModSystem
         }
     }
 
-    #region WorldGen Variants
-
-    public enum JungleVariant
-    {
-        jungle,
-        tropics,
-        random
-    }
-
-    public enum CopperVariant
-    {
-        copper,
-        tin,
-        bronze,
-        random
-    }
-
-    public enum IronVariant
-    {
-        iron,
-        lead,
-        nickel,
-        random
-    }
-
-    public enum SilverVariant
-    {
-        silver,
-        tungsten,
-        zinc,
-        random
-    }
-
-    public enum GoldVariant
-    {
-        gold,
-        platinum,
-        bismuth,
-        random
-    }
-
-    public enum RhodiumVariant
-    {
-        rhodium,
-        osmium,
-        iridium,
-        random
-    }
-
-    public enum CobaltVariant
-    {
-        cobalt,
-        palladium,
-        duratanium,
-        random
-    }
-
-    public enum MythrilVariant
-    {
-        mythril,
-        orichalcum,
-        naquadah,
-        random
-    }
-
-    public enum AdamantiteVariant
-    {
-        adamantite,
-        titanium,
-        troxinium,
-        random
-    }
-
-    public enum SHMTier1Variant
-    {
-        tritanorium,
-        pyroscoric,
-        random
-    }
-
-    public enum SHMTier2Variant
-    {
-        unvolandite,
-        vorazylcum,
-        random
-    }
-
-    public static JungleVariant jungleMenuSelection = JungleVariant.random;
-    public static CopperVariant copperOre = CopperVariant.random;
-    public static IronVariant ironOre = IronVariant.random;
-    public static SilverVariant silverOre = SilverVariant.random;
-    public static GoldVariant goldOre = GoldVariant.random;
-    public static RhodiumVariant rhodiumOre = RhodiumVariant.random;
-    public static CobaltVariant cobaltOre = CobaltVariant.cobalt;
-    public static MythrilVariant mythrilOre = MythrilVariant.random;
-    public static AdamantiteVariant adamantiteOre = AdamantiteVariant.random;
-    public static SHMTier1Variant shmTier1Ore = SHMTier1Variant.random;
-    public static SHMTier2Variant shmTier2Ore = SHMTier2Variant.random;
-
-    #endregion WorldGen Variants
+    
 }

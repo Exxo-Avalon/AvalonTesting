@@ -23,6 +23,10 @@ public static class HooksManager
         ClassicPlayerResourcesDisplaySet.DrawMana += ExtraMana.ILClassicDrawMana;
         FancyClassicPlayerResourcesDisplaySet.StarFillingDrawer += ExtraMana.ILStarFillingDrawer;
         HorizontalBarsPlayerReosurcesDisplaySet.ManaFillingDrawer += ExtraMana.ILManaFillingDrawer;
+        WorldGen.GenerateWorld += GenPasses.ILGenerateWorld;
+        GenPasses.Hook_GenPassReset += ContagionWorldGen.ILGenPassReset;
+        GenPasses.Hook_GenPassShinies += WorldGenEdits.ILGenPassShinies;
+        GenPasses.Hook_GenPassAltars += ContagionWorldGen.ILGenPassAltars;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
 
         CaesiumBackground.ILCaesium();

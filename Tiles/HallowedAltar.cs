@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Tiles.Ores;
+﻿using AvalonTesting.Systems;
+using AvalonTesting.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -90,8 +91,8 @@ public class HallowedAltar : ModTile
             return;
         }
 
-        int num = AvalonTestingWorld.hallowAltarCount % 2;
-        int num2 = (AvalonTestingWorld.hallowAltarCount / 2) + 1;
+        int num = ModContent.GetInstance<ExxoWorldGen>().HallowedAltarCount % 2;
+        int num2 = (ModContent.GetInstance<ExxoWorldGen>().HallowedAltarCount / 2) + 1;
         float num3 = Main.maxTilesX / 4200;
         int num4 = 1 - num;
         num3 = (num3 * 310f) - (85 * num);
@@ -101,7 +102,7 @@ public class HallowedAltar : ModTile
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                if (AvalonTestingWorld.shmOreTier1 == 0)
+                if (ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore == ExxoWorldGen.SHMTier1Variant.Tritanorium)
                 {
                     Main.NewText("Your world has been invigorated with Tritanorium!", 117, 158, 107);
                 }
@@ -112,7 +113,7 @@ public class HallowedAltar : ModTile
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                if (AvalonTestingWorld.shmOreTier1 == 0)
+                if (ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore == ExxoWorldGen.SHMTier1Variant.Tritanorium)
                 {
                     ChatHelper.BroadcastChatMessage(
                         NetworkText.FromLiteral("Your world has been invigorated with Tritanorium!"),
@@ -125,14 +126,14 @@ public class HallowedAltar : ModTile
                 }
             }
 
-            num = AvalonTestingWorld.shmOreTier1;
+            num = ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore.GetSHMTier1VariantTileOre();
             num3 *= 1.05f;
         }
         else if (num == 1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                if (AvalonTestingWorld.shmOreTier2 == 2)
+                if (ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore == ExxoWorldGen.SHMTier2Variant.Unvolandite)
                 {
                     Main.NewText("Your world has been blessed with Unvolandite!", 171, 119, 75);
                 }
@@ -143,7 +144,7 @@ public class HallowedAltar : ModTile
             }
             else if (Main.netMode == NetmodeID.Server)
             {
-                if (AvalonTestingWorld.shmOreTier2 == 2)
+                if (ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore == ExxoWorldGen.SHMTier2Variant.Unvolandite)
                 {
                     ChatHelper.BroadcastChatMessage(
                         NetworkText.FromLiteral("Your world has been blessed with Unvolandite!"),
@@ -157,7 +158,7 @@ public class HallowedAltar : ModTile
                 }
             }
 
-            num = AvalonTestingWorld.shmOreTier2;
+            num = ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore.GetSHMTier2VariantTileOre();
         }
 
         int num11 = 0;
@@ -197,6 +198,6 @@ public class HallowedAltar : ModTile
             num11++;
         }
 
-        AvalonTestingWorld.hallowAltarCount++;
+        ModContent.GetInstance<ExxoWorldGen>().HallowedAltarCount++;
     }
 }

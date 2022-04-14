@@ -1,5 +1,6 @@
 ﻿using Terraria.GameContent.Bestiary;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -95,6 +96,6 @@ public class OsmiumSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || AvalonTestingWorld.rhodiumOre == AvalonTestingWorld.RhodiumVariant.osmium) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Osmium) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }
