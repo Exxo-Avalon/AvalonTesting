@@ -2,23 +2,33 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using On.Terraria.GameContent.UI.ResourceSets;
 using ReLogic.Content;
 using Terraria;
+using Terraria.GameContent.UI.ResourceSets;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
 public static class ExtraMana
 {
-    public static void OnPlayerStatsSnapshotCtor(PlayerStatsSnapshot.orig_ctor orig,
-                                                 ref Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot self,
-                                                 Player player)
+    private const int MaxManaCrystalsToDisplay = 10;
+    private const int ManaPerCrystal = 20;
+    private const int MaxManaToDisplay = MaxManaCrystalsToDisplay * ManaPerCrystal;
+    private const int TopManaTier = 6;
+    private const int LowManaTier = 2;
+
+    private static readonly Func<HorizontalBarsPlayerReosurcesDisplaySet, int> GetMPSegmentsCount =
+        Utilities.CreatePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>("_mpSegmentsCount");
+
+    public static void OnPlayerStatsSnapshotCtor(
+        On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.orig_ctor orig,
+        ref PlayerStatsSnapshot self,
+        Player player)
     {
         orig(ref self, player);
-        if (self.ManaMax > 400)
+        if (self.ManaMax > MaxManaToDisplay)
         {
-            self.ManaPerSegment = self.ManaMax / 20f;
+            self.ManaPerSegment = self.ManaMax / (float)MaxManaCrystalsToDisplay;
         }
     }
 
@@ -38,9 +48,9 @@ public static class ExtraMana
 
         c.EmitDelegate<Func<int, int>>(val =>
         {
-            if (Main.LocalPlayer.statManaMax2 > 400)
+            if (Main.LocalPlayer.statManaMax2 > MaxManaToDisplay)
             {
-                return Main.LocalPlayer.statManaMax2 / 20;
+                return Main.LocalPlayer.statManaMax2 / MaxManaCrystalsToDisplay;
             }
 
             return val;
@@ -65,38 +75,79 @@ public static class ExtraMana
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, index) =>
         {
-            int tier6ManaCount = (Main.player[Main.myPlayer].statManaMax2 - 2000) / 20;
-            int tier5ManaCount = (Main.player[Main.myPlayer].statManaMax2 - 1600) / 20;
-            int tier4ManaCount = (Main.player[Main.myPlayer].statManaMax2 - 1200) / 20;
-            int tier3ManaCount = (Main.player[Main.myPlayer].statManaMax2 - 800) / 20;
-            int tier2ManaCount = (Main.player[Main.myPlayer].statManaMax2 - 400) / 20;
-
-            if (index - 1 < tier6ManaCount)
+            for (int i = TopManaTier; i >= LowManaTier; i--)
             {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana6");
-            }
-
-            if (index - 1 < tier5ManaCount)
-            {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana5");
-            }
-
-            if (index - 1 < tier4ManaCount)
-            {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana4");
-            }
-
-            if (index - 1 < tier3ManaCount)
-            {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana3");
-            }
-
-            if (index - 1 < tier2ManaCount)
-            {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana2");
+                if (index - 1 < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
+                {
+                    return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana{i}");
+                }
             }
 
             return sprite;
         });
+    }
+
+    public static void ILStarFillingDrawer(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
+        {
+            return;
+        }
+
+        if (!c.TryGotoNext(i => i.MatchStindRef()))
+        {
+            return;
+        }
+
+        c.Emit(OpCodes.Ldarg, 1);
+
+        c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, index) =>
+        {
+            for (int i = TopManaTier; i >= LowManaTier; i--)
+            {
+                if (index < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
+                {
+                    return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/FancyMana{i}");
+                }
+            }
+
+            return sprite;
+        });
+    }
+
+    public static void ILManaFillingDrawer(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
+        {
+            return;
+        }
+
+        if (!c.TryGotoNext(i => i.MatchStindRef()))
+        {
+            return;
+        }
+
+        c.Emit(OpCodes.Ldarg, 1);
+        c.Emit(OpCodes.Ldarg_0);
+
+        c.EmitDelegate<Func<Asset<Texture2D>, int, HorizontalBarsPlayerReosurcesDisplaySet, Asset<Texture2D>>>(
+            (sprite, index, self) =>
+            {
+                int mpSegmentsCount = GetMPSegmentsCount(self);
+                for (int i = TopManaTier; i >= LowManaTier; i--)
+                {
+                    if (index >= mpSegmentsCount -
+                        ((Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal))
+                    {
+                        return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/BarMana{i}");
+                    }
+                }
+
+                return sprite;
+            });
     }
 }
