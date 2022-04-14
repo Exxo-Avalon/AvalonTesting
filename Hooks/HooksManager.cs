@@ -1,6 +1,6 @@
 ﻿using IL.Terraria;
+using IL.Terraria.GameContent.UI.ResourceSets;
 using On.Terraria.GameContent.ItemDropRules;
-using On.Terraria.GameContent.UI.ResourceSets;
 
 namespace AvalonTesting.Hooks;
 
@@ -16,7 +16,9 @@ public static class HooksManager
             BuffEffects.OnDropItemForEachInteractingPlayerOnThePlayer;
         On.Terraria.Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
         On.Terraria.WorldGen.SmashAltar += EvilAltar.OnSmashAltar;
-        ClassicPlayerResourcesDisplaySet.DrawLife += ExtraHealth.OnDrawLife;
+        ClassicPlayerResourcesDisplaySet.DrawLife += ExtraHealth.ILDrawLife;
+        HorizontalBarsPlayerReosurcesDisplaySet.LifeFillingDrawer += ExtraHealth.ILLifeFillingDrawer;
+        FancyClassicPlayerResourcesDisplaySet.HeartFillingDrawer += ExtraHealth.ILHeartFillingDrawer;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
 
         CaesiumBackground.ILCaesium();
