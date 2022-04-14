@@ -21,11 +21,20 @@ internal class Underworld : GenPass
         //{
         //    WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(Main.maxTilesY - 150, Main.maxTilesY), WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 5), (ushort)ModContent.TileType<Tiles.CaesiumOre>());
         //}
-        for (int q = Main.maxTilesX - (Main.maxTilesX / 5) - 15; q < Main.maxTilesX - (Main.maxTilesX / 5); q++)
+        int caesiumXPosLeft = Main.maxTilesX - (Main.maxTilesX / 5) - 15;
+        int caesiumXPosRight = Main.maxTilesX - (Main.maxTilesX / 5);
+        int caesiumMaxRight = Main.maxTilesX - 20;
+        if (Main.drunkWorld)
+        {
+            caesiumXPosLeft = Main.maxTilesX - (Main.maxTilesX / 3) - 15;
+            caesiumXPosRight = Main.maxTilesX - (Main.maxTilesX / 3);
+            caesiumMaxRight = Main.maxTilesX - (Main.maxTilesX / 5) + 50;
+        }
+        for (int q = caesiumXPosLeft; q < caesiumXPosRight; q++)
         {
             for (int z = Main.maxTilesY - 250; z < Main.maxTilesY - 20; z++)
             {
-                if (q > Main.maxTilesX - (Main.maxTilesX / 5) - 10)
+                if (q > caesiumXPosLeft + 5)
                 {
                     if (WorldGen.genRand.Next(10) == 0 && Main.tile[q, z].HasTile &&
                         Main.tile[q, z].TileType == TileID.Ash)
@@ -37,7 +46,7 @@ internal class Underworld : GenPass
             }
         }
 
-        for (int q = Main.maxTilesX - (Main.maxTilesX / 5); q < Main.maxTilesX - 20; q++)
+        for (int q = caesiumXPosRight; q < caesiumMaxRight; q++)
         {
             for (int z = Main.maxTilesY - 250; z < Main.maxTilesY - 20; z++)
             {
@@ -128,8 +137,19 @@ internal class Underworld : GenPass
         }
         #endregion
         progress.Message = "Generating Hellcastle and Ashen Overgrowth";
-        HellCastle.Generate((Main.maxTilesX / 5) - 210, Main.maxTilesY - 140);
-        for (int hbx = (Main.maxTilesX / 5) - 450; hbx < (Main.maxTilesX / 5) + 500; hbx++)
+        int hellcastleOriginX = (Main.maxTilesX / 5) - 210;
+        int ashenLeft = (Main.maxTilesX / 5) - 450;
+        int ashenRight = (Main.maxTilesX / 5) + 500;
+
+        if (Main.drunkWorld)
+        {
+            hellcastleOriginX = (Main.maxTilesX / 3) - 210;
+            ashenLeft = (Main.maxTilesX / 3) - 450;
+            ashenRight = (Main.maxTilesX / 3) + 500;
+        }
+
+        HellCastle.Generate(hellcastleOriginX, Main.maxTilesY - 140);
+        for (int hbx = ashenLeft; hbx < ashenRight; hbx++)
         {
             for (int hby = Main.maxTilesY - 200; hby < Main.maxTilesY - 50; hby++)
             {
