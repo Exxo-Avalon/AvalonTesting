@@ -265,6 +265,7 @@ public class ExxoPlayer : ModPlayer
     public bool UltraHMinion = false;
     public bool UltraRMinion = false;
     public bool UltraLMinion = false;
+    private int actualStatManaMax2;
 
     public Vector2 MousePosition = default(Vector2);
 
@@ -782,6 +783,7 @@ public class ExxoPlayer : ModPlayer
                 player.wingTime = 30;
             */
         }
+        actualStatManaMax2 = Player.statManaMax2;
     }
 
     public override void OnEnterWorld(Player player)
@@ -1975,6 +1977,7 @@ public class ExxoPlayer : ModPlayer
     }
     public override void PostUpdateMiscEffects()
     {
+        Player.statManaMax2 = actualStatManaMax2;
         DashMovement();
         DoubleJumps();
         if (noSticky)
