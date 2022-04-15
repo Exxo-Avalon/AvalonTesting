@@ -38,7 +38,7 @@ Mods: {
 		}
 		UI: {
 		    WorldTitleEvilContagion: Contagion
-		    WorldDescriptionEvilContagion: Slimey icky yucky stuff yum :)
-		}
+		    WorldDescriptionEvilContagion: A dark, slimy infestation will loom within your world
+        }
 	}
 }

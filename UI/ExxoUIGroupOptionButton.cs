@@ -17,7 +17,7 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement where T : IComparable
 
     public readonly LocalizedText Description;
     private readonly Asset<Texture2D> hoveredBorderTexture;
-    private readonly Asset<Texture2D> iconTexture;
+    private readonly ExxoUIList mainElement;
     public readonly T OptionValue;
     private readonly Asset<Texture2D> selectedBorderTexture;
     private T currentGroupOption;
@@ -38,10 +38,22 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement where T : IComparable
         selectedBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelHighlight");
         hoveredBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelBorder");
 
-        this.iconTexture = iconTexture;
-
         SelectedColor = Colors.InventoryDefaultColor;
         UnselectedColor = SelectedColor;
+
+        mainElement = new ExxoUIList();
+        mainElement.Direction = Direction.Horizontal;
+        mainElement.Height.Set(0, 1);
+        mainElement.Width.Set(32, 0);
+        mainElement.ContentVAlign = 0.5f;
+        mainElement.ContentHAlign = 0.5f;
+
+        Append(mainElement);
+        if (iconTexture != null)
+        {
+            var uiImage = new ExxoUIImage(iconTexture);
+            mainElement.Append(uiImage);
+        }
 
         if (title != null)
         {
@@ -54,6 +66,10 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement where T : IComparable
                 TextColor = textColor
             };
             Append(uIText);
+        }
+        else
+        {
+            mainElement.Width.Set(0, 1);
         }
     }
 
@@ -88,17 +104,17 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement where T : IComparable
             Utils.DrawSplicedPanel(spriteBatch, hoveredBorderTexture.Value, (int)dimensions.X, (int)dimensions.Y,
                 (int)dimensions.Width, (int)dimensions.Height, 10, 10, 10, 10, BorderColor);
         }
-
-        if (iconTexture != null)
-        {
-            Color color2 = Color.White;
-            if (!IsMouseHovering && !IsSelected)
-            {
-                color2 = Color.Lerp(color, Color.White, WhiteLerp) * scale;
-            }
-
-            spriteBatch.Draw(iconTexture.Value, new Vector2(dimensions.X + 1f, dimensions.Y + 1f), color2);
-        }
+        //
+        // if (iconTexture != null)
+        // {
+        //     Color color2 = Color.White;
+        //     if (!IsMouseHovering && !IsSelected)
+        //     {
+        //         color2 = Color.Lerp(color, Color.White, WhiteLerp) * scale;
+        //     }
+        //
+        //     spriteBatch.Draw(iconTexture.Value, new Vector2(dimensions.X + 1f, dimensions.Y + 1f), color2);
+        // }
     }
 
     public void SetCurrentOption(T option)

@@ -24,7 +24,7 @@ public class ExxoUIList : ExxoUIElement
 
     public override bool IsDynamicallySized => FitHeightToContent || FitWidthToContent;
 
-    public ExxoUIScrollbar ScrollBar { get; protected set; }
+    public ExxoUIScrollbar ScrollBar { get; set; }
     public float TotalLength { get; set; }
 
     public void ScrollTo(ElementSearchMethod searchMethod)
@@ -333,7 +333,10 @@ public class ExxoUIList : ExxoUIElement
 
     private void UpdateScrollbar()
     {
-        ScrollBar?.SetView(GetInnerDimensions().Height, TotalLength);
+        if (Parent != null)
+        {
+            ScrollBar?.SetView(Parent.MaxHeight.Pixels, GetInnerDimensions().Height);
+        }
     }
 
     public struct ElementParams

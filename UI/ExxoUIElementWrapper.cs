@@ -15,13 +15,14 @@ public class ExxoUIElementWrapper : ExxoUIElement
     }
 
     public bool FitMinToInnerElement { get; set; }
+    public bool FitToInnerElement { get; set; }
 
-    public override bool IsDynamicallySized => FitMinToInnerElement;
+    public override bool IsDynamicallySized => FitMinToInnerElement || FitToInnerElement;
 
     protected override void PreRecalculate()
     {
         base.PreRecalculate();
-        if (FitMinToInnerElement)
+        if (FitMinToInnerElement || FitToInnerElement)
         {
             origWidth = Width;
             origHeight = Height;
@@ -40,6 +41,12 @@ public class ExxoUIElementWrapper : ExxoUIElement
                 MinHeight.Set(InnerElement.MinHeight.Pixels + PaddingBottom + PaddingTop, 0);
                 Width = origWidth;
                 Height = origHeight;
+            }
+
+            if (FitToInnerElement)
+            {
+                Width.Set(InnerElement.MinWidth.Pixels + PaddingLeft + PaddingRight, 0);
+                Height.Set(InnerElement.MinHeight.Pixels + PaddingBottom + PaddingTop, 0);
             }
 
             RecalculateChildrenSelf();
