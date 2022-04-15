@@ -22,7 +22,9 @@ public class ExxoUIList : ExxoUIElement
     private StyleDimension origHeight;
     private StyleDimension origWidth;
 
-    protected ExxoUIScrollbar ScrollBar;
+    public override bool IsDynamicallySized => FitHeightToContent || FitWidthToContent;
+
+    public ExxoUIScrollbar ScrollBar { get; protected set; }
     public float TotalLength { get; set; }
 
     public void ScrollTo(ElementSearchMethod searchMethod)
@@ -41,7 +43,7 @@ public class ExxoUIList : ExxoUIElement
 
     public new void Append(UIElement item)
     {
-        Append(item, new ElementParams());
+        Append(item, new ElementParams(false, false));
     }
 
     public void Append(UIElement item, ElementParams elementParams)
@@ -115,9 +117,17 @@ public class ExxoUIList : ExxoUIElement
         {
             Elements[i].MarginBottom = 0;
             Elements[i].MarginRight = 0;
-            if (Elements[i] is ExxoUIElement exxoElement && (exxoElement.Hidden || !exxoElement.Active))
+            if (Elements[i] is ExxoUIElement exxoElement)
             {
-                continue;
+                if (exxoElement.Hidden || !exxoElement.Active)
+                {
+                    continue;
+                }
+
+                if (exxoElement.IsDynamicallySized)
+                {
+                    exxoElement.Recalculate();
+                }
             }
 
             if (!ElementParamsList[i].IgnoreContentAlign)
@@ -326,14 +336,9 @@ public class ExxoUIList : ExxoUIElement
         ScrollBar?.SetView(GetInnerDimensions().Height, TotalLength);
     }
 
-    public void SetScrollbar(ExxoUIScrollbar scrollbar)
-    {
-        ScrollBar = scrollbar;
-    }
-
     public struct ElementParams
     {
-        public ElementParams(bool fillLength = false, bool ignoreContentAlign = false)
+        public ElementParams(bool fillLength, bool ignoreContentAlign)
         {
             FillLength = fillLength;
             IgnoreContentAlign = ignoreContentAlign;

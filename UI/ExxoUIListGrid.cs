@@ -26,7 +26,7 @@ public class ExxoUIListGrid : ExxoUIList
             AddNewInnerList();
         }
 
-        var lastElement = Elements[Elements.Count - 1] as ExxoUIList;
+        var lastElement = (Elements[^1] as ExxoUIList)!;
 
         if (amountPerInnerList == -1)
         {
@@ -45,15 +45,6 @@ public class ExxoUIListGrid : ExxoUIList
         }
 
         lastElement.Append(item, elementParams);
-    }
-
-    protected override void PreRecalculate()
-    {
-        base.PreRecalculate();
-        foreach (UIElement element in Elements)
-        {
-            element.Recalculate();
-        }
     }
 
     private ExxoUIList AddNewInnerList()

@@ -107,7 +107,7 @@ public static class UIWorldCreationEdits
             groupOptionButton.OnMouseOut += self.ClearOptionDescription;
             groupOptionButton.SetSnapPoint(tagGroup, i);
             groupOptionButton.SetCurrentOption(0);
-            EvilListGrid.Append(groupOptionButton, new ExxoUIList.ElementParams(fillLength: true));
+            EvilListGrid.Append(groupOptionButton, new ExxoUIList.ElementParams(true, false));
         }
 
         EvilListGrid.Recalculate();

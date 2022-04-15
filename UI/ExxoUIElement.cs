@@ -7,18 +7,25 @@ using Terraria.UI;
 
 namespace AvalonTesting.UI;
 
-public class ExxoUIElement : UIElement
+public abstract class ExxoUIElement : UIElement
 {
     public delegate void ExxoUIElementEventHandler(ExxoUIElement sender, EventArgs e);
 
     public readonly Queue<UIElement> ElementsForRemoval = new();
+
     private bool mouseWasOver;
-    public string Tooltip = "";
-    public int ElementCount => Elements.Count;
-    public bool IsRecalculating { get; private set; }
+    public bool IsVisible => Active && !Hidden && GetOuterDimensions().Width > 0 && GetOuterDimensions().Height > 0;
     public bool Active { get; set; } = true;
     public bool Hidden { get; set; }
-    public bool IsVisible => Active && !Hidden && GetOuterDimensions().Width > 0 && GetOuterDimensions().Height > 0;
+    public int ElementCount => Elements.Count;
+    public bool IsRecalculating { get; private set; }
+    public string Tooltip { get; set; } = "";
+
+    public abstract bool IsDynamicallySized
+    {
+        get;
+    }
+
     public event MouseEvent OnMouseHovering;
     public event MouseEvent OnFirstMouseOver;
     public event MouseEvent OnLastMouseOut;

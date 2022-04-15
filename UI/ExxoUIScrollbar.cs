@@ -21,7 +21,7 @@ public class ExxoUIScrollbar : UIScrollbar
         if (viewSize == maxViewSize)
         {
             Width.Set(0, 0);
-            if (Parent is ExxoUIElementWrapper<ExxoUIScrollbar> exxoParent)
+            if (Parent is ExxoUIElementWrapper exxoParent)
             {
                 exxoParent.Hidden = true;
             }
@@ -29,7 +29,7 @@ public class ExxoUIScrollbar : UIScrollbar
         else
         {
             Width.Set(20, 0);
-            if (Parent is ExxoUIElementWrapper<ExxoUIScrollbar> exxoParent)
+            if (Parent is ExxoUIElementWrapper exxoParent)
             {
                 exxoParent.Hidden = false;
             }

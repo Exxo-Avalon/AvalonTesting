@@ -2,31 +2,26 @@
 
 namespace AvalonTesting.UI;
 
-public class ExxoUIElementWrapper<T> : ExxoUIElement where T : UIElement
+public class ExxoUIElementWrapper : ExxoUIElement
 {
-    public readonly T InnerElement;
+    public readonly UIElement InnerElement;
     private StyleDimension origHeight;
     private StyleDimension origWidth;
 
-    public ExxoUIElementWrapper(T uiElement, bool autoSize = true)
+    public ExxoUIElementWrapper(UIElement uiElement)
     {
         InnerElement = uiElement;
-        if (autoSize)
-        {
-            InnerElement.Width.Set(0, 1);
-            InnerElement.Height.Set(0, 1);
-        }
-
         Append(InnerElement);
     }
 
-    public bool FitToInnerElement { get; set; }
     public bool FitMinToInnerElement { get; set; }
+
+    public override bool IsDynamicallySized => FitMinToInnerElement;
 
     protected override void PreRecalculate()
     {
         base.PreRecalculate();
-        if (FitToInnerElement || FitMinToInnerElement)
+        if (FitMinToInnerElement)
         {
             origWidth = Width;
             origHeight = Height;
@@ -37,7 +32,7 @@ public class ExxoUIElementWrapper<T> : ExxoUIElement where T : UIElement
 
     protected override void PostRecalculate()
     {
-        if (FitMinToInnerElement || FitToInnerElement)
+        if (FitMinToInnerElement)
         {
             if (FitMinToInnerElement)
             {
@@ -47,13 +42,13 @@ public class ExxoUIElementWrapper<T> : ExxoUIElement where T : UIElement
                 Height = origHeight;
             }
 
-            if (FitToInnerElement)
-            {
-                Width.Set(InnerElement.GetOuterDimensions().Width + PaddingLeft + PaddingRight, 0);
-                Height.Set(InnerElement.GetOuterDimensions().Height + PaddingBottom + PaddingTop, 0);
-            }
-
             RecalculateChildrenSelf();
         }
     }
+}
+
+public class ExxoUIElementWrapper<T> : ExxoUIElementWrapper where T : UIElement
+{
+    public ExxoUIElementWrapper(T uiElement) : base(uiElement) { }
+    public new T InnerElement => (T)base.InnerElement;
 }
