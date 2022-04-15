@@ -119,6 +119,12 @@ public static class ClassExtensions
         return true;
     }
 
+    // Used to draw float coordinates to nearest pixel coordinates to avoid blurry rendering of textures
+    public static Vector2 ToNearestPixel(this Vector2 vector)
+    {
+        return new Vector2((int)vector.X, (int)vector.Y);
+    }
+
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;

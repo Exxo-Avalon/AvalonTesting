@@ -36,5 +36,9 @@ Mods: {
 				HateNPC: "{NPCName} gives me the chills. He reminds me of the monsters that invaded."
 			}
 		}
+		UI: {
+		    WorldTitleEvilContagion: Contagion
+		    WorldDescriptionEvilContagion: Slimey icky yucky stuff yum :)
+		}
 	}
 }

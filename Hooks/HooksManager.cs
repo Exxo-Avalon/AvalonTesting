@@ -1,5 +1,7 @@
 ﻿using IL.Terraria;
 using IL.Terraria.GameContent.UI.ResourceSets;
+using IL.Terraria.GameContent.UI.States;
+using IL.Terraria.UI;
 using On.Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Hooks;
@@ -27,6 +29,18 @@ public static class HooksManager
         GenPasses.Hook_GenPassReset += ContagionWorldGen.ILGenPassReset;
         GenPasses.Hook_GenPassShinies += WorldGenEdits.ILGenPassShinies;
         GenPasses.Hook_GenPassAltars += ContagionWorldGen.ILGenPassAltars;
+        UIWorldCreation.MakeInfoMenu += UIWorldCreationEdits.ILMakeInfoMenu;
+        UIElement.Draw += UIChanges.ILUIElementDraw;
+        UIChanges.Hook_OnSpriteFontInternalDraw += UIChanges.OnSpriteFontInternalDraw;
+        On.Terraria.Main.DrawInterface += UIChanges.OnMainDrawInterface;
+        UserInterface.Update += UIChanges.ILUserInterfaceUpdate;
+        //UIElement.GetElementAt += UIChanges.ILUIElementGetElementAt;
+        UIElement.Recalculate += UIChanges.ILUIElementRecalculate;
+        UIElement.GetClippingRectangle += UIChanges.ILUIElementGetClippingRectangle;
+        On.Terraria.UI.UIElement.Remove += UIChanges.OnUIElementRemove;
+        On.Terraria.Main.DrawInventory += UIChanges.OnMainDrawInventory;
+        On.Terraria.GameContent.UI.States.UIWorldCreation.AddWorldEvilOptions +=
+            UIWorldCreationEdits.OnAddWorldEvilOptions;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
 
         CaesiumBackground.ILCaesium();

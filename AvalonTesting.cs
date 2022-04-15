@@ -24,6 +24,7 @@ public partial class AvalonTesting : Mod
     public Mod MusicMod { get; private set; }
     public Mod ImkSushisMod { get; private set; }
 
+    public bool CheckPointer;
     public static float CaesiumTransition;
 
     public override void Load()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -30,6 +31,35 @@ public static class Utilities
         {
             object obj = instruction.Operand == null ? "" : instruction.Operand.ToString();
             AvalonTesting.Mod.Logger.Debug($"{instruction.Offset} | {instruction.OpCode} | {obj}");
+        }
+    }
+
+    public static List<Instruction> FromCursorToInstruction(ILCursor c, Func<Instruction, bool> predicate)
+    {
+        List<Instruction> instructions = new();
+        while (!predicate.Invoke(c.Next))
+        {
+            instructions.Add(c.Next);
+            c.Index++;
+        }
+
+        return instructions;
+    }
+
+    public static void EmitInstructions(ILCursor c, IEnumerable<Instruction> instructions)
+    {
+        foreach (Instruction instruction in instructions)
+        {
+            c.Emit(instruction.OpCode, instruction.Operand);
+        }
+    }
+
+    public static void RemoveUntilInstruction(ILCursor c, Func<Instruction, bool> predicate)
+    {
+        List<Instruction> instructions = new();
+        while (!predicate.Invoke(c.Next))
+        {
+            c.Remove();
         }
     }
 }
