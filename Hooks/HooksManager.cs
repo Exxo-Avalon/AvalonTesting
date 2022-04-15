@@ -42,6 +42,8 @@ public static class HooksManager
         On.Terraria.GameContent.UI.States.UIWorldCreation.AddWorldEvilOptions +=
             UIWorldCreationEdits.OnAddWorldEvilOptions;
         //On.Terraria.Item.IsAPrefixableAccessory += PrefixChanges.OnIsAPrefixableAccessory;
+        UIWorldCreation.FinishCreatingWorld += UIWorldCreationEdits.ILFinishCreatingWorld;
+        UIWorldCreation.UpdatePreviewPlate += UIWorldCreationEdits.ILUpdatePreviewPlate;
 
         CaesiumBackground.ILCaesium();
     }

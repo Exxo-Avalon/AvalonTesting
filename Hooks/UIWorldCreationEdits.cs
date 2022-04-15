@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using AvalonTesting.UI;
 using Microsoft.Xna.Framework;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
@@ -17,6 +19,7 @@ public static class UIWorldCreationEdits
         Utilities.CreatePropertyOrFieldReaderDelegate<UIWorldCreation, UIText>("_descriptionText");
 
     public static ExxoUIListGrid EvilListGrid;
+    public static int CurrentEvilOption;
 
     public static void ILMakeInfoMenu(ILContext il)
     {
@@ -33,7 +36,7 @@ public static class UIWorldCreationEdits
         }
 
         c.Remove();
-        c.EmitDelegate(() => EvilListGrid.MinHeight.Pixels + 16);
+        c.EmitDelegate(() => EvilListGrid.MinHeight.Pixels + 12);
     }
 
     public static void OnAddWorldEvilOptions(
@@ -69,26 +72,33 @@ public static class UIWorldCreationEdits
             "Images/UI/WorldCreation/IconEvilCrimson", "Images/UI/WorldCreation/IconEvilRandom"
         };
 
-        EvilListGrid = new ExxoUIListGrid();
+        EvilListGrid = new ExxoUIListGrid(3);
         EvilListGrid.Top.Set(accumualtedHeight, 0);
         EvilListGrid.Width.Set(0, 1);
         EvilListGrid.FitHeightToContent = true;
+        EvilListGrid.ContentHAlign = 0.5f;
+        EvilListGrid.ListPadding = 4;
         container.Append(EvilListGrid);
 
         for (int i = 0; i < array.Length; i++)
         {
             GroupOptionButton<int> groupOptionButton =
                 new(array[i], array2[i], array3[i], array4[i], array5[i], 1f, 1f, 16f);
-            groupOptionButton.Width = StyleDimension.FromPixelsAndPercent(-4 * 2, 1f / 3 * usableWidthPercent);
-            // groupOptionButton.Left = StyleDimension.FromPercent(1f - usableWidthPercent);
-            //groupOptionButton.HAlign = i / (float)2;
-            //groupOptionButton.Top.Set(accumualtedHeight, 0f);
             groupOptionButton.OnMouseDown += (UIMouseEvent evt, UIElement element) =>
             {
-                foreach (UIElement child in EvilListGrid.Children)
+                foreach (UIElement parent in EvilListGrid.Children)
                 {
-                    (child as GroupOptionButton<int>).SetCurrentOption((element as GroupOptionButton<int>).OptionValue);
+                    foreach (UIElement child in parent.Children)
+                    {
+                        (child as GroupOptionButton<int>).SetCurrentOption((element as GroupOptionButton<int>)
+                            .OptionValue);
+                    }
                 }
+
+                CurrentEvilOption = (element as GroupOptionButton<int>).OptionValue;
+                typeof(UIWorldCreation)
+                    .GetMethod("UpdatePreviewPlate", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .Invoke(self, null);
             };
             groupOptionButton.OnMouseOver += (evt, element) =>
             {
@@ -97,13 +107,76 @@ public static class UIWorldCreationEdits
             groupOptionButton.OnMouseOut += self.ClearOptionDescription;
             groupOptionButton.SetSnapPoint(tagGroup, i);
             groupOptionButton.SetCurrentOption(0);
-            EvilListGrid.Append(groupOptionButton);
+            EvilListGrid.Append(groupOptionButton, new ExxoUIList.ElementParams(fillLength: true));
         }
-        
-        container.Parent.Parent.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels + 40;
-        container.Parent.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels + 40;
-        container.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels + 40;
-        
+
         EvilListGrid.Recalculate();
+
+        container.Parent.Parent.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels - 36;
+        container.Parent.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels - 36;
+        container.Parent.Height.Pixels += EvilListGrid.MinHeight.Pixels - 36;
+    }
+
+    public static void ILFinishCreatingWorld(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchRet()))
+        {
+            return;
+        }
+
+        if (!c.TryGotoPrev(i => i.MatchLdnull()))
+        {
+            return;
+        }
+
+        c.EmitDelegate(() =>
+        {
+            switch (CurrentEvilOption)
+            {
+                case 0:
+                    WorldGen.WorldGenParam_Evil = -1;
+                    break;
+                case 1:
+                    WorldGen.WorldGenParam_Evil = 0;
+                    break;
+                case 2:
+                    WorldGen.WorldGenParam_Evil = 1;
+                    break;
+                case 3:
+                    WorldGen.WorldGenParam_Evil = 2;
+                    break;
+            }
+        });
+    }
+
+    public static void ILUpdatePreviewPlate(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchConvU1()))
+        {
+            return;
+        }
+
+        if (!c.TryGotoNext(i => i.MatchConvU1()))
+        {
+            return;
+        }
+
+        c.Index++;
+        c.Emit(OpCodes.Pop);
+
+        c.EmitDelegate(() =>
+        {
+            byte option = (byte)CurrentEvilOption;
+            if (option > 2)
+            {
+                option = 2;
+            }
+
+            return option;
+        });
     }
 }

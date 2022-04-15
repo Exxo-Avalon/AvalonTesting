@@ -14,6 +14,7 @@ public class ExxoUIElement : UIElement
     public readonly Queue<UIElement> ElementsForRemoval = new();
     private bool mouseWasOver;
     public string Tooltip = "";
+    public int ElementCount => Elements.Count;
     public bool IsRecalculating { get; private set; }
     public bool Active { get; set; } = true;
     public bool Hidden { get; set; }

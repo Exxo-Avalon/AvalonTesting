@@ -1,55 +1,69 @@
-﻿using System;
-using Terraria.UI;
+﻿using Terraria.UI;
 
 namespace AvalonTesting.UI;
 
 public class ExxoUIListGrid : ExxoUIList
 {
-    public override void RecalculateChildren()
+    private readonly int amountPerInnerList;
+
+    public ExxoUIListGrid(int amountPerInnerList = -1)
     {
-        foreach (UIElement element in Elements)
+        this.amountPerInnerList = amountPerInnerList;
+        Direction = Direction.Vertical;
+        FitHeightToContent = true;
+        Width.Set(0, 1);
+    }
+
+    public new void Append(UIElement item)
+    {
+        Append(item, new ElementParams());
+    }
+
+    public new void Append(UIElement item, ElementParams elementParams)
+    {
+        if (Elements.Count == 0)
         {
-            element.Recalculate();
+            AddNewInnerList();
         }
 
-        float largestWidth = 0;
-        float largestHeight = 0;
-        float width = 0;
-        float top = 0;
-        for (int i = 0; i < Elements.Count; i++)
+        var lastElement = Elements[Elements.Count - 1] as ExxoUIList;
+
+        if (amountPerInnerList == -1)
         {
-            largestHeight = Math.Max(largestHeight, Elements[i].GetOuterDimensions().Height);
-            Elements[i].Top.Set(top, 0);
-            Elements[i].Left.Set(width, 0);
-            width += Elements[i].GetOuterDimensions().Width + ListPadding;
-            if (i < Elements.Count - 1)
+            if (lastElement.MinWidth.Pixels + item.MinWidth.Pixels + ((lastElement.ElementCount - 1) * ListPadding) >
+                GetInnerDimensions().Width)
             {
-                largestWidth = Math.Max(largestWidth, width - ListPadding);
-                if (width + Elements[i + 1].GetOuterDimensions().Width >= GetInnerDimensions().Width)
-                {
-                    top += largestHeight + ListPadding;
-                    width = 0;
-                    largestHeight = 0;
-                }
+                lastElement = AddNewInnerList();
+            }
+        }
+        else
+        {
+            if (lastElement.ElementCount >= amountPerInnerList)
+            {
+                lastElement = AddNewInnerList();
             }
         }
 
-        if (FitWidthToContent)
-        {
-            MinWidth.Set(largestWidth, 0);
-        }
+        lastElement.Append(item, elementParams);
+    }
 
-        if (FitHeightToContent)
-        {
-            MinHeight.Set(top + largestHeight, 0);
-        }
-
-        TotalLength = top + largestHeight;
-
-        RecalculateSelf();
+    protected override void PreRecalculate()
+    {
+        base.PreRecalculate();
         foreach (UIElement element in Elements)
         {
             element.Recalculate();
         }
+    }
+
+    private ExxoUIList AddNewInnerList()
+    {
+        var list = new ExxoUIList();
+        list.Direction = Direction.Horizontal;
+        list.FitHeightToContent = true;
+        list.Width.Set(0, 1);
+        list.ListPadding = ListPadding;
+        base.Append(list);
+        return list;
     }
 }

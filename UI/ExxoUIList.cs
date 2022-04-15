@@ -175,7 +175,7 @@ public class ExxoUIList : ExxoUIElement
                 continue;
             }
 
-            if (nextExxoElement == null && height > 0 && width > 0)
+            if (nextExxoElement == null && height <= 0 && width <= 0)
             {
                 continue;
             }
