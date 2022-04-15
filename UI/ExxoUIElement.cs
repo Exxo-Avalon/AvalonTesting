@@ -161,4 +161,10 @@ public abstract class ExxoUIElement : UIElement
     {
         OnLastMouseOut?.Invoke(evt, this);
     }
+
+    public static void BeginDefaultSpriteBatch(SpriteBatch spriteBatch)
+    {
+        spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, DepthStencilState.None, null, null,
+            Main.UIScaleMatrix);
+    }
 }

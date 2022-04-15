@@ -3,23 +3,34 @@ using System.Linq;
 using System.Reflection;
 using AvalonTesting.UI;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
 using Terraria.Localization;
+using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace AvalonTesting.Hooks;
 
 public static class UIWorldCreationEdits
 {
+    public enum MenuEvilOption
+    {
+        Random,
+        Corruption,
+        Crimson,
+        Contagion
+    }
+
     public static Func<UIWorldCreation, UIText> GetDescriptionUIText =
         Utilities.CreatePropertyOrFieldReaderDelegate<UIWorldCreation, UIText>("_descriptionText");
 
-    public static ExxoUIListGrid EvilListGrid;
-    public static int CurrentEvilOption;
+    private static ExxoUIListGrid EvilListGrid;
+    private static MenuEvilOption CurrentEvilOption;
 
     public static void ILMakeInfoMenu(ILContext il)
     {
@@ -42,67 +53,74 @@ public static class UIWorldCreationEdits
     public static void OnAddWorldEvilOptions(
         On.Terraria.GameContent.UI.States.UIWorldCreation.orig_AddWorldEvilOptions orig,
         UIWorldCreation self, UIElement container,
-        float accumualtedHeight,
+        float accumulatedHeight,
         UIElement.MouseEvent clickEvent,
         string tagGroup, float usableWidthPercent)
     {
-        orig(self, container, accumualtedHeight, clickEvent, tagGroup, usableWidthPercent);
+        orig(self, container, accumulatedHeight, clickEvent, tagGroup, usableWidthPercent);
+
+        // Remove last 3 elements (original evil buttons)
         UIElement[] tempArray = container.Children.ToArray();
         for (int i = tempArray.Length - 1; i > tempArray.Length - 4; i--)
         {
             tempArray[i].Remove();
         }
 
-        int[] array = {0, 1, 2, 3};
-        LocalizedText[] array2 =
+        MenuEvilOption[] menuEvilOptions =
+        {
+            MenuEvilOption.Random, MenuEvilOption.Corruption, MenuEvilOption.Crimson, MenuEvilOption.Contagion
+        };
+        LocalizedText[] titles =
         {
             Lang.misc[103], Lang.misc[101], Lang.misc[102],
             Language.GetText("Mods.AvalonTesting.UI.WorldTitleEvilContagion")
         };
-        LocalizedText[] array3 =
+        LocalizedText[] descriptions =
         {
             Language.GetText("UI.WorldDescriptionEvilRandom"), Language.GetText("UI.WorldDescriptionEvilCorrupt"),
             Language.GetText("UI.WorldDescriptionEvilCrimson"),
             Language.GetText("Mods.AvalonTesting.UI.WorldDescriptionEvilContagion")
         };
-        Color[] array4 = {Color.White, Color.MediumPurple, Color.IndianRed, Color.ForestGreen};
-        string[] array5 =
+        Color[] textColors = {Color.White, Color.MediumPurple, Color.IndianRed, Color.SpringGreen};
+        Asset<Texture2D>[] array5 =
         {
-            "Images/UI/WorldCreation/IconEvilRandom", "Images/UI/WorldCreation/IconEvilCorruption",
-            "Images/UI/WorldCreation/IconEvilCrimson", "Images/UI/WorldCreation/IconEvilRandom"
+            Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilRandom"),
+            Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"),
+            Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCrimson"),
+            ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/ContagionIcon")
         };
 
-        EvilListGrid = new ExxoUIListGrid(3);
-        EvilListGrid.Top.Set(accumualtedHeight, 0);
+        EvilListGrid = new ExxoUIListGrid(2);
+        EvilListGrid.Top.Set(accumulatedHeight, 0);
         EvilListGrid.Width.Set(0, 1);
         EvilListGrid.FitHeightToContent = true;
         EvilListGrid.ContentHAlign = 0.5f;
         EvilListGrid.ListPadding = 4;
         container.Append(EvilListGrid);
 
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < menuEvilOptions.Length; i++)
         {
-            GroupOptionButton<int> groupOptionButton =
-                new(array[i], array2[i], array3[i], array4[i], array5[i], 1f, 1f, 16f);
+            ExxoUIGroupOptionButton<MenuEvilOption> groupOptionButton = new(menuEvilOptions[i], titles[i],
+                descriptions[i], textColors[i], array5[i], 1f, 1f, 16f);
+
             groupOptionButton.OnMouseDown += (UIMouseEvent evt, UIElement element) =>
             {
                 foreach (UIElement parent in EvilListGrid.Children)
                 {
                     foreach (UIElement child in parent.Children)
                     {
-                        (child as GroupOptionButton<int>).SetCurrentOption((element as GroupOptionButton<int>)
-                            .OptionValue);
+                        (child as ExxoUIGroupOptionButton<MenuEvilOption>)!.SetCurrentOption(
+                            (element as ExxoUIGroupOptionButton<MenuEvilOption>)!.OptionValue);
                     }
                 }
 
-                CurrentEvilOption = (element as GroupOptionButton<int>).OptionValue;
-                typeof(UIWorldCreation)
-                    .GetMethod("UpdatePreviewPlate", BindingFlags.Instance | BindingFlags.NonPublic)
+                CurrentEvilOption = (element as ExxoUIGroupOptionButton<MenuEvilOption>)!.OptionValue;
+                typeof(UIWorldCreation).GetMethod("UpdatePreviewPlate", BindingFlags.Instance | BindingFlags.NonPublic)
                     .Invoke(self, null);
             };
             groupOptionButton.OnMouseOver += (evt, element) =>
             {
-                GetDescriptionUIText(self).SetText((element as GroupOptionButton<int>).Description);
+                GetDescriptionUIText(self).SetText((element as ExxoUIGroupOptionButton<MenuEvilOption>)!.Description);
             };
             groupOptionButton.OnMouseOut += self.ClearOptionDescription;
             groupOptionButton.SetSnapPoint(tagGroup, i);
@@ -135,16 +153,16 @@ public static class UIWorldCreationEdits
         {
             switch (CurrentEvilOption)
             {
-                case 0:
+                case MenuEvilOption.Random:
                     WorldGen.WorldGenParam_Evil = -1;
                     break;
-                case 1:
+                case MenuEvilOption.Corruption:
                     WorldGen.WorldGenParam_Evil = 0;
                     break;
-                case 2:
+                case MenuEvilOption.Crimson:
                     WorldGen.WorldGenParam_Evil = 1;
                     break;
-                case 3:
+                case MenuEvilOption.Contagion:
                     WorldGen.WorldGenParam_Evil = 2;
                     break;
             }
