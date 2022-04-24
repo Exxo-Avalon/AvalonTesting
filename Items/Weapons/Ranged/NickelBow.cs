@@ -16,7 +16,6 @@ internal class NickelBow : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item5;
         Item.damage = 10;
-        Item.useTurn = true;
         Item.scale = 1f;
         Item.shootSpeed = 6.5f;
         Item.useAmmo = AmmoID.Arrow;

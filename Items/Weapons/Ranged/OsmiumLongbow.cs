@@ -17,7 +17,6 @@ internal class OsmiumLongbow : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item5;
         Item.damage = 24;
-        Item.useTurn = true;
         Item.scale = 1f;
         Item.shootSpeed = 9f;
         Item.useAmmo = AmmoID.Arrow;

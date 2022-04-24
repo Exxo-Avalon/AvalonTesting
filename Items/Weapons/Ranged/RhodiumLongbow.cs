@@ -16,7 +16,6 @@ class RhodiumLongbow : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item5;
         Item.damage = 21;
-        Item.useTurn = true;
         Item.scale = 1f;
         Item.shootSpeed = 9f;
         Item.useAmmo = AmmoID.Arrow;

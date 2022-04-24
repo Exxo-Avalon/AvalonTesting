@@ -17,7 +17,6 @@ class CoughwoodBow : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item5;
         Item.damage = 9;
-        Item.useTurn = true;
         Item.scale = 1f;
         Item.shootSpeed = 7f;
         Item.useAmmo = AmmoID.Arrow;
