@@ -9,7 +9,7 @@ public class BlackSolutionDust : ModDust
     public override bool Update(Dust dust)
     {
         var lightFade = (dust.scale > 1 ? 1 : dust.scale);
-        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), (0.1f * lightFade), (0.1f * lightFade), (0.1f * lightFade));
+        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), (0.1f * lightFade), (0.07f * lightFade), (0.11f * lightFade));
         return true;
     }
     public override Color? GetAlpha(Dust dust, Color lightColor)
