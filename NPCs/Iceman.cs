@@ -30,6 +30,13 @@ public class Iceman : ModNPC
         NPCID.Sets.AttackType[NPC.type] = 0;
         NPCID.Sets.AttackTime[NPC.type] = 50;
         NPCID.Sets.AttackAverageChance[NPC.type] = 10;
+		
+		NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {
+			Velocity = 1f
+			};
+		
+		NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+		
         NPC.Happiness
             .SetBiomeAffection<OceanBiome>(AffectionLevel.Hate)
             .SetBiomeAffection<JungleBiome>(AffectionLevel.Hate)
@@ -183,7 +190,7 @@ public class Iceman : ModNPC
             nextSlot++;
         }
     }
-    public override void AI()
+    /*public override void AI()
     {
         var flag22 = Main.raining;
         if (!Main.dayTime)
@@ -639,10 +646,10 @@ public class Iceman : ModNPC
                 }
             }
         }
-    }
+    }*/
     public override void FindFrame(int frameHeight)
     {
-        if (NPC.velocity.Y == 0f)
+        /*if (NPC.velocity.Y == 0f)
         {
             if (NPC.direction == 1)
             {
@@ -676,7 +683,7 @@ public class Iceman : ModNPC
         {
             NPC.frameCounter = 0.0;
             NPC.frame.Y = frameHeight;
-        }
+        }*/
     }
     public override void TownNPCAttackStrength(ref int damage, ref float knockback)
     {
