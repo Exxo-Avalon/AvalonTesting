@@ -10,6 +10,9 @@ namespace AvalonTesting;
 public partial class AvalonTesting : Mod
 {
     public const string AssetPath = "AvalonTesting/Assets/";
+    public static float CaesiumTransition;
+
+    public bool CheckPointer;
 
     public AvalonTesting()
     {
@@ -24,13 +27,14 @@ public partial class AvalonTesting : Mod
     public Mod MusicMod { get; private set; }
     public Mod ImkSushisMod { get; private set; }
 
-    public bool CheckPointer;
-    public static float CaesiumTransition;
-
     public override void Load()
     {
         // ----------- Server/Client ----------- //
         HooksManager.ApplyHooks();
+        ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod);
+        MusicMod = obtainedMod;
+        ModLoader.TryGetMod("Tokens", out obtainedMod);
+        ImkSushisMod = obtainedMod;
 
         if (Main.netMode == NetmodeID.Server)
         {
@@ -38,10 +42,6 @@ public partial class AvalonTesting : Mod
         }
 
         // ----------- Client Only ----------- //
-        ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod);
-        MusicMod = obtainedMod;
-        ModLoader.TryGetMod("Tokens", out obtainedMod);
-        ImkSushisMod = obtainedMod;
         ReplaceVanillaTextures();
     }
 
