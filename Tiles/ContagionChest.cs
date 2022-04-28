@@ -8,6 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
+using Terraria.GameContent.ObjectInteractions;
 
 namespace AvalonTesting.Tiles;
 
@@ -42,7 +43,7 @@ public class ContagionChest : ModTile
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }

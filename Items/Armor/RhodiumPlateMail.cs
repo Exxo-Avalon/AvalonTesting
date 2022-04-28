@@ -30,6 +30,6 @@ class RhodiumPlateMail : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.14f;
-        player.meleeSpeed += 0.14f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.14f;
     }
 }

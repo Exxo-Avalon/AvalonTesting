@@ -29,6 +29,6 @@ class ViruthornScalemail : ModItem
     }
     public override void UpdateEquip(Player player)
     {
-        player.meleeSpeed += 0.07f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.07f;
     }
 }

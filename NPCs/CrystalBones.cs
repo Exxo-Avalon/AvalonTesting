@@ -77,7 +77,7 @@ public class CrystalBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void OnKill()
     {
@@ -85,7 +85,7 @@ public class CrystalBones : ModNPC
         {
             float speedX = NPC.velocity.X + Main.rand.Next(-51, 51) * 0.2f;
             float speedY = NPC.velocity.Y + Main.rand.Next(-51, 51) * 0.2f;
-            int proj = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.CrystalShard>(), 100, 0.3f);
+            int proj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.CrystalShard>(), 100, 0.3f);
             Main.projectile[proj].timeLeft = 300;
         }
     }
@@ -97,11 +97,11 @@ public class CrystalBones : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesHead").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
         }
     }
 }

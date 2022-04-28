@@ -135,28 +135,28 @@ public class GuardianHammer : ModProjectile
             targetPosition3 = new Vector2(p.Center.X + Main.rand.Next(20, 40), p.Center.Y);
         }
 
-        Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), cloudPosition, Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, p.owner);
+        Projectile.NewProjectile(Projectile.GetSource_FromThis(), cloudPosition, Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, p.owner);
 
         for (int i = 0; i < 1; i++)
         {
             Vector2 vectorBetween = targetPosition - cloudPosition;
             float randomSeed = Main.rand.Next(100);
             Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
         }
         for (int i = 0; i < 1; i++)
         {
             Vector2 vectorBetween = targetPosition2 - cloudPosition;
             float randomSeed = Main.rand.Next(100);
             Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
         }
         for (int i = 0; i < 1; i++)
         {
             Vector2 vectorBetween = targetPosition3 - cloudPosition;
             float randomSeed = Main.rand.Next(100);
             Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), p.damage, 0f, p.owner, vectorBetween.ToRotation(), randomSeed);
         }
     }
 }

@@ -112,7 +112,7 @@ public class PhantomKnife : ModProjectile
             num9 = 4f / num9;
             num7 *= num9;
             num8 *= num9;
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Position, new Vector2(num7, num8), ModContent.ProjectileType<Projectiles.SpectreSplit>(), num, 0f, Projectile.owner, num2);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Position, new Vector2(num7, num8), ModContent.ProjectileType<Projectiles.SpectreSplit>(), num, 0f, Projectile.owner, num2);
         }
     }
 }

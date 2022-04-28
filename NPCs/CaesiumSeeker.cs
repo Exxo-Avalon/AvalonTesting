@@ -45,7 +45,7 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.AvalonBiome().ZoneCaesium && spawnInfo.player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh)) // && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
+        if (spawnInfo.Player.AvalonBiome().ZoneCaesium && spawnInfo.Player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh)) // && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
             return 0.6f;
         return 0;
     }
@@ -63,7 +63,7 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
         if (Main.netMode == NetmodeID.Server) return;
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerHead").Type, 0.8f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerHead").Type, 0.8f);
         }
     }
     public override void Init()
@@ -111,7 +111,7 @@ public class CaesiumSeekerBody : CaesiumSeekerWorm
         if (Main.netMode == NetmodeID.Server) return;
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerBody").Type, 0.8f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerBody").Type, 0.8f);
         }
     }
 }
@@ -152,7 +152,7 @@ public class CaesiumSeekerTail : CaesiumSeekerWorm
         if (Main.netMode == NetmodeID.Server) return;
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerTail").Type, 0.8f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CaesiumSeekerTail").Type, 0.8f);
         }
     }
     public override void Init()

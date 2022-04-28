@@ -68,7 +68,7 @@ public class CrystalSpectre : ModNPC
                     NPC.velocity.X = 0f;
                     float speedX = NPC.velocity.X + Main.rand.Next(-51, 51) * 0.1f;
                     float speedY = NPC.velocity.Y + Main.rand.Next(-51, 51) * 0.1f;
-                    Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.CrystalBit>(), 0, 0, Main.myPlayer);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.CrystalBit>(), 0, 0, Main.myPlayer);
                 }
             }
             if (NPC.ai[3] == 540) NPC.ai[3] = 0;
@@ -218,7 +218,7 @@ public class CrystalSpectre : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return !Main.dayTime && Main.hardMode && spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.5f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return !Main.dayTime && Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.5f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -235,11 +235,11 @@ public class CrystalSpectre : ModNPC
                 Main.dust[num334].velocity *= 2f;
                 Main.dust[num334].noGravity = true;
             }
-            int num335 = Gore.NewGore(new Vector2(NPC.position.X, NPC.position.Y - 10f), new Vector2(hitDirection, 0f), 99, NPC.scale);
+            int num335 = Gore.NewGore(NPC.GetSource_FromThis(), new Vector2(NPC.position.X, NPC.position.Y - 10f), new Vector2(hitDirection, 0f), 99, NPC.scale);
             Main.gore[num335].velocity *= 0.3f;
-            num335 = Gore.NewGore(new Vector2(NPC.position.X, NPC.position.Y + NPC.height / 2 - 15f), new Vector2(hitDirection, 0f), 99, NPC.scale);
+            num335 = Gore.NewGore(NPC.GetSource_FromThis(), new Vector2(NPC.position.X, NPC.position.Y + NPC.height / 2 - 15f), new Vector2(hitDirection, 0f), 99, NPC.scale);
             Main.gore[num335].velocity *= 0.3f;
-            num335 = Gore.NewGore(new Vector2(NPC.position.X, NPC.position.Y + NPC.height - 20f), new Vector2(hitDirection, 0f), 99, NPC.scale);
+            num335 = Gore.NewGore(NPC.GetSource_FromThis(), new Vector2(NPC.position.X, NPC.position.Y + NPC.height - 20f), new Vector2(hitDirection, 0f), 99, NPC.scale);
             Main.gore[num335].velocity *= 0.3f;
         }
     }

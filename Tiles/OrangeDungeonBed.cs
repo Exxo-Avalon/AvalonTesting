@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -26,21 +29,22 @@ public class OrangeDungeonBed : ModTile
         DustType = DustID.Coralstone;
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Furniture.OrangeDungeonBed>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32,
+            ModContent.ItemType<Items.Placeable.Furniture.OrangeDungeonBed>());
     }
 
     public override bool RightClick(int i, int j)
     {
         Player player = Main.LocalPlayer;
         Tile tile = Main.tile[i, j];
-        int spawnX = (i - (tile.TileFrameX / 18)) + (tile.TileFrameX >= 72 ? 5 : 2);
+        int spawnX = i - (tile.TileFrameX / 18) + (tile.TileFrameX >= 72 ? 5 : 2);
         int spawnY = j + 2;
 
         if (tile.TileFrameY % 38 != 0)
@@ -50,7 +54,7 @@ public class OrangeDungeonBed : ModTile
 
         if (!Player.IsHoveringOverABottomSideOfABed(i, j))
         {
-            if (player.IsWithinSnappngRangeToTile(i, j, Terraria.GameContent.PlayerSleepingHelper.BedSleepingMaxDistance))
+            if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
             {
                 player.GamepadEnableGrappleCooldown();
                 player.sleeping.StartSleeping(player, i, j);
@@ -63,12 +67,12 @@ public class OrangeDungeonBed : ModTile
             if (player.SpawnX == spawnX && player.SpawnY == spawnY)
             {
                 player.RemoveSpawn();
-                Main.NewText(Terraria.Localization.Language.GetTextValue("Game.SpawnPointRemoved"), byte.MaxValue, 240, 20);
+                Main.NewText(Language.GetTextValue("Game.SpawnPointRemoved"), byte.MaxValue, 240, 20);
             }
             else if (Player.CheckSpawn(spawnX, spawnY))
             {
                 player.ChangeSpawn(spawnX, spawnY);
-                Main.NewText(Terraria.Localization.Language.GetTextValue("Game.SpawnPointSet"), byte.MaxValue, 240, 20);
+                Main.NewText(Language.GetTextValue("Game.SpawnPointSet"), byte.MaxValue, 240, 20);
             }
         }
 

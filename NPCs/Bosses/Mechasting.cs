@@ -103,7 +103,7 @@ public class Mechasting : ModNPC
                 SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33);
                 Vector2 offset = new Vector2(NPC.Center.X + Main.rand.Next(5) * NPC.direction, NPC.Center.Y + Main.rand.Next(5, 10));
                 float rotation = (float)Math.Atan2(NPC.Center.Y - offset.Y, NPC.Center.X - offset.X);
-                int num54 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), ProjectileID.DeathLaser, damage, 0f, 0);
+                int num54 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), ProjectileID.DeathLaser, damage, 0f, 0);
                 //Main.projectile[num54].notReflect = true;
                 NPC.ai[2] = 0;
             }
@@ -164,7 +164,7 @@ public class Mechasting : ModNPC
                 {
                     while (f <= .2f)
                     {
-                        num54 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector8.X, vector8.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), type, damage, 0f, NPC.target);
+                        num54 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector8.X, vector8.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), type, damage, 0f, NPC.target);
                         Main.projectile[num54].timeLeft = 600;
                         Main.projectile[num54].tileCollide = false;
                         //Main.projectile[num54].notReflect = true;
@@ -172,7 +172,7 @@ public class Mechasting : ModNPC
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, num54);
                         }
-                        num54 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector8.X, vector8.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), type, damage, 0f, NPC.target);
+                        num54 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector8.X, vector8.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), type, damage, 0f, NPC.target);
                         Main.projectile[num54].timeLeft = 600;
                         Main.projectile[num54].tileCollide = false;
                         //Main.projectile[num54].notReflect = true;
@@ -202,7 +202,7 @@ public class Mechasting : ModNPC
             // spawn stinger probes
             if (NPC.ai[1] % 70 == 0)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<StingerProbe>(), NPC.target);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<StingerProbe>(), NPC.target);
             }
             if (NPC.ai[2] > 700)
             {
@@ -225,7 +225,7 @@ public class Mechasting : ModNPC
                 int p;
                 while (f < 0.2f) // less than 20 degrees
                 {
-                    p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     //Main.projectile[p].notReflect = true;
@@ -236,7 +236,7 @@ public class Mechasting : ModNPC
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                     }
 
-                    p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     //Main.projectile[p].notReflect = true;
@@ -304,7 +304,7 @@ public class Mechasting : ModNPC
                     while (f <= 3.6f)
                     {
                         // above the boss
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         //Main.projectile[p].notReflect = true;
@@ -314,7 +314,7 @@ public class Mechasting : ModNPC
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                         }
                         // below the boss
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         //Main.projectile[p].notReflect = true;

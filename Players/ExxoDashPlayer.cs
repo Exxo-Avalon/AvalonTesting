@@ -198,10 +198,10 @@ public class ExxoDashPlayer : ModPlayer
                     if (npcIndex != -1)
                     {
                         NPC npc = Main.npc[CheckHitCollision()];
-                        float dashDamage = dashData.Damage * Player.GetDamage<GenericDamageClass>()
-                            .CombineWith(Player.GetDamage<MeleeDamageClass>());
-                        float dashKnockBack = dashData.Knockback * Player
-                            .GetKnockback<GenericDamageClass>().CombineWith(Player.GetKnockback<MeleeDamageClass>());
+                        float dashDamage = Player.GetDamage<GenericDamageClass>()
+                            .CombineWith(Player.GetDamage<MeleeDamageClass>()).ApplyTo(dashData.Damage);
+                        float dashKnockBack = Player.GetKnockback<GenericDamageClass>()
+                            .CombineWith(Player.GetKnockback<MeleeDamageClass>()).ApplyTo(dashData.Knockback);
                         bool doesCriticalHit = Main.rand.Next(100) < Player.GetCritChance<GenericDamageClass>() +
                             Player.GetCritChance<MeleeDamageClass>();
                         int damageDirection = Player.velocity.X switch

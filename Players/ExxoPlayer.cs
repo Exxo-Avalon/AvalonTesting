@@ -8,6 +8,7 @@ using AvalonTesting.Items.Consumables;
 using AvalonTesting.Items.Tomes;
 using AvalonTesting.Items.Tools;
 using AvalonTesting.Items.Weapons.Melee;
+using AvalonTesting.Items.Weapons.Ranged;
 using AvalonTesting.Logic;
 using AvalonTesting.Prefixes;
 using AvalonTesting.Projectiles;
@@ -420,7 +421,7 @@ public class ExxoPlayer : ModPlayer
             }
             if (Player.armor[i].prefix == ModContent.PrefixType<Vigorous>())
             {
-                Player.meleeSpeed += 0.03f;
+                Player.GetAttackSpeed(DamageClass.Melee) += 0.03f;
                 Player.GetDamage(DamageClass.Melee) += 0.03f;
             }
             if (Player.armor[i].prefix == ModContent.PrefixType<Overactive>())
@@ -434,7 +435,7 @@ public class ExxoPlayer : ModPlayer
             }
             if (Player.armor[i].prefix == ModContent.PrefixType<Timid>())
             {
-                Player.meleeSpeed -= 0.02f;
+                Player.GetAttackSpeed(DamageClass.Melee) -= 0.02f;
             }
         }
         for (int i = 0; i < 3; i++)
@@ -607,7 +608,7 @@ public class ExxoPlayer : ModPlayer
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    int g1 = Gore.NewGore(Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("Bubble").Type, 1f);
+                    int g1 = Gore.NewGore(Player.GetSource_FromThis(), Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("Bubble").Type, 1f);
                     SoundEngine.PlaySound(SoundID.Item, (int)Player.position.X, (int)Player.position.Y, SoundLoader.GetSoundSlot(Mod, "Sounds/Item/Bubbles"));
                 }
             }
@@ -615,14 +616,14 @@ public class ExxoPlayer : ModPlayer
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int g1 = Gore.NewGore(Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("LargeBubble").Type, 1f);
+                    int g1 = Gore.NewGore(Player.GetSource_FromThis(), Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("LargeBubble").Type, 1f);
                 }
             }
             if (bubbleCD == 40)
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    int g1 = Gore.NewGore(Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("SmallBubble").Type, 1f);
+                    int g1 = Gore.NewGore(Player.GetSource_FromThis(), Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity, Mod.Find<ModGore>("SmallBubble").Type, 1f);
                 }
                 bubbleCD = 0;
             }
@@ -843,7 +844,7 @@ public class ExxoPlayer : ModPlayer
                     int dmgAdd = 0;
                     if (item2.type == ItemID.Spike)
                     {
-                        t = ModContent.ProjectileType<SpikeCannon>();
+                        t = ModContent.ProjectileType<Projectiles.SpikeCannon>();
                         dmgAdd = 11;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.DemonSpikeScale>())
@@ -889,12 +890,12 @@ public class ExxoPlayer : ModPlayer
                             {
                                 float num90 = num89 - (num88 - 1f) / 2f;
                                 Vector2 vector3 = vector2.Rotate(num87 * num90, default);
-                                int num91 = Projectile.NewProjectile(Player.GetProjectileSource_Item(new Item(ModContent.ItemType<Items.Weapons.Ranged.SpikeRailgun>())), position.X + vector3.X, position.Y + vector3.Y, velocity.X, velocity.Y, t, damage + dmgAdd, knockback, Player.whoAmI, 0f, 0f);
+                                int num91 = Projectile.NewProjectile(Player.GetSource_ItemUse_WithPotentialAmmo(ModContent.GetInstance<SpikeRailgun>().Item, ModContent.GetInstance<SpikeRailgun>().Item.ammo), position.X + vector3.X, position.Y + vector3.Y, velocity.X, velocity.Y, t, damage + dmgAdd, knockback, Player.whoAmI, 0f, 0f);
                             }
                             Main.NewText(t);
                             return false;
                         }
-                        Projectile.NewProjectile(Player.GetProjectileSource_Item(new Item(ModContent.ItemType<Items.Weapons.Ranged.SpikeCannon>())), position, velocity, t, damage + dmgAdd, knockback, Player.whoAmI);
+                        Projectile.NewProjectile(Player.GetSource_ItemUse_WithPotentialAmmo(ModContent.GetInstance<Items.Weapons.Ranged.SpikeCannon>().Item, ModContent.GetInstance<Items.Weapons.Ranged.SpikeCannon>().Item.ammo), position, velocity, t, damage + dmgAdd, knockback, Player.whoAmI);
                         return false;
                     }
                 }
@@ -936,7 +937,7 @@ public class ExxoPlayer : ModPlayer
                     int t = 0;
                     if (torches.TryGetValue(item2.type, out t))
                     {
-                        Projectile.NewProjectile(Player.GetProjectileSource_Item(new Item(ModContent.ItemType<TorchLauncher>())), position, new Vector2(velocity.X, velocity.Y), t, 0, 0);
+                        Projectile.NewProjectile(Player.GetSource_ItemUse_WithPotentialAmmo(ModContent.GetInstance<TorchLauncher>().Item, ModContent.GetInstance<TorchLauncher>().Item.ammo), position, new Vector2(velocity.X, velocity.Y), t, 0, 0);
                         return false;
                     }
                     else return base.Shoot(item, source, position, velocity, type, damage, knockback);
@@ -1066,7 +1067,7 @@ public class ExxoPlayer : ModPlayer
         }
         if (ancientSandVortex && Main.rand.Next(10) == 0)
         {
-            Projectile.NewProjectile(Player.GetProjectileSource_OnHit(target, ProjectileSourceID.None), target.position, Vector2.Zero, ModContent.ProjectileType<AncientSandnado>(), 0, 0);
+            Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero, ModContent.ProjectileType<AncientSandnado>(), 0, 0);
         }
         if (vampireTeeth)
         {
@@ -1117,7 +1118,7 @@ public class ExxoPlayer : ModPlayer
             {
                 if (Main.rand.Next(8) == 0 && roseMagicCooldown <= 0)
                 {
-                    int num36 = Item.NewItem(Player.GetProjectileSource_OnHit(target, ProjectileSourceID.None), (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Rosebud>());
+                    int num36 = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X, (int)target.position.Y, target.width, target.height, ModContent.ItemType<Rosebud>());
                     Main.item[num36].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
                     Main.item[num36].velocity.X = Main.rand.Next(10, 31) * 0.2f * Player.direction;
                     roseMagicCooldown = 20;
@@ -1131,7 +1132,7 @@ public class ExxoPlayer : ModPlayer
             {
                 if (proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
                 {
-                    Projectile.NewProjectile(Player.GetProjectileSource_OnHit(target, ProjectileSourceID.None), target.position, Vector2.Zero, ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
+                    Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero, ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
                 }
             }
         }
@@ -1206,7 +1207,7 @@ public class ExxoPlayer : ModPlayer
             float num572 = (float)Math.Atan2(center.Y - npc.Center.Y, center.X - npc.Center.X);
             for (float f = 0f; f <= 3.6f; f += 0.4f)
             {
-                int proj = Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), center.X, center.Y, (float)(Math.Cos(num572 + f) * shootSpeed * -1), (float)(Math.Sin(num572 + f) * shootSpeed * -1.0), ProjectileID.Stinger, 60, 0f, 0, 0f, 0f);
+                int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), center.X, center.Y, (float)(Math.Cos(num572 + f) * shootSpeed * -1), (float)(Math.Sin(num572 + f) * shootSpeed * -1.0), ProjectileID.Stinger, 60, 0f, 0, 0f, 0f);
                 Main.projectile[proj].timeLeft = 600;
                 Main.projectile[proj].tileCollide = false;
                 Main.projectile[proj].hostile = false;
@@ -1215,7 +1216,7 @@ public class ExxoPlayer : ModPlayer
                 {
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), proj, 0f, 0f, 0f, 0);
                 }
-                proj = Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), center.X, center.Y, (float)(Math.Cos(num572 - f) * shootSpeed * -1), (float)(Math.Sin(num572 - f) * shootSpeed * -1.0), ProjectileID.Stinger, 60, 0f, 0, 0f, 0f);
+                proj = Projectile.NewProjectile(npc.GetSource_FromThis(), center.X, center.Y, (float)(Math.Cos(num572 - f) * shootSpeed * -1), (float)(Math.Sin(num572 - f) * shootSpeed * -1.0), ProjectileID.Stinger, 60, 0f, 0, 0f, 0f);
                 Main.projectile[proj].timeLeft = 600;
                 Main.projectile[proj].tileCollide = false;
                 Main.projectile[proj].hostile = false;
@@ -1613,7 +1614,7 @@ public class ExxoPlayer : ModPlayer
         if (ZoneSight) Player.detectCreature = Player.dangerSense = Player.nightVision = true;
         if (ZoneDelight) Player.lifeRegen += 3;
         if (ZoneHumidity) Player.resistCold = true;
-        if (ZoneBlight) Player.armorPenetration += 10;
+        if (ZoneBlight) Player.GetArmorPenetration(DamageClass.Generic) += 10;
 
         #region rift goggles
 
@@ -1625,7 +1626,7 @@ public class ExxoPlayer : ModPlayer
                 Point pt = pposTile2.ToTileCoordinates();
                 if (!Main.tile[pt.X, pt.Y].HasTile)
                 {
-                    int proj = NPC.NewNPC(Player.GetNPCSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), 0);
+                    int proj = NPC.NewNPC(Player.GetSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), 0);
                     if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, proj);
@@ -1648,7 +1649,7 @@ public class ExxoPlayer : ModPlayer
             {
                 Vector2 pposTile2 = Player.position + new Vector2(Main.rand.Next(-35 * 16, 35 * 16), Main.rand.Next(-35 * 16, 35 * 16));
                 Point pt = pposTile2.ToTileCoordinates();
-                int proj = NPC.NewNPC(Player.GetNPCSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), ai1: 1);
+                int proj = NPC.NewNPC(Player.GetSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), ai1: 1);
                 if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, proj);
@@ -1895,7 +1896,7 @@ public class ExxoPlayer : ModPlayer
                          Player.inventory[i].type == ModContent.ItemType<Items.Other.LargeTourmaline>() ||
                          Player.inventory[i].type == ModContent.ItemType<Items.Other.LargePeridot>()))
                     {
-                        int num = Item.NewItem(Player.GetItemSource_Death(), (int)Player.position.X, (int)Player.position.Y, Player.width, Player.height, Player.inventory[i].type);
+                        int num = Item.NewItem(Player.GetSource_Death(), (int)Player.position.X, (int)Player.position.Y, Player.width, Player.height, Player.inventory[i].type);
                         Main.item[num].netDefaults(Player.inventory[i].netID);
                         Main.item[num].Prefix(Player.inventory[i].prefix);
                         Main.item[num].stack = Player.inventory[i].stack;
@@ -2012,7 +2013,7 @@ public class ExxoPlayer : ModPlayer
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    int newBall = Projectile.NewProjectile(Player.GetProjectileSource_Accessory(new Item(ModContent.ItemType<DragonsBondage>())), Player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.Melee.DragonBall>(), (Player.HeldItem.damage / 2) * 3, 1f, Player.whoAmI);
+                    int newBall = Projectile.NewProjectile(Player.GetSource_Accessory(new Item(ModContent.ItemType<DragonsBondage>())), Player.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.Melee.DragonBall>(), (Player.HeldItem.damage / 2) * 3, 1f, Player.whoAmI);
                     Main.projectile[newBall].localAI[0] = i;
                 }
             }
@@ -2223,11 +2224,11 @@ public class ExxoPlayer : ModPlayer
                         Main.dust[num3].velocity *= 0.2f;
                         Main.dust[num3].scale *= 1f + Main.rand.Next(20) * 0.01f;
                     }
-                    int num4 = Gore.NewGore(new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 34f), default, Main.rand.Next(61, 64), 1f);
+                    int num4 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 34f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[num4].velocity.X = Main.rand.Next(-50, 51) * 0.01f;
                     Main.gore[num4].velocity.Y = Main.rand.Next(-50, 51) * 0.01f;
                     Main.gore[num4].velocity *= 0.4f;
-                    num4 = Gore.NewGore(new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 14f), default, Main.rand.Next(61, 64), 1f);
+                    num4 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 14f), default, Main.rand.Next(61, 64), 1f);
                     Main.gore[num4].velocity.X = Main.rand.Next(-50, 51) * 0.01f;
                     Main.gore[num4].velocity.Y = Main.rand.Next(-50, 51) * 0.01f;
                     Main.gore[num4].velocity *= 0.4f;
@@ -2290,11 +2291,11 @@ public class ExxoPlayer : ModPlayer
                             Main.dust[num3].velocity *= 0.2f;
                             Main.dust[num3].scale *= 1f + Main.rand.Next(20) * 0.01f;
                         }
-                        int num4 = Gore.NewGore(new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 34f), default, Main.rand.Next(61, 64), 1f);
+                        int num4 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 34f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[num4].velocity.X = Main.rand.Next(-50, 51) * 0.01f;
                         Main.gore[num4].velocity.Y = Main.rand.Next(-50, 51) * 0.01f;
                         Main.gore[num4].velocity *= 0.4f;
-                        num4 = Gore.NewGore(new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 14f), default, Main.rand.Next(61, 64), 1f);
+                        num4 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width / 2 - 24f, Player.position.Y + Player.height / 2 - 14f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[num4].velocity.X = Main.rand.Next(-50, 51) * 0.01f;
                         Main.gore[num4].velocity.Y = Main.rand.Next(-50, 51) * 0.01f;
                         Main.gore[num4].velocity *= 0.4f;
@@ -2565,17 +2566,17 @@ public class ExxoPlayer : ModPlayer
             int g3 = Main.rand.Next(2);
             if (g3 == 0) g3 = Mod.Find<ModGore>("QuackGore1").Type;
             if (g3 == 1) g3 = Mod.Find<ModGore>("QuackGore2").Type;
-            int num3 = Gore.NewGore(new Vector2(Player.position.X + Player.width / 2 - 16f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g, 1f);
+            int num3 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width / 2 - 16f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g, 1f);
             Main.gore[num3].velocity.X = Main.gore[num3].velocity.X * 0.1f - Player.velocity.X * 0.1f;
             Main.gore[num3].velocity.Y = Main.gore[num3].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
             Main.gore[num3].sticky = false;
             Main.gore[num3].rotation += 0.1f;
-            num3 = Gore.NewGore(new Vector2(Player.position.X - 36f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g2, 1f);
+            num3 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X - 36f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g2, 1f);
             Main.gore[num3].velocity.X = Main.gore[num3].velocity.X * 0.1f - Player.velocity.X * 0.1f;
             Main.gore[num3].velocity.Y = Main.gore[num3].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
             Main.gore[num3].sticky = false;
             Main.gore[num3].rotation += 0.1f;
-            num3 = Gore.NewGore(new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g3, 1f);
+            num3 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + h - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), g3, 1f);
             Main.gore[num3].velocity.X = Main.gore[num3].velocity.X * 0.1f - Player.velocity.X * 0.1f;
             Main.gore[num3].velocity.Y = Main.gore[num3].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
             Main.gore[num3].sticky = false;
@@ -2601,28 +2602,28 @@ public class ExxoPlayer : ModPlayer
                     targetPosition3 = new Vector2(Player.Center.X + Main.rand.Next(20, 40), Player.Center.Y);
                 }
 
-                Projectile.NewProjectile(Player.GetProjectileSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, Player.whoAmI);
 
                 for (int i = 0; i < 1; i++)
                 {
                     Vector2 vectorBetween = targetPosition - cloudPosition;
                     float randomSeed = Main.rand.Next(100);
                     Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(Player.GetProjectileSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
+                    Projectile.NewProjectile(Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
                 }
                 for (int i = 0; i < 1; i++)
                 {
                     Vector2 vectorBetween = targetPosition2 - cloudPosition;
                     float randomSeed = Main.rand.Next(100);
                     Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(Player.GetProjectileSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
+                    Projectile.NewProjectile(Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
                 }
                 for (int i = 0; i < 1; i++)
                 {
                     Vector2 vectorBetween = targetPosition3 - cloudPosition;
                     float randomSeed = Main.rand.Next(100);
                     Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(Player.GetProjectileSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
+                    Projectile.NewProjectile(Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition, startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer, vectorBetween.ToRotation(), randomSeed);
                 }
             }
 
@@ -2643,7 +2644,7 @@ public class ExxoPlayer : ModPlayer
                     {
                         pos.Y--;
                     }
-                    Projectile.NewProjectile(Player.GetProjectileSource_SetBonus(ProjectileSourceID.None), pos, Vector2.Zero, ModContent.ProjectileType<LeafStorm>(), 80, 0.6f, Main.myPlayer);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), pos, Vector2.Zero, ModContent.ProjectileType<LeafStorm>(), 80, 0.6f, Main.myPlayer);
                 }
             }
         }
@@ -2671,13 +2672,13 @@ public class ExxoPlayer : ModPlayer
                     {
                         Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                         float yDestination = Player.position.Y - 360f;
-                        int num6 = Gore.NewGore(new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                        int num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                         Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                         Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
-                        num6 = Gore.NewGore(new Vector2(Player.position.X - 36f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                        num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X - 36f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                         Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                         Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
-                        num6 = Gore.NewGore(new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                        num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                         Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                         Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
                         SoundEngine.PlaySound(2, Player.Center, 11);
@@ -2690,13 +2691,13 @@ public class ExxoPlayer : ModPlayer
                         {
                             Player.GetModPlayer<ExxoStaminaPlayer>().StatStam -= amt;
                             float yDestination = Player.position.Y - 360f;
-                            int num6 = Gore.NewGore(new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                            int num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + (Player.width / 2) - 16f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                             Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                             Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
-                            num6 = Gore.NewGore(new Vector2(Player.position.X - 36f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                            num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X - 36f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                             Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                             Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
-                            num6 = Gore.NewGore(new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
+                            num6 = Gore.NewGore(Player.GetSource_FromThis(), new Vector2(Player.position.X + Player.width + 4f, Player.position.Y + (Player.gravDir == -1 ? 0 : Player.height) - 16f), new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14), 1f);
                             Main.gore[num6].velocity.X = Main.gore[num6].velocity.X * 0.1f - Player.velocity.X * 0.1f;
                             Main.gore[num6].velocity.Y = Main.gore[num6].velocity.Y * 0.1f - Player.velocity.Y * 0.05f;
                             SoundEngine.PlaySound(2, Player.Center, 11);

@@ -56,16 +56,16 @@ public class ArmoredHellTortoise : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore1").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore2").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore1").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore2").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
         }
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneUnderworldHeight ? 0.125f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.Player.ZoneUnderworldHeight ? 0.125f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

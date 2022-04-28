@@ -63,7 +63,7 @@ public class CaesiumStalker : ModNPC
     {
         if (Main.rand.Next(20) == 0)
         {
-            Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
+            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -187,7 +187,7 @@ public class CaesiumStalker : ModNPC
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
                     var mainproj = (float)Math.Atan2(NPC.Center.Y - (Main.player[NPC.target].Center.Y), NPC.Center.X - (Main.player[NPC.target].Center.X));
-                    int p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ModContent.ProjectileType<Projectiles.CaesiumSpike>(), 50, 1f, NPC.target, 0f, 0f);
+                    int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ModContent.ProjectileType<Projectiles.CaesiumSpike>(), 50, 1f, NPC.target, 0f, 0f);
                     Main.projectile[p].velocity *= 13f;
                     SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 8);
                 }
@@ -260,13 +260,13 @@ public class CaesiumStalker : ModNPC
         {
             SoundEngine.PlaySound(SoundID.Item, (int)NPC.Center.X, (int)NPC.Center.Y, 27, 1.2f, -0.5f);
             SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 5, 1f, -0.5f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore1").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore2").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore3").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore4").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore5").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore5").Type, 1.2f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore6").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore1").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore2").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore3").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore4").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore5").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore5").Type, 1.2f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore6").Type, 1.2f);
             /*for (int k = 0; k < 7; k++)
             {
                 Vector2 value14 = new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10));
@@ -296,7 +296,7 @@ public class CaesiumStalker : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.AvalonBiome().ZoneCaesium && spawnInfo.player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh)) // && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
+        if (spawnInfo.Player.AvalonBiome().ZoneCaesium && spawnInfo.Player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh)) // && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
             return 1f;
         return 0;
     }

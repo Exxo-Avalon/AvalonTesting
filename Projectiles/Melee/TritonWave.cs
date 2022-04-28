@@ -58,7 +58,7 @@ public class TritonWave : ModProjectile
         if (Main.rand.Next(80) == 1)
         {
             int randomSize = Main.rand.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64));
+            int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64));
             Gore gore30 = Main.gore[num161];
             Gore gore40 = gore30;
             gore40.velocity *= 0.3f;

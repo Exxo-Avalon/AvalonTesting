@@ -93,16 +93,16 @@ public class IceGolemBeam : ModProjectile
             if (gore4 == 0) gore4 = Mod.Find<ModGore>("IcyExplosionGore1").Type;
             if (gore4 == 1) gore4 = Mod.Find<ModGore>("IcyExplosionGore2").Type;
             if (gore4 == 2) gore4 = Mod.Find<ModGore>("IcyExplosionGore3").Type;
-            int goreIndex = Gore.NewGore(Projectile.position, Projectile.velocity, gore1);
+            int goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, gore1);
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-            goreIndex = Gore.NewGore(Projectile.position, Projectile.velocity, gore2);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(),Projectile.position, Projectile.velocity, gore2);
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-            goreIndex = Gore.NewGore(Projectile.position, Projectile.velocity, gore3);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(),Projectile.position, Projectile.velocity, gore3);
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-            goreIndex = Gore.NewGore(Projectile.position, Projectile.velocity, gore4);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(),Projectile.position, Projectile.velocity, gore4);
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
         }

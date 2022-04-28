@@ -51,7 +51,7 @@ public class DarkMotherSlime : ModNPC
     {
         for (var k = 0; k < 2; k++)
         {
-            NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NPCs.DarkMatterSlime>(), 0);
+            NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NPCs.DarkMatterSlime>(), 0);
         }
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -192,7 +192,7 @@ public class DarkMotherSlime : ModNPC
         for (int i = 0; i < 2; i++)
         {
             int randomSize = Main.rand.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(new Vector2(NPC.position.X, NPC.position.Y), default(Vector2), Main.rand.Next(61, 64));
+            int num161 = Gore.NewGore(NPC.GetSource_FromThis(), new Vector2(NPC.position.X, NPC.position.Y), default(Vector2), Main.rand.Next(61, 64));
             Gore gore30 = Main.gore[num161];
             Gore gore40 = gore30;
             gore40.velocity *= 0.3f;
@@ -200,14 +200,14 @@ public class DarkMotherSlime : ModNPC
             Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
             Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
         }
-        int bomb = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, Vector2.Zero, ProjectileID.Grenade, 50, 3f);
+        int bomb = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ProjectileID.Grenade, 50, 3f);
         Main.projectile[bomb].timeLeft = 1;
-        Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, new Vector2(0, -5f), ModContent.ProjectileType<Projectiles.DarkGeyser>(), NPC.damage / 3, 1f);
+        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, new Vector2(0, -5f), ModContent.ProjectileType<Projectiles.DarkGeyser>(), NPC.damage / 3, 1f);
         for (int i = 0; i < 9; i++)
         {
             int rand = Main.rand.Next(-10, 11);
             Vector2 velocity = new Vector2(0, -5f).RotatedBy(MathHelper.ToRadians(rand));
-            int cinder = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f);
+            int cinder = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f);
 
         }
         NPC.NPCLoot();

@@ -29,7 +29,7 @@ class HellsteelVest : ModItem
     }
     public override void UpdateEquip(Player player)
     {
-        player.minionKB += 0.25f;
+        player.GetKnockback(DamageClass.Summon) += 0.25f;
         player.maxMinions++;
     }
 }

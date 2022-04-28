@@ -265,6 +265,6 @@ public class Dragonfly : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone() && !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.05f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.InPillarZone() && !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.05f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

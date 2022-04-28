@@ -81,19 +81,19 @@ public class DragonLordHead : ModNPC
     {
         if (Main.rand.Next(7) == 0)
         {
-            Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonLordTrophy>(), 1, false, 0, false);
+            Item.NewItem(NPC.GetSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonLordTrophy>(), 1, false, 0, false);
         }
 
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DragonLordBossBag>()));
         if (!Main.expertMode)
         {
             int rand = Main.rand.Next(5);
-            if (rand == 0) Item.NewItem(NPC.GetItemSource_Loot(),NPC.position, ModContent.ItemType<Items.Accessories.DragonStone>());
-            else if (rand == 1) Item.NewItem(NPC.GetItemSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Melee.Infernasword>());
-            else if (rand == 2) Item.NewItem(NPC.GetItemSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Ranged.QuadroCannon>());
-            else if (rand == 3) Item.NewItem(NPC.GetItemSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Magic.MagmafrostBolt>());
-            else if (rand == 4) Item.NewItem(NPC.GetItemSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Summon.ReflectorStaff>());
-            Item.NewItem(NPC.GetItemSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
+            if (rand == 0) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Accessories.DragonStone>());
+            else if (rand == 1) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Melee.Infernasword>());
+            else if (rand == 2) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Ranged.QuadroCannon>());
+            else if (rand == 3) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Magic.MagmafrostBolt>());
+            else if (rand == 4) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Summon.ReflectorStaff>());
+            Item.NewItem(NPC.GetSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
         }
 
         if (!ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
@@ -140,7 +140,7 @@ public class DragonLordHead : ModNPC
                     {
                         num184 = ModContent.NPCType<DragonLordTail>();
                     }
-                    var num185 = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(),(int)(NPC.position.X + NPC.width / 2), (int)(NPC.position.Y + NPC.height), num184, NPC.whoAmI);
+                    var num185 = NPC.NewNPC(NPC.GetSource_FromAI(),(int)(NPC.position.X + NPC.width / 2), (int)(NPC.position.Y + NPC.height), num184, NPC.whoAmI);
                     Main.npc[num185].ai[3] = NPC.whoAmI;
                     Main.npc[num185].realLife = NPC.whoAmI;
                     Main.npc[num185].ai[1] = num182;
@@ -193,7 +193,7 @@ public class DragonLordHead : ModNPC
         }
         if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath)
         {
-            int p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(),NPC.position.X + NPC.width / 2f, NPC.position.Y + NPC.height / 2f, NPC.velocity.X * 3f + Main.rand.Next(-2, 3), NPC.velocity.Y * 3f + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f, 255, 0f, 0f);
+            int p = Projectile.NewProjectile(NPC.GetSource_FromAI(),NPC.position.X + NPC.width / 2f, NPC.position.Y + NPC.height / 2f, NPC.velocity.X * 3f + Main.rand.Next(-2, 3), NPC.velocity.Y * 3f + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f, 255, 0f, 0f);
             Main.projectile[p].hostile = true;
             Main.projectile[p].friendly = false;
             NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD--;

@@ -484,7 +484,7 @@ public class MatterMan : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
         {
             return 1f;
         }
@@ -517,7 +517,7 @@ public class MatterMan : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MatterManHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MatterManHead").Type, 1f);
         }
     }
 }

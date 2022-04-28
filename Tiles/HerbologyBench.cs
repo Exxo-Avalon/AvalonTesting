@@ -1,6 +1,7 @@
 ﻿using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -22,7 +23,7 @@ public class HerbologyBench : ModTile
         TileID.Sets.DisableSmartCursor[Type] = true;
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }

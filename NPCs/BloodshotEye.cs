@@ -78,12 +78,12 @@ public class BloodshotEye : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye1").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye2").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye1").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye2").Type, 1f);
         }
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.bloodMoon && !spawnInfo.player.InPillarZone() ? 0.121f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.bloodMoon && !spawnInfo.Player.InPillarZone() ? 0.121f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

@@ -33,6 +33,6 @@ class AncientBodyplate : ModItem
     public override void UpdateEquip(Player player)
     {
         player.aggro += 500;
-        player.minionKB += 0.1f;
+        player.GetKnockback(DamageClass.Summon) += 0.1f;
     }
 }

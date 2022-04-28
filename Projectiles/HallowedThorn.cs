@@ -63,7 +63,7 @@ public class HallowedThorn : ModProjectile
                         var point = new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
                         float num929 = 0.3926991f * (float)Main.rand.NextDouble();
                         Projectile.velocity = AvalonTestingGlobalProjectile.RotateAboutOrigin(point, num929);
-                        int num930 = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(),
+                        int num930 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                             vector73.X + Projectile.velocity.X, vector73.Y + Projectile.velocity.Y,
                             Projectile.velocity.X, Projectile.velocity.Y, num928, Projectile.damage,
                             Projectile.knockBack, Projectile.owner);
@@ -73,7 +73,7 @@ public class HallowedThorn : ModProjectile
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), num930);
                         num929 = 0.3926991f * (float)Main.rand.NextDouble();
                         nprojectile.velocity = AvalonTestingGlobalProjectile.RotateAboutOrigin(point, -num929);
-                        num930 = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(),
+                        num930 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                             vector73.X + Projectile.velocity.X, vector73.Y + Projectile.velocity.Y,
                             Projectile.velocity.X, Projectile.velocity.Y, num928, Projectile.damage,
                             Projectile.knockBack, Projectile.owner);
@@ -84,7 +84,7 @@ public class HallowedThorn : ModProjectile
                         return;
                     }
 
-                    int num931 = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(),
+                    int num931 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                         vector73.X + Projectile.velocity.X, vector73.Y + Projectile.velocity.Y, Projectile.velocity.X,
                         Projectile.velocity.Y, num928, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     Projectile projectile2 = Main.projectile[num931];

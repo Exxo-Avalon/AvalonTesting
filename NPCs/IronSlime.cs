@@ -94,6 +94,6 @@ public class IronSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || WorldGen.SavedOreTiers.Iron == TileID.Iron) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && (Main.hardMode || WorldGen.SavedOreTiers.Iron == TileID.Iron) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

@@ -403,7 +403,7 @@ public class WallofSteel : ModNPC
                 {
                     if (Main.netMode != NetmodeID.MultiplayerClient) // leeches
                     {
-                        int num442 = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)(NPC.position.X + NPC.width / 2), (int)(NPC.position.Y + NPC.height / 2 + 20f), ModContent.NPCType<MechanicalLeechHead>(), 1);
+                        int num442 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + NPC.width / 2), (int)(NPC.position.Y + NPC.height / 2 + 20f), ModContent.NPCType<MechanicalLeechHead>(), 1);
                         Main.npc[num442].velocity.X = NPC.direction * 8;
                     }
                 }
@@ -417,14 +417,14 @@ public class WallofSteel : ModNPC
                     SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.wosT, 33);
                     while (f <= .1f)
                     {
-                        fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
+                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
                         Main.projectile[fire].timeLeft = 600;
                         Main.projectile[fire].tileCollide = false;
                         if (Main.netMode != NetmodeID.SinglePlayer)
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, fire);
                         }
-                        fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
+                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
                         Main.projectile[fire].timeLeft = 600;
                         Main.projectile[fire].tileCollide = false;
                         if (Main.netMode != NetmodeID.SinglePlayer)
@@ -438,7 +438,7 @@ public class WallofSteel : ModNPC
                 NPC.ai[2]++;
                 if (NPC.ai[2] == 100)
                 {
-                    int laser = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosB, NPC.velocity.X, NPC.velocity.Y, ProjectileID.DeathLaser, Main.expertMode ? 70 : 55, 4f);
+                    int laser = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosB, NPC.velocity.X, NPC.velocity.Y, ProjectileID.DeathLaser, Main.expertMode ? 70 : 55, 4f);
                     Main.projectile[laser].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, AvalonTestingWorld.wosB)) * 5f;
                     Main.projectile[laser].hostile = true;
                     Main.projectile[laser].friendly = false;
@@ -459,13 +459,13 @@ public class WallofSteel : ModNPC
                     SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.wosT, 33);
                     //while (f <= .1f)
                     //{
-                    fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
+                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
                     Main.projectile[fire].timeLeft = 600;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, fire);
                     }
-                    fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
+                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
                     Main.projectile[fire].timeLeft = 600;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
@@ -498,7 +498,7 @@ public class WallofSteel : ModNPC
                     if (NPC.ai[3] == 90) t = ModContent.ProjectileType<Projectiles.WallofSteelLaserEnd>(); // end
                     if (NPC.ai[3] % 3 == 0)
                     {
-                        int wide = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.ai[1], NPC.ai[2], NPC.localAI[1], NPC.localAI[2], t, 100, 4f);
+                        int wide = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.ai[1], NPC.ai[2], NPC.localAI[1], NPC.localAI[2], t, 100, 4f);
                         if (NPC.velocity.X > 0)
                         {
                             Main.projectile[wide].velocity = Vector2.Normalize(new Vector2(NPC.ai[1], NPC.ai[2]) - new Vector2(NPC.ai[1] - 100, NPC.ai[2])) * 20f;
@@ -518,7 +518,7 @@ public class WallofSteel : ModNPC
                 if (NPC.ai[3] > 100 && NPC.ai[3] < 150)
                 {
                     NPC.defense = 55;
-                    int fire = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosT, NPC.velocity.X, NPC.velocity.Y, ProjectileID.EyeFire, 45, 4f);
+                    int fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.wosT, NPC.velocity.X, NPC.velocity.Y, ProjectileID.EyeFire, 45, 4f);
                     Main.projectile[fire].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, AvalonTestingWorld.wosT)) * 20f;
                     Main.projectile[fire].tileCollide = false;
                     if (Main.netMode != NetmodeID.SinglePlayer)
@@ -537,7 +537,7 @@ public class WallofSteel : ModNPC
                 NPC.localAI[0] = 2f;
                 for (int num456 = 0; num456 < 11; num456++)
                 {
-                    int hungry = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)num450, ModContent.NPCType<NPCs.MechanicalHungry>(), NPC.whoAmI);
+                    int hungry = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)num450, ModContent.NPCType<NPCs.MechanicalHungry>(), NPC.whoAmI);
                     Main.npc[hungry].ai[0] = num456 * 0.1f - 0.05f;
                 }
                 return;
@@ -547,22 +547,22 @@ public class WallofSteel : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore1").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore2").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore4").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore5").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore7").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore8").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore9").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore10").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore11").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore12").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore13").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore14").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore1").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore2").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore3").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore4").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore5").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore6").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore7").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore8").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore9").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore10").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore11").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore12").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore13").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore14").Type, NPC.scale);
         }
     }
     public override void OnKill()

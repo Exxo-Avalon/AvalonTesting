@@ -76,7 +76,7 @@ public class BacteriumPrime : ModNPC
                 var num900 = NPC.Center.Y;
                 num899 += Main.rand.Next(-NPC.width, NPC.width);
                 num900 += Main.rand.Next(-NPC.height, NPC.height);
-                var num901 = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)num899, (int)num900, ModContent.NPCType<BactusMinion>(), 0);
+                var num901 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)num899, (int)num900, ModContent.NPCType<BactusMinion>(), 0);
                 Main.npc[num901].velocity = new Vector2(Main.rand.Next(-30, 31) * 0.1f, Main.rand.Next(-30, 31) * 0.1f);
                 Main.npc[num901].netUpdate = true;
             }
@@ -346,9 +346,9 @@ public class BacteriumPrime : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime1").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime2").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime3").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime1").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime2").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("BacteriumPrime3").Type, 1f);
         }
     }
 }

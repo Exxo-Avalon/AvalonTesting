@@ -44,7 +44,7 @@ public class BlahBullet : ModProjectile
             num202 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default(Color), 1.5f);
             Main.dust[num202].velocity *= 2f;
         }
-        int num203 = Gore.NewGore(new Vector2(Projectile.position.X - 10f, Projectile.position.Y - 10f), default(Vector2), Main.rand.Next(61, 64), 1f);
+        int num203 = Gore.NewGore(Projectile.GetSource_FromThis(),new Vector2(Projectile.position.X - 10f, Projectile.position.Y - 10f), default(Vector2), Main.rand.Next(61, 64), 1f);
         Main.gore[num203].velocity *= 0.3f;
         Gore expr_639C_cp_0 = Main.gore[num203];
         expr_639C_cp_0.velocity.X = expr_639C_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
@@ -56,7 +56,7 @@ public class BlahBullet : ModProjectile
             {
                 float num134 = -Projectile.velocity.X * (float)Main.rand.Next(40, 70) * 0.01f + (float)Main.rand.Next(-20, 21) * 0.9f;
                 float num135 = -Projectile.velocity.Y * (float)Main.rand.Next(40, 70) * 0.01f + (float)Main.rand.Next(-20, 21) * 0.9f;
-                Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position.X + num134, Projectile.position.Y + num135, num134, num135, ModContent.ProjectileType<BlahBulletOffspring>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X + num134, Projectile.position.Y + num135, num134, num135, ModContent.ProjectileType<BlahBulletOffspring>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
             }
         }
         if (Projectile.owner == Main.myPlayer)

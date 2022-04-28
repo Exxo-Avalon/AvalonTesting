@@ -80,7 +80,7 @@ public class CursedScepter : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.ZoneDungeon ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.Player.ZoneDungeon ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

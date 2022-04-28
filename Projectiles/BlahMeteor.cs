@@ -57,25 +57,25 @@ public class BlahMeteor : ModProjectile
             {
                 scaleFactor8 = 0.8f;
             }
-            int num346 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+            int num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
             Gore expr_A0B0_cp_0 = Main.gore[num346];
             expr_A0B0_cp_0.velocity.X = expr_A0B0_cp_0.velocity.X + 1f;
             Gore expr_A0D0_cp_0 = Main.gore[num346];
             expr_A0D0_cp_0.velocity.Y = expr_A0D0_cp_0.velocity.Y + 1f;
-            num346 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+            num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
             Gore expr_A153_cp_0 = Main.gore[num346];
             expr_A153_cp_0.velocity.X = expr_A153_cp_0.velocity.X - 1f;
             Gore expr_A173_cp_0 = Main.gore[num346];
             expr_A173_cp_0.velocity.Y = expr_A173_cp_0.velocity.Y + 1f;
-            num346 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+            num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
             Gore expr_A1F6_cp_0 = Main.gore[num346];
             expr_A1F6_cp_0.velocity.X = expr_A1F6_cp_0.velocity.X + 1f;
             Gore expr_A216_cp_0 = Main.gore[num346];
             expr_A216_cp_0.velocity.Y = expr_A216_cp_0.velocity.Y - 1f;
-            num346 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+            num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
             Gore expr_A299_cp_0 = Main.gore[num346];
             expr_A299_cp_0.velocity.X = expr_A299_cp_0.velocity.X - 1f;
@@ -134,7 +134,7 @@ public class BlahMeteor : ModProjectile
         {
             float speedX = Projectile.velocity.X + Main.rand.Next(20, 51) * 0.1f;
             float speedY = Projectile.velocity.Y + Main.rand.Next(20, 51) * 0.1f;
-            int p = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position, new Vector2(speedX, speedY), ModContent.ProjectileType<BlahStar>(), Projectile.damage, Projectile.knockBack);
+            int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(speedX, speedY), ModContent.ProjectileType<BlahStar>(), Projectile.damage, Projectile.knockBack);
             Main.projectile[p].friendly = true;
             Main.projectile[p].hostile = false;
             Main.projectile[p].owner = Projectile.owner;
@@ -143,7 +143,7 @@ public class BlahMeteor : ModProjectile
         {
             float speedX = Projectile.velocity.X + Main.rand.Next(-51, -20) * 0.1f;
             float speedY = Projectile.velocity.Y + Main.rand.Next(20, 51) * 0.1f;
-            int p = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position, new Vector2(speedX, speedY), ModContent.ProjectileType<BlahStar>(), Projectile.damage, Projectile.knockBack);
+            int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(speedX, speedY), ModContent.ProjectileType<BlahStar>(), Projectile.damage, Projectile.knockBack);
             Main.projectile[p].friendly = true;
             Main.projectile[p].hostile = false;
             Main.projectile[p].owner = Projectile.owner;

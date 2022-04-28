@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AvalonTesting.Items.Accessories;
 using AvalonTesting.Items.Consumables;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Painting;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Ranged;
+using AvalonTesting.Projectiles;
 using AvalonTesting.Systems;
+using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -30,13 +27,11 @@ public class Iceman : ModNPC
         NPCID.Sets.AttackType[NPC.type] = 0;
         NPCID.Sets.AttackTime[NPC.type] = 50;
         NPCID.Sets.AttackAverageChance[NPC.type] = 10;
-		
-		NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {
-			Velocity = 1f
-			};
-		
-		NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
-		
+
+        var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {Velocity = 1f};
+
+        NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
         NPC.Happiness
             .SetBiomeAffection<OceanBiome>(AffectionLevel.Hate)
             .SetBiomeAffection<JungleBiome>(AffectionLevel.Hate)
@@ -63,38 +58,32 @@ public class Iceman : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         AnimationType = 22;
     }
+
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow,
-            new FlavorTextBestiaryInfoElement("The Iceman uses a translator to speak, as his native language is unknown to most. He comes from a land far to the north, where it is cold year-round. As such, he prefers the cold, and hates the heat.")
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Snow, new FlavorTextBestiaryInfoElement(
+                "The Iceman uses a translator to speak, as his native language is unknown to most. He comes from a land far to the north, where it is cold year-round. As such, he prefers the cold, and hates the heat.")
         });
     }
-    public override string TownNPCName()
+
+    public override List<string> SetNPCNameList()
     {
-        switch (Main.rand.Next(9))
+        return new List<string>
         {
-            case 0:
-                return "Icik";
-            case 1:
-                return "Paul";
-            case 2:
-                return "Skaldak";
-            case 3:
-                return "Tom";
-            case 4:
-                return "Sisko";
-            case 5:
-                return "Lance";
-            case 6:
-                return "Adrian";
-            case 7:
-                return "Fred";
-            default:
-                return "Jules";
-        }
+            "Icik",
+            "Paul",
+            "Skaldak",
+            "Tom",
+            "Sisko",
+            "Lance",
+            "Adrian",
+            "Fred",
+            "Jules"
+        };
     }
+
     public override string GetChat()
     {
         if (NPC.homeless)
@@ -102,7 +91,8 @@ public class Iceman : ModNPC
             switch (Main.rand.Next(3))
             {
                 case 0:
-                    return "Thanks for dislodging me from that glacier bit. If you hadn't, I'd have probably gone dormant and stayed there for eons!";
+                    return
+                        "Thanks for dislodging me from that glacier bit. If you hadn't, I'd have probably gone dormant and stayed there for eons!";
                 case 1:
                     return "Wow! A human! I haven't seen one of you for... I don't know how long!";
                 case 2:
@@ -115,6 +105,7 @@ public class Iceman : ModNPC
             {
                 return "You turned off the sun! Awesome. Now I won't melt.";
             }
+
             switch (Main.rand.Next(11))
             {
                 case 0:
@@ -122,15 +113,18 @@ public class Iceman : ModNPC
                 case 1:
                     return "Could you turn down the sun? It's getting too hot in here. I'll melt!";
                 case 2:
-                    return "I hope you keep a spare bag of ice on you. I'm about to chunk off and I need something to replace my mass.";
+                    return
+                        "I hope you keep a spare bag of ice on you. I'm about to chunk off and I need something to replace my mass.";
                 case 3:
                     return "Go long! I just made an ice football-- Get it?";
                 case 4:
                     return "Can you move the hellstone in that chest away from me? I'm feeling ill from all the heat.";
                 case 5:
-                    return "Are you going to buy things? It makes me feel all warm and fuzzy inside when you do. Oh shoot, now I'm melting...";
+                    return
+                        "Are you going to buy things? It makes me feel all warm and fuzzy inside when you do. Oh shoot, now I'm melting...";
                 case 6:
-                    return "My people are very cold sometimes. I remember one of them standing in the way of a large sea liner.";
+                    return
+                        "My people are very cold sometimes. I remember one of them standing in the way of a large sea liner.";
                 case 7:
                     return "You know what I think? That people don't notice my kind because we're ice to everyone.";
                 case 8:
@@ -141,8 +135,10 @@ public class Iceman : ModNPC
                     return "Elta ia jiopa kol nib rtiufaba. Oops, my translator broke. Oh, there it goes.";
             }
         }
+
         return "";
     }
+
     public static List<Item> CreateNewShop()
     {
         // create a list of item ids
@@ -151,26 +147,41 @@ public class Iceman : ModNPC
         itemIds.Add(ItemID.FrostCore);
         itemIds.Add(ItemID.FrostMinnow);
         itemIds.Add(ModContent.ItemType<SoulofIce>());
-        if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<Freezethrower>());
+        if (Main.LocalPlayer.ZoneSnow)
+        {
+            itemIds.Add(ModContent.ItemType<Items.Weapons.Ranged.Freezethrower>());
+        }
+
         itemIds.Add(ModContent.ItemType<FrostySpectacle>());
         itemIds.Add(ModContent.ItemType<BagofFrost>());
         itemIds.Add(ItemID.IceTorch);
-        if (ModContent.GetInstance<DownedBossSystem>().DownedOblivion) itemIds.Add(ModContent.ItemType<HydrolythTrace>());
-        if (Main.LocalPlayer.ZoneSnow) itemIds.Add(ModContent.ItemType<FreezeBolt>());
+        if (ModContent.GetInstance<DownedBossSystem>().DownedOblivion)
+        {
+            itemIds.Add(ModContent.ItemType<HydrolythTrace>());
+        }
+
+        if (Main.LocalPlayer.ZoneSnow)
+        {
+            itemIds.Add(ModContent.ItemType<Items.Weapons.Magic.FreezeBolt>());
+        }
+
         // convert to a list of items
         var items = new List<Item>();
         foreach (int itemId in itemIds)
         {
-            Item item = new Item();
+            var item = new Item();
             item.SetDefaults(itemId);
             items.Add(item);
         }
+
         return items;
     }
+
     public override void SetChatButtons(ref string button, ref string button2)
     {
         button = Language.GetTextValue("LegacyInterface.28");
     }
+
     public override void OnChatButtonClicked(bool firstButton, ref bool shop)
     {
         if (firstButton)
@@ -178,18 +189,22 @@ public class Iceman : ModNPC
             shop = true;
         }
     }
+
     public override void SetupShop(Chest shop, ref int nextSlot)
     {
         foreach (Item item in CreateNewShop())
         {
             // We dont want "empty" items and unloaded items to appear
             if (item == null || item.type == ItemID.None)
+            {
                 continue;
+            }
 
             shop.item[nextSlot].SetDefaults(item.type);
             nextSlot++;
         }
     }
+
     /*public override void AI()
     {
         var flag22 = Main.raining;
@@ -685,22 +700,27 @@ public class Iceman : ModNPC
             NPC.frame.Y = frameHeight;
         }*/
     }
+
     public override void TownNPCAttackStrength(ref int damage, ref float knockback)
     {
         damage = 65;
         knockback = 4f;
     }
+
     public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
     {
         cooldown = 30;
         randExtraCooldown = 30;
     }
+
     public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
     {
-        projType = ModContent.ProjectileType<Projectiles.Icicle>();
+        projType = ModContent.ProjectileType<Icicle>();
         attackDelay = 1;
     }
-    public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+
+    public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection,
+                                                ref float randomOffset)
     {
         multiplier = 12f;
         randomOffset = 2f;

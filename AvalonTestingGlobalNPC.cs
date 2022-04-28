@@ -101,13 +101,13 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
         {
             pool.Clear();
             pool.Add(ModContent.NPCType<Valkyrie>(), 0.6f);
             pool.Add(ModContent.NPCType<CloudBat>(), 0.9f);
         }
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone())
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone())
         {
             pool.Clear();
             pool.Add(ModContent.NPCType<Bactus>(), 1f);
@@ -116,19 +116,19 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             {
                 pool.Add(ModContent.NPCType<Cougher>(), 0.8f);
                 pool.Add(ModContent.NPCType<Ickslime>(), 0.7f);
-                if (spawnInfo.player.ZoneRockLayerHeight)
+                if (spawnInfo.Player.ZoneRockLayerHeight)
                 {
                     pool.Add(ModContent.NPCType<Viris>(), 1f);
                     pool.Add(ModContent.NPCType<GrossyFloat>(), 0.6f);
                 }
-                if (spawnInfo.player.ZoneDesert)
+                if (spawnInfo.Player.ZoneDesert)
                 {
                     pool.Add(NPCID.DarkMummy, 0.3f);
                     pool.Add(ModContent.NPCType<EvilVulture>(), 0.4f);
                 }
             }
         }
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium)
         {
             if (Main.hardMode)
             {
@@ -138,7 +138,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 pool.Add(ModContent.NPCType<CaesiumStalker>(), 0.9f);
             }
         }
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.player.InPillarZone())
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone())
         {
             pool.Clear();
             pool.Add(ModContent.NPCType<DarkMotherSlime>(), 0.5f);
@@ -147,7 +147,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             pool.Add(ModContent.NPCType<MatterMan>(), 0.9f);
             pool.Add(ModContent.NPCType<UnstableAnomaly>(), 0.9f);
         }
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
         {
             pool.Clear();
             pool.Add(NPCID.Demon, 0.2f);
@@ -1176,7 +1176,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
                 if (t > 0)
                 {
-                    int a = Item.NewItem(npc.GetItemSource_Loot(), npc.position, 16, 16, t, s);
+                    int a = Item.NewItem(npc.GetSource_Loot(), npc.position, 16, 16, t, s);
                     NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.Empty, a);
                 }
 
@@ -1225,7 +1225,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         if (npc.type == NPCID.DungeonSpirit && Main.rand.Next(15) == 0 &&
             Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
         {
-            int proj = Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.position, npc.velocity,
+            int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity,
                 ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
             Main.projectile[proj].velocity.Y = -3.5f;
             Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;

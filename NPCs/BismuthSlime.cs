@@ -95,6 +95,6 @@ public class BismuthSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && (Main.hardMode || WorldGen.SavedOreTiers.Gold == ModContent.TileType<Tiles.Ores.BismuthOre>()) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && (Main.hardMode || WorldGen.SavedOreTiers.Gold == ModContent.TileType<Tiles.Ores.BismuthOre>()) ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

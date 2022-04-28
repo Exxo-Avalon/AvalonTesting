@@ -59,13 +59,13 @@ public class Larvae : ModNPC
         Vector2 origin = NPC.Center + new Vector2(Main.rand.NextFloat(-halfWidth, halfWidth + 1f), Main.rand.NextFloat(-halfHeight, halfHeight + 1f));
         if (NPC.ai[0] == 1)
         {
-            NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)origin.X, (int)origin.Y, NPCID.Hornet, default, default, default, default, default, NPC.target);
+            NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)origin.X, (int)origin.Y, NPCID.Hornet, default, default, default, default, default, NPC.target);
         }
         else
         {
             for (int i = 0; i < 3; i++)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), (int)origin.X, (int)origin.Y, NPCID.Bee, default, default, default, default, default, NPC.target);
+                NPC.NewNPC(NPC.GetSource_NaturalSpawn(), (int)origin.X, (int)origin.Y, NPCID.Bee, default, default, default, default, default, NPC.target);
             }
         }
     }

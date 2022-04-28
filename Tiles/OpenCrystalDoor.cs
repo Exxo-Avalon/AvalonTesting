@@ -1,8 +1,8 @@
-﻿using AvalonTesting.Items.Placeable.Furniture;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -24,7 +24,7 @@ public class OpenCrystalDoor : ModTile
         TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, 1, 0);
         TileObjectData.newTile.UsesCustomCanPlace = true;
         TileObjectData.newTile.LavaDeath = true;
-        TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+        TileObjectData.newTile.CoordinateHeights = new[] {16, 16, 16};
         TileObjectData.newTile.CoordinateWidth = 16;
         TileObjectData.newTile.CoordinatePadding = 2;
         TileObjectData.newTile.StyleHorizontal = true;
@@ -59,15 +59,15 @@ public class OpenCrystalDoor : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
         TileID.Sets.HasOutlines[Type] = true;
-        var name = CreateMapEntryName();
+        ModTranslation name = CreateMapEntryName();
         name.SetDefault("Crystal Door");
         AddMapEntry(new Color(119, 105, 79), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
-        AdjTiles = new int[] { TileID.OpenDoor };
+        AdjTiles = new int[] {TileID.OpenDoor};
         CloseDoorID = Mod.Find<ModTile>("ClosedCrystalDoor").Type;
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }
@@ -84,7 +84,7 @@ public class OpenCrystalDoor : ModTile
 
     public override void MouseOver(int i, int j)
     {
-        var player = Main.LocalPlayer;
+        Player player = Main.LocalPlayer;
         player.noThrow = 2;
         player.cursorItemIconEnabled = true;
         player.cursorItemIconID = ItemID.CrystalDoor;

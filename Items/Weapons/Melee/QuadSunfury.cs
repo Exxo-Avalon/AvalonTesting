@@ -128,22 +128,22 @@ public class QuadSunfury : ModItem
             timer++;
             if (timer == 1)
             {
-                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.inventory[player.selectedItem].damage * player.GetDamage(DamageClass.Melee)), 8, PID);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.GetDamage(DamageClass.Melee).ApplyTo(player.inventory[player.selectedItem].damage)), 8, PID);
             }
 
             if (timer == 16)
             {
-                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.inventory[player.selectedItem].damage * player.GetDamage(DamageClass.Melee)), 8, PID);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.GetDamage(DamageClass.Melee).ApplyTo(player.inventory[player.selectedItem].damage)), 8, PID);
             }
 
             if (timer == 31)
             {
-                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.inventory[player.selectedItem].damage * player.GetDamage(DamageClass.Melee)), 8, PID);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.GetDamage(DamageClass.Melee).ApplyTo(player.inventory[player.selectedItem].damage)), 8, PID);
             }
 
             if (timer == 46)
             {
-                Projectile.NewProjectile(player.GetProjectileSource_Item(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.inventory[player.selectedItem].damage * player.GetDamage(DamageClass.Melee)), 8, PID);
+                Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position.X + player.width / 2, player.position.Y + player.height / 2, speedX, speedY, ModContent.ProjectileType<Projectiles.Melee.QuadBall>(), (int)(player.GetDamage(DamageClass.Melee).ApplyTo(player.inventory[player.selectedItem].damage)), 8, PID);
                 timer = 0;
                 done = true;
             }

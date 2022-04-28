@@ -29,23 +29,23 @@ class BossBagDrops
             };
             int item1 = list.RemoveAtIndex(Main.rand.Next(list.Count));
             int item2 = list.RemoveAtIndex(Main.rand.Next(list.Count));
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), item1);
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), item2);
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), item1);
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), item2);
             if (item1 == ItemID.Stynger || item2 == ItemID.Stynger)
             {
-                self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.StyngerBolt, Main.rand.Next(60, 101));
+                self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.StyngerBolt, Main.rand.Next(60, 101));
             }
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ModContent.ItemType<EarthStone>(), Main.rand.Next(1, 4));
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.BeetleHusk, Main.rand.Next(18, 24));
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.ShinyStone);
-            self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.GoldCoin, 12);
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ModContent.ItemType<EarthStone>(), Main.rand.Next(1, 4));
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.BeetleHusk, Main.rand.Next(18, 24));
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.ShinyStone);
+            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.GoldCoin, 12);
             if (Main.rand.Next(7) == 0)
             {
-                self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.GolemMask);
+                self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.GolemMask);
             }
             if (Main.rand.Next(3) == 0)
             {
-                self.QuickSpawnItem(self.GetItemSource_OpenItem(ItemID.GolemBossBag), ItemID.Picksaw);
+                self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.Picksaw);
             }
         }
         else orig(self, type);

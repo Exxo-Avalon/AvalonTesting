@@ -27,7 +27,7 @@ class BlackWhetstone : ModItem
     {
         if (player.inventory[player.selectedItem].DamageType == DamageClass.Melee)
         {
-            player.armorPenetration += 10;
+            player.GetArmorPenetration(DamageClass.Generic) += 10;
         }
     }
 }

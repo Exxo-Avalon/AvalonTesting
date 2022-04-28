@@ -105,15 +105,15 @@ public class Mime : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MimeHead").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
-        Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MimeHead").Type, 0.9f);
+        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && spawnInfo.player.ZoneMarble && Main.hardMode ? 0.14f : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && spawnInfo.Player.ZoneMarble && Main.hardMode ? 0.14f : 0f;
     }
 }

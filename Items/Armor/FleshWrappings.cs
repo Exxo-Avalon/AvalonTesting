@@ -29,7 +29,7 @@ class FleshWrappings : ModItem
     }
     public override void UpdateEquip(Player player)
     {
-        player.minionKB += 0.09f;
+        player.GetKnockback(DamageClass.Summon) += 0.09f;
         player.moveSpeed += 0.1f;
     }
 }

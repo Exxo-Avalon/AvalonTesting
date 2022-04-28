@@ -63,7 +63,7 @@ public class ImpactWizard : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.Player.ZoneDungeon ? 0.2f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void AI()
     {
@@ -180,7 +180,7 @@ public class ImpactWizard : ModNPC
                     num258 *= 1.4f;
                     if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().silenced)
                     {
-                        var num262 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector23.X, vector23.Y, num257, num258, ModContent.ProjectileType<Projectiles.ImpactSphere>(), Main.expertMode ? 35 : 65, 0f, Main.myPlayer, 0f, 0f);
+                        var num262 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector23.X, vector23.Y, num257, num258, ModContent.ProjectileType<Projectiles.ImpactSphere>(), Main.expertMode ? 35 : 65, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[num262].timeLeft = 300;
                     }
                     NPC.localAI[0] = 0f;

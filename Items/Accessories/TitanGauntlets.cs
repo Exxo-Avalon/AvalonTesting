@@ -34,7 +34,7 @@ class TitanGauntlets : ModItem
         }
         player.frostBurn = true;
         player.kbGlove = true;
-        player.meleeSpeed += 0.1f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Ranged) += 0.1f;
         player.frostArmor = true;

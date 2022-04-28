@@ -27,7 +27,7 @@ class SceneofCarnage : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.meleeSpeed += 0.15f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.15f;
         player.GetDamage(DamageClass.Melee) += 0.15f;
     }
 

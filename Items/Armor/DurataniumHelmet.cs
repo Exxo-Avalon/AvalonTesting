@@ -38,7 +38,7 @@ class DurataniumHelmet : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.05f;
-        player.meleeSpeed += 0.05f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
         player.aggro += 100;
     }
 }

@@ -29,7 +29,7 @@ class DionysusAmulet : ModItem
     {
         player.maxMinions += 2;
         player.GetDamage(DamageClass.Summon) += 0.08f;
-        player.armorPenetration += 5;
+        player.GetArmorPenetration(DamageClass.Generic) += 5;
     }
 
     public override void AddRecipes()

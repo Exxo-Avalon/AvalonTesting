@@ -179,7 +179,7 @@ public class GoldenFire : ModProjectile
             velX *= len + var;
             velY *= len + var;
 
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.position.X, Projectile.position.Y, velX, velY, flam, damg, 0, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, velX, velY, flam, damg, 0, Projectile.owner);
         }
 
         // setup projectile for explosion

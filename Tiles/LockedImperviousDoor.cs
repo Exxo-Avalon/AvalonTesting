@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
+using Terraria.GameContent.ObjectInteractions;
 
 namespace AvalonTesting.Tiles;
 
@@ -57,7 +58,7 @@ public class LockedImperviousDoor : ModTile
         return false;
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }

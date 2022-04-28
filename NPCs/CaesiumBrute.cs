@@ -65,7 +65,7 @@ public class CaesiumBrute : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium && spawnInfo.player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh))// && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium && spawnInfo.Player.ZoneUnderworldHeight && !NPC.AnyNPCs(NPCID.WallofFlesh))// && !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.WallofSteel>()))
             return 0.8f;
         return 0;
     }
@@ -89,7 +89,7 @@ public class CaesiumBrute : ModNPC
                 for (int i = 0; i < increments; i++)
                 {
                     Vector2 velocity = rotation.RotatedBy(MathHelper.ToRadians(((float)(degrees / 2f) * -1f) + ((float)(degrees / increments) * i) + offset)) * speed;
-                    int spray = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.CaesiumFireball>(), 55, 0f, NPC.target, 1f, 0f);
+                    int spray = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.CaesiumFireball>(), 55, 0f, NPC.target, 1f, 0f);
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, spray);
@@ -121,15 +121,15 @@ public class CaesiumBrute : ModNPC
             SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 21, 1.2f, -0.5f);
             if (Main.rand.Next(20) == 0)
             {
-                Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
+                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
             }
         }
         if (Main.netMode == NetmodeID.Server) return;
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteHead").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteWing").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteWing").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteWing").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("CaesiumBruteWing").Type, 1f);
         }
     }
 }

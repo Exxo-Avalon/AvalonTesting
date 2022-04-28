@@ -36,7 +36,7 @@ class CaesiumScimitar : ModItem
         SoundEngine.PlaySound(SoundID.Item14, target.position);
         for (int i = 0; i < 5; i++)
         {
-            Projectile.NewProjectile(player.GetProjectileSource_Item(Item), target.Center.X, target.Center.Y, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), ModContent.ProjectileType<Projectiles.CaesiumExplosion>(), damage, knockBack, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center.X, target.Center.Y, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), ModContent.ProjectileType<Projectiles.CaesiumExplosion>(), damage, knockBack, player.whoAmI, 0f, 0f);
         }
     }
 }

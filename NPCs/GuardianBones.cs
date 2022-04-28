@@ -45,7 +45,7 @@ public class GuardianBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void FindFrame(int frameHeight)
     {

@@ -43,7 +43,7 @@ class BerserkerHeadpiece : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.32f;
-        player.meleeSpeed += 0.2f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
         player.GetCritChance(DamageClass.Melee) -= 5;
     }
 }

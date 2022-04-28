@@ -60,7 +60,7 @@ public class Hallowor : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneHallow && spawnInfo.spawnTileY < (Main.maxTilesY - 200) ? 0.13f : 0f;
+        return Main.hardMode && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneHallow && spawnInfo.SpawnTileY < (Main.maxTilesY - 200) ? 0.13f : 0f;
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
@@ -223,7 +223,7 @@ public class Hallowor : ModNPC
             {
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
-                    NPC.NewNPC(NPC.GetSpawnSourceForProjectileNPC(), (int)(NPC.position.X + (float)(NPC.width / 2) + NPC.velocity.X), (int)(NPC.position.Y + (float)(NPC.height / 2) + NPC.velocity.Y), ModContent.NPCType<NPCs.HallowSpit>(), 0);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (float)(NPC.width / 2) + NPC.velocity.X), (int)(NPC.position.Y + (float)(NPC.height / 2) + NPC.velocity.Y), ModContent.NPCType<NPCs.HallowSpit>(), 0);
                 }
                 NPC.localAI[0] = 0f;
             }

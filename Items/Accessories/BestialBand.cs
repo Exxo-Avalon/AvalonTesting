@@ -40,10 +40,10 @@ internal class BestialBand : ModItem
         player.waterWalk = true;
         player.lifeRegen += 2;
         player.statDefense += 4;
-        player.meleeSpeed += 0.1f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Generic) += 0.1f;
         player.GetCritChance(DamageClass.Generic) += 2;
         player.pickSpeed -= 0.15f;
-        player.minionKB += 0.5f;
+        player.GetKnockback(DamageClass.Summon) += 0.5f;
     }
 }

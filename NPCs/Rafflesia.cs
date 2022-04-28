@@ -41,12 +41,12 @@ public class Rafflesia : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics)
         {
-            if (Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY + 2].TileType == ModContent.TileType<Tiles.TropicalGrass>())
+            if (Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY + 2].TileType == ModContent.TileType<Tiles.TropicalGrass>())
                 //&&
-                //!Main.tile[spawnInfo.spawnTileX + 1, spawnInfo.spawnTileY].HasTile && !Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].HasTile &&
-                //!Main.tile[spawnInfo.spawnTileX - 1, spawnInfo.spawnTileY].HasTile)
+                //!Main.tile[spawnInfo.SpawnTileX + 1, spawnInfo.SpawnTileY].HasTile && !Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].HasTile &&
+                //!Main.tile[spawnInfo.SpawnTileX - 1, spawnInfo.SpawnTileY].HasTile)
             {
                 return 1f;
             }
@@ -69,7 +69,7 @@ public class Rafflesia : ModNPC
         if (NPC.ai[1] == 1)
         {
             NPC.ai[2]++;
-            if (NPC.ai[2] == 60 || NPC.ai[2] == 120 || NPC.ai[2] == 180) NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.Center.X, (int)NPC.position.Y + 8, NPCID.Bee);
+            if (NPC.ai[2] == 60 || NPC.ai[2] == 120 || NPC.ai[2] == 180) NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.position.Y + 8, NPCID.Bee);
             if (NPC.ai[2] == 188)
             {
                 NPC.ai[2] = 0;
@@ -117,7 +117,7 @@ public class Rafflesia : ModNPC
     {
         //if (npc.life <= 0)
         //{
-        //    Gore.NewGore(npc.position, npc.velocity * 0.8f, Mod.Find<ModGore>("Rafflesia").Type, 1f);
+        //    Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, npc.velocity * 0.8f, Mod.Find<ModGore>("Rafflesia").Type, 1f);
         //}
     }
 }

@@ -94,11 +94,11 @@ public class Juggernaut : ModNPC
         {
             if (Main.rand.Next(20) == 0)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<JuggernautSorcerer>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<JuggernautSorcerer>(), 0);
             }
             if (Main.rand.Next(20) == 0)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<EyeBones>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<EyeBones>(), 0);
             }
             //if (Main.rand.Next(10) == 1)
             //{
@@ -106,7 +106,7 @@ public class Juggernaut : ModNPC
             //}
             if (Main.rand.Next(45) == 0)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<CursedMagmaSkeleton>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<CursedMagmaSkeleton>(), 0);
             }
             //if (Main.rand.Next(33) == 1)
             //{
@@ -388,16 +388,16 @@ public class Juggernaut : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("JuggernautHead").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone2").Type, 1.7f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone2").Type, 1.7f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("JuggernautHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone2").Type, 1.7f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone2").Type, 1.7f);
         }
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.015f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.015f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

@@ -47,7 +47,7 @@ public class CaesiumOre : ModTile
             {
                 if (Main.rand.Next(7000) == 0)
                 {
-                    Projectile.NewProjectile(Projectile.GetNoneSource(), new Vector2(i, j) * 16,
+                    Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                         new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
                         ModContent.ProjectileType<CaesiumGas>(), 0, 0);
                 }
@@ -61,7 +61,7 @@ public class CaesiumOre : ModTile
         {
             if (Main.rand.Next(27) == 0)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetNoneSource(), new Vector2(i, j) * 16,
+                int proj = Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                     new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
                     ModContent.ProjectileType<CaesiumGas>(), 0, 0);
             }

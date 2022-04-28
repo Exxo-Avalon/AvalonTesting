@@ -27,7 +27,7 @@ class TomorrowsPhoenix : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetDamage(DamageClass.Summon) += 0.08f;
-        player.minionKB += 0.05f;
+        player.GetKnockback(DamageClass.Summon) += 0.05f;
     }
 
     public override void AddRecipes()

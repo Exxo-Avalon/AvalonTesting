@@ -54,8 +54,8 @@ public class Cougher : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone())
-            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.player.InPillarZone()) ? 1f : 0f;
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.Player.InPillarZone())
+            return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && Main.hardMode && !spawnInfo.Player.InPillarZone()) ? 1f : 0f;
         return 0f;
     }
     public override void AI()

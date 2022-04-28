@@ -18,7 +18,7 @@ public class MechanicalDiggerHead : MechanicalDiggerWorm
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerHead").Type, 1f);
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -28,7 +28,7 @@ public class MechanicalDiggerHead : MechanicalDiggerWorm
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.073f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.073f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void SetDefaults()
@@ -73,7 +73,7 @@ public class MechanicalDiggerBody : MechanicalDiggerWorm
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerBody").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerBody").Type, 1f);
         }
     }
 
@@ -118,7 +118,7 @@ public class MechanicalDiggerTail : MechanicalDiggerWorm
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerTail").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MechanicalDiggerTail").Type, 1f);
         }
     }
 
@@ -243,15 +243,15 @@ public abstract class Worm : ModNPC
                     NPC.ai[3] = (float)NPC.whoAmI;
                     NPC.realLife = NPC.whoAmI;
                     NPC.ai[2] = (float)Main.rand.Next(minLength, maxLength + 1);
-                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), bodyType, NPC.whoAmI);
+                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), bodyType, NPC.whoAmI);
                 }
                 else if (NPC.ai[2] > 0f)
                 {
-                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), NPC.type, NPC.whoAmI);
+                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), NPC.type, NPC.whoAmI);
                 }
                 else
                 {
-                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), tailType, NPC.whoAmI);
+                    NPC.ai[0] = (float)NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (float)(NPC.width / 2)), (int)(NPC.position.Y + (float)NPC.height), tailType, NPC.whoAmI);
                 }
                 Main.npc[(int)NPC.ai[0]].ai[3] = NPC.ai[3];
                 Main.npc[(int)NPC.ai[0]].realLife = NPC.realLife;

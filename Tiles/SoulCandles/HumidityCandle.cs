@@ -39,7 +39,8 @@ public class HumidityCandle : ModTile
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.Light.HumidityCandle>());
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
+            ModContent.ItemType<Items.Placeable.Light.HumidityCandle>());
     }
 
     public override bool RightClick(int i, int j)

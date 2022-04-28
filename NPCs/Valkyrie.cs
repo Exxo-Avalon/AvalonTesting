@@ -38,6 +38,6 @@ public class Valkyrie : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

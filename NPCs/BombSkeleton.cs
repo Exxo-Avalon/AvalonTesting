@@ -51,9 +51,9 @@ public class BombSkeleton : ModNPC
         var num3 = 120;
         var num4 = ModContent.ProjectileType<Projectiles.SkeletonHeadbomb>();
         var num5 = (float)Math.Atan2(vector.Y - (Main.player[NPC.target].position.Y + Main.player[NPC.target].height * 0.5f), vector.X - (Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f));
-        var num6 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector.X, vector.Y, (float)(Math.Cos(num5) * num2 * -1.0), (float)(Math.Sin(num5) * num2 * -1.0), num4, num3, 0f, 0, 0f, 0f);
+        var num6 = Projectile.NewProjectile(NPC.GetSource_FromThis(), vector.X, vector.Y, (float)(Math.Cos(num5) * num2 * -1.0), (float)(Math.Sin(num5) * num2 * -1.0), num4, num3, 0f, 0, 0f, 0f);
         Main.projectile[num6].velocity = Vector2.Normalize(NPC.Center - Main.player[NPC.target].Center) * 8f;
-        NPC.NewNPC(NPC.GetSpawnSourceForProjectileNPC(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<BombBones>(), NPC.whoAmI);
+        NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<BombBones>(), NPC.whoAmI);
     }
 
     public override void FindFrame(int frameHeight)
@@ -97,6 +97,6 @@ public class BombSkeleton : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.player.ZoneRockLayerHeight ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.Player.ZoneRockLayerHeight ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

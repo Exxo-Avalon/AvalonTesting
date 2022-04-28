@@ -52,7 +52,7 @@ public class Torch : ModProjectile
             }
             else
             {
-                Item.NewItem(Projectile.GetItemSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
+                Item.NewItem(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
                 Projectile.active = false;
             }
 
@@ -60,17 +60,17 @@ public class Torch : ModProjectile
                                                      Main.tile[TileX - 1, TileY + 1].HasTile || Main.tile[TileX + 1, TileY - 1].HasTile ||
                                                      Main.tile[TileX - 1, TileY - 1].HasTile) && !Main.tile[TileX, TileY + 1].HasTile)
             {
-                Item.NewItem(Projectile.GetItemSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
+                Item.NewItem(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
                 Projectile.active = false;
             }
             if (Main.tile[TileX, TileY].LiquidAmount > 0)
             {
-                Item.NewItem(Projectile.GetItemSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
+                Item.NewItem(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
                 Projectile.active = false;
             }
             if (Main.tile[TileX, TileY + 1].Slope != SlopeType.Solid || Main.tile[TileX, TileY + 1].IsHalfBlock)
             {
-                Item.NewItem(Projectile.GetItemSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
+                Item.NewItem(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, 16, 16, it);
                 Projectile.active = false;
             }
             Projectile.active = false;

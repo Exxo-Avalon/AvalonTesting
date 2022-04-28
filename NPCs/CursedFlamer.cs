@@ -60,7 +60,7 @@ public class CursedFlamer : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.ZoneCorrupt && !spawnInfo.player.InPillarZone() && spawnInfo.spawnTileY < (Main.maxTilesY - 200) ? 1f : 0f;
+        return Main.hardMode && spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.InPillarZone() && spawnInfo.SpawnTileY < (Main.maxTilesY - 200) ? 1f : 0f;
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -245,7 +245,7 @@ public class CursedFlamer : ModNPC
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
                     var mainproj = (float)Math.Atan2(NPC.Center.Y - (Main.player[NPC.target].Center.Y), NPC.Center.X - (Main.player[NPC.target].Center.X));
-                    int p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ProjectileID.CursedFlameHostile, 50, 1f, NPC.target, 0f, 0f);
+                    int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ProjectileID.CursedFlameHostile, 50, 1f, NPC.target, 0f, 0f);
                     Main.projectile[p].velocity *= 7f;
                     if (Main.netMode == NetmodeID.Server)
                     {

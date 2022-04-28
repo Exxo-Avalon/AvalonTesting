@@ -122,7 +122,7 @@ public class BerserkerSphere : ModProjectile
             vector65.Normalize();
             vector65 *= Main.rand.Next(45, 65) * 0.1f;
             vector65 = vector65.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
-            Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector65.X, vector65.Y, ModContent.ProjectileType<Minisphere>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -10f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector65.X, vector65.Y, ModContent.ProjectileType<Minisphere>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -10f, 0f);
         }
     }
     

@@ -70,31 +70,31 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
 
     public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
     {
-        TooltipLine tooltipLine = tooltips.FirstOrDefault(x => x.Name == "ItemName" && x.mod == "Terraria");
-        TooltipLine lineKnockback = tooltips.FirstOrDefault(x => x.Name == "Knockback" && x.mod == "Terraria");
-        TooltipLine lineSpeed = tooltips.FirstOrDefault(x => x.Name == "Speed" && x.mod == "Terraria");
+        TooltipLine tooltipLine = tooltips.FirstOrDefault(x => x.Name == "ItemName" && x.Mod == "Terraria");
+        TooltipLine lineKnockback = tooltips.FirstOrDefault(x => x.Name == "Knockback" && x.Mod == "Terraria");
+        TooltipLine lineSpeed = tooltips.FirstOrDefault(x => x.Name == "Speed" && x.Mod == "Terraria");
         if (lineKnockback != null)
         {
             if (LanguageManager.Instance.ActiveCulture.LegacyId == (int)GameCulture.CultureName.English)
             {
                 if (item.knockBack > 0f && item.knockBack < 1.5f)
                 {
-                    lineKnockback.text = "Puny knockback";
+                    lineKnockback.Text = "Puny knockback";
                 }
 
                 if (item.knockBack > 15f)
                 {
-                    lineKnockback.text = "Absurd knockback";
+                    lineKnockback.Text = "Absurd knockback";
                 }
 
                 if (item.knockBack > 17f)
                 {
-                    lineKnockback.text = "Ridiculous knockback";
+                    lineKnockback.Text = "Ridiculous knockback";
                 }
 
                 if (item.knockBack > 19f)
                 {
-                    lineKnockback.text = "Godly knockback";
+                    lineKnockback.Text = "Godly knockback";
                 }
             }
         }
@@ -111,12 +111,12 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
 
         if (item.useAnimation <= 5f)
         {
-            lineSpeed.text = "Lightning speed";
+            lineSpeed.Text = "Lightning speed";
         }
 
         if (item.useAnimation >= 58f)
         {
-            lineSpeed.text = "Slowpoke speed";
+            lineSpeed.Text = "Slowpoke speed";
         }
     }
 }

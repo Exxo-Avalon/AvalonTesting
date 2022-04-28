@@ -26,7 +26,7 @@ class MiloticSkinplate : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.minionKB += 0.3f;
+        player.GetKnockback(DamageClass.Summon) += 0.3f;
         player.maxMinions += 2;
     }
 }

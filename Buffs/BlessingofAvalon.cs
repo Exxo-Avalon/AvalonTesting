@@ -53,7 +53,7 @@ public class BlessingofAvalon : ModBuff
         player.statDefense += 10;
         player.lifeRegen += 3;
         player.manaRegen += 3;
-        player.armorPenetration += 10;
+        player.GetArmorPenetration(DamageClass.Generic) += 10;
         player.manaCost -= 0.2f;
     }
 }

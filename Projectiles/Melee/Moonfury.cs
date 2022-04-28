@@ -122,8 +122,8 @@ public class Moonfury : ModProjectile
         }
         else if (Projectile.ai[0] == 1f)
         {
-            float num257 = 14f / Main.player[Projectile.owner].meleeSpeed;
-            float num258 = 0.9f / Main.player[Projectile.owner].meleeSpeed;
+            float num257 = 14f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
+            float num258 = 0.9f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
             float num259 = 300f;
             Math.Abs(num253);
             Math.Abs(num254);

@@ -108,7 +108,7 @@ public class Phantasm : ModNPC
                 int p;
                 while (f <= 0.3f)
                 {
-                    p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
@@ -117,7 +117,7 @@ public class Phantasm : ModNPC
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                     }
-                    p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     Main.projectile[p].hostile = true;
@@ -228,7 +228,7 @@ public class Phantasm : ModNPC
                             float rotation = (float)Math.Atan2(npc.Center.Y, npc.Center.X);
                             int num54 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), damage, 0f, 0);
                             Main.projectile[num54].velocity = Vector2.Normalize(T.position - npc.position) * 9f;*/
-                            Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, (T.Center - NPC.Center).SafeNormalize(-Vector2.UnitY) * Speed, ModContent.ProjectileType<Projectiles.Ghostflame>(), damage, 0f, Main.myPlayer);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (T.Center - NPC.Center).SafeNormalize(-Vector2.UnitY) * Speed, ModContent.ProjectileType<Projectiles.Ghostflame>(), damage, 0f, Main.myPlayer);
                         }
                     }
                     if (NPC.ai[2] == 301)
@@ -245,14 +245,14 @@ public class Phantasm : ModNPC
                         var num1166 = (float)Math.Atan2(vector155.Y - (Main.player[NPC.target].position.Y + Main.player[NPC.target].height * 0.5f), vector155.X - (Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f));
                         for (var num1167 = 0f; num1167 <= 3.6f; num1167 += increment)
                         {
-                            var num1168 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 + num1167) * 16f * -1.0), (float)(Math.Sin(num1166 + num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Ghostflame>(), 70, 0f, NPC.target, 0f, 0f);
+                            var num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 + num1167) * 16f * -1.0), (float)(Math.Sin(num1166 + num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Ghostflame>(), 70, 0f, NPC.target, 0f, 0f);
                             Main.projectile[num1168].timeLeft = 600;
                             Main.projectile[num1168].tileCollide = false;
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
                                 NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, num1168);
                             }
-                            num1168 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 - num1167) * 16f * -1.0), (float)(Math.Sin(num1166 - num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Ghostflame>(), 70, 0f, NPC.target, 0f, 0f);
+                            num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 - num1167) * 16f * -1.0), (float)(Math.Sin(num1166 - num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Ghostflame>(), 70, 0f, NPC.target, 0f, 0f);
                             Main.projectile[num1168].timeLeft = 600;
                             Main.projectile[num1168].tileCollide = false;
                             if (Main.netMode != NetmodeID.SinglePlayer)
@@ -283,7 +283,7 @@ public class Phantasm : ModNPC
                             num1275 = 1f;
                         }
                         velocityOfProj = velocityOfProj.RotatedBy((double)((0f - num1275) * MathHelper.TwoPi / 6f));
-                        int p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y + NPC.width / 3, velocityOfProj.X, velocityOfProj.Y, ModContent.ProjectileType<Projectiles.PhantasmLaser>(), 95, 0f, Main.myPlayer, num1275 * MathHelper.TwoPi / 720f, (float)NPC.whoAmI);
+                        int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y + NPC.width / 3, velocityOfProj.X, velocityOfProj.Y, ModContent.ProjectileType<Projectiles.PhantasmLaser>(), 95, 0f, Main.myPlayer, num1275 * MathHelper.TwoPi / 720f, (float)NPC.whoAmI);
                         NPC.localAI[1] += 0.05f;
                         if (NPC.localAI[1] > 1f)
                         {
@@ -332,7 +332,7 @@ public class Phantasm : ModNPC
                 int p;
                 if (NPC.ai[1] == 50 || NPC.ai[1] == 100 || NPC.ai[1] == 150 || NPC.ai[1] == 200)
                 {
-                    NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<PhantasmMinion>());
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<PhantasmMinion>());
                 }
                 if (NPC.ai[0] % 10 == 0)
                 {
@@ -341,7 +341,7 @@ public class Phantasm : ModNPC
                     else increment = 0.18f;
                     if (NPC.ai[2] <= 7.2f)
                     {
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         Main.projectile[p].hostile = true;
@@ -350,7 +350,7 @@ public class Phantasm : ModNPC
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                         }
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation2 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation2 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation2 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation2 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         Main.projectile[p].hostile = true;
@@ -359,7 +359,7 @@ public class Phantasm : ModNPC
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                         }
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation3 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation3 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation3 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation3 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         Main.projectile[p].hostile = true;
@@ -368,7 +368,7 @@ public class Phantasm : ModNPC
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                         }
-                        p = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation4 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation4 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation4 - NPC.ai[2]) * speed) * -1), (float)((Math.Sin(rotation4 - NPC.ai[2]) * speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), 60, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         Main.projectile[p].hostile = true;
@@ -398,7 +398,7 @@ public class Phantasm : ModNPC
                         num1275 = 1f;
                     }
                     velocityOfProj = velocityOfProj.RotatedBy((0f - num1275) * MathHelper.TwoPi / 6f);
-                    int p2 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, velocityOfProj.X, velocityOfProj.Y, ModContent.ProjectileType<Projectiles.PhantasmLaser>(), 95, 0f, Main.myPlayer, num1275 * MathHelper.TwoPi / 720f, (float)NPC.whoAmI);
+                    int p2 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, velocityOfProj.X, velocityOfProj.Y, ModContent.ProjectileType<Projectiles.PhantasmLaser>(), 95, 0f, Main.myPlayer, num1275 * MathHelper.TwoPi / 720f, (float)NPC.whoAmI);
                     Main.projectile[p2].localAI[0] += 120;
                     NPC.localAI[1] += 0.05f;
                     if (NPC.localAI[1] > 1f)

@@ -111,8 +111,8 @@ public class DragonBall : ModProjectile
         }
         else if (Projectile.ai[0] == 1f)
         {
-            var num257 = (11f + (Projectile.localAI[0] / 3)) / Main.player[Projectile.owner].meleeSpeed;
-            var num258 = (0.9f + (Projectile.localAI[0] / 15)) / Main.player[Projectile.owner].meleeSpeed;
+            var num257 = (11f + (Projectile.localAI[0] / 3)) / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
+            var num258 = (0.9f + (Projectile.localAI[0] / 15)) / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
             Math.Abs(num253);
             Math.Abs(num254);
             if (Projectile.ai[1] == 1f)
@@ -186,7 +186,7 @@ public class DragonBall : ModProjectile
                 rotation.Normalize();
                 rotation *= new Vector2(6f, 6f).Length();
                 Vector2 velocity = new Vector2(rotation.X, rotation.Y + Main.rand.Next(-40, 41) * 0.02f);
-                int meteor = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), origin, velocity, ProjectileID.Meteor1 + rand, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0.5f + (float)Main.rand.NextDouble() * 0.3f);
+                int meteor = Projectile.NewProjectile(Projectile.GetSource_FromThis(), origin, velocity, ProjectileID.Meteor1 + rand, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0.5f + (float)Main.rand.NextDouble() * 0.3f);
             }
             meteorCooldown = 120;
         }

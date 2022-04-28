@@ -201,7 +201,7 @@ public class Blaze : ModNPC
             {
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
-                    NPC.NewNPC(NPC.GetSpawnSourceForProjectileNPC(), (int)(NPC.position.X + NPC.width / 2 + NPC.velocity.X), (int)(NPC.position.Y + NPC.height / 2 + NPC.velocity.Y), ModContent.NPCType<BlazeOrb>(), 0);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + NPC.width / 2 + NPC.velocity.X), (int)(NPC.position.Y + NPC.height / 2 + NPC.velocity.Y), ModContent.NPCType<BlazeOrb>(), 0);
                 }
                 NPC.localAI[0] = 0f;
                 NPC.localAI[1] = 0f;
@@ -249,7 +249,7 @@ public class Blaze : ModNPC
     }
     public override void OnKill()
     {
-        var num12 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ProjectileID.Grenade, 0, 0f, NPC.target, 0f, 0f);
+        var num12 = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center.X, NPC.Center.Y, 0f, 0f, ProjectileID.Grenade, 0, 0f, NPC.target, 0f, 0f);
         Main.projectile[num12].Kill();
     }
     public override void FindFrame(int frameHeight)
@@ -281,6 +281,6 @@ public class Blaze : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneUnderworldHeight && Main.hardMode ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneUnderworldHeight && Main.hardMode ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

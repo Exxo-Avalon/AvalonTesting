@@ -105,7 +105,7 @@ public class IridiumSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneRockLayerHeight && !spawnInfo.player.ZoneDungeon &&
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon &&
                (Main.hardMode || ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ==
                    ExxoWorldGen.RhodiumVariant.Iridium)
             ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate

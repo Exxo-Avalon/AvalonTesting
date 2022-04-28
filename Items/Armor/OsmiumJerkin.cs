@@ -30,6 +30,6 @@ class OsmiumJerkin : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.12f;
-        player.meleeSpeed += 0.12f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.12f;
     }
 }

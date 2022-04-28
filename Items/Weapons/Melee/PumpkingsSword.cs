@@ -43,9 +43,9 @@ class PumpkingsSword : ModItem
     }
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        pumpkinSword(target.whoAmI, (int)(damage * 2), knockBack, 0, player);
+        pumpkinSword(target.whoAmI, (int)(damage * 2), knockBack, player);
     }
-    private void pumpkinSword(int i, int dmg, float kb, int Type, Player p)
+    private void pumpkinSword(int i, int dmg, float kb, Player p)
     {
         //if (Main.rand.Next(2) == 1)
         {
@@ -64,7 +64,7 @@ class PumpkingsSword : ModItem
             num5 = 8f / num5;
             num3 *= num5;
             num4 *= num5;
-            Projectile.NewProjectile(p.GetProjectileSource_Item(Item), num, num2, num4, num5, ModContent.ProjectileType<Projectiles.Melee.PumpkinHead>(), dmg, kb, p.whoAmI, (float)i, 0f);
+            Projectile.NewProjectile(p.GetSource_ItemUse(Item), num, num2, num4, num5, ModContent.ProjectileType<Projectiles.Melee.PumpkinHead>(), dmg, kb, p.whoAmI, (float)i, 0f);
         }
     }
 

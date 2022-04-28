@@ -28,7 +28,7 @@ public class BoundIceman : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneSnow && spawnInfo.player.ZoneRockLayerHeight && !AvalonTestingGlobalNPC.savedIceman && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.0526f : 0f;
+        return spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneRockLayerHeight && !AvalonTestingGlobalNPC.savedIceman && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.0526f : 0f;
     }
 
     public override bool CanChat()

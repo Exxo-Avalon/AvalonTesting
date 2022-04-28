@@ -50,7 +50,7 @@ public class Bactus : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneOverworldHeight && !spawnInfo.player.InPillarZone())
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.InPillarZone())
             return 1;
         return 0;
     }
@@ -230,7 +230,7 @@ public class Bactus : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("Bactus").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("Bactus").Type, 1f);
         }
     }
 }

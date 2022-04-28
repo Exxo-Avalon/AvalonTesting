@@ -54,7 +54,7 @@ public class StingerProbe : ModBuff
             return;
         }
         
-        Projectile.NewProjectile(player.GetProjectileSource_Buff(buffIndex), player.Center, Vector2.Zero,
+        Projectile.NewProjectile(player.GetSource_Buff(buffIndex), player.Center, Vector2.Zero,
             ModContent.ProjectileType<StingerProbeMinion>(), damage, 0f,
             player.whoAmI);
         player.GetModPlayer<ExxoBuffPlayer>().StingerProbeTimer = 0;

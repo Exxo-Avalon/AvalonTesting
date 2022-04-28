@@ -235,14 +235,14 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     if (CurrentFrame == 1)
                     {
-                        Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 else
                 {
                     if (CurrentFrame < 5)
                     {
-                        Projectile.NewProjectile(npc.GetSpawnSource_ForProjectile(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
             }
@@ -650,7 +650,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
             {
                 for (int i = ActiveDrones.Count; i < MaxDrones; i++)
                 {
-                    ActiveDrones.Add(NPC.NewNPC(npc.GetSpawnSourceForNPCFromNPCAI(), (int)npc.Center.X, (int)npc.Center.Y,
+                    ActiveDrones.Add(NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.Center.Y,
                         ModContent.NPCType<Oblivion.ShieldDrone>(), 0,
                         npc.whoAmI, i, MaxDrones));
                 }
@@ -659,7 +659,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     if (!Main.npc[ActiveDrones[i]].active)
                     {
-                        ActiveDrones[i] = NPC.NewNPC(npc.GetSpawnSourceForNPCFromNPCAI(),(int)npc.Center.X, (int)npc.Center.Y,
+                        ActiveDrones[i] = NPC.NewNPC(npc.GetSource_FromAI(),(int)npc.Center.X, (int)npc.Center.Y,
                             ModContent.NPCType<Oblivion.ShieldDrone>(), 0,
                             npc.whoAmI, i, MaxDrones);
                     }
@@ -736,9 +736,9 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 SoundEngine.PlaySound(SoundID.NPCHit, (int)npc.Center.X, (int)npc.Center.Y);
                 for (int i = 0; i < 2; i++)
                 {
-                    Gore.NewGore(npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 8);
-                    Gore.NewGore(npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 7);
-                    Gore.NewGore(npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 6);
+                    Gore.NewGore(npc.GetSource_FromThis(), npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 8);
+                    Gore.NewGore(npc.GetSource_FromThis(), npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 7);
+                    Gore.NewGore(npc.GetSource_FromThis(), npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 6);
                 }
                 for (int num855 = 0; num855 < 20; num855++)
                 {
@@ -790,7 +790,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 }
                 spinningPoint = spinningPoint.RotatedBy(-direction * ((float)Math.PI * 2f) / 6f);
 
-                Projectile.NewProjectile(npc.GetSpawnSourceForNPCFromNPCAI(),npc.Center, spinningPoint,
+                Projectile.NewProjectile(npc.GetSource_FromAI(),npc.Center, spinningPoint,
                     ModContent.ProjectileType<Projectiles.OblivionLaser>(), 50, 0f,
                     Main.myPlayer, direction * ((float)Math.PI * 2f) / 540f, npc.whoAmI);
             }

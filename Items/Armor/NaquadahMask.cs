@@ -38,7 +38,7 @@ class NaquadahMask : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.08f;
-        player.meleeSpeed += 0.08f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.08f;
         player.aggro += 150;
     }
 }

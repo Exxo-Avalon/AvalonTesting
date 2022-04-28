@@ -18,7 +18,7 @@ public class Vigorous : ModPrefix
 
     public override void Apply(Item item)
     {
-        Main.player[Main.myPlayer].meleeSpeed += 0.03f;
+        Main.player[Main.myPlayer].GetAttackSpeed(DamageClass.Melee) += 0.03f;
         Main.player[Main.myPlayer].GetDamage(DamageClass.Melee) += 0.03f;
         Main.player[Main.myPlayer].GetDamage(DamageClass.Ranged) += 0.03f;
         Main.player[Main.myPlayer].GetDamage(DamageClass.Magic) += 0.03f;

@@ -121,7 +121,7 @@ public class DesertBeak : ModNPC
                     float Speed = 8f;
                     SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 17);
                     float rotation = (float)Math.Atan2(NPC.Center.Y - (pPos.Y + (Main.player[NPC.target].height * 0.5f)), NPC.Center.X - (pPos.X + (Main.player[NPC.target].width * 0.5f)));
-                    Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), 83, 40, 0f, 0);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), 83, 40, 0f, 0);
                     NPC.ai[1] = 0;
                 }
             }
@@ -221,7 +221,7 @@ public class DesertBeak : ModNPC
                     float num78 = speedX + Main.rand.Next(-50, 51) * 0.05f;
                     float num79 = speedY + Main.rand.Next(-50, 51) * 0.05f;
                     SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 11);
-                    int bomb = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), npcPosRefined.X, npcPosRefined.Y, num78, num79, 102, 20, 0f, 0);
+                    int bomb = Projectile.NewProjectile(NPC.GetSource_FromAI(), npcPosRefined.X, npcPosRefined.Y, num78, num79, 102, 20, 0f, 0);
                 }
                 NPC.ai[2] = 0;
             }
@@ -262,9 +262,9 @@ public class DesertBeak : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakHead").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakWing").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakWing").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakHead").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakWing").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("DesertBeakWing").Type, 0.9f);
         }
     }
 }

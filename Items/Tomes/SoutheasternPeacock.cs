@@ -1,4 +1,5 @@
 ﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,12 +7,13 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Tomes;
 
-class SoutheasternPeacock : ModItem
+internal class SoutheasternPeacock : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Southeastern Peacock");
-        Tooltip.SetDefault("Tome\n+3% critical strike chance, -5% mana cost\n8% increased minion damage, 5% increased minion knockback");
+        Tooltip.SetDefault(
+            "Tome\n+3% critical strike chance, -5% mana cost\n8% increased minion damage, 5% increased minion knockback");
     }
 
     public override void SetDefaults()
@@ -30,12 +32,15 @@ class SoutheasternPeacock : ModItem
         player.GetCritChance(DamageClass.Ranged) += 3;
         player.GetCritChance(DamageClass.Throwing) += 3;
         player.GetCritChance(DamageClass.Magic) += 3;
-        player.minionKB += 0.05f;
+        player.GetKnockback(DamageClass.Summon) += 0.05f;
         player.GetDamage(DamageClass.Summon) += 0.08f;
     }
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<TomorrowsPhoenix>()).AddIngredient(ModContent.ItemType<ChristmasTome>()).AddIngredient(ModContent.ItemType<MysticalTomePage>(), 2).AddTile(ModContent.TileType<Tiles.TomeForge>()).Register();
+        CreateRecipe().AddIngredient(ModContent.ItemType<TomorrowsPhoenix>())
+            .AddIngredient(ModContent.ItemType<ChristmasTome>())
+            .AddIngredient(ModContent.ItemType<MysticalTomePage>(), 2).AddTile(ModContent.TileType<TomeForge>())
+            .Register();
     }
 }

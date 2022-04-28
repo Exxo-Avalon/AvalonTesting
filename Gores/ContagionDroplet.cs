@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,7 +9,7 @@ namespace AvalonTesting.Gores;
 
 public class ContagionDroplet : ModGore
 {
-    public override void OnSpawn(Gore gore)
+    public override void OnSpawn(Gore gore, IEntitySource source)
     {
         gore.numFrames = 15;
         gore.behindTiles = true;
@@ -48,7 +49,7 @@ public class ContagionDroplet : ModGore
                 gore.frame += 1;
                 if (gore.frame == 5)
                 {
-                    int droplet = Gore.NewGore(gore.position, gore.velocity, gore.type);
+                    int droplet = Gore.NewGore(new EntitySource_Misc(nameof(ContagionDroplet)), gore.position, gore.velocity, gore.type);
                     Main.gore[droplet].frame = 9;
                     Main.gore[droplet].velocity *= 0f;
                 }

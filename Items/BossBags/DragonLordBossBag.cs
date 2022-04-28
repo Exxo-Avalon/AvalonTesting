@@ -30,16 +30,16 @@ public class DragonLordBossBag : ModItem
 
     public override void OpenBossBag(Player player)
     {
-        player.TryGettingDevArmor(player.GetItemSource_OpenItem(Item.type));
+        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
 
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<DragonScale>(), Main.rand.Next(10, 21));
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Accessories.DragonsBondage>());
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DragonScale>(), Main.rand.Next(10, 21));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Accessories.DragonsBondage>());
         int rand = Main.rand.Next(5);
-        if (rand == 0) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Accessories.DragonStone>());
-        else if (rand == 1) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Melee.Infernasword>());
-        else if (rand == 2) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Ranged.QuadroCannon>());
-        else if (rand == 3) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Magic.MagmafrostBolt>());
-        else if (rand == 4) player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Summon.ReflectorStaff>());
+        if (rand == 0) player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Accessories.DragonStone>());
+        else if (rand == 1) player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Melee.Infernasword>());
+        else if (rand == 2) player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Ranged.QuadroCannon>());
+        else if (rand == 3) player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Magic.MagmafrostBolt>());
+        else if (rand == 4) player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Summon.ReflectorStaff>());
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.DragonLordHead>();

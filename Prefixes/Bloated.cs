@@ -12,6 +12,6 @@ public class Bloated : ArmorPrefix
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.05f;
-        player.meleeSpeed -= 0.02f;
+        player.GetAttackSpeed(DamageClass.Melee) -= 0.02f;
     }
 }

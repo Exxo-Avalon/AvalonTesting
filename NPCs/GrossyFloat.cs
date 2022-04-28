@@ -86,16 +86,16 @@ public class GrossyFloat : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight)
-            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.player.ZoneRockLayerHeight) ? 1f : 0f;
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.Player.ZoneRockLayerHeight)
+            return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.Player.ZoneRockLayerHeight) ? 1f : 0f;
         return 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GrossyFloatHead").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GrossyFloatTail").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GrossyFloatHead").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GrossyFloatTail").Type, 0.9f);
         }
     }
 }

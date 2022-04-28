@@ -257,7 +257,7 @@ public class KingSting : ModNPC
                 SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 17);
                 Vector2 rotation = (player.Center - NPC.Center).SafeNormalize(-Vector2.UnitY);
                 float speed = 8f;
-                Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, rotation * speed, ProjectileID.Stinger, 20, 1.5f, Main.myPlayer);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, rotation * speed, ProjectileID.Stinger, 20, 1.5f, Main.myPlayer);
                 attackTimer = 0;
             }
 
@@ -292,7 +292,7 @@ public class KingSting : ModNPC
                 if (attackTimer >= 60)
                 {
                     Vector2 velocity = new Vector2(Main.rand.Next(-100, 101) * 0.03f, Main.rand.Next(-100, 101) * 0.03f);
-                    int larvae = NPC.NewNPC(NPC.GetSpawnSourceForNPCFromNPCAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NPCs.Larvae>(), default, default, default, default, default, NPC.target);
+                    int larvae = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<NPCs.Larvae>(), default, default, default, default, default, NPC.target);
                     Main.npc[larvae].velocity = velocity;
                     attackTimer = 0;
                 }
@@ -304,7 +304,7 @@ public class KingSting : ModNPC
                     for (int i = 0; i < 3; i++)
                     {
                         Vector2 velocity = new Vector2(0f, Main.rand.NextFloat(-3f, -5f)).RotatedBy(MathHelper.ToRadians(Main.rand.Next(-35, 36)));
-                        Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.ToxinBall>(), 25, 0.5f, NPC.target);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.ToxinBall>(), 25, 0.5f, NPC.target);
                     }
                     attackTimer = 0;
                 }
@@ -412,10 +412,10 @@ public class KingSting : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingHead").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingWing").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingBody").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingStinger").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingWing").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingBody").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("KingStingStinger").Type, 1f);
         }
     }
     public override void OnKill()

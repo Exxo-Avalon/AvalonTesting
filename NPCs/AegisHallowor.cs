@@ -49,7 +49,7 @@ public class AegisHallowor : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneHallow && spawnInfo.spawnTileY < (Main.maxTilesY - 200) && Main.hardMode && !spawnInfo.player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.066f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneHallow && spawnInfo.SpawnTileY < (Main.maxTilesY - 200) && Main.hardMode && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.066f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -225,13 +225,13 @@ public class AegisHallowor : ModNPC
                     var player5 = Main.player[NPC.target];
                     var vector158 = new Vector2(NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height / 2);
                     var num1191 = (float)Math.Atan2(vector158.Y - (player5.position.Y + player5.height * 0.5f + 40f), vector158.X - (player5.position.X + player5.width * 0.5f + 40f));
-                    var number2 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(num1191) * 7f, -(float)Math.Sin(num1191) * 7f, ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target, 0f, 0f);
+                    var number2 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(num1191) * 7f, -(float)Math.Sin(num1191) * 7f, ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target, 0f, 0f);
                     if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), number2, 0f, 0f, 0f, 0);
                     }
                     var num1192 = (float)Math.Atan2(vector158.Y - (player5.position.Y + player5.height * 0.5f - 40f), vector158.X - (player5.position.X + player5.width * 0.5f - 40f));
-                    var num1193 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(num1192), -(float)Math.Sin(num1192), ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target, 0f, 0f);
+                    var num1193 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(num1192), -(float)Math.Sin(num1192), ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target, 0f, 0f);
                     var expr_4284B_cp_0 = Main.projectile[num1193];
                     expr_4284B_cp_0.velocity.X = expr_4284B_cp_0.velocity.X * 7f;
                     var expr_4286B_cp_0 = Main.projectile[num1193];
@@ -240,7 +240,7 @@ public class AegisHallowor : ModNPC
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), num1193, 0f, 0f, 0f, 0);
                     }
-                    NPC.NewNPC(NPC.GetSpawnSourceForProjectileNPC(), (int)(NPC.Center.X + NPC.velocity.X), (int)(NPC.Center.Y + NPC.velocity.Y), ModContent.NPCType<HallowSpit>(), 0);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + NPC.velocity.X), (int)(NPC.Center.Y + NPC.velocity.Y), ModContent.NPCType<HallowSpit>(), 0);
                 }
                 NPC.localAI[0] = 0f;
             }

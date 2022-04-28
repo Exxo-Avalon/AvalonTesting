@@ -152,17 +152,17 @@ public class PoisonDartFrog : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore1").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore1").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
         }
     }
 }

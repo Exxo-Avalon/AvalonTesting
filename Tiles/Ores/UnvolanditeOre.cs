@@ -34,7 +34,7 @@ public class UnvolanditeOre : ModTile
         {
             if (Main.rand.Next(5500) == 0 && Vector2.Distance(Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].position, new Vector2(i * 16, j * 16)) < 12 * 16)
             {
-                NPC.NewNPC(NPC.GetSpawnSourceForNaturalSpawn(), i * 16, j * 16, ModContent.NPCType<NPCs.UnvolanditeMiteDigger>());
+                NPC.NewNPC(NPC.GetSource_NaturalSpawn(), i * 16, j * 16, ModContent.NPCType<NPCs.UnvolanditeMiteDigger>());
             }
         }
     }

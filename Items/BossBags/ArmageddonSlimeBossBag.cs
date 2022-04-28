@@ -32,9 +32,9 @@ public class ArmageddonSlimeBossBag : ModItem
 
     public override void OpenBossBag(Player player)
     {
-        player.TryGettingDevArmor(player.GetItemSource_OpenItem(Item.type));
+        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
 
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<DarkMatterSoilBlock>(), Main.rand.Next(100, 210));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DarkMatterSoilBlock>(), Main.rand.Next(100, 210));
     }
 
     public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>();

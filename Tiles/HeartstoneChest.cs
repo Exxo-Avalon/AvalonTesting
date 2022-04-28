@@ -8,6 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
+using Terraria.GameContent.ObjectInteractions;
 
 namespace AvalonTesting.Tiles;
 
@@ -42,7 +43,7 @@ public class HeartstoneChest : ModTile
         DustType = DustID.Confetti_Pink;
     }
 
-    public override bool HasSmartInteract()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
     {
         return true;
     }

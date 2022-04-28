@@ -32,23 +32,23 @@ public class DesertBeakBossBag : ModItem
 
     public override void OpenBossBag(Player player)
     {
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ItemID.SandBlock, Main.rand.Next(22, 55));
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<DesertFeather>(), Main.rand.Next(6, 11));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ItemID.SandBlock, Main.rand.Next(22, 55));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DesertFeather>(), Main.rand.Next(6, 11));
         if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Rhodium)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.RhodiumOre>(), Main.rand.Next(20, 31));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.RhodiumOre>(), Main.rand.Next(20, 31));
         }
         else if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Osmium)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.OsmiumOre>(), Main.rand.Next(20, 31));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.OsmiumOre>(), Main.rand.Next(20, 31));
         }
         else if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Iridium)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.IridiumOre>(), Main.rand.Next(20, 31));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.IridiumOre>(), Main.rand.Next(20, 31));
         }
         if (Main.rand.Next(3) == 0)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<TomeoftheDistantPast>(), 1);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<TomeoftheDistantPast>(), 1);
         }
     }
 

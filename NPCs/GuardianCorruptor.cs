@@ -216,13 +216,13 @@ public class GuardianCorruptor : ModNPC
                     var player5 = Main.player[NPC.target];
                     var vector158 = new Vector2(NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height / 2);
                     var num1191 = (float)Math.Atan2(vector158.Y - (player5.position.Y + player5.height * 0.5f + 40f), vector158.X - (player5.position.X + player5.width * 0.5f + 40f));
-                    var number2 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height * 0.5f, -(float)Math.Cos(num1191) * 7f, -(float)Math.Sin(num1191) * 7f, ModContent.ProjectileType<Projectiles.VileSpit>(), 70, 1f, NPC.target, 0f, 0f);
+                    var number2 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height * 0.5f, -(float)Math.Cos(num1191) * 7f, -(float)Math.Sin(num1191) * 7f, ModContent.ProjectileType<Projectiles.VileSpit>(), 70, 1f, NPC.target, 0f, 0f);
                     if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), number2, 0f, 0f, 0f, 0);
                     }
                     var num1192 = (float)Math.Atan2(vector158.Y - (player5.position.Y + player5.height * 0.5f - 40f), vector158.X - (player5.position.X + player5.width * 0.5f - 40f));
-                    var num1193 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height * 0.5f, -(float)Math.Cos(num1192), -(float)Math.Sin(num1192), ModContent.ProjectileType<Projectiles.VileSpit>(), 70, 1f, NPC.target, 0f, 0f);
+                    var num1193 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position.X + NPC.width / 2, NPC.position.Y + NPC.height * 0.5f, -(float)Math.Cos(num1192), -(float)Math.Sin(num1192), ModContent.ProjectileType<Projectiles.VileSpit>(), 70, 1f, NPC.target, 0f, 0f);
                     var expr_4284B_cp_0 = Main.projectile[num1193];
                     expr_4284B_cp_0.velocity.X = expr_4284B_cp_0.velocity.X * 7f;
                     var expr_4286B_cp_0 = Main.projectile[num1193];
@@ -231,7 +231,7 @@ public class GuardianCorruptor : ModNPC
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), num1193, 0f, 0f, 0f, 0);
                     }
-                    NPC.NewNPC(NPC.GetSpawnSourceForProjectileNPC(), (int)(NPC.position.X + NPC.width / 2 + NPC.velocity.X), (int)(NPC.position.Y + NPC.height / 2 + NPC.velocity.Y), NPCID.VileSpit, 0);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + NPC.width / 2 + NPC.velocity.X), (int)(NPC.position.Y + NPC.height / 2 + NPC.velocity.Y), NPCID.VileSpit, 0);
                 }
                 NPC.localAI[0] = 0f;
             }
@@ -248,15 +248,15 @@ public class GuardianCorruptor : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor1").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor2").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor3").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor4").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor1").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor2").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GuardianCorruptor4").Type, 0.9f);
         }
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneCorrupt && !spawnInfo.player.InPillarZone() && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.066f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.InPillarZone() && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.066f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

@@ -44,7 +44,7 @@ public class BlahBulletOffspring : ModProjectile
             num202 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default(Color), 1.5f);
             Main.dust[num202].velocity *= 2f;
         }
-        int num203 = Gore.NewGore(new Vector2(Projectile.position.X - 10f, Projectile.position.Y - 10f), default(Vector2), Main.rand.Next(61, 64), 1f);
+        int num203 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X - 10f, Projectile.position.Y - 10f), default(Vector2), Main.rand.Next(61, 64), 1f);
         Main.gore[num203].velocity *= 0.3f;
         Gore expr_639C_cp_0 = Main.gore[num203];
         expr_639C_cp_0.velocity.X = expr_639C_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;

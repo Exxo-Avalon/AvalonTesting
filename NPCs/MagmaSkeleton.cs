@@ -114,7 +114,7 @@ public class MagmaSkeleton : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && !spawnInfo.player.ZoneDungeon && spawnInfo.player.ZoneRockLayerHeight ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && !spawnInfo.Player.ZoneDungeon && spawnInfo.Player.ZoneRockLayerHeight ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {
@@ -128,11 +128,11 @@ public class MagmaSkeleton : ModNPC
                 Main.dust[num890].scale = 1.2f;
                 Main.dust[num890].noGravity = true;
             }
-            Gore.NewGore(NPC.position, NPC.velocity, 43, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 43, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 44, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 44, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("MagmaHelmet").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 43, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 43, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 44, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 44, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MagmaHelmet").Type, 1f);
         }
     }
 }

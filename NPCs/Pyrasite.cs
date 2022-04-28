@@ -39,15 +39,15 @@ public class PyrasiteHead : PyrasiteWorm
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight)
-            return (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.player.InPillarZone() && spawnInfo.player.ZoneOverworldHeight) ? 0.5f : 0f;
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneOverworldHeight)
+            return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneOverworldHeight) ? 0.5f : 0f;
         return 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteHead").Type, 1f);
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -92,7 +92,7 @@ public class PyrasiteBody : PyrasiteWorm
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteBody").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteBody").Type, 1f);
         }
     }
 
@@ -124,7 +124,7 @@ public class PyrasiteTail : PyrasiteWorm
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteTail").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PyrasiteTail").Type, 1f);
         }
     }
     public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

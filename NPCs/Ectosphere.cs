@@ -160,7 +160,7 @@ public class Ectosphere : ModNPC
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
                     NPC.localAI[1] = 1f;
-                    var num1227 = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.Center.X + NPC.velocity.X, NPC.Center.Y + NPC.velocity.Y, 1f, 1f, ModContent.ProjectileType<Projectiles.Ectosoul>(), 75, 3f, NPC.target, 0f, 0f);
+                    var num1227 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X + NPC.velocity.X, NPC.Center.Y + NPC.velocity.Y, 1f, 1f, ModContent.ProjectileType<Projectiles.Ectosoul>(), 75, 3f, NPC.target, 0f, 0f);
                     Main.projectile[num1227].velocity = Vector2.Normalize(Main.player[NPC.target].Center - NPC.Center) * 7f;
                 }
                 NPC.localAI[0] = 0f;
@@ -207,6 +207,6 @@ public class Ectosphere : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
 }

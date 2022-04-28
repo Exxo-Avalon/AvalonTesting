@@ -49,22 +49,22 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimslime);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Herpling);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimslime);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Herpling);
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.IchorSticker);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FloatyGross);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.IchorSticker);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FloatyGross);
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(3);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimera);
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FaceMonster);
-                                if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimera);
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FaceMonster);
+                                if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                         else // contagion mobs
@@ -74,22 +74,22 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Ickslime>());
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Cougher>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Ickslime>());
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Cougher>());
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Bactus>());
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.PyrasiteHead>());
-                                //if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Bactus>());
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.PyrasiteHead>());
+                                //if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                     }
@@ -105,22 +105,22 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimslime);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Herpling);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimslime);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Herpling);
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.IchorSticker);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FloatyGross);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.IchorSticker);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FloatyGross);
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(3);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimera);
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FaceMonster);
-                                if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Crimera);
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.FaceMonster);
+                                if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                         else // corruption mobs
@@ -130,24 +130,24 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(3);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Slimer);
-                                    if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Slimer);
+                                    if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(3);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.SeekerHead);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
-                                    if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.SeekerHead);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
+                                    if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.EaterofSouls);
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.DevourerHead);
-                                //if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.EaterofSouls);
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.DevourerHead);
+                                //if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                     }
@@ -163,24 +163,24 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(3);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Slimer);
-                                    if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Slimer);
+                                    if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(3);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.SeekerHead);
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
-                                    if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.SeekerHead);
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.CorruptSlime);
+                                    if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.Corruptor);
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.EaterofSouls);
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.DevourerHead);
-                                //if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.EaterofSouls);
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, NPCID.DevourerHead);
+                                //if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                         else // contagion mobs
@@ -190,22 +190,22 @@ public class MidairRift : ModProjectile
                                 if (p.position.Y < Main.worldSurface)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Ickslime>());
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Cougher>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Ickslime>());
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Cougher>());
                                 }
                                 else if (p.ZoneRockLayerHeight)
                                 {
                                     int t = Main.rand.Next(2);
-                                    if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
-                                    if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
+                                    if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Viris>());
+                                    if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.GrossyFloat>());
                                 }
                             }
                             else
                             {
                                 int t = Main.rand.Next(2);
-                                if (t == 0) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Bactus>());
-                                if (t == 1) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.PyrasiteHead>());
-                                //if (t == 2) NPC.NewNPC(Projectile.GetNPCSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
+                                if (t == 0) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.Bactus>());
+                                if (t == 1) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)Projectile.position.X, (int)Projectile.position.Y, ModContent.NPCType<NPCs.PyrasiteHead>());
+                                //if (t == 2) NPC.NewNPC(Projectile.GetSource_FromThis(), (int)projectile.position.X, (int)projectile.position.Y, NPCID.BloodCrawler);
                             }
                         }
                     }

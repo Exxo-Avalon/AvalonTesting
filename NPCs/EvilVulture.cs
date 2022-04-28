@@ -189,13 +189,13 @@ public class EvilVulture : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion || spawnInfo.player.ZoneCorrupt || spawnInfo.player.ZoneCrimson)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion || spawnInfo.Player.ZoneCorrupt || spawnInfo.Player.ZoneCrimson)
         {
             if (Main.hardMode)
             {
-                if (Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY + 1].TileType == TileID.Ebonsand ||
-                    Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY + 1].TileType == TileID.Crimsand ||
-                    Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY + 1].TileType == ModContent.TileType<Tiles.Snotsand>())
+                if (Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY + 1].TileType == TileID.Ebonsand ||
+                    Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY + 1].TileType == TileID.Crimsand ||
+                    Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY + 1].TileType == ModContent.TileType<Tiles.Snotsand>())
                 {
                     return 1f;
                 }
@@ -237,11 +237,11 @@ public class EvilVulture : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureHead").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureWing").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureWing").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureTalon").Type, 0.9f);
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureTalon").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureHead").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureWing").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureWing").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureTalon").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CorruptVultureTalon").Type, 0.9f);
         }
     }
 }

@@ -38,7 +38,7 @@ internal class IridiumHat : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.11f;
-        player.meleeSpeed += 0.11f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.11f;
         player.GetDamage(DamageClass.Ranged) += 0.11f;
     }
 }

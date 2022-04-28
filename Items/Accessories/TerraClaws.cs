@@ -27,6 +27,6 @@ class TerraClaws : ModItem
     {
         player.Avalon().terraClaws = true;
         player.GetDamage(DamageClass.Melee) += 0.1f;
-        player.meleeSpeed += 0.1f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
     }
 }

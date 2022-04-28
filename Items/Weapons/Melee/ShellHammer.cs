@@ -41,7 +41,7 @@ public class ShellHammer : ModItem
             float v = MathHelper.Clamp(velX, -7f, 7f);
             if (v < 0 && v > -5f) v = -5f;
             if (v > 0 && v < 5f) v = 5f;
-            int p = Projectile.NewProjectile(player.GetProjectileSource_Item(Item), player.position.X, player.position.Y, v, -4f, ModContent.ProjectileType<Projectiles.Melee.Shell>(), 87, 6f);
+            int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position.X, player.position.Y, v, -4f, ModContent.ProjectileType<Projectiles.Melee.Shell>(), 87, 6f);
             Main.projectile[p].owner = player.whoAmI;
             fireDelay = 90;
         }

@@ -1,5 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -12,15 +11,10 @@ public class UnvolanditeMite : ModNPC
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Unvolandite Mite");
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-        {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused
-            }
-        };
+        var debuffData = new NPCDebuffImmunityData {SpecificallyImmuneTo = new[] {BuffID.Confused}};
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
+
     public override void SetDefaults()
     {
         NPC.damage = 77;
@@ -35,33 +29,42 @@ public class UnvolanditeMite : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         NPC.lavaImmune = true;
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
+
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("UnvolanditeMiteGore1").Type, NPC.scale);
-            Gore.NewGore(NPC.Center, NPC.velocity, Mod.Find<ModGore>("UnvolanditeMiteGore2").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity,
+                Mod.Find<ModGore>("UnvolanditeMiteGore1").Type, NPC.scale);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity,
+                Mod.Find<ModGore>("UnvolanditeMiteGore2").Type, NPC.scale);
         }
     }
+
     public override void AI()
     {
         NPC.spriteDirection = NPC.direction;
-        NPC.TargetClosest(true);
+        NPC.TargetClosest();
         NPC.ai[2]++;
-        if (NPC.ai[2] >= 360 && Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
+        if (NPC.ai[2] >= 360 && Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position,
+                Main.player[NPC.target].width, Main.player[NPC.target].height))
         {
-            int proj = Projectile.NewProjectile(NPC.GetSpawnSource_ForProjectile(), NPC.position, Vector2.Normalize(Main.player[NPC.target].position - NPC.position) * 7f, ProjectileID.Stinger, 65, 4f);
+            int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position,
+                Vector2.Normalize(Main.player[NPC.target].position - NPC.position) * 7f, ProjectileID.Stinger, 65, 4f);
             NPC.ai[2] = 0;
         }
+
         if (NPC.ai[1] < 1200f)
         {
             NPC.ai[1]++;
         }
+
         if (NPC.ai[1] == 1200f && Main.netMode != 1)
         {
             NPC.position.Y = NPC.position.Y + 16f;
@@ -69,19 +72,22 @@ public class UnvolanditeMite : ModNPC
             NPC.netUpdate = true;
             return;
         }
+
         if (NPC.velocity.Y == 0f)
         {
             if (NPC.ai[0] == 1f)
             {
                 if (NPC.direction == 0)
                 {
-                    NPC.TargetClosest(true);
+                    NPC.TargetClosest();
                 }
+
                 if (NPC.collideX)
                 {
                     NPC.direction *= -1;
                 }
-                NPC.velocity.X = 0.2f * (float)NPC.direction;
+
+                NPC.velocity.X = 0.2f * NPC.direction;
                 if (NPC.type == ModContent.NPCType<UnvolanditeMite>())
                 {
                     NPC.velocity.X = NPC.velocity.X * 3f;
@@ -91,6 +97,7 @@ public class UnvolanditeMite : ModNPC
             {
                 NPC.velocity.X = 0f;
             }
+
             if (Main.netMode != 1)
             {
                 NPC.localAI[1] -= 1f;
@@ -106,10 +113,10 @@ public class UnvolanditeMite : ModNPC
                         NPC.ai[0] = 1f;
                         NPC.localAI[1] = Main.rand.Next(600, 1800);
                     }
+
                     NPC.netUpdate = true;
                 }
             }
         }
-
     }
 }

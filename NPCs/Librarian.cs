@@ -1,7 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Crafting;
 using AvalonTesting.Systems;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -24,13 +24,11 @@ public class Librarian : ModNPC
         NPCID.Sets.AttackType[NPC.type] = 0;
         NPCID.Sets.AttackTime[NPC.type] = 50;
         NPCID.Sets.AttackAverageChance[NPC.type] = 10;
-		
-		NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {
-			Velocity = 1f
-			};
-		
-		NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
-		
+
+        var drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {Velocity = 1f};
+
+        NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+
         NPC.Happiness
             .SetBiomeAffection<ForestBiome>(AffectionLevel.Love)
             .SetBiomeAffection<JungleBiome>(AffectionLevel.Like)
@@ -56,89 +54,93 @@ public class Librarian : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         AnimationType = 22;
     }
+
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-            new FlavorTextBestiaryInfoElement("The Librarian fled his homeland when mysterious otherwordly beings invaded. He seems to be much happier here.")
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface, new FlavorTextBestiaryInfoElement(
+                "The Librarian fled his homeland when mysterious otherwordly beings invaded. He seems to be much happier here.")
         });
     }
-    public override string TownNPCName()
+
+    public override List<string> SetNPCNameList()
     {
-        switch (Main.rand.Next(12))
+        return new List<string>
         {
-            case 0:
-                return "Juisefuss";
-            case 1:
-                return "Rob";
-            case 2:
-                return "Nasard";
-            case 3:
-                return "Helafrin";
-            case 4:
-                return "Ganjarule";
-            case 5:
-                return "Ryugrei";
-            case 6:
-                return "Baysh";
-            case 7:
-                return "Encanes";
-            case 8:
-                return "Dato";
-            case 9:
-                return "Callumn";
-            case 10:
-                return "Alkaido";
-            default:
-                return "Harry";
-        }
+            "Juisefuss",
+            "Rob",
+            "Nasard",
+            "Helafrin",
+            "Ganjarule",
+            "Ryugrei",
+            "Baysh",
+            "Encanes",
+            "Dato",
+            "Callumn",
+            "Alkaido",
+            "Harry"
+        };
     }
+
     public override string GetChat()
     {
         if (!Main.dayTime && Main.hardMode && Main.rand.Next(5) == 0)
         {
             return "My home is fraught with Wraiths. I'm deathly afraid of them; please keep them away.";
         }
+
         if (NPC.AnyNPCs(NPCID.DyeTrader) && Main.rand.Next(6) == 0)
         {
-            return "Wow, " + Main.npc[AvalonTestingGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName + "'s services are free? Where I'm from, you have to pay an arm and a leg to dye clothes...";
+            return "Wow, " + Main.npc[AvalonTestingGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName +
+                   "'s services are free? Where I'm from, you have to pay an arm and a leg to dye clothes...";
         }
+
         switch (Main.rand.Next(11))
         {
             case 0:
-                return "I come from a distant land, one where there are many races. It doesn't appear that you are any of those races, however.";
+                return
+                    "I come from a distant land, one where there are many races. It doesn't appear that you are any of those races, however.";
             case 1:
-                return "This area is quite different from what I'm used to. People where I'm from spend loads to get virtual clothes.";
+                return
+                    "This area is quite different from what I'm used to. People where I'm from spend loads to get virtual clothes.";
             case 2:
-                return "...okay. I've got your grade seventeen fifth cast weapon materials ready. *click* Sorry, did you need something?";
+                return
+                    "...okay. I've got your grade seventeen fifth cast weapon materials ready. *click* Sorry, did you need something?";
             case 3:
                 return "How do you people deal with being two-dimensional?";
             case 4:
                 return "買點東西，什麼都買。 Oops, sorry about that. I was just speaking to a friend of mine from home.";
             case 5:
-                return "Psionic Infusion, Spark, Chant of Chi, Tide Spirit, Sandburst Blast, Stone Smasher, macro. What? Just setting up my strategy for this nuke.";
+                return
+                    "Psionic Infusion, Spark, Chant of Chi, Tide Spirit, Sandburst Blast, Stone Smasher, macro. What? Just setting up my strategy for this nuke.";
             case 6:
                 return "Pan Gu is the creator of my land. Who created yours? ... Redigit? Never heard of them.";
             case 7:
                 return "You should consider the Tome Forge. It's my own invention!";
             case 8:
-                return "When the Changelings took over the Western Steppes, I fled to this land. I already like it better.";
+                return
+                    "When the Changelings took over the Western Steppes, I fled to this land. I already like it better.";
             case 9:
                 return "Wait, you get loot after defeating a boss more than once per day?";
             case 10:
-                return "It's very strange to not see fairies flying around everyone. Why don't you buy one from me?"; // add genie pets
+                return
+                    "It's very strange to not see fairies flying around everyone. Why don't you buy one from me?"; // add genie pets
         }
+
         return "";
     }
+
     public override void SetChatButtons(ref string button, ref string button2)
     {
         button = Language.GetTextValue("LegacyInterface.28");
     }
+
     public override bool CanTownNPCSpawn(int numTownNPCs, int money)
     {
         return NPC.downedBoss1;
     }
+
     public override void OnChatButtonClicked(bool firstButton, ref bool shop)
     {
         if (firstButton)
@@ -146,9 +148,10 @@ public class Librarian : ModNPC
             shop = true;
         }
     }
+
     public override void SetupShop(Chest shop, ref int nextSlot)
     {
-        shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Placeable.Crafting.TomeForge>());
+        shop.item[nextSlot].SetDefaults(ModContent.ItemType<TomeForge>());
         shop.item[nextSlot].value = Item.buyPrice(0, 7, 50);
         nextSlot++;
         if (Main.hardMode)
@@ -157,6 +160,7 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 2);
             nextSlot++;
         }
+
         if (NPC.downedBoss1)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<MysticalClaw>());
@@ -166,12 +170,14 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 2, 50);
             nextSlot++;
         }
+
         if (Main.LocalPlayer.ZoneJungle)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<StrongVenom>());
             shop.item[nextSlot].value = Item.buyPrice(0, 2, 50);
             nextSlot++;
         }
+
         if (NPC.downedBoss3)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ElementDust>());
@@ -181,6 +187,7 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 2, 50);
             nextSlot++;
         }
+
         if (Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<CarbonSteel>());
@@ -196,12 +203,14 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 0, 20);
             nextSlot++;
         }
+
         if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<MysticalTotem>());
             shop.item[nextSlot].value = Item.buyPrice(0, 7);
             nextSlot++;
         }
+
         if (NPC.downedPlantBoss && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ElementDiamond>());
@@ -211,6 +220,7 @@ public class Librarian : ModNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 3, 50);
             nextSlot++;
         }
+
         if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ScrollofTome>());
@@ -224,6 +234,7 @@ public class Librarian : ModNPC
             }
         }
     }
+
     /*public override void AI()
     {
         var flag22 = Main.raining;
@@ -802,22 +813,27 @@ public class Librarian : ModNPC
             NPC.frame.Y = frameHeight;
         }*/
     }
+
     public override void TownNPCAttackStrength(ref int damage, ref float knockback)
     {
         damage = 22;
         knockback = 2f;
     }
+
     public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
     {
         cooldown = 30;
         randExtraCooldown = 30;
     }
+
     public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
     {
         projType = ProjectileID.WaterBolt;
         attackDelay = 1;
     }
-    public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+
+    public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection,
+                                                ref float randomOffset)
     {
         multiplier = 12f;
         randomOffset = 2f;

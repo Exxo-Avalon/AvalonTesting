@@ -30,7 +30,7 @@ class BacchusBoots : ModItem
     {
         player.maxMinions += 2;
         player.GetDamage(DamageClass.Summon) += 0.08f;
-        player.armorPenetration += 5;
+        player.GetArmorPenetration(DamageClass.Generic) += 5;
         player.maxTurrets++;
         player.noKnockback = true;
         player.noFallDmg = true;

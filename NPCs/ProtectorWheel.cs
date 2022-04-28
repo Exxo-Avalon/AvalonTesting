@@ -111,6 +111,6 @@ public class ProtectorWheel : ModNPC
     /*Replaces Blazing Wheels
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.player.ZoneDungeon && Main.hardMode && AvalonTesting.superHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return spawnInfo.Player.ZoneDungeon && Main.hardMode && AvalonTesting.superHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }*/
 }

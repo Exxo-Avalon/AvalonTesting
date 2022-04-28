@@ -168,7 +168,7 @@ public static class ClassExtensions
 
         p.lifeSteal -= num;
         int num2 = p.whoAmI;
-        Projectile.NewProjectile(p.GetProjectileSource_Accessory(new Item(ModContent.ItemType<VampireTeeth>())),
+        Projectile.NewProjectile(p.GetSource_Accessory(new Item(ModContent.ItemType<VampireTeeth>())),
             position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
     }
 

@@ -28,7 +28,7 @@ class AvalonCuisses : ModItem
     public override void UpdateEquip(Player player)
     {
         player.moveSpeed += 0.15f;
-        player.meleeSpeed += 0.10f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.10f;
         player.Avalon().LightningInABottle = true;
     }
 }

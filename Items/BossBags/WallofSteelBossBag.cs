@@ -1,6 +1,9 @@
-﻿using AvalonTesting.Items.Material;
+﻿using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Consumables;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Weapons.Magic;
 using AvalonTesting.Items.Weapons.Ranged;
+using AvalonTesting.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,6 +12,8 @@ namespace AvalonTesting.Items.BossBags;
 
 public class WallofSteelBossBag : ModItem
 {
+    public override int BossBagNPC => ModContent.NPCType<WallofSteel>();
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Treasure Bag");
@@ -32,28 +37,33 @@ public class WallofSteelBossBag : ModItem
 
     public override void OpenBossBag(Player player)
     {
-        player.TryGettingDevArmor(player.GetItemSource_OpenItem(Item.type));
+        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
 
-        if (player.extraAccessorySlots == 0 && !Main.expertMode || player.extraAccessorySlots == 1 && Main.expertMode)
+        if ((player.extraAccessorySlots == 0 && !Main.expertMode) ||
+            (player.extraAccessorySlots == 1 && Main.expertMode))
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Consumables.MechanicalHeart>());
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MechanicalHeart>());
         }
+
         int drop = Main.rand.Next(5);
         if (drop == 0)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<FleshBoiler>(), 1);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FleshBoiler>());
         }
+
         if (drop == 1)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<MagicCleaver>(), 1);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MagicCleaver>());
         }
+
         if (drop == 2)
         {
-            player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<Accessories.BubbleBoost>(), 1);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BubbleBoost>());
         }
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<SoulofBlight>(), Main.rand.Next(40, 56));
-        player.QuickSpawnItem(player.GetItemSource_OpenItem(Item.type), ModContent.ItemType<HellsteelPlate>(), Main.rand.Next(20, 31));
-    }
 
-    public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.WallofSteel>();
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SoulofBlight>(),
+            Main.rand.Next(40, 56));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<HellsteelPlate>(),
+            Main.rand.Next(20, 31));
+    }
 }

@@ -102,8 +102,8 @@ public class MegaQuadBall : ModProjectile
         }
         else if (Projectile.ai[0] == 1f)
         {
-            var num257 = 14f / Main.player[Projectile.owner].meleeSpeed;
-            var num258 = 0.9f / Main.player[Projectile.owner].meleeSpeed;
+            var num257 = 14f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
+            var num258 = 0.9f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
             var num259 = 300f;
             Math.Abs(num253);
             Math.Abs(num254);

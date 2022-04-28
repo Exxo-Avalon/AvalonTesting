@@ -92,17 +92,17 @@ public class IrateBones : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.player.ZoneDungeon ? 0.6f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
+        return Main.hardMode && spawnInfo.Player.ZoneDungeon ? 0.6f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
     }
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.position, NPC.velocity, Mod.Find<ModGore>("IrateBonesHelmet").Type, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 43, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 43, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 44, 1f);
-            Gore.NewGore(NPC.position, NPC.velocity, 44, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("IrateBonesHelmet").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 43, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 43, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 44, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, 44, 1f);
         }
     }
 }

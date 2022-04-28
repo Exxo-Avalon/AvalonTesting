@@ -95,56 +95,56 @@ public class CrimsandBomb : ModProjectile
         int choice = Main.rand.Next(1);
         if (choice == 0)
         {
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
         }
 
         int num = Main.rand.Next(1);
         if (num == 0)
         {
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
         }
 
         int num2 = Main.rand.Next(1);
         if (num2 == 0)
         {
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
         }
 
         int num3 = Main.rand.Next(1);
         if (num3 == 0)
         {
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
         }
 
         int num4 = Main.rand.Next(1);
         if (num4 == 0)
         {
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
-            Projectile.NewProjectile(Projectile.GetItemSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, -8 + Main.rand.Next(0, 17), -8 + Main.rand.Next(0, 17), ProjectileID.CrimsandBallFalling, 24, 1f, Main.myPlayer, 0f, 0f);
         }
         for (int i = 0; i < 50; i++)
         {
@@ -161,19 +161,19 @@ public class CrimsandBomb : ModProjectile
         }
         for (int g = 0; g < 2; g++)
         {
-            int goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+            int goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[goreIndex].scale = 1.5f;
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-            goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[goreIndex].scale = 1.5f;
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-            goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[goreIndex].scale = 1.5f;
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-            goreIndex = Gore.NewGore(new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
+            goreIndex = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[goreIndex].scale = 1.5f;
             Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
             Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;

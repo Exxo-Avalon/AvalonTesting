@@ -66,7 +66,7 @@ public class BlahStaff : ModItem
                 num311 *= num313;
                 num312 *= num313;
                 Vector2 vector3 = new Vector2(num311, num312) / 2f;
-                int p = Projectile.NewProjectile(Projectile.GetNoneSource(), vector.X, vector.Y, vector3.X, vector3.Y, ModContent.ProjectileType<Projectiles.BlahMeteor>(), (int)(Item.damage * player.GetDamage(DamageClass.Magic)), Item.knockBack, player.whoAmI, 0f, ai2);
+                int p = Projectile.NewProjectile(Projectile.GetSource_None(), vector.X, vector.Y, vector3.X, vector3.Y, ModContent.ProjectileType<Projectiles.BlahMeteor>(), (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
                 Main.projectile[p].owner = player.whoAmI;
             }
         }

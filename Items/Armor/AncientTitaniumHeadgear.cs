@@ -32,7 +32,7 @@ class AncientTitaniumHeadgear : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "20% increased melee speed";
-        player.meleeSpeed += 0.2f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
     }
 
     public override void UpdateEquip(Player player)

@@ -93,7 +93,7 @@ public class StingerProbeMinion : ModProjectile
         for (int i = 0; i < 2; i++)
         {
             int randomSize = syncedRandom.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(new Vector2(Projectile.position.X, Projectile.position.Y), default,
+            int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default,
                 syncedRandom.Next(61, 64));
             Gore gore30 = Main.gore[num161];
             Gore gore40 = gore30;
@@ -110,7 +110,7 @@ public class StingerProbeMinion : ModProjectile
             return;
         }
 
-        int bomb = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.position,
+        int bomb = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position,
             Vector2.Zero, ProjectileID.Grenade, 50, 3f);
         Main.projectile[bomb].timeLeft = 1;
 
@@ -273,7 +273,7 @@ public class StingerProbeMinion : ModProjectile
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int laser = Projectile.NewProjectile(Projectile.GetProjectileSource_FromThis(), Projectile.Center,
+                int laser = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,
                     dirToCursor * 36f, ModContent.ProjectileType<StingerLaser>(), Projectile.damage, 0f,
                     Projectile.owner);
 
