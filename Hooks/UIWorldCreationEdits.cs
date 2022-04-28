@@ -31,7 +31,7 @@ public static class UIWorldCreationEdits
     }
 
     public static Func<UIWorldCreation, UIText> GetDescriptionUIText =
-        Utilities.CreatePropertyOrFieldReaderDelegate<UIWorldCreation, UIText>("_descriptionText");
+        Utilities.CreateInstancePropertyOrFieldReaderDelegate<UIWorldCreation, UIText>("_descriptionText");
 
     public static Action<UIElement, float> AddHorizontalSeperator =
         (Action<UIElement, float>)Delegate.CreateDelegate(typeof(Action<UIElement, float>),

@@ -18,7 +18,7 @@ public static class ExtraMana
     private const int LowManaTier = 2;
 
     private static readonly Func<HorizontalBarsPlayerReosurcesDisplaySet, int> GetMPSegmentsCount =
-        Utilities.CreatePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>("_mpSegmentsCount");
+        Utilities.CreateInstancePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>("_mpSegmentsCount");
 
     public static void OnPlayerStatsSnapshotCtor(
         On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.orig_ctor orig,

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 
@@ -16,7 +17,7 @@ public static class Utilities
     /// <typeparam name="TInstance">The type of the instance that the field belongs to</typeparam>
     /// <typeparam name="TResult">The type of the property or field</typeparam>
     /// <returns>A delegate that provides the property or field value when supplied with an instance</returns>
-    public static Func<TInstance, TResult> CreatePropertyOrFieldReaderDelegate<TInstance, TResult>(string fieldName)
+    public static Func<TInstance, TResult> CreateInstancePropertyOrFieldReaderDelegate<TInstance, TResult>(string fieldName)
     {
         ParameterExpression instanceParameter = Expression.Parameter(typeof(TInstance));
         return Expression

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using AvalonTesting.Items.Accessories;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -8,17 +10,46 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.UI;
-using Terraria.UI.Gamepad;
 
 namespace AvalonTesting;
 
 public static class ClassExtensions
 {
+    private static readonly Action<Player, int, int, int> OpenChestAction = CacheOpenChestAction();
+
+    private static Action<Player, int, int, int> CacheOpenChestAction()
+    {
+        ParameterExpression paramPlayer = Expression.Parameter(typeof(Player));
+        ParameterExpression paramX = Expression.Parameter(typeof(int));
+        ParameterExpression paramY = Expression.Parameter(typeof(int));
+        ParameterExpression paramNewChest = Expression.Parameter(typeof(int));
+        MethodInfo methodInfo = typeof(Player).GetMethod("OpenChest", BindingFlags.NonPublic | BindingFlags.Instance,
+            new[] {typeof(int), typeof(int), typeof(int)})!;
+        return Expression
+            .Lambda<Action<Player, int, int, int>>(
+                Expression.Call(
+                    paramPlayer,
+                    methodInfo,
+                    new Expression[] {paramX, paramY, paramNewChest}),
+                paramPlayer, paramX, paramY, paramNewChest).Compile();
+    }
+
+    /// <summary>
+    ///     This is calls a dynamically compiled expression which calls the vanilla private OpenChest method.
+    /// </summary>
+    /// <param name="player">The player.</param>
+    /// <param name="x">X coordinate of the chest.</param>
+    /// <param name="y">Y coordinate of the chest.</param>
+    /// <param name="newChest">The chest index.</param>
+    public static void OpenChest(this Player player, int x, int y, int newChest)
+    {
+        OpenChestAction.Invoke(player, x, y, newChest);
+    }
+
+
     public static void active(this Tile t, bool a)
     {
         t.HasTile = a;
@@ -35,36 +66,6 @@ public static class ClassExtensions
         int item = list[index];
         list.RemoveAt(index);
         return item;
-    }
-
-    /// <summary>
-    ///     Helper method for opening a chest. This method exists in vanilla, but is private.
-    /// </summary>
-    /// <param name="player">The player.</param>
-    /// <param name="x">X coordinate of the chest.</param>
-    /// <param name="y">Y coordinate of the chest.</param>
-    /// <param name="newChest">The chest index.</param>
-    public static void OpenChest(this Player player, int x, int y, int newChest)
-    {
-        if (player.chest != -1 && Main.myPlayer == player.whoAmI)
-        {
-            for (int i = 0; i < 40; i++)
-            {
-                ItemSlot.SetGlow(i, -1f, true);
-            }
-        }
-
-        player.chest = newChest;
-        Main.playerInventory = true;
-        UILinkPointNavigator.ForceMovementCooldown(120);
-        if (PlayerInput.GrappleAndInteractAreShared)
-        {
-            PlayerInput.Triggers.JustPressed.Grapple = false;
-        }
-
-        Main.recBigList = false;
-        player.chestX = x;
-        player.chestY = y;
     }
 
     /// <summary>
