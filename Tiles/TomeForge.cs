@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -9,9 +10,7 @@ public class TomeForge : ModTile
 {
     public override void SetStaticDefaults()
     {
-        var name = CreateMapEntryName();
-        name.SetDefault("Tome Forge");
-        AddMapEntry(Color.OrangeRed);
+        AddMapEntry((Color.OrangeRed), LanguageManager.Instance.GetText("Tome Forge"));
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
         TileObjectData.newTile.CoordinateHeights = new[]
         {
