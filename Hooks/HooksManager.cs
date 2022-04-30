@@ -24,6 +24,12 @@ public static class HooksManager
         GenPasses.Hook_GenPassReset += ContagionWorldGen.ILGenPassReset;
         GenPasses.Hook_GenPassShinies += WorldGenEdits.ILGenPassShinies;
         GenPasses.Hook_GenPassAltars += ContagionWorldGen.ILGenPassAltars;
+        WorldGen.AddBuriedChest_int_int_int_bool_int_bool_ushort += WorldGenEdits.AddAllAltarAlternativeChecks;
+        WorldGen.Place3x2 += WorldGenEdits.AddAllAltarAlternativeChecks;
+        WorldGen.Check3x2 += WorldGenEdits.ILCheck3X2;
+        WorldGen.badOceanCaveTiles += WorldGenEdits.AddAllAltarAlternativeChecks;
+        WorldGen.AllowsSandfall += WorldGenEdits.AddAllAltarAlternativeChecks;
+        Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += WorldGenEdits.AddEvilAltarAlternativeChecks;
 
         if (Terraria.Main.netMode == NetmodeID.Server)
         {

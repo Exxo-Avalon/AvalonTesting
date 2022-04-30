@@ -1,7 +1,5 @@
 ﻿using AvalonTesting.Items.Weapons.Throw;
 using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -20,18 +18,9 @@ public class AvalonTestingGlobalTile : GlobalTile
         }
     }
 
-    public override void NearbyEffects(int i, int j, int type, bool closer)
-    {
-        if (type == ModContent.TileType<PyroscoricOre>())
-        {
-            Dust.NewDust(new Vector2(j * 16, i * 16), 16, 16, DustID.InfernoFork);
-        }
-    }
-
     public override bool Slope(int i, int j, int type)
     {
-        if (Main.tile[i, j - 1].TileType == ModContent.TileType<IckyAltar>() ||
-            Main.tile[i, j - 1].TileType == ModContent.TileType<HallowedAltar>())
+        if (Main.tile[i, j - 1].HasTile && Data.Sets.Tile.NoHammerTileBelow[Main.tile[i, j - 1].TileType])
         {
             return false;
         }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 
@@ -17,7 +16,8 @@ public static class Utilities
     /// <typeparam name="TInstance">The type of the instance that the field belongs to</typeparam>
     /// <typeparam name="TResult">The type of the property or field</typeparam>
     /// <returns>A delegate that provides the property or field value when supplied with an instance</returns>
-    public static Func<TInstance, TResult> CreateInstancePropertyOrFieldReaderDelegate<TInstance, TResult>(string fieldName)
+    public static Func<TInstance, TResult> CreateInstancePropertyOrFieldReaderDelegate<TInstance, TResult>(
+        string fieldName)
     {
         ParameterExpression instanceParameter = Expression.Parameter(typeof(TInstance));
         return Expression
@@ -61,6 +61,19 @@ public static class Utilities
         while (!predicate.Invoke(c.Next))
         {
             c.Remove();
+        }
+    }
+
+    public static void AddAlternativeIdChecks(ILContext il, ushort origId, Func<ushort, bool> predicate)
+    {
+        var c = new ILCursor(il);
+
+        while (c.TryGotoNext(i =>
+                   (i.MatchBeq(out _) || i.MatchBneUn(out _)) && i.Offset != 0 && i.Previous.MatchLdcI4(origId)))
+        {
+            c.Index--;
+            c.EmitDelegate<Func<ushort, ushort>>(id => predicate.Invoke(id) ? origId : id);
+            c.Index += 2;
         }
     }
 }

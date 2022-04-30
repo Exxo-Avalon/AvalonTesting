@@ -56,10 +56,13 @@ public class PyroscoricOre : ModTile
 
     public override void NearbyEffects(int i, int j, bool closer)
     {
+        Dust.NewDust(new Vector2(j * 16, i * 16), 16, 16, DustID.InfernoFork);
+
         if (Main.rand.Next(200) == 1)
         {
             int randomSize = Main.rand.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(new EntitySource_TileUpdate(i, j),new Vector2(i * 16, j * 16), default, Main.rand.Next(61, 64));
+            int num161 = Gore.NewGore(new EntitySource_TileUpdate(i, j), new Vector2(i * 16, j * 16), default,
+                Main.rand.Next(61, 64));
             Gore gore30 = Main.gore[num161];
             Gore gore40 = gore30;
             gore40.velocity *= 0.3f;
