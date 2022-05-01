@@ -21,9 +21,9 @@ public static class HooksManager
         On.Terraria.Player.OpenBossBag += BossBagDrops.OnOpenBossBag;
         On.Terraria.WorldGen.SmashAltar += EvilAltar.OnSmashAltar;
         WorldGen.GenerateWorld += GenPasses.ILGenerateWorld;
-        GenPasses.Hook_GenPassReset += ContagionWorldGen.ILGenPassReset;
-        GenPasses.Hook_GenPassShinies += WorldGenEdits.ILGenPassShinies;
-        GenPasses.Hook_GenPassAltars += ContagionWorldGen.ILGenPassAltars;
+        GenPasses.HookGenPassReset += ContagionWorldGen.ILGenPassReset;
+        GenPasses.HookGenPassShinies += WorldGenEdits.ILGenPassShinies;
+        GenPasses.HookGenPassAltars += ContagionWorldGen.ILGenPassAltars;
         WorldGen.AddBuriedChest_int_int_int_bool_int_bool_ushort += WorldGenEdits.AddAllAltarAlternativeChecks;
         WorldGen.Place3x2 += WorldGenEdits.AddAllAltarAlternativeChecks;
         WorldGen.Check3x2 += WorldGenEdits.ILCheck3X2;
