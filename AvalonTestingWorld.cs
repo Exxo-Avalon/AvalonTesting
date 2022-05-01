@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
@@ -360,16 +361,7 @@ public class AvalonTestingWorld : ModSystem
         }
     }
 
-    public void InitiateSuperHardmode()
-    {
-        ThreadPool.QueueUserWorkItem(shmCallback, 1);
-    }
-    public void GenerateSkyFortress()
-    {
-        ThreadPool.QueueUserWorkItem(new WaitCallback(SkyFortressCallback), 1);
-    }
-
-    public void shmCallback(object threadContext)
+    public void InitiateSuperHardMode()
     {
         if (SuperHardmode)
         {
@@ -399,8 +391,7 @@ public class AvalonTestingWorld : ModSystem
             Netplay.ResetSections();
         }
     }
-
-    public void SkyFortressCallback(object threadContext)
+    public void GenerateSkyFortress()
     {
         if (Main.rand == null)
         {

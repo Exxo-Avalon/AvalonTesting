@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 //using AvalonTesting.Items.Placeable.Tile;
 //using AvalonTesting.Items.Placeable.Trophy;
 //using AvalonTesting.Items.Potions;
@@ -540,7 +541,7 @@ public class ArmageddonSlime : ModNPC
         if (!ModContent.GetInstance<DownedBossSystem>().DownedArmageddon)
         {
             NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-            ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress();
+            Task.Run(() => ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress());
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)

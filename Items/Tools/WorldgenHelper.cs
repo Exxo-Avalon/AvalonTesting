@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -37,7 +38,7 @@ class WorldgenHelper : ModItem
         //World.Utils.MakeSquareTemp(xStored, y);
 
         NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-        ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress();
+        Task.Run(() => ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress());
 
         //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;

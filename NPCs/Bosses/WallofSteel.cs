@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Trophy;
 using AvalonTesting.Items.Weapons.Magic;
@@ -571,7 +572,7 @@ public class WallofSteel : ModNPC
         if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             if (!Main.expertMode) NPC.DropItemInstanced(NPC.position, new Vector2(NPC.width, NPC.height), ModContent.ItemType<Items.Consumables.MechanicalHeart>());
-            ModContent.GetInstance<AvalonTestingWorld>().InitiateSuperHardmode();
+            Task.Run(() => ModContent.GetInstance<AvalonTestingWorld>().InitiateSuperHardMode());
         }
         if (Main.netMode != NetmodeID.MultiplayerClient)
         {
