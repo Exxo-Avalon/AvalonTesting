@@ -1,10 +1,11 @@
+using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Crafting;
 
-class CoughwoodWorkBench : ModItem
+internal class CoughwoodWorkBench : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -17,7 +18,7 @@ class CoughwoodWorkBench : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.CoughwoodWorkbench>();
+        Item.createTile = ModContent.TileType<CoughwoodWorkbench>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;
@@ -26,5 +27,11 @@ class CoughwoodWorkBench : ModItem
         Item.value = 150;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        Mod.CreateRecipe(ModContent.ItemType<CoughwoodWorkBench>())
+            .AddIngredient(ModContent.ItemType<Tile.Coughwood>(), 10).Register();
     }
 }

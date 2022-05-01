@@ -140,7 +140,7 @@ public class ExxoWorldGen : ModSystem
     {
         GenPass currentPass;
 
-        int reset = tasks.FindIndex(genpass => genpass.Name == "Reset");
+        int reset = tasks.FindIndex(genPass => genPass.Name == "Reset");
         if (reset != -1)
         {
             currentPass = new AvalonSetup();
@@ -156,7 +156,7 @@ public class ExxoWorldGen : ModSystem
             totalWeight += currentPass.Weight;
         }
 
-        int shinies = tasks.FindIndex(genpass => genpass.Name == "Shinies");
+        int shinies = tasks.FindIndex(genPass => genPass.Name == "Shinies");
         if (shinies != -1)
         {
             currentPass = new OreGenPreHardMode();
@@ -172,7 +172,7 @@ public class ExxoWorldGen : ModSystem
             totalWeight += currentPass.Weight;
         }
 
-        int iceWalls = tasks.FindIndex(genpass => genpass.Name == "Cave Walls");
+        int iceWalls = tasks.FindIndex(genPass => genPass.Name == "Cave Walls");
         if (iceWalls != -1)
         {
             currentPass = new Shrines();
@@ -195,8 +195,6 @@ public class ExxoWorldGen : ModSystem
             {
                 currentPass = new Contagion();
                 tasks[corruption] = currentPass;
-                // tasks.Insert(vines + 1, currentPass);
-                // totalWeight += currentPass.Weight;
             }
         }
     }
@@ -234,14 +232,7 @@ public class ExxoWorldGen : ModSystem
         }
         else
         {
-            if (WorldGen.crimson)
-            {
-                WorldEvil = EvilBiome.Crimson;
-            }
-            else
-            {
-                WorldEvil = EvilBiome.Corruption;
-            }
+            WorldEvil = WorldGen.crimson ? EvilBiome.Crimson : EvilBiome.Corruption;
         }
 
         if (tag.ContainsKey("DungeonSide"))
@@ -313,7 +304,7 @@ public class ExxoWorldGen : ModSystem
         {
             JungleX = tag.Get<int>("JungleX");
         }
-        
+
         if (JungleX == 0)
         {
             bool found = false;
@@ -321,13 +312,15 @@ public class ExxoWorldGen : ModSystem
             {
                 for (int x = 0; x < Main.maxTilesX; x++)
                 {
-                    if (Main.tile[x, y].HasTile && (Main.tile[x, y].TileType == TileID.JungleGrass ||
-                                                    Main.tile[x, y].TileType == ModContent.TileType<TropicalGrass>()))
+                    if (!Main.tile[x, y].HasTile || (Main.tile[x, y].TileType != TileID.JungleGrass &&
+                                                     Main.tile[x, y].TileType != ModContent.TileType<TropicalGrass>()))
                     {
-                        JungleX = x;
-                        found = true;
-                        break;
+                        continue;
                     }
+
+                    JungleX = x;
+                    found = true;
+                    break;
                 }
 
                 if (found)
@@ -343,42 +336,32 @@ public static class ExxoWorldGenExtensions
 {
     public static int GetRhodiumVariantItemOre(this ExxoWorldGen.RhodiumVariant osmiumVariant)
     {
-        switch (osmiumVariant)
+        return osmiumVariant switch
         {
-            case ExxoWorldGen.RhodiumVariant.Osmium:
-                return ModContent.ItemType<OsmiumOre>();
-            case ExxoWorldGen.RhodiumVariant.Rhodium:
-                return ModContent.ItemType<RhodiumOre>();
-            case ExxoWorldGen.RhodiumVariant.Iridium:
-                return ModContent.ItemType<IridiumOre>();
-            default:
-                return -1;
-        }
+            ExxoWorldGen.RhodiumVariant.Osmium => ModContent.ItemType<OsmiumOre>(),
+            ExxoWorldGen.RhodiumVariant.Rhodium => ModContent.ItemType<RhodiumOre>(),
+            ExxoWorldGen.RhodiumVariant.Iridium => ModContent.ItemType<IridiumOre>(),
+            _ => -1
+        };
     }
 
     public static int GetSHMTier1VariantTileOre(this ExxoWorldGen.SHMTier1Variant shmTier1Variant)
     {
-        switch (shmTier1Variant)
+        return shmTier1Variant switch
         {
-            case ExxoWorldGen.SHMTier1Variant.Tritanorium:
-                return ModContent.TileType<Tiles.Ores.TritanoriumOre>();
-            case ExxoWorldGen.SHMTier1Variant.Pyroscoric:
-                return ModContent.TileType<Tiles.Ores.PyroscoricOre>();
-            default:
-                return -1;
-        }
+            ExxoWorldGen.SHMTier1Variant.Tritanorium => ModContent.TileType<Tiles.Ores.TritanoriumOre>(),
+            ExxoWorldGen.SHMTier1Variant.Pyroscoric => ModContent.TileType<Tiles.Ores.PyroscoricOre>(),
+            _ => -1
+        };
     }
 
     public static int GetSHMTier2VariantTileOre(this ExxoWorldGen.SHMTier2Variant shmTier2Variant)
     {
-        switch (shmTier2Variant)
+        return shmTier2Variant switch
         {
-            case ExxoWorldGen.SHMTier2Variant.Unvolandite:
-                return ModContent.TileType<Tiles.Ores.UnvolanditeOre>();
-            case ExxoWorldGen.SHMTier2Variant.Vorazylcum:
-                return ModContent.TileType<Tiles.Ores.VorazylcumOre>();
-            default:
-                return -1;
-        }
+            ExxoWorldGen.SHMTier2Variant.Unvolandite => ModContent.TileType<Tiles.Ores.UnvolanditeOre>(),
+            ExxoWorldGen.SHMTier2Variant.Vorazylcum => ModContent.TileType<Tiles.Ores.VorazylcumOre>(),
+            _ => -1
+        };
     }
 }

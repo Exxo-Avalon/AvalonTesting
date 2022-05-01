@@ -3,7 +3,6 @@ using AvalonTesting.Items.Ammo;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Consumables;
 using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Other;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Placeable.Beam;
 using AvalonTesting.Items.Placeable.Crafting;
@@ -29,57 +28,9 @@ public class RecipeCreator : ModSystem
 {
     public override void AddRecipes()
     {
-        Mod.CreateRecipe(ModContent.ItemType<BrokenVigilanteTome>())
-            .AddIngredient(ItemID.BrokenHeroSword)
-            .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
-
         Mod.CreateRecipe(ItemID.BrokenHeroSword)
             .AddIngredient(ModContent.ItemType<BrokenVigilanteTome>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<UnderworldKey>())
-            .AddIngredient(ItemID.TempleKey)
-            .AddIngredient(ModContent.ItemType<UnderworldKeyMold>())
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddIngredient(ItemID.SoulofMight, 5)
-            .AddIngredient(ItemID.SoulofSight, 5)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<DesertKey>())
-            .AddIngredient(ItemID.TempleKey)
-            .AddIngredient(ModContent.ItemType<DesertKeyMold>())
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddIngredient(ItemID.SoulofMight, 5)
-            .AddIngredient(ItemID.SoulofSight, 5)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<ContagionKey>())
-            .AddIngredient(ItemID.TempleKey)
-            .AddIngredient(ModContent.ItemType<ContagionKeyMold>())
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddIngredient(ItemID.SoulofMight, 5)
-            .AddIngredient(ItemID.SoulofSight, 5)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodDoor>())
-            .AddIngredient(ModContent.ItemType<Coughwood>(), 6)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodChair>())
-            .AddIngredient(ModContent.ItemType<Coughwood>(), 4)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodChest>())
-            .AddIngredient(ModContent.ItemType<Coughwood>(), 8)
-            .AddRecipeGroup("IronBar", 2)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodTable>())
-            .AddIngredient(ModContent.ItemType<Coughwood>(), 8)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodWorkBench>())
-            .AddIngredient(ModContent.ItemType<Coughwood>(), 10).Register();
 
         Mod.CreateRecipe(ModContent.ItemType<DarkSlimeBlock>(), 5)
             .AddIngredient(ItemID.SlimeBlock, 5)
@@ -2415,16 +2366,7 @@ public class RecipeCreator : ModSystem
         // end Iridium stuff
 
         #region catalyzer
-
-        // catalyzer stuff
-        // catalyzer 
-        Mod.CreateRecipe(ModContent.ItemType<Catalyzer>())
-            .AddRecipeGroup(RecipeGroupID.Wood, 20)
-            .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
-            .AddRecipeGroup("IronBar", 15)
-            .AddRecipeGroup("AvalonTesting:WorkBenches")
-            .AddTile(TileID.Anvils).Register();
-
+        
         //start stone types
         Mod.CreateRecipe(ItemID.EbonstoneBlock, 50)
             .AddIngredient(ItemID.PearlstoneBlock, 50)
@@ -2829,10 +2771,5 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
         #endregion catalyzer
-
-        Mod.CreateRecipe(ModContent.ItemType<TropicalBlade>())
-            .AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 12)
-            .AddIngredient(ModContent.ItemType<MosquitoProboscis>(), 12)
-            .AddTile(TileID.Anvils).Register();
     }
 }

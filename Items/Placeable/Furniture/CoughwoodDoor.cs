@@ -1,3 +1,4 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,5 +25,13 @@ class CoughwoodDoor : ModItem
         Item.value = 200;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<Coughwood>(), 6)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

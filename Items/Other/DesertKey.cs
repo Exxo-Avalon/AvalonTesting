@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Other;
 
-class DesertKey : ModItem
+internal class DesertKey : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -19,5 +19,17 @@ class DesertKey : ModItem
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ItemID.TempleKey)
+            .AddIngredient(ModContent.ItemType<DesertKeyMold>())
+            .AddIngredient(ItemID.SoulofFright, 5)
+            .AddIngredient(ItemID.SoulofMight, 5)
+            .AddIngredient(ItemID.SoulofSight, 5)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 }

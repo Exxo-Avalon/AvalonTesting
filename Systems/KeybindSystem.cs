@@ -1,4 +1,5 @@
-﻿using Terraria.ModLoader;
+﻿using Microsoft.Xna.Framework.Input;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Systems;
 
@@ -16,22 +17,21 @@ public class KeybindSystem : ModSystem
     public static ModKeybind RocketJumpHotkey { get; private set; }
     public static ModKeybind QuickStaminaHotkey { get; private set; }
     public static ModKeybind FlightTimeRestoreHotkey { get; private set; }
-    public static ModKeybind MinionGuidingHotkey { get; private set; }
 
     public override void Load()
     {
-        ShadowHotkey = KeybindLoader.RegisterKeybind(Mod, "Shadow Teleport", "V");
-        SprintHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Sprint", "F");
-        DashHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Dash", "K");
-        QuintupleHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Quintuple Jump", "RightControl");
-        SwimHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Swimming", "L");
-        WallSlideHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Wall Sliding", "Z");
-        BubbleBoostHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Bubble Boost", "U");
-        ModeChangeHotkey = KeybindLoader.RegisterKeybind(Mod, "Mode Change", "N");
-        AstralHotkey = KeybindLoader.RegisterKeybind(Mod, "Activate Astral Projecting", "OemPipe");
-        RocketJumpHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Rocket Jump", "C");
-        QuickStaminaHotkey = KeybindLoader.RegisterKeybind(Mod, "Quick Stamina", "X");
-        FlightTimeRestoreHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Flight Time Restore", "G");
+        ShadowHotkey = KeybindLoader.RegisterKeybind(Mod, "Shadow Teleport", Keys.V);
+        SprintHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Sprint", Keys.F);
+        DashHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Dash", Keys.K);
+        QuintupleHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Quintuple Jump", Keys.RightControl);
+        SwimHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Swimming", Keys.L);
+        WallSlideHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Wall Sliding", Keys.Z);
+        BubbleBoostHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Bubble Boost", Keys.U);
+        ModeChangeHotkey = KeybindLoader.RegisterKeybind(Mod, "Mode Change", Keys.N);
+        AstralHotkey = KeybindLoader.RegisterKeybind(Mod, "Activate Astral Projecting", Keys.OemPipe);
+        RocketJumpHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Rocket Jump", Keys.C);
+        QuickStaminaHotkey = KeybindLoader.RegisterKeybind(Mod, "Quick Stamina", Keys.X);
+        FlightTimeRestoreHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Flight Time Restore", Keys.G);
     }
 
     public override void Unload()

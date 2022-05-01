@@ -14,7 +14,7 @@ public class BiomeTileCounts : ModSystem
     public int WorldDarkMatterTiles;
     public int ContagionTiles { get; private set; }
     public int TropicsTiles { get; private set; }
-    public int HellcastleTiles { get; private set; }
+    public int HellCastleTiles { get; private set; }
     public int DarkTiles { get; private set; }
     public int CaesiumTiles { get; private set; }
     public int SkyFortressTiles { get; private set; }
@@ -35,7 +35,7 @@ public class BiomeTileCounts : ModSystem
                        tileCounts[ModContent.TileType<TuhrtlBrick>()] +
                        tileCounts[ModContent.TileType<TropicalMud>()] +
                        tileCounts[ModContent.TileType<TropicalGrass>()];
-        HellcastleTiles = tileCounts[ModContent.TileType<ImperviousBrick>()];
+        HellCastleTiles = tileCounts[ModContent.TileType<ImperviousBrick>()];
         DarkTiles = tileCounts[ModContent.TileType<DarkMatter>()] +
                     tileCounts[ModContent.TileType<DarkMatterSand>()] +
                     tileCounts[ModContent.TileType<BlackIce>()] +

@@ -1,10 +1,11 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Storage;
 
-class CoughwoodChest : ModItem
+internal class CoughwoodChest : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -26,5 +27,13 @@ class CoughwoodChest : ModItem
         Item.value = 500;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<Coughwood>(), 8)
+            .AddRecipeGroup("IronBar", 2)
+            .AddTile(TileID.WorkBenches).Register();
     }
 }

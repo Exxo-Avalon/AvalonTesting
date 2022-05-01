@@ -1,10 +1,11 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Furniture;
 
-class CoughwoodChair : ModItem
+internal class CoughwoodChair : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -24,5 +25,13 @@ class CoughwoodChair : ModItem
         Item.maxStack = 99;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        Mod.CreateRecipe(ModContent.ItemType<CoughwoodChair>())
+            .AddIngredient(ModContent.ItemType<Coughwood>(), 4)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

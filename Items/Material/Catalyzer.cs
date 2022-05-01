@@ -1,10 +1,11 @@
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Material;
 
-class Catalyzer : ModItem
+internal class Catalyzer : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -27,5 +28,16 @@ class Catalyzer : ModItem
         Item.value = 50000;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        Mod.CreateRecipe(ModContent.ItemType<Catalyzer>())
+            .AddRecipeGroup(RecipeGroupID.Wood, 20)
+            .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
+            .AddRecipeGroup("IronBar", 15)
+            .AddRecipeGroup("AvalonTesting:WorkBenches")
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

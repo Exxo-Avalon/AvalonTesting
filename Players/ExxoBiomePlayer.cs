@@ -26,7 +26,7 @@ public class ExxoBiomePlayer : ModPlayer
         ZoneCaesium = biomeTileCounts.CaesiumTiles > 200 && Player.ZoneUnderworldHeight;
         ZoneCrystal = biomeTileCounts.CrystalTiles > 100;
         ZoneDarkMatter = biomeTileCounts.DarkTiles > 300;
-        ZoneHellcastle = biomeTileCounts.HellcastleTiles > 350 &&
+        ZoneHellcastle = biomeTileCounts.HellCastleTiles > 350 &&
                          wallType == ModContent.WallType<ImperviousBrickWallUnsafe>() && Player.ZoneUnderworldHeight;
         ZoneSkyFortress = biomeTileCounts.SkyFortressTiles > 50 && Player.ZoneSkyHeight;
         ZoneTropics = biomeTileCounts.TropicsTiles > 50;

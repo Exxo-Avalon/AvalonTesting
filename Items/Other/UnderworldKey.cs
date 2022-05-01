@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Other;
 
-class UnderworldKey : ModItem
+internal class UnderworldKey : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -19,5 +19,17 @@ class UnderworldKey : ModItem
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ItemID.TempleKey)
+            .AddIngredient(ModContent.ItemType<UnderworldKeyMold>())
+            .AddIngredient(ItemID.SoulofFright, 5)
+            .AddIngredient(ItemID.SoulofMight, 5)
+            .AddIngredient(ItemID.SoulofSight, 5)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Items.Material;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -55,5 +56,13 @@ public class TropicalBlade : ModItem
         {
             target.AddBuff(ModContent.BuffType<Buffs.Malaria>(), 660);
         }
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 12)
+            .AddIngredient(ModContent.ItemType<MosquitoProboscis>(), 12)
+            .AddTile(TileID.Anvils).Register();
     }
 }

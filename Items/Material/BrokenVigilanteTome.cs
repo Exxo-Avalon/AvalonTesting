@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Material;
 
-class BrokenVigilanteTome : ModItem
+internal class BrokenVigilanteTome : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -18,7 +18,15 @@ class BrokenVigilanteTome : ModItem
         Item.rare = ItemRarityID.Yellow;
         Item.width = dims.Width;
         Item.maxStack = 99;
-        Item.value = Item.sellPrice(0, 2, 0, 0);
+        Item.value = Item.sellPrice(0, 2);
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        CreateRecipe()
+            .AddIngredient(ItemID.BrokenHeroSword)
+            .AddTile(ModContent.TileType<Tiles.Catalyzer>())
+            .Register();
     }
 }
