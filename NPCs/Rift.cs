@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Systems;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -44,7 +45,7 @@ public class Rift : ModNPC
             if (NPC.ai[0] % 60 == 0)
             {
                 Player p = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)];
-                if (!WorldGen.crimson && !AvalonTestingWorld.contagion) // corruption world
+                if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Corruption)
                 {
                     if (Main.rand.Next(2) == 0) // crimson mobs
                     {
@@ -97,7 +98,7 @@ public class Rift : ModNPC
                         }
                     }
                 }
-                else if (!WorldGen.crimson && AvalonTestingWorld.contagion) // contagion world
+                else if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion) // contagion world
                 {
                     if (Main.rand.Next(2) == 0) // crimson mobs
                     {

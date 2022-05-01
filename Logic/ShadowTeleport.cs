@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Systems;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,6 +32,7 @@ public static class ShadowTeleport
         {
             player = Main.player[whoAmI];
         }
+
         switch (teleportType)
         {
             case 0:
@@ -51,9 +53,6 @@ public static class ShadowTeleport
 
             case 4:
                 UnderworldTeleport(player, syncData);
-                break;
-
-            default:
                 break;
         }
     }
@@ -85,13 +84,10 @@ public static class ShadowTeleport
                 break;
             }
         }
+
         if (pos != previousPos)
         {
-            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData, false);
-        }
-        else
-        {
-            return;
+            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData);
         }
     }
 
@@ -117,13 +113,10 @@ public static class ShadowTeleport
                 break;
             }
         }
+
         if (pos != previousPos)
         {
-            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData, false);
-        }
-        else
-        {
-            return;
+            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData);
         }
     }
 
@@ -159,11 +152,7 @@ public static class ShadowTeleport
         //}
         if (pos != previousPos)
         {
-            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData, false);
-        }
-        else
-        {
-            return;
+            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData);
         }
     }
 
@@ -171,31 +160,32 @@ public static class ShadowTeleport
     {
         Vector2 previousPos = player.position;
         Vector2 pos = previousPos;
-        for (int y = Main.maxTilesY; y > Main.worldSurface - 150; --y)
+        int startX = ModContent.GetInstance<ExxoWorldGen>().JungleX;
+        if (startX < 0)
         {
-            for (int x = 0; x < Main.maxTilesX; ++x)
+            startX = 0;
+        }
+
+        for (int y = (int)Main.worldSurface - 150; y < Main.worldSurface; y++)
+        {
+            for (int x = startX; x < startX + 50; x++)
             {
-                if (Main.tile[x, y] == null)
+                if (Main.tile[x, y].HasTile && Main.tileSolid[Main.tile[x, y].TileType])
                 {
-                    continue;
+                    pos = new Vector2(x * 16, (y - 2) * 16);
+                    break;
                 }
+            }
 
-                if (Main.tile[x, y].TileType != 233 || Main.tile[x, y].TileType != ModContent.TileType<Tiles.TropicalShortGrass>())
-                {
-                    continue;
-                }
-
-                pos = new Vector2(x * 16, (y - 2) * 16);
+            if (pos != previousPos)
+            {
                 break;
             }
         }
+
         if (pos != previousPos)
         {
-            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData, false);
-        }
-        else
-        {
-            return;
+            RunTeleport(player, new Vector2(pos.X, pos.Y), syncData);
         }
     }
 
@@ -214,13 +204,14 @@ public static class ShadowTeleport
         player.grapCount = 0;
         for (int index = 0; index < 1000; ++index)
         {
-            if (Main.projectile[index].active && Main.projectile[index].owner == player.whoAmI && Main.projectile[index].aiStyle == 7)
+            if (Main.projectile[index].active && Main.projectile[index].owner == player.whoAmI &&
+                Main.projectile[index].aiStyle == 7)
             {
                 Main.projectile[index].Kill();
             }
         }
 
-        player.Teleport(pos, 2, 0);
+        player.Teleport(pos, 2);
         player.velocity = Vector2.Zero;
         player.immune = postImmune;
         player.immuneTime = postImmuneTime;
@@ -232,8 +223,8 @@ public static class ShadowTeleport
 
         if (syncData)
         {
-            RemoteClient.CheckSection(player.whoAmI, player.position, 1);
-            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, pos.X, pos.Y, 3, 0, 0);
+            RemoteClient.CheckSection(player.whoAmI, player.position);
+            NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, pos.X, pos.Y, 3);
         }
     }
 }

@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using AvalonTesting.Players;
+using AvalonTesting.Systems;
 
 namespace AvalonTesting.Projectiles;
 
@@ -38,7 +39,7 @@ public class MidairRift : ModProjectile
             if (Projectile.ai[0] % 60 == 0)
             {
                 Player p = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)];
-                if (!WorldGen.crimson && !AvalonTestingWorld.contagion) // corruption world
+                if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Corruption) // corruption world
                 {
                     if (p.ZoneCorrupt)
                     {
@@ -94,7 +95,7 @@ public class MidairRift : ModProjectile
                         }
                     }
                 }
-                else if (!WorldGen.crimson && AvalonTestingWorld.contagion) // contagion world
+                else if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion) // contagion world
                 {
                     if (p.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
                     {

@@ -2507,7 +2507,7 @@ public class ExxoPlayer : ModPlayer
                         break;
 
                     case 2:
-                        Main.NewText("Mirror Mode: Jungle/Tropics" + (AvalonTestingWorld.jungleLocationKnown ? "" : " (approx. pos)"));
+                        Main.NewText("Mirror Mode: Jungle/Tropics");
                         break;
 
                     case 3:

@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Tiles;
 using AvalonTesting.World.Passes;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
@@ -113,13 +116,13 @@ public class ExxoWorldGen : ModSystem
     public int HallowedAltarCount;
     public IronVariant IronOre = IronVariant.Random;
     public JungleVariant JungleMenuSelection = JungleVariant.Random;
+    public int JungleX;
     public MythrilVariant MythrilOre = MythrilVariant.Random;
     public RhodiumVariant RhodiumOre = RhodiumVariant.Random;
     public SHMTier1Variant SHMTier1Ore = SHMTier1Variant.Random;
     public SHMTier2Variant SHMTier2Ore = SHMTier2Variant.Random;
     public SilverVariant SilverOre = SilverVariant.Random;
     public EvilBiome WorldEvil;
-
 
     public override void PreWorldGen()
     {
@@ -180,7 +183,7 @@ public class ExxoWorldGen : ModSystem
         int vines = tasks.FindIndex(genPass => genPass.Name == "Vines");
         if (vines != -1)
         {
-            currentPass = new Impvines();
+            currentPass = new World.Passes.Impvines();
             tasks.Insert(vines + 1, currentPass);
             totalWeight += currentPass.Weight;
         }
@@ -196,6 +199,12 @@ public class ExxoWorldGen : ModSystem
                 // totalWeight += currentPass.Weight;
             }
         }
+    }
+
+    public override void PostWorldGen()
+    {
+        JungleX =
+            (int)typeof(WorldGen).GetField("JungleX", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
     }
 
     public override void SaveWorldData(TagCompound tag)
@@ -214,6 +223,7 @@ public class ExxoWorldGen : ModSystem
         tag["AdamantiteOre"] = (byte)AdamantiteOre;
         tag["SHMTier1Ore"] = (byte)SHMTier1Ore;
         tag["SHMTier2Ore"] = (byte)SHMTier2Ore;
+        tag["JungleX"] = JungleX;
     }
 
     public override void LoadWorldData(TagCompound tag)
@@ -297,6 +307,34 @@ public class ExxoWorldGen : ModSystem
         if (tag.ContainsKey("SHMTier2Ore"))
         {
             SHMTier2Ore = (SHMTier2Variant)tag.Get<byte>("SHMTier2Ore");
+        }
+
+        if (tag.ContainsKey("JungleX"))
+        {
+            JungleX = tag.Get<int>("JungleX");
+        }
+        
+        if (JungleX == 0)
+        {
+            bool found = false;
+            for (int y = (int)Main.worldSurface - 150; y < Main.maxTilesY; y++)
+            {
+                for (int x = 0; x < Main.maxTilesX; x++)
+                {
+                    if (Main.tile[x, y].HasTile && (Main.tile[x, y].TileType == TileID.JungleGrass ||
+                                                    Main.tile[x, y].TileType == ModContent.TileType<TropicalGrass>()))
+                    {
+                        JungleX = x;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    break;
+                }
+            }
         }
     }
 }

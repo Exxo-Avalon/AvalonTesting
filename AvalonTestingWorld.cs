@@ -19,23 +19,10 @@ namespace AvalonTesting;
 
 public class AvalonTestingWorld : ModSystem
 {
-    public static bool contagion = false;
-    public static bool stopCometDrops = false;
-    public static Vector2 hiddenTemplePos;
-    public static bool retroGenned = false;
-    public static bool generatingBaccilite = false;
-    public static int dungeonSide = 0;
-    public static int jungleX = 0;
-    public static int grassSpread = 0;
-    public static bool contaigonSet = false;
-    public static Vector2 LoK = Vector2.Zero;
-    public static int specialWireHitCount = 0;
     public static int wosT;
     public static int wosB;
     public static int wosF = 0;
     public static int wos = -1;
-    public static bool jungleLocationKnown = false;
-    private Version worldVersion;
     public bool SuperHardmode { get; private set; }
 
     public override void PostUpdateEverything()

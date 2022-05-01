@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Systems;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
@@ -227,9 +228,9 @@ public class ContagionPot : ModTile
                         }
                         else
                         {
-                            if (!WorldGen.crimson && !AvalonTestingWorld.contagion) type2 = ItemID.UnholyArrow;
+                            if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Corruption) type2 = ItemID.UnholyArrow;
                             else if (WorldGen.crimson) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>();
-                            else if (AvalonTestingWorld.contagion) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>(); // contagion arrow
+                            else if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion) type2 = ModContent.ItemType<Items.Ammo.BloodyArrow>(); // contagion arrow
                         }
                     }
                     Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, type2, stack2, false, 0, false);
