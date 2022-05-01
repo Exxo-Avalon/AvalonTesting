@@ -3,6 +3,7 @@ using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Weapons.Melee;
 using AvalonTesting.Items.Weapons.Throw;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,8 +19,8 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.WarriorEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.SummonerEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddIngredient(ItemID.Wood, 6).AddTile(TileID.Anvils).Register();
-        Mod.CreateRecipe(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.WorkBenches).Register();
-        Mod.CreateRecipe(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.WorkBenches).Register();
+        Mod.CreateRecipe(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.Bottles).Register();
+        Mod.CreateRecipe(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.PeaceCandle).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 2).AddIngredient(ItemID.PinkTorch).AddTile(TileID.WorkBenches).Register();
         Mod.CreateRecipe(ItemID.NightsEdge).AddIngredient(ModContent.ItemType<Snotsabre>()).AddIngredient(ItemID.Muramasa).AddIngredient(ItemID.BladeofGrass).AddIngredient(ItemID.FieryGreatsword).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.NightsEdge).AddIngredient(ItemID.LightsBane).AddIngredient(ItemID.Muramasa).AddIngredient(ModContent.ItemType<FieryBladeofGrass>()).AddTile(TileID.DemonAltar).Register();
@@ -96,5 +97,23 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ModContent.ItemType<NickelOre>()).Register();
         Mod.CreateRecipe(ItemID.FireblossomSeeds, 3).AddIngredient(ItemID.AshBlock, 8).AddIngredient(ItemID.Hellstone, 2).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
         // end seed fabricator stuff
+        Mod.CreateRecipe(ItemID.AncientBattleArmorHat).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 10).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
+        Mod.CreateRecipe(ItemID.AncientBattleArmorShirt).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 20).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
+        Mod.CreateRecipe(ItemID.AncientBattleArmorPants).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 16).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
+		Mod.CreateRecipe(ItemID.GravediggerShovel).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.NickelBar>(), 12).AddIngredient(ItemID.Wood, 3).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
+		Mod.CreateRecipe(ItemID.Magiluminescence).AddIngredient(ItemID.Topaz, 5).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BacciliteBar>(), 12).AddTile(TileID.Anvils).Register();
+        Mod.CreateRecipe(ItemID.FlinxStaff).AddIngredient(ItemID.FlinxFur, 6).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 10).AddTile(TileID.WorkBenches).Register();
+        Mod.CreateRecipe(ItemID.FlinxFurCoat).AddIngredient(ItemID.Silk, 10).AddIngredient(ItemID.FlinxFur, 8).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 8).AddTile(TileID.Loom).Register();
+        Mod.CreateRecipe(ItemID.DeerThing).AddIngredient(ItemID.FlinxFur, 3).AddIngredient(ModContent.ItemType<BacciliteOre>(), 5).AddIngredient(ItemID.Lens).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.MonsterLasagna).AddIngredient(ModContent.ItemType<YuckyBit>(), 8).AddTile(TileID.CookingPots).Register();
+        Mod.CreateRecipe(ItemID.CoffinMinecart).AddIngredient(ItemID.IronBar, 5).AddIngredient(ItemID.Wood, 10).AddIngredient(ModContent.ItemType<YuckyBit>(), 10).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
+        Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ItemID.JungleSpores, 15).AddIngredient(ModContent.ItemType<Booger>(), 30).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 15).AddIngredient(ItemID.ShadowScale, 30).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 15).AddIngredient(ItemID.Vertebrae, 30).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 15).AddIngredient(ModContent.ItemType<Booger>(), 30).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ItemID.JungleSpores, 8).AddIngredient(ModContent.ItemType<Booger>(), 15).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ItemID.ShadowScale, 15).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ItemID.Vertebrae, 15).AddTile(TileID.DemonAltar).Register();
+        Mod.CreateRecipe(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ModContent.ItemType<Booger>(), 15).AddTile(TileID.DemonAltar).Register();
     }
 }
