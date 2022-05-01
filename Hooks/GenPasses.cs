@@ -46,7 +46,7 @@ public static class GenPasses
             MethodReference methodReference = null;
 
             c.GotoNext(i => i.MatchLdstr(name));
-            c.TryGotoNext(i => i.MatchLdftn(out methodReference));
+            c.GotoNext(i => i.MatchLdftn(out methodReference));
 
             return methodReference.ResolveReflection();
         }
