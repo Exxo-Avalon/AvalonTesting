@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using AvalonTesting.Network;
+using AvalonTesting.Network.Handlers;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -85,7 +87,7 @@ public abstract class BaseDagger<T> : ModProjectile where T : ModBuff
         if (Projectile.owner == Main.myPlayer && Main.netMode != NetmodeID.SinglePlayer && Projectile.ai[0] % 300 == 1)
         {
             Projectile.netUpdate = true;
-            buffPlayer.SyncDaggerStaff();
+            ModContent.GetInstance<SyncDaggerStaff>().Send(new BasicPlayerNetworkArgs(player));
         }
 
         if (player.HasBuff(ModContent.BuffType<T>()))

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using AvalonTesting.Buffs;
+using AvalonTesting.Network;
+using AvalonTesting.Network.Handlers;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -93,7 +95,8 @@ public class StingerProbeMinion : ModProjectile
         for (int i = 0; i < 2; i++)
         {
             int randomSize = syncedRandom.Next(1, 4) / 2;
-            int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default,
+            int num161 = Gore.NewGore(Projectile.GetSource_FromThis(),
+                new Vector2(Projectile.position.X, Projectile.position.Y), default,
                 syncedRandom.Next(61, 64));
             Gore gore30 = Main.gore[num161];
             Gore gore40 = gore30;
@@ -279,8 +282,8 @@ public class StingerProbeMinion : ModProjectile
 
                 if (Main.netMode != NetmodeID.SinglePlayer)
                 {
-                    player.GetModPlayer<ExxoPlayer>().SyncMouse();
-                    player.GetModPlayer<ExxoBuffPlayer>().SyncStingerProbe();
+                    ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(player));
+                    ModContent.GetInstance<SyncStingerProbe>().Send(new BasicPlayerNetworkArgs(player));
                 }
             }
 

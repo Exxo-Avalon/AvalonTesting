@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using AvalonTesting.Network.Handlers;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
@@ -22,7 +21,7 @@ public class ExxoDashPlayer : ModPlayer
     }
 
     private static readonly Dictionary<int, DashInfo> RegisteredDashes = new();
-    private readonly Dictionary<int, DashData> activeDashes = new();
+    public readonly Dictionary<int, DashData> ActiveDashes = new();
     private readonly Queue<ModItem> dashCheckQueue = new();
 
     public override bool CloneNewInstances => false;
@@ -48,7 +47,7 @@ public class ExxoDashPlayer : ModPlayer
     /// <param name="sourceItem">The current ModItem instance</param>
     public void QueueDashEffect(ModItem sourceItem)
     {
-        if (Player.whoAmI == Main.myPlayer && !activeDashes.ContainsKey(sourceItem.Type))
+        if (Player.whoAmI == Main.myPlayer && !ActiveDashes.ContainsKey(sourceItem.Type))
         {
             dashCheckQueue.Enqueue(sourceItem);
         }
@@ -89,9 +88,10 @@ public class ExxoDashPlayer : ModPlayer
                 DashInfo dashInfo = RegisteredDashes[sourceItem.Type];
                 if (dashInfo.Directions.Contains((DashDirection)direction))
                 {
-                    activeDashes.Add(sourceItem.Type,
+                    ActiveDashes.Add(sourceItem.Type,
                         new DashData((DashDirection)direction, sourceItem.Item.damage, sourceItem.Item.knockBack));
-                    SyncDashPlayer(sourceItem.Type);
+                    ModContent.GetInstance<SyncDashPlayer>()
+                        .Send(new SyncDashPlayer.HandlerArgs(Player, sourceItem.Type));
 
                     break;
                 }
@@ -101,55 +101,12 @@ public class ExxoDashPlayer : ModPlayer
         dashCheckQueue.Clear();
     }
 
-    public void SyncDashPlayer(int key, int ignoreClient = -1)
-    {
-        if (Main.netMode == NetmodeID.SinglePlayer)
-        {
-            return;
-        }
-
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncActiveDash);
-        packet.Write((byte)Player.whoAmI);
-        packet.Write(key);
-        packet.Write((byte)activeDashes[key].Direction);
-        // Dont need to send damage or knockback
-        packet.Send(ignoreClient: ignoreClient);
-    }
-
-    public void HandleSyncDashPlayer(int key, BinaryReader reader)
-    {
-        activeDashes.Add(key, new DashData((DashDirection)reader.ReadByte(), 0, 0));
-    }
-
-    public void SyncRemoveDashPlayer(int key, int ignoreClient = -1)
-    {
-        if (Main.netMode == NetmodeID.SinglePlayer)
-        {
-            return;
-        }
-
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.ExxoDashPlayerSyncRemoveDash);
-        packet.Write((byte)Player.whoAmI);
-        packet.Write(key);
-        packet.Send(ignoreClient: ignoreClient);
-    }
-
-    public void HandleSyncRemoveDashPlayer(int key)
-    {
-        if (activeDashes.ContainsKey(key))
-        {
-            activeDashes.Remove(key);
-        }
-    }
-
     public override void PreUpdateMovement()
     {
-        foreach (int dashKey in activeDashes.Keys)
+        foreach (int dashKey in ActiveDashes.Keys)
         {
             DashInfo dashInfo = RegisteredDashes[dashKey];
-            DashData dashData = activeDashes[dashKey];
+            DashData dashData = ActiveDashes[dashKey];
 
             if (dashData.Delay == 0)
             {
@@ -175,8 +132,9 @@ public class ExxoDashPlayer : ModPlayer
                         }
                         default:
                             // Not fast enough
-                            activeDashes.Remove(dashKey);
-                            SyncRemoveDashPlayer(dashKey);
+                            ActiveDashes.Remove(dashKey);
+                            ModContent.GetInstance<SyncRemoveDashPlayer>()
+                                .Send(new SyncRemoveDashPlayer.HandlerArgs(Player, dashKey));
                             continue;
                     }
 
@@ -232,10 +190,11 @@ public class ExxoDashPlayer : ModPlayer
             dashData.Delay--;
             if (dashData.Delay == 0)
             {
-                activeDashes.Remove(dashKey);
+                ActiveDashes.Remove(dashKey);
                 if (Player.whoAmI == Main.myPlayer)
                 {
-                    SyncRemoveDashPlayer(dashKey);
+                    ModContent.GetInstance<SyncRemoveDashPlayer>()
+                        .Send(new SyncRemoveDashPlayer.HandlerArgs(Player, dashKey));
                 }
             }
         }
@@ -273,7 +232,7 @@ public class ExxoDashPlayer : ModPlayer
         return -1;
     }
 
-    private class DashData
+    public class DashData
     {
         public readonly int Damage;
         public readonly DashDirection Direction;

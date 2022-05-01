@@ -1,4 +1,6 @@
-﻿using AvalonTesting.Hooks;
+﻿using System.IO;
+using AvalonTesting.Hooks;
+using AvalonTesting.Network;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
@@ -7,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting;
 
-public partial class AvalonTesting : Mod
+public class AvalonTesting : Mod
 {
     public const string AssetPath = "AvalonTesting/Assets/";
     public static float CaesiumTransition;
@@ -65,5 +67,18 @@ public partial class AvalonTesting : Mod
         TextureAssets.Tile[TileID.Containers] = Assets.Request<Texture2D>("Sprites/VanillaChests");
         // Projectiles
         TextureAssets.Projectile[ProjectileID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
+    }
+
+    public override void HandlePacket(BinaryReader reader, int whoAmI)
+    {
+        byte msgIndex = reader.ReadByte();
+        if (msgIndex < NetworkManager.RegisteredHandlers.Count)
+        {
+            NetworkManager.RegisteredHandlers[msgIndex].Handle(reader, whoAmI);
+        }
+        else
+        {
+            Logger.Warn($"PacketHandler with message index {msgIndex} does not exist!");
+        }
     }
 }

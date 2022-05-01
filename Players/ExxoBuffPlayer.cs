@@ -1,7 +1,8 @@
-﻿using System.IO;
-using AvalonTesting.Buffs;
+﻿using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Items.Accessories;
+using AvalonTesting.Network;
+using AvalonTesting.Network.Handlers;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -35,8 +36,8 @@ public class ExxoBuffPlayer : ModPlayer
     public int OldFallStart;
 
     public int StingerProbeTimer;
-    public float DaggerStaffRotation { get; private set; }
-    public float StingerProbeRotation { get; private set; }
+    public float DaggerStaffRotation { get; set; }
+    public float StingerProbeRotation { get; set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
     public int AstralCooldown { get; private set; }
@@ -90,48 +91,8 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
     {
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.BuffPlayerLazySync);
-        packet.Write((byte)Player.whoAmI);
-        packet.Write(DaggerStaffRotation);
-        packet.Write(StingerProbeRotation);
-        packet.Write(StingerProbeTimer);
-        packet.Send(toWho, fromWho);
-    }
-
-    public void HandleSyncPlayer(BinaryReader reader)
-    {
-        DaggerStaffRotation = reader.ReadSingle();
-        StingerProbeRotation = reader.ReadSingle();
-        StingerProbeTimer = reader.ReadInt32();
-    }
-
-    public void SyncStingerProbe(int ignoreClient = -1)
-    {
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.ExxoBuffPlayerSyncStingerProbe);
-        packet.Write((byte)Player.whoAmI);
-        packet.Write(StingerProbeRotation);
-        packet.Send(ignoreClient: ignoreClient);
-    }
-
-    public void HandleSyncStingerProbe(BinaryReader reader)
-    {
-        StingerProbeRotation = reader.ReadSingle();
-    }
-
-    public void SyncDaggerStaff(int ignoreClient = -1)
-    {
-        ModPacket packet = Mod.GetPacket();
-        packet.Write((byte)AvalonTesting.MessageType.ExxoBuffPlayerSyncDaggerStaff);
-        packet.Write((byte)Player.whoAmI);
-        packet.Write(DaggerStaffRotation);
-        packet.Send(ignoreClient: ignoreClient);
-    }
-
-    public void HandleSyncDaggerStaff(BinaryReader reader)
-    {
-        DaggerStaffRotation = reader.ReadSingle();
+        ModContent.GetInstance<ExxoBuffPlayerSyncHandler>()
+            .Send(new BasicPlayerNetworkArgs(Player), toWho, fromWho);
     }
 
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
@@ -155,7 +116,7 @@ public class ExxoBuffPlayer : ModPlayer
         {
             return;
         }
-        
+
         if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
         {
             if (Player.HasBuff<AstralProjecting>())
@@ -238,7 +199,7 @@ public class ExxoBuffPlayer : ModPlayer
 
         if (Player.whoAmI == Main.myPlayer)
         {
-            NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
+            NetMessage.SendData(Terraria.ID.MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
         }
     }
 
