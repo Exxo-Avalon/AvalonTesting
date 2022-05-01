@@ -2,7 +2,6 @@
 using AvalonTesting.Tiles;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace AvalonTesting;
@@ -41,15 +40,8 @@ public class AvalonTestingGlobalTile : GlobalTile
         if (type == TileID.Stalactite && Main.tile[i, j].TileFrameX < 54 &&
             Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.Next(2) == 0)
         {
-            int number2 = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
                 ModContent.ItemType<Icicle>());
-
-            if (Main.netMode == NetmodeID.Server)
-            {
-                NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), number2);
-                Main.item[number2].playerIndexTheItemIsReservedFor =
-                    Player.FindClosest(Main.item[number2].position, 8, 8);
-            }
         }
     }
 }
