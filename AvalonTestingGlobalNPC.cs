@@ -1573,7 +1573,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         #endregion group
 
-        if (AvalonTesting.Mod.ImkSushisMod != null)
+        if (AvalonTesting.ImkSushisMod != null)
         {
             if (!NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
             {
@@ -1593,13 +1593,13 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void ModifyGlobalLoot(GlobalLoot globalLoot)
     {
-        if (AvalonTesting.Mod.ImkSushisMod != null)
+        if (AvalonTesting.ImkSushisMod != null)
         {
             if (ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
             {
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.Mod.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
+                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
             }
         }
 
@@ -1607,7 +1607,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
         NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
         NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
-        
+
         var hardModeCondition = new HardmodeOnly();
         var superHardModeCondition = new Superhardmode();
         var zoneRockLayerCondition = new ZoneRockLayer();

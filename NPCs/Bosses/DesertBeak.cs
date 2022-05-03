@@ -48,7 +48,7 @@ public class DesertBeak : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/DesertBeak");
+        Music = AvalonTesting.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/DesertBeak");
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

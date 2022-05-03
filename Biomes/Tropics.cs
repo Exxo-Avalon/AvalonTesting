@@ -10,8 +10,8 @@ public class Tropics : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeMedium;
 
-    public override int Music => AvalonTesting.Mod.MusicMod != null
-        ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Tropics")
+    public override int Music => AvalonTesting.MusicMod != null
+        ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Tropics")
         : MusicID.Jungle;
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>

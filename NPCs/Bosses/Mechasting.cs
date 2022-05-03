@@ -38,7 +38,7 @@ public class Mechasting : ModNPC
         NPC.boss = true;
         NPC.lifeMax = 82000;
         NPC.scale = 1.2f;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Mechasting");
+        Music = AvalonTesting.MusicMod == null ? MusicID.Boss3 : MusicID.Boss3; //MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Mechasting");
         //bossBag = ModContent.ItemType<Items.BossBags.MechastingBossBag>();
 
     }
@@ -119,7 +119,7 @@ public class Mechasting : ModNPC
         {
             NPC.ai[2]++; // ai phase counter
             NPC.ai[1]++; // movement and stinger probe counter
-            // normal movement 
+            // normal movement
             if (NPC.ai[1] < 300)
             {
                 if (Main.player[NPC.target].position.X < NPC.position.X)

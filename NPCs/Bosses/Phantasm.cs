@@ -34,7 +34,7 @@ public class Phantasm : ModNPC
         NPC.scale = 1.5f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath39;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss5 : MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Phantasm");
+        Music = AvalonTesting.MusicMod == null ? MusicID.Boss5 : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Phantasm");
 
         transitionDone = false;
     }

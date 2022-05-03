@@ -61,7 +61,7 @@ public class ArmageddonSlime : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        Music = AvalonTesting.Mod.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/ArmageddonSlime");
+        Music = AvalonTesting.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/ArmageddonSlime");
         //music = mod.GetSoundSlot(SoundType.Music, "Music/ArmageddonSlime");
         //bossBag = ModContent.ItemType<Items.BossBags.ArmageddonSlimeBossBag>();
 

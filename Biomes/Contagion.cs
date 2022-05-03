@@ -16,13 +16,13 @@ public class Contagion : ModBiome
         {
             if (Main.LocalPlayer.ZoneNormalUnderground || Main.LocalPlayer.ZoneNormalCaverns)
             {
-                return AvalonTesting.Mod.MusicMod != null
-                    ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/UndergroundContagion")
+                return AvalonTesting.MusicMod != null
+                    ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/UndergroundContagion")
                     : MusicID.UndergroundCrimson;
             }
 
-            return AvalonTesting.Mod.MusicMod != null
-                ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/Contagion")
+            return AvalonTesting.MusicMod != null
+                ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Contagion")
                 : MusicID.Crimson;
         }
     }

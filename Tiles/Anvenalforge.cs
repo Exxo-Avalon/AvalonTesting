@@ -19,19 +19,11 @@ public class Anvenalforge : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         Main.tileLighted[Type] = true;
-        AdjTiles = new int[]
+        AdjTiles = new[]
         {
-            ModContent.TileType<CaesiumForge>(),
-            TileID.AdamantiteForge,
-            TileID.Hellforge,
-            TileID.Furnaces,
-            TileID.WorkBenches,
-            TileID.DemonAltar,
-            ModContent.TileType<SolariumAnvil>(),
-            TileID.MythrilAnvil,
-            TileID.Anvils,
-            ModContent.TileType<HallowedAltar>(),
-            TileID.LunarCraftingStation
+            ModContent.TileType<CaesiumForge>(), TileID.AdamantiteForge, TileID.Hellforge, TileID.Furnaces,
+            TileID.WorkBenches, TileID.DemonAltar, ModContent.TileType<SolariumAnvil>(), TileID.MythrilAnvil,
+            TileID.Anvils, ModContent.TileType<HallowedAltar>(), TileID.LunarCraftingStation,
         };
     }
 
@@ -42,26 +34,30 @@ public class Anvenalforge : ModTile
         {
             frameCounter = 0;
             frame++;
-            if (frame > 3) frame = 0;
+            if (frame > 3)
+            {
+                frame = 0;
+            }
         }
     }
 
-    public override void KillMultiTile(int i, int j, int frameX, int frameY)
-    {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, ModContent.ItemType<Items.Placeable.Crafting.Anvenalforge>());
-    }
+    public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(
+        WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32,
+        ModContent.ItemType<Items.Placeable.Crafting.Anvenalforge>());
+
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
     {
         r = 230f / 255f;
         g = 155f / 255f;
         b = 115f / 255f;
     }
+
     public override void NearbyEffects(int i, int j, bool closer)
     {
-        if (Main.rand.Next(40) == 0)
+        if (Main.rand.NextBool(40))
         {
-            int num56 = Dust.NewDust(new Vector2(i * 16 - 4, j * 16 - 6), 8, 6, 6, 0f, 0f, 100, default, 1f);
-            if (Main.rand.Next(3) != 0)
+            int num56 = Dust.NewDust(new Vector2((i * 16) - 4, (j * 16) - 6), 8, 6, DustID.Torch, 0f, 0f, 100);
+            if (!Main.rand.NextBool(3))
             {
                 Main.dust[num56].noGravity = true;
             }

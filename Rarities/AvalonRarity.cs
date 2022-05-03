@@ -11,20 +11,16 @@ public class AvalonRarity : ModRarity
     {
         get
         {
-            List<Color> colors = new List<Color>
-            {
-                new Color(71, 142, 147),
-                new Color(255, 242, 0)
-            };
+            var colors = new List<Color> { new(71, 142, 147), new(255, 242, 0) };
             int num = (int)(Main.GlobalTimeWrappedHourly / 2f % colors.Count);
             Color teal = colors[num];
             Color yellow = colors[(num + 1) % colors.Count];
-            return Color.Lerp(teal, yellow, (Main.GlobalTimeWrappedHourly % 2f > 1f) ? 1f : (Main.GlobalTimeWrappedHourly % 1f));
+            return Color.Lerp(teal, yellow,
+                Main.GlobalTimeWrappedHourly % 2f > 1f ? 1f : Main.GlobalTimeWrappedHourly % 1f);
         }
     }
 
-    public override int GetPrefixedRarity(int offset, float valueMult)
-    {
-        return Type; // no 'lower' tier to go to, so return the type of this rarity.
-    }
+    /// <inheritdoc />
+    // no 'lower' tier to go to, so return the type of this rarity.
+    public override int GetPrefixedRarity(int offset, float valueMult) => Type;
 }

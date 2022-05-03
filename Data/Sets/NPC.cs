@@ -28,9 +28,7 @@ public static class NPC
         NPCID.SlimeSpiked,
         NPCID.SandSlime,
         ModContent.NPCType<DarkMotherSlime>(),
-        ModContent.NPCType<DarkMatterSlime>()
-    );
-
+        ModContent.NPCType<DarkMatterSlime>());
 
     public static readonly bool[] Toxic = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Hornet,
@@ -44,8 +42,7 @@ public static class NPC
         NPCID.HornetLeafy,
         NPCID.HornetSpikey,
         NPCID.HornetStingy,
-        NPCID.JungleCreeper
-    );
+        NPCID.JungleCreeper);
 
     public static readonly bool[] Undead = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Zombie,
@@ -89,8 +86,7 @@ public static class NPC
         NPCID.SkeletonAstonaut,
         NPCID.SkeletonAlien,
         NPCID.ZombieXmas,
-        NPCID.ZombieSweater
-    );
+        NPCID.ZombieSweater);
 
     public static readonly bool[] Fiery = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.FireImp,
@@ -101,8 +97,7 @@ public static class NPC
         NPCID.Lavabat,
         NPCID.RedDevil,
         ModContent.NPCType<Blaze>(),
-        ModContent.NPCType<ArmoredHellTortoise>()
-    );
+        ModContent.NPCType<ArmoredHellTortoise>());
 
     public static readonly bool[] Watery = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Piranha,
@@ -114,13 +109,11 @@ public static class NPC
         NPCID.Arapaima,
         NPCID.SeaSnail,
         NPCID.Squid,
-        NPCID.AnglerFish
-    );
+        NPCID.AnglerFish);
 
     public static readonly bool[] Earthen = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.GiantWormHead, NPCID.MotherSlime, NPCID.ManEater, NPCID.CaveBat, NPCID.Snatcher, NPCID.Antlion,
-        NPCID.GiantBat, NPCID.DiggerHead, NPCID.GiantTortoise, NPCID.WallCreeper, NPCID.WallCreeperWall
-    );
+        NPCID.GiantBat, NPCID.DiggerHead, NPCID.GiantTortoise, NPCID.WallCreeper, NPCID.WallCreeperWall);
 
     public static readonly bool[] Flyer = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.DemonEye,
@@ -142,8 +135,7 @@ public static class NPC
         NPCID.FlyingSnake,
         NPCID.AngryNimbus,
         ModContent.NPCType<VampireHarpy>(),
-        ModContent.NPCType<Dragonfly>()
-    );
+        ModContent.NPCType<Dragonfly>());
 
     public static readonly bool[] Frozen = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.IceSlime,
@@ -158,8 +150,7 @@ public static class NPC
         NPCID.SpikedIceSlime,
         NPCID.SnowFlinx,
         NPCID.IcyMerman,
-        NPCID.IceGolem
-    );
+        NPCID.IceGolem);
 
     public static readonly bool[] Wicked = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.EaterofSouls,
@@ -195,8 +186,7 @@ public static class NPC
         ModContent.NPCType<Viris>(),
         ModContent.NPCType<Ickslime>(),
         ModContent.NPCType<Pigron>(),
-        ModContent.NPCType<GrossyFloat>()
-    );
+        ModContent.NPCType<GrossyFloat>());
 
     public static readonly bool[] Arcane = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.Pixie,
@@ -209,6 +199,5 @@ public static class NPC
         NPCID.IlluminantSlime,
         NPCID.PigronHallow,
         NPCID.RainbowSlime,
-        ModContent.NPCType<Mime>()
-    );
+        ModContent.NPCType<Mime>());
 }

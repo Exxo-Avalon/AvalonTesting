@@ -9,8 +9,8 @@ public class TuhrtlOutpost : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
 
-    public override int Music => AvalonTesting.Mod.MusicMod != null
-        ? MusicLoader.GetMusicSlot(AvalonTesting.Mod.MusicMod, "Sounds/Music/TuhrtlOutpost")
+    public override int Music => AvalonTesting.MusicMod != null
+        ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/TuhrtlOutpost")
         : MusicID.Temple;
 
     public override bool IsBiomeActive(Player player)
