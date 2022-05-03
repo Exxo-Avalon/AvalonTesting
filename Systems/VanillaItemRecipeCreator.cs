@@ -18,7 +18,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.SorcererEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.WarriorEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.SummonerEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Mod.CreateRecipe(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddIngredient(ItemID.Wood, 6).AddTile(TileID.Anvils).Register();
+        Mod.CreateRecipe(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddRecipeGroup("Wood", 6).AddTile(TileID.Anvils).Register();
         Mod.CreateRecipe(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.PeaceCandle).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 2).AddIngredient(ItemID.PinkTorch).AddTile(TileID.WorkBenches).Register();
@@ -26,7 +26,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.NightsEdge).AddIngredient(ItemID.LightsBane).AddIngredient(ItemID.Muramasa).AddIngredient(ModContent.ItemType<FieryBladeofGrass>()).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.NightsEdge).AddIngredient(ItemID.BloodButcherer).AddIngredient(ItemID.Muramasa).AddIngredient(ModContent.ItemType<FieryBladeofGrass>()).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.NightsEdge).AddIngredient(ModContent.ItemType<Snotsabre>()).AddIngredient(ItemID.Muramasa).AddIngredient(ModContent.ItemType<FieryBladeofGrass>()).AddTile(TileID.DemonAltar).Register();
-        Mod.CreateRecipe(ItemID.MagicMirror).AddIngredient(ItemID.RecallPotion, 3).AddIngredient(ItemID.IronBar, 5).AddIngredient(ItemID.Glass, 20).AddTile(TileID.Furnaces).Register();
+        Mod.CreateRecipe(ItemID.MagicMirror).AddIngredient(ItemID.RecallPotion, 3).AddRecipeGroup("IronBar", 5).AddIngredient(ItemID.Glass, 20).AddTile(TileID.Furnaces).Register();
         Mod.CreateRecipe(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Silk, 5).AddIngredient(ModContent.ItemType<FleshyTendril>(), 5).AddIngredient(ItemID.SoulofNight, 5).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.MagicPowerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<Bloodberry>()).AddIngredient(ItemID.FallenStar).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.MagicPowerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<Barfbush>()).AddIngredient(ItemID.FallenStar).AddTile(TileID.Bottles).Register();
@@ -52,7 +52,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ModContent.ItemType<Items.Potions.ForceFieldPotion>()).AddIngredient(ModContent.ItemType<BottledLava>()).AddIngredient(ItemID.SoulofNight, 3).AddIngredient(ModContent.ItemType<Sweetstem>(), 2).AddIngredient(ItemID.Hellstone).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.StinkPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Stinkfish).AddIngredient(ModContent.ItemType<Bloodberry>()).AddTile(TileID.Bottles).Register();
         Mod.CreateRecipe(ItemID.StinkPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Stinkfish).AddIngredient(ModContent.ItemType<Barfbush>()).AddTile(TileID.Bottles).Register();
-        Mod.CreateRecipe(ItemID.IceSkates).AddIngredient(ItemID.Leather, 6).AddIngredient(ItemID.IronBar, 4).AddIngredient(ModContent.ItemType<FrostShard>(), 2).AddTile(TileID.TinkerersWorkbench).Register();
+        Mod.CreateRecipe(ItemID.IceSkates).AddIngredient(ItemID.Leather, 6).AddRecipeGroup("IronBar", 4).AddIngredient(ModContent.ItemType<FrostShard>(), 2).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.WaterWalkingBoots).AddIngredient(ItemID.Leather, 7).AddIngredient(ItemID.WaterWalkingPotion, 10).AddIngredient(ModContent.ItemType<WaterShard>(), 2).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.LavaCharm).AddIngredient(ItemID.ObsidianSkull).AddIngredient(ItemID.ObsidianSkinPotion, 10).AddIngredient(ModContent.ItemType<BlastShard>(), 2).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.Starfury).AddIngredient(ItemID.GoldBroadsword).AddIngredient(ItemID.MeteoriteBar, 10).AddIngredient(ItemID.FallenStar, 20).AddTile(TileID.Anvils).Register();
@@ -70,7 +70,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.IceBlade).AddIngredient(ItemID.GoldBroadsword).AddIngredient(ModContent.ItemType<Icicle>(), 50).AddIngredient(ItemID.FallenStar, 8).AddIngredient(ModContent.ItemType<FrostShard>(), 4).AddTile(TileID.IceMachine).Register();
         Mod.CreateRecipe(ItemID.IceBlade).AddIngredient(ItemID.PlatinumBroadsword).AddIngredient(ModContent.ItemType<Icicle>(), 50).AddIngredient(ItemID.FallenStar, 8).AddIngredient(ModContent.ItemType<FrostShard>(), 4).AddTile(TileID.IceMachine).Register();
         Mod.CreateRecipe(ItemID.IceBlade).AddIngredient(ModContent.ItemType<BismuthBroadsword>()).AddIngredient(ModContent.ItemType<Icicle>(), 50).AddIngredient(ItemID.FallenStar, 8).AddIngredient(ModContent.ItemType<FrostShard>(), 4).AddTile(TileID.IceMachine).Register();
-        Mod.CreateRecipe(ItemID.Extractinator).AddIngredient(ItemID.IronBar, 30).AddIngredient(ItemID.Glass, 5).AddIngredient(ItemID.Wire, 20).AddIngredient(ItemID.Timer1Second).AddTile(TileID.TinkerersWorkbench).Register();
+        Mod.CreateRecipe(ItemID.Extractinator).AddRecipeGroup("IronBar", 30).AddIngredient(ItemID.Glass, 5).AddIngredient(ItemID.Wire, 20).AddIngredient(ItemID.Timer1Second).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.HermesBoots).AddIngredient(ItemID.OldShoe).AddIngredient(ItemID.SwiftnessPotion, 2).AddIngredient(ItemID.Cloud, 60).AddIngredient(ModContent.ItemType<BreezeShard>(), 2).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.RodofDiscord).AddIngredient(ModContent.ItemType<ChaosDust>(), 45).AddIngredient(ItemID.SoulofLight, 25).AddIngredient(ItemID.Diamond, 10).AddIngredient(ItemID.SoulofMight).AddIngredient(ItemID.SoulofFright).AddIngredient(ItemID.SoulofSight).AddTile(TileID.TinkerersWorkbench).Register();
         Mod.CreateRecipe(ItemID.LihzahrdPowerCell).AddIngredient(ModContent.ItemType<SolariumStar>(), 5).AddIngredient(ItemID.LihzahrdBrick, 10).AddTile(TileID.MythrilAnvil).Register();
@@ -90,23 +90,23 @@ public class VanillaItemRecipeCreator : ModSystem
         Mod.CreateRecipe(ItemID.HallowedSeeds, 2).AddIngredient(ItemID.GrassSeeds, 2).AddIngredient(ItemID.PearlstoneBlock, 5).AddIngredient(ModContent.ItemType<HallowedOre>(), 3).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
         Mod.CreateRecipe(ItemID.MushroomGrassSeeds, 2).AddIngredient(ItemID.GrassSeeds, 2).AddIngredient(ItemID.MudBlock, 5).AddIngredient(ItemID.GlowingMushroom, 6).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
         Mod.CreateRecipe(ItemID.JungleGrassSeeds, 2).AddIngredient(ItemID.GrassSeeds, 2).AddIngredient(ItemID.MudBlock, 5).AddIngredient(ItemID.JungleSpores, 6).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
-        Mod.CreateRecipe(ItemID.Spike, 20).AddIngredient(ItemID.IronBar, 3).AddIngredient(ItemID.Bone, 10).AddTile(TileID.Anvils).Register();
-        Mod.CreateRecipe(ItemID.WoodenSpike, 40).AddIngredient(ItemID.Wood, 40).AddIngredient(ItemID.BeetleHusk).AddTile(TileID.Anvils).Register();
-        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ItemID.IronOre).Register();
-        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ItemID.LeadOre).Register();
-        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ModContent.ItemType<NickelOre>()).Register();
+        Mod.CreateRecipe(ItemID.Spike, 20).AddRecipeGroup("IronBar", 3).AddIngredient(ItemID.Bone, 10).AddTile(TileID.Anvils).Register();
+        Mod.CreateRecipe(ItemID.WoodenSpike, 40).AddRecipeGroup("Wood", 40).AddIngredient(ItemID.BeetleHusk).AddTile(TileID.Anvils).Register();
+        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ItemID.IronOre).AddCondition(Recipe.Condition.NearWater).Register();
+        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ItemID.LeadOre).AddCondition(Recipe.Condition.NearWater).Register();
+        Mod.CreateRecipe(ItemID.ClayBlock, 50).AddIngredient(ItemID.DirtBlock, 50).AddIngredient(ModContent.ItemType<RottenFlesh>()).AddIngredient(ModContent.ItemType<NickelOre>()).AddCondition(Recipe.Condition.NearWater).Register();
         Mod.CreateRecipe(ItemID.FireblossomSeeds, 3).AddIngredient(ItemID.AshBlock, 8).AddIngredient(ItemID.Hellstone, 2).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
         // end seed fabricator stuff
         Mod.CreateRecipe(ItemID.AncientBattleArmorHat).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 10).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
         Mod.CreateRecipe(ItemID.AncientBattleArmorShirt).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 20).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
         Mod.CreateRecipe(ItemID.AncientBattleArmorPants).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 16).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
-		Mod.CreateRecipe(ItemID.GravediggerShovel).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.NickelBar>(), 12).AddIngredient(ItemID.Wood, 3).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
+		Mod.CreateRecipe(ItemID.GravediggerShovel).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.NickelBar>(), 12).AddRecipeGroup("Wood", 3).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
 		Mod.CreateRecipe(ItemID.Magiluminescence).AddIngredient(ItemID.Topaz, 5).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BacciliteBar>(), 12).AddTile(TileID.Anvils).Register();
         Mod.CreateRecipe(ItemID.FlinxStaff).AddIngredient(ItemID.FlinxFur, 6).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 10).AddTile(TileID.WorkBenches).Register();
         Mod.CreateRecipe(ItemID.FlinxFurCoat).AddIngredient(ItemID.Silk, 10).AddIngredient(ItemID.FlinxFur, 8).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 8).AddTile(TileID.Loom).Register();
         Mod.CreateRecipe(ItemID.DeerThing).AddIngredient(ItemID.FlinxFur, 3).AddIngredient(ModContent.ItemType<BacciliteOre>(), 5).AddIngredient(ItemID.Lens).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.MonsterLasagna).AddIngredient(ModContent.ItemType<YuckyBit>(), 8).AddTile(TileID.CookingPots).Register();
-        Mod.CreateRecipe(ItemID.CoffinMinecart).AddIngredient(ItemID.IronBar, 5).AddIngredient(ItemID.Wood, 10).AddIngredient(ModContent.ItemType<YuckyBit>(), 10).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
+        Mod.CreateRecipe(ItemID.CoffinMinecart).AddRecipeGroup("IronBar", 5).AddRecipeGroup("Wood", 10).AddIngredient(ModContent.ItemType<YuckyBit>(), 10).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
         Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ItemID.JungleSpores, 15).AddIngredient(ModContent.ItemType<Booger>(), 30).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 15).AddIngredient(ItemID.ShadowScale, 30).AddTile(TileID.DemonAltar).Register();
         Mod.CreateRecipe(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 15).AddIngredient(ItemID.Vertebrae, 30).AddTile(TileID.DemonAltar).Register();

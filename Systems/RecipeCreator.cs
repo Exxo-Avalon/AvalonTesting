@@ -2395,7 +2395,7 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
         Mod.CreateRecipe(ItemID.Ebonwood, 50)
-            .AddRecipeGroup("Wood", 50)
+            .AddIngredient(ItemID.Wood, 50)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 

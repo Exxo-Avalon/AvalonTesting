@@ -18,6 +18,7 @@ public class RecipeSystem : ModSystem
             group0.ValidItems.Add(ModContent.ItemType<DarkMatterWood>());
             group0.ValidItems.Add(ModContent.ItemType<Coughwood>());
             group0.ValidItems.Add(ModContent.ItemType<TropicalWood>());
+            group0.ValidItems.Add(ModContent.ItemType<ResistantWood>());
         }
 
         var groupWings = new RecipeGroup(() => "Any Wings", new int[]
