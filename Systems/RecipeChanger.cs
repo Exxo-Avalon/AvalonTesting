@@ -94,6 +94,16 @@ public class RecipeChanger : ModSystem
                     recipe.AddIngredient(ModContent.ItemType<ToxinShard>());
                     break;
                 }
+                case ItemID.JungleYoyo:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<ToxinShard>());
+                    break;
+                }
+                case ItemID.ThornWhip:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<ToxinShard>());
+                    break;
+                }
                 case ItemID.JungleHat:
                 {
                     recipe.AddIngredient(ModContent.ItemType<ToxinShard>());
@@ -140,6 +150,21 @@ public class RecipeChanger : ModSystem
                     break;
                 }
                 case ItemID.ImpStaff:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<FireShard>());
+                    break;
+                }
+                case ItemID.MoltenHelmet:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<FireShard>());
+                    break;
+                }
+                case ItemID.MoltenBreastplate:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<FireShard>());
+                    break;
+                }
+                case ItemID.MoltenGreaves:
                 {
                     recipe.AddIngredient(ModContent.ItemType<FireShard>());
                     break;

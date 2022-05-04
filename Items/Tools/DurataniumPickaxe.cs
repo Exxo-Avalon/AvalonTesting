@@ -23,12 +23,12 @@ class DurataniumPickaxe : ModItem
         Item.pick = 110;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
-        Item.useTime = 20;
+        Item.useTime = 13;
         Item.knockBack = 1f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 1, 20, 0);
-        Item.useAnimation = 20;
+        Item.useAnimation = 25;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }

@@ -25,12 +25,12 @@ public class TroxiniumPickaxe : ModItem
         Item.pick = 185;
         Item.rare = ItemRarityID.Pink;
         Item.width = dims.Width;
-        Item.useTime = 20;
+        Item.useTime = 8;
         Item.knockBack = 1f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 28, 0);
-        Item.useAnimation = 20;
+        Item.useAnimation = 25;
         Item.height = dims.Height;
         //if (!Main.dedServ)
         //{

@@ -23,12 +23,12 @@ class NaquadahPickaxe : ModItem
         Item.pick = 150;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
-        Item.useTime = 20;
+        Item.useTime = 10;
         Item.knockBack = 1f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 5, 0);
-        Item.useAnimation = 20;
+        Item.useAnimation = 25;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
