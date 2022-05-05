@@ -1,5 +1,6 @@
 ﻿using AvalonTesting.Players;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,16 +15,16 @@ public class HadesCross : ModItem
             return;
         }
 
-        Mod.AddEquipTexture(this, EquipType.Head, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Head");
-        Mod.AddEquipTexture(this, EquipType.Body, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Body");
-        Mod.AddEquipTexture(this, EquipType.Legs, $"{AvalonTesting.AssetPath}Textures/Costumes/LavaMerman_Legs");
+        Mod.AddEquipTexture(this, EquipType.Head, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head");
+        Mod.AddEquipTexture(this, EquipType.Body, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body");
+        Mod.AddEquipTexture(this, EquipType.Legs, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs");
     }
 
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hades' Cross");
         Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         if (Main.netMode == NetmodeID.Server)
         {
             return;
@@ -58,8 +59,5 @@ public class HadesCross : ModItem
         player.ignoreWater = true;
     }
 
-    public override bool IsVanitySet(int head, int body, int legs)
-    {
-        return true;
-    }
+    public override bool IsVanitySet(int head, int body, int legs) => true;
 }

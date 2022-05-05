@@ -14,10 +14,10 @@ public class ExxoMenu : ModMenu
         {
             if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
             {
-                return Mod.Assets.Request<Texture2D>("Sprites/EAOLogoAprilFools");
+                return Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/EAOLogoAprilFools");
             }
 
-            return Mod.Assets.Request<Texture2D>("Sprites/EAOLogo");
+            return Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/EAOLogo");
         }
     }
 
@@ -25,7 +25,7 @@ public class ExxoMenu : ModMenu
     {
         base.Load();
         typeof(MenuLoader)
-            .GetField("LastSelectedModMenu", BindingFlags.Static | BindingFlags.NonPublic)
+            .GetField("LastSelectedModMenu", BindingFlags.NonPublic | BindingFlags.Static)
             ?.SetValue(null, FullName);
     }
 }

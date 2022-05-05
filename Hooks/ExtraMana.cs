@@ -5,7 +5,6 @@ using MonoMod.Cil;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.UI.ResourceSets;
-using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
@@ -18,7 +17,8 @@ public static class ExtraMana
     private const int LowManaTier = 2;
 
     private static readonly Func<HorizontalBarsPlayerReosurcesDisplaySet, int> GetMPSegmentsCount =
-        Utilities.CreateInstancePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>("_mpSegmentsCount");
+        Utilities.CreateInstancePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>(
+            "_mpSegmentsCount");
 
     public static void OnPlayerStatsSnapshotCtor(
         On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.orig_ctor orig,
@@ -79,7 +79,7 @@ public static class ExtraMana
             {
                 if (index - 1 < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
                 {
-                    return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Mana{i}");
+                    return AvalonTesting.Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/Mana{i}");
                 }
             }
 
@@ -109,7 +109,8 @@ public static class ExtraMana
             {
                 if (index < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
                 {
-                    return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/FancyMana{i}");
+                    return AvalonTesting.Mod.Assets.Request<Texture2D>(
+                        $"{AvalonTesting.TextureAssetsPath}/UI/FancyMana{i}");
                 }
             }
 
@@ -143,7 +144,8 @@ public static class ExtraMana
                     if (index >= mpSegmentsCount -
                         ((Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal))
                     {
-                        return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/BarMana{i}");
+                        return AvalonTesting.Mod.Assets.Request<Texture2D>(
+                            $"{AvalonTesting.TextureAssetsPath}/UI/BarMana{i}");
                     }
                 }
 

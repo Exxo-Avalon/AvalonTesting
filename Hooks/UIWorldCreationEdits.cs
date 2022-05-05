@@ -108,7 +108,7 @@ public static class UIWorldCreationEdits
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilRandom"),
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"),
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCrimson"),
-                ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/ContagionIcon")
+                AvalonTesting.Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/ContagionIcon")
             });
 
         // TODO: Wrapper fix for automatic height to max height
@@ -358,14 +358,14 @@ public static class UIWorldCreationEdits
         #endregion
 
         //  hr line in thing and ref implemented
-        
+
         var hr = new UIHorizontalSeparator();
         hr.Width.Set(0, 1);
         hr.Color = Color.Lerp(Color.White, new Color(63, 65, 151, (int)byte.MaxValue), 0.85f) * 0.9f;
         customOptionsPrimaryList.Append(hr);
 
         customOptionsPrimaryList.Recalculate();
-        
+
         container.Parent.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
         container.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
         container.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;

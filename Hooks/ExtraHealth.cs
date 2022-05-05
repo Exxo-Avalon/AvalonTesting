@@ -5,7 +5,6 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using ReLogic.Content;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
@@ -37,7 +36,7 @@ public static class ExtraHealth
             int crystalFruitCount = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (index - 1 < crystalFruitCount)
             {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/Heart3");
+                return AvalonTesting.Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/Heart3");
             }
 
             return sprite;
@@ -84,7 +83,8 @@ public static class ExtraHealth
             int crystalFruitSegments = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (elementIndex >= hpSegmentsCount - crystalFruitSegments)
             {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/HP_Fill_Crystal");
+                return AvalonTesting.Mod.Assets.Request<Texture2D>(
+                    $"{AvalonTesting.TextureAssetsPath}/UI/HP_Fill_Crystal");
             }
 
             return sprite;
@@ -111,7 +111,8 @@ public static class ExtraHealth
             int crystalFruitCount = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (elementIndex < crystalFruitCount)
             {
-                return ModContent.Request<Texture2D>($"{AvalonTesting.AssetPath}Textures/UI/FancyBlueHeart");
+                return AvalonTesting.Mod.Assets.Request<Texture2D>(
+                    $"{AvalonTesting.TextureAssetsPath}/UI/FancyBlueHeart");
             }
 
             return sprite;

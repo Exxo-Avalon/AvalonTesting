@@ -15,9 +15,9 @@ namespace AvalonTesting;
 public class AvalonTesting : Mod
 {
     /// <summary>
-    ///     The asset path for the mod.
+    ///     The path for texture assets of the mod.
     /// </summary>
-    public const string AssetPath = $"{nameof(AvalonTesting)}/Assets/";
+    public const string TextureAssetsPath = "Assets/Textures";
 
     /// <summary>
     ///     Gets reference to the main instance of the mod.
