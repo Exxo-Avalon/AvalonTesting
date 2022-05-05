@@ -16,49 +16,37 @@ public abstract class ModDresser : ModTile
     protected virtual Color MapColor => Color.Gray;
     protected abstract int DresserItemId { get; }
 
-    public override void SetStaticDefaults()
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
+
+    public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        // Properties
-        Main.tileSolidTop[Type] = true;
-        Main.tileFrameImportant[Type] = true;
-        Main.tileNoAttach[Type] = true;
-        Main.tileTable[Type] = true;
-        Main.tileContainer[Type] = true;
-        Main.tileLavaDeath[Type] = true;
-        TileID.Sets.HasOutlines[Type] = true;
-        TileID.Sets.BasicDresser[Type] = true;
-        TileID.Sets.AvoidedByNPCs[Type] = true;
-        TileID.Sets.IsAContainer[Type] = true;
-        TileID.Sets.InteractibleByNPCs[Type] = true;
-        TileID.Sets.DisableSmartCursor[Type] = true;
-
-        // Placement
-        TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-        TileObjectData.newTile.Origin = new Point16(1, 1);
-        TileObjectData.newTile.CoordinateHeights = new[] {16, 16};
-        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
-        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-        TileObjectData.newTile.AnchorInvalidTiles = new[] {127};
-        TileObjectData.newTile.StyleHorizontal = true;
-        TileObjectData.newTile.LavaDeath = false;
-        TileObjectData.newTile.AnchorBottom = new AnchorData(
-            AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
-        TileObjectData.addTile(Type);
-
-        AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-
-        ModTranslation name = CreateMapEntryName();
-        name.SetDefault(ContainerName.GetDefault());
-        AddMapEntry(MapColor, name);
-
-        AdjTiles = new int[] {TileID.Dressers};
-        DresserDrop = DresserItemId;
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, DresserDrop);
+        Chest.DestroyChest(i, j);
     }
 
-    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
+    public override void MouseOver(int i, int j)
     {
-        return true;
+        Player player = Main.LocalPlayer;
+        MouseOverBase(player);
+        if (Main.tile[Player.tileTargetX, Player.tileTargetY].TileFrameY > 0)
+        {
+            player.cursorItemIconID = ItemID.FamiliarShirt;
+            player.cursorItemIconText = string.Empty;
+        }
     }
+
+    public override void MouseOverFar(int i, int j)
+    {
+        Player player = Main.LocalPlayer;
+        MouseOverBase(player);
+        if (player.cursorItemIconText?.Length == 0)
+        {
+            player.cursorItemIconEnabled = false;
+            player.cursorItemIconID = 0;
+        }
+    }
+
+    public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 
     public override bool RightClick(int i, int j)
     {
@@ -77,7 +65,7 @@ public abstract class ModDresser : ModTile
             player.CloseSign();
             player.SetTalkNPC(-1);
             Main.npcChatCornerItem = 0;
-            Main.npcChatText = "";
+            Main.npcChatText = string.Empty;
 
             if (Main.editChest)
             {
@@ -143,7 +131,7 @@ public abstract class ModDresser : ModTile
             Recipe.FindRecipes();
             player.SetTalkNPC(-1);
             Main.npcChatCornerItem = 0;
-            Main.npcChatText = "";
+            Main.npcChatText = string.Empty;
             Main.interactedDresserTopLeftX = Player.tileTargetX;
             Main.interactedDresserTopLeftY = Player.tileTargetY;
             Main.OpenClothesWindow();
@@ -152,7 +140,46 @@ public abstract class ModDresser : ModTile
         return true;
     }
 
-    private void MouseOverBase(Player player, int i, int j)
+    public override void SetStaticDefaults()
+    {
+        // Properties
+        Main.tileSolidTop[Type] = true;
+        Main.tileFrameImportant[Type] = true;
+        Main.tileNoAttach[Type] = true;
+        Main.tileTable[Type] = true;
+        Main.tileContainer[Type] = true;
+        Main.tileLavaDeath[Type] = true;
+        TileID.Sets.HasOutlines[Type] = true;
+        TileID.Sets.BasicDresser[Type] = true;
+        TileID.Sets.AvoidedByNPCs[Type] = true;
+        TileID.Sets.IsAContainer[Type] = true;
+        TileID.Sets.InteractibleByNPCs[Type] = true;
+        TileID.Sets.DisableSmartCursor[Type] = true;
+
+        // Placement
+        TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+        TileObjectData.newTile.Origin = new Point16(1, 1);
+        TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
+        TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
+        TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
+        TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
+        TileObjectData.newTile.StyleHorizontal = true;
+        TileObjectData.newTile.LavaDeath = false;
+        TileObjectData.newTile.AnchorBottom = new AnchorData(
+            AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
+        TileObjectData.addTile(Type);
+
+        AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
+
+        ModTranslation name = CreateMapEntryName();
+        name.SetDefault(ContainerName.GetDefault());
+        AddMapEntry(MapColor, name);
+
+        AdjTiles = new int[] { TileID.Dressers };
+        DresserDrop = DresserItemId;
+    }
+
+    private void MouseOverBase(Player player)
     {
         Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
         int left = Player.tileTargetX;
@@ -171,56 +198,18 @@ public abstract class ModDresser : ModTile
         }
         else
         {
-            if (Main.chest[chestIndex].name != "")
-            {
-                player.cursorItemIconText = Main.chest[chestIndex].name;
-            }
-            else
-            {
-                player.cursorItemIconText = ContainerName.ToString();
-            }
+            player.cursorItemIconText = Main.chest[chestIndex].name != string.Empty
+                ? Main.chest[chestIndex].name
+                : ContainerName.ToString();
 
             if (player.cursorItemIconText == ContainerName.ToString())
             {
                 player.cursorItemIconID = DresserItemId;
-                player.cursorItemIconText = "";
+                player.cursorItemIconText = string.Empty;
             }
         }
 
         player.noThrow = 2;
         player.cursorItemIconEnabled = true;
-    }
-
-    public override void MouseOverFar(int i, int j)
-    {
-        Player player = Main.LocalPlayer;
-        MouseOverBase(player, i, j);
-        if (player.cursorItemIconText == "")
-        {
-            player.cursorItemIconEnabled = false;
-            player.cursorItemIconID = 0;
-        }
-    }
-
-    public override void MouseOver(int i, int j)
-    {
-        Player player = Main.LocalPlayer;
-        MouseOverBase(player, i, j);
-        if (Main.tile[Player.tileTargetX, Player.tileTargetY].TileFrameY > 0)
-        {
-            player.cursorItemIconID = ItemID.FamiliarShirt;
-            player.cursorItemIconText = "";
-        }
-    }
-
-    public override void NumDust(int i, int j, bool fail, ref int num)
-    {
-        num = fail ? 1 : 3;
-    }
-
-    public override void KillMultiTile(int i, int j, int frameX, int frameY)
-    {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 32, DresserDrop);
-        Chest.DestroyChest(i, j);
     }
 }

@@ -442,13 +442,13 @@ public class Contagion : GenPass
                 float dist = Vector2.Distance(new Vector2(k, l), new Vector2(i, j));
                 if (dist <= radius && dist >= radius - 29)
                 {
-                    Main.tile[k, l].active(false);
+                    Main.tile[k, l].Active(false);
                 }
 
                 if (((dist <= radius && dist >= radius - 7) || (dist <= radius - 22 && dist >= radius - 29)) &&
                     Main.tile[k, l].TileType != (ushort)ModContent.TileType<SnotOrb>())
                 {
-                    Main.tile[k, l].active(true);
+                    Main.tile[k, l].Active(true);
                     Tile tile = Main.tile[k, l];
                     tile.IsHalfBlock = false;
                     tile.Slope = SlopeType.Solid;
@@ -894,7 +894,7 @@ public class Contagion : GenPass
                 float num7 = Vector2.Distance(new Vector2(num5, num6), new Vector2(i, j));
                 if (num7 < radius - 7 && num7 > radius - 22)
                 {
-                    Main.tile[num5, num6].active(false);
+                    Main.tile[num5, num6].Active(false);
                 }
             }
         }
@@ -926,7 +926,7 @@ public class Contagion : GenPass
             {
                 if (x >= i + 7 || x <= i - 7)
                 {
-                    Main.tile[x, y].active(true);
+                    Main.tile[x, y].Active(true);
                     Tile tile = Main.tile[x, y];
                     tile.IsHalfBlock = false;
                     tile.Slope = SlopeType.Solid;
@@ -936,7 +936,7 @@ public class Contagion : GenPass
                 if (x <= i + 7 && x >= i - 7)
                 {
                     Main.tile[x, y].WallType = (ushort)ModContent.WallType<ChunkstoneWall>();
-                    Main.tile[x, y].active(false);
+                    Main.tile[x, y].Active(false);
                 }
             }
         }
@@ -1028,12 +1028,12 @@ public class Contagion : GenPass
                 {
                     if (type == 65535)
                     {
-                        Main.tile[i, j].active(false);
+                        Main.tile[i, j].Active(false);
                         Main.tile[i, j].WallType = (ushort)ModContent.WallType<ChunkstoneWall>();
                     }
                     else
                     {
-                        Main.tile[i, j].active(true);
+                        Main.tile[i, j].Active(true);
                         Main.tile[i, j].TileType = type;
                         Main.tile[i, j].WallType = (ushort)ModContent.WallType<ChunkstoneWall>();
                         WorldGen.SquareTileFrame(i, j);
@@ -1069,12 +1069,12 @@ public class Contagion : GenPass
                 {
                     if (type == 65535)
                     {
-                        Main.tile[i, j].active(false);
+                        Main.tile[i, j].Active(false);
                         Main.tile[i, j].WallType = (ushort)ModContent.WallType<ChunkstoneWall>();
                     }
                     else
                     {
-                        Main.tile[i, j].active(true);
+                        Main.tile[i, j].Active(true);
                         Main.tile[i, j].TileType = type;
                         //Main.tile[i, j].wall = (ushort)ModContent.WallType<Walls.ChunkstoneWall>();
                         WorldGen.SquareTileFrame(i, j);
@@ -1118,19 +1118,19 @@ public class Contagion : GenPass
         }
 
         short num = 0;
-        Main.tile[x - 1, y - 1].active(true);
+        Main.tile[x - 1, y - 1].Active(true);
         Main.tile[x - 1, y - 1].TileType = (ushort)ModContent.TileType<SnotOrb>();
         Main.tile[x - 1, y - 1].TileFrameX = num;
         Main.tile[x - 1, y - 1].TileFrameY = 0;
-        Main.tile[x, y - 1].active(true);
+        Main.tile[x, y - 1].Active(true);
         Main.tile[x, y - 1].TileType = (ushort)ModContent.TileType<SnotOrb>();
         Main.tile[x, y - 1].TileFrameX = (short)(18 + num);
         Main.tile[x, y - 1].TileFrameY = 0;
-        Main.tile[x - 1, y].active(true);
+        Main.tile[x - 1, y].Active(true);
         Main.tile[x - 1, y].TileType = (ushort)ModContent.TileType<SnotOrb>();
         Main.tile[x - 1, y].TileFrameX = num;
         Main.tile[x - 1, y].TileFrameY = 18;
-        Main.tile[x, y].active(true);
+        Main.tile[x, y].Active(true);
         Main.tile[x, y].TileType = (ushort)ModContent.TileType<SnotOrb>();
         Main.tile[x, y].TileFrameX = (short)(18 + num);
         Main.tile[x, y].TileFrameY = 18;

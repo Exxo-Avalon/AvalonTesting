@@ -26,7 +26,7 @@ public class ContagionPot : ModTile
         DustType = 29;
         SoundType = 13;
     }
-	
+
     public override bool CreateDust(int i, int j, ref int type)
     {
         return false;

@@ -40,7 +40,7 @@ public class MechanicalHungry : ModNPC
         {
             NPC.ai[1] = 10f;
         }
-        if (AvalonTestingWorld.wos < 0)
+        if (AvalonTestingWorld.WallOfSteel < 0)
         {
             NPC.active = false;
             return;
@@ -48,28 +48,28 @@ public class MechanicalHungry : ModNPC
         NPC.TargetClosest(true);
         float num465 = 0.1f;
         float num466 = 300f;
-        if ((double)Main.npc[AvalonTestingWorld.wos].life < (double)Main.npc[AvalonTestingWorld.wos].lifeMax * 0.25)
+        if ((double)Main.npc[AvalonTestingWorld.WallOfSteel].life < (double)Main.npc[AvalonTestingWorld.WallOfSteel].lifeMax * 0.25)
         {
             NPC.damage = 75;
             NPC.defense = 40;
             num466 = 900f;
         }
-        else if ((double)Main.npc[AvalonTestingWorld.wos].life < (double)Main.npc[AvalonTestingWorld.wos].lifeMax * 0.5)
+        else if ((double)Main.npc[AvalonTestingWorld.WallOfSteel].life < (double)Main.npc[AvalonTestingWorld.WallOfSteel].lifeMax * 0.5)
         {
             NPC.damage = 60;
             NPC.defense = 30;
             num466 = 700f;
         }
-        else if ((double)Main.npc[AvalonTestingWorld.wos].life < (double)Main.npc[AvalonTestingWorld.wos].lifeMax * 0.75)
+        else if ((double)Main.npc[AvalonTestingWorld.WallOfSteel].life < (double)Main.npc[AvalonTestingWorld.WallOfSteel].lifeMax * 0.75)
         {
             NPC.damage = 45;
             NPC.defense = 20;
             num466 = 500f;
         }
-        float num467 = Main.npc[AvalonTestingWorld.wos].position.X + (float)(Main.npc[AvalonTestingWorld.wos].width / 2);
-        float num468 = Main.npc[AvalonTestingWorld.wos].position.Y;
-        float num469 = (float)(AvalonTestingWorld.wosB - AvalonTestingWorld.wosT);
-        num468 = (float)AvalonTestingWorld.wosT + num469 * NPC.ai[0];
+        float num467 = Main.npc[AvalonTestingWorld.WallOfSteel].position.X + (float)(Main.npc[AvalonTestingWorld.WallOfSteel].width / 2);
+        float num468 = Main.npc[AvalonTestingWorld.WallOfSteel].position.Y;
+        float num469 = (float)(AvalonTestingWorld.WallOfSteelB - AvalonTestingWorld.WallOfSteelT);
+        num468 = (float)AvalonTestingWorld.WallOfSteelT + num469 * NPC.ai[0];
         NPC.ai[2] += 1f;
         if (NPC.ai[2] > 100f)
         {

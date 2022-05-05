@@ -29,10 +29,10 @@ class LavaShrine
             WorldGen.PlaceTile(xoff, y + 1, LB, forced: true);
             Utils.ResetSlope(xoff, y + 1);
         }
-        Main.tile[x + 3, y + 2].active(true);
-        Main.tile[x + 3, y + 3].active(true);
-        Main.tile[x + 8, y + 2].active(true);
-        Main.tile[x + 8, y + 3].active(true);
+        Main.tile[x + 3, y + 2].Active(true);
+        Main.tile[x + 3, y + 3].Active(true);
+        Main.tile[x + 8, y + 2].Active(true);
+        Main.tile[x + 8, y + 3].Active(true);
 
         Main.tile[x + 3, y + 2].TileType = LB;
         Main.tile[x + 3, y + 3].TileType = LB;
@@ -42,63 +42,63 @@ class LavaShrine
         {
             for (int yoff = y + 2; yoff <= y + 3; yoff++)
             {
-                Main.tile[xoff, yoff].active(true);
+                Main.tile[xoff, yoff].Active(true);
                 Main.tile[xoff, yoff].TileType = LA;
             }
         }
-        Main.tile[x + 4, y + 4].active(true);
-        Main.tile[x + 5, y + 4].active(true);
-        Main.tile[x + 6, y + 4].active(true);
-        Main.tile[x + 7, y + 4].active(true);
-        Main.tile[x + 5, y + 5].active(true);
-        Main.tile[x + 6, y + 5].active(true);
-        Main.tile[x + 7, y + 5].active(true);
-        Main.tile[x + 5, y + 6].active(true);
-        Main.tile[x + 5, y + 7].active(true);
-        Main.tile[x + 5, y + 8].active(true);
-        Main.tile[x + 4, y + 8].active(true);
-        Main.tile[x + 3, y + 8].active(true);
-        Main.tile[x + 3, y + 9].active(true);
-        Main.tile[x + 3, y + 10].active(true);
-        Main.tile[x + 2, y + 10].active(true);
-        Main.tile[x + 1, y + 10].active(true);
-        Main.tile[x + 1, y + 11].active(true);
-        Main.tile[x, y + 11].active(true);
-        Main.tile[x, y + 12].active(true);
-        Main.tile[x, y + 13].active(true);
-        Main.tile[x, y + 14].active(true);
-        Main.tile[x + 1, y + 14].active(true);
-        Main.tile[x + 1, y + 15].active(true);
-        Main.tile[x + 2, y + 15].active(true);
-        Main.tile[x + 2, y + 16].active(true);
-        Main.tile[x + 3, y + 16].active(true);
-        Main.tile[x + 3, y + 17].active(true);
-        Main.tile[x + 4, y + 17].active(true);
-        Main.tile[x + 5, y + 17].active(true);
-        Main.tile[x + 6, y + 17].active(true);
-        Main.tile[x + 6, y + 16].active(true);
-        Main.tile[x + 7, y + 16].active(true);
-        Main.tile[x + 8, y + 16].active(true);
-        Main.tile[x + 8, y + 15].active(true);
-        Main.tile[x + 9, y + 15].active(true);
-        Main.tile[x + 9, y + 14].active(true);
-        Main.tile[x + 10, y + 14].active(true);
-        Main.tile[x + 10, y + 13].active(true);
-        Main.tile[x + 11, y + 13].active(true);
-        Main.tile[x + 12, y + 13].active(true);
-        Main.tile[x + 13, y + 13].active(true);
-        Main.tile[x + 13, y + 14].active(true);
-        Main.tile[x + 14, y + 14].active(true);
-        Main.tile[x + 14, y + 15].active(true);
-        Main.tile[x + 15, y + 15].active(true);
-        Main.tile[x + 16, y + 15].active(true);
-        Main.tile[x + 16, y + 16].active(true);
-        Main.tile[x + 17, y + 16].active(true);
-        Main.tile[x + 18, y + 16].active(true);
-        Main.tile[x + 19, y + 16].active(true);
-        Main.tile[x + 19, y + 17].active(true);
-        Main.tile[x + 20, y + 17].active(true);
-        Main.tile[x + 20, y + 18].active(true);
+        Main.tile[x + 4, y + 4].Active(true);
+        Main.tile[x + 5, y + 4].Active(true);
+        Main.tile[x + 6, y + 4].Active(true);
+        Main.tile[x + 7, y + 4].Active(true);
+        Main.tile[x + 5, y + 5].Active(true);
+        Main.tile[x + 6, y + 5].Active(true);
+        Main.tile[x + 7, y + 5].Active(true);
+        Main.tile[x + 5, y + 6].Active(true);
+        Main.tile[x + 5, y + 7].Active(true);
+        Main.tile[x + 5, y + 8].Active(true);
+        Main.tile[x + 4, y + 8].Active(true);
+        Main.tile[x + 3, y + 8].Active(true);
+        Main.tile[x + 3, y + 9].Active(true);
+        Main.tile[x + 3, y + 10].Active(true);
+        Main.tile[x + 2, y + 10].Active(true);
+        Main.tile[x + 1, y + 10].Active(true);
+        Main.tile[x + 1, y + 11].Active(true);
+        Main.tile[x, y + 11].Active(true);
+        Main.tile[x, y + 12].Active(true);
+        Main.tile[x, y + 13].Active(true);
+        Main.tile[x, y + 14].Active(true);
+        Main.tile[x + 1, y + 14].Active(true);
+        Main.tile[x + 1, y + 15].Active(true);
+        Main.tile[x + 2, y + 15].Active(true);
+        Main.tile[x + 2, y + 16].Active(true);
+        Main.tile[x + 3, y + 16].Active(true);
+        Main.tile[x + 3, y + 17].Active(true);
+        Main.tile[x + 4, y + 17].Active(true);
+        Main.tile[x + 5, y + 17].Active(true);
+        Main.tile[x + 6, y + 17].Active(true);
+        Main.tile[x + 6, y + 16].Active(true);
+        Main.tile[x + 7, y + 16].Active(true);
+        Main.tile[x + 8, y + 16].Active(true);
+        Main.tile[x + 8, y + 15].Active(true);
+        Main.tile[x + 9, y + 15].Active(true);
+        Main.tile[x + 9, y + 14].Active(true);
+        Main.tile[x + 10, y + 14].Active(true);
+        Main.tile[x + 10, y + 13].Active(true);
+        Main.tile[x + 11, y + 13].Active(true);
+        Main.tile[x + 12, y + 13].Active(true);
+        Main.tile[x + 13, y + 13].Active(true);
+        Main.tile[x + 13, y + 14].Active(true);
+        Main.tile[x + 14, y + 14].Active(true);
+        Main.tile[x + 14, y + 15].Active(true);
+        Main.tile[x + 15, y + 15].Active(true);
+        Main.tile[x + 16, y + 15].Active(true);
+        Main.tile[x + 16, y + 16].Active(true);
+        Main.tile[x + 17, y + 16].Active(true);
+        Main.tile[x + 18, y + 16].Active(true);
+        Main.tile[x + 19, y + 16].Active(true);
+        Main.tile[x + 19, y + 17].Active(true);
+        Main.tile[x + 20, y + 17].Active(true);
+        Main.tile[x + 20, y + 18].Active(true);
 
         Main.tile[x + 4, y + 4].TileType = LB;
         Main.tile[x + 5, y + 4].TileType = LB;
@@ -157,76 +157,76 @@ class LavaShrine
         //------------------------------------------------------------
         for (int xoff = x + 8; xoff <= x + 36; xoff++)
         {
-            Main.tile[xoff, y + 5].active(true);
+            Main.tile[xoff, y + 5].Active(true);
             Main.tile[xoff, y + 5].TileType = LB;
         }
 
 
-        Main.tile[x + 11, y + 4].active(true);
-        Main.tile[x + 12, y + 4].active(true);
-        Main.tile[x + 13, y + 4].active(true);
+        Main.tile[x + 11, y + 4].Active(true);
+        Main.tile[x + 12, y + 4].Active(true);
+        Main.tile[x + 13, y + 4].Active(true);
 
-        Main.tile[x + 14, y + 4].active(true); // LA
+        Main.tile[x + 14, y + 4].Active(true); // LA
 
-        Main.tile[x + 15, y + 4].active(true);
-        Main.tile[x + 16, y + 4].active(true);
+        Main.tile[x + 15, y + 4].Active(true);
+        Main.tile[x + 16, y + 4].Active(true);
 
-        Main.tile[x + 17, y + 4].active(true); // LA
-        Main.tile[x + 18, y + 4].active(true); // LA
+        Main.tile[x + 17, y + 4].Active(true); // LA
+        Main.tile[x + 18, y + 4].Active(true); // LA
 
-        Main.tile[x + 13, y + 3].active(true);
-        Main.tile[x + 14, y + 3].active(true);
-        Main.tile[x + 15, y + 3].active(true);
+        Main.tile[x + 13, y + 3].Active(true);
+        Main.tile[x + 14, y + 3].Active(true);
+        Main.tile[x + 15, y + 3].Active(true);
 
-        Main.tile[x + 16, y + 3].active(true); // LA
+        Main.tile[x + 16, y + 3].Active(true); // LA
 
-        Main.tile[x + 17, y + 3].active(true);
+        Main.tile[x + 17, y + 3].Active(true);
 
-        Main.tile[x + 18, y + 3].active(true); // LA
+        Main.tile[x + 18, y + 3].Active(true); // LA
 
-        Main.tile[x + 14, y + 2].active(true);
-        Main.tile[x + 15, y + 2].active(true);
-        Main.tile[x + 16, y + 2].active(true);
-        Main.tile[x + 17, y + 2].active(true);
-        Main.tile[x + 18, y + 2].active(true);
+        Main.tile[x + 14, y + 2].Active(true);
+        Main.tile[x + 15, y + 2].Active(true);
+        Main.tile[x + 16, y + 2].Active(true);
+        Main.tile[x + 17, y + 2].Active(true);
+        Main.tile[x + 18, y + 2].Active(true);
 
         for (int xoff = x + 19; xoff <= x + 25; xoff++)
         {
             for (int yoff = y + 2; yoff <= y + 4; yoff++)
             {
-                Main.tile[xoff, yoff].active(true);
+                Main.tile[xoff, yoff].Active(true);
                 Main.tile[xoff, yoff].TileType = LA;
             }
         }
         for (int xoff = x + 16; xoff <= x + 28; xoff++)
         {
-            Main.tile[xoff, y + 1].active(true);
+            Main.tile[xoff, y + 1].Active(true);
             Main.tile[xoff, y + 1].TileType = LB;
         }
 
-        Main.tile[x + 26, y + 2].active(true);
-        Main.tile[x + 27, y + 2].active(true);
-        Main.tile[x + 28, y + 2].active(true);
-        Main.tile[x + 29, y + 2].active(true);
-        Main.tile[x + 30, y + 2].active(true);
+        Main.tile[x + 26, y + 2].Active(true);
+        Main.tile[x + 27, y + 2].Active(true);
+        Main.tile[x + 28, y + 2].Active(true);
+        Main.tile[x + 29, y + 2].Active(true);
+        Main.tile[x + 30, y + 2].Active(true);
 
-        Main.tile[x + 26, y + 3].active(true); // LA
+        Main.tile[x + 26, y + 3].Active(true); // LA
 
-        Main.tile[x + 27, y + 3].active(true);
+        Main.tile[x + 27, y + 3].Active(true);
 
-        Main.tile[x + 28, y + 3].active(true); // LA
+        Main.tile[x + 28, y + 3].Active(true); // LA
 
-        Main.tile[x + 29, y + 3].active(true);
-        Main.tile[x + 30, y + 3].active(true);
-        Main.tile[x + 31, y + 3].active(true);
+        Main.tile[x + 29, y + 3].Active(true);
+        Main.tile[x + 30, y + 3].Active(true);
+        Main.tile[x + 31, y + 3].Active(true);
 
-        Main.tile[x + 26, y + 4].active(true); // LA
-        Main.tile[x + 27, y + 4].active(true); // LA
+        Main.tile[x + 26, y + 4].Active(true); // LA
+        Main.tile[x + 27, y + 4].Active(true); // LA
 
-        Main.tile[x + 28, y + 4].active(true);
-        Main.tile[x + 29, y + 4].active(true);
+        Main.tile[x + 28, y + 4].Active(true);
+        Main.tile[x + 29, y + 4].Active(true);
 
-        Main.tile[x + 30, y + 4].active(true); // LA
+        Main.tile[x + 30, y + 4].Active(true); // LA
 
 
 
@@ -282,80 +282,80 @@ class LavaShrine
 
         Main.tile[x + 30, y + 4].TileType = LA; // LA
 
-        Main.tile[x + 24, y + 18].active(true);
-        Main.tile[x + 24, y + 17].active(true);
-        Main.tile[x + 25, y + 17].active(true);
-        Main.tile[x + 25, y + 16].active(true);
-        Main.tile[x + 26, y + 16].active(true);
-        Main.tile[x + 27, y + 16].active(true);
-        Main.tile[x + 28, y + 16].active(true);
-        Main.tile[x + 28, y + 15].active(true);
-        Main.tile[x + 29, y + 15].active(true);
-        Main.tile[x + 30, y + 15].active(true);
-        Main.tile[x + 30, y + 14].active(true);
-        Main.tile[x + 31, y + 14].active(true);
-        Main.tile[x + 31, y + 13].active(true);
-        Main.tile[x + 32, y + 13].active(true);
-        Main.tile[x + 33, y + 13].active(true);
-        Main.tile[x + 34, y + 13].active(true);
-        Main.tile[x + 34, y + 14].active(true);
-        Main.tile[x + 35, y + 14].active(true);
-        Main.tile[x + 35, y + 15].active(true);
-        Main.tile[x + 36, y + 15].active(true);
-        Main.tile[x + 36, y + 16].active(true);
-        Main.tile[x + 37, y + 16].active(true);
-        Main.tile[x + 38, y + 16].active(true);
-        Main.tile[x + 38, y + 17].active(true);
-        Main.tile[x + 39, y + 17].active(true);
-        Main.tile[x + 40, y + 17].active(true);
-        Main.tile[x + 41, y + 17].active(true);
-        Main.tile[x + 41, y + 16].active(true);
-        Main.tile[x + 42, y + 16].active(true);
-        Main.tile[x + 42, y + 15].active(true);
-        Main.tile[x + 43, y + 15].active(true);
-        Main.tile[x + 43, y + 14].active(true);
-        Main.tile[x + 44, y + 14].active(true);
-        Main.tile[x + 44, y + 13].active(true);
-        Main.tile[x + 44, y + 12].active(true);
-        Main.tile[x + 44, y + 11].active(true);
-        Main.tile[x + 43, y + 11].active(true);
-        Main.tile[x + 43, y + 10].active(true);
-        Main.tile[x + 42, y + 10].active(true);
-        Main.tile[x + 41, y + 10].active(true);
-        Main.tile[x + 41, y + 9].active(true);
-        Main.tile[x + 41, y + 8].active(true);
-        Main.tile[x + 40, y + 8].active(true);
-        Main.tile[x + 39, y + 8].active(true);
-        Main.tile[x + 39, y + 7].active(true);
-        Main.tile[x + 39, y + 6].active(true);
-        Main.tile[x + 39, y + 5].active(true);
-        Main.tile[x + 38, y + 5].active(true);
-        Main.tile[x + 37, y + 5].active(true);
-        Main.tile[x + 37, y + 4].active(true);
-        Main.tile[x + 38, y + 4].active(true);
-        Main.tile[x + 39, y + 4].active(true);
-        Main.tile[x + 40, y + 4].active(true);
-        Main.tile[x + 36, y + 3].active(true);
-        Main.tile[x + 36, y + 2].active(true);
-        Main.tile[x + 41, y + 3].active(true);
-        Main.tile[x + 41, y + 2].active(true);
-        Main.tile[x + 35, y + 1].active(true);
-        Main.tile[x + 36, y + 1].active(true);
-        Main.tile[x + 37, y + 1].active(true);
-        Main.tile[x + 38, y + 1].active(true);
-        Main.tile[x + 39, y + 1].active(true);
-        Main.tile[x + 40, y + 1].active(true);
-        Main.tile[x + 41, y + 1].active(true);
-        Main.tile[x + 42, y + 1].active(true);
-        Main.tile[x + 35, y].active(true);
-        Main.tile[x + 38, y].active(true);
-        Main.tile[x + 39, y].active(true);
-        Main.tile[x + 42, y].active(true);
+        Main.tile[x + 24, y + 18].Active(true);
+        Main.tile[x + 24, y + 17].Active(true);
+        Main.tile[x + 25, y + 17].Active(true);
+        Main.tile[x + 25, y + 16].Active(true);
+        Main.tile[x + 26, y + 16].Active(true);
+        Main.tile[x + 27, y + 16].Active(true);
+        Main.tile[x + 28, y + 16].Active(true);
+        Main.tile[x + 28, y + 15].Active(true);
+        Main.tile[x + 29, y + 15].Active(true);
+        Main.tile[x + 30, y + 15].Active(true);
+        Main.tile[x + 30, y + 14].Active(true);
+        Main.tile[x + 31, y + 14].Active(true);
+        Main.tile[x + 31, y + 13].Active(true);
+        Main.tile[x + 32, y + 13].Active(true);
+        Main.tile[x + 33, y + 13].Active(true);
+        Main.tile[x + 34, y + 13].Active(true);
+        Main.tile[x + 34, y + 14].Active(true);
+        Main.tile[x + 35, y + 14].Active(true);
+        Main.tile[x + 35, y + 15].Active(true);
+        Main.tile[x + 36, y + 15].Active(true);
+        Main.tile[x + 36, y + 16].Active(true);
+        Main.tile[x + 37, y + 16].Active(true);
+        Main.tile[x + 38, y + 16].Active(true);
+        Main.tile[x + 38, y + 17].Active(true);
+        Main.tile[x + 39, y + 17].Active(true);
+        Main.tile[x + 40, y + 17].Active(true);
+        Main.tile[x + 41, y + 17].Active(true);
+        Main.tile[x + 41, y + 16].Active(true);
+        Main.tile[x + 42, y + 16].Active(true);
+        Main.tile[x + 42, y + 15].Active(true);
+        Main.tile[x + 43, y + 15].Active(true);
+        Main.tile[x + 43, y + 14].Active(true);
+        Main.tile[x + 44, y + 14].Active(true);
+        Main.tile[x + 44, y + 13].Active(true);
+        Main.tile[x + 44, y + 12].Active(true);
+        Main.tile[x + 44, y + 11].Active(true);
+        Main.tile[x + 43, y + 11].Active(true);
+        Main.tile[x + 43, y + 10].Active(true);
+        Main.tile[x + 42, y + 10].Active(true);
+        Main.tile[x + 41, y + 10].Active(true);
+        Main.tile[x + 41, y + 9].Active(true);
+        Main.tile[x + 41, y + 8].Active(true);
+        Main.tile[x + 40, y + 8].Active(true);
+        Main.tile[x + 39, y + 8].Active(true);
+        Main.tile[x + 39, y + 7].Active(true);
+        Main.tile[x + 39, y + 6].Active(true);
+        Main.tile[x + 39, y + 5].Active(true);
+        Main.tile[x + 38, y + 5].Active(true);
+        Main.tile[x + 37, y + 5].Active(true);
+        Main.tile[x + 37, y + 4].Active(true);
+        Main.tile[x + 38, y + 4].Active(true);
+        Main.tile[x + 39, y + 4].Active(true);
+        Main.tile[x + 40, y + 4].Active(true);
+        Main.tile[x + 36, y + 3].Active(true);
+        Main.tile[x + 36, y + 2].Active(true);
+        Main.tile[x + 41, y + 3].Active(true);
+        Main.tile[x + 41, y + 2].Active(true);
+        Main.tile[x + 35, y + 1].Active(true);
+        Main.tile[x + 36, y + 1].Active(true);
+        Main.tile[x + 37, y + 1].Active(true);
+        Main.tile[x + 38, y + 1].Active(true);
+        Main.tile[x + 39, y + 1].Active(true);
+        Main.tile[x + 40, y + 1].Active(true);
+        Main.tile[x + 41, y + 1].Active(true);
+        Main.tile[x + 42, y + 1].Active(true);
+        Main.tile[x + 35, y].Active(true);
+        Main.tile[x + 38, y].Active(true);
+        Main.tile[x + 39, y].Active(true);
+        Main.tile[x + 42, y].Active(true);
         for (int xoff = x + 37; xoff <= x + 40; xoff++)
         {
             for (int yoff = y + 2; yoff <= y + 3; yoff++)
             {
-                Main.tile[xoff, yoff].active(true);
+                Main.tile[xoff, yoff].Active(true);
                 Main.tile[xoff, yoff].TileType = LA;
             }
         }
@@ -433,7 +433,7 @@ class LavaShrine
         {
             for (int yoff = y + 6; yoff <= y + 12; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
@@ -441,7 +441,7 @@ class LavaShrine
         {
             for (int yoff = y + 13; yoff <= y + 15; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
@@ -449,26 +449,26 @@ class LavaShrine
         {
             for (int yoff = y + 13; yoff <= y + 14; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
         for (int xoff = x + 20; xoff <= x + 24; xoff++)
         {
-            Main.tile[xoff, y + 16].active(false);
+            Main.tile[xoff, y + 16].Active(false);
             Main.tile[xoff, y + 16].WallType = backWall;
         }
 
-        Main.tile[x + 14, y + 13].active(true);
-        Main.tile[x + 15, y + 14].active(true);
-        Main.tile[x + 16, y + 14].active(true);
-        Main.tile[x + 17, y + 15].active(true);
-        Main.tile[x + 18, y + 15].active(true);
-        Main.tile[x + 26, y + 15].active(true);
-        Main.tile[x + 27, y + 15].active(true);
-        Main.tile[x + 28, y + 14].active(true);
-        Main.tile[x + 29, y + 14].active(true);
-        Main.tile[x + 30, y + 13].active(true);
+        Main.tile[x + 14, y + 13].Active(true);
+        Main.tile[x + 15, y + 14].Active(true);
+        Main.tile[x + 16, y + 14].Active(true);
+        Main.tile[x + 17, y + 15].Active(true);
+        Main.tile[x + 18, y + 15].Active(true);
+        Main.tile[x + 26, y + 15].Active(true);
+        Main.tile[x + 27, y + 15].Active(true);
+        Main.tile[x + 28, y + 14].Active(true);
+        Main.tile[x + 29, y + 14].Active(true);
+        Main.tile[x + 30, y + 13].Active(true);
 
         Main.tile[x + 14, y + 13].TileType = 19;
         Main.tile[x + 15, y + 14].TileType = 19;
@@ -491,7 +491,7 @@ class LavaShrine
         {
             for (int yoff = y + 11; yoff <= y + 14; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
@@ -499,26 +499,26 @@ class LavaShrine
         {
             for (int yoff = y + 11; yoff <= y + 14; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
         for (int xoff = x + 3; xoff <= x + 7; xoff++)
         {
-            Main.tile[xoff, y + 15].active(false);
+            Main.tile[xoff, y + 15].Active(false);
             Main.tile[xoff, y + 15].WallType = backWall;
         }
         for (int xoff = x + 37; xoff <= x + 41; xoff++)
         {
-            Main.tile[xoff, y + 15].active(false);
+            Main.tile[xoff, y + 15].Active(false);
             Main.tile[xoff, y + 15].WallType = backWall;
         }
-        Main.tile[x + 4, y + 16].active(false);
-        Main.tile[x + 5, y + 16].active(false);
-        Main.tile[x + 39, y + 16].active(false);
-        Main.tile[x + 40, y + 16].active(false);
-        Main.tile[x + 9, y + 13].active(false);
-        Main.tile[x + 35, y + 13].active(false);
+        Main.tile[x + 4, y + 16].Active(false);
+        Main.tile[x + 5, y + 16].Active(false);
+        Main.tile[x + 39, y + 16].Active(false);
+        Main.tile[x + 40, y + 16].Active(false);
+        Main.tile[x + 9, y + 13].Active(false);
+        Main.tile[x + 35, y + 13].Active(false);
 
         Main.tile[x + 4, y + 16].WallType = backWall;
         Main.tile[x + 5, y + 16].WallType = backWall;
@@ -531,7 +531,7 @@ class LavaShrine
         {
             for (int yoff = y + 9; yoff <= y + 10; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
@@ -539,22 +539,22 @@ class LavaShrine
         {
             for (int yoff = y + 9; yoff <= y + 10; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
         for (int xoff = x + 6; xoff <= x + 10; xoff++)
         {
-            Main.tile[xoff, y + 8].active(true);
+            Main.tile[xoff, y + 8].Active(true);
             Main.tile[xoff, y + 8].TileType = MO;
         }
         for (int xoff = x + 34; xoff <= x + 38; xoff++)
         {
-            Main.tile[xoff, y + 8].active(true);
+            Main.tile[xoff, y + 8].Active(true);
             Main.tile[xoff, y + 8].TileType = MO;
         }
-        Main.tile[x + 10, y + 9].active(true);
-        Main.tile[x + 34, y + 9].active(true);
+        Main.tile[x + 10, y + 9].Active(true);
+        Main.tile[x + 34, y + 9].Active(true);
         Main.tile[x + 10, y + 9].TileType = MO;
         Main.tile[x + 34, y + 9].TileType = MO;
 
@@ -565,18 +565,18 @@ class LavaShrine
         {
             for (int yoff = y + 18; yoff <= y + 21; yoff++)
             {
-                Main.tile[xoff, yoff].active(false);
+                Main.tile[xoff, yoff].Active(false);
                 Main.tile[xoff, yoff].WallType = backWall;
             }
         }
         for (int xoff = x + 20; xoff <= x + 24; xoff++)
         {
-            Main.tile[xoff, y + 22].active(true);
+            Main.tile[xoff, y + 22].Active(true);
             Main.tile[xoff, y + 22].TileType = LB;
         }
         for (int xoff = x + 21; xoff <= x + 23; xoff++)
         {
-            Main.tile[xoff, y + 23].active(true);
+            Main.tile[xoff, y + 23].Active(true);
             Main.tile[xoff, y + 23].TileType = LB;
         }
 
@@ -588,19 +588,19 @@ class LavaShrine
         WorldGen.PlaceDoor(x + 34, y + 11, 10, 19);
         for (int xoff = x + 21; xoff <= x + 23; xoff++)
         {
-            Main.tile[xoff, y + 17].active(true);
+            Main.tile[xoff, y + 17].Active(true);
             Main.tile[xoff, y + 17].TileType = 19;
             Main.tile[xoff, y + 17].WallType = backWall;
         }
         for (int xoff = x + 31; xoff <= x + 33; xoff++)
         {
-            Main.tile[xoff, y + 4].active(true);
+            Main.tile[xoff, y + 4].Active(true);
             Main.tile[xoff, y + 4].TileType = LB;
         }
-        Main.tile[x + 43, y + 12].active(false);
-        Main.tile[x + 43, y + 13].active(false);
-        Main.tile[x + 1, y + 12].active(false);
-        Main.tile[x + 1, y + 13].active(false);
+        Main.tile[x + 43, y + 12].Active(false);
+        Main.tile[x + 43, y + 13].Active(false);
+        Main.tile[x + 1, y + 12].Active(false);
+        Main.tile[x + 1, y + 13].Active(false);
         Main.tile[x + 43, y + 12].WallType = backWall;
         Main.tile[x + 43, y + 13].WallType = backWall;
         Main.tile[x + 1, y + 12].WallType = backWall;

@@ -38,7 +38,7 @@ class WorldgenHelper : ModItem
         //World.Utils.MakeSquareTemp(xStored, y);
 
         NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-        Task.Run(() => ModContent.GetInstance<AvalonTestingWorld>().GenerateSkyFortress());
+        Task.Run(AvalonTestingWorld.GenerateSkyFortress);
 
         //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;
