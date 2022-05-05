@@ -1,14 +1,14 @@
-﻿using Terraria.GameContent.Bestiary;
-using System;
+﻿using System;
 using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
+using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.DataStructures;
 
 namespace AvalonTesting.NPCs;
 
@@ -18,15 +18,9 @@ public class Juggernaut : ModNPC
     {
         DisplayName.SetDefault("Juggernaut");
         Main.npcFrameCount[NPC.type] = 15;
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        var debuffData = new NPCDebuffImmunityData
         {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused,
-                BuffID.OnFire,
-                BuffID.CursedInferno,
-                BuffID.Venom
-            }
+            SpecificallyImmuneTo = new[] { BuffID.Confused, BuffID.OnFire, BuffID.CursedInferno, BuffID.Venom },
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
@@ -48,31 +42,35 @@ public class Juggernaut : ModNPC
         NPC.HitSound = SoundID.NPCHit2;
         NPC.DeathSound = SoundID.NPCDeath2;
     }
+
     public override void OnKill()
     {
-        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce = false;
+        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce = false;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("A Juggernaut has been defeated!", new Color(175, 75, 255));
         }
         else if (Main.netMode == NetmodeID.Server)
         {
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A Juggernaut has been defeated!"), new Color(175, 75, 255));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A Juggernaut has been defeated!"),
+                new Color(175, 75, 255));
         }
     }
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-           BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("These behemoths will quite literally spawn in your face. They summon their minions as you attack them.")
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement(
+                "These behemoths will quite literally spawn in your face. They summon their minions as you attack them."),
         });
-    }
+
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<IllegalWeaponInstructions>()));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofBlight>(), 1, 1, 3));
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f * bossLifeScale);
@@ -81,43 +79,59 @@ public class Juggernaut : ModNPC
 
     public override void AI()
     {
-        var num441 = 30;
-        var flag40 = false;
-        if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce)
+        int num441 = 30;
+        bool flag40 = false;
+        if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce)
         {
             NPC.position = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].position;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().jugRunonce = true;
-            if (Main.netMode == NetmodeID.SinglePlayer) Main.NewText("A Juggernaut has awoken!", new Color(175, 75, 255));
-            else if (Main.netMode == NetmodeID.Server) ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A Juggernaut has awoken!"), new Color(175, 75, 255));
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce = true;
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Main.NewText("A Juggernaut has awoken!", new Color(175, 75, 255));
+            }
+            else if (Main.netMode == NetmodeID.Server)
+            {
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A Juggernaut has awoken!"),
+                    new Color(175, 75, 255));
+            }
         }
+
         if (NPC.justHit)
         {
             if (Main.rand.Next(20) == 0)
             {
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<JuggernautSorcerer>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y,
+                    ModContent.NPCType<JuggernautSorcerer>());
             }
+
             if (Main.rand.Next(20) == 0)
             {
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<EyeBones>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y,
+                    ModContent.NPCType<EyeBones>());
             }
+
             //if (Main.rand.Next(10) == 1)
             //{
             //    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.ArmoredSkeleton, 0);
             //}
             if (Main.rand.Next(45) == 0)
             {
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<CursedMagmaSkeleton>(), 0);
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y,
+                    ModContent.NPCType<CursedMagmaSkeleton>());
             }
             //if (Main.rand.Next(33) == 1)
             //{
             //    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, NPCID.ArmoredViking, 0);
             //}
         }
-        if (NPC.velocity.Y == 0f && ((NPC.velocity.X > 0f && NPC.direction < 0) || (NPC.velocity.X < 0f && NPC.direction > 0)))
+
+        if (NPC.velocity.Y == 0f &&
+            ((NPC.velocity.X > 0f && NPC.direction < 0) || (NPC.velocity.X < 0f && NPC.direction > 0)))
         {
             flag40 = true;
             NPC.ai[3] += 1f;
         }
+
         if (NPC.position.X == NPC.oldPosition.X || NPC.ai[3] >= num441 || flag40)
         {
             NPC.ai[3] += 1f;
@@ -126,29 +140,34 @@ public class Juggernaut : ModNPC
         {
             NPC.ai[3] -= 1f;
         }
+
         if (NPC.ai[3] > num441 * 10)
         {
             NPC.ai[3] = 0f;
         }
+
         if (NPC.justHit)
         {
             NPC.ai[3] = 0f;
         }
+
         if (NPC.ai[3] == num441)
         {
             NPC.netUpdate = true;
         }
-        var vector41 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-        var num442 = Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f - vector41.X;
-        var num443 = Main.player[NPC.target].position.Y - vector41.Y;
-        var num444 = (float)Math.Sqrt(num442 * num442 + num443 * num443);
+
+        var vector41 = new Vector2(NPC.position.X + (NPC.width * 0.5f), NPC.position.Y + (NPC.height * 0.5f));
+        float num442 = Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5f) - vector41.X;
+        float num443 = Main.player[NPC.target].position.Y - vector41.Y;
+        float num444 = (float)Math.Sqrt((num442 * num442) + (num443 * num443));
         if (num444 < 200f)
         {
             NPC.ai[3] = 0f;
         }
+
         if (NPC.ai[3] < num441)
         {
-            NPC.TargetClosest(true);
+            NPC.TargetClosest();
         }
         else
         {
@@ -169,14 +188,17 @@ public class Juggernaut : ModNPC
             {
                 NPC.ai[0] = 0f;
             }
+
             NPC.directionY = -1;
             if (NPC.direction == 0)
             {
                 NPC.direction = 1;
             }
         }
-        var num445 = 6f;
-        if (NPC.velocity.Y == 0f || NPC.wet || (NPC.velocity.X <= 0f && NPC.direction < 0) || (NPC.velocity.X >= 0f && NPC.direction > 0))
+
+        float num445 = 6f;
+        if (NPC.velocity.Y == 0f || NPC.wet || (NPC.velocity.X <= 0f && NPC.direction < 0) ||
+            (NPC.velocity.X >= 0f && NPC.direction > 0))
         {
             if (NPC.velocity.X < -num445 || NPC.velocity.X > num445)
             {
@@ -202,21 +224,24 @@ public class Juggernaut : ModNPC
                 }
             }
         }
+
         if (NPC.velocity.Y >= 0f)
         {
-            var num446 = 0;
+            int num446 = 0;
             if (NPC.velocity.X < 0f)
             {
                 num446 = -1;
             }
+
             if (NPC.velocity.X > 0f)
             {
                 num446 = 1;
             }
-            var vector42 = NPC.position;
+
+            Vector2 vector42 = NPC.position;
             vector42.X += NPC.velocity.X;
-            var num447 = (int)((vector42.X + NPC.width / 2 + (NPC.width / 2 + 1) * num446) / 16f);
-            var num448 = (int)((vector42.Y + NPC.height - 1f) / 16f);
+            int num447 = (int)((vector42.X + (NPC.width / 2) + (((NPC.width / 2) + 1) * num446)) / 16f);
+            int num448 = (int)((vector42.Y + NPC.height - 1f) / 16f);
             //if (Main.tile[num447, num448] == null)
             //{
             //    Main.tile[num447, num448] = new Tile();
@@ -237,20 +262,42 @@ public class Juggernaut : ModNPC
             //{
             //    Main.tile[num447, num448 + 1] = new Tile();
             //}
-            if (num447 * 16 < vector42.X + NPC.width && num447 * 16 + 16 > vector42.X && ((Main.tile[num447, num448].HasUnactuatedTile && !Main.tile[num447, num448].TopSlope && !Main.tile[num447, num448 - 1].TopSlope && Main.tileSolid[Main.tile[num447, num448].TileType] && !Main.tileSolidTop[Main.tile[num447, num448].TileType]) || (Main.tile[num447, num448 - 1].IsHalfBlock && Main.tile[num447, num448 - 1].HasUnactuatedTile)) && (!Main.tile[num447, num448 - 1].HasUnactuatedTile || !Main.tileSolid[Main.tile[num447, num448 - 1].TileType] || Main.tileSolidTop[Main.tile[num447, num448 - 1].TileType] || (Main.tile[num447, num448 - 1].IsHalfBlock && (!Main.tile[num447, num448 - 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[num447, num448 - 4].TileType] || Main.tileSolidTop[Main.tile[num447, num448 - 4].TileType]))) && (!Main.tile[num447, num448 - 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[num447, num448 - 2].TileType] || Main.tileSolidTop[Main.tile[num447, num448 - 2].TileType]) && (!Main.tile[num447, num448 - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[num447, num448 - 3].TileType] || Main.tileSolidTop[Main.tile[num447, num448 - 3].TileType]) && (!Main.tile[num447 - num446, num448 - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[num447 - num446, num448 - 3].TileType]))
+            if (num447 * 16 < vector42.X + NPC.width && (num447 * 16) + 16 > vector42.X &&
+                ((Main.tile[num447, num448].HasUnactuatedTile && !Main.tile[num447, num448].TopSlope &&
+                  !Main.tile[num447, num448 - 1].TopSlope && Main.tileSolid[Main.tile[num447, num448].TileType] &&
+                  !Main.tileSolidTop[Main.tile[num447, num448].TileType]) ||
+                 (Main.tile[num447, num448 - 1].IsHalfBlock && Main.tile[num447, num448 - 1].HasUnactuatedTile)) &&
+                (!Main.tile[num447, num448 - 1].HasUnactuatedTile ||
+                 !Main.tileSolid[Main.tile[num447, num448 - 1].TileType] ||
+                 Main.tileSolidTop[Main.tile[num447, num448 - 1].TileType] ||
+                 (Main.tile[num447, num448 - 1].IsHalfBlock && (!Main.tile[num447, num448 - 4].HasUnactuatedTile ||
+                                                                !Main.tileSolid[
+                                                                    Main.tile[num447, num448 - 4].TileType] ||
+                                                                Main.tileSolidTop
+                                                                    [Main.tile[num447, num448 - 4].TileType]))) &&
+                (!Main.tile[num447, num448 - 2].HasUnactuatedTile ||
+                 !Main.tileSolid[Main.tile[num447, num448 - 2].TileType] ||
+                 Main.tileSolidTop[Main.tile[num447, num448 - 2].TileType]) &&
+                (!Main.tile[num447, num448 - 3].HasUnactuatedTile ||
+                 !Main.tileSolid[Main.tile[num447, num448 - 3].TileType] ||
+                 Main.tileSolidTop[Main.tile[num447, num448 - 3].TileType]) &&
+                (!Main.tile[num447 - num446, num448 - 3].HasUnactuatedTile ||
+                 !Main.tileSolid[Main.tile[num447 - num446, num448 - 3].TileType]))
             {
                 float num449 = num448 * 16;
                 if (Main.tile[num447, num448].IsHalfBlock)
                 {
                     num449 += 8f;
                 }
+
                 if (Main.tile[num447, num448 - 1].IsHalfBlock)
                 {
                     num449 -= 8f;
                 }
+
                 if (num449 < vector42.Y + NPC.height)
                 {
-                    var num450 = vector42.Y + NPC.height - num449;
+                    float num450 = vector42.Y + NPC.height - num449;
                     if (num450 <= 16.1)
                     {
                         NPC.gfxOffY += NPC.position.Y + NPC.height - num449;
@@ -267,12 +314,15 @@ public class Juggernaut : ModNPC
                 }
             }
         }
+
         if (NPC.velocity.Y != 0f)
         {
             return;
         }
-        var num451 = (int)((NPC.position.X + NPC.width / 2 + (NPC.width / 2 + 2) * NPC.direction + NPC.velocity.X * 5f) / 16f);
-        var num452 = (int)((NPC.position.Y + NPC.height - 15f) / 16f);
+
+        int num451 = (int)((NPC.position.X + (NPC.width / 2) + (((NPC.width / 2) + 2) * NPC.direction) +
+                            (NPC.velocity.X * 5f)) / 16f);
+        int num452 = (int)((NPC.position.Y + NPC.height - 15f) / 16f);
         //if (Main.tile[num451, num452] == null)
         //{
         //    Main.tile[num451, num452] = new Tile();
@@ -309,39 +359,46 @@ public class Juggernaut : ModNPC
         {
             return;
         }
+
         if (Main.tile[num451, num452 - 2].HasUnactuatedTile && Main.tileSolid[Main.tile[num451, num452 - 2].TileType])
         {
-            if (Main.tile[num451, num452 - 3].HasUnactuatedTile && Main.tileSolid[Main.tile[num451, num452 - 3].TileType])
+            if (Main.tile[num451, num452 - 3].HasUnactuatedTile &&
+                Main.tileSolid[Main.tile[num451, num452 - 3].TileType])
             {
                 NPC.velocity.Y = -8.5f;
                 NPC.netUpdate = true;
                 return;
             }
+
             NPC.velocity.Y = -7.5f;
             NPC.netUpdate = true;
             return;
         }
-        else
+
+        if (Main.tile[num451, num452 - 1].HasUnactuatedTile && !Main.tile[num451, num452 - 1].TopSlope &&
+            Main.tileSolid[Main.tile[num451, num452 - 1].TileType])
         {
-            if (Main.tile[num451, num452 - 1].HasUnactuatedTile && !Main.tile[num451, num452 - 1].TopSlope && Main.tileSolid[Main.tile[num451, num452 - 1].TileType])
-            {
-                NPC.velocity.Y = -7f;
-                NPC.netUpdate = true;
-                return;
-            }
-            if (NPC.position.Y + NPC.height - num452 * 16 > 20f && Main.tile[num451, num452].HasUnactuatedTile && !Main.tile[num451, num452].TopSlope && Main.tileSolid[Main.tile[num451, num452].TileType])
-            {
-                NPC.velocity.Y = -6f;
-                NPC.netUpdate = true;
-                return;
-            }
-            if ((NPC.directionY < 0 || Math.Abs(NPC.velocity.X) > 3f) && (!Main.tile[num451, num452 + 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[num451, num452 + 2].TileType]) && (!Main.tile[num451 + NPC.direction, num452 + 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[num451 + NPC.direction, num452 + 3].TileType]))
-            {
-                NPC.velocity.Y = -8f;
-                NPC.netUpdate = true;
-                return;
-            }
+            NPC.velocity.Y = -7f;
+            NPC.netUpdate = true;
             return;
+        }
+
+        if (NPC.position.Y + NPC.height - (num452 * 16) > 20f && Main.tile[num451, num452].HasUnactuatedTile &&
+            !Main.tile[num451, num452].TopSlope && Main.tileSolid[Main.tile[num451, num452].TileType])
+        {
+            NPC.velocity.Y = -6f;
+            NPC.netUpdate = true;
+            return;
+        }
+
+        if ((NPC.directionY < 0 || Math.Abs(NPC.velocity.X) > 3f) &&
+            (!Main.tile[num451, num452 + 2].HasUnactuatedTile ||
+             !Main.tileSolid[Main.tile[num451, num452 + 2].TileType]) &&
+            (!Main.tile[num451 + NPC.direction, num452 + 3].HasUnactuatedTile ||
+             !Main.tileSolid[Main.tile[num451 + NPC.direction, num452 + 3].TileType]))
+        {
+            NPC.velocity.Y = -8f;
+            NPC.netUpdate = true;
         }
     }
 
@@ -353,10 +410,12 @@ public class Juggernaut : ModNPC
             {
                 NPC.spriteDirection = 1;
             }
+
             if (NPC.direction == -1)
             {
                 NPC.spriteDirection = -1;
             }
+
             if (NPC.velocity.X == 0f)
             {
                 NPC.frame.Y = 0;
@@ -371,6 +430,7 @@ public class Juggernaut : ModNPC
                     NPC.frame.Y = NPC.frame.Y + frameHeight;
                     NPC.frameCounter = 0.0;
                 }
+
                 if (NPC.frame.Y / frameHeight >= Main.npcFrameCount[NPC.type])
                 {
                     NPC.frame.Y = frameHeight * 2;
@@ -388,7 +448,8 @@ public class Juggernaut : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("JuggernautHead").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("JuggernautHead").Type);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone2").Type, 1.7f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.7f);
@@ -396,8 +457,9 @@ public class Juggernaut : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.015f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode &&
+        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
+            ? 0.015f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+﻿using AvalonTesting.Items.Banners;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -27,17 +27,18 @@ public class Valkyrie : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         NPC.height = 34;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.ValkyrieBanner>();
+        BannerItem = ModContent.ItemType<ValkyrieBanner>();
         AnimationType = 48;
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.26f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress
+            ? 0.26f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

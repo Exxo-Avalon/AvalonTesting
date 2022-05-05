@@ -9,16 +9,6 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalProjectile : GlobalProjectile
 {
-    public override bool CanHitPlayer(Projectile projectile, Player target)
-    {
-        if (target.HasBuff<BeeSweet>() && projectile.type == ProjectileID.Stinger)
-        {
-            return false;
-        }
-
-        return base.CanHitPlayer(projectile, target);
-    }
-
     public static int FindClosestHostile(Vector2 pos, float dist)
     {
         int closest = -1;
@@ -41,12 +31,12 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
         return closest;
     }
 
-    public static int howManyProjectiles(int min, int max)
+    public static int HowManyProjectiles(int min, int max)
     {
         int output = min;
         for (int i = min; i < max; i++)
         {
-            if (Main.rand.Next(2 ^ (max - i)) == 0)
+            if (Main.rand.NextBool(2 ^ (max - i)))
             {
                 output++;
             }
@@ -71,5 +61,15 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
         float num = (float)Math.Atan2(value.Y, value.X);
         num += rotation;
         return value.Length() * new Vector2((float)Math.Cos(num), (float)Math.Sin(num));
+    }
+
+    public override bool CanHitPlayer(Projectile projectile, Player target)
+    {
+        if (target.HasBuff<BeeSweet>() && projectile.type == ProjectileID.Stinger)
+        {
+            return false;
+        }
+
+        return base.CanHitPlayer(projectile, target);
     }
 }

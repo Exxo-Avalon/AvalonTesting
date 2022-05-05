@@ -16,8 +16,8 @@ using AvalonTesting.Items.Tools;
 using AvalonTesting.Items.Vanity;
 using AvalonTesting.Items.Weapons.Magic;
 using AvalonTesting.Items.Weapons.Melee;
+using AvalonTesting.Items.Weapons.Throw;
 using AvalonTesting.NPCs;
-using AvalonTesting.NPCs.Bosses;
 using AvalonTesting.Players;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
@@ -33,145 +33,47 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalNPC : GlobalNPC
 {
-    private const int UncommonChance = 50;
-    private const int RareChance = 700;
-    private const int VeryRareChance = 1000;
-    public static int boogerBoss = 0;
-    public static float endoSpawnRate = 0.25f;
-    public static bool savedIceman = false;
-
-    public static List<int> shmMobs = new()
-    {
-        NPCID.Creeper,
-        NPCID.Pumpking,
-        NPCID.SantaNK1,
-        ModContent.NPCType<AegisHallowor>(),
-        ModContent.NPCType<ArmageddonSlime>(),
-        ModContent.NPCType<ArmoredHellTortoise>(),
-        ModContent.NPCType<ArmoredWraith>(),
-        ModContent.NPCType<BactusMinion>(), // remove later
-        ModContent.NPCType<BombBones>(),
-        ModContent.NPCType<NPCs.BombSkeleton>(),
-        ModContent.NPCType<CloudBat>(),
-        ModContent.NPCType<CometTail>(),
-        ModContent.NPCType<CrystalBones>(),
-        ModContent.NPCType<CrystalSpectre>(),
-        ModContent.NPCType<CursedMagmaSkeleton>(),
-        ModContent.NPCType<DarkMatterSlime>(),
-        ModContent.NPCType<DarkMotherSlime>(),
-        ModContent.NPCType<Dragonfly>(),
-        ModContent.NPCType<DragonLordBody>(),
-        ModContent.NPCType<DragonLordBody2>(),
-        ModContent.NPCType<DragonLordBody3>(),
-        ModContent.NPCType<DragonLordHead>(),
-        ModContent.NPCType<DragonLordLegs>(),
-        ModContent.NPCType<DragonLordTail>(),
-        ModContent.NPCType<Ectosphere>(),
-        ModContent.NPCType<EyeBones>(),
-        ModContent.NPCType<GuardianBones>(),
-        ModContent.NPCType<GuardianCorruptor>(),
-        ModContent.NPCType<ImpactWizard>(),
-        ModContent.NPCType<Juggernaut>(),
-        ModContent.NPCType<JuggernautSorcerer>(),
-        ModContent.NPCType<MatterMan>(),
-        ModContent.NPCType<MechanicalDiggerBody>(),
-        ModContent.NPCType<MechanicalDiggerHead>(),
-        ModContent.NPCType<MechanicalDiggerTail>(),
-        ModContent.NPCType<Mechasting>(),
-        ModContent.NPCType<ProtectorWheel>(),
-        ModContent.NPCType<QuickCaribe>(),
-        ModContent.NPCType<RedAegisBonesHelmet>(),
-        ModContent.NPCType<RedAegisBonesHorned>(),
-        ModContent.NPCType<RedAegisBonesSparta>(),
-        ModContent.NPCType<RedAegisBonesSpike>(),
-        ModContent.NPCType<UnstableAnomaly>(),
-        ModContent.NPCType<UnvolanditeMite>(),
-        ModContent.NPCType<UnvolanditeMiteDigger>(),
-        ModContent.NPCType<Valkyrie>(),
-        ModContent.NPCType<VampireHarpy>(),
-        ModContent.NPCType<VorazylcumMite>(),
-        ModContent.NPCType<VorazylcumMiteDigger>()
-    };
-
     public static readonly int[] Hornets =
     {
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,
-        NPCID.HornetStingy
+        NPCID.HornetStingy,
     };
 
-    public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
-    {
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
-        {
-            pool.Clear();
-            pool.Add(ModContent.NPCType<Valkyrie>(), 0.6f);
-            pool.Add(ModContent.NPCType<CloudBat>(), 0.9f);
-        }
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone())
-        {
-            pool.Clear();
-            pool.Add(ModContent.NPCType<Bactus>(), 1f);
-            pool.Add(ModContent.NPCType<PyrasiteHead>(), 0.1f);
-            if (Main.hardMode)
-            {
-                pool.Add(ModContent.NPCType<Cougher>(), 0.8f);
-                pool.Add(ModContent.NPCType<Ickslime>(), 0.7f);
-                if (spawnInfo.Player.ZoneRockLayerHeight)
-                {
-                    pool.Add(ModContent.NPCType<Viris>(), 1f);
-                    pool.Add(ModContent.NPCType<GrossyFloat>(), 0.6f);
-                }
-                if (spawnInfo.Player.ZoneDesert)
-                {
-                    pool.Add(NPCID.DarkMummy, 0.3f);
-                    pool.Add(ModContent.NPCType<EvilVulture>(), 0.4f);
-                }
-            }
-        }
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium)
-        {
-            if (Main.hardMode)
-            {
-                pool.Clear();
-                pool.Add(ModContent.NPCType<CaesiumBrute>(), 1f);
-                pool.Add(ModContent.NPCType<CaesiumSeekerHead>(), 0.05f);
-                pool.Add(ModContent.NPCType<CaesiumStalker>(), 0.9f);
-            }
-        }
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone())
-        {
-            pool.Clear();
-            pool.Add(ModContent.NPCType<DarkMotherSlime>(), 0.5f);
-            pool.Add(ModContent.NPCType<DarkMatterSlime>(), 0.9f);
-            pool.Add(ModContent.NPCType<VampireHarpy>(), 0.9f);
-            pool.Add(ModContent.NPCType<MatterMan>(), 0.9f);
-            pool.Add(ModContent.NPCType<UnstableAnomaly>(), 0.9f);
-        }
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
-        {
-            pool.Clear();
-            pool.Add(NPCID.Demon, 0.2f);
-            pool.Add(NPCID.RedDevil, 0.2f);
-            pool.Add(ModContent.NPCType<EctoHand>(), 0.3f);
-            pool.Add(ModContent.NPCType<HellboundLizard>(), 1f);
-            pool.Add(ModContent.NPCType<Gargoyle>(), 1f);
-            if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
-            {
-                pool.Add(ModContent.NPCType<ArmoredHellTortoise>(), 1f);
-            }
-        }
-    }
+    private const int RareChance = 700;
+    private const int UncommonChance = 50;
+    private const int VeryRareChance = 1000;
 
+    public static int BoogerBoss { get; set; }
+    public static float EndoSpawnRate { get; set; } = 0.25f;
+    public static bool SavedIceman { get; set; }
+
+    /// <summary>
+    ///     Finds a type of NPC.
+    /// </summary>
+    /// <param name="type">The type of NPC to find.</param>
+    /// <returns>The index of the found NPC in the Main.npc[] array.</returns>
+    public static int FindATypeOfNPC(int type)
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            if (type == Main.npc[i].type && Main.npc[i].active)
+            {
+                return i;
+            }
+        }
+
+        return 0;
+    }
 
     /// <summary>
     ///     A method to choose a random Town NPC death messages.
     /// </summary>
-    /// <param name="Type">The Town NPC's type.</param>
+    /// <param name="type">The Town NPC's type.</param>
     /// <returns>The string containing the death message.</returns>
-    public static string TownDeathMSG(int Type)
+    public static string TownDeathMsg(int type)
     {
-        string result = "";
-        if (Type == NPCID.Merchant)
+        string result = string.Empty;
+        if (type == NPCID.Merchant)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -199,7 +101,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " tried gold dust for the first time.";
             }
         }
-        else if (Type == NPCID.Nurse)
+        else if (type == NPCID.Nurse)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -227,7 +129,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += "'s surgical strike was in error.";
             }
         }
-        else if (Type == NPCID.OldMan)
+        else if (type == NPCID.OldMan)
         {
             int r = Main.rand.Next(2);
             if (r == 0)
@@ -240,7 +142,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was slain...";
             }
         }
-        else if (Type == NPCID.ArmsDealer)
+        else if (type == NPCID.ArmsDealer)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -280,7 +182,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 }
             }
         }
-        else if (Type == NPCID.Dryad)
+        else if (type == NPCID.Dryad)
         {
             int r = Main.rand.Next(7);
             if (r == 0)
@@ -318,7 +220,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " tripped on a corrupt vine.";
             }
         }
-        else if (Type == NPCID.Guide)
+        else if (type == NPCID.Guide)
         {
             int r = Main.rand.Next(7);
             if (r == 0)
@@ -356,7 +258,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " opened a door.";
             }
         }
-        else if (Type == NPCID.Demolitionist)
+        else if (type == NPCID.Demolitionist)
         {
             int r = Main.rand.Next(7);
             if (r == 0)
@@ -394,12 +296,12 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " became a true martyr.";
             }
         }
-        else if (Type == NPCID.Clothier)
+        else if (type == NPCID.Clothier)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
             {
-                result += " was unknowningly cursed...";
+                result += " was unknowingly cursed...";
             }
 
             if (r == 1)
@@ -427,7 +329,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " stitched himself up.";
             }
         }
-        else if (Type == NPCID.GoblinTinkerer)
+        else if (type == NPCID.GoblinTinkerer)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -460,7 +362,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was approached from the north.";
             }
         }
-        else if (Type == NPCID.Wizard)
+        else if (type == NPCID.Wizard)
         {
             int r = Main.rand.Next(7);
             if (r == 0)
@@ -498,7 +400,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += "'s low armor class failed him.";
             }
         }
-        else if (Type == NPCID.SantaClaus)
+        else if (type == NPCID.SantaClaus)
         {
             int r = Main.rand.Next(2);
             if (r == 0)
@@ -511,7 +413,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " wasn't believed in.";
             }
         }
-        else if (Type == NPCID.Mechanic)
+        else if (type == NPCID.Mechanic)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -544,7 +446,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was removed from " + Main.worldName + ".";
             }
         }
-        else if (Type == NPCID.Truffle)
+        else if (type == NPCID.Truffle)
         {
             int r = Main.rand.Next(4);
             if (r == 0)
@@ -567,7 +469,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " is no longer a fun guy.";
             }
         }
-        else if (Type == NPCID.Steampunker)
+        else if (type == NPCID.Steampunker)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -595,7 +497,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " used her teleporter too fast.";
             }
         }
-        else if (Type == NPCID.DyeTrader)
+        else if (type == NPCID.DyeTrader)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -628,7 +530,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was dyed a deep chartreuse.";
             }
         }
-        else if (Type == NPCID.PartyGirl)
+        else if (type == NPCID.PartyGirl)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -661,7 +563,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was dissolved into the punch.";
             }
         }
-        else if (Type == NPCID.Cyborg)
+        else if (type == NPCID.Cyborg)
         {
             int r = Main.rand.Next(7);
             if (r == 0)
@@ -699,7 +601,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " malfunctioned.";
             }
         }
-        else if (Type == NPCID.Painter)
+        else if (type == NPCID.Painter)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -732,7 +634,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " inhaled asbestos.";
             }
         }
-        else if (Type == NPCID.WitchDoctor)
+        else if (type == NPCID.WitchDoctor)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -760,7 +662,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " was eaten by an exotic insect.";
             }
         }
-        else if (Type == NPCID.Pirate)
+        else if (type == NPCID.Pirate)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -788,7 +690,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " lost his peg leg.";
             }
         }
-        else if (Type == NPCID.Stylist)
+        else if (type == NPCID.Stylist)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -821,7 +723,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " couldn't take the sight of spiders anymore.";
             }
         }
-        else if (Type == NPCID.TravellingMerchant)
+        else if (type == NPCID.TravellingMerchant)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -854,7 +756,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " failed to make any sales.";
             }
         }
-        else if (Type == NPCID.Angler)
+        else if (type == NPCID.Angler)
         {
             int r = Main.rand.Next(9);
             if (r == 0)
@@ -909,7 +811,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 }
             }
         }
-        else if (Type == NPCID.TaxCollector)
+        else if (type == NPCID.TaxCollector)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -937,7 +839,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " overtaxed himself.";
             }
         }
-        else if (Type == NPCID.DD2Bartender)
+        else if (type == NPCID.DD2Bartender)
         {
             int r = Main.rand.Next(5);
             if (r == 0)
@@ -965,7 +867,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " drank his feelings away.";
             }
         }
-        else if (Type == NPCID.Princess)
+        else if (type == NPCID.Princess)
         {
             int r = Main.rand.Next(4);
             if (r == 0)
@@ -988,7 +890,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " tripped on her dress.";
             }
         }
-        else if (Type == NPCID.Golfer)
+        else if (type == NPCID.Golfer)
         {
             int r = Main.rand.Next(6);
             if (r == 0)
@@ -998,7 +900,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
             if (r == 1)
             {
-                result += " was hit in the head by a golfball.";
+                result += " was hit in the head by a golf ball.";
             }
 
             if (r == 2)
@@ -1021,7 +923,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += "'s club hit back.";
             }
         }
-        else if (Type == NPCID.BestiaryGirl)
+        else if (type == NPCID.BestiaryGirl)
         {
             int r = Main.rand.Next(3);
             if (r == 0)
@@ -1039,31 +941,73 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 result += " got too comfortable with an exotic beast.";
             }
         }
-        else if (Type == ModContent.NPCType<Iceman>())
+        else if (type == ModContent.NPCType<Iceman>())
         {
             int r = Main.rand.Next(7);
-            if (r == 0) result += " froze.";
-            if (r == 1) result += " melted.";
-            if (r == 2) result += " has died.";
-            if (r == 3) result += "'s ice was cracked.";
+            if (r == 0)
+            {
+                result += " froze.";
+            }
+
+            if (r == 1)
+            {
+                result += " melted.";
+            }
+
+            if (r == 2)
+            {
+                result += " has died.";
+            }
+
+            if (r == 3)
+            {
+                result += "'s ice was cracked.";
+            }
+
             if (r == 4)
             {
                 if (NPC.AnyNPCs(NPCID.ArmsDealer))
                 {
                     result += " was used to cool " + Main.npc[FindATypeOfNPC(NPCID.ArmsDealer)].GivenName + "'s drink.";
                 }
-                else result += " fell into a crevasse.";
+                else
+                {
+                    result += " fell into a crevasse.";
+                }
             }
-            if (r == 5) result += " fell into a crevasse";
-            if (r == 6) result += " slipped.";
+
+            if (r == 5)
+            {
+                result += " fell into a crevasse";
+            }
+
+            if (r == 6)
+            {
+                result += " slipped.";
+            }
         }
-        else if (Type == ModContent.NPCType<Librarian>())
+        else if (type == ModContent.NPCType<Librarian>())
         {
             int r = Main.rand.Next(4);
-            if (r == 0) result += " was nuked by a full squad.";
-            if (r == 1) result += " fell victim to toxic world chat.";
-            if (r == 2) result += " couldn't afford grade eighteen.";
-            if (r == 3) result += " was slain by a boss cone attack.";
+            if (r == 0)
+            {
+                result += " was nuked by a full squad.";
+            }
+
+            if (r == 1)
+            {
+                result += " fell victim to toxic world chat.";
+            }
+
+            if (r == 2)
+            {
+                result += " couldn't afford grade eighteen.";
+            }
+
+            if (r == 3)
+            {
+                result += " was slain by a boss cone attack.";
+            }
         }
         else
         {
@@ -1073,22 +1017,14 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         return result;
     }
 
-    /// <summary>
-    ///     Finds a type of NPC.
-    /// </summary>
-    /// <param name="type">The type of NPC to find.</param>
-    /// <returns>The index of the found NPC in the Main.npc[] array.</returns>
-    public static int FindATypeOfNPC(int type)
+    public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
     {
-        for (int i = 0; i < 200; i++)
+        if (target.HasBuff<BeeSweet>() && Hornets.Contains(npc.type))
         {
-            if (type == Main.npc[i].type && Main.npc[i].active)
-            {
-                return i;
-            }
+            return false;
         }
 
-        return 0;
+        return base.CanHitPlayer(npc, target, ref cooldownSlot);
     }
 
     public override bool CheckDead(NPC npc)
@@ -1097,7 +1033,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
-                Main.NewText(npc.FullName + TownDeathMSG(npc.type), new Color(178, 0, 90));
+                Main.NewText(npc.FullName + TownDeathMsg(npc.type), new Color(178, 0, 90));
                 npc.life = 0;
                 npc.HitEffect();
                 npc.active = false;
@@ -1106,7 +1042,8 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             }
             else
             {
-                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(npc.FullName + TownDeathMSG(npc.type)),
+                ChatHelper.BroadcastChatMessage(
+                    NetworkText.FromLiteral(npc.FullName + TownDeathMsg(npc.type)),
                     new Color(178, 0, 90));
                 NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, npc.whoAmI, -1);
                 int t = 0;
@@ -1121,28 +1058,28 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
                         break;
                     case NPCID.DyeTrader:
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.NextBool(8))
                         {
                             t = ItemID.DyeTradersScimitar;
                         }
 
                         break;
                     case NPCID.Painter:
-                        if (Main.rand.Next(10) == 0)
+                        if (Main.rand.NextBool(10))
                         {
                             t = ItemID.PainterPaintballGun;
                         }
 
                         break;
                     case NPCID.DD2Bartender:
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.NextBool(8))
                         {
                             t = ItemID.AleThrowingGlove;
                         }
 
                         break;
                     case NPCID.Stylist:
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.NextBool(8))
                         {
                             t = ItemID.StylistKilLaKillScissorsIWish;
                         }
@@ -1152,7 +1089,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                         t = ItemID.RedHat;
                         break;
                     case NPCID.PartyGirl:
-                        if (Main.rand.Next(4) == 0)
+                        if (Main.rand.NextBool(4))
                         {
                             t = ItemID.PartyGirlGrenade;
                             s = Main.rand.Next(30, 61);
@@ -1160,7 +1097,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
                         break;
                     case NPCID.TaxCollector:
-                        if (Main.rand.Next(8) == 0)
+                        if (Main.rand.NextBool(8))
                         {
                             t = 3351;
                         }
@@ -1180,7 +1117,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                     NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.Empty, a);
                 }
 
-                //Main.npc[npc.whoAmI].NPCLoot();
+                // Main.npc[npc.whoAmI].NPCLoot();
                 SoundEngine.PlaySound(SoundID.NPCKilled, (int)npc.position.X, (int)npc.position.Y);
             }
 
@@ -1188,6 +1125,92 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
 
         return base.CheckDead(npc);
+    }
+
+    public override void DrawEffects(NPC npc, ref Color drawColor)
+    {
+        if (npc.HasBuff<AstralCurse>())
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
+        }
+
+        if (npc.HasBuff<BacteriaInfection>())
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.ScourgeOfTheCorruptor);
+        }
+
+        if (npc.HasBuff<Bleeding>())
+        {
+            for (int i = 0; i < npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks; i++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
+            }
+        }
+    }
+
+    public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+    {
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<Valkyrie>(), 0.6f);
+            pool.Add(ModContent.NPCType<CloudBat>(), 0.9f);
+        }
+
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone())
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<Bactus>(), 1f);
+            pool.Add(ModContent.NPCType<PyrasiteHead>(), 0.1f);
+            if (Main.hardMode)
+            {
+                pool.Add(ModContent.NPCType<Cougher>(), 0.8f);
+                pool.Add(ModContent.NPCType<Ickslime>(), 0.7f);
+                if (spawnInfo.Player.ZoneRockLayerHeight)
+                {
+                    pool.Add(ModContent.NPCType<Viris>(), 1f);
+                    pool.Add(ModContent.NPCType<GrossyFloat>(), 0.6f);
+                }
+
+                if (spawnInfo.Player.ZoneDesert)
+                {
+                    pool.Add(NPCID.DarkMummy, 0.3f);
+                    pool.Add(ModContent.NPCType<EvilVulture>(), 0.4f);
+                }
+            }
+        }
+
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCaesium && Main.hardMode)
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<CaesiumBrute>(), 1f);
+            pool.Add(ModContent.NPCType<CaesiumSeekerHead>(), 0.05f);
+            pool.Add(ModContent.NPCType<CaesiumStalker>(), 0.9f);
+        }
+
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone())
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<DarkMotherSlime>(), 0.5f);
+            pool.Add(ModContent.NPCType<DarkMatterSlime>(), 0.9f);
+            pool.Add(ModContent.NPCType<VampireHarpy>(), 0.9f);
+            pool.Add(ModContent.NPCType<MatterMan>(), 0.9f);
+            pool.Add(ModContent.NPCType<UnstableAnomaly>(), 0.9f);
+        }
+
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
+        {
+            pool.Clear();
+            pool.Add(NPCID.Demon, 0.2f);
+            pool.Add(NPCID.RedDevil, 0.2f);
+            pool.Add(ModContent.NPCType<EctoHand>(), 0.3f);
+            pool.Add(ModContent.NPCType<HellboundLizard>(), 1f);
+            pool.Add(ModContent.NPCType<Gargoyle>(), 1f);
+            if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+            {
+                pool.Add(ModContent.NPCType<ArmoredHellTortoise>(), 1f);
+            }
+        }
     }
 
     public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -1205,31 +1228,65 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
     }
 
-    public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
+    public override void ModifyGlobalLoot(GlobalLoot globalLoot)
     {
-        if (target.HasBuff<BeeSweet>() && Hornets.Contains(npc.type))
+        if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
-            return false;
+            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
+            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
+            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
         }
 
-        return base.CanHitPlayer(npc, target, ref cooldownSlot);
-    }
+        NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
+        NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
+        NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
+        NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
 
-    public override void OnKill(NPC npc)
-    {
-        if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
-        {
-            AvalonTestingWorld.GenerateSulphur();
-        }
+        var hardModeCondition = new HardmodeOnly();
+        var superHardModeCondition = new Superhardmode();
+        var zoneRockLayerCondition = new ZoneRockLayer();
+        var contagionCondition = new ZoneContagion();
+        var undergroundContagionCondition = new Combine(true, "Drops in the underground contagion", contagionCondition,
+            zoneRockLayerCondition);
+        var undergroundHardmodeContagionCondition = new Combine(
+            true,
+            undergroundContagionCondition.GetConditionDescription(), undergroundContagionCondition,
+            hardModeCondition);
+        var dungeonCondition = new ZoneDungeon();
+        var hardmodeDungeonCondition = new Combine(true, dungeonCondition.GetConditionDescription(), hardModeCondition,
+            dungeonCondition);
+        var desertPostBeakCondition = new DesertPostBeakDrop();
+        var snowCondition = new ZoneSnow();
+        var undergroundSnow = new Combine(true, "Drops in the underground snow", snowCondition, zoneRockLayerCondition);
+        var undergroundHardmodeSnow = new Combine(true, undergroundSnow.GetConditionDescription(), undergroundSnow,
+            hardModeCondition);
+        var bloodMoonAndNotFromStatueCondition = new Conditions.IsBloodMoonAndNotFromStatue();
+        var eclipseCondition = new IsEclipse();
 
-        if (npc.type == NPCID.DungeonSpirit && Main.rand.Next(15) == 0 &&
-            Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
-        {
-            int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity,
-                ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
-            Main.projectile[proj].velocity.Y = -3.5f;
-            Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;
-        }
+        globalLoot.Add(ItemDropRule.ByCondition(desertPostBeakCondition, ModContent.ItemType<AncientTitaniumHeadgear>(),
+            150));
+        globalLoot.Add(ItemDropRule.ByCondition(
+            desertPostBeakCondition,
+            ModContent.ItemType<AncientTitaniumPlateMail>(), 150));
+        globalLoot.Add(ItemDropRule.ByCondition(desertPostBeakCondition, ModContent.ItemType<AncientTitaniumGreaves>(),
+            150));
+        globalLoot.Add(ItemDropRule.ByCondition(undergroundHardmodeSnow, ModContent.ItemType<SoulofIce>(), 10));
+        globalLoot.Add(ItemDropRule.Common(ModContent.ItemType<Rock>(), 600));
+        globalLoot.Add(ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<PointingLaser>(), 650)
+            .HideFromBestiary());
+        globalLoot.Add(ItemDropRule.ByCondition(superHardModeCondition, ModContent.ItemType<AlienDevice>(), 700)
+            .HideFromBestiary());
+        globalLoot.Add(ItemDropRule.ByCondition(
+            undergroundHardmodeContagionCondition,
+            ModContent.ItemType<RingofDisgust>(), RareChance));
+        globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<Trespassing>(),
+            RareChance));
+        globalLoot.Add(ItemDropRule.ByCondition(
+            bloodMoonAndNotFromStatueCondition,
+            ModContent.ItemType<BloodyWhetstone>(), 50));
+        globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<ACometHasStruckGround>(),
+            RareChance));
+        globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
     }
 
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
@@ -1245,7 +1302,9 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         var contagionCondition = new ZoneContagion();
         var undergroundContagionCondition = new Combine(true, "Drops in the underground contagion", contagionCondition,
             zoneRockLayerCondition);
-        var undergroundHardmodeContagionCondition = new Combine(true, undergroundContagionCondition.GetConditionDescription(), undergroundContagionCondition,
+        var undergroundHardmodeContagionCondition = new Combine(
+            true,
+            undergroundContagionCondition.GetConditionDescription(), undergroundContagionCondition,
             hardModeCondition);
         var dungeonCondition = new ZoneDungeon();
         var hardmodeDungeonCondition = new Combine(true, dungeonCondition.GetConditionDescription(), hardModeCondition,
@@ -1256,7 +1315,6 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         switch (npc.type)
         {
             case NPCID.Golem:
-            {
                 // Get main drops and duplicate
                 var oneFromRulesRule = new OneFromRulesRule(1);
                 foreach (IItemDropRule rule in npcLoot.Get(false))
@@ -1265,7 +1323,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                     {
                         foreach (IItemDropRuleChainAttempt chain in rule1.ChainedRules)
                         {
-                            if (chain is Chains.TryIfSucceeded chain1 && chain1.RuleToChain is OneFromRulesRule ruleMain)
+                            if (chain is Chains.TryIfSucceeded { RuleToChain: OneFromRulesRule ruleMain })
                             {
                                 oneFromRulesRule.options = ruleMain.options;
                                 break;
@@ -1283,7 +1341,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ItemID.Picksaw));
                 npcLoot.Add(oneFromRulesRule.HideFromBestiary());
                 break;
-            }
+
             case NPCID.WallofFlesh:
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<NullEmblem>()));
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<FleshyTendril>(),
@@ -1330,7 +1388,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MysticalTotem>(), 2));
                 break;
             case NPCID.Clown:
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Weapons.Throw.ClownBomb>(), 3, 2, 6));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ClownBomb>(), 3, 2, 6));
                 break;
             case NPCID.Harpy:
                 npcLoot.Add(ItemDropRule.ByCondition(hardModeCondition, ItemID.ShinyRedBalloon, 50));
@@ -1375,28 +1433,30 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.Common(ItemID.RainCloud, 1, 2, 6));
                 break;
             case NPCID.EyeofCthulhu:
-            {
-                npcLoot.Add(ItemDropRule.ByCondition(preHardModeCondition,
-                    ModContent.ItemType<Items.Consumables.BloodyAmulet>(),
+                npcLoot.Add(ItemDropRule.ByCondition(
+                    preHardModeCondition,
+                    ModContent.ItemType<BloodyAmulet>(),
                     10, 1, 1, 3));
 
-                npcLoot.Add(ItemDropRule.ByCondition(hardmodePreSuperHardmodeCondition,
-                    ModContent.ItemType<Items.Consumables.BloodyAmulet>(),
+                npcLoot.Add(ItemDropRule.ByCondition(
+                    hardmodePreSuperHardmodeCondition,
+                    ModContent.ItemType<BloodyAmulet>(),
                     100, 1, 1, 15));
 
-                npcLoot.Add(ItemDropRule.ByCondition(superHardModeCondition,
-                    ModContent.ItemType<Items.Consumables.BloodyAmulet>(),
+                npcLoot.Add(ItemDropRule.ByCondition(
+                    superHardModeCondition,
+                    ModContent.ItemType<BloodyAmulet>(),
                     100, 1, 1, 7));
 
                 break;
-            }
+
             case NPCID.Shark:
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DivingSuit>(), 60));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DivingPants>(), 40));
                 break;
         }
 
-        #endregion
+        #endregion individual
 
         #region group
 
@@ -1573,89 +1633,39 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         #endregion group
 
-        if (AvalonTesting.ImkSushisMod != null)
+        if (AvalonTesting.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
         {
-            if (!NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
-            {
-                npcLoot.Add(ItemDropRule.ByCondition(new PostPhantasmHellcastleDrop(),
-                    ModContent.ItemType<HellcastleToken>(), 15));
-                npcLoot.Add(ItemDropRule.ByCondition(new SuperhardmodePreArmaDrop(),
-                    ModContent.ItemType<SuperhardmodeToken>(), 15));
-                npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonDrop(), ModContent.ItemType<DarkMatterToken>(),
-                    15));
-                npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingDrop(), ModContent.ItemType<MechastingToken>(),
-                    15));
-                npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropics(), ModContent.ItemType<TropicsToken>(), 15));
-                npcLoot.Add(ItemDropRule.ByCondition(undergroundHardmodeContagionCondition, ModContent.ItemType<ContagionToken>(), 15));
-            }
+            npcLoot.Add(ItemDropRule.ByCondition(
+                new PostPhantasmHellcastleDrop(),
+                ModContent.ItemType<HellcastleToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(
+                new SuperhardmodePreArmaDrop(),
+                ModContent.ItemType<SuperhardmodeToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonDrop(), ModContent.ItemType<DarkMatterToken>(),
+                15));
+            npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingDrop(), ModContent.ItemType<MechastingToken>(),
+                15));
+            npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropics(), ModContent.ItemType<TropicsToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(
+                undergroundHardmodeContagionCondition,
+                ModContent.ItemType<ContagionToken>(), 15));
         }
     }
 
-    public override void ModifyGlobalLoot(GlobalLoot globalLoot)
+    public override void OnKill(NPC npc)
     {
-        if (AvalonTesting.ImkSushisMod != null)
+        if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {
-            if (ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
-            {
-                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
-                NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
-            }
+            AvalonTestingWorld.GenerateSulphur();
         }
 
-        NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
-
-        var hardModeCondition = new HardmodeOnly();
-        var superHardModeCondition = new Superhardmode();
-        var zoneRockLayerCondition = new ZoneRockLayer();
-        var contagionCondition = new ZoneContagion();
-        var undergroundContagionCondition = new Combine(true, "Drops in the underground contagion", contagionCondition,
-            zoneRockLayerCondition);
-        var undergroundHardmodeContagionCondition = new Combine(true, undergroundContagionCondition.GetConditionDescription(), undergroundContagionCondition,
-            hardModeCondition);
-        var dungeonCondition = new ZoneDungeon();
-        var hardmodeDungeonCondition = new Combine(true, dungeonCondition.GetConditionDescription(), hardModeCondition,
-            dungeonCondition);
-        var desertPostBeakCondition = new DesertPostBeakDrop();
-        var snowCondition = new ZoneSnow();
-        var undergroundSnow = new Combine(true, "Drops in the underground snow", snowCondition, zoneRockLayerCondition);
-        var undergroundHardmodeSnow = new Combine(true, undergroundSnow.GetConditionDescription(), undergroundSnow, hardModeCondition);
-        var bloodMoonAndNotFromStatueCondition = new Conditions.IsBloodMoonAndNotFromStatue();
-        var eclipseCondition = new IsEclipse();
-
-        globalLoot.Add(ItemDropRule.ByCondition(desertPostBeakCondition, ModContent.ItemType<AncientTitaniumHeadgear>(), 150));
-        globalLoot.Add(ItemDropRule.ByCondition(desertPostBeakCondition, ModContent.ItemType<AncientTitaniumPlateMail>(), 150));
-        globalLoot.Add(ItemDropRule.ByCondition(desertPostBeakCondition, ModContent.ItemType<AncientTitaniumGreaves>(), 150));
-        globalLoot.Add(ItemDropRule.ByCondition(undergroundHardmodeSnow, ModContent.ItemType<SoulofIce>(), 10));
-        globalLoot.Add(ItemDropRule.Common(ModContent.ItemType<Rock>(), 600));
-        globalLoot.Add(ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<PointingLaser>(), 650).HideFromBestiary());
-        globalLoot.Add(ItemDropRule.ByCondition(superHardModeCondition, ModContent.ItemType<AlienDevice>(), 700).HideFromBestiary());
-        globalLoot.Add(ItemDropRule.ByCondition(undergroundHardmodeContagionCondition, ModContent.ItemType<RingofDisgust>(), RareChance));
-        globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<Trespassing>(), RareChance));
-        globalLoot.Add(ItemDropRule.ByCondition(bloodMoonAndNotFromStatueCondition, ModContent.ItemType<BloodyWhetstone>(), 50));
-        globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<ACometHasStruckGround>(), RareChance));
-        globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
-    }
-
-    public override void DrawEffects(NPC npc, ref Color drawColor)
-    {
-        if (npc.HasBuff<AstralCurse>())
+        if (npc.type == NPCID.DungeonSpirit && Main.rand.NextBool(15) &&
+            Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
         {
-            Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
-        }
-        if (npc.HasBuff<BacteriaInfection>())
-        {
-            Dust.NewDust(npc.position, npc.width, npc.height, DustID.ScourgeOfTheCorruptor);
-        }
-        if (npc.HasBuff<Bleeding>())
-        {
-            for (int i = 0; i < npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks; i++)
-            {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
-            }
+            int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity,
+                ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
+            Main.projectile[proj].velocity.Y = -3.5f;
+            Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;
         }
     }
 }

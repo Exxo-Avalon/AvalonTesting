@@ -15,9 +15,12 @@ public class HadesCross : ModItem
             return;
         }
 
-        Mod.AddEquipTexture(this, EquipType.Head, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head");
-        Mod.AddEquipTexture(this, EquipType.Body, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body");
-        Mod.AddEquipTexture(this, EquipType.Legs, $"{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs");
+        Mod.AddEquipTexture(this, EquipType.Head,
+            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head");
+        Mod.AddEquipTexture(this, EquipType.Body,
+            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body");
+        Mod.AddEquipTexture(this, EquipType.Legs,
+            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs");
     }
 
     public override void SetStaticDefaults()

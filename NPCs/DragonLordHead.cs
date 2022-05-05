@@ -1,27 +1,35 @@
 ﻿using System;
+using AvalonTesting.Items.Accessories;
 using AvalonTesting.Items.BossBags;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Placeable.Trophy;
+using AvalonTesting.Items.Potions;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Items.Weapons.Melee;
+using AvalonTesting.Items.Weapons.Ranged;
+using AvalonTesting.Items.Weapons.Summon;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
 
 [AutoloadBossHead]
 public class DragonLordHead : ModNPC
 {
+    public bool head;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dragon Lord");
         Main.npcFrameCount[NPC.type] = 1;
     }
-    public bool head;
+
     public override void SetDefaults()
     {
         NPC.damage = 125;
@@ -49,18 +57,14 @@ public class DragonLordHead : ModNPC
         NPC.buffImmune[BuffID.Frostburn] = true;
         DrawOffsetY = 55;
     }
-    public override void BossLoot(ref string name, ref int potionType)
-    {
-        potionType = ModContent.ItemType<Items.Potions.ElixirofLife>();
-    }
-    public override Color? GetAlpha(Color drawColor)
-    {
-        return Color.White;
-    }
-    public override void BossHeadRotation(ref float rotation)
-    {
-        rotation = NPC.rotation;
-    }
+
+    public override void BossLoot(ref string name, ref int potionType) =>
+        potionType = ModContent.ItemType<ElixirofLife>();
+
+    public override Color? GetAlpha(Color drawColor) => Color.White;
+
+    public override void BossHeadRotation(ref float rotation) => rotation = NPC.rotation;
+
     /*public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
     {
         Texture2D texture = mod.GetTexture("NPCs/DragonLordHead");
@@ -81,23 +85,43 @@ public class DragonLordHead : ModNPC
     {
         if (Main.rand.Next(7) == 0)
         {
-            Item.NewItem(NPC.GetSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonLordTrophy>(), 1, false, 0, false);
+            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
+                ModContent.ItemType<DragonLordTrophy>());
         }
 
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DragonLordBossBag>()));
         if (!Main.expertMode)
         {
             int rand = Main.rand.Next(5);
-            if (rand == 0) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Accessories.DragonStone>());
-            else if (rand == 1) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Melee.Infernasword>());
-            else if (rand == 2) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Ranged.QuadroCannon>());
-            else if (rand == 3) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Magic.MagmafrostBolt>());
-            else if (rand == 4) Item.NewItem(NPC.GetSource_Loot(),NPC.position, ModContent.ItemType<Items.Weapons.Summon.ReflectorStaff>());
-            Item.NewItem(NPC.GetSource_Loot(),(int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16), false, 0, false);
+            if (rand == 0)
+            {
+                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<DragonStone>());
+            }
+            else if (rand == 1)
+            {
+                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<Infernasword>());
+            }
+            else if (rand == 2)
+            {
+                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<QuadroCannon>());
+            }
+            else if (rand == 3)
+            {
+                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<MagmafrostBolt>());
+            }
+            else if (rand == 4)
+            {
+                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<ReflectorStaff>());
+            }
+
+            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
+                ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16));
         }
 
         if (!ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
+        {
             ModContent.GetInstance<DownedBossSystem>().DownedDragonLord = true;
+        }
     }
 
     public override void AI()
@@ -106,24 +130,27 @@ public class DragonLordHead : ModNPC
         {
             NPC.realLife = (int)NPC.ai[3];
         }
+
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)
         {
-            NPC.TargetClosest(true);
+            NPC.TargetClosest();
         }
+
         if (Main.player[NPC.target].dead && NPC.timeLeft > 300)
         {
             NPC.timeLeft = 300;
         }
+
         if (Main.netMode != NetmodeID.MultiplayerClient)
         {
             if (NPC.ai[0] == 0f)
             {
                 NPC.ai[3] = NPC.whoAmI;
                 NPC.realLife = NPC.whoAmI;
-                var num182 = NPC.whoAmI;
-                for (var num183 = 0; num183 < 13; num183++)
+                int num182 = NPC.whoAmI;
+                for (int num183 = 0; num183 < 13; num183++)
                 {
-                    var num184 = ModContent.NPCType<DragonLordBody>();
+                    int num184 = ModContent.NPCType<DragonLordBody>();
                     if (num183 == 1 || num183 == 8)
                     {
                         num184 = ModContent.NPCType<DragonLordLegs>();
@@ -140,70 +167,85 @@ public class DragonLordHead : ModNPC
                     {
                         num184 = ModContent.NPCType<DragonLordTail>();
                     }
-                    var num185 = NPC.NewNPC(NPC.GetSource_FromAI(),(int)(NPC.position.X + NPC.width / 2), (int)(NPC.position.Y + NPC.height), num184, NPC.whoAmI);
+
+                    int num185 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (NPC.width / 2)),
+                        (int)(NPC.position.Y + NPC.height), num184, NPC.whoAmI);
                     Main.npc[num185].ai[3] = NPC.whoAmI;
                     Main.npc[num185].realLife = NPC.whoAmI;
                     Main.npc[num185].ai[1] = num182;
                     Main.npc[num182].ai[0] = num185;
-                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, NetworkText.FromLiteral(""), num185, 0f, 0f, 0f, 0);
+                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, NetworkText.FromLiteral(""), num185);
                     num182 = num185;
                 }
             }
+
             if (!Main.npc[(int)NPC.ai[0]].active)
             {
                 NPC.life = 0;
-                NPC.HitEffect(0, 10.0);
+                NPC.HitEffect();
                 NPC.active = false;
             }
+
             if (!Main.npc[(int)NPC.ai[1]].active)
             {
                 NPC.life = 0;
-                NPC.HitEffect(0, 10.0);
+                NPC.HitEffect();
                 NPC.active = false;
             }
+
             if (!NPC.active && Main.netMode == NetmodeID.Server)
             {
-                NetMessage.SendData(MessageID.DamageNPC, -1, -1, NetworkText.FromLiteral(""), NPC.whoAmI, -1f, 0f, 0f, 0);
+                NetMessage.SendData(MessageID.DamageNPC, -1, -1, NetworkText.FromLiteral(""), NPC.whoAmI, -1f);
             }
         }
-        var num193 = (int)(NPC.position.X / 16f) - 1;
-        var num194 = (int)((NPC.position.X + NPC.width) / 16f) + 2;
-        var num195 = (int)(NPC.position.Y / 16f) - 1;
-        var num196 = (int)((NPC.position.Y + NPC.height) / 16f) + 2;
+
+        int num193 = (int)(NPC.position.X / 16f) - 1;
+        int num194 = (int)((NPC.position.X + NPC.width) / 16f) + 2;
+        int num195 = (int)(NPC.position.Y / 16f) - 1;
+        int num196 = (int)((NPC.position.Y + NPC.height) / 16f) + 2;
         if (num193 < 0)
         {
             num193 = 0;
         }
+
         if (num194 > Main.maxTilesX)
         {
             num194 = Main.maxTilesX;
         }
+
         if (num195 < 0)
         {
             num195 = 0;
         }
+
         if (num196 > Main.maxTilesY)
         {
             num196 = Main.maxTilesY;
         }
+
         if (Main.rand.Next(275) == 0)
         {
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath = true;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = true;
             SoundEngine.PlaySound(SoundID.Roar, -1, -1, 0);
         }
-        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath)
+
+        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath)
         {
-            int p = Projectile.NewProjectile(NPC.GetSource_FromAI(),NPC.position.X + NPC.width / 2f, NPC.position.Y + NPC.height / 2f, NPC.velocity.X * 3f + Main.rand.Next(-2, 3), NPC.velocity.Y * 3f + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f, 255, 0f, 0f);
+            int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position.X + (NPC.width / 2f),
+                NPC.position.Y + (NPC.height / 2f), (NPC.velocity.X * 3f) + Main.rand.Next(-2, 3),
+                (NPC.velocity.Y * 3f) + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f);
             Main.projectile[p].hostile = true;
             Main.projectile[p].friendly = false;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD--;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd--;
         }
-        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD <= 0)
+
+        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd <= 0)
         {
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().dlBreath = false;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().breathCD = 90;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = false;
+            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd = 90;
             SoundEngine.PlaySound(SoundID.Item, -1, -1, 20);
         }
+
         if (NPC.velocity.X < 0f)
         {
             NPC.spriteDirection = 1;
@@ -212,32 +254,34 @@ public class DragonLordHead : ModNPC
         {
             NPC.spriteDirection = -1;
         }
-        var num201 = 10f;
-        var num202 = 0.25f;
-        var vector21 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-        var num204 = Main.player[NPC.target].position.X + Main.player[NPC.target].width / 2;
-        var num205 = Main.player[NPC.target].position.Y + Main.player[NPC.target].height / 2;
+
+        float num201 = 10f;
+        float num202 = 0.25f;
+        var vector21 = new Vector2(NPC.position.X + (NPC.width * 0.5f), NPC.position.Y + (NPC.height * 0.5f));
+        float num204 = Main.player[NPC.target].position.X + (Main.player[NPC.target].width / 2);
+        float num205 = Main.player[NPC.target].position.Y + (Main.player[NPC.target].height / 2);
         num204 = (int)(num204 / 16f) * 16;
         num205 = (int)(num205 / 16f) * 16;
         vector21.X = (int)(vector21.X / 16f) * 16;
         vector21.Y = (int)(vector21.Y / 16f) * 16;
         num204 -= vector21.X;
         num205 -= vector21.Y;
-        var num206 = (float)Math.Sqrt(num204 * num204 + num205 * num205);
+        float num206 = (float)Math.Sqrt((num204 * num204) + (num205 * num205));
         if (NPC.ai[1] > 0f && NPC.ai[1] < Main.npc.Length)
         {
             try
             {
-                vector21 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
-                num204 = Main.npc[(int)NPC.ai[1]].position.X + Main.npc[(int)NPC.ai[1]].width / 2 - vector21.X;
-                num205 = Main.npc[(int)NPC.ai[1]].position.Y + Main.npc[(int)NPC.ai[1]].height / 2 - vector21.Y;
+                vector21 = new Vector2(NPC.position.X + (NPC.width * 0.5f), NPC.position.Y + (NPC.height * 0.5f));
+                num204 = Main.npc[(int)NPC.ai[1]].position.X + (Main.npc[(int)NPC.ai[1]].width / 2) - vector21.X;
+                num205 = Main.npc[(int)NPC.ai[1]].position.Y + (Main.npc[(int)NPC.ai[1]].height / 2) - vector21.Y;
             }
             catch
             {
             }
+
             NPC.rotation = (float)Math.Atan2(num205, num204) + 1.57f;
-            num206 = (float)Math.Sqrt(num204 * num204 + num205 * num205);
-            var num207 = 42;
+            num206 = (float)Math.Sqrt((num204 * num204) + (num205 * num205));
+            int num207 = 42;
             num206 = (num206 - num207) / num206;
             num204 *= num206;
             num205 *= num206;
@@ -249,22 +293,24 @@ public class DragonLordHead : ModNPC
                 NPC.spriteDirection = 1;
                 return;
             }
+
             if (num204 > 0f)
             {
                 NPC.spriteDirection = -1;
-                return;
             }
         }
         else
         {
-            num206 = (float)Math.Sqrt(num204 * num204 + num205 * num205);
-            var num209 = Math.Abs(num204);
-            var num210 = Math.Abs(num205);
-            var num211 = num201 / num206;
+            num206 = (float)Math.Sqrt((num204 * num204) + (num205 * num205));
+            float num209 = Math.Abs(num204);
+            float num210 = Math.Abs(num205);
+            float num211 = num201 / num206;
             num204 *= num211;
             num205 *= num211;
-            var flag21 = false;
-            if (((NPC.velocity.X > 0f && num204 < 0f) || (NPC.velocity.X < 0f && num204 > 0f) || (NPC.velocity.Y > 0f && num205 < 0f) || (NPC.velocity.Y < 0f && num205 > 0f)) && Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) > num202 / 2f && num206 < 300f)
+            bool flag21 = false;
+            if (((NPC.velocity.X > 0f && num204 < 0f) || (NPC.velocity.X < 0f && num204 > 0f) ||
+                 (NPC.velocity.Y > 0f && num205 < 0f) || (NPC.velocity.Y < 0f && num205 > 0f)) &&
+                Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) > num202 / 2f && num206 < 300f)
             {
                 flag21 = true;
                 if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < num201)
@@ -272,7 +318,9 @@ public class DragonLordHead : ModNPC
                     NPC.velocity *= 1.1f;
                 }
             }
-            if (NPC.position.Y > Main.player[NPC.target].position.Y || Main.player[NPC.target].position.Y / 16f > Main.worldSurface || Main.player[NPC.target].dead)
+
+            if (NPC.position.Y > Main.player[NPC.target].position.Y ||
+                Main.player[NPC.target].position.Y / 16f > Main.worldSurface || Main.player[NPC.target].dead)
             {
                 flag21 = true;
                 if (Math.Abs(NPC.velocity.X) < num201 / 2f)
@@ -281,6 +329,7 @@ public class DragonLordHead : ModNPC
                     {
                         NPC.velocity.X = NPC.velocity.X - NPC.direction;
                     }
+
                     NPC.velocity.X = NPC.velocity.X * 1.1f;
                 }
                 else if (NPC.velocity.Y > -num201)
@@ -288,9 +337,11 @@ public class DragonLordHead : ModNPC
                     NPC.velocity.Y = NPC.velocity.Y - num202;
                 }
             }
+
             if (!flag21)
             {
-                if ((NPC.velocity.X > 0f && num204 > 0f) || (NPC.velocity.X < 0f && num204 < 0f) || (NPC.velocity.Y > 0f && num205 > 0f) || (NPC.velocity.Y < 0f && num205 < 0f))
+                if ((NPC.velocity.X > 0f && num204 > 0f) || (NPC.velocity.X < 0f && num204 < 0f) ||
+                    (NPC.velocity.Y > 0f && num205 > 0f) || (NPC.velocity.Y < 0f && num205 < 0f))
                 {
                     if (NPC.velocity.X < num204)
                     {
@@ -300,6 +351,7 @@ public class DragonLordHead : ModNPC
                     {
                         NPC.velocity.X = NPC.velocity.X - num202;
                     }
+
                     if (NPC.velocity.Y < num205)
                     {
                         NPC.velocity.Y = NPC.velocity.Y + num202;
@@ -308,26 +360,30 @@ public class DragonLordHead : ModNPC
                     {
                         NPC.velocity.Y = NPC.velocity.Y - num202;
                     }
-                    if (Math.Abs(num205) < num201 * 0.2 && ((NPC.velocity.X > 0f && num204 < 0f) || (NPC.velocity.X < 0f && num204 > 0f)))
+
+                    if (Math.Abs(num205) < num201 * 0.2 &&
+                        ((NPC.velocity.X > 0f && num204 < 0f) || (NPC.velocity.X < 0f && num204 > 0f)))
                     {
                         if (NPC.velocity.Y > 0f)
                         {
-                            NPC.velocity.Y = NPC.velocity.Y + num202 * 2f;
+                            NPC.velocity.Y = NPC.velocity.Y + (num202 * 2f);
                         }
                         else
                         {
-                            NPC.velocity.Y = NPC.velocity.Y - num202 * 2f;
+                            NPC.velocity.Y = NPC.velocity.Y - (num202 * 2f);
                         }
                     }
-                    if (Math.Abs(num204) < num201 * 0.2 && ((NPC.velocity.Y > 0f && num205 < 0f) || (NPC.velocity.Y < 0f && num205 > 0f)))
+
+                    if (Math.Abs(num204) < num201 * 0.2 &&
+                        ((NPC.velocity.Y > 0f && num205 < 0f) || (NPC.velocity.Y < 0f && num205 > 0f)))
                     {
                         if (NPC.velocity.X > 0f)
                         {
-                            NPC.velocity.X = NPC.velocity.X + num202 * 2f;
+                            NPC.velocity.X = NPC.velocity.X + (num202 * 2f);
                         }
                         else
                         {
-                            NPC.velocity.X = NPC.velocity.X - num202 * 2f;
+                            NPC.velocity.X = NPC.velocity.X - (num202 * 2f);
                         }
                     }
                 }
@@ -335,12 +391,13 @@ public class DragonLordHead : ModNPC
                 {
                     if (NPC.velocity.X < num204)
                     {
-                        NPC.velocity.X = NPC.velocity.X + num202 * 1.1f;
+                        NPC.velocity.X = NPC.velocity.X + (num202 * 1.1f);
                     }
                     else if (NPC.velocity.X > num204)
                     {
-                        NPC.velocity.X = NPC.velocity.X - num202 * 1.1f;
+                        NPC.velocity.X = NPC.velocity.X - (num202 * 1.1f);
                     }
+
                     if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < num201 * 0.5)
                     {
                         if (NPC.velocity.Y > 0f)
@@ -357,12 +414,13 @@ public class DragonLordHead : ModNPC
                 {
                     if (NPC.velocity.Y < num205)
                     {
-                        NPC.velocity.Y = NPC.velocity.Y + num202 * 1.1f;
+                        NPC.velocity.Y = NPC.velocity.Y + (num202 * 1.1f);
                     }
                     else if (NPC.velocity.Y > num205)
                     {
-                        NPC.velocity.Y = NPC.velocity.Y - num202 * 1.1f;
+                        NPC.velocity.Y = NPC.velocity.Y - (num202 * 1.1f);
                     }
+
                     if (Math.Abs(NPC.velocity.X) + Math.Abs(NPC.velocity.Y) < num201 * 0.5)
                     {
                         if (NPC.velocity.X > 0f)
@@ -376,11 +434,10 @@ public class DragonLordHead : ModNPC
                     }
                 }
             }
+
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 1.57f;
         }
     }
-    public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-    {
-        return head ? (bool?)null : false;
-    }
+
+    public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => head ? null : false;
 }

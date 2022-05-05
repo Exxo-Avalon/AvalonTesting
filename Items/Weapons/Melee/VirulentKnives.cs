@@ -1,4 +1,4 @@
-﻿using System;
+﻿using AvalonTesting.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Weapons.Melee;
 
-class VirulentKnives : ModItem
+internal class VirulentKnives : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -28,22 +28,26 @@ class VirulentKnives : ModItem
         Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 3f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.YuckyKnife>();
+        Item.shoot = ModContent.ProjectileType<YuckyKnife>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.value = Item.sellPrice(0, 20, 0, 0);
+        Item.value = Item.sellPrice(0, 20);
         Item.useAnimation = 18;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item39;
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
+                               int type, int damage, float knockback)
     {
-        int numberProjectiles = AvalonTestingGlobalProjectile.howManyProjectiles(1, 5);
+        int numberProjectiles = AvalonTestingGlobalProjectile.HowManyProjectiles(1, 5);
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));
-            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage,
+                knockback, player.whoAmI);
         }
+
         return false;
     }
 }

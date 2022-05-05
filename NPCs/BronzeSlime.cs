@@ -32,14 +32,12 @@ public class BronzeSlime : ModNPC
         BannerItem = ModContent.ItemType<BronzeSlimeBanner>();
     }
 
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals."),
         });
-    }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -47,10 +45,8 @@ public class BronzeSlime : ModNPC
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
 
-    public override void ModifyNPCLoot(NPCLoot loot)
-    {
+    public override void ModifyNPCLoot(NPCLoot loot) =>
         loot.Add(ItemDropRule.Common(ModContent.ItemType<BronzeOre>(), 1, 15, 25));
-    }
 
     public override void FindFrame(int frameHeight)
     {
@@ -102,10 +98,8 @@ public class BronzeSlime : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon
-            ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon
+            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
             : 0f;
-    }
 }

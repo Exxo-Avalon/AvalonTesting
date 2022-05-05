@@ -1,9 +1,8 @@
-﻿using AvalonTesting.Players;
+﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.GameContent.Bestiary;
 
 namespace AvalonTesting.NPCs;
 
@@ -29,17 +28,18 @@ public class CloudBat : ModNPC
         NPC.DeathSound = SoundID.NPCDeath4;
         NPC.height = 12;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.CloudBatBanner>();
+        BannerItem = ModContent.ItemType<CloudBatBanner>();
         AnimationType = 49;
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ? 0.3f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress
+            ? 0.3f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

@@ -1,11 +1,11 @@
-﻿using Terraria.GameContent.Bestiary;
-using System;
+﻿using System;
+using AvalonTesting.Items.Accessories;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Systems;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
 
@@ -33,20 +33,25 @@ public class GuardianBones : ModNPC
         NPC.HitSound = SoundID.NPCHit2;
         NPC.DeathSound = SoundID.NPCDeath2;
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.44f);
     }
+
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessories.AegisofAges>(), 20));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<AegisofAges>(), 20));
         loot.Add(ItemDropRule.Common(ModContent.ItemType<Phantoplasm>(), 10));
     }
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
+        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
+            ? 0.083f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
+
     public override void FindFrame(int frameHeight)
     {
         if (NPC.velocity.Y == 0f)
@@ -55,10 +60,12 @@ public class GuardianBones : ModNPC
             {
                 NPC.spriteDirection = 1;
             }
+
             if (NPC.direction == -1)
             {
                 NPC.spriteDirection = -1;
             }
+
             if (NPC.velocity.X == 0f)
             {
                 if (NPC.type == NPCID.PossessedArmor)
@@ -81,6 +88,7 @@ public class GuardianBones : ModNPC
                     NPC.frame.Y = NPC.frame.Y + frameHeight;
                     NPC.frameCounter = 0.0;
                 }
+
                 if (NPC.frame.Y / frameHeight >= Main.npcFrameCount[NPC.type])
                 {
                     NPC.frame.Y = frameHeight * 2;

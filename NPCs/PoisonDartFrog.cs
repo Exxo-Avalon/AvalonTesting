@@ -1,28 +1,44 @@
-﻿using Terraria.GameContent.Bestiary;
+﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
-using AvalonTesting.Players;
 
 namespace AvalonTesting.NPCs;
 
 public class PoisonDartFrog : ModNPC
 {
+    private const int AISlotFrame = 0;
+    private const int AISlotInJump = 2;
+    private const int AISlotTimer = 1;
+
+    public float AIFrame
+    {
+        get => NPC.ai[AISlotFrame];
+        set => NPC.ai[AISlotFrame] = value;
+    }
+
+    public float AITimer
+    {
+        get => NPC.ai[AISlotTimer];
+        set => NPC.ai[AISlotTimer] = value;
+    }
+
+    public bool AIInJump
+    {
+        get => NPC.ai[AISlotInJump] == 1;
+        set => NPC.ai[AISlotInJump] = value ? 1 : 0;
+    }
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Poison Dart Frog");
         Main.npcFrameCount[NPC.type] = 3;
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        var debuffData = new NPCDebuffImmunityData
         {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused,
-                BuffID.CursedInferno,
-                BuffID.OnFire,
-                BuffID.Poisoned
-            }
+            SpecificallyImmuneTo = new[] { BuffID.Confused, BuffID.CursedInferno, BuffID.OnFire, BuffID.Poisoned },
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
@@ -44,35 +60,13 @@ public class PoisonDartFrog : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         AIInJump = true;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.PoisonDartFrogBanner>();
-    }
-
-    private const int AISlotFrame = 0;
-    private const int AISlotTimer = 1;
-    private const int AISlotInJump = 2;
-
-    public float AIFrame
-    {
-        get => NPC.ai[AISlotFrame];
-        set => NPC.ai[AISlotFrame] = value;
-    }
-
-    public float AITimer
-    {
-        get => NPC.ai[AISlotTimer];
-        set => NPC.ai[AISlotTimer] = value;
-    }
-
-    public bool AIInJump
-    {
-        get => NPC.ai[AISlotInJump] == 1;
-        set => NPC.ai[AISlotInJump] = value ? 1 : 0;
+        BannerItem = ModContent.ItemType<PoisonDartFrogBanner>();
     }
 
     public override void AI()
     {
         AITimer++;
-        NPC.TargetClosest(true);
+        NPC.TargetClosest();
         Player player = Main.player[NPC.target];
         NPC.spriteDirection = NPC.direction;
 
@@ -126,14 +120,17 @@ public class PoisonDartFrog : ModNPC
                 NPC.velocity.X = 0f;
                 //AIFrame = 0;
             }
+
             AIInJump = false;
         }
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f * bossLifeScale);
         NPC.damage = (int)(NPC.damage * 0.8f);
     }
+
     public override void FindFrame(int frameHeight)
     {
         if (NPC.collideY && NPC.velocity.Y >= 0 && Logic.Collision.TouchingTile(NPC.position, NPC.width, NPC.height))
@@ -146,23 +143,33 @@ public class PoisonDartFrog : ModNPC
             {
                 NPC.frame.Y = frameHeight * 2;
             }
-            else NPC.frame.Y = frameHeight * 3;
+            else
+            {
+                NPC.frame.Y = frameHeight * 3;
+            }
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.InPillarZone() && Main.hardMode ? 0.083f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.InPillarZone() &&
+        Main.hardMode
+            ? 0.083f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
+
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore1").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore2").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f, Mod.Find<ModGore>("FrogGore3").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
+                Mod.Find<ModGore>("FrogGore1").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
+                Mod.Find<ModGore>("FrogGore2").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
+                Mod.Find<ModGore>("FrogGore2").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
+                Mod.Find<ModGore>("FrogGore3").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
+                Mod.Find<ModGore>("FrogGore3").Type);
         }
     }
 }

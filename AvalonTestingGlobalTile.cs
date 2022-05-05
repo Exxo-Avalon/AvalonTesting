@@ -10,21 +10,11 @@ public class AvalonTestingGlobalTile : GlobalTile
 {
     public override void SetStaticDefaults()
     {
-        int[] spelunkers = {TileID.Crimtane, TileID.Meteorite, TileID.Obsidian, TileID.Hellstone};
+        int[] spelunkers = { TileID.Crimtane, TileID.Meteorite, TileID.Obsidian, TileID.Hellstone };
         foreach (int tile in spelunkers)
         {
             Main.tileSpelunker[tile] = true;
         }
-    }
-
-    public override bool Slope(int i, int j, int type)
-    {
-        if (Main.tile[i, j - 1].HasTile && Data.Sets.Tile.NoHammerTileBelow[Main.tile[i, j - 1].TileType])
-        {
-            return false;
-        }
-
-        return base.Slope(i, j, type);
     }
 
     public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
@@ -38,10 +28,20 @@ public class AvalonTestingGlobalTile : GlobalTile
 
         // Sometimes drop icicles from ice stalactites
         if (type == TileID.Stalactite && Main.tile[i, j].TileFrameX < 54 &&
-            Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.Next(2) == 0)
+            Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.NextBool(2))
         {
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
                 ModContent.ItemType<Icicle>());
         }
+    }
+
+    public override bool Slope(int i, int j, int type)
+    {
+        if (Main.tile[i, j - 1].HasTile && Data.Sets.Tile.NoHammerTileBelow[Main.tile[i, j - 1].TileType])
+        {
+            return false;
+        }
+
+        return base.Slope(i, j, type);
     }
 }

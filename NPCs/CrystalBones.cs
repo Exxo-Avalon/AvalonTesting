@@ -1,11 +1,13 @@
-﻿using Terraria.GameContent.Bestiary;
-using System;
+﻿using System;
+using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
+using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
 
@@ -16,6 +18,7 @@ public class CrystalBones : ModNPC
         DisplayName.SetDefault("Crystal Bones");
         Main.npcFrameCount[NPC.type] = 15;
     }
+
     public override void SetDefaults()
     {
         NPC.damage = 122;
@@ -30,13 +33,15 @@ public class CrystalBones : ModNPC
         NPC.HitSound = SoundID.NPCHit2;
         NPC.DeathSound = SoundID.NPCDeath2;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.CrystalBonesBanner>();
+        BannerItem = ModContent.ItemType<CrystalBonesBanner>();
     }
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.7f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
+
     public override void FindFrame(int frameHeight)
     {
         if (NPC.velocity.Y == 0f)
@@ -45,10 +50,12 @@ public class CrystalBones : ModNPC
             {
                 NPC.spriteDirection = 1;
             }
+
             if (NPC.direction == -1)
             {
                 NPC.spriteDirection = -1;
             }
+
             if (NPC.velocity.X == 0f)
             {
                 NPC.frame.Y = 0;
@@ -63,6 +70,7 @@ public class CrystalBones : ModNPC
                     NPC.frame.Y = NPC.frame.Y + frameHeight;
                     NPC.frameCounter = 0.0;
                 }
+
                 if (NPC.frame.Y / frameHeight >= Main.npcFrameCount[NPC.type])
                 {
                     NPC.frame.Y = frameHeight * 2;
@@ -75,33 +83,41 @@ public class CrystalBones : ModNPC
             NPC.frame.Y = frameHeight;
         }
     }
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal ? 0.8f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal
+            ? 0.8f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
+
     public override void OnKill()
     {
         for (int i = 0; i < 8; i++)
         {
-            float speedX = NPC.velocity.X + Main.rand.Next(-51, 51) * 0.2f;
-            float speedY = NPC.velocity.Y + Main.rand.Next(-51, 51) * 0.2f;
-            int proj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.CrystalShard>(), 100, 0.3f);
+            float speedX = NPC.velocity.X + (Main.rand.Next(-51, 51) * 0.2f);
+            float speedY = NPC.velocity.Y + (Main.rand.Next(-51, 51) * 0.2f);
+            int proj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, new Vector2(speedX, speedY),
+                ModContent.ProjectileType<CrystalShard>(), 100, 0.3f);
             Main.projectile[proj].timeLeft = 300;
         }
     }
-    public override void ModifyNPCLoot(NPCLoot npcLoot)
-    {
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.Tile.CrystalStoneBlock>(), 1, 10, 15));
-    }
+
+    public override void ModifyNPCLoot(NPCLoot npcLoot) =>
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CrystalStoneBlock>(), 1, 10, 15));
+
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesHead").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesArm").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CrystalBonesLeg").Type, 1f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("CrystalBonesHead").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("CrystalBonesArm").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("CrystalBonesArm").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("CrystalBonesLeg").Type);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("CrystalBonesLeg").Type);
         }
     }
 }

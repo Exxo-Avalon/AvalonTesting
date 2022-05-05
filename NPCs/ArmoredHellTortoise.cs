@@ -1,9 +1,10 @@
-﻿using AvalonTesting.Items.Material;
+﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Material;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace AvalonTesting.NPCs;
 
@@ -13,13 +14,9 @@ public class ArmoredHellTortoise : ModNPC
     {
         DisplayName.SetDefault("Armored Hell Tortoise");
         Main.npcFrameCount[NPC.type] = 8;
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        var debuffData = new NPCDebuffImmunityData
         {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused,
-                BuffID.OnFire
-            }
+            SpecificallyImmuneTo = new[] { BuffID.Confused, BuffID.OnFire },
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
@@ -40,32 +37,40 @@ public class ArmoredHellTortoise : ModNPC
         NPC.HitSound = SoundID.NPCHit24;
         NPC.DeathSound = SoundID.NPCDeath27;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.ArmoredHellTortoiseBanner>();
+        BannerItem = ModContent.ItemType<ArmoredHellTortoiseBanner>();
     }
-    public override void ModifyNPCLoot(NPCLoot loot)
-    {
+
+    public override void ModifyNPCLoot(NPCLoot loot) =>
         loot.Add(ItemDropRule.Common(ModContent.ItemType<SpikedBlastShell>(), 9));
-    }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.35f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
+
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore1").Type, 0.9f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore2").Type, 0.9f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore1").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore2").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
+                Mod.Find<ModGore>("ArmoredHellTortoiseGore3").Type, 0.9f);
         }
     }
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.Player.ZoneUnderworldHeight ? 0.125f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+        spawnInfo.Player.ZoneUnderworldHeight
+            ? 0.125f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

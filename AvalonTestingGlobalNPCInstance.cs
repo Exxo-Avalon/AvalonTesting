@@ -5,29 +5,25 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalNPCInstance : GlobalNPC
 {
-    public bool astigSpawned = false;
-    public int BleedStacks = 1;
-    public int breathCD = 45;
-    public bool dlBreath = false;
-    public bool electrified = false;
-    public bool frozen = false;
-    public bool infernaSpawned = false;
-    public bool jugRunonce = false;
-    public bool lavaWalk = false;
-    public bool malaria;
-    public bool Malaria;
-    public bool noOneHitKill = false;
-    public int oRebirth = 0;
-    public bool silenced = false;
-    public int slimeHitCounter = 0;
-    public bool slowed = false;
-    public int spikeTimer;
     public override bool InstancePerEntity => true;
+    public bool AstigSpawned { get; set; }
+    public int BleedStacks { get; set; } = 1;
+    public int BreathCd { get; set; } = 45;
+    public bool DlBreath { get; set; }
+    public bool Electrified { get; set; }
+    public bool Frozen { get; set; }
+    public bool InfernaSpawned { get; set; }
+    public bool JugRunOnce { get; set; }
+    public bool LavaWalk { get; set; }
+    public bool Malaria { get; set; }
+    public bool NoOneHitKill { get; set; }
+    public int ORebirth { get; set; }
+    public bool Silenced { get; set; }
+    public int SlimeHitCounter { get; set; }
+    public bool Slowed { get; set; }
+    public int SpikeTimer { get; set; }
 
-    public override void ResetEffects(NPC npc)
-    {
-        Malaria = false;
-    }
+    public override void ResetEffects(NPC npc) => Malaria = false;
 
     public override void UpdateLifeRegen(NPC npc, ref int damage)
     {

@@ -33,19 +33,15 @@ public class IridiumSlime : ModNPC
         BannerItem = ModContent.ItemType<IridiumSlimeBanner>();
     }
 
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals."),
         });
-    }
 
-    public override void ModifyNPCLoot(NPCLoot npcLoot)
-    {
+    public override void ModifyNPCLoot(NPCLoot npcLoot) =>
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<IridiumOre>(), 1, 10, 16));
-    }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -103,12 +99,10 @@ public class IridiumSlime : ModNPC
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon &&
-               (Main.hardMode || ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ==
-                   ExxoWorldGen.RhodiumVariant.Iridium)
-            ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon &&
+        (Main.hardMode || ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ==
+            ExxoWorldGen.RhodiumVariant.Iridium)
+            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
             : 0f;
-    }
 }

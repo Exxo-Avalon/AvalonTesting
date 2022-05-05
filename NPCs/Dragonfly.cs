@@ -1,28 +1,24 @@
-﻿using Terraria.GameContent.Bestiary;
-using System;
+﻿using System;
+using AvalonTesting.Items.Banners;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 
 namespace AvalonTesting.NPCs;
 
 public class Dragonfly : ModNPC
 {
+    public int frames = 4;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dragonfly");
         Main.npcFrameCount[NPC.type] = 7;
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        var debuffData = new NPCDebuffImmunityData
         {
-            SpecificallyImmuneTo = new int[]
-            {
-                BuffID.Confused,
-                BuffID.Poisoned,
-                BuffID.OnFire,
-                BuffID.CursedInferno
-            }
+            SpecificallyImmuneTo = new[] { BuffID.Confused, BuffID.Poisoned, BuffID.OnFire, BuffID.CursedInferno },
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
@@ -45,36 +41,39 @@ public class Dragonfly : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.DragonflyBanner>();
+        BannerItem = ModContent.ItemType<DragonflyBanner>();
     }
 
-    public int frames = 4;
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.35f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
+
     public override void AI()
     {
-        var flag33 = false;
+        bool flag33 = false;
         frames += 16;
         if (frames > 448)
         {
             frames = 4;
         }
+
         if (Math.Round(NPC.velocity.X) == 0.0)
         {
             NPC.spriteDirection = NPC.direction;
         }
+
         if (NPC.justHit)
         {
             NPC.ai[2] = 0f;
         }
+
         if (NPC.ai[2] >= 0f)
         {
-            var num403 = 16;
-            var flag34 = false;
-            var flag35 = false;
+            int num403 = 16;
+            bool flag34 = false;
+            bool flag35 = false;
             if (NPC.position.X > NPC.ai[0] - num403 && NPC.position.X < NPC.ai[0] + num403)
             {
                 flag34 = true;
@@ -83,11 +82,13 @@ public class Dragonfly : ModNPC
             {
                 flag34 = true;
             }
+
             num403 += 24;
             if (NPC.position.Y > NPC.ai[1] - num403 && NPC.position.Y < NPC.ai[1] + num403)
             {
                 flag35 = true;
             }
+
             if (flag34 && flag35)
             {
                 NPC.ai[2] += 1f;
@@ -95,6 +96,7 @@ public class Dragonfly : ModNPC
                 {
                     flag33 = true;
                 }
+
                 if (NPC.ai[2] >= 60f)
                 {
                     NPC.ai[2] = -200f;
@@ -109,12 +111,14 @@ public class Dragonfly : ModNPC
                 NPC.ai[1] = NPC.position.Y;
                 NPC.ai[2] = 0f;
             }
-            NPC.TargetClosest(true);
+
+            NPC.TargetClosest();
         }
         else
         {
             NPC.ai[2] += 1f;
-            if (Main.player[NPC.target].position.X + Main.player[NPC.target].width / 2 > NPC.position.X + NPC.width / 2)
+            if (Main.player[NPC.target].position.X + (Main.player[NPC.target].width / 2) >
+                NPC.position.X + (NPC.width / 2))
             {
                 NPC.direction = -1;
             }
@@ -123,22 +127,26 @@ public class Dragonfly : ModNPC
                 NPC.direction = 1;
             }
         }
-        var num404 = (int)((NPC.position.X + NPC.width / 2) / 16f) + NPC.direction * 2;
-        var num405 = (int)((NPC.position.Y + NPC.height) / 16f);
-        var flag36 = true;
-        var num406 = 3;
-        for (var num428 = num405; num428 < num405 + num406; num428++)
+
+        int num404 = (int)((NPC.position.X + (NPC.width / 2)) / 16f) + (NPC.direction * 2);
+        int num405 = (int)((NPC.position.Y + NPC.height) / 16f);
+        bool flag36 = true;
+        int num406 = 3;
+        for (int num428 = num405; num428 < num405 + num406; num428++)
         {
-            if ((Main.tile[num404, num428].HasUnactuatedTile && Main.tileSolid[Main.tile[num404, num428].TileType]) || Main.tile[num404, num428].LiquidAmount > 0)
+            if ((Main.tile[num404, num428].HasUnactuatedTile && Main.tileSolid[Main.tile[num404, num428].TileType]) ||
+                Main.tile[num404, num428].LiquidAmount > 0)
             {
                 flag36 = false;
                 break;
             }
         }
+
         if (flag33)
         {
             flag36 = true;
         }
+
         if (flag36)
         {
             NPC.velocity.Y = NPC.velocity.Y + 0.1f;
@@ -153,11 +161,13 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.Y = NPC.velocity.Y - 0.1f;
             }
+
             if (NPC.velocity.Y < -4f)
             {
                 NPC.velocity.Y = -4f;
             }
         }
+
         if (NPC.collideX)
         {
             NPC.velocity.X = NPC.oldVelocity.X * -0.4f;
@@ -165,11 +175,13 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.X = 1f;
             }
+
             if (NPC.direction == 1 && NPC.velocity.X < 0f && NPC.velocity.X > -1f)
             {
                 NPC.velocity.X = -1f;
             }
         }
+
         if (NPC.collideY)
         {
             NPC.velocity.Y = NPC.oldVelocity.Y * -0.25f;
@@ -177,12 +189,14 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.Y = 1f;
             }
+
             if (NPC.velocity.Y < 0f && NPC.velocity.Y > -1f)
             {
                 NPC.velocity.Y = -1f;
             }
         }
-        var num430 = 2f;
+
+        float num430 = 2f;
         if (NPC.direction == -1 && NPC.velocity.X > -num430)
         {
             NPC.velocity.X = NPC.velocity.X - 0.1f;
@@ -194,6 +208,7 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.X = NPC.velocity.X + 0.05f;
             }
+
             if (NPC.velocity.X < -num430)
             {
                 NPC.velocity.X = -num430;
@@ -210,11 +225,13 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.X = NPC.velocity.X - 0.05f;
             }
+
             if (NPC.velocity.X > num430)
             {
                 NPC.velocity.X = num430;
             }
         }
+
         if (NPC.directionY == -1 && NPC.velocity.Y > -1.5)
         {
             NPC.velocity.Y = NPC.velocity.Y - 0.04f;
@@ -226,6 +243,7 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.Y = NPC.velocity.Y + 0.03f;
             }
+
             if (NPC.velocity.Y < -1.5)
             {
                 NPC.velocity.Y = -1.5f;
@@ -242,29 +260,32 @@ public class Dragonfly : ModNPC
             {
                 NPC.velocity.Y = NPC.velocity.Y - 0.03f;
             }
+
             if (NPC.velocity.Y > 1.5)
             {
                 NPC.velocity.Y = 1.5f;
             }
         }
-        return;
     }
 
     public override void FindFrame(int frameHeight)
     {
-        var frameHeightX = 1;
+        int frameHeightX = 1;
         if (!Main.dedServ)
         {
             frameHeightX = TextureAssets.Npc[NPC.type].Height() / Main.npcFrameCount[NPC.type];
         }
-        if (frames == 4 || frames == 68 || frames == 132 || frames == 196 || frames == 260 || frames == 324 || frames == 388)
+
+        if (frames == 4 || frames == 68 || frames == 132 || frames == 196 || frames == 260 || frames == 324 ||
+            frames == 388)
         {
             NPC.frame.Y = frames;
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.InPillarZone() && !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.05f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.InPillarZone() && !Main.dayTime && Main.hardMode &&
+        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
+            ? 0.05f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

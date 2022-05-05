@@ -1,8 +1,9 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using AvalonTesting.Items.Banners;
+using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.NPCs;
 
@@ -27,28 +28,27 @@ public class CobaltSlime : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         NPC.height = 24;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.CobaltSlimeBanner>();
+        BannerItem = ModContent.ItemType<CobaltSlimeBanner>();
     }
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals.")
+            new FlavorTextBestiaryInfoElement("Gelatinous, but filled with minerals."),
         });
-    }
-    public override void ModifyNPCLoot(NPCLoot loot)
-    {
-        loot.Add(ItemDropRule.Common(ItemID.CobaltOre, 1, 20, 32));
-    }
+
+    public override void ModifyNPCLoot(NPCLoot loot) => loot.Add(ItemDropRule.Common(ItemID.CobaltOre, 1, 20, 32));
+
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
         NPC.damage = (int)(NPC.damage * 0.45f);
     }
+
     public override void FindFrame(int frameHeight)
     {
-        var num2 = 0;
+        int num2 = 0;
         if (NPC.aiAction == 0)
         {
             if (NPC.velocity.Y < 0f)
@@ -72,28 +72,32 @@ public class CobaltSlime : ModNPC
         {
             num2 = 4;
         }
+
         NPC.frameCounter += 1.0;
         if (num2 > 0)
         {
             NPC.frameCounter += 1.0;
         }
+
         if (num2 == 4)
         {
             NPC.frameCounter += 1.0;
         }
+
         if (NPC.frameCounter >= 8.0)
         {
             NPC.frame.Y = NPC.frame.Y + frameHeight;
             NPC.frameCounter = 0.0;
         }
+
         if (NPC.frame.Y >= frameHeight * Main.npcFrameCount[NPC.type])
         {
             NPC.frame.Y = 0;
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode ? 0.00526f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode
+            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }

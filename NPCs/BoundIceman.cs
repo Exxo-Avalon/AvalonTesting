@@ -26,47 +26,49 @@ public class BoundIceman : ModNPC
         NPC.knockBackResist = 0.5f;
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneSnow && spawnInfo.Player.ZoneRockLayerHeight && !AvalonTestingGlobalNPC.savedIceman && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.0526f : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow &&
+                                                                 spawnInfo.Player.ZoneRockLayerHeight &&
+                                                                 !AvalonTestingGlobalNPC.SavedIceman &&
+                                                                 ModContent.GetInstance<AvalonTestingWorld>()
+                                                                     .SuperHardmode
+        ? 0.0526f
+        : 0f;
 
-    public override bool CanChat()
-    {
-        return true;
-    }
+    public override bool CanChat() => true;
 
     public override string GetChat()
     {
         switch (Main.rand.Next(3))
         {
             case 0:
-                return "Thanks for dislodging me from that glacier bit. If you hadn't, I'd have probably gone dormant and stayed there for eons!";
+                return
+                    "Thanks for dislodging me from that glacier bit. If you hadn't, I'd have probably gone dormant and stayed there for eons!";
             case 1:
                 return "Wow! A human! I haven't seen one of you for... I don't know how long!";
             case 2:
                 return "Thanks for not flinging matches at me. I hate it when people do that.";
         }
+
         return string.Empty;
     }
 
     public override void AI()
     {
-        for (var i = 0; i < 255; i++)
+        for (int i = 0; i < 255; i++)
         {
             if (Main.player[i].active && Main.player[i].talkNPC == NPC.whoAmI)
             {
                 NPC.Transform(ModContent.NPCType<Iceman>());
-                AvalonTestingGlobalNPC.savedIceman = true;
+                AvalonTestingGlobalNPC.SavedIceman = true;
             }
         }
-        NPC.TargetClosest(true);
+
+        NPC.TargetClosest();
         NPC.spriteDirection = NPC.direction;
         NPC.velocity.X = NPC.velocity.X * 0.93f;
         if (NPC.velocity.X > -0.1 && NPC.velocity.X < 0.1)
         {
             NPC.velocity.X = 0f;
-            return;
         }
     }
 }

@@ -417,6 +417,7 @@ dotnet_diagnostic.SA1200.severity = none
 dotnet_diagnostic.SA1101.severity = none
 dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA1123.severity = none
 
 ##########################################
 # Roslynator Changes

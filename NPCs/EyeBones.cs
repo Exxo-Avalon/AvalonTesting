@@ -1,9 +1,10 @@
-﻿using Terraria.GameContent.Bestiary;
-using System;
+﻿using System;
+using AvalonTesting.Items.Banners;
 using Terraria;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs;
 
@@ -29,7 +30,7 @@ public class EyeBones : ModNPC
         NPC.DeathSound = SoundID.NPCDeath2;
         NPC.buffImmune[BuffID.Confused] = true;
         Banner = NPC.type;
-        BannerItem = ModContent.ItemType<Items.Banners.EyeBonesBanner>();
+        BannerItem = ModContent.ItemType<EyeBonesBanner>();
     }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -37,18 +38,17 @@ public class EyeBones : ModNPC
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
-    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-    {
+
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
-            new FlavorTextBestiaryInfoElement("An eye that has turned to bones. It is unknown how this happened, however.")
+            new FlavorTextBestiaryInfoElement(
+                "An eye that has turned to bones. It is unknown how this happened, however."),
         });
-    }
-    public override void ModifyNPCLoot(NPCLoot npcLoot)
-    {
-        npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 0, 3));
-    }
+
+    public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 0, 3));
+
     public override void FindFrame(int frameHeight)
     {
         if (NPC.velocity.X > 0f)
@@ -56,25 +56,29 @@ public class EyeBones : ModNPC
             NPC.spriteDirection = 1;
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X);
         }
+
         if (NPC.velocity.X < 0f)
         {
             NPC.spriteDirection = -1;
             NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) + 3.14f;
         }
+
         NPC.frameCounter += 1.0;
         if (NPC.frameCounter >= 8.0)
         {
             NPC.frame.Y = NPC.frame.Y + frameHeight;
             NPC.frameCounter = 0.0;
         }
+
         if (NPC.frame.Y >= frameHeight * Main.npcFrameCount[NPC.type])
         {
             NPC.frame.Y = 0;
         }
     }
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.1f * AvalonTestingGlobalNPC.endoSpawnRate : 0f;
-    }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode &&
+        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
+            ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
 }
