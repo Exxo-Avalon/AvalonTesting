@@ -25,7 +25,6 @@ public class ExtraMana : ModHook
 
     protected override void Apply()
     {
-        Mod.Logger.Debug("HELLO");
         On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.ctor += OnPlayerStatsSnapshotCtor;
         IL.Terraria.GameContent.UI.ResourceSets.ClassicPlayerResourcesDisplaySet.DrawMana += ILClassicDrawMana;
         IL.Terraria.GameContent.UI.ResourceSets.FancyClassicPlayerResourcesDisplaySet.StarFillingDrawer +=

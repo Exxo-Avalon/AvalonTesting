@@ -48,5 +48,4 @@ class SoulEdge : ModItem
         }
         return false; // return false because we don't want tmodloader to shoot projectile
     }
-    public override bool OnlyShootOnSwing => base.OnlyShootOnSwing;
 }
