@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using AvalonTesting.Hooks;
+using AvalonTesting.Common;
 using AvalonTesting.Network;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -20,6 +20,11 @@ public class AvalonTesting : Mod
     public const string TextureAssetsPath = "Assets/Textures";
 
     /// <summary>
+    ///     Gets the instance of the imkSushi's mod.
+    /// </summary>
+    public static readonly Mod? ImkSushisMod = ModLoader.TryGetMod("Tokens", out Mod obtainedMod) ? obtainedMod : null;
+
+    /// <summary>
     ///     Gets reference to the main instance of the mod.
     /// </summary>
     public static readonly AvalonTesting Mod = ModContent.GetInstance<AvalonTesting>();
@@ -28,11 +33,6 @@ public class AvalonTesting : Mod
     ///     Gets the instance of the music mod for this mod.
     /// </summary>
     public static readonly Mod? MusicMod = ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod) ? obtainedMod : null;
-
-    /// <summary>
-    ///     Gets the instance of the imkSushi's mod.
-    /// </summary>
-    public static readonly Mod? ImkSushisMod = ModLoader.TryGetMod("Tokens", out Mod obtainedMod) ? obtainedMod : null;
 
     /// <summary>
     ///     Gets or sets the transition value for fading the caesium background in and out.
@@ -48,7 +48,10 @@ public class AvalonTesting : Mod
     public override void Load()
     {
         // ----------- Server/Client ----------- //
-        HooksManager.ApplyHooks();
+        while (ModHook.RegisteredHooks.TryDequeue(out ModHook? hook))
+        {
+            hook.ApplyHook();
+        }
 
         if (Main.netMode == NetmodeID.Server)
         {

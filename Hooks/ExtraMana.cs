@@ -1,26 +1,40 @@
 using System;
+using AvalonTesting.Common;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent.UI.ResourceSets;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
-public static class ExtraMana
+[Autoload(Side = ModSide.Client)]
+public class ExtraMana : ModHook
 {
-    private const int MaxManaCrystalsToDisplay = 10;
+    private const int LowManaTier = 2;
     private const int ManaPerCrystal = 20;
+    private const int MaxManaCrystalsToDisplay = 10;
     private const int MaxManaToDisplay = MaxManaCrystalsToDisplay * ManaPerCrystal;
     private const int TopManaTier = 6;
-    private const int LowManaTier = 2;
 
     private static readonly Func<HorizontalBarsPlayerReosurcesDisplaySet, int> GetMPSegmentsCount =
         Utilities.CreateInstancePropertyOrFieldReaderDelegate<HorizontalBarsPlayerReosurcesDisplaySet, int>(
             "_mpSegmentsCount");
 
-    public static void OnPlayerStatsSnapshotCtor(
+    protected override void Apply()
+    {
+        Mod.Logger.Debug("HELLO");
+        On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.ctor += OnPlayerStatsSnapshotCtor;
+        IL.Terraria.GameContent.UI.ResourceSets.ClassicPlayerResourcesDisplaySet.DrawMana += ILClassicDrawMana;
+        IL.Terraria.GameContent.UI.ResourceSets.FancyClassicPlayerResourcesDisplaySet.StarFillingDrawer +=
+            ILStarFillingDrawer;
+        IL.Terraria.GameContent.UI.ResourceSets.HorizontalBarsPlayerReosurcesDisplaySet.ManaFillingDrawer +=
+            ILManaFillingDrawer;
+    }
+
+    private static void OnPlayerStatsSnapshotCtor(
         On.Terraria.GameContent.UI.ResourceSets.PlayerStatsSnapshot.orig_ctor orig,
         ref PlayerStatsSnapshot self,
         Player player)
@@ -32,7 +46,7 @@ public static class ExtraMana
         }
     }
 
-    public static void ILClassicDrawMana(ILContext il)
+    private static void ILClassicDrawMana(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -87,7 +101,7 @@ public static class ExtraMana
         });
     }
 
-    public static void ILStarFillingDrawer(ILContext il)
+    private static void ILStarFillingDrawer(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -118,7 +132,7 @@ public static class ExtraMana
         });
     }
 
-    public static void ILManaFillingDrawer(ILContext il)
+    private static void ILManaFillingDrawer(ILContext il)
     {
         var c = new ILCursor(il);
 

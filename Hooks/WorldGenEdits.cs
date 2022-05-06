@@ -1,25 +1,44 @@
 using System;
 using System.Collections.Generic;
+using AvalonTesting.Common;
 using AvalonTesting.Tiles;
+using IL.Terraria;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
-public static class WorldGenEdits
+[Autoload(Side = ModSide.Both)]
+public class WorldGenEdits : ModHook
 {
-    public static void ILGenPassShinies(ILContext il)
-    {
-        ContagionWorldGen.ILGenPassShinies(il);
+    protected override ModHook[] HookDependencies => new ModHook[] { ModContent.GetInstance<GenPasses>() };
 
+    public static void AddEvilAltarAlternativeChecks(ILContext il) =>
+        Utilities.AddAlternativeIdChecks(il, TileID.DemonAltar, id => id == ModContent.TileType<IckyAltar>());
+
+    public static void AddAllAltarAlternativeChecks(ILContext il) =>
+        Utilities.AddAlternativeIdChecks(il, TileID.DemonAltar, id => Data.Sets.Tile.Altar[id]);
+
+    protected override void Apply()
+    {
+        ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
+        WorldGen.AddBuriedChest_int_int_int_bool_int_bool_ushort += AddAllAltarAlternativeChecks;
+        WorldGen.Place3x2 += AddAllAltarAlternativeChecks;
+        WorldGen.Check3x2 += ILCheck3X2;
+        WorldGen.badOceanCaveTiles += AddAllAltarAlternativeChecks;
+        WorldGen.AllowsSandfall += AddAllAltarAlternativeChecks;
+        Player.ItemCheck_UseMiningTools_ActuallyUseMiningTool += AddEvilAltarAlternativeChecks;
+    }
+
+    private static void ILGenPassShinies(ILContext il)
+    {
         var instructions = new Instruction[4];
         var delegates = new Func<int>[4]
         {
-            () => WorldGen.SavedOreTiers.Copper, () => WorldGen.SavedOreTiers.Iron,
-            () => WorldGen.SavedOreTiers.Silver, () => WorldGen.SavedOreTiers.Gold
+            () => Terraria.WorldGen.SavedOreTiers.Copper, () => Terraria.WorldGen.SavedOreTiers.Iron,
+            () => Terraria.WorldGen.SavedOreTiers.Silver, () => Terraria.WorldGen.SavedOreTiers.Gold,
         };
         var c = new ILCursor(il);
 
@@ -27,7 +46,7 @@ public static class WorldGenEdits
         {
             for (int j = 0; j < 3; j++)
             {
-                if (!c.TryGotoNext(i => i.MatchCall<WorldGen>(nameof(WorldGen.TileRunner))))
+                if (!c.TryGotoNext(i => i.MatchCall<Terraria.WorldGen>(nameof(Terraria.WorldGen.TileRunner))))
                 {
                     return;
                 }
@@ -59,7 +78,7 @@ public static class WorldGenEdits
         }
     }
 
-    public static void ILCheck3X2(ILContext il)
+    private static void ILCheck3X2(ILContext il)
     {
         var c = new ILCursor(il);
         try
@@ -78,15 +97,5 @@ public static class WorldGenEdits
         {
             AvalonTesting.Mod.Logger.Error("Failed to apply hook!", e);
         }
-    }
-
-    public static void AddEvilAltarAlternativeChecks(ILContext il)
-    {
-        Utilities.AddAlternativeIdChecks(il, TileID.DemonAltar, id => id == ModContent.TileType<IckyAltar>());
-    }
-
-    public static void AddAllAltarAlternativeChecks(ILContext il)
-    {
-        Utilities.AddAlternativeIdChecks(il, TileID.DemonAltar, id => Data.Sets.Tile.Altar[id]);
     }
 }

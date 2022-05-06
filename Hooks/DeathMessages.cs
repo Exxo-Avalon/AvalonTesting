@@ -1,13 +1,18 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Common;
+using Terraria;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
-public class DeathMessages
+
+[Autoload(Side = ModSide.Both)]
+public class DeathMessages : ModHook
 {
-    public static NetworkText OnCreateDeathMessage(On.Terraria.Lang.orig_CreateDeathMessage orig, string deadPlayerName, int plr = -1, int npc = -1, int proj = -1, int other = -1, int projType = 0, int plrItemType = 0)
+    protected override void Apply() => On.Terraria.Lang.CreateDeathMessage += OnCreateDeathMessage;
+
+    private static NetworkText OnCreateDeathMessage(
+        On.Terraria.Lang.orig_CreateDeathMessage orig, string deadPlayerName, int plr = -1, int npc = -1, int proj = -1,
+        int other = -1, int projType = 0, int plrItemType = 0)
     {
         NetworkText networkText = NetworkText.Empty;
         NetworkText networkText2 = NetworkText.Empty;
@@ -17,44 +22,53 @@ public class DeathMessages
         {
             networkText = NetworkText.FromKey(Lang.GetProjectileName(projType).Key);
         }
+
         if (npc >= 0)
         {
             networkText2 = Main.npc[npc].GetGivenOrTypeNetName();
         }
+
         if (plr >= 0 && plr < 255)
         {
             networkText3 = NetworkText.FromLiteral(Main.player[plr].name);
         }
+
         if (plrItemType >= 0)
         {
             networkText4 = NetworkText.FromKey(Lang.GetItemName(plrItemType).Key);
         }
+
         bool flag = networkText != NetworkText.Empty;
         bool flag2 = plr >= 0 && plr < 255;
         bool flag3 = networkText2 != NetworkText.Empty;
         NetworkText result = NetworkText.Empty;
         NetworkText empty = NetworkText.Empty;
-        empty = NetworkText.FromKey(Language.RandomFromCategory("DeathTextGeneric").Key, deadPlayerName, Main.worldName);
-        if (Main.rand.Next(4) == 0)
+        empty = NetworkText.FromKey(Language.RandomFromCategory("DeathTextGeneric").Key, deadPlayerName,
+            Main.worldName);
+        if (Main.rand.NextBool(4))
         {
             int msg = Main.rand.Next(4);
             if (msg == 0)
             {
                 empty = NetworkText.FromLiteral(deadPlayerName + " was tickled to smithereens");
             }
+
             if (msg == 1)
             {
                 empty = NetworkText.FromLiteral(deadPlayerName + " was reduced to a fine paste");
             }
+
             if (msg == 2)
             {
                 empty = NetworkText.FromLiteral(deadPlayerName + " became a tombstone dispenser");
             }
+
             if (msg == 3)
             {
                 empty = NetworkText.FromLiteral(deadPlayerName + ".exe has stopped working. Program was closed");
             }
         }
+
         if (flag2)
         {
             result = NetworkText.FromKey("DeathSource.Player", empty, networkText3, flag ? networkText : networkText4);
@@ -72,8 +86,7 @@ public class DeathMessages
             #region falling
             if (other == 0)
             {
-                int rn = Main.rand.Next(9) + 1;
-                switch (rn)
+                switch (Main.rand.Next(9) + 1)
                 {
                     case 1:
                         result = NetworkText.FromKey("DeathText.Fell_1", deadPlayerName);
@@ -82,7 +95,8 @@ public class DeathMessages
                         result = NetworkText.FromKey("DeathText.Fell_2", deadPlayerName);
                         break;
                     case 3:
-                        result = NetworkText.FromLiteral(deadPlayerName + " made a satisfying SPLAT when they hit the ground.");
+                        result = NetworkText.FromLiteral(deadPlayerName +
+                                                         " made a satisfying SPLAT when they hit the ground.");
                         break;
                     case 4:
                         result = NetworkText.FromLiteral(deadPlayerName + " took a leap of faith...");
@@ -100,16 +114,16 @@ public class DeathMessages
                         result = NetworkText.FromLiteral(deadPlayerName + "'s parachute was just a backpack.");
                         break;
                     case 9:
-                        result = NetworkText.FromLiteral(deadPlayerName + " got splattered all over " + Main.worldName);
+                        result = NetworkText.FromLiteral(deadPlayerName + " got splattered all over " +
+                                                         Main.worldName);
                         break;
                 }
             }
-            #endregion
+            #endregion falling
             #region drowing
             else if (other == 1)
             {
-                int rn = Main.rand.Next(7) + 1;
-                switch (rn)
+                switch (Main.rand.Next(7) + 1)
                 {
                     case 1:
                         result = NetworkText.FromKey("DeathText.Drowned_1", deadPlayerName);
@@ -134,12 +148,11 @@ public class DeathMessages
                         break;
                 }
             }
-            #endregion
+            #endregion drowing
             #region lava
             else if (other == 2)
             {
-                int rn = Main.rand.Next(7) + 1;
-                switch (rn)
+                switch (Main.rand.Next(7) + 1)
                 {
                     case 1:
                         result = NetworkText.FromKey("DeathText.Lava_1", deadPlayerName);
@@ -164,12 +177,11 @@ public class DeathMessages
                         break;
                 }
             }
-            #endregion
+            #endregion lava
             #region petrification
             else if (other == 5)
             {
-                int rn = Main.rand.Next(5) + 1;
-                switch (rn)
+                switch (Main.rand.Next(5) + 1)
                 {
                     case 1:
                         result = NetworkText.FromKey("DeathText.Petrified_1", deadPlayerName);
@@ -188,12 +200,11 @@ public class DeathMessages
                         break;
                 }
             }
-            #endregion
+            #endregion petrification
             #region electrocution
             else if (other == 10)
             {
-                int rn = Main.rand.Next(3) + 1;
-                switch (rn)
+                switch (Main.rand.Next(3) + 1)
                 {
                     case 1:
                         result = NetworkText.FromKey("DeathText.Electrocuted", deadPlayerName);
@@ -206,7 +217,7 @@ public class DeathMessages
                         break;
                 }
             }
-            #endregion
+            #endregion electrocution
             else
             {
                 switch (other)
@@ -262,6 +273,7 @@ public class DeathMessages
                 }
             }
         }
+
         return result;
     }
 }

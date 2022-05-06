@@ -1,88 +1,113 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using AvalonTesting.Common;
+using AvalonTesting.Tiles;
+using Microsoft.Xna.Framework;
+using On.Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
-class TrapCollision
+[Autoload(Side = ModSide.Both)]
+public class TrapCollision : ModHook
 {
-    public static Vector2 OnHurtTiles(On.Terraria.Collision.orig_HurtTiles orig, Vector2 Position,
-                                      Vector2 Velocity, int Width, int Height, bool fireImmune = false)
+    protected override void Apply() => Collision.HurtTiles += OnHurtTiles;
+
+    private static Vector2 OnHurtTiles(Collision.orig_HurtTiles orig, Vector2 position,
+                                       Vector2 velocity, int width, int height, bool fireImmune = false)
     {
-        Vector2 output = orig(Position, Velocity, Width, Height, fireImmune);
-        Vector2 vector = Position;
-        int num = (int)(Position.X / 16f) - 1;
-        int num2 = (int)((Position.X + (float)Width) / 16f) + 2;
-        int num3 = (int)(Position.Y / 16f) - 1;
-        int num4 = (int)((Position.Y + (float)Height) / 16f) + 2;
+        Vector2 output = orig(position, velocity, width, height, fireImmune);
+        Vector2 vector = position;
+        int num = (int)(position.X / 16f) - 1;
+        int num2 = (int)((position.X + width) / 16f) + 2;
+        int num3 = (int)(position.Y / 16f) - 1;
+        int num4 = (int)((position.Y + height) / 16f) + 2;
         if (num < 0)
         {
             num = 0;
         }
-        if (num2 > Main.maxTilesX)
+
+        if (num2 > Terraria.Main.maxTilesX)
         {
-            num2 = Main.maxTilesX;
+            num2 = Terraria.Main.maxTilesX;
         }
+
         if (num3 < 0)
         {
             num3 = 0;
         }
-        if (num4 > Main.maxTilesY)
+
+        if (num4 > Terraria.Main.maxTilesY)
         {
-            num4 = Main.maxTilesY;
+            num4 = Terraria.Main.maxTilesY;
         }
+
         for (int i = num; i < num2; i++)
         {
             for (int j = num3; j < num4; j++)
             {
-                if (Main.tile[i, j] != null && Main.tile[i, j].Slope == SlopeType.Solid && !Main.tile[i, j].IsActuated && Main.tile[i, j].HasTile && (Main.tile[i, j].TileType == ModContent.TileType<Tiles.VenomSpike>() || Main.tile[i, j].TileType == TileID.Spikes || Main.tile[i, j].TileType == TileID.WoodenSpikes))
+                if (Terraria.Main.tile[i, j].Slope == SlopeType.Solid &&
+                    !Terraria.Main.tile[i, j].IsActuated && Terraria.Main.tile[i, j].HasTile &&
+                    (Terraria.Main.tile[i, j].TileType == ModContent.TileType<VenomSpike>() ||
+                     Terraria.Main.tile[i, j].TileType == TileID.Spikes ||
+                     Terraria.Main.tile[i, j].TileType == TileID.WoodenSpikes))
                 {
                     Vector2 vector2;
                     vector2.X = i * 16;
                     vector2.Y = j * 16;
                     int num5 = 0;
-                    int type = (int)Main.tile[i, j].TileType;
+                    int type = Terraria.Main.tile[i, j].TileType;
                     int num6 = 16;
-                    if (Main.tile[i, j].IsHalfBlock)
+                    if (Terraria.Main.tile[i, j].IsHalfBlock)
                     {
                         vector2.Y += 8f;
                         num6 -= 8;
                     }
-                    if (vector.X + Width >= vector2.X && vector.X <= vector2.X + 16f && vector.Y + Height >= vector2.Y && vector.Y <= (vector2.Y + num6) + 0.01)
+
+                    if (vector.X + width >= vector2.X && vector.X <= vector2.X + 16f &&
+                        vector.Y + height >= vector2.Y && vector.Y <= vector2.Y + num6 + 0.01)
                     {
                         int num9 = 1;
-                        if (vector.X + Width / 2 < vector2.X + 8f)
+                        if (vector.X + (width / 2f) < vector2.X + 8f)
                         {
                             num9 = -1;
                         }
+
                         if (!fireImmune && (type == 37 || type == 58 || type == 76))
                         {
                             num5 = 20;
                         }
-                        if (!Main.LocalPlayer.Avalon().trapImmune && !Main.LocalPlayer.Avalon().spikeImmune && type == TileID.Spikes)
+
+                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
+                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune && type == TileID.Spikes)
                         {
                             num5 = 40;
                         }
-                        if (!Main.LocalPlayer.Avalon().trapImmune && !Main.LocalPlayer.Avalon().spikeImmune && type == TileID.WoodenSpikes)
+
+                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
+                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune && type == TileID.WoodenSpikes)
                         {
                             num5 = 60;
                         }
-                        //if (!Main.LocalPlayer.Avalon().trapImmune && !Main.LocalPlayer.Avalon().spikeImmune && type == ModContent.TileType<Tiles.PoisonSpike>())
-                        //{
+
+                        // if (!Main.LocalPlayer.Avalon().trapImmune && !Main.LocalPlayer.Avalon().spikeImmune && type == ModContent.TileType<Tiles.PoisonSpike>())
+                        // {
                         //    num5 = 35;
                         //    Main.player[Main.myPlayer].AddBuff(BuffID.Poisoned, 180, true);
-                        //}
-                        if (!Main.LocalPlayer.Avalon().trapImmune && !Main.LocalPlayer.Avalon().spikeImmune && type == ModContent.TileType<Tiles.VenomSpike>())
+                        // }
+                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
+                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune &&
+                            type == ModContent.TileType<VenomSpike>())
                         {
                             num5 = 90;
-                            Main.player[Main.myPlayer].AddBuff(BuffID.Venom, 180, true);
+                            Terraria.Main.player[Terraria.Main.myPlayer].AddBuff(BuffID.Venom, 180);
                         }
+
                         return new Vector2(num9, num5);
                     }
                 }
             }
         }
+
         return output;
     }
 }

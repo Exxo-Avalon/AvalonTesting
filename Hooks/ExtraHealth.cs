@@ -1,16 +1,27 @@
 using System;
+using AvalonTesting.Common;
+using IL.Terraria.GameContent.UI.ResourceSets;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using ReLogic.Content;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
-public static class ExtraHealth
+[Autoload(Side = ModSide.Client)]
+public class ExtraHealth : ModHook
 {
-    public static void ILDrawLife(ILContext il)
+    protected override void Apply()
+    {
+        ClassicPlayerResourcesDisplaySet.DrawLife += ILDrawLife;
+        HorizontalBarsPlayerReosurcesDisplaySet.LifeFillingDrawer += ILLifeFillingDrawer;
+        FancyClassicPlayerResourcesDisplaySet.HeartFillingDrawer += ILHeartFillingDrawer;
+    }
+
+    private static void ILDrawLife(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -43,7 +54,7 @@ public static class ExtraHealth
         });
     }
 
-    public static void ILLifeFillingDrawer(ILContext il)
+    private static void ILLifeFillingDrawer(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -91,7 +102,7 @@ public static class ExtraHealth
         });
     }
 
-    public static void ILHeartFillingDrawer(ILContext il)
+    private static void ILHeartFillingDrawer(ILContext il)
     {
         var c = new ILCursor(il);
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AvalonTesting.Common;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Systems;
 using AvalonTesting.UI;
@@ -21,7 +22,8 @@ using Terraria.UI;
 
 namespace AvalonTesting.Hooks;
 
-public static class UIWorldCreationEdits
+[Autoload(Side = ModSide.Client)]
+public class UIWorldCreationEdits : ModHook
 {
     private static readonly Func<UIWorldCreation, UIText> GetDescriptionUIText =
         Utilities.CreateInstancePropertyOrFieldReaderDelegate<UIWorldCreation, UIText>("_descriptionText");
@@ -51,7 +53,44 @@ public static class UIWorldCreationEdits
         Contagion = 3,
     }
 
-    public static void ILMakeInfoMenu(ILContext il)
+    protected override void Apply()
+    {
+        IL.Terraria.GameContent.UI.States.UIWorldCreation.MakeInfoMenu += ILMakeInfoMenu;
+        On.Terraria.GameContent.UI.States.UIWorldCreation.AddWorldEvilOptions += OnAddWorldEvilOptions;
+        IL.Terraria.GameContent.UI.States.UIWorldCreation.FinishCreatingWorld += ILFinishCreatingWorld;
+        IL.Terraria.GameContent.UI.States.UIWorldCreation.UpdatePreviewPlate += ILUpdatePreviewPlate;
+    }
+
+    private static void ILUpdatePreviewPlate(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchConvU1()))
+        {
+            return;
+        }
+
+        if (!c.TryGotoNext(i => i.MatchConvU1()))
+        {
+            return;
+        }
+
+        c.Index++;
+        c.Emit(OpCodes.Pop);
+
+        c.EmitDelegate(() =>
+        {
+            byte option = (byte)currentEvilOption;
+            if (option > 2)
+            {
+                option = 2;
+            }
+
+            return option;
+        });
+    }
+
+    private static void ILMakeInfoMenu(ILContext il)
     {
         try
         {
@@ -68,7 +107,7 @@ public static class UIWorldCreationEdits
         }
     }
 
-    public static void OnAddWorldEvilOptions(
+    private static void OnAddWorldEvilOptions(
         On.Terraria.GameContent.UI.States.UIWorldCreation.orig_AddWorldEvilOptions orig,
         UIWorldCreation self, UIElement container,
         float accumulatedHeight,
@@ -85,7 +124,6 @@ public static class UIWorldCreationEdits
         }
 
         #region populating region
-
         var customOptionsPrimaryList = new ExxoUIList { ListPadding = 4, FitHeightToContent = true };
         customOptionsPrimaryList.Width.Set(0, 1);
         customOptionsPrimaryList.Top.Set(accumulatedHeight, 0);
@@ -95,7 +133,7 @@ public static class UIWorldCreationEdits
             val =>
             {
                 currentEvilOption = val;
-                typeof(UIWorldCreation).GetMethod(
+                typeof(On.Terraria.GameContent.UI.States.UIWorldCreation).GetMethod(
                         "UpdatePreviewPlate",
                         BindingFlags.NonPublic | BindingFlags.Instance)!
                     .Invoke(self, null);
@@ -352,7 +390,6 @@ public static class UIWorldCreationEdits
                 ModContent.Request<Texture2D>(ModContent.GetInstance<UnvolanditeOre>().Texture),
                 ModContent.Request<Texture2D>(ModContent.GetInstance<VorazylcumOre>().Texture),
             }, false);
-
         #endregion populating region
 
         var hr = new UIHorizontalSeparator();
@@ -367,11 +404,11 @@ public static class UIWorldCreationEdits
         container.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
     }
 
-    public static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
-                                           string tagGroup, Action<T> actionOnClick, T defaultSelection,
-                                           int amountPerInnerList, T[] optionValues, LocalizedText[] titles,
-                                           LocalizedText[] descriptions, Color[] textColors,
-                                           Asset<Texture2D>[] textures, bool addHorizontalRule = true)
+    private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
+                                            string tagGroup, Action<T> actionOnClick, T defaultSelection,
+                                            int amountPerInnerList, T[] optionValues, LocalizedText[] titles,
+                                            LocalizedText[] descriptions, Color[] textColors,
+                                            Asset<Texture2D>[] textures, bool addHorizontalRule = true)
         where T : IComparable
     {
         var listGrid = new ExxoUIListGrid(amountPerInnerList);
@@ -416,7 +453,7 @@ public static class UIWorldCreationEdits
         }
     }
 
-    public static void ILFinishCreatingWorld(ILContext il)
+    private static void ILFinishCreatingWorld(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -440,35 +477,6 @@ public static class UIWorldCreationEdits
                 MenuEvilOption.Contagion => 2,
                 _ => WorldGen.WorldGenParam_Evil,
             };
-        });
-    }
-
-    public static void ILUpdatePreviewPlate(ILContext il)
-    {
-        var c = new ILCursor(il);
-
-        if (!c.TryGotoNext(i => i.MatchConvU1()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchConvU1()))
-        {
-            return;
-        }
-
-        c.Index++;
-        c.Emit(OpCodes.Pop);
-
-        c.EmitDelegate(() =>
-        {
-            byte option = (byte)currentEvilOption;
-            if (option > 2)
-            {
-                option = 2;
-            }
-
-            return option;
         });
     }
 }

@@ -1,54 +1,60 @@
 using System.Collections.Generic;
 using System.Reflection;
+using AvalonTesting.Common;
+using IL.Terraria;
 using Mono.Cecil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using MonoMod.Utils;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 
-public static class GenPasses
+[Autoload(Side = ModSide.Both)]
+public class GenPasses : ModHook
 {
-    private static MethodBase ResetInfo;
-    private static MethodBase ShiniesInfo;
-    private static MethodBase AltarsInfo;
+    private MethodBase? altarsInfo;
+    private MethodBase? resetInfo;
+    private MethodBase? shiniesInfo;
 
-    public static event ILContext.Manipulator HookGenPassReset
+    public event ILContext.Manipulator HookGenPassAltars
     {
-        add => HookEndpointManager.Modify(ResetInfo, value);
-        remove => HookEndpointManager.Unmodify(ResetInfo, value);
+        add => HookEndpointManager.Modify(altarsInfo, value);
+        remove => HookEndpointManager.Unmodify(altarsInfo, value);
     }
 
-    public static event ILContext.Manipulator HookGenPassShinies
+    public event ILContext.Manipulator HookGenPassReset
     {
-        add => HookEndpointManager.Modify(ShiniesInfo, value);
-        remove => HookEndpointManager.Unmodify(ShiniesInfo, value);
+        add => HookEndpointManager.Modify(resetInfo, value);
+        remove => HookEndpointManager.Unmodify(resetInfo, value);
     }
 
-    public static event ILContext.Manipulator HookGenPassAltars
+    public event ILContext.Manipulator HookGenPassShinies
     {
-        add => HookEndpointManager.Modify(AltarsInfo, value);
-        remove => HookEndpointManager.Unmodify(AltarsInfo, value);
+        add => HookEndpointManager.Modify(shiniesInfo, value);
+        remove => HookEndpointManager.Unmodify(shiniesInfo, value);
     }
 
-    public static void ILGenerateWorld(ILContext il)
+    public void ILGenerateWorld(ILContext il)
     {
-        ResetInfo = GetGenPassInfo(il, "Reset");
-        ShiniesInfo = GetGenPassInfo(il, "Shinies");
-        AltarsInfo = GetGenPassInfo(il, "Altars");
+        resetInfo = GetGenPassInfo(il, "Reset");
+        shiniesInfo = GetGenPassInfo(il, "Shinies");
+        altarsInfo = GetGenPassInfo(il, "Altars");
     }
 
-    private static MethodBase GetGenPassInfo(ILContext il, string name)
+    protected override void Apply() => WorldGen.GenerateWorld += ILGenerateWorld;
+
+    private static MethodBase? GetGenPassInfo(ILContext il, string name)
     {
         try
         {
             var c = new ILCursor(il);
-            MethodReference methodReference = null;
+            MethodReference? methodReference = null;
 
-            c.GotoNext(i => i.MatchLdstr(name));
-            c.GotoNext(i => i.MatchLdftn(out methodReference));
+            c.GotoNext(i => i.MatchLdstr(name))
+                .GotoNext(i => i.MatchLdftn(out methodReference));
 
-            return methodReference.ResolveReflection();
+            return methodReference?.ResolveReflection();
         }
         catch (KeyNotFoundException e)
         {

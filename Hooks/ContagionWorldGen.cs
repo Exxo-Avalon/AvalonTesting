@@ -1,4 +1,5 @@
 using System;
+using AvalonTesting.Common;
 using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using AvalonTesting.Tiles.Ores;
@@ -15,74 +16,19 @@ namespace AvalonTesting.Hooks;
 // MakeDungeon() for the chest
 // SmashAltar for tiles that are added on smash altar
 // GERunner for tiles on hardmode evil enter
-
-public static class ContagionWorldGen
+[Autoload(Side = ModSide.Both)]
+public class ContagionWorldGen : ModHook
 {
-    public static void ILGenPassReset(ILContext il)
+    protected override ModHook[] HookDependencies => new ModHook[] { ModContent.GetInstance<GenPasses>() };
+
+    protected override void Apply()
     {
-        var c = new ILCursor(il);
-
-        if (!c.TryGotoNext(i => i.MatchStsfld<WorldGen>(nameof(WorldGen.crimson))))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
-        {
-            return;
-        }
-
-        c.EmitDelegate(() =>
-        {
-            if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Crimson)
-            {
-                WorldGen.crimson = true;
-            }
-            else
-            {
-                WorldGen.crimson = false;
-            }
-        });
-
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchBneUn(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchLdcI4(-1)))
-        {
-            return;
-        }
-
-        c.EmitDelegate<Func<int, int>>(dungeonSide =>
-        {
-            ModContent.GetInstance<ExxoWorldGen>().DungeonSide = dungeonSide;
-            return dungeonSide;
-        });
-
-        for (int i = 0; i < 2; i++)
-        {
-            if (!c.TryGotoNext(i => i.MatchRet()))
-            {
-                return;
-            }
-
-            c.Index--;
-
-            c.EmitDelegate<Func<int, int>>(dungeonLocation =>
-            {
-                ModContent.GetInstance<ExxoWorldGen>().DungeonLocation = dungeonLocation;
-                return dungeonLocation;
-            });
-        }
+        ModContent.GetInstance<GenPasses>().HookGenPassReset += ILGenPassReset;
+        ModContent.GetInstance<GenPasses>().HookGenPassAltars += ILGenPassAltars;
+        ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
     }
 
-    public static void ILGenPassShinies(ILContext il)
+    private static void ILGenPassShinies(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -90,7 +36,6 @@ public static class ContagionWorldGen
         {
             return;
         }
-
 
         if (!c.TryGotoPrev(i => i.MatchLdsfld<WorldGen>(nameof(WorldGen.drunkWorldGen))))
         {
@@ -147,7 +92,64 @@ public static class ContagionWorldGen
         c.MarkLabel(startCorruptionGen);
     }
 
-    public static void ILGenPassAltars(ILContext il)
+    private static void ILGenPassReset(ILContext il)
+    {
+        var c = new ILCursor(il);
+
+        if (!c.TryGotoNext(i => i.MatchStsfld<WorldGen>(nameof(WorldGen.crimson))))
+        {
+            return;
+        }
+
+        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
+        {
+            return;
+        }
+
+        c.EmitDelegate<Action>(() =>
+            WorldGen.crimson = ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Crimson);
+
+        if (!c.TryGotoNext(i => i.MatchRet()))
+        {
+            return;
+        }
+
+        if (!c.TryGotoPrev(i => i.MatchBneUn(out _)))
+        {
+            return;
+        }
+
+        if (!c.TryGotoPrev(i => i.MatchLdcI4(-1)))
+        {
+            return;
+        }
+
+        c.EmitDelegate<Func<int, int>>(dungeonSide =>
+        {
+            ModContent.GetInstance<ExxoWorldGen>().DungeonSide = dungeonSide;
+            return dungeonSide;
+        });
+
+        for (int i = 0; i < 2; i++)
+        {
+            if (!c.TryGotoNext(i => i.MatchRet()))
+            {
+                return;
+            }
+
+            c.Index--;
+
+            c.EmitDelegate<Func<int, int>>(dungeonLocation =>
+            {
+                ModContent.GetInstance<ExxoWorldGen>().DungeonLocation = dungeonLocation;
+                return dungeonLocation;
+            });
+
+            c.Index += 2;
+        }
+    }
+
+    private static void ILGenPassAltars(ILContext il)
     {
         var c = new ILCursor(il);
 
@@ -160,17 +162,15 @@ public static class ContagionWorldGen
         }
 
         c.EmitDelegate(() => ModContent.GetInstance<ExxoWorldGen>().WorldEvil != ExxoWorldGen.EvilBiome.Corruption);
-        c.Emit(OpCodes.Brfalse, startNormalAltar);
-        c.Emit(OpCodes.Ldloc, 3);
-        c.Emit(OpCodes.Ldloc, 4);
+        c.Emit(OpCodes.Brfalse, startNormalAltar)
+            .Emit(OpCodes.Ldloc, 3)
+            .Emit(OpCodes.Ldloc, 4);
         c.EmitDelegate((int x, int y) =>
         {
-            if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion)
+            if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion &&
+                !WorldGen.IsTileNearby(x, y, ModContent.TileType<IckyAltar>(), 3))
             {
-                if (!WorldGen.IsTileNearby(x, y, ModContent.TileType<IckyAltar>(), 3))
-                {
-                    WorldGen.Place3x2(x, y, (ushort)ModContent.TileType<IckyAltar>());
-                }
+                WorldGen.Place3x2(x, y, (ushort)ModContent.TileType<IckyAltar>());
             }
         });
         c.Emit(OpCodes.Br, endNormalAltar);
