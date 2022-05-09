@@ -1,6 +1,5 @@
 ﻿using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.Items.Accessories;
 using AvalonTesting.Network;
 using AvalonTesting.Network.Handlers;
 using AvalonTesting.Systems;
@@ -16,6 +15,7 @@ namespace AvalonTesting.Players;
 
 public class ExxoBuffPlayer : ModPlayer
 {
+    public const string LavaMermanName = "LavaMerman";
     public bool AccLavaMerman;
     public bool AdvancedBattle;
     public bool AdvancedCalming;
@@ -28,7 +28,6 @@ public class ExxoBuffPlayer : ModPlayer
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
     public int InfectDamage;
-    private bool lavaMerman;
     public bool Lucky;
     public bool Malaria;
     public bool Melting;
@@ -36,11 +35,47 @@ public class ExxoBuffPlayer : ModPlayer
     public int OldFallStart;
 
     public int StingerProbeTimer;
+    private bool lavaMerman;
     public float DaggerStaffRotation { get; set; }
     public float StingerProbeRotation { get; set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
     public int AstralCooldown { get; private set; }
+
+    public override void Load()
+    {
+        if (Main.netMode == NetmodeID.Server)
+        {
+            return;
+        }
+
+        EquipLoader.AddEquipTexture(
+            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head", EquipType.Head,
+            null, LavaMermanName);
+        EquipLoader.AddEquipTexture(
+            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body", EquipType.Body,
+            null, LavaMermanName);
+        EquipLoader.AddEquipTexture(
+            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs", EquipType.Legs,
+            null, LavaMermanName);
+    }
+
+    public override void SetStaticDefaults()
+    {
+        if (Main.netMode == NetmodeID.Server)
+        {
+            return;
+        }
+
+        int lavaMermanHead = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Head);
+        int lavaMermanBody = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Body);
+        int lavaMermanLegs = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Legs);
+
+        ArmorIDs.Head.Sets.DrawHead[lavaMermanHead] = false;
+        ArmorIDs.Body.Sets.HidesTopSkin[lavaMermanBody] = true;
+        ArmorIDs.Body.Sets.HidesArms[lavaMermanBody] = true;
+        ArmorIDs.Legs.Sets.HidesBottomSkin[lavaMermanLegs] = true;
+    }
 
     public override void ResetEffects()
     {
@@ -84,16 +119,11 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void PostUpdateBuffs()
-    {
-        OldFallStart = Player.fallStart;
-    }
+    public override void PostUpdateBuffs() => OldFallStart = Player.fallStart;
 
-    public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-    {
+    public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) =>
         ModContent.GetInstance<ExxoBuffPlayerSyncHandler>()
             .Send(new BasicPlayerNetworkArgs(Player), toWho, fromWho);
-    }
 
     public override bool CanConsumeAmmo(Item weapon, Item ammo)
     {
@@ -103,11 +133,6 @@ public class ExxoBuffPlayer : ModPlayer
         }
 
         return base.CanConsumeAmmo(weapon, ammo);
-    }
-
-    public void ResetShadowCooldown()
-    {
-        ShadowCooldown = 0;
     }
 
     public override void ProcessTriggers(TriggersSet triggersSet)
@@ -174,70 +199,12 @@ public class ExxoBuffPlayer : ModPlayer
             return false;
         }
 
-        return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit, ref customDamage, ref playSound,
-            ref genGore, ref damageSource);
+        return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit,
+            ref customDamage,
+            ref playSound, ref genGore, ref damageSource);
     }
 
-    private void SpectrumDodge()
-    {
-        Player.immune = true;
-        if (Player.longInvince)
-        {
-            Player.immuneTime = 60;
-        }
-        else
-        {
-            Player.immuneTime = 30;
-        }
-
-        SoundEngine.PlaySound(SoundID.Item, Player.position,
-            SoundLoader.GetSoundSlot(Mod, "Sounds/Item/SpectrumDodge"));
-        for (int i = 0; i < Player.hurtCooldowns.Length; i++)
-        {
-            Player.hurtCooldowns[i] = Player.immuneTime;
-        }
-
-        if (Player.whoAmI == Main.myPlayer)
-        {
-            NetMessage.SendData(Terraria.ID.MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
-        }
-    }
-
-    public void FloorVisualsAvalon()
-    {
-        int num = (int)((Player.position.X + (Player.width / 2)) / 16f);
-        int num2 = (int)((Player.position.Y + Player.height) / 16f);
-        int num3 = -1;
-        if (Main.tile[num, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num, num2].TileType])
-        {
-            num3 = Main.tile[num, num2].TileType;
-        }
-        else if (Main.tile[num - 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num - 1, num2].TileType])
-        {
-            num3 = Main.tile[num - 1, num2].TileType;
-        }
-        else if (Main.tile[num + 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num + 1, num2].TileType])
-        {
-            num3 = Main.tile[num + 1, num2].TileType;
-        }
-
-        if (num3 > -1)
-        {
-            if (num3 == 229 && !NoSticky)
-            {
-                Player.sticky = true;
-            }
-            else
-            {
-                Player.sticky = false;
-            }
-        }
-    }
-
-    public override void PostUpdateRunSpeeds()
-    {
-        FloorVisualsAvalon();
-    }
+    public override void PostUpdateRunSpeeds() => FloorVisualsAvalon();
 
     public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback,
                                               ref bool crit,
@@ -299,10 +266,67 @@ public class ExxoBuffPlayer : ModPlayer
     {
         if (lavaMerman)
         {
-            HadesCross hadesCross = ModContent.GetInstance<HadesCross>();
-            Player.head = Mod.GetEquipSlot(hadesCross.Name, EquipType.Head);
-            Player.body = Mod.GetEquipSlot(hadesCross.Name, EquipType.Body);
-            Player.legs = Mod.GetEquipSlot(hadesCross.Name, EquipType.Legs);
+            Player.head = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Head);
+            Player.body = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Body);
+            Player.legs = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Legs);
+        }
+    }
+
+    public void ResetShadowCooldown() => ShadowCooldown = 0;
+
+    public void FloorVisualsAvalon()
+    {
+        int num = (int)((Player.position.X + (Player.width / 2)) / 16f);
+        int num2 = (int)((Player.position.Y + Player.height) / 16f);
+        int num3 = -1;
+        if (Main.tile[num, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num, num2].TileType])
+        {
+            num3 = Main.tile[num, num2].TileType;
+        }
+        else if (Main.tile[num - 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num - 1, num2].TileType])
+        {
+            num3 = Main.tile[num - 1, num2].TileType;
+        }
+        else if (Main.tile[num + 1, num2].HasUnactuatedTile && Main.tileSolid[Main.tile[num + 1, num2].TileType])
+        {
+            num3 = Main.tile[num + 1, num2].TileType;
+        }
+
+        if (num3 > -1)
+        {
+            if (num3 == 229 && !NoSticky)
+            {
+                Player.sticky = true;
+            }
+            else
+            {
+                Player.sticky = false;
+            }
+        }
+    }
+
+    private void SpectrumDodge()
+    {
+        Player.immune = true;
+        if (Player.longInvince)
+        {
+            Player.immuneTime = 60;
+        }
+        else
+        {
+            Player.immuneTime = 30;
+        }
+
+        SoundEngine.PlaySound(SoundID.Item, Player.position,
+            SoundLoader.GetSoundSlot(Mod, "Sounds/Item/SpectrumDodge"));
+        for (int i = 0; i < Player.hurtCooldowns.Length; i++)
+        {
+            Player.hurtCooldowns[i] = Player.immuneTime;
+        }
+
+        if (Player.whoAmI == Main.myPlayer)
+        {
+            NetMessage.SendData(Terraria.ID.MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
         }
     }
 }

@@ -8,39 +8,11 @@ namespace AvalonTesting.Items.Accessories;
 
 public class HadesCross : ModItem
 {
-    public override void Load()
-    {
-        if (Main.netMode == NetmodeID.Server)
-        {
-            return;
-        }
-
-        Mod.AddEquipTexture(this, EquipType.Head,
-            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head");
-        Mod.AddEquipTexture(this, EquipType.Body,
-            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body");
-        Mod.AddEquipTexture(this, EquipType.Legs,
-            $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs");
-    }
-
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hades' Cross");
         Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-        if (Main.netMode == NetmodeID.Server)
-        {
-            return;
-        }
-
-        int equipSlotHead = Mod.GetEquipSlot(Name, EquipType.Head);
-        int equipSlotBody = Mod.GetEquipSlot(Name, EquipType.Body);
-        int equipSlotLegs = Mod.GetEquipSlot(Name, EquipType.Legs);
-
-        ArmorIDs.Head.Sets.DrawHead[equipSlotHead] = false;
-        ArmorIDs.Body.Sets.HidesTopSkin[equipSlotBody] = true;
-        ArmorIDs.Body.Sets.HidesArms[equipSlotBody] = true;
-        ArmorIDs.Legs.Sets.HidesBottomSkin[equipSlotLegs] = true;
     }
 
     public override void SetDefaults()
