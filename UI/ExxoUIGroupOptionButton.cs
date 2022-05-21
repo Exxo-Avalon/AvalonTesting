@@ -12,7 +12,7 @@ using Terraria.UI;
 namespace AvalonTesting.UI;
 
 public class ExxoUIGroupOptionButton<T> : ExxoUIElement
-    where T : IComparable
+    where T : struct, IComparable
 {
     private const float WhiteLerp = 0.7f;
     private readonly Asset<Texture2D> basePanelTexture;
@@ -72,7 +72,7 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement
     public LocalizedText Description { get; }
     public T? OptionValue { get; }
 
-    public bool IsSelected => EqualityComparer<T>.Default.Equals(currentGroupOption, OptionValue);
+    public bool IsSelected => EqualityComparer<T?>.Default.Equals(currentGroupOption, OptionValue);
     public float FadeFromBlack { get; set; } = 1f;
     public bool ShowHighlightWhenSelected { get; set; } = true;
 
@@ -88,7 +88,7 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement
         base.MouseDown(evt);
     }
 
-    public void SetCurrentOption(T option) => currentGroupOption = option;
+    public void SetCurrentOption(T? option) => currentGroupOption = option;
 
     protected override void DrawSelf(SpriteBatch spriteBatch)
     {

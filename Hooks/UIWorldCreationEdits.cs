@@ -132,13 +132,16 @@ public class UIWorldCreationEdits : ModHook
         AddCustomGenMenu(self, customOptionsPrimaryList, tagGroup,
             val =>
             {
-                currentEvilOption = val;
+                currentEvilOption = val ?? MenuEvilOption.None;
                 typeof(On.Terraria.GameContent.UI.States.UIWorldCreation).GetMethod(
                         "UpdatePreviewPlate",
                         BindingFlags.NonPublic | BindingFlags.Instance)!
                     .Invoke(self, null);
             }, MenuEvilOption.None, 2,
-            new[] { MenuEvilOption.None, MenuEvilOption.Corruption, MenuEvilOption.Crimson, MenuEvilOption.Contagion },
+            new MenuEvilOption?[]
+            {
+                MenuEvilOption.None, MenuEvilOption.Corruption, MenuEvilOption.Crimson, MenuEvilOption.Contagion,
+            },
             new[]
             {
                 Lang.misc[103], Lang.misc[101], Lang.misc[102],
@@ -402,12 +405,12 @@ public class UIWorldCreationEdits : ModHook
     }
 
     private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
-                                            string tagGroup, Action<T> actionOnClick, T defaultSelection,
+                                            string tagGroup, Action<T?> actionOnClick, T? defaultSelection,
                                             int amountPerInnerList, IReadOnlyList<T?> optionValues,
                                             IReadOnlyList<LocalizedText> titles,
                                             IReadOnlyList<LocalizedText> descriptions, IReadOnlyList<Color> textColors,
                                             IReadOnlyList<Asset<Texture2D>> textures, bool addHorizontalRule = true)
-        where T : IComparable?
+        where T : struct, IComparable
     {
         var listGrid = new ExxoUIListGrid(amountPerInnerList);
         listGrid.Width.Set(0, 1);
