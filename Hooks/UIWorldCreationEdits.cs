@@ -191,11 +191,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, leftOreDrawer, "copperOres",
             val => ModContent.GetInstance<ExxoWorldGen>().CopperOre = val,
-            ExxoWorldGen.CopperVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.CopperVariant?[]
             {
-                ExxoWorldGen.CopperVariant.Random, ExxoWorldGen.CopperVariant.Copper,
-                ExxoWorldGen.CopperVariant.Tin, ExxoWorldGen.CopperVariant.Bronze,
+                null, ExxoWorldGen.CopperVariant.Copper, ExxoWorldGen.CopperVariant.Tin,
+                ExxoWorldGen.CopperVariant.Bronze,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -212,11 +212,10 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, leftOreDrawer, "ironOres",
             val => ModContent.GetInstance<ExxoWorldGen>().IronOre = val,
-            ExxoWorldGen.IronVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.IronVariant?[]
             {
-                ExxoWorldGen.IronVariant.Random, ExxoWorldGen.IronVariant.Iron, ExxoWorldGen.IronVariant.Lead,
-                ExxoWorldGen.IronVariant.Nickel,
+                null, ExxoWorldGen.IronVariant.Iron, ExxoWorldGen.IronVariant.Lead, ExxoWorldGen.IronVariant.Nickel,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -233,11 +232,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, leftOreDrawer, "silverOres",
             val => ModContent.GetInstance<ExxoWorldGen>().SilverOre = val,
-            ExxoWorldGen.SilverVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.SilverVariant?[]
             {
-                ExxoWorldGen.SilverVariant.Random, ExxoWorldGen.SilverVariant.Silver,
-                ExxoWorldGen.SilverVariant.Tungsten, ExxoWorldGen.SilverVariant.Zinc,
+                null, ExxoWorldGen.SilverVariant.Silver, ExxoWorldGen.SilverVariant.Tungsten,
+                ExxoWorldGen.SilverVariant.Zinc,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -254,10 +253,10 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, leftOreDrawer, "goldOres",
             val => ModContent.GetInstance<ExxoWorldGen>().GoldOre = val,
-            ExxoWorldGen.GoldVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.GoldVariant?[]
             {
-                ExxoWorldGen.GoldVariant.Random, ExxoWorldGen.GoldVariant.Gold, ExxoWorldGen.GoldVariant.Platinum,
+                null, ExxoWorldGen.GoldVariant.Gold, ExxoWorldGen.GoldVariant.Platinum,
                 ExxoWorldGen.GoldVariant.Bismuth,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -272,11 +271,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, leftOreDrawer, "rhodiumOres",
             val => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = val,
-            ExxoWorldGen.RhodiumVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.RhodiumVariant?[]
             {
-                ExxoWorldGen.RhodiumVariant.Random, ExxoWorldGen.RhodiumVariant.Rhodium,
-                ExxoWorldGen.RhodiumVariant.Iridium, ExxoWorldGen.RhodiumVariant.Osmium,
+                null, ExxoWorldGen.RhodiumVariant.Rhodium, ExxoWorldGen.RhodiumVariant.Iridium,
+                ExxoWorldGen.RhodiumVariant.Osmium,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -297,11 +296,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, rightOreDrawer, "cobaltOres",
             val => ModContent.GetInstance<ExxoWorldGen>().CobaltOre = val,
-            ExxoWorldGen.CobaltVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.CobaltVariant?[]
             {
-                ExxoWorldGen.CobaltVariant.Random, ExxoWorldGen.CobaltVariant.Cobalt,
-                ExxoWorldGen.CobaltVariant.Palladium, ExxoWorldGen.CobaltVariant.Duratanium,
+                null, ExxoWorldGen.CobaltVariant.Cobalt, ExxoWorldGen.CobaltVariant.Palladium,
+                ExxoWorldGen.CobaltVariant.Duratanium,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -318,11 +317,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, rightOreDrawer, "mythrilOres",
             val => ModContent.GetInstance<ExxoWorldGen>().MythrilOre = val,
-            ExxoWorldGen.MythrilVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.MythrilVariant?[]
             {
-                ExxoWorldGen.MythrilVariant.Random, ExxoWorldGen.MythrilVariant.Mythril,
-                ExxoWorldGen.MythrilVariant.Orichalcum, ExxoWorldGen.MythrilVariant.Naquadah,
+                null, ExxoWorldGen.MythrilVariant.Mythril, ExxoWorldGen.MythrilVariant.Orichalcum,
+                ExxoWorldGen.MythrilVariant.Naquadah,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -339,11 +338,11 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, rightOreDrawer, "adamantiteOres",
             val => ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre = val,
-            ExxoWorldGen.AdamantiteVariant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.AdamantiteVariant?[]
             {
-                ExxoWorldGen.AdamantiteVariant.Random, ExxoWorldGen.AdamantiteVariant.Adamantite,
-                ExxoWorldGen.AdamantiteVariant.Titanium, ExxoWorldGen.AdamantiteVariant.Troxinium,
+                null, ExxoWorldGen.AdamantiteVariant.Adamantite, ExxoWorldGen.AdamantiteVariant.Titanium,
+                ExxoWorldGen.AdamantiteVariant.Troxinium,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -357,11 +356,10 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, rightOreDrawer, "shmTier1Ores",
             val => ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore = val,
-            ExxoWorldGen.SHMTier1Variant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.SHMTier1Variant?[]
             {
-                ExxoWorldGen.SHMTier1Variant.Random, ExxoWorldGen.SHMTier1Variant.Pyroscoric,
-                ExxoWorldGen.SHMTier1Variant.Tritanorium,
+                null, ExxoWorldGen.SHMTier1Variant.Pyroscoric, ExxoWorldGen.SHMTier1Variant.Tritanorium,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -375,11 +373,10 @@ public class UIWorldCreationEdits : ModHook
 
         AddCustomGenMenu(self, rightOreDrawer, "shmTier2Ores",
             val => ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore = val,
-            ExxoWorldGen.SHMTier2Variant.Random, 4,
-            new[]
+            null, 4,
+            new ExxoWorldGen.SHMTier2Variant?[]
             {
-                ExxoWorldGen.SHMTier2Variant.Random, ExxoWorldGen.SHMTier2Variant.Unvolandite,
-                ExxoWorldGen.SHMTier2Variant.Vorazylcum,
+                null, ExxoWorldGen.SHMTier2Variant.Unvolandite, ExxoWorldGen.SHMTier2Variant.Vorazylcum,
             },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
             new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
@@ -406,10 +403,11 @@ public class UIWorldCreationEdits : ModHook
 
     private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
                                             string tagGroup, Action<T> actionOnClick, T defaultSelection,
-                                            int amountPerInnerList, T[] optionValues, LocalizedText[] titles,
-                                            LocalizedText[] descriptions, Color[] textColors,
-                                            Asset<Texture2D>[] textures, bool addHorizontalRule = true)
-        where T : IComparable
+                                            int amountPerInnerList, IReadOnlyList<T?> optionValues,
+                                            IReadOnlyList<LocalizedText> titles,
+                                            IReadOnlyList<LocalizedText> descriptions, IReadOnlyList<Color> textColors,
+                                            IReadOnlyList<Asset<Texture2D>> textures, bool addHorizontalRule = true)
+        where T : IComparable?
     {
         var listGrid = new ExxoUIListGrid(amountPerInnerList);
         listGrid.Width.Set(0, 1);
@@ -418,7 +416,7 @@ public class UIWorldCreationEdits : ModHook
         listGrid.ListPadding = 4;
         container.Append(listGrid);
 
-        for (int i = 0; i < optionValues.Length; i++)
+        for (int i = 0; i < optionValues.Count; i++)
         {
             ExxoUIGroupOptionButton<T> groupOptionButton = new(optionValues[i], titles[i],
                 descriptions[i], textColors[i], textures[i], 1f, 1f, 16f);

@@ -1,41 +1,32 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-class ResistantTree : ModTree
+public class ResistantTree : ModTree
 {
-    private Mod mod
+    public override TreePaintingSettings TreeShaderSettings => new();
+    public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<Impgrass>() };
+
+    public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY,
+                                                ref int topTextureFrameWidth,
+                                                ref int topTextureFrameHeight)
     {
-        get
-        {
-            return ModLoader.GetMod("AvalonTesting");
-        }
-    }
-    public override int DropWood()
-    {
-        return ModContent.ItemType<Items.Placeable.Tile.ResistantWood>();
     }
 
-    public override Texture2D GetTexture()
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/ResistantTree").Value;
-    }
+    public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTree");
 
-    public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/ResistantTreeBranches").Value;
-    }
-    public override int CreateDust()
-    {
-        return 54;
-    }
-    public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
-    {
-        frameWidth = 80;
-        frameHeight = 80;
-        yOffset += 2;
-        //xOffsetLeft += 16;
-        return mod.Assets.Request<Texture2D>("Tiles/ResistantTreeTop").Value;
-    }
+    public override Asset<Texture2D> GetBranchTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeBranches");
+
+    public override Asset<Texture2D> GetTopTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeTop");
+
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.ResistantWood>();
+
+    public override int CreateDust() => DustID.Wraith;
 }

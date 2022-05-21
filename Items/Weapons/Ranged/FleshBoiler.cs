@@ -1,7 +1,7 @@
 ﻿using AvalonTesting.Items.Ammo;
+using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,10 +9,8 @@ namespace AvalonTesting.Items.Weapons.Ranged;
 
 public class FleshBoiler : ModItem
 {
-    public override void SetStaticDefaults()
-    {
-        Tooltip.SetDefault("Uses canisters for ammo");
-    }
+    public override void SetStaticDefaults() => Tooltip.SetDefault("Uses canisters for ammo");
+
     public override void SetDefaults()
     {
         Item.damage = 55;
@@ -28,20 +26,21 @@ public class FleshBoiler : ModItem
         Item.rare = ItemRarityID.Red;
         Item.UseSound = SoundID.Item34;
         Item.autoReuse = true;
-        Item.shoot = ModContent.ProjectileType<Projectiles.FleshFire>();
+        Item.shoot = ModContent.ProjectileType<FleshFire>();
         Item.shootSpeed = 10f;
         Item.useAmmo = ModContent.ItemType<Canister>();
     }
+
     // Vanilla Flamethrower uses the commented out code below to prevent shooting while underwater, but this weapon can shoot underwater, so we don't use this code. The projectile also is specifically programmed to survive underwater.
     /*public override bool CanUseItem(Player player)
     {
         return !player.wet;
     }*/
-    public override bool CanConsumeAmmo(Player player)
-    {
-        return player.itemAnimation >= player.itemAnimationMax - 4;
-    }
-    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    public override bool CanConsumeAmmo(Item ammo, Player player) =>
+        player.itemAnimation >= player.itemAnimationMax - 4;
+
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
+                                          ref int damage, ref float knockback)
     {
         Vector2 muzzleOffset = Vector2.Normalize(velocity) * 54f;
         if (Collision.CanHit(position, 6, 6, position + muzzleOffset, 6, 6))
@@ -49,8 +48,6 @@ public class FleshBoiler : ModItem
             position += muzzleOffset;
         }
     }
-    public override Vector2? HoldoutOffset()
-    {
-        return new Vector2(-7, -3);
-    }
+
+    public override Vector2? HoldoutOffset() => new Vector2(-7, -3);
 }

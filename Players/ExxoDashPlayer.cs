@@ -12,19 +12,20 @@ namespace AvalonTesting.Players;
 /// </summary>
 public class ExxoDashPlayer : ModPlayer
 {
+    public readonly Dictionary<int, DashData> ActiveDashes = new();
+
+    private static readonly Dictionary<int, DashInfo> RegisteredDashes = new();
+    private readonly Queue<ModItem> dashCheckQueue = new();
+
     public enum DashDirection
     {
         Down,
         Up,
         Right,
-        Left
+        Left,
     }
 
-    private static readonly Dictionary<int, DashInfo> RegisteredDashes = new();
-    public readonly Dictionary<int, DashData> ActiveDashes = new();
-    private readonly Queue<ModItem> dashCheckQueue = new();
-
-    public override bool CloneNewInstances => false;
+    protected override bool CloneNewInstances => false;
 
     /// <summary>
     ///     Register a new dash item and provide metadata for the dash configuration
@@ -39,18 +40,6 @@ public class ExxoDashPlayer : ModPlayer
         }
 
         RegisteredDashes.Add(sourceItemId, dashInfo);
-    }
-
-    /// <summary>
-    ///     Queues an item to be checked for dashing the next update
-    /// </summary>
-    /// <param name="sourceItem">The current ModItem instance</param>
-    public void QueueDashEffect(ModItem sourceItem)
-    {
-        if (Player.whoAmI == Main.myPlayer && !ActiveDashes.ContainsKey(sourceItem.Type))
-        {
-            dashCheckQueue.Enqueue(sourceItem);
-        }
     }
 
     public override void ResetEffects()
@@ -166,7 +155,7 @@ public class ExxoDashPlayer : ModPlayer
                         {
                             < 0f => -1,
                             > 0f => 1,
-                            _ => Player.direction
+                            _ => Player.direction,
                         };
 
                         if (Player.whoAmI == Main.myPlayer)
@@ -200,12 +189,22 @@ public class ExxoDashPlayer : ModPlayer
         }
     }
 
-    private bool CanUseDash()
+    /// <summary>
+    ///     Queues an item to be checked for dashing the next update
+    /// </summary>
+    /// <param name="sourceItem">The current ModItem instance</param>
+    public void QueueDashEffect(ModItem sourceItem)
     {
-        return Player.dashType == 0 // player doesn't have Tabi or EoCShield equipped (give priority to those dashes)
-               && !Player.setSolar // player isn't wearing solar armor
-               && !Player.mount.Active; // player isn't mounted, since dashes on a mount look weird
+        if (Player.whoAmI == Main.myPlayer && !ActiveDashes.ContainsKey(sourceItem.Type))
+        {
+            dashCheckQueue.Enqueue(sourceItem);
+        }
     }
+
+    private bool CanUseDash() =>
+        Player.dashType == 0 // player doesn't have Tabi or EoCShield equipped (give priority to those dashes)
+        && !Player.setSolar // player isn't wearing solar armor
+        && !Player.mount.Active; // player isn't mounted, since dashes on a mount look weird
 
     private int CheckHitCollision()
     {
@@ -232,23 +231,6 @@ public class ExxoDashPlayer : ModPlayer
         return -1;
     }
 
-    public class DashData
-    {
-        public readonly int Damage;
-        public readonly DashDirection Direction;
-        public readonly float Knockback;
-        public int Delay;
-        public bool HasHitEnemy;
-        public int Timer;
-
-        public DashData(DashDirection direction, int damage, float knockback)
-        {
-            Direction = direction;
-            Damage = damage;
-            Knockback = knockback;
-        }
-    }
-
     /// <summary>
     ///     Outlines the metadata that is stored for a specific item's dash
     /// </summary>
@@ -268,5 +250,22 @@ public class ExxoDashPlayer : ModPlayer
         public readonly int Duration;
         public readonly float Velocity;
         public readonly bool IsValid;
+    }
+
+    public class DashData
+    {
+        public readonly int Damage;
+        public readonly DashDirection Direction;
+        public readonly float Knockback;
+        public int Delay;
+        public bool HasHitEnemy;
+        public int Timer;
+
+        public DashData(DashDirection direction, int damage, float knockback)
+        {
+            Direction = direction;
+            Damage = damage;
+            Knockback = knockback;
+        }
     }
 }

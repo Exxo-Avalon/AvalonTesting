@@ -26,8 +26,6 @@ public class Snotsand : ModTile
         TileID.Sets.Falling[Type] = true;
         TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
         ItemDrop = ModContent.ItemType<SnotsandBlock>();
-        SetModCactus(new IckyCactus());
-        SetModPalmTree(new ContagionPalmTree());
         DustType = DustID.ScourgeOfTheCorruptor;
     }
     //public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
@@ -89,19 +87,7 @@ public class Snotsand : ModTile
     //    }
     //    return true;
     //}
-    public override bool HasWalkDust()
-    {
-        return Main.rand.Next(3) == 0;
-    }
+    public override bool HasWalkDust() => Main.rand.Next(3) == 0;
 
-    public override void NumDust(int i, int j, bool fail, ref int num)
-    {
-        num = fail ? 1 : 3;
-    }
-
-    public override int SaplingGrowthType(ref int style)
-    {
-        style = 0;
-        return ModContent.TileType<ContagionPalmSapling>();
-    }
+    public override void NumDust(int i, int j, bool fail, ref int num) => num = fail ? 1 : 3;
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -17,9 +18,9 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement
     private readonly Asset<Texture2D> basePanelTexture;
     private readonly Asset<Texture2D> hoveredBorderTexture;
     private readonly Asset<Texture2D> selectedBorderTexture;
-    private T currentGroupOption;
+    private T? currentGroupOption;
 
-    public ExxoUIGroupOptionButton(T option, LocalizedText title, LocalizedText description, Color textColor,
+    public ExxoUIGroupOptionButton(T? option, LocalizedText title, LocalizedText description, Color textColor,
                                    Asset<Texture2D>? iconTexture, float textSize = 1f, float titleAlignmentX = 0.5f,
                                    float titleWidthReduction = 10f)
     {
@@ -69,9 +70,9 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement
 
     public override bool IsDynamicallySized => false;
     public LocalizedText Description { get; }
-    public T OptionValue { get; }
+    public T? OptionValue { get; }
 
-    public bool IsSelected => currentGroupOption.Equals(OptionValue);
+    public bool IsSelected => EqualityComparer<T>.Default.Equals(currentGroupOption, OptionValue);
     public float FadeFromBlack { get; set; } = 1f;
     public bool ShowHighlightWhenSelected { get; set; } = true;
 

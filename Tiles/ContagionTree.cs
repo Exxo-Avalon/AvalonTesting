@@ -1,42 +1,39 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using AvalonTesting.Dusts;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-class ContagionTree : ModTree
+public class ContagionTree : ModTree
 {
-    private Mod mod
+    public override TreePaintingSettings TreeShaderSettings => new();
+
+    public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<Ickgrass>() };
+
+    public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY,
+                                                ref int topTextureFrameWidth,
+                                                ref int topTextureFrameHeight)
     {
-        get
-        {
-            return ModLoader.GetMod("AvalonTesting");
-        }
     }
 
-    public override int DropWood()
-    {
-        return ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
-    }
+    public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionTree");
 
-    public override Texture2D GetTexture()
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/ContagionTree").Value;
-    }
+    public override Asset<Texture2D> GetTopTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionTreeTop");
 
-    public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
+    public override Asset<Texture2D> GetBranchTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionTreeBranches");
+
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
+
+    public override int CreateDust() => ModContent.DustType<CoughwoodDust>();
+
+    public override int SaplingGrowthType(ref int style)
     {
-        return mod.Assets.Request<Texture2D>("Tiles/ContagionTreeBranches").Value;
-    }
-    public override int CreateDust()
-    {
-        return ModContent.DustType<Dusts.CoughwoodDust>();
-    }
-    public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
-    {
-        frameWidth = 80;
-        frameHeight = 80;
-        yOffset += 2;
-        //xOffsetLeft += 16;
-        return mod.Assets.Request<Texture2D>("Tiles/ContagionTreeTop").Value;
+        style = 0;
+        return ModContent.TileType<ContagionSapling>();
     }
 }

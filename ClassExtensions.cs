@@ -53,8 +53,20 @@ public static class ClassExtensions
     public static Rectangle GetDims(this ModTexturedType texturedType) =>
         Main.netMode == NetmodeID.Server ? Rectangle.Empty : texturedType.GetTexture().Frame();
 
+    public static Rectangle GetDims(this ModItem modItem) =>
+        Main.netMode == NetmodeID.Server ? Rectangle.Empty : modItem.GetTexture().Frame();
+
+    public static Rectangle GetDims(this ModProjectile modProjectile) =>
+        Main.netMode == NetmodeID.Server ? Rectangle.Empty : modProjectile.GetTexture().Frame();
+
     public static Asset<Texture2D> GetTexture(this ModTexturedType texturedType) =>
         ModContent.Request<Texture2D>(texturedType.Texture);
+
+    public static Asset<Texture2D> GetTexture(this ModItem modItem) =>
+        ModContent.Request<Texture2D>(modItem.Texture);
+
+    public static Asset<Texture2D> GetTexture(this ModProjectile modProjectile) =>
+        ModContent.Request<Texture2D>(modProjectile.Texture);
 
     /// <summary>
     ///     Checks if the current player has an item in their armor/accessory slots.
@@ -210,6 +222,12 @@ public static class ClassExtensions
         Projectile.NewProjectile(
             p.GetSource_Accessory(new Item(ModContent.ItemType<VampireTeeth>())),
             position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
+    }
+
+    public static T GetRandomValue<T>(this T[] array)
+    {
+        var random = new Random();
+        return array[random.Next(array.Length)];
     }
 
     private static Action<Player, int, int, int> CacheOpenChestAction()

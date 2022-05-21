@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Weapons.Ranged;
 
-class Freezethrower : ModItem
+internal class Freezethrower : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -33,12 +33,9 @@ class Freezethrower : ModItem
         Item.useAnimation = 30;
         Item.height = dims.Height;
     }
-    public override Vector2? HoldoutOffset()
-    {
-        return new Vector2(-10, 0);
-    }
-    public override bool CanConsumeAmmo(Player player)
-    {
-        return player.itemAnimation >= player.HeldItem.useAnimation - 3;
-    }
+
+    public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+    public override bool CanConsumeAmmo(Item ammo, Player player) =>
+        player.itemAnimation >= player.HeldItem.useAnimation - 3;
 }

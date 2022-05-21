@@ -1,41 +1,36 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using AvalonTesting.Dusts;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-class ContagionPalmTree : ModPalmTree
+public class ContagionPalmTree : ModPalmTree
 {
-    private Mod mod
-    {
-        get
-        {
-            return ModLoader.GetMod("AvalonTesting");
-        }
-    }
-    public override int DropWood()
-    {
-        return ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
-    }
+    public override TreePaintingSettings TreeShaderSettings => new();
 
-    public override Texture2D GetTexture()
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTree").Value;
-    }
+    public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<Snotsand>() };
 
-    public override int CreateDust()
+    public override Asset<Texture2D> GetOasisTopTextures() => Asset<Texture2D>.Empty;
+
+    public override Asset<Texture2D> GetOasisBranchTextures() => Asset<Texture2D>.Empty;
+
+    public override Asset<Texture2D> GetBranchTextures() => Asset<Texture2D>.Empty;
+
+    public override Asset<Texture2D> GetTexture() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTree");
+
+    public override Asset<Texture2D> GetTopTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTreeTop");
+
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
+
+    public override int CreateDust() => ModContent.DustType<CoughwoodDust>();
+
+    public override int SaplingGrowthType(ref int style)
     {
-        return ModContent.DustType<Dusts.CoughwoodDust>();
+        style = 0;
+        return ModContent.TileType<ContagionPalmSapling>();
     }
-    public override Texture2D GetTopTextures()
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTreeTop").Value;
-    }
-    //public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
-    //{
-    //    frameWidth = 80;
-    //    frameHeight = 80;
-    //    yOffset += 2;
-    //    //xOffsetLeft += 16;
-    //    return mod.GetTexture("Tiles/ContagionPalmTreeTop");
-    //}
 }

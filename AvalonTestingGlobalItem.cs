@@ -428,7 +428,8 @@ public class AvalonTestingGlobalItem : GlobalItem
         return base.CanEquipAccessory(item, player, slot, modded);
     }
 
-    public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref int damage,
+    public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed,
+                                  ref StatModifier damage,
                                   ref float knockback)
     {
         if (ammo.ammo == AmmoID.Arrow && speed < 20f && player.HasBuff<AdvArchery>())
@@ -443,7 +444,6 @@ public class AvalonTestingGlobalItem : GlobalItem
     public override void HoldItem(Item item, Player player)
     {
         #region wire disable in sky fortress
-
         var tempWireItem = new Item();
         tempWireItem.netDefaults(item.netID);
         tempWireItem = tempWireItem.CloneWithModdedDataFrom(item);
@@ -467,11 +467,9 @@ public class AvalonTestingGlobalItem : GlobalItem
             item.stack = tempWireItem.stack;
             item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
         }
-
         #endregion wire disable in sky fortress
 
         #region barbaric prefix logic
-
         var tempItem = new Item();
         tempItem.netDefaults(item.netID);
         tempItem = tempItem.CloneWithModdedDataFrom(item);
@@ -527,11 +525,9 @@ public class AvalonTestingGlobalItem : GlobalItem
 
         item.knockBack = tempItem.knockBack * (1 + kbDiff);
         item.knockBack *= player.Avalon().bonusKB;
-
         #endregion barbaric prefix logic
 
         #region herb seed block swap
-
         if (Data.Sets.Item.HerbSeeds[item.type])
         {
             Vector2 mousePosition = Main.MouseWorld;
@@ -575,7 +571,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.stack--;
             }
         }
-
         #endregion herb seed block swap
     }
 

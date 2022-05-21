@@ -7,12 +7,9 @@ public class ExxoSummonPlayer : ModPlayer
 {
     public LinkedList<int> DaggerSummons { get; } = new();
     public LinkedList<int> StingerProbes { get; } = new();
-    public override bool CloneNewInstances => false;
+    protected override bool CloneNewInstances => false;
 
-    public LinkedListNode<int> HandleDaggerSummon()
-    {
-        return DaggerSummons.AddLast(DaggerSummons.Count);
-    }
+    public LinkedListNode<int> HandleDaggerSummon() => DaggerSummons.AddLast(DaggerSummons.Count);
 
     public void RemoveDaggerSummon(LinkedListNode<int> linkedListNode)
     {
@@ -42,10 +39,7 @@ public class ExxoSummonPlayer : ModPlayer
         return DaggerSummons.Find(index);
     }
 
-    public LinkedListNode<int> HandleStingerProbe()
-    {
-        return StingerProbes.AddLast(StingerProbes.Count);
-    }
+    public LinkedListNode<int> HandleStingerProbe() => StingerProbes.AddLast(StingerProbes.Count);
 
     public void RemoveStingerProbe(LinkedListNode<int> linkedListNode)
     {

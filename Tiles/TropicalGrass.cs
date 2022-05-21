@@ -11,7 +11,6 @@ public class TropicalGrass : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(56, 215, 29));
-        SetModTree(new TropicalTree());
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
@@ -34,11 +33,5 @@ public class TropicalGrass : ModTile
             Main.tile[i, j].TileType = (ushort)ModContent.TileType<TropicalMud>();
             WorldGen.SquareTileFrame(i, j);
         }
-    }
-
-    public override int SaplingGrowthType(ref int style)
-    {
-        style = 0;
-        return ModContent.TileType<TropicalSapling>();
     }
 }

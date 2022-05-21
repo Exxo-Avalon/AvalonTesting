@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AvalonTesting.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Ammo;
 
-class LimeGreenSolution : ModItem
+internal class LimeGreenSolution : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -20,13 +21,12 @@ class LimeGreenSolution : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.consumable = true;
-        Item.shoot = ModContent.ProjectileType<Projectiles.LimeSolution>() - ProjectileID.PureSpray;
-        Item.value = Item.buyPrice(0, 0, 25, 0);
+        Item.shoot = ModContent.ProjectileType<LimeSolution>() - ProjectileID.PureSpray;
+        Item.value = Item.buyPrice(0, 0, 25);
         Item.maxStack = 2000;
         Item.height = dims.Height;
     }
-    public override bool CanConsumeAmmo(Player player)
-    {
-        return player.itemAnimation >= player.HeldItem.useAnimation - 3;
-    }
+
+    public override bool CanConsumeAmmo(Item ammo, Player player) =>
+        player.itemAnimation >= player.HeldItem.useAnimation - 3;
 }

@@ -5,11 +5,13 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Weapons.Melee;
 
-class ExcaliburNet : ModItem
+internal class ExcaliburNet : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Exalibur Net");
+        ItemID.Sets.CatchingTool[Item.type] = true;
+        ItemID.Sets.LavaproofCatchingTool[Item.type] = true;
     }
 
     public override void SetDefaults()
@@ -24,15 +26,19 @@ class ExcaliburNet : ModItem
         Item.useTime = 23;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
-        Item.value = Item.buyPrice(0, 3, 0, 0);
+        Item.value = Item.buyPrice(0, 3);
         Item.useAnimation = 23;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<GoldSwordNet>()).AddIngredient(ItemID.HallowedBar, 10).AddTile(TileID.Anvils).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<PlatinumSwordNet>()).AddIngredient(ItemID.HallowedBar, 10).AddTile(TileID.Anvils).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<BismuthSwordNet>()).AddIngredient(ItemID.HallowedBar, 10).AddTile(TileID.Anvils).Register();
+        CreateRecipe().AddIngredient(ModContent.ItemType<GoldSwordNet>()).AddIngredient(ItemID.HallowedBar, 10)
+            .AddTile(TileID.Anvils).Register();
+        CreateRecipe().AddIngredient(ModContent.ItemType<PlatinumSwordNet>()).AddIngredient(ItemID.HallowedBar, 10)
+            .AddTile(TileID.Anvils).Register();
+        CreateRecipe().AddIngredient(ModContent.ItemType<BismuthSwordNet>()).AddIngredient(ItemID.HallowedBar, 10)
+            .AddTile(TileID.Anvils).Register();
     }
 }

@@ -15,114 +15,104 @@ public class ExxoWorldGen : ModSystem
 {
     public enum AdamantiteVariant
     {
-        Adamantite,
-        Titanium,
-        Troxinium,
-        Random
+        Adamantite = 0,
+        Titanium = 1,
+        Troxinium = 2,
     }
 
     public enum CobaltVariant
     {
-        Cobalt,
-        Palladium,
-        Duratanium,
-        Random
+        Cobalt = 0,
+        Palladium = 1,
+        Duratanium = 2,
     }
 
     public enum CopperVariant
     {
-        Copper,
-        Tin,
-        Bronze,
-        Random
+        Copper = 0,
+        Tin = 1,
+        Bronze = 2,
     }
 
     public enum EvilBiome
     {
-        Corruption,
-        Crimson,
-        Contagion
+        Corruption = 0,
+        Crimson = 1,
+        Contagion = 2,
     }
 
     public enum GoldVariant
     {
-        Gold,
-        Platinum,
-        Bismuth,
-        Random
+        Gold = 0,
+        Platinum = 1,
+        Bismuth = 2,
     }
+
 
     public enum IronVariant
     {
-        Iron,
-        Lead,
-        Nickel,
-        Random
+        Iron = 0,
+        Lead = 1,
+        Nickel = 2,
     }
 
     public enum JungleVariant
     {
-        Jungle,
-        Tropics,
-        Random
+        Jungle = 0,
+        Tropics = 1,
     }
 
     public enum MythrilVariant
     {
-        Mythril,
-        Orichalcum,
-        Naquadah,
-        Random
+        Mythril = 0,
+        Orichalcum = 1,
+        Naquadah = 2,
     }
 
     public enum RhodiumVariant
     {
-        Rhodium,
-        Osmium,
-        Iridium,
-        Random
+        Rhodium = 0,
+        Osmium = 1,
+        Iridium = 2,
     }
 
     public enum SHMTier1Variant
     {
-        Tritanorium,
-        Pyroscoric,
-        Random
+        Tritanorium = 0,
+        Pyroscoric = 1,
     }
 
     public enum SHMTier2Variant
     {
-        Unvolandite,
-        Vorazylcum,
-        Random
+        Unvolandite = 0,
+        Vorazylcum = 1,
     }
 
     public enum SilverVariant
     {
-        Silver,
-        Tungsten,
-        Zinc,
-        Random
+        Silver = 0,
+        Tungsten = 1,
+        Zinc = 2,
     }
 
-    public AdamantiteVariant AdamantiteOre = AdamantiteVariant.Random;
-    public CobaltVariant CobaltOre = CobaltVariant.Random;
+    public AdamantiteVariant? AdamantiteOre { get; set; }
+    public CobaltVariant? CobaltOre { get; set; }
 
-    public CopperVariant CopperOre = CopperVariant.Random;
+    public CopperVariant? CopperOre { get; set; }
 
-    public int DungeonLocation;
-    public int DungeonSide;
-    public GoldVariant GoldOre = GoldVariant.Random;
-    public int HallowedAltarCount;
-    public IronVariant IronOre = IronVariant.Random;
-    public JungleVariant JungleMenuSelection = JungleVariant.Random;
-    public int JungleX;
-    public MythrilVariant MythrilOre = MythrilVariant.Random;
-    public RhodiumVariant RhodiumOre = RhodiumVariant.Random;
-    public SHMTier1Variant SHMTier1Ore = SHMTier1Variant.Random;
-    public SHMTier2Variant SHMTier2Ore = SHMTier2Variant.Random;
-    public SilverVariant SilverOre = SilverVariant.Random;
-    public EvilBiome WorldEvil;
+    public int DungeonLocation { get; set; }
+    public int DungeonSide { get; set; }
+    public GoldVariant? GoldOre { get; set; }
+    public int HallowedAltarCount { get; set; }
+    public IronVariant? IronOre { get; set; }
+    public JungleVariant? JungleMenuSelection { get; set; }
+    public int JungleX { get; set; }
+    public MythrilVariant? MythrilOre { get; set; }
+    public RhodiumVariant? RhodiumOre { get; set; }
+    public SHMTier1Variant? SHMTier1Ore { get; set; }
+    public SHMTier2Variant? SHMTier2Ore { get; set; }
+    public SilverVariant? SilverOre { get; set; }
+    public EvilBiome WorldEvil { get; set; }
 
     public override void PreWorldGen()
     {
@@ -199,11 +189,9 @@ public class ExxoWorldGen : ModSystem
         }
     }
 
-    public override void PostWorldGen()
-    {
+    public override void PostWorldGen() =>
         JungleX =
-            (int)typeof(WorldGen).GetField("JungleX", BindingFlags.Static | BindingFlags.NonPublic)!.GetValue(null)!;
-    }
+            (int)typeof(WorldGen).GetField("JungleX", BindingFlags.NonPublic | BindingFlags.Static)!.GetValue(null)!;
 
     public override void SaveWorldData(TagCompound tag)
     {
@@ -211,16 +199,16 @@ public class ExxoWorldGen : ModSystem
         tag["DungeonLocation"] = DungeonLocation;
         tag["HallowedAltarCount"] = HallowedAltarCount;
         tag["WorldEvil"] = (byte)WorldEvil;
-        tag["CopperOre"] = (byte)CopperOre;
-        tag["IronOre"] = (byte)IronOre;
-        tag["SilverOre"] = (byte)SilverOre;
-        tag["GoldOre"] = (byte)GoldOre;
-        tag["RhodiumOre"] = (byte)RhodiumOre;
-        tag["CobaltOre"] = (byte)CobaltOre;
-        tag["MythrilOre"] = (byte)MythrilOre;
-        tag["AdamantiteOre"] = (byte)AdamantiteOre;
-        tag["SHMTier1Ore"] = (byte)SHMTier1Ore;
-        tag["SHMTier2Ore"] = (byte)SHMTier2Ore;
+        tag["CopperOre"] = (byte?)CopperOre;
+        tag["IronOre"] = (byte?)IronOre;
+        tag["SilverOre"] = (byte?)SilverOre;
+        tag["GoldOre"] = (byte?)GoldOre;
+        tag["RhodiumOre"] = (byte?)RhodiumOre;
+        tag["CobaltOre"] = (byte?)CobaltOre;
+        tag["MythrilOre"] = (byte?)MythrilOre;
+        tag["AdamantiteOre"] = (byte?)AdamantiteOre;
+        tag["SHMTier1Ore"] = (byte?)SHMTier1Ore;
+        tag["SHMTier2Ore"] = (byte?)SHMTier2Ore;
         tag["JungleX"] = JungleX;
     }
 
@@ -334,34 +322,28 @@ public class ExxoWorldGen : ModSystem
 
 public static class ExxoWorldGenExtensions
 {
-    public static int GetRhodiumVariantItemOre(this ExxoWorldGen.RhodiumVariant osmiumVariant)
-    {
-        return osmiumVariant switch
+    public static int GetRhodiumVariantItemOre(this ExxoWorldGen.RhodiumVariant? rhodiumVariant) =>
+        rhodiumVariant switch
         {
             ExxoWorldGen.RhodiumVariant.Osmium => ModContent.ItemType<OsmiumOre>(),
             ExxoWorldGen.RhodiumVariant.Rhodium => ModContent.ItemType<RhodiumOre>(),
             ExxoWorldGen.RhodiumVariant.Iridium => ModContent.ItemType<IridiumOre>(),
-            _ => -1
+            _ => -1,
         };
-    }
 
-    public static int GetSHMTier1VariantTileOre(this ExxoWorldGen.SHMTier1Variant shmTier1Variant)
-    {
-        return shmTier1Variant switch
+    public static int GetSHMTier1VariantTileOre(this ExxoWorldGen.SHMTier1Variant? shmTier1Variant) =>
+        shmTier1Variant switch
         {
             ExxoWorldGen.SHMTier1Variant.Tritanorium => ModContent.TileType<Tiles.Ores.TritanoriumOre>(),
             ExxoWorldGen.SHMTier1Variant.Pyroscoric => ModContent.TileType<Tiles.Ores.PyroscoricOre>(),
-            _ => -1
+            _ => -1,
         };
-    }
 
-    public static int GetSHMTier2VariantTileOre(this ExxoWorldGen.SHMTier2Variant shmTier2Variant)
-    {
-        return shmTier2Variant switch
+    public static int GetSHMTier2VariantTileOre(this ExxoWorldGen.SHMTier2Variant? shmTier2Variant) =>
+        shmTier2Variant switch
         {
             ExxoWorldGen.SHMTier2Variant.Unvolandite => ModContent.TileType<Tiles.Ores.UnvolanditeOre>(),
             ExxoWorldGen.SHMTier2Variant.Vorazylcum => ModContent.TileType<Tiles.Ores.VorazylcumOre>(),
-            _ => -1
+            _ => -1,
         };
-    }
 }

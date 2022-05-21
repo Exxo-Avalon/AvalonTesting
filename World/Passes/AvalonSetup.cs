@@ -1,3 +1,4 @@
+using System;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Systems;
 using AvalonTesting.Tiles.Ores;
@@ -11,16 +12,17 @@ namespace AvalonTesting.World.Passes;
 
 public class AvalonSetup : GenPass
 {
-    public AvalonSetup() : base("AvalonSetup", 10) { }
+    public AvalonSetup()
+        : base("AvalonSetup", 10)
+    {
+    }
 
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         progress.Message = "Setting up Avalonian World Gen";
 
-        if (ModContent.GetInstance<ExxoWorldGen>().CopperOre == ExxoWorldGen.CopperVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().CopperOre = (ExxoWorldGen.CopperVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().CopperOre ??=
+            Enum.GetValues<ExxoWorldGen.CopperVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().CopperOre)
         {
@@ -40,10 +42,8 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().IronOre == ExxoWorldGen.IronVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().IronOre = (ExxoWorldGen.IronVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().IronOre ??=
+            Enum.GetValues<ExxoWorldGen.IronVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().IronOre)
         {
@@ -63,10 +63,8 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().SilverOre == ExxoWorldGen.SilverVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().SilverOre = (ExxoWorldGen.SilverVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().SilverOre ??=
+            Enum.GetValues<ExxoWorldGen.SilverVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().SilverOre)
         {
@@ -86,10 +84,8 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().GoldOre == ExxoWorldGen.GoldVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().GoldOre = (ExxoWorldGen.GoldVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().GoldOre ??=
+            Enum.GetValues<ExxoWorldGen.GoldVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().GoldOre)
         {
@@ -109,15 +105,11 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = (ExxoWorldGen.RhodiumVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ??=
+            Enum.GetValues<ExxoWorldGen.RhodiumVariant>().GetRandomValue();
 
-        if (ModContent.GetInstance<ExxoWorldGen>().CobaltOre == ExxoWorldGen.CobaltVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().CobaltOre = (ExxoWorldGen.CobaltVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().CobaltOre ??=
+            Enum.GetValues<ExxoWorldGen.CobaltVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().CobaltOre)
         {
@@ -134,10 +126,8 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().MythrilOre == ExxoWorldGen.MythrilVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().MythrilOre = (ExxoWorldGen.MythrilVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().MythrilOre ??=
+            Enum.GetValues<ExxoWorldGen.MythrilVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().MythrilOre)
         {
@@ -155,11 +145,8 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre == ExxoWorldGen.AdamantiteVariant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre =
-                (ExxoWorldGen.AdamantiteVariant)WorldGen.genRand.Next(3);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre ??=
+            Enum.GetValues<ExxoWorldGen.AdamantiteVariant>().GetRandomValue();
 
         switch (ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre)
         {
@@ -177,14 +164,10 @@ public class AvalonSetup : GenPass
                 break;
         }
 
-        if (ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore == ExxoWorldGen.SHMTier1Variant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore = (ExxoWorldGen.SHMTier1Variant)WorldGen.genRand.Next(2);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore ??=
+            Enum.GetValues<ExxoWorldGen.SHMTier1Variant>().GetRandomValue();
 
-        if (ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore == ExxoWorldGen.SHMTier2Variant.Random)
-        {
-            ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore = (ExxoWorldGen.SHMTier2Variant)WorldGen.genRand.Next(2);
-        }
+        ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore ??=
+            Enum.GetValues<ExxoWorldGen.SHMTier2Variant>().GetRandomValue();
     }
 }

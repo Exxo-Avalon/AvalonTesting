@@ -10,7 +10,6 @@ public class Impgrass : ModTile
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(238, 102, 70));
-        SetModTree(new ResistantTree());
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
@@ -19,6 +18,7 @@ public class Impgrass : ModTile
         ItemDrop = ItemID.AshBlock;
         DustType = DustID.Silt;
     }
+
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
         if (fail && !effectOnly)

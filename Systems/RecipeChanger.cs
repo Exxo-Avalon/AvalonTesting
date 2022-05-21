@@ -17,7 +17,7 @@ public class RecipeChanger : ModSystem
             {
                 case ItemID.TerrasparkBoots:
                 {
-                    recipe.RemoveRecipe();
+                    recipe.DisableRecipe();
                     i--;
                     break;
                 }
@@ -31,7 +31,7 @@ public class RecipeChanger : ModSystem
                     }
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
-                        recipe.RemoveRecipe();
+                        recipe.DisableRecipe();
                         i--;
                     }
 
@@ -47,7 +47,7 @@ public class RecipeChanger : ModSystem
                     }
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
-                        recipe.RemoveRecipe();
+                        recipe.DisableRecipe();
                         i--;
                     }
 
@@ -63,7 +63,7 @@ public class RecipeChanger : ModSystem
                     }
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
-                        recipe.RemoveRecipe();
+                        recipe.DisableRecipe();
                         i--;
                     }
 

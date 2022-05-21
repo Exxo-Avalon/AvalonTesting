@@ -1,41 +1,38 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-class TropicalTree : ModTree
+public class TropicalTree : ModTree
 {
-    private Mod mod
+    public override TreePaintingSettings TreeShaderSettings => new();
+    public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<TropicalGrass>() };
+
+    public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY,
+                                                ref int topTextureFrameWidth,
+                                                ref int topTextureFrameHeight)
     {
-        get
-        {
-            return ModLoader.GetMod("AvalonTesting");
-        }
-    }
-    public override int DropWood()
-    {
-        return ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
     }
 
-    public override Texture2D GetTexture()
-    {
-        return mod.Assets.Request<Texture2D>("Tiles/TropicalTree").Value;
-    }
+    public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTree");
 
-    public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
+    public override Asset<Texture2D> GetBranchTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeBranches");
+
+    public override Asset<Texture2D> GetTopTextures() =>
+        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop");
+
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
+
+
+    public override int CreateDust() => 51;
+
+    public override int SaplingGrowthType(ref int style)
     {
-        return mod.Assets.Request<Texture2D>("Tiles/TropicalTreeBranches").Value;
-    }
-    public override int CreateDust()
-    {
-        return 51;
-    }
-    public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
-    {
-        frameWidth = 116;
-        frameHeight = 96;
-        //yOffset += 2;
-        xOffsetLeft += 18;
-        return mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop").Value;
+        style = 0;
+        return ModContent.TileType<TropicalSapling>();
     }
 }
