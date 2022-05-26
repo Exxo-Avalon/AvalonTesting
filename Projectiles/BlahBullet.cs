@@ -31,7 +31,7 @@ public class BlahBullet : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 14);
+        SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         for (int num200 = 0; num200 < 7; num200++)
         {
             Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 1.5f);

@@ -226,7 +226,7 @@ public class DragonLordHead : ModNPC
         if (Main.rand.Next(275) == 0)
         {
             NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = true;
-            SoundEngine.PlaySound(SoundID.Roar, -1, -1, 0);
+            SoundEngine.PlaySound(SoundID.Roar, NPC.position);
         }
 
         if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath)
@@ -243,7 +243,7 @@ public class DragonLordHead : ModNPC
         {
             NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = false;
             NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd = 90;
-            SoundEngine.PlaySound(SoundID.Item, -1, -1, 20);
+            SoundEngine.PlaySound(SoundID.Item20, NPC.position);
         }
 
         if (NPC.velocity.X < 0f)

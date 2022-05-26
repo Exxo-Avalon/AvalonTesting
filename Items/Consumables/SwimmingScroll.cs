@@ -1,6 +1,7 @@
 ﻿using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,7 +23,7 @@ class SwimmingScroll : ModItem
         Item.useTime = 20;
         Item.rare = ItemRarityID.Green;
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Scroll");
+        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Scroll");
         Item.useAnimation = 20;
         Item.height = dims.Height;
     }

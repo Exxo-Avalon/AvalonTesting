@@ -19,9 +19,8 @@ public class Kunzite : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Kunzite>();
-        SoundType = SoundID.Tink;
+        HitSound = SoundID.Tink;
         MinPick = 210;
-        SoundStyle = 1;
         DustType = DustID.PinkFairy;
     }
 

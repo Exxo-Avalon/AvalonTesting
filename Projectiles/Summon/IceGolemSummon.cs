@@ -89,7 +89,7 @@ public class IceGolemSummon : ModProjectile
             {
                 if (Collision.CanHit(Projectile.Center, Projectile.width, Projectile.height, Main.npc[n].Center, Main.npc[n].width, Main.npc[n].height))
                 {
-                    SoundEngine.PlaySound(2, Projectile.position, 12);
+                    SoundEngine.PlaySound(SoundID.Item12, Projectile.position);
                     int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<IceGolemBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     Main.projectile[p].velocity = Vector2.Normalize(Main.npc[n].Center - Projectile.Center) * 18f;
                 }

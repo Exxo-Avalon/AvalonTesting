@@ -19,8 +19,7 @@ public class ShroomiteOre : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1400;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ShroomiteOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 205;
         DustType = DustID.Clentaminator_Blue;
     }

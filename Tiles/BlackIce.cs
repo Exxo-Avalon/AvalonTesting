@@ -18,8 +18,7 @@ public class BlackIce : ModTile
         Main.tileShine2[Type] = true;
         ItemDrop = ModContent.ItemType<BlackIceBlock>();
         DustType = DustID.Clentaminator_Purple;
-        SoundType = SoundID.Item;
-        SoundStyle = 50;
+        HitSound = SoundID.Item50;
         TileID.Sets.Conversion.Ice[Type] = true;
         TileID.Sets.Ices[Type] = true;
         TileID.Sets.IcesSlush[Type] = true;

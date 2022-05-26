@@ -16,8 +16,7 @@ public class PyroscoricBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.PyroscoricBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.InfernoFork;
     }
 }

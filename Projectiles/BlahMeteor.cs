@@ -30,7 +30,7 @@ public class BlahMeteor : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 14);
+        SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
         Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
         Projectile.width = 22;

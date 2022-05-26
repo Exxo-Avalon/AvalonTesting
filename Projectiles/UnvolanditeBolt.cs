@@ -33,7 +33,7 @@ public class UnvolanditeBolt : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<UnvolanditeBolt>())
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+            SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 7f)
             {

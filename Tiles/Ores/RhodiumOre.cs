@@ -20,8 +20,7 @@ public class RhodiumOre : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 60;
         DustType = DustID.t_LivingWood;
     }

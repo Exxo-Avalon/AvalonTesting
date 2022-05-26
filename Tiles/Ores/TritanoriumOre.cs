@@ -20,8 +20,7 @@ public class TritanoriumOre : ModTile
         Main.tileLighted[Type] = true;
         Main.tileOreFinderPriority[Type] = 830;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TritanoriumOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.Stone;
     }

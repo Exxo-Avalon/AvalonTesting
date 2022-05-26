@@ -84,7 +84,7 @@ public class OblivionLaser : ModProjectile
 
         if (Projectile.localAI[0] == 0f)
         {
-            SoundEngine.PlaySound(SoundID.Zombie, (int)Projectile.position.X, (int)Projectile.position.Y, 104);
+            SoundEngine.PlaySound(SoundID.Zombie104, Projectile.position);
         }
         float num990 = 1f;
         Projectile.localAI[0]++;

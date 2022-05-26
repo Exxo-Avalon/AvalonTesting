@@ -254,7 +254,7 @@ public class KingSting : ModNPC
 
             if (attackTimer >= 90)
             {
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 17);
+                SoundEngine.PlaySound(SoundID.Item17, NPC.position);
                 Vector2 rotation = (player.Center - NPC.Center).SafeNormalize(-Vector2.UnitY);
                 float speed = 8f;
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, rotation * speed, ProjectileID.Stinger, 20, 1.5f, Main.myPlayer);

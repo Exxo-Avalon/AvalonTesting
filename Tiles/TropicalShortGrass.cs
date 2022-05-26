@@ -26,8 +26,7 @@ public class TropicalShortGrass : ModTile
         TileObjectData.newTile.LavaDeath = true;
         TileObjectData.addTile(Type);
         DustType = DustID.Grass;
-        SoundStyle = 1;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));

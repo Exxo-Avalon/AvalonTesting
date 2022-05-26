@@ -38,7 +38,7 @@ public class SacredLyreShockwaveNote : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<SacredLyreShockwaveNote>())
         {
-            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 10);
+            //Main.PlaySound(SoundID.Item10, Projectile.position);
             if (timer % 4 == 0)
             {
                 Vector2 c = Projectile.Center;
@@ -49,7 +49,7 @@ public class SacredLyreShockwaveNote : ModProjectile
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), c.X, c.Y, (float)(Math.Cos(rot - f) * 4f * -1.0), (float)(Math.Sin(rot - f) * 4f * -1.0), ModContent.ProjectileType<Shockwave>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
                 }
             }
-                
+
             //int p = Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<Shockwave2>(), projectile.damage / 2, projectile.knockBack, projectile.owner);
             //Main.projectile[p].Center = projectile.Center;
             //Main.projectile[p].ai[0] = projectile.Center.X;

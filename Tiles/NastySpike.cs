@@ -14,7 +14,6 @@ public class NastySpike : ModTile
         Main.tileSolid[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.NastySpike>();
         DustType = DustID.ScourgeOfTheCorruptor;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
 }

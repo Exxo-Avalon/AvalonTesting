@@ -14,8 +14,7 @@ public class PoisonSpike : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.PoisonSpike>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Grass;
     }
 }

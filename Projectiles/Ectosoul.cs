@@ -32,7 +32,7 @@ public class Ectosoul : ModProjectile
     {
         if (Projectile.localAI[0] == 0f)
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             Projectile.localAI[0] += 1f;
         }
         for (var num641 = 0; num641 < 9; num641++)

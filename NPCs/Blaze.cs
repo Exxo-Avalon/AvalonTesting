@@ -255,7 +255,8 @@ public class Blaze : ModNPC
     {
         if (NPC.life > 0)
         {
-            SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 37, 1f, -0.5f);
+
+            SoundEngine.PlaySound(SoundID.NPCHit37 with { Pitch = -0.5f }, NPC.Center);
             var rectangle = new Rectangle((int)NPC.position.X, (int)(NPC.position.Y + ((NPC.height - NPC.width) / 2)),
                 NPC.width, NPC.width);
             int num8 = 50;

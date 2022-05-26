@@ -187,7 +187,7 @@ public class DarkMotherSlime : ModNPC
     }
     public void Explode()
     {
-        SoundEngine.PlaySound(SoundID.NPCKilled, NPC.position, 14);
+        SoundEngine.PlaySound(SoundID.NPCDeath14);
 
         for (int i = 0; i < 2; i++)
         {

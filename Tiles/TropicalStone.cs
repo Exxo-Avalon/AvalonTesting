@@ -16,8 +16,7 @@ public class TropicalStone : ModTile
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<TropicalStoneBlock>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.SnowBlock;
     }
 }

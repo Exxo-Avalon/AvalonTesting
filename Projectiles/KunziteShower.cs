@@ -32,7 +32,7 @@ public class KunziteShower : ModProjectile
         if (Projectile.type == ProjectileID.GoldenShowerHostile && Projectile.localAI[0] == 0f)
         {
             Projectile.localAI[0] = 1f;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 17);
+            SoundEngine.PlaySound(SoundID.Item17, Projectile.position);
         }
         if (Projectile.type != ModContent.ProjectileType<KunziteShower>())
         {

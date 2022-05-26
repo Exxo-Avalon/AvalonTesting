@@ -19,8 +19,7 @@ public class LaziteGrass : ModTile
         Main.tileMerge[ModContent.TileType<BlastedStone>()][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BlastedStone>();
         DustType = DustID.GemSapphire;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

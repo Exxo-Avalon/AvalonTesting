@@ -91,7 +91,7 @@ public class BiomeBombs : ModTile
                 }
             }
         }
-        SoundEngine.PlaySound(2, i * 16, j * 16, 14);
+        SoundEngine.PlaySound(SoundID.Item14, new Vector2(i * 16, j * 16));
         return true;
     }
     public override void MouseOver(int i, int j)
@@ -149,9 +149,9 @@ public class BiomeBombs : ModTile
                 }
             }
         }
-        SoundEngine.PlaySound(2, i * 16, j * 16, 14);
+        SoundEngine.PlaySound(SoundID.Item14, new Vector2(i * 16, j * 16));
     }
-    
+
     public static void BCBConvert(int i, int j, int conversionType, int size = 4)
     {
         for (int k = i - size; k <= i + size; k++)

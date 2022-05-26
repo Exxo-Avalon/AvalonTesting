@@ -14,8 +14,7 @@ public class BlastedStone : ModTile
         Main.tileShine[Type] = 1150;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BlastedStone>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Wraith;
         TileID.Sets.HellSpecial[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;

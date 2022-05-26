@@ -17,8 +17,7 @@ public class GiantCrystalShard : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] {16, 16};
         TileObjectData.addTile(Type);
         AddMapEntry(new Color(85, 37, 134));
-        SoundType = SoundID.Item;
-        SoundStyle = 27;
+        HitSound = SoundID.Item27;
     }
 
     //public override void NumDust(int i, int j, bool fail, ref int num)

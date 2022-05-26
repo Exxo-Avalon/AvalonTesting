@@ -18,8 +18,7 @@ public class OrangeBrick : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileDungeon[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OrangeBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Coralstone;
     }
 }

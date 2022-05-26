@@ -14,7 +14,6 @@ public class BloodiedSpike : ModTile
         Main.tileSolid[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BloodiedSpike>();
         DustType = DustID.Palladium;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
 }

@@ -19,8 +19,7 @@ public class BismuthOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.BismuthDust>();
     }
 }

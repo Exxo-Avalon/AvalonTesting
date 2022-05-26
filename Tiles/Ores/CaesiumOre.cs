@@ -19,11 +19,10 @@ public class CaesiumOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 720;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.CaesiumOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 200;
         DustType = ModContent.DustType<CaesiumDust>();
-        
+
         TileID.Sets.HellSpecial[Type] = true;
         TileID.Sets.DoesntGetReplacedWithTileReplacement[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;
@@ -35,7 +34,7 @@ public class CaesiumOre : ModTile
     {
         return false;
     }
-    
+
     public override void NearbyEffects(int i, int j, bool closer)
     {
         if (j > Main.maxTilesY - 190 && i > Main.maxTilesX - (Main.maxTilesX / 5))

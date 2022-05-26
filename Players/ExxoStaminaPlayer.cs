@@ -78,7 +78,7 @@ public class ExxoStaminaPlayer : ModPlayer
         {
             return;
         }
-        SoundEngine.PlaySound(SoundID.Item, (int)Player.position.X, (int)Player.position.Y, 3);
+        SoundEngine.PlaySound(SoundID.Item3, Player.position);
         StatStam += potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina;
         if (StatStam > StatStamMax2)
         {

@@ -24,7 +24,7 @@ public class HellstoneSeed : ModProjectile
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y, 1);
+        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         return true;
     }
     public override void AI()

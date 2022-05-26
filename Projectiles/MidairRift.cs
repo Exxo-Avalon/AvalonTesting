@@ -219,7 +219,7 @@ public class MidairRift : ModProjectile
                     Main.dust[num893].noGravity = true;
                     Main.dust[num893].fadeIn = 3f;
                 }
-                SoundEngine.PlaySound(SoundID.Item, Projectile.position, 8);
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
             }
         }
         else if (Projectile.ai[1] == 1)
@@ -237,7 +237,7 @@ public class MidairRift : ModProjectile
     }
     //public override void Kill(int timeLeft)
     //{
-    //    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+    //    Main.PlaySound(SoundID.Item10, Projectile.position);
     //    for (int num394 = 4; num394 < 24; num394++)
     //    {
     //        float num395 = projectile.oldVelocity.X * (30f / (float)num394);

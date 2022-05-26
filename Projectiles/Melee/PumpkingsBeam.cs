@@ -58,7 +58,7 @@ public class PumpkingsBeam : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int num394 = 4; num394 < 24; num394++)
         {
             float num395 = Projectile.oldVelocity.X * (30f / (float)num394);

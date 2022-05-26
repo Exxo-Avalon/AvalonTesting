@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.ID;
 
 namespace AvalonTesting.Projectiles;
 
@@ -48,7 +49,7 @@ public class CrystalBit : ModProjectile
         Projectile.ai[0]++;
         if (Projectile.ai[0] > rn)
         {
-            SoundEngine.PlaySound(2, Projectile.position, 43);
+            SoundEngine.PlaySound(SoundID.Item43, Projectile.position);
             int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<CrystalBeam>(), 67, Projectile.knockBack, Main.myPlayer);
             Main.projectile[p].velocity = Vector2.Normalize(Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].position - Projectile.position) * 7f;
             Projectile.active = false;

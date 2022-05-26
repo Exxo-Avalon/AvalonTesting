@@ -48,7 +48,7 @@ public class BookcaseTeleporter : ModTile
     }
     public static void Trigger(int i, int j)
     {
-        SoundEngine.PlaySound(28, i * 16, j * 16, 0);
+        SoundEngine.PlaySound(SoundID.Mech, new Vector2(i * 16, j * 16));
         Wiring.TripWire(i, j, 1, 1);
     }
     public override void HitWire(int i, int j)

@@ -14,7 +14,7 @@ public class LivingLightning : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileLighted[Type] = true;
-        SoundType = SoundID.Dig;
+        HitSound = SoundID.Dig;
         ItemDrop = ModContent.ItemType<LivingLightningBlock>();
         AddMapEntry(new Color(196, 142, 238));
         AnimationFrameHeight = 90;

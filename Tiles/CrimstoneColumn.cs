@@ -13,8 +13,7 @@ public class CrimstoneColumn : ModTile
     {
         AddMapEntry(new Color(73, 51, 36));
         ItemDrop = ModContent.ItemType<Items.Placeable.Beam.CrimstoneColumn>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         TileObjectData.newTile.Width = 1;
         TileObjectData.newTile.Height = 1;
         TileObjectData.newTile.Origin = new Point16(0, 0);

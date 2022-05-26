@@ -20,8 +20,7 @@ public class Zircon : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 55;
     }
 

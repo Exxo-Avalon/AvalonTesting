@@ -16,8 +16,7 @@ public class BlueLihzahrdBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BlueLihzahrdBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 400;
         DustType = DustID.t_Granite;
     }

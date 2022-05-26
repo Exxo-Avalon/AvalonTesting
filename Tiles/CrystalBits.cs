@@ -21,8 +21,7 @@ public class CrystalBits : ModTile
         };
         TileObjectData.addTile(Type);
         Main.tileSolid[Type] = false;
-        SoundType = SoundID.Item;
-        SoundStyle = 27;
+        HitSound = SoundID.Item27;
     }
     public override void NumDust(int i, int j, bool fail, ref int num)
     {

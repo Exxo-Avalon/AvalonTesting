@@ -25,7 +25,7 @@ public class Blahcket : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 14);
+        SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
         Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
         Projectile.width = 22;
@@ -75,7 +75,7 @@ public class Blahcket : ModProjectile
     //{
     //    if (projectile.type == ModContent.ProjectileType<BlahBeam>())
     //    {
-    //        Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+    //        Main.PlaySound(SoundID.Item10, Projectile.position);
     //        projectile.ai[0] += 1f;
     //        if (projectile.ai[0] >= 4f)
     //        {

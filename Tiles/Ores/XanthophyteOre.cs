@@ -20,8 +20,7 @@ public class XanthophyteOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileOreFinderPriority[Type] = 705;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Confetti_Yellow;
         MinPick = 200;
         TileID.Sets.JungleSpecial[Type] = true;

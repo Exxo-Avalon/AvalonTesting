@@ -9,40 +9,6 @@ namespace AvalonTesting.Items.Accessories;
 [AutoloadEquip(EquipType.Shield)]
 class ReflexShield : ModItem
 {
-    public int[] notReflect = new int[]
-    {
-        ProjectileID.Stinger,
-        ProjectileID.RainCloudMoving,
-        ProjectileID.RainCloudRaining,
-        ProjectileID.BloodCloudMoving,
-        ProjectileID.BloodCloudRaining,
-        ProjectileID.FrostHydra,
-        ProjectileID.InfernoFriendlyBolt,
-        ProjectileID.InfernoFriendlyBlast,
-        ProjectileID.PhantasmalDeathray,
-        ProjectileID.FlyingPiggyBank,
-        ProjectileID.Glowstick,
-        ProjectileID.BouncyGlowstick,
-        ProjectileID.SpelunkerGlowstick,
-        ProjectileID.StickyGlowstick,
-        ProjectileID.WaterGun,
-        ProjectileID.SlimeGun,
-        ModContent.ProjectileType<Projectiles.Ghostflame>(),
-        ModContent.ProjectileType<Projectiles.WallofSteelLaser>(),
-        ModContent.ProjectileType<Projectiles.ElectricBolt>(),
-        ModContent.ProjectileType<Projectiles.HomingRocket>(),
-        ModContent.ProjectileType<Projectiles.StingerLaser>(),
-        ModContent.ProjectileType<Projectiles.CaesiumFireball>(),
-        ModContent.ProjectileType<Projectiles.CaesiumCrystal>(),
-        ModContent.ProjectileType<Projectiles.CaesiumGas>(),
-        ModContent.ProjectileType<Projectiles.SpikyBall>(),
-        ModContent.ProjectileType<Projectiles.Spike>(),
-        ModContent.ProjectileType<Projectiles.CrystalShard>(),
-        ModContent.ProjectileType<Projectiles.WallofSteelLaserEnd>(),
-        ModContent.ProjectileType<Projectiles.WallofSteelLaserStart>(),
-        ModContent.ProjectileType<Projectiles.CrystalBit>(),
-        ModContent.ProjectileType<Projectiles.CrystalBeam>()
-    };
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Reflex Shield");
@@ -88,7 +54,7 @@ class ReflexShield : ModItem
         var playerWS = new Rectangle((int)player.Center.X - 32, (int)player.Center.Y - 32, 64, 64);
         foreach (Projectile Pr in Main.projectile)
         {
-            if (!Pr.friendly && !Pr.bobber && !notReflect.Contains(Pr.type))
+            if (!Pr.friendly && !Pr.bobber && !Data.Sets.Projectile.DontReflect[Pr.type])
             {
                 Rectangle proj2 = new Rectangle((int)Pr.position.X, (int)Pr.position.Y, Pr.width, Pr.height);
                 bool reflect = false, check = false;

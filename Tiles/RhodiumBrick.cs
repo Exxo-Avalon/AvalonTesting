@@ -16,8 +16,7 @@ public class RhodiumBrick : ModTile
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.RhodiumBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.t_LivingWood;
     }
 }

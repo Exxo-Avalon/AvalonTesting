@@ -14,10 +14,6 @@ public class ContagionPalmTree : ModPalmTree
 
     public override Asset<Texture2D> GetOasisTopTextures() => Asset<Texture2D>.Empty;
 
-    public override Asset<Texture2D> GetOasisBranchTextures() => Asset<Texture2D>.Empty;
-
-    public override Asset<Texture2D> GetBranchTextures() => Asset<Texture2D>.Empty;
-
     public override Asset<Texture2D> GetTexture() =>
         AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTree");
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,7 +32,7 @@ public class StarlightCannon : ModItem
         Item.knockBack = 7f;
         Item.shoot = ModContent.ProjectileType<Projectiles.ChargingStar>();
         Item.shootSpeed = 6f;
-        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Charging");
+        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Charging");
         Item.value = 15500000;
     }
 

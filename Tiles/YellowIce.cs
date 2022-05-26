@@ -17,8 +17,7 @@ public class YellowIce : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         ItemDrop = ModContent.ItemType<YellowIceBlock>();
-        SoundType = SoundID.Item;
-        SoundStyle = 50;
+        HitSound = SoundID.Item50;
         DustType = ModContent.DustType<ContagionSpray>();
         TileID.Sets.Conversion.Ice[Type] = true;
         TileID.Sets.Ices[Type] = true;

@@ -47,7 +47,7 @@ public class ElementBeam : ModProjectile
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         return true;
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -103,7 +103,7 @@ public class ElementBeam : ModProjectile
         DiscoRGB = new Vector3((float)Main.DiscoR / 255f, (float)Main.DiscoG / 255f, (float)Main.DiscoB / 255f);
         RGB = new Color(DiscoRGB.X, DiscoRGB.Y, DiscoRGB.Z);
 
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int num394 = 4; num394 < 24; num394++)
         {
             float num395 = Projectile.oldVelocity.X * (30f / (float)num394);

@@ -13,8 +13,7 @@ public class Vertebrae : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ItemID.Vertebrae;
-        SoundType = SoundID.NPCHit;
-        SoundStyle = 2;
+        HitSound = SoundID.NPCHit2;
         DustType = DustID.HeartCrystal;
     }
 }

@@ -35,8 +35,8 @@ public class SacredLyreHomingNote : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<SacredLyreHomingNote>())
         {
-            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 10);
-                
+            //Main.PlaySound(SoundID.Item10, Projectile.position);
+
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 9f)
             {

@@ -54,7 +54,7 @@ public class BerserkerSphere : ModProjectile
         {
             Projectile.netUpdate = true;
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-            SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y, 1);
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         }
         return false;
     }
@@ -125,7 +125,7 @@ public class BerserkerSphere : ModProjectile
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector65.X, vector65.Y, ModContent.ProjectileType<Minisphere>(), Projectile.damage, Projectile.knockBack, Projectile.owner, -10f, 0f);
         }
     }
-    
+
     public override bool PreDraw(ref Color lightColor)
     {
         var texture = Mod.Assets.Request<Texture2D>("Projectiles/Melee/BerserkerSphere_Chain");

@@ -317,8 +317,7 @@ public class ExxoBuffPlayer : ModPlayer
             Player.immuneTime = 30;
         }
 
-        SoundEngine.PlaySound(SoundID.Item, Player.position,
-            SoundLoader.GetSoundSlot(Mod, "Sounds/Item/SpectrumDodge"));
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/SpectrumDodge"), Player.position);
         for (int i = 0; i < Player.hurtCooldowns.Length; i++)
         {
             Player.hurtCooldowns[i] = Player.immuneTime;

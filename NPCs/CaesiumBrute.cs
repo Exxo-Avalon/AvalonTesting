@@ -95,7 +95,7 @@ public class CaesiumBrute : ModNPC
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, spray);
                     }
                 }
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 8);
+                SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             }
             NPC.ai[0] = 0;
         }
@@ -118,7 +118,7 @@ public class CaesiumBrute : ModNPC
     {
         if (NPC.life > 0)
         {
-            SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 21, 1.2f, -0.5f);
+            SoundEngine.PlaySound(SoundID.NPCHit21 with { Volume = 1.2f, Pitch = -0.5f }, NPC.Center);
             if (Main.rand.Next(20) == 0)
             {
                 Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);

@@ -23,8 +23,7 @@ public class PearlstoneColumn : ModTile
         TileObjectData.newTile.UsesCustomCanPlace = true;
         TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(AfterPlacement, -1, 0, processedCoordinates: false);
         TileObjectData.addTile(Type);
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
     public override bool CanPlace(int i, int j)
     {

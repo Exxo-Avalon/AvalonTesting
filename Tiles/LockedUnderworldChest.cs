@@ -97,7 +97,7 @@ public class LockedUnderworldChest : ModTile
         {
             return;
         }
-        SoundEngine.PlaySound(SoundID.Unlock, X * 16, Y * 16, 1);
+        SoundEngine.PlaySound(SoundID.Unlock, new Vector2(X * 16, Y * 16));
         for (int i = X; i <= X + 1; i++)
         {
             for (int j = Y; j <= Y + 1; j++)

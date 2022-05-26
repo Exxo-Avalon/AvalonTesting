@@ -9,8 +9,7 @@ public class TropicalGrassWall : ModWall
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(35, 76, 0));
-        SoundType = SoundID.Grass;
-        SoundStyle = 1;
+        HitSound = SoundID.Grass;
         DustType = DustID.GrassBlades;
     }
 }

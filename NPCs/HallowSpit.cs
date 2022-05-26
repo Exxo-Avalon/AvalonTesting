@@ -55,7 +55,7 @@ public class HallowSpit : ModNPC
         if (NPC.ai[0] == 2f)
         {
             NPC.position += NPC.velocity;
-            SoundEngine.PlaySound(SoundID.NPCKilled, (int)NPC.position.X, (int)NPC.position.Y, 9);
+            SoundEngine.PlaySound(SoundID.NPCDeath9, NPC.position);
             for (int num161 = 0; num161 < 20; num161++)
             {
                 int num162 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, DustID.Enchanted_Pink, 0f, 0f, 100, default(Color), 1.8f);

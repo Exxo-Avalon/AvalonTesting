@@ -14,8 +14,7 @@ public class BrimstoneBlock : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileMerge[Type][ModContent.TileType<Impgrass>()] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BrimstoneBlock>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.HeartCrystal;
         TileID.Sets.HellSpecial[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;

@@ -14,7 +14,7 @@ public class TropicalVines : ModTile
         Main.tileLavaDeath[Type] = true;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         DustType = DustID.Grass;
 
         AddMapEntry(new Color(45, 153, 26));

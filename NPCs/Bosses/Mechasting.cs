@@ -100,7 +100,7 @@ public class Mechasting : ModNPC
                 float Speed = 9f;
                 Vector2 vector8 = new Vector2(NPC.Center.X, NPC.position.Y + NPC.height - 10);
                 int damage = 90;
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33);
+                SoundEngine.PlaySound(SoundID.Item33, NPC.position);
                 Vector2 offset = new Vector2(NPC.Center.X + Main.rand.Next(5) * NPC.direction, NPC.Center.Y + Main.rand.Next(5, 10));
                 float rotation = (float)Math.Atan2(NPC.Center.Y - offset.Y, NPC.Center.X - offset.X);
                 int num54 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), ProjectileID.DeathLaser, damage, 0f, 0);

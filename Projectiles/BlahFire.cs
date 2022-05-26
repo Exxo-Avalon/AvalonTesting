@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using IL.Terraria.ID;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Audio;
@@ -71,7 +72,7 @@ public class BlahFire : ModProjectile
             if (Projectile.ai[1] == 0f && Projectile.type == ModContent.ProjectileType<BlahFire>())
             {
                 Projectile.ai[1] = 1f;
-                SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 13);
+                SoundEngine.PlaySound(Terraria.ID.SoundID.Item13, Projectile.position);
             }
             int num218 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 6, 0f, 0f, 100, default, 1f);
             Main.dust[num218].position.X -= 2f;

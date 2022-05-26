@@ -140,7 +140,7 @@ public class DesertBeak : ModNPC
                 if (NPC.ai[1] >= 60)
                 {
                     float Speed = 8f;
-                    SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 17);
+                    SoundEngine.PlaySound(SoundID.Item17, NPC.position);
                     float rotation =
                         (float)Math.Atan2(NPC.Center.Y - (pPos.Y + (Main.player[NPC.target].height * 0.5f)),
                             NPC.Center.X - (pPos.X + (Main.player[NPC.target].width * 0.5f)));
@@ -277,7 +277,7 @@ public class DesertBeak : ModNPC
                     float speedY = (float)(Math.Sin(rotation) * Speed * -1);
                     float num78 = speedX + (Main.rand.Next(-50, 51) * 0.05f);
                     float num79 = speedY + (Main.rand.Next(-50, 51) * 0.05f);
-                    SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 11);
+                    SoundEngine.PlaySound(SoundID.Item11, NPC.position);
                     int bomb = Projectile.NewProjectile(NPC.GetSource_FromAI(), npcPosRefined.X, npcPosRefined.Y, num78,
                         num79, 102, 20, 0f, 0);
                 }

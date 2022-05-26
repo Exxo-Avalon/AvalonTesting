@@ -14,8 +14,7 @@ public class VenomSpike : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.VenomSpike>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.BismuthDust>();
     }
     public override bool Slope(int i, int j)

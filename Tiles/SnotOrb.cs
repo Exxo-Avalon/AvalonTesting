@@ -113,7 +113,7 @@ public class SnotOrb : ModTile
                     ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), new Color(50, 255, 130));
                 }
             }
-            SoundEngine.PlaySound(SoundID.NPCKilled, i * 16, j * 16, 1);
+            SoundEngine.PlaySound(SoundID.NPCDeath1, new Vector2(i * 16, j * 16));
         }
     }
 }

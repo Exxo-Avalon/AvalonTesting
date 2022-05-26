@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,7 +34,7 @@ class SpikeRailgun : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 9;
         Item.height = dims.Height;
-        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Railgun");
+        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Railgun");
     }
     public override Vector2? HoldoutOffset()
     {

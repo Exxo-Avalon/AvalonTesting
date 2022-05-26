@@ -80,7 +80,7 @@ public class ImpactWizard : ModNPC
 
         if (NPC.ai[2] != 0f && NPC.ai[3] != 0f)
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             for (int num231 = 0; num231 < 50; num231++)
             {
                 int num234 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height,
@@ -95,7 +95,7 @@ public class ImpactWizard : ModNPC
             NPC.velocity.Y = 0f;
             NPC.ai[2] = 0f;
             NPC.ai[3] = 0f;
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             for (int num239 = 0; num239 < 50; num239++)
             {
                 int num243 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height,

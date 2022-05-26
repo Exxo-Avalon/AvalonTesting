@@ -17,7 +17,6 @@ public class MoonplateBlock : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.MoonplateBlock>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
 }

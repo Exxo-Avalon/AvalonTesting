@@ -16,8 +16,7 @@ public class HydrolythOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.HydrolythOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 300;
         DustType = DustID.MagicMirror;
     }

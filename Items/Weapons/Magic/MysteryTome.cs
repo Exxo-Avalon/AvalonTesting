@@ -46,43 +46,43 @@ class MysteryTome : ModItem
         Vector2 vel = velocity;
         if (x == 0) // Ancient
         {
-            SoundEngine.PlaySound(2, new Vector2(-1, -1), 34);
+            SoundEngine.PlaySound(SoundID.Item34, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.AncientSandstorm>(), Item.damage, 4);
             return false;
         }
         if (x == 1) // Devil's Scythe
         {
-            SoundEngine.PlaySound(2, new Vector2(-1, -1), 8);
+            SoundEngine.PlaySound(SoundID.Item8, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.DevilScythe>(), Item.damage, 5);
             return false;
         }
         if (x == 2) // Tome of the Distant Past
         {
-            SoundEngine.PlaySound(2, new Vector2(-1, -1), 8);
+            SoundEngine.PlaySound(SoundID.Item8, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.Bones>(), Item.damage, 4);
             return false;
         }
         if (x == 3) // The Golden Flames
         {
-            SoundEngine.PlaySound(2, new Vector2(-1, -1), 20);
+            SoundEngine.PlaySound(SoundID.Item20, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.GoldenFire>(), Item.damage, 6);
             return false;
         }
         if (x == 4) // Focus Beam
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)player.position.X, (int)player.position.Y, SoundLoader.GetSoundSlot(Mod, "Sounds/Item/Beam"));
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Beam"), player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FocusBeam>(), Item.damage, 5);
             return false;
         }
         if (x == 5) // Freeze Bolt
         {
-            SoundEngine.PlaySound(2, new Vector2(-1, -1), 21);
+            SoundEngine.PlaySound(SoundID.Item21, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FreezeBolt>(), Item.damage, 5);
             return false;
         }
         if (x == 6) // Terraspin
         {
-            SoundEngine.PlaySound(2, -1, -1, 84);
+            SoundEngine.PlaySound(SoundID.Item84, player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.TerraTyphoon>(), Item.damage, 5);
             return false;
         }

@@ -16,8 +16,7 @@ public class BrownIce : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         ItemDrop = ModContent.ItemType<BrownIceBlock>();
-        SoundType = SoundID.Item;
-        SoundStyle = 50;
+        HitSound = SoundID.Item50;
         DustType = DustID.Dirt;
         TileID.Sets.Conversion.Ice[Type] = true;
         TileID.Sets.Ices[Type] = true;

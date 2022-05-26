@@ -19,8 +19,7 @@ public class HallowedOre : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 1150;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.HallowedOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 185;
         DustType = DustID.Enchanted_Gold;
     }

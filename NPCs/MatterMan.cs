@@ -104,27 +104,27 @@ public class MatterMan : ModNPC
         {
             if ((NPC.type == 3 || NPC.type == 331 || NPC.type == 332 || NPC.type == 21 || NPC.type == 31 || NPC.type == 482 || NPC.type == 294 || NPC.type == 295 || NPC.type == 296 || NPC.type == 77 || NPC.type == 110 || NPC.type == 132 || NPC.type == 167 || NPC.type == 161 || NPC.type == 162 || NPC.type == 186 || NPC.type == 187 || NPC.type == 188 || NPC.type == 189 || NPC.type == 197 || NPC.type == 200 || NPC.type == 201 || NPC.type == 202 || NPC.type == 203 || NPC.type == 223 || NPC.type == 291 || NPC.type == 292 || NPC.type == 293 || NPC.type == 320 || NPC.type == 321 || NPC.type == 319) && Main.rand.Next(1000) == 0)
             {
-                SoundEngine.PlaySound(14, (int)NPC.position.X, (int)NPC.position.Y, 1);
+                SoundEngine.PlaySound(SoundID.ZombieMoan, NPC.position);
             }
             if ((NPC.type == 78 || NPC.type == 79 || NPC.type == 80) && Main.rand.Next(500) == 0)
             {
-                SoundEngine.PlaySound(26, (int)NPC.position.X, (int)NPC.position.Y, 1);
+                SoundEngine.PlaySound(SoundID.Mummy, NPC.position);
             }
             if (NPC.type == 159 && Main.rand.Next(500) == 0)
             {
-                SoundEngine.PlaySound(29, (int)NPC.position.X, (int)NPC.position.Y, 7);
+                SoundEngine.PlaySound(SoundID.Zombie7, NPC.position);
             }
             if (NPC.type == 162 && Main.rand.Next(500) == 0)
             {
-                SoundEngine.PlaySound(29, (int)NPC.position.X, (int)NPC.position.Y, 6);
+                SoundEngine.PlaySound(SoundID.Zombie8, NPC.position);
             }
             if (NPC.type == 181 && Main.rand.Next(500) == 0)
             {
-                SoundEngine.PlaySound(29, (int)NPC.position.X, (int)NPC.position.Y, 8);
+                SoundEngine.PlaySound(SoundID.Zombie9, NPC.position);
             }
             if (NPC.type >= 269 && NPC.type <= 280 && Main.rand.Next(1000) == 0)
             {
-                SoundEngine.PlaySound(14, (int)NPC.position.X, (int)NPC.position.Y, 1);
+                SoundEngine.PlaySound(SoundID.ZombieMoan, NPC.position);
             }
             NPC.TargetClosest(true);
         }

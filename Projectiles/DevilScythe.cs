@@ -29,7 +29,7 @@ public class DevilScythe : ModProjectile
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y);
+        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         int num234 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1.7f);
         Main.dust[num234].noGravity = true;
         Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);
@@ -40,7 +40,7 @@ public class DevilScythe : ModProjectile
         if (Projectile.ai[1] == 0f && Projectile.type == ProjectileID.DemonSickle)
         {
             Projectile.ai[1] = 1f;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
         }
         if (Projectile.type == ProjectileID.IceSickle || Projectile.type == ProjectileID.DeathSickle || Projectile.type == ModContent.ProjectileType<Melee.InfernoScythe>())
         {

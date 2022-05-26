@@ -30,7 +30,7 @@ public class SpikeCannon : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int num133 = 0; num133 < 3; num133++)
         {
             float num134 = -Projectile.velocity.X * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 0.4f;

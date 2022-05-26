@@ -215,7 +215,7 @@ public class DragonLordLegs : ModNPC
                         num208 = 20f;
                     }
                     NPC.soundDelay = (int)num208;
-                    SoundEngine.PlaySound(SoundID.Roar, (int)NPC.position.X, (int)NPC.position.Y, 1);
+                    SoundEngine.PlaySound(SoundID.Roar, NPC.position);
                 }
                 num206 = (float)Math.Sqrt(num204 * num204 + num205 * num205);
                 var num209 = Math.Abs(num204);

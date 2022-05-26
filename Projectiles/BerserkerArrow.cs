@@ -57,7 +57,7 @@ public class BerserkerArrow : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int num121 = 0; num121 < 10; num121++)
         {
             Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 119, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default, 1.2f);

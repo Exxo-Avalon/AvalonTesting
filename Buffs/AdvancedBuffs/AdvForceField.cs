@@ -6,26 +6,8 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs.AdvancedBuffs;
 
-// TODO: Uncomment projectiles
 public class AdvForceField : ModBuff
 {
-    private static readonly int[] NotReflect =
-    {
-        ProjectileID.Stinger, ProjectileID.RainCloudMoving, ProjectileID.RainCloudRaining,
-        ProjectileID.BloodCloudMoving, ProjectileID.BloodCloudRaining, ProjectileID.FrostHydra,
-        ProjectileID.InfernoFriendlyBolt, ProjectileID.InfernoFriendlyBlast, ProjectileID.PhantasmalDeathray,
-        ProjectileID.FlyingPiggyBank, ProjectileID.Glowstick, ProjectileID.BouncyGlowstick,
-        ProjectileID.SpelunkerGlowstick, ProjectileID.StickyGlowstick, ProjectileID.WaterGun, ProjectileID.SlimeGun
-        // ModContent.ProjectileType<Ghostflame>(), ModContent.ProjectileType<WallofSteelLaser>(),
-        // ModContent.ProjectileType<ElectricBolt>(), ModContent.ProjectileType<HomingRocket>(),
-        // ModContent.ProjectileType<StingerLaser>(), ModContent.ProjectileType<CaesiumFireball>(),
-        // ModContent.ProjectileType<CaesiumCrystal>(), ModContent.ProjectileType<CaesiumGas>(),
-        // ModContent.ProjectileType<SpikyBall>(), ModContent.ProjectileType<Spike>(),
-        // ModContent.ProjectileType<CrystalShard>(), ModContent.ProjectileType<WallofSteelLaserEnd>(),
-        // ModContent.ProjectileType<WallofSteelLaserStart>(), ModContent.ProjectileType<CrystalBit>(),
-        // ModContent.ProjectileType<CrystalBeam>()
-    };
-
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Advanced Force Field");
@@ -39,7 +21,7 @@ public class AdvForceField : ModBuff
         for (int l = 0; l < projectile.Length; l++)
         {
             Projectile Pr = projectile[l];
-            if (!Pr.friendly && !Pr.bobber && !NotReflect.Contains(Pr.type))
+            if (!Pr.friendly && !Pr.bobber && !Data.Sets.Projectile.DontReflect[Pr.type])
             {
                 var rectangle = new Rectangle((int)Pr.position.X, (int)Pr.position.Y, Pr.width, Pr.height);
                 if (rectangle.Intersects(value))

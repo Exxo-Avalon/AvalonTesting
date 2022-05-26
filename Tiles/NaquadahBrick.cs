@@ -17,8 +17,7 @@ public class NaquadahBrick : ModTile
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.NaquadahBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.NaquadahDust>();
     }
 }

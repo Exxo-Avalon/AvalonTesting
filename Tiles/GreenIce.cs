@@ -16,8 +16,7 @@ public class GreenIce : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         ItemDrop = ModContent.ItemType<GreenIceBlock>();
-        SoundType = SoundID.Item;
-        SoundStyle = 50;
+        HitSound = SoundID.Item50;
         DustType = DustID.TerraBlade;
         TileID.Sets.Conversion.Ice[Type] = true;
         TileID.Sets.Ices[Type] = true;

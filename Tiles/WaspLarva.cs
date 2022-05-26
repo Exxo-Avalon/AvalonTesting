@@ -21,8 +21,7 @@ public class WaspLarva : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
         TileObjectData.addTile(Type);
         DustType = DustID.Stone;
-        SoundStyle = 1;
-        SoundType = SoundID.NPCKilled;
+        HitSound = SoundID.NPCDeath1;
         AddMapEntry(new Color(172, 154, 131));
     }
 

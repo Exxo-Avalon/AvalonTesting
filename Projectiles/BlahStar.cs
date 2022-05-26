@@ -30,7 +30,7 @@ public class BlahStar : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(2, Projectile.position, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         for (int i = 0; i < 2; i++)
         {
             float speedX = Projectile.velocity.X + Main.rand.Next(-51, 51) * 0.2f;

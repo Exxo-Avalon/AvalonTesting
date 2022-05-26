@@ -56,7 +56,7 @@ public class ElectricBolt : ModProjectile
             if (Projectile.ai[1] == 0f && Projectile.hostile)
             {
                 Projectile.ai[1] = 1f;
-                SoundEngine.PlaySound(SoundID.Item, (int)Projectile.Center.X, (int)Projectile.Center.Y, 12);
+                SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
             }
             Projectile.alpha -= 40;
             if (Projectile.alpha < 0)

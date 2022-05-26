@@ -70,7 +70,7 @@ public class BlahBeam : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<BlahBeam>())
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+            SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 4f)
             {

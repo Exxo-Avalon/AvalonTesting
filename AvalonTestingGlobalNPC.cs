@@ -1038,7 +1038,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 npc.HitEffect();
                 npc.active = false;
                 npc.NPCLoot();
-                SoundEngine.PlaySound(SoundID.NPCKilled, (int)npc.position.X, (int)npc.position.Y);
+                SoundEngine.PlaySound(SoundID.NPCDeath1, npc.position);
             }
             else
             {
@@ -1118,7 +1118,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 }
 
                 // Main.npc[npc.whoAmI].NPCLoot();
-                SoundEngine.PlaySound(SoundID.NPCKilled, (int)npc.position.X, (int)npc.position.Y);
+                SoundEngine.PlaySound(SoundID.NPCDeath1, npc.position);
             }
 
             return false;

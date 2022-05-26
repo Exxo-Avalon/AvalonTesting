@@ -20,8 +20,7 @@ public class ManaCrystal : ModTile
         Main.tileShine[Type] = 300;
         Main.tileFrameImportant[Type] = true;
         DustType = DustID.Ice;
-        SoundType = SoundID.Shatter;
-        SoundStyle = 1;
+        HitSound = SoundID.Shatter;
     }
 
     public override void AnimateTile(ref int frame, ref int frameCounter)

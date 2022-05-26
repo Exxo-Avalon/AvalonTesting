@@ -18,9 +18,8 @@ public class PrimordialOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 815;
-        SoundType = SoundID.Tink;
+        HitSound = SoundID.Tink;
         MinPick = 210;
-        SoundStyle = 1;
         DustType = DustID.Stone;
     }
 

@@ -36,7 +36,7 @@ public class SacredLyreSplittingNote : ModProjectile
     {
         if (Projectile.type == ModContent.ProjectileType<SacredLyreSplittingNote>())
         {
-            //Main.PlaySound(SoundID.Item, (int)projectile.position.X, (int)projectile.position.Y, 10);
+            //Main.PlaySound(SoundID.Item10, Projectile.position);
             for (int num133 = 0; num133 < 3; num133++)
             {
                 float num134 = -Projectile.velocity.X * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 0.4f;

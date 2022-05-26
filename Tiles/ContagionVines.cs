@@ -14,7 +14,7 @@ public class ContagionVines : ModTile
         Main.tileLavaDeath[Type] = true;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         DustType = ModContent.DustType<Dusts.ContagionDust>();
 
         AddMapEntry(new Color(117, 131, 37));

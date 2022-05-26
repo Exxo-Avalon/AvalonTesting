@@ -22,8 +22,7 @@ public class Sweetstem : ModTile
         Main.tileNoFail[Type] = true;
         Main.tileSpelunker[Type] = true;
         AddMapEntry(new Color(216, 161, 50), LanguageManager.Instance.GetText("Sweetstem"));
-        SoundStyle = 1;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
         TileObjectData.newTile.AnchorValidTiles = new int[]
         {

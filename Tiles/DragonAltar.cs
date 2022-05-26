@@ -44,7 +44,7 @@ public class DragonAltar : ModTile
             if (p.inventory[v].type == ModContent.ItemType<Items.Consumables.DragonSpine>() && !NPC.AnyNPCs(ModContent.NPCType<NPCs.DragonLordHead>()))
             {
                 p.inventory[v].stack--;
-                SoundEngine.PlaySound(SoundID.Roar, p.position, 0);
+                SoundEngine.PlaySound(SoundID.Roar, p.position);
                 NPC.SpawnOnPlayer(p.whoAmI, ModContent.NPCType<NPCs.DragonLordHead>());
                 return true;
             }

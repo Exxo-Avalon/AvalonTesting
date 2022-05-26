@@ -31,7 +31,7 @@ public class Rock : ModProjectile
         if (Projectile.velocity.Y != oldVelocity.Y && oldVelocity.Y > 5f)
         {
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-            SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y, 1);
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
             Projectile.velocity.Y = -oldVelocity.Y * 0.2f;
         }
         if (Projectile.velocity.X != oldVelocity.X)

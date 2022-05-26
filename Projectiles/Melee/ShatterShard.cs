@@ -50,7 +50,7 @@ public class ShatterShard : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.Center.X, (int)Projectile.Center.Y, 27, 0.8f, -0.25f);
+        SoundEngine.PlaySound(SoundID.Item27 with { Volume = 0.8f, Pitch = -0.25f }, Projectile.Center);
         for (int num237 = 0; num237 < 10; num237++)
         {
             int num239 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), 18, 18, 70, Projectile.oldVelocity.X * 0.1f, Projectile.oldVelocity.Y * 0.1f, default, default, 1.2f);

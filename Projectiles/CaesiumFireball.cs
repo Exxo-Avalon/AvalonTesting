@@ -49,8 +49,7 @@ public class CaesiumFireball : ModProjectile
 
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Fireball"), (int)Projectile.position.X,
-            (int)Projectile.position.Y);
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Fireball"), Projectile.position);
         Projectile.damage <<= 1;
         Projectile.penetrate = 10;
         Projectile.width <<= 3;

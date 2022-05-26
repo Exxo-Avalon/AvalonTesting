@@ -23,8 +23,7 @@ public class DarkMatter : ModTile
         TileID.Sets.Stone[Type] = true;
         TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
         ItemDrop = ModContent.ItemType<DarkMatterBlock>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = ModContent.DustType<DarkMatterDust>();
     }
 

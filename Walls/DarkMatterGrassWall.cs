@@ -9,8 +9,7 @@ public class DarkMatterGrassWall : ModWall
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(58, 37, 53));
-        SoundType = SoundID.Grass;
-        SoundStyle = 1;
+        HitSound = SoundID.Grass;
         DustType = DustID.UnholyWater;
         WallID.Sets.Conversion.Grass[Type] = true;
     }

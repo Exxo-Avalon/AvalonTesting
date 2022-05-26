@@ -67,7 +67,7 @@ public class CrystalShard : ModProjectile
             if (Projectile.ai[1] == 0f && Projectile.type == ModContent.ProjectileType<CrystalShard>())
             {
                 Projectile.ai[1] = 1f;
-                SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 13);
+                SoundEngine.PlaySound(SoundID.Item13, Projectile.position);
             }
             int d = Main.rand.Next(3);
             if (d == 0) d = DustID.BlueCrystalShard;

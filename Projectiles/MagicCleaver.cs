@@ -57,7 +57,7 @@ public class MagicCleaver : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y);
+        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         for (int num410 = 0; num410 < 10; num410++)
         {
             int num411 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Gold, 0f, 0f, 100, default(Color), 1f);

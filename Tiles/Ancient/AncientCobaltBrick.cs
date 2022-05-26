@@ -19,8 +19,7 @@ public class AncientCobaltBrick : ModTile
         Main.tileMerge[Type][TileID.WoodBlock] = true;
         Main.tileMerge[TileID.WoodBlock][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Ancient.AncientCobaltBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Cobalt;
     }
 }

@@ -483,7 +483,7 @@ public class ArmageddonSlime : ModNPC
                     increment = 0.4f;
 
                 var vector155 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height / 2);
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33);
+                SoundEngine.PlaySound(SoundID.Item33, NPC.position);
                 var num1166 = (float)Math.Atan2(vector155.Y - (Main.player[NPC.target].position.Y + Main.player[NPC.target].height * 0.5f), vector155.X - (Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f));
                 for (var num1167 = 0f; num1167 <= 3.6f; num1167 += increment)
                 {
@@ -505,7 +505,7 @@ public class ArmageddonSlime : ModNPC
                 break;
 
             case 2:
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33);
+                SoundEngine.PlaySound(SoundID.Item33, NPC.position);
 
                 int increments; // Old spray had ~25? weird pattern tho
                 if (Main.expertMode)

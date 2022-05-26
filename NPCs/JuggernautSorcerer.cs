@@ -57,14 +57,14 @@ public class JuggernautSorcerer : ModNPC
 
         if (NPC.ai[2] != 0f && NPC.ai[3] != 0f)
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             NPC.position.X = (NPC.ai[2] * 16f) - (NPC.width / 2) + 8f;
             NPC.position.Y = (NPC.ai[3] * 16f) - NPC.height;
             NPC.velocity.X = 0f;
             NPC.velocity.Y = 0f;
             NPC.ai[2] = 0f;
             NPC.ai[3] = 0f;
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             for (int num239 = 0; num239 < 50; num239++)
             {
                 int num243 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y), NPC.width, NPC.height,

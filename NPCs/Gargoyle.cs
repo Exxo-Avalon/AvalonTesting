@@ -234,11 +234,11 @@ public class Gargoyle : ModNPC
     {
         if (NPC.life > 0)
         {
-            SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 41, 1f, -0.25f);
+            SoundEngine.PlaySound(SoundID.NPCHit41 with { Pitch = -0.25f }, NPC.Center);
         }
         if (NPC.life <= 0)
         {
-            SoundEngine.PlaySound(SoundID.NPCKilled, (int)NPC.Center.X, (int)NPC.Center.Y, 5, 1f, -0.25f);
+            SoundEngine.PlaySound(SoundID.NPCDeath5 with { Pitch = -0.25f }, NPC.Center);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GargoyleGore3").Type, 1f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GargoyleGore3").Type, 1f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GargoyleGore4").Type, 1f);

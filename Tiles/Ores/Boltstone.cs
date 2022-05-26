@@ -18,8 +18,7 @@ public class Boltstone : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Boltstone>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.GreenTorch;
     }
 }

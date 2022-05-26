@@ -223,7 +223,7 @@ public class Phantasm : ModNPC
                         {
                             float Speed = 9f;
                             int damage = 65;
-                            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33, 0.8f);
+                            SoundEngine.PlaySound(SoundID.Item33 with { Volume = 0.8f }, NPC.position);
                             /*Vector2 offset = new Vector2(npc.Center.X + Main.rand.Next(5) * npc.direction, npc.Center.Y + Main.rand.Next(5, 10));
                             float rotation = (float)Math.Atan2(npc.Center.Y, npc.Center.X);
                             int num54 = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), ModContent.ProjectileType<Projectiles.Ghostflame>(), damage, 0f, 0);
@@ -241,7 +241,7 @@ public class Phantasm : ModNPC
                             increment = 0.4f;
 
                         var vector155 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height / 2);
-                        SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 33);
+                        SoundEngine.PlaySound(SoundID.Item33, NPC.position);
                         var num1166 = (float)Math.Atan2(vector155.Y - (Main.player[NPC.target].position.Y + Main.player[NPC.target].height * 0.5f), vector155.X - (Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f));
                         for (var num1167 = 0f; num1167 <= 3.6f; num1167 += increment)
                         {
@@ -273,7 +273,9 @@ public class Phantasm : ModNPC
                     #region sweeping laser attack
                     if (NPC.ai[1] % 60 == 0)
                     {
-                        SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/LaserFire"), (int)NPC.position.X, (int)NPC.position.Y).Volume *= 0.8f;
+                        SoundEngine.PlaySound(
+                            new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserFire") { Volume = 0.8f},
+                            NPC.position);
                         // fire laser
                         Vector2 velocityOfProj = Main.player[NPC.target].Center - NPC.Center;
                         velocityOfProj.Normalize();
@@ -389,7 +391,7 @@ public class Phantasm : ModNPC
                 }
                 if (NPC.ai[0] == 400 || NPC.ai[0] == 450 || NPC.ai[0] == 500 || NPC.ai[0] == 550)
                 {
-                    SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/LaserFire"), (int)NPC.position.X, (int)NPC.position.Y).Volume *= 0.8f;
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserFire") { Volume = 0.8f}, NPC.position);
                     Vector2 velocityOfProj = Main.player[NPC.target].Center - NPC.Center;
                     velocityOfProj.Normalize();
                     float num1275 = -1f;

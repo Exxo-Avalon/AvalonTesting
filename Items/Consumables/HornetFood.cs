@@ -37,7 +37,7 @@ class HornetFood : ModItem
     public override bool? UseItem(Player player)
     {
         NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.KingSting>());
-        SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+        SoundEngine.PlaySound(SoundID.Roar, player.position);
         return true;
     }
 }

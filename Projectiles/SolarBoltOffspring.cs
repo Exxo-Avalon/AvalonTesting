@@ -29,7 +29,7 @@ public class SolarBoltOffspring : ModProjectile
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         Projectile.ai[0]++;
         if (Projectile.ai[0] >= 5f)
         {
@@ -60,7 +60,7 @@ public class SolarBoltOffspring : ModProjectile
         if (Projectile.ai[1] == 0f)
         {
             Projectile.ai[1] = 1f;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
         }
 
         Lighting.AddLight(new Vector2((int)((Projectile.position.X + (float)(Projectile.width / 2)) / 16f), (int)((Projectile.position.Y + (float)(Projectile.height / 2)) / 16f)), color.ToVector3());
@@ -68,7 +68,7 @@ public class SolarBoltOffspring : ModProjectile
 
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y);
+        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         for (int num453 = 0; num453 < 15; num453++)
         {
             int num454 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dustId, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 50, color, 1.2f);

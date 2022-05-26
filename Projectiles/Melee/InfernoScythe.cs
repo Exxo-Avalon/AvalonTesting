@@ -31,7 +31,7 @@ public class InfernoScythe : ModProjectile
         if (Projectile.ai[1] == 0f && Projectile.type == ProjectileID.DemonSickle)
         {
             Projectile.ai[1] = 1f;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 8);
+            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
         }
         if (Projectile.type == ProjectileID.IceSickle || Projectile.type == ProjectileID.DeathSickle || Projectile.type == ModContent.ProjectileType<InfernoScythe>())
         {

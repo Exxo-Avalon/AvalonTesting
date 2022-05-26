@@ -101,7 +101,7 @@ public class LockedImperviousDoor : ModTile
                 return;
             }
         }
-        SoundEngine.PlaySound(SoundID.Unlock, i * 16, num * 16 + 16, 1);
+        SoundEngine.PlaySound(SoundID.Unlock, new Vector2(i * 16, (num * 16) + 16));
         for (int k = num; k <= num + 2; k++)
         {
             //if (Main.tile[i, k] == null)

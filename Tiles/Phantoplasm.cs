@@ -17,7 +17,11 @@ public class Phantoplasm : ModTile
     }
     public override bool KillSound(int i, int j)
     {
-        if (Main.rand.Next(10) == 0) SoundEngine.PlaySound(SoundID.NPCKilled, i * 16, j * 16, 6);
+        if (Main.rand.NextBool(10))
+        {
+            SoundEngine.PlaySound(SoundID.NPCDeath6, new Vector2(i * 16, j * 16));
+        }
+
         return true;
     }
 }

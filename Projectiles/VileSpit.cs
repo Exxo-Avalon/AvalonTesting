@@ -266,7 +266,7 @@ public class VileSpit : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.NPCKilled, (int)Projectile.position.X, (int)Projectile.position.Y, 9);
+        SoundEngine.PlaySound(SoundID.NPCDeath9, Projectile.position);
         Projectile.active = false;
     }
 }

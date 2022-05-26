@@ -17,8 +17,7 @@ public class SpiritPoppy : ModTile
         Main.tileObsidianKill[Type] = true;
         Main.tileNoAttach[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        SoundType = SoundID.Shatter;
-        SoundStyle = 1;
+        HitSound = SoundID.Shatter;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

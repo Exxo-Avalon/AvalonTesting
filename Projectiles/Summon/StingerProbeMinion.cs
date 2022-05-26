@@ -90,7 +90,7 @@ public class StingerProbeMinion : ModProjectile
 
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.NPCKilled, Projectile.position, 14);
+        SoundEngine.PlaySound(SoundID.NPCDeath14, Projectile.position);
 
         for (int i = 0; i < 2; i++)
         {

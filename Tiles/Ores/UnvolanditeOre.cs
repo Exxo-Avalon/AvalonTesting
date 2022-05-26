@@ -20,8 +20,7 @@ public class UnvolanditeOre : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 2100;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.UnvolanditeOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 250;
     }
     public override bool CanExplode(int i, int j)

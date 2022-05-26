@@ -18,8 +18,7 @@ public class ContagionShortGrass : ModTile
         Main.tileWaterDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
         DustType = ModContent.DustType<Dusts.ContagionDust>();
-        SoundStyle = 1;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         AddMapEntry(new Color(133, 150, 39));
     }
 

@@ -39,7 +39,7 @@ class DarkMatterChunk : ModItem
     }
     public override bool? UseItem(Player player)
     {
-        SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+        SoundEngine.PlaySound(SoundID.Roar, player.position);
         NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>());
         return true;
     }

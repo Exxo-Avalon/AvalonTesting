@@ -40,7 +40,7 @@ class PyroscoricFlamesword : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)player.Center.X, (int)player.Center.Y, 20, 0.8f, 0.25f);
+        SoundEngine.PlaySound(SoundID.Item20 with { Volume = 0.8f, Pitch = 0.25f }, player.position);
         return true;
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)

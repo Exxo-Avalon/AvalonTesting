@@ -41,7 +41,7 @@ public class EnchantedShuriken : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Dig, (int)Projectile.position.X, (int)Projectile.position.Y);
+        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
         for (int i = 0; i < 15; i++)
         {
             var Sparkle = Dust.NewDust(new Vector2(Projectile.Center.X, Projectile.Center.Y), 8, 8, DustID.MagicMirror, 0f, 0f, 100, default(Color), 1.25f);

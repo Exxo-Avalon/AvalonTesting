@@ -25,7 +25,7 @@ public class PinkTorch : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         if (Projectile.aiStyle == 1)
         {
             int it = ItemID.PinkTorch;

@@ -189,7 +189,7 @@ public class CaesiumStalker : ModNPC
                     var mainproj = (float)Math.Atan2(NPC.Center.Y - (Main.player[NPC.target].Center.Y), NPC.Center.X - (Main.player[NPC.target].Center.X));
                     int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ModContent.ProjectileType<Projectiles.CaesiumSpike>(), 50, 1f, NPC.target, 0f, 0f);
                     Main.projectile[p].velocity *= 13f;
-                    SoundEngine.PlaySound(2, (int)NPC.position.X, (int)NPC.position.Y, 8);
+                    SoundEngine.PlaySound(SoundID.Item8, NPC.position);
                 }
                 NPC.localAI[0] = 0f;
                 NPC.localAI[1] = 0f;
@@ -241,11 +241,11 @@ public class CaesiumStalker : ModNPC
     }
     public override void HitEffect(int hitDirection, double damage)
     {
-        
+
         if (NPC.life > 0)
         {
-            SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 4, 0.9f, -0.5f);
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.Center.X, (int)NPC.Center.Y, 30, 0.2f, -0.5f);
+            SoundEngine.PlaySound(SoundID.NPCHit4 with { Volume = 0.9f, Pitch = -0.5f }, NPC.Center);
+            SoundEngine.PlaySound(SoundID.Item30 with { Volume = 0.2f, Pitch = -0.5f }, NPC.Center);
             var rectangle = new Rectangle((int)NPC.position.X, (int)(NPC.position.Y + (NPC.height - NPC.width) / 2), NPC.width, NPC.width);
             for (var j = 1; j <= 25; j++)
             {
@@ -258,8 +258,8 @@ public class CaesiumStalker : ModNPC
         if (Main.netMode == NetmodeID.Server) return;
         if (NPC.life <= 0)
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.Center.X, (int)NPC.Center.Y, 27, 1.2f, -0.5f);
-            SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.Center.X, (int)NPC.Center.Y, 5, 1f, -0.5f);
+            SoundEngine.PlaySound(SoundID.Item27 with { Volume = 1.2f, Pitch = -0.5f }, NPC.Center);
+            SoundEngine.PlaySound(SoundID.NPCHit5 with { Pitch = 0.5f }, NPC.Center);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore1").Type, 1.2f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore2").Type, 1.2f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0f, Mod.Find<ModGore>("StalkerGore3").Type, 1.2f);

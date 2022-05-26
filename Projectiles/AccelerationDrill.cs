@@ -47,7 +47,7 @@ public class AccelerationDrill : ModProjectile
         }
         if (Projectile.soundDelay <= 0)
         {
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 22);
+            SoundEngine.PlaySound(SoundID.Item22, Projectile.position);
             Projectile.soundDelay = 30;
         }
         if (Main.myPlayer == Projectile.owner)

@@ -21,8 +21,7 @@ public class TroxiniumOre : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 875;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TroxiniumOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 150;
         DustType = ModContent.DustType<TroxiniumDust>();
     }

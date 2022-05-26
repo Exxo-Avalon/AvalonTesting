@@ -24,8 +24,7 @@ public class CrystalFruit : ModTile
         TileObjectData.addTile(Type);
         AddMapEntry(new Color(159, 190, 224), LanguageManager.Instance.GetText("Crystal Fruit"));
         TileID.Sets.DisableSmartCursor[Type] = true;
-        SoundType = SoundID.Shatter;
-        SoundStyle = 1;
+        HitSound = SoundID.Shatter;
         //DustType = DustID.BlueCrystalShard;
     }
     //public override void NumDust(int i, int j, bool fail, ref int num)

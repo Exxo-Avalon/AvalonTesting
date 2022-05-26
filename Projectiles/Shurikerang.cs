@@ -41,7 +41,7 @@ public class Shurikerang : ModProjectile
         if (Projectile.soundDelay == 0)
         {
             Projectile.soundDelay = 8;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 7);
+            SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
         }
         if (Projectile.ai[0] == 0f)
         {

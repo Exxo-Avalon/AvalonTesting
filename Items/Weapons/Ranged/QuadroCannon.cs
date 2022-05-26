@@ -50,7 +50,7 @@ internal class QuadroCannon : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {
-        //sound is weird sometimes?? idk why tho
+        // sound is weird sometimes?? idk why tho
         for (int num209 = 0; num209 < 4; num209++)
         {
             float num210 = velocity.X;
@@ -59,7 +59,7 @@ internal class QuadroCannon : ModItem
             num211 += Main.rand.Next(-24, 25) * 0.05f;
             Projectile.NewProjectile(source, position.X, position.Y, num210, num211, type, damage, knockback,
                 player.whoAmI);
-            SoundEngine.PlaySound(SoundID.Item, -1, -1, 11);
+            SoundEngine.PlaySound(SoundID.Item11, player.position);
         }
 
         return false;

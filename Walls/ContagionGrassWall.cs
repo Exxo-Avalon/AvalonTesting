@@ -9,8 +9,7 @@ public class ContagionGrassWall : ModWall
     public override void SetStaticDefaults()
     {
         AddMapEntry(new Color(106, 116, 59));
-        SoundType = SoundID.Grass;
-        SoundStyle = 1;
+        HitSound = SoundID.Grass;
         WallID.Sets.Conversion.Grass[Type] = true;
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }

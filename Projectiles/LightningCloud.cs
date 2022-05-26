@@ -33,7 +33,7 @@ public class LightningCloud : ModProjectile
         Projectile.frameCounter++;
         if (Projectile.frameCounter == 11)
         {
-            SoundEngine.PlaySound(SoundLoader.GetSoundSlot(Mod, "Sounds/Item/LightningStrike"), (int)Projectile.position.X, (int)Projectile.position.Y + 10);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LightningStrike"), new Vector2(Projectile.position.X, Projectile.position.Y + 10));
         }
         if (Projectile.frameCounter > 11f)
         {

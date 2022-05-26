@@ -148,7 +148,7 @@ public class GoldenFire : ModProjectile
             return;
         }
         Projectile.timeLeft = 0;
-        SoundEngine.PlaySound(SoundID.Item, Projectile.position, SoundLoader.GetSoundSlot(Mod, "Sounds/Item/Fireball"));
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Fireball"), Projectile.position);
 
         float len = 4f;
         int flam = ModContent.ProjectileType<GoldenFlamelet>();

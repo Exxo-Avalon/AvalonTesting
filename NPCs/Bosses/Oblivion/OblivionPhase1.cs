@@ -525,7 +525,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
 
             if (CurrentFrame == waitFrameDuration)
             {
-                SoundEngine.PlaySound(SoundID.ForceRoar, (int)npc.Center.X, (int)npc.Center.Y, -1);
+                SoundEngine.PlaySound(SoundID.ForceRoar, npc.Center);
             }
 
             base.Update();
@@ -733,7 +733,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                     oblivionPhase1.AIFrameOffset = 1;
                 }
 
-                SoundEngine.PlaySound(SoundID.NPCHit, (int)npc.Center.X, (int)npc.Center.Y);
+                SoundEngine.PlaySound(SoundID.NPCHit1, npc.Center);
                 for (int i = 0; i < 2; i++)
                 {
                     Gore.NewGore(npc.GetSource_FromThis(), npc.Center, new Vector2(syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f), 8);
@@ -744,7 +744,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Blood, syncedRandom.Next(-30, 31) * 0.2f, syncedRandom.Next(-30, 31) * 0.2f);
                 }
-                SoundEngine.PlaySound(SoundID.Roar, (int)npc.Center.X, (int)npc.Center.Y, 0);
+                SoundEngine.PlaySound(SoundID.Roar, npc.Center);
             }
 
             if (CurrentFrame > duration)

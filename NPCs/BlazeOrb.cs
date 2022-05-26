@@ -54,7 +54,7 @@ public class BlazeOrb : ModNPC
         if (NPC.ai[0] == 2f)
         {
             NPC.position += NPC.velocity;
-            SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.position.Y, 20);
+            SoundEngine.PlaySound(SoundID.Item20, NPC.position);
             for (var num285 = 0; num285 < 20; num285++)
             {
                 var num286 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + 2f), NPC.width, NPC.height, DustID.Torch, 0f, 0f, 100, default(Color), 1.8f);

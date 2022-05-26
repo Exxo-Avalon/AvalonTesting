@@ -22,8 +22,7 @@ public class Holybird : ModTile
         Main.tileNoFail[Type] = true;
         Main.tileSpelunker[Type] = true;
         AddMapEntry(new Color(0, 200, 50), LanguageManager.Instance.GetText("Holybird"));
-        SoundStyle = 1;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 
         TileObjectData.newTile.AnchorValidTiles = new int[]

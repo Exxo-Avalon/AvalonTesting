@@ -108,7 +108,7 @@ public class BacteriumPrime : ModNPC
         {
             if (NPC.localAI[2] == 0f)
             {
-                SoundEngine.PlaySound(SoundID.NPCHit, (int)NPC.position.X, (int)NPC.position.Y);
+                SoundEngine.PlaySound(SoundID.NPCHit1, NPC.position);
                 NPC.localAI[2] = 1f;
                 for (int num903 = 0; num903 < 20; num903++)
                 {
@@ -122,7 +122,7 @@ public class BacteriumPrime : ModNPC
                     NPC.life = 1500;
                 }
 
-                SoundEngine.PlaySound(SoundID.Roar, (int)NPC.position.X, (int)NPC.position.Y, 0);
+                SoundEngine.PlaySound(SoundID.Roar, NPC.position);
             }
 
             NPC.dontTakeDamage = false;
@@ -203,7 +203,7 @@ public class BacteriumPrime : ModNPC
                     NPC.alpha = 255;
                     NPC.position.X = (NPC.ai[1] * 16f) - (NPC.width / 2);
                     NPC.position.Y = (NPC.ai[2] * 16f) - (NPC.height / 2);
-                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.Center.X, (int)NPC.Center.Y, 8);
+                    SoundEngine.PlaySound(SoundID.Item8, NPC.Center);
                     NPC.ai[0] = -3f;
                     return;
                 }
@@ -318,7 +318,7 @@ public class BacteriumPrime : ModNPC
             NPC.alpha += 5;
             if (NPC.alpha >= 255)
             {
-                SoundEngine.PlaySound(SoundID.Item, (int)NPC.Center.X, (int)NPC.Center.Y, 8);
+                SoundEngine.PlaySound(SoundID.Item8, NPC.Center);
                 NPC.alpha = 255;
                 NPC.position.X = (NPC.ai[1] * 16f) - (NPC.width / 2);
                 NPC.position.Y = (NPC.ai[2] * 16f) - (NPC.height / 2);

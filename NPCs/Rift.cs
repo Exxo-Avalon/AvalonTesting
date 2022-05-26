@@ -216,7 +216,7 @@ public class Rift : ModNPC
                     Main.dust[num893].noGravity = true;
                     Main.dust[num893].fadeIn = 3f;
                 }
-                SoundEngine.PlaySound(SoundID.Item, NPC.position, 8);
+                SoundEngine.PlaySound(SoundID.Item8, NPC.position);
             }
         }
         else if (NPC.ai[1] == 1)

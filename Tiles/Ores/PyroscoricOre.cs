@@ -19,8 +19,7 @@ public class PyroscoricOre : ModTile
         Main.tileLighted[Type] = true;
         Main.tileOreFinderPriority[Type] = 820;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.PyroscoricOre>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.InfernoFork;
         MinPick = 210;
     }

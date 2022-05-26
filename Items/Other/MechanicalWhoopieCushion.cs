@@ -30,7 +30,7 @@ class MechanicalWhoopieCushion : ModItem
 
     public override bool? UseItem(Player player)
     {
-        SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/MechanicalFart"));
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/MechanicalFart"));
         return true;
     }
 }

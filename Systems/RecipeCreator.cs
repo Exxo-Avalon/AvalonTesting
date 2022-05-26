@@ -1432,7 +1432,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.TinkerersWorkshop)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        
+
 
         Mod.CreateRecipe(ModContent.ItemType<BuildersToolbelt>())
             .AddIngredient(ModContent.ItemType<GoblinToolbelt>())
@@ -2366,7 +2366,7 @@ public class RecipeCreator : ModSystem
         // end Iridium stuff
 
         #region catalyzer
-        
+
         //start stone types
         Mod.CreateRecipe(ItemID.EbonstoneBlock, 50)
             .AddIngredient(ItemID.PearlstoneBlock, 50)

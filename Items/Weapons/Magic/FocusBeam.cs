@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,6 +34,6 @@ class FocusBeam : ModItem
         Item.value = 388500;
         Item.useAnimation = 27;
         Item.height = dims.Height;
-        Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Beam");
+        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Beam");
     }
 }

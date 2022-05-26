@@ -56,7 +56,7 @@ public class Moonerang : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.NPCHit, (int)Projectile.Center.X, (int)Projectile.Center.Y, 3, 0.8f, -0.25f);
+        SoundEngine.PlaySound(SoundID.NPCHit3 with { Volume = 0.8f, Pitch = -0.25f }, Projectile.Center);
         for (int num237 = 0; num237 < 15; num237++)
         {
             int num239 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), 18, 18, 68, Projectile.oldVelocity.X * 0.3f, Projectile.oldVelocity.Y * 0.3f, default, default, 1.5f);

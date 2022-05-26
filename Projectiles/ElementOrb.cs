@@ -62,7 +62,7 @@ public class ElementOrb : ModProjectile
         if (Projectile.soundDelay == 0 && Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y) > 2f)
         {
             Projectile.soundDelay = 10;
-            SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 9);
+            SoundEngine.PlaySound(SoundID.Item9, Projectile.position);
         }
         var num170 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.MagicMirror, 0f, 0f, 100, default(Color), 2f);
         Main.dust[num170].velocity *= 0.3f;

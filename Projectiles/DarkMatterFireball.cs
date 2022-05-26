@@ -30,7 +30,7 @@ public class DarkMatterFireball : ModProjectile
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(SoundID.Item, (int)Projectile.position.X, (int)Projectile.position.Y, 10);
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         return true;
     }
     public override void OnHitPlayer(Player target, int damage, bool crit)

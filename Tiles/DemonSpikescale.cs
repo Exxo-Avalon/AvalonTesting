@@ -14,7 +14,6 @@ public class DemonSpikescale : ModTile
         Main.tileSolid[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DemonSpikeScale>();
         DustType = DustID.CorruptionThorns;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
     }
 }

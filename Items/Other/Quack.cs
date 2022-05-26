@@ -31,7 +31,7 @@ class Quack : ModItem
 
     public override bool? UseItem(Player player)
     {
-        SoundEngine.PlaySound(SoundID.Zombie, -1, -1, 12);
+        SoundEngine.PlaySound(SoundID.Zombie12, player.position);
         return true;
     }
 }

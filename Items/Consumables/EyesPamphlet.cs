@@ -38,7 +38,7 @@ class EyesPamphlet : ModItem
         NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
         NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
         NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
-        SoundEngine.PlaySound(SoundID.Roar, player.position, 0);
+        SoundEngine.PlaySound(SoundID.Roar, player.position);
         return true;
     }
     public override void AddRecipes()

@@ -17,8 +17,7 @@ public class LaziteShortGrass : ModTile
         Main.tileWaterDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
         DustType = DustID.GemSapphire;
-        SoundStyle = 1;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         AddMapEntry(new Color(10, 40, 175));
     }
 

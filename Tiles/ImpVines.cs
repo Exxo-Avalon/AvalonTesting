@@ -14,7 +14,7 @@ public class Impvines : ModTile
         Main.tileLavaDeath[Type] = false;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
-        SoundType = SoundID.Grass;
+        HitSound = SoundID.Grass;
         DustType = DustID.Torch;
         TileID.Sets.IsVine[Type] = true;
         TileID.Sets.VineThreads[Type] = true;

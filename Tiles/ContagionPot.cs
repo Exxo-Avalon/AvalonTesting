@@ -24,7 +24,7 @@ public class ContagionPot : ModTile
         name.SetDefault("Pot");
         AddMapEntry(new Color(33, 38, 97), name);
         DustType = 29;
-        SoundType = 13;
+        HitSound = SoundID.Shatter;
     }
 
     public override bool CreateDust(int i, int j, ref int type)
@@ -36,7 +36,7 @@ public class ContagionPot : ModTile
     {
         _ = j - Main.tile[i, j].TileFrameY / 18;
         _ = i - Main.tile[i, j].TileFrameX / 18;
-        SoundEngine.PlaySound(4, i * 16, j * 16, 1);
+        SoundEngine.PlaySound(SoundID.NPCDeath1, new Vector2(i * 16, j * 16));
         Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, 22, 0f, 0f, 0, default, 1f);
         //Gore.NewGore(new Vector2((float)(i * 16), (float)(j * 16)), default(Vector2), base.Mod.Find<ModGore>("DepthsPotGore1"));
         //Gore.NewGore(new Vector2((float)(i * 16), (float)(j * 16)), default(Vector2), base.Mod.Find<ModGore>("DepthsPotGore2"));

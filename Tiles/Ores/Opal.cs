@@ -20,8 +20,7 @@ public class Opal : ModTile
         Main.tileMerge[Type][TileID.Stone] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.Stone;
     }

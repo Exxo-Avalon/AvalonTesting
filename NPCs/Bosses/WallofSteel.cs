@@ -415,7 +415,7 @@ public class WallofSteel : ModNPC
                     int dmg = Main.expertMode ? 75 : 60;
                     var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), AvalonTestingWorld.WallOfSteelT);
                     float rotation = (float)Math.Atan2(laserPos.Y - (Main.player[NPC.target].position.Y + (Main.player[NPC.target].height * 0.5f)), laserPos.X - (Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5f)));
-                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.WallOfSteelT, 33);
+                    SoundEngine.PlaySound(SoundID.Item33, new Vector2((int)NPC.position.X, AvalonTestingWorld.WallOfSteelT));
                     while (f <= .1f)
                     {
                         fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
@@ -457,7 +457,7 @@ public class WallofSteel : ModNPC
                     float f = 0f;
                     var laserPos = new Vector2((NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width), AvalonTestingWorld.WallOfSteelT);
                     float rotation = (float)Math.Atan2(laserPos.Y - (Main.player[NPC.target].position.Y + (Main.player[NPC.target].height * 0.5f)), laserPos.X - (Main.player[NPC.target].position.X + (Main.player[NPC.target].width * 0.5f)));
-                    SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, AvalonTestingWorld.WallOfSteelT, 33);
+                    SoundEngine.PlaySound(SoundID.Item33, new Vector2((int)NPC.position.X, AvalonTestingWorld.WallOfSteelT));
                     //while (f <= .1f)
                     //{
                     fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
@@ -482,13 +482,13 @@ public class WallofSteel : ModNPC
                 if (NPC.ai[3] == 1)
                 {
                     NPC.defense = 0;
-                    SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/LaserCharge"), -1, -1);
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserCharge"), NPC.Center);
                 }
                 if (NPC.ai[3] >= 60 && NPC.ai[3] <= 90)
                 {
                     if (NPC.ai[3] == 60)
                     {
-                        SoundEngine.PlaySound(SoundID.Item, (int)NPC.position.X, (int)NPC.Center.Y, 33);
+                        SoundEngine.PlaySound(SoundID.Item33, NPC.Center);
                         NPC.ai[1] = (NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width);
                         NPC.ai[2] = NPC.Center.Y;
                         NPC.localAI[1] = NPC.velocity.X;

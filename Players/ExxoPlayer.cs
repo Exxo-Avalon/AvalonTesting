@@ -396,8 +396,7 @@ public class ExxoPlayer : ModPlayer
                     int g1 = Gore.NewGore(Player.GetSource_FromThis(),
                         Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
                         Mod.Find<ModGore>("Bubble").Type);
-                    SoundEngine.PlaySound(SoundID.Item, (int)Player.position.X, (int)Player.position.Y,
-                        SoundLoader.GetSoundSlot(Mod, "Sounds/Item/Bubbles"));
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Bubbles"), Player.position);
                 }
             }
 
@@ -971,7 +970,7 @@ public class ExxoPlayer : ModPlayer
         {
             float shootSpeed = 6f;
             Vector2 center = Player.Center;
-            SoundEngine.PlaySound(2, Player.position, 17);
+            SoundEngine.PlaySound(SoundID.Item17, Player.position);
             float num572 = (float)Math.Atan2(center.Y - npc.Center.Y, center.X - npc.Center.X);
             for (float f = 0f; f <= 3.6f; f += 0.4f)
             {
@@ -1292,7 +1291,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[0])
             {
-                SoundEngine.PlaySound(28, pposX * 16, pposY * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2(pposX * 16, pposY * 16));
                 Wiring.TripWire(pposX, pposY, 1, 1);
                 pSensor[0] = true;
             }
@@ -1307,7 +1306,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[1])
             {
-                SoundEngine.PlaySound(28, (pposX + 1) * 16, pposY * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2((pposX + 1) * 16, pposY * 16));
                 Wiring.TripWire(pposX + 1, pposY, 1, 1);
                 pSensor[1] = true;
             }
@@ -1322,7 +1321,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[2])
             {
-                SoundEngine.PlaySound(28, pposX * 16, (pposY + 1) * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2(pposX * 16, (pposY + 1) * 16));
                 Wiring.TripWire(pposX, pposY + 1, 1, 1);
                 pSensor[2] = true;
             }
@@ -1337,7 +1336,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[3])
             {
-                SoundEngine.PlaySound(28, (pposX + 1) * 16, (pposY + 1) * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2((pposX + 1) * 16, (pposY + 1) * 16));
                 Wiring.TripWire(pposX + 1, pposY + 1, 1, 1);
                 pSensor[3] = true;
             }
@@ -1352,7 +1351,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[4])
             {
-                SoundEngine.PlaySound(28, pposX * 16, (pposY + 2) * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2(pposX * 16, (pposY + 2) * 16));
                 Wiring.TripWire(pposX, pposY + 2, 1, 1);
                 pSensor[4] = true;
             }
@@ -1367,7 +1366,7 @@ public class ExxoPlayer : ModPlayer
         {
             if (!pSensor[5])
             {
-                SoundEngine.PlaySound(28, (pposX + 1) * 16, (pposY + 2) * 16, 0);
+                SoundEngine.PlaySound(SoundID.Mech, new Vector2((pposX + 1) * 16, (pposY + 2) * 16));
                 Wiring.TripWire(pposX + 1, pposY + 2, 1, 1);
                 pSensor[5] = true;
             }
@@ -1380,8 +1379,7 @@ public class ExxoPlayer : ModPlayer
 
         if (screenShakeTimer == 1)
         {
-            SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/Stomp"), (int)Player.position.X,
-                (int)Player.position.Y);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Stomp"), Player.position);
         }
 
         if (screenShakeTimer > 0)
@@ -2281,7 +2279,7 @@ public class ExxoPlayer : ModPlayer
                 h = -6;
             }
 
-            SoundEngine.PlaySound(SoundID.Zombie, Player.position, 12);
+            SoundEngine.PlaySound(SoundID.Zombie12, Player.position);
             Player.velocity.Y = -Player.jumpSpeed * Player.gravDir;
             Player.jump = (int)(Player.jumpHeight * 1.25);
             int num8 = Dust.NewDust(new Vector2(Player.position.X - 4f, Player.position.Y + h), Player.width + 8, 4,
@@ -2472,7 +2470,7 @@ public class ExxoPlayer : ModPlayer
                             new Vector2(-Player.velocity.X, -Player.velocity.Y), Main.rand.Next(11, 14));
                         Main.gore[num6].velocity.X = (Main.gore[num6].velocity.X * 0.1f) - (Player.velocity.X * 0.1f);
                         Main.gore[num6].velocity.Y = (Main.gore[num6].velocity.Y * 0.1f) - (Player.velocity.Y * 0.05f);
-                        SoundEngine.PlaySound(2, Player.Center, 11);
+                        SoundEngine.PlaySound(SoundID.Item11, Player.Center);
                         Player.velocity.Y -= 16.5f;
                     }
                     else if (Player.GetModPlayer<ExxoStaminaPlayer>().StamFlower)
@@ -2506,7 +2504,7 @@ public class ExxoPlayer : ModPlayer
                                 (Main.gore[num6].velocity.X * 0.1f) - (Player.velocity.X * 0.1f);
                             Main.gore[num6].velocity.Y =
                                 (Main.gore[num6].velocity.Y * 0.1f) - (Player.velocity.Y * 0.05f);
-                            SoundEngine.PlaySound(2, Player.Center, 11);
+                            SoundEngine.PlaySound(SoundID.Item11, Player.Center);
                             Player.velocity.Y -= 16.5f;
                         }
                     }

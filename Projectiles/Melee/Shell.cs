@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.ID;
 
 namespace AvalonTesting.Projectiles.Melee;
 
@@ -30,7 +31,7 @@ public class Shell : ModProjectile
         if (Projectile.velocity.Y != oldVelocity.Y && oldVelocity.Y > 5f)
         {
             Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-            SoundEngine.PlaySound(0, (int)Projectile.position.X, (int)Projectile.position.Y, 1);
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
             Projectile.velocity.Y = -oldVelocity.Y * 0.2f;
         }
         if (Projectile.velocity.X != oldVelocity.X)

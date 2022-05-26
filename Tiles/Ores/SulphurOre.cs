@@ -15,8 +15,7 @@ public class SulphurOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Sulphur>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         DustType = DustID.Enchanted_Gold;
     }
 }

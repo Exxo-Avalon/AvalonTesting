@@ -14,8 +14,7 @@ public class TuhrtlBrick : ModTile
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.TuhrtlBrick>();
-        SoundType = SoundID.Tink;
-        SoundStyle = 1;
+        HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.Silt;
         TileID.Sets.AllBlocksWithSmoothBordersToResolveHalfBlockIssue[Type] = true;
