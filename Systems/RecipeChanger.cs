@@ -18,7 +18,6 @@ public class RecipeChanger : ModSystem
                 case ItemID.TerrasparkBoots:
                 {
                     recipe.DisableRecipe();
-                    i--;
                     break;
                 }
                 case ItemID.FrostHelmet:
@@ -32,7 +31,6 @@ public class RecipeChanger : ModSystem
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
                         recipe.DisableRecipe();
-                        i--;
                     }
 
                     break;
@@ -48,7 +46,6 @@ public class RecipeChanger : ModSystem
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
                         recipe.DisableRecipe();
-                        i--;
                     }
 
                     break;
@@ -64,7 +61,6 @@ public class RecipeChanger : ModSystem
                     else if (recipe.HasIngredient(ItemID.TitaniumBar))
                     {
                         recipe.DisableRecipe();
-                        i--;
                     }
 
                     break;
