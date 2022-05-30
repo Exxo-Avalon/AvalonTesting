@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using AvalonTesting.Common;
 using AvalonTesting.Tiles;
 using IL.Terraria;
+using Mono.Cecil;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using MonoMod.Utils;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,47 +36,32 @@ public class WorldGenEdits : ModHook
 
     private static void ILGenPassShinies(ILContext il)
     {
-        var instructions = new Instruction[4];
-        var delegates = new Func<int>[4]
-        {
-            () => Terraria.WorldGen.SavedOreTiers.Copper, () => Terraria.WorldGen.SavedOreTiers.Iron,
-            () => Terraria.WorldGen.SavedOreTiers.Silver, () => Terraria.WorldGen.SavedOreTiers.Gold,
-        };
         var c = new ILCursor(il);
+        FieldReference? copperField = default;
+        c.GotoNext(i => i.MatchStfld(out copperField));
+        Type methodType = copperField?.DeclaringType.ResolveReflection()!;
 
-        for (int i = 0; i < instructions.Length; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                if (!c.TryGotoNext(i => i.MatchCall<Terraria.WorldGen>(nameof(Terraria.WorldGen.TileRunner))))
-                {
-                    return;
-                }
-            }
+        SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("copper")),
+            () => Terraria.WorldGen.SavedOreTiers.Copper);
+        SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("iron")),
+            () => Terraria.WorldGen.SavedOreTiers.Iron);
+        SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("silver")),
+            () => Terraria.WorldGen.SavedOreTiers.Silver);
+        SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("gold")),
+            () => Terraria.WorldGen.SavedOreTiers.Gold);
 
-            if (!c.TryGotoPrev(i => i.MatchLdfld(out _)))
-            {
-                return;
-            }
-
-            instructions[i] = c.Next;
-        }
-
-        for (int i = 0; i < instructions.Length; i++)
-        {
-            SoftInterceptOreGen(il, instructions[i], delegates[i]);
-        }
+        Utilities.OutputIL(il);
     }
 
-    private static void SoftInterceptOreGen(ILContext il, Instruction i1, Func<int> del)
+    private static void SoftInterceptOreGen(ILContext il, Func<Instruction, bool> predicate, Func<int> valueProvider)
     {
         var c = new ILCursor(il);
 
-        while (c.TryGotoNext(i => i.OpCode == i1.OpCode && i.Operand == i1.Operand))
+        while (c.TryGotoNext(predicate))
         {
             c.Index++;
-            c.Emit(OpCodes.Pop);
-            c.EmitDelegate(del);
+            c.Emit(OpCodes.Pop)
+                .EmitDelegate(valueProvider);
         }
     }
 

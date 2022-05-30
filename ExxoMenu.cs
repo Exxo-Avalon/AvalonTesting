@@ -24,6 +24,8 @@ public class ExxoMenu : ModMenu
     public override void Load()
     {
         base.Load();
+
+        // Sets the menu to be initially set to Exxo Avalon's on game load
         typeof(MenuLoader)
             .GetField("LastSelectedModMenu", BindingFlags.NonPublic | BindingFlags.Static)
             ?.SetValue(null, FullName);

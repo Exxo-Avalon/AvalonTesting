@@ -133,7 +133,7 @@ public class UIWorldCreationEdits : ModHook
             val =>
             {
                 currentEvilOption = val ?? MenuEvilOption.None;
-                typeof(On.Terraria.GameContent.UI.States.UIWorldCreation).GetMethod(
+                typeof(UIWorldCreation).GetMethod(
                         "UpdatePreviewPlate",
                         BindingFlags.NonPublic | BindingFlags.Instance)!
                     .Invoke(self, null);
