@@ -66,7 +66,8 @@ public abstract class ExxoUIElement : UIElement
         {
             if (IsMouseHovering && !string.IsNullOrEmpty(Tooltip))
             {
-                Main.hoverItemName = Tooltip;
+                // TODO: Upgrade tooltip
+                Main.instance.MouseText(Tooltip);
             }
 
             base.Draw(spriteBatch);

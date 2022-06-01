@@ -21,12 +21,6 @@ public class ExxoUIPieInterface : ExxoUIElement
         PieChart.VAlign = UIAlign.Center;
         PieChart.HAlign = UIAlign.Center;
         backingCircle.Append(PieChart);
-
-        OnMouseHovering += (evt, element) =>
-        {
-            AvalonTesting.Mod.Logger.Debug("A");
-            AvalonTesting.Mod.Logger.Debug("B");
-        };
     }
 
     public override bool IsDynamicallySized => false;
