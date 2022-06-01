@@ -6,7 +6,7 @@ float4 PS(in float4 uv: TEXCOORD0) : COLOR0
 {
     float2 origPoint = uv.xy - float2(0.5, 0.5);
 
-    float rotation = atan2(origPoint.y, origPoint.x) + PI;
+    float rotation = atan2(origPoint.y, origPoint.x);
     float4 color = float4(Thresholds[0].xyz, 1);
 
     for (int i = 0; i < 11; ++i) {
