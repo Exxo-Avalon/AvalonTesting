@@ -1,6 +1,6 @@
 const float PI = 3.14159265359;
 
-float4 Thresholds[12];
+float4 Thresholds[16];
 
 float4 PS(in float4 uv: TEXCOORD0) : COLOR0
 {
@@ -9,7 +9,7 @@ float4 PS(in float4 uv: TEXCOORD0) : COLOR0
     float rotation = atan2(origPoint.y, origPoint.x);
     float4 color = float4(Thresholds[0].xyz, 1);
 
-    for (int i = 0; i < 11; ++i) {
+    for (int i = 0; i < 15; ++i) {
         color = (rotation > Thresholds[i].w) ? float4(Thresholds[i + 1].xyz, 1) : color;
     }
 

@@ -7,32 +7,31 @@ namespace AvalonTesting.UI;
 
 public class ExxoUICircle : ExxoUIElement
 {
-    private readonly Asset<Effect> circleEffect =
+    private static readonly Asset<Effect> CircleEffect =
         AvalonTesting.Mod.Assets.Request<Effect>("Effects/Circle", AssetRequestMode.ImmediateLoad);
 
     public override bool IsDynamicallySized => false;
     public Color Color { get; set; } = Color.White;
 
     public override bool ContainsPoint(Vector2 point) =>
-        Vector2.Distance(GetDimensions().Center(), point) <= GetDimensions().Width / 2;
+        Vector2.Distance(GetInnerDimensions().Center(), point) <= GetInnerDimensions().Width / 2;
 
     protected override void DrawSelf(SpriteBatch spriteBatch)
     {
         spriteBatch.End();
-        circleEffect.Value.CurrentTechnique = circleEffect.Value.Techniques["Default"];
+        CircleEffect.Value.CurrentTechnique = CircleEffect.Value.Techniques["Default"];
 
         using var whiteRectangle = new Texture2D(Main.spriteBatch.GraphicsDevice, 1, 1);
         whiteRectangle.SetData(new[] { Color.White });
 
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp,
-            DepthStencilState.None,
-            RasterizerState.CullNone, circleEffect.Value, Main.UIScaleMatrix);
+            DepthStencilState.None, RasterizerState.CullNone, CircleEffect.Value, Main.UIScaleMatrix);
 
-        circleEffect.Value.Parameters["Color"].SetValue(Color.ToVector4());
+        CircleEffect.Value.Parameters["Color"].SetValue(Color.ToVector4());
 
         spriteBatch.Draw(
             whiteRectangle,
-            GetDimensions().ToRectangle(),
+            GetInnerDimensions().ToRectangle(),
             Color.White);
         spriteBatch.End();
         BeginDefaultSpriteBatch(spriteBatch);

@@ -10,16 +10,16 @@ namespace AvalonTesting.UI;
 
 public class ExxoUIPieChart : ExxoUIElement
 {
-    private const int MaxData = 12;
+    private const int MaxData = 16;
 
-    private readonly PieCacheData[] cachedPieData = new PieCacheData[MaxData];
-
-    private readonly Asset<Effect> pieChartEffect =
+    private static readonly Asset<Effect> PieChartEffect =
         AvalonTesting.Mod.Assets.Request<Effect>("Effects/PieChart", AssetRequestMode.ImmediateLoad);
+
+    private readonly Tuple<float, PieData>[] calculatedData = new Tuple<float, PieData>[MaxData];
 
     private readonly List<PieData> pieDataList = new();
     public override bool IsDynamicallySized => false;
-    public PieData CurrentHoverPie { get; set; }
+    public PieData? CurrentPieDataHovered { get; private set; }
 
     private Vector4[] PieShaderData
     {
@@ -28,7 +28,7 @@ public class ExxoUIPieChart : ExxoUIElement
             var data = new Vector4[MaxData];
             for (int i = 0; i < MaxData; i++)
             {
-                data[i] = cachedPieData[i].ShaderData;
+                data[i] = new Vector4(calculatedData[i].Item2.Color.ToVector3(), calculatedData[i].Item1);
             }
 
             return data;
@@ -38,25 +38,21 @@ public class ExxoUIPieChart : ExxoUIElement
     public override bool ContainsPoint(Vector2 point) =>
         Vector2.Distance(GetDimensions().Center(), point) <= GetDimensions().Width / 2;
 
-    public void RegisterData(PieData pieData)
-    {
-        pieDataList.Add(pieData);
-        BuildCache();
-    }
+    public void RegisterData(PieData pieData) => pieDataList.Add(pieData);
 
     protected override void DrawSelf(SpriteBatch spriteBatch)
     {
         spriteBatch.End();
-        pieChartEffect.Value.CurrentTechnique = pieChartEffect.Value.Techniques["Default"];
+        PieChartEffect.Value.CurrentTechnique = PieChartEffect.Value.Techniques["Default"];
 
         using var whiteRectangle = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
         whiteRectangle.SetData(new[] { Color.White });
 
-        pieChartEffect.Value.Parameters["Thresholds"].SetValue(PieShaderData);
+        PieChartEffect.Value.Parameters["Thresholds"].SetValue(PieShaderData);
 
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp,
             DepthStencilState.None,
-            RasterizerState.CullNone, pieChartEffect.Value, Main.UIScaleMatrix);
+            RasterizerState.CullNone, PieChartEffect.Value, Main.UIScaleMatrix);
 
         spriteBatch.Draw(
             whiteRectangle,
@@ -68,23 +64,26 @@ public class ExxoUIPieChart : ExxoUIElement
 
     protected override void UpdateSelf(GameTime gameTime)
     {
+        CalculateData();
+
         if (IsMouseHovering)
         {
             Vector2 point =
-                (UserInterface.ActiveInstance.MousePosition - GetDimensions().Center()).SafeNormalize(Vector2.Zero);
+                (UserInterface.ActiveInstance.MousePosition - GetInnerDimensions().Center())
+                .SafeNormalize(Vector2.Zero);
             double rotation = Math.Atan2(point.Y, point.X);
 
-            CurrentHoverPie = cachedPieData[0].PieData;
+            CurrentPieDataHovered = calculatedData[0].Item2;
 
             for (int i = 0; i < MaxData - 1; ++i)
             {
-                if (rotation > cachedPieData[i].Threshold)
+                if (rotation > calculatedData[i].Item1)
                 {
-                    CurrentHoverPie = cachedPieData[i + 1].PieData;
+                    CurrentPieDataHovered = calculatedData[i + 1].Item2;
                 }
             }
 
-            Tooltip = CurrentHoverPie.Label;
+            Tooltip = $"{CurrentPieDataHovered.Name} ({CurrentPieDataHovered.Percentage * 100:n2}%)";
         }
         else
         {
@@ -92,57 +91,49 @@ public class ExxoUIPieChart : ExxoUIElement
         }
     }
 
-    private void BuildCache()
+    private void CalculateData()
     {
-        int count = pieDataList.Count < MaxData ? pieDataList.Count : MaxData;
-        float percentCount = 0;
+        pieDataList.Sort((a, b) => a.Percentage.CompareTo(b.Percentage));
+        pieDataList.Reverse();
+        int trackDataCount = pieDataList.Count < MaxData - 1 ? pieDataList.Count : MaxData - 1;
 
-        for (int i = 0; i < count; i++)
+        float percentIncrement = 0;
+
+        for (int i = 0; i < trackDataCount; i++)
         {
-            cachedPieData[i] = new PieCacheData(pieDataList[i].GetThresholdData(ref percentCount), pieDataList[i]);
+            calculatedData[i] =
+                new Tuple<float, PieData>(pieDataList[i].GetThreshold(ref percentIncrement), pieDataList[i]);
         }
 
-        float count1 = percentCount;
-        var otherData = new PieData("Other", Color.Gray, () => 1 - count1);
-        var otherCacheData = new PieCacheData(otherData.GetThresholdData(ref percentCount), otherData);
+        float percentRemaining = 1 - percentIncrement;
+        var otherData = new PieData("Other", Color.Gray, () => percentRemaining);
 
-        for (int i = count; i < MaxData; i++)
+        for (int i = trackDataCount; i < MaxData; i++)
         {
-            cachedPieData[i] = otherCacheData;
+            calculatedData[i] =
+                new Tuple<float, PieData>(otherData.GetThreshold(ref percentIncrement), otherData);
         }
-    }
-
-    private readonly struct PieCacheData
-    {
-        public PieCacheData(Vector4 shaderData, PieData pieData)
-        {
-            ShaderData = shaderData;
-            PieData = pieData;
-        }
-
-        public readonly Vector4 ShaderData;
-        public readonly PieData PieData;
-        public float Threshold => ShaderData.W;
     }
 
     public class PieData
     {
-        public readonly string Label;
         private readonly Func<float> percentageProvider;
 
-        public PieData(string label, Color color, Func<float> percentageProvider)
+        public PieData(string name, Color color, Func<float> percentageProvider)
         {
-            Label = label;
+            Name = name;
             Color = color;
             this.percentageProvider = percentageProvider;
         }
 
-        public Color Color { get; set; }
+        public float Percentage => percentageProvider.Invoke();
+        public string Name { get; }
+        public Color Color { get; }
 
-        public Vector4 GetThresholdData(ref float count)
+        public float GetThreshold(ref float count)
         {
-            count += percentageProvider.Invoke();
-            return new Vector4(Color.ToVector3(), (count * MathHelper.TwoPi) - MathHelper.Pi);
+            count += Percentage;
+            return (count * MathHelper.TwoPi) - MathHelper.Pi;
         }
     }
 }

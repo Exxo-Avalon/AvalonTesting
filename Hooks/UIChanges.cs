@@ -36,8 +36,8 @@ public class UIChanges : ModHook
 
     protected override void Apply()
     {
-        IL.Terraria.UI.UIElement.Draw += ILUIElementDraw;
-        Hook_OnSpriteFontInternalDraw += OnSpriteFontInternalDraw;
+        // IL.Terraria.UI.UIElement.Draw += ILUIElementDraw;
+        // Hook_OnSpriteFontInternalDraw += OnSpriteFontInternalDraw;
         Main.DrawInterface += OnMainDrawInterface;
         IL.Terraria.UI.UserInterface.Update += ILUserInterfaceUpdate;
         Main.DrawInventory += OnMainDrawInventory;

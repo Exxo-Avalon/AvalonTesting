@@ -9,27 +9,33 @@ namespace AvalonTesting.UI;
 
 public abstract class ExxoUIElement : UIElement
 {
-    public delegate void ExxoUIElementEventHandler(ExxoUIElement sender, EventArgs e);
-
     public readonly Queue<UIElement> ElementsForRemoval = new();
 
     private bool mouseWasOver;
+
+    public delegate void ExxoUIElementEventHandler(ExxoUIElement sender, EventArgs e);
+
+    public event MouseEvent OnFirstMouseOver;
+    public event MouseEvent OnLastMouseOut;
+
+    public event MouseEvent OnMouseHovering;
+    public event ExxoUIElementEventHandler OnRecalculateFinish;
     public bool IsVisible => Active && !Hidden && GetOuterDimensions().Width > 0 && GetOuterDimensions().Height > 0;
-    public bool Active { get; set; } = true;
-    public bool Hidden { get; set; }
     public int ElementCount => Elements.Count;
-    public bool IsRecalculating { get; private set; }
-    public string Tooltip { get; set; } = "";
 
     public abstract bool IsDynamicallySized
     {
         get;
     }
 
-    public event MouseEvent OnMouseHovering;
-    public event MouseEvent OnFirstMouseOver;
-    public event MouseEvent OnLastMouseOut;
-    public event ExxoUIElementEventHandler OnRecalculateFinish;
+    public bool Active { get; set; } = true;
+    public bool Hidden { get; set; }
+    public bool IsRecalculating { get; private set; }
+    public string Tooltip { get; set; } = "";
+
+    public static void BeginDefaultSpriteBatch(SpriteBatch spriteBatch) =>
+        spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, DepthStencilState.None, null, null,
+            Main.UIScaleMatrix);
 
     public sealed override void Update(GameTime gameTime)
     {
@@ -51,26 +57,18 @@ public abstract class ExxoUIElement : UIElement
         }
     }
 
-    protected virtual void UpdateSelf(GameTime gameTime)
-    {
-    }
-
-    public override bool ContainsPoint(Vector2 point)
-    {
-        return IsVisible && base.ContainsPoint(point);
-    }
+    public override bool ContainsPoint(Vector2 point) => IsVisible && base.ContainsPoint(point);
 
     public sealed override void Draw(SpriteBatch spriteBatch)
     {
         if (IsVisible)
         {
+            base.Draw(spriteBatch);
+
             if (IsMouseHovering && !string.IsNullOrEmpty(Tooltip))
             {
-                // TODO: Upgrade tooltip
-                Main.instance.MouseText(Tooltip);
+                Utilities.DrawBoxedCursorTooltip(spriteBatch, Tooltip);
             }
-
-            base.Draw(spriteBatch);
         }
     }
 
@@ -87,50 +85,6 @@ public abstract class ExxoUIElement : UIElement
         }
 
         IsRecalculating = false;
-    }
-
-    private void RecalculateFinish()
-    {
-        foreach (UIElement element in Elements)
-        {
-            if (element is ExxoUIElement exxoElement)
-            {
-                exxoElement.RecalculateFinish();
-            }
-        }
-
-        OnRecalculateFinish?.Invoke(this, EventArgs.Empty);
-    }
-
-    // Optimised method that only moves positions, only to be used if the elements have already previously been recalculated
-    public void RecalculateChildrenSelf()
-    {
-        RecalculateSelf();
-        foreach (UIElement element in Elements)
-        {
-            if (element is ExxoUIElement exxoElement)
-            {
-                exxoElement.RecalculateChildrenSelf();
-            }
-            else
-            {
-                element.Recalculate();
-            }
-        }
-    }
-
-    // This works because the UIChanges.ILUIElementRecalculate hook doesn't recalulate children if the element is an ExxoUIElement
-    public void RecalculateSelf()
-    {
-        base.Recalculate();
-    }
-
-    protected virtual void PreRecalculate()
-    {
-    }
-
-    protected virtual void PostRecalculate()
-    {
     }
 
     public override void MouseOver(UIMouseEvent evt)
@@ -153,19 +107,52 @@ public abstract class ExxoUIElement : UIElement
         }
     }
 
-    protected virtual void FirstMouseOver(UIMouseEvent evt)
+    // Optimised method that only moves positions, only to be used if the elements have already previously been recalculated
+    public void RecalculateChildrenSelf()
     {
-        OnFirstMouseOver?.Invoke(evt, this);
+        RecalculateSelf();
+        foreach (UIElement element in Elements)
+        {
+            if (element is ExxoUIElement exxoElement)
+            {
+                exxoElement.RecalculateChildrenSelf();
+            }
+            else
+            {
+                element.Recalculate();
+            }
+        }
     }
 
-    protected virtual void LastMouseOut(UIMouseEvent evt)
+    // This works because the UIChanges.ILUIElementRecalculate hook doesn't recalulate children if the element is an ExxoUIElement
+    public void RecalculateSelf() => base.Recalculate();
+
+    protected virtual void UpdateSelf(GameTime gameTime)
     {
-        OnLastMouseOut?.Invoke(evt, this);
     }
 
-    public static void BeginDefaultSpriteBatch(SpriteBatch spriteBatch)
+    protected virtual void PreRecalculate()
     {
-        spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, DepthStencilState.None, null, null,
-            Main.UIScaleMatrix);
+    }
+
+    protected virtual void PostRecalculate()
+    {
+    }
+
+    protected virtual void FirstMouseOver(UIMouseEvent evt) => OnFirstMouseOver?.Invoke(evt, this);
+
+    protected virtual void LastMouseOut(UIMouseEvent evt) => OnLastMouseOut?.Invoke(evt, this);
+
+    private void RecalculateFinish()
+    {
+        foreach (UIElement element in Elements)
+        {
+            if (element is ExxoUIElement exxoElement)
+            {
+                exxoElement.RecalculateFinish();
+            }
+        }
+
+        OnRecalculateFinish?.Invoke(this, EventArgs.Empty);
     }
 }
