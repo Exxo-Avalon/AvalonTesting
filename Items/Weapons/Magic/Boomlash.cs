@@ -22,7 +22,7 @@ class Boomlash : ModItem
         Item.channel = true;
         Item.shootSpeed = 4f;
         Item.mana = 40;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.Purple;
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 12f;

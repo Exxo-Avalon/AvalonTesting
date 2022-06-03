@@ -22,7 +22,7 @@ class DevilsScythe : ModItem
         Item.scale = 0.9f;
         Item.shootSpeed = 1.2f;
         Item.mana = 16;
-        Item.rare = ItemRarityID.Pink;
+        Item.rare = ItemRarityID.Purple;
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 20;
