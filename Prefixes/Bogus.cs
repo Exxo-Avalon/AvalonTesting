@@ -10,7 +10,6 @@ public class Bogus : ExxoPrefix
 
     public override void ModifyValue(ref float valueMult) => valueMult *= 1.25f;
     public override bool CanRoll(Item item) => true;
-    public override void Apply(Item item) => Main.player[Main.myPlayer].GetCritChance(DamageClass.Generic) += 3;
 
     public override void UpdateOwnerPlayer(Player player)
     {

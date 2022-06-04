@@ -1,17 +1,15 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Colossal : ModPrefix
+public class Colossal : ExxoPrefix
 {
-    public override PrefixCategory Category { get { return PrefixCategory.Melee; } }
+    public override PrefixCategory Category => PrefixCategory.Melee;
 
-    public override bool CanRoll(Terraria.Item item)
-    {
-        return true;
-    }
-    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
-    {
-        scaleMult = 1.5f;
-    }
+    public override bool CanRoll(Item item) => true;
+
+    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult,
+                                  ref float scaleMult, ref float shootSpeedMult, ref float manaMult,
+                                  ref int critBonus) => scaleMult = 1.5f;
 }

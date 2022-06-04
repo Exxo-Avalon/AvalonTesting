@@ -43,23 +43,30 @@ public abstract class ExxoPrefix : ModPrefix
         var modifiedPlayer = new Player();
         cachedSetupPlayerAction.Invoke(modifiedPlayer);
 
-        float damageMult = 0, knockbackMult = 0, useTimeMult = 0, scaleMult = 0, shootSpeedMult = 0, manaMult = 0;
+        float damageMult = 1f, knockbackMult = 1f, useTimeMult = 1f, scaleMult = 1f, shootSpeedMult = 1f, manaMult = 1f;
         int critBonus = 0;
 
         UpdateOwnerPlayer(modifiedPlayer);
         SetStats(ref damageMult, ref knockbackMult, ref useTimeMult, ref scaleMult, ref shootSpeedMult, ref manaMult,
             ref critBonus);
 
+        damageMult--;
+        knockbackMult--;
+        useTimeMult--;
+        scaleMult--;
+        shootSpeedMult--;
+        manaMult--;
+
         float critDamageDiff = modifiedPlayer.GetModPlayer<ExxoPlayer>().CritDamageMult -
                                origPlayer.GetModPlayer<ExxoPlayer>().CritDamageMult;
 
         BasicDifference(lines, "PrefixDamage", "damage", damageMult);
-        BasicDifference(lines, "PrefixCritChance", "critical strike chance", critBonus, false, true);
         BasicDifference(lines, "PrefixSize", "size", scaleMult);
         BasicDifference(lines, "PrefixKnockback", "knockback", knockbackMult);
         BasicDifference(lines, "PrefixSpeed", "speed", useTimeMult);
         BasicDifference(lines, "PrefixShootSpeed", "velocity", shootSpeedMult);
-        BasicDifference(lines, "PrefixUseMana", "mana cost", manaMult);
+        BasicDifference(lines, "PrefixUseMana", "mana cost", manaMult, true);
+        BasicDifference(lines, "PrefixCritBonus", "critical damage", critBonus);
 
         StatModifierDifference(lines, "PrefixAccDamage", "damage", origPlayer, modifiedPlayer,
             (player, damageClass) => player.GetDamage(damageClass).Additive);

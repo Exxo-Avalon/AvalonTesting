@@ -49,8 +49,6 @@ public class WorldGenEdits : ModHook
             () => Terraria.WorldGen.SavedOreTiers.Silver);
         SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("gold")),
             () => Terraria.WorldGen.SavedOreTiers.Gold);
-
-        Utilities.OutputIL(il);
     }
 
     private static void SoftInterceptOreGen(ILContext il, Func<Instruction, bool> predicate, Func<int> valueProvider)

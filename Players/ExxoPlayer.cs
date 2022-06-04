@@ -161,52 +161,6 @@ public class ExxoPlayer : ModPlayer
         {
             Item item = Player.armor[i];
             (PrefixLoader.GetPrefix(item.prefix) as ExxoPrefix)?.UpdateOwnerPlayer(Player);
-
-            if (item.prefix == ModContent.PrefixType<Enchanted>())
-            {
-                Player.statManaMax2 += 20;
-                Player.moveSpeed += 0.03f;
-                Player.statDefense++;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Lurid>())
-            {
-                Player.GetDamage(DamageClass.Generic) += 0.02f;
-                Player.statDefense += 2;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Magical>())
-            {
-                Player.statManaMax2 += 40;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Robust>())
-            {
-                Player.GetDamage(DamageClass.Generic) += 0.03f;
-                Player.statDefense += 3;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Vigorous>())
-            {
-                Player.GetAttackSpeed(DamageClass.Melee) += 0.03f;
-                Player.GetDamage(DamageClass.Melee) += 0.03f;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Overactive>())
-            {
-                Player.statManaMax2 += 20;
-                Player.manaCost += 0.04f;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Languid>())
-            {
-                Player.moveSpeed -= 0.02f;
-            }
-
-            if (item.prefix == ModContent.PrefixType<Timid>())
-            {
-                Player.GetAttackSpeed(DamageClass.Melee) -= 0.02f;
-            }
         }
 
         //player.statMana = statManaMax3;

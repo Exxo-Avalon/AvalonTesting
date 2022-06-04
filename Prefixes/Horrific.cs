@@ -1,20 +1,18 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Horrific : ModPrefix
+public class Horrific : ExxoPrefix
 {
-    public override PrefixCategory Category { get { return PrefixCategory.Ranged; } }
+    public override PrefixCategory Category => PrefixCategory.Ranged;
 
-    public override void ModifyValue(ref float valueMult)
-    {
-        valueMult *= 0.9f;
-    }
-    public override bool CanRoll(Terraria.Item item)
-    {
-        return true;
-    }
-    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
+    public override void ModifyValue(ref float valueMult) => valueMult *= 0.9f;
+
+    public override bool CanRoll(Item item) => true;
+
+    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult,
+                                  ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {
         knockbackMult = 1.1f;
         damageMult = 0.9f;
