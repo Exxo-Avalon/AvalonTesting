@@ -49,15 +49,8 @@ public class ExtraMana : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchLdcI4(20)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchStfld(out _)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchLdcI4(20))
+            .GotoNext(i => i.MatchStfld(out _));
 
         c.EmitDelegate<Func<int, int>>(val =>
         {
@@ -69,22 +62,10 @@ public class ExtraMana : ModHook
             return val;
         });
 
-        if (!c.TryGotoNext(i => i.MatchLdcR8(0.9)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdsfld(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchCallvirt(out _)))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldloc, 6);
+        c.GotoNext(i => i.MatchLdcR8(0.9))
+            .GotoNext(i => i.MatchLdsfld(out _))
+            .GotoNext(i => i.MatchCallvirt(out _))
+            .Emit(OpCodes.Ldloc, 6);
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, index) =>
         {
@@ -104,17 +85,9 @@ public class ExtraMana : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchStindRef()))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldarg, 1);
+        c.GotoNext(i => i.MatchLdfld(out _))
+            .GotoNext(i => i.MatchStindRef())
+            .Emit(OpCodes.Ldarg, 1);
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, index) =>
         {
@@ -135,18 +108,10 @@ public class ExtraMana : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchStindRef()))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldarg, 1);
-        c.Emit(OpCodes.Ldarg_0);
+        c.GotoNext(i => i.MatchLdfld(out _))
+            .GotoNext(i => i.MatchStindRef())
+            .Emit(OpCodes.Ldarg, 1)
+            .Emit(OpCodes.Ldarg_0);
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, HorizontalBarsPlayerReosurcesDisplaySet, Asset<Texture2D>>>(
             (sprite, index, self) =>

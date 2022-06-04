@@ -16,17 +16,14 @@ namespace AvalonTesting.Hooks;
 public class CaesiumBackground : ModHook
 {
     protected override void Apply() =>
-        IL.Terraria.Main.DrawUnderworldBackgroudLayer += Main_DrawUnderworldBackgroudLayer;
+        IL.Terraria.Main.DrawUnderworldBackgroudLayer += ILMainDrawUnderworldBackgroundLayer;
 
-    private static void Main_DrawUnderworldBackgroudLayer(ILContext il)
+    private static void ILMainDrawUnderworldBackgroundLayer(ILContext il)
     {
         var c = new ILCursor(il);
-        if (!c.TryGotoNext(i => i.MatchStloc(0)))
-        {
-            return;
-        }
-
+        c.GotoNext(i => i.MatchStloc(0));
         c.Index++;
+
         c.EmitDelegate(() => // Transition thingy
         {
             if (Main.LocalPlayer.AvalonBiome().ZoneCaesium)
@@ -47,16 +44,11 @@ public class CaesiumBackground : ModHook
             }
         });
 
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        c.Remove();
-        c.Emit(OpCodes.Ldarg_0);
-        c.Emit(OpCodes.Ldarg_1);
-        c.Emit(OpCodes.Ldarg_2);
-        c.Emit(OpCodes.Ldarg_3);
+        c.GotoNext(i => i.MatchRet())
+            .Emit(OpCodes.Ldarg_0)
+            .Emit(OpCodes.Ldarg_1)
+            .Emit(OpCodes.Ldarg_2)
+            .Emit(OpCodes.Ldarg_3);
         c.EmitDelegate<Action<bool, Vector2, float, int>>((flat, screenOffset, pushUp, layerTextureIndex) =>
         {
             int num27 = Main.underworldBG[layerTextureIndex];
@@ -198,6 +190,5 @@ public class CaesiumBackground : ModHook
                 vector.X += num18;
             }
         });
-        c.Emit(OpCodes.Ret);
     }
 }
