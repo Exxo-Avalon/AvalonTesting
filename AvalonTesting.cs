@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using AvalonTesting.Common;
 using AvalonTesting.Network;
 using Microsoft.Xna.Framework.Graphics;
@@ -72,7 +73,8 @@ public class AvalonTesting : Mod
         }
         else
         {
-            Logger.Warn($"PacketHandler with message index {msgIndex} does not exist!");
+            Logger.Error(
+                $"PacketHandler with message index {msgIndex.ToString(CultureInfo.InvariantCulture)} does not exist");
         }
     }
 

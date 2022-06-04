@@ -157,68 +157,55 @@ public class ExxoPlayer : ModPlayer
 
     public override void PostUpdateEquips()
     {
-        for (int i = 3; i < Player.armor.Length; i++)
+        for (int i = 0; i <= 9; i++)
         {
-            if (Player.armor[i].prefix == ModContent.PrefixType<Bogus>())
-            {
-                CritDamageMult += 0.04f;
-                Player.GetCritChance(DamageClass.Generic) += 2;
-            }
+            Item item = Player.armor[i];
+            (PrefixLoader.GetPrefix(item.prefix) as ExxoPrefix)?.UpdateOwnerPlayer(Player);
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Enchanted>())
+            if (item.prefix == ModContent.PrefixType<Enchanted>())
             {
                 Player.statManaMax2 += 20;
                 Player.moveSpeed += 0.03f;
                 Player.statDefense++;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Lurid>())
+            if (item.prefix == ModContent.PrefixType<Lurid>())
             {
                 Player.GetDamage(DamageClass.Generic) += 0.02f;
                 Player.statDefense += 2;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Magical>())
+            if (item.prefix == ModContent.PrefixType<Magical>())
             {
                 Player.statManaMax2 += 40;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Robust>())
+            if (item.prefix == ModContent.PrefixType<Robust>())
             {
                 Player.GetDamage(DamageClass.Generic) += 0.03f;
                 Player.statDefense += 3;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Vigorous>())
+            if (item.prefix == ModContent.PrefixType<Vigorous>())
             {
                 Player.GetAttackSpeed(DamageClass.Melee) += 0.03f;
                 Player.GetDamage(DamageClass.Melee) += 0.03f;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Overactive>())
+            if (item.prefix == ModContent.PrefixType<Overactive>())
             {
                 Player.statManaMax2 += 20;
                 Player.manaCost += 0.04f;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Languid>())
+            if (item.prefix == ModContent.PrefixType<Languid>())
             {
                 Player.moveSpeed -= 0.02f;
             }
 
-            if (Player.armor[i].prefix == ModContent.PrefixType<Timid>())
+            if (item.prefix == ModContent.PrefixType<Timid>())
             {
                 Player.GetAttackSpeed(DamageClass.Melee) -= 0.02f;
-            }
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            ArmorPrefix prefix;
-            if ((prefix = PrefixLoader.GetPrefix(Player.armor[i].prefix) as ArmorPrefix) != null)
-            {
-                //int kb = prefix.PreUpdateEquip(player);
-                prefix.UpdateEquip(Player);
             }
         }
 
@@ -396,7 +383,8 @@ public class ExxoPlayer : ModPlayer
                     int g1 = Gore.NewGore(Player.GetSource_FromThis(),
                         Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
                         Mod.Find<ModGore>("Bubble").Type);
-                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Bubbles"), Player.position);
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Bubbles"),
+                        Player.position);
                 }
             }
 

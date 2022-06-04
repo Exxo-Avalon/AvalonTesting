@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using AvalonTesting.Buffs.AdvancedBuffs;
+using AvalonTesting.Data.Sets;
 using AvalonTesting.Items.Accessories;
 using AvalonTesting.Items.Ammo;
 using AvalonTesting.Items.Consumables;
 using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Network;
 using AvalonTesting.Players;
 using AvalonTesting.Prefixes;
@@ -12,14 +15,18 @@ using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace AvalonTesting;
 
 public class AvalonTestingGlobalItem : GlobalItem
 {
-    public override void SetDefaults(Item item)
+    private static readonly int NewMaskPrice = Terraria.Item.sellPrice(0, 2);
+
+    public override void SetDefaults(Terraria.Item item)
     {
         if (item.IsArmor())
         {
@@ -42,12 +49,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.createTile = ModContent.TileType<MushroomTile>();
                 item.useStyle = ItemUseStyleID.Swing;
                 item.UseSound = null;
-                break;
-            case ItemID.Torch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 0;
-                item.notAmmo = true;
                 break;
             case ItemID.EnchantedBoomerang:
                 item.rare = ItemRarityID.Green;
@@ -77,19 +78,12 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.maxStack = 50;
                 break;
             case ItemID.Spike:
-                item.ammo = 147;
-                item.notAmmo = true;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().spike = 0;
-                break;
             case ItemID.WoodenSpike:
-                item.ammo = 147;
+                item.ammo = ItemID.Spike;
                 item.notAmmo = true;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().spike = 4;
                 break;
             case ItemID.Hellstone:
-                item.value = Item.sellPrice(0, 0, 13, 30);
+                item.value = Terraria.Item.sellPrice(0, 0, 13, 30);
                 break;
             case ItemID.ManaPotion:
                 item.maxStack = 75;
@@ -131,25 +125,11 @@ public class AvalonTestingGlobalItem : GlobalItem
             case ItemID.GoblinBattleStandard:
                 item.maxStack = 20;
                 break;
-            case ItemID.BlueTorch:
-            case ItemID.RedTorch:
-            case ItemID.GreenTorch:
-            case ItemID.PurpleTorch:
-            case ItemID.WhiteTorch:
-            case ItemID.YellowTorch:
-            case ItemID.DemonTorch:
-                item.ammo = 8;
-                break;
             case ItemID.PixieDust:
                 item.value = 1000;
                 break;
             case ItemID.Flamethrower:
                 item.damage = 35;
-                break;
-            case ItemID.CursedTorch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 8;
                 break;
             case ItemID.SnowGlobe:
                 item.maxStack = 20;
@@ -198,11 +178,6 @@ public class AvalonTestingGlobalItem : GlobalItem
             case ItemID.BlackBelt:
                 item.value = 150000;
                 break;
-            case ItemID.IceTorch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<AvalonTestingGlobalItemInstance>().torch = 9;
-                break;
             case ItemID.ChlorophyteMask:
                 item.defense = 27;
                 break;
@@ -226,19 +201,11 @@ public class AvalonTestingGlobalItem : GlobalItem
             case ItemID.WaspGun:
                 item.damage = 23;
                 break;
-            case ItemID.OrangeTorch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 10;
-                break;
             case ItemID.SniperRifle:
-                item.value = Item.sellPrice(0, 7);
+                item.value = Terraria.Item.sellPrice(0, 7);
                 break;
             case ItemID.Uzi:
                 item.value = 250000;
-                break;
-            case ItemID.SkeletronMask:
-                item.value = Item.sellPrice(0, 2);
                 break;
             case ItemID.Picksaw:
                 item.tileBoost++;
@@ -276,11 +243,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.autoReuse = true;
                 item.createTile = ModContent.TileType<Vertebrae>();
                 break;
-            case ItemID.IchorTorch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 11;
-                break;
             case ItemID.FlaskofGold:
                 item.value = 108000;
                 break;
@@ -294,10 +256,10 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.createTile = ModContent.TileType<Ectoplasm>();
                 break;
             case ItemID.AnkhCharm:
-                item.value = Item.sellPrice(0, 10);
+                item.value = Terraria.Item.sellPrice(0, 10);
                 break;
             case ItemID.AnkhShield:
-                item.value = Item.sellPrice(0, 13);
+                item.value = Terraria.Item.sellPrice(0, 13);
                 break;
             case ItemID.Coal:
                 item.value = 5;
@@ -320,11 +282,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                 break;
             case ItemID.SuperManaPotion:
                 item.maxStack = 150;
-                break;
-            case ItemID.UltrabrightTorch:
-                item.ammo = 8;
-
-                // item.GetGlobalItem<ExxoAvalonOriginsGlobalItemInstance>().torch = 12;
                 break;
             case ItemID.LifeforcePotion:
                 item.rare = ItemRarityID.Orange;
@@ -365,10 +322,6 @@ public class AvalonTestingGlobalItem : GlobalItem
             case ItemID.SpiderGreaves:
                 item.defense = 8;
                 break;
-            case ItemID.KingSlimeMask:
-            case ItemID.DukeFishronMask:
-                item.value = Item.sellPrice(0, 2);
-                break;
             case ItemID.Meowmere:
                 item.damage = 145;
                 break;
@@ -390,11 +343,12 @@ public class AvalonTestingGlobalItem : GlobalItem
             case ItemID.RainbowCrystalStaff:
                 item.damage = 120;
                 break;
-            case ItemID.BoneTorch:
-            case ItemID.RainbowTorch:
-            case ItemID.PinkTorch:
-                item.ammo = 8;
-                break;
+        }
+
+        if (ItemID.Sets.Torches[item.type])
+        {
+            item.ammo = ItemID.Torch;
+            item.notAmmo = true;
         }
 
         if (Data.Sets.Item.StackTo2000[item.type])
@@ -412,23 +366,39 @@ public class AvalonTestingGlobalItem : GlobalItem
             item.maxStack = 100;
         }
 
-        if (item.type is >= ItemID.BrainMask and <= ItemID.DestroyerMask)
+        // Alters vanilla setting cost of masks in Item.SetDefaultsX from default
+        // this.value = Item.sellPrice(0, 0, 75);
+        switch (item.type)
         {
-            item.value = Item.sellPrice(0, 2);
+            case ItemID.DeerclopsMask:
+            case ItemID.QueenSlimeMask:
+            case ItemID.FairyQueenMask:
+            case ItemID.BossMaskOgre:
+            case ItemID.BossMaskDarkMage:
+            case ItemID.BossMaskBetsy:
+            case ItemID.BossMaskMoonlord:
+            case ItemID.BossMaskCultist:
+            case ItemID.DukeFishronMask:
+            case ItemID.KingSlimeMask:
+            case ItemID.SpiderMask:
+            case ItemID.SkeletronMask:
+                item.value = NewMaskPrice;
+                break;
+            default:
+                if (item.type is >= ItemID.BrainMask and <= ItemID.DestroyerMask)
+                {
+                    item.value = NewMaskPrice;
+                }
+
+                break;
         }
     }
 
-    public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
-    {
-        if (item.IsArmor())
-        {
-            return false;
-        }
+    public override bool CanEquipAccessory(Terraria.Item item, Player player, int slot, bool modded) =>
+        !item.IsArmor() && base.CanEquipAccessory(item, player, slot, modded);
 
-        return base.CanEquipAccessory(item, player, slot, modded);
-    }
-
-    public override void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed,
+    public override void PickAmmo(Terraria.Item weapon, Terraria.Item ammo, Player player, ref int type,
+                                  ref float speed,
                                   ref StatModifier damage,
                                   ref float knockback)
     {
@@ -441,10 +411,10 @@ public class AvalonTestingGlobalItem : GlobalItem
         base.PickAmmo(weapon, ammo, player, ref type, ref speed, ref damage, ref knockback);
     }
 
-    public override void HoldItem(Item item, Player player)
+    public override void HoldItem(Terraria.Item item, Player player)
     {
         #region wire disable in sky fortress
-        var tempWireItem = new Item();
+        var tempWireItem = new Terraria.Item();
         tempWireItem.netDefaults(item.netID);
         tempWireItem = tempWireItem.CloneWithModdedDataFrom(item);
         tempWireItem.stack = item.stack;
@@ -470,7 +440,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         #endregion wire disable in sky fortress
 
         #region barbaric prefix logic
-        var tempItem = new Item();
+        var tempItem = new Terraria.Item();
         tempItem.netDefaults(item.netID);
         tempItem = tempItem.CloneWithModdedDataFrom(item);
         float kbDiff = 0f;
@@ -574,7 +544,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         #endregion herb seed block swap
     }
 
-    public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+    public override void ModifyTooltips(Terraria.Item item, List<TooltipLine> tooltips)
     {
         TooltipLine? tooltipLine = tooltips.Find(x => x.Name == "ItemName" && x.Mod == "Terraria");
         if (tooltipLine != null)
@@ -620,274 +590,9 @@ public class AvalonTestingGlobalItem : GlobalItem
             }
         }
 
-        if (item.IsArmor() && !item.social)
+        if (item.IsArmor() && !item.social && PrefixLoader.GetPrefix(item.prefix) is ExxoPrefix exxoPrefix)
         {
-            if (item.prefix == ModContent.PrefixType<Fluidic>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(
-                        index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+5% increased movement speed") { IsModifier = true });
-                    tooltips.Insert(
-                        index + 2,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "Free movement in liquids") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Barbaric>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+4% damage") { IsModifier = true });
-                    tooltips.Insert(index + 2,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+6% knockback") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Boosted>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+4% increased movement speed") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Busted>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "-1 defense")
-                        {
-                            IsModifier = true, IsModifierBad = true,
-                        });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Disgusting>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "-2 defense")
-                        {
-                            IsModifier = true, IsModifierBad = true,
-                        });
-                    tooltips.Insert(index + 2,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "Stink potion effect")
-                        {
-                            IsModifier = true, IsModifierBad = true,
-                        });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Glorious>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+4% damage") { IsModifier = true });
-                    tooltips.Insert(index + 2,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+1 defense") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Insane>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "Increased placement speed") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Loaded>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+1 defense") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Messy>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "-5% damage")
-                        {
-                            IsModifier = true, IsModifierBad = true,
-                        });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Mythic>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+20 maximum mana") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Protective>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+2 defense") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Silly>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+2% critical strike chance") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Handy>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+1 block range") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Slimy>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "Reduces damage taken by 3%") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Bloated>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "+5% melee damage") { IsModifier = true });
-                    tooltips.Insert(index + 2,
-                        new TooltipLine(Mod, "PrefixAccMaxMana", "-2% melee speed")
-                        {
-                            IsModifier = true, IsModifierBad = true,
-                        });
-                }
-            }
+            tooltips.AddRange(exxoPrefix.TooltipLines);
         }
 
         if (item.accessory && !item.social)
@@ -963,26 +668,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                         new TooltipLine(Mod, "PrefixAccMoveSpeed", "+3% movement speed") { IsModifier = true });
                     tooltips.Insert(index + 3,
                         new TooltipLine(Mod, "PrefixAccDefense", "+1 defense") { IsModifier = true });
-                }
-            }
-
-            if (item.prefix == ModContent.PrefixType<Bogus>())
-            {
-                int index = tooltips.FindLastIndex(tt =>
-                    (tt.Mod.Equals("Terraria", StringComparison.Ordinal) ||
-                     tt.Mod.Equals(Mod.Name, StringComparison.Ordinal))
-                    && (tt.Name.Equals("Material", StringComparison.Ordinal) ||
-                        tt.Name.StartsWith("Tooltip", StringComparison.InvariantCulture) ||
-                        tt.Name.Equals("Defense", StringComparison.Ordinal) ||
-                        tt.Name.Equals("Equipable", StringComparison.Ordinal)));
-                if (index != -1)
-                {
-                    tooltips.Insert(index + 1,
-                        new TooltipLine(Mod, "PrefixAccCritChance",
-                            "+2% critical strike chance") { IsModifier = true });
-                    tooltips.Insert(index + 2,
-                        new TooltipLine(Mod, "PrefixAccCritChance",
-                            "+2% critical strike damage") { IsModifier = true });
                 }
             }
 
@@ -1138,80 +823,77 @@ public class AvalonTestingGlobalItem : GlobalItem
 
     public override void OpenVanillaBag(string context, Player player, int arg)
     {
-        if (context == "bossBag")
+        IEntitySource openItemSource = player.GetSource_OpenItem(arg);
+
+        if (!context.Equals("bossBag", StringComparison.Ordinal))
         {
-            if (Main.rand.Next(4) == 0)
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(0), ModContent.ItemType<StaminaCrystal>());
-            }
+            return;
         }
 
-        if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag)
+        if (Main.rand.NextBool(4))
         {
-            NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
-            NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
-            NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
-            NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
-            player.QuickSpawnItem(
-                player.GetSource_OpenItem(ItemID.WallOfFleshBossBag),
-                ModContent.ItemType<NullEmblem>());
+            player.QuickSpawnItem(openItemSource, ModContent.ItemType<StaminaCrystal>());
         }
 
-        if (context == "bossBag" && arg == ItemID.KingSlimeBossBag && Main.rand.NextBool(3))
+        switch (arg)
         {
-            player.QuickSpawnItem(
-                player.GetSource_OpenItem(ItemID.KingSlimeBossBag),
-                ModContent.ItemType<BandofSlime>());
-        }
+            case ItemID.WallOfFleshBossBag:
+                NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
+                NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
+                NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
+                NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
+                player.QuickSpawnItem(openItemSource, ModContent.ItemType<NullEmblem>());
+                break;
+            case ItemID.KingSlimeBossBag when Main.rand.NextBool(3):
+                player.QuickSpawnItem(openItemSource, ModContent.ItemType<BandofSlime>());
+                break;
+            case ItemID.PlanteraBossBag:
+                player.QuickSpawnItem(openItemSource, ModContent.ItemType<LifeDew>(), Main.rand.Next(15, 22));
+                player.QuickSpawnItem(openItemSource, ItemID.ChlorophyteOre, Main.rand.Next(60, 121));
+                break;
+            case ItemID.EyeOfCthulhuBossBag:
+            {
+                if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion)
+                {
+                    NPCLoader.blockLoot.Add(ItemID.UnholyArrow);
+                    NPCLoader.blockLoot.Add(ItemID.DemoniteOre);
+                    NPCLoader.blockLoot.Add(ItemID.CorruptSeeds);
 
-        if (context == "bossBag" && arg == ItemID.PlanteraBossBag)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.PlanteraBossBag), ModContent.ItemType<LifeDew>(),
-                Main.rand.Next(15, 22));
-            player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.PlanteraBossBag), ItemID.ChlorophyteOre,
-                Main.rand.Next(60, 121));
-        }
+                    int randomQuantity = Main.rand.Next(20) + 10;
+                    randomQuantity += Main.rand.Next(20) + 10;
+                    randomQuantity += Main.rand.Next(20) + 10;
+                    player.QuickSpawnItem(openItemSource, ModContent.ItemType<BacciliteOre>(), randomQuantity);
 
-        // keeping it this way because we might add unholy arrow alt
-        if (context == "bossBag" &&
-            arg == ItemID.EyeOfCthulhuBossBag)
-        {
-            /*if (ExxoAvalonOriginsWorld.contagion)
-            {
-                NPCLoader.blockLoot.Add(ItemID.UnholyArrow);
-                NPCLoader.blockLoot.Add(ItemID.DemoniteOre);
-                NPCLoader.blockLoot.Add(ItemID.CorruptSeeds);
-                player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<BacciliteOre>(), Main.rand.Next(30, 81));
-                player.QuickSpawnItem(player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag), ModContent.ItemType<IckgrassSeeds>(), Main.rand.Next(1, 3));
-                //player.QuickSpawnItem(ModContent.ItemType<ShitArrow>(), Main.rand.Next(20, 50));
-            }*/
-            if (WorldGen.crimson)
-            {
-                player.QuickSpawnItem(
-                    player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag),
-                    ModContent.ItemType<BloodyArrow>(), Main.rand.Next(20, 50));
-            }
+                    randomQuantity = Main.rand.Next(3) + 1;
+                    player.QuickSpawnItem(openItemSource, ModContent.ItemType<IckgrassSeeds>(), randomQuantity);
 
-            if (!Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(10) < 3)
-            {
-                player.QuickSpawnItem(
-                    player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag),
-                    ModContent.ItemType<BloodyAmulet>());
-            }
-            else if (Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
-                     Main.rand.Next(100) < 15)
-            {
-                player.QuickSpawnItem(
-                    player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag),
-                    ModContent.ItemType<BloodyAmulet>());
-            }
-            else if (Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
-                     Main.rand.Next(100) < 7)
-            {
-                player.QuickSpawnItem(
-                    player.GetSource_OpenItem(ItemID.EyeOfCthulhuBossBag),
-                    ModContent.ItemType<BloodyAmulet>());
+                    // TODO: Unholy arrow variant for contagion
+                    // randomQuantity = Main.rand.Next(30) + 20;
+                    // player.QuickSpawnItem(openItemSource, ModContent.ItemType<ShitArrow>(), randomQuantity);
+                }
+
+                if (WorldGen.crimson)
+                {
+                    player.QuickSpawnItem(openItemSource, ModContent.ItemType<BloodyArrow>(), Main.rand.Next(30) + 20);
+                }
+
+                switch (Main.hardMode)
+                {
+                    case false when !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+                                    Main.rand.Next(10) < 3:
+                    case true when !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+                                   Main.rand.Next(100) < 15:
+                    case true
+                        when ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(100) < 7:
+                        player.QuickSpawnItem(openItemSource, ModContent.ItemType<BloodyAmulet>());
+                        break;
+                }
+
+                break;
             }
         }
     }
+
+    public override int ChoosePrefix(Terraria.Item item, UnifiedRandom rand) => item.IsArmor() ?
+        Prefix.ArmorPrefixes[rand.Next(Prefix.ArmorPrefixes.Length)] : base.ChoosePrefix(item, rand);
 }
