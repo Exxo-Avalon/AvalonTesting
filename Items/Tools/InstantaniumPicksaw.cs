@@ -44,8 +44,8 @@ class InstantaniumPicksaw : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ItemID.TitaniumBar, 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).ReplaceResult(ModContent.ItemType<InstantaniumPicksaw>());
-        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).ReplaceResult(ModContent.ItemType<InstantaniumPicksaw>());
-        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ItemID.AdamantiteBar, 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).ReplaceResult(ModContent.ItemType<InstantaniumPicksaw>());
+        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ItemID.TitaniumBar, 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Picksaw).AddIngredient(ItemID.AdamantiteBar, 30).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 5).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

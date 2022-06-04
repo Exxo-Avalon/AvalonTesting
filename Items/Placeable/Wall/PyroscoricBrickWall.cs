@@ -28,6 +28,6 @@ class PyroscoricBrickWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ModContent.ItemType<Tile.PyroscoricBrick>()).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ModContent.ItemType<Tile.PyroscoricBrick>());
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }

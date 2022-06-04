@@ -34,6 +34,6 @@ public class FuryPotion : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Ickfish>()).AddIngredient(ModContent.ItemType<Barfbush>()).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<FuryPotion>());
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Ickfish>()).AddIngredient(ModContent.ItemType<Barfbush>()).AddTile(TileID.Bottles).Register();
     }
 }

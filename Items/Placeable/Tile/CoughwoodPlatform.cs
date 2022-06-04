@@ -28,6 +28,6 @@ class CoughwoodPlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<Coughwood>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).ReplaceResult(ModContent.ItemType<Coughwood>());
+        CreateRecipe(1).AddIngredient(this, 2).Register();
     }
 }

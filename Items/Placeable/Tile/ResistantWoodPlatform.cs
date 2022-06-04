@@ -33,6 +33,6 @@ class ResistantWoodPlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<ResistantWood>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).ReplaceResult(ModContent.ItemType<ResistantWood>());
+        CreateRecipe(1).AddIngredient(this, 2).Register();
     }
 }

@@ -28,6 +28,6 @@ class SapphireWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ItemID.Sapphire).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ItemID.Sapphire);
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }

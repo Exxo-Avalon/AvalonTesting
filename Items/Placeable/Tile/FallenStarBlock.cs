@@ -31,6 +31,6 @@ class FallenStarBlock : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ItemID.FallenStar).Register();
-        CreateRecipe(1).AddIngredient(this).ReplaceResult(ItemID.FallenStar);
+        CreateRecipe(1).AddIngredient(this).Register();
     }
 }

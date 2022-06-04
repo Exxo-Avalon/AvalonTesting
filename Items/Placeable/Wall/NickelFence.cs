@@ -28,6 +28,6 @@ class NickelFence : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ModContent.ItemType<Bar.NickelBar>()).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ModContent.ItemType<Bar.NickelBar>());
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }

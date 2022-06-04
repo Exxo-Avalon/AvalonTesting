@@ -28,6 +28,6 @@ class BlueLihzahrdBrickWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ModContent.ItemType<Tile.BlueLihzahrdBrick>()).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ModContent.ItemType<Tile.BlueLihzahrdBrick>());
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }

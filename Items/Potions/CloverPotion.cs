@@ -30,7 +30,7 @@ class CloverPotion : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.FakeFourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Holybird>()).AddIngredient(ItemID.Fireblossom).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<CloverPotion>());
-        CreateRecipe(20).AddIngredient(ModContent.ItemType<Material.FourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>(), 20).AddIngredient(ModContent.ItemType<Material.Holybird>(), 20).AddIngredient(ItemID.Fireblossom, 20).AddTile(TileID.Bottles).ReplaceResult(ModContent.ItemType<CloverPotion>());
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.FakeFourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Holybird>()).AddIngredient(ItemID.Fireblossom).AddTile(TileID.Bottles).Register();
+        CreateRecipe(20).AddIngredient(ModContent.ItemType<Material.FourLeafClover>()).AddIngredient(ModContent.ItemType<Material.BottledLava>(), 20).AddIngredient(ModContent.ItemType<Material.Holybird>(), 20).AddIngredient(ItemID.Fireblossom, 20).AddTile(TileID.Bottles).Register();
     }
 }

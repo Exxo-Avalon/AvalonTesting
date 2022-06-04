@@ -30,8 +30,8 @@ class Starstone : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(this, 60).AddTile(TileID.Furnaces).ReplaceResult(ItemID.ManaCrystal);
+        CreateRecipe(1).AddIngredient(this, 60).AddTile(TileID.Furnaces).Register();
         CreateRecipe(60).AddIngredient(ItemID.ManaCrystal).AddTile(TileID.Furnaces).Register();
-        CreateRecipe(1).AddIngredient(this, 20).AddTile(TileID.Furnaces).ReplaceResult(ItemID.FallenStar);
+        CreateRecipe(1).AddIngredient(this, 20).AddTile(TileID.Furnaces).Register();
     }
 }

@@ -28,6 +28,6 @@ class ObsidianLavaTubeWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ItemID.Obsidian).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ItemID.Obsidian);
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }
