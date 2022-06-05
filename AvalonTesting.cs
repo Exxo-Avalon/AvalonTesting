@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.IO;
 using AvalonTesting.Common;
 using AvalonTesting.Network;
@@ -61,6 +61,11 @@ public class AvalonTesting : Mod
 
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
+    }
+
+    public override object Call(params object[] args)
+    {
+        return false;
     }
 
     /// <inheritdoc />
