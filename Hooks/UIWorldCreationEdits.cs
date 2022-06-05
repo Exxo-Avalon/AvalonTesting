@@ -114,12 +114,28 @@ public class UIWorldCreationEdits : ModHook
     {
         orig(self, container, accumulatedHeight, clickEvent, tagGroup, usableWidthPercent);
 
-        // Remove last 3 elements (original evil buttons)
-        UIElement[] tempArray = container.Children.ToArray();
-        for (int i = tempArray.Length - 1; i > tempArray.Length - 4; i--)
+        // Remove original evil buttons
+        float heightAdjustment = 0f;
+        const string worldEvilIdName = "WorldEvilId";
+        Type? worldEvilIdType = typeof(UIWorldCreation).GetNestedType(worldEvilIdName, BindingFlags.NonPublic);
+        if (worldEvilIdType == null)
         {
-            tempArray[i].Remove();
+            AvalonTesting.Mod.Logger.Error(
+                $"Could not find field with name {worldEvilIdName} in {typeof(UIWorldCreation)}");
         }
+        else
+        {
+            Type groupOptionButtonType = typeof(GroupOptionButton<>).MakeGenericType(worldEvilIdType);
+            foreach (UIElement? evilMenuOption in container.Children
+                         .Where(child => child.GetType() == groupOptionButtonType).ToArray())
+            {
+                evilMenuOption.Remove();
+                heightAdjustment = -evilMenuOption.GetOuterDimensions().Height;
+            }
+        }
+
+        UIElement lastElement = container.Children.Last();
+        accumulatedHeight = lastElement.Top.Pixels + lastElement.GetOuterDimensions().Height;
 
         var customOptionsPrimaryList = new ExxoUIList { ListPadding = 4, FitHeightToContent = true };
         customOptionsPrimaryList.Width.Set(0, 1);
@@ -387,9 +403,10 @@ public class UIWorldCreationEdits : ModHook
 
         customOptionsPrimaryList.Recalculate();
 
-        container.Parent.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
-        container.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
-        container.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
+        heightAdjustment += customOptionsPrimaryList.MinHeight.Pixels;
+        container.Parent.Parent.Parent.Height.Pixels += heightAdjustment;
+        container.Parent.Parent.Height.Pixels += heightAdjustment;
+        container.Parent.Height.Pixels += heightAdjustment;
     }
 
     private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
