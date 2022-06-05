@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using AvalonTesting.Common;
 using AvalonTesting.UI;
@@ -19,7 +19,7 @@ public class UIChanges : ModHook
         Main.DrawInterface += OnMainDrawInterface;
         IL.Terraria.UI.UserInterface.Update += ILUserInterfaceUpdate;
         Main.DrawInventory += OnMainDrawInventory;
-        IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate;
+        //IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate; 
         IL.Terraria.UI.UIElement.GetClippingRectangle += ILUIElementGetClippingRectangle;
         UIElement.Remove += OnUIElementRemove;
     }
@@ -208,7 +208,8 @@ public class UIChanges : ModHook
     ///     Some trickery that changes default behaviour of Recalculate to only recalculate self when element is ExxoUIElement.
     /// </summary>
     /// <param name="il">The ILContext of the original method.</param>
-    private static void ILUIElementRecalculate(ILContext il)
+   
+    /*private static void ILUIElementRecalculate(ILContext il)
     {
         var c = new ILCursor(il);
         c.GotoNext(i => i.MatchCallvirt(typeof(Terraria.UI.UIElement).GetMethod(
@@ -223,7 +224,9 @@ public class UIChanges : ModHook
         c.Emit(OpCodes.Brtrue, label)
             .GotoNext(i => i.MatchRet())
             .MarkLabel(label);
-    }
+    }*/
+
+    //Hey lion here, for some reason this causes the mod to fail to load. If someone with higher knowledge on IL edits could have a look that would be good
 
     /// <summary>
     ///     Fixes vanilla's decision to clamp the clipping rectangle from 0 to the screen width which doesnt respect the

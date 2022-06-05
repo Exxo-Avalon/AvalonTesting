@@ -17,7 +17,7 @@ namespace AvalonTesting
 {
     internal class TropicsAlternateBiome : AltBiome
     {
-        public override Color NameColor => new(0, 255, 128);
+        public override Color NameColor => new(107, 232, 0);
 
         public override void SetStaticDefaults()
         {
