@@ -43,4 +43,9 @@
     <Folder Include="World\Passes\" />
     <Folder Include="World\Structures\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AltLibrary">
+      <HintPath>..\..\ModReader\AltLibrary\AltLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

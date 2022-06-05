@@ -6,3 +6,5 @@ includePDB = true
 hideCode = true
 hideResources = false
 includeSource = false
+modReferences = AltLibrary
+sortAfter = AltLibrary
