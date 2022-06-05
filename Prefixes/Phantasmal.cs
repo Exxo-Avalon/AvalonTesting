@@ -1,17 +1,16 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Phantasmal : ModPrefix
+public class Phantasmal : ExxoPrefix
 {
-    public override PrefixCategory Category { get { return PrefixCategory.Magic; } }
+    public override PrefixCategory Category => PrefixCategory.Magic;
 
-    public override bool CanRoll(Terraria.Item item)
-    {
-        return true;
-    }
+    public override bool CanRoll(Item item) => true;
 
-    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
+    public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult,
+                                  ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
     {
         knockbackMult = 1.2f;
         damageMult = 1.19f;

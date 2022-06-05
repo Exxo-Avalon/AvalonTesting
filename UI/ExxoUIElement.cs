@@ -13,6 +13,8 @@ public abstract class ExxoUIElement : UIElement
 
     private bool mouseWasOver;
 
+    protected ExxoUIElement() => OverrideSamplerState = SamplerState.PointClamp;
+
     public delegate void ExxoUIElementEventHandler(ExxoUIElement sender, EventArgs e);
 
     public event MouseEvent OnFirstMouseOver;

@@ -28,6 +28,6 @@ class DarkSlimePlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<DarkSlimeBlock>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).ReplaceResult(ModContent.ItemType<DarkSlimeBlock>());
+        CreateRecipe(1).AddIngredient(this, 2).Register();
     }
 }

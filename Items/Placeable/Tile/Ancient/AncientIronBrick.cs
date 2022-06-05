@@ -29,6 +29,6 @@ public class AncientIronBrick : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ModContent.ItemType<Items.Placeable.Tile.IronBrick>()).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
-        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).ReplaceResult(ModContent.ItemType<Items.Placeable.Tile.IronBrick>());
+        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }

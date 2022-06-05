@@ -3,25 +3,19 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Lurid : ModPrefix
+public class Lurid : ExxoPrefix
 {
-    public override PrefixCategory Category { get { return PrefixCategory.Accessory; } }
+    public override PrefixCategory Category => PrefixCategory.Accessory;
 
-    public override void ModifyValue(ref float valueMult)
+    public override void ModifyValue(ref float valueMult) => valueMult *= 1.25f;
+
+    public override float RollChance(Item item) => 3f;
+
+    public override bool CanRoll(Item item) => true;
+
+    public override void UpdateOwnerPlayer(Player player)
     {
-        valueMult *= 1.25f;
-    }
-    public override float RollChance(Item item)
-    {
-        return 3f;
-    }
-    public override bool CanRoll(Item item)
-    {
-        return true;
-    }
-    public override void Apply(Item item)
-    {
-        //Main.player[Main.myPlayer].GetCritChance(DamageClass.Generic) += 2;
-        //item.defense += 2;
+        Main.player[Main.myPlayer].GetCritChance(DamageClass.Generic) += 2;
+        player.statDefense += 2;
     }
 }

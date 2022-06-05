@@ -28,6 +28,6 @@ class VertebraePlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ItemID.Vertebrae).Register();
-        CreateRecipe(1).AddIngredient(this, 2).ReplaceResult(ItemID.Vertebrae);
+        CreateRecipe(1).AddIngredient(this, 2).Register();
     }
 }

@@ -3,19 +3,13 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Slimy : ArmorPrefix
+public class Slimy : ExxoPrefix
 {
     public override PrefixCategory Category => PrefixCategory.Custom;
-    public override float RollChance(Item item)
-    {
-        return 3f;
-    }
-    public override bool CanRoll(Item item)
-    {
-        return IsArmor(item);
-    } 
-    public override void UpdateEquip(Player player)
-    {
-        player.endurance += 0.03f;
-    }
+
+    public override float RollChance(Item item) => 3f;
+
+    public override bool CanRoll(Item item) => item.IsArmor();
+
+    public override void UpdateOwnerPlayer(Player player) => player.endurance += 0.03f;
 }

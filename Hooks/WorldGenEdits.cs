@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using AvalonTesting.Common;
 using AvalonTesting.Tiles;
 using IL.Terraria;
@@ -49,8 +48,6 @@ public class WorldGenEdits : ModHook
             () => Terraria.WorldGen.SavedOreTiers.Silver);
         SoftInterceptOreGen(il, i => i.MatchLdfld(methodType.GetField("gold")),
             () => Terraria.WorldGen.SavedOreTiers.Gold);
-
-        Utilities.OutputIL(il);
     }
 
     private static void SoftInterceptOreGen(ILContext il, Func<Instruction, bool> predicate, Func<int> valueProvider)
@@ -68,21 +65,15 @@ public class WorldGenEdits : ModHook
     private static void ILCheck3X2(ILContext il)
     {
         var c = new ILCursor(il);
-        try
-        {
-            ILLabel altarLabel = null;
-            c.GotoNext(i => i.MatchLdcI4(533));
-            int beginIndex = c.Index;
-            c.GotoNext(i => i.MatchLdcI4(TileID.DemonAltar));
-            c.GotoNext(i => i.MatchBeq(out altarLabel));
-            c.Index = beginIndex;
-            c.EmitDelegate<Func<int, bool>>(type => Data.Sets.Tile.Altar[type]);
-            c.Emit(OpCodes.Brtrue, altarLabel);
-            c.Emit(OpCodes.Ldarg_2);
-        }
-        catch (KeyNotFoundException e)
-        {
-            AvalonTesting.Mod.Logger.Error("Failed to apply hook!", e);
-        }
+        ILLabel? altarLabel = null;
+        c.GotoNext(i => i.MatchLdcI4(533));
+        int beginIndex = c.Index;
+        c.GotoNext(i => i.MatchLdcI4(TileID.DemonAltar))
+            .GotoNext(i => i.MatchBeq(out altarLabel));
+        c.Index = beginIndex;
+
+        c.EmitDelegate<Func<int, bool>>(type => Data.Sets.Tile.Altar[type]);
+        c.Emit(OpCodes.Brtrue, altarLabel)
+            .Emit(OpCodes.Ldarg_2);
     }
 }

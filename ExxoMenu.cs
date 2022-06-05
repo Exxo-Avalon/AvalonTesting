@@ -25,9 +25,19 @@ public class ExxoMenu : ModMenu
     {
         base.Load();
 
-        // Sets the menu to be initially set to Exxo Avalon's on game load
-        typeof(MenuLoader)
-            .GetField("LastSelectedModMenu", BindingFlags.NonPublic | BindingFlags.Static)
-            ?.SetValue(null, FullName);
+        const string lastSelectedModMenuFieldName = "LastSelectedModMenu";
+        FieldInfo? lastSelectedModMenuFieldInfo =
+            typeof(MenuLoader).GetField(lastSelectedModMenuFieldName, BindingFlags.NonPublic | BindingFlags.Static);
+
+        if (lastSelectedModMenuFieldInfo != null)
+        {
+            // Sets the menu to be initially set to Exxo Avalon's on game load
+            lastSelectedModMenuFieldInfo.SetValue(null, FullName);
+        }
+        else
+        {
+            AvalonTesting.Mod.Logger.Error(
+                $"Could not find field with name {lastSelectedModMenuFieldName} in {typeof(MenuLoader)}");
+        }
     }
 }

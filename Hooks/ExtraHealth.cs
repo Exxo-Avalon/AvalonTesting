@@ -25,22 +25,10 @@ public class ExtraHealth : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchLdcR8(0.9)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdsfld(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchCallvirt(out _)))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldloc, 10);
+        c.GotoNext(i => i.MatchLdcR8(0.9))
+            .GotoNext(i => i.MatchLdsfld(out _))
+            .GotoNext(i => i.MatchCallvirt(out _))
+            .Emit(OpCodes.Ldloc, 10);
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, index) =>
         {
@@ -58,36 +46,16 @@ public class ExtraHealth : ModHook
     {
         var c = new ILCursor(il);
 
-        FieldReference hpSegmentsCountField = null;
+        FieldReference? hpSegmentsCountField = null;
 
-        if (!c.TryGotoNext(i => i.MatchLdarg(1)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdarg(0)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdfld(out hpSegmentsCountField)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchBlt(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchStindRef()))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldarg_1);
-        c.Emit(OpCodes.Ldarg_0);
-        c.Emit(OpCodes.Ldfld, hpSegmentsCountField);
+        c.GotoNext(i => i.MatchLdarg(1))
+            .GotoNext(i => i.MatchLdarg(0))
+            .GotoNext(i => i.MatchLdfld(out hpSegmentsCountField))
+            .GotoNext(i => i.MatchBlt(out _))
+            .GotoNext(i => i.MatchStindRef())
+            .Emit(OpCodes.Ldarg_1)
+            .Emit(OpCodes.Ldarg_0)
+            .Emit(OpCodes.Ldfld, hpSegmentsCountField);
 
         c.EmitDelegate<Func<Asset<Texture2D>, int, int, Asset<Texture2D>>>((sprite, elementIndex, hpSegmentsCount) =>
         {
@@ -106,17 +74,10 @@ public class ExtraHealth : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchBge(out _)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchBge(out _))
+            .GotoNext(i => i.MatchStindRef())
+            .Emit(OpCodes.Ldarg_1);
 
-        if (!c.TryGotoNext(i => i.MatchStindRef()))
-        {
-            return;
-        }
-
-        c.Emit(OpCodes.Ldarg_1);
         c.EmitDelegate<Func<Asset<Texture2D>, int, Asset<Texture2D>>>((sprite, elementIndex) =>
         {
             int crystalFruitCount = (Main.LocalPlayer.statLifeMax - 500) / 5;

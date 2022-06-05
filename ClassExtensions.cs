@@ -98,15 +98,8 @@ public static class ClassExtensions
     /// </summary>
     /// <param name="item">The item.</param>
     /// <returns>Whether or not the item is an armor piece.</returns>
-    public static bool IsArmor(this Item item)
-    {
-        if (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1)
-        {
-            return !item.vanity;
-        }
-
-        return false;
-    }
+    public static bool IsArmor(this Item item) =>
+        (item.headSlot != -1 || item.bodySlot != -1 || item.legSlot != -1) && !item.vanity;
 
     /// <summary>
     ///     A helper method to check if the given Player is touching the ground.

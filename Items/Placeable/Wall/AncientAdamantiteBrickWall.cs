@@ -29,6 +29,6 @@ public class AncientAdamantiteBrickWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ModContent.ItemType<Tile.Ancient.AncientAdamantiteBrick>()).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).ReplaceResult(ModContent.ItemType<Tile.Ancient.AncientAdamantiteBrick>());
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }

@@ -44,8 +44,5 @@ class Timechanger : ModItem
         return true;
     }
 
-    public override void AddRecipes()
-    {
-        CreateRecipe(1).AddRecipeGroup(RecipeGroup.recipeGroupIDs["AvalonTesting:GoldBar"], 30).AddIngredient(ItemID.SoulofLight, 15).AddIngredient(ItemID.SoulofNight, 15).AddRecipeGroup(RecipeGroup.recipeGroupIDs["AvalonTesting:Tier3Watch"], 1).AddTile(TileID.MythrilAnvil).ReplaceResult(Item.type);
-    }
+    public override void AddRecipes() => CreateRecipe().AddRecipeGroup(RecipeGroup.recipeGroupIDs["AvalonTesting:GoldBar"], 30).AddIngredient(ItemID.SoulofLight, 15).AddIngredient(ItemID.SoulofNight, 15).AddRecipeGroup(RecipeGroup.recipeGroupIDs["AvalonTesting:Tier3Watch"], 1).AddTile(TileID.MythrilAnvil).Register();
 }

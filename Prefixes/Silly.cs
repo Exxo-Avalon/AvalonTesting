@@ -3,19 +3,11 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Silly : ArmorPrefix
+public class Silly : ExxoPrefix
 {
-    public override bool CanRoll(Item item)
-    {
-        return IsArmor(item);
-    }
+    public override bool CanRoll(Item item) => item.IsArmor();
 
-    public override void ModifyValue(ref float valueMult)
-    {
-        valueMult *= 1.2f;
-    }
-    public override void UpdateEquip(Player player)
-    {
-        player.GetCritChance(DamageClass.Generic) += 2;
-    }
+    public override void ModifyValue(ref float valueMult) => valueMult *= 1.2f;
+
+    public override void UpdateOwnerPlayer(Player player) => player.GetCritChance(DamageClass.Generic) += 0.02f;
 }
