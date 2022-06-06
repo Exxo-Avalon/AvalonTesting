@@ -1,18 +1,18 @@
+using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common.AltOres;
-using AltLibrary.Common.Systems;
 using AltLibrary.Common.Hooks;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria.ID;
-using Terraria.ModLoader;
+using AltLibrary.Common.Systems;
+using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Placeable.Seed;
 using AvalonTesting.Items.Weapons.Melee;
 using AvalonTesting.NPCs;
 using AvalonTesting.Tiles;
 using AvalonTesting.Tiles.Ores;
 using AvalonTesting.Walls;
-using AvalonTesting.Items.Placeable.Bar;
+using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AvalonTesting
 {

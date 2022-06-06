@@ -64,27 +64,6 @@ public class AvalonTesting : Mod
         ReplaceVanillaTextures();
     }
 
-    public override object Call(params object[] args)
-    {
-        if (args[0] is int arg0 && arg0 == 0 && args[1] is int arg1 && args[2] is int arg2)
-        {
-            switch (arg1)
-            {
-                default:
-                    ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = (ExxoWorldGen.RhodiumVariant?)arg2;
-                    return true;
-                case 1:
-                    ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore = (ExxoWorldGen.SHMTier1Variant?)arg2;
-                    return true;
-                case 2:
-                    ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore = (ExxoWorldGen.SHMTier2Variant?)arg2;
-                    return true;
-            }
-        }
-
-        return false;
-    }
-
     /// <inheritdoc />
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
