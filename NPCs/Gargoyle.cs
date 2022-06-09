@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -17,12 +17,11 @@ public class Gargoyle : ModNPC
     {
         DisplayName.SetDefault("Gargoyle");
         Main.npcFrameCount[NPC.type] = 5;
-        NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+        NPCID.Sets.DebuffImmunitySets[Type] = new NPCDebuffImmunityData
         {
             ImmuneToAllBuffsThatAreNotWhips = true,
-            ImmuneToWhips = true
+            ImmuneToWhips = true,
         };
-        NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
     public override void SetDefaults()
     {
