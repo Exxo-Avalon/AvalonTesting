@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AvalonTesting.Buffs;
@@ -139,6 +139,7 @@ public class ExxoPlayer : ModPlayer
         UltraLMinion = false;
         cloudGloves = false;
         bonusKB = 1f;
+        miniArma = false;
 
         if (shmAcc)
         {
@@ -3163,6 +3164,7 @@ public class ExxoPlayer : ModPlayer
     public bool teleportVWasTriggered;
     public int screenShakeTimer;
     public bool snotOrb;
+    public bool miniArma;
 
     public enum ShadowMirrorModes
     {
