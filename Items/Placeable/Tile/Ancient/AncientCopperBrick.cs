@@ -29,6 +29,6 @@ public class AncientCopperBrick : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ItemID.CopperBrick).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
-        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).ReplaceResult(ItemID.CopperBrick);
+        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }

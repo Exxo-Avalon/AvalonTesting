@@ -28,6 +28,6 @@ class EctoplasmPlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<Material.Echoplasm>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).ReplaceResult(ModContent.ItemType<Material.Echoplasm>());
+        CreateRecipe(1).AddIngredient(this, 2).Register();
     }
 }

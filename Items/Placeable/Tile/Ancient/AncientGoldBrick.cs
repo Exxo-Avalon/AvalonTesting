@@ -29,6 +29,6 @@ public class AncientGoldBrick : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ItemID.GoldBrick).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
-        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).ReplaceResult(ItemID.GoldBrick);
+        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }

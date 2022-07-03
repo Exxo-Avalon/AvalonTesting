@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using AvalonTesting.Prefixes;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
@@ -10,41 +8,12 @@ namespace AvalonTesting;
 
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {
-    public static readonly int[] AllowedPrefixes =
-    {
-        ModContent.PrefixType<Barbaric>(), ModContent.PrefixType<Boosted>(), ModContent.PrefixType<Busted>(),
-        ModContent.PrefixType<Bloated>(), ModContent.PrefixType<Disgusting>(), ModContent.PrefixType<Fluidic>(),
-        ModContent.PrefixType<Glorious>(), ModContent.PrefixType<Handy>(), ModContent.PrefixType<Insane>(),
-        ModContent.PrefixType<Loaded>(), ModContent.PrefixType<Messy>(), ModContent.PrefixType<Mythic>(),
-        ModContent.PrefixType<Protective>(), ModContent.PrefixType<Silly>(), ModContent.PrefixType<Slimy>(),
-    };
-
     public override bool InstancePerEntity => true;
 
     public int HealStamina { get; set; }
     public bool Tome { get; set; }
     public bool UpdateInvisibleVanity { get; set; }
     public bool WasWiring { get; set; }
-
-    public override bool AllowPrefix(Item item, int pre)
-    {
-        if (!item.IsArmor())
-        {
-            return base.AllowPrefix(item, pre);
-        }
-
-        if (pre is < PrefixID.Hard or >= PrefixID.Legendary)
-        {
-            return base.AllowPrefix(item, pre);
-        }
-
-        pre = AllowedPrefixes[Main.rand.Next(AllowedPrefixes.Length)];
-        return base.AllowPrefix(item, pre);
-    }
-
-    public override int ChoosePrefix(Item item, UnifiedRandom rand) => item.IsArmor()
-        ? AllowedPrefixes[rand.Next(AllowedPrefixes.Length)]
-        : base.ChoosePrefix(item, rand);
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {

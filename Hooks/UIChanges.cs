@@ -1,15 +1,12 @@
-﻿using System;
+using System;
 using System.Reflection;
 using AvalonTesting.Common;
 using AvalonTesting.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using MonoMod.RuntimeDetour.HookGen;
 using On.Terraria;
 using On.Terraria.UI;
-using ReLogic.Graphics;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
@@ -17,31 +14,12 @@ namespace AvalonTesting.Hooks;
 [Autoload(Side = ModSide.Client)]
 public class UIChanges : ModHook
 {
-    public delegate void hook_SpriteFontInternalDraw(orig_SpriteFontInternalDraw orig, DynamicSpriteFont self,
-                                                     string text, SpriteBatch spriteBatch, Vector2 startPosition,
-                                                     Color color, float rotation, Vector2 origin, ref Vector2 scale,
-                                                     SpriteEffects spriteEffects, float depth);
-
-    public delegate void orig_SpriteFontInternalDraw(DynamicSpriteFont self, string text, SpriteBatch spriteBatch,
-                                                     Vector2 startPosition, Color color, float rotation, Vector2 origin,
-                                                     ref Vector2 scale, SpriteEffects spriteEffects, float depth);
-
-    public static event hook_SpriteFontInternalDraw Hook_OnSpriteFontInternalDraw
-    {
-        add => HookEndpointManager.Add<hook_SpriteFontInternalDraw>(
-            typeof(DynamicSpriteFont).GetMethod("InternalDraw", BindingFlags.NonPublic | BindingFlags.Instance), value);
-        remove => HookEndpointManager.Remove<hook_SpriteFontInternalDraw>(
-            typeof(DynamicSpriteFont).GetMethod("InternalDraw", BindingFlags.NonPublic | BindingFlags.Instance), value);
-    }
-
     protected override void Apply()
     {
-        // IL.Terraria.UI.UIElement.Draw += ILUIElementDraw;
-        // Hook_OnSpriteFontInternalDraw += OnSpriteFontInternalDraw;
         Main.DrawInterface += OnMainDrawInterface;
         IL.Terraria.UI.UserInterface.Update += ILUserInterfaceUpdate;
         Main.DrawInventory += OnMainDrawInventory;
-        IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate;
+        //IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate; 
         IL.Terraria.UI.UIElement.GetClippingRectangle += ILUIElementGetClippingRectangle;
         UIElement.Remove += OnUIElementRemove;
     }
@@ -207,80 +185,68 @@ public class UIChanges : ModHook
     private static void ILUserInterfaceUpdate(ILContext il)
     {
         var c = new ILCursor(il);
+        c.GotoNext(i => i.MatchStloc(5));
 
-        if (!c.TryGotoNext(i => i.MatchStloc(5)))
-        {
-            return;
-        }
-
-        c.EmitDelegate<Func<Terraria.UI.UIElement, Terraria.UI.UIElement>>(uiElement =>
+        c.EmitDelegate<Func<Terraria.UI.UIElement?, Terraria.UI.UIElement?>>(uiElement =>
         {
             if (Terraria.Main.gameMenu || uiElement is Terraria.UI.UIState)
             {
                 return uiElement;
             }
 
-            if (AvalonTesting.Mod.CheckPointer && uiElement != null)
+            if (!AvalonTesting.Mod.CheckPointer || uiElement == null)
             {
-                AvalonTesting.Mod.CheckPointer = false;
-                return uiElement;
+                return null;
             }
 
-            return null;
+            AvalonTesting.Mod.CheckPointer = false;
+            return uiElement;
         });
     }
 
-    // Reverses the order that children are checked in order to best reflect the order in which they are drawn
-    // private static void ILUIElementGetElementAt(ILContext il)
-    // {
-    //     var c = new ILCursor(il);
-    //
-    //     if (!c.TryGotoNext(i => i.MatchCallvirt(out _)))
-    //     {
-    //         return;
-    //     }
-    //
-    //     // Logically elements should actually be checked in reverse as the last elements are drawn over everything below
-    //     c.EmitDelegate<Func<List<Terraria.UI.UIElement>, List<Terraria.UI.UIElement>>>(elements =>
-    //         elements.AsEnumerable().Reverse().ToList());
-    // }
-
-    // Some trickery that changes default behaviour of Recalculate to only recalculate self when element is ExxoUIElement
-    private static void ILUIElementRecalculate(ILContext il)
+    /// <summary>
+    ///     Some trickery that changes default behaviour of Recalculate to only recalculate self when element is ExxoUIElement.
+    /// </summary>
+    /// <param name="il">The ILContext of the original method.</param>
+   
+    /*private static void ILUIElementRecalculate(ILContext il)
     {
         var c = new ILCursor(il);
-        if (!c.TryGotoNext(i =>
-                i.MatchCallvirt(
-                    typeof(Terraria.UI.UIElement).GetMethod(nameof(Terraria.UI.UIElement.RecalculateChildren)))))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchCallvirt(typeof(Terraria.UI.UIElement).GetMethod(
+            nameof(Terraria.UI.UIElement.RecalculateChildren),
+            BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly, null, Type.EmptyTypes, null)));
+        c.Index--;
 
-        c.Remove();
-        c.EmitDelegate<Action<Terraria.UI.UIElement>>(element =>
-        {
-            if (!(element is ExxoUIElement))
-            {
-                element.RecalculateChildren();
-            }
-        });
-    }
+        ILLabel label = c.DefineLabel();
 
-    // Fixes vanilla's decision to clamp the clipping rectangle from 0 to the screen width which doesnt respect the position of the element... smh
+        c.Emit(OpCodes.Ldarg_0);
+        c.EmitDelegate<Func<Terraria.UI.UIElement, bool>>(element => element is ExxoUIElement);
+        c.Emit(OpCodes.Brtrue, label)
+            .GotoNext(i => i.MatchRet())
+            .MarkLabel(label);
+    }*/
+
+    //Hey lion here, for some reason this causes the mod to fail to load. If someone with higher knowledge on IL edits could have a look that would be good
+
+    /// <summary>
+    ///     Fixes vanilla's decision to clamp the clipping rectangle from 0 to the screen width which doesnt respect the
+    ///     position of the element... smh.
+    /// </summary>
+    /// <param name="il">The ILContext of the original method.</param>
     private static void ILUIElementGetClippingRectangle(ILContext il)
     {
         var c = new ILCursor(il);
-        if (!c.TryGotoNext(i => i.MatchLdarg(1)))
-        {
-            return;
-        }
-
-        Utilities.RemoveUntilInstruction(c, i => i.MatchRet());
-
-        c.Emit(OpCodes.Ldloc, 2);
+        c.GotoNext(i => i.MatchRet())
+            .Emit(OpCodes.Pop)
+            .Emit(OpCodes.Ldloc_2);
     }
 
-    // ExxoUIElements use a better removal system that removes children after updating, this allows children to remove themselves during update
+    /// <summary>
+    ///     ExxoUIElements use a better removal system that removes children after updating, this allows children to remove
+    ///     themselves during update.
+    /// </summary>
+    /// <param name="orig">Delegate that calls the original method.</param>
+    /// <param name="self">The calling UIElement instance.</param>
     private static void OnUIElementRemove(UIElement.orig_Remove orig, Terraria.UI.UIElement self)
     {
         if (self.Parent is ExxoUIElement exxoParent)
@@ -308,28 +274,5 @@ public class UIChanges : ModHook
             Terraria.Main.mouseX = (int)oldMouseScreen.X;
             Terraria.Main.mouseY = (int)oldMouseScreen.Y;
         }
-    }
-
-    // Increased clarity of text by drawing on the nearest integer coordinate rather than on a floating point
-    private static void OnSpriteFontInternalDraw(orig_SpriteFontInternalDraw orig, DynamicSpriteFont self, string text,
-                                                 SpriteBatch spriteBatch, Vector2 startPosition, Color color,
-                                                 float rotation, Vector2 origin, ref Vector2 scale,
-                                                 SpriteEffects spriteEffects, float depth) =>
-        orig(self, text, spriteBatch, startPosition.ToNearestPixel(), color, rotation, origin, ref scale, spriteEffects,
-            depth);
-
-    // Makes ExxoUIElements able to assume that no matter what they will be SamplerState PointClamp by default unless they implement other SamplerStates manually
-    private static void ILUIElementDraw(ILContext il)
-    {
-        var c = new ILCursor(il);
-        if (!c.TryGotoNext(i => i.MatchLdsfld(typeof(SamplerState), nameof(SamplerState.AnisotropicClamp))))
-        {
-            return;
-        }
-
-        c.Index++;
-        c.Emit(OpCodes.Ldarg_0);
-        c.EmitDelegate<Func<SamplerState, Terraria.UI.UIElement, SamplerState>>((origState, element) =>
-            element is ExxoUIElement ? SamplerState.PointClamp : origState);
     }
 }

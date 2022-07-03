@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
@@ -15,6 +15,9 @@ public class TropicalTree : ModTree
                                                 ref int topTextureFrameWidth,
                                                 ref int topTextureFrameHeight)
     {
+        xoffset = 2;
+        topTextureFrameWidth = 118;
+        topTextureFrameHeight = 96;
     }
 
     public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTree");
@@ -26,7 +29,6 @@ public class TropicalTree : ModTree
         AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
-
 
     public override int CreateDust() => 51;
 

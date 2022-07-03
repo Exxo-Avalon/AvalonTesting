@@ -31,6 +31,6 @@ class HallowedOre : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(this, 5).AddTile(TileID.AdamantiteForge).ReplaceResult(ItemID.HallowedBar);
+        CreateRecipe(1).AddIngredient(this, 5).AddTile(TileID.AdamantiteForge).Register();
     }
 }

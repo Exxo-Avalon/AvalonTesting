@@ -31,7 +31,7 @@ class Boltstone : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(this, 35).AddTile(TileID.Furnaces).ReplaceResult(ModContent.ItemType<Items.Consumables.StaminaCrystal>());
+        CreateRecipe(1).AddIngredient(this, 35).AddTile(TileID.Furnaces).Register();
         CreateRecipe(35).AddIngredient(ModContent.ItemType<Items.Consumables.StaminaCrystal>()).AddTile(TileID.Furnaces).Register();
     }
 }

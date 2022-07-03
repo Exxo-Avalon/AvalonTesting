@@ -32,21 +32,9 @@ public class ContagionWorldGen : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchLdsfld<WorldGen>(nameof(WorldGen.drunkWorldGen))))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchBrfalse(out _)))
-        {
-            return;
-        }
-
+        c.GotoNext(i => i.MatchRet())
+            .GotoPrev(i => i.MatchLdsfld<WorldGen>(nameof(WorldGen.drunkWorldGen)))
+            .GotoNext(i => i.MatchBrfalse(out _));
         c.Index++;
 
         // Drunk world seed baccilite generation
@@ -54,21 +42,15 @@ public class ContagionWorldGen : ModHook
         {
             for (int i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 2.25E-05 / 2.0); i++)
             {
-                WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX),
+                WorldGen.TileRunner(
+                    WorldGen.genRand.Next(0, Main.maxTilesX),
                     WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY), WorldGen.genRand.Next(3, 6),
                     WorldGen.genRand.Next(4, 8), ModContent.TileType<BacciliteOre>());
             }
         });
 
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchBr(out _)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchRet())
+            .GotoNext(i => i.MatchBr(out _));
 
         ILLabel startCorruptionGen = c.DefineLabel();
 
@@ -81,7 +63,8 @@ public class ContagionWorldGen : ModHook
             {
                 for (int i = 0; i < (int)(Main.maxTilesX * Main.maxTilesY * 2.25E-05); i++)
                 {
-                    WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX),
+                    WorldGen.TileRunner(
+                        WorldGen.genRand.Next(0, Main.maxTilesX),
                         WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY), WorldGen.genRand.Next(3, 6),
                         WorldGen.genRand.Next(4, 8), ModContent.TileType<BacciliteOre>());
                 }
@@ -96,33 +79,15 @@ public class ContagionWorldGen : ModHook
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchStsfld<WorldGen>(nameof(WorldGen.crimson))))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdfld(out _)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchStsfld<WorldGen>(nameof(WorldGen.crimson)))
+            .GotoNext(i => i.MatchLdfld(out _));
 
         c.EmitDelegate<Action>(() =>
             WorldGen.crimson = ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Crimson);
 
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchBneUn(out _)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchLdcI4(-1)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchRet())
+            .GotoPrev(i => i.MatchBneUn(out _))
+            .GotoPrev(i => i.MatchLdcI4(-1));
 
         c.EmitDelegate<Func<int, int>>(dungeonSide =>
         {
@@ -132,11 +97,7 @@ public class ContagionWorldGen : ModHook
 
         for (int i = 0; i < 2; i++)
         {
-            if (!c.TryGotoNext(i => i.MatchRet()))
-            {
-                return;
-            }
-
+            c.GotoNext(inst => inst.MatchRet());
             c.Index--;
 
             c.EmitDelegate<Func<int, int>>(dungeonLocation =>
@@ -156,10 +117,7 @@ public class ContagionWorldGen : ModHook
         ILLabel endNormalAltar = c.DefineLabel();
         ILLabel startNormalAltar = c.DefineLabel();
 
-        if (!c.TryGotoNext(i => i.MatchLdsfld<WorldGen>(nameof(WorldGen.crimson))))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchLdsfld<WorldGen>(nameof(WorldGen.crimson)));
 
         c.EmitDelegate(() => ModContent.GetInstance<ExxoWorldGen>().WorldEvil != ExxoWorldGen.EvilBiome.Corruption);
         c.Emit(OpCodes.Brfalse, startNormalAltar)
@@ -176,15 +134,8 @@ public class ContagionWorldGen : ModHook
         c.Emit(OpCodes.Br, endNormalAltar);
         c.MarkLabel(startNormalAltar);
 
-        if (!c.TryGotoNext(i => i.MatchLdloc(5)))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchLdsflda(out _)))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchLdloc(5))
+            .GotoNext(i => i.MatchLdsflda(out _));
 
         c.MarkLabel(endNormalAltar);
     }

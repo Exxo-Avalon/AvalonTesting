@@ -2,19 +2,11 @@
 
 namespace AvalonTesting.Prefixes;
 
-public class Protective : ArmorPrefix
+public class Protective : ExxoPrefix
 {
-    public override bool CanRoll(Item item)
-    {
-        return IsArmor(item);
-    }
+    public override bool CanRoll(Item item) => item.IsArmor();
 
-    public override void ModifyValue(ref float valueMult)
-    {
-        valueMult *= 1.15f;
-    }
-    public override void UpdateEquip(Player player)
-    {
-        player.statDefense += 2;
-    }
+    public override void ModifyValue(ref float valueMult) => valueMult *= 1.15f;
+
+    public override void UpdateOwnerPlayer(Player player) => player.statDefense += 2;
 }

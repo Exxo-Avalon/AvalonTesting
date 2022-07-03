@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +15,8 @@ public class Phantoplasm : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Phantoplasm>();
         DustType = DustID.TheDestroyer;
     }
-    public override bool KillSound(int i, int j)
+
+    public override bool KillSound(int i, int j, bool fail)
     {
         if (Main.rand.NextBool(10))
         {

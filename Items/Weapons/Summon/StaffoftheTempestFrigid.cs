@@ -35,6 +35,6 @@ class StaffoftheTempestFrigid : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.StaffoftheFrostHydra).AddIngredient(ModContent.ItemType<Material.SoulofIce>(), 75).AddIngredient(ItemID.FrostCore, 10).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20).AddIngredient(ModContent.ItemType<Placeable.Bar.HydrolythBar>(), 40).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).ReplaceResult(ModContent.ItemType<StaffoftheTempestFrigid>());
+        CreateRecipe(1).AddIngredient(ItemID.StaffoftheFrostHydra).AddIngredient(ModContent.ItemType<Material.SoulofIce>(), 75).AddIngredient(ItemID.FrostCore, 10).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20).AddIngredient(ModContent.ItemType<Placeable.Bar.HydrolythBar>(), 40).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

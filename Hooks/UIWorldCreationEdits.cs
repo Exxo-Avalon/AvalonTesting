@@ -1,4 +1,4 @@
-using System;
+/*using System; commented just in case we reuse it somehow
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -61,19 +61,16 @@ public class UIWorldCreationEdits : ModHook
         IL.Terraria.GameContent.UI.States.UIWorldCreation.UpdatePreviewPlate += ILUpdatePreviewPlate;
     }
 
+    /// <summary>
+    ///     Updates the preview plate with the new values from the UI replacement.
+    /// </summary>
+    /// <param name="il">The ILContext of the original method.</param>
     private static void ILUpdatePreviewPlate(ILContext il)
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchConvU1()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoNext(i => i.MatchConvU1()))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchLdfld<UIWorldCreation>("_optionEvil"))
+            .GotoNext(i => i.MatchConvU1());
 
         c.Index++;
         c.Emit(OpCodes.Pop);
@@ -90,21 +87,22 @@ public class UIWorldCreationEdits : ModHook
         });
     }
 
+    /// <summary>
+    ///     Skips the last separator and the space added as compensation.
+    /// </summary>
+    /// <param name="il">The ILContext of the original method.</param>
     private static void ILMakeInfoMenu(ILContext il)
     {
-        try
-        {
-            var c = new ILCursor(il);
+        var c = new ILCursor(il);
 
-            c.GotoNext(i => i.MatchLdstr("evil"))
-                .GotoNext(i => i.MatchLdloc(1));
+        c.GotoNext(i => i.MatchLdstr("evil"))
+            .GotoNext(i => i.MatchLdloc(1), i => i.MatchLdcR4(48f));
 
-            Utilities.RemoveUntilInstruction(c, i => i.MatchLdarg(0));
-        }
-        catch (KeyNotFoundException e)
-        {
-            AvalonTesting.Mod.Logger.Error("Failed to apply hook!", e);
-        }
+        ILLabel label = c.DefineLabel();
+        c.Emit(OpCodes.Br, label)
+            .GotoNext(i => i.MatchLdarg(0), i => i.MatchLdloc(0), i => i.MatchLdloc(1), i => i.MatchLdstr("desc"));
+
+        c.MarkLabel(label);
     }
 
     private static void OnAddWorldEvilOptions(
@@ -116,14 +114,29 @@ public class UIWorldCreationEdits : ModHook
     {
         orig(self, container, accumulatedHeight, clickEvent, tagGroup, usableWidthPercent);
 
-        // Remove last 3 elements (original evil buttons)
-        UIElement[] tempArray = container.Children.ToArray();
-        for (int i = tempArray.Length - 1; i > tempArray.Length - 4; i--)
+        // Remove original evil buttons
+        float heightAdjustment = 0f;
+        const string worldEvilIdName = "WorldEvilId";
+        Type? worldEvilIdType = typeof(UIWorldCreation).GetNestedType(worldEvilIdName, BindingFlags.NonPublic);
+        if (worldEvilIdType == null)
         {
-            tempArray[i].Remove();
+            AvalonTesting.Mod.Logger.Error(
+                $"Could not find field with name {worldEvilIdName} in {typeof(UIWorldCreation)}");
+        }
+        else
+        {
+            Type groupOptionButtonType = typeof(GroupOptionButton<>).MakeGenericType(worldEvilIdType);
+            foreach (UIElement? evilMenuOption in container.Children
+                         .Where(child => child.GetType() == groupOptionButtonType).ToArray())
+            {
+                evilMenuOption.Remove();
+                heightAdjustment = -evilMenuOption.GetOuterDimensions().Height;
+            }
         }
 
-        #region populating region
+        UIElement lastElement = container.Children.Last();
+        accumulatedHeight = lastElement.Top.Pixels + lastElement.GetOuterDimensions().Height;
+
         var customOptionsPrimaryList = new ExxoUIList { ListPadding = 4, FitHeightToContent = true };
         customOptionsPrimaryList.Width.Set(0, 1);
         customOptionsPrimaryList.Top.Set(accumulatedHeight, 0);
@@ -381,16 +394,7 @@ public class UIWorldCreationEdits : ModHook
             {
                 null, ExxoWorldGen.SHMTier2Variant.Unvolandite, ExxoWorldGen.SHMTier2Variant.Vorazylcum,
             },
-            new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
-            new[] { LocalizedText.Empty, LocalizedText.Empty, LocalizedText.Empty },
-            new[] { Color.White, Color.White, Color.White },
-            new[]
-            {
-                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilRandom"),
-                ModContent.Request<Texture2D>(ModContent.GetInstance<UnvolanditeOre>().Texture),
-                ModContent.Request<Texture2D>(ModContent.GetInstance<VorazylcumOre>().Texture),
-            }, false);
-        #endregion populating region
+            new[] { ItemID.None, ModContent.ItemType<UnvolanditeOre>(), ModContent.ItemType<VorazylcumOre>() }, false);
 
         var hr = new UIHorizontalSeparator();
         hr.Width.Set(0, 1);
@@ -399,9 +403,35 @@ public class UIWorldCreationEdits : ModHook
 
         customOptionsPrimaryList.Recalculate();
 
-        container.Parent.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
-        container.Parent.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
-        container.Parent.Height.Pixels += customOptionsPrimaryList.MinHeight.Pixels - 48;
+        heightAdjustment += customOptionsPrimaryList.MinHeight.Pixels;
+        container.Parent.Parent.Parent.Height.Pixels += heightAdjustment;
+        container.Parent.Parent.Height.Pixels += heightAdjustment;
+        container.Parent.Height.Pixels += heightAdjustment;
+    }
+
+    private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
+                                            string tagGroup, Action<T?> actionOnClick, T? defaultSelection,
+                                            int amountPerInnerList, IReadOnlyList<T?> optionValues,
+                                            IReadOnlyList<int> items, bool addHorizontalRule = true)
+        where T : struct, IComparable
+    {
+        var titles = new LocalizedText[items.Count];
+        var descriptions = new LocalizedText[items.Count];
+        var textures = new Asset<Texture2D>[items.Count];
+        var colors = new Color[items.Count];
+        for (int i = 0; i < items.Count; i++)
+        {
+            titles[i] = LocalizedText.Empty;
+            descriptions[i] = Lang.GetItemName(items[i]);
+            textures[i] = TextureAssets.Item[items[i]];
+            colors[i] = Color.White;
+        }
+
+        textures[0] = Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilRandom");
+        descriptions[0] = Language.GetText("CLI.Random");
+
+        AddCustomGenMenu(self, container, tagGroup, actionOnClick, defaultSelection, amountPerInnerList, optionValues,
+            titles, descriptions, colors, textures, addHorizontalRule);
     }
 
     private static void AddCustomGenMenu<T>(UIWorldCreation self, ExxoUIList container,
@@ -454,30 +484,27 @@ public class UIWorldCreationEdits : ModHook
         }
     }
 
+    /// <summary>
+    ///     Sets the WorldGenParam_Evil corresponding to the final option.
+    /// </summary>
+    /// <param name="il">The ILContext of the original method.</param>
     private static void ILFinishCreatingWorld(ILContext il)
     {
         var c = new ILCursor(il);
 
-        if (!c.TryGotoNext(i => i.MatchRet()))
-        {
-            return;
-        }
-
-        if (!c.TryGotoPrev(i => i.MatchLdnull()))
-        {
-            return;
-        }
+        c.GotoNext(i => i.MatchRet())
+            .GotoPrev(i => i.MatchLdnull());
 
         c.EmitDelegate(() =>
         {
             WorldGen.WorldGenParam_Evil = currentEvilOption switch
             {
                 MenuEvilOption.None => -1,
-                MenuEvilOption.Corruption => 0,
-                MenuEvilOption.Crimson => 1,
-                MenuEvilOption.Contagion => 2,
+                MenuEvilOption.Corruption => (int)ExxoWorldGen.EvilBiome.Corruption,
+                MenuEvilOption.Crimson => (int)ExxoWorldGen.EvilBiome.Crimson,
+                MenuEvilOption.Contagion => (int)ExxoWorldGen.EvilBiome.Contagion,
                 _ => WorldGen.WorldGenParam_Evil,
             };
         });
     }
-}
+}*/

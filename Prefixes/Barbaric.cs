@@ -3,21 +3,15 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Prefixes;
 
-public class Barbaric : ArmorPrefix
+public class Barbaric : ExxoPrefix
 {
-    public override bool CanRoll(Item item)
-    {
-        return IsArmor(item);
-    }
+    public override bool CanRoll(Item item) => item.IsArmor();
 
-    public override void ModifyValue(ref float valueMult)
-    {
-        valueMult *= 1.25f;
-    }
-    public override void UpdateEquip(Player player)
+    public override void ModifyValue(ref float valueMult) => valueMult *= 1.25f;
+
+    public override void UpdateOwnerPlayer(Player player)
     {
         player.GetDamage<GenericDamageClass>() += 0.04f;
-        player.Avalon().bonusKB = 1.06f;
-        //player.inventory[player.selectedItem].knockBack += 0.06f;
+        player.GetKnockback<GenericDamageClass>() += 0.06f;
     }
 }

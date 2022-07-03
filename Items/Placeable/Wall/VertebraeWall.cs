@@ -28,6 +28,6 @@ class VertebraeWall : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(4).AddIngredient(ItemID.Vertebrae).AddTile(TileID.WorkBenches).Register();
-        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).ReplaceResult(ItemID.Vertebrae);
+        CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }
