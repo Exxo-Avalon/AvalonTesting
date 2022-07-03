@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +20,7 @@ class AncientElementalExcalibur : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 7f;

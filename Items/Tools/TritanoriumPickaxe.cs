@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +20,7 @@ class TritanoriumPickaxe : ModItem
         Item.useTurn = true;
         Item.scale = 1.15f;
         Item.pick = 260;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 6.5f;

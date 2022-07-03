@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -23,7 +23,7 @@ class TritanoriumBroadsword : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 15f;

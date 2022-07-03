@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +23,7 @@ class PyroscoricPickaxe : ModItem
         Item.useTurn = true;
         Item.scale = 1.15f;
         Item.pick = 250;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 9;
         Item.knockBack = 3.5f;

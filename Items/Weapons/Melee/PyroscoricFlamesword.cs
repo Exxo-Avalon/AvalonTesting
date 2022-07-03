@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +25,7 @@ class PyroscoricFlamesword : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.3f;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.useAnimation = 20;

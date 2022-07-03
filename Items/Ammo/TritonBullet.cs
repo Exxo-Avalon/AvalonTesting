@@ -19,7 +19,7 @@ class TritonBullet : ModItem
         Item.ammo = AmmoID.Bullet;
         Item.DamageType = DamageClass.Ranged;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.knockBack = 20f;
         Item.shoot = ModContent.ProjectileType<Projectiles.TritonBullet>();

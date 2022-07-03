@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class ElementalExcalibur : ModItem
         Item.UseSound = SoundID.Item1;
         Item.scale = 1.2f;
         Item.shootSpeed = 13f;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.noMelee = false;
         Item.width = dims.Width;
         Item.useTime = 15;

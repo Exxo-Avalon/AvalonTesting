@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -21,7 +21,7 @@ class PyroscoricBar : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 13;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.Purple;
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = Item.sellPrice(0, 1, 0, 0);
