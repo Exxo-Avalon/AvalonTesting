@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Dusts;
+using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -13,7 +13,7 @@ public class ContagionTree : ModTree
 
     public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<Ickgrass>() };
 
-    public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY,
+    public override void SetTreeFoliageSettings(Tile tile, ref int xoffset, ref int treeFrame, ref int floorY,
                                                 ref int topTextureFrameWidth,
                                                 ref int topTextureFrameHeight)
     {

@@ -1,5 +1,6 @@
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,7 +33,7 @@ internal class Catalyzer : ModItem
 
     public override void AddRecipes()
     {
-        Mod.CreateRecipe(ModContent.ItemType<Catalyzer>())
+        Recipe.Create(ModContent.ItemType<Catalyzer>())
             .AddRecipeGroup(RecipeGroupID.Wood, 20)
             .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
             .AddRecipeGroup("IronBar", 15)
