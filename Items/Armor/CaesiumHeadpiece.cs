@@ -30,6 +30,14 @@ class CaesiumHeadpiece : ModItem
     {
         player.armorEffectDrawOutlines = true;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 30)
+            .AddIngredient(ItemID.HellstoneBar, 10)
+            .AddIngredient(ItemID.SoulofSight, 5)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "Melee Stealth and increased stats";

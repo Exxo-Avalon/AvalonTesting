@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Accessories;
+using AvalonTesting.Items.Accessories;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Placeable.Tile;
@@ -20,6 +20,22 @@ public class RecipeSystem : ModSystem
             group0.ValidItems.Add(ModContent.ItemType<TropicalWood>());
             group0.ValidItems.Add(ModContent.ItemType<ResistantWood>());
         }
+
+        var groupGemStaves = new RecipeGroup(() => "Any Gem Staff", new int[]
+        {
+            ItemID.RubyStaff,
+            ItemID.AmberStaff,
+            ItemID.TopazStaff,
+            ItemID.EmeraldStaff,
+            ItemID.SapphireStaff,
+            ItemID.AmethystStaff,
+            ItemID.DiamondStaff,
+            ModContent.ItemType<Items.Weapons.Magic.PeridotStaff>(),
+            ModContent.ItemType<Items.Weapons.Magic.TourmalineStaff>(),
+            ModContent.ItemType<Items.Weapons.Magic.ZirconStaff>()
+        });
+        RecipeGroup.RegisterGroup("AvalonTesting:GemStaves", groupGemStaves);
+
 
         var groupWings = new RecipeGroup(() => "Any Wings", new int[]
         {

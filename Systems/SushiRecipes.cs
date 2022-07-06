@@ -6,7 +6,7 @@ namespace AvalonTesting.Systems;
 
 public static class SushiRecipes
 {
-    public static void CreateRecipes(Mod self, Mod imk)
+    public static void CreateRecipes(Mod imk)
     {
     // Recipe.Create doesn't work as a replacement for self.CreateRecipe
         Recipe.Create(ModContent.ItemType<Items.Accessories.StingerPack>()).AddIngredient(ModContent.ItemType<Items.Weapons.Magic.Mechazapinator>()).AddIngredient(imk.Find<ModItem>("BossLootSwapToken").Type).AddTile(TileID.MythrilAnvil).Register();

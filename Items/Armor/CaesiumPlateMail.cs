@@ -23,7 +23,14 @@ class CaesiumPlateMail : ModItem
         Item.value = Item.sellPrice(0, 9, 0, 0);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 40)
+            .AddIngredient(ItemID.HellstoneBar, 12)
+            .AddIngredient(ItemID.SoulofMight, 5)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Melee) += 5;

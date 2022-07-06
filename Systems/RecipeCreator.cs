@@ -965,44 +965,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.HallowedBar, 13)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(ModContent.ItemType<CaesiumForge>())
-            .AddIngredient(ItemID.AdamantiteForge)
-            .AddIngredient(ModContent.ItemType<CaesiumOre>(), 40)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumForge>())
-            .AddIngredient(ItemID.TitaniumForge)
-            .AddIngredient(ModContent.ItemType<CaesiumOre>(), 40)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumForge>())
-            .AddIngredient(ModContent.ItemType<TroxiniumForge>())
-            .AddIngredient(ModContent.ItemType<CaesiumOre>(), 40)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumHeadpiece>())
-            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 30)
-            .AddIngredient(ItemID.HellstoneBar, 10)
-            .AddIngredient(ItemID.SoulofSight, 5)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumPlateMail>())
-            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 40)
-            .AddIngredient(ItemID.HellstoneBar, 12)
-            .AddIngredient(ItemID.SoulofMight, 5)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumGreaves>())
-            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 28)
-            .AddIngredient(ItemID.HellstoneBar, 9)
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-
-        Recipe.Create(ModContent.ItemType<SolariumAnvil>())
-            .AddIngredient(ModContent.ItemType<SolariumStar>(), 16)
-            .AddIngredient(ModContent.ItemType<SoulofBlight>(), 2)
-            .AddTile(TileID.MythrilAnvil).Register();
-
         Recipe.Create(ModContent.ItemType<BlastShard>())
             .AddIngredient(ModContent.ItemType<FireShard>(), 2)
             .AddIngredient(ItemID.LivingFireBlock, 10)

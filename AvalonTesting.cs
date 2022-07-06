@@ -78,7 +78,13 @@ public class AvalonTesting : Mod
                 $"PacketHandler with message index {msgIndex.ToString(CultureInfo.InvariantCulture)} does not exist");
         }
     }
-
+    public override void AddRecipes()
+    {
+        if (ImkSushisMod != null)
+        {
+            SushiRecipes.CreateRecipes(ImkSushisMod);
+        }
+    }
     private void ReplaceVanillaTextures()
     {
         // Items

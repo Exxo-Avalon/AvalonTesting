@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,5 +28,22 @@ class CaesiumForge : ModItem
         Item.value = 50000;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(1)
+            .AddIngredient(ItemID.AdamantiteForge)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(1)
+            .AddIngredient(ItemID.TitaniumForge)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(1)
+            .AddIngredient(ModContent.ItemType<TroxiniumForge>())
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }
