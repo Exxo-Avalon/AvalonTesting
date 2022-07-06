@@ -11,9 +11,7 @@ public class TropicalTree : ModTree
     public override TreePaintingSettings TreeShaderSettings => new();
     public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<TropicalGrass>() };
 
-    public override void SetTreeFoliageSettings(Tile tile, int xoffset, ref int treeFrame, ref int floorY,
-                                                ref int topTextureFrameWidth,
-                                                ref int topTextureFrameHeight)
+    public override void SetTreeFoliageSettings(Tile tile, ref int xoffset, ref int treeFrame, ref int floorY, ref int topTextureFrameWidth, ref int topTextureFrameHeight)
     {
         xoffset = 2;
         topTextureFrameWidth = 118;
