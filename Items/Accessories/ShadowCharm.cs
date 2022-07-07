@@ -23,8 +23,7 @@ class ShadowCharm : ModItem
         Item.value = Item.sellPrice(0, 0, 45);
         Item.height = dims.Height;
     }
-
-    public override void UpdateAccessory(Player player, bool hideVisual)
+    public override void ArmorSetShadows(Player player)
     {
         player.armorEffectDrawShadow = true;
     }
