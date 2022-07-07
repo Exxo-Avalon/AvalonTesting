@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +12,7 @@ class DivineLightJerkin : ModItem
     {
         DisplayName.SetDefault("Divine Light Jerkin");
         Tooltip.SetDefault("10% increased ranged critical strike chance" +
-                           "\n25% increased critical damage");
+                           "\n50% increased critical damage");
     }
 
     public override void SetDefaults()
@@ -27,13 +27,15 @@ class DivineLightJerkin : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1)
-            .AddIngredient(ItemID.PixieDust, 25)
+            .AddIngredient(ItemID.HallowedBar, 25)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 25)
-            .AddIngredient(ItemID.SoulofLight, 20).AddTile(TileID.MythrilAnvil).Register();
+            .AddIngredient(ItemID.SoulofLight, 20)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Ranged) += 10;
-        player.Avalon().CritDamageMult += 0.25f;
+        player.Avalon().CritDamageMult += 0.5f;
     }
 }

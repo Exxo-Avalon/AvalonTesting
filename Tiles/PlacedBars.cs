@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -135,11 +135,15 @@ public class PlacedBars : ModTile
                 DustType = ModContent.DustType<Dusts.IridiumDust>();
                 break;
             case 23:
-                //toDrop = ModContent.ItemType<XanthophyteBar>();
+                toDrop = ModContent.ItemType<XanthophyteBar>();
                 DustType = DustID.KryptonMoss;
                 break;
+            case 24:
+                toDrop = ModContent.ItemType<CorruptedBar>();
+                DustType = DustID.Corruption;
+                break;
         }
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i * 16,j * 16), i * 16, j * 16, 16, 16, toDrop);
+        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i * 16, j * 16), i * 16, j * 16, 16, 16, toDrop);
     }
 
     public override bool CreateDust(int i, int j, ref int type)

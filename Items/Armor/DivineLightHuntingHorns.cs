@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -29,9 +29,11 @@ internal class DivineLightHuntingHorns : ModItem
     public override void AddRecipes()
     {
         CreateRecipe()
-            .AddIngredient(ItemID.PixieDust, 20)
+            .AddIngredient(ItemID.HallowedBar, 20)
             .AddIngredient(ModContent.ItemType<CaesiumBar>(), 20)
-            .AddIngredient(ItemID.SoulofLight, 10).AddTile(TileID.MythrilAnvil).Register();
+            .AddIngredient(ItemID.SoulofLight, 10)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 
     public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -45,8 +47,7 @@ internal class DivineLightHuntingHorns : ModItem
         ExxoPlayer modPlayer = player.Avalon();
         player.setBonus = "Reckoning: your reckoning level increases as you attack enemies, up to a maximum of ten"
                           + "\nThe greater your reckoning level, the greater your ranged critical strike chance"
-                          + "\nYour reckoning level decreases gradually over time"
-                          + "\nReckoning Level: " + modPlayer.reckoningLevel;
+                          + "\nYour reckoning level decreases gradually over time";
         modPlayer.reckoning = true;
     }
 

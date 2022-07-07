@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,9 +29,11 @@ class CorruptedThornGreaves : ModItem
     {
         CreateRecipe(1)
             .AddIngredient(ItemID.Spike, 20)
-            .AddIngredient(ModContent.ItemType<Material.CorruptShard>(), 20)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 20)
-            .AddIngredient(ItemID.SoulofNight, 15).AddTile(TileID.MythrilAnvil).Register();
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CorruptedBar>(), 20)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 15)
+            .AddIngredient(ItemID.SoulofNight, 8)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
     public override void UpdateEquip(Player player)
     {

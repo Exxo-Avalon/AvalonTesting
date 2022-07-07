@@ -32,7 +32,7 @@ class CaesiumHeadpiece : ModItem
     }
     public override void AddRecipes()
     {
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 30)
             .AddIngredient(ItemID.HellstoneBar, 10)
             .AddIngredient(ItemID.SoulofSight, 5)

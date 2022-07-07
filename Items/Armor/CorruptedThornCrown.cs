@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -31,9 +31,11 @@ internal class CorruptedThornCrown : ModItem
     {
         CreateRecipe()
             .AddIngredient(ItemID.Spike, 20)
-            .AddIngredient(ModContent.ItemType<CorruptShard>(), 20)
+            .AddIngredient(ModContent.ItemType<CorruptedBar>(), 20)
             .AddIngredient(ModContent.ItemType<CaesiumBar>(), 15)
-            .AddIngredient(ItemID.SoulofNight, 10).AddTile(TileID.MythrilAnvil).Register();
+            .AddIngredient(ItemID.SoulofNight, 6)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 
     public override bool IsArmorSet(Item head, Item body, Item legs)

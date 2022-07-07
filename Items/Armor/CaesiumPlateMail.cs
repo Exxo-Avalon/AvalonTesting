@@ -25,7 +25,7 @@ class CaesiumPlateMail : ModItem
     }
     public override void AddRecipes()
     {
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 40)
             .AddIngredient(ItemID.HellstoneBar, 12)
             .AddIngredient(ItemID.SoulofMight, 5)
