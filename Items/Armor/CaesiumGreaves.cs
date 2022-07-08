@@ -25,7 +25,7 @@ class CaesiumGreaves : ModItem
     }
     public override void AddRecipes()
     {
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 28)
             .AddIngredient(ItemID.HellstoneBar, 9)
             .AddIngredient(ItemID.SoulofFright, 5)

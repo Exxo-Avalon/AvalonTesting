@@ -1,4 +1,5 @@
-﻿using Terraria;
+using AvalonTesting.Players;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,7 +8,7 @@ namespace AvalonTesting.Buffs;
 // TODO: IMPLEMENT
 public class StaminaDrain : ModBuff
 {
-    private readonly int stacks = 1;
+    private int stacks = 1;
 
     public override void SetStaticDefaults()
     {
@@ -41,13 +42,13 @@ public class StaminaDrain : ModBuff
         }
     }
 
-    // public override void Update(Player player, ref int buffIndex)
-    // {
-    //     player.Avalon().staminaDrain = true;
-    //     stacks = player.Avalon().staminaDrainStacks;
-    //     if (player.buffTime[buffIndex] == 0)
-    //     {
-    //         player.Avalon().staminaDrainStacks = 1;
-    //     }
-    // }
+    public override void Update(Player player, ref int buffIndex)
+    {
+        player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain = true;
+        stacks = player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks;
+        if (player.buffTime[buffIndex] == 0)
+        {
+            player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks = 1;
+        }
+    }
 }

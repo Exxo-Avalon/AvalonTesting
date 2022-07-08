@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Buffs;
+using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Network;
 using AvalonTesting.Network.Handlers;
@@ -33,6 +33,9 @@ public class ExxoBuffPlayer : ModPlayer
     public bool Melting;
     public bool NoSticky;
     public int OldFallStart;
+
+    public bool SkyBlessing;
+    public int SkyStacks = 1;
 
     public int StingerProbeTimer;
     private bool lavaMerman;
@@ -91,6 +94,7 @@ public class ExxoBuffPlayer : ModPlayer
         AccLavaMerman = false;
         lavaMerman = false;
         BloodyWhetstone = false;
+        SkyBlessing = false;
     }
 
     public override void PreUpdateBuffs()
@@ -104,7 +108,6 @@ public class ExxoBuffPlayer : ModPlayer
             AstralCooldown++;
         }
     }
-
     public override void PostUpdateEquips()
     {
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
@@ -119,7 +122,10 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void PostUpdateBuffs() => OldFallStart = Player.fallStart;
+    public override void PostUpdateBuffs()
+    {
+        OldFallStart = Player.fallStart;
+    }
 
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) =>
         ModContent.GetInstance<ExxoBuffPlayerSyncHandler>()

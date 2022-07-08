@@ -30,7 +30,7 @@ class SolariumAnvil : ModItem
     }
     public override void AddRecipes()
     {
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 16)
             .AddIngredient(ModContent.ItemType<Material.HellsteelPlate>(), 5)
             .AddTile(TileID.MythrilAnvil).Register();

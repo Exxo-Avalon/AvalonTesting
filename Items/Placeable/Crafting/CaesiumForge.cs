@@ -31,19 +31,19 @@ class CaesiumForge : ModItem
     }
     public override void AddRecipes()
     {
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ItemID.AdamantiteForge)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ItemID.TitaniumForge)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(1)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<TroxiniumForge>())
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
     }
 }
