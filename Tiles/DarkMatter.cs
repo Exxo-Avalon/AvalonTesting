@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Dusts;
+using AvalonTesting.Dusts;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
@@ -18,6 +18,8 @@ public class DarkMatter : ModTile
         Main.tileBrick[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
+        Main.tileMerge[Type][ModContent.TileType<DarkMatterSoil>()] = true;
+        Main.tileMerge[ModContent.TileType<DarkMatterSoil>()][Type] = true;
         TileID.Sets.Conversion.Stone[Type] = true;
         TileID.Sets.GeneralPlacementTiles[Type] = false;
         TileID.Sets.Stone[Type] = true;

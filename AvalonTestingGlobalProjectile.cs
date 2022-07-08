@@ -74,7 +74,7 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
     }
     public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
     {
-        if (Main.player[projectile.owner].Avalon().skyBlessing && Main.rand.NextBool(10) && projectile.minion)
+        if (Main.player[projectile.owner].Avalon().skyBlessing && Main.rand.NextBool(15) && projectile.minion)
         {
             int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
         }
