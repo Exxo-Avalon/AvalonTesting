@@ -19,7 +19,7 @@ public class SkyBlessing : ModBuff
     {
         if (stacks < 10)
         {
-            tip += (stacks * 2) + "%";
+            tip += (stacks * 4) + "%";
         }
         else tip += "25%";
     }

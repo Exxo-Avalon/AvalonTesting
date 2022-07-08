@@ -1328,34 +1328,34 @@ public class ExxoPlayer : ModPlayer
             switch (Player.GetModPlayer<ExxoBuffPlayer>().SkyStacks)
             {
                 case 1:
-                    Player.GetDamage(DamageClass.Summon) += 0.02f;
-                    break;
-                case 2:
                     Player.GetDamage(DamageClass.Summon) += 0.04f;
                     break;
-                case 3:
-                    Player.GetDamage(DamageClass.Summon) += 0.06f;
-                    break;
-                case 4:
+                case 2:
                     Player.GetDamage(DamageClass.Summon) += 0.08f;
                     break;
-                case 5:
-                    Player.GetDamage(DamageClass.Summon) += 0.1f;
-                    break;
-                case 6:
+                case 3:
                     Player.GetDamage(DamageClass.Summon) += 0.12f;
                     break;
-                case 7:
-                    Player.GetDamage(DamageClass.Summon) += 0.14f;
-                    break;
-                case 8:
+                case 4:
                     Player.GetDamage(DamageClass.Summon) += 0.16f;
                     break;
+                case 5:
+                    Player.GetDamage(DamageClass.Summon) += 0.2f;
+                    break;
+                case 6:
+                    Player.GetDamage(DamageClass.Summon) += 0.24f;
+                    break;
+                case 7:
+                    Player.GetDamage(DamageClass.Summon) += 0.28f;
+                    break;
+                case 8:
+                    Player.GetDamage(DamageClass.Summon) += 0.32f;
+                    break;
                 case 9:
-                    Player.GetDamage(DamageClass.Summon) += 0.18f;
+                    Player.GetDamage(DamageClass.Summon) += 0.36f;
                     break;
                 case 10:
-                    Player.GetDamage(DamageClass.Summon) += 0.25f;
+                    Player.GetDamage(DamageClass.Summon) += 0.45f;
                     break;
             }
             //if (Player.GetModPlayer<ExxoBuffPlayer>().SkyStacks < 10)
