@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Projectiles;
+using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -57,7 +57,7 @@ internal class PhantomKnives : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {
-        int numberProjectiles = AvalonTestingGlobalProjectile.HowManyProjectiles(4, 8);
+        int numberProjectiles = Main.rand.Next(4, 8);
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));

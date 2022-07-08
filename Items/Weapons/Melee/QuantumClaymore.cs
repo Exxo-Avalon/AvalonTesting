@@ -33,7 +33,15 @@ public class QuantumClaymore : ModItem
         Item.shootSpeed = 10;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.QuantumBeam>();
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CorruptedBar>(), 10)
+            .AddIngredient(ItemID.HallowedBar, 10)
+            .AddIngredient(ItemID.Ectoplasm, 20)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
+    }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         DontShootEverySwingkthxbye++;

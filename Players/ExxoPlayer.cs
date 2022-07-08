@@ -64,6 +64,13 @@ public class ExxoPlayer : ModPlayer
     public static int NumHookProj() => Main.projectile.Count(p =>
         Main.projHook[p.type] && p.active && p.ai[0] == 2f && p.owner == Main.myPlayer);
 
+    public override void ModifyScreenPosition()
+    {
+        if (screenShakeTimer > 0)
+        {
+            Main.screenPosition += Main.rand.NextVector2Circular(20, 20);
+        }
+    }
     public override void ResetEffects()
     {
         //Main.NewText("" + trapImmune.ToString());

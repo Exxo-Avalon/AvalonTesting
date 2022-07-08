@@ -43,7 +43,15 @@ class BlahsEnergyBlade : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Phantoplasm>(), 45).AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40).AddIngredient(ModContent.ItemType<SoulofTorture>(), 45).AddIngredient(ModContent.ItemType<ElementalExcalibur>()).AddIngredient(ModContent.ItemType<BerserkerBlade>()).AddIngredient(ModContent.ItemType<PumpkingsSword>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Phantoplasm>(), 45)
+            .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40)
+            .AddIngredient(ModContent.ItemType<SoulofTorture>(), 45)
+            .AddIngredient(ModContent.ItemType<ElementalExcalibur>())
+            .AddIngredient(ModContent.ItemType<BerserkerBlade>())
+            .AddIngredient(ModContent.ItemType<PumpkingsSword>())
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

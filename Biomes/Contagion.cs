@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Backgrounds;
+using AvalonTesting.Backgrounds;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -16,14 +16,10 @@ public class Contagion : ModBiome
         {
             if (Main.LocalPlayer.ZoneNormalUnderground || Main.LocalPlayer.ZoneNormalCaverns)
             {
-                return AvalonTesting.MusicMod != null
-                    ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/UndergroundContagion")
-                    : MusicID.UndergroundCrimson;
+                return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion");
             }
 
-            return AvalonTesting.MusicMod != null
-                ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Contagion")
-                : MusicID.Crimson;
+            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Contagion");
         }
     }
 

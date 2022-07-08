@@ -51,4 +51,15 @@ internal class BlahsKnives : ModItem
 
         return false;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Magic.PhantomKnives>())
+            .AddIngredient(ModContent.ItemType<Melee.KnivesoftheCorruptor>())
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 40)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.SuperhardmodeBar>(), 35)
+            .AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 40)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
+    }
 }

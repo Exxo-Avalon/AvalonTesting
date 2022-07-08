@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Potions;
 using AvalonTesting.Systems;
@@ -348,11 +348,9 @@ public class Mechasting : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        if (!Main.expertMode)
-        {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofDelight>(), 1, 20, 40));
-            npcLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Items.Accessories.StingerPack>(), ModContent.ItemType<Items.Weapons.Magic.Mechazapinator>(), ModContent.ItemType<Items.Weapons.Ranged.HeatSeeker>() }));
-        }
+        LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+        notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SoulofDelight>(), 1, 20, 40));
+        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Items.Accessories.StingerPack>(), ModContent.ItemType<Items.Weapons.Magic.Mechazapinator>(), ModContent.ItemType<Items.Weapons.Ranged.HeatSeeker>() }));
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.MechastingBossBag>()));
     }
     public override void FindFrame(int frameHeight)

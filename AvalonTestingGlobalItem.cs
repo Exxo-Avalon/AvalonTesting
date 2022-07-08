@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Data.Sets;
@@ -438,6 +438,32 @@ public class AvalonTestingGlobalItem : GlobalItem
             item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
         }
         #endregion wire disable in sky fortress
+
+        #region wire disable in hellcastle pre-phantasm
+        var tempWireItemHC = new Terraria.Item();
+        tempWireItemHC.netDefaults(item.netID);
+        tempWireItemHC = tempWireItemHC.CloneWithModdedDataFrom(item);
+        tempWireItemHC.stack = item.stack;
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle &&
+            !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+        {
+            player.InfoAccMechShowWires = false;
+            if (item.mech)
+            {
+                item.mech = false;
+                item.useStyle = 0;
+                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
+            }
+        }
+
+        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
+        {
+            item.netDefaults(tempWireItemHC.netID);
+            item.stack = tempWireItemHC.stack;
+            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
+        }
+        #endregion wire disable in hellcastle pre-phantasm
 
         #region barbaric prefix logic
         var tempItem = new Terraria.Item();
