@@ -46,10 +46,11 @@ public class QuantumClaymore : ModItem
     }
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
-        Vector2 SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly = player.position - new Vector2(10,10).RotatedBy(Main.rand.NextFloat(-0.3926991f, 0.3926991f));
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Main.rand.Next(3, 4); i++)
         {
-            Projectile.NewProjectile(player.GetSource_FromThis(), SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly, SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly.DirectionTo(Main.MouseWorld) * (Item.shootSpeed * Main.rand.NextFloat(0.6f, 1.3f)), ModContent.ProjectileType<Projectiles.Melee.QuantumBeam2>(), (int)(Item.damage * 0.8f), Item.knockBack * 0.1f, player.whoAmI);
+            Vector2 SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly = player.position - new Vector2(Main.rand.Next(230,280) * player.direction, Main.rand.Next(-75, 75));
+        
+            Projectile.NewProjectile(player.GetSource_FromThis(), SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly, SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly.DirectionTo(Main.MouseWorld) * (Item.shootSpeed * Main.rand.NextFloat(1.6f, 3f)), ModContent.ProjectileType<Projectiles.Melee.QuantumBeam2>(), (int)(Item.damage * 0.4f), Item.knockBack * 0.1f, player.whoAmI);
         }
     }
 }
