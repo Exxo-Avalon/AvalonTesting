@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +27,8 @@ public class UnvolanditeBolt : ModProjectile
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.timeLeft = 2400;
         Projectile.ignoreWater = true;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 10;
     }
 
     public override bool OnTileCollide(Vector2 oldVelocity)

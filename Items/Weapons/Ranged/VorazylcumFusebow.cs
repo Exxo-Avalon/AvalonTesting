@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -36,7 +36,7 @@ class VorazylcumFusebow : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        int proj = Projectile.NewProjectile(source, position, velocity, ProjectileID.ShadowBeamFriendly, damage, knockback);
+        int proj = Projectile.NewProjectile(source, position, velocity, ProjectileID.ShadowBeamFriendly, damage, knockback, player.whoAmI);
         // Main.projectile[proj].magic = false /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
         Main.projectile[proj].DamageType = DamageClass.Ranged;
         return false;
