@@ -109,6 +109,7 @@ public class QuantumBeam : ModProjectile
             //Main.dust[FunnyDeathDust].noGravity = true;
         }
         SoundEngine.PlaySound(Impac, Projectile.position);
+        target.AddBuff(BuffID.ShadowFlame, 300);
     }
 
     public override void OnHitPvp(Player target, int damage, bool crit)
@@ -119,6 +120,7 @@ public class QuantumBeam : ModProjectile
             //Main.dust[FunnyDeathDust].noGravity = true;
         }
         SoundEngine.PlaySound(Impac, Projectile.position);
+        target.AddBuff(BuffID.ShadowFlame, 300);
     }
     public override bool PreDraw(ref Color lightColor)
     {
