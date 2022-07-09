@@ -11,7 +11,7 @@ public class QuantumClaymore : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Quantum Claymore");
-        Tooltip.SetDefault("'Tear through time to tear apart your foes'\nFires a piercing projectile. True melee strikes\nsummon extra non-piercing projectiles.\n[c/C39FDD:10th Anniversary Contest Winner - Waasephi]");
+        Tooltip.SetDefault("'Tear through time to rip apart your foes'\nFires a piercing projectile\nTrue melee strikes summon extra non-piercing beams of quantum energy\n[c/C39FDD:10th Anniversary Contest Winner - Waasephi]");
         Item.staff[Item.type] = true;
     }
     public override void SetDefaults()
