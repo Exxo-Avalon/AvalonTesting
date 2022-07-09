@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -218,12 +218,10 @@ internal class QuadHook : ModProjectile
         {
             flag = false;
         }
-
         if (float.IsNaN(vector2_4.X) && float.IsNaN(vector2_4.Y))
         {
             flag = false;
         }
-
         while (flag)
         {
             if (vector2_4.Length() < num1 + 1.0)

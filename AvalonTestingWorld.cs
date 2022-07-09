@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
@@ -523,7 +523,18 @@ public class AvalonTestingWorld : ModSystem
             }
         }
     }
-
+    public override void PreWorldGen()
+    {
+        SuperHardmode = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedArmageddon = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedBacteriumPrime = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedDragonLord = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedKingSting = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedMechasting = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedOblivion = false;
+        ModContent.GetInstance<DownedBossSystem>().DownedPhantasm = false;
+    }
     public void InitiateSuperHardMode()
     {
         if (SuperHardmode)

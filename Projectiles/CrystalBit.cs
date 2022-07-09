@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Audio;
@@ -9,6 +9,7 @@ namespace AvalonTesting.Projectiles;
 public class CrystalBit : ModProjectile
 {
     int rn = 0;
+    Vector2 heading = Vector2.Zero;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Crystal Shard");
@@ -45,13 +46,21 @@ public class CrystalBit : ModProjectile
         Projectile.hostile = true;
         Projectile.friendly = false;
         Projectile.velocity *= 0.85f;
-        Projectile.rotation = (float)System.Math.Atan2(Projectile.Center.Y - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.Y, Projectile.Center.X - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.X) - 1.57079633f;
+        Projectile.ai[1]++;
+        if (Projectile.ai[1] < 20)
+        {
+            Projectile.rotation = (float)System.Math.Atan2(Projectile.Center.Y - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.Y, Projectile.Center.X - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.X) - 1.57079633f;
+        }
+        if (Projectile.ai[1] == 20)
+        {
+            heading = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].position;
+        }
         Projectile.ai[0]++;
         if (Projectile.ai[0] > rn)
         {
             SoundEngine.PlaySound(SoundID.Item43, Projectile.position);
             int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<CrystalBeam>(), 67, Projectile.knockBack, Main.myPlayer);
-            Main.projectile[p].velocity = Vector2.Normalize(Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].position - Projectile.position) * 7f;
+            Main.projectile[p].velocity = Vector2.Normalize(heading - Projectile.position) * 7f;
             Projectile.active = false;
         }
     }

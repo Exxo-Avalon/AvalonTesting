@@ -439,12 +439,33 @@ public class AvalonTestingGlobalItem : GlobalItem
         }
         #endregion wire disable in sky fortress
 
+        #region actuation rod disable
+        var actuationRodItem = new Terraria.Item();
+        actuationRodItem.netDefaults(item.netID);
+        actuationRodItem = actuationRodItem.CloneWithModdedDataFrom(item);
+        actuationRodItem.stack = item.stack;
+        if (item.type == ItemID.ActuationRod && (player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress ||
+            player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle))
+        {
+            item.useStyle = 0;
+            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod = true;
+        }
+        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod &&
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress &&
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
+        {
+            item.netDefaults(actuationRodItem.netID);
+            item.stack = actuationRodItem.stack;
+            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod = false;
+        }
+        #endregion actuation rod disable
+
         #region wire disable in hellcastle pre-phantasm
         var tempWireItemHC = new Terraria.Item();
         tempWireItemHC.netDefaults(item.netID);
         tempWireItemHC = tempWireItemHC.CloneWithModdedDataFrom(item);
         tempWireItemHC.stack = item.stack;
-        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle &&
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle &&
             !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
             player.InfoAccMechShowWires = false;
@@ -457,7 +478,7 @@ public class AvalonTestingGlobalItem : GlobalItem
         }
 
         if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
-            !player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle)
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
         {
             item.netDefaults(tempWireItemHC.netID);
             item.stack = tempWireItemHC.stack;
