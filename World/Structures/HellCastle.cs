@@ -445,7 +445,7 @@ class HellCastle
                                 tile.HasTile = false;
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                WorldGen.PlaceTile(k, l, TileID.Books); // ModContent.TileType<Tiles.DevilsScythe>());
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.DevilsScythe>());
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 break;
                         }
