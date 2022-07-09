@@ -29,6 +29,8 @@ public class SpectralBullet : ModProjectile
         Projectile.tileCollide = false;
         Projectile.timeLeft = 600;
         Projectile.DamageType = DamageClass.Ranged;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 60;
     }
     public override void Kill(int timeLeft)
     {

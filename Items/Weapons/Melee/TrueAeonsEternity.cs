@@ -38,7 +38,7 @@ class TrueAeonsEternity : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
-        swingCounter += 1;
+        swingCounter++;
         if (swingCounter >= 6)
         {
             for (int num185 = 0; num185 < 6; num185++)
@@ -47,7 +47,7 @@ class TrueAeonsEternity : ModItem
                 float num187 = velocity.Y;
                 num186 += (float)Main.rand.Next(-40, 41) * 0.05f;
                 num187 += (float)Main.rand.Next(-40, 41) * 0.05f;
-                Projectile.NewProjectile(source, position.X, position.Y, num186, num187, ProjectileID.Starfury, damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, num186, num187, ModContent.ProjectileType<Projectiles.Melee.AeonStar>(), damage, knockback, player.whoAmI, 0f, 0f);
             }
             swingCounter = 0;
         }

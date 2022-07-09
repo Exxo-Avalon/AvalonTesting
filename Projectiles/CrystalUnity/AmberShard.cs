@@ -19,7 +19,7 @@ public class AmberShard : ModProjectile
         Projectile.width = dims.Width * 20 / 16;
         Projectile.height = dims.Height * 20 / 16 / Main.projFrames[Projectile.type];
         Projectile.scale = 1f;
-        Projectile.alpha = 255;
+        Projectile.alpha = 0;
         Projectile.aiStyle = 1;
         Projectile.timeLeft = 3600;
         Projectile.friendly = true;
