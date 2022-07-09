@@ -126,7 +126,59 @@ public class ExxoBuffPlayer : ModPlayer
     {
         OldFallStart = Player.fallStart;
     }
-
+    public override void UpdateLifeRegen()
+    {
+        if (Player.GetModPlayer<ExxoPlayer>().darkInferno)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.Next(6) == 0)
+            {
+                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 6 : 4;
+            }
+            else
+            {
+                Player.lifeRegen -= 16;
+            }
+        }
+        if (Player.GetModPlayer<ExxoPlayer>().caesiumPoison)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.NextBool(6))
+            {
+                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 3 : 2;
+            }
+            else
+            {
+                Player.lifeRegen -= 20;
+            }
+        }
+        if (Player.GetModPlayer<ExxoPlayer>().melting)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            Player.lifeRegen -= 32;
+        }
+        if (Player.GetModPlayer<ExxoPlayer>().malaria)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            Player.lifeRegen -= 30;
+        }
+    }
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) =>
         ModContent.GetInstance<ExxoBuffPlayerSyncHandler>()
             .Send(new BasicPlayerNetworkArgs(Player), toWho, fromWho);

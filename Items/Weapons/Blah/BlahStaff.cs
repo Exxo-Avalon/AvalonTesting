@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -18,12 +18,12 @@ public class BlahStaff : ModItem
 
     public override void SetDefaults()
     {
-            
         Item.staff[Item.type] = true;
         Rectangle dims = this.GetDims();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.autoReuse = true;
         Item.DamageType = DamageClass.Magic;
+        Item.useTurn = true;
         Item.damage = 278;
         Item.mana = 19;
         Item.noMelee = true;

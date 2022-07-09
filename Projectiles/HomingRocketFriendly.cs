@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -28,18 +28,18 @@ public class HomingRocketFriendly : ModProjectile
     {
         foreach (NPC P in Main.npc)
         {
-            if (P.getRect().Intersects(Projectile.getRect()))
+            if (P.getRect().Intersects(Projectile.getRect()) && !P.dontTakeDamage && !P.townNPC && P.type != NPCID.TargetDummy)
             {
                 P.StrikeNPC(Projectile.damage, Projectile.knockBack, 0);
             }
         }
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
-        Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
-        Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
+        Projectile.position.X += Projectile.width / 2;
+        Projectile.position.Y += Projectile.height / 2;
         Projectile.width = 22;
         Projectile.height = 22;
-        Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-        Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+        Projectile.position.X -= Projectile.width / 2;
+        Projectile.position.Y -= Projectile.height / 2;
         for (int num341 = 0; num341 < 30; num341++)
         {
             int num342 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default(Color), 1.5f);

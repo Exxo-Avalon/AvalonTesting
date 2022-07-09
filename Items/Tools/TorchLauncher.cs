@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,7 +14,7 @@ class TorchLauncher : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 0;
+        Item.damage = 1;
         Item.UseSound = SoundID.Item5;
         Item.shootSpeed = 8f;
         Item.useAmmo = 8;
