@@ -11,7 +11,7 @@ public class QuantumClaymore : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Quantum Claymore");
-        Tooltip.SetDefault("'Tear through time to tear apart your foes'\n[c/C39FDD:10th Anniversary Contest Winner - Waasephi]");
+        Tooltip.SetDefault("'Tear through time to tear apart your foes'\nFires a piercing projectile. True melee strikes\nsummon extra non-piercing projectiles.\n[c/C39FDD:10th Anniversary Contest Winner - Waasephi]");
         Item.staff[Item.type] = true;
     }
     public override void SetDefaults()
@@ -58,7 +58,7 @@ public class QuantumClaymore : ModItem
         {
             Vector2 SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly = player.position - new Vector2(Main.rand.Next(230,280) * player.direction, Main.rand.Next(-75, 75));
         
-            Projectile.NewProjectile(player.GetSource_FromThis(), SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly, SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly.DirectionTo(Main.MouseWorld) * (Item.shootSpeed * Main.rand.NextFloat(1.6f, 3f)), ModContent.ProjectileType<Projectiles.Melee.QuantumBeam2>(), (int)(Item.damage * 0.4f), Item.knockBack * 0.1f, player.whoAmI);
+            Projectile.NewProjectile(player.GetSource_FromThis(), SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly, SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly.DirectionTo(Main.MouseWorld) * (Item.shootSpeed * Main.rand.NextFloat(1.6f, 3f)), ModContent.ProjectileType<Projectiles.Melee.QuantumBeam2>(), (int)(Item.damage * 0.6f), Item.knockBack * 0.1f, player.whoAmI);
         }
     }
 }
