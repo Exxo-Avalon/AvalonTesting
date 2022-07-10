@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -70,7 +70,7 @@ public class Starfall : ModItem
                 num311 *= num313;
                 num312 *= num313;
                 Vector2 vector3 = new Vector2(num311, num312) / 2f;
-                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), vector.X, vector.Y, vector3.X, vector3.Y, ProjectileID.FallingStar, (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
+                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), vector.X, vector.Y, vector3.X, vector3.Y, 720, (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
                 Main.projectile[p].owner = player.whoAmI;
             }
         }

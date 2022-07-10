@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Common;
+using AvalonTesting.Common;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;

@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using Terraria;
 using Terraria.ID;
@@ -18,6 +18,11 @@ public class RecipeChanger : ModSystem
                 case ItemID.TerrasparkBoots:
                 {
                     recipe.DisableRecipe();
+                    break;
+                }
+                case ItemID.AnkhCharm:
+                {
+                    recipe.AddIngredient(ModContent.ItemType<Items.Accessories.Bayonet>());
                     break;
                 }
                 case ItemID.FrostHelmet:

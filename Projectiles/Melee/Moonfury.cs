@@ -23,7 +23,7 @@ public class Moonfury : ModProjectile
         Projectile.width = dims.Width * 22 / 38;
         Projectile.height = dims.Height * 22 / 38 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = ProjAIStyleID.Flail;
-        AIType = ProjectileID.Sunfury;
+        AIType = ProjectileID.Mace;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
@@ -72,9 +72,9 @@ public class Moonfury : ModProjectile
             Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default, 1.5f);
         Main.dust[num249].noGravity = true;
         Dust dust42 = Main.dust[num249];
-        dust42.velocity.X = dust42.velocity.X / 2f;
+        dust42.velocity.X /= 2f;
         Dust dust43 = Main.dust[num249];
-        dust43.velocity.Y = dust43.velocity.Y / 2f;
+        dust43.velocity.Y /= 2f;
         if (Main.player[Projectile.owner].dead)
         {
             Projectile.Kill();
@@ -88,8 +88,8 @@ public class Moonfury : ModProjectile
         // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
         playerArmPosition.Y -= Main.player[Projectile.owner].gfxOffY;
 
-        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Moonfury_Chain");
-        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Moonfury_Chain"); // This texture and related code is optional and used for a unique effect
+        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Moonfury_Chain");
+        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Moonfury_Chain"); // This texture and related code is optional and used for a unique effect
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);

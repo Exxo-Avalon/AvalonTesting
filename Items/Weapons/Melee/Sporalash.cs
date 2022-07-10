@@ -25,7 +25,7 @@ class Sporalash : ModItem
         Item.width = dims.Width;
         Item.useTime = 46;
         Item.knockBack = 6.75f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Sporalash>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.Sporalash>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 27000;

@@ -7,13 +7,13 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ReLogic.Content;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Melee;
 
-public class Sporalash : ModProjectile
+public class HeavensTear : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Sporalash");
+        DisplayName.SetDefault("Heaven's Tear");
     }
 
     public override void SetDefaults()
@@ -21,7 +21,8 @@ public class Sporalash : ModProjectile
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 22 / 34;
         Projectile.height = dims.Height * 22 / 34 / Main.projFrames[Projectile.type];
-        Projectile.aiStyle = -1;
+        Projectile.aiStyle = ProjAIStyleID.Flail;
+        AIType = ProjectileID.Mace;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
@@ -61,12 +62,12 @@ public class Sporalash : ModProjectile
 
     public override void AI()
     {
-        var num250 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GrassBlades, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default(Color), 1.5f);
-        Main.dust[num250].noGravity = true;
-        var dust44 = Main.dust[num250];
-        dust44.velocity.X = dust44.velocity.X / 2f;
-        var dust45 = Main.dust[num250];
-        dust45.velocity.Y = dust45.velocity.Y / 2f;
+        var num248 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Gold, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default(Color), 1.5f);
+        Main.dust[num248].noGravity = true;
+        var dust40 = Main.dust[num248];
+        dust40.velocity.X = dust40.velocity.X / 2f;
+        var dust41 = Main.dust[num248];
+        dust41.velocity.Y = dust41.velocity.Y / 2f;
         if (Main.player[Projectile.owner].dead)
         {
             Projectile.Kill();
@@ -136,10 +137,6 @@ public class Sporalash : ModProjectile
                 num258 *= 2f;
             }
             var num260 = 60;
-            if (Projectile.type == ProjectileID.FlowerPow)
-            {
-                num260 = 100;
-            }
             if (num255 > num260 || !Projectile.tileCollide)
             {
                 num255 = num257 / num255;
@@ -180,8 +177,8 @@ public class Sporalash : ModProjectile
         // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
         playerArmPosition.Y -= Main.player[Projectile.owner].gfxOffY;
 
-        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Sporalash_Chain");
-        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Sporalash_Chain"); // This texture and related code is optional and used for a unique effect
+        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/HeavensTear_Chain");
+        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/HeavensTear_Chain"); // This texture and related code is optional and used for a unique effect
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);

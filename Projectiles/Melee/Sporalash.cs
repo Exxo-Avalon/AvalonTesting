@@ -7,25 +7,26 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ReLogic.Content;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Melee;
 
-public class Cell : ModProjectile
+public class Sporalash : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Cell");
+        DisplayName.SetDefault("Sporalash");
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Projectile.width = dims.Width * 22 / 24;
-        Projectile.height = dims.Height * 22 / 24 / Main.projFrames[Projectile.type];
-        Projectile.aiStyle = -1;
+        Projectile.width = dims.Width * 22 / 34;
+        Projectile.height = dims.Height * 22 / 34 / Main.projFrames[Projectile.type];
+        Projectile.aiStyle = ProjAIStyleID.Flail;
+        AIType = ProjectileID.Mace;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
-        Projectile.scale = 1.1f;
+        Projectile.scale = 0.8f;
     }
 
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -61,11 +62,116 @@ public class Cell : ModProjectile
 
     public override void AI()
     {
+        var num250 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GrassBlades, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default(Color), 1.5f);
+        Main.dust[num250].noGravity = true;
+        var dust44 = Main.dust[num250];
+        dust44.velocity.X = dust44.velocity.X / 2f;
+        var dust45 = Main.dust[num250];
+        dust45.velocity.Y = dust45.velocity.Y / 2f;
         if (Main.player[Projectile.owner].dead)
         {
             Projectile.Kill();
             return;
         }
+        Main.player[Projectile.owner].itemAnimation = 10;
+        Main.player[Projectile.owner].itemTime = 10;
+        if (Projectile.position.X + Projectile.width / 2 > Main.player[Projectile.owner].position.X + Main.player[Projectile.owner].width / 2)
+        {
+            Main.player[Projectile.owner].ChangeDir(1);
+            Projectile.direction = 1;
+        }
+        else
+        {
+            Main.player[Projectile.owner].ChangeDir(-1);
+            Projectile.direction = -1;
+        }
+        var vector19 = new Vector2(Projectile.position.X + Projectile.width * 0.5f, Projectile.position.Y + Projectile.height * 0.5f);
+        var num253 = Main.player[Projectile.owner].position.X + Main.player[Projectile.owner].width / 2 - vector19.X;
+        var num254 = Main.player[Projectile.owner].position.Y + Main.player[Projectile.owner].height / 2 - vector19.Y;
+        var num255 = (float)Math.Sqrt(num253 * num253 + num254 * num254);
+        if (Projectile.ai[0] == 0f)
+        {
+            var num256 = 160f;
+            Projectile.tileCollide = true;
+            if (num255 > num256)
+            {
+                Projectile.ai[0] = 1f;
+                Projectile.netUpdate = true;
+            }
+            else if (!Main.player[Projectile.owner].channel)
+            {
+                if (Projectile.velocity.Y < 0f)
+                {
+                    Projectile.velocity.Y = Projectile.velocity.Y * 0.9f;
+                }
+                Projectile.velocity.Y = Projectile.velocity.Y + 1f;
+                Projectile.velocity.X = Projectile.velocity.X * 0.9f;
+            }
+        }
+        else if (Projectile.ai[0] == 1f)
+        {
+            var num257 = 14f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
+            var num258 = 0.9f / Main.player[Projectile.owner].GetAttackSpeed(DamageClass.Melee);
+            var num259 = 300f;
+            Math.Abs(num253);
+            Math.Abs(num254);
+            if (Projectile.ai[1] == 1f)
+            {
+                Projectile.tileCollide = false;
+            }
+            if (!Main.player[Projectile.owner].channel || num255 > num259 || !Projectile.tileCollide)
+            {
+                Projectile.ai[1] = 1f;
+                if (Projectile.tileCollide)
+                {
+                    Projectile.netUpdate = true;
+                }
+                Projectile.tileCollide = false;
+                if (num255 < 20f)
+                {
+                    Projectile.Kill();
+                }
+            }
+            if (!Projectile.tileCollide)
+            {
+                num258 *= 2f;
+            }
+            var num260 = 60;
+            if (Projectile.type == ProjectileID.FlowerPow)
+            {
+                num260 = 100;
+            }
+            if (num255 > num260 || !Projectile.tileCollide)
+            {
+                num255 = num257 / num255;
+                num253 *= num255;
+                num254 *= num255;
+                new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
+                var num261 = num253 - Projectile.velocity.X;
+                var num262 = num254 - Projectile.velocity.Y;
+                var num263 = (float)Math.Sqrt(num261 * num261 + num262 * num262);
+                num263 = num258 / num263;
+                num261 *= num263;
+                num262 *= num263;
+                Projectile.velocity.X = Projectile.velocity.X * 0.98f;
+                Projectile.velocity.Y = Projectile.velocity.Y * 0.98f;
+                Projectile.velocity.X = Projectile.velocity.X + num261;
+                Projectile.velocity.Y = Projectile.velocity.Y + num262;
+            }
+            else
+            {
+                if (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y) < 6f)
+                {
+                    Projectile.velocity.X = Projectile.velocity.X * 0.96f;
+                    Projectile.velocity.Y = Projectile.velocity.Y + 0.2f;
+                }
+                if (Main.player[Projectile.owner].velocity.X == 0f)
+                {
+                    Projectile.velocity.X = Projectile.velocity.X * 0.96f;
+                }
+            }
+        }
+        Projectile.rotation = (float)Math.Atan2(num254, num253) - Projectile.velocity.X * 0.1f;
     }
 
     public override bool PreDraw(ref Color lightColor)
@@ -75,8 +181,8 @@ public class Cell : ModProjectile
         // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
         playerArmPosition.Y -= Main.player[Projectile.owner].gfxOffY;
 
-        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Cell_Chain");
-        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Cell_Chain"); // This texture and related code is optional and used for a unique effect
+        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Sporalash_Chain");
+        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Sporalash_Chain"); // This texture and related code is optional and used for a unique effect
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);

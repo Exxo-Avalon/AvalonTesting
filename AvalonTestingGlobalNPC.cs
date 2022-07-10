@@ -1648,6 +1648,20 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
     }
 
+    public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+    {
+        if (npc.type is NPCID.BloodJelly or NPCID.Unicorn or NPCID.DarkMummy or NPCID.LightMummy && Main.rand.NextBool(9))
+        {
+            target.AddBuff(ModContent.BuffType<BrokenWeaponry>(), 60 * 7);
+        }
+        if (npc.type == NPCID.Mummy || npc.type == NPCID.FungoFish || npc.type == NPCID.Clinger || npc.type == ModContent.NPCType<GrossyFloat>())
+        {
+            if (Main.rand.NextBool(9))
+            {
+                target.AddBuff(ModContent.BuffType<Unloaded>(), 60 * 7);
+            }
+        }
+    }
     public override void OnKill(NPC npc)
     {
         if (npc.HasBuff(ModContent.BuffType<Virulent>()))

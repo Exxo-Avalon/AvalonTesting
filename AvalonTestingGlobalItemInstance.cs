@@ -15,6 +15,8 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
     public bool UpdateInvisibleVanity { get; set; }
     public bool WasWiring { get; set; }
     public bool ActuationRod { get; set; }
+    public bool UnloadedDebuffItem { get; set; }
+    public bool BrokenWeaponDebuffItem { get; set; }
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {
@@ -23,6 +25,8 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         clone.WasWiring = WasWiring;
         clone.Tome = Tome;
         clone.ActuationRod = ActuationRod;
+        clone.UnloadedDebuffItem = UnloadedDebuffItem;
+        clone.BrokenWeaponDebuffItem = BrokenWeaponDebuffItem;
         return clone;
     }
 
@@ -38,38 +42,35 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
             {
                 lineKnockback.Text = "Puny knockback";
             }
-
             if (item.knockBack > 15f)
             {
                 lineKnockback.Text = "Absurd knockback";
             }
-
             if (item.knockBack > 17f)
             {
                 lineKnockback.Text = "Ridiculous knockback";
             }
-
             if (item.knockBack > 19f)
             {
                 lineKnockback.Text = "Godly knockback";
             }
+            if (item.type == Terraria.ID.ItemID.BatBat)
+            {
+                lineKnockback.Text = lineKnockback.Text.Replace("knockback", "knockbat");
+            }
         }
-
         if (lineSpeed == null)
         {
             return;
         }
-
         if (LanguageManager.Instance.ActiveCulture.LegacyId != (int)GameCulture.CultureName.English)
         {
             return;
         }
-
         if (item.useAnimation <= 5f)
         {
             lineSpeed.Text = "Lightning speed";
         }
-
         if (item.useAnimation >= 58f)
         {
             lineSpeed.Text = "Slowpoke speed";
