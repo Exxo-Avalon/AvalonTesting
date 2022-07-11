@@ -151,11 +151,11 @@ public class ExxoPlayer : ModPlayer
         bonusKB = 1f;
         miniArma = false;
 
-        if (shmAcc)
-        {
-            Player.extraAccessory = true;
-            Player.extraAccessorySlots++;
-        }
+        //if (shmAcc)
+        //{
+        //    Player.extraAccessory = true;
+        //    Player.extraAccessorySlots++;
+        //}
 
         CritDamageMult = 1f;
 

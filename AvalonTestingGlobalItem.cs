@@ -462,48 +462,6 @@ public class AvalonTestingGlobalItem : GlobalItem
     }
     public override void HoldItem(Terraria.Item item, Player player)
     {
-        #region broken weaponry debuff logic
-        var brokenWItem = new Terraria.Item();
-        brokenWItem.netDefaults(item.netID);
-        brokenWItem = brokenWItem.CloneWithModdedDataFrom(item);
-        brokenWItem.stack = item.stack;
-        if (player.GetModPlayer<ExxoBuffPlayer>().BrokenWeaponry)
-        {
-            if (item.DamageType == DamageClass.Melee)
-            {
-                item.useStyle = 0;
-                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().BrokenWeaponDebuffItem = true;
-            }
-        }
-        else
-        {
-            item.netDefaults(brokenWItem.netID);
-            item.stack = brokenWItem.stack;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().BrokenWeaponDebuffItem = false;
-        }
-        #endregion broken weaponry debuff logic
-
-        #region unloaded debuff logic
-        var rangedItem = new Terraria.Item();
-        rangedItem.netDefaults(item.netID);
-        rangedItem = rangedItem.CloneWithModdedDataFrom(item);
-        rangedItem.stack = item.stack;
-        if (player.GetModPlayer<ExxoBuffPlayer>().Unloaded)
-        {
-            if (item.useAmmo > 0)
-            {
-                item.useStyle = 0;
-                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UnloadedDebuffItem = true;
-            }
-        }
-        else
-        {
-            item.netDefaults(rangedItem.netID);
-            item.stack = rangedItem.stack;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UnloadedDebuffItem = false;
-        }
-        #endregion unloaded debuff logic
-
         #region wire disable in sky fortress
         var tempWireItem = new Terraria.Item();
         tempWireItem.netDefaults(item.netID);
@@ -528,25 +486,6 @@ public class AvalonTestingGlobalItem : GlobalItem
             item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
         }
         #endregion wire disable in sky fortress
-
-        #region actuation rod disable
-        var actuationRodItem = new Terraria.Item();
-        actuationRodItem.netDefaults(item.netID);
-        actuationRodItem = actuationRodItem.CloneWithModdedDataFrom(item);
-        actuationRodItem.stack = item.stack;
-        if (item.type == ItemID.ActuationRod && player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
-        {
-            item.useStyle = 0;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod = true;
-        }
-        if (item.type == ItemID.ActuationRod && item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod &&
-            !player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
-        {
-            item.netDefaults(actuationRodItem.netID);
-            item.stack = actuationRodItem.stack;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().ActuationRod = false;
-        }
-        #endregion actuation rod disable
 
         #region wire disable in hellcastle pre-phantasm
         var tempWireItemHC = new Terraria.Item();
@@ -861,7 +800,30 @@ public class AvalonTestingGlobalItem : GlobalItem
             }
         }
     }
-
+    public override bool CanUseItem(Terraria.Item item, Player player)
+    {
+        if (item.type == ItemID.RodofDiscord &&
+            ((player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSystem>().DownedDragonLord) ||
+            (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle && !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)))
+        {
+            return false;
+        }
+        if (item.type == ItemID.ActuationRod &&
+            ((player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSystem>().DownedDragonLord) ||
+            (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle && !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)))
+        {
+            return false;
+        }
+        if (item.useAmmo > 0 && player.HasBuff(ModContent.BuffType<Buffs.Unloaded>()))
+        {
+            return false;
+        }
+        if (item.DamageType == DamageClass.Melee && player.HasBuff(ModContent.BuffType<Buffs.BrokenWeaponry>()))
+        {
+            return false;
+        }
+        return base.CanUseItem(item, player);
+    }
     public override int ChoosePrefix(Terraria.Item item, UnifiedRandom rand) => item.IsArmor()
         ? Prefix.ArmorPrefixes[rand.Next(Prefix.ArmorPrefixes.Length)]
         : base.ChoosePrefix(item, rand);

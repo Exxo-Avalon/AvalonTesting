@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Items.Consumables;
 
@@ -30,13 +31,12 @@ class MechanicalHeart : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !player.Avalon().shmAcc;
+        return !player.GetModPlayer<ExxoPlayer>().shmAcc;
     }
 
     public override bool? UseItem(Player player)
     {
-        player.extraAccessorySlots++;
-        player.Avalon().shmAcc = true;
+        player.GetModPlayer<ExxoPlayer>().shmAcc = true;
         return true;
     }
 }
