@@ -92,7 +92,16 @@ public class AvalonTesting : Mod
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
     }
-
+    public override void Unload()
+    {
+        ExxoPlayer.torches = null;
+        // TODO: FIGURE OUT HOW TO LOAD ORIGINAL TEXTURES UPON UNLOADING AVALON.
+        //if (Main.netMode != NetmodeID.Server)
+        //{
+        //    Main.logoTexture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo");
+        //    Main.logo2Texture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo2");
+        //}
+    }
     /// <inheritdoc />
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {

@@ -365,7 +365,12 @@ public class AvalonTestingWorld : ModSystem
         Main.maxRaining = 0f;
     }
 
-    public override void PostUpdateEverything() => SpectrumHelmet.StaticUpdate();
+    public override void PostUpdateEverything()
+    {
+        SpectrumHelmet.StaticUpdate();
+        CoolGemsparkBlock.StaticUpdate();
+        WarmGemsparkBlock.StaticUpdate();
+    }
 
     public override void PostUpdateWorld()
     {

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Tiles;
@@ -26,7 +26,6 @@ public class ExxoWorldGen : ModSystem
         Palladium = 1,
         Duratanium = 2,
     }
-
     public enum CopperVariant
     {
         Copper = 0,

@@ -29,7 +29,7 @@ namespace AvalonTesting
             BiomeMud = ModContent.TileType<Loam>();
             BiomeOreBrick = ModContent.TileType<XanthophyteOre>(); //Change to Xanthophyte Brick when its finished
             //BossBulb = ModContent.TileType<CentipedeNest>();
-
+            GenPassName.SetDefault("Generating tropics");
             BiomeChestItem = ModContent.ItemType<VirulentKnives>(); //Change to biome item later
             BiomeChestTile = ModContent.TileType<LockedContagionChest>(); //change to biome chest locked later
             BiomeChestTileStyle = 0;

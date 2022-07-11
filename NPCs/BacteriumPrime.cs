@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.BossBags;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Placeable.Trophy;
@@ -40,6 +40,7 @@ public class BacteriumPrime : ModNPC
         NPC.HitSound = SoundID.NPCHit8;
         NPC.DeathSound = SoundID.NPCDeath10;
         NPC.knockBackResist = 0f;
+        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BacteriumPrime");
         //bossBag = ModContent.ItemType<Items.BossBags.BacteriumPrimeBossBag>();
     }
 

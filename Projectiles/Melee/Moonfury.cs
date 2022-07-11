@@ -150,22 +150,6 @@ public class Moonfury : ModProjectile
             chainCount++;
             chainLengthRemainingToDraw -= chainSegmentLength;
         }
-
-        // Add a motion trail when moving forward, like most flails do (don't add trail if already hit a tile)
-        //if (CurrentAIState == AIState.LaunchingForward)
-        //{
-        //    Texture2D projectileTexture = TextureAssets.Projectile[Projectile.type].Value;
-        //    Vector2 drawOrigin = new Vector2(projectileTexture.Width * 0.5f, Projectile.height * 0.5f);
-        //    SpriteEffects spriteEffects = SpriteEffects.None;
-        //    if (Projectile.spriteDirection == -1)
-        //        spriteEffects = SpriteEffects.FlipHorizontally;
-        //    for (int k = 0; k < Projectile.oldPos.Length && k < StateTimer; k++)
-        //    {
-        //        Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-        //        Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-        //        Main.spriteBatch.Draw(projectileTexture, drawPos, null, color, Projectile.rotation, drawOrigin, Projectile.scale - k / (float)Projectile.oldPos.Length / 3, spriteEffects, 0f);
-        //    }
-        //}
         return true;
     }
 }
