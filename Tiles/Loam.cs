@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-public class TropicalMud : ModTile
+public class Loam : ModTile
 {
     public override void SetStaticDefaults()
     {
@@ -15,7 +15,7 @@ public class TropicalMud : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<TropicalMudBlock>();
+        ItemDrop = ModContent.ItemType<LoamBlock>();
         DustType = ModContent.DustType<TropicalMudDust>();
         TileID.Sets.CanBeDugByShovel[Type] = true;
         TileID.Sets.Mud[Type] = true;

@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-public class DarkMatterWood : ModTile
+public class ApocalyptusWood : ModTile
 {
     public override void SetStaticDefaults()
     {
@@ -12,7 +12,7 @@ public class DarkMatterWood : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileBrick[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DarkMatterWood>();
+        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ApocalyptusWood>();
         DustType = ModContent.DustType<Dusts.DarkMatterWoodDust>();
     }
 }

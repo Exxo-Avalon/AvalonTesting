@@ -26,6 +26,7 @@ namespace AvalonTesting
             BiomeGrass = ModContent.TileType<TropicalGrass>();
             BiomeStone = ModContent.TileType<TropicalStone>();
             BiomeOre = ModContent.TileType<XanthophyteOre>();
+            BiomeMud = ModContent.TileType<Loam>();
             BiomeOreBrick = ModContent.TileType<XanthophyteOre>(); //Change to Xanthophyte Brick when its finished
             //BossBulb = ModContent.TileType<CentipedeNest>();
 
@@ -36,7 +37,7 @@ namespace AvalonTesting
             DisplayName.SetDefault("Tropics");
             Description.SetDefault("A Tropical forest which houses lots of wasps. A hidden outpost lives beneath the surface. [c/E11919:(Not Complete)]");
 
-            BakeTileChild(ModContent.TileType<TropicalMud>(), TileID.Mud, new(true, true, true));
+            BakeTileChild(ModContent.TileType<Loam>(), TileID.Mud, new(true, true, true));
 
             /*WallContext = new WallContext()
                 .AddReplacement<ContagionNaturalWall1>(28, 1, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 188, 189, 190, 191, 192, 193, 194, 195, 61, 185, 212, 213, 214, 215, 3, 200, 201, 202, 203, 83)

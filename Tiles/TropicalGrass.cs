@@ -14,7 +14,7 @@ public class TropicalGrass : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<TropicalMudBlock>();
+        ItemDrop = ModContent.ItemType<LoamBlock>();
         TileID.Sets.Conversion.Grass[Type] = true;
         TileID.Sets.CanBeDugByShovel[Type] = true;
         TileID.Sets.ResetsHalfBrickPlacementAttempt[Type] = false;
@@ -30,7 +30,7 @@ public class TropicalGrass : ModTile
     {
         if (fail && !effectOnly)
         {
-            Main.tile[i, j].TileType = (ushort)ModContent.TileType<TropicalMud>();
+            Main.tile[i, j].TileType = (ushort)ModContent.TileType<Loam>();
             WorldGen.SquareTileFrame(i, j);
         }
     }

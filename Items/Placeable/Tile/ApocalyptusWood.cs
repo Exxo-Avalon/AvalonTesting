@@ -1,14 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Tile;
 
-class TropicalMudBlock : ModItem
+class ApocalyptusWood : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Loam Block");
+        DisplayName.SetDefault("Apocalyptus Wood");
     }
 
     public override void SetDefaults()
@@ -16,10 +16,10 @@ class TropicalMudBlock : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.TropicalMud>();
+        Item.createTile = ModContent.TileType<Tiles.ApocalyptusWood>();
         Item.width = dims.Width;
-        Item.useTime = 10;
         Item.useTurn = true;
+        Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
         Item.useAnimation = 15;

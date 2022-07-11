@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -39,14 +39,14 @@ class TrueAeonsEternity : ModItem
     {
         Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
         swingCounter++;
-        if (swingCounter >= 6)
+        if (swingCounter >= 1)
         {
             for (int num185 = 0; num185 < 6; num185++)
             {
                 float num186 = velocity.X;
                 float num187 = velocity.Y;
-                num186 += (float)Main.rand.Next(-40, 41) * 0.05f;
-                num187 += (float)Main.rand.Next(-40, 41) * 0.05f;
+                num186 += Main.rand.Next(-40, 41) * 0.05f;
+                num187 += Main.rand.Next(-40, 41) * 0.05f;
                 Projectile.NewProjectile(source, position.X, position.Y, num186, num187, ModContent.ProjectileType<Projectiles.Melee.AeonStar>(), damage, knockback, player.whoAmI, 0f, 0f);
             }
             swingCounter = 0;

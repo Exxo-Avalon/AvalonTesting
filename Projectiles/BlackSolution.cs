@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Dusts;
 using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
@@ -135,7 +135,7 @@ public class BlackSolution : ModProjectile
                         replaceType = (ushort)ModContent.TileType<DarkMatterGrass>();
                     }
                     else if (type is TileID.Dirt or TileID.ClayBlock or TileID.Mud ||
-                             type == ModContent.TileType<TropicalMud>())
+                             type == ModContent.TileType<Loam>())
                     {
                         replaceType = (ushort)ModContent.TileType<DarkMatterSoil>();
                     }

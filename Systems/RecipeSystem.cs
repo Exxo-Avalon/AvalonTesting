@@ -15,7 +15,7 @@ public class RecipeSystem : ModSystem
         {
             int index = RecipeGroup.recipeGroupIDs["Wood"];
             RecipeGroup group0 = RecipeGroup.recipeGroups[index];
-            group0.ValidItems.Add(ModContent.ItemType<DarkMatterWood>());
+            group0.ValidItems.Add(ModContent.ItemType<ApocalyptusWood>());
             group0.ValidItems.Add(ModContent.ItemType<Coughwood>());
             group0.ValidItems.Add(ModContent.ItemType<TropicalWood>());
             group0.ValidItems.Add(ModContent.ItemType<ResistantWood>());

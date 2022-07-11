@@ -2353,7 +2353,7 @@ public class RecipeCreator : ModSystem
         //end stone types
         //start wood
         Recipe.Create(ItemID.Wood, 50)
-            .AddIngredient(ModContent.ItemType<DarkMatterWood>(), 50)
+            .AddIngredient(ModContent.ItemType<ApocalyptusWood>(), 50)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
@@ -2397,7 +2397,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
-        Recipe.Create(ModContent.ItemType<DarkMatterWood>(), 50)
+        Recipe.Create(ModContent.ItemType<ApocalyptusWood>(), 50)
             .AddIngredient(ModContent.ItemType<TropicalWood>(), 50)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();

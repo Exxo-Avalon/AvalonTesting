@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,7 +27,7 @@ class DarkMatterWoodWall : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(4).AddIngredient(ModContent.ItemType<Tile.DarkMatterWood>()).AddTile(TileID.WorkBenches).Register();
+        CreateRecipe(4).AddIngredient(ModContent.ItemType<Tile.ApocalyptusWood>()).AddTile(TileID.WorkBenches).Register();
         CreateRecipe(1).AddIngredient(this, 4).AddTile(TileID.WorkBenches).Register();
     }
 }

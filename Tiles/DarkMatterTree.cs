@@ -26,7 +26,7 @@ public class DarkMatterTree : ModTree
     public override Asset<Texture2D> GetBranchTextures() =>
         AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterTreeBranches");
 
-    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.DarkMatterWood>();
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.ApocalyptusWood>();
 
     public override int CreateDust() => ModContent.DustType<DarkMatterWoodDust>();
 

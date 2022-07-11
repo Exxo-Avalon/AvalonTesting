@@ -82,7 +82,7 @@ internal class RhodiumAlternateOres : AltOre
         DisplayName.SetDefault("Rhodium");
         Selectable = false;
     }
-
+    public override string Texture => "AvalonTesting/Assets/Ores/RhodiumOreIcon";
     public override void OnInitialize() => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = (ExxoWorldGen.RhodiumVariant)Main.rand.Next(3);
 
     public override bool OnClick()
@@ -137,7 +137,7 @@ internal class OsmiumAlternateOres : AltOre
         DisplayName.SetDefault("Osmium");
         Selectable = false;
     }
-
+    public override string Texture => "AvalonTesting/Assets/Ores/OsmiumOreIcon";
     public override bool OnClick()
     {
         ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = ExxoWorldGen.RhodiumVariant.Osmium;
@@ -160,7 +160,7 @@ internal class IridiumAlternateOres : AltOre
         DisplayName.SetDefault("Iridium");
         Selectable = false;
     }
-
+    public override string Texture => "AvalonTesting/Assets/Ores/IridiumOreIcon";
     public override bool OnClick()
     {
         ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = ExxoWorldGen.RhodiumVariant.Iridium;

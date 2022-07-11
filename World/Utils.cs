@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Tiles;
+using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -135,7 +135,7 @@ class Utils
         for (int i = (int)(WorldGen.worldSurfaceLow - 30); i < Main.maxTilesY; i++)
         {
             Tile tile = Framing.GetTileSafely(positionX, i);
-            if ((tile.TileType == TileID.Dirt || tile.TileType == TileID.ClayBlock || tile.TileType == TileID.Stone || tile.TileType == TileID.Sand || tile.TileType == ModContent.TileType<Snotsand>() || tile.TileType == ModContent.TileType<TropicalMud>() || tile.TileType == TileID.Mud || tile.TileType == TileID.SnowBlock || tile.TileType == TileID.IceBlock) && tile.HasTile)
+            if ((tile.TileType == TileID.Dirt || tile.TileType == TileID.ClayBlock || tile.TileType == TileID.Stone || tile.TileType == TileID.Sand || tile.TileType == ModContent.TileType<Snotsand>() || tile.TileType == ModContent.TileType<Loam>() || tile.TileType == TileID.Mud || tile.TileType == TileID.SnowBlock || tile.TileType == TileID.IceBlock) && tile.HasTile)
             {
                 return i;
             }

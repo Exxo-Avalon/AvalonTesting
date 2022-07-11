@@ -28,6 +28,7 @@ public class DarkMatterGrass : ModTile
         TileID.Sets.SpreadUnderground[Type] = true;
         TileID.Sets.Grass[Type] = true;
         TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
         ItemDrop = ModContent.ItemType<DarkMatterSoilBlock>();
         DustType = ModContent.DustType<DarkMatterDust>();
     }

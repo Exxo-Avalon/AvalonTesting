@@ -52,7 +52,7 @@ public class Starfall : ModItem
             for (int times = 0; times < 3; times++)
             {
                 Vector2 vector = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                vector.X = (vector.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
+                vector.X = (vector.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
                 vector.Y -= 100 * times;
                 float num311 = Main.mouseX + Main.screenPosition.X - vector.X;
                 float num312 = Main.mouseY + Main.screenPosition.Y - vector.Y;
@@ -70,7 +70,7 @@ public class Starfall : ModItem
                 num311 *= num313;
                 num312 *= num313;
                 Vector2 vector3 = new Vector2(num311, num312) / 2f;
-                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), vector.X, vector.Y, vector3.X, vector3.Y, 720, (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
+                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), vector.X, vector.Y, vector3.X, vector3.Y, ProjectileID.FallingStar, (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
                 Main.projectile[p].owner = player.whoAmI;
             }
         }
