@@ -12,6 +12,7 @@ internal class IridiumHat : ModItem
     {
         DisplayName.SetDefault("Iridium Hat");
         Tooltip.SetDefault("11% increased melee damage and speed\n11% increased ranged damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

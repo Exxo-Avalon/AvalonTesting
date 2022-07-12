@@ -11,6 +11,7 @@ class HerbologyBench : ModItem
     {
         DisplayName.SetDefault("Herbology Bench");
         Tooltip.SetDefault("Used for herb-related exchange");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

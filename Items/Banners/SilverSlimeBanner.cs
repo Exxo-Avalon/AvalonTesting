@@ -10,6 +10,7 @@ public class SilverSlimeBanner : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault("Nearby players get a bonus against: Silver Slime");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     // The tooltip for this item is automatically assigned from .lang files
     public override void SetDefaults()

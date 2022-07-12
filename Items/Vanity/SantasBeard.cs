@@ -11,6 +11,7 @@ class SantasBeard : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Santa's Beard");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

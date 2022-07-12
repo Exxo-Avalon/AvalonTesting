@@ -12,6 +12,7 @@ class AncientBodyplate : ModItem
     {
         DisplayName.SetDefault("Ancient Bodyplate");
         Tooltip.SetDefault("Enemies are more likely to target you\nMinion knockback is increased by 10%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

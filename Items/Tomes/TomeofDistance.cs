@@ -12,6 +12,7 @@ class TomeofDistance : ModItem
     {
         DisplayName.SetDefault("Tome of Distance");
         Tooltip.SetDefault("Tome\n+15% ranged damage, +40 HP, +20 mana\n20% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

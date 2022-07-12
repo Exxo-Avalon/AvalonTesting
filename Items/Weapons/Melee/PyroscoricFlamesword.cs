@@ -13,6 +13,7 @@ class PyroscoricFlamesword : ModItem
     {
         DisplayName.SetDefault("Pyroscoric Flamesword");
         Tooltip.SetDefault("Shoots a wave of fire\n'It burns, I tell you!'");
+        SacrificeTotal = 1;
     }
     public override Color? GetAlpha(Color lightColor)
     {

@@ -13,6 +13,7 @@ class RocketJumpScroll : ModItem
     {
         DisplayName.SetDefault("Rocket Jump Scroll");
         Tooltip.SetDefault("Unlocks stamina rocket jump");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

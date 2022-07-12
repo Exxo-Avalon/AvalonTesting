@@ -10,6 +10,7 @@ class PeridotStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Peridot Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

@@ -18,6 +18,7 @@ internal class SpraynBlah : ModItem
     {
         DisplayName.SetDefault("Spray 'n' Blah");
         Tooltip.SetDefault("Fires very inaccurately\n30% chance to not consume ammo\n'Spray 'n' Pray'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

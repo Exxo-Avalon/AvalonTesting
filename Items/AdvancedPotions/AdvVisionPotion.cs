@@ -11,6 +11,7 @@ class AdvVisionPotion : ModItem
     {
         DisplayName.SetDefault("Vision Elixir");
         Tooltip.SetDefault("Open caves light up\nCurrently not functional");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

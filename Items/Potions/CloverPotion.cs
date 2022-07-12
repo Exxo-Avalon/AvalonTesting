@@ -10,6 +10,7 @@ class CloverPotion : ModItem
     {
         DisplayName.SetDefault("Clover Potion");
         Tooltip.SetDefault("Doubles rare drop chance");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class StarbrightPotion : ModItem
     {
         DisplayName.SetDefault("Starbright Potion");
         Tooltip.SetDefault("Fallen stars fall more frequently");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

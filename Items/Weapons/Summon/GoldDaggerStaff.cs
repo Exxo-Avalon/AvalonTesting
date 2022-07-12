@@ -13,6 +13,7 @@ public class GoldDaggerStaff : ModItem
     {
         DisplayName.SetDefault("Gold Dagger Staff");
         Tooltip.SetDefault("Summons a gold dagger to fight for you");
+        SacrificeTotal = 1;
         ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
         ItemID.Sets.LockOnIgnoresCollision[Item.type] = false;
     }

@@ -11,6 +11,7 @@ class CrimsandBomb : ModItem
     {
         DisplayName.SetDefault("Crimsand Bomb");
         Tooltip.SetDefault("An explosion of crimsand that will destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

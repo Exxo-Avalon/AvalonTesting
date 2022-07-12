@@ -9,6 +9,7 @@ class OrangeBrickPlatform : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Orange Platform");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

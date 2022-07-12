@@ -25,6 +25,19 @@ internal class OreGenPreHardMode : GenPass
         //        false, 0f, 0f, false, true); //last input overrides existing tiles
         //}
 
+        for (int tourmaline = 0; tourmaline < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); tourmaline++)
+        {
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Tourmaline>());
+        }
+        for (int peridot = 0; peridot < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); peridot++)
+        {
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)WorldGen.worldSurfaceLow - 20), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Peridot>());
+        }
+        for (int zircon = 0; zircon < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); zircon++)
+        {
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)WorldGen.worldSurfaceLow - 20), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Zircon>());
+        }
+
         #region motherloads
 
         if (WorldGen.genRand.Next(3) == 0)

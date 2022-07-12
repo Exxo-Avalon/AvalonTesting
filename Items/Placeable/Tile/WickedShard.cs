@@ -11,6 +11,7 @@ class WickedShard : ModItem
     {
         DisplayName.SetDefault("Wicked Shard");
         Tooltip.SetDefault("'A fragment of wicked creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
     }
 
     public override void SetDefaults()

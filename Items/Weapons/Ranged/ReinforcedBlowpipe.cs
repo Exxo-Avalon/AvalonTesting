@@ -12,6 +12,7 @@ class ReinforcedBlowpipe : ModItem
     {
         DisplayName.SetDefault("Reinforced Blowpipe");
         Tooltip.SetDefault("Fires a spread of two seeds\nAllows the collection of seeds for ammo");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

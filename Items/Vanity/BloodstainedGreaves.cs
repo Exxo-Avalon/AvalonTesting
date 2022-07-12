@@ -11,6 +11,7 @@ class BloodstainedGreaves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bloodstained Greaves");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

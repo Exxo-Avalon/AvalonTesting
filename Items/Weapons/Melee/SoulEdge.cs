@@ -11,7 +11,8 @@ class SoulEdge : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Soul Edge");
-        Tooltip.SetDefault("'Haunted by souls of darkness'");
+        Tooltip.SetDefault("'Haunted by souls of darkness'"); // use paper airplane projectile code to maybe fix?
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

@@ -9,6 +9,7 @@ class ZincBow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zinc Bow");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

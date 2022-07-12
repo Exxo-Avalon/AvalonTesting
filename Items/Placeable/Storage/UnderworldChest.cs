@@ -9,6 +9,7 @@ class UnderworldChest : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Underworld Chest");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

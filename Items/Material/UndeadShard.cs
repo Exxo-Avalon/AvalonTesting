@@ -11,6 +11,7 @@ class UndeadShard : ModItem
     {
         DisplayName.SetDefault("Undead Shard");
         Tooltip.SetDefault("'A fragment of undead creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

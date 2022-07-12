@@ -9,6 +9,7 @@ class Electrobullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Electrobullet");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()

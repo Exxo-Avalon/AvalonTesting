@@ -14,6 +14,7 @@ public class AccelerationDrill : ModItem
     {
         DisplayName.SetDefault("Acceleration Drill");
         Tooltip.SetDefault("'Vroom vroom'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

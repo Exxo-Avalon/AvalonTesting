@@ -11,6 +11,7 @@ public class CoolGemsparkBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Cool Gemspark Block");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

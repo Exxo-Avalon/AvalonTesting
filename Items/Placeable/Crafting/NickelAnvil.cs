@@ -9,6 +9,7 @@ class NickelAnvil : ModItem
     {
         DisplayName.SetDefault("Nickel Anvil");
         Tooltip.SetDefault("Used to craft items from metal bars");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

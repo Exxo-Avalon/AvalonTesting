@@ -13,6 +13,7 @@ class CrystalUnity : ModItem
     {
         DisplayName.SetDefault("Crystal Unity");
         Tooltip.SetDefault("'The power of chaos vanquishes your enemies'\n[c/C39FDD:10th Anniversary Contest Winner - FractureACBF]");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

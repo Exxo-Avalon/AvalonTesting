@@ -9,6 +9,7 @@ class ZincBroadsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zinc Broadsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

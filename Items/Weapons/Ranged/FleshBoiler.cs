@@ -9,7 +9,11 @@ namespace AvalonTesting.Items.Weapons.Ranged;
 
 public class FleshBoiler : ModItem
 {
-    public override void SetStaticDefaults() => Tooltip.SetDefault("Uses canisters for ammo");
+    public override void SetStaticDefaults()
+    {
+        Tooltip.SetDefault("Uses canisters for ammo");
+        SacrificeTotal = 1;
+    }
 
     public override void SetDefaults()
     {

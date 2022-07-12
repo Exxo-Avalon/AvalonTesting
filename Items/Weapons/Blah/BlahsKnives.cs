@@ -14,6 +14,7 @@ internal class BlahsKnives : ModItem
     {
         DisplayName.SetDefault("Blah's Knives");
         Tooltip.SetDefault("Rapidly throws lifestealing daggers that seek out targets and compound damage upon hits");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class DesertBeakMask : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Desert Beak Mask");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

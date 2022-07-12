@@ -13,6 +13,7 @@ class Sunstorm : ModItem
     {
         DisplayName.SetDefault("Sunstorm");
         Tooltip.SetDefault("Fires beams from the sun itself");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

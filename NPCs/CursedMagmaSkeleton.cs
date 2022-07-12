@@ -129,7 +129,7 @@ public class CursedMagmaSkeleton : ModNPC
             Main.dust[num890].noGravity = true;
             Main.dust[num890].fadeIn = 2f;
         }
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("CursedMagmaSkeletonHelmet").Type, 1.2f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Bone1").Type, 1.2f);

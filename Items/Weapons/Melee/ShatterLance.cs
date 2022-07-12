@@ -12,6 +12,7 @@ class ShatterLance : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shatter Lance");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

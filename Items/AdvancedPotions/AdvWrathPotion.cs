@@ -11,6 +11,7 @@ class AdvWrathPotion : ModItem
     {
         DisplayName.SetDefault("Wrath Elixir");
         Tooltip.SetDefault("Increases damage by 20%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

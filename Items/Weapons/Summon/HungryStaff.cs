@@ -11,6 +11,7 @@ class HungryStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hungry Staff");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

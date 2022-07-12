@@ -11,6 +11,7 @@ class AdvForceFieldPotion : ModItem
     {
         DisplayName.SetDefault("Force Field Elixir");
         Tooltip.SetDefault("Enables a projectile-reflecting force field");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

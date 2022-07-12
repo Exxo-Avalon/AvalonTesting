@@ -10,6 +10,7 @@ class BottledLava : ModItem
     {
         DisplayName.SetDefault("Bottled Lava");
         Tooltip.SetDefault("'Drinking may be fatal'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

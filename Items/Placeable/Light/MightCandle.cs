@@ -10,7 +10,8 @@ class MightCandle : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Candle of Might");
-        Tooltip.SetDefault("Nearby players deal +10% more damage");
+        Tooltip.SetDefault("Nearby players deal 10% more damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,8 @@ class Echoplasm : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Echoplasm");
+        Tooltip.SetDefault("Used to craft Ectoplasm furniture");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

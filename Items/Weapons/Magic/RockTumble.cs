@@ -12,6 +12,7 @@ class RockTumble : ModItem
     {
         DisplayName.SetDefault("Rock Tumble");
         Tooltip.SetDefault("Casts boulders");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class PumpkingsSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pumpking's Sword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

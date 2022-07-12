@@ -9,6 +9,7 @@ class DurataniumChainsaw : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Duratanium Chainsaw");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

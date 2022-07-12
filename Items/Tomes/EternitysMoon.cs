@@ -12,6 +12,7 @@ class EternitysMoon : ModItem
     {
         DisplayName.SetDefault("Eternity's Moon");
         Tooltip.SetDefault("Tome\n+20 mana, -5% mana cost");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class InvincibilityPotion : ModItem
     {
         DisplayName.SetDefault("Invincibility Potion");
         Tooltip.SetDefault("Grants invincibility");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

@@ -14,6 +14,7 @@ class AeroforceProtector : ModItem
         Tooltip.SetDefault("10% increased minion damage"
                            + "\nIncreases your max number of minions by 1"
                            + "\n[c/C39FDD:10th Anniversary Contest Winner - Crabby]");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class DesertGreaves : ModItem
     {
         DisplayName.SetDefault("Desert Greaves");
         Tooltip.SetDefault("5% increased melee damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

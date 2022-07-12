@@ -8,6 +8,7 @@ class BronzeBow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bronze Bow");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

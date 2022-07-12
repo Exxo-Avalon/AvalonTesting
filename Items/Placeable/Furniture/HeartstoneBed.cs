@@ -9,6 +9,7 @@ class HeartstoneBed : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Heartstone Bed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

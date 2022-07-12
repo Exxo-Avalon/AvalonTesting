@@ -10,6 +10,7 @@ class TourmalineStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tourmaline Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

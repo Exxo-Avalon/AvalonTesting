@@ -10,6 +10,7 @@ class OnyxStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Onyx Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

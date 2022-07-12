@@ -11,6 +11,7 @@ class BacteriumPrimeMask : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bacterium Prime Mask");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

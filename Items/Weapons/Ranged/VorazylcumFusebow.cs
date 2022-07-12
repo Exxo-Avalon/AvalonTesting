@@ -12,6 +12,7 @@ class VorazylcumFusebow : ModItem
     {
         DisplayName.SetDefault("Vorazylcum Fusebow");
         Tooltip.SetDefault("Fires a beam of energy");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

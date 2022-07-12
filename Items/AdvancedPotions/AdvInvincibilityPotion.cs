@@ -11,6 +11,7 @@ class AdvInvincibilityPotion : ModItem
     {
         DisplayName.SetDefault("Invincibility Elixir");
         Tooltip.SetDefault("Grants invincibility");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

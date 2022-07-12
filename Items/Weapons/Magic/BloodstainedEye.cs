@@ -12,6 +12,7 @@ class BloodstainedEye : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bloodstained Eye");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

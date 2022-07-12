@@ -9,6 +9,7 @@ class TheCell : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("The Cell");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

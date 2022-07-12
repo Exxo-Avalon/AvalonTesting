@@ -13,6 +13,7 @@ class SacredLyre : ModItem
     {
         DisplayName.SetDefault("Sacred Lyre");
         Tooltip.SetDefault("Casts bouncing notes\nNotes have a different effect depending on the distance your cursor is from you");
+        SacrificeTotal = 1;
     }
     public override Color? GetAlpha(Color lightColor)
     {

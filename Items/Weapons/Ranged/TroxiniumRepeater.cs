@@ -12,6 +12,7 @@ public class TroxiniumRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Troxinium Repeater");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

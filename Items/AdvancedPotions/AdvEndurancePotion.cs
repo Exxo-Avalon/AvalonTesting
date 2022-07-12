@@ -11,6 +11,7 @@ class AdvEndurancePotion : ModItem
     {
         DisplayName.SetDefault("Endurance Elixir");
         Tooltip.SetDefault("Reduces damage taken by 20%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

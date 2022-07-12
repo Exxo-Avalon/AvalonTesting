@@ -14,6 +14,7 @@ public class BlahStaff : ModItem
     {
         DisplayName.SetDefault("Blah Staff");
         Tooltip.SetDefault("Summons blah meteors that rain from the sky\nMeteors rain stars that explode into fire");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

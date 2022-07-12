@@ -12,6 +12,7 @@ class UnvolanditeKunziteWaveStaff : ModItem
     {
         DisplayName.SetDefault("Unvolandite-Kunzite Wave Staff");
         Tooltip.SetDefault("Sprays out a wave of showers");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

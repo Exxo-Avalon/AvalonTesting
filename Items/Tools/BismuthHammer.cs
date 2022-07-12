@@ -9,6 +9,7 @@ class BismuthHammer : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Hammer");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

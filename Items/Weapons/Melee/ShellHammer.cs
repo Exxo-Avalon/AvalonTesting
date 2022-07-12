@@ -12,6 +12,7 @@ public class ShellHammer : ModItem
     {
         DisplayName.SetDefault("Shell Hammer");
         Tooltip.SetDefault("Lobs shells");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

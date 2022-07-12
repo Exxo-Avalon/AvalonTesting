@@ -12,7 +12,8 @@ public class PlatinumDaggerStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Platinum Dagger Staff");
-        Tooltip.SetDefault("Summons an platinum dagger to fight for you");
+        Tooltip.SetDefault("Summons a platinum dagger to fight for you");
+        SacrificeTotal = 1;
         ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
         ItemID.Sets.LockOnIgnoresCollision[Item.type] = false;
     }

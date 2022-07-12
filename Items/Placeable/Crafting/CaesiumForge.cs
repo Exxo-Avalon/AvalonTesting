@@ -11,6 +11,7 @@ class CaesiumForge : ModItem
     {
         DisplayName.SetDefault("Caesium Forge");
         Tooltip.SetDefault("Used to smelt high-end ore");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

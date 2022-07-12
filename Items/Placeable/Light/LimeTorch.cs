@@ -10,6 +10,7 @@ class LimeTorch : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Lime Torch");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

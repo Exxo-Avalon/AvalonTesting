@@ -12,6 +12,7 @@ class NaquadahHeadguard : ModItem
     {
         DisplayName.SetDefault("Naquadah Headguard");
         Tooltip.SetDefault("7% increased ranged damage\n10% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

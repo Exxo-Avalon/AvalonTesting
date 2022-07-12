@@ -12,6 +12,7 @@ class MeditationsFlame : ModItem
     {
         DisplayName.SetDefault("Meditation's Flame");
         Tooltip.SetDefault("Tome\n+5% magic damage, -10% mana cost\n+60 mana");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

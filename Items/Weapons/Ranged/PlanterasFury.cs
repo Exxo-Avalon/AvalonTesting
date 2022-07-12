@@ -11,6 +11,7 @@ class PlanterasFury : ModItem
     {
         DisplayName.SetDefault("Plantera's Fury");
         Tooltip.SetDefault("60% chance to not consume ammo");
+        SacrificeTotal = 1;
     }
     public override Vector2? HoldoutOffset()
     {

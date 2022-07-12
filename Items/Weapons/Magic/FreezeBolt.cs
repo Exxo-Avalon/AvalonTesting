@@ -10,6 +10,7 @@ class FreezeBolt : ModItem
     {
         DisplayName.SetDefault("Freeze Bolt");
         Tooltip.SetDefault("Casts a fast-moving bolt of ice");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

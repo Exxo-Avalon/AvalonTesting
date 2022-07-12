@@ -9,6 +9,7 @@ class DurataniumBrick : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Duratanium Brick");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

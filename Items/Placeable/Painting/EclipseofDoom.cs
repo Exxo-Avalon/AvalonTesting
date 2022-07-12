@@ -11,6 +11,7 @@ class EclipseofDoom : ModItem
     {
         DisplayName.SetDefault("Eclipse of Doom");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

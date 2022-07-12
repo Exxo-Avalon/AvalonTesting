@@ -10,6 +10,7 @@ class VoraylzumKatana : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Vorazylcum Katana");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

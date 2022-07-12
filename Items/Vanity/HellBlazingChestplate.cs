@@ -11,6 +11,7 @@ class HellBlazingChestplate : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hell Armored Chestplate");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

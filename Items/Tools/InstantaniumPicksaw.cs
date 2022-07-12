@@ -11,6 +11,7 @@ class InstantaniumPicksaw : ModItem
     {
         DisplayName.SetDefault("Instantanium Picksaw");
         Tooltip.SetDefault("'The ultimate tool'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

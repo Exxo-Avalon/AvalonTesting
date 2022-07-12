@@ -11,6 +11,7 @@ class EvilOuroboros : ModItem
     {
         DisplayName.SetDefault("Evil Ouroboros");
         Tooltip.SetDefault("'Sir E. Brum'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

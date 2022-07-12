@@ -10,6 +10,7 @@ class NaquadahAnvil : ModItem
     {
         DisplayName.SetDefault("Naquadah Anvil");
         Tooltip.SetDefault("Used to craft items from mythril, orichalcum, naquadah, adamantite, titanium, and troxinium bars");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

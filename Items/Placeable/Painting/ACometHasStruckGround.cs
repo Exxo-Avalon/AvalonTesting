@@ -11,6 +11,7 @@ public class ACometHasStruckGround : ModItem
     {
         DisplayName.SetDefault("A Comet Has Struck Ground");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

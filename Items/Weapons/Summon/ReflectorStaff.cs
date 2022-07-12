@@ -10,6 +10,7 @@ public class ReflectorStaff : ModItem
     {
         DisplayName.SetDefault("Reflector Staff");
         Tooltip.SetDefault("Summons mirrors to reflect hostile projectiles");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

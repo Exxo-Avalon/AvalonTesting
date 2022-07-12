@@ -11,6 +11,7 @@ class HellArmoredGreaves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hell Armored Greaves");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

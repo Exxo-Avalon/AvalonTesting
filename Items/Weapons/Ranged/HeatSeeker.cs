@@ -12,6 +12,7 @@ class HeatSeeker : ModItem
     {
         DisplayName.SetDefault("Heat Seeker");
         Tooltip.SetDefault("Rockets turn into heat-seeking missiles");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

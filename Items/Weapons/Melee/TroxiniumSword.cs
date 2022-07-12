@@ -12,6 +12,7 @@ public class TroxiniumSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Troxinium Sword");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

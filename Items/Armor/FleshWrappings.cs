@@ -12,6 +12,7 @@ class FleshWrappings : ModItem
     {
         DisplayName.SetDefault("Flesh Wrappings");
         Tooltip.SetDefault("9% increased minion knockback\n10% increased movement speed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

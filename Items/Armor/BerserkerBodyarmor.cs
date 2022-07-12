@@ -14,6 +14,7 @@ class BerserkerBodyarmor : ModItem
         Tooltip.SetDefault("Enemies are more likely to target you"
                            + "\nTaking heavy damage will give you the 'Berserk!' buff"
                            + "\nThis buff greatly increases the critical strike damage of true melee weapons");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

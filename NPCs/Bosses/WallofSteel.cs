@@ -546,7 +546,7 @@ public class WallofSteel : ModNPC
         }
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore1").Type, NPC.scale);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity, Mod.Find<ModGore>("WallofSteelGore2").Type, NPC.scale);

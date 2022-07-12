@@ -10,6 +10,7 @@ class VirulentPike : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Virulent Pike");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

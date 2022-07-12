@@ -11,6 +11,7 @@ class AdvBuilderPotion : ModItem
     {
         DisplayName.SetDefault("Builder Elixir");
         Tooltip.SetDefault("Increased placement speed and range");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class AdvFlipperPotion : ModItem
     {
         DisplayName.SetDefault("Flipper Elixir");
         Tooltip.SetDefault("Lets you move swiftly in liquids");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

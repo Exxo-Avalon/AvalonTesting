@@ -10,6 +10,7 @@ class Wheezebow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Wheezebow");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

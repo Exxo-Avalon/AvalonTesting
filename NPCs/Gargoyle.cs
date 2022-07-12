@@ -235,7 +235,7 @@ public class Gargoyle : ModNPC
         {
             SoundEngine.PlaySound(SoundID.NPCHit41 with { Pitch = -0.25f }, NPC.Center);
         }
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             SoundEngine.PlaySound(SoundID.NPCDeath5 with { Pitch = -0.25f }, NPC.Center);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GargoyleGore3").Type, 1f);

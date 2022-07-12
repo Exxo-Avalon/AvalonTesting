@@ -10,6 +10,7 @@ public class AeonsEternity : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Aeon's Eternity");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

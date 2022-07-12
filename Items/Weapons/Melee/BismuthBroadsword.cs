@@ -9,6 +9,7 @@ class BismuthBroadsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Broadsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

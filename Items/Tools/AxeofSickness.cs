@@ -10,6 +10,7 @@ class AxeofSickness : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Axe of Sickness");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void SetDefaults()
     {

@@ -11,6 +11,7 @@ class MagicGrenade : ModItem
     {
         DisplayName.SetDefault("Magic Grenade");
         Tooltip.SetDefault("A small explosion that will not destroy tiles");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

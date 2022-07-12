@@ -14,6 +14,7 @@ class AwakenedRoseCrown : ModItem
         Tooltip.SetDefault("20% increased magic damage"
                            + "\n5% increased magic critical strike chance"
                            + "\nOccasionally summons a leaf storm when damaged");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

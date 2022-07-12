@@ -11,6 +11,7 @@ class TheBeak : ModItem
     {
         DisplayName.SetDefault("The Beak");
         Tooltip.SetDefault("Summons Desert Beak");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

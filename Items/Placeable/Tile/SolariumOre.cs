@@ -10,6 +10,7 @@ class SolariumOre : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Solarium Ore");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

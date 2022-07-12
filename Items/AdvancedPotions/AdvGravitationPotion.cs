@@ -11,6 +11,7 @@ class AdvGravitationPotion : ModItem
     {
         DisplayName.SetDefault("Gravitation Elixir");
         Tooltip.SetDefault("Allows the control of gravity");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

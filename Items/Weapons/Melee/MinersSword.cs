@@ -10,6 +10,7 @@ class MinersSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Miner's Sword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

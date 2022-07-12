@@ -10,6 +10,7 @@ class UnderworldKeyMold : ModItem
     {
         DisplayName.SetDefault("Underworld Key Mold");
         Tooltip.SetDefault("Used for crafting an Underworld Key");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

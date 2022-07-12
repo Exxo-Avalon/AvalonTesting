@@ -9,6 +9,7 @@ class NaquadahChainsaw : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Naquadah Chainsaw");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

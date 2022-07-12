@@ -10,6 +10,7 @@ public class AlienApparatus : ModItem
     {
         DisplayName.SetDefault("Alien Apparatus");
         Tooltip.SetDefault("Used for crafting the Eye of Oblivion");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
     }
 
     public override void SetDefaults()

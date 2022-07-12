@@ -14,6 +14,7 @@ internal class AwakenedRosePlateMail : ModItem
         DisplayName.SetDefault("Awakened Rose Plate Mail");
         Tooltip.SetDefault("Press V to teleport to the cursor"
                            + "\nOn hitting tiles with a magic attack, there is a chance a small vine of thorns shoots out of the ground");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

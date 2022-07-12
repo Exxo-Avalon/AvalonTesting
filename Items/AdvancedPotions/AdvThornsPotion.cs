@@ -11,6 +11,7 @@ class AdvThornsPotion : ModItem
     {
         DisplayName.SetDefault("Thorns Elixir");
         Tooltip.SetDefault("Attackers also take damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

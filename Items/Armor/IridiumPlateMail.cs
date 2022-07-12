@@ -12,6 +12,7 @@ class IridiumPlateMail : ModItem
     {
         DisplayName.SetDefault("Iridium Plate Mail");
         Tooltip.SetDefault("Increases maximum mana by 40");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

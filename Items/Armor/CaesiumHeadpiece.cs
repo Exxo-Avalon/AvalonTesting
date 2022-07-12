@@ -12,6 +12,7 @@ class CaesiumHeadpiece : ModItem
     {
         DisplayName.SetDefault("Caesium Galea");
         Tooltip.SetDefault("8% increased melee damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void SetDefaults()
     {

@@ -9,6 +9,7 @@ class FeroziumIceSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ferozium Icesword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

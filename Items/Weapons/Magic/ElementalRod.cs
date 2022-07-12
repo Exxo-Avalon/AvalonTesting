@@ -11,6 +11,7 @@ class ElementalRod : ModItem
     {
         DisplayName.SetDefault("Elemental Rod");
         Tooltip.SetDefault("Will inflict debuffs");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

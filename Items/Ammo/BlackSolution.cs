@@ -11,7 +11,7 @@ internal class BlackSolution : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Black Solution");
-        Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Dark Matter");
+        Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Dark Matter\nSpread Dark Matter cannot be converted back");
 
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }

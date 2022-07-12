@@ -9,6 +9,7 @@ class NickelBroadsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Nickel Broadsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

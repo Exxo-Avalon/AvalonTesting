@@ -9,6 +9,7 @@ class HeartstoneBrick : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Heartstone Brick");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

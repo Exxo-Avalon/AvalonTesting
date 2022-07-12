@@ -10,6 +10,7 @@ class HallowedThorn : ModItem
     {
         DisplayName.SetDefault("Hallowed Thorn");
         Tooltip.SetDefault("Summons a splitting, hallow thorn");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

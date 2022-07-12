@@ -9,6 +9,7 @@ class ImperviousBrickWall : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Impervious Brick Wall");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 400;
     }
 
     public override void SetDefaults()

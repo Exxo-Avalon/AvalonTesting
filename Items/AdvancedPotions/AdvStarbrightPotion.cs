@@ -11,6 +11,7 @@ class AdvStarbrightPotion : ModItem
     {
         DisplayName.SetDefault("Starbright Elixir");
         Tooltip.SetDefault("Fallen stars fall even more frequently");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

@@ -2307,11 +2307,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<DesertFeather>(), 3)
             .AddTile(TileID.Anvils).Register();
 
-        Recipe.Create(ModContent.ItemType<IridiumLongbow>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 13)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 2)
-            .AddTile(TileID.Anvils).Register();
-
         Recipe.Create(ModContent.ItemType<IridiumHat>())
             .AddIngredient(ModContent.ItemType<IridiumBar>(), 15)
             .AddIngredient(ModContent.ItemType<DesertFeather>(), 4)
@@ -2392,13 +2387,13 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
-        Recipe.Create(ModContent.ItemType<TropicalWood>(), 50)
+        Recipe.Create(ModContent.ItemType<BleachedEbony>(), 50)
             .AddIngredient(ItemID.RichMahogany, 50)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
         Recipe.Create(ModContent.ItemType<ApocalyptusWood>(), 50)
-            .AddIngredient(ModContent.ItemType<TropicalWood>(), 50)
+            .AddIngredient(ModContent.ItemType<BleachedEbony>(), 50)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
         //end wood

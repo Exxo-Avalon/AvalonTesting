@@ -10,6 +10,7 @@ class GlassEye : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Glass Eye");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

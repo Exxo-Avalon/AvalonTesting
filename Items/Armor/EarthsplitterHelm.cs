@@ -15,6 +15,7 @@ internal class EarthsplitterHelm : ModItem
         DisplayName.SetDefault("Earthsplitter Helm");
         Tooltip.SetDefault("Shine potion effect"
                            + "\n[c/C39FDD:10th Anniversary Contest Winner - Crispy]");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

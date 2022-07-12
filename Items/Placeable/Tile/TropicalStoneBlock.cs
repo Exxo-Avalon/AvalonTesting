@@ -9,6 +9,7 @@ class TropicalStoneBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tropical Stone Block");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

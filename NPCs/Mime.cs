@@ -105,11 +105,14 @@ public class Mime : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MimeHead").Type, 0.9f);
-        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
-        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
-        Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
+        {
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("MimeHead").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder1").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("Girder2").Type, 0.9f);
+        }
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)

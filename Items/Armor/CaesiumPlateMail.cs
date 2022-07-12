@@ -12,6 +12,7 @@ class CaesiumPlateMail : ModItem
     {
         DisplayName.SetDefault("Caesium Plate Mail");
         Tooltip.SetDefault("5% increased melee critical strike chance\nMelee attacks inflict On Fire!");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

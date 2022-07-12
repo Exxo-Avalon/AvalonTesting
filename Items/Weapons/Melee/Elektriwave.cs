@@ -10,6 +10,7 @@ class Elektriwave : ModItem
     {
         DisplayName.SetDefault("Elektriwave");
         Tooltip.SetDefault("Has a chance to inflict Electrified");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

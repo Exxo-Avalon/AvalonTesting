@@ -9,6 +9,7 @@ class LargeWaterleaf : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Large Waterleaf");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 15;
     }
 
     public override void SetDefaults()

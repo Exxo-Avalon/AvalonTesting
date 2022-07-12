@@ -11,6 +11,7 @@ class AdvMagicPowerPotion : ModItem
     {
         DisplayName.SetDefault("Magic Power Elixir");
         Tooltip.SetDefault("40% increased magic damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

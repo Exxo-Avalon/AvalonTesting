@@ -13,6 +13,7 @@ class SwimmingScroll : ModItem
     {
         DisplayName.SetDefault("Swimming Scroll");
         Tooltip.SetDefault("Unlocks stamina swimming");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

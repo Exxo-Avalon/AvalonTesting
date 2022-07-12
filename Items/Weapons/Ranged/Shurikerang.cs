@@ -10,6 +10,7 @@ class Shurikerang : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shurikerang");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

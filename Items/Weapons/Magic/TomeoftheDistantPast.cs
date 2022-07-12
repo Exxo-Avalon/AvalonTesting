@@ -10,6 +10,7 @@ class TomeoftheDistantPast : ModItem
     {
         DisplayName.SetDefault("Tome of the Distant Past");
         Tooltip.SetDefault("Summons a bone barrage");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

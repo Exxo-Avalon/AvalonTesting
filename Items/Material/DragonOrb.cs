@@ -13,6 +13,7 @@ class DragonOrb : ModItem
         DisplayName.SetDefault("Dragon Orb");
         Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 8));
         ItemID.Sets.ItemNoGravity[Item.type] = true;
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 2;
     }
 
     public override void SetDefaults()

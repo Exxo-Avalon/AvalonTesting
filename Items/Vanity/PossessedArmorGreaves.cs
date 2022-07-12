@@ -11,6 +11,7 @@ class PossessedArmorGreaves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Possessed Armor Greaves");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

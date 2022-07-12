@@ -9,6 +9,7 @@ class RhodiumGreatsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Rhodium Greatsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

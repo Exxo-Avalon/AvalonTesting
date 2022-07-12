@@ -13,6 +13,7 @@ internal class VirulentKnives : ModItem
     {
         DisplayName.SetDefault("Virulent Knives");
         Tooltip.SetDefault("Throws homing knives");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

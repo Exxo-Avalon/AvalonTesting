@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,6 +10,7 @@ class IridiumLongbow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Iridium Longbow");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {
@@ -29,5 +31,12 @@ class IridiumLongbow : ModItem
         Item.value = 25000;
         Item.useAnimation = 16;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 13)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 2)
+            .AddTile(TileID.Anvils).Register();
     }
 }

@@ -12,6 +12,7 @@ class TacticalExpulsor : ModItem
     {
         DisplayName.SetDefault("Tactical Expulsor");
         Tooltip.SetDefault("Fires a spread of eight bullets");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

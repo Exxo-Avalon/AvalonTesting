@@ -10,6 +10,7 @@ class SolarFlaresword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Solar Flaresword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

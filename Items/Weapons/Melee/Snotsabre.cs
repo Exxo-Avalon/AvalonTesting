@@ -10,6 +10,7 @@ class Snotsabre : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Snotsabre");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

@@ -10,6 +10,7 @@ class FeroziumArrow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ferozium Arrow");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class Mechazapinator : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Mechazapinator");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

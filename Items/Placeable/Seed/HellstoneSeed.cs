@@ -10,6 +10,7 @@ class HellstoneSeed : ModItem
     {
         DisplayName.SetDefault("Hellstone Dart");
         Tooltip.SetDefault("For use with Blowpipes");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()

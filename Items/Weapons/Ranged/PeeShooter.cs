@@ -10,6 +10,7 @@ class PeeShooter : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pee Shooter");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

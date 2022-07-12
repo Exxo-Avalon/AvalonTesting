@@ -38,7 +38,7 @@ public class UnvolanditeMite : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.Center, NPC.velocity,
                 Mod.Find<ModGore>("UnvolanditeMiteGore1").Type, NPC.scale);

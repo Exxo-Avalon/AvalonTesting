@@ -182,7 +182,7 @@ class EvilShrine
                                 tile.TileType = (ushort)ModContent.TileType<Tiles.EbonstoneColumn>();
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                tile.WallType = WallID.ObsidianBackEcho;
                                 break;
                             case 6:
                                 if (confirmPlatforms == 0)
@@ -190,7 +190,7 @@ class EvilShrine
                                     tile.HasTile = false;
                                     tile.IsHalfBlock = false;
                                     tile.Slope = SlopeType.Solid;
-                                    tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                    tile.WallType = WallID.ObsidianBackEcho;
                                 }
                                 break;
                             case 7:
@@ -198,14 +198,14 @@ class EvilShrine
                                 tile.TileType = (ushort)ModContent.TileType<Tiles.ChunkstoneColumn>();
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                tile.WallType = WallID.ObsidianBackEcho;
                                 break;
                             case 8:
                                 tile.HasTile = true;
                                 tile.TileType = 4;
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                tile.WallType = WallID.ObsidianBackEcho;
                                 break;
                             case 9:
                                 tile.HasTile = true;
@@ -219,14 +219,14 @@ class EvilShrine
                                 WorldGen.PlaceTile(k, l, 19, true, true, -1, 9);
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                tile.WallType = WallID.ObsidianBackEcho;
                                 break;
                             case 11:
                                 tile.HasTile = true;
                                 tile.TileType = (ushort)ModContent.TileType<Tiles.CrimstoneColumn>();
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
-                                tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                tile.WallType = WallID.ObsidianBackEcho;
                                 break;
                             case 12:
                                 if (confirmPlatforms == 1)
@@ -235,7 +235,7 @@ class EvilShrine
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
                                     WorldGen.PlaceTile(k, l, 93, true, true, -1, 10);
-                                    tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                    tile.WallType = WallID.ObsidianBackEcho;
                                 }
                                 break;
                             case 13:
@@ -253,7 +253,7 @@ class EvilShrine
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    tile.WallType = (ushort)ModContent.WallType<Walls.ObsidianLavaTube>();
+                                    tile.WallType = WallID.ObsidianBackEcho;
                                     AddEvilChest(k + 1, l);
                                 }
                                 break;

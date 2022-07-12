@@ -10,6 +10,7 @@ class ShockwavePotion : ModItem
     {
         DisplayName.SetDefault("Shockwave Potion");
         Tooltip.SetDefault("Enemies take damage when you land");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

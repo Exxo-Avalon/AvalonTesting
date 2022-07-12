@@ -11,6 +11,7 @@ class AdvDangersensePotion : ModItem
     {
         DisplayName.SetDefault("Dangersense Elixir");
         Tooltip.SetDefault("Allows you to see nearby traps");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

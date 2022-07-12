@@ -12,8 +12,18 @@ class ZirconRobe : ModItem
     {
         DisplayName.SetDefault("Zircon Robe");
         Tooltip.SetDefault("Increases maximum mana by 120\nReduces mana usage by 18%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
-
+    public override void Load()
+    {
+        if (Main.netMode == NetmodeID.Server) return;
+        EquipLoader.AddEquipTexture(Mod, $"{Texture}_{EquipType.Legs}", EquipType.Legs, this);
+    }
+    public override void SetMatch(bool male, ref int equipSlot, ref bool robes)
+    {
+        robes = true;
+        equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Legs);
+    }
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();

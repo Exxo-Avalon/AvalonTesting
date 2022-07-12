@@ -9,6 +9,7 @@ class NaquadahRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Naquadah Repeater");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

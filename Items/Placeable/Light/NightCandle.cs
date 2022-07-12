@@ -11,6 +11,7 @@ class NightCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Night");
         Tooltip.SetDefault("Nearby players become werewolves");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

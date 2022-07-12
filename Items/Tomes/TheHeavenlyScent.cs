@@ -12,6 +12,7 @@ class TheHeavenlyScent : ModItem
     {
         DisplayName.SetDefault("The Heavenly Scent");
         Tooltip.SetDefault("Tome\n+2 life regen");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

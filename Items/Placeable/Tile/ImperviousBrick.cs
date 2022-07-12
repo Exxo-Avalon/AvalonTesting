@@ -9,6 +9,7 @@ class ImperviousBrick : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Impervious Brick");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

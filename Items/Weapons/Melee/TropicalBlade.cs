@@ -12,6 +12,7 @@ public class TropicalBlade : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tropic Blade");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

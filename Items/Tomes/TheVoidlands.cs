@@ -12,6 +12,7 @@ class TheVoidlands : ModItem
     {
         DisplayName.SetDefault("The Voidlands");
         Tooltip.SetDefault("Tome\n+15% damage, +3% critical strike chance\n+60 HP, +40 mana");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class Thompson : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Thompson");
+        SacrificeTotal = 1;
         //Tooltip.SetDefault("");
     }
     public override void SetDefaults()

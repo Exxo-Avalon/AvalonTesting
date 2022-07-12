@@ -11,6 +11,7 @@ class PhantomShirt : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Phantom Shirt");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

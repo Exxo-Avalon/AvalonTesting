@@ -1279,7 +1279,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             RareChance));
         globalLoot.Add(ItemDropRule.ByCondition(
             bloodMoonAndNotFromStatueCondition,
-            ModContent.ItemType<BloodyWhetstone>(), 50));
+            ModContent.ItemType<BloodyWhetstone>(), 80));
         globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<ACometHasStruckGround>(),
             RareChance));
         globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
@@ -1533,7 +1533,10 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Clash>(), 100));
         }
-
+        if (npc.type is NPCID.LavaSlime)
+        {
+            npcLoot.Add(ItemDropRule.Common(ItemID.LavaCharm, 175));
+        }
         if (npc.type is NPCID.SkeletonArcher or NPCID.LavaSlime or NPCID.MeteorHead or NPCID.FireImp
             or NPCID.Hellbat
             or NPCID.Demon or NPCID.HellArmoredBones or NPCID.HellArmoredBonesSpikeShield

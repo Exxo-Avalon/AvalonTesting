@@ -10,6 +10,7 @@ class TheGoldenFlames : ModItem
     {
         DisplayName.SetDefault("The Golden Flames");
         Tooltip.SetDefault("'The flames are made of gold!'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

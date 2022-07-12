@@ -10,6 +10,7 @@ class RottenBullet : ModItem
     {
         DisplayName.SetDefault("Rotten Bullet");
         Tooltip.SetDefault("Slow speed, low range, but high damage and knockback");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()

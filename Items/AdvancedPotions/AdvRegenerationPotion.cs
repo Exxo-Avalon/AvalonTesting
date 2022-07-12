@@ -11,6 +11,7 @@ class AdvRegenerationPotion : ModItem
     {
         DisplayName.SetDefault("Regeneration Elixir");
         Tooltip.SetDefault("Increases life regeneration");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
     public override void SetDefaults()
     {

@@ -10,6 +10,7 @@ class HeavensTear : ModItem
     {
         DisplayName.SetDefault("Heaven's Tear");
         Tooltip.SetDefault("'Heaven splits with each swing'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

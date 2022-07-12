@@ -11,6 +11,7 @@ class AdvSpelunkerPotion : ModItem
     {
         DisplayName.SetDefault("Spelunker Elixir");
         Tooltip.SetDefault("Shows the location of treasure and ore");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

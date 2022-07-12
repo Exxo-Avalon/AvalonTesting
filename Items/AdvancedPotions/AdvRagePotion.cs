@@ -11,6 +11,7 @@ class AdvRagePotion : ModItem
     {
         DisplayName.SetDefault("Rage Elixir");
         Tooltip.SetDefault("Increases critical strike chance by 20%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

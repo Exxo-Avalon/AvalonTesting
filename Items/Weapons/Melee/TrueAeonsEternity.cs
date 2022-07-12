@@ -13,6 +13,7 @@ class TrueAeonsEternity : ModItem
     {
         DisplayName.SetDefault("True Aeon's Eternity");
         Tooltip.SetDefault("Fires a burst of stars every six swings");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

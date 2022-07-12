@@ -11,6 +11,7 @@ class SpiritbeamFork : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Spiritbeam Fork");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

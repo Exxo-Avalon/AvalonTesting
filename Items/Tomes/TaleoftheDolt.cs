@@ -11,6 +11,7 @@ class TaleoftheDolt : ModItem
     {
         DisplayName.SetDefault("Tale of the Dolt");
         Tooltip.SetDefault("Tome\n+15% melee damage\n+20 HP, +20 mana");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

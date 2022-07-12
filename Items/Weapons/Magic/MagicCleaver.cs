@@ -9,6 +9,7 @@ class MagicCleaver : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Magic Cleaver");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

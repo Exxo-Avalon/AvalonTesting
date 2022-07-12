@@ -10,6 +10,7 @@ class ElementalArrow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Elemental Arrow");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 500;
     }
 
     public override void SetDefaults()

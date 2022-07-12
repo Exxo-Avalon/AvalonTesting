@@ -11,6 +11,7 @@ class TroxiniumSpear : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Troxinium Spear");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

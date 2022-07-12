@@ -10,6 +10,8 @@ class Gravel : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Gravel");
+        Tooltip.SetDefault("Low grade finish used to produce tomes");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

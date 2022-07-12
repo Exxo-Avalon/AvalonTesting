@@ -10,6 +10,7 @@ class DesertFeather : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Desert Feather");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

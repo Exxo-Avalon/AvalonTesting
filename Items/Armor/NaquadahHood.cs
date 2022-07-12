@@ -12,6 +12,7 @@ class NaquadahHood : ModItem
     {
         DisplayName.SetDefault("Naquadah Hood");
         Tooltip.SetDefault("8% increased magic damage\n7% decreased mana usage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ internal class Freezethrower : ModItem
     {
         DisplayName.SetDefault("Freezethrower");
         Tooltip.SetDefault("Uses gel for ammo");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -9,6 +9,7 @@ class ResistantWoodDresser : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Resistant Wood Dresser");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

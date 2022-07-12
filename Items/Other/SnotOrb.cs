@@ -11,6 +11,7 @@ class SnotOrb : ModItem
     {
         DisplayName.SetDefault("Snot Orb");
         Tooltip.SetDefault("Creates a snot orb that provides light");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {

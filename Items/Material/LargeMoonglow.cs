@@ -9,6 +9,7 @@ class LargeMoonglow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Large Moonglow");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 15;
     }
 
     public override void SetDefaults()

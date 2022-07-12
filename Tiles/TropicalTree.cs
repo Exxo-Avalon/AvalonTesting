@@ -26,7 +26,7 @@ public class TropicalTree : ModTree
     public override Asset<Texture2D> GetTopTextures() =>
         AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop");
 
-    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.TropicalWood>();
+    public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.BleachedEbony>();
 
     public override int CreateDust() => 51;
 

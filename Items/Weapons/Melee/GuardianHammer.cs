@@ -11,6 +11,7 @@ class GuardianHammer : ModItem
     {
         DisplayName.SetDefault("Guardian Hammer");
         Tooltip.SetDefault("'Lightning strikes with each hit'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

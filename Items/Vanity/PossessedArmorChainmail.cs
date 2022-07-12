@@ -11,6 +11,7 @@ class PossessedArmorChainmail : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Possessed Armor Chainmail");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

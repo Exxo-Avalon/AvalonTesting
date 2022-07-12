@@ -565,7 +565,7 @@ public class HellboundLizard : ModNPC
             Main.dust[num890].scale = 1.2f;
             Main.dust[num890].noGravity = true;
         }
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HellboundLizardGore1").Type, 1f);
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("HellboundLizardGore2").Type, 1f);

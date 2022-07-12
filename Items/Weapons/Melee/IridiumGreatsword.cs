@@ -9,6 +9,7 @@ class IridiumGreatsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Iridium Greatsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

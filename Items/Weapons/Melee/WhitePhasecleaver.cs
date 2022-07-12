@@ -10,6 +10,7 @@ class WhitePhasecleaver : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("White Phasecleaver");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

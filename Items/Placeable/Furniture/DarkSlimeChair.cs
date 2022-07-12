@@ -9,6 +9,7 @@ class DarkSlimeChair : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dark Slime Chair");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

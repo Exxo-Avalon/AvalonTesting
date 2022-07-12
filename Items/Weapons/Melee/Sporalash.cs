@@ -10,6 +10,7 @@ class Sporalash : ModItem
     {
         DisplayName.SetDefault("Sporalash");
         Tooltip.SetDefault("Has a chance to poison");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

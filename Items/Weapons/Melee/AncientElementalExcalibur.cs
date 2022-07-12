@@ -11,6 +11,7 @@ class AncientElementalExcalibur : ModItem
     {
         DisplayName.SetDefault("Ancient Elemental Excalibur");
         Tooltip.SetDefault("'The unification of the Elements'\n'A relic of the past'");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {
