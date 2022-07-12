@@ -52,6 +52,11 @@ public class AvalonTesting : Mod
     /// <inheritdoc />
     public override void Load()
     {
+
+        ModLoader.TryGetMod("Wikithis", out Mod wikithis);
+        if (wikithis != null && !Main.dedServ)
+            wikithis.Call(0, this, "terrariamods.fandom.com$Exxo_Avalon");
+
         ExxoPlayer.torches = new Dictionary<int, int>()
         {
             { ItemID.Torch, ModContent.ProjectileType<Torch>() },
