@@ -212,7 +212,7 @@ public class Contagion : GenPass
             }
 
             // Just checked that randomX is valid and now we start
-            ContagionRunner(randomX, (int)WorldGen.worldSurfaceLow - 10);
+            //ContagionRunner(randomX, (int)WorldGen.worldSurfaceLow - 10);
 
             // Modify jungle
             for (int x = leftBeachAvoidanceCheck; x < rightBeachAvoidanceCheck; x++)
