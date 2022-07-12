@@ -36,7 +36,7 @@ public class CrystalStone : ModTile
         Main.tileMerge[TileID.Mud][Type] = true;
         ItemDrop = ModContent.ItemType<CrystalStoneBlock>();
         HitSound = SoundID.Tink;
-        DustType = DustID.PinkCrystalShard;
+        DustType = ModContent.DustType<Dusts.CrystalDust>();
     }
     public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawInfo)
     {

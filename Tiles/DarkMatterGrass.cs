@@ -16,6 +16,9 @@ public class DarkMatterGrass : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
+        Main.tileBlendAll[Type] = true;
+        Main.tileMerge[Type][ModContent.TileType<DarkMatterSoil>()] = true;
+        Main.tileMerge[ModContent.TileType<DarkMatterSoil>()][Type] = true;
         TileID.Sets.Conversion.Grass[Type] = true;
         TileID.Sets.Conversion.MergesWithDirtInASpecialWay[Type] = true;
         TileID.Sets.ResetsHalfBrickPlacementAttempt[Type] = false;
@@ -25,6 +28,7 @@ public class DarkMatterGrass : ModTile
         TileID.Sets.SpreadUnderground[Type] = true;
         TileID.Sets.Grass[Type] = true;
         TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;
+        TileID.Sets.ChecksForMerge[Type] = true;
         ItemDrop = ModContent.ItemType<DarkMatterSoilBlock>();
         DustType = ModContent.DustType<DarkMatterDust>();
     }

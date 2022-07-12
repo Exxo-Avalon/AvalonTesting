@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Trophy;
@@ -586,6 +586,7 @@ public class WallofSteel : ModNPC
                     if ((k == num22 - num24 || k == num22 + num24 || l == num23 - num24 || l == num23 + num24) && !Main.tile[k, l].HasTile)
                     {
                         Main.tile[k, l].TileType = (ushort)ModContent.TileType<Tiles.OblivionBrick>();
+                        Main.tile[k, l].Active(true);
                     }
                     Main.tile[k, l].LiquidAmount = 0;
                     if (Main.netMode == NetmodeID.Server)
@@ -602,12 +603,11 @@ public class WallofSteel : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
+        LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<FleshBoiler>(), ModContent.ItemType<MagicCleaver>(), ModContent.ItemType<Items.Accessories.BubbleBoost>() }));
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.WallofSteelBossBag>()));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WallofSteelTrophy>(), 10));
-        if (!Main.expertMode)
-        {
-            npcLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<FleshBoiler>(), ModContent.ItemType<MagicCleaver>(), ModContent.ItemType<Items.Accessories.BubbleBoost>() }));
-        }
+        npcLoot.Add(notExpertRule);
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SoulofBlight>(), 1, 40, 56));
         npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<HellsteelPlate>(), 1, 20, 31));
     }

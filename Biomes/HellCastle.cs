@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Players;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,9 +9,7 @@ public class HellCastle : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
-    public override int Music => AvalonTesting.MusicMod != null
-        ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Hellcastle")
-        : MusicID.Dungeon;
+    public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Hellcastle");
 
     public override bool IsBiomeActive(Player player)
     {

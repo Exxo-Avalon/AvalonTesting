@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -18,7 +18,7 @@ class PyroscoricOre : ModItem
         Item.autoReuse = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.Ores.PyroscoricOre>();
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.Purple;
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;

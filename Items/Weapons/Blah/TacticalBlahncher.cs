@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Weapons.Ranged;
@@ -18,7 +18,7 @@ internal class TacticalBlahncher : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tactical Blahncher");
-        Tooltip.SetDefault("Launches homing blahckets\n75% chance to not consume ammo");
+        Tooltip.SetDefault("Launches homing blahckets\n75% chance to not consume ammo\nBlahckets will not destroy tiles");
     }
 
     public override void SetDefaults()

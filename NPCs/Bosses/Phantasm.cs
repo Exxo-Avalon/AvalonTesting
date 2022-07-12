@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,6 +7,9 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.Chat;
 using AvalonTesting.Systems;
+using Terraria.GameContent.ItemDropRules;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Placeable.Trophy;
 
 namespace AvalonTesting.NPCs.Bosses;
 
@@ -34,7 +37,7 @@ public class Phantasm : ModNPC
         NPC.scale = 1.5f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath39;
-        Music = AvalonTesting.MusicMod == null ? MusicID.Boss5 : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Phantasm");
+        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Phantasm");
 
         transitionDone = false;
     }
@@ -63,7 +66,7 @@ public class Phantasm : ModNPC
         NPC.TargetClosest(true);
         if (Main.player[NPC.target].dead) // || !Main.player[target].zoneHellcastle)
         {
-            NPC.velocity.Y = NPC.velocity.Y - 0.04f;
+            NPC.velocity.Y -= 0.04f;
             if (NPC.timeLeft > 10)
             {
                 NPC.timeLeft = 10;
@@ -177,7 +180,9 @@ public class Phantasm : ModNPC
             if (!transitionDone)
             {
                 NPC.dontTakeDamage = true;
-                Vector2 libraryCenter = new Vector2(Main.maxTilesX / 3 + 184, Main.maxTilesY - 140 + 57) * 16;
+                int xpos = Main.maxTilesX / 5;
+                if (Main.drunkWorld) xpos = Main.maxTilesX / 3;
+                Vector2 libraryCenter = new Vector2(xpos + 184, Main.maxTilesY - 140 + 57) * 16;
 
                 if (Vector2.Distance(libraryCenter, NPC.Center) <= 5)
                 {
@@ -484,20 +489,19 @@ public class Phantasm : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        //if (!Main.expertMode)
-        //{
-        //    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GhostintheMachine>(), 1, 3, 6));
-        //    npcLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<PhantomKnives>(), ModContent.ItemType<EtherealHeart>(), ModContent.ItemType<VampireTeeth>() }));
-        //}
-        //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmTrophy>(), 10));
-        //npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.PhantasmBossBag>()));
+        LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Items.Weapons.Magic.PhantomKnives>(), ModContent.ItemType<Items.Accessories.EtherealHeart>(), ModContent.ItemType<Items.Accessories.VampireTeeth>() }));
+        notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GhostintheMachine>(), 1, 3, 6));
+        npcLoot.Add(notExpertRule);
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmTrophy>(), 10));
+        npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<Items.BossBags.PhantasmBossBag>()));
     }
     public override void FindFrame(int frameHeight)
     {
         NPC.frameCounter++;
         if (NPC.frameCounter >= 4.0)
         {
-            NPC.frame.Y = NPC.frame.Y + frameHeight;
+            NPC.frame.Y += frameHeight;
             NPC.frameCounter = 0.0;
         }
         if (NPC.frame.Y >= frameHeight * Main.npcFrameCount[NPC.type])

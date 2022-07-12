@@ -25,7 +25,7 @@ class HeavensTear : ModItem
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.knockBack = 8f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.HeavensTear>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.HeavensTear>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 54000;

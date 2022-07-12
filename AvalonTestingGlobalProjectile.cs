@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -71,5 +71,12 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
         }
 
         return base.CanHitPlayer(projectile, target);
+    }
+    public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+    {
+        if (Main.player[projectile.owner].Avalon().skyBlessing && Main.rand.NextBool(15) && projectile.minion)
+        {
+            int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
+        }
     }
 }

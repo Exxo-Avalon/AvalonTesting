@@ -64,11 +64,20 @@ public class ExxoPlayer : ModPlayer
     public static int NumHookProj() => Main.projectile.Count(p =>
         Main.projHook[p.type] && p.active && p.ai[0] == 2f && p.owner == Main.myPlayer);
 
+    public override void ModifyScreenPosition()
+    {
+        if (screenShakeTimer > 0)
+        {
+            Main.screenPosition += Main.rand.NextVector2Circular(20, 20);
+        }
+    }
     public override void ResetEffects()
     {
         //Main.NewText("" + trapImmune.ToString());
         //Main.NewText("" + slimeBand.ToString());
         Player.defaultItemGrabRange = 38;
+        oreDupe = false;
+        skyBlessing = false;
         inertiaBoots = false;
         luckTome = false;
         blahWings = false;
@@ -138,14 +147,15 @@ public class ExxoPlayer : ModPlayer
         UltraRMinion = false;
         UltraLMinion = false;
         cloudGloves = false;
+        ReckoningBonus = false;
         bonusKB = 1f;
         miniArma = false;
 
-        if (shmAcc)
-        {
-            Player.extraAccessory = true;
-            Player.extraAccessorySlots++;
-        }
+        //if (shmAcc)
+        //{
+        //    Player.extraAccessory = true;
+        //    Player.extraAccessorySlots++;
+        //}
 
         CritDamageMult = 1f;
 
@@ -716,14 +726,14 @@ public class ExxoPlayer : ModPlayer
     {
         bool consume = true;
 
-        if (tomeItem.type == ModContent.ItemType<CreatorsTome>() && Main.rand.Next(4) == 0)
+        if (tomeItem.type == ModContent.ItemType<CreatorsTome>() && Main.rand.NextBool(4))
         {
             consume = false;
         }
 
         if ((tomeItem.type == ModContent.ItemType<TomeofDistance>() ||
              tomeItem.type == ModContent.ItemType<Dominance>() ||
-             tomeItem.type == ModContent.ItemType<LoveUpandDown>()) && Main.rand.Next(5) == 0)
+             tomeItem.type == ModContent.ItemType<LoveUpandDown>()) && Main.rand.NextBool(5))
         {
             consume = false;
         }
@@ -744,6 +754,15 @@ public class ExxoPlayer : ModPlayer
 
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
+        if (ReckoningBonus && item.DamageType == DamageClass.Ranged)
+        {
+            reckoningHit++;
+            if (reckoningHit >= 4)
+            {
+                Player.AddBuff(ModContent.BuffType<Reckoning>(), 60 * 5);
+                reckoningHit = 0;
+            }
+        }
         if (terraClaws && item.DamageType == DamageClass.Melee)
         {
             switch (Main.rand.Next(5))
@@ -766,35 +785,29 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (ancientSandVortex && Main.rand.Next(10) == 0)
+        if (ancientSandVortex && Main.rand.NextBool(10))
         {
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<AncientSandnado>(), 0, 0);
         }
 
-        if (vampireTeeth)
+        if (vampireTeeth && item.DamageType == DamageClass.Melee)
         {
-            if (item.DamageType == DamageClass.Melee)
+            if (target.boss)
             {
-                if (target.boss)
-                {
-                    Player.VampireHeal(damage / 2, target.Center);
-                }
-                else
-                {
-                    Player.VampireHeal(damage, target.Center);
-                }
+                Player.VampireHeal(damage / 2, target.Center);
+            }
+            else
+            {
+                Player.VampireHeal(damage, target.Center);
             }
         }
 
         if (crit)
         {
-            if (Main.rand.Next(8) == 0)
+            if (Main.rand.NextBool(8) && Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
             {
-                if (Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
-                {
-                    reckoningLevel += 1;
-                }
+                reckoningLevel++;
             }
 
             if (avalonRestoration)
@@ -806,6 +819,15 @@ public class ExxoPlayer : ModPlayer
 
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
+        if (reckoning && proj.DamageType == DamageClass.Ranged && proj.owner == Main.myPlayer)
+        {
+            reckoningHit++;
+            if (reckoningHit >= 4)
+            {
+                Player.AddBuff(ModContent.BuffType<Reckoning>(), 60 * 8);
+                reckoningHit = 0;
+            }
+        }
         if (minionFreeze)
         {
             if (proj.minion || Data.Sets.Projectile.MinionProjectiles[proj.type])
@@ -817,41 +839,26 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (roseMagic)
+        if (roseMagic && proj.DamageType == DamageClass.Magic && Main.rand.NextBool(8) && roseMagicCooldown <= 0)
         {
-            if (proj.DamageType == DamageClass.Magic)
-            {
-                if (Main.rand.Next(8) == 0 && roseMagicCooldown <= 0)
-                {
-                    int num36 = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X,
-                        (int)target.position.Y, target.width, target.height, ModContent.ItemType<Rosebud>());
-                    Main.item[num36].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
-                    Main.item[num36].velocity.X = Main.rand.Next(10, 31) * 0.2f * Player.direction;
-                    roseMagicCooldown = 20;
-                }
-            }
+            int num36 = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X,
+                (int)target.position.Y, target.width, target.height, ModContent.ItemType<Rosebud>());
+            Main.item[num36].velocity.Y = Main.rand.Next(-20, 1) * 0.2f;
+            Main.item[num36].velocity.X = Main.rand.Next(10, 31) * 0.2f * Player.direction;
+            roseMagicCooldown = 20;
         }
 
-        if (target.life <= 0)
+        if (target.life <= 0 && ancientGunslinger && proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
         {
-            if (ancientGunslinger)
-            {
-                if (proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
-                {
-                    Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
-                        ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
-                }
-            }
+            Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
+                ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
         }
 
         if (crit)
         {
-            if (Main.rand.Next(8) == 0)
+            if (Main.rand.NextBool(8) && Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
             {
-                if (Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
-                {
-                    reckoningLevel += 1;
-                }
+                reckoningLevel++;
             }
 
             if (avalonRestoration)
@@ -1117,19 +1124,21 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    public override void SaveData(TagCompound tag) => tag["CrystalHealth"] = CrystalHealth;
+    public override void SaveData(TagCompound tag)
+    {
+        tag["CrystalHealth"] = CrystalHealth;
+        tag["SHMAcc"] = shmAcc;
+        tag["SpiritPoppyUseCount"] = spiritPoppyUseCount;
+    }
 
     // tag = new TagCompound
     // {
     //     { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
-    //     { "AvalonTesting:CrystalHealth", CrystalHealth },
     //     { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-    //     { "AvalonTesting:SHMAcc", shmAcc },
     //     { "AvalonTesting:HerbTier", (int)herbTier },
     //     { "AvalonTesting:HerbTotal", herbTotal },
     //     { "AvalonTesting:PotionTotal", potionTotal },
     //     { "AvalonTesting:HerbCounts", herbCounts.Save() },
-    //     { "AvalonTesting:SpiritPoppyUseCount", spiritPoppyUseCount },
     //     { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
     //     { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
     //     { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
@@ -1145,32 +1154,21 @@ public class ExxoPlayer : ModPlayer
             Player.statLifeMax2 += CrystalHealth * 25;
             Player.statLife += CrystalHealth * 25;
         }
+        if (tag.ContainsKey("SHMAcc"))
+        {
+            shmAcc = tag.Get<bool>("SHMAcc");
+        }
+        if (tag.ContainsKey("SpiritPoppyUseCount"))
+        {
+            spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
+        }
         // if (tag.ContainsKey("AvalonTesting:TomeSlot"))
         // {
         //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
         // }
-        // if (tag.ContainsKey("AvalonTesting:CrystalHealth"))
-        // {
-        //     CrystalHealth = tag.GetAsInt("AvalonTesting:CrystalHealth");
-        //     if (CrystalHealth > 4)
-        //     {
-        //         CrystalHealth = 4;
-        //     }
-        //
-        //     if (Player.statLifeMax == 500)
-        //     {
-        //         Player.statLifeMax += CrystalHealth *= 25;
-        //         Player.statLifeMax2 += CrystalHealth *= 25;
-        //     }
-        // }
-        //
         // if (tag.ContainsKey("AvalonTesting:Stamina"))
         // {
         //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
-        // }
-        // if (tag.ContainsKey("AvalonTesting:SHMAcc"))
-        // {
-        //     shmAcc = tag.Get<bool>("AvalonTesting:SHMAcc");
         // }
         // if (tag.ContainsKey("AvalonTesting:HerbTier"))
         // {
@@ -1194,10 +1192,6 @@ public class ExxoPlayer : ModPlayer
         //     {
         //         herbCounts = new Dictionary<int, int>();
         //     }
-        // }
-        // if (tag.ContainsKey("AvalonTesting:SpiritPoppyUseCount"))
-        // {
-        //     spiritPoppyUseCount = tag.Get<int>("AvalonTesting:SpiritPoppyUseCount");
         // }
         // if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
         // {
@@ -1319,7 +1313,51 @@ public class ExxoPlayer : ModPlayer
             pSensor[5] = false;
         }
         #endregion
-
+        if (ReckoningBonus)
+        {
+            Player.GetCritChance(DamageClass.Ranged) += reckoningLevel * 3;
+        }
+        if (Player.GetModPlayer<ExxoBuffPlayer>().SkyBlessing)
+        {
+            switch (Player.GetModPlayer<ExxoBuffPlayer>().SkyStacks)
+            {
+                case 1:
+                    Player.GetDamage(DamageClass.Summon) += 0.04f;
+                    break;
+                case 2:
+                    Player.GetDamage(DamageClass.Summon) += 0.08f;
+                    break;
+                case 3:
+                    Player.GetDamage(DamageClass.Summon) += 0.12f;
+                    break;
+                case 4:
+                    Player.GetDamage(DamageClass.Summon) += 0.16f;
+                    break;
+                case 5:
+                    Player.GetDamage(DamageClass.Summon) += 0.2f;
+                    break;
+                case 6:
+                    Player.GetDamage(DamageClass.Summon) += 0.24f;
+                    break;
+                case 7:
+                    Player.GetDamage(DamageClass.Summon) += 0.28f;
+                    break;
+                case 8:
+                    Player.GetDamage(DamageClass.Summon) += 0.32f;
+                    break;
+                case 9:
+                    Player.GetDamage(DamageClass.Summon) += 0.36f;
+                    break;
+                case 10:
+                    Player.GetDamage(DamageClass.Summon) += 0.45f;
+                    break;
+            }
+            //if (Player.GetModPlayer<ExxoBuffPlayer>().SkyStacks < 10)
+            //{
+            //    Player.GetDamage(DamageClass.Summon) += (float)(Player.GetModPlayer<ExxoBuffPlayer>().SkyStacks * 2) / 100;
+            //}
+            //else Player.GetDamage(DamageClass.Summon) += 0.25f;
+        }
         if (screenShakeTimer == 1)
         {
             SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Stomp"), Player.position);
@@ -1617,41 +1655,41 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (reckoning)
-        {
-            if (Player.whoAmI == Main.myPlayer)
-            {
-                if (reckoningTimeLeft > 0)
-                {
-                    reckoningTimeLeft--;
-                }
-                else
-                {
-                    if (reckoningLevel > 1)
-                    {
-                        reckoningLevel--;
-                    }
+        //if (reckoning)
+        //{
+        //    if (Player.whoAmI == Main.myPlayer)
+        //    {
+        //        if (reckoningTimeLeft > 0)
+        //        {
+        //            reckoningTimeLeft--;
+        //        }
+        //        else
+        //        {
+        //            if (reckoningLevel > 1)
+        //            {
+        //                reckoningLevel--;
+        //            }
 
-                    reckoningTimeLeft = 120;
-                }
+        //            reckoningTimeLeft = 120;
+        //        }
 
-                if (reckoningLevel < 1)
-                {
-                    reckoningLevel = 1;
-                }
+        //        if (reckoningLevel < 1)
+        //        {
+        //            reckoningLevel = 1;
+        //        }
 
-                Player.GetCritChance(DamageClass.Ranged) += 3 * reckoningLevel;
-            }
-            else
-            {
-                Main.NewText("Good job dummy, you broke the Reckoning set bonus");
-            }
-        }
-        else
-        {
-            reckoningLevel = 0;
-            reckoningTimeLeft = 0;
-        }
+        //        Player.GetCritChance(DamageClass.Ranged) += 3 * reckoningLevel;
+        //    }
+        //    else
+        //    {
+        //        Main.NewText("Good job dummy, you broke the Reckoning set bonus");
+        //    }
+        //}
+        //else
+        //{
+        //    reckoningLevel = 0;
+        //    reckoningTimeLeft = 0;
+        //}
     }
 
     public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
@@ -3156,6 +3194,8 @@ public class ExxoPlayer : ModPlayer
 
     public bool reflectorMinion;
 
+    public bool skyBlessing;
+
     // end minion stuff
     public bool[] pSensor = new bool[6];
     public int spiritPoppyUseCount;
@@ -3319,6 +3359,8 @@ public class ExxoPlayer : ModPlayer
     public bool reckoning;
     public int reckoningLevel;
     public int reckoningTimeLeft;
+    public bool ReckoningBonus;
+    public int reckoningHit;
     public bool curseOfIcarus;
     public bool undeadTalisman;
     public bool cOmega;
@@ -3337,6 +3379,7 @@ public class ExxoPlayer : ModPlayer
     public bool UltraRMinion;
     public bool UltraLMinion;
     private int actualStatManaMax2;
+    public bool oreDupe;
 
     public Vector2 MousePosition;
 

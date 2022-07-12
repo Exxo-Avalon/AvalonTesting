@@ -1,5 +1,6 @@
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,7 +32,7 @@ internal class CoughwoodWorkBench : ModItem
 
     public override void AddRecipes()
     {
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodWorkBench>())
+        Recipe.Create(ModContent.ItemType<CoughwoodWorkBench>())
             .AddIngredient(ModContent.ItemType<Tile.Coughwood>(), 10).Register();
     }
 }

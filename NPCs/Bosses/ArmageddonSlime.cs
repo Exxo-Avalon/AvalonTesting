@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 //using AvalonTesting.Items.Placeable.Tile;
 //using AvalonTesting.Items.Placeable.Trophy;
@@ -61,7 +61,7 @@ public class ArmageddonSlime : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        Music = AvalonTesting.MusicMod == null ? MusicID.Boss2 : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/ArmageddonSlime");
+        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ArmageddonSlime");
         //music = mod.GetSoundSlot(SoundType.Music, "Music/ArmageddonSlime");
         //bossBag = ModContent.ItemType<Items.BossBags.ArmageddonSlimeBossBag>();
 

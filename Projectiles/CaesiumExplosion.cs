@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -44,7 +45,10 @@ public class CaesiumExplosion : ModProjectile
 
         if (Projectile.ai[0] >= (3 * 7)) Projectile.Kill();
     }
-
+    public override void OnSpawn(IEntitySource source)
+    {
+        Projectile.rotation = Main.rand.NextFloat(MathHelper.Pi, -MathHelper.Pi);
+    }
     public override bool PreDraw(ref Color lightColor)
     {
         Main.spriteBatch.End();
@@ -55,7 +59,7 @@ public class CaesiumExplosion : ModProjectile
         float frame = (float)Math.Floor(Projectile.ai[0] / 3) * 70;
 
         Main.EntitySpriteDraw(tex.Value, Projectile.Center - Main.screenPosition,
-            new Rectangle(0, (int)frame, 70, 70), Color.White, 0f,
+            new Rectangle(0, (int)frame, 70, 70), Color.White, Projectile.rotation,
             new Vector2(70 / 2f, 70 / 2f), Projectile.scale, SpriteEffects.None, 0);
 
         Main.spriteBatch.End();

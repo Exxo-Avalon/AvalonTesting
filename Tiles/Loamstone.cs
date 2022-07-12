@@ -16,8 +16,8 @@ public class Loamstone : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileMerge[Type][TileID.Stone] = true;
         Main.tileMerge[TileID.Stone][Type] = true;
-        Main.tileMerge[Type][ModContent.TileType<TropicalMud>()] = true;
-        Main.tileMerge[ModContent.TileType<TropicalMud>()][Type] = true;
+        Main.tileMerge[Type][ModContent.TileType<Loam>()] = true;
+        Main.tileMerge[ModContent.TileType<Loam>()][Type] = true;
         ItemDrop = ModContent.ItemType<LoamstoneBrick>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.TropicalMudDust>();

@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Backgrounds;
+using AvalonTesting.Backgrounds;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -10,9 +10,7 @@ public class Tropics : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeMedium;
 
-    public override int Music => AvalonTesting.MusicMod != null
-        ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/Tropics")
-        : MusicID.Jungle;
+    public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>
         ModContent.GetInstance<TropicsSurfaceBackground>();

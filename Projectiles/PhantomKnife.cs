@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -38,7 +38,7 @@ public class PhantomKnife : ModProjectile
 
         if (Projectile.type == ModContent.ProjectileType<PhantomKnife>())
         {
-            Projectile.ai[0] += 1f;
+            Projectile.ai[0]++;
             if (Projectile.ai[0] >= 30f)
             {
                 Projectile.alpha += 10;

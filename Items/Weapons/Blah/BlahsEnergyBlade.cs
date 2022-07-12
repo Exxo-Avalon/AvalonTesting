@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Items.Weapons.Melee;
@@ -43,7 +43,15 @@ class BlahsEnergyBlade : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Phantoplasm>(), 45).AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40).AddIngredient(ModContent.ItemType<SoulofTorture>(), 45).AddIngredient(ModContent.ItemType<ElementalExcalibur>()).AddIngredient(ModContent.ItemType<BerserkerBlade>()).AddIngredient(ModContent.ItemType<PumpkingsSword>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Phantoplasm>(), 45)
+            .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40)
+            .AddIngredient(ModContent.ItemType<SoulofTorture>(), 45)
+            .AddIngredient(ModContent.ItemType<ElementalExcalibur>())
+            .AddIngredient(ModContent.ItemType<BerserkerBlade>())
+            .AddIngredient(ModContent.ItemType<PumpkingsSword>())
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -51,8 +59,8 @@ class BlahsEnergyBlade : ModItem
         {
             float num195 = velocity.X;
             float num196 = velocity.Y;
-            num195 += (float)Main.rand.Next(-40, 41) * 0.05f;
-            num196 += (float)Main.rand.Next(-40, 41) * 0.05f;
+            num195 += Main.rand.Next(-40, 41) * 0.05f;
+            num196 += Main.rand.Next(-40, 41) * 0.05f;
             Projectile.NewProjectile(source, position.X, position.Y, num195, num196, type, damage, knockback, player.whoAmI, 0f, 0f);
         }
         return false;

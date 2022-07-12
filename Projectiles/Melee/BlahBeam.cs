@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,15 +27,15 @@ public class BlahBeam : ModProjectile
     }
     public override Color? GetAlpha(Color lightColor)
     {
-        if (this.Projectile.localAI[1] >= 15f)
+        if (Projectile.localAI[1] >= 15f)
         {
-            return new Color(255, 255, 255, this.Projectile.alpha);
+            return new Color(255, 255, 255, Projectile.alpha);
         }
-        if (this.Projectile.localAI[1] < 5f)
+        if (Projectile.localAI[1] < 5f)
         {
             return Color.Transparent;
         }
-        int num7 = (int)((this.Projectile.localAI[1] - 5f) / 10f * 255f);
+        int num7 = (int)((Projectile.localAI[1] - 5f) / 10f * 255f);
         return new Color(num7, num7, num7, num7);
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -71,7 +71,7 @@ public class BlahBeam : ModProjectile
         if (Projectile.type == ModContent.ProjectileType<BlahBeam>())
         {
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
-            Projectile.ai[0] += 1f;
+            Projectile.ai[0]++;
             if (Projectile.ai[0] >= 4f)
             {
                 Projectile.position += Projectile.velocity;
@@ -93,7 +93,7 @@ public class BlahBeam : ModProjectile
     }
     public override void AI()
     {
-        int closest = Projectile.FindClosestNPC(16 * 20, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5);
+        int closest = Projectile.FindClosestNPC(16 * 20, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy || npc.type == NPCID.CultistBossClone);
         if (closest != -1)
         {
             if (Main.npc[closest].lifeMax > 5 && !Main.npc[closest].friendly && !Main.npc[closest].townNPC)

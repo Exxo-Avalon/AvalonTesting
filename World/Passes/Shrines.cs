@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ internal class Shrines : GenPass
             ModContent.TileType<Tiles.TuhrtlBrick>(),
             ModContent.TileType<Tiles.OrangeBrick>(),
             ModContent.TileType<Tiles.TropicalGrass>(),
-            ModContent.TileType<Tiles.TropicalMud>(),
+            ModContent.TileType<Tiles.Loam>(),
             TileID.Mud,
             TileID.JungleGrass,
             TileID.CrimtaneBrick,

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,6 @@ public class BubbleBoost : ModItem
     {
         player.Avalon().bubbleBoost = true;
         player.Avalon().activateBubble = true;
+        player.noFallDmg = true;
     }
 }

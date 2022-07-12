@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Projectiles.Melee;
+using AvalonTesting.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -40,7 +40,7 @@ internal class VirulentKnives : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {
-        int numberProjectiles = AvalonTestingGlobalProjectile.HowManyProjectiles(1, 5);
+        int numberProjectiles = Main.rand.Next(1, 5);
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));

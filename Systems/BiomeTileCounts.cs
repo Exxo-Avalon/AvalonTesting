@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Players;
 using AvalonTesting.Tiles;
 using Terraria;
@@ -33,7 +33,7 @@ public class BiomeTileCounts : ModSystem
 
         TropicsTiles = tileCounts[ModContent.TileType<TropicalStone>()] +
                        tileCounts[ModContent.TileType<TuhrtlBrick>()] +
-                       tileCounts[ModContent.TileType<TropicalMud>()] +
+                       tileCounts[ModContent.TileType<Loam>()] +
                        tileCounts[ModContent.TileType<TropicalGrass>()];
         HellCastleTiles = tileCounts[ModContent.TileType<ImperviousBrick>()];
         DarkTiles = tileCounts[ModContent.TileType<DarkMatter>()] +

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Buffs;
 using AvalonTesting.Items.BossBags;
 using AvalonTesting.Items.Material;
@@ -43,9 +43,7 @@ public class DesertBeak : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
-        Music = AvalonTesting.MusicMod == null
-            ? MusicID.Boss2
-            : MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/DesertBeak");
+        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak");
     }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

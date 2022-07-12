@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -11,7 +11,7 @@ public class RainbowRarity : ModRarity
     {
         get
         {
-            return new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB);
+            return new Color(Main.DiscoR + 200, Main.DiscoG + 200, Main.DiscoB + 200);
         }
     }
 

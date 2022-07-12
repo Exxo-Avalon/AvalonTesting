@@ -27,10 +27,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.406">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 7778d07fdf779524bf000d688f3be0d0843680fd
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.5" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AltLibrary">
-      <HintPath>..\..\..\tModLoader-preview\ModReader\AltLibrary\AltLibrary.dll</HintPath>
+      <HintPath>..\..\ModReader\AltLibrary\AltLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

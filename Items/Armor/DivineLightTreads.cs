@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,9 +27,11 @@ class DivineLightTreads : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1)
-            .AddIngredient(ItemID.PixieDust, 20)
+            .AddIngredient(ItemID.HallowedBar, 20)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 15)
-            .AddIngredient(ItemID.SoulofLight, 15).AddTile(TileID.MythrilAnvil).Register();
+            .AddIngredient(ItemID.SoulofLight, 15)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
     public override void UpdateEquip(Player player)
     {

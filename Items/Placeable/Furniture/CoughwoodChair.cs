@@ -1,5 +1,6 @@
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,7 +30,7 @@ internal class CoughwoodChair : ModItem
 
     public override void AddRecipes()
     {
-        Mod.CreateRecipe(ModContent.ItemType<CoughwoodChair>())
+        Recipe.Create(ModContent.ItemType<CoughwoodChair>())
             .AddIngredient(ModContent.ItemType<Coughwood>(), 4)
             .AddTile(TileID.WorkBenches)
             .Register();

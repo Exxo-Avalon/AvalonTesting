@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Data.Sets;
@@ -25,7 +25,24 @@ namespace AvalonTesting;
 public class AvalonTestingGlobalItem : GlobalItem
 {
     private static readonly int NewMaskPrice = Terraria.Item.sellPrice(0, 2);
-
+    private static List<int> nonSolidExceptions = new List<int>
+        {
+            TileID.Cobweb,
+            TileID.LivingCursedFire,
+            TileID.LivingDemonFire,
+            TileID.LivingFire,
+            TileID.LivingFrostFire,
+            TileID.LivingIchor,
+            TileID.LivingUltrabrightFire,
+            TileID.ChimneySmoke,
+            TileID.Bubble,
+            TileID.Rope,
+            TileID.SilkRope,
+            TileID.VineRope,
+            TileID.WebRope,
+            ModContent.TileType<Tiles.LivingLightning>(),
+            ModContent.TileType<Tiles.VineRope>()
+        };
     public override void SetDefaults(Terraria.Item item)
     {
         if (item.IsArmor())
@@ -410,7 +427,39 @@ public class AvalonTestingGlobalItem : GlobalItem
 
         base.PickAmmo(weapon, ammo, player, ref type, ref speed, ref damage, ref knockback);
     }
-
+    public override bool? UseItem(Terraria.Item item, Player player)
+    {
+        if (player.Avalon().cloudGloves && player.whoAmI == Main.myPlayer)
+        {
+            bool inrange = (player.position.X / 16f - Player.tileRangeX - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetX &&
+                (player.position.X + player.width) / 16f + Player.tileRangeX + player.inventory[player.selectedItem].tileBoost - 1f + player.blockRange >= Player.tileTargetX &&
+                player.position.Y / 16f - Player.tileRangeY - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetY &&
+                (player.position.Y + player.height) / 16f + Player.tileRangeY + player.inventory[player.selectedItem].tileBoost - 2f + player.blockRange >= Player.tileTargetY);
+            if (item.createTile > -1 && (Main.tileSolid[item.createTile] || nonSolidExceptions.Contains(item.createTile)) &&
+                (Main.tile[Player.tileTargetX, Player.tileTargetY].LiquidType != LiquidID.Lava || player.HasItemInArmor(ModContent.ItemType<ObsidianGlove>())) &&
+                !Main.tile[Player.tileTargetX, Player.tileTargetY].HasTile && inrange)
+            {
+                bool subtractFromStack = WorldGen.PlaceTile(Player.tileTargetX, Player.tileTargetY, item.createTile);
+                if (Main.tile[Player.tileTargetX, Player.tileTargetY].HasTile && Main.netMode != NetmodeID.SinglePlayer && subtractFromStack)
+                {
+                    NetMessage.SendData(Terraria.ID.MessageID.TileManipulation, -1, -1, null, 1, Player.tileTargetX, Player.tileTargetY, item.createTile);
+                }
+                if (subtractFromStack)
+                    item.stack--;
+            }
+            if (item.createWall > 0 && Main.tile[Player.tileTargetX, Player.tileTargetY].WallType == 0 && inrange)
+            {
+                WorldGen.PlaceWall(Player.tileTargetX, Player.tileTargetY, item.createWall);
+                if (Main.tile[Player.tileTargetX, Player.tileTargetY].WallType != 0 && Main.netMode != NetmodeID.SinglePlayer)
+                {
+                    NetMessage.SendData(Terraria.ID.MessageID.TileManipulation, -1, -1, null, 3, Player.tileTargetX, Player.tileTargetY, item.createWall);
+                }
+                //Main.PlaySound(0, Player.tileTargetX * 16, Player.tileTargetY * 16, 1);
+                item.stack--;
+            }
+        }
+        return base.UseItem(item, player);
+    }
     public override void HoldItem(Terraria.Item item, Player player)
     {
         #region wire disable in sky fortress
@@ -429,7 +478,6 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
             }
         }
-
         if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
             !player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
         {
@@ -438,6 +486,32 @@ public class AvalonTestingGlobalItem : GlobalItem
             item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
         }
         #endregion wire disable in sky fortress
+
+        #region wire disable in hellcastle pre-phantasm
+        var tempWireItemHC = new Terraria.Item();
+        tempWireItemHC.netDefaults(item.netID);
+        tempWireItemHC = tempWireItemHC.CloneWithModdedDataFrom(item);
+        tempWireItemHC.stack = item.stack;
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle &&
+            !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+        {
+            player.InfoAccMechShowWires = false;
+            if (item.mech)
+            {
+                item.mech = false;
+                item.useStyle = 0;
+                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
+            }
+        }
+
+        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
+            !player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
+        {
+            item.netDefaults(tempWireItemHC.netID);
+            item.stack = tempWireItemHC.stack;
+            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
+        }
+        #endregion wire disable in hellcastle pre-phantasm
 
         #region barbaric prefix logic
         var tempItem = new Terraria.Item();
@@ -726,7 +800,30 @@ public class AvalonTestingGlobalItem : GlobalItem
             }
         }
     }
-
+    public override bool CanUseItem(Terraria.Item item, Player player)
+    {
+        if (item.type == ItemID.RodofDiscord &&
+            ((player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSystem>().DownedDragonLord) ||
+            (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle && !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)))
+        {
+            return false;
+        }
+        if (item.type == ItemID.ActuationRod &&
+            ((player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && !ModContent.GetInstance<DownedBossSystem>().DownedDragonLord) ||
+            (player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle && !ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)))
+        {
+            return false;
+        }
+        if (item.useAmmo > 0 && player.HasBuff(ModContent.BuffType<Buffs.Unloaded>()))
+        {
+            return false;
+        }
+        if (item.DamageType == DamageClass.Melee && player.HasBuff(ModContent.BuffType<Buffs.BrokenWeaponry>()))
+        {
+            return false;
+        }
+        return base.CanUseItem(item, player);
+    }
     public override int ChoosePrefix(Terraria.Item item, UnifiedRandom rand) => item.IsArmor()
         ? Prefix.ArmorPrefixes[rand.Next(Prefix.ArmorPrefixes.Length)]
         : base.ChoosePrefix(item, rand);

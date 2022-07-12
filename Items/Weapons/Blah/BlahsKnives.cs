@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Projectiles;
+using AvalonTesting.Projectiles;
 using AvalonTesting.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -41,7 +41,7 @@ internal class BlahsKnives : ModItem
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {
-        int numberProjectiles = AvalonTestingGlobalProjectile.HowManyProjectiles(4, 8);
+        int numberProjectiles = Main.rand.Next(4, 8); // AvalonTestingGlobalProjectile.HowManyProjectiles(4, 8);
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));
@@ -50,5 +50,16 @@ internal class BlahsKnives : ModItem
         }
 
         return false;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Magic.PhantomKnives>())
+            .AddIngredient(ModContent.ItemType<Melee.KnivesoftheCorruptor>())
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 40)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.SuperhardmodeBar>(), 35)
+            .AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 40)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
     }
 }

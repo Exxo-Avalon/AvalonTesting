@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -25,7 +25,7 @@ class TheCell : ModItem
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.knockBack = 6.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Cell>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.Cell>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 27000;

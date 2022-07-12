@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Buffs;
+using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
 using AvalonTesting.Network;
 using AvalonTesting.Network.Handlers;
@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Players;
-
+// TODO: Add duratanium shield DoT debuff logic
 public class ExxoBuffPlayer : ModPlayer
 {
     public const string LavaMermanName = "LavaMerman";
@@ -21,6 +21,9 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AdvancedCalming;
     public bool AstralProject;
 
+    public bool Unloaded;
+    public bool BrokenWeaponry;
+    public bool Electrified;
     public bool BadgeOfBacteria;
     public bool BloodyWhetstone;
     public int DeleriumCount;
@@ -31,8 +34,13 @@ public class ExxoBuffPlayer : ModPlayer
     public bool Lucky;
     public bool Malaria;
     public bool Melting;
+    public bool CaesiumPoison;
+    public bool DarkInferno;
     public bool NoSticky;
     public int OldFallStart;
+
+    public bool SkyBlessing;
+    public int SkyStacks = 1;
 
     public int StingerProbeTimer;
     private bool lavaMerman;
@@ -91,6 +99,12 @@ public class ExxoBuffPlayer : ModPlayer
         AccLavaMerman = false;
         lavaMerman = false;
         BloodyWhetstone = false;
+        SkyBlessing = false;
+        Unloaded = false;
+        BrokenWeaponry = false;
+        DarkInferno = false;
+        CaesiumPoison = false;
+        Electrified = false;
     }
 
     public override void PreUpdateBuffs()
@@ -104,7 +118,6 @@ public class ExxoBuffPlayer : ModPlayer
             AstralCooldown++;
         }
     }
-
     public override void PostUpdateEquips()
     {
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
@@ -119,8 +132,10 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void PostUpdateBuffs() => OldFallStart = Player.fallStart;
-
+    public override void PostUpdateBuffs()
+    {
+        OldFallStart = Player.fallStart;
+    }
     public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) =>
         ModContent.GetInstance<ExxoBuffPlayerSyncHandler>()
             .Send(new BasicPlayerNetworkArgs(Player), toWho, fromWho);
@@ -141,7 +156,6 @@ public class ExxoBuffPlayer : ModPlayer
         {
             return;
         }
-
         if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
         {
             if (Player.HasBuff<AstralProjecting>())
@@ -158,6 +172,38 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void UpdateBadLifeRegen()
     {
+        if (DarkInferno)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.NextBool(6))
+            {
+                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 6 : 4;
+            }
+            else
+            {
+                Player.lifeRegen -= 16;
+            }
+        }
+        if (CaesiumPoison)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.NextBool(6))
+            {
+                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 3 : 2;
+            }
+            else
+            {
+                Player.lifeRegen -= 20;
+            }
+        }
         if (Melting)
         {
             if (Player.lifeRegen > 0)
@@ -168,7 +214,6 @@ public class ExxoBuffPlayer : ModPlayer
             Player.lifeRegenTime = 0;
             Player.lifeRegen -= 32;
         }
-
         if (Malaria)
         {
             if (Player.lifeRegen > 0)
@@ -178,6 +223,23 @@ public class ExxoBuffPlayer : ModPlayer
 
             Player.lifeRegenTime = 0;
             Player.lifeRegen -= 30;
+        }
+        if (Electrified)
+        {
+            if (Player.lifeRegen > 0)
+            {
+                Player.lifeRegen = 0;
+            }
+            Player.lifeRegenTime = 0;
+            int minus = Player.Avalon().duraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumShield>()) ? 4 :
+                Player.Avalon().duraShield ? 6 : 8;
+            int minus2 = Player.Avalon().duraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>())
+                ? 16 : Player.Avalon().duraShield ? 24 : 32;
+            Player.lifeRegen -= minus;
+            if (Player.velocity.X != 0)
+            {
+                Player.lifeRegen -= minus2;
+            }
         }
     }
 

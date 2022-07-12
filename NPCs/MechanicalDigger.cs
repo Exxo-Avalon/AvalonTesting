@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Banners;
 using AvalonTesting.Items.Other;
 using Microsoft.Xna.Framework;
@@ -492,7 +492,7 @@ public abstract class Worm : ModNPC
                     }
 
                     NPC.soundDelay = (int)num195;
-                    SoundEngine.PlaySound(SoundID.Roar, NPC.position);
+                    SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/Roar_1"), NPC.position);
                 }
 
                 num193 = (float)Math.Sqrt((num191 * num191) + (num192 * num192));

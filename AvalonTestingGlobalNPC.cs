@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using AvalonTesting.Buffs;
 using AvalonTesting.Buffs.AdvancedBuffs;
@@ -80,22 +80,18 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             {
                 result += " tried to sell torches to a zombie.";
             }
-
             if (r == 1)
             {
                 result += " made a grave error...";
             }
-
             if (r == 2)
             {
                 result += " was slain...";
             }
-
             if (r == 3)
             {
                 result += " was hanged with a bug net.";
             }
-
             if (r == 4)
             {
                 result += " tried gold dust for the first time.";
@@ -1652,13 +1648,31 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
     }
 
+    public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+    {
+        if (npc.type is NPCID.BloodJelly or NPCID.Unicorn or NPCID.DarkMummy or NPCID.LightMummy && Main.rand.NextBool(9))
+        {
+            target.AddBuff(ModContent.BuffType<BrokenWeaponry>(), 60 * 7);
+        }
+        if (npc.type == NPCID.Mummy || npc.type == NPCID.FungoFish || npc.type == NPCID.Clinger || npc.type == ModContent.NPCType<GrossyFloat>())
+        {
+            if (Main.rand.NextBool(9))
+            {
+                target.AddBuff(ModContent.BuffType<Unloaded>(), 60 * 7);
+            }
+        }
+    }
     public override void OnKill(NPC npc)
     {
+        if (npc.HasBuff(ModContent.BuffType<Virulent>()))
+        {
+            int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity, ModContent.ProjectileType<Projectiles.PathogenicMist>(), 0, 0);
+            //Main.projectile[proj].velocity
+        }
         if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {
             AvalonTestingWorld.GenerateSulphur();
         }
-
         if (npc.type == NPCID.DungeonSpirit && Main.rand.NextBool(15) &&
             Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
         {

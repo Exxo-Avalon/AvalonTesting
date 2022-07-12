@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Logic;
+using AvalonTesting.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -22,6 +22,7 @@ public class TroxiniumSword : ModItem
         Item.autoReuse = true;
         Item.scale = 1.3f;
         Item.rare = ItemRarityID.Pink;
+        Item.autoReuse = true;
         Item.width = dims.Width;
         Item.useTime = 24;
         Item.knockBack = 4f;

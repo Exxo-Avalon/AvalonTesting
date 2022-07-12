@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Common;
+using AvalonTesting.Common;
 using AvalonTesting.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using On.Terraria;

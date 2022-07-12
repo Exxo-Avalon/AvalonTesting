@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Tile;
 
-class DarkMatterWood : ModItem
+class LoamBlock : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Dark Matter Wood");
+        DisplayName.SetDefault("Loam Block");
     }
 
     public override void SetDefaults()
@@ -16,10 +16,10 @@ class DarkMatterWood : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkMatterWood>();
+        Item.createTile = ModContent.TileType<Tiles.Loam>();
         Item.width = dims.Width;
-        Item.useTurn = true;
         Item.useTime = 10;
+        Item.useTurn = true;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
         Item.useAnimation = 15;

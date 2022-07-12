@@ -18,6 +18,7 @@ class NaquadahSword : ModItem
         Item.damage = 43;
         Item.useTurn = true;
         Item.scale = 1f;
+        Item.autoReuse = true;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.useTime = 24;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -47,43 +47,43 @@ class MysteryTome : ModItem
         if (x == 0) // Ancient
         {
             SoundEngine.PlaySound(SoundID.Item34, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.AncientSandstorm>(), Item.damage, 4);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.AncientSandstorm>(), Item.damage, 4, player.whoAmI);
             return false;
         }
         if (x == 1) // Devil's Scythe
         {
             SoundEngine.PlaySound(SoundID.Item8, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.DevilScythe>(), Item.damage, 5);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.DevilScythe>(), Item.damage, 5, player.whoAmI);
             return false;
         }
         if (x == 2) // Tome of the Distant Past
         {
             SoundEngine.PlaySound(SoundID.Item8, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.Bones>(), Item.damage, 4);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.Bones>(), Item.damage, 4, player.whoAmI);
             return false;
         }
         if (x == 3) // The Golden Flames
         {
             SoundEngine.PlaySound(SoundID.Item20, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.GoldenFire>(), Item.damage, 6);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.GoldenFire>(), Item.damage, 6, player.whoAmI);
             return false;
         }
         if (x == 4) // Focus Beam
         {
             SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Beam"), player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FocusBeam>(), Item.damage, 5);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FocusBeam>(), Item.damage, 5, player.whoAmI);
             return false;
         }
         if (x == 5) // Freeze Bolt
         {
             SoundEngine.PlaySound(SoundID.Item21, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FreezeBolt>(), Item.damage, 5);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FreezeBolt>(), Item.damage, 5, player.whoAmI);
             return false;
         }
         if (x == 6) // Terraspin
         {
             SoundEngine.PlaySound(SoundID.Item84, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.TerraTyphoon>(), Item.damage, 5);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.TerraTyphoon>(), Item.damage, 5, player.whoAmI);
             return false;
         }
 

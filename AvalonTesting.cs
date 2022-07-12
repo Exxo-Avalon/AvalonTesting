@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using AvalonTesting.Common;
 using AvalonTesting.Network;
+using AvalonTesting.Players;
+using AvalonTesting.Projectiles.Torches;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -49,6 +52,32 @@ public class AvalonTesting : Mod
     /// <inheritdoc />
     public override void Load()
     {
+        ExxoPlayer.torches = new Dictionary<int, int>()
+        {
+            { ItemID.Torch, ModContent.ProjectileType<Torch>() },
+            { ItemID.BlueTorch, ModContent.ProjectileType<BlueTorch>() },
+            { ItemID.RedTorch, ModContent.ProjectileType<RedTorch>() },
+            { ItemID.GreenTorch, ModContent.ProjectileType<GreenTorch>() },
+            { ItemID.PurpleTorch, ModContent.ProjectileType<PurpleTorch>() },
+            { ItemID.WhiteTorch, ModContent.ProjectileType<WhiteTorch>() },
+            { ItemID.YellowTorch, ModContent.ProjectileType<YellowTorch>() },
+            { ItemID.DemonTorch, ModContent.ProjectileType<DemonTorch>() },
+            { ItemID.CursedTorch, ModContent.ProjectileType<CursedTorch>() },
+            { ItemID.IceTorch, ModContent.ProjectileType<IceTorch>() },
+            { ItemID.OrangeTorch, ModContent.ProjectileType<OrangeTorch>() },
+            { ItemID.IchorTorch, ModContent.ProjectileType<IchorTorch>() },
+            { ItemID.UltrabrightTorch, ModContent.ProjectileType<UltrabrightTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.JungleTorch>(), ModContent.ProjectileType<JungleTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.PathogenTorch>(), ModContent.ProjectileType<PathogenTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.SlimeTorch>(), ModContent.ProjectileType<SlimeTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.CyanTorch>(), ModContent.ProjectileType<CyanTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.LimeTorch>(), ModContent.ProjectileType<LimeTorch>() },
+            { ModContent.ItemType<Items.Placeable.Light.BrownTorch>(), ModContent.ProjectileType<BrownTorch>() },
+            { ItemID.BoneTorch, ModContent.ProjectileType<BoneTorch>() },
+            { ItemID.RainbowTorch, ModContent.ProjectileType<RainbowTorch>() },
+            { ItemID.PinkTorch, ModContent.ProjectileType<PinkTorch>() },
+        };
+
         // ----------- Server/Client ----------- //
         while (ModHook.RegisteredHooks.TryDequeue(out ModHook? hook))
         {
@@ -63,7 +92,16 @@ public class AvalonTesting : Mod
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
     }
-
+    public override void Unload()
+    {
+        ExxoPlayer.torches = null;
+        // TODO: FIGURE OUT HOW TO LOAD ORIGINAL TEXTURES UPON UNLOADING AVALON.
+        //if (Main.netMode != NetmodeID.Server)
+        //{
+        //    Main.logoTexture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo");
+        //    Main.logo2Texture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo2");
+        //}
+    }
     /// <inheritdoc />
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
@@ -78,7 +116,13 @@ public class AvalonTesting : Mod
                 $"PacketHandler with message index {msgIndex.ToString(CultureInfo.InvariantCulture)} does not exist");
         }
     }
-
+    public override void AddRecipes()
+    {
+        if (ImkSushisMod != null)
+        {
+            SushiRecipes.CreateRecipes(ImkSushisMod);
+        }
+    }
     private void ReplaceVanillaTextures()
     {
         // Items

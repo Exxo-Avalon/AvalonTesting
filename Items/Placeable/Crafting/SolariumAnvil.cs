@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,7 +12,6 @@ class SolariumAnvil : ModItem
         DisplayName.SetDefault("Solarium Anvil");
         Tooltip.SetDefault("Used to craft high-end items");
     }
-
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -27,5 +27,12 @@ class SolariumAnvil : ModItem
         Item.value = 75000;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 16)
+            .AddIngredient(ModContent.ItemType<Material.HellsteelPlate>(), 5)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

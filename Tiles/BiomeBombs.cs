@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -452,7 +452,7 @@ public class BiomeBombs : ModTile
                             WorldGen.SquareTileFrame(k, l);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == 0 || type == ModContent.TileType<TropicalMud>())
+                        else if (type == 0 || type == ModContent.TileType<Loam>())
                         {
                             Main.tile[k, l].TileType = 59;
                             WorldGen.SquareTileFrame(k, l);
@@ -594,7 +594,7 @@ public class BiomeBombs : ModTile
                         }
                         else if (type == 0 || type == 59)
                         {
-                            Main.tile[k, l].TileType = (ushort)ModContent.TileType<TropicalMud>();
+                            Main.tile[k, l].TileType = (ushort)ModContent.TileType<Loam>();
                             WorldGen.SquareTileFrame(k, l);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
