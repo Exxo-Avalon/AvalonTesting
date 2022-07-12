@@ -10,7 +10,7 @@ class ElixirofLife : ModItem
     {
         DisplayName.SetDefault("Elixir of Life");
         Tooltip.SetDefault("'It refreshes you'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

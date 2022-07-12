@@ -11,7 +11,7 @@ class AdvMiningPotion : ModItem
     {
         DisplayName.SetDefault("Mining Elixir");
         Tooltip.SetDefault("Increases mining speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

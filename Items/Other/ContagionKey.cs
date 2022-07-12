@@ -10,7 +10,7 @@ internal class ContagionKey : ModItem
     {
         DisplayName.SetDefault("Contagion Key");
         Tooltip.SetDefault("Opens a Contagion Chest in the Dungeon");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

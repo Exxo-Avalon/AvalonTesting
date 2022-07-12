@@ -11,7 +11,7 @@ class AdvLeapingPotion : ModItem
     {
         DisplayName.SetDefault("Leaping Elixir");
         Tooltip.SetDefault("Increases vertical acceleration");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

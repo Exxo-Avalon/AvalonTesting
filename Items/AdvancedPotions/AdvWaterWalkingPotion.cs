@@ -11,7 +11,7 @@ class AdvWaterWalkingPotion : ModItem
     {
         DisplayName.SetDefault("Water Walking Elixir");
         Tooltip.SetDefault("Allows the ability to walk on liquids");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

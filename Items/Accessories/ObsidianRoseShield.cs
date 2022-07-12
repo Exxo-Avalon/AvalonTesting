@@ -11,7 +11,7 @@ class ObsidianRoseShield : ModItem
     {
         DisplayName.SetDefault("Obsidian Rose Shield");
         Tooltip.SetDefault("Reduces damage from touching lava\nGrants immunity to fire blocks and knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -15,7 +15,7 @@ internal class AncientHeadpiece : ModItem
     {
         DisplayName.SetDefault("Ancient Headpiece");
         Tooltip.SetDefault("20% increased damage\n5% increased critical strike chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

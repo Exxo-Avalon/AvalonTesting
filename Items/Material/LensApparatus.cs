@@ -10,7 +10,7 @@ class LensApparatus : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Lens Apparatus");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

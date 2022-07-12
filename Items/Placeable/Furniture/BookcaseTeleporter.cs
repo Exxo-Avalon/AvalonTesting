@@ -10,7 +10,7 @@ class BookcaseTeleporter : ModItem
     {
         DisplayName.SetDefault("Bookcase Teleporter");
         Tooltip.SetDefault("'What a great way to hide a teleporter'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

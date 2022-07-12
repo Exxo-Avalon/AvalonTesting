@@ -9,7 +9,7 @@ class BerserkerBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserker Bullet");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 300;
+        SacrificeTotal = 300;
     }
 
     public override void SetDefaults()

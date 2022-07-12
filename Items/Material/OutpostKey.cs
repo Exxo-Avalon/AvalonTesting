@@ -10,7 +10,7 @@ public class OutpostKey : ModItem
     {
         DisplayName.SetDefault("Outpost Key");
         Tooltip.SetDefault("Opens the Tuhrtl Outpost door");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

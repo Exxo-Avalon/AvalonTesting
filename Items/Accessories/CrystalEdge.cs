@@ -11,7 +11,7 @@ class CrystalEdge : ModItem
     {
         DisplayName.SetDefault("Crystal Edge");
         Tooltip.SetDefault("Increases damage by 15");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

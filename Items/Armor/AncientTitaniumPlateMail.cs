@@ -12,7 +12,7 @@ class AncientTitaniumPlateMail : ModItem
     {
         DisplayName.SetDefault("Ancient Titanium Plate Mail");
         Tooltip.SetDefault("10% increased melee damage and speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

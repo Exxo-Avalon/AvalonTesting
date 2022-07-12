@@ -11,7 +11,7 @@ class HiddenBlade : ModItem
     {
         DisplayName.SetDefault("Hidden Blade");
         Tooltip.SetDefault("Immunity to Broken Weaponry");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

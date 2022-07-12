@@ -14,7 +14,7 @@ internal class BestialBand : ModItem
         DisplayName.SetDefault("Bestial Band");
         Tooltip.SetDefault(
             "Turns the holder into merfolk upon entering water\nTurns the holder into varefolk upon entering lava\nTurns the holder into a werewolf at night\nMinor increase to all stats");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

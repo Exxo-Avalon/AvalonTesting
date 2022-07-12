@@ -11,7 +11,7 @@ class HeartoftheGolem : ModItem
     {
         DisplayName.SetDefault("Heart of the Golem");
         Tooltip.SetDefault("Grants a 5% chance for enemies to drop a platinum heart");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

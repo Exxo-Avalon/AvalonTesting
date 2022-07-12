@@ -10,7 +10,7 @@ class MushroomBomb : ModItem
     {
         DisplayName.SetDefault("Mushroom Bomb");
         Tooltip.SetDefault("Converts tiles to Mushrooms in a large radius\nNot the kind you think.");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
+        SacrificeTotal = 5;
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ class ChristmasTome : ModItem
     {
         DisplayName.SetDefault("Christmas Tome");
         Tooltip.SetDefault("Tome\n+3% critical strike chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

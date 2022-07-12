@@ -10,7 +10,7 @@ class NaquadahDrill : ModItem
     {
         DisplayName.SetDefault("Naquadah Drill");
         Tooltip.SetDefault("Can mine Adamantite, Titanium, and Troxinium");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

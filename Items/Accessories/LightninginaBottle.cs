@@ -11,7 +11,7 @@ class LightninginaBottle : ModItem
     {
         DisplayName.SetDefault("Lightning in a Bottle");
         Tooltip.SetDefault("Lightning strikes you when damaged");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

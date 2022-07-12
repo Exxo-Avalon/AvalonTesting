@@ -11,7 +11,7 @@ class RubybeadHerb : ModItem
     {
         DisplayName.SetDefault("Rubybead Herb");
         Tooltip.SetDefault("A mystical object containing an unknown force");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

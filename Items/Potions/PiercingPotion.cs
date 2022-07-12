@@ -10,7 +10,7 @@ class PiercingPotion : ModItem
     {
         DisplayName.SetDefault("Piercing Potion");
         Tooltip.SetDefault("Increases projectile penetration");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

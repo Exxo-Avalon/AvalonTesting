@@ -11,7 +11,7 @@ class AdvShadowPotion : ModItem
     {
         DisplayName.SetDefault("Shadow Elixir");
         Tooltip.SetDefault("Enables teleportation to the cursor");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

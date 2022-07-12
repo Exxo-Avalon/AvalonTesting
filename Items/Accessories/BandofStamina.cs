@@ -12,7 +12,7 @@ internal class BandofStamina : ModItem
     {
         DisplayName.SetDefault("Band of Stamina");
         Tooltip.SetDefault("Increases maximum stamina by 90");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

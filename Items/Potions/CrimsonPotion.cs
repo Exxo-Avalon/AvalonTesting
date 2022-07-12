@@ -11,7 +11,7 @@ class CrimsonPotion : ModItem
     {
         DisplayName.SetDefault("Aura Potion");
         Tooltip.SetDefault("On-screen enemies take damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

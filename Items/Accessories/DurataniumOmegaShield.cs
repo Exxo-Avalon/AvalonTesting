@@ -11,7 +11,7 @@ class DurataniumOmegaShield : ModItem
     {
         DisplayName.SetDefault("Duratanium Omega Shield");
         Tooltip.SetDefault("Increases defense and regenerates life when struck\nGreatly slows the effects of damage over time debuffs");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class NullEmblem : ModItem
     {
         DisplayName.SetDefault("Null Emblem");
         Tooltip.SetDefault("Craft it into a Wall of Flesh Emblem");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

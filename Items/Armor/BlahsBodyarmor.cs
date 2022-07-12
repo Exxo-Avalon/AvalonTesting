@@ -12,7 +12,7 @@ class BlahsBodyarmor : ModItem
     {
         DisplayName.SetDefault("Blah's Bodyarmor");
         Tooltip.SetDefault("30% decreased mana usage and increases your max number of minions by 6\nIncreases maximum mana by 500");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

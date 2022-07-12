@@ -11,7 +11,7 @@ class AdvGauntletPotion : ModItem
     {
         DisplayName.SetDefault("Gauntlet Elixir");
         Tooltip.SetDefault("-6 defense, +25% melee damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

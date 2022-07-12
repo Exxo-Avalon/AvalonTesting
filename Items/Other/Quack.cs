@@ -13,7 +13,7 @@ class Quack : ModItem
     {
         DisplayName.SetDefault("Quack");
         Tooltip.SetDefault("'May annoy others'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

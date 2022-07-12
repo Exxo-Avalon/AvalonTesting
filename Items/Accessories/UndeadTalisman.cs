@@ -11,7 +11,7 @@ class UndeadTalisman : ModItem
     {
         DisplayName.SetDefault("Undead Talisman");
         Tooltip.SetDefault("Provides 20 defense against undead monsters");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

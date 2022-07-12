@@ -13,7 +13,7 @@ class ChantoftheWaterDragon : ModItem
     {
         DisplayName.SetDefault("Chant of the Water Dragon");
         Tooltip.SetDefault("Tome\n+20% magic damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class PalladiumShield : ModItem
     {
         DisplayName.SetDefault("Palladium Shield");
         Tooltip.SetDefault("Regenerates health when struck");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

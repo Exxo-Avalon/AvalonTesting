@@ -11,7 +11,7 @@ class BlahsHeadguard : ModItem
     {
         DisplayName.SetDefault("Blah's Headguard");
         Tooltip.SetDefault("35% increased damage\n11% increased critical strike chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

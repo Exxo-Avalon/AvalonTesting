@@ -11,7 +11,7 @@ class ForsakenCross : ModItem
     {
         DisplayName.SetDefault("Forsaken Cross");
         Tooltip.SetDefault("Increases damage and critical strike chance by 7% while invincible\nIncreases length of invincibility after taking damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

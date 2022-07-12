@@ -11,7 +11,7 @@ class StickyCharm : ModItem
     {
         DisplayName.SetDefault("Sticky Charm");
         Tooltip.SetDefault("Reduces damage taken by 5% and negates fall damage\nProvides immunity to slimes");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

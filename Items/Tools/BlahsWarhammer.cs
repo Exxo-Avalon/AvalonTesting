@@ -11,7 +11,7 @@ class BlahsWarhammer : ModItem
     {
         DisplayName.SetDefault("Blah's Warhammer");
         Tooltip.SetDefault("You shouldn't have this");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

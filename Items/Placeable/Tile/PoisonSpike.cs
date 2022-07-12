@@ -9,7 +9,7 @@ class PoisonSpike : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Poison Spike");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

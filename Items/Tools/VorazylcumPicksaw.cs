@@ -11,7 +11,7 @@ class VorazylcumPicksaw : ModItem
     {
         DisplayName.SetDefault("Vorazylcum Picksaw");
         Tooltip.SetDefault("Can mine Oblivion Ore");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

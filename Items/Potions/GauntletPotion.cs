@@ -10,7 +10,7 @@ class GauntletPotion : ModItem
     {
         DisplayName.SetDefault("Gauntlet Potion");
         Tooltip.SetDefault("-6 defense, +12% melee damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class ShadowCharm : ModItem
     {
         DisplayName.SetDefault("Shadow Charm");
         Tooltip.SetDefault("The holder has an afterimage when moving\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

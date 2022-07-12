@@ -7,7 +7,7 @@ public class FrostCanister : ModItem
 {
     public override void SetStaticDefaults()
     {
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
+        SacrificeTotal = 99;
     }
     public override void SetDefaults()
     {

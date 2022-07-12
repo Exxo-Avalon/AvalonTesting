@@ -11,7 +11,7 @@ class AdvTitanPotion : ModItem
     {
         DisplayName.SetDefault("Titan Elixir");
         Tooltip.SetDefault("Increases knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

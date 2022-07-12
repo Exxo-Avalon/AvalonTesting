@@ -10,7 +10,7 @@ class ZincWatch : ModItem
     {
         DisplayName.SetDefault("Zinc Watch");
         Tooltip.SetDefault("Tells the time");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

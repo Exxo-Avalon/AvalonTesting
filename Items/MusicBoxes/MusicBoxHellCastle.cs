@@ -10,7 +10,7 @@ class MusicBoxHellCastle : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Hellcastle)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

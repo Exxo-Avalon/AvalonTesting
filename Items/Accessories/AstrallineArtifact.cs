@@ -12,7 +12,7 @@ public class AstrallineArtifact : ModItem
         DisplayName.SetDefault("Astralline Artifact");
         Tooltip.SetDefault(
             "Allows you to astral project\nRun into enemies to mark them while astral projecting\nEnemies marked will take triple damage for 45 seconds");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

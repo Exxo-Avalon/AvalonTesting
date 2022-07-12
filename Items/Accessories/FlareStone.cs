@@ -11,7 +11,7 @@ class FlareStone : ModItem
     {
         DisplayName.SetDefault("Flare Stone");
         Tooltip.SetDefault("Damage taken from lava contact is reduced\nWeapons inflict fire damage and provides immunity to fire blocks");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

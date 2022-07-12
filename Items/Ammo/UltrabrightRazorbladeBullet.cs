@@ -11,7 +11,7 @@ class UltrabrightRazorbladeBullet : ModItem
     {
         DisplayName.SetDefault("Ultrabright Razorblade Bullet");
         Tooltip.SetDefault("'Randomizer be like'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 500;
+        SacrificeTotal = 500;
     }
 
     public override void SetDefaults()

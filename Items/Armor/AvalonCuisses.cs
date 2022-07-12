@@ -14,7 +14,7 @@ class AvalonCuisses : ModItem
         Tooltip.SetDefault("30% increased critical damage"
                            + "\n10% increased melee speed"
                            + "\nLightning strikes when damaged");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

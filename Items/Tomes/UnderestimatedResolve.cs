@@ -12,7 +12,7 @@ class UnderestimatedResolve : ModItem
     {
         DisplayName.SetDefault("Underestimated Resolve");
         Tooltip.SetDefault("Tome\n+20 HP, +5% ranged damage\n+4 defense");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

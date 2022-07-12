@@ -11,7 +11,7 @@ class FightoftheBumblebee : ModItem
     {
         DisplayName.SetDefault("Fight of the Bumblebee");
         Tooltip.SetDefault("'Dan D. Lyon'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

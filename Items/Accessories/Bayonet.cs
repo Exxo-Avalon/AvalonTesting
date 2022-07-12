@@ -11,7 +11,7 @@ class Bayonet : ModItem
     {
         DisplayName.SetDefault("Bayonet");
         Tooltip.SetDefault("Immunity to Broken Weaponry and Unloaded");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

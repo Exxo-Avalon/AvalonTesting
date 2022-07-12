@@ -10,7 +10,7 @@ public class DragonsBondage : ModItem
     {
         DisplayName.SetDefault("Dragon's Bondage");
         Tooltip.SetDefault("'Your victory weighs on you... literally.'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

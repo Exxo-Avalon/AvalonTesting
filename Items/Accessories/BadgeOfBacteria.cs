@@ -12,7 +12,7 @@ public class BadgeOfBacteria : ModItem
         DisplayName.SetDefault("Badge of Bacteria");
         Tooltip.SetDefault(
             "Increases damage by 8 after being hit\nAttackers also take damage for a short time after you are hit");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

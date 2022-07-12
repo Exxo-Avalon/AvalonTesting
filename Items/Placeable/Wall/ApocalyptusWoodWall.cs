@@ -9,7 +9,7 @@ class ApocalyptusWoodWall : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Apocalyptus Wood Wall");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 400;
+        SacrificeTotal = 400;
     }
 
     public override void SetDefaults()

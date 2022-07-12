@@ -10,7 +10,7 @@ class WisdomPotion : ModItem
     {
         DisplayName.SetDefault("Wisdom Potion");
         Tooltip.SetDefault("-8% magic damage, +60 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

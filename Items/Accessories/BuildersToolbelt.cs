@@ -11,7 +11,7 @@ class BuildersToolbelt : ModItem
     {
         DisplayName.SetDefault("Builder's Toolbelt");
         Tooltip.SetDefault("Increases block range by 10 and wall and tile placement speed by 45% and tells time and shows position\nCan craft Tinkerer's Workshop, Anvil, Furnace, and Work Bench items by hand, and the holder can float");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -10,7 +10,7 @@ class TroxiniumDrill : ModItem
     {
         DisplayName.SetDefault("Troxinium Drill");
         Tooltip.SetDefault("Can mine Ferozium");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

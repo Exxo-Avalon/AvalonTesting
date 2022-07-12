@@ -10,7 +10,7 @@ class ShadowPotion : ModItem
     {
         DisplayName.SetDefault("Shadow Potion");
         Tooltip.SetDefault("Enables teleportation to the cursor");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()
