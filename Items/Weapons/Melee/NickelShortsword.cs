@@ -22,7 +22,9 @@ class NickelShortsword : ModItem
         Item.useTime = 11;
         Item.knockBack = 4f;
         Item.DamageType = DamageClass.Melee;
-        Item.useStyle = ItemUseStyleID.Thrust;
+        Item.shootSpeed = 2.1f;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.NickelShortsword>();
+        Item.useStyle = ItemUseStyleID.Rapier;
         Item.value = 1800;
         Item.useAnimation = 11;
         Item.height = dims.Height;

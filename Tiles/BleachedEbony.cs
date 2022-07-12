@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Tiles;
 
-public class TropicalWood : ModTile
+public class BleachedEbony : ModTile
 {
     public override void SetStaticDefaults()
     {

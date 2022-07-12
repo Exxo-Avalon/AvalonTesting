@@ -45,8 +45,7 @@ internal class Shrines : GenPass
             ModContent.WallType<Walls.OrangeBrickUnsafe>(),
             ModContent.WallType<Walls.OrangeTiledUnsafe>(),
             ModContent.WallType<Walls.OrangeSlabUnsafe>(),
-            WallID.IceBrick,
-            ModContent.WallType<Walls.ObsidianLavaTube>()
+            WallID.IceBrick
         };
         for (int q = 0; q < 4; q++)
         {

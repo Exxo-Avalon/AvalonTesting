@@ -22,7 +22,9 @@ class ZincShortsword : ModItem
         Item.useTime = 10;
         Item.knockBack = 4f;
         Item.DamageType = DamageClass.Melee;
-        Item.useStyle = ItemUseStyleID.Thrust;
+        Item.useStyle = ItemUseStyleID.Rapier;
+        Item.shootSpeed = 2.1f;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ZincShortsword>();
         Item.value = 4500;
         Item.useAnimation = 10;
         Item.height = dims.Height;

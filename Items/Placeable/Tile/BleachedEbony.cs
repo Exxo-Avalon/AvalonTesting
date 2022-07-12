@@ -17,7 +17,7 @@ class BleachedEbony : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.TropicalWood>();
+        Item.createTile = ModContent.TileType<Tiles.BleachedEbony>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;

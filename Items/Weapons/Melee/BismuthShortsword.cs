@@ -21,8 +21,10 @@ class BismuthShortsword : ModItem
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 4f;
+        Item.shootSpeed = 2.1f;
         Item.DamageType = DamageClass.Melee;
-        Item.useStyle = ItemUseStyleID.Thrust;
+        Item.useStyle = ItemUseStyleID.Rapier;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BismuthShortsword>();
         Item.value = 9000;
         Item.useAnimation = 10;
         Item.height = dims.Height;

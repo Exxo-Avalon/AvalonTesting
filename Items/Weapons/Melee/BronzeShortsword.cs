@@ -14,5 +14,10 @@ class BronzeShortsword : ModItem
     public override void SetDefaults()
     {
         Item.CloneDefaults(ItemID.TinShortsword);
+        Item.damage = 7;
+        Item.shootSpeed = 2.1f;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BronzeShortsword>();
+        Item.scale = 0.95f;
+        Item.value = 3500;
     }
 }
