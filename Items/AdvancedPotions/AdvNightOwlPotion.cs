@@ -11,6 +11,7 @@ class AdvNightOwlPotion : ModItem
     {
         DisplayName.SetDefault("Night Owl Elixir");
         Tooltip.SetDefault("Increases night vision");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

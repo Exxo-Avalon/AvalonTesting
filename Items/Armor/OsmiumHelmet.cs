@@ -12,6 +12,7 @@ class OsmiumHelmet : ModItem
     {
         DisplayName.SetDefault("Osmium Helmet");
         Tooltip.SetDefault("12% increased ranged damage\nIncreases maximum mana by 40");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

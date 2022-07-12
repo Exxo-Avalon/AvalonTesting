@@ -10,6 +10,7 @@ public class PlayerSensor : ModItem
     {
         DisplayName.SetDefault("Player Sensor");
         Tooltip.SetDefault("Activates when a player collides with it");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
     }
 
     public override void SetDefaults()

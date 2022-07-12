@@ -10,6 +10,7 @@ class DesertKeyMold : ModItem
     {
         DisplayName.SetDefault("Desert Key Mold");
         Tooltip.SetDefault("Used for crafting a Desert Key");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class RhodiumPickaxe : ModItem
     {
         DisplayName.SetDefault("Rhodium Pickaxe");
         Tooltip.SetDefault("Can mine Hellstone");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

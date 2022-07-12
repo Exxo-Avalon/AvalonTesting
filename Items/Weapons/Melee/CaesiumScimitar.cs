@@ -12,6 +12,7 @@ class CaesiumScimitar : ModItem
     {
         DisplayName.SetDefault("Caesium Scimitar");
         Tooltip.SetDefault("Explodes foes on hit");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

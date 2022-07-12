@@ -11,6 +11,7 @@ class CaesiumRepeater : ModItem
     {
         DisplayName.SetDefault("Caesium Crossbow");
         Tooltip.SetDefault("Converts wooden arrows into hellfire arrows");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

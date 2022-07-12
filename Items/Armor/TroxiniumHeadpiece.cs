@@ -12,6 +12,7 @@ class TroxiniumHeadpiece : ModItem
     {
         DisplayName.SetDefault("Troxinium Headpiece");
         Tooltip.SetDefault("9% increased ranged damage\n30% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

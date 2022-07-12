@@ -11,6 +11,7 @@ class ToxinShard : ModItem
     {
         DisplayName.SetDefault("Toxin Shard");
         Tooltip.SetDefault("'A fragment of jungle creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

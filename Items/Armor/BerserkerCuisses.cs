@@ -12,6 +12,7 @@ class BerserkerCuisses : ModItem
     {
         DisplayName.SetDefault("Berserker Cuisses");
         Tooltip.SetDefault("Melee stealth when standing still\nLightning strikes when damaged");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class SpikeRailgun : ModItem
     {
         DisplayName.SetDefault("Spike Railgun");
         Tooltip.SetDefault("Uses spikes for ammo\nShoots spikes at extreme velocity");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

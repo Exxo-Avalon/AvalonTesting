@@ -10,6 +10,7 @@ class UnvolanditeGreatsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Unvolandite Greatsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

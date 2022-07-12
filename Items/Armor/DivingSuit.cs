@@ -12,6 +12,7 @@ class DivingSuit : ModItem
     {
         DisplayName.SetDefault("Diving Suit");
         Tooltip.SetDefault("Greatly extends underwater breathing\n10% increased damage while in water");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

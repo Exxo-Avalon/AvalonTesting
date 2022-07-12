@@ -240,12 +240,12 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     if (tile.WallType == WallID.HardenedSand)
                     {
                         // Hardened Snotsand wall
-                        //tile.WallType = ModContent.WallType<>()
+                        tile.WallType = (ushort)ModContent.WallType<HardenedSnotsandWall>();
                     }
                     else if (tile.WallType == WallID.Sandstone)
                     {
                         // Snotsandstone wall
-                        //tile.WallType = ModContent.WallType<>()
+                        tile.WallType = (ushort)ModContent.WallType<SnotsandstoneWall>();
                     }
 
                     switch (tile.TileType)

@@ -10,6 +10,7 @@ class HallowedGreatsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hallowed Greatsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

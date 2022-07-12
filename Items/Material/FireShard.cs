@@ -11,6 +11,7 @@ class FireShard : ModItem
     {
         DisplayName.SetDefault("Fire Shard");
         Tooltip.SetDefault("'A fragment of fiery creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class BismuthChainmail : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Chainmail");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void AddRecipes()
     {

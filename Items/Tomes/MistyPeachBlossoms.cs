@@ -12,6 +12,7 @@ class MistyPeachBlossoms : ModItem
     {
         DisplayName.SetDefault("Misty Peach Blossoms");
         Tooltip.SetDefault("Tome\n+20 HP\n+20 mana");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

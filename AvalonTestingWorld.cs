@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
@@ -13,6 +14,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using Terraria.WorldBuilding;
 
 namespace AvalonTesting;
 

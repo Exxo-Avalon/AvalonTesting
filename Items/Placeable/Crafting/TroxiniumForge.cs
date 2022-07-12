@@ -10,6 +10,7 @@ class TroxiniumForge : ModItem
     {
         DisplayName.SetDefault("Troxinium Forge");
         Tooltip.SetDefault("Used to smelt adamantite, titanium, and troxinium ore");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

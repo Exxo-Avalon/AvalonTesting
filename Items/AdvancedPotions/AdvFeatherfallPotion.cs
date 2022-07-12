@@ -11,6 +11,7 @@ class AdvFeatherfallPotion : ModItem
     {
         DisplayName.SetDefault("Featherfall Elixir");
         Tooltip.SetDefault("Slows falling speed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

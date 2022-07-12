@@ -17,7 +17,7 @@ public class RecipeSystem : ModSystem
             RecipeGroup group0 = RecipeGroup.recipeGroups[index];
             group0.ValidItems.Add(ModContent.ItemType<ApocalyptusWood>());
             group0.ValidItems.Add(ModContent.ItemType<Coughwood>());
-            group0.ValidItems.Add(ModContent.ItemType<TropicalWood>());
+            group0.ValidItems.Add(ModContent.ItemType<BleachedEbony>());
             group0.ValidItems.Add(ModContent.ItemType<ResistantWood>());
         }
 

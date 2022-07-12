@@ -9,6 +9,7 @@ class ZincAxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zinc Axe");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void SetDefaults()
     {

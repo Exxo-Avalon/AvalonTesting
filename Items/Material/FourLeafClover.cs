@@ -11,6 +11,7 @@ class FourLeafClover : ModItem
     {
         DisplayName.SetDefault("Four Leaf Clover");
         Tooltip.SetDefault("You are very lucky to have found this!");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class PathogenMist : ModItem
     {
         DisplayName.SetDefault("Pathogen Mist");
         Tooltip.SetDefault("Fires a blast of infected mist");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

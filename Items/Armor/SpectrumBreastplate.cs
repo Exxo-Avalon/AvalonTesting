@@ -13,6 +13,7 @@ class SpectrumBreastplate : ModItem
     {
         DisplayName.SetDefault("Spectrum Breastplate");
         Tooltip.SetDefault("Ranged projectiles have a chance to split in two");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class HumidityCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Humidity");
         Tooltip.SetDefault("Nearby players have cold resistance");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

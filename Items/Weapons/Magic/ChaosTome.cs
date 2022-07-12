@@ -10,6 +10,7 @@ class ChaosTome : ModItem
     {
         DisplayName.SetDefault("Chaos Tome");
         Tooltip.SetDefault("Casts a chaos bolt");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

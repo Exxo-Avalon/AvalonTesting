@@ -9,6 +9,7 @@ class LeadBrick : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Lead Brick");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

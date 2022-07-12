@@ -11,6 +11,7 @@ class GleamingTwilight : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Gleaming Twilight");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class GreaterStaminaPotion : ModItem
     {
         DisplayName.SetDefault("Greater Stamina Potion");
         Tooltip.SetDefault("Restores 95 stamina");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class SolariumStar : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Solarium Star");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

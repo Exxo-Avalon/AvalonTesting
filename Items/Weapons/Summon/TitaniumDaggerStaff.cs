@@ -12,7 +12,8 @@ public class TitaniumDaggerStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Titanium Dagger Staff");
-        Tooltip.SetDefault("Summons an titanium dagger to fight for you");
+        Tooltip.SetDefault("Summons a titanium dagger to fight for you");
+        SacrificeTotal = 1;
         ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
         ItemID.Sets.LockOnIgnoresCollision[Item.type] = false;
     }

@@ -11,6 +11,7 @@ class TortureCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Torture");
         Tooltip.SetDefault("Nearby players get +4% critical strike chance");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

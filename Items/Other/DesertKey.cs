@@ -10,6 +10,7 @@ internal class DesertKey : ModItem
     {
         DisplayName.SetDefault("Desert Key");
         Tooltip.SetDefault("Unlocks a Desert Chest in the dungeon");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -9,6 +9,7 @@ class ResistantWoodCandelabra : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Resistant Wood Candelabra");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

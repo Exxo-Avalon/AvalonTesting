@@ -9,6 +9,7 @@ class DragonScale : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dragon Scale");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

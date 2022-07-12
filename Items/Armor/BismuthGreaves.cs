@@ -11,6 +11,7 @@ class BismuthGreaves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Greaves");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override void AddRecipes()
     {

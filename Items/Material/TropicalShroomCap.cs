@@ -10,6 +10,7 @@ class TropicalShroomCap : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tropical Shroom Cap");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
         Item.staff[Item.type] = true;
     }
 

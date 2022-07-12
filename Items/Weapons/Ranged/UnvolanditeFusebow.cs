@@ -12,6 +12,7 @@ class UnvolanditeFusebow : ModItem
     {
         DisplayName.SetDefault("Unvolandite Fusebow");
         Tooltip.SetDefault("Fires a spread of pulse arrows that explode on the final impact");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

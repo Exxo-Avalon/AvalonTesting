@@ -9,6 +9,7 @@ class SpikedBlastShell : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Spiked Blast Shell");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

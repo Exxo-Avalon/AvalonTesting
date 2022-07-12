@@ -11,6 +11,7 @@ class MysticalTomePage : ModItem
     {
         DisplayName.SetDefault("Mystical Tome Page");
         Tooltip.SetDefault("Used to craft tomes");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

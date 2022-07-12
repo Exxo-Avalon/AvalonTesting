@@ -158,7 +158,7 @@ public class PoisonDartFrog : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity * 0.8f,
                 Mod.Find<ModGore>("FrogGore1").Type);

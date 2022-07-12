@@ -11,6 +11,7 @@ class SnotsandBomb : ModItem
     {
         DisplayName.SetDefault("Snotsand Bomb");
         Tooltip.SetDefault("An explosion of snotsand that will not destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class NaquadahSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Naquadah Sword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

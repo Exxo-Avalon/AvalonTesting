@@ -11,6 +11,7 @@ class AdvInfernoPotion : ModItem
     {
         DisplayName.SetDefault("Inferno Elixir");
         Tooltip.SetDefault("Ignites nearby enemies");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

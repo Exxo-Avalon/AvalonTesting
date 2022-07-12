@@ -11,6 +11,7 @@ class AdvCalmingPotion : ModItem
     {
         DisplayName.SetDefault("Calming Elixir");
         Tooltip.SetDefault("Reduces enemy aggression and spawn rate");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

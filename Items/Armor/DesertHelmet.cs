@@ -12,6 +12,7 @@ class DesertHelmet : ModItem
     {
         DisplayName.SetDefault("Desert Helmet");
         Tooltip.SetDefault("5% decreased mana usage\n5% increased ranged damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

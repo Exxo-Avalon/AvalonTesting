@@ -12,6 +12,7 @@ class MoltenHeadgear : ModItem
     {
         DisplayName.SetDefault("Molten Headgear");
         Tooltip.SetDefault("Ranged helmet");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

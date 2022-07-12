@@ -9,6 +9,7 @@ class VenomSpike : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Venom Spike");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

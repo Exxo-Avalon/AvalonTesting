@@ -11,6 +11,7 @@ class KingStingMask : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("King Sting Mask");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

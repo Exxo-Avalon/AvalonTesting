@@ -15,6 +15,7 @@ class BlahsEnergyBlade : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Blah's Energy Blade");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

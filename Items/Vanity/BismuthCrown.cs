@@ -10,6 +10,7 @@ class BismuthCrown : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Crown");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

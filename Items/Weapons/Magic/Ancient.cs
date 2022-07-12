@@ -13,6 +13,7 @@ class Ancient : ModItem
     {
         DisplayName.SetDefault("Ancient");
         Tooltip.SetDefault("Creates a sandstorm");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

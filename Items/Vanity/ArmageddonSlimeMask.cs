@@ -11,6 +11,7 @@ class ArmageddonSlimeMask : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Armageddon Slime Mask");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class SonicScrewdriverMkIII : ModItem
     {
         DisplayName.SetDefault("Sonic Screwdriver Mk III");
         Tooltip.SetDefault("Reveals treasures, ores, mobs, and dangers\nTells time, shows position, and can open all locks");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class EggmanTrophy : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Eggman Trophy");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()
@@ -21,7 +22,7 @@ class EggmanTrophy : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.BossTrophy>();
         Item.placeStyle = 5;
-        Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
+        Item.rare = ModContent.RarityType<ElectricBlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;

@@ -11,6 +11,7 @@ class AdvGillsPotion : ModItem
     {
         DisplayName.SetDefault("Gills Elixir");
         Tooltip.SetDefault("Breathe water instead of air");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

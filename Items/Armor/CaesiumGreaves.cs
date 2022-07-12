@@ -12,6 +12,7 @@ class CaesiumGreaves : ModItem
     {
         DisplayName.SetDefault("Caesium Greaves");
         Tooltip.SetDefault("15% increased melee and movement speed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

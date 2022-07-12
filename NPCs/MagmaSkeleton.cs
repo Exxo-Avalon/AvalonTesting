@@ -125,7 +125,7 @@ public class MagmaSkeleton : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             for (int i = 0; i < 20; i++)
             {

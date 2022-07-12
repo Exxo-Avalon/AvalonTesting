@@ -13,6 +13,7 @@ class PrimeStaff : ModItem
     {
         DisplayName.SetDefault("Prime Staff");
         Tooltip.SetDefault("Summons the might of Skeletron to fight for you");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

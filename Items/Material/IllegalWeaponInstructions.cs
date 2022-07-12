@@ -10,6 +10,7 @@ class IllegalWeaponInstructions : ModItem
     {
         DisplayName.SetDefault("Illegal Weapon Instructions");
         Tooltip.SetDefault("'Read if you dare'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

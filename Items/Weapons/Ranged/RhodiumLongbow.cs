@@ -10,6 +10,7 @@ class RhodiumLongbow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Rhodium Longbow");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {
@@ -30,5 +31,12 @@ class RhodiumLongbow : ModItem
         Item.value = Item.sellPrice(0, 0, 50);
         Item.useAnimation = 18;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.RhodiumBar>(), 13)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 2)
+            .AddTile(TileID.Anvils).Register();
     }
 }

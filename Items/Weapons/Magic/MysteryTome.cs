@@ -13,6 +13,7 @@ class MysteryTome : ModItem
     {
         DisplayName.SetDefault("Mystery Tome");
         Tooltip.SetDefault("Casts all spells used to make it in random order\nSpells cast may not match the original");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

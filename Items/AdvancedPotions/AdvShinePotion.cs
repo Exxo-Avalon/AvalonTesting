@@ -11,6 +11,7 @@ class AdvShinePotion : ModItem
     {
         DisplayName.SetDefault("Shine Elixir");
         Tooltip.SetDefault("Emits an aura of light");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

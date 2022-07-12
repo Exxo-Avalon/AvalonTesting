@@ -11,6 +11,7 @@ class CurseofOblivion : ModItem
     {
         DisplayName.SetDefault("Curse of Oblivion");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

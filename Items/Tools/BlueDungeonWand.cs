@@ -11,6 +11,7 @@ class BlueDungeonWand : ModItem
     {
         DisplayName.SetDefault("Blue Dungeon Wand");
         Tooltip.SetDefault("Places unsafe blue dungeon walls");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

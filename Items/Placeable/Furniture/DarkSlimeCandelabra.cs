@@ -9,6 +9,7 @@ class DarkSlimeCandelabra : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dark Slime Candelabra");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

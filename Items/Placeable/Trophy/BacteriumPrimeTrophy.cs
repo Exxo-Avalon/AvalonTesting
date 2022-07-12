@@ -10,6 +10,7 @@ class BacteriumPrimeTrophy : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bacterium Prime Trophy");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

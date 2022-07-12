@@ -13,6 +13,7 @@ class BlahBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Blah Bullet");
+        SacrificeTotal = 200;
     }
 
     public override void SetDefaults()

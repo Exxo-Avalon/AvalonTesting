@@ -10,6 +10,7 @@ class DevilsScythe : ModItem
     {
         DisplayName.SetDefault("Devil's Scythe");
         Tooltip.SetDefault("Casts a hellfire scythe");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

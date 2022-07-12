@@ -12,6 +12,7 @@ class TroxiniumHelmet : ModItem
     {
         DisplayName.SetDefault("Troxinium Helmet");
         Tooltip.SetDefault("11% increased melee damage and speed\nEnemies are more likely to target you");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

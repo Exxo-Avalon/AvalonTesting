@@ -9,6 +9,7 @@ public class BlastedStone : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Blasted Stone");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

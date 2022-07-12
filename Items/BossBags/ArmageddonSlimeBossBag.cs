@@ -11,8 +11,9 @@ public class ArmageddonSlimeBossBag : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Treasure Bag");
+        DisplayName.SetDefault("Treasure Bag (Armageddon Slime)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

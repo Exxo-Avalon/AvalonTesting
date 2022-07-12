@@ -10,6 +10,7 @@ class ElementalExcalibur : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Elemental Excalibur");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

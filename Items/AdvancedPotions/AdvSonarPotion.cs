@@ -11,6 +11,7 @@ class AdvSonarPotion : ModItem
     {
         DisplayName.SetDefault("Sonar Elixir");
         Tooltip.SetDefault("Detects hooked fish");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

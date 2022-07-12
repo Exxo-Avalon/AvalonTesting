@@ -11,6 +11,7 @@ class PhantomMask : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Phantom Mask");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

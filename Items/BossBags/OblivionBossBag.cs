@@ -11,8 +11,9 @@ public class OblivionBossBag : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Treasure Bag");
+        DisplayName.SetDefault("Treasure Bag (Oblivion)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

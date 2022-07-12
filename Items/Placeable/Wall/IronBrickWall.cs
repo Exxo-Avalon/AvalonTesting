@@ -9,6 +9,7 @@ class IronBrickWall : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Iron Brick Wall");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 400;
     }
 
     public override void SetDefaults()

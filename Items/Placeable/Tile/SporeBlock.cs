@@ -9,6 +9,7 @@ class SporeBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Spore Block");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

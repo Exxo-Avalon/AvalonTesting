@@ -14,6 +14,7 @@ public class BismuthDaggerStaff : ModItem
     {
         DisplayName.SetDefault("Bismuth Dagger Staff");
         Tooltip.SetDefault("Summons a bismuth dagger to fight for you");
+        SacrificeTotal = 1;
         ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true;
         ItemID.Sets.LockOnIgnoresCollision[Item.type] = false;
     }

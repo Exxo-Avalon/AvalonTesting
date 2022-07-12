@@ -11,6 +11,7 @@ class AdvRoguePotion : ModItem
     {
         DisplayName.SetDefault("Rogue Elixir");
         Tooltip.SetDefault("-5% ranged damage, 25% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

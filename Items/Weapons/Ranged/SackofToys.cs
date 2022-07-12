@@ -11,6 +11,7 @@ class SackofToys : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Sack of Toys");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

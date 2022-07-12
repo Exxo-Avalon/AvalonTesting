@@ -10,6 +10,7 @@ class PyroscoricPickaxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Pickaxe");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
     public override Color? GetAlpha(Color lightColor)
     {

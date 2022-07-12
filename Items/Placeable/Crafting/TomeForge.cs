@@ -11,6 +11,7 @@ class TomeForge : ModItem
     {
         DisplayName.SetDefault("Tome Forge");
         Tooltip.SetDefault("Used to craft Mystical Tomes");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

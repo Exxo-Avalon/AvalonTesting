@@ -11,6 +11,7 @@ class HellArmoredHelmet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hell Armored Helmet");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

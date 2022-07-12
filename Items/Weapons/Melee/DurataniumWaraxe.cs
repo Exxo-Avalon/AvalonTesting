@@ -10,6 +10,7 @@ class DurataniumWaraxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Duratanium Waraxe");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

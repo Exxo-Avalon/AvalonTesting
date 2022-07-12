@@ -13,6 +13,7 @@ internal class Oblivionet : ModItem
         DisplayName.SetDefault("Oblivionet");
         ItemID.Sets.CatchingTool[Item.type] = true;
         ItemID.Sets.LavaproofCatchingTool[Item.type] = true;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

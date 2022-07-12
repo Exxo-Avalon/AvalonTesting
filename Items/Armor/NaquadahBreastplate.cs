@@ -12,6 +12,7 @@ class NaquadahBreastplate : ModItem
     {
         DisplayName.SetDefault("Naquadah Breastplate");
         Tooltip.SetDefault("6% increased damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

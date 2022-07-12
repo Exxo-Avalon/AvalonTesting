@@ -12,6 +12,7 @@ class MechanicalWasp : ModItem
     {
         DisplayName.SetDefault("Mechanical Wasp");
         Tooltip.SetDefault("Summons Mechasting");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

@@ -9,8 +9,9 @@ public class DragonLordBossBag : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Treasure Bag");
+        DisplayName.SetDefault("Treasure Bag (Dragon Lord)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

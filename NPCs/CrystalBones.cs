@@ -106,7 +106,7 @@ public class CrystalBones : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity,
                 Mod.Find<ModGore>("CrystalBonesHead").Type);

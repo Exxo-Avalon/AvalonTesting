@@ -12,6 +12,7 @@ class XeradonLeggings : ModItem
     {
         DisplayName.SetDefault("Xeradon Leggings");
         Tooltip.SetDefault("10% increased mining speed\n10% increased block placement speed");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

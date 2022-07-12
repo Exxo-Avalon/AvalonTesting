@@ -10,6 +10,7 @@ class CrimsonBomb : ModItem
     {
         DisplayName.SetDefault("Crimson Bomb");
         Tooltip.SetDefault("Converts tiles to the Crimson in a large radius");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
     }
 
     public override void SetDefaults()

@@ -9,6 +9,7 @@ internal class NickelBow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Nickel Bow");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

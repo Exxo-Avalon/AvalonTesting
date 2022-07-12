@@ -9,7 +9,8 @@ class CompressedExtractBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Compressed Extractination Block");
-        Tooltip.SetDefault("Stick it in the Extractinator!");
+        Tooltip.SetDefault("Stick it in the Extractinator!\nNot currently functional");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

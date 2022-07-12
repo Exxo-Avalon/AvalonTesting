@@ -10,6 +10,7 @@ class FlowerofTheJungle : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Flower of The Jungle");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

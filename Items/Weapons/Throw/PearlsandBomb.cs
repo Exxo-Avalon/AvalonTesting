@@ -11,6 +11,7 @@ class PearlsandBomb : ModItem
     {
         DisplayName.SetDefault("Pearlsand Bomb");
         Tooltip.SetDefault("An explosion of pearlsand that will not destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

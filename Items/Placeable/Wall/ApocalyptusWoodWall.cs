@@ -4,11 +4,12 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Wall;
 
-class DarkMatterWoodWall : ModItem
+class ApocalyptusWoodWall : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Dark Matter Wood Wall");
+        DisplayName.SetDefault("Apocalyptus Wood Wall");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 400;
     }
 
     public override void SetDefaults()
@@ -19,7 +20,7 @@ class DarkMatterWoodWall : ModItem
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 7;
-        Item.createWall = ModContent.WallType<Walls.DarkMatterWoodWall>();
+        Item.createWall = ModContent.WallType<Walls.ApocalyptusWoodWall>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
         Item.useAnimation = 15;

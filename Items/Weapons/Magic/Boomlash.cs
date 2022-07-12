@@ -11,6 +11,7 @@ class Boomlash : ModItem
     {
         DisplayName.SetDefault("Boomlash");
         Tooltip.SetDefault("Summons a terrain-destroying missile");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

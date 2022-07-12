@@ -11,6 +11,7 @@ class VertexofExcalibur : ModItem
     {
         DisplayName.SetDefault("Vertex of Excalibur");
         Tooltip.SetDefault("Deals more damage to enemies affected by a debuff\n'The unification of dark and light'");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

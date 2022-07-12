@@ -12,6 +12,7 @@ class GigaHorn : ModItem
     {
         DisplayName.SetDefault("Giga Horn");
         Tooltip.SetDefault("Summons a powerful sonic blast");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

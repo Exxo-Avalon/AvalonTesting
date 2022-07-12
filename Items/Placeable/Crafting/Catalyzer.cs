@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Material;
+namespace AvalonTesting.Items.Placeable.Crafting;
 
 internal class Catalyzer : ModItem
 {
@@ -12,6 +12,7 @@ internal class Catalyzer : ModItem
     {
         DisplayName.SetDefault("Catalyzer");
         Tooltip.SetDefault("Used to convert items to their counterparts");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()
@@ -33,7 +34,7 @@ internal class Catalyzer : ModItem
 
     public override void AddRecipes()
     {
-        Recipe.Create(ModContent.ItemType<Catalyzer>())
+        Recipe.Create(Type)
             .AddRecipeGroup(RecipeGroupID.Wood, 20)
             .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
             .AddRecipeGroup("IronBar", 15)

@@ -17,6 +17,7 @@ public class QuadSunfury : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Quad Sunfury");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

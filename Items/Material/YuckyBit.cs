@@ -8,6 +8,7 @@ class YuckyBit : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Yucky Bit");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class ClownBomb : ModItem
     {
         DisplayName.SetDefault("Clown Bomb");
         Tooltip.SetDefault("An explosion that will not destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

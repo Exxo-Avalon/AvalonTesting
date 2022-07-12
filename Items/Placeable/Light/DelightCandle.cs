@@ -11,6 +11,7 @@ class DelightCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Delight");
         Tooltip.SetDefault("Increases life regeneration of nearby players");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

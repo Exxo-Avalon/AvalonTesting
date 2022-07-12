@@ -11,6 +11,7 @@ class FrostySpectacle : ModItem
     {
         DisplayName.SetDefault("Frosty Spectacle");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

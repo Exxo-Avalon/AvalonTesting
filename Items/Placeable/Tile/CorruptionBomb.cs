@@ -10,6 +10,7 @@ class CorruptionBomb : ModItem
     {
         DisplayName.SetDefault("Corruption Bomb");
         Tooltip.SetDefault("Converts tiles to the Corruption in a large radius");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
     }
 
     public override void SetDefaults()

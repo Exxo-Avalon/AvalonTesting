@@ -10,6 +10,7 @@ class Anvenalforge : ModItem
     {
         DisplayName.SetDefault("Anvenalforge");
         Tooltip.SetDefault("Used to craft almost anything");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

@@ -14,6 +14,7 @@ public class BerserkerBlade : ModItem
     {
         DisplayName.SetDefault("Berserker Blade");
         Tooltip.SetDefault("'Go berserk!'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

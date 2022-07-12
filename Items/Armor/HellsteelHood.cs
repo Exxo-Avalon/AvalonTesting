@@ -12,6 +12,7 @@ class HellsteelHood : ModItem
     {
         DisplayName.SetDefault("Hellsteel Hood");
         Tooltip.SetDefault("16% increased minion damage\nIncreases your max number of minions by 1");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

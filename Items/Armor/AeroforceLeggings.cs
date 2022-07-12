@@ -14,6 +14,7 @@ class AeroforceLeggings : ModItem
         Tooltip.SetDefault("4% increased minion damage"
                            + "\n20% increased movement acceleration and jump speed"
                            + "\n[c/C39FDD:10th Anniversary Contest Winner - Crabby]");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

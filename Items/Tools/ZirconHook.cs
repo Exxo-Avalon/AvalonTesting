@@ -10,6 +10,7 @@ class ZirconHook : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zircon Hook");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

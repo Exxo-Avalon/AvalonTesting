@@ -10,6 +10,7 @@ class FieryBladeofGrass : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fiery Blade of Grass");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

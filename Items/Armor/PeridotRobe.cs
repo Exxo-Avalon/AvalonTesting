@@ -12,6 +12,7 @@ class PeridotRobe : ModItem
     {
         DisplayName.SetDefault("Peridot Robe");
         Tooltip.SetDefault("Increases maximum mana by 120\nReduces mana usage by 16%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()
@@ -22,6 +23,16 @@ class PeridotRobe : ModItem
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 0, 50, 0) * 4;
         Item.height = dims.Height;
+    }
+    public override void Load()
+    {
+        if (Main.netMode == NetmodeID.Server) return;
+        EquipLoader.AddEquipTexture(Mod, $"{Texture}_{EquipType.Legs}", EquipType.Legs, this);
+    }
+    public override void SetMatch(bool male, ref int equipSlot, ref bool robes)
+    {
+        robes = true;
+        equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Legs);
     }
     public override void AddRecipes()
     {

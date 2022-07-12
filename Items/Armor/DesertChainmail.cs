@@ -12,6 +12,7 @@ class DesertChainmail : ModItem
     {
         DisplayName.SetDefault("Desert Chainmail");
         Tooltip.SetDefault("5% decreased mana usage\nIncreases maximum mana by 20");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

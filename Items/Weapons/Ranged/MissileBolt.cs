@@ -2,13 +2,14 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace AvalonTesting.Items.Ammo;
 
 class MissileBolt : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Missile Bolt");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

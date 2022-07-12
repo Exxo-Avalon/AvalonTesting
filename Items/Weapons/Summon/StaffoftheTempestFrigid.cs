@@ -11,6 +11,7 @@ class StaffoftheTempestFrigid : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Staff of the Tempest Frigid");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

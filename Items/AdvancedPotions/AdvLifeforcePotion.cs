@@ -11,6 +11,7 @@ class AdvLifeforcePotion : ModItem
     {
         DisplayName.SetDefault("Lifeforce Elixir");
         Tooltip.SetDefault("Increases max life by 40%");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

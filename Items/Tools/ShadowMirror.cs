@@ -12,7 +12,8 @@ class ShadowMirror : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shadow Mirror");
-        Tooltip.SetDefault("Gaze in the mirror to return home");
+        Tooltip.SetDefault("Gaze in the mirror to return home\nDisplays everything");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

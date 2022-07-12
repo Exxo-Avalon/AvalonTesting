@@ -11,6 +11,7 @@ class EbonsandBomb : ModItem
     {
         DisplayName.SetDefault("Ebonsand Bomb");
         Tooltip.SetDefault("An explosion of ebonsand that will destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

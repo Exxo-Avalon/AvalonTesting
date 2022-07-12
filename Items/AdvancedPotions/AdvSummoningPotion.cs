@@ -11,6 +11,7 @@ class AdvSummoningPotion : ModItem
     {
         DisplayName.SetDefault("Summoning Elixir");
         Tooltip.SetDefault("Increases your max number of minions");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

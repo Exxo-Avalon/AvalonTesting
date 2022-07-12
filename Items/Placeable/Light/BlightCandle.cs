@@ -10,6 +10,7 @@ class BlightCandle : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Candle of Blight");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         //Tooltip.SetDefault("Nearby players become werewolves");
     }
 

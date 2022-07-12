@@ -12,6 +12,7 @@ class HallowedBlowpipe : ModItem
     {
         DisplayName.SetDefault("Hallowed Blowpipe");
         Tooltip.SetDefault("Fires a spread of ten seeds\nAllows the collection of seeds for ammo");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

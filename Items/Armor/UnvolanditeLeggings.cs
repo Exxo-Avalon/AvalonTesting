@@ -12,6 +12,7 @@ class UnvolanditeLeggings : ModItem
     {
         DisplayName.SetDefault("Unvolandite Leggings");
         Tooltip.SetDefault("Increases your max number of minions by 2\nIncreases maximum mana by 80");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

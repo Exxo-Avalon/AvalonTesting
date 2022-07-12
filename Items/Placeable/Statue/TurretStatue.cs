@@ -9,6 +9,7 @@ class TurretStatue : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Turret Statue");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

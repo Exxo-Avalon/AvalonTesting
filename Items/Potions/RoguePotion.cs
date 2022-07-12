@@ -10,6 +10,7 @@ class RoguePotion : ModItem
     {
         DisplayName.SetDefault("Rogue Potion");
         Tooltip.SetDefault("-5% ranged damage, 20% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

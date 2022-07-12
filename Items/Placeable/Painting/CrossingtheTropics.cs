@@ -11,6 +11,7 @@ class CrossingtheTropics : ModItem
     {
         DisplayName.SetDefault("Crossing the Tropics");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

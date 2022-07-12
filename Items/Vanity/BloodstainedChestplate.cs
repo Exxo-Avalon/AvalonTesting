@@ -11,6 +11,7 @@ class BloodstainedChestplate : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bloodstained Chestplate");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

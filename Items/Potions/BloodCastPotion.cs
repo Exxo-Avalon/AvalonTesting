@@ -11,6 +11,7 @@ class BloodCastPotion : ModItem
     {
         DisplayName.SetDefault("Blood Cast Potion");
         Tooltip.SetDefault("Adds your max life to your max mana");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

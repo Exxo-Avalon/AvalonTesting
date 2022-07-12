@@ -19,6 +19,7 @@ internal class TacticalBlahncher : ModItem
     {
         DisplayName.SetDefault("Tactical Blahncher");
         Tooltip.SetDefault("Launches homing blahckets\n75% chance to not consume ammo\nBlahckets will not destroy tiles");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ public class TroxiniumWaraxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Troxinium Waraxe");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

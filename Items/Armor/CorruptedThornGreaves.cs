@@ -14,6 +14,7 @@ class CorruptedThornGreaves : ModItem
         Tooltip.SetDefault("20% increased movement speed" +
                            "\nMana regen greatly increased" +
                            "\nAttackers also take full damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

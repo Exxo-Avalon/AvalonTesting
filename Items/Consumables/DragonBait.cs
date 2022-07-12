@@ -10,6 +10,7 @@ class DragonBait : ModItem
     {
         DisplayName.SetDefault("Dragon Bait");
         Tooltip.SetDefault("Vital in the creation of the Dragon Spine");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class NauSeaFish : ModItem
     {
         DisplayName.SetDefault("Nau-Sea-a Fish");
         Tooltip.SetDefault("'Get it?'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

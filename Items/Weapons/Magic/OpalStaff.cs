@@ -11,6 +11,7 @@ class OpalStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Opal Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

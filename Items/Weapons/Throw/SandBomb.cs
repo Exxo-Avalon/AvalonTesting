@@ -11,6 +11,7 @@ class SandBomb : ModItem
     {
         DisplayName.SetDefault("Sand Bomb");
         Tooltip.SetDefault("An explosion of sand that will destroy tiles");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

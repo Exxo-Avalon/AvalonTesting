@@ -14,6 +14,7 @@ public class Terraspin : ModItem
     {
         DisplayName.SetDefault("Terraspin");
         Tooltip.SetDefault("Fires a spread of typhoons");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

@@ -9,6 +9,7 @@ class Icicle : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Icicle");
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class BerserkerHeadpiece : ModItem
     {
         DisplayName.SetDefault("Berserker Headpiece");
         Tooltip.SetDefault("32% increased melee damage and 20% increased melee speed\n5% decreased melee critical strike chance");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

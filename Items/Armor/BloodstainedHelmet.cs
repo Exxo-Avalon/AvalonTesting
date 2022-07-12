@@ -12,6 +12,7 @@ class BloodstainedHelmet : ModItem
     {
         DisplayName.SetDefault("Bloodstained Helmet");
         Tooltip.SetDefault("Shows the location of treasures and ores\nWorks in the vanity slot");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

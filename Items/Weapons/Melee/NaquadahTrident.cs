@@ -9,6 +9,7 @@ class NaquadahTrident : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Naquadah Trident");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class PlanterasRage : ModItem
     {
         DisplayName.SetDefault("Plantera's Rage");
         Tooltip.SetDefault("'B. Harold'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

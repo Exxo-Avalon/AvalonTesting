@@ -10,6 +10,7 @@ class YellowPhasecleaver : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Yellow Phasecleaver");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

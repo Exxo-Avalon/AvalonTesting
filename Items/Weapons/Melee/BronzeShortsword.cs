@@ -8,6 +8,7 @@ class BronzeShortsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bronze Shortsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

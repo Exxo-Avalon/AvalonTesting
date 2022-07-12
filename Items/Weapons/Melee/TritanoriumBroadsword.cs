@@ -11,6 +11,7 @@ class TritanoriumBroadsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tritanorium Broadsword");
+        SacrificeTotal = 1;
     }
     public override Color? GetAlpha(Color lightColor)
     {

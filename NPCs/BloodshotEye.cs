@@ -71,7 +71,7 @@ public class BloodshotEye : ModNPC
         NPC.frameCounter += 1.0;
         if (NPC.frameCounter >= 8.0)
         {
-            NPC.frame.Y = NPC.frame.Y + frameHeight;
+            NPC.frame.Y += frameHeight;
             NPC.frameCounter = 0.0;
         }
 
@@ -85,8 +85,11 @@ public class BloodshotEye : ModNPC
     {
         if (NPC.life <= 0)
         {
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye1").Type);
-            Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye2").Type);
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye1").Type);
+                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye2").Type);
+            }
         }
     }
 

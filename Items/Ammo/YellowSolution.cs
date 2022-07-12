@@ -11,6 +11,7 @@ internal class YellowSolution : ModItem
     {
         DisplayName.SetDefault("Yellow Solution");
         Tooltip.SetDefault("Used by the Clentaminator\nSpreads the Contagion");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
     }
 
     public override void SetDefaults()

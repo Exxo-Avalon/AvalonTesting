@@ -9,6 +9,7 @@ class OsmiumGreatsword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Osmium Greatsword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

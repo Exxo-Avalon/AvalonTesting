@@ -12,6 +12,7 @@ public class Starfall : ModItem
     {
         DisplayName.SetDefault("Starfall");
         Tooltip.SetDefault("'The power of the stars consumes your mana'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

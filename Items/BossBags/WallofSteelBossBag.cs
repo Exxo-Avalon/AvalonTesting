@@ -16,8 +16,9 @@ public class WallofSteelBossBag : ModItem
 
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Treasure Bag");
+        DisplayName.SetDefault("Treasure Bag (Wall of Steel)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

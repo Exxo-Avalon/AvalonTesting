@@ -9,7 +9,8 @@ class VisionPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Vision Potion");
-        Tooltip.SetDefault("Open caves light up");
+        Tooltip.SetDefault("Open caves light up\nCurrently not functional");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
     }
 
     public override void SetDefaults()

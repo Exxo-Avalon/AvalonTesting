@@ -11,6 +11,7 @@ class GastropodStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Gastropod Staff");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -9,6 +9,7 @@ class Moonfury : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Moonfury");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

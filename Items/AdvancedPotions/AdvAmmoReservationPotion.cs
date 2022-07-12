@@ -11,6 +11,7 @@ class AdvAmmoReservationPotion : ModItem
     {
         DisplayName.SetDefault("Ammo Reservation Elixir");
         Tooltip.SetDefault("Gives 30% chance to not consume ammo");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

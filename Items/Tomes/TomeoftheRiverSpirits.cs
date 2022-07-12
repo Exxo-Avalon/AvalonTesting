@@ -12,6 +12,7 @@ class TomeoftheRiverSpirits : ModItem
     {
         DisplayName.SetDefault("Tome of the River Spirits");
         Tooltip.SetDefault("Tome\n+15% magic and minion damage\n-5% mana cost");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

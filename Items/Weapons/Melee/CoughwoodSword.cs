@@ -10,6 +10,7 @@ class CoughwoodSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Coughwood Sword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

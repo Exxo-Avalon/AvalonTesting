@@ -11,6 +11,7 @@ class DragonSpine : ModItem
     {
         DisplayName.SetDefault("Dragon Spine");
         Tooltip.SetDefault("Summons the Dragon Lord\nUse at the Dragon Altar in the Sky Fortress");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

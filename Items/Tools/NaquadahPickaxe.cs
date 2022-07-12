@@ -11,6 +11,7 @@ class NaquadahPickaxe : ModItem
     {
         DisplayName.SetDefault("Naquadah Pickaxe");
         Tooltip.SetDefault("Can mine Adamantite, Titanium, and Troxinium");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

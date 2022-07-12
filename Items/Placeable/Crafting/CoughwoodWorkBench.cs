@@ -12,6 +12,7 @@ internal class CoughwoodWorkBench : ModItem
     {
         DisplayName.SetDefault("Coughwood Work Bench");
         Tooltip.SetDefault("Used for basic crafting");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

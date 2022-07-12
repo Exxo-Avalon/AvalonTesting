@@ -115,7 +115,7 @@ public class Rafflesia : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        //if (npc.life <= 0)
+        //if (npc.life <= 0 && Main.netMode != NetmodeID.Server)
         //{
         //    Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, npc.velocity * 0.8f, Mod.Find<ModGore>("Rafflesia").Type, 1f);
         //}

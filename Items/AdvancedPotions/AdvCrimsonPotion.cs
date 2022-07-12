@@ -11,6 +11,7 @@ class AdvCrimsonPotion : ModItem
     {
         DisplayName.SetDefault("Aura Elixir");
         Tooltip.SetDefault("On-screen enemies take damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

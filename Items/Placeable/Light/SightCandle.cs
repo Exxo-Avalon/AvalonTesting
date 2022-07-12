@@ -11,6 +11,7 @@ class SightCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Sight");
         Tooltip.SetDefault("Nearby players can see nearby enemies and traps");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

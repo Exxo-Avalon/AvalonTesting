@@ -12,6 +12,7 @@ class IridiumPants : ModItem
     {
         DisplayName.SetDefault("Iridium Pants");
         Tooltip.SetDefault("11% increased magic damage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

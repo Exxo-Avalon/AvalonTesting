@@ -11,6 +11,7 @@ class MagmafrostBolt : ModItem
     {
         DisplayName.SetDefault("Magmafrost Bolt");
         Tooltip.SetDefault("Casts a superfast-moving bolt of igneonic frost");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

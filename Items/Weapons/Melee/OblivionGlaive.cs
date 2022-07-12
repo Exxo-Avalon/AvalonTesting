@@ -11,6 +11,7 @@ class OblivionGlaive : ModItem
     {
         DisplayName.SetDefault("Oblivion Glaive");
         Tooltip.SetDefault("Striking an enemy causes shadow glaives to rain down");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

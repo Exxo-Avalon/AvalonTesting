@@ -14,6 +14,7 @@ class AvalonBodyarmor : ModItem
         Tooltip.SetDefault("10% increased critical strike chance"
                            + "\nGreatly increases length of invincibility after taking damage"
                            + "\nStars fall when injured");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

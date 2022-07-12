@@ -10,6 +10,7 @@ class SolarFlareBow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Solarium Bow");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

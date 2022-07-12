@@ -11,6 +11,7 @@ class BreezeShard : ModItem
     {
         DisplayName.SetDefault("Breeze Shard");
         Tooltip.SetDefault("'A fragment of flying creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

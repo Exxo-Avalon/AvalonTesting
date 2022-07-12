@@ -10,6 +10,7 @@ class CursedFlamelash : ModItem
     {
         DisplayName.SetDefault("Cursed Flamelash");
         Tooltip.SetDefault("Summons a controllable ball of cursed fire");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -10,6 +10,7 @@ class DurataniumSword : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Duratanium Sword");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

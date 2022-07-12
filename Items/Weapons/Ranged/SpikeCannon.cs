@@ -11,6 +11,7 @@ class SpikeCannon : ModItem
     {
         DisplayName.SetDefault("Spike Cannon");
         Tooltip.SetDefault("Uses spikes for ammo\n'You should be careful with this'");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

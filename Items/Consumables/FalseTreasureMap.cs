@@ -12,6 +12,7 @@ class FalseTreasureMap : ModItem
     {
         DisplayName.SetDefault("False Treasure Map");
         Tooltip.SetDefault("Cancels a Pirate Invasion");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

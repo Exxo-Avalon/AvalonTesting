@@ -12,6 +12,7 @@ class FleshPants : ModItem
     {
         DisplayName.SetDefault("Flesh Pants");
         Tooltip.SetDefault("Increases your max number of minions by 2");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

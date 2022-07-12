@@ -9,6 +9,7 @@ class DurataniumRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Duratanium Repeater");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

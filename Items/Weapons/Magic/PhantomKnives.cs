@@ -13,6 +13,7 @@ internal class PhantomKnives : ModItem
     {
         DisplayName.SetDefault("Phantom Knives");
         Tooltip.SetDefault("Rapidly throws daggers that compound damage upon hitting a target");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

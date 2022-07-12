@@ -11,6 +11,7 @@ class BismuthHelmet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Helmet");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

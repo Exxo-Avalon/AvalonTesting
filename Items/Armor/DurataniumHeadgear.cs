@@ -12,6 +12,7 @@ class DurataniumHeadgear : ModItem
     {
         DisplayName.SetDefault("Duratanium Headgear");
         Tooltip.SetDefault("6% increased magic damage\n5% decreased mana usage");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

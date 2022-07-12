@@ -11,6 +11,7 @@ class FrostShard : ModItem
     {
         DisplayName.SetDefault("Frost Shard");
         Tooltip.SetDefault("'A fragment of icy creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

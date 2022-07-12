@@ -11,6 +11,7 @@ class PossessedArmorHelmet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Possessed Armor Helmet");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

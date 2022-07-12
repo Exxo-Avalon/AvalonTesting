@@ -11,6 +11,7 @@ class AdvManaRegenerationPotion : ModItem
     {
         DisplayName.SetDefault("Mana Regeneration Elixir");
         Tooltip.SetDefault("Increased mana regeneration");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
     }
 
     public override void SetDefaults()

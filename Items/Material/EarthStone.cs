@@ -11,6 +11,7 @@ class EarthStone : ModItem
     {
         DisplayName.SetDefault("Earth Stone");
         Tooltip.SetDefault("'The essence of the golem'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

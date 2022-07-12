@@ -9,6 +9,7 @@ class OrangeDungeonTable : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Orange Dungeon Table");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

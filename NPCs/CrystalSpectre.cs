@@ -246,7 +246,7 @@ public class CrystalSpectre : ModNPC
 
     public override void HitEffect(int hitDirection, double damage)
     {
-        if (NPC.life <= 0)
+        if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
         {
             for (int num333 = 0; num333 < 20; num333++)
             {

@@ -10,6 +10,7 @@ class BismuthStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bismuth Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

@@ -10,6 +10,7 @@ class SolariumStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Solarium Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

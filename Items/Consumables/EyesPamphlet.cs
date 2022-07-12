@@ -12,6 +12,7 @@ class EyesPamphlet : ModItem
     {
         DisplayName.SetDefault("Eyes' Pamphlet");
         Tooltip.SetDefault("Summons three Eyes of Cthulhu");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
     }
 
     public override void SetDefaults()

@@ -11,6 +11,7 @@ class FocusBeam : ModItem
     {
         DisplayName.SetDefault("Focus Beam");
         Tooltip.SetDefault("Fires a wide-beam laser");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

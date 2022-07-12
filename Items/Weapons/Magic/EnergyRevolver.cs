@@ -10,6 +10,7 @@ class EnergyRevolver : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Energy Revolver");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

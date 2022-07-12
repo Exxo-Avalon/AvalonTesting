@@ -14,6 +14,7 @@ public class Moonerang : ModItem
     {
         DisplayName.SetDefault("Moonerang");
         Tooltip.SetDefault("Strengthens at night");
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

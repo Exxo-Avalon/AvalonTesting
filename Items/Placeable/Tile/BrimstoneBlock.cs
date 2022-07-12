@@ -9,6 +9,7 @@ class BrimstoneBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Brimstone Block");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
     }
 
     public override void SetDefaults()

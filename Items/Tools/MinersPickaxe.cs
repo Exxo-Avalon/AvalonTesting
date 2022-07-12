@@ -9,6 +9,7 @@ class MinersPickaxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Miner's Pickaxe");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

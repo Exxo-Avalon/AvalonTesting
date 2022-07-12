@@ -13,6 +13,7 @@ internal class KnivesoftheCorruptor : ModItem
     {
         DisplayName.SetDefault("Knives of the Corruptor");
         Tooltip.SetDefault("Rapidly throws daggers that explode into tiny eaters");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

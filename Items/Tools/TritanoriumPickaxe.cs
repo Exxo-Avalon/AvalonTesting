@@ -10,6 +10,7 @@ class TritanoriumPickaxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tritanorium Pickaxe");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

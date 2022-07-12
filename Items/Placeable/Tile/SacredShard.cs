@@ -11,6 +11,7 @@ class SacredShard : ModItem
     {
         DisplayName.SetDefault("Sacred Shard");
         Tooltip.SetDefault("'A fragment of hallow creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
     }
 
     public override void SetDefaults()

@@ -17,6 +17,7 @@ public class UltrablivionStaff : ModItem
     {
         DisplayName.SetDefault("Ultrablivion Staff");
         Tooltip.SetDefault("Summons a mini Ultrablivion to fight for you");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

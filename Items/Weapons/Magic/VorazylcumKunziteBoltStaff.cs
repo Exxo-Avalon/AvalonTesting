@@ -12,6 +12,7 @@ class VorazylcumKunziteBoltStaff : ModItem
     {
         DisplayName.SetDefault("Vorazylcum-Kunzite Bolt Staff");
         Tooltip.SetDefault("Fires a spread of magical bolts");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

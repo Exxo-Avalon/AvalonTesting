@@ -10,6 +10,7 @@ class MusicBoxUndergroundContagion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Underground Contagion)");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

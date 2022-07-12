@@ -9,8 +9,9 @@ class PossessedFlamesaw : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Possessed Flamesaw");
+        DisplayName.SetDefault("Possessed Flamesaw"); // make chop ability a right click
         Tooltip.SetDefault("Can chop trees instantly");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

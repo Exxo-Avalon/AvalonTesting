@@ -11,6 +11,7 @@ class DemonicShard : ModItem
     {
         DisplayName.SetDefault("Demonic Shard");
         Tooltip.SetDefault("'A fragment of undead creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
     }
 
     public override void SetDefaults()

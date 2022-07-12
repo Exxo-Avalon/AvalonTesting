@@ -9,6 +9,7 @@ class MosquitoProboscis : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Mosquito Proboscis");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

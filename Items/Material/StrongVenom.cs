@@ -10,6 +10,8 @@ class StrongVenom : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Strong Venom");
+        Tooltip.SetDefault("Substance found inside some beast's body");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

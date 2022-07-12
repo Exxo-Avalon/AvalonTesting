@@ -14,6 +14,7 @@ class CorruptedThornBodyarmor : ModItem
         Tooltip.SetDefault("10% increased critical strike chance" +
                            "\n20% increased critical damage" +
                            "\nMax life increased by 40");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

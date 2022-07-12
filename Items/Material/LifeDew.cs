@@ -10,6 +10,7 @@ class LifeDew : ModItem
     {
         DisplayName.SetDefault("Life Dew");
         Tooltip.SetDefault("'The essence of living creatures'");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
     }
 
     public override void SetDefaults()

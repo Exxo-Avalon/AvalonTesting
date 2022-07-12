@@ -9,6 +9,7 @@ class EctoplasmChair : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ectoplasm Chair");
+        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
     public override void SetDefaults()

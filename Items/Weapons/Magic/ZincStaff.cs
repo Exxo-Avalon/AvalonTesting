@@ -10,6 +10,7 @@ class ZincStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zinc Staff");
+        SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
 

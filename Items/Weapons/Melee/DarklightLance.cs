@@ -10,6 +10,7 @@ class DarklightLance : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Darklight Lance");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
