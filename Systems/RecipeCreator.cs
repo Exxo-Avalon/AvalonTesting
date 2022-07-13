@@ -1590,15 +1590,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<BrokenHiltPiece>(), 5)
             .AddTile(TileID.Anvils).Register();
 
-
-        Recipe.Create(ModContent.ItemType<CompressedExtractBlock>())
-            .AddIngredient(ItemID.SiltBlock, 100)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Recipe.Create(ModContent.ItemType<CompressedExtractBlock>())
-            .AddIngredient(ItemID.SlushBlock, 100)
-            .AddTile(TileID.WorkBenches).Register();
-
         Recipe.Create(ModContent.ItemType<InfestedCarcass>())
             .AddIngredient(ModContent.ItemType<YuckyBit>(), 15)
             .AddIngredient(ModContent.ItemType<VirulentPowder>(), 30)

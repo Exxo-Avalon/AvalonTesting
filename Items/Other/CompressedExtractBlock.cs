@@ -4,7 +4,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Tile;
+namespace AvalonTesting.Items.Other;
 
 class CompressedExtractBlock : ModItem
 {
@@ -29,6 +29,16 @@ class CompressedExtractBlock : ModItem
         Item.useAnimation = 40;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+		Recipe.Create(Type)
+			.AddIngredient(ItemID.SiltBlock, 100)
+			.AddTile(TileID.WorkBenches).Register();
+
+		Recipe.Create(Type)
+			.AddIngredient(ItemID.SlushBlock, 100)
+			.AddTile(TileID.WorkBenches).Register();
+	}
     public override void HoldItem(Player player)
     {
 		if (player.itemAnimation > 0 && player.whoAmI == Main.myPlayer)
