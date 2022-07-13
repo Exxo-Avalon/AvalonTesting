@@ -1,17 +1,17 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.MusicBoxes;
 
-class MusicBoxTuhrtlOutpost : ModItem
+class MusicBoxDarkMatter : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Music Box (Tuhrtl Outpost)");
+        DisplayName.SetDefault("Music Box (Dark Matter)");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TuhrtlOutpost"), ModContent.ItemType<MusicBoxTuhrtlOutpost>(), ModContent.TileType<Tiles.MusicBoxes>(), 324);
+        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DarkMatter"), ModContent.ItemType<MusicBoxDarkMatter>(), ModContent.TileType<Tiles.MusicBoxes>(), 252);
     }
 
     public override void SetDefaults()
@@ -19,10 +19,9 @@ class MusicBoxTuhrtlOutpost : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.accessory = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.MusicBoxes>();
-        Item.placeStyle = 9;
+        Item.placeStyle = 7;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.useTime = 10;

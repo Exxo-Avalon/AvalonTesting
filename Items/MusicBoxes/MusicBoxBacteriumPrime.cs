@@ -11,6 +11,7 @@ class MusicBoxBacteriumPrime : ModItem
     {
         DisplayName.SetDefault("Music Box (Bacterium Prime)");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BacteriumPrime"), ModContent.ItemType<MusicBoxBacteriumPrime>(), ModContent.TileType<Tiles.MusicBoxes>(), 36);
     }
 
     public override void SetDefaults()
@@ -18,7 +19,7 @@ class MusicBoxBacteriumPrime : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.maxStack = 999;
+        Item.accessory = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.MusicBoxes>();
         Item.placeStyle = 1;

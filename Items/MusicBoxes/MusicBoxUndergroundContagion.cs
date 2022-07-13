@@ -11,6 +11,7 @@ class MusicBoxUndergroundContagion : ModItem
     {
         DisplayName.SetDefault("Music Box (Underground Contagion)");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion"), ModContent.ItemType<MusicBoxUndergroundContagion>(), ModContent.TileType<Tiles.MusicBoxes>(), 144);
     }
 
     public override void SetDefaults()
@@ -18,7 +19,7 @@ class MusicBoxUndergroundContagion : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.maxStack = 999;
+        Item.accessory = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.MusicBoxes>();
         Item.placeStyle = 4;

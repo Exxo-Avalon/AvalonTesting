@@ -50,9 +50,9 @@ public class MusicBoxes : ModTile
             case 6:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxPhantasm>();
                 break;
-            /*case 7:
+            case 7:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxDarkMatter>();
-                break;*/
+                break;
             case 8:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxHellCastle>();
                 break;
@@ -89,9 +89,9 @@ public class MusicBoxes : ModTile
             case 6:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxPhantasm>();
                 break;
-            /*case 7:
+            case 7:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxDarkMatter>();
-                break;*/
+                break;
             case 8:
                 item = ModContent.ItemType<Items.MusicBoxes.MusicBoxHellCastle>();
                 break;
