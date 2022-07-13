@@ -20,6 +20,8 @@ internal class Impvines : GenPass
                 if (num587 > 0 && !Main.tile[num586, num589].HasTile)
                 {
                     Main.tile[num586, num589].TileType = (ushort)ModContent.TileType<Tiles.Impvines>();
+                    Tile t = Main.tile[num586, num589];
+                    t.HasTile = true;
                     num587--;
                 }
                 else
