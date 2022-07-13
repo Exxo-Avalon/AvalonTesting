@@ -9,11 +9,11 @@ using ReLogic.Content;
 
 namespace AvalonTesting.Projectiles.Melee;
 
-public class Sporalash : ModProjectile
+public class CaesiumFlail : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Sporalash");
+        DisplayName.SetDefault("Caesium Ball");
     }
 
     public override void SetDefaults()
@@ -26,7 +26,9 @@ public class Sporalash : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
-        Projectile.scale = 0.8f;
+        Projectile.scale = 1.1f;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 60;
     }
 
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -59,17 +61,10 @@ public class Sporalash : ModProjectile
         }
         return false;
     }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        target.AddBuff(BuffID.Poisoned, 60 * 6);
-    }
-    public override void OnHitPvp(Player target, int damage, bool crit)
-    {
-        target.AddBuff(BuffID.Poisoned, 60 * 6);
-    }
+
     public override void AI()
     {
-        var num250 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GrassBlades, Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default(Color), 1.5f);
+        var num250 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Dusts.CaesiumDust>(), Projectile.velocity.X * 0.4f, Projectile.velocity.Y * 0.4f, 100, default(Color), 1.5f);
         Main.dust[num250].noGravity = true;
         var dust44 = Main.dust[num250];
         dust44.velocity.X /= 2f;
@@ -78,10 +73,17 @@ public class Sporalash : ModProjectile
         if (Main.player[Projectile.owner].dead)
         {
             Projectile.Kill();
-            return;
         }
     }
-
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        SoundEngine.PlaySound(SoundID.Item14, target.position);
+        for (int i = 0; i < 5; i++)
+        {
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), ModContent.ProjectileType<Projectiles.CaesiumExplosion>(), damage, 5f, Projectile.owner, 0f, 0f);
+        }
+        target.AddBuff(BuffID.OnFire, 60 * 5);
+    }
     public override bool PreDraw(ref Color lightColor)
     {
         Vector2 playerArmPosition = Main.GetPlayerArmPosition(Projectile);
@@ -89,8 +91,8 @@ public class Sporalash : ModProjectile
         // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
         playerArmPosition.Y -= Main.player[Projectile.owner].gfxOffY;
 
-        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Sporalash_Chain");
-        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Sporalash_Chain"); // This texture and related code is optional and used for a unique effect
+        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/CaesiumFlail_Chain");
+        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/CaesiumFlail_Chain"); // This texture and related code is optional and used for a unique effect
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);

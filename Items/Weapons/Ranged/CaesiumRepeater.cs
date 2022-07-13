@@ -45,4 +45,10 @@ class CaesiumRepeater : ModItem
             type = ProjectileID.HellfireArrow;
         }
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 28)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }
