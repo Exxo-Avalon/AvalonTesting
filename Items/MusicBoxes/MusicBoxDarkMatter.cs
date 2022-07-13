@@ -10,7 +10,7 @@ class MusicBoxDarkMatter : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Dark Matter)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
         MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DarkMatter"), ModContent.ItemType<MusicBoxDarkMatter>(), ModContent.TileType<Tiles.MusicBoxes>(), 252);
     }
 

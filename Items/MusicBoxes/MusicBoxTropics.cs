@@ -10,7 +10,7 @@ class MusicBoxTropics : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Tropics)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
         MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics"), ModContent.ItemType<MusicBoxTropics>(), ModContent.TileType<Tiles.MusicBoxes>(), 180);
     }
 

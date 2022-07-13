@@ -10,7 +10,7 @@ class MusicBoxBacteriumPrime : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Bacterium Prime)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
         MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BacteriumPrime"), ModContent.ItemType<MusicBoxBacteriumPrime>(), ModContent.TileType<Tiles.MusicBoxes>(), 36);
     }
 

@@ -10,7 +10,7 @@ class MusicBoxArmageddonSlime : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Music Box (Armageddon Slime)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
         MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ArmageddonSlime"), ModContent.ItemType<MusicBoxArmageddonSlime>(), ModContent.TileType<Tiles.MusicBoxes>(), 72);
     }
 
