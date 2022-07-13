@@ -6,6 +6,8 @@ using AvalonTesting.Network;
 using AvalonTesting.Players;
 using AvalonTesting.Projectiles.Torches;
 using AvalonTesting.Systems;
+using AvalonTesting.Tiles.Ores;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
@@ -152,4 +154,28 @@ public class AvalonTesting : Mod
         // Projectiles
         TextureAssets.Projectile[ProjectileID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
     }
+
+    // why this method is in here? good question!
+    internal static Color ReturnHardmodeColor(int i)
+	{
+        if (i == TileID.Cobalt)
+            return new Color(26, 105, 161);
+        else if (i == TileID.Palladium)
+            return new Color(235, 87, 47);
+        else if (i == ModContent.TileType<DurataniumOre>())
+            return new Color(137, 81, 89);
+        else if (i == TileID.Mythril)
+            return new Color(93, 147, 88);
+        else if (i == TileID.Orichalcum)
+            return new Color(163, 22, 158);
+        else if (i == ModContent.TileType<NaquadahOre>())
+            return new Color(0, 38, 255);
+        else if (i == TileID.Adamantite)
+            return new Color(221, 85, 152);
+        else if (i == TileID.Titanium)
+            return new Color(185, 194, 215);
+        else if (i == ModContent.TileType<TroxiniumOre>())
+            return new Color(193, 218, 72);
+        return new Color(50, 255, 130);
+	}
 }
