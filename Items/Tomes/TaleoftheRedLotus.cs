@@ -12,7 +12,7 @@ class TaleoftheRedLotus : ModItem
     {
         DisplayName.SetDefault("Tale of the Red Lotus");
         Tooltip.SetDefault("Tome\n+5% ranged damage\n+20 HP");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

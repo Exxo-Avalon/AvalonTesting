@@ -11,7 +11,7 @@ public class AncientWorkbench : ModItem
     {
         DisplayName.SetDefault("Ancient Work Bench");
         Tooltip.SetDefault("Used to craft old-style items");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

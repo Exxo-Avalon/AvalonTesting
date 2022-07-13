@@ -10,7 +10,7 @@ class ScrollofTome : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Scroll of Tome");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 2;
+        SacrificeTotal = 2;
     }
 
     public override void SetDefaults()

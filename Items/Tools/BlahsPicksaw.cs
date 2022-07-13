@@ -11,7 +11,7 @@ class BlahsPicksaw : ModItem
     {
         DisplayName.SetDefault("Blah's Picksaw");
         Tooltip.SetDefault("The user can mine at mach speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

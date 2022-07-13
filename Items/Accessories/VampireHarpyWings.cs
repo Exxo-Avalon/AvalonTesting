@@ -13,7 +13,7 @@ class VampireHarpyWings : ModItem
     {
         DisplayName.SetDefault("Vampire Harpy Wings");
         Tooltip.SetDefault("Allows flight and slow fall and heals life\nOther bonuses apply when in the Dark Matter");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

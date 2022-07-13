@@ -11,7 +11,7 @@ class Sandstone : ModItem
     {
         DisplayName.SetDefault("Sandstone");
         Tooltip.SetDefault("Lowest grade finish used to produce tomes");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

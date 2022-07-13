@@ -11,7 +11,7 @@ class RubyAmulet : ModItem
     {
         DisplayName.SetDefault("Ruby Amulet");
         Tooltip.SetDefault("Increases maximum life by 40");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

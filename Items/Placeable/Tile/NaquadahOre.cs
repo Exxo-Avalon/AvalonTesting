@@ -10,7 +10,7 @@ class NaquadahOre : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Naquadah Ore");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

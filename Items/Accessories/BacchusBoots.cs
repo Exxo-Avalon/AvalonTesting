@@ -12,7 +12,7 @@ class BacchusBoots : ModItem
         DisplayName.SetDefault("Bacchus Boots");
         Tooltip.SetDefault("Increases your max number of minions by 2\nIncreases your max number of sentries by 1\n" +
                            "8% increased minion damage\nIncreases armor penetration by 5\nProvides immunity to traps, knockback, fire blocks, and fall damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

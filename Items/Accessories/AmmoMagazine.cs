@@ -11,7 +11,7 @@ class AmmoMagazine : ModItem
     {
         DisplayName.SetDefault("Ammo Magazine");
         Tooltip.SetDefault("Immunity to Unloaded");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

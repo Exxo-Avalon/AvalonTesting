@@ -12,7 +12,7 @@ class LargePeridot : ModItem
     {
         DisplayName.SetDefault("Large Peridot");
         Tooltip.SetDefault("For Capture the Gem. It drops when you die");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

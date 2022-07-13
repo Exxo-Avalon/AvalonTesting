@@ -11,7 +11,7 @@ class SolariumAnvil : ModItem
     {
         DisplayName.SetDefault("Solarium Anvil");
         Tooltip.SetDefault("Used to craft high-end items");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

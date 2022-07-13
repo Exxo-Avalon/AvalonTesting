@@ -13,7 +13,7 @@ class AwakenedRoseSubligar : ModItem
         DisplayName.SetDefault("Awakened Rose Subligar");
         Tooltip.SetDefault("10% increased movement speed"
                            + "\n10% decreased mana cost");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

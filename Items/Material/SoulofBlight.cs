@@ -17,7 +17,7 @@ class SoulofBlight : ModItem
         ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         ItemID.Sets.ItemIconPulse[Item.type] = true;
         ItemID.Sets.ItemNoGravity[Item.type] = true;
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
     public override Color? GetAlpha(Color lightColor)
     {

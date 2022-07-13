@@ -10,7 +10,7 @@ class ContagionKeyMold : ModItem
     {
         DisplayName.SetDefault("Contagion Key Mold");
         Tooltip.SetDefault("Used for crafting a Contagion Key");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

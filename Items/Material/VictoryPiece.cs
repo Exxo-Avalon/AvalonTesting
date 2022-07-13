@@ -11,7 +11,7 @@ class VictoryPiece : ModItem
     {
         DisplayName.SetDefault("Victory Piece");
         Tooltip.SetDefault("Victory is yours!");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

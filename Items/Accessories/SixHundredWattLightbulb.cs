@@ -11,7 +11,7 @@ class SixHundredWattLightbulb : ModItem
     {
         DisplayName.SetDefault("600 Watt Lightbulb");
         Tooltip.SetDefault("Immunity to Blackout");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

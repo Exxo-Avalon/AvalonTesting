@@ -11,7 +11,7 @@ class ImmunityCharm : ModItem
     {
         DisplayName.SetDefault("Immunity Charm");
         Tooltip.SetDefault("Provides immunity to slimes and flying creatures\nProvides 20 defense against undead monsters\nReduces damage taken by 10% and negates fall damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

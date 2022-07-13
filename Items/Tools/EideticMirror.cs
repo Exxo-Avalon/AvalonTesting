@@ -11,7 +11,7 @@ class EideticMirror : ModItem
     {
         DisplayName.SetDefault("Team Mirror");
         Tooltip.SetDefault("Teleports you to a team member in multiplayer\nCan also be used as a magic mirror");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

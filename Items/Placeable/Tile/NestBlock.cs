@@ -9,7 +9,7 @@ class NestBlock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Nest Block");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

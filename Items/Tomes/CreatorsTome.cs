@@ -12,7 +12,7 @@ class CreatorsTome : ModItem
     {
         DisplayName.SetDefault("Creator's Tome");
         Tooltip.SetDefault("Tome\n+20% damage, +5% critical strike chance, -20% mana cost\n25% chance to not consume ammo, 10 defense, +100 HP, +100 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

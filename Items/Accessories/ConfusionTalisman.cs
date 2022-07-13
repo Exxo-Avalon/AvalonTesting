@@ -11,7 +11,7 @@ class ConfusionTalisman : ModItem
     {
         DisplayName.SetDefault("Confusion Talisman");
         Tooltip.SetDefault("12% chance for your attacks to confuse your enemies");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

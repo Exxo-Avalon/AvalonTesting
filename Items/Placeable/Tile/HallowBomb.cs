@@ -10,7 +10,7 @@ class HallowBomb : ModItem
     {
         DisplayName.SetDefault("Hallow Bomb");
         Tooltip.SetDefault("Converts tiles to the Hallow in a large radius");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
+        SacrificeTotal = 5;
     }
 
     public override void SetDefaults()

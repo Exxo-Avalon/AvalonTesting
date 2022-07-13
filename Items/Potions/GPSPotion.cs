@@ -10,7 +10,7 @@ class GPSPotion : ModItem
     {
         DisplayName.SetDefault("GPS Potion");
         Tooltip.SetDefault("GPS Effect");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

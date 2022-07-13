@@ -10,7 +10,7 @@ class BeeRepellent : ModItem
     {
         DisplayName.SetDefault("Bee Repellent");
         Tooltip.SetDefault("Provides immunity to Hornets");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

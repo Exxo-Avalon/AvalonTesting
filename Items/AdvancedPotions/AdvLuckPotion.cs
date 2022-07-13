@@ -11,7 +11,7 @@ class AdvLuckPotion : ModItem
     {
         DisplayName.SetDefault("Luck Elixir");
         Tooltip.SetDefault("Doubles rare drop chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class AdvCratePotion : ModItem
     {
         DisplayName.SetDefault("Crate Elixir");
         Tooltip.SetDefault("Increases chance to get a crate");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

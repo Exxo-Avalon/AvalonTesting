@@ -12,7 +12,7 @@ class TomorrowsPhoenix : ModItem
     {
         DisplayName.SetDefault("Tomorrow's Phoenix");
         Tooltip.SetDefault("Tome\n8% increased minion damage\n5% increased minion knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -10,7 +10,7 @@ internal class UnderworldKey : ModItem
     {
         DisplayName.SetDefault("Underworld Key");
         Tooltip.SetDefault("Unlocks an Underworld Chest in the dungeon");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

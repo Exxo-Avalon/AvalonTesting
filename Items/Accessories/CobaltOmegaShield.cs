@@ -11,7 +11,7 @@ class CobaltOmegaShield : ModItem
     {
         DisplayName.SetDefault("Cobalt Omega Shield");
         Tooltip.SetDefault("Greatly increases defense and regenerates life when struck\nSlows the effects of damage over time debuffs");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

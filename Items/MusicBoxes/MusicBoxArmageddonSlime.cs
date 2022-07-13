@@ -19,7 +19,7 @@ class MusicBoxArmageddonSlime : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.accessory = true;
+        Item.maxStack = 999;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.MusicBoxes>();
         Item.placeStyle = 2;

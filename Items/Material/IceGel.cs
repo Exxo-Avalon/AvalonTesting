@@ -10,7 +10,7 @@ class IceGel : ModItem
     {
         DisplayName.SetDefault("Ice Gel");
         Tooltip.SetDefault("'Sticky and slippery!'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

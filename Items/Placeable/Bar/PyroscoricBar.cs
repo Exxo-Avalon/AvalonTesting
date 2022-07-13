@@ -11,7 +11,7 @@ class PyroscoricBar : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Bar");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
     public override void SetDefaults()
     {

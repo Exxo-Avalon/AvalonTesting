@@ -10,7 +10,7 @@ class PhantasmalBullet : ModItem
     {
         DisplayName.SetDefault("Phantasmal Bullet");
         Tooltip.SetDefault("Passes through normal tiles\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
+        SacrificeTotal = 99;
     }
 
     public override void SetDefaults()

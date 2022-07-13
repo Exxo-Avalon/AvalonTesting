@@ -9,7 +9,7 @@ class RottenEye : ModItem
     {
         DisplayName.SetDefault("Rotten Eye");
         Tooltip.SetDefault("'Looks nasty!'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

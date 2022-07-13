@@ -12,7 +12,7 @@ class ThePlumHarvest : ModItem
     {
         DisplayName.SetDefault("The Plum Harvest");
         Tooltip.SetDefault("Tome\n30% chance to not consume ammo");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

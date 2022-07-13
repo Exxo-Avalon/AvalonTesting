@@ -15,7 +15,7 @@ internal class CorruptedThornCrown : ModItem
     {
         DisplayName.SetDefault("Corrupted Thorn Crown");
         Tooltip.SetDefault("35% increased magic damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

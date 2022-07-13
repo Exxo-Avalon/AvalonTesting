@@ -11,7 +11,7 @@ class AdvFishingPotion : ModItem
     {
         DisplayName.SetDefault("Fishing Elixir");
         Tooltip.SetDefault("Increases fishing skill");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

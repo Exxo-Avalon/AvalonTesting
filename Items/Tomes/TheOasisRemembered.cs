@@ -13,7 +13,7 @@ class TheOasisRemembered : ModItem
     {
         DisplayName.SetDefault("The Oasis Remembered");
         Tooltip.SetDefault("Tome\n20% increased minion damage and knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

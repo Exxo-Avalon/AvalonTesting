@@ -11,7 +11,7 @@ class FlaskofInfection : ModItem
     {
         DisplayName.SetDefault("Flask of Infection");
         Tooltip.SetDefault("Melee attacks inflict Infected on enemies");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

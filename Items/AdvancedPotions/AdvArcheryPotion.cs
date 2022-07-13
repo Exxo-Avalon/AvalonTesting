@@ -11,7 +11,7 @@ class AdvArcheryPotion : ModItem
     {
         DisplayName.SetDefault("Archery Elixir");
         Tooltip.SetDefault("40% increased arrow speed and damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

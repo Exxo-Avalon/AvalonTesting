@@ -13,7 +13,7 @@ public class FuryPotion : ModItem
     {
         DisplayName.SetDefault("Fury Potion");
         Tooltip.SetDefault("Increases critical strike damage by 20%");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

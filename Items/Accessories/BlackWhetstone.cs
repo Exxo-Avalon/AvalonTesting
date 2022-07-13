@@ -12,7 +12,7 @@ class BlackWhetstone : ModItem
     {
         DisplayName.SetDefault("Black Whetstone");
         Tooltip.SetDefault("Increases melee armor penetration by 10");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

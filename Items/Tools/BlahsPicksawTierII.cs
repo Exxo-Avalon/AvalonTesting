@@ -11,7 +11,7 @@ class BlahsPicksawTierII : ModItem
     {
         DisplayName.SetDefault("Blah's Picksaw (Tier II)");
         Tooltip.SetDefault("The user can mine at warp speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

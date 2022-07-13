@@ -12,7 +12,7 @@ class TitanGauntlets : ModItem
     {
         DisplayName.SetDefault("Titan Gauntlets");
         Tooltip.SetDefault("Attacks inflict Frostburn, increases damage and melee speed by 9%, reduces team member damage (only active above 25% HP)\nIncreases knockback, reduces dmg when below 25% HP, [+15 defense, +3 life regeneration, +15% damage] (Only when below 33% HP)");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -10,7 +10,7 @@ class TimeShiftPotion : ModItem
     {
         DisplayName.SetDefault("Time Shift Potion");
         Tooltip.SetDefault("Slows time down\nCurrently not functional");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

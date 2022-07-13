@@ -11,7 +11,7 @@ class AdvGPSPotion : ModItem
     {
         DisplayName.SetDefault("GPS Elixir");
         Tooltip.SetDefault("GPS Effect");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

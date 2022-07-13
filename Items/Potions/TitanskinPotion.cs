@@ -10,7 +10,7 @@ class TitanskinPotion : ModItem
     {
         DisplayName.SetDefault("Titanskin Potion");
         Tooltip.SetDefault("-8% damage, +15 defense");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

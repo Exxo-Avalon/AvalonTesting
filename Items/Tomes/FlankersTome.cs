@@ -12,7 +12,7 @@ class FlankersTome : ModItem
     {
         DisplayName.SetDefault("Flanker's Tome");
         Tooltip.SetDefault("Tome\n+10% melee damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

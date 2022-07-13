@@ -9,7 +9,7 @@ class LargeSweetstem : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Large Sweetstem");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 15;
+        SacrificeTotal = 15;
     }
 
     public override void SetDefaults()

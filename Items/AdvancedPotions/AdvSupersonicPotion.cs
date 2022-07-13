@@ -11,7 +11,7 @@ class AdvSupersonicPotion : ModItem
     {
         DisplayName.SetDefault("Supersonic Elixir");
         Tooltip.SetDefault("Increases movement speed to the maximum");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

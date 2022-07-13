@@ -13,7 +13,7 @@ internal class RingofReplenishment : ModItem
         DisplayName.SetDefault("Ring of Replenishment");
         Tooltip.SetDefault(
             "Automatically use mana and stamina potions when needed\nIncreases maximum stamina by 60\nReduces the cooldown of healing potions\nProvides life, mana, and stamina regeneration");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

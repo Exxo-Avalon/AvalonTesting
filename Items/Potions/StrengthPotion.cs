@@ -10,7 +10,7 @@ class StrengthPotion : ModItem
     {
         DisplayName.SetDefault("Strength Potion");
         Tooltip.SetDefault("Increases all stats");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 20;
+        SacrificeTotal = 20;
     }
 
     public override void SetDefaults()

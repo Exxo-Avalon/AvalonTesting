@@ -11,7 +11,7 @@ class AdvHeartreachPotion : ModItem
     {
         DisplayName.SetDefault("Heartreach Elixir");
         Tooltip.SetDefault("Increases pickup range for life hearts");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

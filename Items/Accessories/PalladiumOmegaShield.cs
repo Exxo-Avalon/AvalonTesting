@@ -11,7 +11,7 @@ class PalladiumOmegaShield : ModItem
     {
         DisplayName.SetDefault("Palladium Omega Shield");
         Tooltip.SetDefault("Quickly regenerates life and increases defense when struck\nSlows the effects of damage over time debuffs");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

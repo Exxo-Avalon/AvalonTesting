@@ -13,7 +13,7 @@ class Emperor : ModItem
     {
         DisplayName.SetDefault("Emperor");
         Tooltip.SetDefault("Tome\n25% increased damage, 12% increased critical strike chance, -20% mana cost\n30% chance to not consume ammo, 14 defense, +200 mana, +100 HP, +90 stamina");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

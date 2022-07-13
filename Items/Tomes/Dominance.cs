@@ -13,7 +13,7 @@ class Dominance : ModItem
     {
         DisplayName.SetDefault("Dominance");
         Tooltip.SetDefault("Tome\n+22% damage, +8% critical strike chance, -10% mana cost\n20% chance to not consume ammo, 11 defense, +140 mana, +80 HP");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class MysticalTotem : ModItem
     {
         DisplayName.SetDefault("Mystical Totem");
         Tooltip.SetDefault("Part of a beast's body");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

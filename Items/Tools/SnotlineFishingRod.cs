@@ -13,7 +13,7 @@ internal class SnotlineFishingRod : ModItem
     {
         DisplayName.SetDefault("Snotline Fishing Rod");
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

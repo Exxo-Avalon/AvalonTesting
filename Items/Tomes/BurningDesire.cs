@@ -12,7 +12,7 @@ class BurningDesire : ModItem
     {
         DisplayName.SetDefault("Burning Desire");
         Tooltip.SetDefault("Tome\n+40 HP\n+40 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

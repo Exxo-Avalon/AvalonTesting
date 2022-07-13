@@ -11,7 +11,7 @@ class DionysusAmulet : ModItem
     {
         DisplayName.SetDefault("Dionysus Amulet");
         Tooltip.SetDefault("Increases your max number of minions by 2\n8% increased minion damage\nIncreases armor penetration by 5");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

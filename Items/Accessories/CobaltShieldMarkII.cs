@@ -11,7 +11,7 @@ class CobaltShieldMarkII : ModItem
     {
         DisplayName.SetDefault("Cobalt Shield Mark II");
         Tooltip.SetDefault("Increases defense when struck");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

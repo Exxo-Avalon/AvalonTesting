@@ -11,7 +11,7 @@ class HellsteelEmblem : ModItem
     {
         DisplayName.SetDefault("Hellsteel Emblem");
         Tooltip.SetDefault("12% increased critical strike damage\n15% increased damage\nProvides immunity to traps");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

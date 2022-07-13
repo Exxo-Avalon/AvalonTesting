@@ -11,7 +11,7 @@ internal class BandofSlime : ModItem
     {
         DisplayName.SetDefault("Band of Slime");
         Tooltip.SetDefault("Reduces damage taken by 5% and negates fall damage\nAll tiles are slippery");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class GiftofStarpower : ModItem
     {
         DisplayName.SetDefault("Gift of Starpower");
         Tooltip.SetDefault("20% decreased mana usage and +40 mana\nAutomatically use mana potions when needed and 15% increased magic damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

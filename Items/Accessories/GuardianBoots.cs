@@ -11,7 +11,7 @@ class GuardianBoots : ModItem
     {
         DisplayName.SetDefault("Guardian Boots");
         Tooltip.SetDefault("Provides immunity to traps and knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

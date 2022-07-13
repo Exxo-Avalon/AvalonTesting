@@ -11,7 +11,7 @@ class AdvBattlePotion : ModItem
     {
         DisplayName.SetDefault("Battle Elixir");
         Tooltip.SetDefault("Increases enemy spawn rate");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

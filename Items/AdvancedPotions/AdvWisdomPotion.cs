@@ -11,7 +11,7 @@ class AdvWisdomPotion : ModItem
     {
         DisplayName.SetDefault("Wisdom Elixir");
         Tooltip.SetDefault("-4% magic damage, +120 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()

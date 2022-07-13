@@ -11,7 +11,7 @@ class IridiumPickaxe : ModItem
     {
         DisplayName.SetDefault("Iridium Pickaxe");
         Tooltip.SetDefault("Can mine Hellstone");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

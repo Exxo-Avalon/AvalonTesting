@@ -12,7 +12,7 @@ public class AdventuresandMishaps : ModItem
     {
         DisplayName.SetDefault("Adventures and Mishaps");
         Tooltip.SetDefault("Tome\n+60 HP, +5% damage\n-10% mana cost");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

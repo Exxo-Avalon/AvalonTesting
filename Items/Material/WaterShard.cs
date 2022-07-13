@@ -11,7 +11,7 @@ class WaterShard : ModItem
     {
         DisplayName.SetDefault("Water Shard");
         Tooltip.SetDefault("'A fragment of water creatures'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

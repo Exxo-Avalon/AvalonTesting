@@ -12,7 +12,7 @@ public class LoveUpandDown : ModItem
     {
         DisplayName.SetDefault("Love Up and Down");
         Tooltip.SetDefault("Tome\n+15% damage, +7% critical strike chance, -25% mana cost\n20% chance to not consume ammo, 12 defense, +80 HP, +80 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

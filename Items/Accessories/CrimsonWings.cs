@@ -12,7 +12,7 @@ class CrimsonWings : ModItem
     {
         DisplayName.SetDefault("Crimson Flaps");
         Tooltip.SetDefault("Allows flight and slow fall\nOther bonuses apply when in the Crimson");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

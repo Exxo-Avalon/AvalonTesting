@@ -10,7 +10,7 @@ class TerraClaws : ModItem
     {
         DisplayName.SetDefault("Terra Claws");
         Tooltip.SetDefault("Increases melee damage and speed by 10%\nMelee attacks will burn, poison, envenom, frostburn, or ichor your enemies");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

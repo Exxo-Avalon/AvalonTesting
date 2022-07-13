@@ -14,7 +14,7 @@ internal class SoutheasternPeacock : ModItem
         DisplayName.SetDefault("Southeastern Peacock");
         Tooltip.SetDefault(
             "Tome\n+3% critical strike chance, -5% mana cost\n8% increased minion damage, 5% increased minion knockback");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

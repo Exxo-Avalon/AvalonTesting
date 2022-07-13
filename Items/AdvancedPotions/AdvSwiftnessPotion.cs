@@ -11,7 +11,7 @@ class AdvSwiftnessPotion : ModItem
     {
         DisplayName.SetDefault("Swiftness Elixir");
         Tooltip.SetDefault("50% increased movement speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 30;
+        SacrificeTotal = 30;
     }
 
     public override void SetDefaults()
