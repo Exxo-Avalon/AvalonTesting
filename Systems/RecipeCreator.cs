@@ -1857,14 +1857,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<CaesiumOre>(), 5)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
 
-        Recipe.Create(ModContent.ItemType<CaesiumRepeater>())
-            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 18)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<CaesiumScimitar>())
-            .AddIngredient(ModContent.ItemType<CaesiumBar>(), 18)
-            .AddTile(TileID.MythrilAnvil).Register();
-
         Recipe.Create(ModContent.ItemType<ElementalRod>())
             .AddIngredient(ModContent.ItemType<CaesiumBar>(), 30)
             .AddIngredient(ModContent.ItemType<ElementShard>(), 20)

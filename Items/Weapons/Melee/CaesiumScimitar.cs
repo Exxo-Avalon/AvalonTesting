@@ -21,7 +21,7 @@ class CaesiumScimitar : ModItem
         Item.damage = 66;
         Item.useTurn = true;
         Item.scale = 1.3f;
-        Item.rare = ItemRarityID.Pink;
+        Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 8f;
@@ -39,5 +39,12 @@ class CaesiumScimitar : ModItem
         {
             Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center.X, target.Center.Y, Main.rand.Next(-2, 3), Main.rand.Next(-2, 3), ModContent.ProjectileType<Projectiles.CaesiumExplosion>(), damage, knockBack, player.whoAmI, 0f, 0f);
         }
+        target.AddBuff(BuffID.OnFire, 60 * 5);
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 32)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }
