@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Banners;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -29,6 +29,7 @@ public class CloudBat : ModNPC
         NPC.height = 12;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<CloudBatBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.SkyFortress>().Type };
         AnimationType = 49;
     }
 

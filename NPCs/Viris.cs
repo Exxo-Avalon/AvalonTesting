@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using AvalonTesting.Items.Material;
 using Terraria;
 using Terraria.ID;
@@ -30,6 +30,7 @@ public class Viris : ModNPC
         NPC.knockBackResist = 0.2f;
         NPC.HitSound = SoundID.NPCHit18;
         NPC.DeathSound = SoundID.NPCDeath21;
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Contagion>().Type };
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -44,7 +45,7 @@ public class Viris : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Assets/Bestiary/ContagionIcon", "Assets/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("Unimplemented")
         });
     }

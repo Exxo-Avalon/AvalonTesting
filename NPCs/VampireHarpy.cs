@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -36,8 +36,13 @@ public class VampireHarpy : ModNPC
         NPC.buffImmune[BuffID.CursedInferno] = true;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.VampireHarpyBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.DarkMatter>().Type };
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new FlavorTextBestiaryInfoElement("Bloodsucking variants of your everyday Harpy, these creatures live only in dark areas."),
+        });
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

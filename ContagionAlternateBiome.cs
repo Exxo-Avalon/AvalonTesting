@@ -65,7 +65,7 @@ internal class ContagionAlternateBiome : AltBiome
 
     public override string WorldIcon => "AvalonTesting/Assets/WorldIcons/Contagion";
 
-    public override string IconSmall => "AvalonTesting/Sprites/Bestiary/ContagionIcon";
+    public override string IconSmall => "AvalonTesting/Assets/Bestiary/ContagionIcon";
 
     public override string IconLarge => "AvalonTesting/Assets/Textures/UI/ContagionPreview";
 

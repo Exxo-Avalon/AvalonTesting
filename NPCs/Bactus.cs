@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -34,13 +34,13 @@ public class Bactus : ModNPC
         NPC.knockBackResist = 0.5f;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.BactusBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Contagion>().Type };
         DrawOffsetY = 10;
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("Bacti will swarm you if you're not careful. Watch out!")
         });
     }

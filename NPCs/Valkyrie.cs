@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Banners;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -28,6 +28,7 @@ public class Valkyrie : ModNPC
         NPC.height = 34;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<ValkyrieBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.SkyFortress>().Type };
         AnimationType = 48;
     }
 

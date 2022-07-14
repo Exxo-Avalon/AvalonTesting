@@ -8,7 +8,7 @@ namespace AvalonTesting.Biomes;
 public class DarkMatter : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
-
+    public override string BestiaryIcon => base.BestiaryIcon;
     public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DarkMatter");
 
     public override bool IsBiomeActive(Player player)

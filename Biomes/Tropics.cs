@@ -1,7 +1,6 @@
 using AvalonTesting.Backgrounds;
 using AvalonTesting.Players;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Biomes;
@@ -9,7 +8,7 @@ namespace AvalonTesting.Biomes;
 public class Tropics : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeMedium;
-
+    public override string BestiaryIcon => base.BestiaryIcon;
     public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>

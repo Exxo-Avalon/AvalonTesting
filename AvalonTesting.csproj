@@ -34,7 +34,6 @@
     <Folder Include="Items\Consumables\" />
     <Folder Include="Items\Material\" />
     <Folder Include="Items\Tools\" />
-    <Folder Include="Biomes\" />
     <Folder Include="Gores\" />
     <Folder Include="Walls\" />
     <Folder Include="World\Passes\" />

@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -31,6 +31,7 @@ public class PyrasiteHead : PyrasiteWorm
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.PyrasiteBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Contagion>().Type };
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

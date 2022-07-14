@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -45,12 +45,12 @@ public class MatterMan : ModNPC
         NPC.DeathSound = SoundID.NPCDeath2;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.MatterManBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.DarkMatter>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
             new FlavorTextBestiaryInfoElement("A man that matters.")
         });
     }

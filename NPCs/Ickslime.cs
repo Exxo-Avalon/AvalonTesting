@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,6 +40,7 @@ public class Ickslime : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.IckslimeBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Contagion>().Type };
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
@@ -54,7 +55,6 @@ public class Ickslime : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("Gelatinous and icky. Watch out for the large ones!")
         });
     }
