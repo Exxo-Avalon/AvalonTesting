@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ public class CaesiumSpear : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Caesium Spear");
+        DisplayName.SetDefault("Caesium Pike");
     }
     public override void SetDefaults()
     {
@@ -46,8 +46,8 @@ public class CaesiumSpear : ModProjectile
         Projectile.direction = projOwner.direction;
         projOwner.heldProj = Projectile.whoAmI;
         projOwner.itemTime = projOwner.itemAnimation;
-        Projectile.position.X = ownerMountedCenter.X - (float)(Projectile.width / 2);
-        Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2);
+        Projectile.position.X = ownerMountedCenter.X - Projectile.width / 2;
+        Projectile.position.Y = ownerMountedCenter.Y - Projectile.height / 2;
         if (!projOwner.frozen)
         {
             if (movementFactor == 0f)

@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -21,8 +21,6 @@ public class PlacedGems : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 500;
         Main.tileSpelunker[Type] = true;
-
-
     }
 
     // selects the map entry depending on the frameX
@@ -51,6 +49,9 @@ public class PlacedGems : ModTile
                 break;
             case 4:
                 toDrop = ModContent.ItemType<Items.Placeable.Tile.Peridot>();
+                break;
+            case 5:
+                toDrop = ModContent.ItemType<Items.Material.Zircon>();
                 break;
         }
         if (toDrop > 0) Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, toDrop);

@@ -21,7 +21,7 @@ class CaesiumMace : ModItem
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 25f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;

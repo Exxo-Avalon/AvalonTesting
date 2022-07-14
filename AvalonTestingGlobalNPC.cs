@@ -1012,7 +1012,92 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         return result;
     }
-
+    /// <summary>
+    /// Spawns the Wall of Steel at the given position.
+    /// </summary>
+    /// <param name="pos">The position to spawn the boss at.</param>
+    /// <param name="essence">Whether or not the method will broadcast the "has awoken!" message.</param>
+    public static void SpawnWOS(Vector2 pos, bool essence = false)
+    {
+        if (pos.Y / 16f < Main.maxTilesY - 205)
+        {
+            return;
+        }
+        if (AvalonTestingWorld.WallOfSteel >= 0 || Main.wofNPCIndex >= 0)
+        {
+            return;
+        }
+        if (Main.netMode == NetmodeID.MultiplayerClient)
+        {
+            return;
+        }
+        int num = 1;
+        if (pos.X / 16f > Main.maxTilesX / 2)
+        {
+            num = -1;
+        }
+        bool flag = false;
+        int num2 = (int)pos.X;
+        while (!flag)
+        {
+            flag = true;
+            for (int i = 0; i < 255; i++)
+            {
+                if (Main.player[i].active && Main.player[i].position.X > num2 - 1200 && Main.player[i].position.X < num2 + 1200)
+                {
+                    num2 -= num * 16;
+                    flag = false;
+                }
+            }
+            if (num2 / 16 < 20 || num2 / 16 > Main.maxTilesX - 20)
+            {
+                flag = true;
+            }
+        }
+        int num3 = (int)pos.Y;
+        int num4 = num2 / 16;
+        int num5 = num3 / 16;
+        int num6 = 0;
+        try
+        {
+            while (WorldGen.SolidTile(num4, num5 - num6) || Main.tile[num4, num5 - num6].LiquidAmount >= 100)
+            {
+                if (!WorldGen.SolidTile(num4, num5 + num6) && Main.tile[num4, num5 + num6].LiquidAmount < 100)
+                {
+                    num5 += num6;
+                    goto IL_162;
+                }
+                num6++;
+            }
+            num5 -= num6;
+        }
+        catch
+        {
+        }
+        IL_162:
+        num3 = num5 * 16;
+        int num7 = NPC.NewNPC(NPC.GetBossSpawnSource(Player.FindClosest(pos, 32, 32)), num2, num3, ModContent.NPCType<NPCs.Bosses.WallofSteel>(), 0);
+        if (Main.netMode == NetmodeID.Server && num7 < 200)
+        {
+            NetMessage.SendData(MessageID.SyncNPC, -1, -1, NetworkText.Empty, num7);
+        }
+        //if (Main.npc[num7].displayName == "")
+        //{
+        //    Main.npc[num7].DisplayName = "Wall of Steel";
+        //}
+        if (!essence)
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Main.NewText("Wall of Steel has awoken!", 175, 75, 255);
+                return;
+            }
+            if (Main.netMode == NetmodeID.Server)
+            {
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Wall of Steel has awoken!"), new Color(175, 75, 255));
+            }
+        }
+    }
     public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
     {
         if (target.HasBuff<BeeSweet>() && Hornets.Contains(npc.type))
@@ -1022,7 +1107,45 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         return base.CanHitPlayer(npc, target, ref cooldownSlot);
     }
-
+    public override void SetupShop(int type, Chest shop, ref int nextSlot)
+    {
+        if (type == NPCID.Steampunker)
+        {
+            if (Main.bloodMoon || Main.eclipse)
+            {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Ammo.YellowSolution>());
+                nextSlot++;
+            }
+            if (Main.LocalPlayer.ZoneJungle)
+            {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Ammo.LimeGreenSolution>());
+                nextSlot++;
+            }
+            if (ModContent.GetInstance<DownedBossSystem>().DownedMechasting)
+            {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Ammo.BlackSolution>());
+                shop.item[nextSlot].value = Item.buyPrice(0, 1);
+                nextSlot++;
+            }
+        }
+        if (type == NPCID.Pirate && NPC.downedPirates)
+        {
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<FalseTreasureMap>());
+            shop.item[nextSlot].value = Item.buyPrice(0, 4);
+            nextSlot++;
+        }
+        if (type == NPCID.GoblinTinkerer && NPC.downedGoblins)
+        {
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<GoblinRetreatOrder>());
+            shop.item[nextSlot].value = Item.buyPrice(0, 4);
+            nextSlot++;
+        }
+        if (type == NPCID.ArmsDealer && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+        {
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Ammo.MissileBolt>());
+            nextSlot++;
+        }
+    }
     public override bool CheckDead(NPC npc)
     {
         if (npc.townNPC && npc.life <= 0)
@@ -1287,6 +1410,10 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
+        NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
+        NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
+        NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
+        NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
         var hardModeCondition = new HardmodeOnly();
         var preHardModeCondition = new Invert(hardModeCondition);
         var superHardModeCondition = new Superhardmode();
@@ -1346,7 +1473,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 break;
             case NPCID.AngryBones or NPCID.AngryBonesBig or NPCID.AngryBonesBigHelmet
                 or NPCID.AngryBonesBigMuscle:
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlackWhetstone>(), 50));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlackWhetstone>(), 100));
                 break;
             case NPCID.KingSlime:
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BandofSlime>(),

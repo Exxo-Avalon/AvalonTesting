@@ -15,8 +15,10 @@ using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -411,13 +413,32 @@ public class AvalonTestingGlobalItem : GlobalItem
         }
     }
 
+    public override void PostUpdate(Terraria.Item item)
+    {
+        if (item.lavaWet && item.position.Y / 16 > Main.maxTilesY - 190)
+        {
+            if (item.type == ModContent.ItemType<HellboundRemote>() && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+            {
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    item.active = false;
+                    item.type = ItemID.None;
+                    item.stack = 0;
+                    if (Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+                    {
+                        AvalonTestingGlobalNPC.SpawnWOS(item.position);
+                        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/WoS"), item.position);
+                    }
+                    NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, NetworkText.Empty, item.whoAmI, 0f, 0f, 0f, 0);
+                }
+            }
+        }
+    }
     public override bool CanEquipAccessory(Terraria.Item item, Player player, int slot, bool modded) =>
         !item.IsArmor() && base.CanEquipAccessory(item, player, slot, modded);
 
     public override void PickAmmo(Terraria.Item weapon, Terraria.Item ammo, Player player, ref int type,
-                                  ref float speed,
-                                  ref StatModifier damage,
-                                  ref float knockback)
+                                  ref float speed, ref StatModifier damage, ref float knockback)
     {
         if (ammo.ammo == AmmoID.Arrow && speed < 20f && player.HasBuff<AdvArchery>())
         {
@@ -727,7 +748,13 @@ public class AvalonTestingGlobalItem : GlobalItem
                 break;
         }
     }
-
+    public override void UpdateVanity(Terraria.Item item, Player player)
+    {
+        if (item.type == ItemID.HighTestFishingLine)
+        {
+            player.accFishingLine = true;
+        }
+    }
     public override void OpenVanillaBag(string context, Player player, int arg)
     {
         IEntitySource openItemSource = player.GetSource_OpenItem(arg);

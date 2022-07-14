@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,8 +9,8 @@ class CaesiumSpear : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Caesium Poke");
-        Tooltip.SetDefault("Explodes with each hit");
+        DisplayName.SetDefault("Caesium Pike");
+        Tooltip.SetDefault("Explodes with each hit\n'Poke!'");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()
