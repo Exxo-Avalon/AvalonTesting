@@ -33,4 +33,10 @@ class SolarFlareBow : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item5;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 21)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

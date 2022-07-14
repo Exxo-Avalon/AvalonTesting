@@ -16,7 +16,7 @@ class TheCell : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item1;
-        Item.damage = 17;
+        Item.damage = 36;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1f;

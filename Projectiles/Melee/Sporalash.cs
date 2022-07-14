@@ -19,8 +19,8 @@ public class Sporalash : ModProjectile
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Projectile.width = dims.Width * 22 / 34;
-        Projectile.height = dims.Height * 22 / 34 / Main.projFrames[Projectile.type];
+        Projectile.width = 38;
+        Projectile.height = 38;
         Projectile.aiStyle = ProjAIStyleID.Flail;
         AIType = ProjectileID.Mace;
         Projectile.friendly = true;
@@ -50,7 +50,7 @@ public class Sporalash : ModProjectile
             Projectile.position.Y += Projectile.velocity.Y;
             Projectile.velocity.Y = -oldVelocity.Y * 0.2f;
         }
-        Projectile.ai[0] = 1f;
+        //Projectile.ai[0] = 1f;
         if (flag5)
         {
             Projectile.netUpdate = true;

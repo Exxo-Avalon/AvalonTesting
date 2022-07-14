@@ -16,7 +16,7 @@ class Sporalash : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 33;
+        Item.damage = 52;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;

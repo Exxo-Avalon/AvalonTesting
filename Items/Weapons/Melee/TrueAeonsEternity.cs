@@ -54,6 +54,13 @@ class TrueAeonsEternity : ModItem
         }
         return false;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<AeonsEternity>())
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.CaesiumBar>(), 10)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
         if (Main.rand.Next(5) == 0)

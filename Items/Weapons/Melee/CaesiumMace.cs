@@ -17,7 +17,7 @@ class CaesiumMace : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 71;
+        Item.damage = 97;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;

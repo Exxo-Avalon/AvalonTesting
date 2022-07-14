@@ -764,11 +764,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.LightShard)
             .AddTile(TileID.AdamantiteForge).Register();
 
-        Recipe.Create(ModContent.ItemType<TrueAeonsEternity>())
-            .AddIngredient(ModContent.ItemType<AeonsEternity>())
-            .AddIngredient(ItemID.BrokenHeroSword)
-            .AddTile(TileID.MythrilAnvil).Register();
-
         Recipe.Create(ItemID.TerraBlade)
             .AddIngredient(ModContent.ItemType<TrueAeonsEternity>())
             .AddIngredient(ItemID.TrueExcalibur)
@@ -1074,19 +1069,6 @@ public class RecipeCreator : ModSystem
         Recipe.Create(ModContent.ItemType<SolariumStar>())
             .AddIngredient(ModContent.ItemType<SolariumOre>(), 2)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
-        Recipe.Create(ModContent.ItemType<SolarFlaresword>())
-            .AddIngredient(ModContent.ItemType<SolariumStar>(), 33)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-
-        Recipe.Create(ModContent.ItemType<SolarFlareBow>())
-            .AddIngredient(ModContent.ItemType<SolariumStar>(), 21)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-
-        Recipe.Create(ModContent.ItemType<SolariumStaff>())
-            .AddIngredient(ModContent.ItemType<SolariumStar>(), 40)
-            .AddIngredient(ModContent.ItemType<FeroziumBar>(), 7)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
         Recipe.Create(ModContent.ItemType<KnivesoftheCorruptor>())
             .AddIngredient(ItemID.VampireKnives)

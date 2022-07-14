@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -117,6 +117,7 @@ public abstract class ExxoPrefix : ModPrefix
         {
             list.Add(new TooltipLine(Mod, prefix, $"{value:+#;-#;+0}{(percentage ? "%" : string.Empty)} {identifier}")
             {
+                IsModifier = true,
                 IsModifierBad = !inverted ? value < 0 : value >= 0,
             });
         }
@@ -129,6 +130,7 @@ public abstract class ExxoPrefix : ModPrefix
         {
             list.Add(new TooltipLine(Mod, prefix, $"{value * 100:+#;-#;+0;n0}% {identifier}")
             {
+                IsModifier = true,
                 IsModifierBad = !inverted ? value < 0 : value >= 0,
             });
         }
@@ -139,7 +141,7 @@ public abstract class ExxoPrefix : ModPrefix
     {
         if (value)
         {
-            list.Add(new TooltipLine(Mod, prefix, identifier) { IsModifierBad = isBad });
+            list.Add(new TooltipLine(Mod, prefix, identifier) { IsModifier = true, IsModifierBad = isBad });
         }
     }
 }

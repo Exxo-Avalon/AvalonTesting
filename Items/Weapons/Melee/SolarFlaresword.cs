@@ -29,4 +29,10 @@ class SolarFlaresword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 33)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

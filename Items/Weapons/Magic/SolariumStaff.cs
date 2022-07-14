@@ -32,4 +32,11 @@ class SolariumStaff : ModItem
         Item.shoot = ModContent.ProjectileType<Projectiles.SolarBolt>();
         Item.value = Item.sellPrice(0, 10, 0, 0);
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 40)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.FeroziumBar>(), 7)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

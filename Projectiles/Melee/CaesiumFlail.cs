@@ -18,10 +18,10 @@ public class CaesiumFlail : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
-        Projectile.width = dims.Width * 22 / 34;
-        Projectile.height = dims.Height * 22 / 34 / Main.projFrames[Projectile.type];
+        Projectile.width = 46;
+        Projectile.height = 46;
         Projectile.aiStyle = -1;
+        //Projectile.tileCollide = false;
         //AIType = ProjectileID.Mace;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
@@ -30,7 +30,18 @@ public class CaesiumFlail : ModProjectile
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
     }
-
+    public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+    {
+        if (Projectile.ai[0] == 0f)
+        {
+            Vector2 mountedCenter = Main.player[Projectile.owner].MountedCenter;
+            Vector2 vector = targetHitbox.ClosestPointInRect(mountedCenter) - mountedCenter;
+            vector.Y /= 0.8f;
+            float num = 55f;
+            return vector.Length() <= num;
+        }
+        return false;
+    }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
         bool flag5 = false;
@@ -52,7 +63,7 @@ public class CaesiumFlail : ModProjectile
             Projectile.position.Y += Projectile.velocity.Y;
             Projectile.velocity.Y = -oldVelocity.Y * 0.2f;
         }
-        Projectile.ai[0] = 1f;
+        //Projectile.ai[0] = 1f;
         if (flag5)
         {
             Projectile.netUpdate = true;
@@ -142,6 +153,7 @@ public class CaesiumFlail : ModProjectile
             }
             case 1:
             {
+                //Projectile.tileCollide = true;
                 doFastThrowDust = true;
                 bool flag4 = Projectile.ai[1]++ >= launchTimeLimit;
                 flag4 |= Projectile.Distance(mountedCenter) >= maxLaunchLength;
@@ -345,7 +357,7 @@ public class CaesiumFlail : ModProjectile
         float chainHeightAdjustment = 0f; // Use this to adjust the chain overlap. 
 
         Vector2 chainOrigin = chainSourceRectangle.HasValue ? (chainSourceRectangle.Value.Size() / 2f) : (chainTexture.Size() / 2f);
-        Vector2 chainDrawPosition = Projectile.Center;
+        Vector2 chainDrawPosition = Projectile.Center; //position + new Vector2(23, 23);
         Vector2 vectorFromProjectileToPlayerArms = playerArmPosition.MoveTowards(chainDrawPosition, 4f) - chainDrawPosition;
         Vector2 unitVectorFromProjectileToPlayerArms = vectorFromProjectileToPlayerArms.SafeNormalize(Vector2.Zero);
         float chainSegmentLength = (chainSourceRectangle.HasValue ? chainSourceRectangle.Value.Height : chainTexture.Height()) + chainHeightAdjustment;
