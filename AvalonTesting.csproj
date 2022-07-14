@@ -6,6 +6,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>latest</LangVersion>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3">
@@ -26,7 +28,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     
-    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Items\Consumables\" />
