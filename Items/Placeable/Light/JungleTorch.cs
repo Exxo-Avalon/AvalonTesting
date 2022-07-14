@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ class JungleTorch : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Jungle Torch");
-        SacrificeTotal = 1;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()
