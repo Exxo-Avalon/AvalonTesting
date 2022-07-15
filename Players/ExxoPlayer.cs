@@ -3369,6 +3369,7 @@ public class ExxoPlayer : ModPlayer
     public bool UltraLMinion;
     private int actualStatManaMax2;
     public bool oreDupe;
+    public bool HookBonus;
 
     public Vector2 MousePosition;
 

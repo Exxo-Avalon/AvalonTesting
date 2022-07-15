@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -25,10 +25,17 @@ class SpectrumGreaves : ModItem
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;
     }
-    //public override void AddRecipes()
-    //{
-    //    CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 17).AddIngredient(ModContent.ItemType<Material.DarkMatterGel>(), 40).AddIngredient(ModContent.ItemType<AncientLeggings>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 3).AddIngredient(ModContent.ItemType<Placeable.Tile.Opal>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-    //}
+    public override void AddRecipes()
+    {
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 17)
+            .AddIngredient(ModContent.ItemType<Material.DarkMatterGel>(), 40)
+            .AddIngredient(ModContent.ItemType<AncientLeggings>())
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 3)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Opal>(), 10)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
+    }
     public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
     {
         Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumGreaves_Glow").Value;

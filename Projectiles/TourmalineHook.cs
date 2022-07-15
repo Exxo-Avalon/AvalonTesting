@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -67,7 +67,7 @@ public class TourmalineHook : ModProjectile
     }
     public override float GrappleRange()
     {
-        return 510f;
+        return Main.player[Projectile.owner].GetModPlayer<Players.ExxoPlayer>().HookBonus ? 640f : 510f;
     }
 
     public override void NumGrappleHooks(Player player, ref int numHooks)

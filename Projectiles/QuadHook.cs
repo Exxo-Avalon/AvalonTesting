@@ -256,17 +256,12 @@ internal class QuadHook : ModProjectile
             }
         }
 
-        if (hooksOut > 4)
-        {
-            return false;
-        }
-
-        return true;
+        return hooksOut <= 4;
     }
 
     public override float GrappleRange()
     {
-        return 650f;
+        return Main.player[Projectile.owner].GetModPlayer<Players.ExxoPlayer>().HookBonus ? 810f : 650f;
     }
 
     public override void NumGrappleHooks(Player player, ref int numHooks)
