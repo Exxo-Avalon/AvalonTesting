@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,7 @@ class BerserkerArrow : ModItem
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.BerserkerArrow>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.BerserkerArrow>();
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 2000;
         Item.height = dims.Height;

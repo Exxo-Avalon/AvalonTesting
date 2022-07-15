@@ -42,7 +42,7 @@ public class FeroziumBullet : ModProjectile
                 Projectile.alpha = 0;
             }
         }
-        if ((Projectile.type == ModContent.ProjectileType<MissileBolt>() && Projectile.ai[1] < 45f) || (Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<RottenBullet>() && Projectile.type != ModContent.ProjectileType<PatellaBullet>() && Projectile.type != ModContent.ProjectileType<Soundwave>() && Projectile.type != ModContent.ProjectileType<FeroziumBullet>() && Projectile.type != ModContent.ProjectileType<Electrobullet>() && Projectile.type != ModContent.ProjectileType<SpikeCannon>() && Projectile.type != ModContent.ProjectileType<PathogenBullet>() && Projectile.type != ModContent.ProjectileType<MagmaticBullet>() && Projectile.type != ModContent.ProjectileType<TritonBullet>() && Projectile.type != ModContent.ProjectileType<FocusBeam>() && Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<InfectiousSpore>()))
+        if ((Projectile.type == ModContent.ProjectileType<Ranged.MissileBolt>() && Projectile.ai[1] < 45f) || (Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<Projectiles.Ranged.RottenBullet>() && Projectile.type != ModContent.ProjectileType<Projectiles.Ranged.PatellaBullet>() && Projectile.type != ModContent.ProjectileType<Soundwave>() && Projectile.type != ModContent.ProjectileType<FeroziumBullet>() && Projectile.type != ModContent.ProjectileType<Projectiles.Ranged.Electrobullet>() && Projectile.type != ModContent.ProjectileType<Ranged.SpikeCannon>() && Projectile.type != ModContent.ProjectileType<PathogenBullet>() && Projectile.type != ModContent.ProjectileType<Ranged.MagmaticBullet>() && Projectile.type != ModContent.ProjectileType<Ranged.TritonBullet>() && Projectile.type != ModContent.ProjectileType<FocusBeam>() && Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<InfectiousSpore>()))
         {
             Projectile.ai[0] += 1f;
         }
@@ -93,7 +93,7 @@ public class FeroziumBullet : ModProjectile
                 Projectile.alpha = 0;
             }
         }
-        else if (Projectile.type == ModContent.ProjectileType<BerserkerBullet>())
+        else if (Projectile.type == ModContent.ProjectileType<Ranged.BerserkerBullet>())
         {
             if (Projectile.alpha < 170)
             {
@@ -186,7 +186,7 @@ public class FeroziumBullet : ModProjectile
                 Projectile.velocity.Y = (Projectile.velocity.Y * (num46 - 1) + num44) / num46;
             }
         }
-        else if (Projectile.type == ModContent.ProjectileType<MissileBolt>())
+        else if (Projectile.type == ModContent.ProjectileType<Ranged.MissileBolt>())
         {
             if (Projectile.localAI[0] == 0f)
             {

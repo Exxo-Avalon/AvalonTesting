@@ -27,7 +27,7 @@ class DurataniumDrill : ModItem
         Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 0f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.DurataniumDrill>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.DurataniumDrill>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 60000;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,7 @@ class PathogenArrow : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.PathogenArrow>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.PathogenArrow>();
         Item.value = Item.sellPrice(0, 0, 0, 50);
         Item.maxStack = 2000;
         Item.height = dims.Height;

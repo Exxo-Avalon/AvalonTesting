@@ -26,7 +26,7 @@ class NaquadahDrill : ModItem
         Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 0f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.NaquadahDrill>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.NaquadahDrill>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 102500;

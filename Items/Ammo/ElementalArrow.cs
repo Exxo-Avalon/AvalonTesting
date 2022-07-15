@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,7 @@ class ElementalArrow : ModItem
         Item.rare = ItemRarityID.Yellow;
         Item.width = dims.Width;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ElementalArrow>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.ElementalArrow>();
         Item.value = Item.sellPrice(0, 0, 3, 0);
         Item.maxStack = 2000;
         Item.height = dims.Height;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -81,7 +81,7 @@ class TimechangerMkII : ModItem
         {
             if (player.itemAnimation > 0 && player.whoAmI == Main.myPlayer)
             {
-                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.TimechangerMkII>(), 0, 0);
+                int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.Tools.TimechangerMkII>(), 0, 0);
                 Main.projectile[p].ai[0] = time;
             }
             //switch (selectedTime)

@@ -28,7 +28,7 @@ class VorazylcumFusebow : ModItem
         Item.width = dims.Width;
         Item.knockBack = 5f;
         Item.useTime = 15;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ArrowBeam>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.ArrowBeam>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 20, 0, 0);
         Item.useAnimation = 15;

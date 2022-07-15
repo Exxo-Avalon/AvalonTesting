@@ -24,7 +24,7 @@ class BloodyArrow : ModItem
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.knockBack = 3f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.BloodyArrow>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.BloodyArrow>();
         Item.value = Item.sellPrice(0, 0, 0, 8);
         Item.maxStack = 2000;
         Item.height = dims.Height;

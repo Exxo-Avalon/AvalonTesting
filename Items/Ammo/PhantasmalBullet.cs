@@ -24,7 +24,7 @@ class PhantasmalBullet : ModItem
         Item.rare = ModContent.RarityType<Rarities.QuibopsRarity>();
         Item.width = dims.Width;
         Item.knockBack = 6f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.PhantasmalBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.PhantasmalBullet>();
         Item.maxStack = 2000;
         Item.value = 1200;
         Item.height = dims.Height;

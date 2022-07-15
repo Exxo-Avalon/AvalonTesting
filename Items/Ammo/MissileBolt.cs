@@ -23,7 +23,7 @@ class MissileBolt : ModItem
         Item.rare = ItemRarityID.Yellow;
         Item.width = dims.Width;
         Item.knockBack = 3f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.MissileBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.MissileBolt>();
         Item.maxStack = 2000;
         Item.value = 150;
         Item.height = dims.Height;

@@ -25,7 +25,7 @@ class TroxiniumChainsaw : ModItem
         Item.width = dims.Width;
         Item.useTime = 6;
         Item.knockBack = 4.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TroxiniumChainsaw>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.TroxiniumChainsaw>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 114000;

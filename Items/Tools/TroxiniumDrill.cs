@@ -26,7 +26,7 @@ class TroxiniumDrill : ModItem
         Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 0f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TroxiniumDrill>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.TroxiniumDrill>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 114000;

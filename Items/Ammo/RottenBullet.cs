@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,7 +24,7 @@ class RottenBullet : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.knockBack = 16f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.RottenBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.RottenBullet>();
         Item.value = 10;
         Item.maxStack = 2000;
         Item.height = dims.Height;

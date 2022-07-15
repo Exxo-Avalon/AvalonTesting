@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -30,7 +30,7 @@ class SpikeRailgun : ModItem
         Item.width = dims.Width;
         Item.knockBack = 8f;
         Item.useTime = 9;
-        Item.shoot = ModContent.ProjectileType<Projectiles.SpikeCannon>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
         Item.value = Item.sellPrice(0, 20, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 9;

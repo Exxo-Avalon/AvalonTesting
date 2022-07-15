@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -148,7 +148,7 @@ public class PossessedFlamesaw : ModProjectile
                 num100 = 16f;
                 num101 = 1.2f;
             }
-            else if (Projectile.type == ModContent.ProjectileType<Shurikerang>())
+            else if (Projectile.type == ModContent.ProjectileType<Projectiles.Ranged.Shurikerang>())
             {
                 num100 = 15f;
                 num101 = 0.8f;

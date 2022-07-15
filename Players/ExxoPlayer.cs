@@ -598,7 +598,7 @@ public class ExxoPlayer : ModPlayer
                     int dmgAdd = 0;
                     if (item2.type == ItemID.Spike)
                     {
-                        t = ModContent.ProjectileType<Projectiles.SpikeCannon>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
                         dmgAdd = 11;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.DemonSpikeScale>())
@@ -608,27 +608,27 @@ public class ExxoPlayer : ModPlayer
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.BloodiedSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.BloodiedSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.BloodiedSpike>();
                         dmgAdd = 17;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.NastySpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.NastySpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.NastySpike>();
                         dmgAdd = 18;
                     }
                     else if (item2.type == ItemID.WoodenSpike)
                     {
-                        t = ModContent.ProjectileType<WoodenSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.WoodenSpike>();
                         dmgAdd = 30;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.VenomSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.VenomSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.VenomSpike>();
                         dmgAdd = 39;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.PoisonSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.PoisonSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.PoisonSpike>();
                         dmgAdd = 15;
                     }
 

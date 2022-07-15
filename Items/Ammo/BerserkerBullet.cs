@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -23,7 +23,7 @@ class BerserkerBullet : ModItem
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.BerserkerBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.BerserkerBullet>();
         Item.maxStack = 2000;
         Item.value = 200;
         Item.height = dims.Height;

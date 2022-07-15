@@ -24,7 +24,7 @@ class FeroziumArrow : ModItem
         Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.FeroziumArrow>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.FeroziumArrow>();
         Item.value = Item.sellPrice(0, 0, 1, 0);
         Item.maxStack = 2000;
         Item.height = dims.Height;
