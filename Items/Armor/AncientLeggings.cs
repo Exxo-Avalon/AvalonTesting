@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,7 @@ class AncientLeggings : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ancient Leggings");
-        Tooltip.SetDefault("Increases your max number of minions by 3\nIncreases maximum mana by 80");
+        Tooltip.SetDefault("Increases your max number of minions by 6\nIncreases maximum mana by 100");
         SacrificeTotal = 1;
     }
 
@@ -33,7 +33,7 @@ class AncientLeggings : ModItem
     }
     public override void UpdateEquip(Player player)
     {
-        player.maxMinions += 3;
-        player.statManaMax2 += 80;
+        player.maxMinions += 6;
+        player.statManaMax2 += 100;
     }
 }

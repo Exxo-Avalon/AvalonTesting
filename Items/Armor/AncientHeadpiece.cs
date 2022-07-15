@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Players;
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
@@ -14,7 +14,7 @@ internal class AncientHeadpiece : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ancient Headpiece");
-        Tooltip.SetDefault("20% increased damage\n5% increased critical strike chance");
+        Tooltip.SetDefault("23% increased damage\n6% increased critical strike chance");
         SacrificeTotal = 1;
     }
 
@@ -69,7 +69,7 @@ internal class AncientHeadpiece : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.GetDamage(DamageClass.Generic) += 0.2f;
-        player.GetCritChance(DamageClass.Generic) += 5;
+        player.GetDamage(DamageClass.Generic) += 0.23f;
+        player.GetCritChance(DamageClass.Generic) += 6;
     }
 }

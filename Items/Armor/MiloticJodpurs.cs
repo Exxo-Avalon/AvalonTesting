@@ -11,7 +11,7 @@ class MiloticJodpurs : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Milotic Jodpurs");
-        Tooltip.SetDefault("Increases your max number of minions by 1\n10% increased movement speed");
+        Tooltip.SetDefault("Increases your max number of minions by 2\n10% increased movement speed");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
@@ -28,6 +28,6 @@ class MiloticJodpurs : ModItem
     public override void UpdateEquip(Player player)
     {
         player.moveSpeed += 0.1f;
-        player.maxMinions++;
+        player.maxMinions += 2;
     }
 }

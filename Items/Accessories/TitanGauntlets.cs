@@ -11,7 +11,7 @@ class TitanGauntlets : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Titan Gauntlets");
-        Tooltip.SetDefault("Attacks inflict Frostburn, increases damage and melee speed by 9%, reduces team member damage (only active above 25% HP)\nIncreases knockback, reduces dmg when below 25% HP, [+15 defense, +3 life regeneration, +15% damage] (Only when below 33% HP)");
+        Tooltip.SetDefault("Attacks inflict Frostburn, increases damage and melee speed by 9%, reduces team member damage (only active above 25% HP)\nIncreases knockback, reduces dmg when below 25% HP, [+15 defense, +3 life regeneration, +15% damage] (Only when below 33% HP)\nEnables auto swing for melee weapons and increases the size of melee weapons");
         SacrificeTotal = 1;
     }
 
@@ -38,6 +38,8 @@ class TitanGauntlets : ModItem
         player.GetDamage(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Ranged) += 0.1f;
         player.frostArmor = true;
+        player.autoReuseGlove = true;
+        player.meleeScaleGlove = true;
         if (player.statLife <= player.statLifeMax2 * 0.33)
         {
             player.statDefense += 20;

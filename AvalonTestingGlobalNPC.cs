@@ -1794,6 +1794,10 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     }
     public override void OnKill(NPC npc)
     {
+        if (npc.type == NPCID.Golem && !NPC.downedGolemBoss)
+        {
+            AvalonTestingWorld.GenerateSolarium();
+        }
         if (npc.HasBuff(ModContent.BuffType<Virulent>()))
         {
             int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity, ModContent.ProjectileType<Projectiles.PathogenicMist>(), 0, 0);
@@ -1810,6 +1814,17 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
             Main.projectile[proj].velocity.Y = -3.5f;
             Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;
+        }
+        if (npc.type is NPCID.TheDestroyer or NPCID.Retinazer or NPCID.Spazmatism or NPCID.SkeletronPrime)
+        {
+            if (!NPC.downedMechBossAny)
+            {
+                if ((npc.type == NPCID.Spazmatism && NPC.AnyNPCs(NPCID.Retinazer)) || (npc.type == NPCID.Retinazer && NPC.AnyNPCs(NPCID.Spazmatism)))
+                {
+                    return;
+                }
+                AvalonTestingWorld.GenerateHallowedOre();
+            }
         }
     }
 }
