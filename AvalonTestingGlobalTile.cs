@@ -80,6 +80,10 @@ public class AvalonTestingGlobalTile : GlobalTile
         {
             fail = true;
         }
+        if (type == ModContent.TileType<HallowedAltar>() && Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].hammer < 100)
+        {
+            fail = true;
+        }
         // Sometimes drop icicles from ice stalactites
         if (type == TileID.Stalactite && Main.tile[i, j].TileFrameX < 54 &&
             Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.NextBool(2))

@@ -1,7 +1,8 @@
-﻿using AvalonTesting.Systems;
+using AvalonTesting.Systems;
 using AvalonTesting.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
@@ -25,6 +26,7 @@ public class HallowedAltar : ModTile
         DustType = DustID.HallowedWeapons;
         TileID.Sets.PreventsTileRemovalIfOnTopOfIt[Type] = true;
         TileID.Sets.InteractibleByNPCs[Type] = true;
+        HitSound = new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarHit");
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -39,7 +41,6 @@ public class HallowedAltar : ModTile
     {
         return false;
     }
-
     public override bool CanKillTile(int i, int j, ref bool blockDamaged)
     {
         if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode)
@@ -55,6 +56,27 @@ public class HallowedAltar : ModTile
         if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             SmashHallowAltar(i, j);
+            SoundEngine.PlaySound(new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
+            var R = new Rectangle(i * 16, j * 16, 16 * 3, 16 * 2);
+            int C = 50;
+            float vR = .4f;
+            Vector2 pos = new Vector2(i * 16, j * 16);
+            for (int i2 = 1; i2 <= C; i2++)
+            {
+                int D = Dust.NewDust(pos, R.Width, R.Height, DustID.Enchanted_Gold, 0, 0, 100, new Color(),
+                    2f);
+                Main.dust[D].noGravity = true;
+                Main.dust[D].velocity.X = vR * (Main.dust[D].position.X - (pos.X + 24));
+                Main.dust[D].velocity.Y = vR * (Main.dust[D].position.Y - (pos.Y + 16));
+            }
+
+            for (int i2 = 1; i2 <= C; i2++)
+            {
+                int D2 = Dust.NewDust(pos, R.Width, R.Height, DustID.MagicMirror, 0, 0, 100, new Color(), 2f);
+                Main.dust[D2].noGravity = true;
+                Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (pos.X + 24));
+                Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (pos.Y + 16));
+            }
         }
     }
 
