@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -28,10 +28,17 @@ class SpectrumHelmet : ModItem
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;
     }
-    //public override void AddRecipes()
-    //{
-    //    CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bars.OblivionBar>(), 20).AddIngredient(ModContent.ItemType<Material.DarkMatterGel>(), 40).AddIngredient(ModContent.ItemType<AncientHeadpiece>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 3).AddIngredient(ModContent.ItemType<Placeable.Tile.Opal>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-    //}
+    public override void AddRecipes()
+    {
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.OblivionBar>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.DarkMatterGel>(), 40)
+            .AddIngredient(ModContent.ItemType<AncientHeadpiece>())
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 3)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Opal>(), 10)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
+    }
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
         return body.type == ModContent.ItemType<SpectrumBreastplate>() && legs.type == ModContent.ItemType<SpectrumGreaves>();

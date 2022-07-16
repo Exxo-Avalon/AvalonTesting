@@ -39,7 +39,7 @@ public class Pigron : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Assets/Bestiary/ContagionIcon", "Assets/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("This elusive dragon-pig hybrid has excellent stealth capabilities despite its rotund figure. It is uncertain how they came to exist.")
         });
     }

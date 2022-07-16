@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -67,7 +67,7 @@ public class PeridotHook : ModProjectile
 
     public override float GrappleRange()
     {
-        return 540f;
+        return Main.player[Projectile.owner].GetModPlayer<Players.ExxoPlayer>().HookBonus ? 675f : 540f;
     }
 
     public override void NumGrappleHooks(Player player, ref int numHooks)

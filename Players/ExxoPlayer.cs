@@ -598,7 +598,7 @@ public class ExxoPlayer : ModPlayer
                     int dmgAdd = 0;
                     if (item2.type == ItemID.Spike)
                     {
-                        t = ModContent.ProjectileType<Projectiles.SpikeCannon>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
                         dmgAdd = 11;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.DemonSpikeScale>())
@@ -608,27 +608,27 @@ public class ExxoPlayer : ModPlayer
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.BloodiedSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.BloodiedSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.BloodiedSpike>();
                         dmgAdd = 17;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.NastySpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.NastySpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.NastySpike>();
                         dmgAdd = 18;
                     }
                     else if (item2.type == ItemID.WoodenSpike)
                     {
-                        t = ModContent.ProjectileType<WoodenSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.WoodenSpike>();
                         dmgAdd = 30;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.VenomSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.VenomSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.VenomSpike>();
                         dmgAdd = 39;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.PoisonSpike>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.PoisonSpike>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.PoisonSpike>();
                         dmgAdd = 15;
                     }
 
@@ -1384,57 +1384,57 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (ZoneFlight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFlight)
         {
             Player.slowFall = true; // doesn't work
         }
 
-        if (ZoneFright)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFright)
         {
             Player.statDefense += 5;
         }
 
-        if (ZoneIceSoul)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneIceSoul)
         {
             slimeBand = true; // doesn't work
         }
 
-        if (ZoneMight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneMight)
         {
             Player.GetDamage(DamageClass.Generic) += 0.06f;
         }
 
-        if (ZoneNight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneNight)
         {
             Player.wolfAcc = true;
         }
 
-        if (ZoneTime)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneTime)
         {
             Player.accWatch = 3;
         }
 
-        if (ZoneTorture)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneTorture)
         {
             Player.GetCritChance(DamageClass.Generic) += 6;
         }
 
-        if (ZoneSight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneSight)
         {
             Player.detectCreature = Player.dangerSense = Player.nightVision = true;
         }
 
-        if (ZoneDelight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneDelight)
         {
             Player.lifeRegen += 3;
         }
 
-        if (ZoneHumidity)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneHumidity)
         {
             Player.resistCold = true;
         }
 
-        if (ZoneBlight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneBlight)
         {
             Player.GetArmorPenetration(DamageClass.Generic) += 10;
         }
@@ -1951,7 +1951,7 @@ public class ExxoPlayer : ModPlayer
         }
 
         Player.breathMax = 200;
-        if (ZoneFlight)
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFlight)
         {
             Player.slowFall = true;
         }
@@ -2995,7 +2995,7 @@ public class ExxoPlayer : ModPlayer
                 Player.sticky = false;
             }
 
-            if (slimeBand || ZoneIceSoul)
+            if (slimeBand || Player.GetModPlayer<ExxoBiomePlayer>().ZoneIceSoul)
             {
                 Player.slippy = true;
                 Player.slippy2 = true;
@@ -3329,17 +3329,6 @@ public class ExxoPlayer : ModPlayer
     public bool magnet;
     public Item tome;
     public bool ghostSilence;
-    public bool ZoneTime;
-    public bool ZoneBlight;
-    public bool ZoneFright;
-    public bool ZoneMight;
-    public bool ZoneNight;
-    public bool ZoneTorture;
-    public bool ZoneIceSoul;
-    public bool ZoneFlight;
-    public bool ZoneHumidity;
-    public bool ZoneDelight;
-    public bool ZoneSight;
     public bool meleeStealth;
 
     public bool ammoCost70;
@@ -3380,6 +3369,7 @@ public class ExxoPlayer : ModPlayer
     public bool UltraLMinion;
     private int actualStatManaMax2;
     public bool oreDupe;
+    public bool HookBonus;
 
     public Vector2 MousePosition;
 

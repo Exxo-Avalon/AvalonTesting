@@ -48,6 +48,6 @@ namespace AvalonTesting
 
         public override string WorldIcon => "AvalonTesting/Assets/WorldIcons/Tropics";
 
-        public override string IconSmall => "AvalonTesting/Sprites/Bestiary/TropicsIcon";
+        public override string IconSmall => "AvalonTesting/Assets/Bestiary/TropicsIcon";
     }
 }

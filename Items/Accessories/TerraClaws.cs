@@ -9,7 +9,7 @@ class TerraClaws : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Terra Claws");
-        Tooltip.SetDefault("Increases melee damage and speed by 10%\nMelee attacks will burn, poison, envenom, frostburn, or ichor your enemies");
+        Tooltip.SetDefault("Increases melee damage and speed by 10%\nMelee attacks will burn, poison, envenom, frostburn, or ichor your enemies\nEnables auto swing for melee weapons and increases the size of melee weapons");
         SacrificeTotal = 1;
     }
 
@@ -28,5 +28,7 @@ class TerraClaws : ModItem
         player.Avalon().terraClaws = true;
         player.GetDamage(DamageClass.Melee) += 0.1f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
+        player.autoReuseGlove = true;
+        player.meleeScaleGlove = true;
     }
 }

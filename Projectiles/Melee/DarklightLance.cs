@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,6 +29,14 @@ public class DarklightLance : ModProjectile
     {
         get => Projectile.ai[0];
         set => Projectile.ai[0] = value;
+    }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        target.AddBuff(BuffID.ShadowFlame, 60 * 5);
+    }
+    public override void OnHitPvp(Player target, int damage, bool crit)
+    {
+        target.AddBuff(BuffID.ShadowFlame, 60 * 5);
     }
     public override void AI()
     {

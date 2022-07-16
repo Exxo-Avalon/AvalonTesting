@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -42,8 +42,13 @@ public class UnstableAnomaly : ModNPC
         NPC.DeathSound = SoundID.NPCDeath6;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.UnstableAnomalyBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.DarkMatter>().Type };
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new FlavorTextBestiaryInfoElement("These creatures are unstable and frightening apparitions of the darkness."),
+        });
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);

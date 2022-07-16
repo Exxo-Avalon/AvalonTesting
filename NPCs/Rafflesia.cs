@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Players;
@@ -32,6 +32,7 @@ public class Rafflesia : ModNPC
         NPC.knockBackResist = 0f;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.RafflesiaBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Tropics>().Type };
         //DrawOffsetY = 10;
     }
 

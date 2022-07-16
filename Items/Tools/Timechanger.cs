@@ -25,7 +25,7 @@ class Timechanger : ModItem
         Item.useTime = 30;
         Item.useAnimation = 15;
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Timechanger>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.Timechanger>();
         Item.value = Item.sellPrice(0, 2, 70, 0);
     }
 

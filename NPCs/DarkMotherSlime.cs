@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -39,7 +39,7 @@ public class DarkMotherSlime : ModNPC
         NPC.knockBackResist = 0.3f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.DarkMatter>().Type };
         suicideTimer = 0;
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -58,7 +58,6 @@ public class DarkMotherSlime : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
             new FlavorTextBestiaryInfoElement("Gelatinous, but also unstable. Made of dark matter.")
         });
     }

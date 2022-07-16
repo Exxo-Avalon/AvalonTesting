@@ -68,7 +68,7 @@ internal class TacticalBlahncher : ModItem
             }
 
             Projectile.NewProjectile(source, position.X, position.Y, num78, num79,
-                ModContent.ProjectileType<Blahcket>(), damage, knockback, player.whoAmI);
+                ModContent.ProjectileType<Projectiles.Ranged.Blahcket>(), damage, knockback, player.whoAmI);
         }
 
         return false;

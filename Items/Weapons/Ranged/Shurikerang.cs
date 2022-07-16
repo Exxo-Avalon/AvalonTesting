@@ -29,7 +29,7 @@ class Shurikerang : ModItem
         Item.UseSound = SoundID.Item1;
         Item.useTime = 12;
         Item.knockBack = 3f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Shurikerang>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.Shurikerang>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 30000;
         Item.useAnimation = 12;

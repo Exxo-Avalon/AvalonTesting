@@ -39,7 +39,7 @@ public class Cougher : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
+            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Assets/Bestiary/ContagionIcon", "Assets/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("Watch out for the coughing!")
         });
     }

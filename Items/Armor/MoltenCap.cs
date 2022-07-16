@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,7 +31,7 @@ class MoltenCap : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.HellstoneBar, 10).AddIngredient(ModContent.ItemType<Items.Material.FireShard>()).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddIngredient(ItemID.HellstoneBar, 10).AddIngredient(ModContent.ItemType<Material.FireShard>()).AddTile(TileID.Anvils).Register();
     }
     public override void UpdateArmorSet(Player player)
     {

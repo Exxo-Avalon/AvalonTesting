@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +29,7 @@ class SpikeCannon : ModItem
         Item.width = dims.Width;
         Item.knockBack = 8f;
         Item.useTime = 25;
-        Item.shoot = ModContent.ProjectileType<Projectiles.SpikeCannon>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 25;

@@ -25,7 +25,7 @@ class NaquadahChainsaw : ModItem
         Item.width = dims.Width;
         Item.useTime = 6;
         Item.knockBack = 4.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.NaquadahChainsaw>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.NaquadahChainsaw>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 102500;

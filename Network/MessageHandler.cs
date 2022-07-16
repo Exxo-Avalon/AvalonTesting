@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Network;
@@ -30,7 +30,7 @@ public class MessageHandler
                 SyncWiring.HandlePacket(reader, fromWho);
                 break;
             case MessageID.StaminaHeal:
-                SyncWiring.HandlePacket(reader, fromWho);
+                StaminaHeal.HandlePacket(reader, fromWho);
                 break;
         }
     }

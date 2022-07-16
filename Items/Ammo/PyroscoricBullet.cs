@@ -23,7 +23,7 @@ class PyroscoricBullet : ModItem
         Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.MagmaticBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.MagmaticBullet>();
         Item.maxStack = 2000;
         Item.value = 1200;
         Item.height = dims.Height;

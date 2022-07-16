@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,6 +32,6 @@ class HallowedOre : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(this, 5).AddTile(TileID.AdamantiteForge).Register();
+        Recipe.Create(ItemID.HallowedBar).AddIngredient(this, 5).AddTile(TileID.AdamantiteForge).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -41,12 +41,13 @@ public class HellboundLizard : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.HellboundLizardBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Hellcastle>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
+            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Assets/Bestiary/HellcastleIcon", "Assets/Bestiary/HellcastleBG", null),
             new FlavorTextBestiaryInfoElement("Similar in appearance to Lihzahrds, they run about in the Hellcastle, seemingly without purpose.")
         });
     }

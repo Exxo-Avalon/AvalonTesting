@@ -19,6 +19,17 @@ public class BiomeTileCounts : ModSystem
     public int CaesiumTiles { get; private set; }
     public int SkyFortressTiles { get; private set; }
     public int CrystalTiles { get; private set; }
+    public int TimeTiles { get; private set; }
+    public int BlightTiles { get; private set; }
+    public int FrightTiles { get; private set; }
+    public int MightTiles { get; private set; }
+    public int NightTiles { get; private set; }
+    public int TortureTiles { get; private set; }
+    public int IceSoulTiles { get; private set; }
+    public int FlightTiles { get; private set; }
+    public int HumidityTiles { get; private set; }
+    public int DelightTiles { get; private set; }
+    public int SightTiles { get; private set; }
 
     public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
     {
@@ -47,7 +58,17 @@ public class BiomeTileCounts : ModSystem
         CaesiumTiles = tileCounts[ModContent.TileType<BlastedStone>()];
         SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];
-
+        TimeTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.TimeCandle>()];
+        BlightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.BlightCandle>()];
+        FrightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.FrightCandle>()];
+        MightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.MightCandle>()];
+        NightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.NightCandle>()];
+        TortureTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.TortureCandle>()];
+        IceSoulTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.IceCandle>()];
+        FlightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.FlightCandle>()];
+        HumidityTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.HumidityCandle>()];
+        DelightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.DelightCandle>()];
+        SightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.SightCandle>()];
         Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().UpdateZones(this);
     }
 

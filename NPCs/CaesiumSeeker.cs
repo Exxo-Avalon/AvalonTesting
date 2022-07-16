@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -34,12 +34,12 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
         DrawOffsetY = 25;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CaesiumSeekerBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.CaesiumBlastplains>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
             new FlavorTextBestiaryInfoElement("These worms are some of the longest discovered.")
         });
     }
@@ -178,7 +178,7 @@ public abstract class CaesiumSeekerWorm : Worm
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
         var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
         { // Influences how the NPC looks in the Bestiary
-            CustomTexturePath = "AvalonTesting/Sprites/Bestiary/CaesiumSeeker", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+            CustomTexturePath = "AvalonTesting/Assets/Bestiary/CaesiumSeeker", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
             Position = new Vector2(40f, 24f),
             PortraitPositionXOverride = 0f,
             PortraitPositionYOverride = 12f,

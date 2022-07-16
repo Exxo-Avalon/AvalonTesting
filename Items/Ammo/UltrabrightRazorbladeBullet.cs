@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +25,7 @@ class UltrabrightRazorbladeBullet : ModItem
         Item.width = dims.Width;
         Item.knockBack = 3.5f;
         Item.rare = ItemRarityID.Cyan;
-        Item.shoot = ModContent.ProjectileType<Projectiles.UltrabrightRazorbladeBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.UltrabrightRazorbladeBullet>();
         Item.maxStack = 2000;
         Item.value = Item.sellPrice(0, 0, 2);
         Item.height = dims.Height;

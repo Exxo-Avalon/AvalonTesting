@@ -19,7 +19,7 @@ class Rainbringer : ModItem
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.useTime = 30;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Rainbringer>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.Rainbringer>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 70, 0);
         Item.useAnimation = 15;

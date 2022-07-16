@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,21 +14,12 @@ class BismuthShortsword : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.CloneDefaults(ItemID.GoldShortsword);
         Item.damage = 14;
-        Item.useTurn = true;
-        Item.scale = 1f;
-        Item.width = dims.Width;
-        Item.useTime = 10;
-        Item.knockBack = 4f;
         Item.shootSpeed = 2.1f;
-        Item.DamageType = DamageClass.Melee;
-        Item.useStyle = ItemUseStyleID.Rapier;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BismuthShortsword>();
+        Item.scale = 0.95f;
         Item.value = 9000;
-        Item.useAnimation = 10;
-        Item.height = dims.Height;
-        Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()
     {

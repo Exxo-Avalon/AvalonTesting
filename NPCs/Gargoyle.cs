@@ -40,12 +40,12 @@ public class Gargoyle : ModNPC
         NPC.DeathSound = null;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.GargoyleBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Hellcastle>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
             new FlavorTextBestiaryInfoElement("Made of stone, they resemble mythical creatures. They guard the Hellcastle and its treasures.")
         });
     }

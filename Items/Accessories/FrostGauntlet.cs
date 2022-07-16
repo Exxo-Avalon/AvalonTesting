@@ -11,7 +11,7 @@ class FrostGauntlet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Frost Gauntlet");
-        Tooltip.SetDefault("Melee attacks inflict Frostburn and increases damage and melee speed by 9%\nIncreases knockback and puts a damage-reducing shell around the holder when below 25% life");
+        Tooltip.SetDefault("Melee attacks inflict Frostburn and increases damage and melee speed by 9%\nIncreases knockback and puts a damage-reducing shell around the holder when below 25% life\nEnables auto swing for melee weapons and increases the size of melee weapons");
         SacrificeTotal = 1;
     }
 
@@ -37,5 +37,7 @@ class FrostGauntlet : ModItem
         player.GetDamage(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Ranged) += 0.1f;
         player.frostArmor = true;
+        player.autoReuseGlove = true;
+        player.meleeScaleGlove = true;
     }
 }

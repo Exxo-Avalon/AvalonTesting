@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -22,5 +22,8 @@ public class ShroomiteOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 205;
         DustType = DustID.Clentaminator_Blue;
+        TileID.Sets.ChecksForMerge[Type] = true;
+        TileID.Sets.OreMergesWithMud[Type] = true;
+        TileID.Sets.Ore[Type] = true;
     }
 }

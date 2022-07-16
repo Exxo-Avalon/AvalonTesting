@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -39,7 +39,7 @@ class PeeShooter : ModItem
     {
         if (type == ProjectileID.Bullet)
         {
-            type = ModContent.ProjectileType<Projectiles.PeeBullet>();
+            type = ModContent.ProjectileType<Projectiles.Ranged.PeeBullet>();
         }
     }
 }

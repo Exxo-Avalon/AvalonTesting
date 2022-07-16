@@ -1,4 +1,4 @@
-﻿//using AvalonTesting.Items.Accessories;
+//using AvalonTesting.Items.Accessories;
 //using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -44,12 +44,12 @@ public class DarkMatterSlime : ModNPC
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.DarkMatterSlimeBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.DarkMatter>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Dark Matter", "Sprites/Bestiary/DarkMatterIcon", "Sprites/Bestiary/DarkMatterBG", null),
             new FlavorTextBestiaryInfoElement("Gelatinous, but also unstable. Made of dark matter.")
         });
     }

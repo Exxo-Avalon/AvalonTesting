@@ -18,6 +18,6 @@ class BronzeShortsword : ModItem
         Item.shootSpeed = 2.1f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BronzeShortsword>();
         Item.scale = 0.95f;
-        Item.value = 3500;
+        Item.value = 1500;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Seed;
+using AvalonTesting.Logic;
 using AvalonTesting.Systems;
 using AvalonTesting.Tiles;
 using AvalonTesting.Tiles.Ores;
@@ -26,39 +27,7 @@ public class AvalonTestingWorld : ModSystem
     public static int WallOfSteelT { get; set; }
     public bool SuperHardmode { get; private set; }
 
-    public static void ChangeRain()
-    {
-        if (Main.cloudBGActive >= 1f || Main.numClouds > 150.0)
-        {
-            if (Main.rand.NextBool(3))
-            {
-                Main.maxRaining = Main.rand.Next(20, 90) * 0.01f;
-                return;
-            }
-
-            Main.maxRaining = Main.rand.Next(40, 90) * 0.01f;
-        }
-        else if (Main.numClouds > 100.0)
-        {
-            if (Main.rand.NextBool(3))
-            {
-                Main.maxRaining = Main.rand.Next(10, 70) * 0.01f;
-                return;
-            }
-
-            Main.maxRaining = Main.rand.Next(20, 60) * 0.01f;
-        }
-        else
-        {
-            if (Main.rand.NextBool(3))
-            {
-                Main.maxRaining = Main.rand.Next(5, 40) * 0.01f;
-                return;
-            }
-
-            Main.maxRaining = Main.rand.Next(5, 30) * 0.01f;
-        }
-    }
+    
 
     public static void CheckLargeHerb(int x, int y, int type)
     {
@@ -186,6 +155,56 @@ public class AvalonTestingWorld : ModSystem
             WorldGen.destroyObject = false;
         }
     }
+    public override void PreUpdateWorld()
+    {
+        if (Main.time == 16200 && Main.rand.NextBool(4) && NPC.downedMoonlord && SuperHardmode && Main.hardMode)
+        {
+            DropComet(ModContent.TileType<HydrolythOre>());
+        }
+        Main.tileSolidTop[ModContent.TileType<FallenStarTile>()] = Main.dayTime;
+    }
+    public static void GenerateSolarium()
+    {
+        for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00008); a++)
+        {
+            int x = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+            int y = WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
+            WorldGen.OreRunner(x, y, WorldGen.genRand.Next(4, 7), WorldGen.genRand.Next(4, 8), (ushort)ModContent.TileType<Tiles.Ores.SolariumOre>());
+        }
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("Your world has been energized with Solarium!", 244, 167, 0);
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been energized with Solarium!"), new Color(244, 167, 0));
+        }
+    }
+    public static void GenerateHallowedOre()
+    {
+        Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
+
+        double num5 = Main.rockLayer;
+        int xloc = -100 + Main.maxTilesX - 100;
+        int yloc = -(int)num5 + Main.maxTilesY - 200;
+        int sum = xloc * yloc;
+        int amount = (sum / 10000) * 10;
+        for (int zz = 0; zz < amount; zz++)
+        {
+            int i2 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
+            double num6 = Main.rockLayer;
+            int j2 = WorldGen.genRand.Next((int)num6, Main.maxTilesY - 200);
+            WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(WorldGen.genRand.Next(2, 4), WorldGen.genRand.Next(4, 6)), WorldGen.genRand.Next(WorldGen.genRand.Next(3, 5), WorldGen.genRand.Next(4, 8)), (ushort)ModContent.TileType<Tiles.Ores.HallowedOre>());
+        }
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("Your world has been blessed with Hallowed Ore!", 220, 170, 0);
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Your world has been blessed with Hallowed Ore!"), new Color(220, 170, 0));
+        }
+    }
 
     public static void GenerateSHMOres()
     {
@@ -299,6 +318,39 @@ public class AvalonTestingWorld : ModSystem
         }
     }
 
+    public static void ChangeRain()
+    {
+        if (Main.cloudBGActive >= 1f || Main.numClouds > 150.0)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                Main.maxRaining = Main.rand.Next(20, 90) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(40, 90) * 0.01f;
+        }
+        else if (Main.numClouds > 100.0)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                Main.maxRaining = Main.rand.Next(10, 70) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(20, 60) * 0.01f;
+        }
+        else
+        {
+            if (Main.rand.NextBool(3))
+            {
+                Main.maxRaining = Main.rand.Next(5, 40) * 0.01f;
+                return;
+            }
+
+            Main.maxRaining = Main.rand.Next(5, 30) * 0.01f;
+        }
+    }
     public static void StartRain()
     {
         const int num = 86400;
@@ -511,6 +563,396 @@ public class AvalonTestingWorld : ModSystem
             }
         }
     }
+    public void SpreadXanthophyte(int x, int y)
+    {
+        if (Main.tile[x, y].IsActuated)
+        {
+            return;
+        }
+
+        int type = Main.tile[x, y].TileType;
+
+        if (y > (Main.worldSurface + Main.rockLayer) / 2.0)
+        {
+            if ((type == ModContent.TileType<TropicalGrass>()/* || type == ModContent.TileType<Tiles.BrownIce>()*/) && WorldGen.genRand.NextBool(325))
+            {
+                int num6 = x + WorldGen.genRand.Next(-10, 11);
+                int num7 = y + WorldGen.genRand.Next(-10, 11);
+                if (Main.tile[num6, num7].HasTile && (Main.tile[num6, num7].TileType == ModContent.TileType<Loam>()/* || Main.tile[num6, num7].type == ModContent.TileType<Tiles.BrownIce>()*/) && (!Main.tile[num6, num7 - 1].HasTile || (Main.tile[num6, num7 - 1].TileType != 5 && Main.tile[num6, num7 - 1].TileType != 236 && Main.tile[num6, num7 - 1].TileType != 238)) && GrowingOreSpread.GrowingOre(x, y, ModContent.TileType<XanthophyteOre>()))
+                {
+                    Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<XanthophyteOre>();
+                    WorldGen.SquareTileFrame(num6, num7, true);
+                }
+            }
+            if (type == (ushort)ModContent.TileType<XanthophyteOre>() && WorldGen.genRand.Next(3) != 0)
+            {
+                int num8 = x;
+                int num9 = y;
+                int num10 = WorldGen.genRand.Next(4);
+                if (num10 == 0)
+                {
+                    num8++;
+                }
+                if (num10 == 1)
+                {
+                    num8--;
+                }
+                if (num10 == 2)
+                {
+                    num9++;
+                }
+                if (num10 == 3)
+                {
+                    num9--;
+                }
+                if (Main.tile[num8, num9].HasTile && (Main.tile[num8, num9].TileType == ModContent.TileType<Loam>() || Main.tile[num8, num9].TileType == ModContent.TileType<TropicalGrass>()) /*|| Main.tile[num8, num9].type == ModContent.TileType<Tiles.BrownIce>())*/ && GrowingOreSpread.GrowingOre(x, y, ModContent.TileType<XanthophyteOre>()))
+                {
+                    Main.tile[num8, num9].TileType = (ushort)ModContent.TileType<XanthophyteOre>();
+                    WorldGen.SquareTileFrame(num8, num9, true);
+                }
+            }
+        }
+    }
+    public void SpreadShroomite(int x, int y)
+    {
+        if (Main.tile[x, y].IsActuated)
+        {
+            return;
+        }
+
+        int type = Main.tile[x, y].TileType;
+
+        if (y > (Main.worldSurface + Main.rockLayer) / 2.0)
+        {
+            if ((type == TileID.MushroomGrass) && WorldGen.genRand.NextBool(150))
+            {
+                int num6 = x + WorldGen.genRand.Next(-10, 11);
+                int num7 = y + WorldGen.genRand.Next(-10, 11);
+                if (Main.tile[num6, num7].HasTile && (Main.tile[num6, num7].TileType == TileID.Mud) && (!Main.tile[num6, num7 - 1].HasTile || (Main.tile[num6, num7 - 1].TileType != 5 && Main.tile[num6, num7 - 1].TileType != 236 && Main.tile[num6, num7 - 1].TileType != 238)) && GrowingOreSpread.GrowingOre(x, y, ModContent.TileType<ShroomiteOre>()))
+                {
+                    Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<ShroomiteOre>();
+                    WorldGen.SquareTileFrame(num6, num7, true);
+                }
+            }
+            if (type == (ushort)ModContent.TileType<ShroomiteOre>() && !WorldGen.genRand.NextBool(3))
+            {
+                int num8 = x;
+                int num9 = y;
+                int num10 = WorldGen.genRand.Next(4);
+                if (num10 == 0)
+                {
+                    num8++;
+                }
+                if (num10 == 1)
+                {
+                    num8--;
+                }
+                if (num10 == 2)
+                {
+                    num9++;
+                }
+                if (num10 == 3)
+                {
+                    num9--;
+                }
+                if (Main.tile[num8, num9].HasTile && (Main.tile[num8, num9].TileType == TileID.Mud || Main.tile[num8, num9].TileType == TileID.MushroomGrass) && GrowingOreSpread.GrowingOre(x, y, ModContent.TileType<ShroomiteOre>()))
+                {
+                    Main.tile[num8, num9].TileType = (ushort)ModContent.TileType<ShroomiteOre>();
+                    WorldGen.SquareTileFrame(num8, num9, true);
+                }
+            }
+        }
+    }
+    public void DarkMatterSpread(int i, int j)
+    {
+        if (!Main.hardMode || Main.tile[i, j].IsActuated)
+        {
+            return;
+        }
+
+        int type = Main.tile[i, j].TileType;
+        int wall = Main.tile[i, j].WallType;
+        if (SuperHardmode)
+        {
+            if (type == ModContent.TileType<DarkMatter>() || type == ModContent.TileType<DarkMatterSoil>() || type == ModContent.TileType<DarkMatterGrass>() || type == ModContent.TileType<DarkMatterSand>() || type == ModContent.TileType<HardenedDarkSand>() || type == ModContent.TileType<Darksandstone>() || type == ModContent.TileType<BlackIce>())
+            {
+                bool flag5 = true;
+                while (flag5)
+                {
+                    flag5 = false;
+                    int num6 = i + WorldGen.genRand.Next(-3, 4);
+                    int num7 = j + WorldGen.genRand.Next(-3, 4);
+                    if (Main.tile[num6, num7 - 1].TileType == 27)
+                    {
+                        continue;
+                    }
+                    if (Main.tile[num6, num7].TileType == TileID.Grass || Main.tile[num6, num7].TileType == TileID.JungleGrass ||
+                        Main.tile[num6, num7].TileType == TileID.MushroomGrass || Main.tile[num6, num7].TileType == TileID.CorruptGrass ||
+                        Main.tile[num6, num7].TileType == TileID.CrimsonGrass || Main.tile[num6, num7].TileType == TileID.HallowedGrass ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<Ickgrass>() ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<TropicalGrass>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<DarkMatterGrass>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    if (Main.tile[num6, num7].TileType == TileID.Dirt || Main.tile[num6, num7].TileType == TileID.Mud ||
+                        Main.tile[num6, num7].TileType == TileID.ClayBlock ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<Loam>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<DarkMatterSoil>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    else if (Main.tile[num6, num7].TileType == TileID.Stone || Main.tile[num6, num7].TileType == TileID.Crimstone ||
+                        Main.tile[num6, num7].TileType == TileID.Ebonstone || Main.tile[num6, num7].TileType == TileID.Pearlstone ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<Chunkstone>() || Main.tileMoss[Main.tile[num6, num7].TileType])
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<DarkMatter>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    else if (Main.tile[num6, num7].TileType == TileID.Sand || Main.tile[num6, num7].TileType == TileID.Pearlsand ||
+                        Main.tile[num6, num7].TileType == TileID.Ebonsand || Main.tile[num6, num7].TileType == TileID.Crimsand ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<Snotsand>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<DarkMatterSand>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    else if (Main.tile[num6, num7].TileType == TileID.Sandstone || Main.tile[num6, num7].TileType == TileID.CrimsonSandstone ||
+                        Main.tile[num6, num7].TileType == TileID.CorruptSandstone || Main.tile[num6, num7].TileType == TileID.HallowSandstone ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<Snotsandstone>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<Darksandstone>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    else if (Main.tile[num6, num7].TileType == TileID.HardenedSand || Main.tile[num6, num7].TileType == TileID.CrimsonHardenedSand ||
+                        Main.tile[num6, num7].TileType == TileID.CorruptHardenedSand || Main.tile[num6, num7].TileType == TileID.HallowHardenedSand ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<HardenedSnotsand>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<HardenedDarkSand>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                    else if (Main.tile[num6, num7].TileType == TileID.IceBlock || Main.tile[num6, num7].TileType == TileID.FleshIce ||
+                        Main.tile[num6, num7].TileType == TileID.CorruptIce || Main.tile[num6, num7].TileType == TileID.HallowedIce ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<YellowIce>() ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<GreenIce>() ||
+                        Main.tile[num6, num7].TileType == (ushort)ModContent.TileType<BrownIce>())
+                    {
+                        if (WorldGen.genRand.NextBool(2))
+                        {
+                            flag5 = true;
+                        }
+                        Main.tile[num6, num7].TileType = (ushort)ModContent.TileType<BlackIce>();
+                        WorldGen.SquareTileFrame(num6, num7);
+                        NetMessage.SendTileSquare(-1, num6, num7, 1);
+                    }
+                }
+            }
+        }
+    }
+
+    public void DropComet(int tile)
+    {
+        bool flag = true;
+        int num = 0;
+        if (Main.netMode == NetmodeID.MultiplayerClient)
+        {
+            return;
+        }
+        for (int i = 0; i < 255; i++)
+        {
+            if (Main.player[i].active)
+            {
+                flag = false;
+                break;
+            }
+        }
+        int num2 = 0;
+        float num3 = Main.maxTilesX / 4200;
+        int num4 = (int)(400f * num3);
+        for (int j = 5; j < Main.maxTilesX - 5; j++)
+        {
+            int num5 = 5;
+            while (num5 < Main.worldSurface)
+            {
+                if (Main.tile[j, num5].HasTile && Main.tile[j, num5].TileType == tile)
+                {
+                    num2++;
+                    if (num2 > num4)
+                    {
+                        return;
+                    }
+                }
+                num5++;
+            }
+        }
+        while (!flag)
+        {
+            float num6 = Main.maxTilesX * 0.08f;
+            int num7 = Main.rand.Next(50, Main.maxTilesX - 50);
+            while (num7 > Main.spawnTileX - num6 && num7 < Main.spawnTileX + num6)
+            {
+                num7 = Main.rand.Next(50, Main.maxTilesX - 50);
+            }
+            for (int k = Main.rand.Next(100); k < Main.maxTilesY; k++)
+            {
+                if (Main.tile[num7, k].HasTile && Main.tileSolid[Main.tile[num7, k].TileType])
+                {
+                    flag = Comet(num7, k, tile);
+                    break;
+                }
+            }
+            num++;
+            if (num >= 100)
+            {
+                return;
+            }
+        }
+    }
+
+    public bool Comet(int i, int j, int tile)
+    {
+        if (i < 50 || i > Main.maxTilesX - 50)
+        {
+            return false;
+        }
+        if (j < 50 || j > Main.maxTilesY - 50)
+        {
+            return false;
+        }
+        int num = 25;
+        var rectangle = new Rectangle((i - num) * 16, (j - num) * 16, num * 2 * 16, num * 2 * 16);
+        for (int k = 0; k < 255; k++)
+        {
+            if (Main.player[k].active)
+            {
+                var value = new Rectangle((int)(Main.player[k].position.X + Main.player[k].width / 2 - NPC.sWidth / 2 - NPC.safeRangeX), (int)(Main.player[k].position.Y + Main.player[k].height / 2 - NPC.sHeight / 2 - NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+                if (rectangle.Intersects(value))
+                {
+                    return false;
+                }
+            }
+        }
+        for (int l = 0; l < 200; l++)
+        {
+            if (Main.npc[l].active)
+            {
+                var value2 = new Rectangle((int)Main.npc[l].position.X, (int)Main.npc[l].position.Y, Main.npc[l].width, Main.npc[l].height);
+                if (rectangle.Intersects(value2))
+                {
+                    return false;
+                }
+            }
+        }
+        for (int m = i - num; m < i + num; m++)
+        {
+            for (int n = j - num; n < j + num; n++)
+            {
+                if (Main.tile[m, n].HasTile && Main.tile[m, n].TileType == 21 || Main.tile[m, n].TileType == TileID.Containers2)
+                {
+                    return false;
+                }
+            }
+        }
+        //stopCometDrops = true;
+        num = 15;
+        for (int num2 = i - num; num2 < i + num; num2++)
+        {
+            for (int num3 = j - num; num3 < j + num; num3++)
+            {
+                if (num3 > j + Main.rand.Next(-2, 3) - 5 && Math.Abs(i - num2) + Math.Abs(j - num3) < num * 1.5 + Main.rand.Next(-5, 5))
+                {
+                    if (!Main.tileSolid[Main.tile[num2, num3].TileType])
+                    {
+                        Main.tile[num2, num3].Active(false);
+                    }
+                    Main.tile[num2, num3].TileType = (ushort)tile;
+                }
+            }
+        }
+        num = 10;
+        for (int num4 = i - num; num4 < i + num; num4++)
+        {
+            for (int num5 = j - num; num5 < j + num; num5++)
+            {
+                if (num5 > j + Main.rand.Next(-2, 3) - 5 && Math.Abs(i - num4) + Math.Abs(j - num5) < num + Main.rand.Next(-3, 4))
+                {
+                    Main.tile[num4, num5].Active(false);
+                }
+            }
+        }
+        num = 16;
+        for (int num6 = i - num; num6 < i + num; num6++)
+        {
+            for (int num7 = j - num; num7 < j + num; num7++)
+            {
+                if (Main.tile[num6, num7].TileType == 5 || Main.tile[num6, num7].TileType == 32)
+                {
+                    WorldGen.KillTile(num6, num7, false, false, false);
+                }
+                WorldGen.SquareTileFrame(num6, num7, true);
+                WorldGen.SquareWallFrame(num6, num7, true);
+            }
+        }
+        num = 23;
+        for (int num8 = i - num; num8 < i + num; num8++)
+        {
+            for (int num9 = j - num; num9 < j + num; num9++)
+            {
+                if (Main.tile[num8, num9].HasTile && Main.rand.Next(10) == 0 && Math.Abs(i - num8) + Math.Abs(j - num9) < num * 1.3)
+                {
+                    if (Main.tile[num8, num9].TileType == 5 || Main.tile[num8, num9].TileType == 32)
+                    {
+                        WorldGen.KillTile(num8, num9, false, false, false);
+                    }
+                    Main.tile[num8, num9].TileType = (ushort)tile;
+                    WorldGen.SquareTileFrame(num8, num9, true);
+                }
+            }
+        }
+        //stopCometDrops = false;
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("A comet has struck ground!", 0, 201, 190);
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("A comet has struck ground!"), new Color(0, 201, 190));
+        }
+        if (Main.netMode != NetmodeID.MultiplayerClient)
+        {
+            NetMessage.SendTileSquare(-1, i, j, 30);
+        }
+        return true;
+    }
     public override void PostUpdateWorld()
     {
         float num2 = 3E-05f * (float)WorldGen.GetWorldUpdateRate();
@@ -551,6 +993,25 @@ public class AvalonTestingWorld : ModSystem
                 GrowLargeHerb(num5, num6);
             }
             #endregion large herb growth
+
+            #region hardmode/superhardmode stuff
+            if (Main.tile[num5, num6].HasUnactuatedTile)
+            {
+                //ContagionHardmodeSpread(num5, num6);
+                if (Main.hardMode)
+                {
+                    SpreadXanthophyte(num5, num6);
+                }
+                if (Main.hardMode)
+                {
+                    SpreadShroomite(num5, num6);
+                }
+                if (SuperHardmode && ModContent.GetInstance<BiomeTileCounts>().WorldDarkMatterTiles < BiomeTileCounts.DarkMatterTilesHardLimit)
+                {
+                    DarkMatterSpread(num5, num6);
+                }
+            }
+            #endregion hardmode/superhardmode stuff
 
             #region holybird spawning
             if (Main.tile[num5, num6].TileType == TileID.HallowedGrass || Main.tile[num5, num6].TileType == TileID.Pearlstone)

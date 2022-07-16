@@ -26,7 +26,7 @@ class DurataniumChainsaw : ModItem
         Item.width = dims.Width;
         Item.useTime = 6;
         Item.knockBack = 3.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.DurataniumChainsaw>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.DurataniumChainsaw>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 60000;

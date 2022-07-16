@@ -29,6 +29,16 @@ class SkyInsignia : ModItem
     {
         player.AddBuff(ModContent.BuffType<Buffs.SkyBlessing>(), 60 * 7);
         SoundEngine.PlaySound(SoundID.Grab, player.position);
+        if (Main.netMode != NetmodeID.SinglePlayer)
+        {
+            foreach (Player p in Main.player)
+            {
+                if (p.whoAmI != player.whoAmI && Vector2.Distance(p.position, player.position) < 43.75f * 16)
+                {
+                    p.AddBuff(ModContent.BuffType<Buffs.SkyBlessing>(), 60 * 7);
+                }
+            }
+        }
         return false;
     }
 }

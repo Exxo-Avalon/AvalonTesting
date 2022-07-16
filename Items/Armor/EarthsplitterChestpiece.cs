@@ -11,7 +11,7 @@ class EarthsplitterChestpiece : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Earthsplitter Chestpiece");
-        Tooltip.SetDefault("Night Owl potion effect" // add other things from post
+        Tooltip.SetDefault("Night Owl potion effect\nGrappling hooks can grab onto 5 tiles and have 25% increased range" // add other things from post
                            + "\n[c/C39FDD:10th Anniversary Contest Winner - Crispy]");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
@@ -28,6 +28,7 @@ class EarthsplitterChestpiece : ModItem
     public override void UpdateEquip(Player player)
     {
         player.nightVision = true;
+        player.GetModPlayer<Players.ExxoPlayer>().HookBonus = true;
     }
     public override void AddRecipes()
     {

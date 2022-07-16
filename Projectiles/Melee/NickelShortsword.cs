@@ -19,6 +19,7 @@ public class NickelShortsword : ModProjectile
         Projectile.width = 18;
         Projectile.height = 18;
         Projectile.aiStyle = ProjAIStyleID.ShortSword;
+        AIType = ProjectileID.TinShortswordStab;
         Projectile.friendly = true;
         Projectile.DamageType = DamageClass.Melee;
         Projectile.tileCollide = false;

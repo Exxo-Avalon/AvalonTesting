@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -32,7 +32,7 @@ public class AccelerationDrill : ModItem
         Item.width = dims.Width;
         Item.useTime = 7;
         Item.knockBack = 1f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.AccelerationDrill>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.AccelerationDrill>();
         Item.UseSound = SoundID.Item23;
         Item.DamageType = DamageClass.Melee;
         Item.tileBoost += 6;

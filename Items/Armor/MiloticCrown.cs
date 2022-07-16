@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,7 @@ class MiloticCrown : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Milotic Crown");
-        Tooltip.SetDefault("20% increased minion damage\nIncreases your max number of minions by 1");
+        Tooltip.SetDefault("30% increased minion damage\nIncreases your max number of minions by 3");
         Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
     }
 
@@ -39,7 +39,7 @@ class MiloticCrown : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.GetDamage(DamageClass.Summon) += 0.2f;
-        player.maxMinions++;
+        player.GetDamage(DamageClass.Summon) += 0.3f;
+        player.maxMinions += 3;
     }
 }

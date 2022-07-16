@@ -18,6 +18,8 @@ public class MiniArma : ModProjectile
     {
         Projectile.CloneDefaults(ProjectileID.KingSlimePet);
         AIType = ProjectileID.KingSlimePet;
+        Projectile.width = 36;
+        Projectile.height = 34;
     }
     public override bool PreAI()
     {

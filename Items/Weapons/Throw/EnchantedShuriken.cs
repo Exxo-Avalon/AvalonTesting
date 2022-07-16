@@ -24,7 +24,7 @@ class EnchantedShuriken : ModItem
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.shoot = ModContent.ProjectileType<Projectiles.EnchantedShuriken>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.EnchantedShuriken>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 30;
         Item.useAnimation = 15;

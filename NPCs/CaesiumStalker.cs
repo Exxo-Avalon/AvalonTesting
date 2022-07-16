@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
@@ -45,12 +45,12 @@ public class CaesiumStalker : ModNPC
         }
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CaesiumStalkerBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.CaesiumBlastplains>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
             new FlavorTextBestiaryInfoElement("Similar to the common Blaze, these creatures are made entirely of crystals.")
         });
     }

@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
@@ -43,12 +43,12 @@ public class GrossyFloat : ModNPC
         NPC.DeathSound = SoundID.NPCDeath2;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.GrossyFloatBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Contagion>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Contagion", "Sprites/Bestiary/ContagionIcon", "Sprites/Bestiary/ContagionBG", null),
             new FlavorTextBestiaryInfoElement("Unimplemented")
         });
     }

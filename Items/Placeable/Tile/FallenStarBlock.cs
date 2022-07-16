@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace AvalonTesting.Items.Placeable.Tile;
 
@@ -32,6 +33,6 @@ class FallenStarBlock : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ItemID.FallenStar).Register();
-        CreateRecipe(1).AddIngredient(this).Register();
+        Recipe.Create(ItemID.FallenStar).AddIngredient(this).Register();
     }
 }

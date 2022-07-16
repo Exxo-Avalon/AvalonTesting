@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+using AvalonTesting.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -32,7 +32,6 @@ public class CaesiumBrute : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Caesium Blastplains", "Sprites/Bestiary/CaesiumBPIcon", "Sprites/Bestiary/CaesiumBG", null),
             new FlavorTextBestiaryInfoElement("Unlike normal Demons, these creatures are capable of knocking you far away from them!")
         });
     }
@@ -53,6 +52,7 @@ public class CaesiumBrute : ModNPC
         NPC.lavaImmune = true;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.CaesiumBruteBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.CaesiumBlastplains>().Type };
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Placeable.Tile;
@@ -29,6 +30,6 @@ class HeartstonePlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<Heartstone>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).Register();
+        Recipe.Create(ModContent.ItemType<Heartstone>()).AddIngredient(this, 2).Register();
     }
 }

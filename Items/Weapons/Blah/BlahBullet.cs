@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Ammo;
+using AvalonTesting.Items.Ammo;
 using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Items.Placeable.Tile;
@@ -27,7 +27,7 @@ class BlahBullet : ModItem
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.BlahBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.BlahBullet>();
         Item.maxStack = 2000;
         Item.value = 200;
         Item.height = dims.Height;

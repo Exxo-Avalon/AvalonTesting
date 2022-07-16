@@ -39,6 +39,59 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         NPCID.HornetStingy,
     };
 
+    public static List<int> SHMMobs = new List<int>
+    {
+        NPCID.Creeper,
+        NPCID.Pumpking,
+        NPCID.SantaNK1,
+        ModContent.NPCType<AegisHallowor>(),
+        ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>(),
+        ModContent.NPCType<ArmoredHellTortoise>(),
+        ModContent.NPCType<ArmoredWraith>(),
+        ModContent.NPCType<BactusMinion>(), // remove later
+        ModContent.NPCType<BombBones>(),
+        ModContent.NPCType<BombSkeleton>(),
+        ModContent.NPCType<CloudBat>(),
+        ModContent.NPCType<CometTail>(),
+        ModContent.NPCType<CrystalBones>(),
+        ModContent.NPCType<CrystalSpectre>(),
+        ModContent.NPCType<CursedMagmaSkeleton>(),
+        ModContent.NPCType<DarkMatterSlime>(),
+        ModContent.NPCType<DarkMotherSlime>(),
+        ModContent.NPCType<Dragonfly>(),
+        ModContent.NPCType<DragonLordBody>(),
+        ModContent.NPCType<DragonLordBody2>(),
+        ModContent.NPCType<DragonLordBody3>(),
+        ModContent.NPCType<DragonLordHead>(),
+        ModContent.NPCType<DragonLordLegs>(),
+        ModContent.NPCType<DragonLordTail>(),
+        ModContent.NPCType<Ectosphere>(),
+        ModContent.NPCType<EyeBones>(),
+        ModContent.NPCType<GuardianBones>(),
+        ModContent.NPCType<GuardianCorruptor>(),
+        ModContent.NPCType<ImpactWizard>(),
+        ModContent.NPCType<Juggernaut>(),
+        ModContent.NPCType<JuggernautSorcerer>(),
+        ModContent.NPCType<MatterMan>(),
+        ModContent.NPCType<MechanicalDiggerBody>(),
+        ModContent.NPCType<MechanicalDiggerHead>(),
+        ModContent.NPCType<MechanicalDiggerTail>(),
+        ModContent.NPCType<NPCs.Bosses.Mechasting>(),
+        ModContent.NPCType<ProtectorWheel>(),
+        ModContent.NPCType<QuickCaribe>(),
+        ModContent.NPCType<RedAegisBonesHelmet>(),
+        ModContent.NPCType<RedAegisBonesHorned>(),
+        ModContent.NPCType<RedAegisBonesSparta>(),
+        ModContent.NPCType<RedAegisBonesSpike>(),
+        ModContent.NPCType<UnstableAnomaly>(),
+        ModContent.NPCType<UnvolanditeMite>(),
+        ModContent.NPCType<UnvolanditeMiteDigger>(),
+        ModContent.NPCType<Valkyrie>(),
+        ModContent.NPCType<VampireHarpy>(),
+        ModContent.NPCType<VorazylcumMite>(),
+        ModContent.NPCType<VorazylcumMiteDigger>(),
+    };
+
     private const int RareChance = 700;
     private const int UncommonChance = 50;
     private const int VeryRareChance = 1000;
@@ -1245,7 +1298,51 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         return base.CheckDead(npc);
     }
-
+    public override void SetDefaults(NPC npc)
+    {
+        #region shm mob scaling
+        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        {
+            if (!SHMMobs.Contains(npc.type))
+            {
+                if (Main.expertMode)
+                {
+                    if (npc.townNPC)
+                    {
+                        npc.lifeMax *= 2;
+                    }
+                    else if (npc.boss)
+                    {
+                        npc.lifeMax = (int)(npc.lifeMax * 1.2);
+                        npc.damage = (int)(npc.damage * 1.3);
+                    }
+                    else
+                    {
+                        npc.lifeMax = (int)(npc.lifeMax * 1.6);
+                        npc.damage = (int)(npc.damage * 1.5);
+                    }
+                }
+                else
+                {
+                    if (npc.townNPC)
+                    {
+                        npc.lifeMax *= 2;
+                    }
+                    else if (npc.boss)
+                    {
+                        npc.lifeMax = (int)(npc.lifeMax * 1.5);
+                        npc.damage *= 2;
+                    }
+                    else
+                    {
+                        npc.damage *= 2;
+                        npc.lifeMax *= 2;
+                    }
+                }
+            }
+        }
+        #endregion
+    }
     public override void DrawEffects(NPC npc, ref Color drawColor)
     {
         if (npc.HasBuff<AstralCurse>())
@@ -1794,6 +1891,10 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     }
     public override void OnKill(NPC npc)
     {
+        if (npc.type == NPCID.Golem && !NPC.downedGolemBoss)
+        {
+            AvalonTestingWorld.GenerateSolarium();
+        }
         if (npc.HasBuff(ModContent.BuffType<Virulent>()))
         {
             int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity, ModContent.ProjectileType<Projectiles.PathogenicMist>(), 0, 0);
@@ -1810,6 +1911,17 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 ModContent.ProjectileType<Projectiles.SpiritPoppy>(), 0, 0, Main.myPlayer);
             Main.projectile[proj].velocity.Y = -3.5f;
             Main.projectile[proj].velocity.X = Main.rand.Next(-45, 46) * 0.1f;
+        }
+        if (npc.type is NPCID.TheDestroyer or NPCID.Retinazer or NPCID.Spazmatism or NPCID.SkeletronPrime)
+        {
+            if (!NPC.downedMechBossAny)
+            {
+                if ((npc.type == NPCID.Spazmatism && NPC.AnyNPCs(NPCID.Retinazer)) || (npc.type == NPCID.Retinazer && NPC.AnyNPCs(NPCID.Spazmatism)))
+                {
+                    return;
+                }
+                AvalonTestingWorld.GenerateHallowedOre();
+            }
         }
     }
 }

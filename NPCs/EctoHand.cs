@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
@@ -38,12 +38,12 @@ public class EctoHand : ModNPC
         NPC.behindTiles = false;
         Banner = NPC.type;
         BannerItem = ModContent.ItemType<Items.Banners.EctoHandBanner>();
+        SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Hellcastle>().Type };
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new ModBiomeBestiaryInfoElement(Mod, "Hellcastle", "Sprites/Bestiary/HellcastleIcon", "Sprites/Bestiary/HellcastleBG", null),
             new FlavorTextBestiaryInfoElement("They reach out, as if to touch their lost life.")
         });
     }

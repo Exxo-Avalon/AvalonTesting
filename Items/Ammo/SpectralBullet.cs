@@ -24,7 +24,7 @@ class SpectralBullet : ModItem
         Item.rare = ModContent.RarityType<Rarities.QuibopsRarity>();
         Item.width = dims.Width;
         Item.knockBack = 6f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.SpectralBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.SpectralBullet>();
         Item.maxStack = 2000;
         Item.value = 1200;
         Item.height = dims.Height;

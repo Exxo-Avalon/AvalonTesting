@@ -1,5 +1,6 @@
 using System;
 using AvalonTesting.Buffs;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -77,6 +78,13 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
         if (Main.player[projectile.owner].Avalon().skyBlessing && Main.rand.NextBool(15) && projectile.minion)
         {
             int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
+        }
+    }
+    public override void NumGrappleHooks(Projectile projectile, Player player, ref int numHooks)
+    {
+        if (projectile.type != ProjectileID.Web && player.GetModPlayer<ExxoPlayer>().HookBonus)
+        {
+            numHooks = 5;
         }
     }
 }
