@@ -1443,7 +1443,6 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             maxSpawns = (int)(maxSpawns * AdvCalming.SpawnMultiplier);
         }
     }
-
     public override void ModifyGlobalLoot(GlobalLoot globalLoot)
     {
         if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
@@ -1453,10 +1452,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
         }
 
-        NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
+        
 
         var hardModeCondition = new HardmodeOnly();
         var superHardModeCondition = new Superhardmode();
@@ -1507,10 +1503,18 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
-        NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
-        NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
-        NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
+        if (npc.type == NPCID.WallofFlesh)
+        {
+            // RemoveWhere will remove any drop rule that matches the provided expression.
+            // To make your own expressions to remove vanilla drop rules, you'll usually have to study the original source code that adds those rules.
+            npcLoot.RemoveWhere(
+                // The following expression returns true if the following conditions are met:
+                rule => rule is OneFromOptionsNotScaledWithLuckDropRule drop // If the rule is an ItemDropWithConditionRule instance
+                    && (drop.dropIds[0] == ItemID.WarriorEmblem && drop.dropIds[1] == ItemID.RangerEmblem && drop.dropIds[2] == ItemID.SorcererEmblem &&
+                    drop.dropIds[3] == ItemID.SummonerEmblem));
+
+            npcLoot.Add(ItemDropRule.Common(ItemID.GreenCap, 1)); // In conjunction with the above removal, this makes it so a guide with any name will drop the Green Cap.
+        }
         var hardModeCondition = new HardmodeOnly();
         var preHardModeCondition = new Invert(hardModeCondition);
         var superHardModeCondition = new Superhardmode();
