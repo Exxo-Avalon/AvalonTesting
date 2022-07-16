@@ -103,7 +103,7 @@ public class ALSHMIcon : ModHook
         try
         {
             c.GotoNext(MoveType.After,
-                i => i.MatchStloc(17))
+                i => i.MatchNop())
                 .Emit(OpCodes.Ldloc, 1);
             c.EmitDelegate<Func<Dictionary<string, Func<WorldFileData, bool>>, Dictionary<string, Func<WorldFileData, bool>>>>((value) =>
             {
