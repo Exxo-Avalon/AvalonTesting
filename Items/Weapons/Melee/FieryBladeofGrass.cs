@@ -30,4 +30,14 @@ class FieryBladeofGrass : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    {
+        target.AddBuff(BuffID.Poisoned, 60 * 6);
+        target.AddBuff(BuffID.OnFire, 60 * 6);
+    }
+    public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+    {
+        target.AddBuff(BuffID.Poisoned, 60 * 6);
+        target.AddBuff(BuffID.OnFire, 60 * 6);
+    }
 }
