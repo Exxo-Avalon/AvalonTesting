@@ -424,7 +424,6 @@ public class AvalonTestingWorld : ModSystem
     {
         int index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Good"));
         list.Insert(index + 1, new PassLegacy("Exxo Avalon Origins: Hardmode Good (Hallowed Altars)", new WorldGenLegacyMethod(World.Passes.HallowedAltars.Method)));
-        //list.RemoveAt(index);
     }
     public override void PostUpdateEverything()
     {

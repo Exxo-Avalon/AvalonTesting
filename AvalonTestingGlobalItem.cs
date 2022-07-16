@@ -690,6 +690,32 @@ public class AvalonTestingGlobalItem : GlobalItem
                     });
                 }
             }
+            if (item.prefix == ModContent.PrefixType<Timid>())
+            {
+                int index = tooltips.FindLastIndex(tt => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name))
+                    && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                if (index != -1)
+                {
+                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMeleeSpeed", "-2% melee speed")
+                    {
+                        IsModifier = true,
+                        IsModifierBad = true
+                    });
+                }
+            }
+            if (item.prefix == ModContent.PrefixType<Languid>())
+            {
+                int index = tooltips.FindLastIndex(tt => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name))
+                    && (tt.Name.Equals("Material") || tt.Name.StartsWith("Tooltip") || tt.Name.Equals("Defense") || tt.Name.Equals("Equipable")));
+                if (index != -1)
+                {
+                    tooltips.Insert(index + 1, new TooltipLine(Mod, "PrefixAccMoveSpeed", "-2% movement speed")
+                    {
+                        IsModifier = true,
+                        IsModifierBad = true
+                    });
+                }
+            }
             if (item.prefix == ModContent.PrefixType<Enchanted>())
             {
                 int index = tooltips.FindLastIndex(tt => (tt.Mod.Equals("Terraria") || tt.Mod.Equals(Mod.Name))

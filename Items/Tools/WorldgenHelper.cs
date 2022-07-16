@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
@@ -36,9 +36,10 @@ class WorldgenHelper : ModItem
         //int xStored = x;
         //GetXCoord(x, y, 5, ref xStored);
         //World.Utils.MakeSquareTemp(xStored, y);
-
-        NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-        Task.Run(AvalonTestingWorld.GenerateSkyFortress);
+        //Main.hardMode = false;
+        //World.Passes.HallowedAltars.Generate();
+        //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
+        //Task.Run(AvalonTestingWorld.GenerateSkyFortress);
 
         //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;

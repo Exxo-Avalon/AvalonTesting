@@ -71,7 +71,15 @@ public class AvalonTestingGlobalTile : GlobalTile
         {
             fail = true;
         }
-
+        if (Main.tile[i, j - 1].TileType == ModContent.TileType<IckyAltar>() && Main.tile[i, j].TileType != ModContent.TileType<IckyAltar>() ||
+            Main.tile[i, j - 1].TileType == ModContent.TileType<HallowedAltar>() && Main.tile[i, j].TileType != ModContent.TileType<HallowedAltar>())
+        {
+            fail = true;
+        }
+        if (type == TileID.Hellstone && Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].pick < 70)
+        {
+            fail = true;
+        }
         // Sometimes drop icicles from ice stalactites
         if (type == TileID.Stalactite && Main.tile[i, j].TileFrameX < 54 &&
             Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.NextBool(2))

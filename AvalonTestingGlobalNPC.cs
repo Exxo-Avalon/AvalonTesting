@@ -1494,6 +1494,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
+        // DOES NOT WORK
         if (npc.type == NPCID.WallofFlesh)
         {
             // RemoveWhere will remove any drop rule that matches the provided expression.
