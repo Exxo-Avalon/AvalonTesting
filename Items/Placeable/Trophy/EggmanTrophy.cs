@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ class EggmanTrophy : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.BossTrophy>();
         Item.placeStyle = 5;
-        Item.rare = ModContent.RarityType<ElectricBlueRarity>();
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;

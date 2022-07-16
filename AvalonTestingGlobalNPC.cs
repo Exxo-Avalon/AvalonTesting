@@ -1445,15 +1445,6 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     }
     public override void ModifyGlobalLoot(GlobalLoot globalLoot)
     {
-        if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
-        {
-            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type);
-            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type);
-            NPCLoader.blockLoot.Add(AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type);
-        }
-
-        
-
         var hardModeCondition = new HardmodeOnly();
         var superHardModeCondition = new Superhardmode();
         var zoneRockLayerCondition = new ZoneRockLayer();
@@ -1512,8 +1503,14 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 rule => rule is OneFromOptionsNotScaledWithLuckDropRule drop // If the rule is an ItemDropWithConditionRule instance
                     && (drop.dropIds[0] == ItemID.WarriorEmblem && drop.dropIds[1] == ItemID.RangerEmblem && drop.dropIds[2] == ItemID.SorcererEmblem &&
                     drop.dropIds[3] == ItemID.SummonerEmblem));
-
-            npcLoot.Add(ItemDropRule.Common(ItemID.GreenCap, 1)); // In conjunction with the above removal, this makes it so a guide with any name will drop the Green Cap.
+        }
+        if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+        {
+            npcLoot.RemoveWhere(
+                rule => rule is ItemDropWithConditionRule drop &&
+                (drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type ||
+                drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type ||
+                drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type));
         }
         var hardModeCondition = new HardmodeOnly();
         var preHardModeCondition = new Invert(hardModeCondition);

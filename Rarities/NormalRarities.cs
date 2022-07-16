@@ -47,7 +47,7 @@ namespace AvalonTesting
 
             if (offset > 1)
             {
-                return ModContent.RarityType<ElectricBlueRarity>();
+                return ModContent.RarityType<TealRarity>();
             }
 
             if (offset == -1)

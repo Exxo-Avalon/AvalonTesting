@@ -11,6 +11,7 @@ using AvalonTesting.World.Structures;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -419,6 +420,12 @@ public class AvalonTestingWorld : ModSystem
         Main.maxRaining = 0f;
     }
 
+    public override void ModifyHardmodeTasks(List<GenPass> list)
+    {
+        int index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Good"));
+        list.Insert(index + 1, new PassLegacy("Exxo Avalon Origins: Hardmode Good (Hallowed Altars)", new WorldGenLegacyMethod(World.Passes.HallowedAltars.Method)));
+        //list.RemoveAt(index);
+    }
     public override void PostUpdateEverything()
     {
         SpectrumHelmet.StaticUpdate();

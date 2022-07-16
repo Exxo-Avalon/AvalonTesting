@@ -36,7 +36,6 @@
     <Folder Include="Items\Tools\" />
     <Folder Include="Gores\" />
     <Folder Include="Walls\" />
-    <Folder Include="World\Passes\" />
     <Folder Include="World\Structures\" />
   </ItemGroup>
   <ItemGroup>
