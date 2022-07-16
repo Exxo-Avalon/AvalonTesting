@@ -71,35 +71,6 @@ namespace AvalonTesting
         {
             if (offset == 1)
             {
-                return ModContent.RarityType<ElectricBlueRarity>();
-            }
-
-            if (offset > 1)
-            {
-                return ModContent.RarityType<FireOrangeRarity>();
-            }
-
-            if (offset == -1)
-            {
-                return ModContent.RarityType<MagentaRarity>();
-            }
-
-            if (offset < -1)
-            {
-                return ModContent.RarityType<BlueRarity>();
-            }
-
-            return Type;
-        }
-    }
-    public class ElectricBlueRarity : ModRarity //15
-    {
-        public override Color RarityColor => new Color(0, 128, 255);
-
-        public override int GetPrefixedRarity(int offset, float valueMult)
-        {
-            if (offset == 1)
-            {
                 return ModContent.RarityType<FireOrangeRarity>();
             }
 
@@ -110,12 +81,12 @@ namespace AvalonTesting
 
             if (offset == -1)
             {
-                return ModContent.RarityType<TealRarity>();
+                return ModContent.RarityType<MagentaRarity>();
             }
 
             if (offset < -1)
             {
-                return ModContent.RarityType<MagentaRarity>();
+                return ModContent.RarityType<BlueRarity>();
             }
 
             return Type;
@@ -140,12 +111,12 @@ namespace AvalonTesting
 
             if (offset == -1)
             {
-                return ModContent.RarityType<ElectricBlueRarity>();
+                return ModContent.RarityType<TealRarity>();
             }
 
             if (offset < -1)
             {
-                return ModContent.RarityType<TealRarity>();
+                return ModContent.RarityType<MagentaRarity>();
             }
 
             return Type;
@@ -174,7 +145,7 @@ namespace AvalonTesting
 
             if (offset < -1)
             {
-                return ModContent.RarityType<ElectricBlueRarity>();
+                return ModContent.RarityType<TealRarity>();
             }
 
             return Type;
