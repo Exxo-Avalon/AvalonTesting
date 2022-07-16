@@ -103,8 +103,11 @@ public class ALSHMIcon : ModHook
         try
         {
             c.GotoNext(MoveType.After,
-                i => i.MatchNop())
-                .Emit(OpCodes.Ldloc, 1);
+                i => i.MatchStloc(17))
+                .GotoPrev(i => i.MatchNop(),
+                i => i.MatchNop());
+            c.Index++;
+            c.Emit(OpCodes.Ldloc, 1);
             c.EmitDelegate<Func<Dictionary<string, Func<WorldFileData, bool>>, Dictionary<string, Func<WorldFileData, bool>>>>((value) =>
             {
                 value.Add("Terraria/AvalonTesting/SuperHardmode", sHMCondition);
