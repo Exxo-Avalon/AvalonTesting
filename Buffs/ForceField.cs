@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;

@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
-public class StingerLaser : ModProjectile
+public class WoSLaserSmall : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Stinger Laser");
+        DisplayName.SetDefault("Death Laser");
     }
 
     public override void SetDefaults()
@@ -17,15 +17,14 @@ public class StingerLaser : ModProjectile
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 4 / 20;
         Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
-        Projectile.friendly = true;
-        Projectile.hostile = false;
+        Projectile.hostile = true;
         Projectile.penetrate = 1;
         Projectile.light = 0.8f;
         Projectile.alpha = 0;
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 300;
         Projectile.tileCollide = false;
-        Projectile.DamageType = DamageClass.Summon;
+        Projectile.DamageType = DamageClass.Ranged;
         Projectile.aiStyle = 1;
         AIType = ProjectileID.DeathLaser;
     }

@@ -156,7 +156,7 @@ public class Mechasting : ModNPC
                 float speed = 12f;
                 Vector2 vector8 = new Vector2(NPC.position.X + (NPC.width * 0.5f), NPC.position.Y + (NPC.height / 2));
                 int damage = 60;
-                int type = ModContent.ProjectileType<Projectiles.Mechastinger>();
+                int type = ModContent.ProjectileType<Projectiles.Hostile.Mechastinger>();
                 float rotation = (float)Math.Atan2(NPC.Center.Y - Main.player[NPC.target].Center.Y, NPC.Center.X - Main.player[NPC.target].Center.X);
                 int num54;
                 float f = 0f;
@@ -225,7 +225,7 @@ public class Mechasting : ModNPC
                 int p;
                 while (f < 0.2f) // less than 20 degrees
                 {
-                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.Hostile.HomingRocket>(), 80, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     //Main.projectile[p].notReflect = true;
@@ -236,7 +236,7 @@ public class Mechasting : ModNPC
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                     }
 
-                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.HomingRocket>(), 80, 0f, NPC.target);
+                    p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.Hostile.HomingRocket>(), 80, 0f, NPC.target);
                     Main.projectile[p].timeLeft = 600;
                     Main.projectile[p].friendly = false;
                     //Main.projectile[p].notReflect = true;
@@ -304,7 +304,7 @@ public class Mechasting : ModNPC
                     while (f <= 3.6f)
                     {
                         // above the boss
-                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation + f) * speed) * -1), (float)((Math.Sin(rotation + f) * speed) * -1), ModContent.ProjectileType<Projectiles.Hostile.ElectricBolt>(), 80, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         //Main.projectile[p].notReflect = true;
@@ -314,7 +314,7 @@ public class Mechasting : ModNPC
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, p);
                         }
                         // below the boss
-                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.ElectricBolt>(), 80, 0f, NPC.target);
+                        p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)((Math.Cos(rotation - f) * speed) * -1), (float)((Math.Sin(rotation - f) * speed) * -1), ModContent.ProjectileType<Projectiles.Hostile.ElectricBolt>(), 80, 0f, NPC.target);
                         Main.projectile[p].timeLeft = 600;
                         Main.projectile[p].friendly = false;
                         //Main.projectile[p].notReflect = true;

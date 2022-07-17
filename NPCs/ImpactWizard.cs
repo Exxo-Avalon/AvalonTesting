@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Banners;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Projectiles;
@@ -199,7 +199,7 @@ public class ImpactWizard : ModNPC
                     if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().Silenced)
                     {
                         int num262 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector23.X, vector23.Y, num257,
-                            num258, ModContent.ProjectileType<ImpactSphere>(), Main.expertMode ? 35 : 65, 0f,
+                            num258, ModContent.ProjectileType<Projectiles.Hostile.ImpactSphere>(), Main.expertMode ? 35 : 65, 0f,
                             Main.myPlayer);
                         Main.projectile[num262].timeLeft = 300;
                     }

@@ -1179,7 +1179,8 @@ public class AvalonTestingWorld : ModSystem
             }
 
             #endregion contagion shortgrass/barfbush spawning
-            // Lazite grass
+
+            #region lazite grass
             if (Main.tile[num5, num6].TileType == ModContent.TileType<LaziteGrass>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
@@ -1230,8 +1231,9 @@ public class AvalonTestingWorld : ModSystem
                     NetMessage.SendTileSquare(-1, num5, num6, 3);
                 }
             }
+            #endregion lazite grass
 
-            // impgrass growing
+            #region impgrass
             if (Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
@@ -1262,8 +1264,42 @@ public class AvalonTestingWorld : ModSystem
                     NetMessage.SendTileSquare(-1, num5, num6, 3);
                 }
             }
+            #endregion impgrass
 
-            // impvines growing
+            #region tropical grass
+            if (Main.tile[num5, num6].TileType == ModContent.TileType<TropicalGrass>())
+            {
+                int num14 = Main.tile[num5, num6].TileType;
+                bool flag2 = false;
+                for (int m = num7; m < num8; m++)
+                {
+                    for (int n = num9; n < num10; n++)
+                    {
+                        if ((num5 != m || num6 != n) && Main.tile[m, n].HasTile)
+                        {
+                            if (Main.tile[m, n].TileType == ModContent.TileType<Loam>())
+                            {
+                                WorldGen.SpreadGrass(m, n, ModContent.TileType<Loam>(), ModContent.TileType<TropicalGrass>(), false,
+                                    Main.tile[num5, num6].TileColor);
+                            }
+
+                            if (Main.tile[m, n].TileType == num14)
+                            {
+                                WorldGen.SquareTileFrame(m, n);
+                                flag2 = true;
+                            }
+                        }
+                    }
+                }
+
+                if (Main.netMode == NetmodeID.Server && flag2)
+                {
+                    NetMessage.SendTileSquare(-1, num5, num6, 3);
+                }
+            }
+            #endregion tropical grass
+
+            #region impvines growing
             if ((Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>() ||
                  Main.tile[num5, num6].TileType == ModContent.TileType<Impvines>()) &&
                 WorldGen.genRand.NextBool(15) && !Main.tile[num5, num6 + 1].HasTile && // change back to NextBool(15)
@@ -1302,6 +1338,7 @@ public class AvalonTestingWorld : ModSystem
                     }
                 }
             }
+            #endregion impvines
         }
     }
     public override void PreWorldGen()

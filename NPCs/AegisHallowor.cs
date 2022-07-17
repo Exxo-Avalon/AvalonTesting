@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Buffs;
 using AvalonTesting.Items.Banners;
 using Microsoft.Xna.Framework;
@@ -250,7 +250,7 @@ public class AegisHallowor : ModNPC
                             vector158.X - (player5.position.X + (player5.width * 0.5f) + 40f));
                     int number2 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y,
                         -(float)Math.Cos(num1191) * 7f, -(float)Math.Sin(num1191) * 7f,
-                        ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target);
+                        ModContent.ProjectileType<Projectiles.Hostile.HallowSpit>(), 70, 1f, NPC.target);
                     if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), number2);
@@ -261,7 +261,7 @@ public class AegisHallowor : ModNPC
                             vector158.X - (player5.position.X + (player5.width * 0.5f) - 40f));
                     int num1193 = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y,
                         -(float)Math.Cos(num1192), -(float)Math.Sin(num1192),
-                        ModContent.ProjectileType<Projectiles.HallowSpit>(), 70, 1f, NPC.target);
+                        ModContent.ProjectileType<Projectiles.Hostile.HallowSpit>(), 70, 1f, NPC.target);
                     Projectile? expr_4284B_cp_0 = Main.projectile[num1193];
                     expr_4284B_cp_0.velocity.X = expr_4284B_cp_0.velocity.X * 7f;
                     Projectile? expr_4286B_cp_0 = Main.projectile[num1193];

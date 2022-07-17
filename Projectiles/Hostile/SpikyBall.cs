@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
 public class SpikyBall : ModProjectile
 {

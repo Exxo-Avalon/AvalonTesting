@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -168,7 +168,7 @@ public class JuggernautSorcerer : ModNPC
                     if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().Silenced)
                     {
                         int num262 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector23.X, vector23.Y, num257,
-                            num258, ModContent.ProjectileType<SpikyBall>(), 78, 0f, Main.myPlayer);
+                            num258, ModContent.ProjectileType<Projectiles.Hostile.SpikyBall>(), 78, 0f, Main.myPlayer);
                         Main.projectile[num262].timeLeft = 300;
                         if (Main.netMode == NetmodeID.Server)
                         {

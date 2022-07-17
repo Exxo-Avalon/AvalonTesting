@@ -47,7 +47,7 @@ public class SpectralBullet : ModProjectile
 
             Projectile.tileCollide = false;
             Projectile.velocity *= 0.01f;
-            Projectile.Damage();
+            //Projectile.Damage();
             Projectile.scale = 0.01f;
 
             Projectile.position = Projectile.Center;

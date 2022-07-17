@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -100,9 +100,12 @@ public class StingerProbe : ModNPC
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
                     int num153 = 57;
-                    int num154 = ModContent.ProjectileType<Projectiles.StingerLaser>();
+                    int num154 = ModContent.ProjectileType<Projectiles.Hostile.StingerLaser>();
                     int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector17.X, vector17.Y, num149, num150, num154, num153, 0f, Main.myPlayer, 0f, 0f);
                     Main.projectile[proj].velocity = Vector2.Normalize(NPC.position - Main.npc[NPC.target].position) * 14f;
+                    Main.projectile[proj].hostile = true;
+                    Main.projectile[proj].friendly = false;
+                    Main.projectile[proj].tileCollide = true;
                     //if (type == 480) Main.projectile[proj].notReflect = true;
                 }
             }

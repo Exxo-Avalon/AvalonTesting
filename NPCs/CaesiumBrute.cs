@@ -89,7 +89,7 @@ public class CaesiumBrute : ModNPC
                 for (int i = 0; i < increments; i++)
                 {
                     Vector2 velocity = rotation.RotatedBy(MathHelper.ToRadians(((float)(degrees / 2f) * -1f) + ((float)(degrees / increments) * i) + offset)) * speed;
-                    int spray = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.CaesiumFireball>(), 55, 0f, NPC.target, 1f, 0f);
+                    int spray = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.Hostile.CaesiumFireball>(), 55, 0f, NPC.target, 1f, 0f);
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, spray);
@@ -121,7 +121,7 @@ public class CaesiumBrute : ModNPC
             SoundEngine.PlaySound(SoundID.NPCHit21 with { Volume = 1.2f, Pitch = -0.5f }, NPC.Center);
             if (Main.rand.Next(20) == 0)
             {
-                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
+                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
             }
         }
         if (Main.netMode == NetmodeID.Server) return;

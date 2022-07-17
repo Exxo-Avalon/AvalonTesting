@@ -76,295 +76,295 @@ internal class ContagionAlternateBiome : AltBiome
 
 public class ContagionGeneration : EvilBiomeGenerationPass
 {
-    public override void GetEvilSpawnLocation(
-            int dungeonSide,
-            int dungeonLocation,
+    //public override void GetEvilSpawnLocation(
+    //        int dungeonSide,
+    //        int dungeonLocation,
 
-            int SnowBoundMinX,
-            int SnowBoundMaxX,
-            int JungleBoundMinX,
-            int JungleBoundMaxX,
+    //        int SnowBoundMinX,
+    //        int SnowBoundMaxX,
+    //        int JungleBoundMinX,
+    //        int JungleBoundMaxX,
 
-            int currentDrunkIter,
-            int maxDrunkBorders,
+    //        int currentDrunkIter,
+    //        int maxDrunkBorders,
 
-            out int evilBiomePosition, out int evilBiomePositionWestBound, out int evilBiomePositionEastBound)
-    {
-        //base.GetEvilSpawnLocation(dungeonSide, dungeonLocation, SnowBoundMinX, SnowBoundMaxX, JungleBoundMinX, JungleBoundMaxX, currentDrunkIter, maxDrunkBorders, out evilBiomePosition, out evilBiomePositionWestBound, out evilBiomePositionEastBound);
-        int beachBordersWidth = 275;
-        int beachSandRandomCenter = beachBordersWidth + 5 + 40;
-        int evilBiomeBeachAvoidance = beachSandRandomCenter + 60;
-        bool FoundEvilLocation = false;
-        evilBiomePosition = 0;
-        evilBiomePositionWestBound = 0;
-        evilBiomePositionEastBound = 0;
+    //        out int evilBiomePosition, out int evilBiomePositionWestBound, out int evilBiomePositionEastBound)
+    //{
+    //    //base.GetEvilSpawnLocation(dungeonSide, dungeonLocation, SnowBoundMinX, SnowBoundMaxX, JungleBoundMinX, JungleBoundMaxX, currentDrunkIter, maxDrunkBorders, out evilBiomePosition, out evilBiomePositionWestBound, out evilBiomePositionEastBound);
+    //    int beachBordersWidth = 275;
+    //    int beachSandRandomCenter = beachBordersWidth + 5 + 40;
+    //    int evilBiomeBeachAvoidance = beachSandRandomCenter + 60;
+    //    bool FoundEvilLocation = false;
+    //    evilBiomePosition = 0;
+    //    evilBiomePositionWestBound = 0;
+    //    evilBiomePositionEastBound = 0;
 
-        while (!FoundEvilLocation)
-        {
-            FoundEvilLocation = true;
-            int MapCenter = Main.maxTilesX / 2;
-            int MapCenterGive = 200;
+    //    while (!FoundEvilLocation)
+    //    {
+    //        FoundEvilLocation = true;
+    //        int MapCenter = Main.maxTilesX / 2;
+    //        int MapCenterGive = 200;
 
-            if (WorldGen.drunkWorldGen)
-            {
-                MapCenterGive = DrunkRNGMapCenterGive;
+    //        if (WorldGen.drunkWorldGen)
+    //        {
+    //            MapCenterGive = DrunkRNGMapCenterGive;
 
-                int diff = Main.maxTilesX - NonDrunkBorderDist - NonDrunkBorderDist;
+    //            int diff = Main.maxTilesX - NonDrunkBorderDist - NonDrunkBorderDist;
 
-                int left = NonDrunkBorderDist + diff * currentDrunkIter / maxDrunkBorders;
-                int right = NonDrunkBorderDist + diff * (currentDrunkIter + 1) / maxDrunkBorders;
+    //            int left = NonDrunkBorderDist + diff * currentDrunkIter / maxDrunkBorders;
+    //            int right = NonDrunkBorderDist + diff * (currentDrunkIter + 1) / maxDrunkBorders;
 
-                evilBiomePosition = WorldGen.genRand.Next(left, right);
+    //            evilBiomePosition = WorldGen.genRand.Next(left, right);
 
-                /*
-                if (drunkRNGTilt)
-                    evilBiomePosition = WorldGen.genRand.Next((int)((double)Main.maxTilesX * 0.5), Main.maxTilesX - nonDrunkBorderDist);
-                else
-                    evilBiomePosition = WorldGen.genRand.Next(nonDrunkBorderDist, (int)((double)Main.maxTilesX * 0.5));*/
-            }
-            else
-            {
-                evilBiomePosition = WorldGen.genRand.Next(NonDrunkBorderDist, Main.maxTilesX - NonDrunkBorderDist);
-            }
-            evilBiomePositionWestBound = evilBiomePosition - WorldGen.genRand.Next(200) - 100;
-            evilBiomePositionEastBound = evilBiomePosition + WorldGen.genRand.Next(200) + 100;
+    //            /*
+    //            if (drunkRNGTilt)
+    //                evilBiomePosition = WorldGen.genRand.Next((int)((double)Main.maxTilesX * 0.5), Main.maxTilesX - nonDrunkBorderDist);
+    //            else
+    //                evilBiomePosition = WorldGen.genRand.Next(nonDrunkBorderDist, (int)((double)Main.maxTilesX * 0.5));*/
+    //        }
+    //        else
+    //        {
+    //            evilBiomePosition = WorldGen.genRand.Next(NonDrunkBorderDist, Main.maxTilesX - NonDrunkBorderDist);
+    //        }
+    //        evilBiomePositionWestBound = evilBiomePosition - WorldGen.genRand.Next(200) - 100;
+    //        evilBiomePositionEastBound = evilBiomePosition + WorldGen.genRand.Next(200) + 100;
 
-            if (evilBiomePositionWestBound < evilBiomeBeachAvoidance)
-            {
-                evilBiomePositionWestBound = evilBiomeBeachAvoidance;
-            }
-            if (evilBiomePositionEastBound > Main.maxTilesX - evilBiomeBeachAvoidance)
-            {
-                evilBiomePositionEastBound = Main.maxTilesX - evilBiomeBeachAvoidance;
-            }
-            if (evilBiomePosition < evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer)
-            {
-                evilBiomePosition = evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer;
-            }
-            if (evilBiomePosition > evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer)
-            {
-                evilBiomePosition = evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer;
-            }
-            //DIFFERENCE 2 - CRIMSON ONLY
-            if (!CanGenerateNearDungeonOcean)
-            {
-                if (dungeonSide < 0 && evilBiomePositionWestBound < 400)
-                {
-                    evilBiomePositionWestBound = 400;
-                }
-                else if (dungeonSide > 0 && evilBiomePositionWestBound > Main.maxTilesX - 400)
-                {
-                    evilBiomePositionWestBound = Main.maxTilesX - 400;
-                }
-            }
-            //DIFFERENCE 2 END
-            if (evilBiomePosition > MapCenter - MapCenterGive && evilBiomePosition < MapCenter + MapCenterGive)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionWestBound > MapCenter - MapCenterGive && evilBiomePositionWestBound < MapCenter + MapCenterGive)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionEastBound > MapCenter - MapCenterGive && evilBiomePositionEastBound < MapCenter + MapCenterGive)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePosition > WorldGen.UndergroundDesertLocation.X && evilBiomePosition < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionWestBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionWestBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionEastBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionEastBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionWestBound < dungeonLocation + DungeonGive && evilBiomePositionEastBound > dungeonLocation - DungeonGive)
-            {
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionWestBound < SnowBoundMinX && evilBiomePositionEastBound > SnowBoundMaxX)
-            {
-                SnowBoundMinX++;
-                SnowBoundMaxX--;
-                FoundEvilLocation = false;
-            }
-            if (evilBiomePositionWestBound < JungleBoundMinX && evilBiomePositionEastBound > JungleBoundMaxX)
-            {
-                JungleBoundMinX++;
-                JungleBoundMaxX--;
-                FoundEvilLocation = false;
-            }
-        }
-        //START GENERATING!
-        int leftBeachAvoidanceCheck = 0;
-        int rightBeachAvoidanceCheck = 0;
-        Tile tile;
-        // Replace tiles
-        double randomYOffset = Main.worldSurface + 40.0;
-        for (int x = leftBeachAvoidanceCheck; x < rightBeachAvoidanceCheck; x++)
-        {
-            randomYOffset += WorldGen.genRand.Next(-2, 3);
-            if (randomYOffset < Main.worldSurface + 30.0)
-            {
-                randomYOffset = Main.worldSurface + 30.0;
-            }
+    //        if (evilBiomePositionWestBound < evilBiomeBeachAvoidance)
+    //        {
+    //            evilBiomePositionWestBound = evilBiomeBeachAvoidance;
+    //        }
+    //        if (evilBiomePositionEastBound > Main.maxTilesX - evilBiomeBeachAvoidance)
+    //        {
+    //            evilBiomePositionEastBound = Main.maxTilesX - evilBiomeBeachAvoidance;
+    //        }
+    //        if (evilBiomePosition < evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer)
+    //        {
+    //            evilBiomePosition = evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer;
+    //        }
+    //        if (evilBiomePosition > evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer)
+    //        {
+    //            evilBiomePosition = evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer;
+    //        }
+    //        //DIFFERENCE 2 - CRIMSON ONLY
+    //        if (!CanGenerateNearDungeonOcean)
+    //        {
+    //            if (dungeonSide < 0 && evilBiomePositionWestBound < 400)
+    //            {
+    //                evilBiomePositionWestBound = 400;
+    //            }
+    //            else if (dungeonSide > 0 && evilBiomePositionWestBound > Main.maxTilesX - 400)
+    //            {
+    //                evilBiomePositionWestBound = Main.maxTilesX - 400;
+    //            }
+    //        }
+    //        //DIFFERENCE 2 END
+    //        if (evilBiomePosition > MapCenter - MapCenterGive && evilBiomePosition < MapCenter + MapCenterGive)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionWestBound > MapCenter - MapCenterGive && evilBiomePositionWestBound < MapCenter + MapCenterGive)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionEastBound > MapCenter - MapCenterGive && evilBiomePositionEastBound < MapCenter + MapCenterGive)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePosition > WorldGen.UndergroundDesertLocation.X && evilBiomePosition < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionWestBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionWestBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionEastBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionEastBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionWestBound < dungeonLocation + DungeonGive && evilBiomePositionEastBound > dungeonLocation - DungeonGive)
+    //        {
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionWestBound < SnowBoundMinX && evilBiomePositionEastBound > SnowBoundMaxX)
+    //        {
+    //            SnowBoundMinX++;
+    //            SnowBoundMaxX--;
+    //            FoundEvilLocation = false;
+    //        }
+    //        if (evilBiomePositionWestBound < JungleBoundMinX && evilBiomePositionEastBound > JungleBoundMaxX)
+    //        {
+    //            JungleBoundMinX++;
+    //            JungleBoundMaxX--;
+    //            FoundEvilLocation = false;
+    //        }
+    //    }
+    //    //START GENERATING!
+    //    int leftBeachAvoidanceCheck = 0;
+    //    int rightBeachAvoidanceCheck = 0;
+    //    Tile tile;
+    //    // Replace tiles
+    //    double randomYOffset = Main.worldSurface + 40.0;
+    //    for (int x = leftBeachAvoidanceCheck; x < rightBeachAvoidanceCheck; x++)
+    //    {
+    //        randomYOffset += WorldGen.genRand.Next(-2, 3);
+    //        if (randomYOffset < Main.worldSurface + 30.0)
+    //        {
+    //            randomYOffset = Main.worldSurface + 30.0;
+    //        }
 
-            if (randomYOffset > Main.worldSurface + 50.0)
-            {
-                randomYOffset = Main.worldSurface + 50.0;
-            }
+    //        if (randomYOffset > Main.worldSurface + 50.0)
+    //        {
+    //            randomYOffset = Main.worldSurface + 50.0;
+    //        }
 
-            bool unusedFlag = false;
-            for (int y = (int)WorldGen.worldSurfaceLow; y < randomYOffset; y++)
-            {
-                tile = Main.tile[x, y];
-                if (tile.HasTile)
-                {
-                    if (tile.TileType == TileID.Sand && x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
-                        x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
-                    {
-                        tile.TileType = (ushort)ModContent.TileType<Snotsand>();
-                    }
+    //        bool unusedFlag = false;
+    //        for (int y = (int)WorldGen.worldSurfaceLow; y < randomYOffset; y++)
+    //        {
+    //            tile = Main.tile[x, y];
+    //            if (tile.HasTile)
+    //            {
+    //                if (tile.TileType == TileID.Sand && x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
+    //                    x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
+    //                {
+    //                    tile.TileType = (ushort)ModContent.TileType<Snotsand>();
+    //                }
 
-                    tile = Main.tile[x, y];
-                    if (tile.TileType == TileID.Dirt && y < Main.worldSurface - 1.0 && !unusedFlag)
-                    {
-                        WorldGen.SpreadGrass(x, y, TileID.Dirt, ModContent.TileType<Ickgrass>());
-                    }
+    //                tile = Main.tile[x, y];
+    //                if (tile.TileType == TileID.Dirt && y < Main.worldSurface - 1.0 && !unusedFlag)
+    //                {
+    //                    WorldGen.SpreadGrass(x, y, TileID.Dirt, ModContent.TileType<Ickgrass>());
+    //                }
 
-                    unusedFlag = true;
-                    if (tile.WallType == WallID.HardenedSand)
-                    {
-                        // Hardened Snotsand wall
-                        tile.WallType = (ushort)ModContent.WallType<HardenedSnotsandWall>();
-                    }
-                    else if (tile.WallType == WallID.Sandstone)
-                    {
-                        // Snotsandstone wall
-                        tile.WallType = (ushort)ModContent.WallType<SnotsandstoneWall>();
-                    }
+    //                unusedFlag = true;
+    //                if (tile.WallType == WallID.HardenedSand)
+    //                {
+    //                    // Hardened Snotsand wall
+    //                    tile.WallType = (ushort)ModContent.WallType<HardenedSnotsandWall>();
+    //                }
+    //                else if (tile.WallType == WallID.Sandstone)
+    //                {
+    //                    // Snotsandstone wall
+    //                    tile.WallType = (ushort)ModContent.WallType<SnotsandstoneWall>();
+    //                }
 
-                    switch (tile.TileType)
-                    {
-                        case TileID.Stone:
-                        {
-                            if (x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
-                                x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
-                            {
-                                tile.TileType = (ushort)ModContent.TileType<Chunkstone>();
-                            }
+    //                switch (tile.TileType)
+    //                {
+    //                    case TileID.Stone:
+    //                    {
+    //                        if (x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
+    //                            x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
+    //                        {
+    //                            tile.TileType = (ushort)ModContent.TileType<Chunkstone>();
+    //                        }
 
-                            break;
-                        }
-                        case TileID.Grass:
-                            tile.TileType = (ushort)ModContent.TileType<Ickgrass>();
-                            break;
-                        case TileID.IceBlock:
-                            tile.TileType = (ushort)ModContent.TileType<YellowIce>();
-                            break;
-                        case TileID.Sandstone:
-                            tile.TileType = (ushort)ModContent.TileType<Snotsandstone>();
-                            break;
-                        case TileID.HardenedSand:
-                            tile.TileType = (ushort)ModContent.TileType<HardenedSnotsand>();
-                            break;
-                    }
-                }
-            }
-        }
+    //                        break;
+    //                    }
+    //                    case TileID.Grass:
+    //                        tile.TileType = (ushort)ModContent.TileType<Ickgrass>();
+    //                        break;
+    //                    case TileID.IceBlock:
+    //                        tile.TileType = (ushort)ModContent.TileType<YellowIce>();
+    //                        break;
+    //                    case TileID.Sandstone:
+    //                        tile.TileType = (ushort)ModContent.TileType<Snotsandstone>();
+    //                        break;
+    //                    case TileID.HardenedSand:
+    //                        tile.TileType = (ushort)ModContent.TileType<HardenedSnotsand>();
+    //                        break;
+    //                }
+    //            }
+    //        }
+    //    }
 
-        //// Try placing altars
-        //int altarAttempts = WorldGen.genRand.Next(10, 15);
-        //for (int i = 0; i < altarAttempts; i++)
-        //{
-        //    bool finished = false;
-        //    int attemptsAtOffset = 0;
-        //    int offset = 0;
-        //    while (!finished && offset <= 100)
-        //    {
-        //        attemptsAtOffset++;
+    //    //// Try placing altars
+    //    //int altarAttempts = WorldGen.genRand.Next(10, 15);
+    //    //for (int i = 0; i < altarAttempts; i++)
+    //    //{
+    //    //    bool finished = false;
+    //    //    int attemptsAtOffset = 0;
+    //    //    int offset = 0;
+    //    //    while (!finished && offset <= 100)
+    //    //    {
+    //    //        attemptsAtOffset++;
 
-        //        // Make sure not in the ocean
-        //        int x = WorldGen.genRand.Next(leftBeachAvoidanceCheck - offset, rightBeachAvoidanceCheck + offset);
-        //        int y = WorldGen.genRand.Next((int)(Main.worldSurface - (offset / 2.0)),
-        //            (int)(Main.worldSurface + 100.0 + offset));
-        //        while (WorldGen.oceanDepths(x, y))
-        //        {
-        //            x = WorldGen.genRand.Next(leftBeachAvoidanceCheck - offset, rightBeachAvoidanceCheck + offset);
-        //            y = WorldGen.genRand.Next((int)(Main.worldSurface - (offset / 2.0)),
-        //                (int)(Main.worldSurface + 100.0 + offset));
-        //        }
+    //    //        // Make sure not in the ocean
+    //    //        int x = WorldGen.genRand.Next(leftBeachAvoidanceCheck - offset, rightBeachAvoidanceCheck + offset);
+    //    //        int y = WorldGen.genRand.Next((int)(Main.worldSurface - (offset / 2.0)),
+    //    //            (int)(Main.worldSurface + 100.0 + offset));
+    //    //        while (WorldGen.oceanDepths(x, y))
+    //    //        {
+    //    //            x = WorldGen.genRand.Next(leftBeachAvoidanceCheck - offset, rightBeachAvoidanceCheck + offset);
+    //    //            y = WorldGen.genRand.Next((int)(Main.worldSurface - (offset / 2.0)),
+    //    //                (int)(Main.worldSurface + 100.0 + offset));
+    //    //        }
 
-        //        if (attemptsAtOffset > 100)
-        //        {
-        //            offset++;
-        //            attemptsAtOffset = 0;
-        //        }
+    //    //        if (attemptsAtOffset > 100)
+    //    //        {
+    //    //            offset++;
+    //    //            attemptsAtOffset = 0;
+    //    //        }
 
-        //        // Find nearest tile that exists to point and adjust coords
-        //        tile = Main.tile[x, y];
-        //        if (!tile.HasTile)
-        //        {
-        //            while (true)
-        //            {
-        //                tile = Main.tile[x, y];
-        //                if (tile.HasTile)
-        //                {
-        //                    break;
-        //                }
+    //    //        // Find nearest tile that exists to point and adjust coords
+    //    //        tile = Main.tile[x, y];
+    //    //        if (!tile.HasTile)
+    //    //        {
+    //    //            while (true)
+    //    //            {
+    //    //                tile = Main.tile[x, y];
+    //    //                if (tile.HasTile)
+    //    //                {
+    //    //                    break;
+    //    //                }
 
-        //                y++;
-        //            }
+    //    //                y++;
+    //    //            }
 
-        //            y--;
-        //        }
-        //        else
-        //        {
-        //            while (true)
-        //            {
-        //                tile = Main.tile[x, y];
-        //                if (!tile.HasTile || !(y > Main.worldSurface))
-        //                {
-        //                    break;
-        //                }
+    //    //            y--;
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            while (true)
+    //    //            {
+    //    //                tile = Main.tile[x, y];
+    //    //                if (!tile.HasTile || !(y > Main.worldSurface))
+    //    //                {
+    //    //                    break;
+    //    //                }
 
-        //                y--;
-        //            }
-        //        }
+    //    //                y--;
+    //    //            }
+    //    //        }
 
-        //        if (offset > 10)
-        //        {
-        //            TryPlaceAltar();
-        //        }
+    //    //        if (offset > 10)
+    //    //        {
+    //    //            TryPlaceAltar();
+    //    //        }
 
-        //        tile = Main.tile[x, y + 1];
-        //        if (tile.HasTile)
-        //        {
-        //            tile = Main.tile[x, y + 1];
-        //            if (tile.TileType == ModContent.TileType<Chunkstone>())
-        //            {
-        //                TryPlaceAltar();
-        //            }
-        //        }
+    //    //        tile = Main.tile[x, y + 1];
+    //    //        if (tile.HasTile)
+    //    //        {
+    //    //            tile = Main.tile[x, y + 1];
+    //    //            if (tile.TileType == ModContent.TileType<Chunkstone>())
+    //    //            {
+    //    //                TryPlaceAltar();
+    //    //            }
+    //    //        }
 
-        //        void TryPlaceAltar()
-        //        {
-        //            if (!WorldGen.IsTileNearby(x, y, ModContent.TileType<IckyAltar>(), 3))
-        //            {
-        //                WorldGen.Place3x2(x, y, (ushort)ModContent.TileType<IckyAltar>());
-        //                if (Main.tile[x, y].TileType == ModContent.TileType<IckyAltar>())
-        //                {
-        //                    finished = true;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-    }
+    //    //        void TryPlaceAltar()
+    //    //        {
+    //    //            if (!WorldGen.IsTileNearby(x, y, ModContent.TileType<IckyAltar>(), 3))
+    //    //            {
+    //    //                WorldGen.Place3x2(x, y, (ushort)ModContent.TileType<IckyAltar>());
+    //    //                if (Main.tile[x, y].TileType == ModContent.TileType<IckyAltar>())
+    //    //                {
+    //    //                    finished = true;
+    //    //                }
+    //    //            }
+    //    //        }
+    //    //    }
+    //    //}
+    //}
 
 
     public override void GenerateEvil(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
@@ -401,9 +401,9 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     Main.tile[k, l].TileType != (ushort)ModContent.TileType<SnotOrb>())
                 {
                     Main.tile[k, l].Active(true);
-                    Tile tile = Main.tile[k, l];
-                    tile.IsHalfBlock = false;
-                    tile.Slope = SlopeType.Solid;
+                    Tile tile2 = Main.tile[k, l];
+                    tile2.IsHalfBlock = false;
+                    tile2.Slope = SlopeType.Solid;
                     Main.tile[k, l].TileType = (ushort)ModContent.TileType<Chunkstone>();
                 }
 
@@ -879,9 +879,9 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 if (x >= evilBiomePosition + 7 || x <= evilBiomePosition - 7)
                 {
                     Main.tile[x, y].Active(true);
-                    Tile tile = Main.tile[x, y];
-                    tile.IsHalfBlock = false;
-                    tile.Slope = SlopeType.Solid;
+                    Tile tile3 = Main.tile[x, y];
+                    tile3.IsHalfBlock = false;
+                    tile3.Slope = SlopeType.Solid;
                     Main.tile[x, y].TileType = (ushort)ModContent.TileType<Chunkstone>();
                 }
 
@@ -903,6 +903,82 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     if (y % rn == 0)
                     {
                         MakeCircle(x, y, 3, (ushort)ModContent.TileType<Chunkstone>());
+                    }
+                }
+            }
+        }
+        int leftBeachAvoidanceCheck = 0;
+        int rightBeachAvoidanceCheck = 0;
+        Tile tile;
+        // Replace tiles
+        double randomYOffset = Main.worldSurface + 40.0;
+        for (int x = leftBeachAvoidanceCheck; x < rightBeachAvoidanceCheck; x++)
+        {
+            randomYOffset += WorldGen.genRand.Next(-2, 3);
+            if (randomYOffset < Main.worldSurface + 30.0)
+            {
+                randomYOffset = Main.worldSurface + 30.0;
+            }
+
+            if (randomYOffset > Main.worldSurface + 50.0)
+            {
+                randomYOffset = Main.worldSurface + 50.0;
+            }
+
+            bool unusedFlag = false;
+            for (int y = (int)WorldGen.worldSurfaceLow; y < randomYOffset; y++)
+            {
+                tile = Main.tile[x, y];
+                if (tile.HasTile)
+                {
+                    if (tile.TileType == TileID.Sand && x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
+                        x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
+                    {
+                        tile.TileType = (ushort)ModContent.TileType<Snotsand>();
+                    }
+
+                    tile = Main.tile[x, y];
+                    if (tile.TileType == TileID.Dirt && y < Main.worldSurface - 1.0 && !unusedFlag)
+                    {
+                        WorldGen.SpreadGrass(x, y, TileID.Dirt, ModContent.TileType<Ickgrass>());
+                    }
+
+                    unusedFlag = true;
+                    if (tile.WallType == WallID.HardenedSand)
+                    {
+                        // Hardened Snotsand wall
+                        tile.WallType = (ushort)ModContent.WallType<HardenedSnotsandWall>();
+                    }
+                    else if (tile.WallType == WallID.Sandstone)
+                    {
+                        // Snotsandstone wall
+                        tile.WallType = (ushort)ModContent.WallType<SnotsandstoneWall>();
+                    }
+
+                    switch (tile.TileType)
+                    {
+                        case TileID.Stone:
+                        {
+                            if (x >= leftBeachAvoidanceCheck + WorldGen.genRand.Next(5) &&
+                                x <= rightBeachAvoidanceCheck - WorldGen.genRand.Next(5))
+                            {
+                                tile.TileType = (ushort)ModContent.TileType<Chunkstone>();
+                            }
+
+                            break;
+                        }
+                        case TileID.Grass:
+                            tile.TileType = (ushort)ModContent.TileType<Ickgrass>();
+                            break;
+                        case TileID.IceBlock:
+                            tile.TileType = (ushort)ModContent.TileType<YellowIce>();
+                            break;
+                        case TileID.Sandstone:
+                            tile.TileType = (ushort)ModContent.TileType<Snotsandstone>();
+                            break;
+                        case TileID.HardenedSand:
+                            tile.TileType = (ushort)ModContent.TileType<HardenedSnotsand>();
+                            break;
                     }
                 }
             }

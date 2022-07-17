@@ -1,7 +1,7 @@
-﻿using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Banners;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
-using AvalonTesting.Projectiles;
+using AvalonTesting.Projectiles.Hostile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -59,18 +59,18 @@ public class CrystalSpectre : ModNPC
         NPC.ai[3]++;
         if (NPC.ai[3] >= 180)
         {
-            if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position,
-                    Main.player[NPC.target].width, Main.player[NPC.target].head))
+            //if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position,
+            //        Main.player[NPC.target].width, Main.player[NPC.target].head))
+            //{
+            if (NPC.ai[3] is 180 or 300 or 420 or 540)
             {
-                if (NPC.ai[3] == 180 || NPC.ai[3] == 300 || NPC.ai[3] == 420 || NPC.ai[3] == 540)
-                {
-                    NPC.velocity.X = 0f;
-                    float speedX = NPC.velocity.X + (Main.rand.Next(-51, 51) * 0.1f);
-                    float speedY = NPC.velocity.Y + (Main.rand.Next(-51, 51) * 0.1f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position, new Vector2(speedX, speedY),
-                        ModContent.ProjectileType<CrystalBit>(), 0, 0, Main.myPlayer);
-                }
+                NPC.velocity.X = 0f;
+                float speedX = NPC.velocity.X + (Main.rand.Next(-51, 51) * 0.1f);
+                float speedY = NPC.velocity.Y + (Main.rand.Next(-51, 51) * 0.1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position, new Vector2(speedX, speedY),
+                    ModContent.ProjectileType<CrystalBit>(), 0, 0, Main.myPlayer);
             }
+            //}
 
             if (NPC.ai[3] == 540)
             {
@@ -105,12 +105,12 @@ public class CrystalSpectre : ModNPC
 
             if (flag35 && flag36)
             {
-                NPC.ai[2] += 1f;
+                NPC.ai[2]++;
                 if (NPC.ai[2] >= 60f)
                 {
                     NPC.ai[2] = -200f;
                     NPC.direction *= -1;
-                    NPC.velocity.X = NPC.velocity.X * -1f;
+                    NPC.velocity.X *= -1f;
                     NPC.collideX = false;
                 }
             }
@@ -167,14 +167,14 @@ public class CrystalSpectre : ModNPC
         float num418 = 2f;
         if (NPC.direction == -1 && NPC.velocity.X > -num418)
         {
-            NPC.velocity.X = NPC.velocity.X - 0.1f;
+            NPC.velocity.X -= 0.1f;
             if (NPC.velocity.X > num418)
             {
-                NPC.velocity.X = NPC.velocity.X - 0.1f;
+                NPC.velocity.X -= 0.1f;
             }
             else if (NPC.velocity.X > 0f)
             {
-                NPC.velocity.X = NPC.velocity.X + 0.05f;
+                NPC.velocity.X += 0.05f;
             }
 
             if (NPC.velocity.X < -num418)
@@ -184,14 +184,14 @@ public class CrystalSpectre : ModNPC
         }
         else if (NPC.direction == 1 && NPC.velocity.X < num418)
         {
-            NPC.velocity.X = NPC.velocity.X + 0.1f;
+            NPC.velocity.X += 0.1f;
             if (NPC.velocity.X < -num418)
             {
-                NPC.velocity.X = NPC.velocity.X + 0.1f;
+                NPC.velocity.X += 0.1f;
             }
             else if (NPC.velocity.X < 0f)
             {
-                NPC.velocity.X = NPC.velocity.X - 0.05f;
+                NPC.velocity.X -= 0.05f;
             }
 
             if (NPC.velocity.X > num418)
@@ -202,14 +202,14 @@ public class CrystalSpectre : ModNPC
 
         if (NPC.directionY == -1 && NPC.velocity.Y > -1.5)
         {
-            NPC.velocity.Y = NPC.velocity.Y - 0.04f;
+            NPC.velocity.Y -= 0.04f;
             if (NPC.velocity.Y > 1.5)
             {
-                NPC.velocity.Y = NPC.velocity.Y - 0.05f;
+                NPC.velocity.Y -= 0.05f;
             }
             else if (NPC.velocity.Y > 0f)
             {
-                NPC.velocity.Y = NPC.velocity.Y + 0.03f;
+                NPC.velocity.Y += 0.03f;
             }
 
             if (NPC.velocity.Y < -1.5)
@@ -219,14 +219,14 @@ public class CrystalSpectre : ModNPC
         }
         else if (NPC.directionY == 1 && NPC.velocity.Y < 1.5)
         {
-            NPC.velocity.Y = NPC.velocity.Y + 0.04f;
+            NPC.velocity.Y += 0.04f;
             if (NPC.velocity.Y < -1.5)
             {
-                NPC.velocity.Y = NPC.velocity.Y + 0.05f;
+                NPC.velocity.Y += 0.05f;
             }
             else if (NPC.velocity.Y < 0f)
             {
-                NPC.velocity.Y = NPC.velocity.Y - 0.03f;
+                NPC.velocity.Y -= 0.03f;
             }
 
             if (NPC.velocity.Y > 1.5)

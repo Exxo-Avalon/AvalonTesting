@@ -27,9 +27,9 @@ public class MissileBolt : ModProjectile
 
     public override void AI()
     {
-        if ((Projectile.type == ModContent.ProjectileType<MissileBolt>() && Projectile.ai[1] < 45f) || (Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<RottenBullet>() && Projectile.type != ModContent.ProjectileType<PatellaBullet>() && Projectile.type != ModContent.ProjectileType<Soundwave>() && Projectile.type != ModContent.ProjectileType<FeroziumBullet>() && Projectile.type != ModContent.ProjectileType<Electrobullet>() && Projectile.type != ModContent.ProjectileType<SpikeCannon>() && Projectile.type != ModContent.ProjectileType<PathogenBullet>() && Projectile.type != ModContent.ProjectileType<MagmaticBullet>() && Projectile.type != ModContent.ProjectileType<TritonBullet>() && Projectile.type != ModContent.ProjectileType<FocusBeam>() && Projectile.type != ModContent.ProjectileType<VileSpit>() && Projectile.type != ModContent.ProjectileType<InfectiousSpore>()))
+        if (Projectile.type == ModContent.ProjectileType<MissileBolt>() && Projectile.ai[1] < 45f)
         {
-            Projectile.ai[0] += 1f;
+            Projectile.ai[0]++;
         }
         if (Projectile.type == ModContent.ProjectileType<MissileBolt>())
         {
@@ -38,10 +38,10 @@ public class MissileBolt : ModProjectile
                 Projectile.localAI[1] = Projectile.velocity.ToRotation();
                 Projectile.localAI[0] = Projectile.velocity.Length();
             }
-            Projectile.ai[1] += 1f;
+            Projectile.ai[1]++;
             if (Projectile.ai[1] < 45f)
             {
-                Projectile.velocity.Y = Projectile.velocity.Y + 0.02f;
+                Projectile.velocity.Y += 0.02f;
             }
             if (Projectile.ai[1] == 45f)
             {

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
 public class ImpactSphere : ModProjectile
 {

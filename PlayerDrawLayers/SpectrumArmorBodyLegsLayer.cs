@@ -1,6 +1,5 @@
 using System;
 using AvalonTesting.Items.Armor;
-using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,11 +8,9 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.PlayerDrawLayers;
 
-public class SpectrumArmorLayer : PlayerDrawLayer
+public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
 {
-    public override bool IsHeadLayer => true;
-
-    public override Position GetDefaultPosition() => new AfterParent(Terraria.DataStructures.PlayerDrawLayers.Head);
+    public override Position GetDefaultPosition() => new AfterParent(Terraria.DataStructures.PlayerDrawLayers.HandOnAcc);
 
     public override bool GetDefaultVisibility(PlayerDrawSet drawInfo) => true;
 
@@ -25,7 +22,7 @@ public class SpectrumArmorLayer : PlayerDrawLayer
         }
 
         Player p = drawInfo.drawPlayer;
-        var rb = new Color(SpectrumHelmet.R, SpectrumHelmet.G, SpectrumHelmet.B, drawInfo.colorArmorBody.A);
+        var rb = new Color(SpectrumHelmet.R, SpectrumHelmet.G, SpectrumHelmet.B, drawInfo.colorArmorBody.A * (1 - drawInfo.drawPlayer.immuneAlpha));
         SpriteEffects spriteEffects = SpriteEffects.None;
         if (p.gravDir == 1f)
         {
@@ -69,8 +66,7 @@ public class SpectrumArmorLayer : PlayerDrawLayer
         var vector3 = new Vector2(p.legFrame.Width * 0.5f, p.legFrame.Height * 0.4f);
         if (p.head == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumHelmet", EquipType.Head))
         {
-            var value = default(DrawData);
-            value = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
+            var value = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
                 new Vector2(
                     (int)(drawInfo.Position.X - Main.screenPosition.X - (p.bodyFrame.Width / 2) + (p.width / 2)),
                     (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) +
@@ -80,36 +76,49 @@ public class SpectrumArmorLayer : PlayerDrawLayer
 
         if (p.body == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumBreastplate", EquipType.Body))
         {
-            Vector2 vector = new Vector2((float)(int)(drawInfo.Position.X - Main.screenPosition.X - (float)(drawInfo.drawPlayer.bodyFrame.Width / 2) + (float)(drawInfo.drawPlayer.width / 2)), (float)(int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2((float)(drawInfo.drawPlayer.bodyFrame.Width / 2), (float)(drawInfo.drawPlayer.bodyFrame.Height / 2));
+            Vector2 vector = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - drawInfo.drawPlayer.bodyFrame.Width / 2 + drawInfo.drawPlayer.width / 2), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2((float)(drawInfo.drawPlayer.bodyFrame.Width / 2), (float)(drawInfo.drawPlayer.bodyFrame.Height / 2));
             Vector2 value = Main.OffsetsPlayerHeadgear[drawInfo.drawPlayer.bodyFrame.Y / drawInfo.drawPlayer.bodyFrame.Height];
             value.Y -= 2f;
-            vector += value * (float)(-((Enum)drawInfo.playerEffect).HasFlag((Enum)(object)(SpriteEffects)2).ToDirectionInt());
+            vector += value * (-drawInfo.playerEffect.HasFlag((Enum)(object)(SpriteEffects)2).ToDirectionInt());
             float bodyRotation = drawInfo.drawPlayer.bodyRotation;
             Vector2 val = vector;
             Vector2 bodyVect = drawInfo.bodyVect;
+            Vector2 compositeOffset_FrontArm = GetCompositeOffset_FrontArm(ref drawInfo);
+            vector = val + compositeOffset_FrontArm;
+            bodyVect += compositeOffset_FrontArm;
+
+            Vector2 valBack = vector;
+            Vector2 bodyVectBack = drawInfo.bodyVect;
             Vector2 compositeOffset_BackArm = GetCompositeOffset_BackArm(ref drawInfo);
-            _ = val + compositeOffset_BackArm;
-            bodyVect += compositeOffset_BackArm;
+            Vector2 vectorBack = valBack + compositeOffset_BackArm;
+            bodyVectBack += compositeOffset_BackArm;
+            if (drawInfo.playerEffect == SpriteEffects.None || drawInfo.playerEffect == SpriteEffects.FlipVertically)
+            {
+                vector.X += 5f;
+                vectorBack.X--;
+                if (drawInfo.playerEffect == SpriteEffects.FlipVertically) vectorBack.Y += 2f;
+                else vectorBack.Y -= 2f;
+            }
+            else if (drawInfo.playerEffect == SpriteEffects.FlipHorizontally || drawInfo.playerEffect == (SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically))
+            {
+                vector.X -= 5f;
+                vectorBack.X++;
+                if (drawInfo.playerEffect == (SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically)) vectorBack.Y += 2f;
+                else vectorBack.Y -= 2f;
+            }
             if (!drawInfo.drawPlayer.invis)
             {
                 Texture2D value2 = Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Body_Glow").Value;
-                DrawData drawData2 = new DrawData(value2, vector, drawInfo.compTorsoFrame, rb, bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect, 0);
+                DrawData drawData2 = new DrawData(value2, vector, drawInfo.compFrontArmFrame, rb, bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect, 0);
                 drawData2.shader = drawInfo.cBody;
                 DrawData drawData = drawData2;
-                Terraria.DataStructures.PlayerDrawLayers.DrawCompositeArmorPiece(ref drawInfo, CompositePlayerDrawContext.Torso, drawData);
-                //drawInfo.DrawDataCache.Add(drawData);
+                drawInfo.DrawDataCache.Add(drawData);
+
+                DrawData drawData3 = new DrawData(value2, vectorBack, drawInfo.compBackArmFrame, rb, bodyRotation, drawInfo.bodyVect, 1f, drawInfo.playerEffect, 0);
+                drawData3.shader = drawInfo.cBody;
+                DrawData drawData4 = drawData3;
+                drawInfo.DrawDataCache.Add(drawData4);
             }
-            //Rectangle bodyFrame2 = p.bodyFrame;
-            //int num55 = drawInfo.armorAdjust;
-            //bodyFrame2.X += num55;
-            //bodyFrame2.Width -= num55;
-            //var dd = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumBreastplate_Body_Glow").Value,
-            //    new Vector2(
-            //        (int)(drawInfo.Position.X - Main.screenPosition.X - (p.bodyFrame.Width / 2) + (p.width / 2)) +
-            //        num55, (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) +
-            //    p.bodyPosition + new Vector2(p.bodyFrame.Width / 2, p.bodyFrame.Height / 2), bodyFrame2, rb,
-            //    p.bodyRotation, origin, 1f, spriteEffects, 0);
-            //drawInfo.DrawDataCache.Add(dd);
         }
 
         if (p.legs == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumGreaves", EquipType.Legs))

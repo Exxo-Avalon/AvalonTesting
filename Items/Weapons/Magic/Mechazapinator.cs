@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -27,7 +27,7 @@ class Mechazapinator : ModItem
         Item.width = dims.Width;
         Item.knockBack = 2f;
         Item.useTime = 20;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ElectricBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Hostile.ElectricBolt>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 10);
         Item.useAnimation = 20;

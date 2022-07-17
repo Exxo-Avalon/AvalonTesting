@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
 public class CrystalBit : ModProjectile
 {
@@ -47,11 +47,11 @@ public class CrystalBit : ModProjectile
         Projectile.friendly = false;
         Projectile.velocity *= 0.85f;
         Projectile.ai[1]++;
-        if (Projectile.ai[1] < 20)
+        if (Projectile.ai[1] < rn - 5)
         {
             Projectile.rotation = (float)System.Math.Atan2(Projectile.Center.Y - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.Y, Projectile.Center.X - Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].Center.X) - 1.57079633f;
         }
-        if (Projectile.ai[1] == 20)
+        if (Projectile.ai[1] == rn - 5)
         {
             heading = Main.player[Player.FindClosest(Projectile.position, Projectile.width, Projectile.height)].position;
         }

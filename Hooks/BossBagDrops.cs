@@ -40,9 +40,6 @@ public class BossBagDrops : ModHook
                 self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.StyngerBolt,
                     Main.rand.Next(60, 101));
             }
-
-            self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ModContent.ItemType<EarthStone>(),
-                Main.rand.Next(1, 4));
             self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.BeetleHusk,
                 Main.rand.Next(18, 24));
             self.QuickSpawnItem(self.GetSource_OpenItem(ItemID.GolemBossBag), ItemID.ShinyStone);

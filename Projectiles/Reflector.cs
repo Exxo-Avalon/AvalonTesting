@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -129,12 +129,7 @@ public class Reflector : ModProjectile
             {
                 Rectangle proj = new Rectangle((int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height);
                 Rectangle targetProj = new Rectangle((int)targ.position.X, (int)targ.position.Y, targ.width, targ.height);
-                if (proj.Intersects(targetProj) && !targ.bobber && targ.type != 237 && targ.type != 238 && targ.type != 243 &&
-                    targ.type != 244 && targ.type != 308 && targ.type != 295 && targ.type != 296 &&
-                    targ.type != ProjectileID.PhantasmalDeathray && targ.type != ModContent.ProjectileType<Projectiles.Ghostflame>() &&
-                    targ.type != ModContent.ProjectileType<Projectiles.WallofSteelLaser>() && targ.type != ModContent.ProjectileType<Projectiles.ElectricBolt>() &&
-                    targ.type != ModContent.ProjectileType<Projectiles.HomingRocket>() && targ.type != ModContent.ProjectileType<Projectiles.StingerLaser>() &&
-                    targ.type != ModContent.ProjectileType<Projectiles.CaesiumFireball>() && targ.type != ModContent.ProjectileType<Projectiles.CaesiumCrystal>())
+                if (proj.Intersects(targetProj) && !targ.bobber && !Data.Sets.Projectile.DontReflect[targ.type])
                 {
                     targ.hostile = false;
                     targ.friendly = true;

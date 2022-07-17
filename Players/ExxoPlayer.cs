@@ -2222,7 +2222,7 @@ public class ExxoPlayer : ModPlayer
         }
 
         if (Main.netMode != NetmodeID.SinglePlayer &&
-            Player.inventory[Player.selectedItem].type == ModContent.ItemType<EideticMirror>() &&
+            Player.inventory[Player.selectedItem].type == ModContent.ItemType<TeamMirror>() &&
             KeybindSystem.ModeChangeHotkey.JustPressed)
         {
             int newPlayer = teleportToPlayer;

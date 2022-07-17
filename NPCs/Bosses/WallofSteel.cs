@@ -418,14 +418,14 @@ public class WallofSteel : ModNPC
                     SoundEngine.PlaySound(SoundID.Item33, new Vector2((int)NPC.position.X, AvalonTestingWorld.WallOfSteelT));
                     while (f <= .1f)
                     {
-                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
+                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Hostile.WoSCursedFireball>(), dmg, 6f);
                         Main.projectile[fire].timeLeft = 600;
                         Main.projectile[fire].tileCollide = false;
                         if (Main.netMode != NetmodeID.SinglePlayer)
                         {
                             NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, fire);
                         }
-                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameHostile, dmg, 6f);
+                        fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Hostile.WoSCursedFireball>(), dmg, 6f);
                         Main.projectile[fire].timeLeft = 600;
                         Main.projectile[fire].tileCollide = false;
                         if (Main.netMode != NetmodeID.SinglePlayer)
@@ -439,7 +439,7 @@ public class WallofSteel : ModNPC
                 NPC.ai[2]++;
                 if (NPC.ai[2] == 100)
                 {
-                    int laser = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.WallOfSteelB, NPC.velocity.X, NPC.velocity.Y, ProjectileID.DeathLaser, Main.expertMode ? 70 : 55, 4f);
+                    int laser = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.velocity.X < 0 ? NPC.position.X : NPC.position.X + NPC.width, AvalonTestingWorld.WallOfSteelB, NPC.velocity.X, NPC.velocity.Y, ModContent.ProjectileType<Projectiles.Hostile.WoSLaserSmall>(), Main.expertMode ? 70 : 55, 4f);
                     Main.projectile[laser].velocity = Vector2.Normalize(Main.player[NPC.target].Center - new Vector2(NPC.position.X, AvalonTestingWorld.WallOfSteelB)) * 5f;
                     Main.projectile[laser].hostile = true;
                     Main.projectile[laser].friendly = false;
@@ -460,13 +460,13 @@ public class WallofSteel : ModNPC
                     SoundEngine.PlaySound(SoundID.Item33, new Vector2((int)NPC.position.X, AvalonTestingWorld.WallOfSteelT));
                     //while (f <= .1f)
                     //{
-                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
+                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation + f) * 12f) * -1), (float)((Math.Sin(rotation + f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Hostile.WoSCursedFireball>(), Main.expertMode ? 70 : 55, 6f);
                     Main.projectile[fire].timeLeft = 600;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, fire);
                     }
-                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ProjectileID.CursedFlameFriendly, Main.expertMode ? 70 : 55, 6f);
+                    fire = Projectile.NewProjectile(NPC.GetSource_FromAI(), laserPos.X, laserPos.Y, (float)((Math.Cos(rotation - f) * 12f) * -1), (float)((Math.Sin(rotation - f) * 12f) * -1), ModContent.ProjectileType<Projectiles.Hostile.WoSCursedFireball>(), Main.expertMode ? 70 : 55, 6f);
                     Main.projectile[fire].timeLeft = 600;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
@@ -494,9 +494,9 @@ public class WallofSteel : ModNPC
                         NPC.localAI[1] = NPC.velocity.X;
                         NPC.localAI[2] = NPC.velocity.Y;
                     }
-                    int t = ModContent.ProjectileType<Projectiles.WallofSteelLaser>(); // middle
-                    if (NPC.ai[3] == 60) t = ModContent.ProjectileType<Projectiles.WallofSteelLaserStart>(); // start
-                    if (NPC.ai[3] == 90) t = ModContent.ProjectileType<Projectiles.WallofSteelLaserEnd>(); // end
+                    int t = ModContent.ProjectileType<Projectiles.Hostile.WallofSteelLaser>(); // middle
+                    if (NPC.ai[3] == 60) t = ModContent.ProjectileType<Projectiles.Hostile.WallofSteelLaserStart>(); // start
+                    if (NPC.ai[3] == 90) t = ModContent.ProjectileType<Projectiles.Hostile.WallofSteelLaserEnd>(); // end
                     if (NPC.ai[3] % 3 == 0)
                     {
                         int wide = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.ai[1], NPC.ai[2], NPC.localAI[1], NPC.localAI[2], t, 100, 4f);

@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
-public class WallofSteelLaserEnd : ModProjectile
+public class WallofSteelLaser : ModProjectile
 {
     public override void SetStaticDefaults()
     {

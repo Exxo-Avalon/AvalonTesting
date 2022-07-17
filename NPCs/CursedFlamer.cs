@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Accessories;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -60,7 +60,7 @@ public class CursedFlamer : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return Main.hardMode && spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.InPillarZone() && spawnInfo.SpawnTileY < (Main.maxTilesY - 200) ? 1f : 0f;
+        return Main.hardMode && spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.InPillarZone() && spawnInfo.SpawnTileY < (Main.maxTilesY - 200) ? 0.3f : 0f;
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -69,7 +69,7 @@ public class CursedFlamer : ModNPC
     }
     public override void FindFrame(int frameHeight)
     {
-        NPC.frameCounter += 1.0;
+        NPC.frameCounter++;
         if (NPC.frameCounter >= 8.0)
         {
             NPC.frame.Y = NPC.frame.Y + frameHeight;

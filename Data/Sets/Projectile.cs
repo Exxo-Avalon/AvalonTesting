@@ -1,4 +1,4 @@
-using AvalonTesting.Projectiles;
+using AvalonTesting.Projectiles.Hostile;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -37,7 +37,9 @@ public static class Projectile
         ModContent.ProjectileType<WallofSteelLaserEnd>(),
         ModContent.ProjectileType<WallofSteelLaserStart>(),
         ModContent.ProjectileType<CrystalBit>(),
-        ModContent.ProjectileType<CrystalBeam>());
+        ModContent.ProjectileType<CrystalBeam>(),
+        ModContent.ProjectileType<WoSLaserSmall>(),
+        ModContent.ProjectileType<WoSCursedFireball>());
 
     public static readonly bool[] MinionProjectiles = ProjectileID.Sets.Factory.CreateBoolSet(
         ProjectileID.HornetStinger,

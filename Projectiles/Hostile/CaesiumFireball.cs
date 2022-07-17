@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Dusts;
+using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
 public class CaesiumFireball : ModProjectile
 {

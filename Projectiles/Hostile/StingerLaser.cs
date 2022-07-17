@@ -1,16 +1,15 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace AvalonTesting.Projectiles.Hostile;
 
-public class FeroziumBullet : ModProjectile
+public class StingerLaser : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Ferozium Bullet");
+        DisplayName.SetDefault("Stinger Laser");
     }
 
     public override void SetDefaults()
@@ -18,15 +17,16 @@ public class FeroziumBullet : ModProjectile
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 4 / 20;
         Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
-        Projectile.aiStyle = 1;
-        AIType = ProjectileID.Bullet;
         Projectile.friendly = true;
+        Projectile.hostile = false;
         Projectile.penetrate = 1;
-        Projectile.light = 0.5f;
+        Projectile.light = 0.8f;
         Projectile.alpha = 0;
-        Projectile.MaxUpdates = 1;
         Projectile.scale = 1.2f;
-        Projectile.timeLeft = 900;
-        Projectile.DamageType = DamageClass.Ranged;
+        Projectile.timeLeft = 300;
+        Projectile.tileCollide = false;
+        Projectile.DamageType = DamageClass.Summon;
+        Projectile.aiStyle = 1;
+        AIType = ProjectileID.DeathLaser;
     }
 }

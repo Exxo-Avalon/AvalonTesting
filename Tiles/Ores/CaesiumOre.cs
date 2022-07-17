@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Dusts;
+using AvalonTesting.Dusts;
 using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -48,7 +48,7 @@ public class CaesiumOre : ModTile
                 {
                     Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                         new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
-                        ModContent.ProjectileType<CaesiumGas>(), 0, 0);
+                        ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
                 }
             }
         }
@@ -62,7 +62,7 @@ public class CaesiumOre : ModTile
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                     new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
-                    ModContent.ProjectileType<CaesiumGas>(), 0, 0);
+                    ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
             }
         }
     }

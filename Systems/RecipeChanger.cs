@@ -20,6 +20,19 @@ public class RecipeChanger : ModSystem
                     recipe.DisableRecipe();
                     break;
                 }
+                case ItemID.GPS:
+                {
+                    if (recipe.TryGetIngredient(ItemID.GoldWatch, out Item ing))
+                    {
+                        recipe.RemoveIngredient(ing);
+                        recipe.AddRecipeGroup("AvalonTesting:Tier3Watch");
+                    }
+                    if (recipe.TryGetIngredient(ItemID.PlatinumWatch, out Item ing2))
+                    {
+                        recipe.DisableRecipe();
+                    }
+                    break;
+                }
                 case ItemID.AnkhCharm:
                 {
                     recipe.AddIngredient(ModContent.ItemType<Items.Accessories.Bayonet>());

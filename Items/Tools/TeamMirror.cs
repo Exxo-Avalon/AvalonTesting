@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Tools;
 
-class EideticMirror : ModItem
+class TeamMirror : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -29,15 +29,12 @@ class EideticMirror : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.MagicMirror).AddRecipeGroup("AvalonTesting:GoldBar", 10).AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 4).AddTile(TileID.Anvils).Register();
-
-        //recipe = new ModRecipe(mod);
-        //recipe.AddIngredient(ItemID.MagicMirror);
-        //recipe.AddIngredient(ItemID.PlatinumBar, 10);
-        //recipe.AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 3);
-        //recipe.AddTile(TileID.Anvils);
-        //recipe.SetResult(ModContent.ItemType<EideticMirror>());
-        //recipe.AddRecipe();
+        CreateRecipe(1)
+            .AddIngredient(ItemID.MagicMirror)
+            .AddRecipeGroup("AvalonTesting:GoldBar", 10)
+            .AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 4)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
     public override bool CanUseItem(Player player)
     {

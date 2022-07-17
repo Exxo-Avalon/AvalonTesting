@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using AvalonTesting.Buffs;
@@ -159,22 +159,7 @@ public class StingerProbeMinion : ModProjectile
         var projWS = new Rectangle((int)Projectile.Center.X - 32, (int)Projectile.Center.Y - 32, 64, 64);
         foreach (Projectile Pr in Main.projectile)
         {
-            if (!Pr.friendly && !Pr.bobber &&
-                Pr.type != ProjectileID.RainCloudMoving && Pr.type != ProjectileID.RainCloudRaining &&
-                Pr.type != ProjectileID.BloodCloudMoving && Pr.type != ProjectileID.BloodCloudRaining &&
-                Pr.type != 50 && Pr.type != ProjectileID.Stinger &&
-                Pr.type != 53 && Pr.type != 358 &&
-                Pr.type != ProjectileID.FrostHydra && Pr.type != ProjectileID.InfernoFriendlyBolt &&
-                Pr.type != ProjectileID.InfernoFriendlyBlast && Pr.type != ProjectileID.FlyingPiggyBank &&
-                Pr.type != ProjectileID.PhantasmalDeathray && Pr.type != ProjectileID.SpiritHeal &&
-                Pr.type != ProjectileID.SpectreWrath && Pr.type != ModContent.ProjectileType<Ghostflame>() &&
-                Pr.type != ModContent.ProjectileType<WallofSteelLaser>() &&
-                Pr.type != ModContent.ProjectileType<PhantasmLaser>() &&
-                Pr.type != ModContent.ProjectileType<PhantasmLaser>() &&
-                Pr.type != ModContent.ProjectileType<ElectricBolt>() &&
-                Pr.type != ModContent.ProjectileType<HomingRocket>() &&
-                Pr.type != ModContent.ProjectileType<StingerLaser>() &&
-                Pr.type != ModContent.ProjectileType<SpectreSplit>())
+            if (!Pr.friendly && !Pr.bobber && !Data.Sets.Projectile.DontReflect[Pr.type])
             {
                 var proj2 = new Rectangle((int)Pr.position.X, (int)Pr.position.Y, Pr.width, Pr.height);
                 bool reflect = false, check = false;
@@ -277,7 +262,7 @@ public class StingerProbeMinion : ModProjectile
             if (Projectile.owner == Main.myPlayer)
             {
                 int laser = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,
-                    dirToCursor * 36f, ModContent.ProjectileType<StingerLaser>(), Projectile.damage, 0f,
+                    dirToCursor * 36f, ModContent.ProjectileType<Hostile.StingerLaser>(), Projectile.damage, 0f,
                     Projectile.owner);
 
                 if (Main.netMode != NetmodeID.SinglePlayer)

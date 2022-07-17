@@ -63,7 +63,7 @@ public class CaesiumStalker : ModNPC
     {
         if (Main.rand.Next(20) == 0)
         {
-            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.CaesiumGas>(), 0, 0);
+            Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
@@ -187,7 +187,7 @@ public class CaesiumStalker : ModNPC
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
                     var mainproj = (float)Math.Atan2(NPC.Center.Y - (Main.player[NPC.target].Center.Y), NPC.Center.X - (Main.player[NPC.target].Center.X));
-                    int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ModContent.ProjectileType<Projectiles.CaesiumSpike>(), 50, 1f, NPC.target, 0f, 0f);
+                    int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)Math.Cos(mainproj), -(float)Math.Sin(mainproj), ModContent.ProjectileType<Projectiles.Hostile.CaesiumSpike>(), 50, 1f, NPC.target, 0f, 0f);
                     Main.projectile[p].velocity *= 13f;
                     SoundEngine.PlaySound(SoundID.Item8, NPC.position);
                 }

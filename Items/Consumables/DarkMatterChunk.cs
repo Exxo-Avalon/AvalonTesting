@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,9 +34,9 @@ class DarkMatterChunk : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.EbonstoneBlock, 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Material.EarthStone>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
-        CreateRecipe(1).AddIngredient(ItemID.CrimstoneBlock, 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Material.EarthStone>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.ChunkstoneBlock>(), 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Material.EarthStone>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
+        CreateRecipe(1).AddIngredient(ItemID.EbonstoneBlock, 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Placeable.Bar.BeetleBar>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
+        CreateRecipe(1).AddIngredient(ItemID.CrimstoneBlock, 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Placeable.Bar.BeetleBar>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.ChunkstoneBlock>(), 30).AddIngredient(ItemID.SoulofNight, 8).AddIngredient(ItemID.Ectoplasm, 5).AddIngredient(ModContent.ItemType<Placeable.Bar.BeetleBar>()).AddIngredient(ModContent.ItemType<Material.SoulofBlight>()).AddTile(TileID.DemonAltar).Register();
     }
     public override bool? UseItem(Player player)
     {

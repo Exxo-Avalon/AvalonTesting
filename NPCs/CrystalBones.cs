@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AvalonTesting.Items.Banners;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
@@ -96,7 +96,7 @@ public class CrystalBones : ModNPC
             float speedX = NPC.velocity.X + (Main.rand.Next(-51, 51) * 0.2f);
             float speedY = NPC.velocity.Y + (Main.rand.Next(-51, 51) * 0.2f);
             int proj = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, new Vector2(speedX, speedY),
-                ModContent.ProjectileType<CrystalShard>(), 100, 0.3f);
+                ModContent.ProjectileType<Projectiles.Hostile.CrystalShard>(), 100, 0.3f);
             Main.projectile[proj].timeLeft = 300;
         }
     }

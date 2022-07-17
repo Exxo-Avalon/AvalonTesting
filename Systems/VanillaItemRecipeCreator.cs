@@ -74,7 +74,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.LihzahrdPowerCell).AddIngredient(ModContent.ItemType<SolariumStar>(), 5).AddIngredient(ItemID.LihzahrdBrick, 10).AddTile(TileID.MythrilAnvil).Register();
         Recipe.Create(ItemID.Leather).AddIngredient(ModContent.ItemType<RottenFlesh>(), 4).AddTile(TileID.WorkBenches).Register();
         Recipe.Create(ItemID.Leather).AddIngredient(ModContent.ItemType<YuckyBit>(), 6).AddTile(TileID.WorkBenches).Register();
-        Recipe.Create(ItemID.Picksaw).AddIngredient(ModContent.ItemType<SolariumStar>(), 50).AddIngredient(ModContent.ItemType<EarthStone>(), 3).AddIngredient(ItemID.SoulofMight, 15).AddTile(TileID.MythrilAnvil).Register();
+        Recipe.Create(ItemID.Picksaw).AddIngredient(ModContent.ItemType<SolariumStar>(), 50).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BeetleBar>(), 3).AddIngredient(ItemID.SoulofMight, 15).AddTile(TileID.MythrilAnvil).Register();
         Recipe.Create(ModContent.ItemType<Items.Potions.BeeRepellent>(), 2).AddIngredient(ItemID.BottledHoney, 2).AddIngredient(ItemID.SoulofFlight).AddTile(TileID.Bottles).Register();
         Recipe.Create(ItemID.SunplateBlock, 2).AddIngredient(ItemID.GoldOre).AddIngredient(ItemID.Cloud).AddTile(TileID.Furnaces).Register();
         Recipe.Create(ItemID.BlinkrootSeeds, 2).AddIngredient(ItemID.StoneBlock, 5).AddIngredient(ItemID.Torch, 2).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();

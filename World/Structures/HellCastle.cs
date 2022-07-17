@@ -278,7 +278,7 @@ class HellCastle
                                     }
                                     if (item == 7)
                                     {
-                                        item = ModContent.ItemType<EarthStone>();
+                                        item = ModContent.ItemType<BeetleBar>();
                                     }
                                     if (item == 8)
                                     {
@@ -574,7 +574,7 @@ class HellCastle
                         Main.chest[num2].item[0].SetDefaults(contain, false);
                         Main.chest[num2].item[0].Prefix(-1);
                         if (contain == ModContent.ItemType<CaesiumBar>() || contain == ModContent.ItemType<SolariumStar>()) Main.chest[num2].item[0].stack = WorldGen.genRand.Next(20, 31);
-                        if (contain == ModContent.ItemType<EarthStone>()) Main.chest[num2].item[0].stack = WorldGen.genRand.Next(2, 6);
+                        if (contain == ModContent.ItemType<BeetleBar>()) Main.chest[num2].item[0].stack = WorldGen.genRand.Next(2, 6);
                         Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<EctoplasmicBeacon>(), false);
                         Main.chest[num2].item[1].stack = 1;
                         int rand = WorldGen.genRand.Next(3);
