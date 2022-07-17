@@ -1507,6 +1507,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 .Find(x => ((OneFromOptionsNotScaledWithLuckDropRule)x.RuleToChain).dropIds.Contains(ItemID.WarriorEmblem));
             var oneFromOptionsRule = (OneFromOptionsNotScaledWithLuckDropRule)successRule.RuleToChain;
             Emblems = oneFromOptionsRule.dropIds;
+            npcLoot.RemoveWhere(x => x == oneFromOptionsRule, false);
         }
         if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
