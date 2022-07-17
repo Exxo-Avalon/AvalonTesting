@@ -1492,18 +1492,21 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
     }
 
+    internal static int[] Emblems;
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
         // DOES NOT WORK
         if (npc.type == NPCID.WallofFlesh)
         {
-            // RemoveWhere will remove any drop rule that matches the provided expression.
-            // To make your own expressions to remove vanilla drop rules, you'll usually have to study the original source code that adds those rules.
-            npcLoot.RemoveWhere(
-                // The following expression returns true if the following conditions are met:
-                rule => rule is OneFromOptionsNotScaledWithLuckDropRule drop // If the rule is an ItemDropWithConditionRule instance
-                    && (drop.dropIds[0] == ItemID.WarriorEmblem && drop.dropIds[1] == ItemID.RangerEmblem && drop.dropIds[2] == ItemID.SorcererEmblem &&
-                    drop.dropIds[3] == ItemID.SummonerEmblem));
+            List<IItemDropRule> rules = npcLoot.Get(false);
+            var leadingRule = rules
+                .OfType<LeadingConditionRule>()
+                .Where(lc => lc.condition is Conditions.NotExpert)
+                .ToList();
+            var successRule = (Chains.TryIfSucceeded)leadingRule[0].ChainedRules
+                .Find(x => ((OneFromOptionsNotScaledWithLuckDropRule)x.RuleToChain).dropIds.Contains(ItemID.WarriorEmblem));
+            var oneFromOptionsRule = (OneFromOptionsNotScaledWithLuckDropRule)successRule.RuleToChain;
+            Emblems = oneFromOptionsRule.dropIds;
         }
         if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
@@ -1891,6 +1894,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             }
         }
     }
+    public override void Unload() => Emblems = null;
     public override void OnKill(NPC npc)
     {
         if (npc.type == NPCID.Golem && !NPC.downedGolemBoss)

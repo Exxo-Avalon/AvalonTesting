@@ -14,10 +14,8 @@ public class VanillaItemRecipeCreator : ModSystem
     public override void AddRecipes()
     {
         Recipe.Create(ItemID.SlimeCrown).AddIngredient(ModContent.ItemType<Items.Vanity.BismuthCrown>()).AddIngredient(ItemID.Gel, 20).AddTile(TileID.DemonAltar).Register();
-        Recipe.Create(ItemID.RangerEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Recipe.Create(ItemID.SorcererEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Recipe.Create(ItemID.WarriorEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Recipe.Create(ItemID.SummonerEmblem).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
+        foreach (int i in AvalonTestingGlobalNPC.Emblems)
+            Recipe.Create(i).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
         Recipe.Create(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddRecipeGroup("Wood", 6).AddTile(TileID.Anvils).Register();
         Recipe.Create(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.Bottles).Register();
         Recipe.Create(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.Bottles).Register();
