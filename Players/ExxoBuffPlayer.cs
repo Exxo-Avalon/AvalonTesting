@@ -38,6 +38,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool DarkInferno;
     public bool NoSticky;
     public int OldFallStart;
+    public bool ShadowCharm;
 
     public bool SkyBlessing;
     public int SkyStacks = 1;
@@ -105,6 +106,7 @@ public class ExxoBuffPlayer : ModPlayer
         DarkInferno = false;
         CaesiumPoison = false;
         Electrified = false;
+        ShadowCharm = false;
     }
 
     public override void PreUpdateBuffs()
@@ -331,6 +333,10 @@ public class ExxoBuffPlayer : ModPlayer
             Player.head = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Head);
             Player.body = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Body);
             Player.legs = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Legs);
+        }
+        if (ShadowCharm)
+        {
+            
         }
     }
 

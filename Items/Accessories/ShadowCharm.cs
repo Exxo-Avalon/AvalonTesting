@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Items.Accessories;
 
@@ -13,7 +14,6 @@ class ShadowCharm : ModItem
         Tooltip.SetDefault("The holder has an afterimage when moving\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
         SacrificeTotal = 1;
     }
-
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -23,13 +23,23 @@ class ShadowCharm : ModItem
         Item.value = Item.sellPrice(0, 0, 45);
         Item.height = dims.Height;
     }
+    public override bool IsVanitySet(int head, int body, int legs) => true;
     public override void ArmorSetShadows(Player player)
     {
         player.armorEffectDrawShadow = true;
     }
+    public override bool CanEquipAccessory(Player player, int slot, bool modded)
+    {
+        return true;
+    }
     public override void UpdateVanity(Player player)
     {
-        player.armorEffectDrawShadow = true;
+        player.GetModPlayer<ExxoBuffPlayer>().ShadowCharm = true;
+        //player.armorEffectDrawShadow = true;
+    }
+    public override void UpdateAccessory(Player player, bool hideVisual)
+    {
+        player.GetModPlayer<ExxoBuffPlayer>().ShadowCharm = true;
     }
 
     public override void AddRecipes()

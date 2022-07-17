@@ -26,6 +26,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameInput;
+using Terraria.Graphics.Renderers;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -76,6 +77,8 @@ public class ExxoPlayer : ModPlayer
         //Main.NewText("" + trapImmune.ToString());
         //Main.NewText("" + slimeBand.ToString());
         Player.defaultItemGrabRange = 38;
+        HookBonus = false;
+        
         oreDupe = false;
         skyBlessing = false;
         inertiaBoots = false;
@@ -545,8 +548,69 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
     }
 
+    private void DrawPlayerInternal(Player drawPlayer, Vector2 position, float rotation, Vector2 rotationOrigin, float shadow = 0f, float alpha = 1f, float scale = 1f, bool headOnly = false)
+    {
+        if (drawPlayer.ShouldNotDraw)
+        {
+            return;
+        }
+        PlayerDrawSet drawinfo = default(PlayerDrawSet);
+        //_drawData.Clear();
+        //_dust.Clear();
+        //_gore.Clear();
+        if (headOnly)
+        {
+            drawinfo.HeadOnlySetup(drawPlayer, new List<DrawData>(), new List<int>(), new List<int>(), position.X, position.Y, alpha, scale);
+        }
+        else
+        {
+            drawinfo.BoringSetup(drawPlayer, new List<DrawData>(), new List<int>(), new List<int>(), position, shadow, rotation, rotationOrigin);
+        }
+        PlayerLoader.ModifyDrawInfo(ref drawinfo);
+        Terraria.ModLoader.PlayerDrawLayer[] drawLayers = PlayerDrawLayerLoader.GetDrawLayers(drawinfo);
+        foreach (PlayerDrawLayer layer in drawLayers)
+        {
+            if (!headOnly || layer.IsHeadLayer)
+            {
+                layer.DrawWithTransformationAndChildren(ref drawinfo);
+            }
+        }
+        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_MakeIntoFirstFractalAfterImage(ref drawinfo);
+        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_TransformDrawData(ref drawinfo);
+        if (scale != 1f)
+        {
+            Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_ScaleDrawData(ref drawinfo, scale);
+        }
+        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_RenderAllLayers(ref drawinfo);
+        if (!drawinfo.drawPlayer.mount.Active || drawinfo.drawPlayer.mount.Type != 11)
+        {
+            return;
+        }
+        for (int i = 0; i < 1000; i++)
+        {
+            if (Main.projectile[i].active && Main.projectile[i].owner == drawinfo.drawPlayer.whoAmI && Main.projectile[i].type == 591)
+            {
+                Main.instance.DrawProj(i);
+            }
+        }
+    }
+
+    //public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+    //{
+        //if (Player.HasItemInArmor(ModContent.ItemType<ShadowCharm>()))
+        //{
+        //    for (int num12 = 0; num12 < 3; num12++)
+        //    {
+        //        DrawPlayerInternal(Player, Player.shadowPos[num12], Player.shadowRotation[num12], Player.shadowOrigin[num12], 0.5f + 0.2f * num12);
+        //    }
+        //}
+    //}
     public override void UpdateEquips()
     {
+        if (Player.HasItemInArmor(ModContent.ItemType<ShadowCharm>()))
+        {
+            ModContent.GetInstance<ShadowCharm>().ArmorSetShadows(Player);
+        }
         if (tomeItem.stack > 0)
         {
             Player.VanillaUpdateEquip(tomeItem);

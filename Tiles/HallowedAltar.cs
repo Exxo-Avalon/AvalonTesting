@@ -57,26 +57,39 @@ public class HallowedAltar : ModTile
         {
             SmashHallowAltar(i, j);
             SoundEngine.PlaySound(new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
-            var R = new Rectangle(i * 16, j * 16, 16 * 3, 16 * 2);
-            int C = 50;
-            float vR = .4f;
-            Vector2 pos = new Vector2(i * 16, j * 16);
+            var R = new Rectangle(i * 16 + 16, j * 16 + 8, 8, 8 * 5);
+            var R2 = new Rectangle(i * 16 + 16, j * 16 + 8, 24, 8);
+            var R3 = new Rectangle(i * 16 + 16, j * 16 + 8, 24, 40);
+            int C = 30;
+            float vR = .2f;
+            Vector2 pinkPos = new Vector2(i * 16 + 10, j * 16);
+            Vector2 horizPos = new Vector2(i * 16 + 10, j * 16 + 16);
+            Vector2 vertPos = new Vector2(i * 16 + 26, j * 16);
             for (int i2 = 1; i2 <= C; i2++)
             {
-                int D = Dust.NewDust(pos, R.Width, R.Height, DustID.Enchanted_Gold, 0, 0, 100, new Color(),
-                    2f);
-                Main.dust[D].noGravity = true;
-                Main.dust[D].velocity.X = vR * (Main.dust[D].position.X - (pos.X + 24));
-                Main.dust[D].velocity.Y = vR * (Main.dust[D].position.Y - (pos.Y + 16));
+                int D2 = Dust.NewDust(pinkPos, R3.Width, R3.Height, DustID.Enchanted_Pink, 0, 0, 100, new Color(), 2f);
+                Main.dust[D2].noGravity = true;
+                Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (pinkPos.X + 12));
+                Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (pinkPos.Y + 8));
             }
 
             for (int i2 = 1; i2 <= C; i2++)
             {
-                int D2 = Dust.NewDust(pos, R.Width, R.Height, DustID.MagicMirror, 0, 0, 100, new Color(), 2f);
-                Main.dust[D2].noGravity = true;
-                Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (pos.X + 24));
-                Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (pos.Y + 16));
+                int D = Dust.NewDust(vertPos, R.Width, R.Height, DustID.Enchanted_Gold, 0, 0, 100, new Color(), 2f);
+                Main.dust[D].noGravity = true;
+                Main.dust[D].velocity.X = vR * (Main.dust[D].position.X - (vertPos.X + 12));
+                Main.dust[D].velocity.Y = vR * (Main.dust[D].position.Y - (vertPos.Y + 8));
             }
+
+            for (int i2 = 1; i2 <= C; i2++)
+            {
+                int D2 = Dust.NewDust(horizPos, R2.Width, R2.Height, DustID.Enchanted_Gold, 0, 0, 100, new Color(), 2f);
+                Main.dust[D2].noGravity = true;
+                Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (horizPos.X + 12));
+                Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (horizPos.Y + 8));
+            }
+
+            
         }
     }
 
