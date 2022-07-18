@@ -57,6 +57,39 @@ public class HallowedAltar : ModTile
         {
             SmashHallowAltar(i, j);
             SoundEngine.PlaySound(new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
+            //var R = new Rectangle(i * 16 - 16, j * 16 - 16, 72, 72);
+            //var R2 = new Rectangle(i * 16, j * 16 - 8, 24, 24);
+            //var R3 = new Rectangle(i * 16 + 16, j * 16 + 24, 16, 16);
+            //int C = 30;
+            //float vR = .2f;
+
+            //Vector2 wholeCookiePos = new Vector2(i * 16 - 16, j * 16 - 16);
+            //Vector2 chip1Pos = new Vector2(i * 16, j * 16 - 8);
+            //Vector2 chip2Pos = new Vector2(i * 16 + 16, j * 16 + 24);
+
+            //for (int i2 = 1; i2 <= C; i2++)
+            //{
+            //    int D2 = Dust.NewDust(wholeCookiePos, R.Width, R.Height, DustID.Sand, 0, 0, 100, new Color(), 2f);
+            //    Main.dust[D2].noGravity = true;
+            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (wholeCookiePos.X + 12));
+            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (wholeCookiePos.Y + 8));
+            //}
+
+            //for (int i2 = 1; i2 <= 15; i2++)
+            //{
+            //    int D2 = Dust.NewDust(chip1Pos, R2.Width, R2.Height, DustID.Mud, 0, 0, 100, new Color(), 2f);
+            //    Main.dust[D2].noGravity = true;
+            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (chip1Pos.X + 12));
+            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (chip1Pos.Y + 8));
+            //}
+            //for (int i2 = 1; i2 <= 15; i2++)
+            //{
+            //    int D2 = Dust.NewDust(chip2Pos, R3.Width, R3.Height, DustID.Mud, 0, 0, 100, new Color(), 2f);
+            //    Main.dust[D2].noGravity = true;
+            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (chip2Pos.X + 12));
+            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (chip2Pos.Y + 8));
+            //}
+
             var R = new Rectangle(i * 16 + 16, j * 16 + 8, 8, 8 * 5);
             var R2 = new Rectangle(i * 16 + 16, j * 16 + 8, 24, 8);
             var R3 = new Rectangle(i * 16 + 16, j * 16 + 8, 24, 40);
@@ -88,8 +121,6 @@ public class HallowedAltar : ModTile
                 Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (horizPos.X + 12));
                 Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (horizPos.Y + 8));
             }
-
-            
         }
     }
 
