@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
@@ -17,6 +18,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using Terraria.WorldBuilding;
+using Terraria.ModLoader.IO;
 
 namespace AvalonTesting;
 
@@ -253,6 +255,32 @@ public class AvalonTestingWorld : ModSystem
             WorldGen.OreRunner(x, y, Main.rand.Next(3, 6), Main.rand.Next(5, 8),
                 (ushort)ModContent.TileType<PrimordialOre>());
         }
+    }
+
+    public override void SaveWorldData(TagCompound tag)
+    {
+        tag["SuperHardmode"] = SuperHardmode;
+    }
+    public override void LoadWorldData(TagCompound tag)
+    {
+        if (tag.ContainsKey("SuperHardmode"))
+        {
+            SuperHardmode = tag.Get<bool>("SuperHardmode");
+        }
+    }
+    public override void NetSend(BinaryWriter writer)
+    {
+        var flags = new BitsByte
+        {
+            [0] = SuperHardmode
+        };
+        writer.Write(flags);
+    }
+
+    public override void NetReceive(BinaryReader reader)
+    {
+        BitsByte flags = reader.ReadByte();
+        SuperHardmode = flags[0];
     }
 
     public static void GenerateSkyFortress()

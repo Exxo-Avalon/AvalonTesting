@@ -57,37 +57,94 @@ public class HallowedAltar : ModTile
         {
             SmashHallowAltar(i, j);
             SoundEngine.PlaySound(new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
-            //var R = new Rectangle(i * 16 - 16, j * 16 - 16, 72, 72);
-            //var R2 = new Rectangle(i * 16, j * 16 - 8, 24, 24);
-            //var R3 = new Rectangle(i * 16 + 16, j * 16 + 24, 16, 16);
-            //int C = 30;
             //float vR = .2f;
-
-            //Vector2 wholeCookiePos = new Vector2(i * 16 - 16, j * 16 - 16);
-            //Vector2 chip1Pos = new Vector2(i * 16, j * 16 - 8);
-            //Vector2 chip2Pos = new Vector2(i * 16 + 16, j * 16 + 24);
-
-            //for (int i2 = 1; i2 <= C; i2++)
+            //int radius = 36;
+            //int xMinWholeCookie = (i + 2) * 16 - radius;
+            //int xMaxWholeCookie = (i + 2) * 16 + radius;
+            //int yMinWholeCookie = (j + 1) * 16 - radius;
+            //int yMaxWholeCookie = (j + 1) * 16 + radius;
+            //for (int x = xMinWholeCookie; x < xMaxWholeCookie; x += Main.rand.Next(4, 7))
             //{
-            //    int D2 = Dust.NewDust(wholeCookiePos, R.Width, R.Height, DustID.Sand, 0, 0, 100, new Color(), 2f);
-            //    Main.dust[D2].noGravity = true;
-            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (wholeCookiePos.X + 12));
-            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (wholeCookiePos.Y + 8));
+            //    for (int y = yMinWholeCookie; y < yMaxWholeCookie; y += Main.rand.Next(4, 7))
+            //    {
+            //        if (Vector2.Distance(new Vector2((i + 2) * 16, (j + 1) * 16), new Vector2(x, y)) < radius &&
+            //            Vector2.Distance(new Vector2((i + 2) * 16, (j + 1) * 16), new Vector2(x, y)) > radius - 5)
+            //        {
+            //            int D2 = Dust.NewDust(new Vector2(x, y), 0, 0, DustID.Sand, 0, 0, 100, new Color(), 1.5f);
+            //            Main.dust[D2].noGravity = true;
+            //            Main.dust[D2].fadeIn = 0.5f;
+            //            Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (x + 12));
+            //            Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (y + 8));
+            //        }
+            //    }
+            //}
+            //int radiusChip1 = Main.rand.Next(6, 11);
+            //int xmodchip1 = Main.rand.Next(14, 19);
+            //int ymodchip1 = Main.rand.Next(6, 11);
+            //int xMinChip1 = i * 16 + xmodchip1 - radiusChip1;
+            //int xMaxChip1 = i * 16 + xmodchip1 + radiusChip1;
+            //int yMinChip1 = j * 16 + ymodchip1 - radiusChip1;
+            //int yMaxChip1 = j * 16 + ymodchip1 + radiusChip1;
+            //for (int x = xMinChip1; x < xMaxChip1; x += Main.rand.Next(4, 6))
+            //{
+            //    for (int y = yMinChip1; y < yMaxChip1; y += Main.rand.Next(4, 6))
+            //    {
+            //        if (Vector2.Distance(new Vector2(i * 16 + xmodchip1, j * 16 + ymodchip1), new Vector2(x, y)) < radiusChip1 &&
+            //            Vector2.Distance(new Vector2(i * 16 + xmodchip1, j * 16 + ymodchip1), new Vector2(x, y)) > radiusChip1 - 5)
+            //        {
+            //            int D2 = Dust.NewDust(new Vector2(x, y), 0, 0, DustID.Mud, 0, 0, 100, new Color(), 1.5f);
+            //            Main.dust[D2].noGravity = true;
+            //            Main.dust[D2].fadeIn = 0.5f;
+            //            Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (x + 12));
+            //            Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (y + 8));
+            //        }
+            //    }
             //}
 
-            //for (int i2 = 1; i2 <= 15; i2++)
+            //int radiuschip2 = Main.rand.Next(8, 17);
+            //int xmodchip2 = Main.rand.Next(46, 53);
+            //int ymodchip2 = Main.rand.Next(18, 25);
+            //int xMinchip2 = i * 16 + xmodchip2 - radiuschip2;
+            //int xMaxchip2 = i * 16 + xmodchip2 + radiuschip2;
+            //int yMinchip2 = j * 16 + ymodchip2 - radiuschip2;
+            //int yMaxchip2 = j * 16 + ymodchip2 + radiuschip2;
+            //for (int x = xMinchip2; x < xMaxchip2; x += Main.rand.Next(4, 6))
             //{
-            //    int D2 = Dust.NewDust(chip1Pos, R2.Width, R2.Height, DustID.Mud, 0, 0, 100, new Color(), 2f);
-            //    Main.dust[D2].noGravity = true;
-            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (chip1Pos.X + 12));
-            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (chip1Pos.Y + 8));
+            //    for (int y = yMinchip2; y < yMaxchip2; y += Main.rand.Next(4, 6))
+            //    {
+            //        if (Vector2.Distance(new Vector2(i * 16 + xmodchip2, j * 16 + ymodchip2), new Vector2(x, y)) < radiuschip2 &&
+            //            Vector2.Distance(new Vector2(i * 16 + xmodchip2, j * 16 + ymodchip2), new Vector2(x, y)) > radiuschip2 - 5)
+            //        {
+            //            int D2 = Dust.NewDust(new Vector2(x, y), 0, 0, DustID.Mud, 0, 0, 100, new Color(), 1.5f);
+            //            Main.dust[D2].noGravity = true;
+            //            Main.dust[D2].fadeIn = 0.5f;
+            //            Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (x + 12));
+            //            Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (y + 8));
+            //        }
+            //    }
             //}
-            //for (int i2 = 1; i2 <= 15; i2++)
+
+            //int radiuschip3 = Main.rand.Next(4, 11);
+            //int xmodchip3 = Main.rand.Next(30, 37);
+            //int ymodchip3 = Main.rand.Next(30, 37);
+            //int xMinchip3 = i * 16 + xmodchip3 - radiuschip3;
+            //int xMaxchip3 = i * 16 + xmodchip3 + radiuschip3;
+            //int yMinchip3 = j * 16 + ymodchip3 - radiuschip3;
+            //int yMaxchip3 = j * 16 + ymodchip3 + radiuschip3;
+            //for (int x = xMinchip3; x < xMaxchip3; x += Main.rand.Next(4, 6))
             //{
-            //    int D2 = Dust.NewDust(chip2Pos, R3.Width, R3.Height, DustID.Mud, 0, 0, 100, new Color(), 2f);
-            //    Main.dust[D2].noGravity = true;
-            //    Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (chip2Pos.X + 12));
-            //    Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (chip2Pos.Y + 8));
+            //    for (int y = yMinchip3; y < yMaxchip3; y += Main.rand.Next(4, 6))
+            //    {
+            //        if (Vector2.Distance(new Vector2(i * 16 + xmodchip3, j * 16 + ymodchip3), new Vector2(x, y)) < radiuschip3 &&
+            //            Vector2.Distance(new Vector2(i * 16 + xmodchip3, j * 16 + ymodchip3), new Vector2(x, y)) > radiuschip3 - 5)
+            //        {
+            //            int D2 = Dust.NewDust(new Vector2(x, y), 0, 0, DustID.Mud, 0, 0, 100, new Color(), 1.5f);
+            //            Main.dust[D2].noGravity = true;
+            //            Main.dust[D2].fadeIn = 0.5f;
+            //            Main.dust[D2].velocity.X = vR * (Main.dust[D2].position.X - (x + 12));
+            //            Main.dust[D2].velocity.Y = vR * (Main.dust[D2].position.Y - (y + 8));
+            //        }
+            //    }
             //}
 
             var R = new Rectangle(i * 16 + 16, j * 16 + 8, 8, 8 * 5);
@@ -126,7 +183,7 @@ public class HallowedAltar : ModTile
 
     public override void NearbyEffects(int i, int j, bool closer)
     {
-        if (Main.rand.Next(60) == 1)
+        if (Main.rand.NextBool(60))
         {
             int num162 = Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.HallowedWeapons, 0f, 0f, 0, default,
                 1.5f);
