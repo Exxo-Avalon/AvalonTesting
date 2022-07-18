@@ -1,4 +1,5 @@
-﻿using AvalonTesting.Tiles.Ores;
+using AvalonTesting.Systems;
+using AvalonTesting.Tiles.Ores;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
@@ -27,15 +28,28 @@ internal class OreGenPreHardMode : GenPass
 
         for (int tourmaline = 0; tourmaline < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); tourmaline++)
         {
-            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Tourmaline>());
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(2, 7), ModContent.TileType<Tourmaline>());
         }
         for (int peridot = 0; peridot < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); peridot++)
         {
-            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)WorldGen.worldSurfaceLow - 20), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Peridot>());
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(3, 5), WorldGen.genRand.Next(3, 7), ModContent.TileType<Peridot>());
         }
         for (int zircon = 0; zircon < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); zircon++)
         {
-            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next(0, (int)WorldGen.worldSurfaceLow - 20), WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<Zircon>());
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(2, 5), WorldGen.genRand.Next(3, 5), ModContent.TileType<Zircon>());
+        }
+        int oreToGen = ModContent.TileType<RhodiumOre>();
+        if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Osmium)
+        {
+            oreToGen = ModContent.TileType<OsmiumOre>();
+        }
+        else if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Iridium)
+        {
+            oreToGen = ModContent.TileType<IridiumOre>();
+        }
+        for (int roi = 0; roi < (int)(Main.maxTilesX * Main.maxTilesY * 0.00012); roi++)
+        {
+            WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY), WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(4, 7), oreToGen);
         }
 
         #region motherloads

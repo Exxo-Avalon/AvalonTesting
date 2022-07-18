@@ -548,63 +548,6 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
     }
 
-    private void DrawPlayerInternal(Player drawPlayer, Vector2 position, float rotation, Vector2 rotationOrigin, float shadow = 0f, float alpha = 1f, float scale = 1f, bool headOnly = false)
-    {
-        if (drawPlayer.ShouldNotDraw)
-        {
-            return;
-        }
-        PlayerDrawSet drawinfo = default(PlayerDrawSet);
-        //_drawData.Clear();
-        //_dust.Clear();
-        //_gore.Clear();
-        if (headOnly)
-        {
-            drawinfo.HeadOnlySetup(drawPlayer, new List<DrawData>(), new List<int>(), new List<int>(), position.X, position.Y, alpha, scale);
-        }
-        else
-        {
-            drawinfo.BoringSetup(drawPlayer, new List<DrawData>(), new List<int>(), new List<int>(), position, shadow, rotation, rotationOrigin);
-        }
-        PlayerLoader.ModifyDrawInfo(ref drawinfo);
-        Terraria.ModLoader.PlayerDrawLayer[] drawLayers = PlayerDrawLayerLoader.GetDrawLayers(drawinfo);
-        foreach (PlayerDrawLayer layer in drawLayers)
-        {
-            if (!headOnly || layer.IsHeadLayer)
-            {
-                layer.DrawWithTransformationAndChildren(ref drawinfo);
-            }
-        }
-        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_MakeIntoFirstFractalAfterImage(ref drawinfo);
-        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_TransformDrawData(ref drawinfo);
-        if (scale != 1f)
-        {
-            Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_ScaleDrawData(ref drawinfo, scale);
-        }
-        Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_RenderAllLayers(ref drawinfo);
-        if (!drawinfo.drawPlayer.mount.Active || drawinfo.drawPlayer.mount.Type != 11)
-        {
-            return;
-        }
-        for (int i = 0; i < 1000; i++)
-        {
-            if (Main.projectile[i].active && Main.projectile[i].owner == drawinfo.drawPlayer.whoAmI && Main.projectile[i].type == 591)
-            {
-                Main.instance.DrawProj(i);
-            }
-        }
-    }
-
-    //public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
-    //{
-        //if (Player.HasItemInArmor(ModContent.ItemType<ShadowCharm>()))
-        //{
-        //    for (int num12 = 0; num12 < 3; num12++)
-        //    {
-        //        DrawPlayerInternal(Player, Player.shadowPos[num12], Player.shadowRotation[num12], Player.shadowOrigin[num12], 0.5f + 0.2f * num12);
-        //    }
-        //}
-    //}
     public override void UpdateEquips()
     {
         if (Player.HasItemInArmor(ModContent.ItemType<ShadowCharm>()))
@@ -621,7 +564,7 @@ public class ExxoPlayer : ModPlayer
                                int type, int damage, float knockback)
     {
         #region spike cannon logic
-        if (item.type == ModContent.ItemType<Items.Weapons.Ranged.SpikeCannon>() ||
+        if (item.type == ModContent.ItemType<SpikeCannon>() ||
             item.type == ModContent.ItemType<SpikeRailgun>())
         {
             var item2 = new Item();
@@ -648,7 +591,6 @@ public class ExxoPlayer : ModPlayer
                     {
                         item2 = Player.inventory[i];
                         flag7 = true;
-                        //Main.NewText(item2.Name);
                         break;
                     }
                 }
@@ -667,7 +609,7 @@ public class ExxoPlayer : ModPlayer
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.DemonSpikeScale>())
                     {
-                        t = ModContent.ProjectileType<Projectiles.DemonSpikeScale>();
+                        t = ModContent.ProjectileType<Projectiles.Ranged.DemonSpikeScale>();
                         dmgAdd = 17;
                     }
                     else if (item2.type == ModContent.ItemType<Items.Placeable.Tile.BloodiedSpike>())
@@ -716,15 +658,13 @@ public class ExxoPlayer : ModPlayer
                                     position.Y + vector3.Y, velocity.X, velocity.Y, t, damage + dmgAdd, knockback,
                                     Player.whoAmI);
                             }
-
-                            Main.NewText(t);
                             return false;
                         }
 
                         Projectile.NewProjectile(
                             Player.GetSource_ItemUse_WithPotentialAmmo(
-                                ModContent.GetInstance<Items.Weapons.Ranged.SpikeCannon>().Item,
-                                ModContent.GetInstance<Items.Weapons.Ranged.SpikeCannon>().Item.ammo), position,
+                                ModContent.GetInstance<SpikeCannon>().Item,
+                                ModContent.GetInstance<SpikeCannon>().Item.ammo), position,
                             velocity, t, damage + dmgAdd, knockback, Player.whoAmI);
                         return false;
                     }
@@ -827,27 +767,7 @@ public class ExxoPlayer : ModPlayer
                 reckoningHit = 0;
             }
         }
-        if (terraClaws && item.DamageType == DamageClass.Melee)
-        {
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                    target.AddBuff(BuffID.OnFire, 9 * 60);
-                    break;
-                case 1:
-                    target.AddBuff(BuffID.Poisoned, 9 * 60);
-                    break;
-                case 2:
-                    target.AddBuff(BuffID.Venom, 9 * 60);
-                    break;
-                case 3:
-                    target.AddBuff(BuffID.Frostburn, 9 * 60);
-                    break;
-                case 4:
-                    target.AddBuff(BuffID.Ichor, 9 * 60);
-                    break;
-            }
-        }
+        
 
         if (ancientSandVortex && Main.rand.NextBool(10))
         {
@@ -3300,7 +3220,6 @@ public class ExxoPlayer : ModPlayer
     public bool openLocks;
     public bool chaosCharm;
     public short thunderTimer;
-    public bool terraClaws;
     public bool thunderBolt;
     public bool incDef;
     public bool regenStrike;

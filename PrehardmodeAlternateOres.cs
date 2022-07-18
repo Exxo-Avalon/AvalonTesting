@@ -76,6 +76,7 @@ internal class RhodiumAlternateOres : AltOre
 {
     public override void SetStaticDefaults()
     {
+        //OreType = (OreType)(-1);
         OreType = OreType.Gold;
         ore = ModContent.TileType<RhodiumOre>();
         bar = ModContent.ItemType<RhodiumBar>();
@@ -131,6 +132,7 @@ internal class OsmiumAlternateOres : AltOre
 {
     public override void SetStaticDefaults()
     {
+        //OreType = (OreType)(-1);
         OreType = OreType.Gold;
         ore = ModContent.TileType<OsmiumOre>();
         bar = ModContent.ItemType<OsmiumBar>();
@@ -154,6 +156,7 @@ internal class IridiumAlternateOres : AltOre
 {
     public override void SetStaticDefaults()
     {
+        //OreType = (OreType)(-1);
         OreType = OreType.Gold;
         ore = ModContent.TileType<IridiumOre>();
         bar = ModContent.ItemType<IridiumBar>();

@@ -1300,11 +1300,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.MagmaStone)
             .AddTile(TileID.TinkerersWorkbench).Register();
 
-        Recipe.Create(ModContent.ItemType<TitanShield>())
-            .AddIngredient(ModContent.ItemType<AegisofAges>())
-            .AddIngredient(ItemID.PaladinsShield)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
         Recipe.Create(ModContent.ItemType<ShadowMirror>())
             .AddIngredient(ItemID.CellPhone)
             .AddIngredient(ItemID.MagicConch)
@@ -1377,8 +1372,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.TinkerersWorkshop)
             .AddTile(TileID.MythrilAnvil).Register();
 
-
-
         Recipe.Create(ModContent.ItemType<BuildersToolbelt>())
             .AddIngredient(ModContent.ItemType<GoblinToolbelt>())
             .AddIngredient(ItemID.PortableCementMixer)
@@ -1387,21 +1380,10 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.FlyingCarpet)
             .AddTile(TileID.TinkerersWorkbench).Register();
 
-        Recipe.Create(ModContent.ItemType<TitanGauntlets>())
-            .AddIngredient(ModContent.ItemType<TitanShield>())
-            .AddIngredient(ModContent.ItemType<FrostGauntlet>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
         Recipe.Create(ModContent.ItemType<SandCastle>())
             .AddIngredient(ItemID.SandBlock, 50)
             .AddIngredient(ItemID.SandstoneBrick, 5)
             .AddTile(TileID.Anvils).Register();
-
-
-        Recipe.Create(ModContent.ItemType<FrostGauntlet>())
-            .AddIngredient(ItemID.FireGauntlet)
-            .AddIngredient(ItemID.FrozenTurtleShell)
-            .AddTile(TileID.TinkerersWorkbench).Register();
 
         Recipe.Create(ModContent.ItemType<TerraClaws>())
             .AddIngredient(ItemID.FireGauntlet)

@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using AvalonTesting.Items.Placeable.Tile;
 using AvalonTesting.Players;
 using Terraria;
@@ -14,7 +14,7 @@ public class EvilVulture : ModNPC
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Evil Vulture");
-        Main.npcFrameCount[NPC.type] = 3;
+        Main.npcFrameCount[NPC.type] = 6;
         NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
         {
             SpecificallyImmuneTo = new int[]

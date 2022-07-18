@@ -11,7 +11,7 @@ public class Valkyrie : ModNPC
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Valkyrie");
-        Main.npcFrameCount[NPC.type] = 4;
+        Main.npcFrameCount[NPC.type] = 6;
     }
 
     public override void SetDefaults()

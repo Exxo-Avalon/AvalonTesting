@@ -22,7 +22,7 @@ namespace AvalonTesting
         public override void SetStaticDefaults()
         {
             BiomeType = BiomeType.Jungle;
-
+            
             BiomeGrass = ModContent.TileType<TropicalGrass>();
             BiomeStone = ModContent.TileType<TropicalStone>();
             BiomeOre = ModContent.TileType<XanthophyteOre>();

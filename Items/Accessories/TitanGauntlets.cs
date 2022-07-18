@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Items.Accessories;
@@ -11,7 +12,12 @@ class TitanGauntlets : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Titan Gauntlets");
-        Tooltip.SetDefault("Attacks inflict Frostburn, increases damage and melee speed by 9%, reduces team member damage (only active above 25% HP)\nIncreases knockback, reduces dmg when below 25% HP, [+15 defense, +3 life regeneration, +15% damage] (Only when below 33% HP)\nEnables auto swing for melee weapons and increases the size of melee weapons");
+        Tooltip.SetDefault("Melee attacks inflict Frostburn and increases melee damage and speed by 9%\n" +
+            "Absorbs 25% of damage done to players on your team when above 25% life\n" +
+            "Puts a shell around the owner when below 50% life that reduces damage by 25%\n" +
+            "Provides 15 defense, 3 life regeneration, and 15% damage when below 33% life\n" +
+            "Increases knockback and enables auto swing for melee weapons\n" +
+            "Increases the size of melee weapons");
         SacrificeTotal = 1;
     }
 
@@ -25,14 +31,26 @@ class TitanGauntlets : ModItem
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<TitanShield>())
+            .AddIngredient(ModContent.ItemType<FrostGauntlet>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
 
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.FrozenShield)
+            .AddIngredient(ItemID.FireGauntlet)
+            .AddIngredient(ModContent.ItemType<AegisofAges>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         if (player.statLife <= player.statLifeMax2 * 0.25)
         {
             player.AddBuff(62, 5, true);
         }
-        player.frostBurn = true;
+        player.GetModPlayer<Players.ExxoBuffPlayer>().FrostGauntlet = true;
         player.kbGlove = true;
         player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Melee) += 0.1f;
