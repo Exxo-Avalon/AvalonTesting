@@ -20,7 +20,7 @@ class CaesiumSpear : ModItem
         Item.UseSound = SoundID.Item1;
         Item.noUseGraphic = true;
         Item.scale = 1f;
-        Item.shootSpeed = 5f;
+        Item.shootSpeed = 7.5f;
         Item.rare = ItemRarityID.Lime;
         Item.noMelee = true;
         Item.width = dims.Width;
