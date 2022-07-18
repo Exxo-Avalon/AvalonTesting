@@ -60,7 +60,7 @@ internal class ContagionAlternateBiome : AltBiome
             .AddReplacement<ContagionNaturalWall2>(216, 217, 218, 219) //Sandstone walls
             .AddReplacement<ContagionNaturalWall2>(197, 220, 221, 222); //Hardened sand walls*/
     }
-
+    public override EvilBiomeGenerationPass GetEvilBiomeGenerationPass() => new ContagionGeneration();
     public override List<int> SpreadingTiles => new() { ModContent.TileType<Ickgrass>(), ModContent.TileType<Chunkstone>(), ModContent.TileType<Snotsand>(), ModContent.TileType<GreenIce>(), ModContent.TileType<Snotsandstone>(), ModContent.TileType<HardenedSnotsand>() };
 
     public override string WorldIcon => "AvalonTesting/Assets/WorldIcons/Contagion";
@@ -365,8 +365,6 @@ public class ContagionGeneration : EvilBiomeGenerationPass
     //    //    }
     //    //}
     //}
-
-
     public override void GenerateEvil(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
     {
         int radius = WorldGen.genRand.Next(50, 61);
