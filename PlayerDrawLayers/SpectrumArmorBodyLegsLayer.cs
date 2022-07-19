@@ -10,7 +10,7 @@ namespace AvalonTesting.PlayerDrawLayers;
 
 public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
 {
-    public override Position GetDefaultPosition() => new AfterParent(Terraria.DataStructures.PlayerDrawLayers.HandOnAcc);
+    public override Position GetDefaultPosition() => new BeforeParent(Terraria.DataStructures.PlayerDrawLayers.HandOnAcc);
 
     public override bool GetDefaultVisibility(PlayerDrawSet drawInfo) => true;
 

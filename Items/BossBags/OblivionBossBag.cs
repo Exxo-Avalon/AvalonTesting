@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Painting;
 using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
@@ -56,5 +56,5 @@ public class OblivionBossBag : ModItem
         }
     }
 
-    //public override int BossBagNPC => ModContent.NPCType<NPCs.AncientOblivionHead1>();
+    public override int BossBagNPC => ModContent.NPCType<NPCs.CrystalSpectre>(); // CHANGE LATER LMAO
 }

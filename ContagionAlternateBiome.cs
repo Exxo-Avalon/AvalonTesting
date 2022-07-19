@@ -78,6 +78,129 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 {
     public override string ProgressMessage => "Making the world gross";
     public override bool CanGenerateNearDungeonOcean => false;
+
+    private const int beachBordersWidth = 275;
+    private const int beachSandRandomCenter = beachBordersWidth + 5 + 40;
+    private const int evilBiomeBeachAvoidance = beachSandRandomCenter + 60;
+
+    public override void GetEvilSpawnLocation(int dungeonSide, int dungeonLocation, int SnowBoundMinX, int SnowBoundMaxX, int JungleBoundMinX, int JungleBoundMaxX, int currentDrunkIter, int maxDrunkBorders, out int evilBiomePosition, out int evilBiomePositionWestBound, out int evilBiomePositionEastBound)
+    {
+        bool FoundEvilLocation = false;
+        evilBiomePosition = 0;
+        evilBiomePositionWestBound = 0;
+        evilBiomePositionEastBound = 0;
+
+        while (!FoundEvilLocation)
+        {
+            FoundEvilLocation = true;
+            int MapCenter = Main.maxTilesX / 2;
+            int MapCenterGive = 200;
+
+            if (WorldGen.drunkWorldGen)
+            {
+                MapCenterGive = DrunkRNGMapCenterGive;
+
+                int diff = Main.maxTilesX - NonDrunkBorderDist - NonDrunkBorderDist;
+
+                int left = NonDrunkBorderDist + diff * currentDrunkIter / maxDrunkBorders;
+                int right = NonDrunkBorderDist + diff * (currentDrunkIter + 1) / maxDrunkBorders;
+
+                evilBiomePosition = WorldGen.genRand.Next(left, right);
+
+                /*
+                if (drunkRNGTilt)
+                    evilBiomePosition = WorldGen.genRand.Next((int)((double)Main.maxTilesX * 0.5), Main.maxTilesX - nonDrunkBorderDist);
+                else
+                    evilBiomePosition = WorldGen.genRand.Next(nonDrunkBorderDist, (int)((double)Main.maxTilesX * 0.5));*/
+            }
+            else
+            {
+                evilBiomePosition = WorldGen.genRand.Next(NonDrunkBorderDist, Main.maxTilesX - NonDrunkBorderDist);
+            }
+            evilBiomePositionWestBound = evilBiomePosition - WorldGen.genRand.Next(200) - 100;
+            evilBiomePositionEastBound = evilBiomePosition + WorldGen.genRand.Next(200) + 100;
+
+            if (evilBiomePositionWestBound < evilBiomeBeachAvoidance)
+            {
+                evilBiomePositionWestBound = evilBiomeBeachAvoidance;
+            }
+            if (evilBiomePositionEastBound > Main.maxTilesX - evilBiomeBeachAvoidance)
+            {
+                evilBiomePositionEastBound = Main.maxTilesX - evilBiomeBeachAvoidance;
+            }
+            if (evilBiomePosition < evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer)
+            {
+                evilBiomePosition = evilBiomePositionWestBound + EvilBiomeAvoidanceMidFixer;
+            }
+            if (evilBiomePosition > evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer)
+            {
+                evilBiomePosition = evilBiomePositionEastBound - EvilBiomeAvoidanceMidFixer;
+            }
+            //DIFFERENCE 2 - CRIMSON ONLY
+            if (!CanGenerateNearDungeonOcean)
+            {
+                if (dungeonSide < 0 && evilBiomePositionWestBound < 400)
+                {
+                    evilBiomePositionWestBound = 400;
+                }
+                else if (dungeonSide > 0 && evilBiomePositionWestBound > Main.maxTilesX - 400)
+                {
+                    evilBiomePositionWestBound = Main.maxTilesX - 400;
+                }
+            }
+            //DIFFERENCE 2 END
+            if (evilBiomePosition > MapCenter - MapCenterGive && evilBiomePosition < MapCenter + MapCenterGive)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionWestBound > MapCenter - MapCenterGive && evilBiomePositionWestBound < MapCenter + MapCenterGive)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionEastBound > MapCenter - MapCenterGive && evilBiomePositionEastBound < MapCenter + MapCenterGive)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePosition > WorldGen.UndergroundDesertLocation.X && evilBiomePosition < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionWestBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionWestBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionEastBound > WorldGen.UndergroundDesertLocation.X && evilBiomePositionEastBound < WorldGen.UndergroundDesertLocation.X + WorldGen.UndergroundDesertLocation.Width)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionWestBound < dungeonLocation + DungeonGive && evilBiomePositionEastBound > dungeonLocation - DungeonGive)
+            {
+                FoundEvilLocation = false;
+            }
+            if (evilBiomePositionWestBound < SnowBoundMinX && evilBiomePositionEastBound > SnowBoundMaxX)
+            {
+                SnowBoundMinX++;
+                SnowBoundMaxX--;
+                FoundEvilLocation = false;
+            }
+            //if (evilBiomePositionWestBound > JungleBoundMinX)
+            //{
+            //    evilBiomePositionWestBound--;
+            //}
+            //if (evilBiomePositionEastBound > JungleBoundMaxX)
+            //{
+            //    evilBiomePositionEastBound++;
+            //}
+            if (evilBiomePositionWestBound < JungleBoundMinX && evilBiomePositionEastBound > JungleBoundMaxX)
+            {
+                JungleBoundMinX++;
+                JungleBoundMaxX--;
+                FoundEvilLocation = false;
+            }
+        }
+        
+    }
+
     public override void GenerateEvil(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
     {
         int radius = WorldGen.genRand.Next(50, 61);
