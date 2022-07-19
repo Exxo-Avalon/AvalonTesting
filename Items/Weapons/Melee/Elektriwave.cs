@@ -20,7 +20,7 @@ class Elektriwave : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1f;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 6f;

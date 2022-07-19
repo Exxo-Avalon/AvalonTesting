@@ -19,7 +19,7 @@ class VorazylcumBodyplate : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 34;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;

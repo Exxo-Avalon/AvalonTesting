@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class EyeofOblivion : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.useStyle = ItemUseStyleID.HoldUp;

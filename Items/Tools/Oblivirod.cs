@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Projectiles;
+using AvalonTesting.Projectiles;
 using AvalonTesting.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -22,7 +22,7 @@ internal class Oblivirod : ModItem
         Item.width = dims.Width;
         Item.height = dims.Height;
         Item.shootSpeed = 15.5f;
-        Item.rare = ModContent.RarityType<RainbowRarity>();
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.useTime = 8;
         Item.fishingPole = 110;
         Item.shoot = ModContent.ProjectileType<OblivirodBobber>();

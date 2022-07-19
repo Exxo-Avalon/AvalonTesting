@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class UnvolanditeHeadpiece : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 32;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 50, 0, 0);
         Item.height = dims.Height;

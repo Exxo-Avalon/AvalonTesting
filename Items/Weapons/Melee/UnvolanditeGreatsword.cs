@@ -18,7 +18,7 @@ class UnvolanditeGreatsword : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 109;
         Item.autoReuse = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.knockBack = 7f;
         Item.useTime = 22;

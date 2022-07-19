@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Bar;
+using AvalonTesting.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -22,7 +22,7 @@ internal class Oblivionet : ModItem
         Item.damage = 70;
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.width = dims.Width;
         Item.knockBack = 6.2f;
         Item.useTime = 21;

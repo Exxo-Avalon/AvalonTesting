@@ -25,7 +25,7 @@ class OnyxStaff : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 9.5f;
         Item.mana = 20;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.useTime = 19;
         Item.useAnimation = 19;
         Item.knockBack = 25.5f;

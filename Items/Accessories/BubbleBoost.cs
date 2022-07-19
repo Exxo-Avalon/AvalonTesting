@@ -17,7 +17,7 @@ public class BubbleBoost : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 15, 0, 0);

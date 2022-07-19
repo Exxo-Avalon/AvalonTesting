@@ -19,7 +19,7 @@ class CurseofOblivion : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.createTile = ModContent.TileType<Tiles.Paintings>();
         Item.placeStyle = 10;
         Item.width = dims.Width;

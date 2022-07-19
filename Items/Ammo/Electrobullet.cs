@@ -20,7 +20,7 @@ class Electrobullet : ModItem
         Item.ammo = AmmoID.Bullet;
         Item.DamageType = DamageClass.Ranged;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.width = dims.Width;
         Item.knockBack = 5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.Electrobullet>();

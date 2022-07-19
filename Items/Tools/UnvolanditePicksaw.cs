@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +23,7 @@ class UnvolanditePicksaw : ModItem
         Item.scale = 1.15f;
         Item.axe = 22;
         Item.pick = 300;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.useTime = 9;
         Item.knockBack = 5.5f;

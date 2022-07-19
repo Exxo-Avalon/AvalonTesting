@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -26,7 +26,7 @@ class UnvolanditeFusebow : ModItem
         Item.noMelee = true;
         Item.knockBack = 16;
         Item.value = Item.sellPrice(0, 20, 0, 0);
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.UseSound = SoundID.Item75;
         Item.autoReuse = true;
         Item.shoot = ModContent.ProjectileType<Projectiles.UnvolanditeBolt>();

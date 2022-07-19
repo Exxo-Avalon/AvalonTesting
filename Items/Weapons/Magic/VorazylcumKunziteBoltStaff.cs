@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -27,7 +27,7 @@ class VorazylcumKunziteBoltStaff : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 6f;
         Item.mana = 37;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.knockBack = 3f;
         Item.useTime = 40;
         Item.useAnimation = 40;

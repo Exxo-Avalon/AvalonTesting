@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -26,7 +26,7 @@ class OpalStaff : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 9.5f;
         Item.mana = 14;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.useTime = 23;
         Item.useAnimation = 23;
         Item.knockBack = 7.5f;

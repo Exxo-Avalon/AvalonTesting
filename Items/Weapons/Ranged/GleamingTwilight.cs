@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -23,7 +23,7 @@ class GleamingTwilight : ModItem
         Item.shootSpeed = 11f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 4.5f;

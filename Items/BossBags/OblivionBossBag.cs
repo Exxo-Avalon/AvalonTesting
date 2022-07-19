@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Painting;
 using AvalonTesting.Items.Placeable.Tile;
 using Terraria;

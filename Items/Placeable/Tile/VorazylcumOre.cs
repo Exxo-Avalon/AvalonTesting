@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class VorazylcumOre : ModItem
         Item.autoReuse = true;
         Item.createTile = ModContent.TileType<Tiles.Ores.VorazylcumOre>();
         Item.consumable = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;

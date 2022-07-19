@@ -19,7 +19,7 @@ class HellsteelPlate : ModItem
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.value = Item.sellPrice(0, 0, 2);
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ItemRarityID.Purple;
         Item.height = dims.Height;
     }
 }

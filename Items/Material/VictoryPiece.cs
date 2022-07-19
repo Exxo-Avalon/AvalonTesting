@@ -17,7 +17,7 @@ class VictoryPiece : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.width = dims.Width;
         Item.maxStack = 100;
         Item.value = Item.sellPrice(0, 10, 0, 0);

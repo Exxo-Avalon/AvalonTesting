@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ class PossessedFlamesaw : ModItem
         Item.noUseGraphic = true;
         Item.shootSpeed = 14f;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.knockBack = 9f;
         Item.useTime = 15;

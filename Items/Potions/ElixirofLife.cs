@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +21,7 @@ class ElixirofLife : ModItem
         Item.maxStack = 60;
         Item.healLife = 350;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.width = dims.Width;
         Item.useTime = 17;
         Item.useStyle = ItemUseStyleID.DrinkLiquid;

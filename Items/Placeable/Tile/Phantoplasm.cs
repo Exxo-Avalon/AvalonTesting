@@ -19,7 +19,7 @@ class Phantoplasm : ModItem
         Item.autoReuse = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.Phantoplasm>();
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;

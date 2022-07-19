@@ -18,7 +18,7 @@ class VoraylzumKatana : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 111;
         Item.autoReuse = true;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.knockBack = 4f;
         Item.useTime = 17;

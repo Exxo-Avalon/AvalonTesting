@@ -17,7 +17,7 @@ class ArmageddonSlimeMask : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.vanity = true;
         Item.value = Item.sellPrice(0, 2, 0, 0);
