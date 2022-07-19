@@ -20,7 +20,7 @@ class MagicCleaver : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 20;
         Item.mana = 16;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.noMelee = true;
         Item.noUseGraphic = true;
         Item.width = dims.Width;

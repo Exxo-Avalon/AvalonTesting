@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -25,7 +25,7 @@ class UnvolanditeKunziteWaveStaff : ModItem
         Item.shootSpeed = 15f;
         Item.mana = 30;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.knockBack = 3f;
         Item.useTime = 25;

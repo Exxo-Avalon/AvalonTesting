@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -21,7 +21,7 @@ class PumpkingsSword : ModItem
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
         Item.scale = 1.15f;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 36;
         Item.useAnimation = 16;

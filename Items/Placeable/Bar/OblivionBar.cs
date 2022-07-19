@@ -22,7 +22,7 @@ class OblivionBar : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 1;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<YellowGreenRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = Item.sellPrice(0, 1, 25, 0);

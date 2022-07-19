@@ -27,7 +27,7 @@ class PlanterasFury : ModItem
         Item.shootSpeed = 14f;
         Item.crit += 2;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 3f;

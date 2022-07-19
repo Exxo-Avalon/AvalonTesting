@@ -17,7 +17,7 @@ class HydrolythTrace : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.useStyle = ItemUseStyleID.HoldUp;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ class OblivionGlaive : ModItem
         Item.noUseGraphic = true;
         Item.scale = 1f;
         Item.shootSpeed = 5f;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 14;

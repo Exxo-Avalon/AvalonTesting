@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ class HydrolythBar : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 2;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = Item.sellPrice(0, 1, 5, 0);

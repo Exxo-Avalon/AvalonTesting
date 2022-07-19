@@ -22,7 +22,7 @@ class VorazylcumBar : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 7;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = Item.sellPrice(0, 2, 0, 0);

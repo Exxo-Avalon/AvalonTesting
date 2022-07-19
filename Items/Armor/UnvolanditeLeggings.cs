@@ -19,7 +19,7 @@ class UnvolanditeLeggings : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 32;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.height = dims.Height;

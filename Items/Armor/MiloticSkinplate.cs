@@ -19,7 +19,7 @@ class MiloticSkinplate : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 30;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;

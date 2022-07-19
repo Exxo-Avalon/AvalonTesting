@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class HellsteelHood : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 26;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.height = dims.Height;

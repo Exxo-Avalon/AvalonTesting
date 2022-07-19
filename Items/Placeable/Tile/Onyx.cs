@@ -21,7 +21,7 @@ class Onyx : ModItem
         Item.createTile = ModContent.TileType<Tiles.PlacedGems>();
         Item.placeStyle = 1;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = 30000;

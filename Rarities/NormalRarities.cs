@@ -124,7 +124,7 @@ namespace AvalonTesting
     }
     public class YellowGreenRarity : ModRarity //17
     {
-        public override Color RarityColor => new Color(210, 255, 0);
+        public override Color RarityColor => new Color(202, 255, 43);
 
         public override int GetPrefixedRarity(int offset, float valueMult)
         {

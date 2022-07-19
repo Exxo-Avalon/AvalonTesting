@@ -22,7 +22,7 @@ public class Starfall : ModItem
         Item.damage = 1000;
         Item.mana = 400;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.width = dims.Width;
         Item.knockBack = 16f;
         Item.useTime = 35;

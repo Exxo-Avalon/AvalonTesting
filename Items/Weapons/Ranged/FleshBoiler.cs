@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Ammo;
+using AvalonTesting.Items.Ammo;
 using AvalonTesting.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -27,7 +27,7 @@ public class FleshBoiler : ModItem
         Item.noMelee = true;
         Item.knockBack = 0.6f;
         Item.value = 10000;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<BlueRarity>();
         Item.UseSound = SoundID.Item34;
         Item.autoReuse = true;
         Item.shoot = ModContent.ProjectileType<FleshFire>();
