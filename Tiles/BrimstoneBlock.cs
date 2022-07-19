@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,6 +13,7 @@ public class BrimstoneBlock : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileMerge[Type][ModContent.TileType<Impgrass>()] = true;
+        Main.tileMerge[ModContent.TileType<Impgrass>()][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BrimstoneBlock>();
         HitSound = SoundID.Tink;
         DustType = DustID.HeartCrystal;

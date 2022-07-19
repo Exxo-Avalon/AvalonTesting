@@ -35,7 +35,6 @@
     <Folder Include="Items\Material\" />
     <Folder Include="Gores\" />
     <Folder Include="Walls\" />
-    <Folder Include="World\Structures\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AltLibrary">

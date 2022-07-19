@@ -41,7 +41,7 @@ public class PyrasiteHead : PyrasiteWorm
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
         if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneOverworldHeight)
-            return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneOverworldHeight) ? 0.5f : 0f;
+            return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone() && spawnInfo.Player.ZoneOverworldHeight) ? 0.1f : 0f;
         return 0f;
     }
     public override void HitEffect(int hitDirection, double damage)

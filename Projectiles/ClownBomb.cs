@@ -16,6 +16,7 @@ public class ClownBomb : ModProjectile
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
+        Projectile.CloneDefaults(30);
         Projectile.width = dims.Width * 20 / 20;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
@@ -27,7 +28,6 @@ public class ClownBomb : ModProjectile
         Projectile.timeLeft = 240;
         AIType = 30;
         Projectile.tileCollide = true;
-        Projectile.CloneDefaults(30);
     }
 
     public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)

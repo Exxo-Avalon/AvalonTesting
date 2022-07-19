@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using AvalonTesting.Items.Armor;
 using AvalonTesting.Items.Material;
@@ -17,6 +18,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using Terraria.WorldBuilding;
+using Terraria.ModLoader.IO;
+using AltLibrary.Common.Systems;
 
 namespace AvalonTesting;
 
@@ -255,6 +258,32 @@ public class AvalonTestingWorld : ModSystem
         }
     }
 
+    public override void SaveWorldData(TagCompound tag)
+    {
+        tag["SuperHardmode"] = SuperHardmode;
+    }
+    public override void LoadWorldData(TagCompound tag)
+    {
+        if (tag.ContainsKey("SuperHardmode"))
+        {
+            SuperHardmode = tag.Get<bool>("SuperHardmode");
+        }
+    }
+    public override void NetSend(BinaryWriter writer)
+    {
+        var flags = new BitsByte
+        {
+            [0] = SuperHardmode
+        };
+        writer.Write(flags);
+    }
+
+    public override void NetReceive(BinaryReader reader)
+    {
+        BitsByte flags = reader.ReadByte();
+        SuperHardmode = flags[0];
+    }
+
     public static void GenerateSkyFortress()
     {
         Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
@@ -419,7 +448,25 @@ public class AvalonTestingWorld : ModSystem
         Main.raining = false;
         Main.maxRaining = 0f;
     }
-
+    public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+    {
+        if (WorldBiomeManager.WorldJungle == "AvalonTesting/TropicsAlternateBiome")
+        {
+            int hives = tasks.FindIndex(genpass => genpass.Name == "Oasis");
+            if (hives != -1)
+            {
+                tasks[hives + 1] = new PassLegacy("Wasp Nests", World.Passes.WaspNest.Method);
+                tasks[hives + 2] = new PassLegacy("Sanctums", World.Passes.TropicsSanctum.Method);
+                //tasks.RemoveAt(hives);
+            }
+            //int jchests = tasks.FindIndex(genpass => genpass.Name == "Jungle Chests");
+            //if (jchests != -1)
+            //{
+            //    tasks[jchests] = new PassLegacy("Sanctums", World.Passes.TropicsSanctum.Method);
+            //    //tasks.RemoveAt(jchests);
+            //}
+        }
+    }
     public override void ModifyHardmodeTasks(List<GenPass> list)
     {
         int index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Good"));
@@ -1040,10 +1087,10 @@ public class AvalonTestingWorld : ModSystem
             #endregion holybird spawning
 
             #region sweetstem spawning
-            if (Main.tile[num5, num6].TileType == ModContent.TileType<Nest>() || Main.tile[num5, num6].TileType == TileID.Hive)
+            if (Main.tile[num5, num6].TileType == ModContent.TileType<Tiles.Nest>() || Main.tile[num5, num6].TileType == TileID.Hive)
             {
                 int num14 = Main.tile[num5, num6].TileType;
-                if (!Main.tile[num5, num9].HasTile && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.NextBool(700) && (num14 == ModContent.TileType<Nest>() || num14 == TileID.Hive))
+                if (!Main.tile[num5, num9].HasTile && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.NextBool(700) && (num14 == ModContent.TileType<Tiles.Nest>() || num14 == TileID.Hive))
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<Tiles.Herbs.Sweetstem>(), true, false, -1, 0);
                     if (Main.tile[num5, num9].HasTile)
