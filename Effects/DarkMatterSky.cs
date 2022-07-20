@@ -54,6 +54,12 @@ public class DarkMatterSky : CustomSky
         int xPos = (xCenter - (AvalonTesting.DarkMatterBlackHole.Height / 1000) + modifier) / 2;
         int yPos = (yCenter - (AvalonTesting.DarkMatterBlackHole.Height / 1000)) / 2;
 
+        spriteBatch.End();
+        spriteBatch.Begin();
+        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole2, new Rectangle(xPos, yPos, Main.screenWidth - xPos * 2, Main.screenHeight - yPos * 2), new Color(255, 255, 255, 255));
+
+        spriteBatch.End();
+        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
         spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole, new Rectangle(xPos, yPos, Main.screenWidth - xPos * 2, Main.screenHeight - yPos * 2), new Color(255, 255, 255, opacity * 10));
         spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(255, 255, 255, opacity * 10));
     }
