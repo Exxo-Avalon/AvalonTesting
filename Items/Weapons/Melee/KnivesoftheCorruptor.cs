@@ -37,6 +37,15 @@ internal class KnivesoftheCorruptor : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item39;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.VampireKnives)
+            .AddIngredient(ItemID.ScourgeoftheCorruptor)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 30)
+            .AddIngredient(ModContent.ItemType<Material.IllegalWeaponInstructions>())
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+    }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)

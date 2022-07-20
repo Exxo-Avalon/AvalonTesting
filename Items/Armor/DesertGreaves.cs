@@ -29,4 +29,30 @@ class DesertGreaves : ModItem
     {
         player.GetDamage(DamageClass.Melee) += 0.05f;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 50)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ItemID.AntlionMandible)
+            .AddIngredient(ItemID.Topaz)
+            .AddIngredient(ItemID.GoldGreaves)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 50)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ItemID.AntlionMandible)
+            .AddIngredient(ItemID.Topaz, 5)
+            .AddIngredient(ItemID.PlatinumGreaves)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 50)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ItemID.AntlionMandible)
+            .AddIngredient(ItemID.Topaz)
+            .AddIngredient(ModContent.ItemType<BismuthGreaves>())
+            .AddTile(TileID.Anvils).Register();
+    }
 }

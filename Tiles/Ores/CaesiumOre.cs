@@ -44,7 +44,7 @@ public class CaesiumOre : ModTile
                 (Main.tile[i, j].HasTile && !Main.tile[i - 1, j].HasTile) ||
                 (Main.tile[i, j].HasTile && !Main.tile[i + 1, j].HasTile))
             {
-                if (Main.rand.Next(7000) == 0)
+                if (Main.rand.Next(7000) == 0 && !Main.gamePaused && Main.hasFocus)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                         new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),

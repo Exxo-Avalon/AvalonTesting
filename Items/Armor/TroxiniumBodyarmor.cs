@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,11 @@ class TroxiniumBodyarmor : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Generic) += 0.08f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 24)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

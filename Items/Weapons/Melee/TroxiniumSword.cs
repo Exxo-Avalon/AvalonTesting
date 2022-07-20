@@ -37,6 +37,12 @@ public class TroxiniumSword : ModItem
             Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         }
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 12)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
         Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Weapons/Melee/TroxiniumSword_Glow").Value;

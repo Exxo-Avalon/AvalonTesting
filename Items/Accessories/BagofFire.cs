@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +33,15 @@ internal class BagofFire : ModItem
             UpdateVanity(player);
         }
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Fireblossom, 15)
+            .AddIngredient(ItemID.HellstoneBar, 10)
+            .AddIngredient(ItemID.AshBlock, 50)
+            .AddIngredient(ModContent.ItemType<Material.FireShard>(), 5)
+            .AddTile(TileID.Hellforge).Register();
+    }
     public override void UpdateVanity(Player player)
     {
         if (!(player.velocity.Length() > 0))

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +33,15 @@ internal class BagofBlood : ModItem
             UpdateVanity(player);
         }
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Vertebrae, 15)
+            .AddIngredient(ItemID.Ichor, 10)
+            .AddIngredient(ItemID.CrimstoneBlock, 50)
+            .AddIngredient(ModContent.ItemType<Material.CorruptShard>(), 5)
+            .AddTile(TileID.Hellforge).Register();
+    }
     public override void UpdateVanity(Player player)
     {
         if (!(player.velocity.Length() > 0))

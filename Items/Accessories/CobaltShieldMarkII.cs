@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,12 @@ class CobaltShieldMarkII : ModItem
         Item.accessory = true;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CobaltBar, 15)
+            .AddTile(TileID.Anvils).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().incDef = true;

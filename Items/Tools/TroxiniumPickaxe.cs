@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Logic;
+using AvalonTesting.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -37,6 +37,12 @@ public class TroxiniumPickaxe : ModItem
         //{
         //    Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         //}
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 18)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {

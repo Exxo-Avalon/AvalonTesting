@@ -30,4 +30,30 @@ class DesertChainmail : ModItem
         player.manaCost -= 0.05f;
         player.statManaMax2 += 20;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 100)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 2)
+            .AddIngredient(ItemID.GoldChainmail)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 100)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 5)
+            .AddIngredient(ItemID.PlatinumChainmail)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 100)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 2)
+            .AddIngredient(ModContent.ItemType<BismuthChainmail>())
+            .AddTile(TileID.Anvils).Register();
+    }
 }

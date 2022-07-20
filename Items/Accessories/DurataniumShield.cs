@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,11 @@ class DurataniumShield : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().duraShield = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 15)
+            .AddTile(TileID.Anvils).Register();
     }
 }

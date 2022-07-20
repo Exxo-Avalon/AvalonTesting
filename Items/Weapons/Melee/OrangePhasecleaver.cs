@@ -20,7 +20,7 @@ class OrangePhasecleaver : ModItem
         Item.autoReuse = true;
         Item.scale = 1.2f;
         Item.useTurn = true;
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<TealRarity>();
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 5.25f;

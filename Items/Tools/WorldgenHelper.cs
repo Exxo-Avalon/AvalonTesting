@@ -31,8 +31,8 @@ class WorldgenHelper : ModItem
 
     public override bool? UseItem(Player player)
     {
-        //int x = (int)player.position.X / 16;
-        //int y = (int)player.position.Y / 16;
+        int x = (int)player.position.X / 16;
+        int y = (int)player.position.Y / 16;
         //int xStored = x;
         //GetXCoord(x, y, 5, ref xStored);
         //World.Utils.MakeSquareTemp(xStored, y);
@@ -40,7 +40,10 @@ class WorldgenHelper : ModItem
         //World.Passes.HallowedAltars.Generate();
         //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
         //Task.Run(AvalonTestingWorld.GenerateSkyFortress);
-
+        for (int i = x - 10; i < x + 10; i++)
+        {
+            WorldGen.PlaceTile(i, y, ModContent.TileType<Tiles.LaziteGrass>());
+        }
         //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;
     }

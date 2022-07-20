@@ -40,4 +40,10 @@ class DurataniumHeadpiece : ModItem
     {
         player.GetDamage(DamageClass.Ranged) += 0.07f;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

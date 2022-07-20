@@ -24,7 +24,12 @@ class TroxiniumHeadpiece : ModItem
         Item.value = Item.sellPrice(0, 3, 40, 0);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 12)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
         return body.type == ModContent.ItemType<TroxiniumBodyarmor>() && legs.type == ModContent.ItemType<TroxiniumCuisses>();

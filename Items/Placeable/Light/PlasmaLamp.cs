@@ -27,4 +27,11 @@ class PlasmaLamp : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ItemID.CrystalBall)
+            .AddIngredient(ModContent.ItemType<Tile.LivingLightningBlock>(), 50)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

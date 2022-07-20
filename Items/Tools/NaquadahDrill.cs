@@ -34,4 +34,10 @@ class NaquadahDrill : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item23;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 15)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

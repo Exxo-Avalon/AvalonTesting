@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +26,17 @@ public class AlchemicalSkull : ModItem
         Item.value = 150000;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.ObsidianShield)
+            .AddIngredient(ItemID.IronskinPotion, 10)
+            .AddIngredient(ItemID.BattlePotion, 15)
+            .AddIngredient(ItemID.ThornsPotion, 15)
+            .AddIngredient(ItemID.WaterWalkingPotion, 10)
+            .AddIngredient(ItemID.Bone, 99)
+            .AddTile(TileID.Hellforge).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.waterWalk = player.waterWalk2 = player.enemySpawns = player.noKnockback = player.fireWalk = true;

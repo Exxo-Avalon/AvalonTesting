@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,11 @@ class PalladiumShield : ModItem
     {
         player.Avalon().regenStrike = true;
         player.Avalon().spikeImmune = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.PalladiumBar, 15)
+            .AddTile(TileID.Anvils).Register();
     }
 }

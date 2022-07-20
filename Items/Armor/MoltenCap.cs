@@ -10,7 +10,7 @@ class MoltenCap : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Molten Cap");
+        DisplayName.SetDefault("Molten Crown");
         Tooltip.SetDefault("Summoner helmet");
         SacrificeTotal = 1;
     }

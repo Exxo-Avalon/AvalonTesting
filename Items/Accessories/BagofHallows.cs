@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +33,15 @@ internal class BagofHallows : ModItem
             UpdateVanity(player);
         }
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.HallowedBar, 15)
+            .AddIngredient(ItemID.PixieDust, 10)
+            .AddIngredient(ItemID.UnicornHorn, 2)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.SacredShard>(), 2)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void UpdateVanity(Player player)
     {
         if (!(player.velocity.Length() > 0))

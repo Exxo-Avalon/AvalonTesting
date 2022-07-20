@@ -33,4 +33,10 @@ class TroxiniumDrill : ModItem
         Item.useAnimation = 25;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 18)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

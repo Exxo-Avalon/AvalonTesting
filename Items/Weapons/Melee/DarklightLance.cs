@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,5 +37,15 @@ class DarklightLance : ModItem
     public override bool CanUseItem(Player player)
     {
         return player.ownedProjectileCounts[Item.shoot] < 1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.DarkLance)
+            .AddIngredient(ItemID.Gungnir)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 25)
+            .AddIngredient(ItemID.DarkShard)
+            .AddIngredient(ItemID.LightShard)
+            .AddTile(TileID.AdamantiteForge).Register();
     }
 }

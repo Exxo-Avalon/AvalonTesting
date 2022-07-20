@@ -42,4 +42,10 @@ class DurataniumHelmet : ModItem
         player.GetAttackSpeed(DamageClass.Melee) += 0.05f;
         player.aggro += 100;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

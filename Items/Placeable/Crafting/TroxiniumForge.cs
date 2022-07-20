@@ -29,4 +29,11 @@ class TroxiniumForge : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Tile.TroxiniumOre>(), 30)
+            .AddIngredient(ItemID.Hellforge)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

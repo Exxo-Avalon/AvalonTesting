@@ -30,4 +30,13 @@ class DesertLongSword : ModItem
         Item.useAnimation = 27;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.AntlionMandible)
+            .AddIngredient(ItemID.SandBlock, 60)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ItemID.Topaz, 5)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,11 @@ class DurataniumChainmail : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Generic) += 0.05f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 20)
+            .AddTile(TileID.Anvils).Register();
     }
 }

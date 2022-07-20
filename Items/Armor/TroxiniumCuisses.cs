@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,11 @@ class TroxiniumCuisses : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Generic) += 5;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 18)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

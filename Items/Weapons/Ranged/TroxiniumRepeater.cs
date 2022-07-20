@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Logic;
+using AvalonTesting.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -39,6 +39,12 @@ public class TroxiniumRepeater : ModItem
         }
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetX = -5;
         Item.GetGlobalItem<ItemUseGlow>().glowOffsetY = 0;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 12)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
     public override Vector2? HoldoutOffset()
     {

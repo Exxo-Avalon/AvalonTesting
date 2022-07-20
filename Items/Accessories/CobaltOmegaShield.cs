@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,15 @@ class CobaltOmegaShield : ModItem
         Item.accessory = true;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<CobaltShieldMarkII>())
+            .AddIngredient(ModContent.ItemType<PalladiumShield>())
+            .AddIngredient(ModContent.ItemType<DurataniumShield>())
+            .AddIngredient(ItemID.SoulofMight, 5)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().incDef = true;

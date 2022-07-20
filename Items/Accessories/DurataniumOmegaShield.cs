@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,5 +32,14 @@ class DurataniumOmegaShield : ModItem
         player.Avalon().duraShield = true;
         player.noKnockback = true;
         player.Avalon().spikeImmune = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<CobaltShieldMarkII>())
+            .AddIngredient(ModContent.ItemType<PalladiumShield>())
+            .AddIngredient(ModContent.ItemType<DurataniumShield>())
+            .AddIngredient(ItemID.SoulofFright, 5)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

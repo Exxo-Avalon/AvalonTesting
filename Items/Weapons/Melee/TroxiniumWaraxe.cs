@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Logic;
+using AvalonTesting.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -32,10 +32,16 @@ public class TroxiniumWaraxe : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 28, 0);
         Item.height = dims.Height;
-        if (!Main.dedServ)
-        {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        }
+        //if (!Main.dedServ)
+        //{
+        //    Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        //}
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 12)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {

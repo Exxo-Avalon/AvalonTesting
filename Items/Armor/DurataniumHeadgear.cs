@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,5 +40,11 @@ class DurataniumHeadgear : ModItem
     {
         player.GetDamage(DamageClass.Magic) += 0.06f;
         player.manaCost -= 0.05f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
     }
 }

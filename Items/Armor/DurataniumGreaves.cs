@@ -29,4 +29,10 @@ class DurataniumGreaves : ModItem
     {
         player.moveSpeed += 0.05f;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 15)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

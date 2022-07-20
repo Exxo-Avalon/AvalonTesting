@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -36,5 +36,13 @@ class EnergyRevolver : ModItem
     public override Vector2? HoldoutOffset()
     {
         return new Vector2(-10f, 0f);
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.LaserRifle)
+            .AddIngredient(ModContent.ItemType<Material.LensApparatus>())
+            .AddIngredient(ItemID.SoulofFright, 16)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

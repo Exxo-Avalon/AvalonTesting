@@ -30,6 +30,12 @@ class TroxiniumBar : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Tile.TroxiniumOre>(), 5)
+            .AddTile(TileID.AdamantiteForge).Register();
+    }
     public override Color? GetAlpha(Color lightColor)
     {
         return new Color(255, 255, 255, 255);

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace AvalonTesting.Items.Tools;
 
 class DurataniumWaraxe : ModItem
 {
@@ -31,5 +31,11 @@ class DurataniumWaraxe : ModItem
         Item.useAnimation = 18;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
     }
 }

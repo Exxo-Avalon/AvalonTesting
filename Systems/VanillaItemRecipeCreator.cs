@@ -113,5 +113,41 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ItemID.ShadowScale, 15).AddTile(TileID.DemonAltar).Register();
         Recipe.Create(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ItemID.Vertebrae, 15).AddTile(TileID.DemonAltar).Register();
         Recipe.Create(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ModContent.ItemType<Booger>(), 15).AddTile(TileID.DemonAltar).Register();
+
+        Recipe.Create(ItemID.NimbusRod)
+            .AddIngredient(ModContent.ItemType<LivingLightningBlock>(), 80)
+            .AddIngredient(ItemID.Cloud, 50)
+            .AddIngredient(ItemID.RainCloud, 80)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.TerraBlade)
+            .AddIngredient(ModContent.ItemType<TrueAeonsEternity>())
+            .AddIngredient(ItemID.TrueExcalibur)
+            .AddIngredient(ItemID.BrokenHeroSword)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.LihzahrdPowerCell)
+            .AddIngredient(ModContent.ItemType<SolariumStar>(), 5)
+            .AddIngredient(ItemID.LihzahrdBrick, 10)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.ShroomiteBar)
+            .AddIngredient(ModContent.ItemType<ShroomiteOre>(), 5)
+            .AddTile(TileID.AdamantiteForge).Register();
+
+        Recipe.Create(ItemID.TurtleHelmet)
+            .AddIngredient(ItemID.ChlorophyteMask)
+            .AddIngredient(ItemID.TurtleShell)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.TurtleScaleMail)
+            .AddIngredient(ItemID.ChlorophytePlateMail)
+            .AddIngredient(ItemID.TurtleShell)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.TurtleLeggings)
+            .AddIngredient(ItemID.ChlorophyteGreaves)
+            .AddIngredient(ItemID.TurtleShell)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,6 +40,16 @@ class VertexofExcalibur : ModItem
             Main.dust[num313].fadeIn = 1.25f;
             Main.dust[num313].velocity *= 0.25f;
         }
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.NightsEdge)
+            .AddIngredient(ItemID.Excalibur)
+            .AddIngredient(ItemID.BrokenHeroSword)
+            .AddIngredient(ItemID.DarkShard)
+            .AddIngredient(ItemID.LightShard)
+            .AddTile(TileID.AdamantiteForge).Register();
     }
     public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
     {

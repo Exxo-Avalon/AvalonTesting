@@ -26,4 +26,11 @@ class VoltBrick : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ItemID.Cloud)
+            .AddIngredient(ModContent.ItemType<LivingLightningBlock>())
+            .AddTile(TileID.Hellforge).Register();
+    }
 }

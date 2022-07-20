@@ -35,4 +35,10 @@ class DurataniumRepeater : ModItem
     {
         return new Vector2(3, -3);
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

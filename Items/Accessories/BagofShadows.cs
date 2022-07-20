@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +33,15 @@ internal class BagofShadows : ModItem
             UpdateVanity(player);
         }
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.DemoniteBar, 15)
+            .AddIngredient(ItemID.CursedFlame, 5)
+            .AddIngredient(ItemID.EbonstoneBlock, 50)
+            .AddIngredient(ModContent.ItemType<Material.CorruptShard>(), 5)
+            .AddTile(TileID.Hellforge).Register();
+    }
     public override void UpdateVanity(Player player)
     {
         if (!(player.velocity.Length() > 0))

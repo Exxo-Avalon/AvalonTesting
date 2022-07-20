@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,11 @@ class ZirconHook : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.Zircon>(), 15)
+            .AddTile(TileID.Anvils).Register();
     }
 }

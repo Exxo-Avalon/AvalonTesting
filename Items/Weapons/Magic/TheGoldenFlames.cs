@@ -33,4 +33,13 @@ class TheGoldenFlames : ModItem
         Item.useAnimation = 50;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ItemID.HallowedBar, 35)
+            .AddIngredient(ItemID.SpellTome)
+            .AddIngredient(ItemID.SoulofLight, 20)
+            .AddIngredient(ItemID.Fireblossom, 5)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+    }
 }

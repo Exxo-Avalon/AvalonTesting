@@ -24,7 +24,12 @@ class NaquadahHood : ModItem
         Item.value = Item.sellPrice(0, 2, 40, 0);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 10)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
         return body.type == ModContent.ItemType<NaquadahBreastplate>() && legs.type == ModContent.ItemType<NaquadahShinguards>();

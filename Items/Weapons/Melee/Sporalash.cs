@@ -33,4 +33,13 @@ class Sporalash : ModItem
         Item.useAnimation = 46;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ItemID.JungleSpores, 15)
+            .AddIngredient(ItemID.Stinger, 10)
+            .AddIngredient(ItemID.Vine, 2)
+            .AddIngredient(ModContent.ItemType<Material.ToxinShard>(), 2)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,5 +32,11 @@ class NaquadahTrident : ModItem
         Item.useAnimation = 26;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 10)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

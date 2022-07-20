@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Buffs;
@@ -14,7 +14,7 @@ public class CaesiumPoison : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.Avalon().caesiumPoison = true;
+        player.GetModPlayer<Players.ExxoBuffPlayer>().CaesiumPoison = true;
         player.blind = true;
     }
 }

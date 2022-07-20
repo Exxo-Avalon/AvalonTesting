@@ -31,4 +31,10 @@ class DurataniumSword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 8)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

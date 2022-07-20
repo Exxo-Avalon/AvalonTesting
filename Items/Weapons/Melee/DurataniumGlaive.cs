@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,5 +30,11 @@ class DurataniumGlaive : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 50000;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.DurataniumBar>(), 10)
+            .AddTile(TileID.Anvils).Register();
     }
 }

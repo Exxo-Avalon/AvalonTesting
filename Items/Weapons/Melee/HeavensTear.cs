@@ -33,4 +33,10 @@ class HeavensTear : ModItem
         Item.useAnimation = 45;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ItemID.HallowedBar, 13)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

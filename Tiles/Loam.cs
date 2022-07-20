@@ -15,6 +15,8 @@ public class Loam : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;
+        Main.tileMerge[TileID.Dirt][Type] = true;
+        Main.tileMerge[Type][TileID.Dirt] = true;
         ItemDrop = ModContent.ItemType<LoamBlock>();
         DustType = ModContent.DustType<TropicalMudDust>();
         TileID.Sets.CanBeDugByShovel[Type] = true;

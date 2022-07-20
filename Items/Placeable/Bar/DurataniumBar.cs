@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,11 @@ class DurataniumBar : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Tile.DurataniumOre>(), 3)
+            .AddTile(TileID.Furnaces).Register();
     }
 }

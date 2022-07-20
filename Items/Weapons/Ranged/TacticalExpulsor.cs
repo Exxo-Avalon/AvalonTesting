@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -37,6 +37,14 @@ class TacticalExpulsor : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item38;
 
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.TacticalShotgun, 2)
+            .AddIngredient(ItemID.Ectoplasm, 50)
+            .AddIngredient(ItemID.ShroomiteBar, 30)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
     public override Vector2? HoldoutOffset()
     {

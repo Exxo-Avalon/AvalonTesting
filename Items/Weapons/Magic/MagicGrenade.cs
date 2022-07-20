@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,5 +32,13 @@ class MagicGrenade : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 27;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.MagicDagger)
+            .AddIngredient(ItemID.Grenade, 10)
+            .AddIngredient(ItemID.SoulofFright, 20)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

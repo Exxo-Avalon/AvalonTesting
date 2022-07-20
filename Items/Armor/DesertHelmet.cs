@@ -41,4 +41,30 @@ class DesertHelmet : ModItem
         player.manaCost -= 0.05f;
         player.GetDamage(DamageClass.Ranged) += 0.05f;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 75)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 2)
+            .AddIngredient(ItemID.GoldHelmet)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 75)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 10)
+            .AddIngredient(ItemID.PlatinumHelmet)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.SandBlock, 75)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ItemID.AntlionMandible, 2)
+            .AddIngredient(ItemID.Topaz, 2)
+            .AddIngredient(ModContent.ItemType<BismuthHelmet>())
+            .AddTile(TileID.Anvils).Register();
+    }
 }

@@ -9,7 +9,7 @@ class TheBanhammer : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Banhammer");
+        DisplayName.SetDefault("The Banhammer");
         Tooltip.SetDefault("Strong enough to destroy Hallowed Altars");
         SacrificeTotal = 1;
     }
@@ -32,5 +32,14 @@ class TheBanhammer : ModItem
         Item.useAnimation = 17;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Pwnhammer)
+            .AddIngredient(ItemID.HallowedBar, 35)
+            .AddIngredient(ItemID.SoulofMight, 10)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>())
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

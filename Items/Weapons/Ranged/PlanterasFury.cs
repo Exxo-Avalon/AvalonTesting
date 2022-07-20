@@ -39,4 +39,14 @@ class PlanterasFury : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item41;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.VenusMagnum)
+            .AddIngredient(ItemID.Uzi)
+            .AddIngredient(ItemID.IllegalGunParts)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 50)
+            .AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 10)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+    }
 }

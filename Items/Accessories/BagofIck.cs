@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,7 +33,15 @@ internal class BagofIck : ModItem
             UpdateVanity(player);
         }
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.YuckyBit>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.Pathogen>(), 10)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.ChunkstoneBlock>(), 50)
+            .AddIngredient(ModContent.ItemType<Material.CorruptShard>(), 5)
+            .AddTile(TileID.Hellforge).Register();
+    }
     public override void UpdateVanity(Player player)
     {
         if (!(player.velocity.Length() > 0))

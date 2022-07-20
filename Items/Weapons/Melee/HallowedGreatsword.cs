@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,5 +30,12 @@ class HallowedGreatsword : ModItem
         Item.useAnimation = 26;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.HallowedBar, 35)
+            .AddIngredient(ItemID.SoulofMight, 20)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

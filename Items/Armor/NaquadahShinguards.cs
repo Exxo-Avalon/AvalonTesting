@@ -24,7 +24,12 @@ class NaquadahShinguards : ModItem
         Item.value = Item.sellPrice(0, 2, 30, 0);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 15)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void UpdateEquip(Player player)
     {
         player.moveSpeed += 0.06f;

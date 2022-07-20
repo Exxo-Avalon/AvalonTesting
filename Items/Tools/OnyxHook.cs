@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace AvalonTesting.Items.Tools;
 
 class OnyxHook : ModItem
 {
@@ -30,5 +30,13 @@ class OnyxHook : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
         Item.height = dims.Height;
+    }
+
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

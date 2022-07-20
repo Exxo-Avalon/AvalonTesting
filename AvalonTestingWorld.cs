@@ -1158,9 +1158,30 @@ public class AvalonTestingWorld : ModSystem
             if (Main.tile[num5, num6].TileType == ModContent.TileType<Ickgrass>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
-                if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())
+                //if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
+                //    !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
+                //    WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())
+                //{
+                //    WorldGen.PlaceTile(num5, num9, ModContent.TileType<ContagionShortGrass>(), true);
+                //    Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 11) * 18);
+                //    if (Main.tile[num5, num9].HasTile)
+                //    {
+                //        Tile t = Main.tile[num5, num9];
+                //        t.TileColor = Main.tile[num5, num6].TileColor;
+                //    }
+                //    if (Main.netMode == NetmodeID.Server && Main.tile[num5, num9].HasTile)
+                //    {
+                //        NetMessage.SendTileSquare(-1, num5, num9, 1);
+                //    }
+                //}
+                if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
+                    !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
+                    WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>() && Main.tile[num5, num9].TileType != TileID.Dirt &&
+                    !Main.tile[num5, num6].HasTile)
                 {
-                    WorldGen.PlaceTile(num5, num9, ModContent.TileType<ContagionShortGrass>(), true, false, -1, 0);
+                    Main.NewText(Main.tile[num5, num6].TileType, Color.GreenYellow);
+                    Main.NewText(Main.tile[num5, num9].TileType, Color.CornflowerBlue);
+                    WorldGen.PlaceTile(num5, num9, ModContent.TileType<ContagionShortGrass>(), true);
                     Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 11) * 18);
                     if (Main.tile[num5, num9].HasTile)
                     {
@@ -1172,6 +1193,7 @@ public class AvalonTestingWorld : ModSystem
                         NetMessage.SendTileSquare(-1, num5, num9, 1);
                     }
                 }
+
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 && !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid && WorldGen.genRand.NextBool(num6 > Main.worldSurface ? 500 : 200) && num14 == ModContent.TileType<Ickgrass>())
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<Tiles.Herbs.Barfbush>(), true, false, -1, 0);
@@ -1235,7 +1257,7 @@ public class AvalonTestingWorld : ModSystem
                 // where lazite tallgrass would grow
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                    WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<LaziteGrass>())
+                    WorldGen.genRand.NextBool(1) && num14 == ModContent.TileType<LaziteGrass>())
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<LaziteShortGrass>(), true);
                     Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 10) * 18);

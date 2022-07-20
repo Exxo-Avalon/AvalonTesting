@@ -31,4 +31,10 @@ class NaquadahSword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 8)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

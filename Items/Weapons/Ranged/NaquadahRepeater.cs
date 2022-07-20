@@ -32,4 +32,10 @@ class NaquadahRepeater : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item5;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NaquadahBar>(), 10)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }
