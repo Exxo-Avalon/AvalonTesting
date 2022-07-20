@@ -48,20 +48,23 @@ public class DarkMatterSky : CustomSky
             surfaceFrame = (surfaceFrame + 1) % 25;
             surfaceFrameCounter = 0;
         }
-        int xCenter = Main.screenWidth / 2;
-        int yCenter = Main.screenHeight / 2;
+        int xCenter = Main.ScreenSize.X / 2; //Main.screenWidth / 2;
+        int yCenter = Main.ScreenSize.Y / 2;
         int modifier = (Main.screenWidth - Main.screenHeight) / 2;
-        int xPos = (xCenter - (AvalonTesting.DarkMatterBlackHole.Height / 1000) + modifier) / 2;
-        int yPos = (yCenter - (AvalonTesting.DarkMatterBlackHole.Height / 1000)) / 2;
+        if (modifier < 0) modifier = (Main.screenHeight - Main.screenWidth) / 2;
+        var percentage = new Vector2(1920 / Main.ScreenSize.X, 1080 / Main.ScreenSize.Y); // FIX FOR 4k LATER
+        int xModifier = (int)(modifier * percentage.X);
+        int xPos2 = (xCenter - (AvalonTesting.DarkMatterBlackHole.Value.Width / 100) + xModifier) / 2;
+        int yPos2 = (yCenter - (AvalonTesting.DarkMatterBlackHole.Value.Height / 100)) / 2;
 
         spriteBatch.End();
         spriteBatch.Begin();
-        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole2, new Rectangle(xPos, yPos, Main.screenWidth - xPos * 2, Main.screenHeight - yPos * 2), new Color(255, 255, 255, 255));
+        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole2.Value, new Vector2(xPos2, yPos2), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f, SpriteEffects.None, 1f);
 
         spriteBatch.End();
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
-        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole, new Rectangle(xPos, yPos, Main.screenWidth - xPos * 2, Main.screenHeight - yPos * 2), new Color(255, 255, 255, opacity * 10));
-        spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(255, 255, 255, opacity * 10));
+        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole.Value, new Vector2(xPos2, yPos2), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Value, new Vector2(xPos2, yPos2), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Width() >> 1, AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Height() >> 1), 6f, SpriteEffects.None, 1f);
     }
     public override void Update(GameTime gameTime)
     {

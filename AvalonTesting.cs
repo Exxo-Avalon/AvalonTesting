@@ -33,9 +33,9 @@ public class AvalonTesting : Mod
     /// </summary>
     public static Texture2D DarkMatterSky;
 
-    public static Texture2D[] DarkMatterBackgrounds = new Texture2D[25];
-    public static Texture2D DarkMatterBlackHole;
-    public static Texture2D DarkMatterBlackHole2;
+    public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[25];
+    public static Asset<Texture2D> DarkMatterBlackHole;
+    public static Asset<Texture2D> DarkMatterBlackHole2;
     public static Effect DarkMatterShader;
 
     /// <summary>
@@ -114,11 +114,11 @@ public class AvalonTesting : Mod
         DarkMatterShader = ModContent.Request<Effect>("AvalonTesting/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
         SkyManager.Instance["AvalonTesting:DarkMatter"] = new Effects.DarkMatterSky();
         Filters.Scene["AvalonTesting:DarkMatter"] = new Filter(new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky").UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
-        DarkMatterBlackHole = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterBGBlackHole", AssetRequestMode.ImmediateLoad).Value;
-        DarkMatterBlackHole2 = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterBGBlackHole2", AssetRequestMode.ImmediateLoad).Value;
+        DarkMatterBlackHole = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterBGBlackHole", AssetRequestMode.ImmediateLoad);
+        DarkMatterBlackHole2 = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterBGBlackHole2", AssetRequestMode.ImmediateLoad);
         for (int i = 0; i < DarkMatterBackgrounds.Length; i++)
         {
-            DarkMatterBackgrounds[i] = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterCloud" + i, AssetRequestMode.ImmediateLoad).Value;
+            DarkMatterBackgrounds[i] = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/DarkMatter/DarkMatterCloud" + i, AssetRequestMode.ImmediateLoad);
         }
     }
     public override void Unload()

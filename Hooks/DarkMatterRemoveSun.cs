@@ -1,6 +1,7 @@
 using Terraria;
 using AvalonTesting.Common;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace AvalonTesting.Hooks;
 public class DarkMatterRemoveSun : ModHook
@@ -11,13 +12,23 @@ public class DarkMatterRemoveSun : ModHook
     }
     private static void OnDrawSunAndMoon(On.Terraria.Main.orig_DrawSunAndMoon orig, Main self, Main.SceneArea sceneArea, Color moonColor, Color sunColor, float tempMushroomInfluence)
     {
-        if (Main.LocalPlayer != null)
+        if (!Main.gameMenu)
         {
             if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
             {
                 orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
             }
         }
-        else orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+        else
+            orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+
+        //if (Main.LocalPlayer != null)
+        //{
+        //    if (ModContent.GetInstance<Systems.BiomeTileCounts>().DarkTiles < 300)//!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
+        //    {
+        //        orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+        //    }
+        //}
+        //else orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
     }
 }
