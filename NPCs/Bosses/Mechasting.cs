@@ -344,7 +344,10 @@ public class Mechasting : ModNPC
     public override void OnKill()
     {
         if (!ModContent.GetInstance<DownedBossSystem>().DownedMechasting)
+        {
             ModContent.GetInstance<DownedBossSystem>().DownedMechasting = true;
+            ModContent.GetInstance<AvalonTestingWorld>().GenerateCrystalMines(); // CHANGE LATER TO OBLIVION
+        }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {

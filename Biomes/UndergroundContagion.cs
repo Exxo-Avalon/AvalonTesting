@@ -6,34 +6,17 @@ using Terraria.ModLoader;
 
 namespace AvalonTesting.Biomes;
 
-public class Contagion : ModBiome
+public class UndergroundContagion : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
     public override string BestiaryIcon => base.BestiaryIcon;
-    public override string BackgroundPath => base.BackgroundPath;
+    public override string BackgroundPath => ModContent.GetInstance<Contagion>().BackgroundPath;
     public override string MapBackground => BackgroundPath;
     public override int Music
     {
         get
         {
-            //if (Main.LocalPlayer.ZoneNormalUnderground || Main.LocalPlayer.ZoneNormalCaverns)
-            //{
-            //    return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion");
-            //}
-
-            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Contagion");
-        }
-    }
-    public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle
-    {
-        get
-        {
-            if (Main.LocalPlayer.ZoneDesert)
-            {
-                return ModContent.GetInstance<ContagionSurfaceDesertBackground>();
-            }
-
-            return ModContent.GetInstance<ContagionSurfaceBackground>();
+            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion");
         }
     }
 
@@ -52,6 +35,6 @@ public class Contagion : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion;
+        return !player.ZoneDungeon && ModContent.GetInstance<Systems.BiomeTileCounts>().ContagionTiles > 200 && player.ZoneRockLayerHeight;
     }
 }

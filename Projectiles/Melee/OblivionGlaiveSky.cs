@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -25,7 +25,7 @@ public class OblivionGlaiveSky : ModProjectile
         Projectile.tileCollide = false;
         Projectile.timeLeft = 360;
         Projectile.usesLocalNPCImmunity = true;
-        //projectile.localNPCHitCooldown = 40;
+        Projectile.localNPCHitCooldown = 40;
         Projectile.extraUpdates = 1;
     }
     public override void AI()

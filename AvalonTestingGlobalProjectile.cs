@@ -80,6 +80,17 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
             int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
         }
     }
+    public override void AI(Projectile projectile)
+    {
+        if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Buffs.Piercing>()) && projectile.penetrate != -1)
+        {
+            if (!projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().PiercingUp)
+            {
+                projectile.penetrate++;
+                projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().PiercingUp = true;
+            }
+        }
+    }
     public override void NumGrappleHooks(Projectile projectile, Player player, ref int numHooks)
     {
         if (projectile.type != ProjectileID.Web && player.GetModPlayer<ExxoPlayer>().HookBonus)

@@ -20,6 +20,7 @@ using Terraria.Utilities;
 using Terraria.WorldBuilding;
 using Terraria.ModLoader.IO;
 using AltLibrary.Common.Systems;
+using System.Threading;
 
 namespace AvalonTesting;
 
@@ -257,7 +258,17 @@ public class AvalonTestingWorld : ModSystem
                 (ushort)ModContent.TileType<PrimordialOre>());
         }
     }
-
+    public override void ModifySunLightColor(ref Color tileColor, ref Color backgroundColor)
+    {
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion)
+        {
+            backgroundColor = new Color(95, 140, 108);
+        }
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
+        {
+            backgroundColor = new Color(74, 53, 90) * 3;
+        }
+    }
     public override void SaveWorldData(TagCompound tag)
     {
         tag["SuperHardmode"] = SuperHardmode;
@@ -323,7 +334,10 @@ public class AvalonTestingWorld : ModSystem
                 new Color(244, 140, 140));
         }
     }
-
+    public void GenerateCrystalMines()
+    {
+        ThreadPool.QueueUserWorkItem(new WaitCallback(CrystalMinesCallback), 1);
+    }
     public static void GenerateSulphur()
     {
         Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
@@ -347,7 +361,44 @@ public class AvalonTestingWorld : ModSystem
                 new Color(210, 183, 4));
         }
     }
-
+    public void CrystalMinesCallback(object threadContext)
+    {
+        if (!SuperHardmode)
+            return;
+        if (Main.netMode == NetmodeID.SinglePlayer)
+        {
+            Main.NewText("The otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
+        }
+        else if (Main.netMode == NetmodeID.Server)
+        {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The otherworldly crystals begin to grow..."), new Color(176, 153, 214));
+        }
+        float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
+        int amtOfBiomes = 3;
+        if (Main.maxTilesX == 6300)
+            amtOfBiomes = 4;
+        if (Main.maxTilesX == 8400)
+            amtOfBiomes = 5;
+        //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
+        float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
+        int num614 = 0;
+        while (num614 < amtOfBiomes)
+        {
+            float num615 = (float)num614 / amtOfBiomes;
+            Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 200);
+            //CrystalMinesRunner(point.X, point.Y, 150, 150);
+            //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
+            //num614++;
+            WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
+            World.Biomes.CrystalMines crystalMines = config.CreateBiome<World.Biomes.CrystalMines>();
+            if (crystalMines.Place(point, null))
+            {
+                World.Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<World.Biomes.CrystalMinesHouseBiome>();
+                crystalHouse.Place(new Point(point.X, point.Y + 15), null);
+                num614++;
+            }
+        }
+    }
     public static void ChangeRain()
     {
         if (Main.cloudBGActive >= 1f || Main.numClouds > 150.0)
@@ -1125,6 +1176,101 @@ public class AvalonTestingWorld : ModSystem
                 }
             }
             #endregion bloodberry spawning
+
+            #region crystal shard in crystal mines
+            if (SuperHardmode)
+            {
+                int type = (int)Main.tile[num5, num6].TileType;
+                if ((type == ModContent.TileType<CrystalStone>()) && num6 > Main.rockLayer && Main.rand.Next(65) == 0)
+                {
+                    int num = WorldGen.genRand.Next(4);
+                    int xdir = 0;
+                    int ydir = 0;
+                    if (num == 0)
+                    {
+                        xdir = -1;
+                    }
+                    else if (num == 1)
+                    {
+                        xdir = 1;
+                    }
+                    else if (num == 0)
+                    {
+                        ydir = -1;
+                    }
+                    else
+                    {
+                        ydir = 1;
+                    }
+                    if (!Main.tile[num5 + xdir, num6 + ydir].HasTile)
+                    {
+                        int q = 0;
+                        int z = 6;
+                        for (int k = num5 - z; k <= num5 + z; k++)
+                        {
+                            for (int l = num6 - z; l <= num6 + z; l++)
+                            {
+                                if (Main.tile[k, l].HasTile && Main.tile[k, l].TileType == TileID.Crystals)
+                                {
+                                    q++;
+                                }
+                            }
+                        }
+                        if (q < 2)
+                        {
+                            if (ydir != -1)
+                            {
+                                WorldGen.PlaceTile(num5 + xdir, num6 + ydir, TileID.Crystals, true, false, -1, 0);
+                                NetMessage.SendTileSquare(-1, num5 + xdir, num6 + ydir, 1);
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region crystal fruit and giant crystal spawning
+            if (Main.tile[num5, num6].TileType == ModContent.TileType<CrystalStone>() && SuperHardmode &&
+                ModContent.GetInstance<DownedBossSystem>().DownedMechasting && num6 > Main.rockLayer) // CHANGE LATER TO OBLIVION
+            {
+                if (WorldGen.genRand.Next(50) == 0 && Main.tile[num5, num9].LiquidAmount == 0)
+                {
+                    bool flag16 = true;
+                    int distanceCheck = 40;
+                    for (int num80 = num5 - distanceCheck; num80 < num5 + distanceCheck; num80 += 2)
+                    {
+                        for (int num81 = num6 - distanceCheck; num81 < num6 + distanceCheck; num81 += 2)
+                        {
+                            if (num80 > 1 && num80 < Main.maxTilesX - 2 && num81 > 1 && num81 < Main.maxTilesY - 2 && Main.tile[num80, num81].HasTile && Main.tile[num80, num81].TileType == ModContent.TileType<CrystalFruit>())
+                            {
+                                flag16 = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (flag16)
+                    {
+                        WorldGen.Place2x2(num5, num9, (ushort)ModContent.TileType<CrystalFruit>(), WorldGen.genRand.Next(3));
+                        WorldGen.SquareTileFrame(num5, num9, true);
+                        WorldGen.SquareTileFrame(num5 + 1, num9 + 1, true);
+                        if (Main.tile[num5, num9].TileType == ModContent.TileType<CrystalFruit>() && Main.netMode == NetmodeID.Server)
+                        {
+                            NetMessage.SendTileSquare(-1, num5, num9, 4);
+                        }
+                    }
+                    else
+                    {
+                        WorldGen.Place2x2(num5, num9, (ushort)ModContent.TileType<GiantCrystalShard>(), WorldGen.genRand.Next(3));
+                        WorldGen.SquareTileFrame(num5, num9, true);
+                        WorldGen.SquareTileFrame(num5 + 1, num9 + 1, true);
+                        if (Main.tile[num5, num9].TileType == ModContent.TileType<GiantCrystalShard>() && Main.netMode == NetmodeID.Server)
+                        {
+                            NetMessage.SendTileSquare(-1, num5, num9, 4);
+                        }
+                    }
+                }
+            }
+            #endregion
 
             #region killing things if the block above/below isn't the necessary type
             // kill contagion vines if block above isn't contagion grass
