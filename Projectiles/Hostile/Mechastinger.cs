@@ -19,11 +19,12 @@ public class Mechastinger : ModProjectile
         Projectile.width = dims.Width * 4 / 20;
         Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
-        Projectile.friendly = true;
+        Projectile.friendly = false;
         Projectile.penetrate = 2;
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
+        Projectile.hostile = true;
     }
 
     public override void AI()
