@@ -153,7 +153,7 @@ namespace AvalonTesting
     }
     public class DarkRedRarity : ModRarity //18
     {
-        public override Color RarityColor => new Color(128, 0, 0);
+        public override Color RarityColor => new Color(150, 0, 0);
 
         public override int GetPrefixedRarity(int offset, float valueMult)
         {
