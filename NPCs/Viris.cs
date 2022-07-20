@@ -49,6 +49,9 @@ public class Viris : ModNPC
             new FlavorTextBestiaryInfoElement("Unimplemented")
         });
     }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneUndergroundContagion && !spawnInfo.Player.ZoneDungeon && Main.hardMode
+            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate : 0f;
     public override void FindFrame(int frameHeight)
     {
         NPC.frameCounter += 1.0;

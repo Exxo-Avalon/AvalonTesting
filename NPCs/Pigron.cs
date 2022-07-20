@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,6 +29,7 @@ public class Pigron : ModNPC
         NPC.defense = 16;
         NPC.width = 44;
         NPC.aiStyle = 2;
+        AIType = NPCID.PigronCorruption;
         NPC.value = 2000f;
         NPC.height = 36;
         NPC.knockBackResist = 0.5f;
@@ -43,6 +44,11 @@ public class Pigron : ModNPC
             new FlavorTextBestiaryInfoElement("This elusive dragon-pig hybrid has excellent stealth capabilities despite its rotund figure. It is uncertain how they came to exist.")
         });
     }
+    public override float SpawnChance(NPCSpawnInfo spawnInfo)
+    {
+        return (spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneUndergroundContagion &&
+            Main.SceneMetrics.SnowTileCount > 200 && !spawnInfo.Player.InPillarZone() && Main.hardMode) ? 0.7f : 0f;
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f * bossLifeScale);
@@ -51,10 +57,10 @@ public class Pigron : ModNPC
     public override void FindFrame(int frameHeight)
     {
         NPC.spriteDirection = NPC.direction;
-        NPC.frameCounter += 1.0;
+        NPC.frameCounter++;
         if (NPC.frameCounter >= 4.0)
         {
-            NPC.frame.Y = NPC.frame.Y + frameHeight;
+            NPC.frame.Y += frameHeight;
             NPC.frameCounter = 0.0;
         }
         if (NPC.frame.Y >= frameHeight * 14)
