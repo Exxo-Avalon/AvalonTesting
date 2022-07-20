@@ -30,6 +30,8 @@ public class StingerProbe : ModNPC
         NPC.knockBackResist = 0.1f;
         NPC.noGravity = true;
         NPC.noTileCollide = true;
+        NPC.friendly = false;
+
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
@@ -41,6 +43,8 @@ public class StingerProbe : ModNPC
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)
         {
             NPC.TargetClosest(true);
+
+
         }
         float num146 = 6f;
         float num147 = 0.05f;
@@ -51,6 +55,8 @@ public class StingerProbe : ModNPC
         num150 = (float)((int)(num150 / 8f) * 8);
         vector17.X = (float)((int)(vector17.X / 8f) * 8);
         vector17.Y = (float)((int)(vector17.Y / 8f) * 8);
+
+
         num149 -= vector17.X;
         num150 -= vector17.Y;
         float num151 = (float)Math.Sqrt((double)(num149 * num149 + num150 * num150));
@@ -99,10 +105,16 @@ public class StingerProbe : ModNPC
                 NPC.localAI[0] = 0f;
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
+                    Player player = Main.player[NPC.target];
+                    Vector2 position = NPC.Center;
+                    Vector2 targetPosition = player.Center;
+                    Vector2 direction = targetPosition - position;
+                    Vector2 perturbedSpeed = direction * 2f;
+
+
                     int num153 = 57;
                     int num154 = ModContent.ProjectileType<Projectiles.Hostile.StingerLaser>();
-                    int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector17.X, vector17.Y, num149, num150, num154, num153, 0f, Main.myPlayer, 0f, 0f);
-                    Main.projectile[proj].velocity = Vector2.Normalize(NPC.position - Main.npc[NPC.target].position) * 14f;
+                    int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector17.X, vector17.Y, perturbedSpeed.X, perturbedSpeed.Y, num154, num153, 0f, Main.myPlayer, 0f, 0f);
                     Main.projectile[proj].hostile = true;
                     Main.projectile[proj].friendly = false;
                     Main.projectile[proj].tileCollide = true;
@@ -130,3 +142,4 @@ public class StingerProbe : ModNPC
         }
     }
 }
+
