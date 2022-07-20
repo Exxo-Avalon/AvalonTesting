@@ -36,6 +36,20 @@ public class RecipeSystem : ModSystem
         });
         RecipeGroup.RegisterGroup("AvalonTesting:GemStaves", groupGemStaves);
 
+        var groupTombstones = new RecipeGroup(() => "Any Tombstone", new int[]
+        {
+            ItemID.Gravestone,
+            ItemID.Tombstone,
+            ItemID.CrossGraveMarker,
+            ItemID.Obelisk,
+            ItemID.Headstone,
+            ItemID.RichGravestone1,
+            ItemID.RichGravestone2,
+            ItemID.RichGravestone3,
+            ItemID.RichGravestone4,
+            ItemID.RichGravestone5
+        });
+        RecipeGroup.RegisterGroup("AvalonTesting:Tombstones", groupTombstones);
 
         var groupWings = new RecipeGroup(() => "Any Wings", new int[]
         {

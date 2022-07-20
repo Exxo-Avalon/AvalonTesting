@@ -52,7 +52,7 @@ public class DarkMatterSky : CustomSky
         int yCenter = Main.ScreenSize.Y / 2;
         int modifier = (Main.screenWidth - Main.screenHeight) / 2;
         if (modifier < 0) modifier = (Main.screenHeight - Main.screenWidth) / 2;
-        var percentage = new Vector2(1920 / Main.ScreenSize.X, 1080 / Main.ScreenSize.Y); // FIX FOR 4k LATER
+        var percentage = new Vector2(1920 / Main.ScreenSize.X, 1080 / Main.ScreenSize.Y); // FIX FOR 4k LATER 3840x2160
         int xModifier = (int)(modifier * percentage.X);
         int xPos2 = (xCenter - (AvalonTesting.DarkMatterBlackHole.Value.Width / 100) + xModifier) / 2;
         int yPos2 = (yCenter - (AvalonTesting.DarkMatterBlackHole.Value.Height / 100)) / 2;
