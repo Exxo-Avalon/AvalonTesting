@@ -23,23 +23,13 @@ class ShadowCharm : ModItem
         Item.value = Item.sellPrice(0, 0, 45);
         Item.height = dims.Height;
     }
-    public override bool IsVanitySet(int head, int body, int legs) => true;
-    public override void ArmorSetShadows(Player player)
-    {
-        player.armorEffectDrawShadow = true;
-    }
-    public override bool CanEquipAccessory(Player player, int slot, bool modded)
-    {
-        return true;
-    }
     public override void UpdateVanity(Player player)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().ShadowCharm = true;
-        //player.armorEffectDrawShadow = true;
+        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().ShadowCharm = true;
+        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
     }
 
     public override void AddRecipes()
