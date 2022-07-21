@@ -267,7 +267,7 @@ public class AvalonTestingWorld : ModSystem
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
-            backgroundColor = new Color(0, 0, 0);
+            backgroundColor = new Color(126, 71, 107) * 0.55f;
         }
     }
     public override void SaveWorldData(TagCompound tag)
