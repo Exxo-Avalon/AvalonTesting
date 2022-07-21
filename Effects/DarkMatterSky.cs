@@ -48,6 +48,7 @@ public class DarkMatterSky : CustomSky
 
         // Draw the sky texture
         spriteBatch.Draw(AvalonTesting.DarkMatterSky, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(51, 41, 48) * opacity); // Main.ColorOfTheSkies
+
         if (Main.netMode == NetmodeID.Server) return;
 
         // Surface frame counter
@@ -112,6 +113,10 @@ public class DarkMatterSky : CustomSky
 
         // Draw the black hole's center
         spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole2.Value, new Vector2(xPos, yPos), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f + scaleMod, SpriteEffects.None, 1f);
+
+        // Draw the floating rocks
+        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos + AvalonTesting.DarkMatterFloatingRocks.Value.Width, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
 
         // End and begin again, allowing transparency and non-blurry scaling
         spriteBatch.End();

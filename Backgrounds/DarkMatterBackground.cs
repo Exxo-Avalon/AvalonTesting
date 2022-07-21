@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Backgrounds;
+namespace AvalonTesting.Backgrounds.DarkMatter;
 
 public class DarkMatterBackground : ModSurfaceBackgroundStyle
 {
@@ -28,7 +28,7 @@ public class DarkMatterBackground : ModSurfaceBackgroundStyle
         }
     }
 
-    public override int ChooseFarTexture()
+    /*public override int ChooseFarTexture()
     {
         return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/DarkMatter/DarkMatterBG");
     }
@@ -43,20 +43,14 @@ public class DarkMatterBackground : ModSurfaceBackgroundStyle
     public override int ChooseMiddleTexture()
     {
         return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/DarkMatter/DarkMatterBG");
-    }
+    }*/
 
     public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
     {
-        b -= 1000;
+        b -= 500;
         //a -= 500;
-        scale = 2f;
+        //scale = 2f;
         parallax = 0;
         return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/DarkMatter/DarkMatterBG");
-        //if (++SurfaceFrameCounter > 3)
-        //{
-        //    SurfaceFrame = (SurfaceFrame + 1) % 25;
-        //    SurfaceFrameCounter = 0;
-        //}
-        //return ModContent.GetModBackgroundSlot($"{Mod.Name}/Backgrounds/DarkMatter/DarkMatterCloud" + SurfaceFrame);
     }
 }

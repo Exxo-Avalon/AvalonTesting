@@ -21,7 +21,7 @@ public class DarkMatter : ModBiome
     {
         get
         {
-            return ModContent.GetInstance<DarkMatterBackground>();
+            return ModContent.GetInstance<Backgrounds.DarkMatter.DarkMatterBackground>();
         }
     }
     public override bool IsBiomeActive(Player player)
