@@ -25,7 +25,7 @@ float4 FilterMyShader(float2 coords : TEXCOORD0) : COLOR0
     float4 color = tex2D(uImage0, coords);
     if (!any(color))
         return color;
-    color.rgb *= float3(0.494, 0.278, 0.419) * 0.5;//float3(0.51, 0.51, 0.51);
+    color.rgb *= float3(0.51, 0.51, 0.51);
     //float3(0.494, 0.278, 0.419);
     return color;
 }
