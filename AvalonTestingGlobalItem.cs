@@ -881,6 +881,26 @@ public class AvalonTestingGlobalItem : GlobalItem
             player.accFishingLine = true;
         }
     }
+
+    /*
+    public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
+    {
+        if (ItemID.Sets.BossBag[item.type])
+        {
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StaminaCrystal>(), 4));
+        }
+        if (item.type == ItemID.KingSlimeBossBag)
+        {
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandofSlime>(), 3));
+        }
+        if (item.type == ItemID.PlanteraBossBag)
+        {
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<LifeDew>(), 1, 15, 22));
+            itemLoot.Add(ItemDropRule.Common(ItemID.ChlorophyteOre, 1, 60, 121));
+        }
+    }
+    */
+
     public override void OpenVanillaBag(string context, Player player, int arg)
     {
         IEntitySource openItemSource = player.GetSource_OpenItem(arg);

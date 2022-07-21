@@ -1,6 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -10,7 +12,8 @@ public class KingStingBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (King Sting)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        ItemID.Sets.BossBag[Type] = true;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()
@@ -27,6 +30,14 @@ public class KingStingBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ItemID.BeeWax, 1, 16, 27));
+        itemLoot.Add(ItemDropRule.Common(ItemID.BottledHoney, 1, 5, 16));
+        itemLoot.Add(ItemDropRule.Common(ItemID.JestersArrow, 4, 20, 31));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Vanity.KingStingMask>(), 7));
+    }*/
 
     public override void OpenBossBag(Player player)
     {

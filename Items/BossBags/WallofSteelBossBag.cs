@@ -7,6 +7,8 @@ using AvalonTesting.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -18,7 +20,8 @@ public class WallofSteelBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Wall of Steel)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        ItemID.Sets.BossBag[Type] = true;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()
@@ -35,6 +38,16 @@ public class WallofSteelBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.ByCondition(new DropConditions.NotUsedMechHeart(), ModContent.ItemType<MechanicalHeart>()));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofBlight>(), 1, 40, 56));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<HellsteelPlate>(), 1, 20, 31));
+
+        itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<FleshBoiler>(),
+            ModContent.ItemType<MagicCleaver>(), ModContent.ItemType<BubbleBoost>() }));
+    }*/
 
     public override void OpenBossBag(Player player)
     {

@@ -4,6 +4,8 @@ using AvalonTesting.Items.Weapons.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -13,7 +15,8 @@ public class PhantasmBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Phantasm)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        ItemID.Sets.BossBag[Type] = true;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()
@@ -30,6 +33,15 @@ public class PhantasmBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessories.AstrallineArtifact>(), 1));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GhostintheMachine>(), 1, 4, 6));
+
+        itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<VampireTeeth>(),
+            ModContent.ItemType<PhantomKnives>(), ModContent.ItemType<EtherealHeart>() }));
+    }*/
 
     public override void OpenBossBag(Player player)
     {

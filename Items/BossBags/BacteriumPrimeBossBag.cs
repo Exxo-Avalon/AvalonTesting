@@ -5,6 +5,8 @@ using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -14,7 +16,8 @@ public class BacteriumPrimeBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Bacterium Prime)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
+        ItemID.Sets.BossBag[Type] = true;
     }
 
     public override void SetDefaults()
@@ -31,6 +34,13 @@ public class BacteriumPrimeBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacciliteOre>(), 1, 30, 43));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Booger>(), 1, 10, 21));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BadgeOfBacteria>(), 1));
+    }*/
 
     public override void OpenBossBag(Player player)
     {

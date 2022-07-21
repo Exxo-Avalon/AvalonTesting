@@ -262,11 +262,12 @@ public class AvalonTestingWorld : ModSystem
     {
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion)
         {
-            backgroundColor = new Color(95, 140, 108);
+            //backgroundColor = new Color(95, 140, 108);
+            //Main.ColorOfTheSkies = new Color(97, 122, 87);
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
-            backgroundColor = new Color(74, 53, 90) * 3;
+            backgroundColor = new Color(0, 0, 0);
         }
     }
     public override void SaveWorldData(TagCompound tag)

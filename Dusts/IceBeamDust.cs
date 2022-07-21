@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AvalonTesting.Dusts;
 
@@ -13,7 +14,7 @@ public class IceBeamDust : ModDust
         {
             if (n.getRect().Intersects(new Rectangle((int)dust.position.X, (int)dust.position.Y, 8, 8)))
             {
-                n.AddBuff(ModContent.BuffType<IcySlowdown>(), 60 * 10);
+                if (n.type != NPCID.TargetDummy) n.AddBuff(ModContent.BuffType<IcySlowdown>(), 60 * 10);
             }
         }
 

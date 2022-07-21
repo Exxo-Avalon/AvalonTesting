@@ -4,6 +4,8 @@ using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -13,7 +15,8 @@ public class OblivionBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Oblivion)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        ItemID.Sets.BossBag[Type] = true;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()
@@ -30,6 +33,19 @@ public class OblivionBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CurseofOblivion>(), 1));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AccelerationDrill>(), 1));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofTorture>(), 1, 60, 121));
+
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<OblivionOre>(), 1, 100, 201));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Accessories.LuckyPapyrus>(), 20));
+
+        LeadingConditionRule r = new LeadingConditionRule((IItemDropRuleCondition)ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<Items.Material.VictoryPiece>(), 5, 1, 1, 4));
+        r.OnFailedRoll(ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<Items.Material.VictoryPiece>(), 1, 2), true);
+    }*/
 
     public override void OpenBossBag(Player player)
     {

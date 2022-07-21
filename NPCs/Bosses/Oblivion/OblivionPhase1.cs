@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using AvalonTesting.NPCs.Utils;
@@ -9,6 +9,8 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.NPCs.Bosses.Oblivion;
 
@@ -42,7 +44,11 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
     }
 
     private const int AISlotFrameOffset = 0;
-
+    /*public override void ModifyNPCLoot(NPCLoot npcLoot)
+    {
+        LeadingConditionRule r = new LeadingConditionRule((IItemDropRuleCondition)ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<Items.Material.VictoryPiece>(), 5, 1, 1, 4));
+        r.OnFailedRoll(ItemDropRule.ByCondition(new Conditions.NotFromStatue(), ModContent.ItemType<Items.Material.VictoryPiece>(), 1, 2), true);
+    }*/
     public int AIFrameOffset
     {
         get => (int)NPC.ai[AISlotFrameOffset];

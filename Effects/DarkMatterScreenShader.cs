@@ -14,7 +14,7 @@ public class DarkMatterScreenShader : ScreenShaderData
 
     public override void Apply()
     {
-        var vec = new Color(126, 71, 107).ToVector3(); // 126 71 107
+        var vec = new Color(126, 100, 100).ToVector3(); // 126 71 107
         vec *= 0.4f;
         UseOpacity(Math.Max(vec.X, Math.Max(vec.Y, vec.Z)));
         base.Apply();

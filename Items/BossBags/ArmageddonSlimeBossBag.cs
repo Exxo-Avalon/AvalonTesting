@@ -4,6 +4,8 @@ using AvalonTesting.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -13,7 +15,8 @@ public class ArmageddonSlimeBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Armageddon Slime)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        ItemID.Sets.BossBag[Type] = true;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()
@@ -30,6 +33,11 @@ public class ArmageddonSlimeBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarkMatterSoilBlock>(), 1, 100, 211));
+    }*/
 
     public override void OpenBossBag(Player player)
     {

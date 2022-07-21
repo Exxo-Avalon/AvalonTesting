@@ -2,6 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 
 namespace AvalonTesting.Items.BossBags;
 
@@ -11,7 +13,8 @@ public class DragonLordBossBag : ModItem
     {
         DisplayName.SetDefault("Treasure Bag (Dragon Lord)");
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
+        ItemID.Sets.BossBag[Type] = true;
     }
 
     public override void SetDefaults()
@@ -28,6 +31,16 @@ public class DragonLordBossBag : ModItem
     {
         return true;
     }
+
+    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    {
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonScale>(), 1, 10, 21));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonsBondage>(), 1));
+
+        itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Accessories.DragonStone>(),
+            ModContent.ItemType<Weapons.Melee.Infernasword>(), ModContent.ItemType<Weapons.Ranged.QuadroCannon>(),
+            ModContent.ItemType<Weapons.Magic.MagmafrostBolt>(), ModContent.ItemType<Weapons.Summon.ReflectorStaff>() }));
+    }*/
 
     public override void OpenBossBag(Player player)
     {
