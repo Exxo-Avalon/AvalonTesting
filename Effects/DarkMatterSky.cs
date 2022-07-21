@@ -43,9 +43,9 @@ public class DarkMatterSky : CustomSky
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
         spriteBatch.Draw(AvalonTesting.DarkMatterSky, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Main.ColorOfTheSkies * opacity);
         if (Main.netMode == NetmodeID.Server) return;
-        if (++surfaceFrameCounter > 3)
+        if (++surfaceFrameCounter > 2)
         {
-            surfaceFrame = (surfaceFrame + 1) % 25;
+            surfaceFrame = (surfaceFrame + 1) % 50;
             surfaceFrameCounter = 0;
         }
         int xCenter = Main.ScreenSize.X / 2; //Main.screenWidth / 2;
@@ -64,7 +64,7 @@ public class DarkMatterSky : CustomSky
         spriteBatch.End();
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
         spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole.Value, new Vector2(xPos2, yPos2), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f, SpriteEffects.None, 1f);
-        spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Value, new Vector2(xPos2, yPos2), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Width() >> 1, AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Height() >> 1), 6f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Value, new Vector2(xPos2, yPos2), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Width() >> 1, AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Height() >> 1), 3f, SpriteEffects.None, 1f);
     }
     public override void Update(GameTime gameTime)
     {

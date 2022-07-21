@@ -33,7 +33,7 @@ public class AvalonTesting : Mod
     /// </summary>
     public static Texture2D DarkMatterSky;
 
-    public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[25];
+    public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[50];
     public static Asset<Texture2D> DarkMatterBlackHole;
     public static Asset<Texture2D> DarkMatterBlackHole2;
     public static Effect DarkMatterShader;
