@@ -1,9 +1,6 @@
-Mods:
-{
-    AvalonTesting:
-    {
-	    ItemName:
-        {
+Mods:{
+    AvalonTesting:{
+	ItemName:{
 		LightninginaBottle: 瓶中闪电
 		CloakofAssists: 协助斗篷
 		ShadowCharm: 暗影护符
@@ -17,6 +14,12 @@ Mods:
 		CaesiumGreaves: 铯护胫
 		CaesiumPlateMail: 铯板甲
 		CaesiumHeadpiece: 铯头盔
+                AegisofAges: 时代神盾
+                AIController: AI控制器
+                AlchemicalSkull: 炼金颅骨
+                AmethystAmulet: 紫晶护身符
+                AmuletofPower: 力量护身符
+                AngerTalisman: 暴怒护身符
         }
     }
 }
