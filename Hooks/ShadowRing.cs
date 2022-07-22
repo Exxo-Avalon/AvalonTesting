@@ -18,7 +18,7 @@ public class ShadowRing : ModHook
         List<DrawData> drawData, List<int> dust, List<int> gore, Vector2 drawPosition, float shadowOpacity, float rotation, Vector2 rotationOrigin)
     {
         float s = shadowOpacity;
-        if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowRing || player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor)
+        if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowRing)// || player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor)
         {
             s += 10f;
         }

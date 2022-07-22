@@ -171,11 +171,11 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
     {
-        if (ShadowRing || BlahArmor)
-        {
-            drawInfo.stealth += 0.97f;
-            drawInfo.shadow += 10;
-        }
+        //if (ShadowRing || BlahArmor)
+        //{
+        //    drawInfo.stealth -= 0.97f;
+        //    drawInfo.shadow -= 10;
+        //}
     }
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
@@ -406,7 +406,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
             }
             #endregion right
 
-            StayInBounds(ref Player.position);
+            StayInBounds(Player.position);
         }
         #endregion bubble boost
 
@@ -488,7 +488,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     /// Keep the player in the bounds of the world.
     /// </summary>
     /// <param name="pos"></param>
-    public static void StayInBounds(ref Vector2 pos)
+    public static void StayInBounds(Vector2 pos)
     {
         if (pos.X > Main.maxTilesX - 100)
         {

@@ -52,7 +52,7 @@ public class DarkMatterSky : CustomSky
         if (Main.netMode == NetmodeID.Server) return;
 
         // Surface frame counter
-        if (++surfaceFrameCounter > 2)
+        if (++surfaceFrameCounter > 3)
         {
             surfaceFrame = (surfaceFrame + 1) % 50;
             surfaceFrameCounter = 0;

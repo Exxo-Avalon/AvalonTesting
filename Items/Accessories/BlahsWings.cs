@@ -17,9 +17,9 @@ internal class BlahsWings : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Blah's Wings");
-        Tooltip.SetDefault(
-            "Allows flight and slow fall and the wearer can run incredibly fast\nThe wearer has a chance to dodge attacks and negates fall damage\nOther various effects");
-        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        Tooltip.SetDefault("Allows flight and slow fall and the wearer can run incredibly fast\n" +
+            "The wearer has a chance to dodge attacks and negates fall damage\nOther various effects");
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
@@ -49,7 +49,6 @@ internal class BlahsWings : ModItem
         player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings = true;
         player.GetModPlayer<ExxoBuffPlayer>().NoSticky = true;
         player.pStone = true;
-        player.GetModPlayer<ExxoEquipEffectPlayer>().BubbleBoost = true;
         player.GetModPlayer<ExxoEquipEffectPlayer>().TrapImmune =
             player.GetModPlayer<ExxoEquipEffectPlayer>().HeartGolem =
                 player.GetModPlayer<ExxoEquipEffectPlayer>().EthHeart =
