@@ -290,9 +290,14 @@ public class AvalonTestingWorld : ModSystem
         };
         writer.Write(flags);
     }
+    public override void NetReceive(BinaryReader reader)
+    {
+        BitsByte flags = reader.ReadByte();
+        SuperHardmode = flags[0];
+    }
     public static void AttemptCaesiumOreShattering(int i, int j, Tile tileCache, bool fail)
     {
-        if (tileCache.TileType != ModContent.TileType<CaesiumOre>() || Main.netMode == NetmodeID.MultiplayerClient || caesiumBreak)
+        if (tileCache.TileType != ModContent.TileType<CaesiumOre>() || Main.netMode == NetmodeID.MultiplayerClient || caesiumBreak || j < Main.maxTilesY - 200)
         {
             return;
         }
@@ -322,12 +327,6 @@ public class AvalonTestingWorld : ModSystem
         }
         caesiumBreak = false;
     }
-    public override void NetReceive(BinaryReader reader)
-    {
-        BitsByte flags = reader.ReadByte();
-        SuperHardmode = flags[0];
-    }
-
     public static void GenerateSkyFortress()
     {
         Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
