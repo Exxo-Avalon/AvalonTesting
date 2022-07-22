@@ -1338,10 +1338,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<HydrolythBar>(), 10)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
-        Recipe.Create(ModContent.ItemType<CaesiumBar>())
-            .AddIngredient(ModContent.ItemType<CaesiumOre>(), 5)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
         Recipe.Create(ModContent.ItemType<ElementalRod>())
             .AddIngredient(ModContent.ItemType<CaesiumBar>(), 30)
             .AddIngredient(ModContent.ItemType<ElementShard>(), 20)

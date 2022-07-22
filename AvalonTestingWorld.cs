@@ -31,6 +31,7 @@ public class AvalonTestingWorld : ModSystem
     public static int WallOfSteelF { get; set; }
     public static int WallOfSteelT { get; set; }
     public bool SuperHardmode { get; private set; }
+    private static bool caesiumBreak;
 
     
 
@@ -289,7 +290,38 @@ public class AvalonTestingWorld : ModSystem
         };
         writer.Write(flags);
     }
-
+    public static void AttemptCaesiumOreShattering(int i, int j, Tile tileCache, bool fail)
+    {
+        if (tileCache.TileType != ModContent.TileType<CaesiumOre>() || Main.netMode == NetmodeID.MultiplayerClient || caesiumBreak)
+        {
+            return;
+        }
+        caesiumBreak = true;
+        for (int k = i - 1; k <= i + 1; k++)
+        {
+            for (int l = j - 1; l <= j + 1; l++)
+            {
+                int maxValue = 15;
+                if (!WorldGen.SolidTile(k, l + 1))
+                {
+                    maxValue = 3;
+                }
+                else if (k == i && l == j - 1 && !fail)
+                {
+                    maxValue = 3;
+                }
+                if ((k != i || l != j) && Main.tile[k, l].HasTile && Main.tile[k, l].TileType == ModContent.TileType<CaesiumOre>() && WorldGen.genRand.NextBool(maxValue))
+                {
+                    WorldGen.KillTile(k, l, fail: false, effectOnly: false, noItem: true);
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, k, l);
+                    }
+                }
+            }
+        }
+        caesiumBreak = false;
+    }
     public override void NetReceive(BinaryReader reader)
     {
         BitsByte flags = reader.ReadByte();

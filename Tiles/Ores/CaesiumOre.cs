@@ -53,12 +53,12 @@ public class CaesiumOre : ModTile
             }
         }
     }
-
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
+        AvalonTestingWorld.AttemptCaesiumOreShattering(i, j, Main.tile[i, j], fail);
         if (j > Main.maxTilesY - 190 && i > Main.maxTilesX - (Main.maxTilesX / 5))
         {
-            if (Main.rand.Next(27) == 0)
+            if (Main.rand.NextBool(27))
             {
                 int proj = Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
                     new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
