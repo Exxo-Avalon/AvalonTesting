@@ -70,12 +70,12 @@ public class ShadowRingLayer : PlayerDrawLayer
         {
             /*drawInfo.stealth = 1f;
             Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_21_Head(ref drawInfo);*/
-            /*var value = new DrawData(TextureAssets.ArmorHead[p.head].Value,
+            var value = new DrawData(TextureAssets.ArmorHead[p.head].Value,
                 new Vector2(
                     (int)(drawInfo.Position.X - Main.screenPosition.X - (p.bodyFrame.Width / 2) + (p.width / 2)),
                     (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) +
                 p.headPosition + vector3, p.bodyFrame, white, p.headRotation, vector3, 1f, spriteEffects, 0);
-            drawInfo.DrawDataCache.Add(value);*/
+            drawInfo.DrawDataCache.Add(value);
         }
 
         if (p.body > 0)

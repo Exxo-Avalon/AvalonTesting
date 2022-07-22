@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Players;
+using AvalonTesting.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -30,6 +30,12 @@ internal class BestialBand : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
+        if (hideVisual)
+        {
+            player.hideMerman = true;
+            player.hideWolf = true;
+            player.GetModPlayer<ExxoEquipEffectPlayer>().HideVarefolk = true;
+        }
         player.GetModPlayer<ExxoBuffPlayer>().AccLavaMerman = true;
         player.fireWalk = true;
         player.ignoreWater = true;

@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Players;
+using AvalonTesting.Players;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -12,7 +12,7 @@ public class HadesCross : ModItem
     {
         DisplayName.SetDefault("Hades' Cross");
         Tooltip.SetDefault("Turns the holder into varefolk upon entering lava");
-        CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
@@ -29,6 +29,10 @@ public class HadesCross : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<ExxoBuffPlayer>().AccLavaMerman = true;
+        if (hideVisual)
+        {
+            player.GetModPlayer<ExxoEquipEffectPlayer>().HideVarefolk = true;
+        }
         player.lavaImmune = true;
         player.fireWalk = true;
         player.ignoreWater = true;

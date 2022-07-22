@@ -26,8 +26,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool Electrified;
     public bool BadgeOfBacteria;
     public bool BloodyWhetstone;
-    public int DeleriumCount;
-    
+    public int DeleriumCount;    
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
     public int InfectDamage;
@@ -131,7 +130,7 @@ public class ExxoBuffPlayer : ModPlayer
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
 
-        if (AccLavaMerman && Collision.LavaCollision(Player.position, Player.width, Player.height))
+        if (AccLavaMerman && !Player.GetModPlayer<ExxoEquipEffectPlayer>().HideVarefolk && Collision.LavaCollision(Player.position, Player.width, Player.height))
         {
             lavaMerman = true;
             Player.merman = true;

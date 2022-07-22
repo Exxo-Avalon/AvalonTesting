@@ -46,6 +46,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool HeartGolem;
     public bool EthHeart;
     public bool ShadowRing;
+    public bool HideVarefolk;
     #endregion accessories
 
     #region extras
@@ -96,6 +97,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         VampireTeeth = false;
         BubbleBoost = false;
         ShadowRing = false;
+        HideVarefolk = false;
 
 
 
