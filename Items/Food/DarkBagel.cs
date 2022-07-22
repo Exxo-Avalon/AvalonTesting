@@ -24,7 +24,7 @@ namespace AvalonTesting.Items.Food
 		public override void SetDefaults()
 		{
 			// DefaultToFood sets all of the food related item defaults such as the buff type, buff duration, use sound, and animation time.
-			Item.DefaultToFood(22, 18, BuffID.WellFed3, 57600); // 57600 is 16 minutes: 16 * 60 * 60
+			Item.DefaultToFood(22, 18, BuffID.WellFed2, 60 * 60 * 10); // 57600 is 16 minutes: 16 * 60 * 60
 			Item.value = Item.buyPrice(0, 2);
 			Item.rare = ItemRarityID.Blue;
 		}

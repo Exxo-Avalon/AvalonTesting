@@ -14,9 +14,6 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
     public bool Tome { get; set; }
     public bool UpdateInvisibleVanity { get; set; }
     public bool WasWiring { get; set; }
-    public bool ActuationRod { get; set; }
-    public bool UnloadedDebuffItem { get; set; }
-    public bool BrokenWeaponDebuffItem { get; set; }
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {
@@ -24,9 +21,6 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
         clone.HealStamina = HealStamina;
         clone.WasWiring = WasWiring;
         clone.Tome = Tome;
-        clone.ActuationRod = ActuationRod;
-        clone.UnloadedDebuffItem = UnloadedDebuffItem;
-        clone.BrokenWeaponDebuffItem = BrokenWeaponDebuffItem;
         return clone;
     }
 

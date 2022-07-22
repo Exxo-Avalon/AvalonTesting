@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,6 +15,8 @@ public class Impgrass : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileBlendAll[Type] = true;
         Main.tileMergeDirt[Type] = true;
+        TileID.Sets.NeedsGrassFraming[Type] = true;
+        TileID.Sets.NeedsGrassFramingDirt[Type] = TileID.Ash;
         ItemDrop = ItemID.AshBlock;
         DustType = DustID.Silt;
     }

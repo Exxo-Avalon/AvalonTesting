@@ -34,8 +34,6 @@ Stay updated and join the discord community: <https://discord.gg/rtm99Uq>
 * Fit Avalon progression within the 1.4.x progression
 * Fix more bugs
 * Add missing stuff
-* Fit expert mode items (and maybe AIs) in and disable expert mode
-* Do Primordial Ore
 * Fix Oblivion
 
 ### Extra

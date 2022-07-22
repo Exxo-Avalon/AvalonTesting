@@ -1,27 +1,26 @@
-using AvalonTesting.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Biomes;
+namespace AvalonTesting.Waters;
 
-public class ContagionWaterStyle : ModWaterStyle
+public class DarkMatterWaterStyle : ModWaterStyle
 {
     public override int ChooseWaterfallStyle()
     {
-        return Mod.Find<ModWaterfallStyle>("ContagionWaterfallStyle").Slot;
+        return Mod.Find<ModWaterfallStyle>("DarkMatterWaterfallStyle").Slot;
     }
 
     public override int GetSplashDust()
     {
-        return ModContent.DustType<ContagionWaterSplash>();
+        return ModContent.DustType<Dusts.DarkMatterWaterSplash>();
     }
 
     public override int GetDropletGore()
     {
-        return Mod.Find<ModGore>("ContagionDroplet").Type;
+        return Mod.Find<ModGore>("DarkMatterDroplet").Type;
     }
 
     public override void LightColorMultiplier(ref float r, ref float g, ref float b)
@@ -33,7 +32,7 @@ public class ContagionWaterStyle : ModWaterStyle
 
     public override Color BiomeHairColor()
     {
-        return Color.LimeGreen;
+        return new Color(126, 71, 107);
     }
 
     public override byte GetRainVariant()
@@ -43,8 +42,6 @@ public class ContagionWaterStyle : ModWaterStyle
 
     public override Asset<Texture2D> GetRainTexture()
     {
-        return ModContent.Request<Texture2D>("AvalonTesting/Biomes/ContagionRain");
+        return ModContent.Request<Texture2D>("AvalonTesting/Waters/DarkMatterRain");
     }
 }
-
-

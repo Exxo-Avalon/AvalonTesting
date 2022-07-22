@@ -1,7 +1,6 @@
 using AvalonTesting.Players;
 using Terraria;
 using Terraria.ModLoader;
-using AvalonTesting.Backgrounds;
 
 namespace AvalonTesting.Biomes;
 

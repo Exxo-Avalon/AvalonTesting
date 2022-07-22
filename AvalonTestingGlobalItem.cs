@@ -28,23 +28,23 @@ public class AvalonTestingGlobalItem : GlobalItem
 {
     private static readonly int NewMaskPrice = Terraria.Item.sellPrice(0, 2);
     private static List<int> nonSolidExceptions = new List<int>
-        {
-            TileID.Cobweb,
-            TileID.LivingCursedFire,
-            TileID.LivingDemonFire,
-            TileID.LivingFire,
-            TileID.LivingFrostFire,
-            TileID.LivingIchor,
-            TileID.LivingUltrabrightFire,
-            TileID.ChimneySmoke,
-            TileID.Bubble,
-            TileID.Rope,
-            TileID.SilkRope,
-            TileID.VineRope,
-            TileID.WebRope,
-            ModContent.TileType<Tiles.LivingLightning>(),
-            ModContent.TileType<Tiles.VineRope>()
-        };
+    {
+        TileID.Cobweb,
+        TileID.LivingCursedFire,
+        TileID.LivingDemonFire,
+        TileID.LivingFire,
+        TileID.LivingFrostFire,
+        TileID.LivingIchor,
+        TileID.LivingUltrabrightFire,
+        TileID.ChimneySmoke,
+        TileID.Bubble,
+        TileID.Rope,
+        TileID.SilkRope,
+        TileID.VineRope,
+        TileID.WebRope,
+        ModContent.TileType<LivingLightning>(),
+        ModContent.TileType<VineRope>()
+    };
     public override void SetDefaults(Terraria.Item item)
     {
         if (item.IsArmor())

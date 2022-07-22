@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.GameContent;
 using Terraria.ModLoader;
+using Terraria;
+using Microsoft.Xna.Framework;
 
 namespace AvalonTesting.Tiles;
 
@@ -21,7 +23,16 @@ public class DarkMatterPalmTree : ModPalmTree
         AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.ApocalyptusWood>();
-
+    public override int TreeLeaf() => ModContent.Find<ModGore>("AvalonTesting/DarkMatterTreeLeaf").Type;
+    public override bool Shake(int x, int y, ref bool createLeaves)
+    {
+        if (Main.rand.NextBool(10))
+        {
+            Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), new Vector2(x, y) * 16, ModContent.ItemType<Items.Food.Blackberry>());
+            return false;
+        }
+        return true;
+    }
     public override int CreateDust() => ModContent.DustType<DarkMatterWoodDust>();
 
     public override int SaplingGrowthType(ref int style)
