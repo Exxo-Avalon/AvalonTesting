@@ -56,15 +56,15 @@ internal class AncientHeadpiece : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        ExxoPlayer modPlayer = player.Avalon();
+        ExxoEquipEffectPlayer modPlayer = player.GetModPlayer<ExxoEquipEffectPlayer>();
         player.setBonus = "Ancient costs 50% less mana"
                           + "\nEnemies killed with a ranged weapon violently explode"
                           + "\nHas a chance to summon a sand vortex that pulls enemies in on true melee hits"
                           + "\nRight-click and hold while holding a summon weapon to direct your minions";
-        modPlayer.ancientLessCost = true;
-        modPlayer.ancientGunslinger = true;
-        modPlayer.ancientMinionGuide = true;
-        modPlayer.ancientSandVortex = true;
+        modPlayer.AncientLessCost = true;
+        modPlayer.AncientGunslinger = true;
+        modPlayer.AncientMinionGuide = true;
+        modPlayer.AncientSandVortex = true;
     }
 
     public override void UpdateEquip(Player player)

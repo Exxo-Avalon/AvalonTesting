@@ -65,7 +65,7 @@ internal class EarthsplitterHelm : ModItem
     public override void UpdateArmorSet(Player player)
     {
         ExxoPlayer modPlayer = player.Avalon();
-        player.setBonus = "Ore blocks have a 50% chance to drop 2 ore";
+        player.setBonus = "Ore blocks have a 50% chance to drop double ore";
 
         modPlayer.oreDupe = true;
     }

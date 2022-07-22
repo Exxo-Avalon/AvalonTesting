@@ -1,9 +1,10 @@
-﻿using AvalonTesting.Common;
+using AvalonTesting.Common;
 using AvalonTesting.Tiles;
 using Microsoft.Xna.Framework;
 using On.Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AvalonTesting.Players;
 
 namespace AvalonTesting.Hooks;
 
@@ -77,14 +78,14 @@ public class TrapCollision : ModHook
                             num5 = 20;
                         }
 
-                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
-                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune && type == TileID.Spikes)
+                        if (!Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().TrapImmune &&
+                            !Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().SpikeImmune && type == TileID.Spikes)
                         {
                             num5 = 40;
                         }
 
-                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
-                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune && type == TileID.WoodenSpikes)
+                        if (!Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().TrapImmune &&
+                            !Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().SpikeImmune && type == TileID.WoodenSpikes)
                         {
                             num5 = 60;
                         }
@@ -94,8 +95,8 @@ public class TrapCollision : ModHook
                         //    num5 = 35;
                         //    Main.player[Main.myPlayer].AddBuff(BuffID.Poisoned, 180, true);
                         // }
-                        if (!Terraria.Main.LocalPlayer.Avalon().trapImmune &&
-                            !Terraria.Main.LocalPlayer.Avalon().spikeImmune &&
+                        if (!Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().TrapImmune &&
+                            !Terraria.Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().SpikeImmune &&
                             type == ModContent.TileType<VenomSpike>())
                         {
                             num5 = 90;

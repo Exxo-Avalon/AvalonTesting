@@ -39,28 +39,7 @@ public class ExxoPlayer : ModPlayer
     public static Asset<Texture2D>[] spectrumArmorTextures;
     protected override bool CloneNewInstances => false;
 
-    public static void stayInBounds(Vector2 pos)
-    {
-        if (pos.X > Main.maxTilesX - 100)
-        {
-            pos.X = Main.maxTilesX - 100;
-        }
-
-        if (pos.X < 100f)
-        {
-            pos.X = 100f;
-        }
-
-        if (pos.Y > Main.maxTilesY)
-        {
-            pos.Y = Main.maxTilesY;
-        }
-
-        if (pos.Y < 100f)
-        {
-            pos.Y = 100f;
-        }
-    }
+    
 
     public static int NumHookProj() => Main.projectile.Count(p =>
         Main.projHook[p.type] && p.active && p.ai[0] == 2f && p.owner == Main.myPlayer);
@@ -81,30 +60,19 @@ public class ExxoPlayer : ModPlayer
         
         oreDupe = false;
         skyBlessing = false;
-        inertiaBoots = false;
-        luckTome = false;
-        blahWings = false;
-        spikeImmune = false;
         snotOrb = false;
         shockWave = false;
         quackJump = false;
-        bOfBacteria = false;
         stingerPack = false;
         crystalEdge = false;
         tpStam = true;
         riftGoggles = false;
-        trapImmune = false;
         undeadTalisman = false;
-        vampireTeeth = false;
-        cOmega = false;
-        pOmega = false;
-        slimeBand = false;
         noSticky = false;
         lucky = false;
         enemySpawns2 = false;
         bloodCast = false;
         magnet = false;
-        bubbleBoost = false;
         darkInferno = false;
         melting = false;
         dragonsBondage = false;
@@ -114,13 +82,8 @@ public class ExxoPlayer : ModPlayer
         frozen = false;
         LightningInABottle = false;
         reckoning = false;
-        hyperMagic = false;
-        hyperMelee = false;
-        hyperRanged = false;
-        ancientLessCost = false;
-        ancientGunslinger = false;
-        ancientMinionGuide = false;
-        ancientSandVortex = false;
+        
+        
         oblivionKill = false;
         goBerserk = false;
         splitProj = false;
@@ -171,6 +134,7 @@ public class ExxoPlayer : ModPlayer
 
     public override void PostUpdateEquips()
     {
+        //Main.NewText(EquipLoader.GetEquipTexture(EquipType.Head, Player.head).Name);
         for (int i = 0; i <= 9; i++)
         {
             Item item = Player.armor[i];
@@ -297,209 +261,7 @@ public class ExxoPlayer : ModPlayer
             Player.stealth = 1f;
         }
 
-        if (inertiaBoots || blahWings)
-        {
-            if (Player.controlUp && Player.controlJump)
-            {
-                Player.wingsLogic = 0;
-                Player.velocity.Y = Player.velocity.Y - (0.7f * Player.gravDir);
-                if (Player.gravDir == 1f)
-                {
-                    if (Player.velocity.Y > 0f)
-                    {
-                        Player.velocity.Y = Player.velocity.Y - 1f;
-                    }
-                    else if (Player.velocity.Y > -Player.jumpSpeed)
-                    {
-                        Player.velocity.Y = Player.velocity.Y - 0.5f;
-                    }
-
-                    if (Player.velocity.Y < -Player.jumpSpeed * 3f)
-                    {
-                        Player.velocity.Y = -Player.jumpSpeed * 3f;
-                    }
-                }
-                else
-                {
-                    if (Player.velocity.Y < 0f)
-                    {
-                        Player.velocity.Y = Player.velocity.Y + 1f;
-                    }
-                    else if (Player.velocity.Y < Player.jumpSpeed)
-                    {
-                        Player.velocity.Y = Player.velocity.Y + 0.5f;
-                    }
-
-                    if (Player.velocity.Y > Player.jumpSpeed * 3f)
-                    {
-                        Player.velocity.Y = Player.jumpSpeed * 3f;
-                    }
-                }
-            }
-        }
-
-        #region bubble boost
-        if (bubbleBoost && activateBubble && !Player.IsOnGround() && !Player.releaseJump &&
-            !NPC.AnyNPCs(ModContent.NPCType<ArmageddonSlime>()))
-        {
-            #region bubble timer and spawn bubble gores/sound
-            bubbleCD++;
-            if (bubbleCD == 20)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    int g1 = Gore.NewGore(Player.GetSource_FromThis(),
-                        Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
-                        Mod.Find<ModGore>("Bubble").Type);
-                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Bubbles"),
-                        Player.position);
-                }
-            }
-
-            if (bubbleCD == 30)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    int g1 = Gore.NewGore(Player.GetSource_FromThis(),
-                        Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
-                        Mod.Find<ModGore>("LargeBubble").Type);
-                }
-            }
-
-            if (bubbleCD == 40)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    int g1 = Gore.NewGore(Player.GetSource_FromThis(),
-                        Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
-                        Mod.Find<ModGore>("SmallBubble").Type);
-                }
-
-                bubbleCD = 0;
-            }
-            #endregion bubble timer and spawn bubble gores/sound
-
-            #region down
-            if (Player.controlDown && Player.controlJump)
-            {
-                Player.wingsLogic = 0;
-                Player.rocketBoots = 0;
-                if (Player.controlLeft)
-                {
-                    Player.velocity.X = -15f;
-                }
-                else if (Player.controlRight)
-                {
-                    Player.velocity.X = 15f;
-                }
-                else
-                {
-                    Player.velocity.X = 0f;
-                }
-
-                Player.velocity.Y = 15f;
-                bubbleBoostActive = true;
-            }
-            #endregion down
-            #region up
-            else if (Player.controlUp && Player.controlJump)
-            {
-                Player.wingsLogic = 0;
-                Player.rocketBoots = 0;
-                if (Player.controlLeft)
-                {
-                    Player.velocity.X = -15f;
-                }
-                else if (Player.controlRight)
-                {
-                    Player.velocity.X = 15f;
-                }
-                else
-                {
-                    Player.velocity.X = 0f;
-                }
-
-                Player.velocity.Y = -15f;
-                bubbleBoostActive = true;
-            }
-            #endregion up
-            #region left
-            else if (Player.controlLeft && Player.controlJump)
-            {
-                Player.velocity.X = -15f;
-                Player.wingsLogic = 0;
-                Player.rocketBoots = 0;
-                if (Player.gravDir == 1f && Player.velocity.Y > -Player.gravity)
-                {
-                    Player.velocity.Y = -(Player.gravity + 1E-06f);
-                }
-                else if (Player.gravDir == -1f && Player.velocity.Y < Player.gravity)
-                {
-                    Player.velocity.Y = Player.gravity + 1E-06f;
-                }
-
-                bubbleBoostActive = true;
-            }
-            #endregion left
-            #region right
-            else if (Player.controlRight && Player.controlJump)
-            {
-                Player.velocity.X = 15f;
-                Player.wingsLogic = 0;
-                Player.rocketBoots = 0;
-                if (Player.gravDir == 1f && Player.velocity.Y > -Player.gravity)
-                {
-                    Player.velocity.Y = -(Player.gravity + 1E-06f);
-                }
-                else if (Player.gravDir == -1f && Player.velocity.Y < Player.gravity)
-                {
-                    Player.velocity.Y = Player.gravity + 1E-06f;
-                }
-
-                bubbleBoostActive = true;
-            }
-            #endregion right
-
-            stayInBounds(Player.position);
-        }
-        #endregion bubble boost
-
-        if (chaosCharm)
-        {
-            int modCrit = 2 * (int)Math.Floor((Player.statLifeMax2 - (double)Player.statLife) /
-                Player.statLifeMax2 * 10.0);
-            Player.GetCritChance(DamageClass.Generic) += modCrit;
-        }
-
-        if (defDebuff)
-        {
-            bool flag = false;
-            for (int num22 = 0; num22 < 22; num22++)
-            {
-                if (Main.debuff[Player.buffType[num22]] && Player.buffType[num22] != BuffID.Horrified &&
-                    Player.buffType[num22] != BuffID.PotionSickness && Player.buffType[num22] != BuffID.Merfolk &&
-                    Player.buffType[num22] != BuffID.Werewolf && Player.buffType[num22] != BuffID.TheTongue &&
-                    Player.buffType[num22] != BuffID.ManaSickness && Player.buffType[num22] != BuffID.Wet &&
-                    Player.buffType[num22] != BuffID.Slimed &&
-                    Player.buffType[num22] != ModContent.BuffType<StaminaDrain>())
-                {
-                    flag = true;
-                    break;
-                }
-            }
-
-            if (flag)
-            {
-                defDebuffBonusDef =
-                    12; // defDebuffBonusDef is here to avoid the def buff sticking around 24/7 because of terraria code jank
-            }
-            else
-            {
-                defDebuffBonusDef = 0;
-            }
-        }
-
-        Player.statDefense += defDebuffBonusDef; // outside of the if statement to remove extra defense
+         
 
         if (teleportV || tpStam)
         {
@@ -550,10 +312,6 @@ public class ExxoPlayer : ModPlayer
 
     public override void UpdateEquips()
     {
-        if (Player.HasItemInArmor(ModContent.ItemType<ShadowCharm>()))
-        {
-            ModContent.GetInstance<ShadowCharm>().ArmorSetShadows(Player);
-        }
         if (tomeItem.stack > 0)
         {
             Player.VanillaUpdateEquip(tomeItem);
@@ -767,25 +525,6 @@ public class ExxoPlayer : ModPlayer
                 reckoningHit = 0;
             }
         }
-        
-
-        if (ancientSandVortex && Main.rand.NextBool(10))
-        {
-            Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
-                ModContent.ProjectileType<AncientSandnado>(), 0, 0);
-        }
-
-        if (vampireTeeth && item.DamageType == DamageClass.Melee)
-        {
-            if (target.boss)
-            {
-                Player.VampireHeal(damage / 2, target.Center);
-            }
-            else
-            {
-                Player.VampireHeal(damage, target.Center);
-            }
-        }
 
         if (crit)
         {
@@ -832,11 +571,7 @@ public class ExxoPlayer : ModPlayer
             roseMagicCooldown = 20;
         }
 
-        if (target.life <= 0 && ancientGunslinger && proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
-        {
-            Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
-                ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
-        }
+        
 
         if (crit)
         {
@@ -934,30 +669,7 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (auraThorns && !Player.immune && !npc.dontTakeDamage)
-        {
-            int x = (int)Player.position.X;
-            int y = (int)Player.position.Y;
-            foreach (NPC N2 in Main.npc)
-            {
-                if (N2.position.X >= x - 620 && N2.position.X <= x + 620 && N2.position.Y >= y - 620 &&
-                    N2.position.Y <= y + 620)
-                {
-                    if (!N2.active || N2.dontTakeDamage || N2.townNPC || N2.life < 1 || N2.boss ||
-                        N2.realLife >= 0) //|| N2.type == ModContent.NPCType<NPCs.Juggernaut>())
-                    {
-                        continue;
-                    }
-
-                    N2.StrikeNPC(damage, 5f, 1);
-                    if (Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        NetMessage.SendData(MessageID.DamageNPC, -1, -1, NetworkText.FromLiteral(""), N2.whoAmI,
-                            damage);
-                    }
-                }
-            }
-        }
+        
 
         if (doubleDamage && !Player.immune && !npc.dontTakeDamage)
         {
@@ -983,23 +695,7 @@ public class ExxoPlayer : ModPlayer
             target.DelBuff(target.FindBuffIndex(ModContent.BuffType<CurseofAvalon>()));
         }
 
-        if (hyperMelee)
-        {
-            hyperBar++;
-            if (hyperBar > 15 && hyperBar <= 25)
-            {
-                crit = true;
-                if (hyperBar == 25)
-                {
-                    hyperBar = 0;
-                }
-            }
-        }
-
-        if (confusionTal && Main.rand.Next(100) <= 12)
-        {
-            target.AddBuff(BuffID.Confused, 540);
-        }
+        
 
         if (crit)
         {
@@ -1025,44 +721,7 @@ public class ExxoPlayer : ModPlayer
             target.DelBuff(target.FindBuffIndex(ModContent.BuffType<CurseofAvalon>()));
         }
 
-        if (hyperMelee && proj.DamageType == DamageClass.Melee)
-        {
-            hyperBar++;
-            if (hyperBar > 15 && hyperBar <= 25)
-            {
-                crit = true;
-                if (hyperBar == 25)
-                {
-                    hyperBar = 0;
-                }
-            }
-        }
-
-        if (hyperRanged && proj.DamageType == DamageClass.Ranged)
-        {
-            hyperBar++;
-            if (hyperBar > 15 && hyperBar <= 25)
-            {
-                crit = true;
-                if (hyperBar == 25)
-                {
-                    hyperBar = 0;
-                }
-            }
-        }
-
-        if (hyperMagic && proj.DamageType == DamageClass.Magic)
-        {
-            hyperBar++;
-            if (hyperBar > 15 && hyperBar <= 25)
-            {
-                crit = true;
-                if (hyperBar == 25)
-                {
-                    hyperBar = 0;
-                }
-            }
-        }
+        
 
         if (minionFreeze)
         {
@@ -1352,21 +1011,7 @@ public class ExxoPlayer : ModPlayer
             screenShakeTimer--;
         }
 
-        Vector2 pposTile = Player.Center / 16;
-        for (int xpos = (int)pposTile.X - 4; xpos <= (int)pposTile.X + 4; xpos++)
-        {
-            for (int ypos = (int)pposTile.Y - 4; ypos <= (int)pposTile.Y + 4; ypos++)
-            {
-                if (Main.tile[xpos, ypos].TileType == (ushort)ModContent.TileType<TritanoriumOre>() ||
-                    Main.tile[xpos, ypos].TileType == (ushort)ModContent.TileType<PyroscoricOre>())
-                {
-                    if (!luckTome && !blahWings)
-                    {
-                        Player.AddBuff(ModContent.BuffType<Melting>(), 60);
-                    }
-                }
-            }
-        }
+        
 
         if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFlight)
         {
@@ -1380,7 +1025,7 @@ public class ExxoPlayer : ModPlayer
 
         if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneIceSoul)
         {
-            slimeBand = true; // doesn't work
+            Player.GetModPlayer<ExxoEquipEffectPlayer>().SlimeBand = true; // doesn't work
         }
 
         if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneMight)
@@ -1492,7 +1137,6 @@ public class ExxoPlayer : ModPlayer
             Player.Avalon().herb = false;
         }
 
-        slimeImmune = false;
         if (Player.tongued)
         {
             bool flag21 = false;
@@ -1683,11 +1327,6 @@ public class ExxoPlayer : ModPlayer
             drawInfo.shadow = 0f;
         }
 
-        if (blahArmor)
-        {
-            drawInfo.shadow = 0f;
-        }
-
         if (spectrumBlur)
         {
             Player.eocDash = 1;
@@ -1739,31 +1378,7 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
-    {
-        if (Player.whoAmI == Main.myPlayer && incDef)
-        {
-            int time = 300;
-            if (cOmega)
-            {
-                time = 600;
-            }
-
-            Player.AddBuff(BuffID.Ironskin, time);
-        }
-
-        if (Player.whoAmI == Main.myPlayer && regenStrike)
-        {
-            int hpHealed = 5;
-            if (pOmega)
-            {
-                hpHealed = 10;
-            }
-
-            Player.statLife += hpHealed;
-            Player.HealEffect(hpHealed);
-        }
-    }
+    
 
     public override void PostUpdateMiscEffects()
     {
@@ -2121,11 +1736,11 @@ public class ExxoPlayer : ModPlayer
             Main.NewText(!activateSlide ? "Wall Sliding Off" : "Wall Sliding On");
         }
 
-        if (KeybindSystem.BubbleBoostHotkey.JustPressed)
-        {
-            activateBubble = !activateBubble;
-            Main.NewText(!activateBubble ? "Bubble Boost Off" : "Bubble Boost On");
-        }
+        //if (KeybindSystem.BubbleBoostHotkey.JustPressed)
+        //{
+        //    activateBubble = !activateBubble;
+        //    Main.NewText(!activateBubble ? "Bubble Boost Off" : "Bubble Boost On");
+        //}
         #endregion
         if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() &&
             KeybindSystem.ModeChangeHotkey.JustPressed)
@@ -2574,17 +2189,17 @@ public class ExxoPlayer : ModPlayer
                         !Player.HasItemInArmor(ItemID.LightningBoots) &&
                         !Player.HasItemInArmor(ItemID.FrostsparkBoots) &&
                         !Player.HasItemInArmor(ItemID.SailfishBoots) &&
-                        !inertiaBoots && !blahWings)
+                        !Player.GetModPlayer<ExxoEquipEffectPlayer>().InertiaBoots && !Player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings)
                     {
                         Player.accRunSpeed = 6f;
                     }
                     else if (!Player.HasItemInArmor(ItemID.LightningBoots) &&
                              !Player.HasItemInArmor(ItemID.FrostsparkBoots) &&
-                             !inertiaBoots && !blahWings)
+                             !Player.GetModPlayer<ExxoEquipEffectPlayer>().InertiaBoots && !Player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings)
                     {
                         Player.accRunSpeed = 6.75f;
                     }
-                    else if (!inertiaBoots && !blahWings)
+                    else if (!Player.GetModPlayer<ExxoEquipEffectPlayer>().InertiaBoots && !Player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings)
                     {
                         Player.accRunSpeed = 10.29f;
                         if ((Player.velocity.X < 4f && Player.controlRight) ||
@@ -2979,7 +2594,7 @@ public class ExxoPlayer : ModPlayer
                 Player.sticky = false;
             }
 
-            if (slimeBand || Player.GetModPlayer<ExxoBiomePlayer>().ZoneIceSoul)
+            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().SlimeBand || Player.GetModPlayer<ExxoBiomePlayer>().ZoneIceSoul)
             {
                 Player.slippy = true;
                 Player.slippy2 = true;
@@ -3199,33 +2814,22 @@ public class ExxoPlayer : ModPlayer
 
     public static Dictionary<int, int> torches;
 
-    public bool inertiaBoots;
-    public bool blahWings;
-    public bool spikeImmune;
-    public bool luckTome;
-    public bool thornHeartAmulet = false;
+    
+    
+    
     public bool quackJump;
     public bool jumpAgainQuack;
     public bool armorStealth = false;
     public int shadowCheckPointNum = 0;
     public int shadowPlayerNum = 0;
-    public bool slimeImmune;
     public int infectTimer = 0;
     public int infectDmg = 0;
-    public bool weaponMinion = false; // remove
-    public bool earthInsig = false;
+    
     public int CrystalHealth;
     public Item tomeItem = new();
     public int pl = -1;
     public bool openLocks;
-    public bool chaosCharm;
-    public short thunderTimer;
-    public bool thunderBolt;
-    public bool incDef;
-    public bool regenStrike;
-    public bool bOfBacteria;
-    public bool duraShield = false;
-    public bool slimeBand;
+    
     public bool defDebuff;
     public int defDebuffBonusDef;
     public float rot;
@@ -3233,12 +2837,7 @@ public class ExxoPlayer : ModPlayer
     public byte qsTimer;
     public bool qsDone;
     public bool qsIsNDown;
-    public bool trapImmune;
-    public bool hyperMelee;
-    public bool hyperMagic;
-    public bool hyperRanged;
-    public int hyperBar;
-    public bool auraThorns;
+    
     public bool speed;
     public bool Nd;
     public bool oldNd;
@@ -3267,27 +2866,17 @@ public class ExxoPlayer : ModPlayer
     public int teleportToPlayer = -1;
     public bool dashIntoMob;
     public bool dashTemp;
-    public bool bubbleBoost;
-    public bool bubbleBoostActive;
-    public int teamLen;
     public bool rocketJumpRO = true;
-    public bool heartGolem;
-    public bool ethHeart;
+
     public byte staminaCD;
     public byte staminaCD2;
     public byte staminaCD3;
-    public bool blahArmor;
+    
     public bool shadowTele;
     public bool teleportV;
     public bool tpStam = true;
     public int tpCD;
-    public int bubbleCD;
-    public bool ancientLessCost;
-    public bool ancientGunslinger;
-    public bool ancientMinionGuide;
-    public bool ancientSandVortex;
-    public int ancientGunslingerTimer;
-    public int ancientGunslingerStatAdd;
+    
     public int baseUseTime;
     public int baseUseAnim;
     public bool oldLeftClick;
@@ -3306,7 +2895,6 @@ public class ExxoPlayer : ModPlayer
     public int deliriumDuration = 300;
     public int quadroCount;
     public int shadowWP;
-    public bool confusionTal;
     public bool shadowRO;
     public bool isNDown;
     public bool magnet;
@@ -3335,10 +2923,7 @@ public class ExxoPlayer : ModPlayer
     public int reckoningHit;
     public bool curseOfIcarus;
     public bool undeadTalisman;
-    public bool cOmega;
-    public bool pOmega;
     public bool noSticky;
-    public bool vampireTeeth;
     public bool riftGoggles;
     public bool malaria;
     public bool caesiumPoison;

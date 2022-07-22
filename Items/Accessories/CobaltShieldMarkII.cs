@@ -32,6 +32,6 @@ class CobaltShieldMarkII : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().incDef = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CobShield = true;
     }
 }

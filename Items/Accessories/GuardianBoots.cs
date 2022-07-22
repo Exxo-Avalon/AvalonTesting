@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,7 +31,7 @@ class GuardianBoots : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().trapImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().TrapImmune = true;
         player.noKnockback = true;
         player.noFallDmg = true;
         player.fireWalk = true;

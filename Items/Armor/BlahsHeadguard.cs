@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -30,7 +30,7 @@ class BlahsHeadguard : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        player.Avalon().blahArmor = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor = true;
         player.setBonus = "Melee Stealth, Ranged Stealth, Attackers also take double full damage, and Spectre Heal";
         player.Avalon().meleeStealth = true;
         player.shroomiteStealth = true;

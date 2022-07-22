@@ -37,8 +37,8 @@ class TroxiniumHelmet : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        player.setBonus = "Hit mobs 15 times to trigger melee crits for 10 hits";
-        player.Avalon().hyperMelee = true;
+        player.setBonus = "Hyper Damage\nHit mobs 15 times to trigger melee crits for 10 hits";
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperMelee = true;
     }
 
     public override void UpdateEquip(Player player)

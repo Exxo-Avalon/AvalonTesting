@@ -38,7 +38,7 @@ class NaquadahMask : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "Nearby enemies receive damage when you are damaged";
-        player.Avalon().auraThorns = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().AuraThorns = true;
     }
 
     public override void UpdateEquip(Player player)

@@ -35,11 +35,11 @@ class CobaltOmegaShield : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().incDef = true;
-        player.Avalon().regenStrike = true;
-        player.Avalon().duraShield = true;
-        player.Avalon().cOmega = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CobShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PallShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DuraShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CobOmegaShield = true;
         player.noKnockback = true;
-        player.Avalon().spikeImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().SpikeImmune = true;
     }
 }

@@ -23,9 +23,12 @@ class ShadowRing : ModItem
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.height = dims.Height;
     }
-
+    public override void UpdateVanity(Player player)
+    {
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowRing = true;
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().shadowRing = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowRing = true;
     }
 }

@@ -37,8 +37,8 @@ class TroxiniumHeadpiece : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        player.setBonus = "Hit mobs 15 times to trigger ranged crits for 10 hits";
-        player.Avalon().hyperRanged = true;
+        player.setBonus = "Hyper Damage\nHit mobs 15 times to trigger ranged crits for 10 hits";
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperRanged = true;
     }
 
     public override void UpdateEquip(Player player)

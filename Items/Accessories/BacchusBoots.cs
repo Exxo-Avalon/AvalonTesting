@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,7 +35,7 @@ class BacchusBoots : ModItem
         player.noKnockback = true;
         player.noFallDmg = true;
         player.fireWalk = true;
-        player.Avalon().trapImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().TrapImmune = true;
     }
 
     public override void AddRecipes()

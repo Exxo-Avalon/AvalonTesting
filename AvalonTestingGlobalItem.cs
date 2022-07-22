@@ -623,6 +623,29 @@ public class AvalonTestingGlobalItem : GlobalItem
             }
         }
         #endregion herb seed block swap
+
+        #region ancient minion guiding
+        if (player.GetModPlayer<ExxoEquipEffectPlayer>().AncientMinionGuide)
+        {
+            if (item.DamageType == DamageClass.Summon && KeybindSystem.MinionGuidingHotkey.Current)
+            {
+                foreach (Terraria.Projectile proj in Main.projectile)
+                {
+                    if (proj.owner == player.whoAmI && proj.minion)
+                    {
+                        float posX = Main.mouseX + Main.screenPosition.X - proj.Center.X;
+                        float posY = Main.mouseY + Main.screenPosition.Y - proj.Center.Y;
+                        if (player.gravDir == -1)
+                        {
+                            posY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - proj.Center.Y;
+                        }
+                        proj.velocity.X = posX;
+                        proj.velocity.Y = posY;
+                    }
+                }
+            }
+        }
+        #endregion ancient minion guiding
     }
 
     public override void ModifyTooltips(Terraria.Item item, List<TooltipLine> tooltips)

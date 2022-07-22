@@ -28,7 +28,7 @@ class HellsteelEmblem : ModItem
     {
         player.GetDamage(DamageClass.Generic) += 0.15f;
         player.Avalon().CritDamageMult += 1.6f;
-        player.Avalon().trapImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().TrapImmune = true;
     }
     public override void AddRecipes()
     {

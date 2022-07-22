@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +26,6 @@ class ConfusionTalisman : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().confusionTal = true; //unimplemented
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ConfusionTal = true;
     }
 }

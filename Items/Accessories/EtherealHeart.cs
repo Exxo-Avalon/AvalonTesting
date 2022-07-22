@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +26,6 @@ class EtherealHeart : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().ethHeart = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().EthHeart = true;
     }
 }

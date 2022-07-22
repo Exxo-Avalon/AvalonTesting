@@ -9,9 +9,9 @@ public class ShadowEffect : ModHook
 {
     protected override void Apply()
     {
-        On.Terraria.Graphics.Renderers.LegacyPlayerRenderer.DrawPlayerFull += OnplayerFull;
+        On.Terraria.Graphics.Renderers.LegacyPlayerRenderer.DrawPlayerFull += OnDrawPlayerFull;
     }
-    private static void OnplayerFull(On.Terraria.Graphics.Renderers.LegacyPlayerRenderer.orig_DrawPlayerFull orig, LegacyPlayerRenderer self, Terraria.Graphics.Camera camera, Player player)
+    private static void OnDrawPlayerFull(On.Terraria.Graphics.Renderers.LegacyPlayerRenderer.orig_DrawPlayerFull orig, LegacyPlayerRenderer self, Terraria.Graphics.Camera camera, Player player)
     {
         SpriteBatch spriteBatch = camera.SpriteBatch;
         SamplerState samplerState = camera.Sampler;
@@ -20,14 +20,14 @@ public class ShadowEffect : ModHook
             samplerState = LegacyPlayerRenderer.MountedSamplerState;
         }
         spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, samplerState, DepthStencilState.None, camera.Rasterizer, null, camera.GameViewMatrix.TransformationMatrix);
-        if (player.GetModPlayer<Players.ExxoAccEffectPlayer>().ShadowCharm)
+        if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowCharm)
         {
             for (int num12 = 0; num12 < 3; num12++)
             {
                 self.DrawPlayer(camera, player, player.shadowPos[num12], player.shadowRotation[num12], player.shadowOrigin[num12], 0.5f + 0.2f * num12);
             }
         }
-        if (player.GetModPlayer<Players.ExxoAccEffectPlayer>().PulseCharm)
+        if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PulseCharm)
         {
             _ = player.position;
             if (!Main.gamePaused)

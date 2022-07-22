@@ -35,11 +35,11 @@ class PalladiumOmegaShield : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().incDef = true;
-        player.Avalon().regenStrike = true;
-        player.Avalon().duraShield = true;
-        player.Avalon().pOmega = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CobShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PallShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DuraShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PallOmegaShield = true;
         player.noKnockback = true;
-        player.Avalon().spikeImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().SpikeImmune = true;
     }
 }

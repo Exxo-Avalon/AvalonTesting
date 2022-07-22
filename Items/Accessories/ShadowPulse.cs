@@ -25,13 +25,13 @@ class ShadowPulse : ModItem
     }
     public override void UpdateVanity(Player player)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
-        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().ShadowCharm = true;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
-        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().ShadowCharm = true;
     }
 
     public override void AddRecipes()

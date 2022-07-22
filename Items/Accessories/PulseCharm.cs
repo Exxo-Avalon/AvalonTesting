@@ -25,11 +25,11 @@ class PulseCharm : ModItem
     }
     public override void UpdateVanity(Player player)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
     }
 
     public override void AddRecipes()

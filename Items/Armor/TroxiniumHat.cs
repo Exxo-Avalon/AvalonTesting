@@ -37,8 +37,8 @@ class TroxiniumHat : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        player.setBonus = "Hit mobs 15 times to trigger magic crits for 10 hits";
-        player.Avalon().hyperMagic = true;
+        player.setBonus = "Hyper Damage\nHit mobs 15 times to trigger magic crits for 10 hits";
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperMagic = true;
     }
 
     public override void UpdateEquip(Player player)

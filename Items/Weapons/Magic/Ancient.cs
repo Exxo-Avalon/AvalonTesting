@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -61,7 +61,7 @@ class Ancient : ModItem
     {
         Item ancient = Item;
         int baseCost = 19;
-        if (player.Avalon().ancientLessCost)
+        if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().AncientLessCost)
         {
             foreach (Item item in player.inventory)
             {

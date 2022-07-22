@@ -33,9 +33,9 @@ class UnvolanditeHeadpiece : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.onHitPetal = true;
-        player.Avalon().hyperMelee = true;
-        player.Avalon().hyperMagic = true;
-        player.Avalon().hyperRanged = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperMelee = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperMagic = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HyperRanged = true;
         player.setBonus = "Petals attack your enemies and Hyper Damage";
     }
 

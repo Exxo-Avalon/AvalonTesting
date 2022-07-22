@@ -27,8 +27,8 @@ class PalladiumShield : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().regenStrike = true;
-        player.Avalon().spikeImmune = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PallShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().SpikeImmune = true;
     }
     public override void AddRecipes()
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +26,7 @@ class SouloftheGolem : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().ethHeart = true;
-        player.Avalon().heartGolem = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().EthHeart = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HeartGolem = true;
     }
 }

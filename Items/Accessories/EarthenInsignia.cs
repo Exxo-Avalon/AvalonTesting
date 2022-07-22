@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +26,6 @@ class EarthenInsignia : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().earthInsig = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().EarthInsig = true;
     }
 }

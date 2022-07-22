@@ -27,7 +27,7 @@ class DurataniumShield : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().duraShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DuraShield = true;
     }
     public override void AddRecipes()
     {

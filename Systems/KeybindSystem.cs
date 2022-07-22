@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input;
 using Terraria.ModLoader;
 
 namespace AvalonTesting.Systems;
@@ -17,6 +17,7 @@ public class KeybindSystem : ModSystem
     public static ModKeybind RocketJumpHotkey { get; private set; }
     public static ModKeybind QuickStaminaHotkey { get; private set; }
     public static ModKeybind FlightTimeRestoreHotkey { get; private set; }
+    public static ModKeybind MinionGuidingHotkey { get; private set; }
 
     public override void Load()
     {
@@ -24,6 +25,7 @@ public class KeybindSystem : ModSystem
         SprintHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Sprint", Keys.F);
         DashHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Dash", Keys.K);
         QuintupleHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Quintuple Jump", Keys.RightControl);
+        MinionGuidingHotkey = KeybindLoader.RegisterKeybind(Mod, "Minion Guide", Keys.RightControl);
         SwimHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Swimming", Keys.L);
         WallSlideHotkey = KeybindLoader.RegisterKeybind(Mod, "Stamina Wall Sliding", Keys.Z);
         BubbleBoostHotkey = KeybindLoader.RegisterKeybind(Mod, "Toggle Bubble Boost", Keys.U);
@@ -48,5 +50,6 @@ public class KeybindSystem : ModSystem
         RocketJumpHotkey = null;
         QuickStaminaHotkey = null;
         FlightTimeRestoreHotkey = null;
+        MinionGuidingHotkey = null;
     }
 }

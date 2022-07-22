@@ -473,3 +473,6 @@ dotnet_diagnostic.RCS1123.severity = none
 
 # IDE0022: Use expression body for methods
 dotnet_diagnostic.IDE0022.severity = none
+
+# CA1051: Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none

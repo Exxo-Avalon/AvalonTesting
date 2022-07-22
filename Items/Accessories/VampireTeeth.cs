@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,6 +25,6 @@ class VampireTeeth : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().vampireTeeth = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().VampireTeeth = true;
     }
 }

@@ -32,8 +32,8 @@ class ShadowPulseBag : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
-        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().ShadowCharm = true;
         if (player.controlRight)
         {
             int dust = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0, 0, 100, Color.White, 2f);
@@ -131,8 +131,8 @@ class ShadowPulseBag : ModItem
 
     public override void UpdateVanity(Player player)
     {
-        player.GetModPlayer<ExxoAccEffectPlayer>().PulseCharm = true;
-        player.GetModPlayer<ExxoAccEffectPlayer>().ShadowCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().PulseCharm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().ShadowCharm = true;
         if (player.controlRight)
         {
             int dust = Dust.NewDust(player.position, player.width - 20, player.height, DustID.Torch, 0, 0, 100, Color.White, 2f);

@@ -32,7 +32,7 @@ class VorazylcumHeadpiece : ModItem
 
     public override void UpdateArmorSet(Player player)
     {
-        player.Avalon().auraThorns = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().AuraThorns = true;
         player.onHitDodge = true;
         player.setBonus = "Thorns Aura and Shadow Dodge";
     }

@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Material;
 using AvalonTesting.Items.Placeable.Bar;
 using AvalonTesting.Players;
 using AvalonTesting.Rarities;
@@ -46,14 +46,14 @@ internal class BlahsWings : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().blahWings = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings = true;
         player.GetModPlayer<ExxoBuffPlayer>().NoSticky = true;
         player.pStone = true;
-        player.Avalon().bubbleBoost = true;
-        player.Avalon().trapImmune =
-            player.Avalon().heartGolem =
-                player.Avalon().ethHeart =
-                    player.Avalon().longInvince2 = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().BubbleBoost = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().TrapImmune =
+            player.GetModPlayer<ExxoEquipEffectPlayer>().HeartGolem =
+                player.GetModPlayer<ExxoEquipEffectPlayer>().EthHeart =
+                    player.GetModPlayer<ExxoPlayer>().longInvince2 = true;
         player.wingTime = 1000;
         if (player.immune)
         {

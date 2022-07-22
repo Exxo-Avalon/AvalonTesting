@@ -212,7 +212,7 @@ public class ExxoBuffPlayer : ModPlayer
                 Player.lifeRegen = 0;
             }
             Player.lifeRegenTime = 0;
-            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.NextBool(6))
+            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Main.rand.NextBool(6))
             {
                 Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 6 : 4;
             }
@@ -228,7 +228,7 @@ public class ExxoBuffPlayer : ModPlayer
                 Player.lifeRegen = 0;
             }
             Player.lifeRegenTime = 0;
-            if (Player.GetModPlayer<ExxoPlayer>().duraShield && Main.rand.NextBool(6))
+            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Main.rand.NextBool(6))
             {
                 Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 3 : 2;
             }
@@ -264,10 +264,10 @@ public class ExxoBuffPlayer : ModPlayer
                 Player.lifeRegen = 0;
             }
             Player.lifeRegenTime = 0;
-            int minus = Player.Avalon().duraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumShield>()) ? 4 :
-                Player.Avalon().duraShield ? 6 : 8;
-            int minus2 = Player.Avalon().duraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>())
-                ? 16 : Player.Avalon().duraShield ? 24 : 32;
+            int minus = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumShield>()) ? 4 :
+                Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 6 : 8;
+            int minus2 = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>())
+                ? 16 : Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 24 : 32;
             Player.lifeRegen -= minus;
             if (Player.velocity.X != 0)
             {

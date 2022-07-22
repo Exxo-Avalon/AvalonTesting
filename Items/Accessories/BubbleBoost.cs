@@ -26,8 +26,8 @@ public class BubbleBoost : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().bubbleBoost = true;
-        player.Avalon().activateBubble = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BubbleBoost = true;
+        //player.Avalon().activateBubble = true;
         player.noFallDmg = true;
     }
 }
