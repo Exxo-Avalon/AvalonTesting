@@ -9,6 +9,7 @@ class XanthophyteBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Xanthophyte Bullet");
+        Tooltip.SetDefault("Splits into gravity-affected bullets upon hitting a tile");
         SacrificeTotal = 300;
     }
 

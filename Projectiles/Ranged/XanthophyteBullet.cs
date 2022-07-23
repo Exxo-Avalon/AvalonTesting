@@ -46,7 +46,7 @@ public class XanthophyteBullet : ModProjectile
             {
                 float num134 = -Projectile.velocity.X * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 2f;
                 float num135 = -Projectile.velocity.Y * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 2f;
-                num134 = MathHelper.Clamp(num134, 4.5f, 6f);
+                //num134 = MathHelper.Clamp(num134, 4.5f, 10f);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X + num134, Projectile.position.Y + num135, num134, num135, ModContent.ProjectileType<XanthophyteBulletSplit>(), Projectile.damage, 0f, Projectile.owner, 0f, 0f);
             }
         }
