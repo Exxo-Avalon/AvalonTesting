@@ -125,7 +125,14 @@ public class AvalonTestingGlobalItem : GlobalItem
                 item.rare = ItemRarityID.Green;
                 item.maxStack = 40;
                 break;
-
+            case 4695:
+            case 4696:
+            case 4697:
+            case 4698:
+            case 4699:
+            case 4700:
+                item.rare = ItemRarityID.Blue;
+                break;
             // case ItemID.Goldfish:
             //    item.makeNPC = (short)ModContent.NPCType<NPCs.ImpactWizard>();
             //    break;
