@@ -5,6 +5,8 @@ using Terraria.ID;
 using Terraria.Graphics.Effects;
 using ReLogic.Content;
 using Terraria.GameContent;
+using System;
+using Terraria.GameInput;
 
 namespace AvalonTesting.Effects;
 public class DarkMatterSky : CustomSky
@@ -15,6 +17,13 @@ public class DarkMatterSky : CustomSky
     private static int surfaceFrame;
     private static int blackHoleCounter;
     private static int blackHoleFrame;
+    private double parallax;
+    private static float bgScale;
+    private int bgTopY;
+    private int bgWidthScaled;
+    private int bgStartX;
+    private int bgLoops;
+    private float scAdj;
     
     public override void Activate(Vector2 position, params object[] args)
     {
@@ -38,7 +47,7 @@ public class DarkMatterSky : CustomSky
     }
     public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
     {
-        if (!(maxDepth >= float.MaxValue) || !(minDepth < float.MaxValue))
+        if (!(maxDepth >= float.MaxValue) || !(minDepth < float.MaxValue) || !Main.BackgroundEnabled)
         {
             return;
         }
@@ -66,9 +75,9 @@ public class DarkMatterSky : CustomSky
         }
 
         // Math to allow the pulsing to work
-        float scaleMod = (float)((blackHoleFrame % 5) - 2) * 0.0003f;
-        if ((blackHoleFrame >= 5 && blackHoleFrame <= 9)) scaleMod *= -1;
-        
+        float scaleMod = ((blackHoleFrame % 5) - 2) * 0.0003f;
+        if (blackHoleFrame is >= 5 and <= 9) scaleMod *= -1;
+
         // Find the center of the screen
         int xCenter = Main.ScreenSize.X / 2;
         int yCenter = Main.ScreenSize.Y / 2;
@@ -100,8 +109,8 @@ public class DarkMatterSky : CustomSky
                 Texture2D starTex = TextureAssets.Star[star.type].Value;
                 origin = new Vector2(starTex.Width * 0.5f, starTex.Height * 0.5f);
                 int bgTop = (int)((double)(0f - Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
-                float posX = star.position.X * ((float)Main.screenWidth / 800f);
-                float posY = star.position.Y * ((float)Main.screenHeight / 600f);
+                float posX = star.position.X * (Main.screenWidth / 800f);
+                float posY = star.position.Y * (Main.screenHeight / 600f);
                 position = new Vector2(posX + origin.X, posY + origin.Y + bgTop);
                 spriteBatch.Draw(starTex, position, new Rectangle(0, 0, starTex.Width, starTex.Height), Color.White * star.twinkle * 0.952f * opacity, star.rotation, origin, star.scale * star.twinkle, SpriteEffects.None, 0f);
             }
@@ -126,6 +135,44 @@ public class DarkMatterSky : CustomSky
 
         spriteBatch.End();
         spriteBatch.Begin();
+        // DOES NOT WORK, COPIED FROM VANILLA
+        //float num = Math.Min(PlayerInput.RealScreenHeight, Main.LogicCheckScreenHeight);
+        //float num2 = Main.screenPosition.Y + Main.screenHeight / 2 - num / 2f;
+
+        //scAdj = (float)(Main.worldSurface * 16.0) / (num2 + num);
+
+        //float screenOff = Main.screenHeight - 600f;
+        //float worldSurfaceMod = (float)Main.worldSurface;
+        //if (worldSurfaceMod == 0f)
+        //{
+        //    worldSurfaceMod = 1f;
+        //}
+        //float num16 = Main.screenPosition.Y + Main.screenHeight / 2 - 600f;
+        //double num17 = (num16 - screenOff / 2f) / (worldSurfaceMod * 16f);
+        //num17 = 0f - MathHelper.Lerp((float)num17, 1f, 0f);
+        //num17 = (0f - num16 + screenOff / 2f) / (worldSurfaceMod * 16f);
+        //float num18 = 2f;
+        //int num19 = 0;
+
+
+        //parallax = 0.17;
+        //bgScale = 1.1f;
+        //bgTopY = (int)(num17 * 1400.0 + 900.0) + (int)scAdj + num19;
+
+        //bgScale *= num18;
+        //bgWidthScaled = (int)((double)(2100f * bgScale) * 1.05);
+        //bgStartX = (int)(0.0 - Math.IEEERemainder(Main.screenPosition.X * parallax, bgWidthScaled) - bgWidthScaled / 2);
+        ////
+        //bgLoops = Main.screenWidth / bgWidthScaled + 2;
+        //if (Main.screenPosition.Y < Main.worldSurface * 16.0 + 16.0)
+        //{
+        //    for (int m = 0; m < bgLoops; m++)
+        //    {
+
+        //        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(bgStartX + bgWidthScaled * (m + 1), bgTopY), new Rectangle(0, 0, AvalonTesting.DarkMatterFloatingRocks.Value.Width, AvalonTesting.DarkMatterFloatingRocks.Value.Height), new Color(255, 255, 255, 255), 0f, default, bgScale, SpriteEffects.None, 1f);
+        //    }
+        //}
+
         // Draw the floating rocks
         spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
         spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos + AvalonTesting.DarkMatterFloatingRocks.Value.Width, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);

@@ -20,7 +20,7 @@ public class ShadowRing : ModHook
         float s = shadowOpacity;
         if (player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ShadowRing)// || player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor)
         {
-            s += 10f;
+            s -= 10f;
         }
         orig(ref self, player, drawData, dust, gore, drawPosition, s, rotation, rotationOrigin);
     }

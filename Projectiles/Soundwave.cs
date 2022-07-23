@@ -31,7 +31,7 @@ public class Soundwave : ModProjectile
     public override bool PreDraw(ref Color lightColor)
     {
         Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null);
+        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
         return true;
     }
     public override void PostDraw(Color lightColor)
@@ -46,13 +46,13 @@ public class Soundwave : ModProjectile
         {
             Projectile.scale = Math.Min(7f, 185.08197f * (float)Math.Pow(0.99111479520797729, Projectile.timeLeft));
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
-            var v = Projectile.Center - new Vector2(Projectile.width * Projectile.scale / 2f, Projectile.height * Projectile.scale / 2f);
+            Vector2 v = Projectile.Center - new Vector2(Projectile.width * Projectile.scale / 2f, Projectile.height * Projectile.scale / 2f);
             var wH = new Vector2(Projectile.width * Projectile.scale, Projectile.height * Projectile.scale);
-            var value2 = ClassExtensions.NewRectVector2(v, wH);
+            Rectangle value2 = ClassExtensions.NewRectVector2(v, wH);
             var npc = Main.npc;
-            for (var num57 = 0; num57 < npc.Length; num57++)
+            for (int num57 = 0; num57 < npc.Length; num57++)
             {
-                var nPC = npc[num57];
+                NPC nPC = npc[num57];
                 if (nPC.active && !nPC.dontTakeDamage && !nPC.friendly && nPC.life >= 1 && nPC.getRect().Intersects(value2))
                 {
                     if (Projectile.ai[0] % 7 == 0) nPC.StrikeNPC(Projectile.damage, Projectile.knockBack, (nPC.Center.X < Projectile.Center.X) ? -1 : 1, false, false);
