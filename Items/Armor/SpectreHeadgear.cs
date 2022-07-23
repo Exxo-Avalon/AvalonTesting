@@ -12,7 +12,7 @@ class SpectreHeadgear : ModItem
     {
         DisplayName.SetDefault("Spectre Headgear");
         Tooltip.SetDefault("10% decreased mana usage\n10% increased magic damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

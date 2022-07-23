@@ -12,7 +12,7 @@ class NaquadahShinguards : ModItem
     {
         DisplayName.SetDefault("Naquadah Shinguards");
         Tooltip.SetDefault("6% increased movement speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

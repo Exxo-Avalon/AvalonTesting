@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ class BacteriumPrimeTrophy : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bacterium Prime Trophy");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

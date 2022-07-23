@@ -14,7 +14,7 @@ class EarthsplitterLeggings : ModItem
         Tooltip.SetDefault("Increases jump height"
                            + "\n15% increased mining speed"
                            + "\n[c/C39FDD:10th Anniversary Contest Winner - Crispy]");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -11,7 +11,7 @@ class CoreShard : ModItem
     {
         DisplayName.SetDefault("Core Shard");
         Tooltip.SetDefault("'A fragment of deep earth creatures'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

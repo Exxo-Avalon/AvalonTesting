@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -249,6 +249,9 @@ public class MonsterBanner : ModTile
             case 76:
                 item = ModContent.ItemType<Items.Banners.GuardianCorruptorBanner>();
                 break;
+            case 77:
+                item = ModContent.ItemType<Items.Banners.TropicalSlimeBanner>();
+                break;
             default:
                 return;
         }
@@ -473,6 +476,9 @@ public class MonsterBanner : ModTile
                     break;
                 case 76:
                     type = "GuardianCorruptor";
+                    break;
+                case 77:
+                    type = "TropicalSlime";
                     break;
                 default:
                     return;

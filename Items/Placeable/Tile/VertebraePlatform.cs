@@ -9,7 +9,7 @@ class VertebraePlatform : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Vertebrae Platform");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

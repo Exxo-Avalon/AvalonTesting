@@ -12,7 +12,7 @@ class TroxiniumHat : ModItem
     {
         DisplayName.SetDefault("Troxinium Hat");
         Tooltip.SetDefault("10% increased magic damage\n15% decreased mana usage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

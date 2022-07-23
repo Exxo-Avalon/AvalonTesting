@@ -9,7 +9,7 @@ class HellWall : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hell Wall");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 200;
+        SacrificeTotal = 200;
     }
 
     public override void SetDefaults()

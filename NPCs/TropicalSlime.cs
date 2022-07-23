@@ -1,0 +1,56 @@
+using AvalonTesting.Items.Banners;
+using AvalonTesting.Items.Placeable.Tile;
+using Terraria;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace AvalonTesting.NPCs;
+
+public class TropicalSlime : ModNPC
+{
+    public override void SetStaticDefaults()
+    {
+        DisplayName.SetDefault("Tropical Slime");
+        Main.npcFrameCount[NPC.type] = 2;
+    }
+
+    public override void SetDefaults()
+    {
+        NPC.damage = 43;
+        NPC.lifeMax = 670;
+        NPC.defense = 12;
+        NPC.width = 36;
+        NPC.aiStyle = 1;
+        NPC.value = 1000f;
+        NPC.knockBackResist = 0.4f;
+        AnimationType = NPCID.BlueSlime;
+        NPC.height = 24;
+        NPC.HitSound = SoundID.NPCHit1;
+        NPC.DeathSound = SoundID.NPCDeath1;
+        Banner = NPC.type;
+        BannerItem = ModContent.ItemType<TropicalSlimeBanner>();
+    }
+
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Underground,
+            new FlavorTextBestiaryInfoElement("Slimy tropics."),
+        });
+
+    public override void ModifyNPCLoot(NPCLoot loot) =>
+        loot.Add(ItemDropRule.Common(ItemID.Gel, 1, 1, 3));
+
+    public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+    {
+        NPC.lifeMax = (int)(NPC.lifeMax * 0.65f);
+        NPC.damage = (int)(NPC.damage * 0.45f);
+    }
+
+    public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
+        spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.ZoneDungeon
+            ? 0.05f * AvalonTestingGlobalNPC.EndoSpawnRate
+            : 0f;
+}

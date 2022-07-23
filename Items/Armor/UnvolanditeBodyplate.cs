@@ -12,7 +12,7 @@ class UnvolanditeBodyplate : ModItem
     {
         DisplayName.SetDefault("Unvolandite Bodyplate");
         Tooltip.SetDefault("Enemies are a lot more likely to target you\nMinion knockback is increased by 10%");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

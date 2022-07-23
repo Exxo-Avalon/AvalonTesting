@@ -13,7 +13,7 @@ class SprintScroll : ModItem
     {
         DisplayName.SetDefault("Sprint Scroll");
         Tooltip.SetDefault("Unlocks stamina sprinting");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

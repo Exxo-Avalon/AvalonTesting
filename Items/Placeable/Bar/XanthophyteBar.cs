@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -33,6 +33,6 @@ public class XanthophyteBar : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>(), 6).AddTile(TileID.AdamantiteForge).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Tile.XanthophyteOre>(), 5).AddTile(TileID.AdamantiteForge).Register();
     }
 }

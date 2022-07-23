@@ -12,7 +12,7 @@ class RhodiumPlateMail : ModItem
     {
         DisplayName.SetDefault("Rhodium Plate Mail");
         Tooltip.SetDefault("14% increased melee damage and speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

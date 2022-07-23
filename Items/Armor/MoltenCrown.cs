@@ -12,7 +12,7 @@ class MoltenCrown : ModItem
     {
         DisplayName.SetDefault("Molten Cap");
         Tooltip.SetDefault("Magic helmet");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

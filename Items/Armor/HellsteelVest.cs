@@ -12,7 +12,7 @@ class HellsteelVest : ModItem
     {
         DisplayName.SetDefault("Hellsteel Vest");
         Tooltip.SetDefault("25% increased minion knockback\nIncreases your max number of minions by 1");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

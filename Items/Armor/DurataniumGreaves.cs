@@ -12,7 +12,7 @@ class DurataniumGreaves : ModItem
     {
         DisplayName.SetDefault("Duratanium Greaves");
         Tooltip.SetDefault("5% increased movement speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

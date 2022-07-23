@@ -12,7 +12,7 @@ class EyeofOblivion : ModItem
     {
         DisplayName.SetDefault("Eye of Oblivion");
         Tooltip.SetDefault("Summons Oblivion\nUse with care");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 6;
+        SacrificeTotal = 6;
     }
 
     public override void SetDefaults()

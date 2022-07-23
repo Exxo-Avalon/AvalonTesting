@@ -13,7 +13,7 @@ class XeradonVisor : ModItem
     {
         DisplayName.SetDefault("Xeradon Visor");
         Tooltip.SetDefault("15% increased mining speed\n15% increased block placement speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

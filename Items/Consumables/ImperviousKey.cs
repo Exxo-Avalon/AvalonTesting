@@ -10,7 +10,7 @@ public class ImperviousKey : ModItem
     {
         DisplayName.SetDefault("Impervious Key");
         Tooltip.SetDefault("Opens the Hellcastle doors");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 4;
+        SacrificeTotal = 4;
     }
 
     public override void SetDefaults()

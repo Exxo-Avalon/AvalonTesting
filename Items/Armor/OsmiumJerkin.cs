@@ -12,7 +12,7 @@ class OsmiumJerkin : ModItem
     {
         DisplayName.SetDefault("Osmium Jerkin");
         Tooltip.SetDefault("12% increased melee damage and speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ class OddFertilizer : ModItem
     {
         DisplayName.SetDefault("Odd Fertilizer");
         Tooltip.SetDefault("Summons Plantera");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

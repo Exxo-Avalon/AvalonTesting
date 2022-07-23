@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -19,6 +19,8 @@ public class XanthophyteOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileOreFinderPriority[Type] = 705;
+        Main.tileMerge[Type][ModContent.TileType<Loam>()] = true;
+        Main.tileMerge[ModContent.TileType<Loam>()][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
         HitSound = SoundID.Tink;
         DustType = DustID.Confetti_Yellow;

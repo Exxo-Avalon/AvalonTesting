@@ -12,7 +12,7 @@ class UnvolanditeHeadpiece : ModItem
     {
         DisplayName.SetDefault("Unvolandite Headpiece");
         Tooltip.SetDefault("16% increased damage\n6% increased critical strike chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

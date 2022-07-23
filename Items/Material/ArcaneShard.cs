@@ -11,7 +11,7 @@ class ArcaneShard : ModItem
     {
         DisplayName.SetDefault("Arcane Shard");
         Tooltip.SetDefault("'A fragment of light creatures'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

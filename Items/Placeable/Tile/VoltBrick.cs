@@ -9,7 +9,7 @@ class VoltBrick : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Volt Brick");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

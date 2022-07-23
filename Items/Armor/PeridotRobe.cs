@@ -12,7 +12,7 @@ class PeridotRobe : ModItem
     {
         DisplayName.SetDefault("Peridot Robe");
         Tooltip.SetDefault("Increases maximum mana by 120\nReduces mana usage by 16%");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

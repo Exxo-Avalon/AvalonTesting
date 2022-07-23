@@ -11,7 +11,7 @@ class DewofHerbs : ModItem
     {
         DisplayName.SetDefault("Dew of Herbs");
         Tooltip.SetDefault("A mystical object containing an unknown force");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

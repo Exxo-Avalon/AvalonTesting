@@ -11,7 +11,7 @@ class GuideSummonDoll : ModItem
     {
         DisplayName.SetDefault("Guide Summon Doll");
         Tooltip.SetDefault("Summons the Guide");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

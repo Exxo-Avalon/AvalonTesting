@@ -11,7 +11,7 @@ public class XanthophyteOre : ModItem
     {
         DisplayName.SetDefault("Xanthophyte Ore");
         Tooltip.SetDefault("'It glows warmly in the sun'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+        SacrificeTotal = 100;
     }
 
     public override void SetDefaults()

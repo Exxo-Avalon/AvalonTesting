@@ -11,7 +11,7 @@ class FakeFourLeafClover : ModItem
     {
         DisplayName.SetDefault("Fake Four Leaf Clover");
         Tooltip.SetDefault("Aww... it's fake!");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

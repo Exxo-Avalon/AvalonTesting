@@ -12,7 +12,7 @@ class ElementDust : ModItem
     {
         DisplayName.SetDefault("Element Dust");
         Tooltip.SetDefault("Compound of the five elements");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
     public override Color? GetAlpha(Color lightColor)
     {

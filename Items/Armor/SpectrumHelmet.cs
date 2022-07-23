@@ -17,7 +17,7 @@ class SpectrumHelmet : ModItem
     {
         DisplayName.SetDefault("Spectrum Helmet");
         Tooltip.SetDefault("20% increased ranged damage\n3% increased ranged critical strike chance");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     public override void SetDefaults()
     {

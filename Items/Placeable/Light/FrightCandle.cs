@@ -11,7 +11,7 @@ class FrightCandle : ModItem
     {
         DisplayName.SetDefault("Candle of Fright");
         Tooltip.SetDefault("Nearby players get +5 defense");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ class ViruthornScalemail : ModItem
     {
         DisplayName.SetDefault("Viruthorn Scalemail");
         Tooltip.SetDefault("7% increased melee speed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

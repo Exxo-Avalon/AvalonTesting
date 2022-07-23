@@ -11,7 +11,7 @@ class HellboundRemote : ModItem
     {
         DisplayName.SetDefault("Hellbound Remote");
         Tooltip.SetDefault("Summons the Wall of Steel\nToss into lava in the Underworld");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

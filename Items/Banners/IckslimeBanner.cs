@@ -10,7 +10,7 @@ public class IckslimeBanner : ModItem
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault("Nearby players get a bonus against: Ickslime");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     // The tooltip for this item is automatically assigned from .lang files
     public override void SetDefaults()

@@ -14,7 +14,7 @@ internal class DivineLightHuntingHorns : ModItem
     {
         DisplayName.SetDefault("Divine Light Hunting Horns");
         Tooltip.SetDefault("25% increased ranged damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

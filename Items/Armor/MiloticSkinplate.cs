@@ -12,7 +12,7 @@ class MiloticSkinplate : ModItem
     {
         DisplayName.SetDefault("Milotic Skinplate");
         Tooltip.SetDefault("30% increased minion knockback\nIncreases your max number of minions by 3");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

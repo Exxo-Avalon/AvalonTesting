@@ -13,7 +13,7 @@ class InfestedCarcass : ModItem
     {
         DisplayName.SetDefault("Infested Carcass");
         Tooltip.SetDefault("Summons Bacterium Prime");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

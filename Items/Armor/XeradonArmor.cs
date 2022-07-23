@@ -12,7 +12,7 @@ class XeradonArmor : ModItem
     {
         DisplayName.SetDefault("Xeradon Armor");
         Tooltip.SetDefault("10% increased mining speed\n10% increased block placement speed\nReduces enemy spawn rate and aggression");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

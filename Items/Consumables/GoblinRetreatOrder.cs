@@ -12,7 +12,7 @@ class GoblinRetreatOrder : ModItem
     {
         DisplayName.SetDefault("Goblin Retreat Order");
         Tooltip.SetDefault("Cancels a Goblin Invasion");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

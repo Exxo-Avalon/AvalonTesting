@@ -13,7 +13,7 @@ class HornetFood : ModItem
     {
         DisplayName.SetDefault("Hornet Food");
         Tooltip.SetDefault("Summons King Sting");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

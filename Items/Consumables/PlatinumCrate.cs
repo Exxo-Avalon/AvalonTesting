@@ -16,7 +16,7 @@ class PlatinumCrate : ModItem
     {
         DisplayName.SetDefault("Platinum Crate");
         Tooltip.SetDefault("Right click to open");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

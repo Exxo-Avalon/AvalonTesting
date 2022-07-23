@@ -13,7 +13,7 @@ class DivineLightJerkin : ModItem
         DisplayName.SetDefault("Divine Light Jerkin");
         Tooltip.SetDefault("10% increased ranged critical strike chance" +
                            "\n50% increased critical damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

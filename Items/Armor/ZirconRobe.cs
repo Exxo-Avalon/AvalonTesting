@@ -12,7 +12,7 @@ class ZirconRobe : ModItem
     {
         DisplayName.SetDefault("Zircon Robe");
         Tooltip.SetDefault("Increases maximum mana by 120\nReduces mana usage by 18%");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
     public override void Load()
     {

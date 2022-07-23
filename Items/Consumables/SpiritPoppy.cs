@@ -11,7 +11,7 @@ class SpiritPoppy : ModItem
     {
         DisplayName.SetDefault("Spirit Poppy");
         Tooltip.SetDefault("Permanently increases maximum mana by 20\nCan only be used when you have 200 or more mana\nMaxes at 400 mana");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

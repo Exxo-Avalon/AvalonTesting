@@ -11,7 +11,7 @@ internal class CrystalFruit : ModItem
     {
         DisplayName.SetDefault("Crystal Fruit");
         Tooltip.SetDefault("Permanently increases maximum life by 25\nCan only be used when you have 500 or more life");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

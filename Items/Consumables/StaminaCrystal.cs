@@ -12,7 +12,7 @@ class StaminaCrystal : ModItem
     {
         DisplayName.SetDefault("Stamina Crystal");
         Tooltip.SetDefault("Permanently increases maximum stamina by 30");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

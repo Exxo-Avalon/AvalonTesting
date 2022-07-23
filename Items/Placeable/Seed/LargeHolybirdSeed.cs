@@ -9,7 +9,7 @@ class LargeHolybirdSeed : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Large Holybird Seed");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 10;
+        SacrificeTotal = 10;
     }
 
     public override void SetDefaults()

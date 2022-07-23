@@ -11,7 +11,7 @@ class FineLumber : ModItem
     {
         DisplayName.SetDefault("Fine Lumber");
         Tooltip.SetDefault("Mid-grade lumber for producing tomes\n'Very fine!'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

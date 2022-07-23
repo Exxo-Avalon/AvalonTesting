@@ -11,7 +11,7 @@ class Trespassing : ModItem
     {
         DisplayName.SetDefault("Trespassing");
         Tooltip.SetDefault("'B. Harold'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

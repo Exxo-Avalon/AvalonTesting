@@ -12,7 +12,7 @@ class DurataniumHelmet : ModItem
     {
         DisplayName.SetDefault("Duratanium Helmet");
         Tooltip.SetDefault("5% increased melee damage and speed\nEnemies are more likely to target you");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

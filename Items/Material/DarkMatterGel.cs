@@ -9,7 +9,7 @@ class DarkMatterGel : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dark Matter Gel");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
+        SacrificeTotal = 50;
     }
 
     public override void SetDefaults()

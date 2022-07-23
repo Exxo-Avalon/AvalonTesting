@@ -12,7 +12,7 @@ class DurataniumHeadpiece : ModItem
     {
         DisplayName.SetDefault("Duratanium Headpiece");
         Tooltip.SetDefault("7% increased ranged damage");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

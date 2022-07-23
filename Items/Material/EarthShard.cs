@@ -11,7 +11,7 @@ class EarthShard : ModItem
     {
         DisplayName.SetDefault("Earth Shard");
         Tooltip.SetDefault("'A fragment of earthen creatures'");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 25;
+        SacrificeTotal = 25;
     }
 
     public override void SetDefaults()

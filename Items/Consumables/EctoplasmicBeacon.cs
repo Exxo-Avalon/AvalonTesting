@@ -16,7 +16,7 @@ internal class EctoplasmicBeacon : ModItem
     {
         DisplayName.SetDefault("Ectoplasmic Beacon");
         Tooltip.SetDefault("Summons Phantasm\nMust be used in the Hellcastle");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ class DarkMatterChunk : ModItem
     {
         DisplayName.SetDefault("Dark Matter Chunk");
         Tooltip.SetDefault("Summons the Armageddon Slime");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

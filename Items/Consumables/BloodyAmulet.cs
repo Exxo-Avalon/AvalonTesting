@@ -13,7 +13,7 @@ class BloodyAmulet : ModItem
     {
         DisplayName.SetDefault("Bloody Amulet");
         Tooltip.SetDefault("Summons a Blood Moon");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+        SacrificeTotal = 3;
     }
 
     public override void SetDefaults()

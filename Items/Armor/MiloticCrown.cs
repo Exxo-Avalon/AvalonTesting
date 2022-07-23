@@ -12,7 +12,7 @@ class MiloticCrown : ModItem
     {
         DisplayName.SetDefault("Milotic Crown");
         Tooltip.SetDefault("30% increased minion damage\nIncreases your max number of minions by 3");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()

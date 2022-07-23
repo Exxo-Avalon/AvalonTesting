@@ -20,7 +20,7 @@ class RedPresent : ModItem
     {
         DisplayName.SetDefault("Red Present");
         Tooltip.SetDefault("Right click to open");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
+        SacrificeTotal = 5;
     }
 
     public override void SetDefaults()

@@ -12,7 +12,7 @@ class VorazylcumLeggings : ModItem
     {
         DisplayName.SetDefault("Vorazylcum Leggings");
         Tooltip.SetDefault("Increases your max number of minions by 3\nIncreases maximum mana by 100");
-        Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
