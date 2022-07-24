@@ -1,3 +1,4 @@
+using Avalon.Backgrounds;
 using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
@@ -21,7 +22,7 @@ public class DarkMatter : ModBiome
     {
         get
         {
-            return ModContent.GetInstance<Backgrounds.DarkMatter.DarkMatterBackground>();
+            return ModContent.GetInstance<DarkMatterBackground>();
         }
     }
     public override bool IsBiomeActive(Player player)

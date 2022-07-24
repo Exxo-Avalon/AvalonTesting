@@ -1,10 +1,11 @@
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.Ammo;
 
-class Electrobullet : ModItem
+internal class Electrobullet : ModItem
 {
     public override void SetStaticDefaults()
     {

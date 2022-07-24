@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon
+namespace Avalon.Rarities
 {
     public class BlueRarity : ModRarity //12
     {

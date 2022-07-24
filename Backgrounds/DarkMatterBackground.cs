@@ -1,7 +1,6 @@
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace Avalon.Backgrounds.DarkMatter;
+namespace Avalon.Backgrounds;
 
 public class DarkMatterBackground : ModSurfaceBackgroundStyle
 {

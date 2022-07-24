@@ -1,20 +1,10 @@
-using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common.AltOres;
-using AltLibrary.Common.Hooks;
-using AltLibrary.Common.Systems;
 using Avalon.Items.Placeable.Bar;
 using Avalon.Tiles.Ores;
-using Avalon.Items.Placeable.Seed;
-using Avalon.Items.Weapons.Melee;
-using Avalon.NPCs;
-using Avalon.Tiles;
-using Avalon.Walls;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon
+namespace Avalon.Compatability.AltLib
 {
     internal class DurataniumAlternateOres : AltOre
     {

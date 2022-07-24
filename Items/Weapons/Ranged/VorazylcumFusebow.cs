@@ -1,3 +1,5 @@
+using Avalon.Projectiles.Ranged;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -6,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Weapons.Ranged;
 
-class VorazylcumFusebow : ModItem
+internal class VorazylcumFusebow : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -28,16 +30,19 @@ class VorazylcumFusebow : ModItem
         Item.width = dims.Width;
         Item.knockBack = 5f;
         Item.useTime = 15;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.ArrowBeam>();
+        Item.shoot = ModContent.ProjectileType<ArrowBeam>();
         Item.useStyle = ItemUseStyleID.Shoot;
-        Item.value = Item.sellPrice(0, 20, 0, 0);
+        Item.value = Item.sellPrice(0, 20);
         Item.useAnimation = 15;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item5;
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
+                               int type, int damage, float knockback)
     {
-        int proj = Projectile.NewProjectile(source, position, velocity, ProjectileID.ShadowBeamFriendly, damage, knockback, player.whoAmI);
+        int proj = Projectile.NewProjectile(source, position, velocity, ProjectileID.ShadowBeamFriendly, damage,
+            knockback, player.whoAmI);
         // Main.projectile[proj].magic = false /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
         Main.projectile[proj].DamageType = DamageClass.Ranged;
         return false;

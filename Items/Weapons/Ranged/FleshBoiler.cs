@@ -1,5 +1,6 @@
 using Avalon.Items.Ammo;
 using Avalon.Projectiles;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

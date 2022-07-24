@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Avalon;
+namespace Avalon.Compatability.AltLib;
 
 internal class BronzeAlternateOres : AltOre
 {

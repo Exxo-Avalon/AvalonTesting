@@ -1,4 +1,5 @@
 using System;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

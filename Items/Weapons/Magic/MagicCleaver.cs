@@ -1,3 +1,4 @@
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;

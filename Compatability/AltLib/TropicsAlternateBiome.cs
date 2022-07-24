@@ -1,19 +1,13 @@
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
-using AltLibrary.Common.Systems;
-using AltLibrary.Common.Hooks;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Avalon.Items.Placeable.Seed;
-using Avalon.NPCs;
-using Avalon.Walls;
 
-namespace Avalon
+namespace Avalon.Compatability.AltLib
 {
     internal class TropicsAlternateBiome : AltBiome
     {

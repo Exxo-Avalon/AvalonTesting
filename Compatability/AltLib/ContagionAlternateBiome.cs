@@ -1,21 +1,19 @@
+using System;
+using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
-using AltLibrary.Common.Systems;
-using AltLibrary.Common.Hooks;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Terraria.ID;
-using Terraria.ModLoader;
 using AltLibrary.Core.Generation;
-using Terraria;
-using System;
 using Avalon.Items.Placeable.Seed;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Avalon.Walls;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace Avalon;
+namespace Avalon.Compatability.AltLib;
 
 internal class ContagionAlternateBiome : AltBiome
 {

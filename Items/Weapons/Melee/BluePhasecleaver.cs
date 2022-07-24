@@ -1,3 +1,4 @@
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -5,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Weapons.Melee;
 
-class BluePhasecleaver : ModItem
+internal class BluePhasecleaver : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -31,8 +32,8 @@ class BluePhasecleaver : ModItem
         Item.useAnimation = 20;
         Item.height = dims.Height;
     }
-    public override void MeleeEffects(Player player, Rectangle hitbox)
-    {
-        Lighting.AddLight((int)((player.itemLocation.X + 6f + player.velocity.X) / 16f), (int)((player.itemLocation.Y - 14f) / 16f), 0.05f, 0.25f, 0.6f);
-    }
+
+    public override void MeleeEffects(Player player, Rectangle hitbox) => Lighting.AddLight(
+        (int)((player.itemLocation.X + 6f + player.velocity.X) / 16f), (int)((player.itemLocation.Y - 14f) / 16f),
+        0.05f, 0.25f, 0.6f);
 }

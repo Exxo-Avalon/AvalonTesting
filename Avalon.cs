@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using Avalon.Assets;
 using Avalon.Common;
 using Avalon.Effects;
 using Avalon.Network;
@@ -44,6 +46,8 @@ public class Avalon : Mod
     ///     The Dark Matter sky texture.
     /// </summary>
     public static Asset<Texture2D> DarkMatterSky;
+
+    private readonly List<IReplaceAssets> assetReplacers = new();
 
     /// <summary>
     ///     Gets reference to the main instance of the mod.
@@ -102,7 +106,21 @@ public class Avalon : Mod
         }
     }
 
-    public override void Unload() => Mod = null!;
+    public override void Unload()
+    {
+        Mod = null!;
+
+        if (Main.netMode == NetmodeID.Server)
+        {
+            return;
+        }
+
+        // ----------- Client Only ----------- //
+        foreach (IReplaceAssets assetReplacer in assetReplacers)
+        {
+            assetReplacer.RestoreAssets();
+        }
+    }
 
     /// <inheritdoc />
     public override void HandlePacket(BinaryReader reader, int whoAmI)
@@ -129,26 +147,29 @@ public class Avalon : Mod
 
     private void ReplaceVanillaTextures()
     {
-        // Items
-        TextureAssets.Item[ItemID.HallowedKey] = Assets.Request<Texture2D>("Sprites/HallowedKey");
-        TextureAssets.Item[ItemID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
-        TextureAssets.Item[ItemID.PaladinBanner] = Assets.Request<Texture2D>("Sprites/PaladinBanner");
-        TextureAssets.Item[ItemID.PossessedArmorBanner] =
-            Assets.Request<Texture2D>("Sprites/PossessedArmorBanner");
-        TextureAssets.Item[ItemID.BoneLeeBanner] = Assets.Request<Texture2D>("Sprites/BoneLeeBanner");
-        TextureAssets.Item[ItemID.AngryTrapperBanner] = Assets.Request<Texture2D>("Sprites/AngryTrapperBanner");
-        TextureAssets.Item[ItemID.Deathweed] = Assets.Request<Texture2D>("Sprites/Deathweed");
-        TextureAssets.Item[ItemID.WaterleafSeeds] = Assets.Request<Texture2D>("Sprites/WaterleafSeeds");
+        var itemReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Item);
+        assetReplacers.Add(itemReplacer);
+        itemReplacer.ReplaceAsset(ItemID.HallowedKey, Assets.Request<Texture2D>("Sprites/HallowedKey"));
+        itemReplacer.ReplaceAsset(ItemID.MagicDagger, Assets.Request<Texture2D>("Sprites/MagicDagger"));
+        itemReplacer.ReplaceAsset(ItemID.PaladinBanner, Assets.Request<Texture2D>("Sprites/PaladinBanner"));
+        itemReplacer.ReplaceAsset(ItemID.PossessedArmorBanner,
+            Assets.Request<Texture2D>("Sprites/PossessedArmorBanner"));
+        itemReplacer.ReplaceAsset(ItemID.BoneLeeBanner, Assets.Request<Texture2D>("Sprites/BoneLeeBanner"));
+        itemReplacer.ReplaceAsset(ItemID.AngryTrapperBanner, Assets.Request<Texture2D>("Sprites/AngryTrapperBanner"));
+        itemReplacer.ReplaceAsset(ItemID.Deathweed, Assets.Request<Texture2D>("Sprites/Deathweed"));
+        itemReplacer.ReplaceAsset(ItemID.WaterleafSeeds, Assets.Request<Texture2D>("Sprites/WaterleafSeeds"));
 
-        // Tiles
-        TextureAssets.Tile[TileID.CopperCoinPile] = Assets.Request<Texture2D>("Sprites/CopperCoin");
-        TextureAssets.Tile[TileID.SilverCoinPile] = Assets.Request<Texture2D>("Sprites/SilverCoin");
-        TextureAssets.Tile[TileID.GoldCoinPile] = Assets.Request<Texture2D>("Sprites/GoldCoin");
-        TextureAssets.Tile[TileID.PlatinumCoinPile] = Assets.Request<Texture2D>("Sprites/PlatinumCoin");
-        TextureAssets.Tile[TileID.Banners] = Assets.Request<Texture2D>("Sprites/VanillaBanners");
-        TextureAssets.Tile[TileID.Containers] = Assets.Request<Texture2D>("Sprites/VanillaChests");
+        var tileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Tile);
+        assetReplacers.Add(tileReplacer);
+        tileReplacer.ReplaceAsset(TileID.CopperCoinPile, Assets.Request<Texture2D>("Sprites/CopperCoin"));
+        tileReplacer.ReplaceAsset(TileID.SilverCoinPile, Assets.Request<Texture2D>("Sprites/SilverCoin"));
+        tileReplacer.ReplaceAsset(TileID.GoldCoinPile, Assets.Request<Texture2D>("Sprites/GoldCoin"));
+        tileReplacer.ReplaceAsset(TileID.PlatinumCoinPile, Assets.Request<Texture2D>("Sprites/PlatinumCoin"));
+        tileReplacer.ReplaceAsset(TileID.Banners, Assets.Request<Texture2D>("Sprites/VanillaBanners"));
+        tileReplacer.ReplaceAsset(TileID.Containers, Assets.Request<Texture2D>("Sprites/VanillaChests"));
 
-        // Projectiles
-        TextureAssets.Projectile[ProjectileID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
+        var projectileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Projectile);
+        assetReplacers.Add(projectileReplacer);
+        projectileReplacer.ReplaceAsset(ProjectileID.MagicDagger, Assets.Request<Texture2D>("Sprites/MagicDagger"));
     }
 }

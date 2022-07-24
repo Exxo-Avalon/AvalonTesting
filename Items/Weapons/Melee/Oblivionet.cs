@@ -1,4 +1,5 @@
 using Avalon.Items.Placeable.Bar;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
