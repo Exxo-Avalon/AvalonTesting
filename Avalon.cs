@@ -36,17 +36,6 @@ public class Avalon : Mod
     /// </summary>
     public static readonly Mod? MusicMod = ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod) ? obtainedMod : null;
 
-    public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[50];
-    public static Asset<Texture2D> DarkMatterBlackHole;
-    public static Asset<Texture2D> DarkMatterBlackHole2;
-    public static Asset<Texture2D> DarkMatterFloatingRocks;
-    public static Effect DarkMatterShader;
-
-    /// <summary>
-    ///     The Dark Matter sky texture.
-    /// </summary>
-    public static Asset<Texture2D> DarkMatterSky;
-
     private readonly List<IReplaceAssets> assetReplacers = new();
 
     /// <summary>
@@ -85,25 +74,12 @@ public class Avalon : Mod
 
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
-        DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");
-        DarkMatterShader = ModContent
-            .Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
+        Asset<Effect> shader =
+            ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad);
         SkyManager.Instance["Avalon:DarkMatter"] = new DarkMatterSky();
         Filters.Scene["Avalon:DarkMatter"] = new Filter(
-            new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky")
+            new DarkMatterScreenShader(new Ref<Effect>(shader.Value), "DarkMatterSky")
                 .UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
-        DarkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole",
-            AssetRequestMode.ImmediateLoad);
-        DarkMatterFloatingRocks = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/FloatingRocks",
-            AssetRequestMode.ImmediateLoad);
-        DarkMatterBlackHole2 = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole2",
-            AssetRequestMode.ImmediateLoad);
-        for (int i = 0; i < DarkMatterBackgrounds.Length; i++)
-        {
-            DarkMatterBackgrounds[i] =
-                ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterCloud" + i,
-                    AssetRequestMode.ImmediateLoad);
-        }
     }
 
     public override void Unload()
