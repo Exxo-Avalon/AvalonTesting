@@ -309,11 +309,11 @@ public class AvalonWorld : ModSystem
                 int maxValue = 15;
                 if (!WorldGen.SolidTile(k, l + 1))
                 {
-                    maxValue = 3;
+                    maxValue = 4;
                 }
                 else if (k == i && l == j - 1 && !fail)
                 {
-                    maxValue = 3;
+                    maxValue = 4;
                 }
                 if ((k != i || l != j) && Main.tile[k, l].HasTile && Main.tile[k, l].TileType == ModContent.TileType<CaesiumOre>() && WorldGen.genRand.NextBool(maxValue))
                 {

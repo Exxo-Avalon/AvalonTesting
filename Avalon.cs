@@ -134,6 +134,7 @@ public class Avalon : Mod
         itemReplacer.ReplaceAsset(ItemID.AngryTrapperBanner, Assets.Request<Texture2D>("Sprites/AngryTrapperBanner"));
         itemReplacer.ReplaceAsset(ItemID.Deathweed, Assets.Request<Texture2D>("Sprites/Deathweed"));
         itemReplacer.ReplaceAsset(ItemID.WaterleafSeeds, Assets.Request<Texture2D>("Sprites/WaterleafSeeds"));
+        itemReplacer.ReplaceAsset(ItemID.ShroomiteDiggingClaw, Assets.Request<Texture2D>("Assets/Vanilla/Items/ShroomiteDiggingClaws"));
 
         var tileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Tile);
         assetReplacers.Add(tileReplacer);

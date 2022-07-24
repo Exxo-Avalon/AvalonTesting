@@ -44,9 +44,9 @@ public class CaesiumOre : ModTile
                 (Main.tile[i, j].HasTile && !Main.tile[i - 1, j].HasTile) ||
                 (Main.tile[i, j].HasTile && !Main.tile[i + 1, j].HasTile))
             {
-                if (Main.rand.Next(7000) == 0 && !Main.gamePaused && Main.hasFocus)
+                if (Main.rand.NextBool(7000) && !Main.gamePaused && Main.hasFocus)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
+                    Projectile.NewProjectile(Entity.GetSource_None(), new Vector2(i, j) * 16,
                         new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
                         ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
                 }
@@ -55,12 +55,16 @@ public class CaesiumOre : ModTile
     }
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        AvalonWorld.AttemptCaesiumOreShattering(i, j, Main.tile[i, j], fail);
+        if (!fail && j > Main.maxTilesY - 190)
+        {
+            AvalonWorld.AttemptCaesiumOreShattering(i, j, Main.tile[i, j], fail);
+
+        }
         if (j > Main.maxTilesY - 190 && i > Main.maxTilesX - (Main.maxTilesX / 5))
         {
             if (Main.rand.NextBool(27))
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_None(), new Vector2(i, j) * 16,
+                Projectile.NewProjectile(Entity.GetSource_None(), new Vector2(i, j) * 16,
                     new Vector2(Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f)),
                     ModContent.ProjectileType<Projectiles.Hostile.CaesiumGas>(), 0, 0);
             }
