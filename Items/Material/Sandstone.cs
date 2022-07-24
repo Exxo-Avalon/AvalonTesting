@@ -10,7 +10,7 @@ class Sandstone : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Sandstone");
-        Tooltip.SetDefault("Lowest grade finish used to produce tomes");
+        Tooltip.SetDefault("Finish used to produce tomes");
         SacrificeTotal = 25;
     }
 
@@ -22,5 +22,6 @@ class Sandstone : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
 }

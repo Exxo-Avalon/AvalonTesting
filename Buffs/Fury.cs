@@ -9,11 +9,11 @@ public class Fury : ModBuff
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fury");
-        Description.SetDefault("20% increased critical damage");
+        Description.SetDefault("200% increased critical damage");
     }
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.2f;
+        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 2f;
     }
 }

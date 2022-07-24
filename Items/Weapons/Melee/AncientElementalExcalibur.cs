@@ -20,7 +20,7 @@ class AncientElementalExcalibur : ModItem
         Item.damage = 190;
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.scale = 1.2f;
+        Item.scale = 1.45f;
         Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.width = dims.Width;
         Item.useTime = 15;

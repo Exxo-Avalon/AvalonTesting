@@ -10,7 +10,7 @@ class Gravel : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Gravel");
-        Tooltip.SetDefault("Low grade finish used to produce tomes");
+        Tooltip.SetDefault("Polish used to produce tomes");
         SacrificeTotal = 25;
     }
 

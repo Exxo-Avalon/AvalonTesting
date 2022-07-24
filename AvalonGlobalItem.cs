@@ -658,6 +658,14 @@ public class AvalonGlobalItem : GlobalItem
     public override void ModifyTooltips(Terraria.Item item, List<TooltipLine> tooltips)
     {
         TooltipLine? tooltipLine = tooltips.Find(x => x.Name == "ItemName" && x.Mod == "Terraria");
+        TooltipLine? tooltipMat = tooltips.Find(x => x.Name == "Material" && x.Mod == "Terraria");
+        if (tooltipMat != null)
+        {
+            if (item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial)
+            {
+                tooltipMat.Text = "Tome material";
+            }
+        }
         if (tooltipLine != null)
         {
             if (item.type == ItemID.CoinGun)

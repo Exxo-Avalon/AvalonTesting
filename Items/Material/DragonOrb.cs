@@ -24,6 +24,7 @@ class DragonOrb : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = 26;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
 
     public override void AddRecipes()

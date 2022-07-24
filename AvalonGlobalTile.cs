@@ -32,6 +32,7 @@ public class AvalonGlobalTile : GlobalTile
     }
     public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
+        #region earthsplitter armor ore duping
         if (Main.LocalPlayer.GetModPlayer<ExxoPlayer>().oreDupe && IsOre(type) && Main.rand.NextBool(3))
         {
             int drop = 0;
@@ -65,6 +66,7 @@ public class AvalonGlobalTile : GlobalTile
             if (type == TileID.Hellstone) drop = ItemID.Hellstone;
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
         }
+        #endregion earthsplitter armor ore duping
         // Prevent Locked Impervious door from being broken from the block below or above
         if (Main.tile[i, j - 1].TileType == ModContent.TileType<LockedImperviousDoor>() ||
             Main.tile[i, j + 1].TileType == ModContent.TileType<LockedImperviousDoor>())
@@ -76,11 +78,11 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
-        if (type == TileID.Hellstone && Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].pick < 70)
+        if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
         {
             fail = true;
         }
-        if (type == ModContent.TileType<HallowedAltar>() && Main.LocalPlayer.inventory[Main.LocalPlayer.selectedItem].hammer < 100)
+        if (type == ModContent.TileType<HallowedAltar>() && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 100)
         {
             fail = true;
         }

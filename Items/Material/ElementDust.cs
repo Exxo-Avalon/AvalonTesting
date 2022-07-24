@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -26,6 +26,7 @@ class ElementDust : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,6 +22,7 @@ class MysticalTomePage : ModItem
         Item.maxStack = 999;
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
     public override void AddRecipes()
     {

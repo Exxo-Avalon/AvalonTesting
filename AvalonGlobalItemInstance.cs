@@ -14,6 +14,7 @@ public class AvalonGlobalItemInstance : GlobalItem
     public bool Tome { get; set; }
     public bool UpdateInvisibleVanity { get; set; }
     public bool WasWiring { get; set; }
+    public bool TomeMaterial { get; set; }
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {
@@ -21,6 +22,7 @@ public class AvalonGlobalItemInstance : GlobalItem
         clone.HealStamina = HealStamina;
         clone.WasWiring = WasWiring;
         clone.Tome = Tome;
+        clone.TomeMaterial = TomeMaterial;
         return clone;
     }
 

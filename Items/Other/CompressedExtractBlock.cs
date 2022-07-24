@@ -23,10 +23,10 @@ class CompressedExtractBlock : ModItem
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.useTurn = true;
-        Item.useTime = 40;
+        Item.useTime = 15;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.maxStack = 999;
-        Item.useAnimation = 40;
+        Item.useAnimation = 15;
         Item.height = dims.Height;
     }
     public override void AddRecipes()
@@ -41,7 +41,7 @@ class CompressedExtractBlock : ModItem
 	}
     public override void HoldItem(Player player)
     {
-		if (player.itemAnimation > 0 && player.whoAmI == Main.myPlayer)
+		if (player.itemAnimation > 0 && player.whoAmI == Main.myPlayer && player.itemTime == player.inventory[player.selectedItem].useTime / 2)
 		{
 			bool inrange = (player.position.X / 16f - Player.tileRangeX - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetX &&
 				(player.position.X + player.width) / 16f + Player.tileRangeX + player.inventory[player.selectedItem].tileBoost - 1f + player.blockRange >= Player.tileTargetX &&

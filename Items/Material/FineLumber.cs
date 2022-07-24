@@ -10,7 +10,7 @@ class FineLumber : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fine Lumber");
-        Tooltip.SetDefault("Mid-grade lumber for producing tomes\n'Very fine!'");
+        Tooltip.SetDefault("Lumber used for producing tomes\n'Very fine!'");
         SacrificeTotal = 25;
     }
 
@@ -22,5 +22,6 @@ class FineLumber : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
 }

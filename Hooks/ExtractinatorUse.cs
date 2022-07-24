@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Common;
 using Terraria;
 using Terraria.ModLoader;
@@ -13,7 +13,7 @@ namespace Avalon.Hooks
     {
         protected override void Apply()
         {
-			On.Terraria.Player.ExtractinatorUse += OnExtractinatorUse;
+            On.Terraria.Player.ExtractinatorUse += OnExtractinatorUse;
         }
         private static void OnExtractinatorUse(On.Terraria.Player.orig_ExtractinatorUse orig, Player self, int extractType)
         {

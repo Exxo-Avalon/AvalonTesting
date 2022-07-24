@@ -449,24 +449,12 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Pearlwood)
             .AddTile(TileID.Sawmill).Register();
 
-        Recipe.Create(ModContent.ItemType<RichMahoganyBeam>(), 2)
-            .AddIngredient(ItemID.RichMahogany)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<BorealWoodBeam>(), 2)
-            .AddIngredient(ItemID.BorealWood)
-            .AddTile(TileID.Sawmill).Register();
-
         Recipe.Create(ModContent.ItemType<PalmWoodBeam>(), 2)
             .AddIngredient(ItemID.PalmWood)
             .AddTile(TileID.Sawmill).Register();
 
         Recipe.Create(ModContent.ItemType<CoughwoodBeam>(), 2)
             .AddIngredient(ModContent.ItemType<Coughwood>())
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<SandstoneColumn>(), 2)
-            .AddIngredient(ItemID.SandstoneBrick)
             .AddTile(TileID.Sawmill).Register();
 
         Recipe.Create(ModContent.ItemType<PearlstoneColumn>(), 2)

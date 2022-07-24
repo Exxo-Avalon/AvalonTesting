@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,6 +10,7 @@ class MysteriousPage : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Mysterious Page");
+        Tooltip.SetDefault("'It contains unknown symbols'");
         SacrificeTotal = 25;
     }
 
@@ -21,6 +22,7 @@ class MysteriousPage : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
     public override void AddRecipes()
     {

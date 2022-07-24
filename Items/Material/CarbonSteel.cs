@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +9,8 @@ class CarbonSteel : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Carbon Steel");
+        DisplayName.SetDefault("High-carbon Steel");
+        Tooltip.SetDefault("Metal used for producing tomes");
         SacrificeTotal = 25;
     }
 
@@ -21,6 +22,7 @@ class CarbonSteel : ModItem
         Item.value = Item.sellPrice(0, 0, 2, 0);
         Item.maxStack = 999;
         Item.height = dims.Height;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
     public override void AddRecipes()
     {
