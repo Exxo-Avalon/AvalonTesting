@@ -33,7 +33,7 @@ class GigaHorn : ModItem
         Item.useTime = 29;
         Item.shoot = ModContent.ProjectileType<Projectiles.Soundwave>();
         Item.useStyle = ItemUseStyleID.Shoot;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/GigaHorn");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/GigaHorn");
         Item.value = Item.sellPrice(0, 9, 0, 0);
         Item.reuseDelay = 14;
         Item.useAnimation = 29;

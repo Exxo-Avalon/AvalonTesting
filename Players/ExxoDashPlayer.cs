@@ -36,7 +36,7 @@ public class ExxoDashPlayer : ModPlayer
     {
         if (!dashInfo.IsValid)
         {
-            AvalonTesting.Mod.Logger.Error("Invalid DashInfo provided, please use the constructor method!");
+            Avalon.Mod.Logger.Error("Invalid DashInfo provided, please use the constructor method!");
         }
 
         RegisteredDashes.Add(sourceItemId, dashInfo);

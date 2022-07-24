@@ -46,8 +46,8 @@ namespace Avalon
                 .AddReplacement<ContagionNaturalWall2>(197, 220, 221, 222); //Hardened sand walls*/
         }
 
-        public override string WorldIcon => "AvalonTesting/Assets/WorldIcons/Tropics";
+        public override string WorldIcon => "Avalon/Assets/WorldIcons/Tropics";
 
-        public override string IconSmall => "AvalonTesting/Assets/Bestiary/TropicsIcon";
+        public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";
     }
 }

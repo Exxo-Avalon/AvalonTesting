@@ -434,7 +434,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                     if (Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
                     {
                         AvalonTestingGlobalNPC.SpawnWOS(item.position);
-                        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/WoS"), item.position);
+                        SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/WoS"), item.position);
                     }
                     NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, NetworkText.Empty, item.whoAmI, 0f, 0f, 0f, 0);
                 }

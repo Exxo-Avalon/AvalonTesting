@@ -11,7 +11,7 @@ namespace Avalon.NPCs;
 
 public class PyrasiteHead : PyrasiteWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/PyrasiteHead";
+    public override string Texture => "Avalon/NPCs/PyrasiteHead";
 
     public override void SetDefaults()
     {
@@ -66,7 +66,7 @@ public class PyrasiteHead : PyrasiteWorm
 
 public class PyrasiteBody : PyrasiteWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/PyrasiteBody";
+    public override string Texture => "Avalon/NPCs/PyrasiteBody";
 
     public override void SetDefaults()
     {
@@ -101,7 +101,7 @@ public class PyrasiteBody : PyrasiteWorm
 
 public class PyrasiteTail : PyrasiteWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/PyrasiteTail";
+    public override string Texture => "Avalon/NPCs/PyrasiteTail";
 
     public override void SetDefaults()
     {

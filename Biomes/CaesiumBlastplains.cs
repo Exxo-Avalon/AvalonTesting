@@ -10,8 +10,8 @@ public class CaesiumBlastplains : ModBiome
     public override string BestiaryIcon => base.BestiaryIcon;
     public override string BackgroundPath => base.BackgroundPath;
     public override string MapBackground => BackgroundPath;
-    public override int Music => AvalonTesting.MusicMod != null
-        ? MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/CaesiumBlastplains")
+    public override int Music => Avalon.MusicMod != null
+        ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/CaesiumBlastplains")
         : MusicID.Hell;
 
     public override bool IsBiomeActive(Player player) => player.AvalonBiome().ZoneCaesium;

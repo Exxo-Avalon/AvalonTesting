@@ -28,18 +28,18 @@ public class CaesiumBackground : ModHook
         {
             if (Main.LocalPlayer.AvalonBiome().ZoneCaesium)
             {
-                AvalonTesting.CaesiumTransition += 0.05f;
-                if (AvalonTesting.CaesiumTransition > 1f)
+                Avalon.CaesiumTransition += 0.05f;
+                if (Avalon.CaesiumTransition > 1f)
                 {
-                    AvalonTesting.CaesiumTransition = 1f;
+                    Avalon.CaesiumTransition = 1f;
                 }
             }
             else
             {
-                AvalonTesting.CaesiumTransition -= 0.05f;
-                if (AvalonTesting.CaesiumTransition < 0f)
+                Avalon.CaesiumTransition -= 0.05f;
+                if (Avalon.CaesiumTransition < 0f)
                 {
-                    AvalonTesting.CaesiumTransition = 0f;
+                    Avalon.CaesiumTransition = 0f;
                 }
             }
         });
@@ -55,7 +55,7 @@ public class CaesiumBackground : ModHook
             var assets = new Asset<Texture2D>[TextureAssets.Underworld.Length];
             for (int i = 0; i < TextureAssets.Underworld.Length; i++)
             {
-                assets[i] = ModContent.Request<Texture2D>("AvalonTesting/Backgrounds/Caesium" + (i + 1));
+                assets[i] = ModContent.Request<Texture2D>("Avalon/Backgrounds/Caesium" + (i + 1));
             }
 
             Asset<Texture2D> asset = assets[num27];
@@ -176,7 +176,7 @@ public class CaesiumBackground : ModHook
 
             for (int i = num17 - 2; i <= num17 + 4 + num16; i++)
             {
-                Main.spriteBatch.Draw(value5, vector, value3, Color.White * AvalonTesting.CaesiumTransition, 0f,
+                Main.spriteBatch.Draw(value5, vector, value3, Color.White * Avalon.CaesiumTransition, 0f,
                     Vector2.Zero, num25, SpriteEffects.None, 0f);
                 if (layerTextureIndex == 0)
                 {
@@ -184,7 +184,7 @@ public class CaesiumBackground : ModHook
                     Main.spriteBatch.Draw(TextureAssets.BlackTile.Value,
                         new Rectangle((int)vector.X, num14, (int)(value3.Width * num25),
                             Math.Max(0, Main.screenHeight - num14)),
-                        new Color(6, 5, 6) * AvalonTesting.CaesiumTransition);
+                        new Color(6, 5, 6) * Avalon.CaesiumTransition);
                 }
 
                 vector.X += num18;

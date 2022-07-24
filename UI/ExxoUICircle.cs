@@ -8,7 +8,7 @@ namespace Avalon.UI;
 public class ExxoUICircle : ExxoUIElement
 {
     private static readonly Asset<Effect> CircleEffect =
-        AvalonTesting.Mod.Assets.Request<Effect>("Effects/Circle", AssetRequestMode.ImmediateLoad);
+        Avalon.Mod.Assets.Request<Effect>("Effects/Circle", AssetRequestMode.ImmediateLoad);
 
     public override bool IsDynamicallySized => false;
     public Color Color { get; set; } = Color.White;

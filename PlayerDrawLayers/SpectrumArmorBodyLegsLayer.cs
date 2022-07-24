@@ -64,7 +64,7 @@ public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
         var vector2 = new Vector2(p.legFrame.Width * 0.5f, p.legFrame.Height * 0.75f);
         var origin = new Vector2(p.legFrame.Width * 0.5f, p.legFrame.Height * 0.5f);
         var vector3 = new Vector2(p.legFrame.Width * 0.5f, p.legFrame.Height * 0.4f);
-        if (p.head == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumHelmet", EquipType.Head))
+        if (p.head == EquipLoader.GetEquipSlot(Avalon.Mod, "SpectrumHelmet", EquipType.Head))
         {
             var value = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
                 new Vector2(
@@ -74,7 +74,7 @@ public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
             drawInfo.DrawDataCache.Add(value);
         }
 
-        if (p.body == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumBreastplate", EquipType.Body))
+        if (p.body == EquipLoader.GetEquipSlot(Avalon.Mod, "SpectrumBreastplate", EquipType.Body))
         {
             Vector2 vector = new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - drawInfo.drawPlayer.bodyFrame.Width / 2 + drawInfo.drawPlayer.width / 2), (int)(drawInfo.Position.Y - Main.screenPosition.Y + (float)drawInfo.drawPlayer.height - (float)drawInfo.drawPlayer.bodyFrame.Height + 4f)) + drawInfo.drawPlayer.bodyPosition + new Vector2((float)(drawInfo.drawPlayer.bodyFrame.Width / 2), (float)(drawInfo.drawPlayer.bodyFrame.Height / 2));
             Vector2 value = Main.OffsetsPlayerHeadgear[drawInfo.drawPlayer.bodyFrame.Y / drawInfo.drawPlayer.bodyFrame.Height];
@@ -121,7 +121,7 @@ public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
             }
         }
 
-        if (p.legs == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumGreaves", EquipType.Legs))
+        if (p.legs == EquipLoader.GetEquipSlot(Avalon.Mod, "SpectrumGreaves", EquipType.Legs))
         {
             var value = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumGreaves_Legs_Glow").Value,
                 new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (p.legFrame.Width / 2) + (p.width / 2)),

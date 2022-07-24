@@ -95,7 +95,7 @@ public class Impvines : ModTile
     //    Color col = Lighting.GetColor(i, j, Color.White);
     //    Vector2 zero = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange, Main.offScreenRange);
 
-    //    spriteBatch.Draw(ModContent.GetTexture("AvalonTesting/Tiles/ImpVines"), drawPos + zero - new Vector2(xOff, 0), realSource, new Color(col.R, col.G, col.B, 255), 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
+    //    spriteBatch.Draw(ModContent.GetTexture("Avalon/Tiles/ImpVines"), drawPos + zero - new Vector2(xOff, 0), realSource, new Color(col.R, col.G, col.B, 255), 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0f);
     //    return false;
     //}
     //public float GetOffset(int i, int j, int frameX, float sOffset = 0f)

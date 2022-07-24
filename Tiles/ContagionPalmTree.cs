@@ -17,15 +17,15 @@ public class ContagionPalmTree : ModPalmTree
     public override Asset<Texture2D> GetOasisTopTextures() => Asset<Texture2D>.Empty;
 
     public override Asset<Texture2D> GetTexture() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTree");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTree");
 
     public override Asset<Texture2D> GetTopTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTreeTop");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/ContagionPalmTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.Coughwood>();
 
     public override int CreateDust() => ModContent.DustType<CoughwoodDust>();
-    public override int TreeLeaf() => ModContent.Find<ModGore>("AvalonTesting/ContagionTreeLeaf").Type;
+    public override int TreeLeaf() => ModContent.Find<ModGore>("Avalon/ContagionTreeLeaf").Type;
     public override bool Shake(int x, int y, ref bool createLeaves)
     {
         if (Main.rand.NextBool(10))

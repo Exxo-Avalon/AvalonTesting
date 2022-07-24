@@ -298,7 +298,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
                     int g1 = Gore.NewGore(Player.GetSource_FromThis(),
                         Player.Center + new Vector2(Main.rand.Next(-32, 33), Main.rand.Next(-32, 33)), Player.velocity,
                         Mod.Find<ModGore>("Bubble").Type);
-                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Bubbles"),
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Bubbles"),
                         Player.position);
                 }
             }

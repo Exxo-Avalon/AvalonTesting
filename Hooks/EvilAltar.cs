@@ -30,7 +30,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return AvalonTesting.ReturnHardmodeColor(type).R;
+                return Avalon.ReturnHardmodeColor(type).R;
             });
 
             c.Index++;
@@ -43,7 +43,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return AvalonTesting.ReturnHardmodeColor(type).G;
+                return Avalon.ReturnHardmodeColor(type).G;
             });
 
             c.Index++;
@@ -56,7 +56,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return AvalonTesting.ReturnHardmodeColor(type).B;
+                return Avalon.ReturnHardmodeColor(type).B;
             });
 
             j++;

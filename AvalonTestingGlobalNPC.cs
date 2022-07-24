@@ -1509,13 +1509,13 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             Emblems = oneFromOptionsRule.dropIds;
             npcLoot.RemoveWhere(x => x == oneFromOptionsRule, false);
         }
-        if (AvalonTesting.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+        if (Avalon.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
             npcLoot.RemoveWhere(
                 rule => rule is ItemDropWithConditionRule drop &&
-                (drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type ||
-                drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type ||
-                drop.itemId == AvalonTesting.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type));
+                (drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type ||
+                drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type ||
+                drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type));
         }
         var hardModeCondition = new HardmodeOnly();
         var preHardModeCondition = new Invert(hardModeCondition);
@@ -1862,7 +1862,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         #endregion group
 
-        if (AvalonTesting.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        if (Avalon.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
         {
             npcLoot.Add(ItemDropRule.ByCondition(
                 new PostPhantasmHellcastleDrop(),

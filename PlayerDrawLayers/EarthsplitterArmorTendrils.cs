@@ -21,7 +21,7 @@ public class EarthsplitterArmorTendrils : PlayerDrawLayer
             return;
         }
         Player p = drawInfo.drawPlayer;
-        if (p.body == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "EarthsplitterChestpiece", EquipType.Body))
+        if (p.body == EquipLoader.GetEquipSlot(Avalon.Mod, "EarthsplitterChestpiece", EquipType.Body))
         {
             Vector2 value6 = new Vector2(0, 8);
             Vector2 vec4 = drawInfo.Position - Main.screenPosition + drawInfo.drawPlayer.bodyPosition + new Vector2(drawInfo.drawPlayer.width / 2, drawInfo.drawPlayer.height - drawInfo.drawPlayer.bodyFrame.Height / 2) + new Vector2(0f, -4f) + value6;

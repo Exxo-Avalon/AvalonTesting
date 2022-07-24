@@ -10,7 +10,7 @@ namespace Avalon.NPCs;
 
 public class UnvolanditeMiteDigger : UnvolanditeMiteDiggerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/UnvolanditeMiteDigger";
+    public override string Texture => "Avalon/NPCs/UnvolanditeMiteDigger";
 
     public override void SetDefaults()
     {

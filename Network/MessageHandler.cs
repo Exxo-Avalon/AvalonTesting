@@ -7,7 +7,7 @@ public class MessageHandler
 {
     public static ModPacket GetPacket(MessageID messageID, int capacity = 256)
     {
-        ModPacket message = AvalonTesting.Mod.GetPacket(capacity);
+        ModPacket message = Avalon.Mod.GetPacket(capacity);
         message.Write((int)messageID);
         return message;
     }

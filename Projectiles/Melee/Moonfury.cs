@@ -88,8 +88,8 @@ public class Moonfury : ModProjectile
         // This fixes a vanilla GetPlayerArmPosition bug causing the chain to draw incorrectly when stepping up slopes. The flail itself still draws incorrectly due to another similar bug. This should be removed once the vanilla bug is fixed.
         playerArmPosition.Y -= Main.player[Projectile.owner].gfxOffY;
 
-        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Moonfury_Chain");
-        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/Melee/Moonfury_Chain"); // This texture and related code is optional and used for a unique effect
+        Asset<Texture2D> chainTexture = ModContent.Request<Texture2D>("Avalon/Projectiles/Melee/Moonfury_Chain");
+        Asset<Texture2D> chainTextureExtra = ModContent.Request<Texture2D>("Avalon/Projectiles/Melee/Moonfury_Chain"); // This texture and related code is optional and used for a unique effect
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);

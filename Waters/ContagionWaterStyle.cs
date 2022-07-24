@@ -43,7 +43,7 @@ public class ContagionWaterStyle : ModWaterStyle
 
     public override Asset<Texture2D> GetRainTexture()
     {
-        return ModContent.Request<Texture2D>("AvalonTesting/Waters/ContagionRain");
+        return ModContent.Request<Texture2D>("Avalon/Waters/ContagionRain");
     }
 }
 

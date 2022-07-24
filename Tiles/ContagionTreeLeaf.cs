@@ -10,7 +10,7 @@ namespace Avalon.Tiles
 {
     public class ContagionTreeLeaf : ModGore
     {
-        public override string Texture => "AvalonTesting/Tiles/ContagionTree_Leaf";
+        public override string Texture => "Avalon/Tiles/ContagionTree_Leaf";
 
         public override void SetStaticDefaults()
         {

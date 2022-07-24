@@ -49,32 +49,32 @@ class ChargingStar : ModProjectile
         if (CHARGE == 149)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE == 169)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE == 189)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE == 209)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE == 229)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE == 249)
         {
             Pindex = Projectile.NewProjectile(Projectile.GetSource_FromThis(), P.position.X + P.width / 2, P.position.Y + P.height / 2, P.velocity.X, P.velocity.Y, ModContent.ProjectileType<TheSun>(), (int)(O.GetDamage(DamageClass.Magic).ApplyTo(O.inventory[O.selectedItem].damage)), 3f, P.owner);
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Pulse"), P.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Pulse"), P.position);
         }
         if (CHARGE > 251) CHARGE = 251;
         float MY = Main.mouseY + Main.screenPosition.Y;

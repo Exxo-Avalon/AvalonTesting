@@ -33,7 +33,7 @@ public static class Utilities
         foreach (Instruction instruction in c.Instrs)
         {
             object obj = (instruction.Operand == null ? string.Empty : instruction.Operand.ToString()) ?? string.Empty;
-            AvalonTesting.Mod.Logger.Debug(
+            Avalon.Mod.Logger.Debug(
                 $"{instruction.Offset.ToString(CultureInfo.InvariantCulture)} | {instruction.OpCode.ToString()} | {obj}");
         }
     }

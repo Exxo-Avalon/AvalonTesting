@@ -26,7 +26,7 @@ public class HallowedAltar : ModTile
         DustType = DustID.HallowedWeapons;
         TileID.Sets.PreventsTileRemovalIfOnTopOfIt[Type] = true;
         TileID.Sets.InteractibleByNPCs[Type] = true;
-        HitSound = new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarHit");
+        HitSound = new SoundStyle("Avalon/Sounds/Item/HallowedAltarHit");
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
@@ -56,7 +56,7 @@ public class HallowedAltar : ModTile
         if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
         {
             SmashHallowAltar(i, j);
-            SoundEngine.PlaySound(new SoundStyle("AvalonTesting/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
+            SoundEngine.PlaySound(new SoundStyle("Avalon/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
             //float vR = .2f;
             //int radius = 36;
             //int xMinWholeCookie = (i + 2) * 16 - radius;

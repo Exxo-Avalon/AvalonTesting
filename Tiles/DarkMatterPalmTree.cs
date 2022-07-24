@@ -14,16 +14,16 @@ public class DarkMatterPalmTree : ModPalmTree
 
     public override void SetStaticDefaults() => GrowsOnTileId = new[] { ModContent.TileType<DarkMatterSand>() };
 
-    public override Asset<Texture2D> GetOasisTopTextures() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTreeTopOasis");
+    public override Asset<Texture2D> GetOasisTopTextures() => Avalon.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTreeTopOasis");
 
     public override Asset<Texture2D> GetTexture() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTree");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTree");
 
     public override Asset<Texture2D> GetTopTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTreeTop");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/DarkMatterPalmTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.ApocalyptusWood>();
-    public override int TreeLeaf() => ModContent.Find<ModGore>("AvalonTesting/DarkMatterTreeLeaf").Type;
+    public override int TreeLeaf() => ModContent.Find<ModGore>("Avalon/DarkMatterTreeLeaf").Type;
     public override bool Shake(int x, int y, ref bool createLeaves)
     {
         if (Main.rand.NextBool(10))

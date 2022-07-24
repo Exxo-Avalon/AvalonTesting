@@ -26,8 +26,8 @@ public class WallofSteel : ModNPC
 
     public override void Load()
     {
-        wosTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/WallofSteel");
-        mechaHungryChainTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/MechaHungryChain");
+        wosTexture = Avalon.Mod.Assets.Request<Texture2D>("Sprites/WallofSteel");
+        mechaHungryChainTexture = Avalon.Mod.Assets.Request<Texture2D>("Sprites/MechaHungryChain");
     }
 
     public override void SetStaticDefaults()
@@ -67,7 +67,7 @@ public class WallofSteel : ModNPC
         NPC.scale = 1.4f;
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath14;
-        Music = AvalonTesting.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/WallofSteel");
+        Music = Avalon.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/WallofSteel");
     }
 
     public override void BossLoot(ref string name, ref int potionType)
@@ -482,7 +482,7 @@ public class WallofSteel : ModNPC
                 if (NPC.ai[3] == 1)
                 {
                     NPC.defense = 0;
-                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserCharge"), NPC.Center);
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/LaserCharge"), NPC.Center);
                 }
                 if (NPC.ai[3] >= 60 && NPC.ai[3] <= 90)
                 {

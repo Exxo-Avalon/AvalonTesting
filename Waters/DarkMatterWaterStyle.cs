@@ -42,6 +42,6 @@ public class DarkMatterWaterStyle : ModWaterStyle
 
     public override Asset<Texture2D> GetRainTexture()
     {
-        return ModContent.Request<Texture2D>("AvalonTesting/Waters/DarkMatterRain");
+        return ModContent.Request<Texture2D>("Avalon/Waters/DarkMatterRain");
     }
 }

@@ -14,10 +14,10 @@ public class ExxoMenu : ModMenu
         {
             if (DateTime.Now.Month == 4 && DateTime.Now.Day == 1)
             {
-                return Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/EAOLogoAprilFools");
+                return Mod.Assets.Request<Texture2D>($"{Avalon.TextureAssetsPath}/UI/EAOLogoAprilFools");
             }
 
-            return Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/EAOLogo");
+            return Mod.Assets.Request<Texture2D>($"{Avalon.TextureAssetsPath}/UI/EAOLogo");
         }
     }
 
@@ -36,7 +36,7 @@ public class ExxoMenu : ModMenu
         }
         else
         {
-            AvalonTesting.Mod.Logger.Error(
+            Avalon.Mod.Logger.Error(
                 $"Could not find field with name {lastSelectedModMenuFieldName} in {typeof(MenuLoader)}");
         }
     }

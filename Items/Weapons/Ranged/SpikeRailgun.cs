@@ -35,7 +35,7 @@ class SpikeRailgun : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 9;
         Item.height = dims.Height;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Railgun");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Railgun");
     }
     public override Vector2? HoldoutOffset()
     {

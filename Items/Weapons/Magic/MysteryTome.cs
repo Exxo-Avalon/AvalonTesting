@@ -71,7 +71,7 @@ class MysteryTome : ModItem
         }
         if (x == 4) // Focus Beam
         {
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Beam"), player.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Beam"), player.position);
             Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.FocusBeam>(), Item.damage, 5, player.whoAmI);
             return false;
         }

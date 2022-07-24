@@ -29,7 +29,7 @@ namespace Avalon
             BlessingMessage.SetDefault("Your world has been blessed with Duratanium");
         }
 
-        public override string Texture => "AvalonTesting/Assets/Ores/DurataniumOreIcon";
+        public override string Texture => "Avalon/Assets/Ores/DurataniumOreIcon";
     }
 
     internal class NaquadahAlternateOres : AltOre
@@ -45,7 +45,7 @@ namespace Avalon
             BlessingMessage.SetDefault("Your world has been blessed with Naquadah");
         }
 
-        public override string Texture => "AvalonTesting/Assets/Ores/NaquadahOreIcon";
+        public override string Texture => "Avalon/Assets/Ores/NaquadahOreIcon";
     }
 
     internal class TroxiniumAlternateOres : AltOre
@@ -61,6 +61,6 @@ namespace Avalon
             BlessingMessage.SetDefault("Your world has been blessed with Troxinium");
         }
 
-        public override string Texture => "AvalonTesting/Assets/Ores/TroxiniumOreIcon";
+        public override string Texture => "Avalon/Assets/Ores/TroxiniumOreIcon";
     }
 }

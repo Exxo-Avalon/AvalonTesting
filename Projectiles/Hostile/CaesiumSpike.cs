@@ -39,7 +39,7 @@ public class CaesiumSpike : ModProjectile
     int counter = 0;
     public override void PostDraw(Color lightColor)
     {
-        Texture2D texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/CaesiumSpike").Value;
+        Texture2D texture = ModContent.Request<Texture2D>("Avalon/Projectiles/CaesiumSpike").Value;
         Vector2 origin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
         if (Projectile.spriteDirection == -1)
         {

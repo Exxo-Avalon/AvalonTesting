@@ -19,18 +19,18 @@ public class TropicalTree : ModTree
         topTextureFrameHeight = 96;
     }
 
-    public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTree");
+    public override Asset<Texture2D> GetTexture() => Avalon.Mod.Assets.Request<Texture2D>("Tiles/TropicalTree");
 
     public override Asset<Texture2D> GetBranchTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeBranches");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeBranches");
 
     public override Asset<Texture2D> GetTopTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/TropicalTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.BleachedEbony>();
 
     public override int CreateDust() => 51;
-    public override int TreeLeaf() => ModContent.Find<ModGore>("AvalonTesting/TropicsTreeLeaf").Type;
+    public override int TreeLeaf() => ModContent.Find<ModGore>("Avalon/TropicsTreeLeaf").Type;
     public override bool Shake(int x, int y, ref bool createLeaves)
     {
         if (Main.rand.NextBool(10))

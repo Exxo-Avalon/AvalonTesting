@@ -64,7 +64,7 @@ public class SpectrumArmorHeadLayer : PlayerDrawLayer
             }
         }
         var vector3 = new Vector2(p.legFrame.Width * 0.5f, p.legFrame.Height * 0.4f);
-        if (p.head == EquipLoader.GetEquipSlot(AvalonTesting.Mod, "SpectrumHelmet", EquipType.Head))
+        if (p.head == EquipLoader.GetEquipSlot(Avalon.Mod, "SpectrumHelmet", EquipType.Head))
         {
             var value = new DrawData(Mod.Assets.Request<Texture2D>("Items/Armor/SpectrumHelmet_Glow_Head").Value,
                 new Vector2(

@@ -24,7 +24,7 @@ class SprintScroll : ModItem
         Item.useTime = 20;
         Item.rare = ItemRarityID.Green;
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Scroll");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Scroll");
         Item.useAnimation = 20;
         Item.height = dims.Height;
     }

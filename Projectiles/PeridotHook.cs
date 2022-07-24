@@ -30,7 +30,7 @@ public class PeridotHook : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("AvalonTesting/Projectiles/PeridotHook_Chain");
+        var texture = ModContent.Request<Texture2D>("Avalon/Projectiles/PeridotHook_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

@@ -308,7 +308,7 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
 
         public override void PostDraw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = AvalonTesting.Mod.Assets.Request<Texture2D>("NPCs/Bosses/Oblivion/OblivionPhase1_Shadow_Glow").Value;
+            Texture2D texture = Avalon.Mod.Assets.Request<Texture2D>("NPCs/Bosses/Oblivion/OblivionPhase1_Shadow_Glow").Value;
             spriteBatch.Draw
             (
                 texture,

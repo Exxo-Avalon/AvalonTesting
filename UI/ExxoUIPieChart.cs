@@ -13,7 +13,7 @@ public class ExxoUIPieChart : ExxoUIElement
     private const int MaxData = 16;
 
     private static readonly Asset<Effect> PieChartEffect =
-        AvalonTesting.Mod.Assets.Request<Effect>("Effects/PieChart", AssetRequestMode.ImmediateLoad);
+        Avalon.Mod.Assets.Request<Effect>("Effects/PieChart", AssetRequestMode.ImmediateLoad);
 
     private readonly Tuple<float, PieData>[] calculatedData = new Tuple<float, PieData>[MaxData];
 

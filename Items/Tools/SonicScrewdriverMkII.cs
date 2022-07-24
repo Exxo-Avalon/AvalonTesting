@@ -25,6 +25,6 @@ class SonicScrewdriverMkII : ModItem
         Item.useStyle = ItemUseStyleID.Thrust;
         Item.useAnimation = 70;
         Item.height = dims.Height;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/SonicScrewdriver");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SonicScrewdriver");
     }
 }

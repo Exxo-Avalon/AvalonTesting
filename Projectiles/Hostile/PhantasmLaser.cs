@@ -20,9 +20,9 @@ public class PhantasmLaser : ModProjectile
 
     public override void Load()
     {
-        BeamMiddleTexture = ModContent.Request<Texture2D>("AvalonTesting/Sprites/BeamVenoshock");
-        BeamStartTexture = ModContent.Request<Texture2D>("AvalonTesting/Sprites/BeamStart");
-        BeamEndTexture = ModContent.Request<Texture2D>("AvalonTesting/Sprites/BeamEnd");
+        BeamMiddleTexture = ModContent.Request<Texture2D>("Avalon/Sprites/BeamVenoshock");
+        BeamStartTexture = ModContent.Request<Texture2D>("Avalon/Sprites/BeamStart");
+        BeamEndTexture = ModContent.Request<Texture2D>("Avalon/Sprites/BeamEnd");
     }
 
     public override void SetStaticDefaults()

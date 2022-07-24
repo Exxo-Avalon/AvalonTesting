@@ -13,7 +13,7 @@ namespace Avalon.NPCs;
 
 public class CaesiumSeekerHead : CaesiumSeekerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/CaesiumSeekerHead";
+    public override string Texture => "Avalon/NPCs/CaesiumSeekerHead";
     public override void SetDefaults()
     {
         NPC.width = 50;
@@ -77,7 +77,7 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
 
 public class CaesiumSeekerBody : CaesiumSeekerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/CaesiumSeekerBody";
+    public override string Texture => "Avalon/NPCs/CaesiumSeekerBody";
 
     public override void SetDefaults()
     {
@@ -118,7 +118,7 @@ public class CaesiumSeekerBody : CaesiumSeekerWorm
 
 public class CaesiumSeekerTail : CaesiumSeekerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/CaesiumSeekerTail";
+    public override string Texture => "Avalon/NPCs/CaesiumSeekerTail";
 
     public override void SetDefaults()
     {
@@ -178,7 +178,7 @@ public abstract class CaesiumSeekerWorm : Worm
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
         var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
         { // Influences how the NPC looks in the Bestiary
-            CustomTexturePath = "AvalonTesting/Assets/Bestiary/CaesiumSeeker", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
+            CustomTexturePath = "Avalon/Assets/Bestiary/CaesiumSeeker", // If the NPC is multiple parts like a worm, a custom texture for the Bestiary is encouraged.
             Position = new Vector2(40f, 24f),
             PortraitPositionXOverride = 0f,
             PortraitPositionYOverride = 12f,

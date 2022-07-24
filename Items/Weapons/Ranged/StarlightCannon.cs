@@ -32,7 +32,7 @@ public class StarlightCannon : ModItem
         Item.knockBack = 7f;
         Item.shoot = ModContent.ProjectileType<Projectiles.ChargingStar>();
         Item.shootSpeed = 6f;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Charging");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Charging");
         Item.value = 15500000;
     }
 

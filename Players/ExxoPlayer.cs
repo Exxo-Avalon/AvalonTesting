@@ -305,7 +305,7 @@ public class ExxoPlayer : ModPlayer
             tomeItem.SetDefaults();
         }
 
-        Main.NewText("You are using Exxo Avalon: Origins " + AvalonTesting.Mod.Version);
+        Main.NewText("You are using Exxo Avalon: Origins " + Avalon.Mod.Version);
         Main.NewText("Please note that Exxo Avalon: Origins is in Beta; it may have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
     }
@@ -1003,7 +1003,7 @@ public class ExxoPlayer : ModPlayer
         }
         if (screenShakeTimer == 1)
         {
-            SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Stomp"), Player.position);
+            SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Stomp"), Player.position);
         }
 
         if (screenShakeTimer > 0)

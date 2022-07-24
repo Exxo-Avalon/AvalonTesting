@@ -178,7 +178,7 @@ public class UIChanges : ModHook
 
     private static void OnMainDrawInterface(Main.orig_DrawInterface orig, Terraria.Main self, GameTime gameTime)
     {
-        AvalonTesting.Mod.CheckPointer = true;
+        Avalon.Mod.CheckPointer = true;
         orig(self, gameTime);
     }
 
@@ -194,12 +194,12 @@ public class UIChanges : ModHook
                 return uiElement;
             }
 
-            if (!AvalonTesting.Mod.CheckPointer || uiElement == null)
+            if (!Avalon.Mod.CheckPointer || uiElement == null)
             {
                 return null;
             }
 
-            AvalonTesting.Mod.CheckPointer = false;
+            Avalon.Mod.CheckPointer = false;
             return uiElement;
         });
     }
@@ -262,14 +262,14 @@ public class UIChanges : ModHook
     private static void OnMainDrawInventory(Main.orig_DrawInventory orig, Terraria.Main self)
     {
         Vector2 oldMouseScreen = Terraria.Main.MouseScreen;
-        if (!AvalonTesting.Mod.CheckPointer)
+        if (!Avalon.Mod.CheckPointer)
         {
             Terraria.Main.mouseX = -100;
             Terraria.Main.mouseY = -100;
         }
 
         orig(self);
-        if (!AvalonTesting.Mod.CheckPointer)
+        if (!Avalon.Mod.CheckPointer)
         {
             Terraria.Main.mouseX = (int)oldMouseScreen.X;
             Terraria.Main.mouseY = (int)oldMouseScreen.Y;

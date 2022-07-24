@@ -13,7 +13,7 @@ namespace Avalon.NPCs;
 
 public class MechanicalDiggerHead : MechanicalDiggerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalDiggerHead";
+    public override string Texture => "Avalon/NPCs/MechanicalDiggerHead";
 
     public override void HitEffect(int hitDirection, double damage)
     {
@@ -69,7 +69,7 @@ public class MechanicalDiggerHead : MechanicalDiggerWorm
 
 public class MechanicalDiggerBody : MechanicalDiggerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalDiggerBody";
+    public override string Texture => "Avalon/NPCs/MechanicalDiggerBody";
 
     public override void HitEffect(int hitDirection, double damage)
     {
@@ -112,7 +112,7 @@ public class MechanicalDiggerBody : MechanicalDiggerWorm
 
 public class MechanicalDiggerTail : MechanicalDiggerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalDiggerTail";
+    public override string Texture => "Avalon/NPCs/MechanicalDiggerTail";
 
     public override void HitEffect(int hitDirection, double damage)
     {

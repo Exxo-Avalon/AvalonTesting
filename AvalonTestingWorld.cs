@@ -533,7 +533,7 @@ public class AvalonTestingWorld : ModSystem
     }
     public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
     {
-        if (WorldBiomeManager.WorldJungle == "AvalonTesting/TropicsAlternateBiome")
+        if (WorldBiomeManager.WorldJungle == "Avalon/TropicsAlternateBiome")
         {
             int hives = tasks.FindIndex(genpass => genpass.Name == "Oasis");
             if (hives != -1)

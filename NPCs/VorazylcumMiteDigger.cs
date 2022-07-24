@@ -8,7 +8,7 @@ namespace Avalon.NPCs;
 
 public class VorazylcumMiteDigger : VorazylcumMiteDiggerWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/VorazylcumMiteDigger";
+    public override string Texture => "Avalon/NPCs/VorazylcumMiteDigger";
 
     public override void SetDefaults()
     {

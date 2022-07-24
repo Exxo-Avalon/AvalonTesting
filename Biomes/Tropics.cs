@@ -8,7 +8,7 @@ namespace Avalon.Biomes;
 public class Tropics : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeMedium;
-    public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("AvalonTesting/TropicsWaterStyle");
+    public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/TropicsWaterStyle");
     public override string BestiaryIcon => base.BestiaryIcon;
     public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
 

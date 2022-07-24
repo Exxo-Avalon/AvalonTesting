@@ -61,13 +61,13 @@ public class ExxoBuffPlayer : ModPlayer
         }
 
         EquipLoader.AddEquipTexture(
-            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Head", EquipType.Head,
+            Mod, $"{nameof(Avalon)}/{Avalon.TextureAssetsPath}/Costumes/LavaMerman_Head", EquipType.Head,
             null, LavaMermanName);
         EquipLoader.AddEquipTexture(
-            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Body", EquipType.Body,
+            Mod, $"{nameof(Avalon)}/{Avalon.TextureAssetsPath}/Costumes/LavaMerman_Body", EquipType.Body,
             null, LavaMermanName);
         EquipLoader.AddEquipTexture(
-            Mod, $"{nameof(AvalonTesting)}/{AvalonTesting.TextureAssetsPath}/Costumes/LavaMerman_Legs", EquipType.Legs,
+            Mod, $"{nameof(Avalon)}/{Avalon.TextureAssetsPath}/Costumes/LavaMerman_Legs", EquipType.Legs,
             null, LavaMermanName);
     }
 
@@ -494,7 +494,7 @@ public class ExxoBuffPlayer : ModPlayer
             Player.immuneTime = 30;
         }
 
-        SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/SpectrumDodge"), Player.position);
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SpectrumDodge"), Player.position);
         for (int i = 0; i < Player.hurtCooldowns.Length; i++)
         {
             Player.hurtCooldowns[i] = Player.immuneTime;

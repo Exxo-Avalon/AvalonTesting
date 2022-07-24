@@ -10,7 +10,7 @@ namespace Avalon.Tiles
 {
     public class DarkMatterTreeLeaf : ModGore
     {
-        public override string Texture => "AvalonTesting/Tiles/DarkMatterTree_Leaf";
+        public override string Texture => "Avalon/Tiles/DarkMatterTree_Leaf";
 
         public override void SetStaticDefaults()
         {

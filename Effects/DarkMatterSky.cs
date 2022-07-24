@@ -56,7 +56,7 @@ public class DarkMatterSky : CustomSky
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
 
         // Draw the sky texture
-        spriteBatch.Draw(AvalonTesting.DarkMatterSky, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(51, 41, 48) * opacity); // Main.ColorOfTheSkies
+        spriteBatch.Draw(Avalon.DarkMatterSky, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(51, 41, 48) * opacity); // Main.ColorOfTheSkies
 
         if (Main.netMode == NetmodeID.Server) return;
 
@@ -95,8 +95,8 @@ public class DarkMatterSky : CustomSky
         int xModifier = (int)(modifier * percentage.X);
 
         // Assign positions for the black hole and spiral clouds
-        int xPos = (xCenter - (AvalonTesting.DarkMatterBlackHole.Value.Width / 100) + xModifier) / 2;
-        int yPos = (yCenter - (AvalonTesting.DarkMatterBlackHole.Value.Height / 100)) / 2;
+        int xPos = (xCenter - (Avalon.DarkMatterBlackHole.Value.Width / 100) + xModifier) / 2;
+        int yPos = (yCenter - (Avalon.DarkMatterBlackHole.Value.Height / 100)) / 2;
 
         // Redraw stars that are in the background
         Vector2 origin = default;
@@ -121,17 +121,17 @@ public class DarkMatterSky : CustomSky
         spriteBatch.Begin();
 
         // Draw the black hole's center
-        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole2.Value, new Vector2(xPos, yPos), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f + scaleMod, SpriteEffects.None, 1f);
+        spriteBatch.Draw(Avalon.DarkMatterBlackHole2.Value, new Vector2(xPos, yPos), null, new Color(255, 255, 255, 255), 0f, new Vector2(Avalon.DarkMatterBlackHole2.Width() >> 1, Avalon.DarkMatterBlackHole2.Height() >> 1), 0.25f + scaleMod, SpriteEffects.None, 1f);
 
         // End and begin again, allowing transparency and non-blurry scaling
         spriteBatch.End();
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
 
         // Draw the black hole
-        spriteBatch.Draw(AvalonTesting.DarkMatterBlackHole.Value, new Vector2(xPos, yPos), null, Color.White, 0f, new Vector2(AvalonTesting.DarkMatterBlackHole2.Width() >> 1, AvalonTesting.DarkMatterBlackHole2.Height() >> 1), 0.25f + scaleMod, SpriteEffects.None, 1f);
+        spriteBatch.Draw(Avalon.DarkMatterBlackHole.Value, new Vector2(xPos, yPos), null, Color.White, 0f, new Vector2(Avalon.DarkMatterBlackHole2.Width() >> 1, Avalon.DarkMatterBlackHole2.Height() >> 1), 0.25f + scaleMod, SpriteEffects.None, 1f);
 
         // Draw the spiral clouds
-        spriteBatch.Draw(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Value, new Vector2(xPos, yPos), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Width() >> 1, AvalonTesting.DarkMatterBackgrounds[surfaceFrame].Height() >> 1), 3f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(Avalon.DarkMatterBackgrounds[surfaceFrame].Value, new Vector2(xPos, yPos), null, new Color(255, 255, 255, 255), 0f, new Vector2(Avalon.DarkMatterBackgrounds[surfaceFrame].Width() >> 1, Avalon.DarkMatterBackgrounds[surfaceFrame].Height() >> 1), 3f, SpriteEffects.None, 1f);
 
         spriteBatch.End();
         spriteBatch.Begin();
@@ -174,8 +174,8 @@ public class DarkMatterSky : CustomSky
         //}
 
         // Draw the floating rocks
-        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
-        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(xPos + AvalonTesting.DarkMatterFloatingRocks.Value.Width, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(AvalonTesting.DarkMatterFloatingRocks.Width() >> 1, AvalonTesting.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(Avalon.DarkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(Avalon.DarkMatterFloatingRocks.Width() >> 1, Avalon.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
+        spriteBatch.Draw(Avalon.DarkMatterFloatingRocks.Value, new Vector2(xPos + Avalon.DarkMatterFloatingRocks.Value.Width, yPos + 200), null, new Color(255, 255, 255, 255), 0f, new Vector2(Avalon.DarkMatterFloatingRocks.Width() >> 1, Avalon.DarkMatterFloatingRocks.Height() >> 1), 1f, SpriteEffects.None, 1f);
     }
     public override void Update(GameTime gameTime)
     {

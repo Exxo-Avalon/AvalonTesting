@@ -9,7 +9,7 @@ namespace Avalon.Biomes;
 public class Contagion : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
-    public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("AvalonTesting/ContagionWaterStyle");
+    public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/ContagionWaterStyle");
     public override string BestiaryIcon => base.BestiaryIcon;
     public override string BackgroundPath => base.BackgroundPath;
     public override string MapBackground => BackgroundPath;

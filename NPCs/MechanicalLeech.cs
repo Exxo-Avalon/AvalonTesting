@@ -7,7 +7,7 @@ namespace Avalon.NPCs;
 
 public class MechanicalLeechHead : MechanicalLeechWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalLeechHead";
+    public override string Texture => "Avalon/NPCs/MechanicalLeechHead";
 
     public override void SetDefaults()
     {
@@ -41,7 +41,7 @@ public class MechanicalLeechHead : MechanicalLeechWorm
 
 public class MechanicalLeechBody : MechanicalLeechWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalLeechBody";
+    public override string Texture => "Avalon/NPCs/MechanicalLeechBody";
     public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
     {
         return false;
@@ -71,7 +71,7 @@ public class MechanicalLeechBody : MechanicalLeechWorm
 
 public class MechanicalLeechTail : MechanicalLeechWorm
 {
-    public override string Texture => "AvalonTesting/NPCs/MechanicalLeechTail";
+    public override string Texture => "Avalon/NPCs/MechanicalLeechTail";
     public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
     {
         return false;

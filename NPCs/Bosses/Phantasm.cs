@@ -279,7 +279,7 @@ public class Phantasm : ModNPC
                     if (NPC.ai[1] % 60 == 0)
                     {
                         SoundEngine.PlaySound(
-                            new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserFire") { Volume = 0.8f},
+                            new SoundStyle($"{nameof(Avalon)}/Sounds/Item/LaserFire") { Volume = 0.8f},
                             NPC.position);
                         // fire laser
                         Vector2 velocityOfProj = Main.player[NPC.target].Center - NPC.Center;
@@ -396,7 +396,7 @@ public class Phantasm : ModNPC
                 }
                 if (NPC.ai[0] == 400 || NPC.ai[0] == 450 || NPC.ai[0] == 500 || NPC.ai[0] == 550)
                 {
-                    SoundEngine.PlaySound(new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/LaserFire") { Volume = 0.8f}, NPC.position);
+                    SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/LaserFire") { Volume = 0.8f}, NPC.position);
                     Vector2 velocityOfProj = Main.player[NPC.target].Center - NPC.Center;
                     velocityOfProj.Normalize();
                     float num1275 = -1f;

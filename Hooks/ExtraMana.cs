@@ -73,7 +73,7 @@ public class ExtraMana : ModHook
             {
                 if (index - 1 < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
                 {
-                    return AvalonTesting.Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/Mana{i}");
+                    return Avalon.Mod.Assets.Request<Texture2D>($"{Avalon.TextureAssetsPath}/UI/Mana{i}");
                 }
             }
 
@@ -95,8 +95,8 @@ public class ExtraMana : ModHook
             {
                 if (index < (Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal)
                 {
-                    return AvalonTesting.Mod.Assets.Request<Texture2D>(
-                        $"{AvalonTesting.TextureAssetsPath}/UI/FancyMana{i}");
+                    return Avalon.Mod.Assets.Request<Texture2D>(
+                        $"{Avalon.TextureAssetsPath}/UI/FancyMana{i}");
                 }
             }
 
@@ -122,8 +122,8 @@ public class ExtraMana : ModHook
                     if (index >= mpSegmentsCount -
                         ((Main.LocalPlayer.statManaMax2 - (MaxManaToDisplay * (i - 1))) / ManaPerCrystal))
                     {
-                        return AvalonTesting.Mod.Assets.Request<Texture2D>(
-                            $"{AvalonTesting.TextureAssetsPath}/UI/BarMana{i}");
+                        return Avalon.Mod.Assets.Request<Texture2D>(
+                            $"{Avalon.TextureAssetsPath}/UI/BarMana{i}");
                     }
                 }
 

@@ -42,6 +42,6 @@ public class TropicsWaterStyle : ModWaterStyle
 
     public override Asset<Texture2D> GetRainTexture()
     {
-        return ModContent.Request<Texture2D>("AvalonTesting/Waters/TropicsRain");
+        return ModContent.Request<Texture2D>("Avalon/Waters/TropicsRain");
     }
 }

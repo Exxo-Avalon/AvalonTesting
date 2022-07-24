@@ -58,7 +58,7 @@ public class GenPasses : ModHook
         }
         catch (KeyNotFoundException e)
         {
-            AvalonTesting.Mod.Logger.Error($"Could not find GenPass with name {name}", e);
+            Avalon.Mod.Logger.Error($"Could not find GenPass with name {name}", e);
             return null;
         }
     }

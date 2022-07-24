@@ -17,13 +17,13 @@ public class ResistantTree : ModTree
 
     }
 
-    public override Asset<Texture2D> GetTexture() => AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTree");
+    public override Asset<Texture2D> GetTexture() => Avalon.Mod.Assets.Request<Texture2D>("Tiles/ResistantTree");
 
     public override Asset<Texture2D> GetBranchTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeBranches");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeBranches");
 
     public override Asset<Texture2D> GetTopTextures() =>
-        AvalonTesting.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeTop");
+        Avalon.Mod.Assets.Request<Texture2D>("Tiles/ResistantTreeTop");
 
     public override int DropWood() => ModContent.ItemType<Items.Placeable.Tile.ResistantWood>();
 

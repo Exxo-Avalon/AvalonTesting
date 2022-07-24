@@ -35,7 +35,7 @@ public class ExtraHealth : ModHook
             int crystalFruitCount = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (index - 1 < crystalFruitCount)
             {
-                return AvalonTesting.Mod.Assets.Request<Texture2D>($"{AvalonTesting.TextureAssetsPath}/UI/Heart3");
+                return Avalon.Mod.Assets.Request<Texture2D>($"{Avalon.TextureAssetsPath}/UI/Heart3");
             }
 
             return sprite;
@@ -62,8 +62,8 @@ public class ExtraHealth : ModHook
             int crystalFruitSegments = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (elementIndex >= hpSegmentsCount - crystalFruitSegments)
             {
-                return AvalonTesting.Mod.Assets.Request<Texture2D>(
-                    $"{AvalonTesting.TextureAssetsPath}/UI/HP_Fill_Crystal");
+                return Avalon.Mod.Assets.Request<Texture2D>(
+                    $"{Avalon.TextureAssetsPath}/UI/HP_Fill_Crystal");
             }
 
             return sprite;
@@ -83,8 +83,8 @@ public class ExtraHealth : ModHook
             int crystalFruitCount = (Main.LocalPlayer.statLifeMax - 500) / 5;
             if (elementIndex < crystalFruitCount)
             {
-                return AvalonTesting.Mod.Assets.Request<Texture2D>(
-                    $"{AvalonTesting.TextureAssetsPath}/UI/FancyBlueHeart");
+                return Avalon.Mod.Assets.Request<Texture2D>(
+                    $"{Avalon.TextureAssetsPath}/UI/FancyBlueHeart");
             }
 
             return sprite;

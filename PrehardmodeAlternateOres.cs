@@ -24,7 +24,7 @@ internal class BronzeAlternateOres : AltOre
         DisplayName.SetDefault("Bronze");
     }
 
-    public override string Texture => "AvalonTesting/Assets/Ores/BronzeOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/BronzeOreIcon";
 }
 
 internal class NickelAlternateOres : AltOre
@@ -39,7 +39,7 @@ internal class NickelAlternateOres : AltOre
         DisplayName.SetDefault("Nickel");
     }
 
-    public override string Texture => "AvalonTesting/Assets/Ores/NickelOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/NickelOreIcon";
 }
 
 internal class ZincAlternateOres : AltOre
@@ -54,7 +54,7 @@ internal class ZincAlternateOres : AltOre
         DisplayName.SetDefault("Zinc");
     }
 
-    public override string Texture => "AvalonTesting/Assets/Ores/ZincOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/ZincOreIcon";
 }
 
 internal class BismuthAlternateOres : AltOre
@@ -69,7 +69,7 @@ internal class BismuthAlternateOres : AltOre
         DisplayName.SetDefault("Bismuth");
     }
 
-    public override string Texture => "AvalonTesting/Assets/Ores/BismuthOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/BismuthOreIcon";
 }
 
 internal class RhodiumAlternateOres : AltOre
@@ -83,7 +83,7 @@ internal class RhodiumAlternateOres : AltOre
         DisplayName.SetDefault("Rhodium");
         Selectable = false;
     }
-    public override string Texture => "AvalonTesting/Assets/Ores/RhodiumOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/RhodiumOreIcon";
     public override void OnInitialize() => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = (ExxoWorldGen.RhodiumVariant)Main.rand.Next(3);
 
     public override bool OnClick()
@@ -111,9 +111,9 @@ internal class RhodiumAlternateOres : AltOre
             list.Insert(index + 1, new ALOreDrawingStruct(this, false,
                 (value) => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre switch
                     {
-                        ExxoWorldGen.RhodiumVariant.Rhodium => ModContent.Request<Texture2D>("AvalonTesting/Assets/Ores/RhodiumOreIcon"),
-                        ExxoWorldGen.RhodiumVariant.Osmium => ModContent.Request<Texture2D>("AvalonTesting/Assets/Ores/OsmiumOreIcon"),
-                        ExxoWorldGen.RhodiumVariant.Iridium => ModContent.Request<Texture2D>("AvalonTesting/Assets/Ores/IridiumOreIcon"),
+                        ExxoWorldGen.RhodiumVariant.Rhodium => ModContent.Request<Texture2D>("Avalon/Assets/Ores/RhodiumOreIcon"),
+                        ExxoWorldGen.RhodiumVariant.Osmium => ModContent.Request<Texture2D>("Avalon/Assets/Ores/OsmiumOreIcon"),
+                        ExxoWorldGen.RhodiumVariant.Iridium => ModContent.Request<Texture2D>("Avalon/Assets/Ores/IridiumOreIcon"),
                         _ => value,
                     }, () => new Rectangle(0, 0, 30, 30),
                 () => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre switch
@@ -139,7 +139,7 @@ internal class OsmiumAlternateOres : AltOre
         DisplayName.SetDefault("Osmium");
         Selectable = false;
     }
-    public override string Texture => "AvalonTesting/Assets/Ores/OsmiumOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/OsmiumOreIcon";
     public override bool OnClick()
     {
         ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = ExxoWorldGen.RhodiumVariant.Osmium;
@@ -163,7 +163,7 @@ internal class IridiumAlternateOres : AltOre
         DisplayName.SetDefault("Iridium");
         Selectable = false;
     }
-    public override string Texture => "AvalonTesting/Assets/Ores/IridiumOreIcon";
+    public override string Texture => "Avalon/Assets/Ores/IridiumOreIcon";
     public override bool OnClick()
     {
         ModContent.GetInstance<ExxoWorldGen>().RhodiumOre = ExxoWorldGen.RhodiumVariant.Iridium;

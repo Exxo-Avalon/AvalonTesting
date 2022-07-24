@@ -35,6 +35,6 @@ class FocusBeam : ModItem
         Item.value = 388500;
         Item.useAnimation = 27;
         Item.height = dims.Height;
-        Item.UseSound = new SoundStyle($"{nameof(AvalonTesting)}/Sounds/Item/Beam");
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Beam");
     }
 }

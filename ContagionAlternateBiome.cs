@@ -63,13 +63,13 @@ internal class ContagionAlternateBiome : AltBiome
     public override EvilBiomeGenerationPass GetEvilBiomeGenerationPass() => new ContagionGeneration();
     public override List<int> SpreadingTiles => new() { ModContent.TileType<Ickgrass>(), ModContent.TileType<Chunkstone>(), ModContent.TileType<Snotsand>(), ModContent.TileType<GreenIce>(), ModContent.TileType<Snotsandstone>(), ModContent.TileType<HardenedSnotsand>() };
 
-    public override string WorldIcon => "AvalonTesting/Assets/WorldIcons/Contagion";
+    public override string WorldIcon => "Avalon/Assets/WorldIcons/Contagion";
 
-    public override string IconSmall => "AvalonTesting/Assets/Bestiary/ContagionIcon";
+    public override string IconSmall => "Avalon/Assets/Bestiary/ContagionIcon";
 
-    public override string IconLarge => "AvalonTesting/Assets/Textures/UI/ContagionPreview";
+    public override string IconLarge => "Avalon/Assets/Textures/UI/ContagionPreview";
 
-    public override string OuterTexture => "AvalonTesting/Assets/Loading/OuterContagion";
+    public override string OuterTexture => "Avalon/Assets/Loading/OuterContagion";
 
     public override Color OuterColor => new(175, 148, 199);
 }

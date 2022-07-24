@@ -30,7 +30,7 @@ public class ALSHMIcon : ModHook
         remove => HookEndpointManager.Unmodify(drunkIcons, value);
     }
 
-    private const string SHMPath = "AvalonTesting/Assets/WorldIcons/SuperHardmode";
+    private const string SHMPath = "Avalon/Assets/WorldIcons/SuperHardmode";
     private Func<WorldFileData, bool> sHMCondition;
 
     protected override void Apply()
@@ -58,7 +58,7 @@ public class ALSHMIcon : ModHook
                 .Emit(OpCodes.Ldloc, 1);
             c.EmitDelegate<Func<Dictionary<string, Func<WorldFileData, bool>>, Dictionary<string, Func<WorldFileData, bool>>>>((value) =>
             {
-                value.Add("Terraria/AvalonTesting/SuperHardmode", sHMCondition);
+                value.Add("Terraria/Avalon/SuperHardmode", sHMCondition);
                 return value;
             });
             c.Emit(OpCodes.Stloc, 1)
@@ -72,7 +72,7 @@ public class ALSHMIcon : ModHook
             ILLabel ifEnd = c.DefineLabel();
 
             // if (...)
-            c.EmitDelegate<Func<string, bool>>((v) => v == "Terraria/AvalonTesting/SuperHardmode");
+            c.EmitDelegate<Func<string, bool>>((v) => v == "Terraria/Avalon/SuperHardmode");
             c.Emit(OpCodes.Brfalse_S, ifStart);
 
             // {
@@ -110,7 +110,7 @@ public class ALSHMIcon : ModHook
             c.Emit(OpCodes.Ldloc, 1);
             c.EmitDelegate<Func<Dictionary<string, Func<WorldFileData, bool>>, Dictionary<string, Func<WorldFileData, bool>>>>((value) =>
             {
-                value.Add("Terraria/AvalonTesting/SuperHardmode", sHMCondition);
+                value.Add("Terraria/Avalon/SuperHardmode", sHMCondition);
                 return value;
             });
             c.Emit(OpCodes.Stloc, 1)
@@ -124,7 +124,7 @@ public class ALSHMIcon : ModHook
             ILLabel ifEnd = c.DefineLabel();
 
             // if (...)
-            c.EmitDelegate<Func<string, bool>>((v) => v == "Terraria/AvalonTesting/SuperHardmode");
+            c.EmitDelegate<Func<string, bool>>((v) => v == "Terraria/Avalon/SuperHardmode");
             c.Emit(OpCodes.Brfalse_S, ifStart);
 
             // {
