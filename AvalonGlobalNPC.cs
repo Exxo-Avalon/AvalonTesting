@@ -1495,20 +1495,6 @@ public class AvalonGlobalNPC : GlobalNPC
     internal static int[] Emblems;
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
-        // DOES NOT WORK
-        if (npc.type == NPCID.WallofFlesh)
-        {
-            List<IItemDropRule> rules = npcLoot.Get(false);
-            var leadingRule = rules
-                .OfType<LeadingConditionRule>()
-                .Where(lc => lc.condition is Conditions.NotExpert)
-                .ToList();
-            var successRule = (Chains.TryIfSucceeded)leadingRule[0].ChainedRules
-                .Find(x => ((OneFromOptionsNotScaledWithLuckDropRule)x.RuleToChain).dropIds.Contains(ItemID.WarriorEmblem));
-            var oneFromOptionsRule = (OneFromOptionsNotScaledWithLuckDropRule)successRule.RuleToChain;
-            Emblems = oneFromOptionsRule.dropIds;
-            npcLoot.RemoveWhere(x => x == oneFromOptionsRule, false);
-        }
         if (Avalon.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
         {
             npcLoot.RemoveWhere(
@@ -1581,6 +1567,31 @@ public class AvalonGlobalNPC : GlobalNPC
                 break;
 
             case NPCID.WallofFlesh:
+                List<IItemDropRule> rules = npcLoot.Get(false);
+                IItemDropRule? match = null;
+                foreach (IItemDropRule rule in rules)
+                {
+                    if (rule is not LeadingConditionRule lc)
+                    {
+                        continue;
+                    }
+
+                    foreach (IItemDropRuleChainAttempt chain in lc.ChainedRules)
+                    {
+                        if (chain is Chains.TryIfSucceeded { RuleToChain: OneFromOptionsNotScaledWithLuckDropRule ruleMain } && ruleMain.dropIds.Contains(ItemID.WarriorEmblem))
+                        {
+                            Emblems = ruleMain.dropIds;
+                            match = rule;
+                            break;
+                        }
+                    }
+
+                    if (match != null)
+                    {
+                        break;
+                    }
+                }
+                npcLoot.Remove(match);
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<NullEmblem>()));
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<FleshyTendril>(),
                     1,
