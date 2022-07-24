@@ -21,7 +21,6 @@ public class ChaosBolt : ModProjectile
         Projectile.tileCollide = false;
         Projectile.friendly = true;
         Projectile.timeLeft = 540;
-        Projectile.light = 1f;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
@@ -29,6 +28,7 @@ public class ChaosBolt : ModProjectile
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 150 / 255f, 0, 100 / 255f);
         var num924 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X, Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 3f);
         Main.dust[num924].noGravity = true;
         if (Main.rand.Next(10) == 0)

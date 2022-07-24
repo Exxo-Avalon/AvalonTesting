@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -20,7 +20,7 @@ public class CursedFlamelash : ModProjectile
         Projectile.width = dims.Width * 14 / 16;
         Projectile.height = dims.Height * 14 / 16 / Main.projFrames[Projectile.type];
         Projectile.friendly = true;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.1f;
         Projectile.DamageType = DamageClass.Magic;
         DrawOriginOffsetY = -6;
     }
@@ -28,10 +28,11 @@ public class CursedFlamelash : ModProjectile
     {
         target.AddBuff(BuffID.CursedInferno, 180);
     }
-    public override Color? GetAlpha(Color lightColor) => new Color(96, 248, 2, 0);
+    public override Color? GetAlpha(Color lightColor) => new Color(200, 200, 200, 25);
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 96 / 255f, 248 / 255f, 2 / 255f);
         if (Projectile.soundDelay == 0 && Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y) > 2f)
         {
             Projectile.soundDelay = 10;
@@ -40,7 +41,14 @@ public class CursedFlamelash : ModProjectile
 
         Dust dust;
         Vector2 position = Projectile.Center + new Vector2(Main.rand.Next(-4, 5), Main.rand.Next(-4, 5));
-        dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 107, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+        if (Main.rand.Next(3) <= 1)
+        {
+            dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 75, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+        }
+        else
+        {
+            dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 107, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
+        }
 
 
         if (Main.myPlayer == Projectile.owner && Projectile.ai[0] == 0f)

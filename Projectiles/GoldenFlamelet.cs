@@ -18,7 +18,7 @@ public class GoldenFlamelet : ModProjectile
         Projectile.timeLeft = 600;
         Projectile.friendly = true;
         Projectile.penetrate = 5;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.2f;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.tileCollide = true;
         Projectile.hostile = false;

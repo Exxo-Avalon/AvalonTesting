@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +20,6 @@ public class ZirconBolt : ModProjectile
         Projectile.width = Projectile.height = 10;
         Projectile.alpha = 255;
         Projectile.DamageType = DamageClass.Magic;
-        Projectile.light = 0.9f;
         Projectile.friendly = true;
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 16;
@@ -28,7 +27,7 @@ public class ZirconBolt : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.penetrate = 3;
 
-        color = new Color(198, 168, 130) * 0.7f;
+        color = new Color(208, 148, 70) * 0.7f;
         dustId = ModContent.DustType<Dusts.ZirconDust>();
     }
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +26,7 @@ public class Tear : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 0, 20 / 255f, 25 / 255f);
         Projectile.spriteDirection = Projectile.direction;
         Projectile.scale *= 0.985f;
         Projectile.ai[0] += 1f;

@@ -21,11 +21,11 @@ public class InfectedMist : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = 6;
-        Projectile.light = 0.2f;
     }
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 20 / 255f, 30 / 255f, 0);
         if (Projectile.type == ModContent.ProjectileType<InfectedMist>())
         {
             Projectile.velocity *= 0.96f;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -30,7 +30,6 @@ class ChargingStar : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.damage = 0;
-        Projectile.light = 1;
         Projectile.hide = true;
         Projectile.ownerHitCheck = true;
         Projectile.tileCollide = false;
@@ -42,6 +41,7 @@ class ChargingStar : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 255 / 255f, 224 / 255f, 115 / 255f);
         CHARGE++;
         Projectile P = Projectile;
         P.damage = 0;

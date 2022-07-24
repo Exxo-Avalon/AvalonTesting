@@ -8,7 +8,8 @@ public class ZirconDust : ModDust
 {
     public override bool Update(Dust dust)
     {
-        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), 198 / 255, 168 / 255, 130 / 255);
+        var lightFade = (dust.scale > 1 ? 1 : dust.scale);
+        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), ((float)208 / 255 * lightFade), ((float)148 / 255 * lightFade), ((float)70 / 255 * lightFade));
         return true;
     }
     public override Color? GetAlpha(Dust dust, Color lightColor)

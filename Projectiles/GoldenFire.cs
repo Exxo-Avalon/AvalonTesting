@@ -26,7 +26,7 @@ public class GoldenFire : ModProjectile
         Projectile.timeLeft = 360;
         Projectile.friendly = true;
         Projectile.penetrate = 1;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.5f;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.tileCollide = true;
         Projectile.damage = 45;
@@ -38,6 +38,7 @@ public class GoldenFire : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 255 / 255f, 235 / 255f, 0);
         if (!initalize)
         {
             if (channeling == -1 || !Main.projectile[channeling].active)

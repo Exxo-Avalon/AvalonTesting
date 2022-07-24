@@ -20,8 +20,6 @@ public class BlahBeam : ModProjectile
         Projectile.aiStyle = 27;
         Projectile.DamageType = DamageClass.Melee;
         Projectile.penetrate = 2;
-        Projectile.light = 0.8f;
-        Projectile.penetrate = 2;
         Projectile.alpha = 255;
         Projectile.friendly = true;
     }
@@ -93,6 +91,7 @@ public class BlahBeam : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 255 / 255f, 175 / 255f, 0);
         int closest = Projectile.FindClosestNPC(16 * 20, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy || npc.type == NPCID.CultistBossClone);
         if (closest != -1)
         {

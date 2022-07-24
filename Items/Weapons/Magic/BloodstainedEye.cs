@@ -17,7 +17,7 @@ class BloodstainedEye : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 22;
+        Item.damage = 34;
         Item.scale = 1.1f;
         Item.DamageType = DamageClass.Magic;
         Item.autoReuse = true;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,6 +26,7 @@ public class BloodyTear : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 30 / 255f, 20 / 255f, 0);
         Projectile.spriteDirection = Projectile.direction;
         Projectile.scale *= 0.99f;
         Projectile.ai[0] += 1f;

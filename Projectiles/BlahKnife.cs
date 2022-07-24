@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -25,8 +25,13 @@ public class BlahKnife : ModProjectile
         Projectile.ignoreWater = true;
         Projectile.extraUpdates = 0;
     }
+    //public override Color? GetAlpha(Color lightColor)
+    //{
+    //    return new Color(255, 255, 255, Projectile.alpha);
+    //}
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 140 / 255f, 90 / 255f, 50 / 255f);
         //projectile.localAI[1]++;
         var num28 = (float)Math.Sqrt(Projectile.velocity.X * Projectile.velocity.X + Projectile.velocity.Y * Projectile.velocity.Y);
         var num29 = Projectile.localAI[0];
@@ -59,6 +64,13 @@ public class BlahKnife : ModProjectile
                     }
                 }
             }
+            //var num483 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X - 2f, Projectile.position.Y + 10f + Projectile.velocity.Y), 8, 8, DustID.Torch, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default(Color), 1.5f);
+            //Main.dust[num483].velocity *= -0.25f;
+            //Main.dust[num483].noGravity = true;
+            //num483 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X - 2f, Projectile.position.Y + 10f + Projectile.velocity.Y), 8, 8, DustID.Torch, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default(Color), 1.5f);
+            //Main.dust[num483].velocity *= -0.25f;
+            //Main.dust[num483].position -= Projectile.velocity * 0.1f;
+            //Main.dust[num483].noGravity = true;
             if (flag)
             {
                 Projectile.ai[1] = npcArrayIndexStored + 1;

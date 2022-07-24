@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -26,10 +26,12 @@ public class HallowedThorn : ModProjectile
         Projectile.alpha = 255;
         Projectile.ignoreWater = true;
         Projectile.DamageType = DamageClass.Magic;
+        Projectile.light = 0.5f;
     }
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 255 / 255f, 255 / 255f, 0);
         Vector2 vector73 = Projectile.position + new Vector2(Projectile.width / 2, Projectile.height / 2);
         Projectile.position -= Projectile.velocity;
         Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57079637f;

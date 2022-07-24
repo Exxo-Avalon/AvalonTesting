@@ -29,6 +29,7 @@ public class KunziteShower : ModProjectile
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 50 / 255f, 20 / 255f, 30 / 255f);
         if (Projectile.type == ProjectileID.GoldenShowerHostile && Projectile.localAI[0] == 0f)
         {
             Projectile.localAI[0] = 1f;

@@ -8,7 +8,8 @@ public class TourmalineDust : ModDust
 {
     public override bool Update(Dust dust)
     {
-        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), 22 / 255, 212 / 255, 198 / 255);
+        var lightFade = (dust.scale > 1 ? 1 : dust.scale);
+        Lighting.AddLight((int)(dust.position.X / 16f), (int)(dust.position.Y / 16f), ((float)22 / 255 * lightFade), ((float)212 / 255 * lightFade), ((float)198 / 255 * lightFade));
         return true;
     }
     public override Color? GetAlpha(Dust dust, Color lightColor)

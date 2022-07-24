@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,6 +23,7 @@ public class SolarBolt : ModProjectile
         Projectile.height = dims.Height * 10 / 16 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
         Projectile.penetrate = 6;
+        Projectile.light = 0.2f;
 
         color = new Color(255, 50, 0) * 0.4f;
         dustId = 152;
@@ -30,6 +31,7 @@ public class SolarBolt : ModProjectile
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 1f, 0.55f, 0);
         for (var i = 0; i < 2; i++)
         {
             var dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dustId, Projectile.velocity.X, Projectile.velocity.Y, 50, color, 1.2f);

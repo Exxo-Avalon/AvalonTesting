@@ -20,7 +20,7 @@ public class JungleFire : ModProjectile
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.5f;
         Projectile.alpha = 100;
         Projectile.DamageType = DamageClass.Magic;
     }
@@ -50,6 +50,7 @@ public class JungleFire : ModProjectile
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 190 / 255f, 255 / 255f, 25 / 255f);
         if (Projectile.type == ModContent.ProjectileType<DarkFlame>())
         {
             var num150 = Dust.NewDust(new Vector2(Projectile.position.X + Projectile.velocity.X, Projectile.position.Y + Projectile.velocity.Y), Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X, Projectile.velocity.Y, 100, default(Color), 1f);

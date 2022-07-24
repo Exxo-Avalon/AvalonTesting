@@ -22,7 +22,7 @@ public class FocusBeam : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = 4;
-        Projectile.light = 0.8f;
+        Projectile.light = 0.6f;
         Projectile.alpha = 0;
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
@@ -52,6 +52,7 @@ public class FocusBeam : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 0, 255 / 255f, 255 / 255f);
         if (Projectile.ai[0] >= 15f)
         {
             Projectile.ai[0] = 15f;

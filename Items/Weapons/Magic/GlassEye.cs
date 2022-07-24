@@ -36,7 +36,7 @@ class GlassEye : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Lens, 1).AddIngredient(ItemID.Glass, 5).AddIngredient(ItemID.FallenStar, 3).AddIngredient(ItemID.BottledWater, 1).AddTile(TileID.WorkBenches).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Lens, 1).AddIngredient(ItemID.FallenStar, 2).AddIngredient(ItemID.BottledWater, 1).AddTile(TileID.WorkBenches).Register();
     }
     public override Vector2? HoldoutOffset()
     {

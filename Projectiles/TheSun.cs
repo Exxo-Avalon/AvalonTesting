@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -27,7 +27,6 @@ class TheSun : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.damage = 0;
-        Projectile.light = 2;
         //projectile.ownerHitCheck = true;
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.Magic;
@@ -45,6 +44,7 @@ class TheSun : ModProjectile
     }
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 255 / 255f, 235 / 255f, 15 / 255f);
         Projectile.rotation++;
         Projectile.scale *= 1.002f;
         if (Projectile.scale > 6f) Projectile.scale = 6f;
