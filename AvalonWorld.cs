@@ -337,15 +337,15 @@ public class AvalonWorld : ModSystem
         }
 
         int x = Main.maxTilesX / 3;
-        int y = 50;
+        int y = 41;
         if (Main.maxTilesY == 1800)
         {
-            y = 60;
+            y = 51;
         }
 
         if (Main.maxTilesY == 2400)
         {
-            y = 70;
+            y = 61;
         }
 
         if (Main.rand.NextBool(2))

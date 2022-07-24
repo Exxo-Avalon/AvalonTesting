@@ -35,16 +35,16 @@ public class ExxoBiomePlayer : ModPlayer
         Point tileCoordinates = Player.Center.ToTileCoordinates();
         ushort wallType = Main.tile[tileCoordinates.X, tileCoordinates.Y].WallType;
 
-        ZoneContagion = biomeTileCounts.ContagionTiles > 200;
-        ZoneUndergroundContagion = biomeTileCounts.ContagionTiles > 200 && Player.ZoneRockLayerHeight;
+        ZoneContagion = biomeTileCounts.ContagionTiles > 350;
+        ZoneUndergroundContagion = biomeTileCounts.ContagionTiles > 350 && Player.ZoneRockLayerHeight;
         ZoneCaesium = biomeTileCounts.CaesiumTiles > 200 && Player.ZoneUnderworldHeight;
-        ZoneCrystal = biomeTileCounts.CrystalTiles > 100;
+        ZoneCrystal = biomeTileCounts.CrystalTiles > 150;
         ZoneDarkMatter = biomeTileCounts.DarkTiles > 450;
         ZoneNearHellcastle = biomeTileCounts.HellCastleTiles > 350 && Player.ZoneUnderworldHeight;
         ZoneHellcastle = biomeTileCounts.HellCastleTiles > 350 &&
                          wallType == ModContent.WallType<ImperviousBrickWallUnsafe>() && Player.ZoneUnderworldHeight;
-        ZoneSkyFortress = biomeTileCounts.SkyFortressTiles > 50;
-        ZoneTropics = biomeTileCounts.TropicsTiles > 50;
+        ZoneSkyFortress = biomeTileCounts.SkyFortressTiles > 75;
+        ZoneTropics = biomeTileCounts.TropicsTiles > 200;
         ZoneTuhrtlOutpost = ZoneTropics && wallType == ModContent.WallType<TuhrtlBrickWallUnsafe>() &&
                             Player.ZoneRockLayerHeight;
         ZoneTime = biomeTileCounts.TimeTiles > 1;
