@@ -60,7 +60,7 @@ public class BacteriumPrime : ModNPC
     {
         if (NPC.type == ModContent.NPCType<BacteriumPrime>())
         {
-            AvalonTestingGlobalNPC.BoogerBoss = NPC.whoAmI;
+            AvalonGlobalNPC.BoogerBoss = NPC.whoAmI;
         }
 
         if (Main.player[NPC.target].dead)

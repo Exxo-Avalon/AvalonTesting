@@ -1140,13 +1140,13 @@ public class ExxoPlayer : ModPlayer
         if (Player.tongued)
         {
             bool flag21 = false;
-            if (AvalonTestingWorld.WallOfSteel >= 0)
+            if (AvalonWorld.WallOfSteel >= 0)
             {
-                float num159 = Main.npc[AvalonTestingWorld.WallOfSteel].position.X +
-                               (Main.npc[AvalonTestingWorld.WallOfSteel].width / 2);
-                num159 += Main.npc[AvalonTestingWorld.WallOfSteel].direction * 200;
-                float num160 = Main.npc[AvalonTestingWorld.WallOfSteel].position.Y +
-                               (Main.npc[AvalonTestingWorld.WallOfSteel].height / 2);
+                float num159 = Main.npc[AvalonWorld.WallOfSteel].position.X +
+                               (Main.npc[AvalonWorld.WallOfSteel].width / 2);
+                num159 += Main.npc[AvalonWorld.WallOfSteel].direction * 200;
+                float num160 = Main.npc[AvalonWorld.WallOfSteel].position.Y +
+                               (Main.npc[AvalonWorld.WallOfSteel].height / 2);
                 var vector5 = new Vector2(Player.position.X + (Player.width * 0.5f),
                     Player.position.Y + (Player.height * 0.5f));
                 float num161 = num159 - vector5.X;
@@ -2284,10 +2284,10 @@ public class ExxoPlayer : ModPlayer
 
     public void WOSTongue()
     {
-        if (AvalonTestingWorld.WallOfSteel >= 0 && Main.npc[AvalonTestingWorld.WallOfSteel].active)
+        if (AvalonWorld.WallOfSteel >= 0 && Main.npc[AvalonWorld.WallOfSteel].active)
         {
-            float num = Main.npc[AvalonTestingWorld.WallOfSteel].position.X + 40f;
-            if (Main.npc[AvalonTestingWorld.WallOfSteel].direction > 0)
+            float num = Main.npc[AvalonWorld.WallOfSteel].position.X + 40f;
+            if (Main.npc[AvalonWorld.WallOfSteel].direction > 0)
             {
                 num -= 96f;
             }
@@ -2295,8 +2295,8 @@ public class ExxoPlayer : ModPlayer
             if (Player.position.X + Player.width > num && Player.position.X < num + 140f && Player.gross)
             {
                 Player.noKnockback = false;
-                Player.Hurt(PlayerDeathReason.ByNPC(AvalonTestingWorld.WallOfSteel), 50,
-                    Main.npc[AvalonTestingWorld.WallOfSteel].direction);
+                Player.Hurt(PlayerDeathReason.ByNPC(AvalonWorld.WallOfSteel), 50,
+                    Main.npc[AvalonWorld.WallOfSteel].direction);
             }
 
             if (!Player.gross && Player.position.Y > (Main.maxTilesY - 250) * 16 && Player.position.X > num - 1920f &&
@@ -2313,16 +2313,16 @@ public class ExxoPlayer : ModPlayer
                     Player.AddBuff(38, 10);
                 }
 
-                if (Main.npc[AvalonTestingWorld.WallOfSteel].direction < 0)
+                if (Main.npc[AvalonWorld.WallOfSteel].direction < 0)
                 {
-                    if (Player.position.X + (Player.width / 2) > Main.npc[AvalonTestingWorld.WallOfSteel].position.X +
-                        (Main.npc[AvalonTestingWorld.WallOfSteel].width / 2) + 40f)
+                    if (Player.position.X + (Player.width / 2) > Main.npc[AvalonWorld.WallOfSteel].position.X +
+                        (Main.npc[AvalonWorld.WallOfSteel].width / 2) + 40f)
                     {
                         Player.AddBuff(38, 10);
                     }
                 }
-                else if (Player.position.X + (Player.width / 2) < Main.npc[AvalonTestingWorld.WallOfSteel].position.X +
-                         (Main.npc[AvalonTestingWorld.WallOfSteel].width / 2) - 40f)
+                else if (Player.position.X + (Player.width / 2) < Main.npc[AvalonWorld.WallOfSteel].position.X +
+                         (Main.npc[AvalonWorld.WallOfSteel].width / 2) - 40f)
                 {
                     Player.AddBuff(38, 10);
                 }
@@ -2343,23 +2343,23 @@ public class ExxoPlayer : ModPlayer
 
                 var vector = new Vector2(Player.position.X + (Player.width * 0.5f),
                     Player.position.Y + (Player.height * 0.5f));
-                float num2 = Main.npc[AvalonTestingWorld.WallOfSteel].position.X +
-                    (Main.npc[AvalonTestingWorld.WallOfSteel].width / 2) - vector.X;
-                float num3 = Main.npc[AvalonTestingWorld.WallOfSteel].position.Y +
-                    (Main.npc[AvalonTestingWorld.WallOfSteel].height / 2) - vector.Y;
+                float num2 = Main.npc[AvalonWorld.WallOfSteel].position.X +
+                    (Main.npc[AvalonWorld.WallOfSteel].width / 2) - vector.X;
+                float num3 = Main.npc[AvalonWorld.WallOfSteel].position.Y +
+                    (Main.npc[AvalonWorld.WallOfSteel].height / 2) - vector.Y;
                 float num4 = (float)Math.Sqrt((num2 * num2) + (num3 * num3));
                 if (num4 > 3000f)
                 {
                     //player.lastPosBeforeDeath = this.position;
-                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonTestingWorld.WallOfSteel), 1000.0, 0);
+                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonWorld.WallOfSteel), 1000.0, 0);
                     return;
                 }
 
-                if (Main.npc[AvalonTestingWorld.WallOfSteel].position.X < 608f ||
-                    Main.npc[AvalonTestingWorld.WallOfSteel].position.X > (Main.maxTilesX - 38) * 16)
+                if (Main.npc[AvalonWorld.WallOfSteel].position.X < 608f ||
+                    Main.npc[AvalonWorld.WallOfSteel].position.X > (Main.maxTilesX - 38) * 16)
                 {
                     //this.lastPosBeforeDeath = this.position;
-                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonTestingWorld.WallOfSteel), 1000.0, 0);
+                    Player.KillMe(PlayerDeathReason.ByNPC(AvalonWorld.WallOfSteel), 1000.0, 0);
                 }
             }
         }

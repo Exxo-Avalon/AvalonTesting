@@ -51,6 +51,6 @@ public class TropicalSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.ZoneDungeon
-            ? 0.05f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.05f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

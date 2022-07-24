@@ -60,8 +60,8 @@ public class ImpactWizard : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && spawnInfo.Player.ZoneDungeon
-            ? 0.2f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode && spawnInfo.Player.ZoneDungeon
+            ? 0.2f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void AI()
@@ -196,7 +196,7 @@ public class ImpactWizard : ModNPC
                     num258 *= num259;
                     num257 *= 1.4f;
                     num258 *= 1.4f;
-                    if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().Silenced)
+                    if (!NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().Silenced)
                     {
                         int num262 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector23.X, vector23.Y, num257,
                             num258, ModContent.ProjectileType<Projectiles.Hostile.ImpactSphere>(), Main.expertMode ? 35 : 65, 0f,

@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalProjectile : GlobalProjectile
+public class AvalonGlobalProjectile : GlobalProjectile
 {
     public static int FindClosestHostile(Vector2 pos, float dist)
     {
@@ -84,10 +84,10 @@ public class AvalonTestingGlobalProjectile : GlobalProjectile
     {
         if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Buffs.Piercing>()) && projectile.penetrate != -1)
         {
-            if (!projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().PiercingUp)
+            if (!projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp)
             {
                 projectile.penetrate++;
-                projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().PiercingUp = true;
+                projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp = true;
             }
         }
     }

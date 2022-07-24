@@ -20,6 +20,6 @@ public class Malaria : ModBuff
 
     public override void Update(NPC npc, ref int buffIndex)
     {
-        npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().Malaria = true;
+        npc.GetGlobalNPC<AvalonGlobalNPCInstance>().Malaria = true;
     }
 }

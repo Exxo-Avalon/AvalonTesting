@@ -23,7 +23,7 @@ class TheOasisRemembered : ModItem
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 0, 40);
         Item.height = dims.Height;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().Tome = true;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().Tome = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

@@ -22,7 +22,7 @@ class TomorrowsPhoenix : ModItem
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 0, 10);
         Item.height = dims.Height;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().Tome = true;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().Tome = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

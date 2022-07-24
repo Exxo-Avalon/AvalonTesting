@@ -302,7 +302,7 @@ public class QuickCaribe : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneJungle && !spawnInfo.Player.InPillarZone() && Main.hardMode &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.041f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.041f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

@@ -120,7 +120,7 @@ public class MagmaSkeleton : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         Main.hardMode && !spawnInfo.Player.ZoneDungeon && spawnInfo.Player.ZoneRockLayerHeight
-            ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.1f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void HitEffect(int hitDirection, double damage)

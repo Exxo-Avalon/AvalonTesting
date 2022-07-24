@@ -24,7 +24,7 @@ using Avalon.World.Structures;
 
 namespace Avalon;
 
-public class AvalonTestingWorld : ModSystem
+public class AvalonWorld : ModSystem
 {
     public static int WallOfSteel { get; set; } = -1;
     public static int WallOfSteelB { get; set; }

@@ -69,8 +69,8 @@ public class ArmoredHellTortoise : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-        Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+        Main.hardMode && ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
         spawnInfo.Player.ZoneUnderworldHeight
-            ? 0.125f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.125f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

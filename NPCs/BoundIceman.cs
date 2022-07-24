@@ -28,8 +28,8 @@ public class BoundIceman : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneSnow &&
                                                                  spawnInfo.Player.ZoneRockLayerHeight &&
-                                                                 !AvalonTestingGlobalNPC.SavedIceman &&
-                                                                 ModContent.GetInstance<AvalonTestingWorld>()
+                                                                 !AvalonGlobalNPC.SavedIceman &&
+                                                                 ModContent.GetInstance<AvalonWorld>()
                                                                      .SuperHardmode
         ? 0.0526f
         : 0f;
@@ -59,7 +59,7 @@ public class BoundIceman : ModNPC
             if (Main.player[i].active && Main.player[i].talkNPC == NPC.whoAmI)
             {
                 NPC.Transform(ModContent.NPCType<Iceman>());
-                AvalonTestingGlobalNPC.SavedIceman = true;
+                AvalonGlobalNPC.SavedIceman = true;
             }
         }
 

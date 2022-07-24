@@ -238,7 +238,7 @@ public class CrystalSpectre : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         !Main.dayTime && Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal
-            ? 0.5f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.5f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>

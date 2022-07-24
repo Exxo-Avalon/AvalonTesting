@@ -225,24 +225,24 @@ public class DragonLordHead : ModNPC
 
         if (Main.rand.Next(275) == 0)
         {
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = true;
+            NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().DlBreath = true;
             SoundEngine.PlaySound(SoundID.Roar, NPC.position);
         }
 
-        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath)
+        if (NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().DlBreath)
         {
             int p = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.position.X + (NPC.width / 2f),
                 NPC.position.Y + (NPC.height / 2f), (NPC.velocity.X * 3f) + Main.rand.Next(-2, 3),
                 (NPC.velocity.Y * 3f) + Main.rand.Next(-2, 3), ProjectileID.FlamethrowerTrap, 75, 1.2f);
             Main.projectile[p].hostile = true;
             Main.projectile[p].friendly = false;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd--;
+            NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().BreathCd--;
         }
 
-        if (NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd <= 0)
+        if (NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().BreathCd <= 0)
         {
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().DlBreath = false;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BreathCd = 90;
+            NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().DlBreath = false;
+            NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().BreathCd = 90;
             SoundEngine.PlaySound(SoundID.Item20, NPC.position);
         }
 

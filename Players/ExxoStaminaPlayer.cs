@@ -52,9 +52,9 @@ public class ExxoStaminaPlayer : ModPlayer
         for (int i = 0; i < 58; i++)
         {
             Item potionChecked = Player.inventory[i];
-            if (potionChecked.stack > 0 && potionChecked.type > 0 && potionChecked.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina > 0)
+            if (potionChecked.stack > 0 && potionChecked.type > 0 && potionChecked.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina > 0)
             {
-                int num3 = potionChecked.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina - num;
+                int num3 = potionChecked.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina - num;
                 if (num2 < 0)
                 {
                     if (num3 > num2)
@@ -74,20 +74,20 @@ public class ExxoStaminaPlayer : ModPlayer
         {
             return;
         }
-        if (potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina < stamNeeded && stamNeeded != 0)
+        if (potionToBeUsed.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina < stamNeeded && stamNeeded != 0)
         {
             return;
         }
         SoundEngine.PlaySound(SoundID.Item3, Player.position);
-        StatStam += potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina;
+        StatStam += potionToBeUsed.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina;
         if (StatStam > StatStamMax2)
         {
             StatStam = StatStamMax2;
         }
-        if (potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina > 0 && Main.myPlayer == Player.whoAmI)
+        if (potionToBeUsed.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina > 0 && Main.myPlayer == Player.whoAmI)
         {
             Player.AddBuff(ModContent.BuffType<StaminaDrain>(), 8 * 60);
-            StaminaHealEffect(potionToBeUsed.GetGlobalItem<AvalonTestingGlobalItemInstance>().HealStamina, true);
+            StaminaHealEffect(potionToBeUsed.GetGlobalItem<AvalonGlobalItemInstance>().HealStamina, true);
         }
         potionToBeUsed.stack--;
         if (potionToBeUsed.stack <= 0)

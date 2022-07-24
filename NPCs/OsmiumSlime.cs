@@ -104,6 +104,6 @@ public class OsmiumSlime : ModNPC
                                                                  (Main.hardMode ||
                                                                   ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ==
                                                                   ExxoWorldGen.RhodiumVariant.Osmium)
-        ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ? 0.00526f * AvalonGlobalNPC.EndoSpawnRate
         : 0f;
 }

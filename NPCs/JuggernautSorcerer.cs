@@ -165,7 +165,7 @@ public class JuggernautSorcerer : ModNPC
                     num258 *= num259;
                     num257 *= 1.4f;
                     num258 *= 1.4f;
-                    if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().Silenced)
+                    if (!NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().Silenced)
                     {
                         int num262 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector23.X, vector23.Y, num257,
                             num258, ModContent.ProjectileType<Projectiles.Hostile.SpikyBall>(), 78, 0f, Main.myPlayer);

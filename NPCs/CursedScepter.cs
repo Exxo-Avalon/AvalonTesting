@@ -75,7 +75,7 @@ public class CursedScepter : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.hardMode && spawnInfo.Player.ZoneDungeon
-        ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ? 0.1f * AvalonGlobalNPC.EndoSpawnRate
         : 0f;
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemDropRule.Common(ItemID.Nazar, 75));

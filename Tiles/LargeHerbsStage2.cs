@@ -22,7 +22,7 @@ public class LargeHerbsStage2 : ModTile
     }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
-        AvalonTestingWorld.CheckLargeHerb(i, j, Type);
+        AvalonWorld.CheckLargeHerb(i, j, Type);
         noBreak = true;
         return true;
     }

@@ -94,6 +94,6 @@ public class BloodshotEye : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.bloodMoon && !spawnInfo.Player.InPillarZone()
-        ? 0.121f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ? 0.121f * AvalonGlobalNPC.EndoSpawnRate
         : 0f;
 }

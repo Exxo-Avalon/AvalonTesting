@@ -103,8 +103,8 @@ public class BombSkeleton : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-        Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+        Main.hardMode && ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
         spawnInfo.Player.ZoneRockLayerHeight
-            ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.1f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

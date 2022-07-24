@@ -406,7 +406,7 @@ public class ExxoBuffPlayer : ModPlayer
         {
             if (!target.HasBuff<Bleeding>())
             {
-                target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks = 1;
+                target.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks = 1;
             }
 
             target.AddBuff(ModContent.BuffType<Bleeding>(), 120);

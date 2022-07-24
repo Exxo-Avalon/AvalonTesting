@@ -1,9 +1,9 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalNPCInstance : GlobalNPC
+public class AvalonGlobalNPCInstance : GlobalNPC
 {
     public override bool InstancePerEntity => true;
     public bool AstigSpawned { get; set; }

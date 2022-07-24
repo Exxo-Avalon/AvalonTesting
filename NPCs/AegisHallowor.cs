@@ -49,9 +49,9 @@ public class AegisHallowor : ModNPC
     public override float SpawnChance(NPCSpawnInfo spawnInfo) => spawnInfo.Player.ZoneHallow &&
                                                                  spawnInfo.SpawnTileY < Main.maxTilesY - 200 &&
                                                                  Main.hardMode && !spawnInfo.Player.InPillarZone() &&
-                                                                 ModContent.GetInstance<AvalonTestingWorld>()
+                                                                 ModContent.GetInstance<AvalonWorld>()
                                                                      .SuperHardmode
-        ? 0.066f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ? 0.066f * AvalonGlobalNPC.EndoSpawnRate
         : 0f;
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

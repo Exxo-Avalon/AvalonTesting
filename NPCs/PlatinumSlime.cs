@@ -94,6 +94,6 @@ public class PlatinumSlime : ModNPC
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon &&
         (Main.hardMode || WorldGen.SavedOreTiers.Gold == TileID.Platinum)
-            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.00526f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

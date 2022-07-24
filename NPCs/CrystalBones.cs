@@ -86,7 +86,7 @@ public class CrystalBones : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         Main.hardMode && spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneCrystal
-            ? 0.8f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.8f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void OnKill()

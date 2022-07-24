@@ -130,6 +130,6 @@ public class FallenHero : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneOverworldHeight && !spawnInfo.Player.InPillarZone() && Main.bloodMoon
-            ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.1f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

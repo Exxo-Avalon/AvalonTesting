@@ -99,6 +99,6 @@ public class SilverSlime : ModNPC
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon &&
         (Main.hardMode || WorldGen.SavedOreTiers.Silver == TileID.Silver)
-            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.00526f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

@@ -62,7 +62,7 @@ public class HallowedThornEnd : ModProjectile
                     {
                         var point = new Vector2(Projectile.velocity.X, Projectile.velocity.Y);
                         float num929 = 0.3926991f * (float)Main.rand.NextDouble();
-                        Projectile.velocity = AvalonTestingGlobalProjectile.RotateAboutOrigin(point, num929);
+                        Projectile.velocity = AvalonGlobalProjectile.RotateAboutOrigin(point, num929);
                         int num930 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                             vector73.X + Projectile.velocity.X, vector73.Y + Projectile.velocity.Y,
                             Projectile.velocity.X, Projectile.velocity.Y, num928, Projectile.damage,
@@ -72,7 +72,7 @@ public class HallowedThornEnd : ModProjectile
                         Projectile.ai[1] = Projectile.ai[1] + 1f;
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), num930);
                         num929 = 0.3926991f * (float)Main.rand.NextDouble();
-                        Projectile.velocity = AvalonTestingGlobalProjectile.RotateAboutOrigin(point, -num929);
+                        Projectile.velocity = AvalonGlobalProjectile.RotateAboutOrigin(point, -num929);
                         num930 = Projectile.NewProjectile(Projectile.GetSource_FromThis(),
                             vector73.X + Projectile.velocity.X, vector73.Y + Projectile.velocity.Y,
                             Projectile.velocity.X, Projectile.velocity.Y, num928, Projectile.damage,

@@ -67,7 +67,7 @@ public class CursedMagmaSkeleton : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode ? 0.03f : 0f;
+        return spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && ModContent.GetInstance<AvalonWorld>().SuperHardmode ? 0.03f : 0f;
     }
 
     public override void AI()

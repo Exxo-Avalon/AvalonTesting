@@ -541,7 +541,7 @@ public class ArmageddonSlime : ModNPC
         if (!ModContent.GetInstance<DownedBossSystem>().DownedArmageddon)
         {
             NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-            Task.Run(AvalonTestingWorld.GenerateSkyFortress);
+            Task.Run(AvalonWorld.GenerateSkyFortress);
         }
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)

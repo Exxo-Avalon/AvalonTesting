@@ -45,7 +45,7 @@ public class Juggernaut : ModNPC
 
     public override void OnKill()
     {
-        NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce = false;
+        NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().JugRunOnce = false;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("A Juggernaut has been defeated!", new Color(175, 75, 255));
@@ -81,10 +81,10 @@ public class Juggernaut : ModNPC
     {
         int num441 = 30;
         bool flag40 = false;
-        if (!NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce)
+        if (!NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().JugRunOnce)
         {
             NPC.position = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].position;
-            NPC.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().JugRunOnce = true;
+            NPC.GetGlobalNPC<AvalonGlobalNPCInstance>().JugRunOnce = true;
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 Main.NewText("A Juggernaut has awoken!", new Color(175, 75, 255));
@@ -459,7 +459,7 @@ public class Juggernaut : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.015f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.015f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

@@ -8,12 +8,12 @@ public class PostMechastingDrop : IItemDropRuleCondition, IProvideItemConditionD
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedMechasting;
+        return ModContent.GetInstance<AvalonWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedMechasting;
     }
 
     public bool CanShowItemDropInUI()
     {
-        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode;
+        return ModContent.GetInstance<AvalonWorld>().SuperHardmode;
     }
 
     public string GetConditionDescription()

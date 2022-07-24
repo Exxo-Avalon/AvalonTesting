@@ -52,8 +52,8 @@ public class ArmoredWraith : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
-        !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.053f * AvalonTestingGlobalNPC.EndoSpawnRate
+        !Main.dayTime && Main.hardMode && ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.053f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void FindFrame(int frameHeight)

@@ -100,6 +100,6 @@ public class TroxiniumSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode
-            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.00526f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

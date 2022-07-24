@@ -22,7 +22,7 @@ class FlankersTome : ModItem
         Item.width = dims.Width;
         Item.value = 15000;
         Item.height = dims.Height;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().Tome = true;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().Tome = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

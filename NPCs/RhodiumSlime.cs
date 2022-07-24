@@ -102,6 +102,6 @@ public class RhodiumSlime : ModNPC
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && (Main.hardMode ||
             ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Rhodium)
-            ? 0.00526f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.00526f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

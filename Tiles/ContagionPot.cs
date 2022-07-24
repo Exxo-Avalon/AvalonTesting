@@ -238,11 +238,11 @@ public class ContagionPot : ModTile
                 else if (num10 == 4)
                 {
                     int type3 = ItemID.LesserHealingPotion;
-                    if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && j > Main.rockLayer && Main.rand.Next(2) == 0)
+                    if (ModContent.GetInstance<AvalonWorld>().SuperHardmode && j > Main.rockLayer && Main.rand.Next(2) == 0)
                     {
                         type3 = ItemID.GreaterHealingPotion;
                     }
-                    else if (j > Main.maxTilesY - 200 || (Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode))
+                    else if (j > Main.maxTilesY - 200 || (Main.hardMode && !ModContent.GetInstance<AvalonWorld>().SuperHardmode))
                     {
                         type3 = ItemID.HealingPotion;
                     }

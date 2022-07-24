@@ -13,7 +13,7 @@ public class HardmodePreSuperHardmode : IItemDropRuleCondition, IProvideItemCond
 
     public bool CanShowItemDropInUI()
     {
-        return Main.hardMode && !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode;
+        return Main.hardMode && !ModContent.GetInstance<AvalonWorld>().SuperHardmode;
     }
 
     public string GetConditionDescription()

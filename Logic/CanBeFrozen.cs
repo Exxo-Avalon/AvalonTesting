@@ -8,7 +8,7 @@ public static class CanBeFrozen
     public static bool CanFreeze(NPC npc)
     {
         int lifeThreshold;
-        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             lifeThreshold = 11000;
         }

@@ -153,7 +153,7 @@ public class PoisonDartFrog : ModNPC
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.InPillarZone() &&
         Main.hardMode
-            ? 0.083f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.083f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void HitEffect(int hitDirection, double damage)

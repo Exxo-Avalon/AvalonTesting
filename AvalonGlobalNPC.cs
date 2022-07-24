@@ -31,7 +31,7 @@ using Terraria.ModLoader;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalNPC : GlobalNPC
+public class AvalonGlobalNPC : GlobalNPC
 {
     public static readonly int[] Hornets =
     {
@@ -1076,7 +1076,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         {
             return;
         }
-        if (AvalonTestingWorld.WallOfSteel >= 0 || Main.wofNPCIndex >= 0)
+        if (AvalonWorld.WallOfSteel >= 0 || Main.wofNPCIndex >= 0)
         {
             return;
         }
@@ -1193,7 +1193,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             shop.item[nextSlot].value = Item.buyPrice(0, 4);
             nextSlot++;
         }
-        if (type == NPCID.ArmsDealer && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+        if (type == NPCID.ArmsDealer && ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Ammo.MissileBolt>());
             nextSlot++;
@@ -1301,7 +1301,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     public override void SetDefaults(NPC npc)
     {
         #region shm mob scaling
-        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             if (!SHMMobs.Contains(npc.type))
             {
@@ -1357,7 +1357,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
 
         if (npc.HasBuff<Bleeding>())
         {
-            for (int i = 0; i < npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks; i++)
+            for (int i = 0; i < npc.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks; i++)
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood);
             }
@@ -1422,7 +1422,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
             pool.Add(ModContent.NPCType<EctoHand>(), 0.3f);
             pool.Add(ModContent.NPCType<HellboundLizard>(), 1f);
             pool.Add(ModContent.NPCType<Gargoyle>(), 1f);
-            if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+            if (ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.hardMode)
             {
                 pool.Add(ModContent.NPCType<ArmoredHellTortoise>(), 1f);
             }
@@ -1900,7 +1900,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
     {
         if (npc.type == NPCID.Golem && !NPC.downedGolemBoss)
         {
-            AvalonTestingWorld.GenerateSolarium();
+            AvalonWorld.GenerateSolarium();
         }
         if (npc.HasBuff(ModContent.BuffType<Virulent>()))
         {
@@ -1909,7 +1909,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
         }
         if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {
-            AvalonTestingWorld.GenerateSulphur();
+            AvalonWorld.GenerateSulphur();
         }
         if (npc.type == NPCID.DungeonSpirit && Main.rand.NextBool(15) &&
             Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneDungeon)
@@ -1927,7 +1927,7 @@ public class AvalonTestingGlobalNPC : GlobalNPC
                 {
                     return;
                 }
-                AvalonTestingWorld.GenerateHallowedOre();
+                AvalonWorld.GenerateHallowedOre();
             }
         }
     }

@@ -24,7 +24,7 @@ class ShadowPulseBag : ModItem
         Item.vanity = true;
         Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.height = dims.Height;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
     public override void AddRecipes()
     {

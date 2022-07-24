@@ -287,7 +287,7 @@ public class GuardianCorruptor : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneCorrupt && !spawnInfo.Player.InPillarZone() && Main.hardMode &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.066f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.066f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

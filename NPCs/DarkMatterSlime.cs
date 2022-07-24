@@ -56,7 +56,7 @@ public class DarkMatterSlime : ModNPC
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             return 1f;
         }

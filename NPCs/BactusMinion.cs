@@ -59,7 +59,7 @@ public class BactusMinion : ModNPC
 
     public override void AI()
     {
-        if (AvalonTestingGlobalNPC.BoogerBoss < 0)
+        if (AvalonGlobalNPC.BoogerBoss < 0)
         {
             NPC.active = false;
             NPC.netUpdate = true;
@@ -69,8 +69,8 @@ public class BactusMinion : ModNPC
         if (NPC.ai[0] == 0f)
         {
             var vector107 = new Vector2(NPC.Center.X, NPC.Center.Y);
-            float num880 = Main.npc[AvalonTestingGlobalNPC.BoogerBoss].Center.X - vector107.X;
-            float num881 = Main.npc[AvalonTestingGlobalNPC.BoogerBoss].Center.Y - vector107.Y;
+            float num880 = Main.npc[AvalonGlobalNPC.BoogerBoss].Center.X - vector107.X;
+            float num881 = Main.npc[AvalonGlobalNPC.BoogerBoss].Center.Y - vector107.Y;
             float num882 = (float)Math.Sqrt((num880 * num880) + (num881 * num881));
             if (num882 > 90f)
             {
@@ -105,8 +105,8 @@ public class BactusMinion : ModNPC
         else
         {
             var vector108 = new Vector2(NPC.Center.X, NPC.Center.Y);
-            float num883 = Main.npc[AvalonTestingGlobalNPC.BoogerBoss].Center.X - vector108.X;
-            float num884 = Main.npc[AvalonTestingGlobalNPC.BoogerBoss].Center.Y - vector108.Y;
+            float num883 = Main.npc[AvalonGlobalNPC.BoogerBoss].Center.X - vector108.X;
+            float num884 = Main.npc[AvalonGlobalNPC.BoogerBoss].Center.Y - vector108.Y;
             float num885 = (float)Math.Sqrt((num883 * num883) + (num884 * num884));
             if (num885 > 700f || NPC.justHit)
             {

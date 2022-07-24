@@ -55,7 +55,7 @@ public class CaesiumOre : ModTile
     }
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        AvalonTestingWorld.AttemptCaesiumOreShattering(i, j, Main.tile[i, j], fail);
+        AvalonWorld.AttemptCaesiumOreShattering(i, j, Main.tile[i, j], fail);
         if (j > Main.maxTilesY - 190 && i > Main.maxTilesX - (Main.maxTilesX / 5))
         {
             if (Main.rand.NextBool(27))

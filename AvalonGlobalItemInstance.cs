@@ -6,7 +6,7 @@ using Terraria.Utilities;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalItemInstance : GlobalItem
+public class AvalonGlobalItemInstance : GlobalItem
 {
     public override bool InstancePerEntity => true;
 
@@ -17,7 +17,7 @@ public class AvalonTestingGlobalItemInstance : GlobalItem
 
     public override GlobalItem Clone(Item item, Item itemClone)
     {
-        var clone = (AvalonTestingGlobalItemInstance)base.Clone(item, itemClone);
+        var clone = (AvalonGlobalItemInstance)base.Clone(item, itemClone);
         clone.HealStamina = HealStamina;
         clone.WasWiring = WasWiring;
         clone.Tome = Tome;

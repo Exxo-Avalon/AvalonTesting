@@ -25,14 +25,14 @@ public class Bleeding : ModBuff
             mult = 6;
         }
 
-        npc.lifeRegen -= mult * npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks;
+        npc.lifeRegen -= mult * npc.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks;
     }
 
     public override bool ReApply(NPC npc, int time, int buffIndex)
     {
-        if (npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks < 3)
+        if (npc.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks < 3)
         {
-            npc.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().BleedStacks++;
+            npc.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks++;
         }
 
         return false;

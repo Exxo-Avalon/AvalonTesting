@@ -41,6 +41,6 @@ public class CloudBat : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress
-            ? 0.3f * AvalonTestingGlobalNPC.EndoSpawnRate
+            ? 0.3f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

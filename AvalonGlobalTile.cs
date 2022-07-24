@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalTile : GlobalTile
+public class AvalonGlobalTile : GlobalTile
 {
     public override void SetStaticDefaults()
     {

@@ -231,7 +231,7 @@ public class Ectosphere : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneDungeon && Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.083f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.083f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

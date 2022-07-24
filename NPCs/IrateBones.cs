@@ -91,7 +91,7 @@ public class IrateBones : ModNPC
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) => Main.hardMode && spawnInfo.Player.ZoneDungeon
-        ? 0.6f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ? 0.6f * AvalonGlobalNPC.EndoSpawnRate
         : 0f;
 
     public override void HitEffect(int hitDirection, double damage)

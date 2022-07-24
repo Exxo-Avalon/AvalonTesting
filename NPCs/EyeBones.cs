@@ -78,7 +78,7 @@ public class EyeBones : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.1f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.1f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

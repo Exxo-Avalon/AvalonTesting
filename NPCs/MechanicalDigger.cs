@@ -29,8 +29,8 @@ public class MechanicalDiggerHead : MechanicalDiggerWorm
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.ZoneRockLayerHeight && !spawnInfo.Player.ZoneDungeon && Main.hardMode &&
-        ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode
-            ? 0.073f * AvalonTestingGlobalNPC.EndoSpawnRate
+        ModContent.GetInstance<AvalonWorld>().SuperHardmode
+            ? 0.073f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 
     public override void SetDefaults()

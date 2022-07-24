@@ -43,17 +43,17 @@ public class HallowedAltar : ModTile
     }
     public override bool CanKillTile(int i, int j, ref bool blockDamaged)
     {
-        if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode)
+        if (!ModContent.GetInstance<AvalonWorld>().SuperHardmode && !Main.hardMode)
         {
             blockDamaged = false;
         }
 
-        return ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode;
+        return ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.hardMode;
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+        if (ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.hardMode)
         {
             SmashHallowAltar(i, j);
             SoundEngine.PlaySound(new SoundStyle("Avalon/Sounds/Item/HallowedAltarBreak"), new Vector2(i * 16, j * 16));
@@ -199,7 +199,7 @@ public class HallowedAltar : ModTile
             return;
         }
 
-        if (!ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && !Main.hardMode)
+        if (!ModContent.GetInstance<AvalonWorld>().SuperHardmode && !Main.hardMode)
         {
             return;
         }

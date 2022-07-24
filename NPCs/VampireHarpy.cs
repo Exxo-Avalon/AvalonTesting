@@ -51,7 +51,7 @@ public class VampireHarpy : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode)
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter && !spawnInfo.Player.InPillarZone() && ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             return 1f;
         }

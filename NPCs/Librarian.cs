@@ -92,7 +92,7 @@ public class Librarian : ModNPC
 
         if (NPC.AnyNPCs(NPCID.DyeTrader) && Main.rand.Next(6) == 0)
         {
-            return "Wow, " + Main.npc[AvalonTestingGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName +
+            return "Wow, " + Main.npc[AvalonGlobalNPC.FindATypeOfNPC(NPCID.DyeTrader)].GivenName +
                    "'s services are free? Where I'm from, you have to pay an arm and a leg to dye clothes...";
         }
 
@@ -221,7 +221,7 @@ public class Librarian : ModNPC
             nextSlot++;
         }
 
-        if (ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.hardMode)
+        if (ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.hardMode)
         {
             shop.item[nextSlot].SetDefaults(ModContent.ItemType<ScrollofTome>());
             shop.item[nextSlot].value = Item.buyPrice(0, 12, 50);

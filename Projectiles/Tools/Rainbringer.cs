@@ -29,7 +29,7 @@ public class Rainbringer : ModProjectile
         {
             if (!Main.raining)
             {
-                AvalonTestingWorld.StartRain();
+                AvalonWorld.StartRain();
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
                     Main.NewText("A rain event has started.", 0, 148, 255);
@@ -41,7 +41,7 @@ public class Rainbringer : ModProjectile
             }
             else
             {
-                AvalonTestingWorld.StopRain();
+                AvalonWorld.StopRain();
                 if (Main.netMode == NetmodeID.SinglePlayer)
                 {
                     Main.NewText("The rain has stopped.", 0, 148, 255);

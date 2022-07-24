@@ -24,7 +24,7 @@ using Terraria.Utilities;
 
 namespace Avalon;
 
-public class AvalonTestingGlobalItem : GlobalItem
+public class AvalonGlobalItem : GlobalItem
 {
     private static readonly int NewMaskPrice = Terraria.Item.sellPrice(0, 2);
     private static List<int> nonSolidExceptions = new List<int>
@@ -433,7 +433,7 @@ public class AvalonTestingGlobalItem : GlobalItem
                     item.stack = 0;
                     if (Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
                     {
-                        AvalonTestingGlobalNPC.SpawnWOS(item.position);
+                        AvalonGlobalNPC.SpawnWOS(item.position);
                         SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/WoS"), item.position);
                     }
                     NetMessage.SendData(Terraria.ID.MessageID.SyncItem, -1, -1, NetworkText.Empty, item.whoAmI, 0f, 0f, 0f, 0);
@@ -503,15 +503,15 @@ public class AvalonTestingGlobalItem : GlobalItem
             {
                 item.mech = false;
                 item.useStyle = 0;
-                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
+                item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring = true;
             }
         }
-        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring &&
             !player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
         {
             item.netDefaults(tempWireItem.netID);
             item.stack = tempWireItem.stack;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
+            item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring = false;
         }
         #endregion wire disable in sky fortress
 
@@ -528,16 +528,16 @@ public class AvalonTestingGlobalItem : GlobalItem
             {
                 item.mech = false;
                 item.useStyle = 0;
-                item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = true;
+                item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring = true;
             }
         }
 
-        if (item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring &&
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring &&
             !player.GetModPlayer<ExxoBiomePlayer>().ZoneNearHellcastle)
         {
             item.netDefaults(tempWireItemHC.netID);
             item.stack = tempWireItemHC.stack;
-            item.GetGlobalItem<AvalonTestingGlobalItemInstance>().WasWiring = false;
+            item.GetGlobalItem<AvalonGlobalItemInstance>().WasWiring = false;
         }
         #endregion wire disable in hellcastle pre-phantasm
 
@@ -989,12 +989,12 @@ public class AvalonTestingGlobalItem : GlobalItem
 
                 switch (Main.hardMode)
                 {
-                    case false when !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+                    case false when !ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
                                     Main.rand.Next(10) < 3:
-                    case true when !ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode &&
+                    case true when !ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
                                    Main.rand.Next(100) < 15:
                     case true
-                        when ModContent.GetInstance<AvalonTestingWorld>().SuperHardmode && Main.rand.Next(100) < 7:
+                        when ModContent.GetInstance<AvalonWorld>().SuperHardmode && Main.rand.Next(100) < 7:
                         player.QuickSpawnItem(openItemSource, ModContent.ItemType<BloodyAmulet>());
                         break;
                 }

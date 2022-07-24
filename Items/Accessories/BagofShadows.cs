@@ -23,7 +23,7 @@ internal class BagofShadows : ModItem
         Item.vanity = true;
         Item.value = Item.sellPrice(0, 1);
         Item.height = dims.Height;
-        Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
+        Item.GetGlobalItem<AvalonGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
