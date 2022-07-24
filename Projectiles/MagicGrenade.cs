@@ -16,6 +16,7 @@ public class MagicGrenade : ModProjectile
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
+        Projectile.CloneDefaults(30);
         Projectile.width = dims.Width * 20 / 20;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
@@ -24,11 +25,10 @@ public class MagicGrenade : ModProjectile
         Projectile.light = 0.9f;
         Projectile.alpha = 0;
         Projectile.scale = 1f;
-        Projectile.timeLeft = 240;
         Projectile.DamageType = DamageClass.Magic;
         AIType = 30;
         Projectile.tileCollide = true;
-        Projectile.CloneDefaults(30);
+        Projectile.timeLeft = 240;
     }
 
     public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
