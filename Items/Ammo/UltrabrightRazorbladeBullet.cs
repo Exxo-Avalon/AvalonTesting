@@ -33,6 +33,11 @@ class UltrabrightRazorbladeBullet : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(250).AddIngredient(ItemID.MusketBall, 250).AddIngredient(ItemID.UltrabrightTorch, 250).AddIngredient(ItemID.RazorbladeTyphoon).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe(1000)
+            .AddIngredient(ItemID.MusketBall, 1000)
+            .AddIngredient(ItemID.UltrabrightTorch, 250)
+            .AddIngredient(ItemID.RazorbladeTyphoon)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
     }
 }

@@ -24,11 +24,38 @@ public class XanthophyteBullet : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = 1;
         Projectile.light = 0.8f;
-        Projectile.alpha = 0;
+        Projectile.alpha = 255;
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.MaxUpdates = 2;
+    }
+    public override void AI()
+    {
+        if (Projectile.alpha < 255)
+        {
+            for (int num26 = 0; num26 < 10; num26++)
+            {
+                float x2 = Projectile.position.X - Projectile.velocity.X / 10f * num26;
+                float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f * num26;
+                int num27 = Dust.NewDust(new Vector2(x2, y2), 1, 1, ModContent.DustType<Dusts.ContagionSpray>(), 0f, 0f, 0, default, 1f);
+                Main.dust[num27].alpha = Projectile.alpha;
+                Main.dust[num27].scale *= 0.7f;
+                Main.dust[num27].position.X = x2;
+                Main.dust[num27].position.Y = y2;
+                Main.dust[num27].velocity *= 0f;
+                Main.dust[num27].noGravity = true;
+            }
+        }
+        if (Projectile.alpha > 0)
+        {
+            Projectile.alpha -= 25;
+        }
+        if (Projectile.alpha < 0)
+        {
+            Projectile.alpha = 0;
+        }
+        Projectile.ai[0] += 2;
     }
     public override void Kill(int timeLeft)
     {
