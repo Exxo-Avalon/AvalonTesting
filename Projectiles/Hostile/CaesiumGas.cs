@@ -23,7 +23,7 @@ public class CaesiumGas : ModProjectile
         Projectile.hostile = true;
         Projectile.tileCollide = false;
         Projectile.scale = 0.6f;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().notReflect = true;
     }
 
     public override void AI()

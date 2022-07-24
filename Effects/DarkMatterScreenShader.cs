@@ -24,7 +24,7 @@ public class DarkMatterScreenShader : ScreenShaderData
     {
         if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
-            Filters.Scene["AvalonTesting:DarkMatter"].Deactivate();
+            Filters.Scene["Avalon:DarkMatter"].Deactivate();
         }
     }
 }

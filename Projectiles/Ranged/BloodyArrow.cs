@@ -29,11 +29,11 @@ public class BloodyArrow : ModProjectile
         Projectile.ai[1] = target.whoAmI;
         Projectile.Kill();
         //projectile.velocity *= 0f;
-        //projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().bloodArrowPos = projectile.position;
+        //projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().bloodArrowPos = projectile.position;
         target.AddBuff(ModContent.BuffType<Buffs.Bleeding>(), 8 * 60);
-        //if (target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleedStacks < 3)
+        //if (target.GetGlobalNPC<AvalonGlobalNPCInstance>().bleedStacks < 3)
         //{
-        //    target.GetGlobalNPC<AvalonTestingGlobalNPCInstance>().bleedStacks++;
+        //    target.GetGlobalNPC<AvalonGlobalNPCInstance>().bleedStacks++;
         //}
     }
     public override void AI()

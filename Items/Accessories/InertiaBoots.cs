@@ -28,7 +28,7 @@ class InertiaBoots : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddRecipeGroup("AvalonTesting:Wings").AddIngredient(ItemID.FrostsparkBoots).AddIngredient(ItemID.BlackBelt).AddIngredient(ItemID.LunarBar, 2).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddRecipeGroup("Avalon:Wings").AddIngredient(ItemID.FrostsparkBoots).AddIngredient(ItemID.BlackBelt).AddIngredient(ItemID.LunarBar, 2).AddTile(TileID.TinkerersWorkbench).Register();
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)

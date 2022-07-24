@@ -114,8 +114,8 @@ public class Avalon : Mod
         ReplaceVanillaTextures();
         DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky", AssetRequestMode.ImmediateLoad).Value;
         DarkMatterShader = ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
-        SkyManager.Instance["AvalonTesting:DarkMatter"] = new Effects.DarkMatterSky();
-        Filters.Scene["AvalonTesting:DarkMatter"] = new Filter(new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky").UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
+        SkyManager.Instance["Avalon:DarkMatter"] = new Effects.DarkMatterSky();
+        Filters.Scene["Avalon:DarkMatter"] = new Filter(new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky").UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
         DarkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole", AssetRequestMode.ImmediateLoad);
         DarkMatterFloatingRocks = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/FloatingRocks", AssetRequestMode.ImmediateLoad);
         DarkMatterBlackHole2 = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole2", AssetRequestMode.ImmediateLoad);

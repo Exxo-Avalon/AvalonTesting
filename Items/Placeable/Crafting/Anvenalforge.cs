@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,8 +31,8 @@ class Anvenalforge : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("AvalonTesting:WorkBenches").AddIngredient(ModContent.ItemType<DemonAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("AvalonTesting:WorkBenches").AddIngredient(ModContent.ItemType<CrimsonAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("AvalonTesting:WorkBenches").AddIngredient(ModContent.ItemType<IckyAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("Avalon:WorkBenches").AddIngredient(ModContent.ItemType<DemonAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("Avalon:WorkBenches").AddIngredient(ModContent.ItemType<CrimsonAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<CaesiumForge>()).AddIngredient(ModContent.ItemType<SolariumAnvil>()).AddRecipeGroup("Avalon:WorkBenches").AddIngredient(ModContent.ItemType<IckyAltar>()).AddIngredient(ModContent.ItemType<HallowedAltar>()).AddIngredient(ItemID.LunarCraftingStation).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 10).AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

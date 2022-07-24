@@ -18,7 +18,7 @@ internal class QuadHook : ModProjectile
     public override void SetDefaults()
     {
         Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
-        /*			Rectangle dims = AvalonTesting.getDims("Projectiles/QuadHook");
+        /*			Rectangle dims = Avalon.getDims("Projectiles/QuadHook");
                     projectile.netImportant = true;
                     projectile.width = dims.Width * 18 / 22;
                     projectile.height = dims.Height * 18 / 22 / Main.projFrames[projectile.type];

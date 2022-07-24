@@ -123,7 +123,7 @@ internal class RhodiumAlternateOres : AltOre
                         ExxoWorldGen.RhodiumVariant.Iridium => "Iridium",
                         _ => throw new System.NotImplementedException(),
                     },
-                (_) => "AvalonTesting"));
+                (_) => "Avalon"));
         }
     }
 }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AvalonTesting.Common;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Systems;
-using AvalonTesting.UI;
+using Avalon.Common;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Systems;
+using Avalon.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
@@ -20,7 +20,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class UIWorldCreationEdits : ModHook
@@ -120,7 +120,7 @@ public class UIWorldCreationEdits : ModHook
         Type? worldEvilIdType = typeof(UIWorldCreation).GetNestedType(worldEvilIdName, BindingFlags.NonPublic);
         if (worldEvilIdType == null)
         {
-            AvalonTesting.Mod.Logger.Error(
+            Avalon.Mod.Logger.Error(
                 $"Could not find field with name {worldEvilIdName} in {typeof(UIWorldCreation)}");
         }
         else
@@ -158,22 +158,22 @@ public class UIWorldCreationEdits : ModHook
             new[]
             {
                 Lang.misc[103], Lang.misc[101], Lang.misc[102],
-                Language.GetText("Mods.AvalonTesting.UI.WorldTitleEvilContagion"),
+                Language.GetText("Mods.Avalon.UI.WorldTitleEvilContagion"),
             },
             new[]
             {
                 Language.GetText("UI.WorldDescriptionEvilRandom"),
                 Language.GetText("UI.WorldDescriptionEvilCorrupt"),
                 Language.GetText("UI.WorldDescriptionEvilCrimson"),
-                Language.GetText("Mods.AvalonTesting.UI.WorldDescriptionEvilContagion"),
+                Language.GetText("Mods.Avalon.UI.WorldDescriptionEvilContagion"),
             }, new[] { Color.White, Color.MediumPurple, Color.IndianRed, Color.SpringGreen },
             new[]
             {
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilRandom"),
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"),
                 Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCrimson"),
-                AvalonTesting.Mod.Assets.Request<Texture2D>(
-                    $"{AvalonTesting.TextureAssetsPath}/UI/ContagionIcon",
+                Avalon.Mod.Assets.Request<Texture2D>(
+                    $"{Avalon.TextureAssetsPath}/UI/ContagionIcon",
                     AssetRequestMode.ImmediateLoad),
             });
 

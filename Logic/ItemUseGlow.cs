@@ -20,13 +20,13 @@ public class ItemUseGlow : GlobalItem
 }
 // public class PlayerUseGlow : ModPlayer
 // {
-//     public static readonly PlayerLayer ItemUseGlow = new PlayerLayer("AvalonTesting", "ItemUseGlow", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
+//     public static readonly PlayerLayer ItemUseGlow = new PlayerLayer("Avalon", "ItemUseGlow", PlayerLayer.HeldItem, delegate (PlayerDrawInfo drawInfo)
 //     {
 //         if (drawInfo.shadow != 0)
 //             return;
 //
 //         Player drawPlayer = drawInfo.drawPlayer;
-//         Mod mod = ModLoader.GetMod("AvalonTesting");
+//         Mod mod = ModLoader.GetMod("Avalon");
 //         if (!drawPlayer.HeldItem.IsAir)
 //         {
 //             Item item = drawPlayer.HeldItem;

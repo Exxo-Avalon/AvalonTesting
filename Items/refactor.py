@@ -21,7 +21,7 @@ def moveItem(basePath, item):
 
     lines = f.readlines()
     for i in range(len(lines)):
-        lines[i] = re.sub("AvalonTesting.getDims\(.*\)", "this.GetDims()", lines[i])
+        lines[i] = re.sub("Avalon.getDims\(.*\)", "this.GetDims()", lines[i])
         print(lines[i].strip("\n"))
 
 
@@ -101,7 +101,7 @@ def moveItems(basePath, items):
 
             lines = f.readlines()
             for i in range(len(lines)):
-                lines[i] = re.sub("AvalonTesting.getDims\(.*\)", "this.GetDims()", lines[i])
+                lines[i] = re.sub("Avalon.getDims\(.*\)", "this.GetDims()", lines[i])
 
 
             f.close()

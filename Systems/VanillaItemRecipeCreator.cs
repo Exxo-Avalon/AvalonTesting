@@ -16,7 +16,7 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.SlimeCrown).AddIngredient(ModContent.ItemType<Items.Vanity.BismuthCrown>()).AddIngredient(ItemID.Gel, 20).AddTile(TileID.DemonAltar).Register();
         foreach (int i in AvalonGlobalNPC.Emblems)
             Recipe.Create(i).AddIngredient(ModContent.ItemType<NullEmblem>()).AddTile(TileID.TinkerersWorkbench).Register();
-        Recipe.Create(ItemID.Aglet).AddRecipeGroup("AvalonTesting:CopperBar").AddRecipeGroup("Wood", 6).AddTile(TileID.Anvils).Register();
+        Recipe.Create(ItemID.Aglet).AddRecipeGroup("Avalon:CopperBar").AddRecipeGroup("Wood", 6).AddTile(TileID.Anvils).Register();
         Recipe.Create(ItemID.IronskinPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Daybloom).AddIngredient(ModContent.ItemType<NickelOre>()).AddTile(TileID.Bottles).Register();
         Recipe.Create(ItemID.SpelunkerPotion).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Moonglow).AddIngredient(ModContent.ItemType<BismuthOre>()).AddTile(TileID.Bottles).Register();
         Recipe.Create(ItemID.PeaceCandle).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 2).AddIngredient(ItemID.PinkTorch).AddTile(TileID.WorkBenches).Register();

@@ -17,7 +17,7 @@ public class TourmalineHook : ModProjectile
     public override void SetDefaults()
     {
         Projectile.CloneDefaults(ProjectileID.GemHookAmethyst);
-        /*			Rectangle dims = AvalonTesting.getDims("Projectiles/TourmalineHook");
+        /*			Rectangle dims = Avalon.getDims("Projectiles/TourmalineHook");
                     projectile.netImportant = true;
                     projectile.width = dims.Width * 18 / 14;
                     projectile.height = dims.Height * 18 / 14 / Main.projFrames[projectile.type];

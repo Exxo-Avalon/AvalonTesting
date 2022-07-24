@@ -24,7 +24,7 @@ public class HomingRocket : ModProjectile
         Projectile.hostile = true;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.penetrate = 1;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().notReflect = true;
 
     }
     public override void Kill(int timeLeft)

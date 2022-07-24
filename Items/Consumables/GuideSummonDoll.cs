@@ -31,9 +31,9 @@ class GuideSummonDoll : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ItemID.SilverOre, 5).AddRecipeGroup("AvalonTesting:GoldBar", 5).AddTile(TileID.Anvils).Register();
-        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ItemID.TungstenOre, 5).AddRecipeGroup("AvalonTesting:GoldBar", 5).AddTile(TileID.Anvils).Register();
-        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ModContent.ItemType<Placeable.Tile.ZincOre>(), 5).AddRecipeGroup("AvalonTesting:GoldBar", 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ItemID.SilverOre, 5).AddRecipeGroup("Avalon:GoldBar", 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ItemID.TungstenOre, 5).AddRecipeGroup("Avalon:GoldBar", 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(5).AddIngredient(ItemID.GuideVoodooDoll).AddIngredient(ItemID.Cobweb, 50).AddIngredient(ModContent.ItemType<Placeable.Tile.ZincOre>(), 5).AddRecipeGroup("Avalon:GoldBar", 5).AddTile(TileID.Anvils).Register();
     }
 
     public override bool CanUseItem(Player player) => true;

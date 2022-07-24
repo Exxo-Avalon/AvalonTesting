@@ -67,7 +67,7 @@ public class KingSting : ModNPC
         NPC.boss = true;
         NPC.lifeMax = 3400;
         NPC.scale = 1;
-        Music = Avalon.MusicMod == null ? MusicID.Boss2 : MusicID.Boss4; // MusicLoader.GetMusicSlot(AvalonTesting.MusicMod, "Sounds/Music/KingSting");
+        Music = Avalon.MusicMod == null ? MusicID.Boss2 : MusicID.Boss4; // MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/KingSting");
 
         // Misc vars
         phase = 0;

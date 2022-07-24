@@ -776,17 +776,17 @@ public class ExxoPlayer : ModPlayer
 
     // tag = new TagCompound
     // {
-    //     { "AvalonTesting:TomeSlot", ItemIO.Save(tomeItem) },
-    //     { "AvalonTesting:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-    //     { "AvalonTesting:HerbTier", (int)herbTier },
-    //     { "AvalonTesting:HerbTotal", herbTotal },
-    //     { "AvalonTesting:PotionTotal", potionTotal },
-    //     { "AvalonTesting:HerbCounts", herbCounts.Save() },
-    //     { "AvalonTesting:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-    //     { "AvalonTesting:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-    //     { "AvalonTesting:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-    //     { "AvalonTesting:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-    //     { "AvalonTesting:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
+    //     { "Avalon:TomeSlot", ItemIO.Save(tomeItem) },
+    //     { "Avalon:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
+    //     { "Avalon:HerbTier", (int)herbTier },
+    //     { "Avalon:HerbTotal", herbTotal },
+    //     { "Avalon:PotionTotal", potionTotal },
+    //     { "Avalon:HerbCounts", herbCounts.Save() },
+    //     { "Avalon:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
+    //     { "Avalon:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
+    //     { "Avalon:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
+    //     { "Avalon:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
+    //     { "Avalon:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
     // };
     public override void LoadData(TagCompound tag)
     {
@@ -805,56 +805,56 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
-        // if (tag.ContainsKey("AvalonTesting:TomeSlot"))
+        // if (tag.ContainsKey("Avalon:TomeSlot"))
         // {
-        //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("AvalonTesting:TomeSlot"));
+        //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("Avalon:TomeSlot"));
         // }
-        // if (tag.ContainsKey("AvalonTesting:Stamina"))
+        // if (tag.ContainsKey("Avalon:Stamina"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("AvalonTesting:Stamina");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("Avalon:Stamina");
         // }
-        // if (tag.ContainsKey("AvalonTesting:HerbTier"))
+        // if (tag.ContainsKey("Avalon:HerbTier"))
         // {
-        //     herbTier = (HerbTier)tag.GetAsInt("AvalonTesting:HerbTier");
+        //     herbTier = (HerbTier)tag.GetAsInt("Avalon:HerbTier");
         // }
-        // if (tag.ContainsKey("AvalonTesting:HerbTotal"))
+        // if (tag.ContainsKey("Avalon:HerbTotal"))
         // {
-        //     herbTotal = tag.GetAsInt("AvalonTesting:HerbTotal");
+        //     herbTotal = tag.GetAsInt("Avalon:HerbTotal");
         // }
-        // if (tag.ContainsKey("AvalonTesting:PotionTotal"))
+        // if (tag.ContainsKey("Avalon:PotionTotal"))
         // {
-        //     potionTotal = tag.GetAsInt("AvalonTesting:PotionTotal");
+        //     potionTotal = tag.GetAsInt("Avalon:PotionTotal");
         // }
-        // if (tag.ContainsKey("AvalonTesting:HerbCounts"))
+        // if (tag.ContainsKey("Avalon:HerbCounts"))
         // {
         //     try
         //     {
-        //         herbCounts.Load(tag.Get<TagCompound>("AvalonTesting:HerbCounts"));
+        //         herbCounts.Load(tag.Get<TagCompound>("Avalon:HerbCounts"));
         //     }
         //     catch
         //     {
         //         herbCounts = new Dictionary<int, int>();
         //     }
         // }
-        // if (tag.ContainsKey("AvalonTesting:RocketJumpUnlocked"))
+        // if (tag.ContainsKey("Avalon:RocketJumpUnlocked"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("AvalonTesting:RocketJumpUnlocked");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("Avalon:RocketJumpUnlocked");
         // }
-        // if (tag.ContainsKey("AvalonTesting:TeleportUnlocked"))
+        // if (tag.ContainsKey("Avalon:TeleportUnlocked"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("AvalonTesting:TeleportUnlocked");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("Avalon:TeleportUnlocked");
         // }
-        // if (tag.ContainsKey("AvalonTesting:SwimmingUnlocked"))
+        // if (tag.ContainsKey("Avalon:SwimmingUnlocked"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("AvalonTesting:SwimmingUnlocked");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("Avalon:SwimmingUnlocked");
         // }
-        // if (tag.ContainsKey("AvalonTesting:SprintUnlocked"))
+        // if (tag.ContainsKey("Avalon:SprintUnlocked"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("AvalonTesting:SprintUnlocked");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("Avalon:SprintUnlocked");
         // }
-        // if (tag.ContainsKey("AvalonTesting:FlightRestoreUnlocked"))
+        // if (tag.ContainsKey("Avalon:FlightRestoreUnlocked"))
         // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("AvalonTesting:FlightRestoreUnlocked");
+        //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
         // }
     }
 
@@ -1336,7 +1336,7 @@ public class ExxoPlayer : ModPlayer
     public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit,
                                  ref bool customDamage, ref bool playSound, ref bool genGore,
                                  ref PlayerDeathReason damageSource) =>
-        //if (AvalonTesting.GodMode)
+        //if (Avalon.GodMode)
         //{
         //    return false;
         //}
@@ -2303,7 +2303,7 @@ public class ExxoPlayer : ModPlayer
                 Player.position.X < num + 1920f)
             {
                 Player.AddBuff(37, 10);
-                //Main.PlaySound(4, (int)Main.npc[AvalonTestingWorld.wos].position.X, (int)Main.npc[AvalonTestingWorld.wos].position.Y, 10);
+                //Main.PlaySound(4, (int)Main.npc[AvalonWorld.wos].position.X, (int)Main.npc[AvalonWorld.wos].position.Y, 10);
             }
 
             if (Player.gross)

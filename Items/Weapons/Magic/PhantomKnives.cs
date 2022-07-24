@@ -41,7 +41,7 @@ internal class PhantomKnives : ModItem
 
     /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
     {
-        float numberProjectiles = AvalonTestingGlobalProjectile.HowManyProjectiles(4, 8);
+        float numberProjectiles = AvalonGlobalProjectile.HowManyProjectiles(4, 8);
         float shootSpeed = (float) Math.Sqrt((double) speedX * speedX + speedY * speedY);
         position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
         for (int i = 0; i < numberProjectiles; i++)

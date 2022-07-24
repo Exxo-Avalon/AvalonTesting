@@ -1,5 +1,5 @@
-//using AvalonTesting.Items.Accessories;
-//using AvalonTesting.Items.Material;
+//using Avalon.Items.Accessories;
+//using Avalon.Items.Material;
 
 using Avalon.Items.Accessories;
 using Avalon.Items.Material;

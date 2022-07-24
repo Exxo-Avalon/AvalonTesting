@@ -40,7 +40,7 @@ class CrystalUnity : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1)
-            .AddRecipeGroup("AvalonTesting:GemStaves", 2)
+            .AddRecipeGroup("Avalon:GemStaves", 2)
             .AddIngredient(ItemID.CrystalStorm)
             .AddIngredient(ModContent.ItemType<Material.ElementDiamond>(), 2)
             .AddTile(TileID.MythrilAnvil)

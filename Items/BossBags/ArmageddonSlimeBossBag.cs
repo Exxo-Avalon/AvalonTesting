@@ -1,5 +1,5 @@
-﻿//using AvalonTesting.Items.Consumables;
-//using AvalonTesting.Items.Placeable.Tile;
+//using Avalon.Items.Consumables;
+//using Avalon.Items.Placeable.Tile;
 
 using Avalon.Items.Placeable.Tile;
 using Terraria;

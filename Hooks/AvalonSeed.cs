@@ -1,8 +1,8 @@
 //using Terraria;
 //using Terraria.ModLoader;
-//using AvalonTesting.Common;
+//using Avalon.Common;
 
-//namespace AvalonTesting.Hooks;
+//namespace Avalon.Hooks;
 //// POSSIBLY USED FOR AVALON DRUNK WORLD SEED
 //[Autoload(Side = ModSide.Both)]
 //public class AvalonSeed : ModHook

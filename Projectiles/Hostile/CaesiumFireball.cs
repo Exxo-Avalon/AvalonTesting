@@ -23,7 +23,7 @@ public class CaesiumFireball : ModProjectile
         Projectile.alpha = 0;
         Projectile.friendly = false;
         Projectile.hostile = true;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().notReflect = true;
     }
 
     public override void AI()

@@ -51,7 +51,7 @@ class BlahsPicksaw : ModItem
                     if (Main.tile[Player.tileTargetX, Player.tileTargetY].HasTile)
                     {
                         int tileId = player.hitTile.HitObject(Player.tileTargetX, Player.tileTargetY, 1);
-                        if (player.inventory[player.selectedItem].pick >= AvalonTesting.minPick[Main.tile[Player.tileTargetX, Player.tileTargetY].type])
+                        if (player.inventory[player.selectedItem].pick >= Avalon.minPick[Main.tile[Player.tileTargetX, Player.tileTargetY].type])
                             player.hitTile.AddDamage(tileId, player.inventory[player.selectedItem].pick, true);
                         return true;
                     }

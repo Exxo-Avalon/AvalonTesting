@@ -865,7 +865,7 @@ public class RecipeCreator : ModSystem
         Recipe.Create(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
             .AddIngredient(ItemID.SilverOre, 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -873,7 +873,7 @@ public class RecipeCreator : ModSystem
         Recipe.Create(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
             .AddIngredient(ItemID.TungstenOre, 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -881,7 +881,7 @@ public class RecipeCreator : ModSystem
         Recipe.Create(ModContent.ItemType<AngerTalisman>())
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("AvalonTesting:GoldBar", 5)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
             .AddIngredient(ModContent.ItemType<ZincOre>(), 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
@@ -1120,7 +1120,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Lens, 5)
             .AddIngredient(ItemID.SoulofLight, 10)
             .AddIngredient(ItemID.SoulofNight, 10)
-            .AddRecipeGroup("AvalonTesting:GoldBar", 20)
+            .AddRecipeGroup("Avalon:GoldBar", 20)
             .AddIngredient(ItemID.BlackLens)
             .AddIngredient(ModContent.ItemType<BloodshotLens>(), 4)
             .AddTile(TileID.WorkBenches).Register();

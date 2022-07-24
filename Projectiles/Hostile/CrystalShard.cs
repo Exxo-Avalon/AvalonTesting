@@ -25,7 +25,7 @@ public class CrystalShard : ModProjectile
         Projectile.alpha = 255;
         Projectile.timeLeft = 180;
         Projectile.ignoreWater = true;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().notReflect = true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {

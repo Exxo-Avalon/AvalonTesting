@@ -121,27 +121,27 @@ public class UIChanges : ModHook
     //
     //     c.EmitDelegate<Action<SpriteBatch, Vector2, Player>>((spriteBatch, vector2, player) =>
     //     {
-    //         AvalonTestingModPlayer modPlayer = player.Avalon();
+    //         AvalonModPlayer modPlayer = player.Avalon();
     //         if (modPlayer == null)
     //         {
     //             return;
     //         }
     //
-    //         Texture2D staminaTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Sprites/Stamina").Value;
-    //         Texture2D defenceTexture = AvalonTesting.Mod.Assets.Request<Texture2D>("Images/UI/Bestiary/Stat_Defense");
+    //         Texture2D staminaTexture = Avalon.Mod.Assets.Request<Texture2D>("Sprites/Stamina").Value;
+    //         Texture2D defenceTexture = Avalon.Mod.Assets.Request<Texture2D>("Images/UI/Bestiary/Stat_Defense");
     //         //switch ((modPlayer.statStamMax - 1) / 150)
     //         //{
     //         //    case 0:
-    //         //        staminaTexture = AvalonTesting.mod.GetTexture("Sprites/Stamina");
+    //         //        staminaTexture = Avalon.mod.GetTexture("Sprites/Stamina");
     //         //        break;
     //         //    case 1:
-    //         //        staminaTexture = AvalonTesting.mod.GetTexture("Sprites/Stamina2");
+    //         //        staminaTexture = Avalon.mod.GetTexture("Sprites/Stamina2");
     //         //        break;
     //         //    case 2:
-    //         //        staminaTexture = AvalonTesting.mod.GetTexture("Sprites/Stamina3");
+    //         //        staminaTexture = Avalon.mod.GetTexture("Sprites/Stamina3");
     //         //        break;
     //         //    default:
-    //         //        staminaTexture = AvalonTesting.mod.GetTexture("Sprites/Stamina");
+    //         //        staminaTexture = Avalon.mod.GetTexture("Sprites/Stamina");
     //         //        break;
     //         //}
     //

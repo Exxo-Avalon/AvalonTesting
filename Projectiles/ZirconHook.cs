@@ -12,7 +12,7 @@ public class ZirconHook : ModProjectile
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Zircon Hook");
-        //Rectangle dims = AvalonTesting.getDims("Projectiles/ZirconHook");
+        //Rectangle dims = Avalon.getDims("Projectiles/ZirconHook");
         //projectile.netImportant = true;
         //projectile.width = dims.Width;
         //projectile.height = dims.Height / Main.projFrames[projectile.type];

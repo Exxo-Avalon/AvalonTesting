@@ -17,7 +17,7 @@ public class PeridotHook : ModProjectile
     public override void SetDefaults()
     {
         Projectile.CloneDefaults(ProjectileID.GemHookEmerald);
-        //Rectangle dims = AvalonTesting.getDims("Projectiles/PeridotHook");
+        //Rectangle dims = Avalon.getDims("Projectiles/PeridotHook");
         //projectile.netImportant = true;
         //projectile.width = dims.Width * 18 / 18;
         //projectile.height = dims.Height / Main.projFrames[projectile.type];

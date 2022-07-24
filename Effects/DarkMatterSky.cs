@@ -169,7 +169,7 @@ public class DarkMatterSky : CustomSky
         //    for (int m = 0; m < bgLoops; m++)
         //    {
 
-        //        spriteBatch.Draw(AvalonTesting.DarkMatterFloatingRocks.Value, new Vector2(bgStartX + bgWidthScaled * (m + 1), bgTopY), new Rectangle(0, 0, AvalonTesting.DarkMatterFloatingRocks.Value.Width, AvalonTesting.DarkMatterFloatingRocks.Value.Height), new Color(255, 255, 255, 255), 0f, default, bgScale, SpriteEffects.None, 1f);
+        //        spriteBatch.Draw(Avalon.DarkMatterFloatingRocks.Value, new Vector2(bgStartX + bgWidthScaled * (m + 1), bgTopY), new Rectangle(0, 0, Avalon.DarkMatterFloatingRocks.Value.Width, Avalon.DarkMatterFloatingRocks.Value.Height), new Color(255, 255, 255, 255), 0f, default, bgScale, SpriteEffects.None, 1f);
         //    }
         //}
 

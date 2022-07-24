@@ -25,7 +25,7 @@ public class Ghostflame : ModProjectile
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
-        //Projectile.GetGlobalProjectile<AvalonTestingGlobalProjectileInstance>().notReflect = true;
+        //Projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().notReflect = true;
     }
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {

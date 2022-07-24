@@ -39,7 +39,7 @@ class WorldgenHelper : ModItem
         //Main.hardMode = false;
         //World.Passes.HallowedAltars.Generate();
         //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
-        //Task.Run(AvalonTestingWorld.GenerateSkyFortress);
+        //Task.Run(AvalonWorld.GenerateSkyFortress);
         for (int i = x - 10; i < x + 10; i++)
         {
             WorldGen.PlaceTile(i, y, ModContent.TileType<Tiles.LaziteGrass>());

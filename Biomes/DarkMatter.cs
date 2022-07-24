@@ -15,7 +15,7 @@ public class DarkMatter : ModBiome
     public override void SpecialVisuals(Player player, bool isActive)
     {
         Main.ColorOfTheSkies = new Microsoft.Xna.Framework.Color(126, 71, 107);
-        player.ManageSpecialBiomeVisuals("AvalonTesting:DarkMatter", isActive);
+        player.ManageSpecialBiomeVisuals("Avalon:DarkMatter", isActive);
     }
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle
     {
