@@ -1,12 +1,12 @@
-using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.Common;
-using AvalonTesting.Players;
+using Avalon.Buffs.AdvancedBuffs;
+using Avalon.Common;
+using Avalon.Players;
 using On.Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class BuffEffects : ModHook

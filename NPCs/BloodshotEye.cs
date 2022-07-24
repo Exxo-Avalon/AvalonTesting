@@ -1,13 +1,13 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Items.Material;
+using Avalon.Items.Banners;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class BloodshotEye : ModNPC
 {

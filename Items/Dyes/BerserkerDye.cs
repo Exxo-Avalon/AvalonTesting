@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Dyes;
+namespace Avalon.Items.Dyes;
 
 public class BerserkerDye : ModItem
 {

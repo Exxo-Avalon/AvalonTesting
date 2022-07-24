@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs.AdvancedBuffs;
+namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvForceField : ModBuff
 {

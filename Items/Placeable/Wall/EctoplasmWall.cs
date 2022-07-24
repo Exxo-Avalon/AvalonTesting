@@ -1,9 +1,9 @@
-using AvalonTesting.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Wall;
+namespace Avalon.Items.Placeable.Wall;
 
 class EctoplasmWall : ModItem
 {

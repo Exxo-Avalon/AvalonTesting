@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Dusts;
+namespace Avalon.Dusts;
 
 public class LightningDust : ModDust
 {

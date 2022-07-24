@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Chat;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 class TimechangerMkII : ModItem
 {

@@ -1,11 +1,11 @@
-using AvalonTesting.Items.Placeable.Crafting;
+using Avalon.Items.Placeable.Crafting;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class HeartstoneWorkbench : ModTile
 {

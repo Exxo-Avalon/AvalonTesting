@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public class ExxoUICircle : ExxoUIElement
 {

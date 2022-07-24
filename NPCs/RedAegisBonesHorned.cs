@@ -6,7 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class RedAegisBonesHorned : ModNPC
 {

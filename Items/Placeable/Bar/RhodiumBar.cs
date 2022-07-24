@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Bar;
+namespace Avalon.Items.Placeable.Bar;
 
 class RhodiumBar : ModItem
 {

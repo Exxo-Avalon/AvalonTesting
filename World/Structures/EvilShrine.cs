@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Fish;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Accessories;
+using Avalon.Items.Fish;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World.Structures;
+namespace Avalon.World.Structures;
 
 class EvilShrine
 {

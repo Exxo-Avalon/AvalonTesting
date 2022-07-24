@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Fish;
+namespace Avalon.Items.Fish;
 
 class Ickfish : ModItem
 {

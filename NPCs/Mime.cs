@@ -1,13 +1,13 @@
 using Terraria.GameContent.Bestiary;
 using System;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
+using Avalon.Items.Accessories;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Mime : ModNPC
 {

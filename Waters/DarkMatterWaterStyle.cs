@@ -4,7 +4,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Waters;
+namespace Avalon.Waters;
 
 public class DarkMatterWaterStyle : ModWaterStyle
 {

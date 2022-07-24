@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class CrystalBit : ModProjectile
 {

@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class SpiritPoppy : ModProjectile
 {

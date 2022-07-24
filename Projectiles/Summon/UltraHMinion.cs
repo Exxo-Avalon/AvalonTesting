@@ -1,8 +1,8 @@
-﻿using AvalonTesting.Players;
+﻿using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public class UltraHMinion : HoverShooter
 {

@@ -1,8 +1,8 @@
-using AvalonTesting.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Prefixes;
+namespace Avalon.Prefixes;
 
 public class Bogus : ExxoPrefix
 {

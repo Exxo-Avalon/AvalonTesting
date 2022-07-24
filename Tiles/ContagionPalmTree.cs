@@ -1,4 +1,4 @@
-using AvalonTesting.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.GameContent;
@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class ContagionPalmTree : ModPalmTree
 {

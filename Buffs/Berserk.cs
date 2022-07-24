@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Players;
+﻿using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class Berserk : ModBuff
 {

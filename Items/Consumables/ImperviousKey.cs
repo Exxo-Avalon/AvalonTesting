@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 public class ImperviousKey : ModItem
 {

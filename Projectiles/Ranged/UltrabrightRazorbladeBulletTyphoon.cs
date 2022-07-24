@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Ranged;
+namespace Avalon.Projectiles.Ranged;
 
 public class UltrabrightRazorbladeBulletTyphoon : ModProjectile
 {
@@ -143,7 +143,7 @@ public class UltrabrightRazorbladeBulletTyphoon : ModProjectile
                 flag28 = false;
                 Projectile.netUpdate = true;
             }
-        }    
+        }
         if (flag28)
         {
             Vector2 v2 = vector55 - Projectile.Center;

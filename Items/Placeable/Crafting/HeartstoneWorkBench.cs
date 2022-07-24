@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Crafting;
+namespace Avalon.Items.Placeable.Crafting;
 
 class HeartstoneWorkBench : ModItem
 {

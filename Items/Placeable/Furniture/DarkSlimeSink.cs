@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Furniture;
+namespace Avalon.Items.Placeable.Furniture;
 
 public class DarkSlimeSink : ModItem
 {

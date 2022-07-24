@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class QuantumBeam : ModProjectile
 {

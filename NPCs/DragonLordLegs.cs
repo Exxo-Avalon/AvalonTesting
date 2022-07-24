@@ -6,7 +6,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 [AutoloadBossHead]
 public class DragonLordLegs : ModNPC

@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.Items.BossBags;
+namespace Avalon.Items.BossBags;
 
 public class DragonLordBossBag : ModItem
 {

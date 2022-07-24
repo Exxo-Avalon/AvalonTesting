@@ -1,7 +1,7 @@
 using System;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Systems;
+using Avalon.Items.Material;
+using Avalon.Items.Potions;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 public class Mechasting : ModNPC
 {

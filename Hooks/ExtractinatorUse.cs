@@ -1,12 +1,12 @@
 ﻿using System;
+using Avalon.Common;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using AvalonTesting.Common;
 using Terraria.GameInput;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Hooks
+namespace Avalon.Hooks
 {
     [Autoload(Side = ModSide.Both)]
     public class ExtractinatorUse : ModHook

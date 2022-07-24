@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AvalonTesting.Network;
+namespace Avalon.Network;
 
 public static class NetworkManager
 {

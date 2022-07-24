@@ -1,12 +1,12 @@
-using AvalonTesting.Items.Material;
-using AvalonTesting.Players;
-using AvalonTesting.Tiles;
+using Avalon.Items.Material;
+using Avalon.Players;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
 internal class AncientHeadpiece : ModItem

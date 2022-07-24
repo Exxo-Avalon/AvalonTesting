@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public abstract class BaseDagger<T> : ModBuff where T : ModProjectile
 {

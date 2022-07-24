@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting;
+namespace Avalon;
 public class AvalonTestingGlobalProjectileInstance : GlobalProjectile
 {
     public override bool InstancePerEntity => true;

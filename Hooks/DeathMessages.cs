@@ -1,9 +1,9 @@
-using AvalonTesting.Common;
+using Avalon.Common;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class DeathMessages : ModHook

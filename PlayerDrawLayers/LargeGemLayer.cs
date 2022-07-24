@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.PlayerDrawLayers;
+namespace Avalon.PlayerDrawLayers;
 
 public class LargeGemLayer : PlayerDrawLayer
 {

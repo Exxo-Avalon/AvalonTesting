@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class DragonAltar : ModTile
 {

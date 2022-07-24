@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Other;
+namespace Avalon.Items.Other;
 
 internal class ContagionKey : ModItem
 {

@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Biomes;
+namespace Avalon.World.Biomes;
 
 public class CrystalMinesHouseBiome : MicroBiome
 {

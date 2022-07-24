@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class BeeSweet : ModBuff
 {

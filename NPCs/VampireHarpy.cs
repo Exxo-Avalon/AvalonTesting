@@ -1,10 +1,10 @@
+using Avalon.Players;
 using Terraria.GameContent.Bestiary;
-using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class VampireHarpy : ModNPC
 {

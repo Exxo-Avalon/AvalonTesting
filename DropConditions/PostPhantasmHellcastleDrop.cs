@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Players;
-using AvalonTesting.Systems;
+﻿using Avalon.Players;
+using Avalon.Systems;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class PostPhantasmHellcastleDrop : IItemDropRuleCondition, IProvideItemConditionDescription
 {

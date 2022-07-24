@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs.AdvancedBuffs;
+namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvInferno : ModBuff
 {

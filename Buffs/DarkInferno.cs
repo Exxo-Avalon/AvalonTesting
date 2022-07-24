@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class DarkInferno : ModBuff
 {

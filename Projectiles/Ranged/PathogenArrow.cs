@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Ranged;
+namespace Avalon.Projectiles.Ranged;
 
 public class PathogenArrow : ModProjectile
 {

@@ -1,9 +1,9 @@
-using AvalonTesting.Backgrounds;
-using AvalonTesting.Players;
+using Avalon.Backgrounds;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Biomes;
+namespace Avalon.Biomes;
 
 public class Tropics : ModBiome
 {

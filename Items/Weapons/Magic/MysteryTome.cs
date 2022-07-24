@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Items.Weapons.Magic;
+namespace Avalon.Items.Weapons.Magic;
 
 class MysteryTome : ModItem
 {

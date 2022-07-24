@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class DarkCinder : ModProjectile
 {

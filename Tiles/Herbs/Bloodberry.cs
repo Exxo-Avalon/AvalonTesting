@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Seed;
+﻿using Avalon.Items.Placeable.Seed;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -7,7 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles.Herbs;
+namespace Avalon.Tiles.Herbs;
 
 //A plant with 3 stages, planted, growing and grown.
 //Sadly, modded plants are unable to be grown by the flower boots

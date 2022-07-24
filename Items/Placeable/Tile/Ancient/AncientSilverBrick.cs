@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Tile.Ancient;
+namespace Avalon.Items.Placeable.Tile.Ancient;
 
 public class AncientSilverBrick : ModItem
 {

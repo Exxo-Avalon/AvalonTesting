@@ -1,10 +1,10 @@
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Players;
+using Avalon.Items.Banners;
+using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class CloudBat : ModNPC
 {

@@ -1,7 +1,7 @@
 ﻿using System;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Items.Weapons.Ranged;
+using Avalon.Items.Accessories;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +11,7 @@ using Terraria.ObjectData;
 using Terraria.Audio;
 using Terraria.Chat;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class SnotOrb : ModTile
 {

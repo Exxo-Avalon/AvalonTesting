@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Logic;
+﻿using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class ElementBeam : ModProjectile
 {

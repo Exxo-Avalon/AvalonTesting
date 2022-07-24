@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using AvalonTesting.Network;
+using Avalon.Network;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs.Utils;
+namespace Avalon.NPCs.Utils;
 
 /// <summary>
 /// A state who performs an action

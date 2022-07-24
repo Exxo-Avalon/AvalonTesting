@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class WarmGemsparkBlock : ModTile
 {

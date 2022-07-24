@@ -1,11 +1,11 @@
-using AvalonTesting.Players;
-using AvalonTesting.Rarities;
+using Avalon.Players;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
 internal class EarthsplitterHelm : ModItem

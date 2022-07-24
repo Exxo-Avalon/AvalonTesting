@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class Lightning : ModProjectile
 {

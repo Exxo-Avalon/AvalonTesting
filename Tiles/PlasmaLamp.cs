@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class PlasmaLamp : ModTile
 {

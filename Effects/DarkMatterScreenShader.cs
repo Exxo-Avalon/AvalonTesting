@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 
-namespace AvalonTesting;
+namespace Avalon;
 public class DarkMatterScreenShader : ScreenShaderData
 {
     public DarkMatterScreenShader(Ref<Effect> shader, string passName) : base(shader, passName)

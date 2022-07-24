@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.Projectiles.Summon;
+﻿namespace Avalon.Projectiles.Summon;
 
 public class BismuthDagger : BaseDagger<Buffs.BismuthDagger>
 {

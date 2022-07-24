@@ -1,6 +1,6 @@
 using System;
-using AvalonTesting.Common;
-using AvalonTesting.Tiles;
+using Avalon.Common;
+using Avalon.Tiles;
 using IL.Terraria;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -9,7 +9,7 @@ using MonoMod.Utils;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class WorldGenEdits : ModHook

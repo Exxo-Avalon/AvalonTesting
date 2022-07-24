@@ -1,5 +1,5 @@
 ﻿using System;
-using AvalonTesting.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -10,7 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Juggernaut : ModNPC
 {

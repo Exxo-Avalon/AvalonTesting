@@ -1,12 +1,12 @@
-using AvalonTesting.Dusts;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Systems;
+using Avalon.Dusts;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class DarkMatterSand : ModTile
 {

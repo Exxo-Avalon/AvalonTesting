@@ -1,8 +1,8 @@
-﻿using Terraria;
+﻿using Avalon.Players;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class NotUsedMechHeart :
     IItemDropRuleCondition,

@@ -5,7 +5,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 internal class ReflexCharm : ModItem
 {

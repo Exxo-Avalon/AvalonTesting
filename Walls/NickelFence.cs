@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class NickelFence : ModWall
 {

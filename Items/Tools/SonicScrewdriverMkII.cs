@@ -4,7 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 class SonicScrewdriverMkII : ModItem
 {

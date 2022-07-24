@@ -1,5 +1,6 @@
 using Terraria.GameContent.Bestiary;
 using System;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,9 +8,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class MatterMan : ModNPC
 {

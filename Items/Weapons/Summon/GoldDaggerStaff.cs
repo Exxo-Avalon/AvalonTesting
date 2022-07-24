@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Buffs;
+﻿using Avalon.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Summon;
+namespace Avalon.Items.Weapons.Summon;
 
 public class GoldDaggerStaff : ModItem
 {

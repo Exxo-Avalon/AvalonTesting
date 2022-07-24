@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 
-namespace AvalonTesting.NPCs.Utils;
+namespace Avalon.NPCs.Utils;
 
 public class Vector2Tween : Network.ISerializable
 {

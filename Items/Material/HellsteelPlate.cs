@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AvalonTesting.Items.Material;
+namespace Avalon.Items.Material;
 
 class HellsteelPlate : ModItem
 {

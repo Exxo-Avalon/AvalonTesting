@@ -1,12 +1,12 @@
-using AvalonTesting.Items.Ammo;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Items.Ammo;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 class BlahBullet : ModItem
 {

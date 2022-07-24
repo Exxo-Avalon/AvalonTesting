@@ -4,7 +4,7 @@ using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class CaesiumSpear : ModProjectile
 {

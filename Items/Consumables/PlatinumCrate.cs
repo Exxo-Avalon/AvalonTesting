@@ -1,14 +1,14 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Potions;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Potions;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class PlatinumCrate : ModItem
 {

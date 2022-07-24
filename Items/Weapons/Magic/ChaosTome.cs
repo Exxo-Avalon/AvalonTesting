@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Magic;
+namespace Avalon.Items.Weapons.Magic;
 
 class ChaosTome : ModItem
 {

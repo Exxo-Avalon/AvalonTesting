@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class VoltBrick : ModTile
 {

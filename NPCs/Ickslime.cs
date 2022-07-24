@@ -1,12 +1,12 @@
+using Avalon.Players;
 using Terraria.GameContent.Bestiary;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Ickslime : ModNPC
 {

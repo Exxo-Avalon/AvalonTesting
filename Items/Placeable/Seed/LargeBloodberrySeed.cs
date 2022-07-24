@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Seed;
+namespace Avalon.Items.Placeable.Seed;
 
 class LargeBloodberrySeed : ModItem
 {

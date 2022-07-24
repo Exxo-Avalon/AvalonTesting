@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Backgrounds;
+namespace Avalon.Backgrounds;
 
 public class ContagionSurfaceBackground : ModSurfaceBackgroundStyle
 {

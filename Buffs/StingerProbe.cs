@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Players;
-using AvalonTesting.Projectiles.Summon;
+﻿using Avalon.Items.Accessories;
+using Avalon.Players;
+using Avalon.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class StingerProbe : ModBuff
 {
@@ -53,7 +53,7 @@ public class StingerProbe : ModBuff
         {
             return;
         }
-        
+
         Projectile.NewProjectile(player.GetSource_Buff(buffIndex), player.Center, Vector2.Zero,
             ModContent.ProjectileType<StingerProbeMinion>(), damage, 0f,
             player.whoAmI);

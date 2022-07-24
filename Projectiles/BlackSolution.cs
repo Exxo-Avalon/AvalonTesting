@@ -1,14 +1,14 @@
 using System;
-using AvalonTesting.Dusts;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
-using AvalonTesting.Walls;
+using Avalon.Dusts;
+using Avalon.Systems;
+using Avalon.Tiles;
+using Avalon.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class BlackSolution : ModProjectile
 {

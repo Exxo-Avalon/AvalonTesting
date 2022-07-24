@@ -1,6 +1,6 @@
 ﻿using Terraria;
 
-namespace AvalonTesting.Network;
+namespace Avalon.Network;
 
 public class NetworkArgs
 {

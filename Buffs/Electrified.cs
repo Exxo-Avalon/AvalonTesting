@@ -1,9 +1,9 @@
+using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class Electrified : ModBuff
 {

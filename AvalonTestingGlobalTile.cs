@@ -1,11 +1,11 @@
-using AvalonTesting.Items.Weapons.Throw;
-using AvalonTesting.Tiles;
+using Avalon.Items.Weapons.Throw;
+using Avalon.Players;
+using Avalon.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Players;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingGlobalTile : GlobalTile
 {

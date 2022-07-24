@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Material;
+namespace Avalon.Items.Material;
 
 class Barfbush : ModItem
 {

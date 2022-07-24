@@ -9,7 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Common;
+namespace Avalon.Common;
 
 public abstract class ModDresser : ModTile
 {

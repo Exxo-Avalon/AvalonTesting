@@ -1,12 +1,12 @@
-using AvalonTesting.Projectiles;
-using AvalonTesting.Rarities;
+using Avalon.Projectiles;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 internal class BlahsKnives : ModItem
 {

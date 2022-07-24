@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Network;
+namespace Avalon.Network;
 
 public static class SyncTime
 {

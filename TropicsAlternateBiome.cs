@@ -4,16 +4,16 @@ using AltLibrary.Common.Systems;
 using AltLibrary.Common.Hooks;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Tiles;
+using Avalon.Tiles.Ores;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.NPCs;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.Walls;
+using Avalon.Items.Placeable.Seed;
+using Avalon.NPCs;
+using Avalon.Walls;
 
-namespace AvalonTesting
+namespace Avalon
 {
     internal class TropicsAlternateBiome : AltBiome
     {
@@ -22,7 +22,7 @@ namespace AvalonTesting
         public override void SetStaticDefaults()
         {
             BiomeType = BiomeType.Jungle;
-            
+
             BiomeGrass = ModContent.TileType<TropicalGrass>();
             BiomeStone = ModContent.TileType<TropicalStone>();
             BiomeOre = ModContent.TileType<XanthophyteOre>();

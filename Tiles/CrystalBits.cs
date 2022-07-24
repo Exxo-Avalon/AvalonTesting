@@ -5,7 +5,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class CrystalBits : ModTile
 {

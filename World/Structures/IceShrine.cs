@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Items.Consumables;
+﻿using Avalon.Items.Consumables;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World.Structures;
+namespace Avalon.World.Structures;
 
 class IceShrine
 {

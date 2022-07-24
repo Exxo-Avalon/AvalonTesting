@@ -6,7 +6,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.UI;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public class ExxoUIPieChart : ExxoUIElement
 {

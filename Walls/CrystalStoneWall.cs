@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class CrystalStoneWall : ModWall
 {

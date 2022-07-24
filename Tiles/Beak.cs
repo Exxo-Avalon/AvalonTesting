@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class Beak : ModTile
 {

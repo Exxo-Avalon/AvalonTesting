@@ -1,5 +1,5 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Furniture;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 using Terraria.Audio;
 using Terraria.GameContent.ObjectInteractions;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class LockedTuhrtlDoor : ModTile
 {

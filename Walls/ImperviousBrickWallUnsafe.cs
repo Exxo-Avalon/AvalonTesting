@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Systems;
+﻿using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class ImperviousBrickWallUnsafe : ModWall
 {

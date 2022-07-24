@@ -1,16 +1,16 @@
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Ranged;
+using Avalon.Items.Accessories;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Potions;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Ranged;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World.Structures;
+namespace Avalon.World.Structures;
 
 class HellCastle
 {

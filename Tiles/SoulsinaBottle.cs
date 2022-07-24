@@ -1,5 +1,5 @@
-using AvalonTesting.Dusts;
-using AvalonTesting.Items.Placeable.Light;
+using Avalon.Dusts;
+using Avalon.Items.Placeable.Light;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class SoulsinaBottle : ModTile
 {

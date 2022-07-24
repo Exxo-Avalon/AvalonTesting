@@ -1,5 +1,5 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Ranged;
 
 internal class QuadroCannon : ModItem
 {

@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using AvalonTesting.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Network.Handlers;
+namespace Avalon.Network.Handlers;
 
 [Autoload]
 public class SyncStingerProbe : PacketHandler<BasicPlayerNetworkArgs>

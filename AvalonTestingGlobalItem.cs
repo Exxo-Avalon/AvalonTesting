@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
-using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.Data.Sets;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Ammo;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Network;
-using AvalonTesting.Players;
-using AvalonTesting.Prefixes;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
+using Avalon.Buffs.AdvancedBuffs;
+using Avalon.Data.Sets;
+using Avalon.Items.Accessories;
+using Avalon.Items.Ammo;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Network;
+using Avalon.Players;
+using Avalon.Prefixes;
+using Avalon.Systems;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -22,7 +22,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingGlobalItem : GlobalItem
 {

@@ -1,5 +1,5 @@
 using System;
-using AvalonTesting.Projectiles;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class GuardianCorruptor : ModNPC
 {

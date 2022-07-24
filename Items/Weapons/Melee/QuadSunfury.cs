@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using AvalonTesting.Systems;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 public class QuadSunfury : ModItem
 {

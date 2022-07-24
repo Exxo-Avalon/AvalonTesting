@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Logic;
+﻿using Avalon.Items.Placeable.Bar;
+using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 public class BerserkerBlade : ModItem
 {

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Wall;
+namespace Avalon.Items.Placeable.Wall;
 
 class VoltBrickWall : ModItem
 {

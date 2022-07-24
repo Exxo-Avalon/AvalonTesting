@@ -1,15 +1,15 @@
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Players;
-using AvalonTesting.Rarities;
-using AvalonTesting.Tiles;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Players;
+using Avalon.Rarities;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 [AutoloadEquip(EquipType.Wings)]
 internal class BlahsWings : ModItem

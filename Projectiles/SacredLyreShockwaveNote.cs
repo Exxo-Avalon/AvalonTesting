@@ -3,7 +3,7 @@ using Terraria;
 using System;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class SacredLyreShockwaveNote : ModProjectile
 {

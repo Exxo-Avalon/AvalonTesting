@@ -1,11 +1,11 @@
 using Terraria;
 using Terraria.ModLoader;
-using AvalonTesting.Common;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Avalon.Common;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class ShadowRing : ModHook

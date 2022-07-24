@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 public class DragonsBondage : ModItem
 {

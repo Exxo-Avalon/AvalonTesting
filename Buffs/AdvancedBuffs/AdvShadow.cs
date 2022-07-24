@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Players;
-using AvalonTesting.Systems;
+﻿using Avalon.Players;
+using Avalon.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs.AdvancedBuffs;
+namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvShadow : ModBuff
 {

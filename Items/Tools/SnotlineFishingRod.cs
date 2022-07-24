@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Projectiles;
+﻿using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 internal class SnotlineFishingRod : ModItem
 {

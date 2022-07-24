@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
-using AvalonTesting.Walls;
+using Avalon.Systems;
+using Avalon.Tiles;
+using Avalon.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -10,7 +10,7 @@ using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 public class Contagion : GenPass
 {
@@ -90,7 +90,7 @@ public class Contagion : GenPass
                 notDrunk = false;
             }
         }
-        
+
         progress.Message = "Making the world gross";
         for (int iteration = 0; iteration < iterations; iteration++)
         {

@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Avalon.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class InfestedCarcass : ModItem
 {

@@ -1,6 +1,6 @@
 ﻿using On.Terraria;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 public static class PrefixChanges
 {

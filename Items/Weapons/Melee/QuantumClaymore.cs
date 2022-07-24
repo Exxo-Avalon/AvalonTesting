@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 public class QuantumClaymore : ModItem
 {
     int DontShootEverySwingkthxbye = 0;
@@ -58,7 +58,7 @@ public class QuantumClaymore : ModItem
         for (int i = 0; i < Main.rand.Next(3, 4); i++)
         {
             Vector2 SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly = player.position - new Vector2(Main.rand.Next(230,280) * player.direction, Main.rand.Next(-75, 75));
-        
+
             Projectile.NewProjectile(player.GetSource_FromThis(), SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly, SwordSpawnFunnyPlaceRealOnGodTheyComeFromHereQuiteCoolHonestly.DirectionTo(Main.MouseWorld) * (Item.shootSpeed * Main.rand.NextFloat(1.6f, 3f)), ModContent.ProjectileType<Projectiles.Melee.QuantumBeam2>(), (int)(Item.damage * 0.6f), Item.knockBack * 0.1f, player.whoAmI);
         }
     }

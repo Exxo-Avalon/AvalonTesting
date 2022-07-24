@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Statue;
+namespace Avalon.Items.Placeable.Statue;
 
 class HallowStatue : ModItem
 {

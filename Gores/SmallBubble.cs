@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Gores;
+namespace Avalon.Gores;
 
 public class SmallBubble : ModGore
 {

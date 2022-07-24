@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class IckyCactus : ModCactus
 {

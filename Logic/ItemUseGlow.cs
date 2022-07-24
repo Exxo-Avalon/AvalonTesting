@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Logic;
+namespace Avalon.Logic;
 
 public class ItemUseGlow : GlobalItem
 {

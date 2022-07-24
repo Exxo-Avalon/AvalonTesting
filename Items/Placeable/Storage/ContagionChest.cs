@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Storage;
+namespace Avalon.Items.Placeable.Storage;
 
 class ContagionChest : ModItem
 {

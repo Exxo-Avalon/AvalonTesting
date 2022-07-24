@@ -3,7 +3,7 @@ using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 public class TropicsSanctum
 {

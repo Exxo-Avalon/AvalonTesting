@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Logic;
+﻿using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Magic;
+namespace Avalon.Items.Weapons.Magic;
 
 public class Terraspin : ModItem
 {

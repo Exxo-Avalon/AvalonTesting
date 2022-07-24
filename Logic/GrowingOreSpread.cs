@@ -1,7 +1,7 @@
 using Terraria;
 
 
-namespace AvalonTesting.Logic;
+namespace Avalon.Logic;
 public class GrowingOreSpread
 {
     public static bool GrowingOre(int i, int j, int growingType)

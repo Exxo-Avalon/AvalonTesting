@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class DarkSlimeCandelabra : ModTile
 {

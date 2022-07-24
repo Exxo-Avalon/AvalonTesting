@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Systems;
+﻿using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Rift : ModNPC
 {

@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Players;
+﻿using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 [AutoloadEquip(EquipType.Shield)]
 public class AegisDash : ModItem

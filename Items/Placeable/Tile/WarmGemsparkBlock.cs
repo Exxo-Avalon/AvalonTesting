@@ -5,7 +5,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Tile;
+namespace Avalon.Items.Placeable.Tile;
 
 public class WarmGemsparkBlock : ModItem
 {

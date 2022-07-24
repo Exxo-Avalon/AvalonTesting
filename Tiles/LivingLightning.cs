@@ -1,5 +1,5 @@
-using AvalonTesting.Dusts;
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Dusts;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class LivingLightning : ModTile
 {

@@ -1,12 +1,12 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
+using Avalon.Items.Banners;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Dragonfly : ModNPC
 {

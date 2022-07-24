@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.UI;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public class ExxoUIBorderedPieChart : ExxoUIElement
 {

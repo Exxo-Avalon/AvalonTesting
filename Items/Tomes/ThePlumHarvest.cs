@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tomes;
+namespace Avalon.Items.Tomes;
 
 class ThePlumHarvest : ModItem
 {

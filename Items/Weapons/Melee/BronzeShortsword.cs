@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 class BronzeShortsword : ModItem
 {

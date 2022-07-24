@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Buffs;
+﻿using Avalon.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 
 public class ExxoStaminaPlayer : ModPlayer
 {

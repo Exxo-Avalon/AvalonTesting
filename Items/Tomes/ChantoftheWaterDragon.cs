@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tomes;
+namespace Avalon.Items.Tomes;
 
 class ChantoftheWaterDragon : ModItem
 {

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Ranged;
 
 class CaesiumRepeater : ModItem
 {

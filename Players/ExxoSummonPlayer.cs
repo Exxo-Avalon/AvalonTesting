@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 
 public class ExxoSummonPlayer : ModPlayer
 {

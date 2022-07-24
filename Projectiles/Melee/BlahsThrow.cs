@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class BlahsThrow : ModProjectile
 {

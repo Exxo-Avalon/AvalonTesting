@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Dusts;
+﻿using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles.SoulCandles;
+namespace Avalon.Tiles.SoulCandles;
 
 public class HumidityCandle : ModTile
 {

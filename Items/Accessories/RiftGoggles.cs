@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 class RiftGoggles : ModItem
 {

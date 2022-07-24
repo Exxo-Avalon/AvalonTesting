@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Body)]
 class DivingSuit : ModItem

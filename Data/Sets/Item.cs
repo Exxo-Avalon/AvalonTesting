@@ -1,8 +1,8 @@
-using AvalonTesting.Items.Placeable.Seed;
+using Avalon.Items.Placeable.Seed;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Data.Sets;
+namespace Avalon.Data.Sets;
 
 public static class Item
 {

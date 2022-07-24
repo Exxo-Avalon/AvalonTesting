@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 internal class BagofShadows : ModItem
 {
@@ -25,7 +25,7 @@ internal class BagofShadows : ModItem
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonTestingGlobalItemInstance>().UpdateInvisibleVanity = true;
     }
-    
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         if (!hideVisual)

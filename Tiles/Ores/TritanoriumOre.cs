@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Dusts;
+﻿using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles.Ores;
+namespace Avalon.Tiles.Ores;
 
 public class TritanoriumOre : ModTile
 {

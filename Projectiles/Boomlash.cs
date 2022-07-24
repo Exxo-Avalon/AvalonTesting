@@ -1,5 +1,5 @@
 using System;
-using AvalonTesting.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Achievements;
@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class Boomlash : ModProjectile
 {

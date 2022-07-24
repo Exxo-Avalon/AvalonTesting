@@ -1,13 +1,13 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Projectiles;
+using Avalon.Items.Banners;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class BombSkeleton : ModNPC
 {

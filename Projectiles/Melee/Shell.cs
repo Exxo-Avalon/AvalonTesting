@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class Shell : ModProjectile
 {

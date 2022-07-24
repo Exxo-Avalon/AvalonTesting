@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Trophy;
+namespace Avalon.Items.Placeable.Trophy;
 
 class PhantasmTrophy : ModItem
 {

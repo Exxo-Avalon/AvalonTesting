@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.Items.BossBags;
+namespace Avalon.Items.BossBags;
 
 public class KingStingBossBag : ModItem
 {

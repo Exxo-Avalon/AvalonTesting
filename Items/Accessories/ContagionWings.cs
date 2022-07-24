@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Players;
+﻿using Avalon.Items.Material;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 [AutoloadEquip(EquipType.Wings)]
 internal class ContagionWings : ModItem

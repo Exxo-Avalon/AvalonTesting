@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public class PriminiVice : ModProjectile
 {

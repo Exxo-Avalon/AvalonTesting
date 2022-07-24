@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class CrystalShard : ModProjectile
 {

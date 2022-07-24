@@ -1,8 +1,8 @@
-using AvalonTesting.Buffs;
-using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.Network;
-using AvalonTesting.Network.Handlers;
-using AvalonTesting.Systems;
+using Avalon.Buffs;
+using Avalon.Buffs.AdvancedBuffs;
+using Avalon.Network;
+using Avalon.Network.Handlers;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -11,7 +11,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 // TODO: Add duratanium shield DoT debuff logic
 public class ExxoBuffPlayer : ModPlayer
 {
@@ -26,7 +26,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool Electrified;
     public bool BadgeOfBacteria;
     public bool BloodyWhetstone;
-    public int DeleriumCount;    
+    public int DeleriumCount;
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
     public int InfectDamage;
@@ -445,7 +445,7 @@ public class ExxoBuffPlayer : ModPlayer
         }
         if (ShadowCharm)
         {
-            
+
         }
     }
 

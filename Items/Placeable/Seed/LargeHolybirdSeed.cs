@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Seed;
+namespace Avalon.Items.Placeable.Seed;
 
 class LargeHolybirdSeed : ModItem
 {

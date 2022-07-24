@@ -1,12 +1,12 @@
 using System;
-using AvalonTesting.Buffs;
-using AvalonTesting.Players;
+using Avalon.Buffs;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingGlobalProjectile : GlobalProjectile
 {

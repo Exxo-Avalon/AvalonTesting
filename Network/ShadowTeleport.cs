@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Network;
+namespace Avalon.Network;
 
 public static class ShadowTeleport
 {

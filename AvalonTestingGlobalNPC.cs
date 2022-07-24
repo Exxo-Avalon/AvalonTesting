@@ -1,25 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
-using AvalonTesting.Buffs;
-using AvalonTesting.Buffs.AdvancedBuffs;
-using AvalonTesting.DropConditions;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Armor;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Other;
-using AvalonTesting.Items.Placeable.Painting;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Items.Tokens;
-using AvalonTesting.Items.Tools;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Items.Weapons.Throw;
-using AvalonTesting.NPCs;
-using AvalonTesting.Players;
-using AvalonTesting.Systems;
+using Avalon.Buffs;
+using Avalon.Buffs.AdvancedBuffs;
+using Avalon.DropConditions;
+using Avalon.Items.Accessories;
+using Avalon.Items.Armor;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Other;
+using Avalon.Items.Placeable.Painting;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Potions;
+using Avalon.Items.Tokens;
+using Avalon.Items.Tools;
+using Avalon.Items.Vanity;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Items.Weapons.Throw;
+using Avalon.NPCs;
+using Avalon.Players;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -29,7 +29,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingGlobalNPC : GlobalNPC
 {

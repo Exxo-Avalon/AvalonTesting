@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Avalon.Players;
+using Avalon.Systems;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
-using AvalonTesting.Players;
-using AvalonTesting.Systems;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public class MidairRift : ModProjectile
 {

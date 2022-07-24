@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Dusts;
+namespace Avalon.Dusts;
 
 public class IridiumDust : ModDust
 {

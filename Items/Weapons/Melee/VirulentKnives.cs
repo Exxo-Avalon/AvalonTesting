@@ -1,11 +1,11 @@
-using AvalonTesting.Projectiles.Melee;
+using Avalon.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 internal class VirulentKnives : ModItem
 {

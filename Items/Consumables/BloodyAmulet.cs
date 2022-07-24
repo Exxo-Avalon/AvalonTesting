@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class BloodyAmulet : ModItem
 {

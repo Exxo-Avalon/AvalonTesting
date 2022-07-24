@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public static class SushiRecipes
 {

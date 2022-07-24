@@ -1,10 +1,10 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class MechanicalHeart : ModItem
 {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Players;
+using Avalon.Items.Accessories;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -14,7 +14,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public static class ClassExtensions
 {

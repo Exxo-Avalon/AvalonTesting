@@ -4,7 +4,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingGlobalItemInstance : GlobalItem
 {

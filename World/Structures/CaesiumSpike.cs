@@ -5,7 +5,7 @@ using Terraria.GameContent.Generation;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Structures;
+namespace Avalon.World.Structures;
 
 class CaesiumSpike
 {

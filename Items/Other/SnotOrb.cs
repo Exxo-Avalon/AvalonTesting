@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Other;
+namespace Avalon.Items.Other;
 
 class SnotOrb : ModItem
 {

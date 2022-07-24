@@ -1,11 +1,11 @@
-using AvalonTesting.Logic;
+using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Ranged;
 
 public class TroxiniumRepeater : ModItem
 {

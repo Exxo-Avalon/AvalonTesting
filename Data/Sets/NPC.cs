@@ -1,9 +1,9 @@
-﻿using AvalonTesting.NPCs;
-using AvalonTesting.NPCs.Bosses;
+﻿using Avalon.NPCs;
+using Avalon.NPCs.Bosses;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Data.Sets;
+namespace Avalon.Data.Sets;
 
 public static class NPC
 {

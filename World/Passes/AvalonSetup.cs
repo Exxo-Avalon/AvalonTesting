@@ -1,14 +1,14 @@
 using System;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Systems;
+using Avalon.Tiles.Ores;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 public class AvalonSetup : GenPass
 {

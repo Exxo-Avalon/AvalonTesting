@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.Items.Tools;
+﻿namespace Avalon.Items.Tools;
 
 public class TimeShift
 {

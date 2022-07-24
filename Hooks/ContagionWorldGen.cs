@@ -1,14 +1,14 @@
 using System;
-using AvalonTesting.Common;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Common;
+using Avalon.Systems;
+using Avalon.Tiles;
+using Avalon.Tiles.Ores;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 // TODO:
 // "Tile Cleanup" has two references for placing orbs

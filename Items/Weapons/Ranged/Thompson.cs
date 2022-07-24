@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Ranged;
 
 class Thompson : ModItem
 {

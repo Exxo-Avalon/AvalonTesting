@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Items.Weapons.Summon;
+namespace Avalon.Items.Weapons.Summon;
 
 public class UltrablivionStaff : ModItem
 {
@@ -41,7 +41,7 @@ public class UltrablivionStaff : ModItem
         Item.shootSpeed = 10f;
     }
 
-        
+
     public override bool AltFunctionUse(Player player)
     {
         return true;

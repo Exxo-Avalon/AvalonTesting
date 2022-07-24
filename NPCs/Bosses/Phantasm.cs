@@ -1,4 +1,7 @@
 using System;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Trophy;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,12 +9,9 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.Chat;
-using AvalonTesting.Systems;
 using Terraria.GameContent.ItemDropRules;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Trophy;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class Phantasm : ModNPC

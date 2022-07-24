@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 class PyroscoricFlamesword : ModItem
 {

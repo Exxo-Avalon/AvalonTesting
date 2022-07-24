@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using AvalonTesting.NPCs.Utils;
+using Avalon.NPCs.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -12,7 +12,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs.Bosses.Oblivion;
+namespace Avalon.NPCs.Bosses.Oblivion;
 
 public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
 {

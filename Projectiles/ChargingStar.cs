@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 class ChargingStar : ModProjectile
 {

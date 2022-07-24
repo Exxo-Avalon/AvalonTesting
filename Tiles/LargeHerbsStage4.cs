@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Material;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class LargeHerbsStage4 : ModTile
 {

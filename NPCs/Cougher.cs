@@ -1,14 +1,14 @@
 using Terraria.GameContent.Bestiary;
 using System;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Players;
+using Avalon.Items.Material;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Cougher : ModNPC
 {

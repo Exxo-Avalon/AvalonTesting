@@ -1,10 +1,10 @@
-using AvalonTesting.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 // TODO: LAVA MERMAN
 internal class BestialBand : ModItem

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using AvalonTesting.Systems;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 public class AccelerationDrill : ModItem
 {

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
 class SpectrumHelmet : ModItem
@@ -62,7 +62,7 @@ class SpectrumHelmet : ModItem
     //public override void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
     //{
     //    //ModContent.GetEquipTexture(EquipType.Head, ModContent.GetInstance<SpectrumHelmet_Glow>().Slot);
-            
+
     //    glowMask = mod.GetEquipSlot(ModContent.GetInstance<SpectrumHelmet_Glow>().Texture, EquipType.Head);
     //    glowMaskColor = new Color(R, G, B);
     //}

@@ -1,24 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AvalonTesting.Buffs;
-using AvalonTesting.Dusts;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Fish;
-using AvalonTesting.Items.Other;
-using AvalonTesting.Items.Tomes;
-using AvalonTesting.Items.Tools;
-using AvalonTesting.Items.Weapons.Ranged;
-using AvalonTesting.Logic;
-using AvalonTesting.NPCs.Bosses;
-using AvalonTesting.Prefixes;
-using AvalonTesting.Projectiles;
-using AvalonTesting.Projectiles.Melee;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.Walls;
+using Avalon.Buffs;
+using Avalon.Dusts;
+using Avalon.Items.Accessories;
+using Avalon.Items.Consumables;
+using Avalon.Items.Fish;
+using Avalon.Items.Other;
+using Avalon.Items.Tomes;
+using Avalon.Items.Tools;
+using Avalon.Items.Weapons.Ranged;
+using Avalon.Logic;
+using Avalon.Prefixes;
+using Avalon.Projectiles;
+using Avalon.Projectiles.Melee;
+using Avalon.Systems;
+using Avalon.Tiles;
+using Avalon.Walls;
+using Avalon.NPCs.Bosses;
+using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -32,14 +32,14 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 
 public class ExxoPlayer : ModPlayer
 {
     public static Asset<Texture2D>[] spectrumArmorTextures;
     protected override bool CloneNewInstances => false;
 
-    
+
 
     public static int NumHookProj() => Main.projectile.Count(p =>
         Main.projHook[p.type] && p.active && p.ai[0] == 2f && p.owner == Main.myPlayer);
@@ -57,7 +57,7 @@ public class ExxoPlayer : ModPlayer
         //Main.NewText("" + slimeBand.ToString());
         Player.defaultItemGrabRange = 38;
         HookBonus = false;
-        
+
         oreDupe = false;
         skyBlessing = false;
         snotOrb = false;
@@ -82,8 +82,8 @@ public class ExxoPlayer : ModPlayer
         frozen = false;
         LightningInABottle = false;
         reckoning = false;
-        
-        
+
+
         oblivionKill = false;
         goBerserk = false;
         splitProj = false;
@@ -261,7 +261,7 @@ public class ExxoPlayer : ModPlayer
             Player.stealth = 1f;
         }
 
-         
+
 
         if (teleportV || tpStam)
         {
@@ -571,7 +571,7 @@ public class ExxoPlayer : ModPlayer
             roseMagicCooldown = 20;
         }
 
-        
+
 
         if (crit)
         {
@@ -669,7 +669,7 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        
+
 
         if (doubleDamage && !Player.immune && !npc.dontTakeDamage)
         {
@@ -695,7 +695,7 @@ public class ExxoPlayer : ModPlayer
             target.DelBuff(target.FindBuffIndex(ModContent.BuffType<CurseofAvalon>()));
         }
 
-        
+
 
         if (crit)
         {
@@ -721,7 +721,7 @@ public class ExxoPlayer : ModPlayer
             target.DelBuff(target.FindBuffIndex(ModContent.BuffType<CurseofAvalon>()));
         }
 
-        
+
 
         if (minionFreeze)
         {
@@ -1011,7 +1011,7 @@ public class ExxoPlayer : ModPlayer
             screenShakeTimer--;
         }
 
-        
+
 
         if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFlight)
         {
@@ -1378,7 +1378,7 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    
+
 
     public override void PostUpdateMiscEffects()
     {
@@ -2814,9 +2814,9 @@ public class ExxoPlayer : ModPlayer
 
     public static Dictionary<int, int> torches;
 
-    
-    
-    
+
+
+
     public bool quackJump;
     public bool jumpAgainQuack;
     public bool armorStealth = false;
@@ -2824,12 +2824,12 @@ public class ExxoPlayer : ModPlayer
     public int shadowPlayerNum = 0;
     public int infectTimer = 0;
     public int infectDmg = 0;
-    
+
     public int CrystalHealth;
     public Item tomeItem = new();
     public int pl = -1;
     public bool openLocks;
-    
+
     public bool defDebuff;
     public int defDebuffBonusDef;
     public float rot;
@@ -2837,7 +2837,7 @@ public class ExxoPlayer : ModPlayer
     public byte qsTimer;
     public bool qsDone;
     public bool qsIsNDown;
-    
+
     public bool speed;
     public bool Nd;
     public bool oldNd;
@@ -2871,12 +2871,12 @@ public class ExxoPlayer : ModPlayer
     public byte staminaCD;
     public byte staminaCD2;
     public byte staminaCD3;
-    
+
     public bool shadowTele;
     public bool teleportV;
     public bool tpStam = true;
     public int tpCD;
-    
+
     public int baseUseTime;
     public int baseUseAnim;
     public bool oldLeftClick;

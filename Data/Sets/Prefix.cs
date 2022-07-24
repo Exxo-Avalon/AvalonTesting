@@ -1,7 +1,7 @@
-using AvalonTesting.Prefixes;
+using Avalon.Prefixes;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Data.Sets;
+namespace Avalon.Data.Sets;
 
 public class Prefix
 {

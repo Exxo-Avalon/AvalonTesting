@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using AvalonTesting.Common;
-using AvalonTesting.Network;
-using AvalonTesting.Players;
-using AvalonTesting.Projectiles.Torches;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Common;
+using Avalon.Network;
+using Avalon.Players;
+using Avalon.Projectiles.Torches;
+using Avalon.Systems;
+using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -16,7 +16,7 @@ using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 /// <summary>
 ///     The main mod class.
@@ -67,7 +67,6 @@ public class AvalonTesting : Mod
     /// <inheritdoc />
     public override void Load()
     {
-
         ModLoader.TryGetMod("Wikithis", out Mod wikithis);
         if (wikithis != null && !Main.dedServ)
             wikithis.Call(0, this, "terrariamods.fandom.com$Exxo_Avalon");
@@ -97,6 +96,8 @@ public class AvalonTesting : Mod
             { ItemID.RainbowTorch, ModContent.ProjectileType<RainbowTorch>() },
             { ItemID.PinkTorch, ModContent.ProjectileType<PinkTorch>() },
         };
+
+        var a = GetFileNames();
 
         // ----------- Server/Client ----------- //
         while (ModHook.RegisteredHooks.TryDequeue(out ModHook? hook))

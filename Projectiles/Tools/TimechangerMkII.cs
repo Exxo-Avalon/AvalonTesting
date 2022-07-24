@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Tools;
+namespace Avalon.Projectiles.Tools;
 
 public class TimechangerMkII : ModProjectile
 {

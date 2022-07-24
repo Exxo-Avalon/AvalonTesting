@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class UnvolanditeMiteDigger : UnvolanditeMiteDiggerWorm
 {

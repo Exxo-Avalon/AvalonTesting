@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 using Terraria.Audio;
 using Terraria.GameContent.ObjectInteractions;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class LockedContagionChest : ModTile
 {

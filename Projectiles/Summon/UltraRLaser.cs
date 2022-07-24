@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public class UltraRLaser : ModProjectile
 {

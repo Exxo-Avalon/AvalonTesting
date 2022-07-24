@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting
+namespace Avalon
 {
     public class BlueRarity : ModRarity //12
     {
@@ -12,12 +12,12 @@ namespace AvalonTesting
         {
             if (offset == 1)
             {
-                return ModContent.RarityType<MagentaRarity>(); 
+                return ModContent.RarityType<MagentaRarity>();
             }
 
             if (offset > 1)
             {
-                return ModContent.RarityType<TealRarity>(); 
+                return ModContent.RarityType<TealRarity>();
             }
 
             if (offset == -1)
@@ -60,7 +60,7 @@ namespace AvalonTesting
                 return ItemRarityID.Purple;
             }
 
-            return Type; 
+            return Type;
         }
     }
     public class TealRarity : ModRarity //14

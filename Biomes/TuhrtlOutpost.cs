@@ -1,9 +1,9 @@
-using AvalonTesting.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Biomes;
+namespace Avalon.Biomes;
 
 public class TuhrtlOutpost : ModBiome
 {

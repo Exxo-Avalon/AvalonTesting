@@ -1,14 +1,6 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using AvalonTesting.Items.Armor;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Logic;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.World.Structures;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -21,8 +13,16 @@ using Terraria.WorldBuilding;
 using Terraria.ModLoader.IO;
 using AltLibrary.Common.Systems;
 using System.Threading;
+using Avalon.Items.Armor;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Logic;
+using Avalon.Systems;
+using Avalon.Tiles;
+using Avalon.Tiles.Ores;
+using Avalon.World.Structures;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 public class AvalonTestingWorld : ModSystem
 {
@@ -33,7 +33,7 @@ public class AvalonTestingWorld : ModSystem
     public bool SuperHardmode { get; private set; }
     private static bool caesiumBreak;
 
-    
+
 
     public static void CheckLargeHerb(int x, int y, int type)
     {

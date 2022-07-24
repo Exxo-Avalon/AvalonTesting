@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class CaesiumCrystal : ModProjectile
 {

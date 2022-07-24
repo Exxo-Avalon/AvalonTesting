@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Light;
+namespace Avalon.Items.Placeable.Light;
 
 class FlightCandle : ModItem
 {

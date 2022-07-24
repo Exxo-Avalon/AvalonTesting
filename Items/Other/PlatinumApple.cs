@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Items.Other;
+namespace Avalon.Items.Other;
 
 class PlatinumApple : ModItem
 {

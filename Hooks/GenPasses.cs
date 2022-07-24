@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
-using AvalonTesting.Common;
+using Avalon.Common;
 using IL.Terraria;
 using Mono.Cecil;
 using MonoMod.Cil;
@@ -8,7 +8,7 @@ using MonoMod.RuntimeDetour.HookGen;
 using MonoMod.Utils;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class GenPasses : ModHook

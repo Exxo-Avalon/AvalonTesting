@@ -8,7 +8,7 @@ using Terraria.GameContent;
 using System;
 using Terraria.GameInput;
 
-namespace AvalonTesting.Effects;
+namespace Avalon.Effects;
 public class DarkMatterSky : CustomSky
 {
     private bool skyActive;
@@ -24,7 +24,7 @@ public class DarkMatterSky : CustomSky
     private int bgStartX;
     private int bgLoops;
     private float scAdj;
-    
+
     public override void Activate(Vector2 position, params object[] args)
     {
         skyActive = true;

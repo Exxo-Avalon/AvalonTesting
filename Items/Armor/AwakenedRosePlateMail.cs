@@ -1,10 +1,10 @@
-using AvalonTesting.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Body)]
 internal class AwakenedRosePlateMail : ModItem

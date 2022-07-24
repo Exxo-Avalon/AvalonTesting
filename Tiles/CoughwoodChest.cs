@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Common;
-using AvalonTesting.Dusts;
+﻿using Avalon.Common;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class CoughwoodChest : ModChest
 {

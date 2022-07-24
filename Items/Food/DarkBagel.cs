@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Food
+namespace Avalon.Items.Food
 {
 	public class DarkBagel : ModItem
 	{

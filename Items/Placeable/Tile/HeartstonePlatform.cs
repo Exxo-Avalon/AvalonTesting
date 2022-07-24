@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Tile;
+namespace Avalon.Items.Placeable.Tile;
 
 class HeartstonePlatform : ModItem
 {

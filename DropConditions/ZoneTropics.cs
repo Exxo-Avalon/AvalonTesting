@@ -1,6 +1,6 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 public class ZoneTropics : IItemDropRuleCondition, IProvideItemConditionDescription
 {
     public bool CanDrop(DropAttemptInfo info)

@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 public class SuperhardmodeAccessorySlot : ModAccessorySlot
 {
     public override bool IsEnabled() => Player.GetModPlayer<ExxoPlayer>().shmAcc;

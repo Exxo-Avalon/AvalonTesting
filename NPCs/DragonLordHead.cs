@@ -1,14 +1,14 @@
 ﻿using System;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.BossBags;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Placeable.Trophy;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Items.Weapons.Ranged;
-using AvalonTesting.Items.Weapons.Summon;
-using AvalonTesting.Systems;
+using Avalon.Items.Accessories;
+using Avalon.Items.BossBags;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Trophy;
+using Avalon.Items.Potions;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Items.Weapons.Ranged;
+using Avalon.Items.Weapons.Summon;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -17,7 +17,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 [AutoloadBossHead]
 public class DragonLordHead : ModNPC

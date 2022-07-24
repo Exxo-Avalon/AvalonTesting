@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Buffs;
+﻿using Avalon.Buffs;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Gores;
+namespace Avalon.Gores;
 
 public class IcyExplosionGore3 : ModGore
 {

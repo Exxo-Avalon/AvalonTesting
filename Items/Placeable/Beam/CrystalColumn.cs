@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Beam;
+namespace Avalon.Items.Placeable.Beam;
 
 public class CrystalColumn : ModItem
 {

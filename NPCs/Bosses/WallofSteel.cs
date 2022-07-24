@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Trophy;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Ranged;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Trophy;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -16,7 +16,7 @@ using Terraria.GameContent;
 using Terraria.DataStructures;
 using ReLogic.Content;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class WallofSteel : ModNPC

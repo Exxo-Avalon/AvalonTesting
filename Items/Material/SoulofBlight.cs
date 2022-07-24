@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Material;
+namespace Avalon.Items.Material;
 
 class SoulofBlight : ModItem
 {

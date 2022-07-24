@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Items.Weapons.Ranged;
+﻿using Avalon.Items.Accessories;
+using Avalon.Items.Potions;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Weapons.Ranged;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World.Structures;
+namespace Avalon.World.Structures;
 
 class LavaShrine
 {

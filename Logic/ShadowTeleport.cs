@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Systems;
+﻿using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Logic;
+namespace Avalon.Logic;
 
 public static class ShadowTeleport
 {

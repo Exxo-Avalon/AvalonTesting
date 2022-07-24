@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AvalonTesting.Items.Placeable.Furniture;
-using AvalonTesting.Items.Placeable.Statue;
+using Avalon.Items.Placeable.Furniture;
+using Avalon.Items.Placeable.Statue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class Statues : ModTile
 {

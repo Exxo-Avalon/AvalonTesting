@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Torches;
+namespace Avalon.Projectiles.Torches;
 
 public class PinkTorch : ModProjectile
 {

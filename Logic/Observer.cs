@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AvalonTesting.Logic;
+namespace Avalon.Logic;
 
 internal class Observer<T> where T : IEquatable<T>
 {

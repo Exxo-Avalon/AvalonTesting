@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 public class Soul : ModProjectile
 {
     public override void SetStaticDefaults()
@@ -119,7 +119,7 @@ public class Soul : ModProjectile
                     float val = Main.rand.NextFloat(min, max);
                     if (val < 0 && val > -12) val = -12;
                     if (val > 0 && val < 12) val = 12;
-                    
+
                     if (Projectile.ai[1]++ < Math.Abs(val))
                     {
                         Projectile.position.Y += 3 * Math.Sign(val);

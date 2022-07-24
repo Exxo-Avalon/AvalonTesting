@@ -1,5 +1,5 @@
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.NPCs;
+using Avalon.Items.Placeable.Tile;
+using Avalon.NPCs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class CaesiumSeekerHead : CaesiumSeekerWorm
 {

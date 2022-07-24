@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using ReLogic.Content;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class HeavensTear : ModProjectile
 {
@@ -182,7 +182,7 @@ public class HeavensTear : ModProjectile
 
         Rectangle? chainSourceRectangle = null;
         // Drippler Crippler customizes sourceRectangle to cycle through sprite frames: sourceRectangle = asset.Frame(1, 6);
-        float chainHeightAdjustment = 0f; // Use this to adjust the chain overlap. 
+        float chainHeightAdjustment = 0f; // Use this to adjust the chain overlap.
 
         Vector2 chainOrigin = chainSourceRectangle.HasValue ? (chainSourceRectangle.Value.Size() / 2f) : (chainTexture.Size() / 2f);
         Vector2 chainDrawPosition = Projectile.Center;

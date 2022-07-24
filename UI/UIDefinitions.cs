@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.UI;
+﻿namespace Avalon.UI;
 
 public enum Justification
 {

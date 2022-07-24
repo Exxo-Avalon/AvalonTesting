@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
-public class ShatterBolt : ModProjectile 
+public class ShatterBolt : ModProjectile
 {
     //unused for now
     public override void SetStaticDefaults()

@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 class CaesiumMace : ModItem
 {

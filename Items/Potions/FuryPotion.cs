@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Fish;
-using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Fish;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Potions;
+namespace Avalon.Items.Potions;
 
 public class FuryPotion : ModItem
 {

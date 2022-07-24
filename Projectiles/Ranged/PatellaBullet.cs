@@ -1,6 +1,6 @@
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Ranged;
+namespace Avalon.Projectiles.Ranged;
 
 public class PatellaBullet : ModProjectile
 {

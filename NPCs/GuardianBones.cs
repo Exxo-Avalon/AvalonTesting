@@ -1,13 +1,13 @@
 ﻿using System;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Systems;
+using Avalon.Items.Accessories;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Systems;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class GuardianBones : ModNPC
 {

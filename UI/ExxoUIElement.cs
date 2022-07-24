@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.UI;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public abstract class ExxoUIElement : UIElement
 {

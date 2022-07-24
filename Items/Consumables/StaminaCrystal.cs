@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Players;
+﻿using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class StaminaCrystal : ModItem
 {

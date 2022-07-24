@@ -1,7 +1,7 @@
-﻿using AvalonTesting.Players;
+﻿using Avalon.Players;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class OutpostDrop : IItemDropRuleCondition, IProvideItemConditionDescription
 {

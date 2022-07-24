@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World.Structures
+namespace Avalon.World.Structures
 {
     public class Nest
     {

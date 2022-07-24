@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Storage;
+namespace Avalon.Items.Placeable.Storage;
 
 class HeartstoneDresser : ModItem
 {

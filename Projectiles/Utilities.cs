@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 
-namespace AvalonTesting.Projectiles;
+namespace Avalon.Projectiles;
 
 public static class Utilities
 {

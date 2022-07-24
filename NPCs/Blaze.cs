@@ -1,5 +1,5 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
+using Avalon.Items.Banners;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,7 +11,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Blaze : ModNPC
 {

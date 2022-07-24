@@ -1,11 +1,11 @@
-using AvalonTesting.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Waters;
+namespace Avalon.Waters;
 
 public class ContagionWaterStyle : ModWaterStyle
 {

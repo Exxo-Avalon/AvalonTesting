@@ -1,8 +1,8 @@
-﻿using AvalonTesting.Tiles;
+﻿using Avalon.Tiles;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Data.Sets;
+namespace Avalon.Data.Sets;
 
 public static class Tile
 {

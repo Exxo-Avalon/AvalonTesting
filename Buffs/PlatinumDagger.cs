@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.Buffs;
+﻿namespace Avalon.Buffs;
 
 public class PlatinumDagger : BaseDagger<Projectiles.Summon.PlatinumDagger>
 {

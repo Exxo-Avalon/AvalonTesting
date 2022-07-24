@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 public class BlahsThrow : ModItem
 {

@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class MechanicalHungry2 : ModNPC
 {

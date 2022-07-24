@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Trophy;
+﻿using Avalon.Items.Placeable.Trophy;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class BossTrophy : ModTile
 {

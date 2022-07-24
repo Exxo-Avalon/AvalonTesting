@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Furniture;
+namespace Avalon.Items.Placeable.Furniture;
 
 class Jukebox : ModItem
 {

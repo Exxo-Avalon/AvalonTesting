@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Potions;
+namespace Avalon.Items.Potions;
 
 class ElixirofLife : ModItem
 {

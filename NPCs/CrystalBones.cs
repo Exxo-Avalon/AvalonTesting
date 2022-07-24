@@ -1,15 +1,15 @@
 using System;
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Players;
-using AvalonTesting.Projectiles;
+using Avalon.Items.Banners;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Players;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class CrystalBones : ModNPC
 {

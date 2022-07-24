@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Buffs;
-using AvalonTesting.Items.Placeable.Bar;
+﻿using Avalon.Buffs;
+using Avalon.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Summon;
+namespace Avalon.Items.Weapons.Summon;
 
 public class BismuthDaggerStaff : ModItem
 {

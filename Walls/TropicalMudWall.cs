@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class TropicalMudWall : ModWall
 {

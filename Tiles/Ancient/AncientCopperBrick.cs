@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles.Ancient;
+namespace Avalon.Tiles.Ancient;
 
 public class AncientCopperBrick : ModTile
 {

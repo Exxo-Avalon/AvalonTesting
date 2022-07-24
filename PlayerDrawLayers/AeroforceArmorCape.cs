@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.PlayerDrawLayers;
+namespace Avalon.PlayerDrawLayers;
 
 public class AeroforceArmorCape : PlayerDrawLayer
 {

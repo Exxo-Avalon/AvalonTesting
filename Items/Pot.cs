@@ -1,8 +1,8 @@
+using Avalon.Tiles;
 using Terraria.ID;
-using AvalonTesting.Tiles;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items;
+namespace Avalon.Items;
 
 public class Pot : ModItem
 {

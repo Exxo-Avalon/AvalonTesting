@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Ammo;
+namespace Avalon.Items.Ammo;
 
 public class Canister : ModItem
 {

@@ -6,7 +6,7 @@ using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.UI;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public class ExxoUIText : ExxoUIElement
 {

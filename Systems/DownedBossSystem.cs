@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class DownedBossSystem : ModSystem
 {

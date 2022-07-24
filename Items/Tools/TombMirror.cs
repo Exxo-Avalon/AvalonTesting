@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 public class TombMirror : ModItem
 {

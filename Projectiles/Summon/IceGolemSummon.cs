@@ -1,13 +1,13 @@
 ﻿using System;
-using AvalonTesting;
-using AvalonTesting.Buffs;
+using Avalon.Buffs;
+using Avalon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public class IceGolemSummon : ModProjectile
 {

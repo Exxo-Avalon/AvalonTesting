@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs.Bosses.Oblivion;
+namespace Avalon.NPCs.Bosses.Oblivion;
 
 public class ShieldDrone : ModNPC
 {
@@ -60,7 +60,7 @@ public class ShieldDrone : ModNPC
         get => (int)NPC.ai[AISlotTimer];
         set => NPC.ai[AISlotTimer] = value;
     }
-    
+
     public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
     {
         Texture2D texture = Mod.Assets.Request<Texture2D>("NPCs/Bosses/Oblivion/ShieldDrone_Glow").Value;

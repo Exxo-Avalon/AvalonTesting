@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 class NaquadahDrill : ModItem
 {

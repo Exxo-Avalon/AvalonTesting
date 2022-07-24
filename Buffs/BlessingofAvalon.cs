@@ -1,10 +1,10 @@
 using System.Linq;
-using AvalonTesting.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class BlessingofAvalon : ModBuff
 {
@@ -28,9 +28,9 @@ public class BlessingofAvalon : ModBuff
             int buffID = player.buffType[i];
             if (Main.debuff[buffID])
             {
-                /*if (buffID != BuffID.Horrified || 
-                    buffID != BuffID.TheTongue || 
-                    buffID != BuffID.MoonLeech || 
+                /*if (buffID != BuffID.Horrified ||
+                    buffID != BuffID.TheTongue ||
+                    buffID != BuffID.MoonLeech ||
                     buffID != BuffID.PotionSickness ||
                     buffID != BuffID.ManaSickness ||
                     buffID != BuffID.Merfolk ||

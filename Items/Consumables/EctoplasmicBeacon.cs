@@ -1,14 +1,14 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.NPCs.Bosses;
-using AvalonTesting.Players;
-using AvalonTesting.Tiles;
+﻿using Avalon.Items.Material;
+using Avalon.NPCs.Bosses;
+using Avalon.Players;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 internal class EctoplasmicBeacon : ModItem
 {

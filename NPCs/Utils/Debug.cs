@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 
-namespace AvalonTesting.NPCs.Utils;
+namespace Avalon.NPCs.Utils;
 
 public static class Debug
 {

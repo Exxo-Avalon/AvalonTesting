@@ -5,7 +5,7 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class TropicalTree : ModTree
 {

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Hallowor : ModNPC
 {

@@ -1,12 +1,12 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
+using Avalon.Items.Banners;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class EyeBones : ModNPC
 {

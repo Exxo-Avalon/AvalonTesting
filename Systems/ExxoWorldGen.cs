@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Reflection;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Tiles;
-using AvalonTesting.World.Passes;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Tiles;
+using Avalon.World.Passes;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class ExxoWorldGen : ModSystem
 {

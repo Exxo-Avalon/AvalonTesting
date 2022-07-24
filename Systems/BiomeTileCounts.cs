@@ -1,11 +1,11 @@
 using System;
-using AvalonTesting.Players;
-using AvalonTesting.Tiles;
+using Avalon.Players;
+using Avalon.Tiles;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class BiomeTileCounts : ModSystem
 {

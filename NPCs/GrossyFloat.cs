@@ -1,12 +1,12 @@
+using Avalon.Players;
 using Terraria.GameContent.Bestiary;
-using AvalonTesting.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class GrossyFloat : ModNPC
 {

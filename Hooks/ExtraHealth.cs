@@ -1,5 +1,5 @@
 using System;
-using AvalonTesting.Common;
+using Avalon.Common;
 using IL.Terraria.GameContent.UI.ResourceSets;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil;
@@ -9,7 +9,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class ExtraHealth : ModHook

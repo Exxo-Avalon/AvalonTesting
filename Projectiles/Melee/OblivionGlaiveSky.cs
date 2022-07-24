@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class OblivionGlaiveSky : ModProjectile
 {
@@ -52,7 +52,7 @@ public class OblivionGlaiveSky : ModProjectile
         //projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
 
         //projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi);
-        /*if (projectile.spriteDirection == 1) 
+        /*if (projectile.spriteDirection == 1)
         {
             drawOriginOffsetX = -30;
             DrawOriginOffsetY = -28;

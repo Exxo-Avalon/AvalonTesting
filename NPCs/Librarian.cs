@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Crafting;
-using AvalonTesting.Systems;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Crafting;
+using Avalon.Systems;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 [AutoloadHead]
 public class Librarian : ModNPC

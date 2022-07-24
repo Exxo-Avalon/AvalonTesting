@@ -1,4 +1,5 @@
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -7,10 +8,9 @@ using Terraria.Localization;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
-using AvalonTesting.Players;
 using Terraria.GameContent.Bestiary;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class CaesiumBrute : ModNPC
 {

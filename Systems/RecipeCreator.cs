@@ -1,29 +1,29 @@
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Ammo;
-using AvalonTesting.Items.Armor;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Beam;
-using AvalonTesting.Items.Placeable.Crafting;
-using AvalonTesting.Items.Placeable.Furniture;
-using AvalonTesting.Items.Placeable.Light;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Placeable.Statue;
-using AvalonTesting.Items.Placeable.Storage;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Placeable.Wall;
-using AvalonTesting.Items.Tools;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Items.Weapons.Ranged;
-using AvalonTesting.Items.Weapons.Summon;
-using AvalonTesting.Items.Weapons.Throw;
+using Avalon.Items.Accessories;
+using Avalon.Items.Ammo;
+using Avalon.Items.Armor;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Beam;
+using Avalon.Items.Placeable.Crafting;
+using Avalon.Items.Placeable.Furniture;
+using Avalon.Items.Placeable.Light;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Placeable.Statue;
+using Avalon.Items.Placeable.Storage;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Wall;
+using Avalon.Items.Tools;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Items.Weapons.Ranged;
+using Avalon.Items.Weapons.Summon;
+using Avalon.Items.Weapons.Throw;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class RecipeCreator : ModSystem
 {
@@ -611,7 +611,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<FrigidShard>(), 3)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        
+
 
         Recipe.Create(ModContent.ItemType<FeroziumBar>())
             .AddIngredient(ModContent.ItemType<FeroziumOre>(), 6)
@@ -647,7 +647,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.ChlorophyteBar, 12)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        
+
 
         Recipe.Create(ModContent.ItemType<ShadowRing>())
             .AddIngredient(ItemID.ShroomiteBar, 5)

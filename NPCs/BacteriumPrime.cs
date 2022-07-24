@@ -1,9 +1,9 @@
 using System;
-using AvalonTesting.Items.BossBags;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Placeable.Trophy;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Systems;
+using Avalon.Items.BossBags;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Trophy;
+using Avalon.Items.Vanity;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 [AutoloadBossHead]
 public class BacteriumPrime : ModNPC

@@ -1,6 +1,6 @@
 ﻿using Terraria;
 
-namespace AvalonTesting.Prefixes;
+namespace Avalon.Prefixes;
 
 public class Mythic : ExxoPrefix
 {

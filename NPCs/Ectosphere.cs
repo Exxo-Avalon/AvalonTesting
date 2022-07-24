@@ -1,8 +1,8 @@
 ﻿using System;
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Projectiles;
-using AvalonTesting.Systems;
+using Avalon.Items.Banners;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Projectiles;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -10,7 +10,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Ectosphere : ModNPC
 {

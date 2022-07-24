@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Light;
+namespace Avalon.Items.Placeable.Light;
 
 class EctoplasmLamp : ModItem
 {

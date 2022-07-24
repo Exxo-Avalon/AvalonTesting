@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Ammo;
+namespace Avalon.Items.Ammo;
 
 class BloodyArrow : ModItem
 {

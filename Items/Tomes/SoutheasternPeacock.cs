@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Tiles;
+﻿using Avalon.Items.Material;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tomes;
+namespace Avalon.Items.Tomes;
 
 internal class SoutheasternPeacock : ModItem
 {

@@ -1,7 +1,7 @@
 ﻿using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class Superhardmode : IItemDropRuleCondition, IProvideItemConditionDescription
 {

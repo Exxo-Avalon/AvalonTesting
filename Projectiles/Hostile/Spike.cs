@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class Spike : ModProjectile
 {

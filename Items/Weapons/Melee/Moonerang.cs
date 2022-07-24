@@ -2,11 +2,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Logic;
+using Avalon.Logic;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 public class Moonerang : ModItem
 {

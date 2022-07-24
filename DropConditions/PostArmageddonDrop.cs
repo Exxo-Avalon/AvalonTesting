@@ -1,8 +1,8 @@
-﻿using AvalonTesting.Systems;
+﻿using Avalon.Systems;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class PostArmageddonDrop : IItemDropRuleCondition, IProvideItemConditionDescription
 {

@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.Network;
+﻿namespace Avalon.Network;
 
 public enum MessageID
 {

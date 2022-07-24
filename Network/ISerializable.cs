@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace AvalonTesting.Network;
+namespace Avalon.Network;
 
 public interface ISerializable
 {

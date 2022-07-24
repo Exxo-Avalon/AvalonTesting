@@ -1,11 +1,11 @@
+using Avalon.Items.Material;
 using Terraria.GameContent.Bestiary;
-using AvalonTesting.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Viris : ModNPC
 {

@@ -1,13 +1,13 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Systems;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.Items.BossBags;
+namespace Avalon.Items.BossBags;
 
 public class DesertBeakBossBag : ModItem
 {

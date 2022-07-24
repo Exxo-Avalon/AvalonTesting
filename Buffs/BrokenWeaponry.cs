@@ -1,8 +1,8 @@
-﻿using Terraria;
+﻿using Avalon.Players;
+using Terraria;
 using Terraria.ModLoader;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class BrokenWeaponry : ModBuff
 {

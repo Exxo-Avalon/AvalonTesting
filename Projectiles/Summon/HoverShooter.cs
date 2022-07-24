@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public abstract class HoverShooter : MinionAI
 {

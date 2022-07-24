@@ -1,8 +1,8 @@
+using Avalon.Common;
 using Terraria;
 using Terraria.ModLoader;
-using AvalonTesting.Common;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 class TeamMirror : ModHook

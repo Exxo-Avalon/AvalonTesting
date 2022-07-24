@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Crafting;
+namespace Avalon.Items.Placeable.Crafting;
 
 class LibraryAltar : ModItem
 {

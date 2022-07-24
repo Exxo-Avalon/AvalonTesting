@@ -1,12 +1,12 @@
 using System;
-using AvalonTesting.Items.Armor;
+using Avalon.Items.Armor;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.PlayerDrawLayers;
+namespace Avalon.PlayerDrawLayers;
 
 public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
 {

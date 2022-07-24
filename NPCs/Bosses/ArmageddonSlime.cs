@@ -1,5 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Trophy;
+using Avalon.Items.Vanity;
+using Avalon.Players;
+using Avalon.Systems;
 //using AvalonTesting.Items.Placeable.Tile;
 //using AvalonTesting.Items.Placeable.Trophy;
 //using AvalonTesting.Items.Potions;
@@ -12,13 +17,8 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
-using AvalonTesting.Players;
-using AvalonTesting.Systems;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Placeable.Trophy;
-using AvalonTesting.Items.Vanity;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class ArmageddonSlime : ModNPC

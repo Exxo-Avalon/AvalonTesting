@@ -5,7 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Ranged;
+namespace Avalon.Projectiles.Ranged;
 
 public class XanthophyteBullet : ModProjectile
 {

@@ -1,12 +1,12 @@
-using AvalonTesting.Projectiles;
-using AvalonTesting.Rarities;
+using Avalon.Projectiles;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 internal class Oblivirod : ModItem
 {

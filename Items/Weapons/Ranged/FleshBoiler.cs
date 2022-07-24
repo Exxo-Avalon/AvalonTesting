@@ -1,11 +1,11 @@
-using AvalonTesting.Items.Ammo;
-using AvalonTesting.Projectiles;
+using Avalon.Items.Ammo;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Ranged;
 
 public class FleshBoiler : ModItem
 {

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 public static class Utilities
 {

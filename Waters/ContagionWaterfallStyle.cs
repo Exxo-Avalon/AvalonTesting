@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Waters;
+namespace Avalon.Waters;
 
 public class ContagionWaterfallStyle : ModWaterfallStyle
 {

@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Players;
-using AvalonTesting.Rarities;
+﻿using Avalon.Players;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
 internal class AvalonHelmet : ModItem

@@ -1,13 +1,13 @@
-﻿using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.World.Structures;
+﻿using Avalon.Tiles;
+using Avalon.Tiles.Ores;
+using Avalon.World.Structures;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 internal class Underworld : GenPass
 {

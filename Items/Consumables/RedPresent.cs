@@ -1,18 +1,18 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Painting;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Potions;
-using AvalonTesting.Items.Tomes;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Items.Weapons.Ranged;
+﻿using Avalon.Items.Accessories;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Painting;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Potions;
+using Avalon.Items.Tomes;
+using Avalon.Items.Vanity;
+using Avalon.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Consumables;
+namespace Avalon.Items.Consumables;
 
 class RedPresent : ModItem
 {

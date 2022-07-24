@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using AvalonTesting.Common;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Weapons.Magic;
+using Avalon.Common;
+using Avalon.Items.Accessories;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class BossBagDrops : ModHook

@@ -1,13 +1,13 @@
 using Terraria.GameContent.Bestiary;
 using System;
-using AvalonTesting.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class EctoHand : ModNPC
 {

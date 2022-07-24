@@ -1,14 +1,14 @@
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Weapons.Melee;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 class BlahsEnergyBlade : ModItem
 {

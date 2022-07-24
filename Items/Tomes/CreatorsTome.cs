@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tomes;
+namespace Avalon.Items.Tomes;
 
 class CreatorsTome : ModItem
 {

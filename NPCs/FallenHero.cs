@@ -1,8 +1,8 @@
 ﻿using System;
-using AvalonTesting.Items.Armor;
-using AvalonTesting.Items.Banners;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Items.Weapons.Melee;
+using Avalon.Items.Armor;
+using Avalon.Items.Banners;
+using Avalon.Items.Vanity;
+using Avalon.Items.Weapons.Melee;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
@@ -10,7 +10,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class FallenHero : ModNPC
 {

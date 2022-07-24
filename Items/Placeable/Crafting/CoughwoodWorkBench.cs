@@ -1,10 +1,10 @@
-using AvalonTesting.Tiles;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Crafting;
+namespace Avalon.Items.Placeable.Crafting;
 
 internal class CoughwoodWorkBench : ModItem
 {

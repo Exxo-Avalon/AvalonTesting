@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Gores;
+namespace Avalon.Gores;
 
 public class ContagionDroplet : ModGore
 {

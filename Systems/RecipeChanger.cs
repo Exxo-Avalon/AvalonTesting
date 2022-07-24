@@ -1,10 +1,10 @@
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class RecipeChanger : ModSystem
 {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.Projectiles.Torches;
+namespace Avalon.Projectiles.Torches;
 
 public class UltrabrightTorch : ModProjectile
 {

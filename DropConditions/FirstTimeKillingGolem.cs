@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.DropConditions;
+namespace Avalon.DropConditions;
 
 public class FirstTimeKillingGolem : IItemDropRuleCondition, IProvideItemConditionDescription
 {

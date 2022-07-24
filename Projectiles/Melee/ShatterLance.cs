@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Melee;
+namespace Avalon.Projectiles.Melee;
 
 public class ShatterLance : ModProjectile
 {

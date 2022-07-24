@@ -1,12 +1,12 @@
 using System;
-using AvalonTesting.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 public class BlahStaff : ModItem
 {

@@ -1,5 +1,5 @@
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Systems;
+using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -9,7 +9,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class HallowedAltar : ModTile
 {

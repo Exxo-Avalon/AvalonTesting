@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace AvalonTesting.Dusts;
+namespace Avalon.Dusts;
 
 public class TourmalineDust : ModDust
 {

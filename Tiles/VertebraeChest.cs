@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Common;
+﻿using Avalon.Common;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class VertebraeChest : ModChest
 {

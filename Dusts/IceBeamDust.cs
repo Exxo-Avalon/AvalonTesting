@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Buffs;
+﻿using Avalon.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AvalonTesting.Dusts;
+namespace Avalon.Dusts;
 
 public class IceBeamDust : ModDust
 {

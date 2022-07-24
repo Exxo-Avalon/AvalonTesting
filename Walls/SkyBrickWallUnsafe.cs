@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class SkyBrickWallUnsafe : ModWall
 {

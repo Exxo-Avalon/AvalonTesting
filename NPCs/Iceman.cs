@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Painting;
-using AvalonTesting.Projectiles;
-using AvalonTesting.Systems;
+using Avalon.Items.Accessories;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Painting;
+using Avalon.Projectiles;
+using Avalon.Systems;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.Personalities;
@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 [AutoloadHead]
 public class Iceman : ModNPC

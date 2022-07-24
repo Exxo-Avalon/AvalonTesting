@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class DurantiumSlime : ModNPC
 {

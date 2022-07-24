@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Painting;
+﻿using Avalon.Items.Placeable.Painting;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class Paintings : ModTile
 {

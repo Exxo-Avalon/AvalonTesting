@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using AvalonTesting.Common;
+using Avalon.Common;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using Terraria.IO;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class ALSHMIcon : ModHook

@@ -4,7 +4,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Other;
+namespace Avalon.Items.Other;
 
 class CompressedExtractBlock : ModItem
 {

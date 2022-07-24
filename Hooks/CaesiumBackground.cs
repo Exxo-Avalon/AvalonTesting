@@ -1,5 +1,5 @@
 ﻿using System;
-using AvalonTesting.Common;
+using Avalon.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
@@ -10,7 +10,7 @@ using Terraria.GameContent;
 using Terraria.Graphics.Effects;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class CaesiumBackground : ModHook

@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Walls;
+namespace Avalon.Walls;
 
 public class TroxiniumBrickWall : ModWall
 {

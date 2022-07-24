@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Localization;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class SpikyBall : ModProjectile
 {

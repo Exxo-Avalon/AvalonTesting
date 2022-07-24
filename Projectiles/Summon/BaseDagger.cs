@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using AvalonTesting.Network;
-using AvalonTesting.Network.Handlers;
-using AvalonTesting.Players;
+using Avalon.Network;
+using Avalon.Network.Handlers;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 // TODO: Implement AI which throws dagger from circle fast and then slashes fast back and forth a few times and then pulls back, repeat (bezier maybe?)
 public abstract class BaseDagger<T> : ModProjectile where T : ModBuff

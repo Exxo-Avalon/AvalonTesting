@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Items.Placeable.Light;
+﻿using Avalon.Items.Placeable.Light;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class Torches : ModTile
 {

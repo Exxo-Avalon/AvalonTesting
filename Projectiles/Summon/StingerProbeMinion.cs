@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using AvalonTesting.Buffs;
-using AvalonTesting.Network;
-using AvalonTesting.Network.Handlers;
-using AvalonTesting.Players;
+using Avalon.Buffs;
+using Avalon.Network;
+using Avalon.Network.Handlers;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Summon;
+namespace Avalon.Projectiles.Summon;
 
 public class StingerProbeMinion : ModProjectile
 {

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tokens;
+namespace Avalon.Items.Tokens;
 
 class DarkMatterToken : ModItem
 {

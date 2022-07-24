@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Ranged;
+namespace Avalon.Projectiles.Ranged;
 
 public class BloodyArrow : ModProjectile
 {

@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Tile;
+namespace Avalon.Items.Placeable.Tile;
 
 class NestBlock : ModItem
 {

@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs.AdvancedBuffs;
+namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvSwiftness : ModBuff
 {

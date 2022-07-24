@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Rarities;
+﻿using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 [AutoloadEquip(EquipType.Shoes, EquipType.Wings)]
 class InertiaBoots : ModItem

@@ -1,10 +1,10 @@
-using AvalonTesting.Tiles;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.World;
+namespace Avalon.World;
 
 class Utils
 {

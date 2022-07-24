@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 
-namespace AvalonTesting.Logic;
+namespace Avalon.Logic;
 
 public static class Collision
 {

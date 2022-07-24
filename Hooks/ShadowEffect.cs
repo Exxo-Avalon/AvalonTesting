@@ -1,10 +1,10 @@
+using Avalon.Common;
 using Terraria;
-using AvalonTesting.Common;
 using Terraria.Graphics.Renderers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 public class ShadowEffect : ModHook
 {
     protected override void Apply()

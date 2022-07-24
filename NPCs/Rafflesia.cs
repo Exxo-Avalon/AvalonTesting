@@ -1,13 +1,13 @@
 using Terraria.GameContent.Bestiary;
 using System;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Players;
+using Avalon.Players;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class Rafflesia : ModNPC
 {
@@ -65,7 +65,7 @@ public class Rafflesia : ModNPC
         if (NPC.ai[0] >= 240)
         {
             NPC.ai[1] = 1;
-                
+
         }
         if (NPC.ai[1] == 1)
         {

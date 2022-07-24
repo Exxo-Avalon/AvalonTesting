@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Items.Placeable.Seed;
+﻿using Avalon.Items.Placeable.Seed;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class LargeHerbsStage3 : ModTile
 {

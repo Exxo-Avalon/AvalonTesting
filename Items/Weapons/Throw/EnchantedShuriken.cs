@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Throw;
+namespace Avalon.Items.Weapons.Throw;
 
 class EnchantedShuriken : ModItem
 {

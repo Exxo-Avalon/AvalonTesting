@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
-using AvalonTesting.Common;
-using AvalonTesting.UI;
+using Avalon.Common;
+using Avalon.UI;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -9,7 +9,7 @@ using On.Terraria;
 using On.Terraria.UI;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class UIChanges : ModHook
@@ -19,7 +19,7 @@ public class UIChanges : ModHook
         Main.DrawInterface += OnMainDrawInterface;
         IL.Terraria.UI.UserInterface.Update += ILUserInterfaceUpdate;
         Main.DrawInventory += OnMainDrawInventory;
-        //IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate; 
+        //IL.Terraria.UI.UIElement.Recalculate += ILUIElementRecalculate;
         IL.Terraria.UI.UIElement.GetClippingRectangle += ILUIElementGetClippingRectangle;
         UIElement.Remove += OnUIElementRemove;
     }
@@ -208,7 +208,7 @@ public class UIChanges : ModHook
     ///     Some trickery that changes default behaviour of Recalculate to only recalculate self when element is ExxoUIElement.
     /// </summary>
     /// <param name="il">The ILContext of the original method.</param>
-   
+
     /*private static void ILUIElementRecalculate(ILContext il)
     {
         var c = new ILCursor(il);

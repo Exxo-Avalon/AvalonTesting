@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Tiles;
+﻿using Avalon.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 internal class SmoothWorld : GenPass
 {

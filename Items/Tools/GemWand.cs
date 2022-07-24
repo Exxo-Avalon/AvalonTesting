@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Tile;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System.Linq;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 class GemWand : ModItem
 {

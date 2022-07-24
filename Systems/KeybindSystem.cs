@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Input;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class KeybindSystem : ModSystem
 {

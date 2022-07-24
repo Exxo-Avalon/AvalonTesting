@@ -1,11 +1,11 @@
-using AvalonTesting.Projectiles;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Magic;
+namespace Avalon.Items.Weapons.Magic;
 
 internal class PhantomKnives : ModItem
 {

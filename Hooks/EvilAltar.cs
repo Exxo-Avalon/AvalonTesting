@@ -1,11 +1,11 @@
-using AvalonTesting.Common;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
+using Avalon.Common;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class EvilAltar : ModHook

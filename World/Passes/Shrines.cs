@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 using Terraria.IO;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 internal class Shrines : GenPass
 {

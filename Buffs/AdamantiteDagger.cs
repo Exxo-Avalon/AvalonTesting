@@ -1,4 +1,4 @@
-﻿namespace AvalonTesting.Buffs;
+﻿namespace Avalon.Buffs;
 
 public class AdamantiteDagger : BaseDagger<Projectiles.Summon.AdamantiteDagger>
 {

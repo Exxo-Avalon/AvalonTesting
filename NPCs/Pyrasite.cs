@@ -1,13 +1,13 @@
+using Avalon.Items.Material;
+using Avalon.Players;
 using Terraria.GameContent.Bestiary;
-using AvalonTesting.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class PyrasiteHead : PyrasiteWorm
 {

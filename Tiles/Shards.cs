@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class Shards : ModTile
 {

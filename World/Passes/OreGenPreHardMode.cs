@@ -1,11 +1,11 @@
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Systems;
+using Avalon.Tiles.Ores;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace AvalonTesting.World.Passes;
+namespace Avalon.World.Passes;
 
 internal class OreGenPreHardMode : GenPass
 {

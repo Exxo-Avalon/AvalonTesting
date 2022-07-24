@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AvalonTesting.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs.AdvancedBuffs;
+namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvShockwave : ModBuff
 {

@@ -1,16 +1,16 @@
 ﻿using System;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Weapons.Ranged;
-using AvalonTesting.Rarities;
-using AvalonTesting.Tiles;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Weapons.Ranged;
+using Avalon.Rarities;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Blah;
+namespace Avalon.Items.Weapons.Blah;
 
 internal class SpraynBlah : ModItem
 {

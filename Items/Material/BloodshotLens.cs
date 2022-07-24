@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Material;
+namespace Avalon.Items.Material;
 
 class BloodshotLens : ModItem
 {

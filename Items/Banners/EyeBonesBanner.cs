@@ -1,9 +1,9 @@
-﻿using AvalonTesting.Tiles;
+﻿using Avalon.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Banners;
+namespace Avalon.Items.Banners;
 
 public class EyeBonesBanner : ModItem
 {

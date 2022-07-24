@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AvalonTesting.Tiles.SoulCandles;
+namespace Avalon.Tiles.SoulCandles;
 
 public class SightCandle : ModTile
 {

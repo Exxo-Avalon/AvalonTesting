@@ -1,5 +1,5 @@
 ﻿using System;
-using AvalonTesting.Systems;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,7 +9,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 public class KingSting : ModNPC
 {

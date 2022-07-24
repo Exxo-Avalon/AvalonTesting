@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Systems;
+﻿using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria;
@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class ContagionPot : ModTile
 {

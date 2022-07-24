@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using AvalonTesting.Network.Handlers;
+using Avalon.Network.Handlers;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 
 /// <summary>
 ///     An advanced player system that allows simultaneous and seamless dashing for different items,

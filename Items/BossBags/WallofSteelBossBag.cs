@@ -1,16 +1,16 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Consumables;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Items.Weapons.Ranged;
-using AvalonTesting.NPCs.Bosses;
+﻿using Avalon.Items.Accessories;
+using Avalon.Items.Consumables;
+using Avalon.Items.Material;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Items.Weapons.Ranged;
+using Avalon.NPCs.Bosses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.Items.BossBags;
+namespace Avalon.Items.BossBags;
 
 public class WallofSteelBossBag : ModItem
 {

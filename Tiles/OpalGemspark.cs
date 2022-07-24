@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Placeable.Tile;
+﻿using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles;
+namespace Avalon.Tiles;
 
 public class OpalGemspark : ModTile
 {

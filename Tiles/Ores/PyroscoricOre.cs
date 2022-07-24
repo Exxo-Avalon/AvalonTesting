@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles.Ores;
+namespace Avalon.Tiles.Ores;
 
 public class PyroscoricOre : ModTile
 {

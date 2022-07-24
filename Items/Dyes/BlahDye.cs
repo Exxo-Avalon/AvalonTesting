@@ -1,4 +1,4 @@
-﻿using AvalonTesting.Rarities;
+﻿using Avalon.Rarities;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -7,7 +7,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Dyes;
+namespace Avalon.Items.Dyes;
 
 public class BlahDye : ModItem
 {

@@ -1,12 +1,12 @@
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Items.Accessories;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 public class RecipeSystem : ModSystem
 {
     public override void AddRecipeGroups()

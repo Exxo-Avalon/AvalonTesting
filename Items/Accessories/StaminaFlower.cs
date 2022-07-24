@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Potions;
-using AvalonTesting.Players;
+﻿using Avalon.Items.Potions;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 internal class StaminaFlower : ModItem
 {

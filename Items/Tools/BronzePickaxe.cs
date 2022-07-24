@@ -1,7 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Tools;
+namespace Avalon.Items.Tools;
 
 public class BronzePickaxe : ModItem
 {

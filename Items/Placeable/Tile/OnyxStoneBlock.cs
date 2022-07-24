@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 
-namespace AvalonTesting.Items.Placeable.Tile;
+namespace Avalon.Items.Placeable.Tile;
 
 class OnyxStoneBlock : ModItem
 {

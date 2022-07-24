@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Projectiles.Summon;
+﻿using Avalon.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Summon;
+namespace Avalon.Items.Weapons.Summon;
 
 class StaffoftheTempestFrigid : ModItem
 {

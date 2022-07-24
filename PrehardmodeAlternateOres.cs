@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common;
 using AltLibrary.Common.AltOres;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Systems;
-using AvalonTesting.Tiles.Ores;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Systems;
+using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 internal class BronzeAlternateOres : AltOre
 {

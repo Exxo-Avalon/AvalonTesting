@@ -1,11 +1,11 @@
 using System.Linq;
-using AvalonTesting.Projectiles;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class ForceField : ModBuff
 {

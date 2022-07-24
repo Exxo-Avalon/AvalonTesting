@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 
-namespace AvalonTesting.UI;
+namespace Avalon.UI;
 
 public static class Utilities
 {

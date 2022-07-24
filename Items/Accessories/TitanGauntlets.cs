@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Accessories;
+namespace Avalon.Items.Accessories;
 
 [AutoloadEquip(EquipType.HandsOn, EquipType.HandsOff)]
 class TitanGauntlets : ModItem

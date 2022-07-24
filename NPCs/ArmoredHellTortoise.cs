@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Banners;
-using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Banners;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class ArmoredHellTortoise : ModNPC
 {

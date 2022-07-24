@@ -1,12 +1,12 @@
-﻿using AvalonTesting.Items.Banners;
-using AvalonTesting.Players;
+﻿using Avalon.Items.Banners;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class PoisonDartFrog : ModNPC
 {

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Weapons.Summon;
+namespace Avalon.Items.Weapons.Summon;
 
 public class ReflectorStaff : ModItem
 {

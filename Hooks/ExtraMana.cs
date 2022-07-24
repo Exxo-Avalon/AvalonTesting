@@ -1,5 +1,5 @@
 using System;
-using AvalonTesting.Common;
+using Avalon.Common;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.GameContent.UI.ResourceSets;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Client)]
 public class ExtraMana : ModHook

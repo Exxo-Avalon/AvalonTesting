@@ -3,18 +3,18 @@ using AltLibrary;
 using AltLibrary.Common.AltOres;
 using AltLibrary.Common.Hooks;
 using AltLibrary.Common.Systems;
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.NPCs;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.Walls;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Tiles.Ores;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Weapons.Melee;
+using Avalon.NPCs;
+using Avalon.Tiles;
+using Avalon.Walls;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting
+namespace Avalon
 {
     internal class DurataniumAlternateOres : AltOre
     {

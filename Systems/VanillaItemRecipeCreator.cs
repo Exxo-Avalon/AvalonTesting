@@ -1,13 +1,13 @@
-using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Placeable.Tile;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Items.Weapons.Throw;
+using Avalon.Items.Accessories;
+using Avalon.Items.Material;
+using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Items.Weapons.Throw;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Systems;
+namespace Avalon.Systems;
 
 public class VanillaItemRecipeCreator : ModSystem
 {

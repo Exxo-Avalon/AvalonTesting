@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class VorazylcumMiteDigger : VorazylcumMiteDiggerWorm
 {

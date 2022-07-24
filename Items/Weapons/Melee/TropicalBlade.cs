@@ -1,11 +1,11 @@
-﻿using AvalonTesting.Items.Material;
+﻿using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace AvalonTesting.Items.Weapons.Melee;
+namespace Avalon.Items.Weapons.Melee;
 
 public class TropicalBlade : ModItem
 {

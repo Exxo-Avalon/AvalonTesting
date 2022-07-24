@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.Hostile;
+namespace Avalon.Projectiles.Hostile;
 
 public class PhantasmLaser : ModProjectile
 {
@@ -71,7 +71,7 @@ public class PhantasmLaser : ModProjectile
         {
             laserColor = colorArray[2];
         }
-        
+
         Main.EntitySpriteDraw(BeamEndTexture.Value, p.Center - Main.screenPosition, null, laserColor, Projectile.rotation, BeamEndTexture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
         num204 -= (BeamEndTexture.Value.Height / 2 + BeamStartTexture.Value.Height) * Projectile.scale;
         Vector2 center2 = p.Center;

@@ -4,7 +4,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Projectiles.CrystalUnity;
+namespace Avalon.Projectiles.CrystalUnity;
 
 public class AmethystShard : ModProjectile
 {

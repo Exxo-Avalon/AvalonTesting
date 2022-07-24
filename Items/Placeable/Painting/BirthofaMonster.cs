@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Painting;
+namespace Avalon.Items.Placeable.Painting;
 
 class BirthofaMonster : ModItem
 {

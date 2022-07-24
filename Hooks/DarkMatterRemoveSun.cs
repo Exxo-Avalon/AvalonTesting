@@ -1,9 +1,9 @@
+using Avalon.Common;
 using Terraria;
-using AvalonTesting.Common;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 public class DarkMatterRemoveSun : ModHook
 {
     protected override void Apply()

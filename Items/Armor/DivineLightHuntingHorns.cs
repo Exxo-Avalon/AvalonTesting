@@ -1,11 +1,11 @@
-using AvalonTesting.Items.Placeable.Bar;
-using AvalonTesting.Players;
+using Avalon.Items.Placeable.Bar;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Armor;
+namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Head)]
 internal class DivineLightHuntingHorns : ModItem

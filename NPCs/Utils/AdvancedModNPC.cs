@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs.Utils;
+namespace Avalon.NPCs.Utils;
 
 /// <summary>
 /// An advanced extension of ModNPC which allows for the state system to be easily implemented
@@ -43,7 +43,7 @@ public abstract class AdvancedModNPC<T> : ModNPC where T : StateParent, new()
     {
         (MainStateInstance ?? (MainStateInstance = new T())).StartUpdate(this);
     }
-    
+
     public override void OnKill()
     {
         base.OnKill();

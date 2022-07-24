@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AvalonTesting.NPCs.Utils.States;
+namespace Avalon.NPCs.Utils.States;
 
 public class MoveToPosition : State
 {

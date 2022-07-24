@@ -1,12 +1,12 @@
-using AvalonTesting.Common;
-using AvalonTesting.Tiles;
+using Avalon.Common;
+using Avalon.Players;
+using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using On.Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Players;
 
-namespace AvalonTesting.Hooks;
+namespace Avalon.Hooks;
 
 [Autoload(Side = ModSide.Both)]
 public class TrapCollision : ModHook

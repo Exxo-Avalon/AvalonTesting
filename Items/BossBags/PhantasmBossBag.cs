@@ -1,13 +1,13 @@
-﻿using AvalonTesting.Items.Accessories;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Weapons.Magic;
+﻿using Avalon.Items.Accessories;
+using Avalon.Items.Material;
+using Avalon.Items.Weapons.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
-namespace AvalonTesting.Items.BossBags;
+namespace Avalon.Items.BossBags;
 
 public class PhantasmBossBag : ModItem
 {

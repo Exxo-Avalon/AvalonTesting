@@ -1,12 +1,12 @@
-using AvalonTesting.Dusts;
-using AvalonTesting.Projectiles;
+using Avalon.Dusts;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Tiles.Ores;
+namespace Avalon.Tiles.Ores;
 
 public class CaesiumOre : ModTile
 {

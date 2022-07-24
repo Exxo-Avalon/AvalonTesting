@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class MiniArma : ModBuff
 {

@@ -1,10 +1,10 @@
-﻿using AvalonTesting.Players;
-using AvalonTesting.Systems;
+﻿using Avalon.Players;
+using Avalon.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Buffs;
+namespace Avalon.Buffs;
 
 public class Shadows : ModBuff
 {

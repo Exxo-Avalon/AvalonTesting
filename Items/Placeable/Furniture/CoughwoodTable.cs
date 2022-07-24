@@ -1,9 +1,9 @@
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.Items.Placeable.Furniture;
+namespace Avalon.Items.Placeable.Furniture;
 
 internal class CoughwoodTable : ModItem
 {

@@ -1,5 +1,3 @@
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -8,11 +6,13 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using Avalon.Buffs;
+using Avalon.NPCs.Bosses;
+using Avalon.Projectiles;
+using Avalon.Tiles.Ores;
 using Terraria.Localization;
-using AvalonTesting.NPCs.Bosses;
-using AvalonTesting.Projectiles;
 
-namespace AvalonTesting.Players;
+namespace Avalon.Players;
 public class ExxoEquipEffectPlayer : ModPlayer
 {
     #region accessories

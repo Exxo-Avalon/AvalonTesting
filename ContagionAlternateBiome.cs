@@ -6,16 +6,16 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AvalonTesting.Items.Placeable.Seed;
-using AvalonTesting.Items.Weapons.Melee;
-using AvalonTesting.Tiles;
-using AvalonTesting.Tiles.Ores;
-using AvalonTesting.Walls;
 using AltLibrary.Core.Generation;
 using Terraria;
 using System;
+using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Weapons.Melee;
+using Avalon.Tiles;
+using Avalon.Tiles.Ores;
+using Avalon.Walls;
 
-namespace AvalonTesting;
+namespace Avalon;
 
 internal class ContagionAlternateBiome : AltBiome
 {
@@ -198,7 +198,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 FoundEvilLocation = false;
             }
         }
-        
+
     }
 
     public override void GenerateEvil(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)

@@ -1,6 +1,6 @@
 using Terraria.GameContent.Bestiary;
 using System;
-using AvalonTesting.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -10,7 +10,7 @@ using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
-namespace AvalonTesting.NPCs;
+namespace Avalon.NPCs;
 
 public class CaesiumStalker : ModNPC
 {
