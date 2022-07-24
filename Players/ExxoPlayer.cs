@@ -467,7 +467,7 @@ public class ExxoPlayer : ModPlayer
                 if (Player.inventory[Player.selectedItem].useAmmo == 8)
                 {
                     int t = 0;
-                    if (torches.TryGetValue(item2.type, out t))
+                    if (ItemID.Sets.Torches[item2.type])
                     {
                         Projectile.NewProjectile(
                             Player.GetSource_ItemUse_WithPotentialAmmo(ModContent.GetInstance<TorchLauncher>().Item,
