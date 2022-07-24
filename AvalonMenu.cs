@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace Avalon;
 
-public class ExxoMenu : ModMenu
+public class AvalonMenu : ModMenu
 {
     public override Asset<Texture2D> Logo
     {

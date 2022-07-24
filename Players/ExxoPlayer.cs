@@ -466,8 +466,7 @@ public class ExxoPlayer : ModPlayer
             {
                 if (Player.inventory[Player.selectedItem].useAmmo == 8)
                 {
-                    int t = 0;
-                    if (ItemID.Sets.Torches[item2.type])
+                    if (TorchLauncher.TorchProjectile.TryGetValue(item2.type, out int t))
                     {
                         Projectile.NewProjectile(
                             Player.GetSource_ItemUse_WithPotentialAmmo(ModContent.GetInstance<TorchLauncher>().Item,
@@ -2811,11 +2810,6 @@ public class ExxoPlayer : ModPlayer
         Checkpoints,
         Team,
     }
-
-    public static Dictionary<int, int> torches;
-
-
-
 
     public bool quackJump;
     public bool jumpAgainQuack;
