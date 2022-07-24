@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ class PeridotStaff : ModItem
         Rectangle dims = this.GetDims();
         Item.width = dims.Width;
         Item.height = dims.Height;
-        Item.damage = 30;
+        Item.damage = 24;
         Item.autoReuse = true;
         Item.shootSpeed = 7.75f;
         Item.mana = 10;
@@ -31,11 +31,14 @@ class PeridotStaff : ModItem
         Item.knockBack = 4.75f;
         Item.shoot = ModContent.ProjectileType<Projectiles.PeridotBolt>();
         Item.value = Item.buyPrice(0, 3, 60, 0);
-
         Item.UseSound = SoundID.Item43;
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.Peridot>(), 15).AddIngredient(ItemID.CrimtaneBar, 20).AddIngredient(ItemID.TissueSample, 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Peridot>(), 15)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

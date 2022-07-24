@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ class ZirconStaff : ModItem
         Rectangle dims = this.GetDims();
         Item.width = dims.Width;
         Item.height = dims.Height;
-        Item.damage = 32;
+        Item.damage = 28;
         Item.autoReuse = true;
         Item.shootSpeed = 7.75f;
         Item.mana = 9;
@@ -35,6 +35,10 @@ class ZirconStaff : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.Zircon>(), 15).AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 8).AddIngredient(ModContent.ItemType<Material.Booger>(), 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Material.Zircon>(), 15)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BismuthBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

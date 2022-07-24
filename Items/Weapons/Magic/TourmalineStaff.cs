@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ class TourmalineStaff : ModItem
         Rectangle dims = this.GetDims();
         Item.width = dims.Width;
         Item.height = dims.Height;
-        Item.damage = 28;
+        Item.damage = 22;
         Item.autoReuse = true;
         Item.shootSpeed = 7.5f;
         Item.mana = 9;
@@ -35,6 +35,10 @@ class TourmalineStaff : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.Tourmaline>(), 15).AddIngredient(ItemID.DemoniteBar, 20).AddIngredient(ItemID.ShadowScale, 5).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Tourmaline>(), 15)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }
