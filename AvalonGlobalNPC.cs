@@ -1542,30 +1542,42 @@ public class AvalonGlobalNPC : GlobalNPC
         {
             case NPCID.Golem:
                 // Get main drops and duplicate
-                var oneFromRulesRule = new OneFromRulesRule(1);
+                OneFromRulesRule? oneFromRulesRule = null;
                 foreach (IItemDropRule rule in npcLoot.Get(false))
                 {
-                    if (rule is LeadingConditionRule rule1)
+                    if (rule is not LeadingConditionRule rule1)
                     {
-                        foreach (IItemDropRuleChainAttempt chain in rule1.ChainedRules)
+                        continue;
+                    }
+
+                    foreach (IItemDropRuleChainAttempt chain in rule1.ChainedRules)
+                    {
+                        if (chain is not Chains.TryIfSucceeded { RuleToChain: OneFromRulesRule ruleMain })
                         {
-                            if (chain is Chains.TryIfSucceeded { RuleToChain: OneFromRulesRule ruleMain })
-                            {
-                                oneFromRulesRule.options = ruleMain.options;
-                                break;
-                            }
+                            continue;
                         }
 
-                        if ((oneFromRulesRule.options?.Length ?? 0) != 0)
-                        {
-                            break;
-                        }
+                        oneFromRulesRule = ruleMain;
+                        break;
+                    }
+
+                    if (oneFromRulesRule != null)
+                    {
+                        break;
                     }
                 }
 
                 var condition = new Combine(true, null, new FirstTimeKillingGolem(), notExpertCondition);
                 npcLoot.Add(ItemDropRule.ByCondition(condition, ItemID.Picksaw));
-                npcLoot.Add(oneFromRulesRule.HideFromBestiary());
+                if (oneFromRulesRule != null)
+                {
+                    npcLoot.Add(new LeadingConditionRule(notExpertCondition)).OnSuccess(oneFromRulesRule.HideFromBestiary());
+                }
+                else
+                {
+                    Mod.Logger.Error("Extra normal mode drops for Golem failed to be added, please report this to the mod author.");
+                }
+
                 break;
 
             case NPCID.WallofFlesh:

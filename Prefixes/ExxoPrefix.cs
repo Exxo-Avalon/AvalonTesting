@@ -91,11 +91,9 @@ public abstract class ExxoPrefix : ModPrefix
         BasicDifference(lines, "PrefixAccIgnoreWater", "Free movement in liquids", modifiedPlayer.ignoreWater);
         BasicDifference(lines, "PrefixAccStinky", "You smell awful", modifiedPlayer.stinky, true);
 
-        Avalon.Mod.Logger.Debug(GetType());
         foreach (TooltipLine line in lines)
         {
             line.IsModifier = true;
-            Avalon.Mod.Logger.Debug(line.Text);
         }
 
         TooltipLines = new ReadOnlyCollection<TooltipLine>(lines);
