@@ -19,7 +19,6 @@ public class MagicGrenade : ModProjectile
         Projectile.CloneDefaults(30);
         Projectile.width = dims.Width * 20 / 20;
         Projectile.height = dims.Height / Main.projFrames[Projectile.type];
-        Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.light = 0.9f;
