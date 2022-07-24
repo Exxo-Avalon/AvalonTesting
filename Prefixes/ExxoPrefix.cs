@@ -75,7 +75,7 @@ public abstract class ExxoPrefix : ModPrefix
         StatModifierDifference(lines, "PrefixAccKnockback", "knockback", origPlayer, modifiedPlayer,
             (player, damageClass) => player.GetKnockback(damageClass).Additive);
         StatModifierDifference(lines, "PrefixAccCritChance", "critical strike chance", origPlayer, modifiedPlayer,
-            (player, damageClass) => player.GetCritChance(damageClass));
+            (player, damageClass) => player.GetCritChance(damageClass) / 100f);
         BasicDifference(lines, "PrefixAccEndurance", "damage taken", -(modifiedPlayer.endurance - origPlayer.endurance),
             true);
         BasicDifference(lines, "PrefixAccMaxMana", "mana", modifiedPlayer.statManaMax2 - origPlayer.statManaMax2);
@@ -91,9 +91,11 @@ public abstract class ExxoPrefix : ModPrefix
         BasicDifference(lines, "PrefixAccIgnoreWater", "Free movement in liquids", modifiedPlayer.ignoreWater);
         BasicDifference(lines, "PrefixAccStinky", "You smell awful", modifiedPlayer.stinky, true);
 
+        Avalon.Mod.Logger.Debug(GetType());
         foreach (TooltipLine line in lines)
         {
             line.IsModifier = true;
+            Avalon.Mod.Logger.Debug(line.Text);
         }
 
         TooltipLines = new ReadOnlyCollection<TooltipLine>(lines);
@@ -117,8 +119,7 @@ public abstract class ExxoPrefix : ModPrefix
         {
             list.Add(new TooltipLine(Mod, prefix, $"{value:+#;-#;+0}{(percentage ? "%" : string.Empty)} {identifier}")
             {
-                IsModifier = true,
-                IsModifierBad = !inverted ? value < 0 : value >= 0,
+                IsModifier = true, IsModifierBad = !inverted ? value < 0 : value >= 0,
             });
         }
     }
@@ -130,8 +131,7 @@ public abstract class ExxoPrefix : ModPrefix
         {
             list.Add(new TooltipLine(Mod, prefix, $"{value * 100:+#;-#;+0;n0}% {identifier}")
             {
-                IsModifier = true,
-                IsModifierBad = !inverted ? value < 0 : value >= 0,
+                IsModifier = true, IsModifierBad = !inverted ? value < 0 : value >= 0,
             });
         }
     }

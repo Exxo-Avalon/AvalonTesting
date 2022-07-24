@@ -15,7 +15,7 @@ public class Lurid : ExxoPrefix
 
     public override void UpdateOwnerPlayer(Player player)
     {
-        Main.player[Main.myPlayer].GetCritChance(DamageClass.Generic) += 2;
+        player.GetCritChance(DamageClass.Generic) += 2;
         player.statDefense += 2;
     }
 }

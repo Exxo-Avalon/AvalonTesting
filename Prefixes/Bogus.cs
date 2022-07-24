@@ -14,6 +14,6 @@ public class Bogus : ExxoPrefix
     public override void UpdateOwnerPlayer(Player player)
     {
         player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.2f;
-        player.GetCritChance(DamageClass.Generic) += 0.02f;
+        player.GetCritChance(DamageClass.Generic) += 2;
     }
 }

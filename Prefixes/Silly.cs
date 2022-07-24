@@ -9,5 +9,5 @@ public class Silly : ExxoPrefix
 
     public override void ModifyValue(ref float valueMult) => valueMult *= 1.2f;
 
-    public override void UpdateOwnerPlayer(Player player) => player.GetCritChance(DamageClass.Generic) += 0.02f;
+    public override void UpdateOwnerPlayer(Player player) => player.GetCritChance(DamageClass.Generic) += 2;
 }

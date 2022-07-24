@@ -84,8 +84,8 @@ public class Avalon : Mod
         DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");
         DarkMatterShader = ModContent
             .Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
-        SkyManager.Instance["AvalonTesting:DarkMatter"] = new DarkMatterSky();
-        Filters.Scene["AvalonTesting:DarkMatter"] = new Filter(
+        SkyManager.Instance["Avalon:DarkMatter"] = new DarkMatterSky();
+        Filters.Scene["Avalon:DarkMatter"] = new Filter(
             new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky")
                 .UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
         DarkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole",
