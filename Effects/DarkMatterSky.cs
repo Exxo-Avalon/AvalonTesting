@@ -56,7 +56,7 @@ public class DarkMatterSky : CustomSky
         spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp, null, null);
 
         // Draw the sky texture
-        spriteBatch.Draw(Avalon.DarkMatterSky, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(51, 41, 48) * opacity); // Main.ColorOfTheSkies
+        spriteBatch.Draw(Avalon.DarkMatterSky.Value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), new Color(51, 41, 48) * opacity); // Main.ColorOfTheSkies
 
         if (Main.netMode == NetmodeID.Server) return;
 

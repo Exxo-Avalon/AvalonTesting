@@ -31,7 +31,7 @@ public class Avalon : Mod
     /// <summary>
     /// The Dark Matter sky texture.
     /// </summary>
-    public static Texture2D DarkMatterSky;
+    public static Asset<Texture2D> DarkMatterSky;
 
     public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[50];
     public static Asset<Texture2D> DarkMatterBlackHole;
@@ -47,7 +47,7 @@ public class Avalon : Mod
     /// <summary>
     ///     Gets reference to the main instance of the mod.
     /// </summary>
-    public static readonly Avalon Mod = ModContent.GetInstance<Avalon>();
+    public static Avalon Mod { get; private set; } = ModContent.GetInstance<Avalon>();
 
     /// <summary>
     ///     Gets the instance of the music mod for this mod.
@@ -67,37 +67,10 @@ public class Avalon : Mod
     /// <inheritdoc />
     public override void Load()
     {
-        ModLoader.TryGetMod("Wikithis", out Mod wikithis);
-        if (wikithis != null && !Main.dedServ)
-            wikithis.Call(0, this, "terrariamods.fandom.com$Exxo_Avalon");
-
-        ExxoPlayer.torches = new Dictionary<int, int>()
+        if (ModLoader.TryGetMod("Wikithis", out Mod? wikiThis) && wikiThis != null && !Main.dedServ)
         {
-            { ItemID.Torch, ModContent.ProjectileType<Torch>() },
-            { ItemID.BlueTorch, ModContent.ProjectileType<BlueTorch>() },
-            { ItemID.RedTorch, ModContent.ProjectileType<RedTorch>() },
-            { ItemID.GreenTorch, ModContent.ProjectileType<GreenTorch>() },
-            { ItemID.PurpleTorch, ModContent.ProjectileType<PurpleTorch>() },
-            { ItemID.WhiteTorch, ModContent.ProjectileType<WhiteTorch>() },
-            { ItemID.YellowTorch, ModContent.ProjectileType<YellowTorch>() },
-            { ItemID.DemonTorch, ModContent.ProjectileType<DemonTorch>() },
-            { ItemID.CursedTorch, ModContent.ProjectileType<CursedTorch>() },
-            { ItemID.IceTorch, ModContent.ProjectileType<IceTorch>() },
-            { ItemID.OrangeTorch, ModContent.ProjectileType<OrangeTorch>() },
-            { ItemID.IchorTorch, ModContent.ProjectileType<IchorTorch>() },
-            { ItemID.UltrabrightTorch, ModContent.ProjectileType<UltrabrightTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.JungleTorch>(), ModContent.ProjectileType<JungleTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.PathogenTorch>(), ModContent.ProjectileType<PathogenTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.SlimeTorch>(), ModContent.ProjectileType<SlimeTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.CyanTorch>(), ModContent.ProjectileType<CyanTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.LimeTorch>(), ModContent.ProjectileType<LimeTorch>() },
-            { ModContent.ItemType<Items.Placeable.Light.BrownTorch>(), ModContent.ProjectileType<BrownTorch>() },
-            { ItemID.BoneTorch, ModContent.ProjectileType<BoneTorch>() },
-            { ItemID.RainbowTorch, ModContent.ProjectileType<RainbowTorch>() },
-            { ItemID.PinkTorch, ModContent.ProjectileType<PinkTorch>() },
-        };
-
-        var a = GetFileNames();
+            wikiThis.Call(0, this, "terrariamods.fandom.com$Exxo_Avalon");
+        }
 
         // ----------- Server/Client ----------- //
         while (ModHook.RegisteredHooks.TryDequeue(out ModHook? hook))
@@ -112,7 +85,7 @@ public class Avalon : Mod
 
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
-        DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky", AssetRequestMode.ImmediateLoad).Value;
+        DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");
         DarkMatterShader = ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
         SkyManager.Instance["AvalonTesting:DarkMatter"] = new Effects.DarkMatterSky();
         Filters.Scene["AvalonTesting:DarkMatter"] = new Filter(new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky").UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
@@ -127,6 +100,7 @@ public class Avalon : Mod
     public override void Unload()
     {
         ExxoPlayer.torches = null;
+        Mod = null!;
         // TODO: FIGURE OUT HOW TO LOAD ORIGINAL TEXTURES UPON UNLOADING AVALON.
         //if (Main.netMode != NetmodeID.Server)
         //{
