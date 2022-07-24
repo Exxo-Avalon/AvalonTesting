@@ -17,7 +17,7 @@ public class DarkMatterSky : CustomSky
     private static int blackHoleFrame;
     private static int surfaceFrame;
     private static int surfaceFrameCounter;
-    private readonly Asset<Texture2D>[] darkMatterBackgrounds = new Asset<Texture2D>[50];
+    private readonly Asset<Texture2D>[] darkMatterBackgrounds = new Asset<Texture2D>[25];
     private int bgLoops;
     private int bgStartX;
     private int bgTopY;
@@ -83,7 +83,7 @@ public class DarkMatterSky : CustomSky
         // Surface frame counter
         if (++surfaceFrameCounter > 3)
         {
-            surfaceFrame = (surfaceFrame + 1) % 50;
+            surfaceFrame = (surfaceFrame + 1) % 25;
             surfaceFrameCounter = 0;
         }
 
