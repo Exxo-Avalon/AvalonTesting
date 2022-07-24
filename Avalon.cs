@@ -1,13 +1,9 @@
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using Avalon.Common;
+using Avalon.Effects;
 using Avalon.Network;
-using Avalon.Players;
-using Avalon.Projectiles.Torches;
 using Avalon.Systems;
-using Avalon.Tiles.Ores;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -29,9 +25,14 @@ public class Avalon : Mod
     public const string TextureAssetsPath = "Assets/Textures";
 
     /// <summary>
-    /// The Dark Matter sky texture.
+    ///     Gets the instance of the imkSushi's mod.
     /// </summary>
-    public static Asset<Texture2D> DarkMatterSky;
+    public static readonly Mod? ImkSushisMod = ModLoader.TryGetMod("Tokens", out Mod obtainedMod) ? obtainedMod : null;
+
+    /// <summary>
+    ///     Gets the instance of the music mod for this mod.
+    /// </summary>
+    public static readonly Mod? MusicMod = ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod) ? obtainedMod : null;
 
     public static Asset<Texture2D>[] DarkMatterBackgrounds = new Asset<Texture2D>[50];
     public static Asset<Texture2D> DarkMatterBlackHole;
@@ -40,19 +41,14 @@ public class Avalon : Mod
     public static Effect DarkMatterShader;
 
     /// <summary>
-    ///     Gets the instance of the imkSushi's mod.
+    ///     The Dark Matter sky texture.
     /// </summary>
-    public static readonly Mod? ImkSushisMod = ModLoader.TryGetMod("Tokens", out Mod obtainedMod) ? obtainedMod : null;
+    public static Asset<Texture2D> DarkMatterSky;
 
     /// <summary>
     ///     Gets reference to the main instance of the mod.
     /// </summary>
     public static Avalon Mod { get; private set; } = ModContent.GetInstance<Avalon>();
-
-    /// <summary>
-    ///     Gets the instance of the music mod for this mod.
-    /// </summary>
-    public static readonly Mod? MusicMod = ModLoader.TryGetMod("AvalonMusic", out Mod obtainedMod) ? obtainedMod : null;
 
     /// <summary>
     ///     Gets or sets the transition value for fading the caesium background in and out.
@@ -86,28 +82,28 @@ public class Avalon : Mod
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
         DarkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");
-        DarkMatterShader = ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
-        SkyManager.Instance["Avalon:DarkMatter"] = new Effects.DarkMatterSky();
-        Filters.Scene["Avalon:DarkMatter"] = new Filter(new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky").UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
-        DarkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole", AssetRequestMode.ImmediateLoad);
-        DarkMatterFloatingRocks = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/FloatingRocks", AssetRequestMode.ImmediateLoad);
-        DarkMatterBlackHole2 = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole2", AssetRequestMode.ImmediateLoad);
+        DarkMatterShader = ModContent
+            .Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad).Value;
+        SkyManager.Instance["AvalonTesting:DarkMatter"] = new DarkMatterSky();
+        Filters.Scene["AvalonTesting:DarkMatter"] = new Filter(
+            new DarkMatterScreenShader(new Ref<Effect>(DarkMatterShader), "DarkMatterSky")
+                .UseColor(0.18f, 0.08f, 0.24f), EffectPriority.VeryHigh);
+        DarkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole",
+            AssetRequestMode.ImmediateLoad);
+        DarkMatterFloatingRocks = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/FloatingRocks",
+            AssetRequestMode.ImmediateLoad);
+        DarkMatterBlackHole2 = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole2",
+            AssetRequestMode.ImmediateLoad);
         for (int i = 0; i < DarkMatterBackgrounds.Length; i++)
         {
-            DarkMatterBackgrounds[i] = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterCloud" + i, AssetRequestMode.ImmediateLoad);
+            DarkMatterBackgrounds[i] =
+                ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterCloud" + i,
+                    AssetRequestMode.ImmediateLoad);
         }
     }
-    public override void Unload()
-    {
-        ExxoPlayer.torches = null;
-        Mod = null!;
-        // TODO: FIGURE OUT HOW TO LOAD ORIGINAL TEXTURES UPON UNLOADING AVALON.
-        //if (Main.netMode != NetmodeID.Server)
-        //{
-        //    Main.logoTexture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo");
-        //    Main.logo2Texture = Main.instance.OurLoad<Texture2D>("Images" + Path.DirectorySeparatorChar + "Logo2");
-        //}
-    }
+
+    public override void Unload() => Mod = null!;
+
     /// <inheritdoc />
     public override void HandlePacket(BinaryReader reader, int whoAmI)
     {
@@ -122,6 +118,7 @@ public class Avalon : Mod
                 $"PacketHandler with message index {msgIndex.ToString(CultureInfo.InvariantCulture)} does not exist");
         }
     }
+
     public override void AddRecipes()
     {
         if (ImkSushisMod != null)
@@ -129,6 +126,7 @@ public class Avalon : Mod
             SushiRecipes.CreateRecipes(ImkSushisMod);
         }
     }
+
     private void ReplaceVanillaTextures()
     {
         // Items
@@ -153,28 +151,4 @@ public class Avalon : Mod
         // Projectiles
         TextureAssets.Projectile[ProjectileID.MagicDagger] = Assets.Request<Texture2D>("Sprites/MagicDagger");
     }
-
-    // why this method is in here? good question!
-    internal static Color ReturnHardmodeColor(int i)
-	{
-        if (i == TileID.Cobalt)
-            return new Color(26, 105, 161);
-        else if (i == TileID.Palladium)
-            return new Color(235, 87, 47);
-        else if (i == ModContent.TileType<DurataniumOre>())
-            return new Color(137, 81, 89);
-        else if (i == TileID.Mythril)
-            return new Color(93, 147, 88);
-        else if (i == TileID.Orichalcum)
-            return new Color(163, 22, 158);
-        else if (i == ModContent.TileType<NaquadahOre>())
-            return new Color(0, 38, 255);
-        else if (i == TileID.Adamantite)
-            return new Color(221, 85, 152);
-        else if (i == TileID.Titanium)
-            return new Color(185, 194, 215);
-        else if (i == ModContent.TileType<TroxiniumOre>())
-            return new Color(193, 218, 72);
-        return new Color(50, 255, 130);
-	}
 }

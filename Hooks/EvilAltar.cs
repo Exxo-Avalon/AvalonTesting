@@ -2,7 +2,10 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
 using Avalon.Common;
+using Avalon.Tiles.Ores;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Hooks;
@@ -11,6 +14,41 @@ namespace Avalon.Hooks;
 public class EvilAltar : ModHook
 {
     protected override void Apply() => IL.Terraria.WorldGen.SmashAltar += WorldGen_SmashAltar;
+
+    private static Color GetHardmodeColor(int i)
+    {
+        switch (i) {
+            case TileID.Cobalt:
+                return new Color(26, 105, 161);
+            case TileID.Palladium:
+                return new Color(235, 87, 47);
+            case TileID.Mythril:
+                return new Color(93, 147, 88);
+            case TileID.Orichalcum:
+                return new Color(163, 22, 158);
+            case TileID.Adamantite:
+                return new Color(221, 85, 152);
+            case TileID.Titanium:
+                return new Color(185, 194, 215);
+            default:
+                if (i == ModContent.TileType<DurataniumOre>())
+                {
+                    return new Color(137, 81, 89);
+                }
+
+                if (i == ModContent.TileType<TroxiniumOre>())
+                {
+                    return new Color(193, 218, 72);
+                }
+
+                if (i == ModContent.TileType<NaquadahOre>())
+                {
+                    return new Color(0, 38, 255);
+                }
+
+                return new Color(50, 255, 130);
+        }
+    }
 
     private void WorldGen_SmashAltar(ILContext il)
 	{
@@ -30,7 +68,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return Avalon.ReturnHardmodeColor(type).R;
+                return GetHardmodeColor(type).R;
             });
 
             c.Index++;
@@ -43,7 +81,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return Avalon.ReturnHardmodeColor(type).G;
+                return GetHardmodeColor(type).G;
             });
 
             c.Index++;
@@ -56,7 +94,7 @@ public class EvilAltar : ModHook
                     type = WorldGen.SavedOreTiers.Mythril;
                 else if (j > 3 && j <= 5)
                     type = WorldGen.SavedOreTiers.Adamantite;
-                return Avalon.ReturnHardmodeColor(type).B;
+                return GetHardmodeColor(type).B;
             });
 
             j++;
