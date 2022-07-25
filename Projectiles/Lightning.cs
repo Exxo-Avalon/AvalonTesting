@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -23,7 +23,7 @@ public class Lightning : ModProjectile
         AIType = ProjectileID.CultistBossLightningOrbArc;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;
-        Projectile.timeLeft = 600;
+        Projectile.timeLeft = 240;
         Projectile.friendly = true;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
     }
@@ -33,6 +33,7 @@ public class Lightning : ModProjectile
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
         Dust.NewDust(Projectile.Center, 0, 0, DustID.Electric, 0f, 0f);
+        //Projectile.active = false;
         return false;
     }
 
