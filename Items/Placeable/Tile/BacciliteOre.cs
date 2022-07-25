@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +9,7 @@ class BacciliteOre : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Baccilite Ore");
+        DisplayName.SetDefault("Pandemite Ore");
         SacrificeTotal = 100;
     }
 

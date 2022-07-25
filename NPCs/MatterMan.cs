@@ -40,7 +40,7 @@ public class MatterMan : ModNPC
         NPC.aiStyle = NPCAIStyleID.Unicorn;
         NPC.value = Item.buyPrice(0, 1, 0, 0);
         NPC.height = 40;
-        NPC.knockBackResist = 0.3f;
+        NPC.knockBackResist = 0.01f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath2;
         Banner = NPC.type;

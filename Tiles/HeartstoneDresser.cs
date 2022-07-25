@@ -1,4 +1,4 @@
-﻿using Avalon.Common;
+using Avalon.Common;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +13,7 @@ public class HeartstoneDresser : ModDresser
     public override void SetStaticDefaults()
     {
         ContainerName.SetDefault("Heartstone Dresser");
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
         base.SetStaticDefaults();
     }
 }

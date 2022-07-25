@@ -28,7 +28,7 @@ public class HeartstoneChandelier : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Heartstone Chandelier");
         AddMapEntry(new Color(235, 166, 135), name);
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

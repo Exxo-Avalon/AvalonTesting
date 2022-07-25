@@ -24,7 +24,7 @@ public class HeartstoneLamp : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Heartstone Lamp");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

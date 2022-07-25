@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,6 +17,6 @@ public class Heartstone : ModTile
         Main.tileSpelunker[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Heartstone>();
         HitSound = SoundID.Tink;
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,10 +22,10 @@ class BlahPotion : ModItem
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
         Item.width = dims.Width;
         Item.useTime = 15;
-        Item.useStyle = ItemUseStyleID.EatFood;
+        Item.useStyle = ItemUseStyleID.DrinkLiquid;
         Item.maxStack = 1;
         Item.useAnimation = 15;
         Item.height = dims.Height;
-        Item.buffTime = 1080000;
+        Item.buffTime = 5 * 60 * 60 * 60; // 5 hours
     }
 }

@@ -55,9 +55,8 @@ public class ExxoPlayer : ModPlayer
     {
         //Main.NewText("" + trapImmune.ToString());
         //Main.NewText("" + slimeBand.ToString());
-        Player.defaultItemGrabRange = 38;
         HookBonus = false;
-
+        //DarkMatterMonolith = false;
         oreDupe = false;
         skyBlessing = false;
         snotOrb = false;
@@ -699,7 +698,7 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            damage += MultiplyCritDamage(damage, 2.5f);
+            damage += MultiplyCritDamage(damage, 1f);
         }
 
         if (crit)
@@ -743,7 +742,7 @@ public class ExxoPlayer : ModPlayer
         {
             //int bonusDmg = -damage;
             //bonusDmg += (int)(damage * (2.5f + 1f) / 2);
-            damage += MultiplyCritDamage(damage, 2.5f);
+            damage += MultiplyCritDamage(damage, 1f);
         }
 
         if (crit)
@@ -2823,10 +2822,10 @@ public class ExxoPlayer : ModPlayer
         Checkpoints,
         Team,
     }
-
+    public bool DarkMatterMonolith;
     public bool quackJump;
     public bool jumpAgainQuack;
-    public bool armorStealth = false;
+    public bool armorStealth;
     public int shadowCheckPointNum = 0;
     public int shadowPlayerNum = 0;
     public int infectTimer = 0;

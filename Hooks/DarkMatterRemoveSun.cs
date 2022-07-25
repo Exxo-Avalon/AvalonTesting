@@ -14,7 +14,7 @@ public class DarkMatterRemoveSun : ModHook
     {
         if (!Main.gameMenu)
         {
-            if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
+            if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
             {
                 orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
             }

@@ -11,7 +11,7 @@ class AncientTitaniumGreaves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ancient Titanium Greaves");
-        Tooltip.SetDefault("10% increased magic damage");
+        Tooltip.SetDefault("14% increased magic damage");
         SacrificeTotal = 1;
     }
 
@@ -27,6 +27,6 @@ class AncientTitaniumGreaves : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.GetDamage(DamageClass.Magic) += 0.1f;
+        player.GetDamage(DamageClass.Magic) += 0.14f;
     }
 }

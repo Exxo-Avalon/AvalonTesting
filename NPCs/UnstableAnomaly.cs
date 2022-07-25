@@ -37,7 +37,7 @@ public class UnstableAnomaly : ModNPC
         NPC.value = Item.buyPrice(0, 1, 0, 0);
         NPC.height = 24;
         NPC.noTileCollide = NPC.noGravity = true;
-        NPC.knockBackResist = 0.3f;
+        NPC.knockBackResist = 0.1f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath6;
         Banner = NPC.type;

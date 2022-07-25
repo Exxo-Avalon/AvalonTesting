@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -40,7 +40,7 @@ public class HeartstoneChest : ModTile
         AdjTiles = new int[] { TileID.Containers };
         ContainerName.SetDefault("Heartstone Chest");
         ChestDrop = ModContent.ItemType<Items.Placeable.Storage.HeartstoneChest>();
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

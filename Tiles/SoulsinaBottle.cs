@@ -1,4 +1,3 @@
-using Avalon.Dusts;
 using Avalon.Items.Placeable.Light;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -14,25 +13,31 @@ public class SoulsinaBottle : ModTile
     public override void SetStaticDefaults()
     {
         Main.tileLighted[Type] = true;
-        HitSound = SoundID.Shatter;
         AddMapEntry(new Color(255, 186, 212), LanguageManager.Instance.GetText("Soul in a Bottle"));
-        //Anim = 90;
+        AnimationFrameHeight = 36;
         Main.tileSolid[Type] = false;
         Main.tileNoAttach[Type] = false;
         Main.tileFrameImportant[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);
         TileObjectData.addTile(Type);
-        DustType = ModContent.DustType<LightningDust>();
+        DustType = DustID.Glass;
     }
 
     public override void AnimateTile(ref int frame, ref int frameCounter)
     {
-        frame = Main.tileFrame[TileID.SoulBottles];
+        frameCounter++;
+        if (frameCounter > 6)
+        {
+            frameCounter = 0;
+            frame++;
+            if (frame >= 4)
+                frame = 0;
+        }
     }
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
         int itemToDrop = 0;
-        switch (frameY / 36)
+        switch (frameX / 18)
         {
             case 0:
                 itemToDrop = ModContent.ItemType<SoulofBlightinaBottle>();
@@ -57,7 +62,7 @@ public class SoulsinaBottle : ModTile
     }
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
     {
-        switch (Main.tile[i, j].TileFrameY / 36)
+        switch (Main.tile[i, j].TileFrameX / 18)
         {
             case 0:
                 r = 226f / 255f;

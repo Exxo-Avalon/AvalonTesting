@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -31,7 +31,6 @@ public class BismuthChandelier : ModTile
         name.SetDefault("Bismuth Chandelier");
         AddMapEntry(new Color(235, 166, 135), name);
     }
-
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
     {
         Tile tile = Main.tile[i, j];
