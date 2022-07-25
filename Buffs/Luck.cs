@@ -8,7 +8,7 @@ public class Luck : ModBuff
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Luck");
+        DisplayName.SetDefault("Clover");
         Description.SetDefault("Doubles rare drop chance");
     }
 
