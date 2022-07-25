@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ class GoldminePickaxe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Goldmine Pickaxe");
-        Tooltip.SetDefault("Able to mine Hellstone");
+        Tooltip.SetDefault("Can mine Rhodium, Osmium, and Iridium");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()
@@ -34,6 +34,10 @@ class GoldminePickaxe : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 12).AddIngredient(ModContent.ItemType<Material.Booger>(), 6).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 12)
+            .AddIngredient(ModContent.ItemType<Material.Booger>(), 6)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

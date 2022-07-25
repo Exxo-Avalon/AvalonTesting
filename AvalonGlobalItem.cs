@@ -659,6 +659,14 @@ public class AvalonGlobalItem : GlobalItem
     {
         TooltipLine? tooltipLine = tooltips.Find(x => x.Name == "ItemName" && x.Mod == "Terraria");
         TooltipLine? tooltipMat = tooltips.Find(x => x.Name == "Material" && x.Mod == "Terraria");
+        TooltipLine? ttlEvilPick = tooltips.Find(x => x.Name == "Tooltip1" && x.Mod == "Terraria");
+        if (ttlEvilPick != null)
+        {
+            if (item.type == ItemID.DeathbringerPickaxe || item.type == ItemID.NightmarePickaxe)
+            {
+                ttlEvilPick.Text = "Can mine Rhodium, Osmium, and Iridium";
+            }
+        }
         if (tooltipMat != null)
         {
             if (item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial)
