@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -20,7 +20,7 @@ public class Peridot : ModTile
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
         HitSound = SoundID.Tink;
-        MinPick = 55;
+        //MinPick = 55;
         DustType = DustID.Grass;
     }
 
