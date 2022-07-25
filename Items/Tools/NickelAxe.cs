@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,5 +29,13 @@ class NickelAxe : ModItem
         Item.UseSound = SoundID.Item1;
         Item.useAnimation = 26;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 9)
+            .AddRecipeGroup(RecipeGroupID.Wood, 3)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

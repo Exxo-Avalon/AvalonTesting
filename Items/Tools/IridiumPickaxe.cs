@@ -39,4 +39,12 @@ class IridiumPickaxe : ModItem
             player.pickSpeed -= 0.5f;
         }
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 13)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 2)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

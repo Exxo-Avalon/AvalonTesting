@@ -699,9 +699,7 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            int bonusDmg = -damage;
-            bonusDmg += (int)(damage * (2.5f + 1f) / 2);
-            damage += bonusDmg;
+            damage += MultiplyCritDamage(damage, 2.5f);
         }
 
         if (crit)
@@ -743,9 +741,9 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            int bonusDmg = -damage;
-            bonusDmg += (int)(damage * (2.5f + 1f) / 2);
-            damage += bonusDmg;
+            //int bonusDmg = -damage;
+            //bonusDmg += (int)(damage * (2.5f + 1f) / 2);
+            damage += MultiplyCritDamage(damage, 2.5f);
         }
 
         if (crit)
@@ -2379,10 +2377,10 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    public int MultiplyCritDamage(int dmg) // dmg = damage before crit application
+    public int MultiplyCritDamage(int dmg, float mult = 0f) // dmg = damage before crit application
     {
         int bonusDmg = -dmg;
-        bonusDmg += (int)(dmg * (CritDamageMult + 1f) / 2);
+        bonusDmg += (int)(dmg * ((mult == 0f ? CritDamageMult : mult) + 1f) / 2);
         return bonusDmg;
     }
 

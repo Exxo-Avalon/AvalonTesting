@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria;
 
 namespace Avalon.Items.Weapons.Melee;
 
@@ -30,5 +31,13 @@ class IridiumGreatsword : ModItem
         Item.useAnimation = 18;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 14)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 3)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

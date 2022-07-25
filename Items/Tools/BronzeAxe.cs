@@ -14,4 +14,12 @@ class BronzeAxe : ModItem
     {
         Item.CloneDefaults(ItemID.TinAxe);
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 9)
+            .AddRecipeGroup(RecipeGroupID.Wood, 3)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

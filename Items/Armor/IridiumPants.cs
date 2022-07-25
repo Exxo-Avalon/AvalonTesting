@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,5 +27,13 @@ class IridiumPants : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Magic) += 0.11f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 17)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 5)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

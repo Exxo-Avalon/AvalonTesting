@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,5 +29,13 @@ class ZincPickaxe : ModItem
         Item.value = 6250;
         Item.useAnimation = 14;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 12)
+            .AddRecipeGroup(RecipeGroupID.Wood, 4)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

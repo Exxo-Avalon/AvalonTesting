@@ -1060,7 +1060,7 @@ public class RecipeCreator : ModSystem
 
         Recipe.Create(ItemID.EnchantedSword)
             .AddIngredient(ModContent.ItemType<EnchantedBar>(), 20)
-            .AddIngredient(ModContent.ItemType<BrokenHiltPiece>(), 5)
+            .AddIngredient(ModContent.ItemType<BrokenHiltPiece>(), 3)
             .AddTile(TileID.Anvils).Register();
 
         Recipe.Create(ModContent.ItemType<InfestedCarcass>())
@@ -1335,9 +1335,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.RainbowRod)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
 
-        Recipe.Create(ModContent.ItemType<OblivionBar>())
-            .AddIngredient(ModContent.ItemType<OblivionOre>(), 7)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+        
 
 
         Recipe.Create(ModContent.ItemType<AwakenedRoseCrown>())
@@ -1570,188 +1568,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.TurtleShell)
             .AddIngredient(ItemID.ChlorophyteBar, 3)
             .AddTile(TileID.MythrilAnvil).Register();
-
-        // phm ore alts
-
-        // bronze
-        Recipe.Create(ModContent.ItemType<BronzeBrick>())
-            .AddIngredient(ModContent.ItemType<BronzeOre>())
-            .AddIngredient(ItemID.StoneBlock)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeBar>())
-            .AddIngredient(ModContent.ItemType<BronzeOre>(), 3)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzePickaxe>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 12)
-            .AddRecipeGroup(RecipeGroupID.Wood, 4)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeAxe>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 9)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeHammer>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 10)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeBroadsword>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 8)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeShortsword>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 7)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<BronzeBow>())
-            .AddIngredient(ModContent.ItemType<BronzeBar>(), 7)
-            .AddTile(TileID.Anvils).Register();
-
-        // staff
-        // end bronze stuff
-
-        // Nickel
-        Recipe.Create(ModContent.ItemType<NickelBrick>())
-            .AddIngredient(ModContent.ItemType<NickelOre>())
-            .AddIngredient(ItemID.StoneBlock)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelDoor>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 6)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelAnvil>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 5)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelBar>())
-            .AddIngredient(ModContent.ItemType<NickelOre>(), 3)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelPickaxe>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 12)
-            .AddRecipeGroup(RecipeGroupID.Wood, 4)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelAxe>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 9)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelHammer>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 10)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelBroadsword>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 8)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelShortsword>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 7)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<NickelBow>())
-            .AddIngredient(ModContent.ItemType<NickelBar>(), 7)
-            .AddTile(TileID.Anvils).Register();
-
-        // staff
-        // end Nickel stuff
-
-        // Zinc
-        Recipe.Create(ModContent.ItemType<ZincBrick>())
-            .AddIngredient(ModContent.ItemType<ZincOre>())
-            .AddIngredient(ItemID.StoneBlock)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincBar>())
-            .AddIngredient(ModContent.ItemType<ZincOre>(), 4)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincPickaxe>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 12)
-            .AddRecipeGroup(RecipeGroupID.Wood, 4)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincAxe>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 9)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincHammer>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 10)
-            .AddRecipeGroup(RecipeGroupID.Wood, 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincBroadsword>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 8)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincShortsword>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 6)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<ZincBow>())
-            .AddIngredient(ModContent.ItemType<ZincBar>(), 7)
-            .AddTile(TileID.Anvils).Register();
-
-        // staff
-        // end Zinc stuff
-
-        // Bismuth
-        Recipe.Create(ModContent.ItemType<BismuthBrick>())
-            .AddIngredient(ModContent.ItemType<BismuthOre>())
-            .AddIngredient(ItemID.StoneBlock)
-            .AddTile(TileID.Furnaces).Register();
-
-        // staff
-
-
-        // end Bismuth stuff
-
-        // Iridium
-        Recipe.Create(ModContent.ItemType<IridiumBrick>())
-            .AddIngredient(ModContent.ItemType<IridiumOre>())
-            .AddIngredient(ItemID.StoneBlock)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumBar>())
-            .AddIngredient(ModContent.ItemType<IridiumOre>(), 4)
-            .AddTile(TileID.Furnaces).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumPickaxe>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 13)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 2)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumHamaxe>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 12)
-            .AddIngredient(ModContent.ItemType<DesertFeather>())
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumGreatsword>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 14)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 3)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumHat>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 15)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 4)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumPlateMail>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 20)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 6)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<IridiumPants>())
-            .AddIngredient(ModContent.ItemType<IridiumBar>(), 17)
-            .AddIngredient(ModContent.ItemType<DesertFeather>(), 5)
-            .AddTile(TileID.Anvils).Register();
-        // end Iridium stuff
 
         #region catalyzer
 

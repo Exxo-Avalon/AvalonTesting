@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,5 +27,13 @@ class IridiumPlateMail : ModItem
     public override void UpdateEquip(Player player)
     {
         player.statManaMax2 += 40;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 6)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

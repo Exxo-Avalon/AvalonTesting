@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -25,5 +25,12 @@ class NickelDoor : ModItem
         Item.value = 200;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Bar.NickelBar>(), 6)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

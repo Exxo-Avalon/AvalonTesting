@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,5 +33,13 @@ class IridiumHamaxe : ModItem
         Item.useAnimation = 13;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 12)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>())
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

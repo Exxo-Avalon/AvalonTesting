@@ -30,4 +30,11 @@ class NickelAnvil : ModItem
         //item.useAnimation = 15;
         //item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Bar.NickelBar>(), 5)
+            .AddTile(TileID.WorkBenches)
+            .Register();
+    }
 }
