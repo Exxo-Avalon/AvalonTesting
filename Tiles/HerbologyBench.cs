@@ -30,11 +30,11 @@ public class HerbologyBench : ModTile
 
     public override bool RightClick(int i, int j)
     {
-        //Main.playerInventory = true;
+        Main.playerInventory = true;
 
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb = !Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb;
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbX = i;
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbY = j;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu = !Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbX = i;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbY = j;
 
         return true;
     }
