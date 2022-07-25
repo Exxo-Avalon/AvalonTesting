@@ -31,7 +31,7 @@ public class Inferno : ModBuff
             }
         }
 
-        if (Main.rand.Next(5) == 0)
+        if (Main.rand.NextBool(5))
         {
             int num10 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Torch, 0f, 0f, 0, default, 1.8f);
             Main.dust[num10].noGravity = true;

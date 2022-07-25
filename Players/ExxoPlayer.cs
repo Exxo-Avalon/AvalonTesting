@@ -524,7 +524,10 @@ public class ExxoPlayer : ModPlayer
                 reckoningHit = 0;
             }
         }
-
+        if (Player.meleeEnchant == 9)
+        {
+            target.AddBuff(ModContent.BuffType<Virulent>(), 60 * 9);
+        }
         if (crit)
         {
             if (Main.rand.NextBool(8) && Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
@@ -694,7 +697,12 @@ public class ExxoPlayer : ModPlayer
             target.DelBuff(target.FindBuffIndex(ModContent.BuffType<CurseofAvalon>()));
         }
 
-
+        if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
+        {
+            int bonusDmg = -damage;
+            bonusDmg += (int)(damage * (2.5f + 1f) / 2);
+            damage += bonusDmg;
+        }
 
         if (crit)
         {
@@ -731,6 +739,13 @@ public class ExxoPlayer : ModPlayer
                     damage = (int)(damage * 1.10f);
                 }
             }
+        }
+
+        if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
+        {
+            int bonusDmg = -damage;
+            bonusDmg += (int)(damage * (2.5f + 1f) / 2);
+            damage += bonusDmg;
         }
 
         if (crit)
@@ -2364,7 +2379,7 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    public int MultiplyCritDamage(int dmg) // dmg = damage befor crit application
+    public int MultiplyCritDamage(int dmg) // dmg = damage before crit application
     {
         int bonusDmg = -dmg;
         bonusDmg += (int)(dmg * (CritDamageMult + 1f) / 2);
