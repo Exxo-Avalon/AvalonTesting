@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -21,7 +21,6 @@ public class YuckyKnife : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = 1;
         Projectile.DamageType = DamageClass.Melee;
-        Projectile.light = 0.6f;
         Projectile.ignoreWater = true;
         Projectile.extraUpdates = 0;
         Projectile.timeLeft = 300;
@@ -29,6 +28,7 @@ public class YuckyKnife : ModProjectile
 
     public override void AI()
     {
+        Lighting.AddLight(Projectile.position, 20 / 255f, 30 / 255f, 0);
         Projectile.rotation += (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y)) * 0.03f * Projectile.direction;
         Projectile.ai[0] += 1f;
         if (Projectile.ai[0] < 30f)

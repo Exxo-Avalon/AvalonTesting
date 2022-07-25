@@ -27,7 +27,7 @@ public class PhantomKnife : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 145 / 255, 1, 1);
+        Lighting.AddLight(Projectile.position, 70 / 255, 130 / 255f, 130 / 255f);
         return true;
     }
     public override void AI()

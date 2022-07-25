@@ -21,13 +21,13 @@ class PeridotStaff : ModItem
         Rectangle dims = this.GetDims();
         Item.width = dims.Width;
         Item.height = dims.Height;
-        Item.damage = 24;
+        Item.damage = 21;
         Item.autoReuse = true;
         Item.shootSpeed = 7.75f;
-        Item.mana = 10;
+        Item.mana = 7;
         Item.rare = ItemRarityID.Blue;
-        Item.useTime = 26;
-        Item.useAnimation = 26;
+        Item.useTime = 31;
+        Item.useAnimation = 31;
         Item.knockBack = 4.75f;
         Item.shoot = ModContent.ProjectileType<Projectiles.PeridotBolt>();
         Item.value = Item.buyPrice(0, 3, 60, 0);
