@@ -32,6 +32,26 @@ public class PhantasmalBullet : ModProjectile
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
     }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            int d = Dust.NewDust(Projectile.position, 8, 8, DustID.VampireHeal);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 1.5f;
+            Main.dust[d].scale *= 0.7f;
+        }
+    }
+    public override void OnHitPvp(Player target, int damage, bool crit)
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            int d = Dust.NewDust(Projectile.position, 8, 8, DustID.VampireHeal);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 1.5f;
+            Main.dust[d].scale *= 0.7f;
+        }
+    }
     public override void Kill(int timeLeft)
     {
         if (Projectile.penetrate == 1)

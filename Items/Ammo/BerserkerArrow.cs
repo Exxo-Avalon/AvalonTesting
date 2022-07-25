@@ -10,6 +10,7 @@ class BerserkerArrow : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserker Arrow");
+        //Tooltip.SetDefault("Bounces and rains stars down from the heavens");
         SacrificeTotal = 300;
     }
 
