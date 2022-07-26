@@ -93,11 +93,11 @@ internal class ExxoUINumberInput : ExxoUIList
         {
             if (i < numString.Length)
             {
-                numbers[i].InnerElement.SetText(numString[i].ToString());
+                numbers[i].TextElement.SetText(numString[i].ToString());
             }
             else
             {
-                numbers[i].InnerElement.SetText("");
+                numbers[i].TextElement.SetText("");
             }
         }
 
@@ -130,8 +130,7 @@ internal class ExxoUINumberInput : ExxoUIList
 
         for (int i = 0; i < amountNumbers; i++)
         {
-            var text = new ExxoUIText("") { VAlign = UIAlign.Center, HAlign = UIAlign.Center };
-            var number = new ExxoUITextPanel(text) { FitMinToInnerElement = false, Width = textSize.MinWidth };
+            var number = new ExxoUITextPanel("") { Width = textSize.MinWidth };
             number.Height.Pixels = textSize.MinHeight.Pixels * 2;
             Append(number);
             numbers[i] = number;

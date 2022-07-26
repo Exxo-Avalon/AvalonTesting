@@ -7,7 +7,7 @@ internal class HerbologyUIHelpAttachment : ExxoUIAttachment<ExxoUIElement, ExxoU
     private bool attachedThisUpdate;
     private bool enabled;
 
-    public HerbologyUIHelpAttachment() : base(new ExxoUITextPanel(new ExxoUIText("")))
+    public HerbologyUIHelpAttachment() : base(new ExxoUITextPanel(""))
     {
         Color newColor = AttachmentElement.BackgroundColor;
         newColor.A = 255;
@@ -57,7 +57,7 @@ internal class HerbologyUIHelpAttachment : ExxoUIAttachment<ExxoUIElement, ExxoU
             {
                 attachedThisUpdate = true;
                 AttachTo(element);
-                AttachmentElement.InnerElement.SetText(description);
+                AttachmentElement.TextElement.SetText(description);
             }
         };
         element.OnLastMouseOut += delegate

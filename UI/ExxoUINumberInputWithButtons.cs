@@ -27,7 +27,7 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
 
         incrementButton =
             new ExxoUIImageButton(
-                Avalon.Mod.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn"));
+                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn"));
         incrementButton.OnClick += delegate
         {
             NumberInput.Number++;
@@ -35,7 +35,7 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
         buttonColumn.Append(incrementButton);
         decrementButton =
             new ExxoUIImageButton(
-                Avalon.Mod.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut"));
+                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut"));
         decrementButton.OnClick += delegate
         {
             NumberInput.Number--;

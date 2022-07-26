@@ -36,9 +36,9 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
         list.FitWidthToContent = true;
         list.ContentVAlign = UIAlign.Center;
 
-        var iconBackground = new ExxoUIImage(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/Wires_1"));
+        var iconBackground = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/Wires_1"));
         list.Append(iconBackground);
-        var innerImage = new ExxoUIImage(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
+        var innerImage = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
         {
             VAlign = UIAlign.Center, HAlign = UIAlign.Center,
         };
@@ -94,7 +94,7 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
             contentHolder.RemoveAllChildren();
             if (ListIsOversize)
             {
-                var image = new ExxoUIImage(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
+                var image = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
                 {
                     VAlign = UIAlign.Center, HAlign = UIAlign.Center,
                 };

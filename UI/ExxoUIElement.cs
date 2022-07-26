@@ -128,7 +128,7 @@ public abstract class ExxoUIElement : UIElement
     ///     This works because the UIChanges.ILUIElementRecalculate hook doesn't recalulate children if the element is an
     ///     ExxoUIElement
     /// </summary>
-    public void RecalculateSelf() => base.Recalculate();
+    public virtual void RecalculateSelf() => base.Recalculate();
 
     protected virtual void UpdateSelf(GameTime gameTime)
     {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.UI;
 
 namespace Avalon.UI.Herbology;
@@ -31,7 +32,7 @@ internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
         herbExchangeTitleContainer.Append(title);
 
         Toggle = new ExxoUIImageButtonToggle(
-            Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"), Color.White,
+            Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"), Color.White,
             Color.Orange) { Tooltip = "Toggle Potions/Elixirs" };
         herbExchangeTitleContainer.Append(Toggle);
 

@@ -26,10 +26,11 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Justification = Justification.Center;
         InnerElement.ContentHAlign = UIAlign.Center;
 
-        RankTitleText = new ExxoUITextPanel(new ExxoUIText("") { TextColor = Color.Gold });
+        RankTitleText = new ExxoUITextPanel("");
+        RankTitleText.TextElement.TextColor = Color.Gold;
         InnerElement.Append(RankTitleText);
 
-        HerbTierText = new ExxoUITextPanel(new ExxoUIText(""));
+        HerbTierText = new ExxoUITextPanel("");
         InnerElement.Append(HerbTierText);
 
         HerbTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList())
@@ -43,7 +44,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(HerbTotalContainer);
 
         herbTotalIcon =
-            new ExxoUIImage(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"))
+            new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"))
             {
                 Inset = new Vector2(7, 7),
             };
@@ -63,7 +64,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(PotionTotalContainer);
 
         potionTotalIcon =
-            new ExxoUIImage(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"))
+            new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"))
             {
                 Inset = new Vector2(4, 5),
             };
@@ -81,10 +82,10 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         ExxoHerbologyPlayer modPlayer = player.GetModPlayer<ExxoHerbologyPlayer>();
 
         string rankTitle = $"Herbology {modPlayer.herbTier}";
-        RankTitleText.InnerElement.SetText(rankTitle);
+        RankTitleText.TextElement.SetText(rankTitle);
 
         string tier = $"Tier {(int)modPlayer.herbTier + 1} Herbologist";
-        HerbTierText.InnerElement.SetText(tier);
+        HerbTierText.TextElement.SetText(tier);
 
         string herbTotal = modPlayer.herbTotal.ToString();
         herbTotalText.SetText(herbTotal);

@@ -34,18 +34,20 @@ public class HerbologyUIState : ExxoUIState
 
         helpAttachment = new HerbologyUIHelpAttachment();
 
-        MainPanel = new ExxoUIDraggablePanel();
+        MainPanel = new ExxoUIDraggablePanel
+        {
+            Width = StyleDimension.FromPixels(720),
+            Height = StyleDimension.FromPixels(660),
+            VAlign = UIAlign.Center,
+            HAlign = UIAlign.Center,
+        };
         MainPanel.SetPadding(15);
-        MainPanel.Width.Set(720, 0);
-        MainPanel.Height.Set(660, 0);
-        MainPanel.VAlign = UIAlign.Center;
-        MainPanel.HAlign = UIAlign.Center;
         Append(MainPanel);
 
-        var mainContainer = new ExxoUIList();
-        mainContainer.Width.Set(0, 1);
-        mainContainer.Height.Set(0, 1);
-        mainContainer.ContentHAlign = UIAlign.Center;
+        var mainContainer = new ExxoUIList
+        {
+            Width = StyleDimension.Fill, Height = StyleDimension.Fill, ContentHAlign = UIAlign.Center,
+        };
         MainPanel.Append(mainContainer);
 
         var titleRow = new ExxoUIList()
@@ -57,12 +59,11 @@ public class HerbologyUIState : ExxoUIState
         };
         titleRow.Width.Set(0, 1);
         mainContainer.Append(titleRow);
-
-        var titleText = new ExxoUITextPanel(new ExxoUIText("Herbology Bench", 0.8f, true));
+        var titleText = new ExxoUITextPanel("Herbology Bench", 0.8f, true);
         titleRow.Append(titleText);
 
         helpToggle =
-            new ExxoUIImageButtonToggle(Avalon.Mod.Assets.Request<Texture2D>("Images/UI/ButtonRename"),
+            new ExxoUIImageButtonToggle(Main.Assets.Request<Texture2D>("Images/UI/ButtonRename"),
                 Color.White * 0.7f, Color.White) { Scale = 2, Tooltip = "Help" };
         titleRow.Append(helpToggle);
         helpToggle.OnToggle += (toggled) =>
@@ -248,6 +249,7 @@ public class HerbologyUIState : ExxoUIState
     public override void Click(UIMouseEvent evt)
     {
         base.Click(evt);
+        return;
         if (!purchaseAttachment.ContainsPoint(evt.MousePosition) &&
             !herbCountAttachment.ContainsPoint(evt.MousePosition) &&
             purchaseAttachment.AttachmentHolder?.ContainsPoint(evt.MousePosition) == false)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.UI;
 
 namespace Avalon.UI.Herbology;
@@ -31,7 +32,7 @@ internal class HerbologyUIHerbExchange : ExxoUIPanelWrapper<ExxoUIList>
         herbExchangeTitleContainer.Append(title);
 
         Toggle = new ExxoUIImageButtonToggle(
-            Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"), Color.Red, Color.White)
+            Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"), Color.Red, Color.White)
         {
             Tooltip = "Toggle Seeds/Large Seeds",
         };

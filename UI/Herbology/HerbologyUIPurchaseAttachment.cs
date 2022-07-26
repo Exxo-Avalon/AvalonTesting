@@ -104,14 +104,14 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         {
             balance = modPlayer.herbTotal;
             balanceIcon.SetImage(
-                Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"));
+                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"));
             balanceIcon.Inset = new Vector2(11, 11);
         }
         else
         {
             balance = modPlayer.potionTotal;
             balanceIcon.SetImage(
-                Avalon.Mod.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"));
+                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"));
             balanceIcon.Inset = new Vector2(8, 5);
         }
 
