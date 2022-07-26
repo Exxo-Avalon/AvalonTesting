@@ -70,7 +70,10 @@ public class Rafflesia : ModNPC
         if (NPC.ai[1] == 1)
         {
             NPC.ai[2]++;
-            if (NPC.ai[2] == 60 || NPC.ai[2] == 120 || NPC.ai[2] == 180) NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.position.Y + 8, NPCID.Bee, Target: NPC.target);
+            int type = ModContent.NPCType<FlySmall>();
+            if (Main.rand.NextBool(3))
+                type = ModContent.NPCType<Fly>();
+            if (NPC.ai[2] is 60 or 120 or 180) NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.position.Y + 8, type, Target: NPC.target);
             if (NPC.ai[2] == 188)
             {
                 NPC.ai[2] = 0;
@@ -83,33 +86,57 @@ public class Rafflesia : ModNPC
 
     public override void FindFrame(int frameHeight)
     {
+        int firstStart = 45;
+
         if (NPC.ai[1] == 0)
         {
             NPC.frameCounter++;
-            if (NPC.frameCounter < 16)
+            // start, slower
+            if (NPC.ai[0] < 180)
             {
-                NPC.frame.Y = 0;
+                if (NPC.frameCounter < 16)
+                {
+                    NPC.frame.Y = 0;
+                }
+                else if (NPC.frameCounter < 32)
+                {
+                    NPC.frame.Y = frameHeight;
+                }
+                else
+                {
+                    NPC.frameCounter = 0;
+                }
             }
-            else if (NPC.frameCounter < 32)
+            // faster
+            else
             {
-                NPC.frame.Y = frameHeight;
+                if (NPC.frameCounter < 8)
+                {
+                    NPC.frame.Y = 0;
+                }
+                else if (NPC.frameCounter < 16)
+                {
+                    NPC.frame.Y = frameHeight;
+                }
+                else
+                {
+                    NPC.frameCounter = 0;
+                }
             }
-            else NPC.frameCounter = 0;
         }
         else if (NPC.ai[1] == 1)
         {
-            if (NPC.ai[2] < 30 || NPC.ai[2] >= 70 && NPC.ai[2] < 90 || NPC.ai[2] >= 130 && NPC.ai[2] < 150) // squish frame
+            if (NPC.ai[2] is < 40 or >= 60 and < 100 or >= 120 and < 160 ) // squish frame
+            {
+                NPC.frame.Y = frameHeight;
+            }
+            else if (NPC.ai[2] is >= 40 and < 50 or >= 100 and < 110 or >= 160 and < 170)
             {
                 NPC.frame.Y = frameHeight * 2;
             }
-            else if (NPC.ai[2] >= 30 && NPC.ai[2] < 50 || NPC.ai[2] >= 90 && NPC.ai[2] < 110 || NPC.ai[2] >= 150 && NPC.ai[2] < 170)
+            else if (NPC.ai[2] is >= 50 and < 60 or >= 110 and < 120 or >= 170 and < 180)
             {
                 NPC.frame.Y = frameHeight * 3;
-            }
-            else if (NPC.ai[2] >= 50 && NPC.ai[2] < 70 || NPC.ai[2] >= 110 && NPC.ai[2] < 130)
-            {
-                if (NPC.ai[2] % 6 == 0 || NPC.ai[2] % 6 == 1 || NPC.ai[2] % 8 == 6 || NPC.ai[2] % 6 == 3) NPC.frame.Y = 0;
-                else NPC.frame.Y = frameHeight;
             }
         }
     }
