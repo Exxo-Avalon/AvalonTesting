@@ -1,4 +1,5 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
+using Avalon.Items.Vanity;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Enums;
@@ -18,14 +19,14 @@ public class TropicalShortGrass : ModTile
         Main.tileNoAttach[Type] = true;
         Main.tileNoFail[Type] = true;
         Main.tileLavaDeath[Type] = true;
-        Main.tileWaterDeath[Type] = true;
+        Main.tileWaterDeath[Type] = false;
         Main.tileFrameImportant[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
         TileObjectData.newTile.AnchorValidTiles = new int[1] { ModContent.TileType<TropicalGrass>() };
         TileObjectData.newTile.WaterPlacement = LiquidPlacement.Allowed;
         TileObjectData.newTile.LavaDeath = true;
         TileObjectData.addTile(Type);
-        DustType = DustID.Grass;
+        DustType = ModContent.DustType<Dusts.TropicalDust>();
         HitSound = SoundID.Grass;
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
@@ -45,6 +46,10 @@ public class TropicalShortGrass : ModTile
     {
         if (Main.tile[i, j].TileFrameX / 18 == 8)
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<TropicalShroomCap>());
+        if (Main.tile[i, j].TileFrameX / 18 == 9)
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.NaturesGift);
+        if (Main.tile[i, j].TileFrameX / 18 is 6 or 7)
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<TropicsLily>());
     }
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
     {

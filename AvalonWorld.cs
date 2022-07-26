@@ -1522,6 +1522,14 @@ public class AvalonWorld : ModSystem
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<TropicalShortGrass>(), true);
                     Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 8) * 18);
+                    if (WorldGen.genRand.NextBool(60))
+                    {
+                        Main.tile[num5, num9].TileFrameX = 18 * 8; // shroom cap
+                    }
+                    else if (WorldGen.genRand.NextBool(230))
+                    {
+                        Main.tile[num5, num9].TileFrameX = 18 * 9; // nature's gift
+                    }
                     if (Main.tile[num5, num9].HasTile)
                     {
                         Tile t = Main.tile[num5, num9];
