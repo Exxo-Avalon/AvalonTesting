@@ -1,10 +1,10 @@
 using System;
-using Avalon.Buffs;
-using Avalon.Items.BossBags;
-using Avalon.Items.Material;
-using Avalon.Items.Vanity;
-using Avalon.Items.Weapons.Magic;
-using Avalon.Systems;
+using AvalonTesting.Buffs;
+using AvalonTesting.Items.BossBags;
+using AvalonTesting.Items.Material;
+using AvalonTesting.Items.Vanity;
+using AvalonTesting.Items.Weapons.Magic;
+using AvalonTesting.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -13,7 +13,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.NPCs.Bosses;
+namespace AvalonTesting.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class DesertBeak : ModNPC
@@ -25,13 +25,17 @@ public class DesertBeak : ModNPC
         var debuffData = new NPCDebuffImmunityData { SpecificallyImmuneTo = new[] { ModContent.BuffType<Frozen>() } };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
-
+    private bool transformed;
+    private Vector2 lockon_player;
     public override void SetDefaults()
     {
+        NPC.TargetClosest();
+        Player player = Main.player[NPC.target];
+
         NPC.damage = 40;
         NPC.boss = true;
         NPC.noTileCollide = true;
-        NPC.lifeMax = 3500;
+        NPC.lifeMax = 3650;
         NPC.defense = 18;
         NPC.noGravity = true;
         NPC.width = 130;
@@ -44,6 +48,8 @@ public class DesertBeak : ModNPC
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
         Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak");
+        NPC.Center = player.Center + new Vector2( 300 , -600);
+        transformed = false;
     }
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -73,15 +79,16 @@ public class DesertBeak : ModNPC
         npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DesertBeakBossBag>()));
     }
 
+    private int winddir;
+    private int mode;
+    
+    private int divetimer;
+    private int modetimer;
+
     public override void AI()
     {
-        int stageFactor = 30;
-        if (Main.expertMode)
-        {
-            stageFactor = 15;
-        }
+        Player player = Main.player[NPC.target];
 
-        NPC.ai[0]++;
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
         {
             NPC.TargetClosest();
@@ -97,195 +104,149 @@ public class DesertBeak : ModNPC
             }
         }
 
-        if (NPC.ai[0] < stageFactor * 10)
+        if(NPC.alpha > 110)
         {
-            Vector2 pVel = Main.player[NPC.target].velocity;
-            Vector2 pPos = Main.player[NPC.target].position;
-            if (NPC.position.X + (NPC.width / 2) > Main.player[NPC.target].Center.X)
-            {
-                NPC.direction = -1;
-                if (NPC.velocity.X > 0f)
-                {
-                    NPC.velocity.X *= 0.96f;
-                }
-
-                NPC.velocity.X -= 0.05f;
-                if (NPC.velocity.X > 8f)
-                {
-                    NPC.velocity.X = 8f;
-                }
-            }
-
-            if (NPC.position.X + (NPC.width / 2) < Main.player[NPC.target].Center.X)
-            {
-                NPC.direction = 1;
-                if (NPC.velocity.X < 0f)
-                {
-                    NPC.velocity.X *= 0.96f;
-                }
-
-                NPC.velocity.X += 0.05f;
-                if (NPC.velocity.X < -8f)
-                {
-                    NPC.velocity.X = -8f;
-                }
-            }
-
-            if (pPos.Y + 75 < NPC.position.Y)
-            {
-                NPC.dontTakeDamage = true;
-                NPC.ai[1]++;
-                if (NPC.ai[1] >= 60)
-                {
-                    float Speed = 8f;
-                    SoundEngine.PlaySound(SoundID.Item17, NPC.position);
-                    float rotation =
-                        (float)Math.Atan2(NPC.Center.Y - (pPos.Y + (Main.player[NPC.target].height * 0.5f)),
-                            NPC.Center.X - (pPos.X + (Main.player[NPC.target].width * 0.5f)));
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y,
-                        (float)(Math.Cos(rotation) * Speed * -1), (float)(Math.Sin(rotation) * Speed * -1), 83, 40, 0f,
-                        0);
-                    NPC.ai[1] = 0;
-                }
-            }
-
-            if (pPos.Y - 250 < NPC.position.Y)
-            {
-                if (NPC.velocity.Y > 0)
-                {
-                    NPC.velocity.Y *= 0.98f;
-                }
-
-                NPC.velocity.Y -= 0.02f;
-                if (NPC.velocity.Y > 2.2f)
-                {
-                    NPC.velocity.Y = 2.2f;
-                }
-            }
-
-            if (pPos.Y - 250 > NPC.position.Y)
-            {
-                NPC.dontTakeDamage = false;
-                if (NPC.velocity.Y < 0)
-                {
-                    NPC.velocity.Y *= 0.98f;
-                }
-
-                NPC.velocity.Y += 0.02f;
-                if (NPC.velocity.Y < -2.2f)
-                {
-                    NPC.velocity.Y = -2.2f;
-                }
-            }
-        }
-        else if (NPC.ai[0] >= stageFactor * 10 && NPC.ai[0] < stageFactor * 11)
-        {
-            NPC.dontTakeDamage = false;
-            float num131 = 6f;
-            var vector14 = new Vector2(NPC.position.X + (NPC.width * 0.5f), NPC.position.Y + (NPC.height * 0.5f));
-            float num132 = Main.player[NPC.target].position.X + (Main.player[NPC.target].width / 2) - vector14.X;
-            float num133 = Main.player[NPC.target].position.Y + (Main.player[NPC.target].height / 2) - vector14.Y;
-            float num134 = (float)Math.Sqrt((num132 * num132) + (num133 * num133));
-            num134 = num131 / num134;
-            NPC.velocity.X = num132 * num134;
-            NPC.velocity.Y = num133 * num134;
-            if (Main.expertMode && NPC.ai[3] < 3)
-            {
-                NPC.ai[0] = stageFactor * 10;
-                NPC.ai[3]++;
-            }
-        }
-        else if (NPC.ai[0] >= stageFactor * 11 && NPC.ai[0] < stageFactor * 20)
-        {
-            NPC.dontTakeDamage = false;
-            NPC.ai[3] = 0;
-            Vector2 pVel = Main.player[NPC.target].velocity;
-            Vector2 pPos = Main.player[NPC.target].position;
-            if (NPC.position.X + (NPC.width / 2) > Main.player[NPC.target].Center.X)
-            {
-                NPC.direction = -1;
-                if (NPC.velocity.X > 0f)
-                {
-                    NPC.velocity.X *= 0.98f;
-                }
-
-                NPC.velocity.X -= 0.05f;
-                if (NPC.velocity.X > 8f)
-                {
-                    NPC.velocity.X = 8f;
-                }
-            }
-
-            if (NPC.position.X + (NPC.width / 2) < Main.player[NPC.target].Center.X)
-            {
-                NPC.direction = 1;
-                if (NPC.velocity.X < 0f)
-                {
-                    NPC.velocity.X *= 0.98f;
-                }
-
-                NPC.velocity.X += 0.05f;
-                if (NPC.velocity.X < -8f)
-                {
-                    NPC.velocity.X = -8f;
-                }
-            }
-
-            if (pPos.Y - 250 < NPC.position.Y)
-            {
-                if (NPC.velocity.Y > 0)
-                {
-                    NPC.velocity.Y *= 0.98f;
-                }
-
-                NPC.velocity.Y -= 0.02f;
-                if (NPC.velocity.Y > 2.2f)
-                {
-                    NPC.velocity.Y = 2.2f;
-                }
-            }
-
-            if (pPos.Y - 250 > NPC.position.Y)
-            {
-                NPC.dontTakeDamage = false;
-                if (NPC.velocity.Y < 0)
-                {
-                    NPC.velocity.Y *= 0.98f;
-                }
-
-                NPC.velocity.Y += 0.02f;
-                if (NPC.velocity.Y < -2.2f)
-                {
-                    NPC.velocity.Y = -2.2f;
-                }
-            }
-
-            NPC.ai[2]++;
-            if (NPC.ai[2] >= 90)
-            {
-                for (int i = 0; i < (Main.expertMode ? 4 : 1); i++)
-                {
-                    float Speed = 5f;
-                    var npcPosRefined = new Vector2(NPC.position.X + (NPC.width * 0.5f),
-                        NPC.position.Y + (NPC.height / 2));
-                    float rotation =
-                        (float)Math.Atan2(npcPosRefined.Y - (pPos.Y + (Main.player[NPC.target].height * 0.5f)),
-                            npcPosRefined.X - (pPos.X + (Main.player[NPC.target].width * 0.5f)));
-                    float speedX = (float)(Math.Cos(rotation) * Speed * -1);
-                    float speedY = (float)(Math.Sin(rotation) * Speed * -1);
-                    float num78 = speedX + (Main.rand.Next(-50, 51) * 0.05f);
-                    float num79 = speedY + (Main.rand.Next(-50, 51) * 0.05f);
-                    SoundEngine.PlaySound(SoundID.Item11, NPC.position);
-                    int bomb = Projectile.NewProjectile(NPC.GetSource_FromAI(), npcPosRefined.X, npcPosRefined.Y, num78,
-                        num79, 102, 20, 0f, 0);
-                }
-
-                NPC.ai[2] = 0;
-            }
+            NPC.dontTakeDamage = true;
         }
         else
         {
-            NPC.ai[0] = 0;
+            NPC.dontTakeDamage = false;
+        }
+
+
+        if (NPC.life > (int)NPC.lifeMax * 0.45f  && !Main.player[NPC.target].dead)
+        {
+            NPC.TargetClosest();
+            switch (mode)
+            {
+                case 0:
+
+                    lockon_player = player.Center;
+                    NPC.alpha += 7;
+                    NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(0, -300));
+
+                    if (NPC.alpha >= 254)
+                    {
+                        SoundEngine.PlaySound(SoundID.NPCHit28);
+                        NPC.velocity = new Vector2(0,0);
+                        NPC.Center = lockon_player + new Vector2 (-500, -500);
+                        mode = 1;
+                    }
+
+                    break;
+
+
+                case 1:
+
+
+                    if (NPC.alpha <= 100)
+                    {
+                        NPC.alpha = 0;
+                        if (NPC.Center.X < lockon_player.X)
+                        {
+                            divetimer++;                            //the closer to 1 the less vertical speed decay
+                            NPC.velocity = new Vector2(6, (float)(7 * Math.Pow(0.98, divetimer))); 
+                        }
+                        else
+                        {
+                                                                   //the closer to 1 the less vertical speed decay
+                            divetimer--;
+                            NPC.velocity = new Vector2(6, (float)(-7 * Math.Pow(0.98, divetimer)));
+                        }
+                    }
+                    else
+                    {
+                        //curently alpha is used a a trigger for the dive but it can be changed
+                        lockon_player = player.Center;
+                        NPC.alpha -= 7;
+                        NPC.velocity = new Vector2(0, 0);
+                        NPC.Center = lockon_player + new Vector2(-300, -250);
+                    }
+
+                    if(NPC.Center.Y < lockon_player.Y -260)
+                    {
+                        mode = 2;
+                        NPC.alpha = 0;
+                        NPC.velocity = new Vector2(0, 0);
+                    }
+
+                    break;
+
+                case 2:
+
+                    NPC.velocity = NPC.DirectionTo(player.Center + new Vector2 (0,-300)) * 7;
+
+                    modetimer++;
+                    divetimer++;
+
+                    if(divetimer >= 60)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0,6).RotatedByRandom(5), ProjectileID.DD2BetsyFireball, 20, 0, player.whoAmI);
+
+                        }
+                        divetimer = 0;
+                    }
+                    if (modetimer >= 600)
+                    {
+                        modetimer = 0;
+                        mode = 0;
+                        divetimer = 0;
+                    }
+
+
+                    break;
+
+            }
+        }
+        else if (NPC.life < (int)NPC.lifeMax * 0.45f && !Main.player[NPC.target].dead)
+        {
+            NPC.TargetClosest();
+            //When at this stage the boss whips up strong winds pushing the player in whatever direction the wind blows
+            if (!transformed)
+            {
+                Main.NewText("The wind is growing stronger and is kicking up a lot of sand.", Color.SandyBrown);
+                transformed = true;
+                mode = 0;
+                NPC.velocity = new Vector2(0, 0);
+            }
+
+            for (int i = 0; i < 15; i++)
+            {
+                int dustType = 32;
+                int dustIndex = Dust.NewDust(player.position - new Vector2(600, 600), player.width * 100, player.height * 100, -100, 0, 0, dustType);
+
+
+            }
+
+
+            player.AddBuff(BuffID.WindPushed, 60);
+
+            switch (mode)
+            {
+                case 0:
+
+
+
+
+
+
+                    break;
+
+
+                case 1:
+                    // Quickly dashes to a random location above the player and fires a spread of 3 feathers
+
+                    break;
+
+                case 2:
+                    // Flies in front of the player and shoots a sand tornado
+
+                    break;
+
+            }
         }
     }
 
