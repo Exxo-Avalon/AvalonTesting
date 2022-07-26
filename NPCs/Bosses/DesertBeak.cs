@@ -1,10 +1,10 @@
 using System;
-using AvalonTesting.Buffs;
-using AvalonTesting.Items.BossBags;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Systems;
+using Avalon.Buffs;
+using Avalon.Items.BossBags;
+using Avalon.Items.Material;
+using Avalon.Items.Vanity;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -48,7 +48,7 @@ public class DesertBeak : ModNPC
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
         Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak");
-        NPC.Center = player.Center + new Vector2( 300 , -600);
+        NPC.Center = player.Center + new Vector2(300, -600);
         transformed = false;
     }
 
