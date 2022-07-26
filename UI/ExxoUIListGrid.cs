@@ -1,50 +1,55 @@
-﻿using Terraria.UI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Terraria.UI;
 
 namespace Avalon.UI;
 
 public class ExxoUIListGrid : ExxoUIList
 {
     private readonly int amountPerInnerList;
+    private readonly List<UIElement> gridElements = new();
 
     public ExxoUIListGrid(int amountPerInnerList = -1)
     {
         this.amountPerInnerList = amountPerInnerList;
         Direction = Direction.Vertical;
         FitHeightToContent = true;
-        Width.Set(0, 1);
     }
 
-    public new void Append(UIElement item)
+    /// <inheritdoc />
+    public override void RecalculateChildren()
     {
-        Append(item, new ElementParams());
-    }
-
-    public new void Append(UIElement item, ElementParams elementParams)
-    {
-        if (Elements.Count == 0)
+        RemoveAllChildren();
+        AddNewInnerList();
+        foreach (UIElement element in gridElements)
         {
-            AddNewInnerList();
+            DealWithItem(element);
         }
 
-        var lastElement = (Elements[^1] as ExxoUIList)!;
+        base.RecalculateChildren();
+    }
+
+    public new void Append(UIElement item) => gridElements.Add(item);
+
+    private void DealWithItem(UIElement item)
+    {
+        var lastElement = (Elements.Last() as ExxoUIList)!;
 
         if (amountPerInnerList == -1)
         {
-            if (lastElement.MinWidth.Pixels + item.MinWidth.Pixels + ((lastElement.ElementCount - 1) * ListPadding) >
+            if (lastElement.MinWidth.Pixels + item.MinWidth.Pixels + ListPadding >
                 GetInnerDimensions().Width)
             {
                 lastElement = AddNewInnerList();
             }
         }
-        else
+        else if (lastElement.ElementCount >= amountPerInnerList)
         {
-            if (lastElement.ElementCount >= amountPerInnerList)
-            {
-                lastElement = AddNewInnerList();
-            }
+            lastElement = AddNewInnerList();
         }
 
-        lastElement.Append(item, elementParams);
+        lastElement.Append(item);
+        lastElement.Recalculate();
     }
 
     private ExxoUIList AddNewInnerList()
@@ -52,9 +57,17 @@ public class ExxoUIListGrid : ExxoUIList
         var list = new ExxoUIList();
         list.Direction = Direction.Horizontal;
         list.FitHeightToContent = true;
+        list.FitWidthToContent = true;
         list.Width.Set(0, 1);
         list.ListPadding = ListPadding;
         base.Append(list);
         return list;
+    }
+
+    /// <inheritdoc />
+    public override void Clear()
+    {
+        base.Clear();
+        gridElements.Clear();
     }
 }

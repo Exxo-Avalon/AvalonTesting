@@ -10,7 +10,7 @@ public class ExxoUIDraggablePanel : ExxoUIPanel
 
     public override void MouseDown(UIMouseEvent evt)
     {
-        if (evt.Target == this)
+        if (evt.Target == ChildBase)
         {
             clickDelta = UserInterface.ActiveInstance.MousePosition -
                          new Vector2(GetInnerDimensions().X, GetInnerDimensions().Y);

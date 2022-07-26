@@ -4,7 +4,6 @@ namespace Avalon.UI;
 
 public class ExxoUIPanelWrapper<T> : ExxoUIPanel where T : UIElement
 {
-    public readonly T InnerElement;
     private StyleDimension origHeight;
     private StyleDimension origWidth;
 
@@ -19,6 +18,11 @@ public class ExxoUIPanelWrapper<T> : ExxoUIPanel where T : UIElement
 
         Append(InnerElement);
     }
+
+    /// <inheritdoc />
+    public override bool IsDynamicallySized => FitToInnerElement || FitMinToInnerElement;
+
+    public T InnerElement { get; }
 
     public bool FitToInnerElement { get; set; }
     public bool FitMinToInnerElement { get; set; }

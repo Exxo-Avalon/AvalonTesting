@@ -116,7 +116,7 @@ public class HerbologyUIState : ExxoUIState
         helpAttachment.Register(herbExchange.Grid, "Select an item to purchase");
 
         herbExchange.Toggle.OnToggle += (toggled) => RefreshHerbList(toggled);
-        herbExchange.Scrollbar.InnerElement.OnViewPositionChanged += delegate
+        herbExchange.Scrollbar.OnViewPositionChanged += delegate
         {
             purchaseAttachment.AttachTo(null);
             herbCountAttachment.AttachTo(null);
@@ -139,7 +139,7 @@ public class HerbologyUIState : ExxoUIState
         helpAttachment.Register(potionExchange.Grid, "Select an item to purchase");
 
         potionExchange.Toggle.OnToggle += (toggled) => RefreshPotionList(toggled);
-        potionExchange.Scrollbar.InnerElement.OnViewPositionChanged += delegate
+        potionExchange.Scrollbar.OnViewPositionChanged += delegate
         {
             purchaseAttachment.AttachTo(null);
             herbCountAttachment.AttachTo(null);
@@ -201,21 +201,18 @@ public class HerbologyUIState : ExxoUIState
     public override void RightDoubleClick(UIMouseEvent evt)
     {
         base.RightDoubleClick(evt);
-        // if (global::Avalon.DevMode)
-        // {
-        //     if (Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herbTier ==
-        //         ExxoAvalonOriginsModPlayer.HerbTier.Master)
-        //     {
-        //         Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herbTier =
-        //             ExxoAvalonOriginsModPlayer.HerbTier.Novice;
-        //     }
-        //     else
-        //     {
-        //         Main.LocalPlayer.GetModPlayer<ExxoAvalonOriginsModPlayer>().herbTier++;
-        //     }
-        //
-        //     RefreshContent();
-        // }
+        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier ==
+            ExxoHerbologyPlayer.HerbTier.Master)
+            {
+                Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier =
+                    ExxoHerbologyPlayer.HerbTier.Novice;
+            }
+            else
+            {
+                Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier++;
+            }
+
+            RefreshContent();
     }
 
     public override void OnActivate()
@@ -278,6 +275,9 @@ public class HerbologyUIState : ExxoUIState
             items.AddRange(HerbologyData.LargeHerbSeedIdByHerbSeedId.Keys);
         }
 
+        herbExchange.Grid.InnerElement.RemoveAllChildren();
+        herbExchange.Grid.InnerElement.Clear();
+
         var elements = new List<UIElement>();
         foreach (int itemID in items)
         {
@@ -288,10 +288,10 @@ public class HerbologyUIState : ExxoUIState
                 herbCountAttachment.AttachTo(listeningElement as ExxoUIItemSlot);
                 purchaseAttachment.NumberInputWithButtons.NumberInput.MaxNumber = herbItem.Item.maxStack;
             };
-            elements.Add(herbItem);
+            herbExchange.Grid.InnerElement.Append(herbItem);
         }
 
-        herbExchange.Grid.InnerElement.AddRange(elements);
+        //herbExchange.Grid.InnerElement.AddRange(elements);
     }
 
     private void RefreshPotionList(bool displayElixirs)
@@ -329,7 +329,9 @@ public class HerbologyUIState : ExxoUIState
             items.Add(ModContent.ItemType<BlahPotion>());
         }
 
-        var elements = new List<UIElement>();
+        potionExchange.Grid.InnerElement.RemoveAllChildren();
+        potionExchange.Grid.InnerElement.Clear();
+
         foreach (int itemID in items)
         {
             var potionItem = new ExxoUIItemSlot(TextureAssets.InventoryBack7, itemID);
@@ -344,9 +346,9 @@ public class HerbologyUIState : ExxoUIState
                 potionItem.SetImage(TextureAssets.InventoryBack7);
             }
 
-            elements.Add(potionItem);
+            potionExchange.Grid.InnerElement.Append(potionItem);
         }
 
-        potionExchange.Grid.InnerElement.AddRange(elements);
+        //potionExchange.Grid.InnerElement.AddRange(elements);
     }
 }

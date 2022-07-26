@@ -32,7 +32,7 @@ public abstract class ExxoUIElement : UIElement
         spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, DepthStencilState.None, null, null,
             Main.UIScaleMatrix);
 
-    public sealed override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime)
     {
         if (!Active)
         {
@@ -108,7 +108,7 @@ public abstract class ExxoUIElement : UIElement
     ///     Optimised method that only moves positions, only to be used if the elements have already previously been
     ///     recalculated
     /// </summary>
-    public void RecalculateChildrenSelf()
+    public virtual void RecalculateChildrenSelf()
     {
         RecalculateSelf();
         foreach (UIElement element in Elements)

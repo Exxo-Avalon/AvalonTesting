@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
 
 namespace Avalon.UI;
@@ -16,6 +14,8 @@ public abstract class ExxoUIAdapter<T> : ExxoUIElement where T : UIElement
         PaddingLeft = childBase.PaddingLeft;
         PaddingRight = childBase.PaddingRight;
         PaddingBottom = childBase.PaddingBottom;
+
+        Append(childBase);
     }
 
     /// <inheritdoc />
@@ -24,7 +24,7 @@ public abstract class ExxoUIAdapter<T> : ExxoUIElement where T : UIElement
     protected T ChildBase { get; }
 
     /// <inheritdoc />
-    protected override void PreRecalculate()
+    public override void RecalculateChildren()
     {
         float oldPaddingTop = PaddingTop;
         float oldPaddingBottom = PaddingBottom;
@@ -34,26 +34,54 @@ public abstract class ExxoUIAdapter<T> : ExxoUIElement where T : UIElement
         PaddingLeft = 0;
         PaddingRight = 0;
         PaddingBottom = 0;
+
         RecalculateSelf();
-        Append(ChildBase);
-        RemoveChild(ChildBase);
+        ChildBase.Recalculate();
+
         PaddingTop = oldPaddingTop;
         PaddingLeft = oldPaddingLeft;
         PaddingRight = oldPaddingRight;
         PaddingBottom = oldPaddingBottom;
+
+        RecalculateSelf();
+
+        for (int i = 1; i < Elements.Count; i++)
+        {
+            Elements[i].Recalculate();
+        }
     }
 
     /// <inheritdoc />
-    protected override void DrawChildren(SpriteBatch spriteBatch)
+    public override void RecalculateChildrenSelf()
     {
-        ChildBase.Draw(spriteBatch);
-        base.DrawChildren(spriteBatch);
-    }
+        float oldPaddingTop = PaddingTop;
+        float oldPaddingBottom = PaddingBottom;
+        float oldPaddingRight = PaddingRight;
+        float oldPaddingLeft = PaddingLeft;
+        PaddingTop = 0;
+        PaddingLeft = 0;
+        PaddingRight = 0;
+        PaddingBottom = 0;
 
-    /// <inheritdoc />
-    protected override void UpdateSelf(GameTime gameTime)
-    {
-        ChildBase.Update(gameTime);
-        base.UpdateSelf(gameTime);
+        base.RecalculateSelf();
+        ChildBase.Recalculate();
+
+        PaddingTop = oldPaddingTop;
+        PaddingLeft = oldPaddingLeft;
+        PaddingRight = oldPaddingRight;
+        PaddingBottom = oldPaddingBottom;
+
+        base.RecalculateSelf();
+        for (int i = 1; i < Elements.Count; i++)
+        {
+            if (Elements[i] is ExxoUIElement exxoElement)
+            {
+                exxoElement.RecalculateChildrenSelf();
+            }
+            else
+            {
+                Elements[i].Recalculate();
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ public class ExxoUIImage : ExxoUIElement
         }
     }
 
-    protected Asset<Texture2D> Texture { get; private set; }
+    protected Asset<Texture2D>? Texture { get; private set; }
 
     public void SetImage(Asset<Texture2D> texture)
     {
@@ -57,10 +57,12 @@ public class ExxoUIImage : ExxoUIElement
 
     private void UpdateDimensions()
     {
-        if (Texture != null)
+        if (Texture == null)
         {
-            MinWidth.Set((Texture.Width() - (Inset.X * 2)) * Scale, 0f);
-            MinHeight.Set((Texture.Height() - (Inset.Y * 2)) * Scale, 0f);
+            return;
         }
+
+        MinWidth.Set((Texture.Width() - (Inset.X * 2)) * Scale, 0f);
+        MinHeight.Set((Texture.Height() - (Inset.Y * 2)) * Scale, 0f);
     }
 }

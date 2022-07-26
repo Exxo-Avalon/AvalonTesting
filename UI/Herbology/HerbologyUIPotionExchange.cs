@@ -8,7 +8,7 @@ namespace Avalon.UI.Herbology;
 internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
 {
     public readonly ExxoUIElementWrapper<ExxoUIListGrid> Grid;
-    public readonly ExxoUIElementWrapper<ExxoUIScrollbar> Scrollbar;
+    public readonly ExxoUIScrollbar Scrollbar;
     public readonly ExxoUIImageButtonToggle Toggle;
     private readonly ExxoUIList list;
     private readonly ExxoUIText title;
@@ -46,11 +46,12 @@ internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
         Grid.InnerElement.FitWidthToContent = true;
         list.Append(Grid, new ExxoUIList.ElementParams(true, false));
 
-        Scrollbar = new ExxoUIElementWrapper<ExxoUIScrollbar>(new ExxoUIScrollbar()) { FitToInnerElement = true };
+        Scrollbar = new ExxoUIScrollbar();
         Scrollbar.VAlign = UIAlign.Center;
+        Scrollbar.Height = StyleDimension.Fill;
         Scrollbar.SetPadding(0);
         InnerElement.Append(Scrollbar);
-        Grid.InnerElement.ScrollBar = Scrollbar.InnerElement;
+        Grid.InnerElement.ScrollBar = Scrollbar;
         OnScrollWheel += Grid.InnerElement.ScrollWheelListener;
     }
 }

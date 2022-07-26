@@ -5,42 +5,39 @@ using Terraria.GameContent.UI.Elements;
 
 namespace Avalon.UI;
 
-public class ExxoUIScrollbar : UIScrollbar
+public class ExxoUIScrollbar : ExxoUIAdapter<UIScrollbar>
 {
     private readonly Observer<float> observer;
-    public EventHandler OnViewPositionChanged;
 
-    public ExxoUIScrollbar()
+    public ExxoUIScrollbar() : base(new UIScrollbar())
     {
         observer = new Observer<float>(() => ViewPosition);
+        Width.Set(20f, 0.0f);
+        MaxWidth.Set(20f, 0.0f);
     }
 
-    public new void SetView(float viewSize, float maxViewSize)
-    {
-        viewSize = MathHelper.Clamp(viewSize, 0f, maxViewSize);
-        if (viewSize == maxViewSize)
-        {
-            Width.Set(0, 0);
-            if (Parent is ExxoUIElementWrapper exxoParent)
-            {
-                exxoParent.Hidden = true;
-            }
-        }
-        else
-        {
-            Width.Set(20, 0);
-            if (Parent is ExxoUIElementWrapper exxoParent)
-            {
-                exxoParent.Hidden = false;
-            }
-        }
+    public bool CanScroll => ChildBase.CanScroll;
+    public EventHandler? OnViewPositionChanged { get; set; }
 
-        base.SetView(viewSize, maxViewSize);
+    public float ViewPosition
+    {
+        get => ChildBase.ViewPosition;
+        set => ChildBase.ViewPosition = value;
     }
 
-    public override void Update(GameTime gameTime)
+    public void GoToBottom() => ChildBase.GoToBottom();
+
+    public void SetView(float viewSize, float maxViewSize)
     {
-        base.Update(gameTime);
+        ChildBase.SetView(viewSize, maxViewSize);
+        Hidden = Math.Abs(viewSize - maxViewSize) < float.Epsilon;
+    }
+
+    public float GetValue() => ChildBase.GetValue();
+
+    /// <inheritdoc />
+    protected override void UpdateSelf(GameTime gameTime)
+    {
         if (observer.Check())
         {
             OnViewPositionChanged?.Invoke(this, EventArgs.Empty);
