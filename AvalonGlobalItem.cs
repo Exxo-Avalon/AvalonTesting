@@ -663,7 +663,7 @@ public class AvalonGlobalItem : GlobalItem
         {
             if (item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial)
             {
-                tooltipMat.Text = "Tome material";
+                tooltipMat.Text = Language.GetTextValue("Mods.Avalon.CommonItemTooltip.TomeMaterial");
             }
         }
         if (tooltipLine != null)
