@@ -18,9 +18,9 @@ public class TropicalSlime : ModNPC
 
     public override void SetDefaults()
     {
-        NPC.damage = 43;
-        NPC.lifeMax = 670;
-        NPC.defense = 12;
+        NPC.damage = 19;
+        NPC.lifeMax = 60;
+        NPC.defense = 1;
         NPC.width = 36;
         NPC.aiStyle = 1;
         NPC.value = 1000f;
@@ -51,6 +51,6 @@ public class TropicalSlime : ModNPC
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         spawnInfo.Player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics && !spawnInfo.Player.ZoneDungeon
-            ? 0.05f * AvalonGlobalNPC.EndoSpawnRate
+            ? 0.21f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
 }

@@ -70,7 +70,7 @@ public class Rafflesia : ModNPC
         if (NPC.ai[1] == 1)
         {
             NPC.ai[2]++;
-            if (NPC.ai[2] == 60 || NPC.ai[2] == 120 || NPC.ai[2] == 180) NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.position.Y + 8, NPCID.Bee);
+            if (NPC.ai[2] == 60 || NPC.ai[2] == 120 || NPC.ai[2] == 180) NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.position.Y + 8, NPCID.Bee, Target: NPC.target);
             if (NPC.ai[2] == 188)
             {
                 NPC.ai[2] = 0;

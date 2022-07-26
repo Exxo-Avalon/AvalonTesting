@@ -698,7 +698,7 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            damage += MultiplyCritDamage(damage, 1f);
+            damage += MultiplyCritDamage(damage, 2f);
         }
 
         if (crit)
@@ -742,7 +742,7 @@ public class ExxoPlayer : ModPlayer
         {
             //int bonusDmg = -damage;
             //bonusDmg += (int)(damage * (2.5f + 1f) / 2);
-            damage += MultiplyCritDamage(damage, 1f);
+            damage += MultiplyCritDamage(damage, 2f);
         }
 
         if (crit)
