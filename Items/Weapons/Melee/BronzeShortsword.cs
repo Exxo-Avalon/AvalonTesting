@@ -20,4 +20,11 @@ class BronzeShortsword : ModItem
         Item.scale = 0.95f;
         Item.value = 1500;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 7)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

@@ -266,7 +266,7 @@ public class AvalonWorld : ModSystem
             //backgroundColor = new Color(95, 140, 108);
             //Main.ColorOfTheSkies = new Color(97, 122, 87);
         }
-        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
         {
             backgroundColor = new Color(126, 71, 107) * 0.55f;
         }

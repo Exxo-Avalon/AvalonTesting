@@ -22,7 +22,7 @@ public class HeartstoneTable : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Heartstone Table");
         AddMapEntry(new Color(191, 142, 111), name);
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

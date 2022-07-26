@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -20,7 +20,7 @@ class ZincBow : ModItem
         Item.shootSpeed = 6.5f;
         Item.useAmmo = AmmoID.Arrow;
         Item.DamageType = DamageClass.Ranged;
-        Item.noMelee = true; /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
+        Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.knockBack = 0f;
@@ -29,5 +29,12 @@ class ZincBow : ModItem
         Item.value = 4500;
         Item.useAnimation = 25;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 7)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

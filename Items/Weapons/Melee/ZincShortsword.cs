@@ -20,4 +20,11 @@ class ZincShortsword : ModItem
         Item.scale = 0.95f;
         Item.value = 4500;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 7)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

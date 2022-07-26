@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +26,11 @@ class OsmiumJerkin : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.OsmiumBar>(), 20).AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 6).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.OsmiumBar>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 6)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
     public override void UpdateEquip(Player player)
     {

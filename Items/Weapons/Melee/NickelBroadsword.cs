@@ -28,4 +28,11 @@ class NickelBroadsword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NickelBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

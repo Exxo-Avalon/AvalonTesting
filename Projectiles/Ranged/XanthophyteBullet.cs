@@ -55,7 +55,7 @@ public class XanthophyteBullet : ModProjectile
         {
             Projectile.alpha = 0;
         }
-        Projectile.ai[0] += 2;
+        //Projectile.ai[0] += 2;
     }
     public override void Kill(int timeLeft)
     {

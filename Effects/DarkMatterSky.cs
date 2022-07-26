@@ -223,11 +223,11 @@ public class DarkMatterSky : CustomSky
 
     public override void Update(GameTime gameTime)
     {
+        //Main.NewText(Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith);
         if (!Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter)
         {
             skyActive = false;
         }
-
         if (skyActive && opacity < 1f)
         {
             opacity += 0.02f;

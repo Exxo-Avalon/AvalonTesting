@@ -25,7 +25,7 @@ public class HeartstoneWorkbench : ModTile
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.WorkBenches };
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

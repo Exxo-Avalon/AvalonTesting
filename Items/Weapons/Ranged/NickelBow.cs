@@ -21,7 +21,7 @@ internal class NickelBow : ModItem
         Item.shootSpeed = 6.5f;
         Item.useAmmo = AmmoID.Arrow;
         Item.DamageType = DamageClass.Ranged;
-        // item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
+        Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 27;
         Item.knockBack = 0f;
@@ -30,5 +30,12 @@ internal class NickelBow : ModItem
         Item.value = 1800;
         Item.useAnimation = 27;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NickelBar>(), 7)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

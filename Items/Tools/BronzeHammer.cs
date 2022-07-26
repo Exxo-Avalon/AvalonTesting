@@ -15,4 +15,12 @@ class BronzeHammer : ModItem
     {
         Item.CloneDefaults(ItemID.TinHammer);
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 10)
+            .AddRecipeGroup(RecipeGroupID.Wood, 3)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

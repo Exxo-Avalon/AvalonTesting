@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -20,7 +20,7 @@ public class HeartstoneSink : ModTile
         AddMapEntry(new Color(191, 142, 111), Language.GetText("MapObject.Sink"));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Sinks };
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

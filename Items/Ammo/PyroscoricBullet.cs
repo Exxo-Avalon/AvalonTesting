@@ -10,6 +10,7 @@ class PyroscoricBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Bullet");
+        Tooltip.SetDefault("Explodes periodically");
         SacrificeTotal = 99;
     }
 
@@ -24,7 +25,7 @@ class PyroscoricBullet : ModItem
         Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.MagmaticBullet>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.PyroscoricBullet>();
         Item.maxStack = 2000;
         Item.value = 1200;
         Item.height = dims.Height;

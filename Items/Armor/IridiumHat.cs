@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -41,5 +41,13 @@ internal class IridiumHat : ModItem
         player.GetDamage(DamageClass.Melee) += 0.11f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.11f;
         player.GetDamage(DamageClass.Ranged) += 0.11f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.IridiumBar>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.DesertFeather>(), 4)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

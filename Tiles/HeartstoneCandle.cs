@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +25,7 @@ public class HeartstoneCandle : ModTile
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Heartstone Candelabra");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override void MouseOver(int i, int j)

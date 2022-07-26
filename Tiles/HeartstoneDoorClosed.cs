@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Furniture;
+using Avalon.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -46,7 +46,7 @@ public class HeartstoneDoorClosed : ModTile
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.ClosedDoor };
         OpenDoorID = Mod.Find<ModTile>("HeartstoneDoorOpen").Type;
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
     public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

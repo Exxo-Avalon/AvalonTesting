@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Projectiles.Ranged;
 
-public class MagmaticBullet : ModProjectile
+public class PyroscoricBullet : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Magmatic Bullet");
+        DisplayName.SetDefault("Pyroscoric Bullet");
     }
 
     public override void SetDefaults()
@@ -26,5 +26,14 @@ public class MagmaticBullet : ModProjectile
         Projectile.scale = 1.2f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
+    }
+    public override void AI()
+    {
+        Projectile.ai[1]++;
+        if (Projectile.ai[1] % 15 == 0)
+        {
+            int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileID.Grenade, Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Main.projectile[p].timeLeft = 1;
+        }
     }
 }

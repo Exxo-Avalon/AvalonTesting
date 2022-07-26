@@ -29,4 +29,12 @@ class NickelPickaxe : ModItem
         Item.useAnimation = 19;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NickelBar>(), 12)
+            .AddRecipeGroup(RecipeGroupID.Wood, 4)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

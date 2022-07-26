@@ -15,4 +15,11 @@ class BronzeBroadsword : ModItem
     {
         Item.CloneDefaults(ItemID.TinBroadsword);
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

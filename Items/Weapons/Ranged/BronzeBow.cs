@@ -14,4 +14,11 @@ class BronzeBow : ModItem
     {
         Item.CloneDefaults(ItemID.TinBow);
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 7)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

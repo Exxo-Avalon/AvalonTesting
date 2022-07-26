@@ -23,7 +23,7 @@ public class Lightning : ModProjectile
         AIType = ProjectileID.CultistBossLightningOrbArc;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;
-        Projectile.timeLeft = 240;
+        Projectile.timeLeft = 180;
         Projectile.friendly = true;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
     }

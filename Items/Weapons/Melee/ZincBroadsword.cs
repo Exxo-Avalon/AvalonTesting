@@ -28,4 +28,11 @@ class ZincBroadsword : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 8)
+            .AddTile(TileID.Anvils)
+            .Register();
+    }
 }

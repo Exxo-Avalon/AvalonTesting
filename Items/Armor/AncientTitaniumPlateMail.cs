@@ -11,7 +11,7 @@ class AncientTitaniumPlateMail : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Ancient Titanium Plate Mail");
-        Tooltip.SetDefault("10% increased melee damage and speed");
+        Tooltip.SetDefault("14% increased melee damage and speed");
         SacrificeTotal = 1;
     }
 
@@ -27,7 +27,7 @@ class AncientTitaniumPlateMail : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.GetDamage(DamageClass.Melee) += 0.1f;
-        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
+        player.GetDamage(DamageClass.Melee) += 0.14f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.14f;
     }
 }

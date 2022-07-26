@@ -14,6 +14,6 @@ public class HeartstoneBrick : ModTile
         Main.tileBlockLight[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.HeartstoneBrick>();
         HitSound = SoundID.Tink;
-        DustType = DustID.Confetti_Pink;
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 }

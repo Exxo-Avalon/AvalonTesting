@@ -9,6 +9,7 @@ class BerserkerBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserker Bullet");
+        Tooltip.SetDefault("Seeks out targets and shatters into tiny crystals on every hit");
         SacrificeTotal = 300;
     }
 
