@@ -538,7 +538,7 @@ public class AvalonWorld : ModSystem
             int hives = tasks.FindIndex(genpass => genpass.Name == "Oasis");
             if (hives != -1)
             {
-                tasks[hives + 1] = new PassLegacy("Wasp Nests", World.Passes.WaspNest.Method);
+                //tasks[hives + 1] = new PassLegacy("Wasp Nests", World.Passes.WaspNest.Method);
                 tasks[hives + 2] = new PassLegacy("Sanctums", World.Passes.TropicsSanctum.Method);
                 //tasks.RemoveAt(hives);
             }
@@ -1572,7 +1572,7 @@ public class AvalonWorld : ModSystem
 
                             if (Main.tile[m, n].TileType == num14)
                             {
-                                WorldGen.SquareTileFrame(m, n);
+                                //WorldGen.SquareTileFrame(m, n);
                                 flag2 = true;
                             }
                         }
@@ -1626,6 +1626,47 @@ public class AvalonWorld : ModSystem
                 }
             }
             #endregion impvines
+
+            #region tropics vines growing
+            if ((Main.tile[num5, num6].TileType == ModContent.TileType<TropicalGrass>() ||
+                 Main.tile[num5, num6].TileType == ModContent.TileType<TropicalVines>()) &&
+                WorldGen.genRand.NextBool(15) && !Main.tile[num5, num6 + 1].HasTile &&
+                Main.tile[num5, num6 + 1].LiquidType != LiquidID.Lava)
+            {
+                bool flag10 = false;
+                for (int num47 = num6; num47 > num6 - 10; num47--)
+                {
+                    if (Main.tile[num5, num47].BottomSlope)
+                    {
+                        flag10 = false;
+                        break;
+                    }
+
+                    if (Main.tile[num5, num47].HasTile &&
+                        Main.tile[num5, num47].TileType == ModContent.TileType<TropicalGrass>() &&
+                        !Main.tile[num5, num47].BottomSlope)
+                    {
+                        flag10 = true;
+                        break;
+                    }
+                }
+
+                if (flag10)
+                {
+                    int num48 = num5;
+                    int num49 = num6 + 1;
+                    Main.tile[num48, num49].TileType = (ushort)ModContent.TileType<TropicalVines>();
+
+                    Tile t = Main.tile[num48, num49];
+                    t.HasTile = true;
+                    WorldGen.SquareTileFrame(num48, num49);
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendTileSquare(-1, num48, num49, 3);
+                    }
+                }
+            }
+            #endregion tropical vines
         }
     }
     public override void PreWorldGen()

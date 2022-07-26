@@ -5,9 +5,13 @@ using Terraria.WorldBuilding;
 
 namespace Avalon.World.Passes;
 
-class WaspNest
+class WaspNest : GenPass
 {
-    public static void Method(GenerationProgress progress, GameConfiguration configuration)
+    public WaspNest() : base("WaspNest", 10)
+    {
+    }
+
+    protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         progress.Message = "Adding nests...";
         int amount = WorldGen.genRand.Next(6, 10);

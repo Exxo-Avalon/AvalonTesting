@@ -175,6 +175,9 @@ public class ExxoWorldGen : ModSystem
             currentPass = new World.Passes.Impvines();
             tasks.Insert(vines + 1, currentPass);
             totalWeight += currentPass.Weight;
+            currentPass = new TropicsVines();
+            tasks.Insert(vines + 2, currentPass);
+            totalWeight += currentPass.Weight;
         }
 
         if (WorldEvil == EvilBiome.Contagion)

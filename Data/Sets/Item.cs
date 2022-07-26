@@ -17,7 +17,8 @@ public static class Item
         ModContent.ItemType<BarfbushSeeds>(),
         ModContent.ItemType<BloodberrySeeds>(),
         ModContent.ItemType<SweetstemSeeds>(),
-        ModContent.ItemType<HolybirdSeeds>());
+        ModContent.ItemType<HolybirdSeeds>(),
+        ModContent.ItemType<TwilightPlumeSeeds>());
 
     public static readonly bool[] StackTo2000 = ItemID.Sets.Factory.CreateBoolSet(
         ItemID.WoodenArrow, ItemID.FlamingArrow, ItemID.UnholyArrow, ItemID.JestersArrow, ItemID.MusketBall,

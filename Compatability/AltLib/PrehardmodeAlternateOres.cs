@@ -77,7 +77,7 @@ internal class RhodiumAlternateOres : AltOre
     public override void SetStaticDefaults()
     {
         //OreType = (OreType)(-1);
-        OreType = OreType.Gold;
+        OreType = OreType.None;
         ore = ModContent.TileType<RhodiumOre>();
         bar = ModContent.ItemType<RhodiumBar>();
         DisplayName.SetDefault("Rhodium");
@@ -103,12 +103,12 @@ internal class RhodiumAlternateOres : AltOre
         }
     }
 
-    public override void AddOreOnScreenIcon(List<ALOreDrawingStruct> list)
+    public override void AddOreOnScreenIcon(List<ALDrawingStruct<AltOre>> list)
     {
         int index = list.FindIndex(x => x.UniqueID == "Terraria/Gold");
         if (index != -1)
         {
-            list.Insert(index + 1, new ALOreDrawingStruct(this, false,
+            list.Insert(index + 1, new ALDrawingStruct<AltOre>(this,
                 (value) => ModContent.GetInstance<ExxoWorldGen>().RhodiumOre switch
                     {
                         ExxoWorldGen.RhodiumVariant.Rhodium => ModContent.Request<Texture2D>("Avalon/Assets/Ores/RhodiumOreIcon"),
@@ -133,7 +133,7 @@ internal class OsmiumAlternateOres : AltOre
     public override void SetStaticDefaults()
     {
         //OreType = (OreType)(-1);
-        OreType = OreType.Gold;
+        OreType = OreType.None;
         ore = ModContent.TileType<OsmiumOre>();
         bar = ModContent.ItemType<OsmiumBar>();
         DisplayName.SetDefault("Osmium");
@@ -157,7 +157,7 @@ internal class IridiumAlternateOres : AltOre
     public override void SetStaticDefaults()
     {
         //OreType = (OreType)(-1);
-        OreType = OreType.Gold;
+        OreType = OreType.None;
         ore = ModContent.TileType<IridiumOre>();
         bar = ModContent.ItemType<IridiumBar>();
         DisplayName.SetDefault("Iridium");

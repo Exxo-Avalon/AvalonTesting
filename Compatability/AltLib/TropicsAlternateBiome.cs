@@ -6,6 +6,7 @@ using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace Avalon.Compatability.AltLib;
 
@@ -24,9 +25,15 @@ internal class TropicsAlternateBiome : AltBiome
         BiomeOreBrick = ModContent.TileType<XanthophyteOre>(); //Change to Xanthophyte Brick when its finished
         //BossBulb = ModContent.TileType<CentipedeNest>();
         GenPassName.SetDefault("Generating tropics");
-        BiomeChestItem = ModContent.ItemType<VirulentKnives>(); //Change to biome item later
-        BiomeChestTile = ModContent.TileType<LockedContagionChest>(); //change to biome chest locked later
+        //BiomeChestItem = ModContent.ItemType<VirulentKnives>(); //Change to biome item later
+        //BiomeChestTile = ModContent.TileType<LockedContagionChest>(); //change to biome chest locked later
         BiomeChestTileStyle = 0;
+        BiomeMudWall = ModContent.WallType<Walls.TropicalMudWall>();
+        BiomeGrassWall = ModContent.WallType<Walls.TropicalGrassWall>();
+        BiomeJunglePlants = ModContent.TileType<TropicalShortGrass>();
+        HiveGenerationPass = new World.Passes.WaspNest();
+        BiomeJungleBushes = ModContent.TileType<TropicsBushes>();
+        //BiomeShrineChestType = ModContent.TileType<PlatinumChest>();
 
         DisplayName.SetDefault("Tropics");
         Description.SetDefault("A Tropical forest which houses lots of wasps. A hidden outpost lives beneath the surface. [c/E11919:(Not Complete)]");
@@ -41,6 +48,6 @@ internal class TropicsAlternateBiome : AltBiome
     }
 
     public override string WorldIcon => "Avalon/Assets/WorldIcons/Tropics";
-
+    public override GenPass GetHiveGenerationPass() => new World.Passes.WaspNest();
     public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";
 }

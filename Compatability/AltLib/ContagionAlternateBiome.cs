@@ -18,7 +18,7 @@ namespace Avalon.Compatability.AltLib;
 internal class ContagionAlternateBiome : AltBiome
 {
     public override Color NameColor => new(0, 255, 128);
-
+    private int xLoc;
     public override void SetStaticDefaults()
     {
         BiomeType = BiomeType.Evil;
@@ -196,10 +196,15 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 FoundEvilLocation = false;
             }
         }
-
+        GenerateEvil2(evilBiomePosition, evilBiomePositionWestBound, evilBiomePositionEastBound);
     }
 
     public override void GenerateEvil(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
+    {
+
+    }
+
+    public void GenerateEvil2(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
     {
         int radius = WorldGen.genRand.Next(50, 61);
         int rad2 = WorldGen.genRand.Next(20, 26);

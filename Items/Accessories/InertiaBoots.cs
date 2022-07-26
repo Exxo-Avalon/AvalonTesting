@@ -1,4 +1,4 @@
-﻿using Avalon.Rarities;
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -81,25 +81,25 @@ class InertiaBoots : ModItem
         {
             if (player.velocity.X > -5f)
             {
-                player.velocity.X = player.velocity.X - 0.31f;
+                player.velocity.X -= player.setVortex ? 0.11f : 0.31f;
             }
-            if (player.velocity.X < -5f && player.velocity.X > -10f)
+            if (player.velocity.X is < -5f and > -10f)
             {
-                player.velocity.X = player.velocity.X - 0.29f;
+                player.velocity.X -= player.setVortex ? 0.09f : 0.29f;
             }
         }
         if (player.controlRight)
         {
             if (player.velocity.X < 5f)
             {
-                player.velocity.X = player.velocity.X + 0.31f;
+                player.velocity.X += player.setVortex ? 0.11f : 0.31f;
             }
-            if (player.velocity.X > 5f && player.velocity.X < 10f)
+            if (player.velocity.X is > 5f and < 10f)
             {
-                player.velocity.X = player.velocity.X + 0.29f;
+                player.velocity.X += player.setVortex ? 0.09f : 0.29f;
             }
         }
-        if (player.velocity.X > 6f || player.velocity.X < -6f)
+        if (player.velocity.X is > 6f or < -6f)
         {
             var newColor = default(Color);
             var num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Cloud, Main.rand.Next(-5, 5), Main.rand.Next(-5, 5), 100, newColor, 2f);
