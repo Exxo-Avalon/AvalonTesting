@@ -47,7 +47,7 @@ public class DesertBeak : ModNPC
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
         Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak");
-        NPC.Center = player.Center + new Vector2( 300 , -600);
+        NPC.Center = player.Center + new Vector2(300, -600);
         transformed = false;
     }
 
