@@ -1544,7 +1544,7 @@ public class AvalonWorld : ModSystem
                 // twilight plume
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                    WorldGen.genRand.NextBool(num6 > Main.worldSurface ? 500 : 200) && num14 == ModContent.TileType<TropicalGrass>())
+                    WorldGen.genRand.NextBool(num6 > Main.worldSurface ? 250 : 75) && num14 == ModContent.TileType<TropicalGrass>())
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<Tiles.Herbs.TwilightPlume>(), true, false, -1, 0);
                     if (Main.tile[num5, num9].HasTile)

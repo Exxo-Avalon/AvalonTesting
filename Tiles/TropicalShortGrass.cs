@@ -48,7 +48,7 @@ public class TropicalShortGrass : ModTile
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<TropicalShroomCap>());
         if (Main.tile[i, j].TileFrameX / 18 == 9)
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ItemID.NaturesGift);
-        if (Main.tile[i, j].TileFrameX / 18 is 6 or 7)
+        if (Main.tile[i, j].TileFrameX / 18 is 6 or 7 && Main.rand.NextBool(25))
             Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<TropicsLily>());
     }
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
