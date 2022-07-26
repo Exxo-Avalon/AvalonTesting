@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +11,7 @@ public class TropicalBlade : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Tropic Blade");
+        DisplayName.SetDefault("Insectoid Blade");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()
