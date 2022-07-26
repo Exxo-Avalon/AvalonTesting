@@ -1,10 +1,10 @@
 using System;
-using AvalonTesting.Buffs;
-using AvalonTesting.Items.BossBags;
-using AvalonTesting.Items.Material;
-using AvalonTesting.Items.Vanity;
-using AvalonTesting.Items.Weapons.Magic;
-using AvalonTesting.Systems;
+using Avalon.Buffs;
+using Avalon.Items.BossBags;
+using Avalon.Items.Material;
+using Avalon.Items.Vanity;
+using Avalon.Items.Weapons.Magic;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -13,7 +13,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AvalonTesting.NPCs.Bosses;
+namespace Avalon.NPCs.Bosses;
 
 [AutoloadBossHead]
 public class DesertBeak : ModNPC
