@@ -65,7 +65,7 @@ public abstract class ExxoUIElement : UIElement
 
         if (IsMouseHovering && !string.IsNullOrEmpty(Tooltip))
         {
-            Utilities.DrawBoxedCursorTooltip(spriteBatch, Tooltip);
+            Main.hoverItemName = Tooltip;
         }
     }
 

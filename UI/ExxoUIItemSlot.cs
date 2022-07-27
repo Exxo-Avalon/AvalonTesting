@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
@@ -39,14 +40,9 @@ internal class ExxoUIItemSlot : ExxoUIImageButton
     protected override void DrawSelf(SpriteBatch spriteBatch)
     {
         base.DrawSelf(spriteBatch);
-        if (IsMouseHovering && Item.type > ItemID.None && Item.stack > 0)
+        if (IsMouseHovering)
         {
-            Main.hoverItemName = Item.Name;
-            if (Item.stack > 1 && HoverItemDrawStack)
-            {
-                Main.hoverItemName += $" ({Item.stack})";
-            }
-
+            Main.hoverItemName = " ";
             Main.HoverItem = Item;
         }
     }

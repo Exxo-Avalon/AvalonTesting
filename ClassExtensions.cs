@@ -201,11 +201,11 @@ public static class ClassExtensions
     }
 
     /// <summary>
-    ///     Used to draw float coordinates to floored coordinates to avoid blurry rendering of textures.
+    ///     Used to draw float coordinates to rounded coordinates to avoid blurry rendering of textures.
     /// </summary>
     /// <param name="vector">The vector to convert.</param>
-    /// <returns>The floored vector.</returns>
-    public static Vector2 ToNearestPixel(this Vector2 vector) => new((int)vector.X, (int)vector.Y);
+    /// <returns>The rounded vector.</returns>
+    public static Vector2 ToNearestPixel(this Vector2 vector) => new((int)(vector.X + 0.5f), (int)(vector.Y + 0.5f));
 
     /// <summary>
     ///     Helper method for Vampire Teeth and Blah's Knives life steal.

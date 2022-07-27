@@ -6,26 +6,26 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace Avalon.Players;
 
 public class ExxoHerbologyPlayer : ModPlayer
 {
-    public Dictionary<int, int> herbCounts = new();
-
-    public HerbTier herbTier;
-    public int herbTotal;
-    public int herbX;
-    public int herbY;
-    public int potionTotal;
-
     public enum HerbTier
     {
-        Novice,
-        Apprentice,
-        Expert,
-        Master,
+        Novice = 0,
+        Apprentice = 1,
+        Expert = 2,
+        Master = 3,
     }
+
+    public Dictionary<int, int> HerbCounts { get; private set; } = new();
+    public HerbTier Tier { get; private set; }
+    public int HerbTotal { get; private set; }
+    public int HerbX { get; set; }
+    public int HerbY { get; set; }
+    public int PotionTotal { get; private set; }
 
     public bool DisplayHerbologyMenu { get; set; }
 
@@ -37,8 +37,8 @@ public class ExxoHerbologyPlayer : ModPlayer
         {
             int num9 = (int)((Player.position.X + (Player.width * 0.5)) / 16.0);
             int num10 = (int)((Player.position.Y + (Player.height * 0.5)) / 16.0);
-            if (num9 < herbX - Player.lastTileRangeX || num9 > herbX + Player.lastTileRangeX + 1 ||
-                num10 < herbY - Player.lastTileRangeY || num10 > herbY + Player.lastTileRangeY + 1)
+            if (num9 < HerbX - Player.lastTileRangeX || num9 > HerbX + Player.lastTileRangeX + 1 ||
+                num10 < HerbY - Player.lastTileRangeY || num10 > HerbY + Player.lastTileRangeY + 1)
             {
                 SoundEngine.PlaySound(SoundID.MenuClose);
                 DisplayHerbologyMenu = false;
@@ -76,17 +76,17 @@ public class ExxoHerbologyPlayer : ModPlayer
                 herbType = HerbologyData.HerbIdByLargeHerbId[HerbologyData.LargeHerbIdByLargeHerbSeedId[item.type]];
             }
 
-            if (herbTotal < charge)
+            if (HerbTotal < charge)
             {
                 return false;
             }
 
             if (chargeInventory)
             {
-                if (herbType != ItemID.None && herbCounts.ContainsKey(herbType) &&
-                    herbCounts[herbType] > charge)
+                if (herbType != ItemID.None && HerbCounts.ContainsKey(herbType) &&
+                    HerbCounts[herbType] > charge)
                 {
-                    herbCounts[herbType] -= charge;
+                    HerbCounts[herbType] -= charge;
                 }
                 else
                 {
@@ -94,18 +94,18 @@ public class ExxoHerbologyPlayer : ModPlayer
                 }
             }
 
-            herbTotal -= charge;
+            HerbTotal -= charge;
             Main.mouseItem = item.Clone();
             Main.mouseItem.stack = amount;
             return true;
         }
 
-        if (potionTotal < charge)
+        if (PotionTotal < charge)
         {
             return false;
         }
 
-        potionTotal -= charge;
+        PotionTotal -= charge;
         Main.mouseItem = item.Clone();
         Main.mouseItem.stack = amount;
         return true;
@@ -138,13 +138,13 @@ public class ExxoHerbologyPlayer : ModPlayer
 
         if (herbAddition > 0 && herbType != ItemID.None)
         {
-            if (!herbCounts.ContainsKey(herbType))
+            if (!HerbCounts.ContainsKey(herbType))
             {
-                herbCounts.Add(herbType, 0);
+                HerbCounts.Add(herbType, 0);
             }
 
-            herbCounts[herbType] += herbAddition * item.stack;
-            herbTotal += herbAddition * item.stack;
+            HerbCounts[herbType] += herbAddition * item.stack;
+            HerbTotal += herbAddition * item.stack;
         }
 
         int potionAddition = 0;
@@ -169,30 +169,29 @@ public class ExxoHerbologyPlayer : ModPlayer
 
         if (potionAddition > 0)
         {
-            potionTotal += potionAddition * item.stack;
+            PotionTotal += potionAddition * item.stack;
         }
 
         UpdateHerbTier();
 
         PopupText.NewText(PopupTextContext.Advanced, item, item.stack);
-        // SoundEngine.PlaySound(SoundID.Item, -1, -1,
-        //     SoundLoader.GetSoundSlot(global::Avalon.Mod, "Sounds/Item/HerbConsume"));
+        SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/HerbConsume"));
         return true;
     }
 
     public void UpdateHerbTier()
     {
         HerbTier newHerbTier;
-        if (herbTotal >= HerbologyData.HerbTier4Threshold && Main.hardMode &&
+        if (HerbTotal >= HerbologyData.HerbTier4Threshold && Main.hardMode &&
             ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             newHerbTier = HerbTier.Master; // tier 4; Blah Potion exchange
         }
-        else if (herbTotal >= HerbologyData.HerbTier3Threshold && Main.hardMode)
+        else if (HerbTotal >= HerbologyData.HerbTier3Threshold && Main.hardMode)
         {
             newHerbTier = HerbTier.Expert; // tier 3; allows you to obtain elixirs
         }
-        else if (herbTotal >= HerbologyData.HerbTier2Threshold)
+        else if (HerbTotal >= HerbologyData.HerbTier2Threshold)
         {
             newHerbTier = HerbTier.Apprentice; // tier 2; allows for large herb seeds
         }
@@ -202,9 +201,46 @@ public class ExxoHerbologyPlayer : ModPlayer
                 HerbTier.Novice; // tier 1; allows for exchanging one herb for another
         }
 
-        if (newHerbTier > herbTier)
+        if (newHerbTier > Tier)
         {
-            herbTier = newHerbTier;
+            Tier = newHerbTier;
+        }
+    }
+
+    /// <inheritdoc />
+    public override void SaveData(TagCompound tag)
+    {
+        tag["Tier"] = (int)Tier;
+        tag["HerbTotal"] = HerbTotal;
+        tag["PotionTotal"] = PotionTotal;
+        tag["HerbCounts"] = HerbCounts.Save();
+    }
+
+    /// <inheritdoc />
+    public override void LoadData(TagCompound tag)
+    {
+        if (tag.ContainsKey("Tier"))
+        {
+            Tier = (HerbTier)tag.GetAsInt("Tier");
+        }
+        if (tag.ContainsKey("HerbTotal"))
+        {
+            HerbTotal = tag.GetAsInt("HerbTotal");
+        }
+        if (tag.ContainsKey("PotionTotal"))
+        {
+            PotionTotal = tag.GetAsInt("PotionTotal");
+        }
+        if (tag.ContainsKey("HerbCounts"))
+        {
+            try
+            {
+                HerbCounts.Load(tag.Get<TagCompound>("HerbCounts"));
+            }
+            catch
+            {
+                HerbCounts = new Dictionary<int, int>();
+            }
         }
     }
 }

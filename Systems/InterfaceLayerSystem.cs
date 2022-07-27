@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Avalon.Players;
 using Avalon.UI.Herbology;
 using Terraria;
@@ -9,8 +11,9 @@ namespace Avalon.Systems;
 
 public class InterfaceLayerSystem : ModSystem
 {
-    private UserInterface? herbologyUserInterface;
     private UIState? herbologyState;
+    private UserInterface? herbologyUserInterface;
+
     /// <inheritdoc />
     public override void Load()
     {
@@ -25,12 +28,17 @@ public class InterfaceLayerSystem : ModSystem
             "Avalon: Update Interfaces",
             delegate
             {
-                if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu && Main.playerInventory && herbologyUserInterface?.CurrentState == null)
+                if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu && Main.playerInventory &&
+                    herbologyUserInterface?.CurrentState == null)
                 {
                     herbologyUserInterface?.SetState(herbologyState);
-                    //typeof(UserInterface).GetField("_clickDisabledTimeRemaining", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).SetValue(ExxoAvalonOrigins.Mod.herbologyUserInterface, 10);
+                    typeof(UserInterface)
+                        .GetField("_clickDisabledTimeRemaining", BindingFlags.NonPublic | BindingFlags.Instance)
+                        ?.SetValue(herbologyUserInterface, 0);
                 }
-                else if (!(Main.playerInventory && Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu) && herbologyUserInterface?.CurrentState != null)
+                else if (!(Main.playerInventory &&
+                           Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu) &&
+                         herbologyUserInterface?.CurrentState != null)
                 {
                     herbologyUserInterface?.SetState(null);
                 }
@@ -42,7 +50,8 @@ public class InterfaceLayerSystem : ModSystem
             InterfaceScaleType.UI)
         );
 
-        int inventoryIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Radial Hotbars", System.StringComparison.Ordinal));
+        int inventoryIndex =
+            layers.FindIndex(layer => layer.Name.Equals("Vanilla: Radial Hotbars", StringComparison.Ordinal));
         if (inventoryIndex >= 0)
         {
             // layers.Insert(inventoryIndex, new LegacyGameInterfaceLayer(

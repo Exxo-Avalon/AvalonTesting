@@ -1,6 +1,7 @@
 ﻿using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.UI;
 
@@ -44,7 +45,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(HerbTotalContainer);
 
         herbTotalIcon =
-            new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"))
+            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed", AssetRequestMode.ImmediateLoad))
             {
                 Inset = new Vector2(7, 7),
             };
@@ -64,7 +65,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(PotionTotalContainer);
 
         potionTotalIcon =
-            new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"))
+            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption", AssetRequestMode.ImmediateLoad))
             {
                 Inset = new Vector2(4, 5),
             };
@@ -81,16 +82,16 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         Player player = Main.LocalPlayer;
         ExxoHerbologyPlayer modPlayer = player.GetModPlayer<ExxoHerbologyPlayer>();
 
-        string rankTitle = $"Herbology {modPlayer.herbTier}";
+        string rankTitle = $"Herbology {modPlayer.Tier}";
         RankTitleText.TextElement.SetText(rankTitle);
 
-        string tier = $"Tier {(int)modPlayer.herbTier + 1} Herbologist";
+        string tier = $"Tier {(int)modPlayer.Tier + 1} Herbologist";
         HerbTierText.TextElement.SetText(tier);
 
-        string herbTotal = modPlayer.herbTotal.ToString();
+        string herbTotal = modPlayer.HerbTotal.ToString();
         herbTotalText.SetText(herbTotal);
 
-        string potionTotal = modPlayer.potionTotal.ToString();
+        string potionTotal = modPlayer.PotionTotal.ToString();
         potionTotalText.SetText(potionTotal);
     }
 }

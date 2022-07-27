@@ -2,6 +2,7 @@
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.UI;
@@ -102,16 +103,16 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         herbCountCostContainer.Hidden = !showHerbCount;
         if (HerbologyData.ItemIsHerb(AttachmentHolder.Item))
         {
-            balance = modPlayer.herbTotal;
+            balance = modPlayer.HerbTotal;
             balanceIcon.SetImage(
-                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"));
+                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed", AssetRequestMode.ImmediateLoad));
             balanceIcon.Inset = new Vector2(11, 11);
         }
         else
         {
-            balance = modPlayer.potionTotal;
+            balance = modPlayer.PotionTotal;
             balanceIcon.SetImage(
-                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"));
+                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption", AssetRequestMode.ImmediateLoad));
             balanceIcon.Inset = new Vector2(8, 5);
         }
 
@@ -133,7 +134,7 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
             {
                 herbTypeIcon.SetImage(TextureAssets.Item[herbType]);
                 subHerbCountBalance.SetText($"-{cost}");
-                if (!modPlayer.herbCounts.ContainsKey(herbType) || modPlayer.herbCounts[herbType] - cost < 0)
+                if (!modPlayer.HerbCounts.ContainsKey(herbType) || modPlayer.HerbCounts[herbType] - cost < 0)
                 {
                     subHerbCountBalance.TextColor = Color.Red;
                 }

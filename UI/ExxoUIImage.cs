@@ -13,7 +13,11 @@ public class ExxoUIImage : ExxoUIElement
     private Vector2 inset;
     private float scale = 1f;
 
-    public ExxoUIImage(Asset<Texture2D> texture) => SetImage(texture);
+    public ExxoUIImage(Asset<Texture2D> texture)
+    {
+        OverrideSamplerState = SamplerState.PointClamp;
+        SetImage(texture);
+    }
 
     public override bool IsDynamicallySized => false;
 

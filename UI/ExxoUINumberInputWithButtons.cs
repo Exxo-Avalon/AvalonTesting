@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria.UI;
 
 namespace Avalon.UI;
@@ -27,7 +28,7 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
 
         incrementButton =
             new ExxoUIImageButton(
-                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn"));
+                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn", AssetRequestMode.ImmediateLoad));
         incrementButton.OnClick += delegate
         {
             NumberInput.Number++;
@@ -35,7 +36,7 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
         buttonColumn.Append(incrementButton);
         decrementButton =
             new ExxoUIImageButton(
-                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut"));
+                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut", AssetRequestMode.ImmediateLoad));
         decrementButton.OnClick += delegate
         {
             NumberInput.Number--;

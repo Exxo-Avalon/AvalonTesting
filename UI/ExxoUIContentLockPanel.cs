@@ -2,6 +2,7 @@
 using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using Terraria.UI;
 
 namespace Avalon.UI;
@@ -36,9 +37,9 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
         list.FitWidthToContent = true;
         list.ContentVAlign = UIAlign.Center;
 
-        var iconBackground = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/Wires_1"));
+        var iconBackground = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/Wires_1", AssetRequestMode.ImmediateLoad));
         list.Append(iconBackground);
-        var innerImage = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
+        var innerImage = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1", AssetRequestMode.ImmediateLoad))
         {
             VAlign = UIAlign.Center, HAlign = UIAlign.Center,
         };
@@ -94,7 +95,7 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
             contentHolder.RemoveAllChildren();
             if (ListIsOversize)
             {
-                var image = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1"))
+                var image = new ExxoUIImage(Terraria.Main.Assets.Request<Texture2D>("Images/UI/UI_quickicon1", AssetRequestMode.ImmediateLoad))
                 {
                     VAlign = UIAlign.Center, HAlign = UIAlign.Center,
                 };

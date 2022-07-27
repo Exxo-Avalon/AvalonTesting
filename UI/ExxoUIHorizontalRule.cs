@@ -11,7 +11,7 @@ internal class ExxoUIHorizontalRule : ExxoUIElement
 
     public ExxoUIHorizontalRule()
     {
-        dividerTexture = Terraria.Main.Assets.Request<Texture2D>("Images/UI/Divider");
+        dividerTexture = Terraria.Main.Assets.Request<Texture2D>("Images/UI/Divider", AssetRequestMode.ImmediateLoad);
         Height.Set(dividerTexture.Height(), 0);
     }
 

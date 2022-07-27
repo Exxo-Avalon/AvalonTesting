@@ -5,6 +5,7 @@ using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -16,15 +17,15 @@ namespace Avalon.UI.Herbology;
 
 public class HerbologyUIState : ExxoUIState
 {
-    public ExxoUIDraggablePanel MainPanel;
-    private HerbologyUIHelpAttachment helpAttachment;
-    private ExxoUIImageButtonToggle helpToggle;
-    private HerbologyUIHerbCountAttachment herbCountAttachment;
-    private HerbologyUIHerbExchange herbExchange;
-    private HerbologyUIPotionExchange potionExchange;
-    private HerbologyUIPurchaseAttachment purchaseAttachment;
-    private HerbologyUIStats stats;
-    private HerbologyUITurnIn turnIn;
+    private HerbologyUIHelpAttachment? helpAttachment;
+    private ExxoUIImageButtonToggle? helpToggle;
+    private HerbologyUIHerbCountAttachment? herbCountAttachment;
+    private HerbologyUIHerbExchange? herbExchange;
+    private ExxoUIDraggablePanel? mainPanel;
+    private HerbologyUIPotionExchange? potionExchange;
+    private HerbologyUIPurchaseAttachment? purchaseAttachment;
+    private HerbologyUIStats? stats;
+    private HerbologyUITurnIn? turnIn;
 
     public override void OnInitialize()
     {
@@ -34,36 +35,36 @@ public class HerbologyUIState : ExxoUIState
 
         helpAttachment = new HerbologyUIHelpAttachment();
 
-        MainPanel = new ExxoUIDraggablePanel
+        mainPanel = new ExxoUIDraggablePanel
         {
             Width = StyleDimension.FromPixels(720),
             Height = StyleDimension.FromPixels(660),
             VAlign = UIAlign.Center,
             HAlign = UIAlign.Center,
         };
-        MainPanel.SetPadding(15);
-        Append(MainPanel);
+        mainPanel.SetPadding(15);
+        Append(mainPanel);
 
         var mainContainer = new ExxoUIList
         {
             Width = StyleDimension.Fill, Height = StyleDimension.Fill, ContentHAlign = UIAlign.Center,
         };
-        MainPanel.Append(mainContainer);
+        mainPanel.Append(mainContainer);
 
         var titleRow = new ExxoUIList()
         {
+            Width = StyleDimension.Fill,
             Direction = Direction.Horizontal,
             Justification = Justification.Center,
             FitHeightToContent = true,
             ContentVAlign = UIAlign.Center,
         };
-        titleRow.Width.Set(0, 1);
         mainContainer.Append(titleRow);
         var titleText = new ExxoUITextPanel("Herbology Bench", 0.8f, true);
         titleRow.Append(titleText);
 
         helpToggle =
-            new ExxoUIImageButtonToggle(Main.Assets.Request<Texture2D>("Images/UI/ButtonRename"),
+            new ExxoUIImageButtonToggle(Main.Assets.Request<Texture2D>("Images/UI/ButtonRename", AssetRequestMode.ImmediateLoad),
                 Color.White * 0.7f, Color.White) { Scale = 2, Tooltip = "Help" };
         titleRow.Append(helpToggle);
         helpToggle.OnToggle += (toggled) =>
@@ -98,11 +99,11 @@ public class HerbologyUIState : ExxoUIState
         {
             Item item = turnIn.ItemSlot.Item;
 
-            ExxoHerbologyPlayer.HerbTier oldTier = Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier;
+            ExxoHerbologyPlayer.HerbTier oldTier = Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier;
             if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().SellItem(item))
             {
                 item.stack = 0;
-                if (oldTier != Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier)
+                if (oldTier != Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier)
                 {
                     RefreshContent();
                 }
@@ -123,7 +124,7 @@ public class HerbologyUIState : ExxoUIState
         };
 
         Append(new ExxoUIContentLockPanel(herbExchange.Toggle,
-            () => Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier >=
+            () => Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
                   ExxoHerbologyPlayer.HerbTier.Apprentice,
             $"Content locked: Must be Herbology {ExxoHerbologyPlayer.HerbTier.Apprentice}"));
 
@@ -146,7 +147,7 @@ public class HerbologyUIState : ExxoUIState
         };
 
         var potionLock = new ExxoUIContentLockPanel(potionExchange,
-            () => Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier >=
+            () => Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
                   ExxoHerbologyPlayer.HerbTier.Expert,
             $"Content locked: Must be Herbology {ExxoHerbologyPlayer.HerbTier.Expert}");
         Append(potionLock);
@@ -201,18 +202,18 @@ public class HerbologyUIState : ExxoUIState
     public override void RightDoubleClick(UIMouseEvent evt)
     {
         base.RightDoubleClick(evt);
-        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier ==
-            ExxoHerbologyPlayer.HerbTier.Master)
-            {
-                Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier =
-                    ExxoHerbologyPlayer.HerbTier.Novice;
-            }
-            else
-            {
-                Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier++;
-            }
-
-            RefreshContent();
+        // if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier ==
+        //     ExxoHerbologyPlayer.HerbTier.Master)
+        // {
+        //     Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier =
+        //         ExxoHerbologyPlayer.HerbTier.Novice;
+        // }
+        // else
+        // {
+        //     Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier++;
+        // }
+        //
+        // RefreshContent();
     }
 
     public override void OnActivate()
@@ -246,7 +247,6 @@ public class HerbologyUIState : ExxoUIState
     public override void Click(UIMouseEvent evt)
     {
         base.Click(evt);
-        return;
         if (!purchaseAttachment.ContainsPoint(evt.MousePosition) &&
             !herbCountAttachment.ContainsPoint(evt.MousePosition) &&
             purchaseAttachment.AttachmentHolder?.ContainsPoint(evt.MousePosition) == false)
@@ -298,7 +298,7 @@ public class HerbologyUIState : ExxoUIState
     {
         potionExchange.Grid.InnerElement.Clear();
         var items = new List<int>();
-        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier >=
+        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Master)
         {
             items.Add(ItemID.SuperHealingPotion);
@@ -306,7 +306,7 @@ public class HerbologyUIState : ExxoUIState
             items.Add(ModContent.ItemType<SuperStaminaPotion>());
         }
 
-        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier >=
+        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Expert)
         {
             items.Add(ItemID.HealingPotion);
@@ -323,7 +323,7 @@ public class HerbologyUIState : ExxoUIState
             items.AddRange(HerbologyData.PotionIds);
         }
 
-        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().herbTier >=
+        if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Master)
         {
             items.Add(ModContent.ItemType<BlahPotion>());

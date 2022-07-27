@@ -42,9 +42,9 @@ internal class HerbologyUIHerbCountAttachment : ExxoUIAttachment<ExxoUIItemSlot,
         int herbType = HerbologyData.GetBaseHerbType(AttachmentHolder.Item);
         if (herbType != -1)
         {
-            if (modPlayer.herbCounts.ContainsKey(herbType))
+            if (modPlayer.HerbCounts.ContainsKey(herbType))
             {
-                Text.SetText(modPlayer.herbCounts[herbType].ToString());
+                Text.SetText(modPlayer.HerbCounts[herbType].ToString());
             }
             else
             {

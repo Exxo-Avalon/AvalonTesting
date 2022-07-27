@@ -788,20 +788,6 @@ public class ExxoPlayer : ModPlayer
         tag["SpiritPoppyUseCount"] = spiritPoppyUseCount;
     }
 
-    // tag = new TagCompound
-    // {
-    //     { "Avalon:TomeSlot", ItemIO.Save(tomeItem) },
-    //     { "Avalon:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-    //     { "Avalon:HerbTier", (int)herbTier },
-    //     { "Avalon:HerbTotal", herbTotal },
-    //     { "Avalon:PotionTotal", potionTotal },
-    //     { "Avalon:HerbCounts", herbCounts.Save() },
-    //     { "Avalon:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-    //     { "Avalon:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-    //     { "Avalon:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-    //     { "Avalon:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-    //     { "Avalon:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
-    // };
     public override void LoadData(TagCompound tag)
     {
         if (tag.ContainsKey("CrystalHealth"))
