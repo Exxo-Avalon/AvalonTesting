@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,6 +13,7 @@ class EtherealWings : ModItem
         DisplayName.SetDefault("Ethereal Wings");
         Tooltip.SetDefault("Allows flight and slow fall\nOther bonuses apply when in the Dungeon");
         SacrificeTotal = 1;
+        ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(170, 5.5f, 1.2f);
     }
 
     public override void SetDefaults()
@@ -33,6 +34,12 @@ class EtherealWings : ModItem
         player.wingTimeMax = 170;
         if (player.ZoneDungeon)
         {
+            if (player.velocity.X != 0 || player.velocity.Y != 0)
+            {
+                var newColor = default(Color);
+                var num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.Cloud, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), 100, newColor, 2f);
+                Main.dust[num].noGravity = true;
+            }
             player.statLifeMax2 += 40;
             player.statDefense += 8;
             if (player.controlLeft)

@@ -33,7 +33,7 @@ public class AvalonGlobalTile : GlobalTile
     public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
         #region earthsplitter armor ore duping
-        if (Main.LocalPlayer.GetModPlayer<ExxoPlayer>().oreDupe && IsOre(type) && Main.rand.NextBool(3))
+        if (Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && IsOre(type) && Main.rand.NextBool(3))
         {
             int drop = 0;
             if (type == TileID.Copper) drop = ItemID.CopperOre;
