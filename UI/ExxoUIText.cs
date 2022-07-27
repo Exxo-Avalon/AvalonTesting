@@ -1,144 +1,66 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
-using Terraria;
-using Terraria.GameContent;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Terraria.GameContent.UI.Elements;
 using Terraria.Localization;
-using Terraria.UI;
 
 namespace Avalon.UI;
 
-public class ExxoUIText : ExxoUIElement
+public class ExxoUIText : ExxoUIAdapter<UIText>
 {
-    public bool DynamicallyScaleDownToWidth;
-    private bool isLarge;
-    private bool isWrapped;
-    private string text = "";
-    private float textScale;
-    private Vector2 textSize = Vector2.Zero;
-    private string visibileText;
-
-    public ExxoUIText(string text, float textScale = 1f, bool isLarge = false)
-    {
-        TextOriginX = 0.5f;
-        TextOriginY = 0.0f;
-        WrappedTextBottomPadding = 20f;
-        isWrapped = false;
-        SetText(text, textScale, isLarge);
-    }
-
-    public ExxoUIText(LocalizedText text, float textScale = 1f, bool isLarge = false) : this(text.ToString(), textScale,
-        isLarge)
+    public ExxoUIText(string text, float textScale = 1f, bool large = false) : this(new UIText(text, textScale, large))
     {
     }
 
-    public float TextOriginX { get; set; }
-    public float TextOriginY { get; set; }
-    public float WrappedTextBottomPadding { get; set; }
-
-    public override bool IsDynamicallySized => false;
-
-    public string Text
+    public ExxoUIText(LocalizedText text, float textScale = 1f, bool large = false) : this(new UIText(text, textScale,
+        large))
     {
-        get => text;
-        set
+    }
+
+    protected ExxoUIText(UIText childBase) : base(childBase) =>
+        ChildBase.OnInternalTextChange += () =>
         {
-            text = value;
-            UpdateText();
-        }
-    }
+            MinWidth = ChildBase.MinWidth;
+            MinHeight = ChildBase.MinHeight;
+            OnInternalTextChange?.Invoke();
+        };
 
-    public float TextScale
-    {
-        get => textScale;
-        set
-        {
-            textScale = value;
-            UpdateText();
-        }
-    }
+    public event Action? OnInternalTextChange;
 
-    public bool IsLarge
+    public string Text => ChildBase.Text;
+
+    public float TextOriginX { get => ChildBase.TextOriginX; set => ChildBase.TextOriginX = value; }
+
+    public float TextOriginY { get => ChildBase.TextOriginY; set => ChildBase.TextOriginY = value; }
+
+    public float WrappedTextBottomPadding
     {
-        get => isLarge;
-        set
-        {
-            isLarge = value;
-            UpdateText();
-        }
+        get => ChildBase.WrappedTextBottomPadding;
+        set => ChildBase.WrappedTextBottomPadding = value;
     }
 
     public bool IsWrapped
     {
-        get => isWrapped;
-        set
-        {
-            isWrapped = value;
-            UpdateText();
-        }
+        get => ChildBase.IsWrapped;
+        set => ChildBase.IsWrapped = value;
     }
 
-    public Color TextColor { get; set; } = Color.White;
-
-    public void SetText(string text, float textScale = 1f, bool isLarge = false)
+    public Color TextColor
     {
-        this.text = text;
-        this.textScale = textScale;
-        this.isLarge = isLarge;
-        UpdateText();
+        get => ChildBase.TextColor;
+        set => ChildBase.TextColor = value;
     }
 
-    private void UpdateText()
+    public bool DynamicallyScaleDownToWidth
     {
-        DynamicSpriteFont dynamicSpriteFont = IsLarge ? FontAssets.DeathText.Value : FontAssets.MouseText.Value;
-        visibileText = !IsWrapped
-            ? Text
-            : dynamicSpriteFont.CreateWrappedText(Text, GetInnerDimensions().Width / TextScale);
-        Vector2 vector2_1 = dynamicSpriteFont.MeasureString(visibileText);
-        Vector2 vector2_2 = textSize = !IsWrapped
-            ? new Vector2(vector2_1.X, IsLarge ? 32f : 16f) * textScale
-            : new Vector2(vector2_1.X, vector2_1.Y + WrappedTextBottomPadding) * textScale;
-        MinWidth.Set(vector2_2.X + PaddingLeft + PaddingRight, 0.0f);
-        MinHeight.Set(vector2_2.Y + PaddingTop + PaddingBottom, 0.0f);
+        get => ChildBase.DynamicallyScaleDownToWidth;
+        set => ChildBase.DynamicallyScaleDownToWidth = value;
     }
 
-    protected override void DrawSelf(SpriteBatch spriteBatch)
-    {
-        base.DrawSelf(spriteBatch);
-        spriteBatch.End();
-        spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.AnisotropicClamp, DepthStencilState.None, null,
-            null, Main.UIScaleMatrix);
+    public void SetText(string text) => ChildBase.SetText(text);
 
-        CalculatedStyle innerDimensions = GetInnerDimensions();
-        Vector2 pos = innerDimensions.Position();
-        if (IsLarge)
-        {
-            pos.Y -= 10f * TextScale;
-        }
-        else
-        {
-            pos.Y -= 2f * TextScale;
-        }
+    public void SetText(LocalizedText text) => ChildBase.SetText(text);
 
-        pos.X += (innerDimensions.Width - textSize.X) * TextOriginX;
-        pos.Y += (innerDimensions.Height - textSize.Y) * TextOriginY;
+    public void SetText(string text, float textScale, bool large) => ChildBase.SetText(text, textScale, large);
 
-        float scale = textScale;
-        if (DynamicallyScaleDownToWidth && textSize.X > (double)innerDimensions.Width)
-        {
-            scale *= innerDimensions.Width / textSize.X;
-        }
-
-        if (IsLarge)
-        {
-            Utils.DrawBorderStringBig(spriteBatch, visibileText, pos, TextColor, scale);
-        }
-        else
-        {
-            Utils.DrawBorderString(spriteBatch, visibileText, pos, TextColor, scale);
-        }
-
-        spriteBatch.End();
-        BeginDefaultSpriteBatch(spriteBatch);
-    }
+    public void SetText(LocalizedText text, float textScale, bool large) => ChildBase.SetText(text, textScale, large);
 }

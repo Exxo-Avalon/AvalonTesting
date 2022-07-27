@@ -23,21 +23,20 @@ public class HerbologyBench : ModTile
         TileID.Sets.DisableSmartCursor[Type] = true;
     }
 
-    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
-    {
-        return true;
-    }
+    public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;
 
     public override bool RightClick(int i, int j)
     {
-        //Main.playerInventory = true;
+        Main.playerInventory = true;
 
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb = !Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herb;
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbX = i;
-        //Main.LocalPlayer.GetModPlayer<ExxoPlayer>().herbY = j;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu =
+            !Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().DisplayHerbologyMenu;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().HerbX = i;
+        Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().HerbY = j;
 
         return true;
     }
+
     public override void MouseOver(int i, int j)
     {
         Player player = Main.player[Main.myPlayer];
@@ -45,8 +44,8 @@ public class HerbologyBench : ModTile
         player.cursorItemIconEnabled = true;
         player.cursorItemIconID = ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>();
     }
-    public override void KillMultiTile(int i, int j, int frameX, int frameY)
-    {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32, ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>());
-    }
+
+    public override void KillMultiTile(int i, int j, int frameX, int frameY) => Item.NewItem(
+        WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 64, 32,
+        ModContent.ItemType<Items.Placeable.Crafting.HerbologyBench>());
 }
