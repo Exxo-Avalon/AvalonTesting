@@ -1,15 +1,15 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Avalon.Buffs;
 
-public class Infected : ModBuff
+public class Toxic : ModBuff
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Infected");
+        DisplayName.SetDefault("Toxic");
         Description.SetDefault("Losing life");
         Main.debuff[Type] = true;
     }
@@ -28,7 +28,7 @@ public class Infected : ModBuff
             }
 
             player.Hurt(PlayerDeathReason.ByCustomReason(" was infected."),
-                player.GetModPlayer<ExxoBuffPlayer>().InfectDamage, 0);
+                player.GetModPlayer<ExxoBuffPlayer>().InfectDamage + player.statDefense / 2, 0);
         }
     }
 }

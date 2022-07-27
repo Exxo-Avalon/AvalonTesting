@@ -711,7 +711,8 @@ public class AvalonGlobalItem : GlobalItem
 
         if (!item.social && PrefixLoader.GetPrefix(item.prefix) is ExxoPrefix exxoPrefix)
         {
-            tooltips.AddRange(exxoPrefix.TooltipLines);
+            if (exxoPrefix.Category == PrefixCategory.Accessory)
+                tooltips.AddRange(exxoPrefix.TooltipLines);
         }
 
         switch (item.type)

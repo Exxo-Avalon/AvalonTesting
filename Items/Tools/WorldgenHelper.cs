@@ -34,16 +34,20 @@ class WorldgenHelper : ModItem
         int x = (int)player.position.X / 16;
         int y = (int)player.position.Y / 16;
         //int xStored = x;
-        //GetXCoord(x, y, 5, ref xStored);
-        //World.Utils.MakeSquareTemp(xStored, y);
+        //List<int> l = new List<int>()
+        //{
+        //    ModContent.TileType<Tiles.Nest>(),
+        //    ModContent.TileType<Tiles.Loamstone>(),
+        //    ModContent.TileType<Tiles.BismuthBrick>(),
+        //    TileID.IridescentBrick,
+        //};
+        //World.Utils.GetSkyFortressXCoord(x, y, 5, 5, ref xStored);
+        //World.Utils.GetXCoordGeneric(x, y, 5, 5, ref xStored, l, true, true);
+        //World.Utils.MakeSquareTemp(x, y);
         //Main.hardMode = false;
         //World.Passes.HallowedAltars.Generate();
         //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
         //Task.Run(AvalonWorld.GenerateSkyFortress);
-        for (int i = x - 10; i < x + 10; i++)
-        {
-            WorldGen.PlaceTile(i, y, ModContent.TileType<Tiles.LaziteGrass>());
-        }
         //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;
     }

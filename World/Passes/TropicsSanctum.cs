@@ -9,8 +9,8 @@ public class TropicsSanctum
 {
     public static void Method(GenerationProgress progress, GameConfiguration configuration)
     {
-        progress.Message = "Adding nests...";
-        int amount = WorldGen.genRand.Next(11, 19);
+        progress.Message = "Adding sanctums";
+        int amount = WorldGen.genRand.Next(5, 10);
         //bool flag30 = true;
         while (amount > 0)
         {

@@ -179,6 +179,13 @@ public class ExxoWorldGen : ModSystem
             tasks.Insert(vines + 2, currentPass);
             totalWeight += currentPass.Weight;
         }
+        int weeds = tasks.FindIndex(genPass => genPass.Name == "Weeds");
+        if (weeds != -1)
+        {
+            currentPass = new ReplaceChestItems();
+            tasks.Insert(weeds + 1, currentPass);
+            totalWeight += currentPass.Weight;
+        }
 
         if (WorldEvil == EvilBiome.Contagion)
         {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -52,6 +53,58 @@ class Utils
                 return;
             }
             GetSkyFortressXCoord(xCoord, y, xLength, ylength, ref xCoord);
+        }
+    }
+
+    /// <summary>
+    /// Generic version of the Sky Fortress shift method. Does not currently work - will crash the game when used.
+    /// </summary>
+    /// <param name="x">The X coordinate of the structure's origin point.</param>
+    /// <param name="y">The Y coordinate of the structure's origin point.</param>
+    /// <param name="xLength">The width of the structure.</param>
+    /// <param name="ylength">The height of the structure.</param>
+    /// <param name="xCoord">The X coordinate of the structure's origin point, passed in again as ref to be modified.</param>
+    /// <param name="typesToCheck">A List of the tile types to shift the structure if found.</param>
+    /// <param name="liquid">Whether or not to check for liquids.</param>
+    /// <param name="walls">Whether or not to check for walls.</param>
+    public static void GetXCoordGeneric(int x, int y, int xLength, int ylength, ref int xCoord, List<int> typesToCheck, bool liquid = true, bool walls = true)
+    {
+        bool leftSideActive = false;
+        bool rightSideActive = false;
+
+        for (int i = y; i < y + ylength; i++)
+        {
+            if ((Main.tile[x, i].HasTile && typesToCheck.Contains(Main.tile[x, i].TileType)) || (Main.tile[x, i].LiquidAmount > 0 && liquid) || (Main.tile[x, i].WallType > 0 && walls))
+            {
+                leftSideActive = true;
+                break;
+            }
+        }
+        for (int i = y; i < y + ylength; i++)
+        {
+            if ((Main.tile[x + xLength, i].HasTile && typesToCheck.Contains(Main.tile[x + xLength, i].TileType)) || (Main.tile[x + xLength, i].LiquidAmount > 0 && liquid) || (Main.tile[x + xLength, i].WallType > 0 && walls))
+            {
+                rightSideActive = true;
+                break;
+            }
+        }
+        if (leftSideActive || rightSideActive)
+        {
+            if (xCoord > Main.maxTilesX / 2)
+                xCoord--;
+            else
+                xCoord++;
+            if (xCoord < 100)
+            {
+                xCoord = 100;
+                return;
+            }
+            if (xCoord > Main.maxTilesX - 100)
+            {
+                xCoord = Main.maxTilesX - 100;
+                return;
+            }
+            GetXCoordGeneric(xCoord, y, xLength, ylength, ref xCoord, typesToCheck, liquid, walls);
         }
     }
 
@@ -206,6 +259,8 @@ class Utils
         {
             for (int j = y; j < y + 5; j++)
             {
+                
+                WorldGen.KillTile(i, j, noItem: true);
                 Main.tile[i, j].TileType = TileID.Stone;
                 Tile t = Main.tile[i, j];
                 t.HasTile = true;

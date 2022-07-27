@@ -479,3 +479,6 @@ dotnet_diagnostic.CA1051.severity = none
 
 # RCS1006: Merge 'else' with nested 'if'.
 dotnet_diagnostic.RCS1006.severity = none
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none

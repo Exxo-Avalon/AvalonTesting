@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,7 +30,7 @@ public class AncientIronBrick : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Items.Placeable.Tile.IronBrick>()).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
-        CreateRecipe(1).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
+        CreateRecipe(1).AddIngredient(ItemID.IronBrick).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
+        Recipe.Create(ItemID.IronBrick).AddIngredient(this).AddTile(ModContent.TileType<Tiles.Ancient.AncientWorkbench>()).Register();
     }
 }
