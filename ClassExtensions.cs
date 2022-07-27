@@ -28,6 +28,22 @@ public static class ClassExtensions
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
 
+    public static Asset<T> VanillaLoad<T>(this Asset<T> asset) where T : class
+    {
+        try
+        {
+            if (asset.State == AssetState.NotLoaded)
+            {
+                Main.Assets.Request<Texture2D>(asset.Name, AssetRequestMode.ImmediateLoad);
+            }
+        }
+        catch (AssetLoadException e)
+        {
+        }
+
+        return asset;
+    }
+
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;
@@ -185,11 +201,11 @@ public static class ClassExtensions
     }
 
     /// <summary>
-    ///     Used to draw float coordinates to floored coordinates to avoid blurry rendering of textures.
+    ///     Used to draw float coordinates to rounded coordinates to avoid blurry rendering of textures.
     /// </summary>
     /// <param name="vector">The vector to convert.</param>
-    /// <returns>The floored vector.</returns>
-    public static Vector2 ToNearestPixel(this Vector2 vector) => new((int)vector.X, (int)vector.Y);
+    /// <returns>The rounded vector.</returns>
+    public static Vector2 ToNearestPixel(this Vector2 vector) => new((int)(vector.X + 0.5f), (int)(vector.Y + 0.5f));
 
     /// <summary>
     ///     Helper method for Vampire Teeth and Blah's Knives life steal.

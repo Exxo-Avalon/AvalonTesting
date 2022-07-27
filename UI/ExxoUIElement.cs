@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,26 +8,20 @@ namespace Avalon.UI;
 
 public abstract class ExxoUIElement : UIElement
 {
-    public readonly Queue<UIElement> ElementsForRemoval = new();
-
     private bool mouseWasOver;
 
-    protected ExxoUIElement() => OverrideSamplerState = SamplerState.PointClamp;
+    public delegate void ExxoUIElementEvent(ExxoUIElement sender);
 
-    public delegate void ExxoUIElementEventHandler(ExxoUIElement sender, EventArgs e);
+    public event MouseEvent? OnFirstMouseOver;
+    public event MouseEvent? OnLastMouseOut;
+    public event MouseEvent? OnMouseHovering;
+    public event ExxoUIElementEvent? OnRecalculateFinish;
+    public Queue<UIElement> ElementsForRemoval { get; } = new();
 
-    public event MouseEvent OnFirstMouseOver;
-    public event MouseEvent OnLastMouseOut;
-
-    public event MouseEvent OnMouseHovering;
-    public event ExxoUIElementEventHandler OnRecalculateFinish;
     public bool IsVisible => Active && !Hidden && GetOuterDimensions().Width > 0 && GetOuterDimensions().Height > 0;
     public int ElementCount => Elements.Count;
 
-    public abstract bool IsDynamicallySized
-    {
-        get;
-    }
+    public abstract bool IsDynamicallySized { get; }
 
     public bool Active { get; set; } = true;
     public bool Hidden { get; set; }
@@ -39,7 +32,7 @@ public abstract class ExxoUIElement : UIElement
         spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp, DepthStencilState.None, null, null,
             Main.UIScaleMatrix);
 
-    public sealed override void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime)
     {
         if (!Active)
         {
@@ -53,9 +46,9 @@ public abstract class ExxoUIElement : UIElement
 
         UpdateSelf(gameTime);
         base.Update(gameTime);
-        while (ElementsForRemoval.Count > 0)
+        while (ElementsForRemoval.TryDequeue(out UIElement? uiElement))
         {
-            RemoveChild(ElementsForRemoval.Dequeue());
+            RemoveChild(uiElement);
         }
     }
 
@@ -63,14 +56,16 @@ public abstract class ExxoUIElement : UIElement
 
     public sealed override void Draw(SpriteBatch spriteBatch)
     {
-        if (IsVisible)
+        if (!IsVisible)
         {
-            base.Draw(spriteBatch);
+            return;
+        }
 
-            if (IsMouseHovering && !string.IsNullOrEmpty(Tooltip))
-            {
-                Utilities.DrawBoxedCursorTooltip(spriteBatch, Tooltip);
-            }
+        base.Draw(spriteBatch);
+
+        if (IsMouseHovering && !string.IsNullOrEmpty(Tooltip))
+        {
+            Main.hoverItemName = Tooltip;
         }
     }
 
@@ -81,7 +76,7 @@ public abstract class ExxoUIElement : UIElement
         RecalculateSelf();
         RecalculateChildren();
         PostRecalculate();
-        if (!(Parent is ExxoUIElement))
+        if (Parent is not ExxoUIElement)
         {
             RecalculateFinish();
         }
@@ -109,8 +104,11 @@ public abstract class ExxoUIElement : UIElement
         }
     }
 
-    // Optimised method that only moves positions, only to be used if the elements have already previously been recalculated
-    public void RecalculateChildrenSelf()
+    /// <summary>
+    ///     Optimised method that only moves positions, only to be used if the elements have already previously been
+    ///     recalculated
+    /// </summary>
+    public virtual void RecalculateChildrenSelf()
     {
         RecalculateSelf();
         foreach (UIElement element in Elements)
@@ -126,8 +124,11 @@ public abstract class ExxoUIElement : UIElement
         }
     }
 
-    // This works because the UIChanges.ILUIElementRecalculate hook doesn't recalulate children if the element is an ExxoUIElement
-    public void RecalculateSelf() => base.Recalculate();
+    /// <summary>
+    ///     This works because the UIChanges.ILUIElementRecalculate hook doesn't recalulate children if the element is an
+    ///     ExxoUIElement
+    /// </summary>
+    public virtual void RecalculateSelf() => base.Recalculate();
 
     protected virtual void UpdateSelf(GameTime gameTime)
     {
@@ -155,6 +156,6 @@ public abstract class ExxoUIElement : UIElement
             }
         }
 
-        OnRecalculateFinish?.Invoke(this, EventArgs.Empty);
+        OnRecalculateFinish?.Invoke(this);
     }
 }

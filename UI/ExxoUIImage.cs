@@ -13,7 +13,11 @@ public class ExxoUIImage : ExxoUIElement
     private Vector2 inset;
     private float scale = 1f;
 
-    public ExxoUIImage(Asset<Texture2D> texture) => SetImage(texture);
+    public ExxoUIImage(Asset<Texture2D> texture)
+    {
+        OverrideSamplerState = SamplerState.PointClamp;
+        SetImage(texture);
+    }
 
     public override bool IsDynamicallySized => false;
 
@@ -37,10 +41,11 @@ public class ExxoUIImage : ExxoUIElement
         }
     }
 
-    protected Asset<Texture2D> Texture { get; private set; }
+    protected Asset<Texture2D>? Texture { get; private set; }
 
-    public void SetImage(Asset<Texture2D> texture)
+    public void SetImage(Asset<Texture2D>? texture)
     {
+        texture?.VanillaLoad();
         Texture = texture;
         UpdateDimensions();
     }
@@ -57,10 +62,12 @@ public class ExxoUIImage : ExxoUIElement
 
     private void UpdateDimensions()
     {
-        if (Texture != null)
+        if (Texture == null)
         {
-            MinWidth.Set((Texture.Width() - (Inset.X * 2)) * Scale, 0f);
-            MinHeight.Set((Texture.Height() - (Inset.Y * 2)) * Scale, 0f);
+            return;
         }
+
+        MinWidth.Set((Texture.Width() - (Inset.X * 2)) * Scale, 0f);
+        MinHeight.Set((Texture.Height() - (Inset.Y * 2)) * Scale, 0f);
     }
 }

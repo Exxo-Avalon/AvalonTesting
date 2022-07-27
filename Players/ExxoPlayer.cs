@@ -785,20 +785,6 @@ public class ExxoPlayer : ModPlayer
         tag["SpiritPoppyUseCount"] = spiritPoppyUseCount;
     }
 
-    // tag = new TagCompound
-    // {
-    //     { "Avalon:TomeSlot", ItemIO.Save(tomeItem) },
-    //     { "Avalon:Stamina", Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax},
-    //     { "Avalon:HerbTier", (int)herbTier },
-    //     { "Avalon:HerbTotal", herbTotal },
-    //     { "Avalon:PotionTotal", potionTotal },
-    //     { "Avalon:HerbCounts", herbCounts.Save() },
-    //     { "Avalon:RocketJumpUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked },
-    //     { "Avalon:TeleportUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked},
-    //     { "Avalon:SwimmingUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked },
-    //     { "Avalon:SprintUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked },
-    //     { "Avalon:FlightRestoreUnlocked", Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked },
-    // };
     public override void LoadData(TagCompound tag)
     {
         if (tag.ContainsKey("CrystalHealth"))
@@ -1128,25 +1114,6 @@ public class ExxoPlayer : ModPlayer
             }
         }*/
         #endregion rift goggles
-
-        // Herbology bench distance check
-        if (herb)
-        {
-            int num9 = (int)((Player.position.X + (Player.width * 0.5)) / 16.0);
-            int num10 = (int)((Player.position.Y + (Player.height * 0.5)) / 16.0);
-            if (num9 < herbX - Player.tileRangeX || num9 > herbX + Player.tileRangeX + 1 ||
-                num10 < herbY - Player.tileRangeY || num10 > herbY + Player.tileRangeY + 1)
-            {
-                SoundEngine.PlaySound(SoundID.MenuClose);
-                Player.Avalon().herb = false;
-                Player.dropItemCheck();
-            }
-        }
-
-        if (!Main.playerInventory)
-        {
-            Player.Avalon().herb = false;
-        }
 
         if (Player.tongued)
         {
@@ -2810,7 +2777,6 @@ public class ExxoPlayer : ModPlayer
     public bool[] pSensor = new bool[6];
     public int spiritPoppyUseCount;
     public bool shmAcc = false;
-    public bool herb;
     public bool teleportVWasTriggered;
     public int screenShakeTimer;
     public bool snotOrb;
@@ -2951,25 +2917,13 @@ public class ExxoPlayer : ModPlayer
     public bool dragonsBondage;
     #endregion Dragon's Bondage AI vars
 
-    public int herbX;
-    public int herbY;
-    public int potionTotal;
-    public int herbTotal;
-    public Dictionary<int, int> herbCounts = new();
+
     private int gemCount;
     public bool[] ownedLargeGems = new bool[10];
 
     // Crit damage multiplyer vars
     public float CritDamageMult = 1f;
 
-    public enum HerbTier
-    {
-        Novice,
-        Apprentice,
-        Expert,
-        Master,
-    }
 
-    public HerbTier herbTier;
     #endregion fields
 }
