@@ -23,7 +23,7 @@ public class DarkMatterScreenShader : ScreenShaderData
     public override void Update(GameTime gameTime)
     {
 
-        if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
+        if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
             Filters.Scene["Avalon:DarkMatter"].Deactivate();
         }
