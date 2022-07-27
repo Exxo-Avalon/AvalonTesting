@@ -1,6 +1,6 @@
-using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,6 +14,7 @@ class InertiaBoots : ModItem
         DisplayName.SetDefault("Inertia Boots");
         Tooltip.SetDefault("Allows infinite flight and slow fall and the wearer can run incredibly fast\nThe wearer has a chance to dodge attacks and negates fall damage");
         SacrificeTotal = 1;
+        ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(1000, 9f, 1.2f, true);
     }
 
     public override void SetDefaults()

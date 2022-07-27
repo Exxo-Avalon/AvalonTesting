@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,6 +13,7 @@ class CrimsonWings : ModItem
         DisplayName.SetDefault("Crimson Flaps");
         Tooltip.SetDefault("Allows flight and slow fall\nOther bonuses apply when in the Crimson");
         SacrificeTotal = 1;
+        ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new Terraria.DataStructures.WingStats(140, 5f, 1.2f);
     }
 
     public override void SetDefaults()
@@ -31,6 +32,12 @@ class CrimsonWings : ModItem
         {
             player.statDefense += 5;
             player.statLifeMax2 += 40;
+            if (player.velocity.X != 0 || player.velocity.Y != 0)
+            {
+                var newColor = default(Color);
+                var num = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, DustID.VampireHeal, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), 100, newColor, 2f);
+                Main.dust[num].noGravity = true;
+            }
         }
         player.wingTimeMax = 140;
     }
