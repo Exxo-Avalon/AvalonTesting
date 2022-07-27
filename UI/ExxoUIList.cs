@@ -333,9 +333,9 @@ public class ExxoUIList : ExxoUIElement
 
     private void UpdateScrollbar()
     {
-        if (Parent != null)
+        if (Parent != null && ScrollBar != null)
         {
-            ScrollBar?.SetView(Parent.MaxHeight.Pixels, GetInnerDimensions().Height);
+            ScrollBar.SetView(Parent.GetInnerDimensions().Height, GetInnerDimensions().Height);
         }
     }
 

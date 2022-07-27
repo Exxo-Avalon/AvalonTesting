@@ -39,8 +39,9 @@ public class ExxoUIImage : ExxoUIElement
 
     protected Asset<Texture2D>? Texture { get; private set; }
 
-    public void SetImage(Asset<Texture2D> texture)
+    public void SetImage(Asset<Texture2D>? texture)
     {
+        texture?.VanillaLoad();
         Texture = texture;
         UpdateDimensions();
     }

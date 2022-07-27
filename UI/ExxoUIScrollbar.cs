@@ -30,7 +30,7 @@ public class ExxoUIScrollbar : ExxoUIAdapter<UIScrollbar>
     public void SetView(float viewSize, float maxViewSize)
     {
         ChildBase.SetView(viewSize, maxViewSize);
-        Hidden = Math.Abs(viewSize - maxViewSize) < float.Epsilon;
+        Hidden = maxViewSize - viewSize <= 0;
     }
 
     public float GetValue() => ChildBase.GetValue();

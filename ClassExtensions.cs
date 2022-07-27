@@ -28,6 +28,22 @@ public static class ClassExtensions
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
 
+    public static Asset<T> VanillaLoad<T>(this Asset<T> asset) where T : class
+    {
+        try
+        {
+            if (asset.State == AssetState.NotLoaded)
+            {
+                Main.Assets.Request<Texture2D>(asset.Name, AssetRequestMode.ImmediateLoad);
+            }
+        }
+        catch (AssetLoadException e)
+        {
+        }
+
+        return asset;
+    }
+
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;

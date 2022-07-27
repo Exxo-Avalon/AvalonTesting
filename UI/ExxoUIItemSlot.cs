@@ -18,6 +18,7 @@ internal class ExxoUIItemSlot : ExxoUIImageButton
         item = new Item();
         item.netDefaults(itemID);
         item.stack = 1;
+
         InnerImage = new ExxoUIImage(TextureAssets.Item[item.type])
         {
             HAlign = UIAlign.Center, VAlign = UIAlign.Center,
