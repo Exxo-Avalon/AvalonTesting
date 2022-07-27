@@ -2,9 +2,11 @@ Mods:
 {
     Avalon:
     {
+	    CommonItemTooltip.TomeMaterial:书册材料
+		
 	    ItemName:
         {
-		/*1.3 item stats*/
+		/*1.3 item start*/
 AdventuresandMishaps:冒险与灾祸
 AegisDash:疾冲神盾
 AegisofAges:时代神盾
@@ -15,7 +17,7 @@ AmuletofPower:力量护身符
 AngerTalisman:暴怒护身符
 ApollosQuiver:阿波罗箭袋
 AstrallineArtifact:线魂神器
-BadgeofBacteria:细菌徽章
+BadgeOfBacteria:细菌徽章
 BagofBlood:血之袋
 BagofFire:火之袋
 BagofFrost:霜之袋
@@ -37,14 +39,14 @@ ChaosEmblem:混沌徽章
 ChaosEye:混沌之眼
 ChristmasTome:圣诞书
 CloakofAssists:天助斗篷
-CloudGlove:云之拳套
+CloudGloves:云之拳套
 CobaltOmegaShield:终极钴盾
 CobaltShieldMarkII:钴盾二型
 ConfusionTalisman:混乱护身符
 ContagionWings:疫化之翼
 CorruptionWings:腐化之翼
 CreatorsTome:创生者之书
-CrimsonFlaps:猩红皮瓣
+CrimsonWings:猩红皮瓣
 CrystalEdge:晶体之锋
 DiamondAmulet:钻石护身符
 Dominance:权势
@@ -101,7 +103,7 @@ SandyStormcloudinaBottle:沙暴云瓶
 SapphireAmulet:蓝玉护身符
 SceneofCarnage:大屠杀现场
 ShadowRing:影之戒
-600WattLightbulb:600瓦灯泡
+SixHundredWattLightbulb:600瓦灯泡
 SouloftheGolem:石巨人之魂
 SoutheasternPeacock:东南孔雀
 StickyCharm:黏液护身符
@@ -131,60 +133,60 @@ VampireTeeth:吸血鬼之牙
 Vortex:旋涡
 ZincWatch:锌表
 ZirconAmulet:锆石护身符
-AmmoReservationElixir:弹药储备灵药
-ArcheryElixir:箭术灵药
-BattleElixir:战斗灵药
-BloodCastElixir:施血灵药
-BuilderElixir:建筑工灵药
-CalmingElixir:镇静灵药
-CrateElixir:宝匣灵药
-AuraElixir:光环灵药
-DangersenseElixir:危险感灵药
-EnduranceElixir:耐力灵药
-FeatherfallElixir:羽落灵药
-FishingElixir:钓鱼灵药
-FlipperElixir:脚蹼灵药
-ForceFieldElixir:力场灵药
-FuryElixir:狂怒灵药
-GauntletElixir:臂铠灵药
-GillsElixir:鱼鳃灵药
-GPSElixir:定位灵药
-GravitationElixir:重力灵药
-HeartreachElixir:拾心灵药
-HunterElixir:狩猎灵药
-InfernoElixir:狱火灵药
-InvincibilityElixir:无敌灵药
-InvisibilityElixir:隐身灵药
-IronskinElixir:铁皮灵药
-LeapingElixir:跳跃灵药
-LifeforceElixir:生命力灵药
-LuckElixir:幸运灵药
-MagicPowerElixir:魔力灵药
-ManaRegenerationElixir:魔力再生灵药
-MiningElixir:挖矿灵药
-NightOwlElixir:夜猫子灵药
-ObsidianSkinElixir:黑曜石皮肤灵药
-RageElixir:暴怒灵药
-RegenerationElixir:再生灵药
-RogueElixir:盗贼灵药
-ShadowElixir:暗影灵药
-ShineElixir:光芒灵药
-ShockwaveElixir:冲击波灵药
-SonarElixir:声呐灵药
-SpelunkerElixir:洞穴探险灵药
-StarbrightElixir:灿星灵药
-StrengthElixir:力量灵药
-SummoningElixir:召唤灵药
-SupersonicElixir:超音速灵药
-SwiftnessElixir:敏捷灵药
-ThornsElixir:荆棘灵药
-TitanElixir:泰坦灵药
-TitanskinElixir:泰坦皮肤灵药
-VisionElixir:视域灵药
-WarmthElixir:温暖灵药
-WaterWalkingElixir:水上漂灵药
-WisdomElixir:智慧灵药
-WrathElixir:怒气灵药
+AdvAmmoReservationPotion:弹药储备灵药
+AdvArcheryPotion:箭术灵药
+AdvBattlePotion:战斗灵药
+AdvBloodCastPotion:施血灵药
+AdvBuilderPotion:建筑工灵药
+AdvCalmingPotion:镇静灵药
+AdvCratePotion:宝匣灵药
+AdvCrimsonPotion:赤红灵药
+AdvDangersensePotion:危险感灵药
+AdvEndurancePotion:耐力灵药
+AdvFeatherfallPotion:羽落灵药
+AdvFishingPotion:钓鱼灵药
+AdvFlipperPotion:脚蹼灵药
+AdvForceFieldPotion:力场灵药
+AdvFuryPotion:狂怒灵药
+AdvGauntletPotion:臂铠灵药
+AdvGillsPotion:鱼鳃灵药
+AdvGPSPotion:定位灵药
+AdvGravitationPotion:重力灵药
+AdvHeartreachPotion:拾心灵药
+AdvHunterPotion:狩猎灵药
+AdvInfernoPotion:狱火灵药
+AdvInvincibilityPotion:无敌灵药
+AdvInvisibilityPotion:隐身灵药
+AdvIronskinPotion:铁皮灵药
+AdvLeapingPotion:跳跃灵药
+AdvLifeforcePotion:生命力灵药
+AdvLuckPotion:幸运灵药
+AdvMagicPowerPotion:魔力灵药
+AdvManaRegenerationPotion:魔力再生灵药
+AdvMiningPotion:挖矿灵药
+AdvNightOwlPotion:夜猫子灵药
+AdvObsidianSkinPotion:黑曜石皮肤灵药
+AdvRagePotion:暴怒灵药
+AdvRegenerationPotion:再生灵药
+AdvRoguePotion:盗贼灵药
+AdvShadowPotion:暗影灵药
+AdvShinePotion:光芒灵药
+AdvShockwavePotion:冲击波灵药
+AdvSonarPotion:声呐灵药
+AdvSpelunkerPotion:洞穴探险灵药
+AdvStarbrightPotion:灿星灵药
+AdvStrengthPotion:力量灵药
+AdvSummoningPotion:召唤灵药
+AdvSupersonicPotion:超音速灵药
+AdvSwiftnessPotion:敏捷灵药
+AdvThornsPotion:荆棘灵药
+AdvTitanPotion:泰坦灵药
+AdvTitanskinPotion:泰坦皮肤灵药
+AdvVisionPotion:视域灵药
+AdvWarmthPotion:温暖灵药
+AdvWaterWalkingPotion:水上漂灵药
+AdvWisdomPotion:智慧灵药
+AdvWrathPotion:怒气灵药
 BerserkerArrow:战狂箭
 BerserkerBullet:战狂弹
 BlackSolution:黑溶液
@@ -192,13 +194,13 @@ BlahBullet:巴拉弹
 BloodyArrow:血污箭
 Canister:圆罐
 CrystalSeed:水晶种子
-CursedSeed:诅咒种子
+CursedTooth:诅咒种子
 Electrobullet:电子弹
 ElementalArrow:元素箭
 FeroziumArrow:冰零箭
 FeroziumBullet:冰零弹
 FrostCanister:冰霜圆罐
-LimeSolution:酸绿溶液
+LimeGreenSolution:酸绿溶液
 PatellaBullet:髌骨弹
 PathogenArrow:病原体箭
 PathogenBullet:病原体弹
@@ -230,7 +232,7 @@ BismuthGreaves:铋护胫
 BismuthHelmet:铋头盔
 BlahsBodyarmor:巴拉躯甲
 BlahsCuisses:巴拉腿甲
-BlahsCuisses:巴拉腿甲
+BlahsGreaves:巴拉护胫
 BlahsHauberk:巴拉链甲
 BlahsHeadguard:巴拉护脸盔
 BlahsHelmet:巴拉头盔
@@ -238,12 +240,12 @@ BloodstainedHelmet:血污头盔
 BronzeChainmail:青铜链甲
 BronzeGreaves:青铜护胫
 BronzeHelmet:青铜头盔
-CaesiumGreaves:青灰石护胫
-CaesiumGalea:青灰石护盔
-CaesiumPlateMail:青灰石板甲
-CorruptedThornBodyarmor:腐荆棘躯甲
-CorruptedThornCrown:腐荆棘头冠
-CorruptedThornGreaves:腐荆棘护胫
+CaesiumGreaves:铯护胫
+CaesiumHeadpiece:铯护盔
+CaesiumPlateMail:铯板甲
+CorruptedThornBodyarmor:腐败躯甲
+CorruptedThornCrown:腐败头冠
+CorruptedThornGreaves:腐败护胫
 CostalliteBoxGoggles:海脉石箱式护目镜
 CostalliteMouthCoverSnorkel:海脉石口罩呼吸管
 CostalliteSnorkel:海脉石呼吸管
@@ -271,7 +273,7 @@ FleshPants:血肉裤
 FleshWrappings:血肉外套
 HallowedCrown:神圣头冠
 HellsteelHood:钢狱兜帽
-HellsteelGreaves:钢狱护胫
+HellsteelPants:钢狱裤
 HellsteelVest:钢狱衬衫
 IridiumHat:铱帽
 IridiumPants:铱裤
@@ -279,6 +281,7 @@ IridiumPlateMail:铱板甲
 MiloticCrown:美纳斯头冠
 MiloticJodpurs:美纳斯骑裤
 MiloticSkinplate:美纳斯皮板
+MoltenCap:熔岩帽
 MoltenCrown:熔岩头冠
 MoltenHeadgear:熔岩头甲
 NaquadahBreastplate:银石胸铠
@@ -378,15 +381,15 @@ UnstableAnomalyBanner:混乱异常体旗
 ValkyrieBanner:武神鸟妖旗
 VampireHarpyBanner:吸血鬼鸟妖旗
 ZincSlimeBanner:锌史莱姆旗
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
-TreasureBag:宝藏袋
+ArmageddonSlimeBossBag:宝藏袋(末世史莱姆)
+BacteriumPrimeBossBag:宝藏袋(疫菌领主)
+DesertBeakBossBag:宝藏袋(荒漠巨鹰)
+DragonLordBossBag:宝藏袋(天龙帝皇)
+KingStingBossBag:宝藏袋(蜂针之王)
+MechastingBossBag:宝藏袋(机械蜂针王)
+OblivionBossBag:宝藏袋(遗忘)
+PhantasmBossBag:宝藏袋(幻影妖魂)
+WallofSteelBossBag:宝藏袋(钢铁之墙)
 InfestedCarcass:感染尸块
 BloodyAmulet:血污护身符
 CrystalFruit:水晶果
@@ -414,7 +417,7 @@ StaminaCrystal:耐力水晶
 SunCharm:日耀护身符
 TheBeak:喙嘴
 Ickfish:恶心鱼
-NauSeaFish:呕吐鱼
+NauSeaaFish:呕吐鱼
 SicklyTrout:病态鳟鱼
 AlienApparatus:异族仪器
 AlienDevice:异族装置
@@ -431,7 +434,7 @@ BrokenVigilanteTome:断裂维和团魔典
 CarbonSteel:碳钢
 Catalyzer:催化桌
 ChaosDust:混沌尘
-VirulentMushroom:毒疫菇
+ContaminatedMushroom:毒疫菇
 CoreShard:核心碎片
 CorruptShard:腐化碎片
 DarkMatterGel:暗物质凝胶
@@ -510,22 +513,22 @@ VirulentPowder:毒疫粉末
 WaterShard:水蓝碎片
 YuckyBit:恶心残肢
 Zircon:锆石
-MusicBox(ArmageddonSlime):音乐盒(末世史莱姆)
-MusicBox(BacteriumPrime):音乐盒(疫菌领主)
-MusicBox(Contagion):音乐盒(疫化之地)
-MusicBox(DesertBeak):音乐盒(荒漠巨鹰)
-MusicBox(Hellcastle):音乐盒(地狱堡垒)
-MusicBox(Phantasm):音乐盒(幻影妖魂)
-MusicBox(Tropics):音乐盒(热带)
-MusicBox(TuhrtlOutpost):音乐盒(龟人前哨站)
-MusicBox(UndergroundContagion):音乐盒(疫化地下)
+MusicBoxArmageddonSlime:音乐盒(末世史莱姆)
+MusicBoxBacteriumPrime:音乐盒(疫菌领主)
+MusicBoxContagion:音乐盒(疫化之地)
+MusicBoxDesertBeak:音乐盒(荒漠巨鹰)
+MusicBoxHellcastle:音乐盒(地狱堡垒)
+MusicBoxPhantasm:音乐盒(幻影妖魂)
+MusicBoxTropics:音乐盒(热带)
+MusicBoxTuhrtlOutpost:音乐盒(龟人前哨站)
+MusicBoxUndergroundContagion:音乐盒(疫化地下)
 ContagionKey:疫化钥匙
 ContagionKeyMold:疫化钥匙模具
 DesertKey:沙漠钥匙
 DesertKeyMold:沙漠钥匙模具
-GoldenApple:金苹果
-GoldenCandyCane:金糖棒
-GoldenHeart:金心
+GoldApple:金苹果
+GoldCandyCane:金糖棒
+GoldHeart:金心
 LargePeridot:大橄榄石
 LargeTourmaline:大电气石
 LargeZircon:大锆石
@@ -541,7 +544,7 @@ BeetleBar:甲虫锭
 BerserkerBar:战狂锭
 BismuthBar:铋锭
 BronzeBar:青铜锭
-CaesiumBar:青灰石锭
+CaesiumBar:铯锭
 DurataniumBar:坚钛锭
 EnchantedBar:附魔锭
 FeroziumBar:冰零锭
@@ -573,8 +576,8 @@ PearlwoodBeam:珍珠木梁
 RichMahoganyBeam:红木梁
 SandstoneColumn:沙岩柱
 ShadewoodBeam:暗影木梁
-AncientWorkBench:远古工作台
-CaesiumForge:青灰石熔炉
+AncientWorkbench:远古工作台
+CaesiumForge:铯熔炉
 CoughwoodWorkBench:咳喘木工作台
 CrimsonAltar:猩红祭坛
 DarkSlimeWorkBench:暗史莱姆工作台
@@ -665,32 +668,32 @@ VertebraeDoor:椎骨门
 BismuthCandelabra:铋烛台
 BismuthCandle:铋蜡烛
 BismuthChandelier:铋吊灯
-CandleofBlight:凋零之烛
+BlightCandle:凋零之烛
 BronzeChandelier:青铜吊灯
 BrownTorch:棕火把
 CyanTorch:青火把
 DarkSlimeCandle:暗史莱姆蜡烛
 DarkSlimeLamp:暗史莱姆灯
 DarkSlimeLantern:暗史莱姆灯笼
-CandleofDelight:欢愉之烛
+DelightCandle:欢愉之烛
 EctoplasmCandelabra:灵气烛台
 EctoplasmCandle:灵气蜡烛
 EctoplasmChandelier:灵气吊灯
 EctoplasmLamp:灵气灯
 EctoplasmLantern:灵气灯笼
-CandleofFlight:飞翔之烛
-CandleofFright:惊骇之烛
+FlightCandle:飞翔之烛
+FrightCandle:惊骇之烛
 HeartstoneCandle:心之石蜡烛
 HeartstoneChandelier:心之石吊灯
 HeartstoneLamp:心之石灯
 HeartstoneLantern:心之石吊灯
-CandleofHumidity:潮水之烛
-CandleofIce:寒冰之烛
+HumidityCandle:潮水之烛
+IceCandle:寒冰之烛
 JungleTorch:丛林火把
-CandleofLight:光辉之烛
+LightCandle:光辉之烛
 LimeTorch:酸绿火把
-CandleofMight:威能之烛
-CandleofNight:暗夜之烛
+MightCandle:威能之烛
+NightCandle:暗夜之烛
 OrangeDungeonCandle:橙地牢蜡烛
 OrangeChandelier:橙吊灯
 OrangeLamp:橙灯
@@ -701,10 +704,10 @@ ResistantWoodCandle:耐炎木蜡烛
 ResistantWoodChandelier:耐炎木吊灯
 ResistantWoodLamp:耐炎木灯
 ResistantWoodLantern:耐炎木灯笼
-CandleofSight:视域之烛
+SightCandle:视域之烛
 SlimeTorch:史莱姆火把
-CandleofTime:时光之烛
-CandleofTorture:酷刑之烛
+TimeCandle:时光之烛
+TortureCandle:酷刑之烛
 VertebraeCandle:椎骨蜡烛
 VertebraeLamp:椎骨灯
 VertebraeLantern:椎骨灯笼
@@ -726,7 +729,7 @@ BarfbushSeeds:呕吐木种子
 BloodberrySeeds:血腥莓种子
 CorruptionSeed:腐化种子
 CrimsonSeed:猩红种子
-HellstoneDart:狱石镖
+HellstoneSeed:狱石镖
 HolybirdSeeds:圣鸟花种子
 ContagionSeeds:疫化种子
 JungleSeed:丛林种子
@@ -786,7 +789,7 @@ BrimstoneBlock:硫磺块
 BronzeBrick:青铜砖
 BronzeOre:青铜矿
 BrownIceBlock:棕冰雪块
-CaesiumOre:青灰石矿
+CaesiumOre:铯矿
 ChlorophyteBrick:叶绿砖
 ChocolateCandyCaneBlock:巧克力糖棒块
 ChunkstoneBlock:厚团石块
@@ -806,7 +809,7 @@ DarkSandBlock:暗沙块
 DarksandstoneBlock:暗沙岩块
 DarkSlimeBlock:暗史莱姆块
 DarkSlimePlatform:暗史莱姆平台
-DemonSpikescale:恶魔鳞片尖刺
+DemonSpikeScale:恶魔鳞片尖刺
 DragonScale:龙鳞
 DurataniumBrick:坚钛砖
 DurataniumOre:坚钛矿
@@ -958,7 +961,7 @@ BeeRepellent:驱蜂剂
 BlahPotion:巴拉药水
 BloodCastPotion:施血药水
 CandyCane:糖棒
-AuraPotion:光环药水
+CrimsonPotion:赤红药水
 ElixirofLife:生命灵药
 FlaskofInfection:侵染瓶
 ForceFieldPotion:力场药水
@@ -969,7 +972,7 @@ GreaterStaminaPotion:强效耐力药水
 InvincibilityPotion:无敌药水
 LeapingPotion:跳跃药水
 LesserStaminaPotion:弱效耐力药水
-LuckPotion:幸运药水
+CloverPotion:幸运药水
 PiercingPotion:穿刺药水
 RoguePotion:盗贼药水
 ShadowPotion:暗影药水
@@ -1046,7 +1049,7 @@ SnotlineFishingRod:鼻涕线鱼竿
 SonicScrewdriverMkI:声波螺丝刀MKI
 SonicScrewdriverMkII:声波螺丝刀MKII
 SonicScrewdriverMkIII:声波螺丝刀MKIII
-Banhammer:封锁之锤
+TheBanhammer:禁令之锤
 Timechanger:时间转换器
 TimechangerMkII:时间转换器MkII
 TorchLauncher:火把发射器
@@ -1135,7 +1138,7 @@ BlahsThrow:巴拉球
 BluePhasecleaver:蓝相位斩刃
 BronzeBroadsword:青铜宽剑
 BronzeShortsword:青铜短剑
-CaesiumScimitar:青灰石弯刀
+CaesiumScimitar:铯弯刀
 CoughwoodSword:咳喘木剑
 DarklightLance:黑光之枪
 DesertLongsword:荒漠长剑
@@ -1144,8 +1147,8 @@ DurataniumSword:坚钛剑
 DurataniumWaraxe:坚钛战斧
 Elektriwave:电气浪潮
 ElementalExcalibur:元素圣剑
-ExaliburNet:圣剑网
-FeroziumIcesword:冰零寒刃
+ExcaliburNet:圣剑网
+FeroziumIceSword:冰零寒刃
 FieryBladeofGrass:草之炎刃
 GoldSwordNet:金网剑
 GreenPhasecleaver:绿相位斩刃
@@ -1196,7 +1199,7 @@ ZincBroadsword:锌宽剑
 ZincShortsword:锌短剑
 BismuthBow:铋弓
 BronzeBow:青铜弓
-CaesiumCrossbow:青灰石十字弩
+CaesiumRepeater:铯十字弩
 CoughwoodBow:咳喘木弓
 DurataniumRepeater:坚钛连弩
 FleshBoiler:血肉锅炉
@@ -1220,7 +1223,7 @@ ReinforcedBlowpipe:强化吹管
 RhodiumLongbow:铑长弓
 SackofToys:玩具袋
 Shurikerang:手里剑环刃
-SolariumBow:日耀弓
+SolarFlareBow:太阳耀斑弓
 SpikeCannon:尖刺加农炮
 SpikeRailgun:尖刺轨道炮
 StarlightCannon:星耀加农炮
@@ -1248,7 +1251,7 @@ Icicle:冰柱
 PearlsandBomb:珍珠沙炸弹
 SandBomb:沙子炸弹
 SnotsandBomb:鼻涕沙炸弹
-PowerofOblivion:遗忘之力
+RingofReplenishment:补给之戒
 PygmyShield:矮人盾
 QuackinaBalloon:鸭子气球
 QuackinaBottle:鸭子瓶
@@ -1274,13 +1277,182 @@ Anvenalforge:军械砧炉
 BlahsKnives:巴拉飞刃
 SpraynBlah:巴拉喷弹枪
 BlackWhetstone:黑磨刀石
-ThornedHeartAmulet:荆心护身符
+ThornHeartAmulet:荆心护身符
 		/*1.3 item end*/
-        }
 		
+		/*1.4 item start*/
+		
+		QuantumClaymore:量子克莱莫尔
+		ShadowCharm:暗影护身符
+		PhantasmalBullet:幻影弹
+		SpectralBullet:幽灵弹
+		AeroforceGuardia:空气动力守卫
+		AeroforceProtector:空气动力护卫
+		AeroforceLeggings:空气动力护腿
+		EarthsplitterHelm:裂地者头盔
+		EarthsplitterChestpiece:裂地者胸甲
+		EarthsplitterLeggings:裂地者护腿
+		CrystalUnity:水晶统一体
+		PulseCharm:脉冲护身符
+		ShadowPulse:暗影脉冲
+		ShadowPulseBag:暗影脉冲袋
+		XanthophyteBullet:叶黄弹
+		TombMirror:墓镜
+		CaesiumSpear:铯矛
+		CaesiumMace:铯钉头锤
+		SkyInsignia:天空徽章
+		SoulofBlightinaBottle:瓶中凋零之魂
+		SoulofDelightinaBottle:瓶中欢愉之魂
+		SoulofHumidityinaBottle:瓶中潮水之魂
+		SoulofIceinaBottle:瓶中寒冰之魂
+		SoulofTimeinaBottle:瓶中时光之魂
+		SoulofTortureinaBottle:瓶中苦痛之魂
+		XanthophyteHat:叶黄帽子
+		XanthophyteHelm:叶黄头盔
+		XanthophyteLeggings:叶黄护腿
+		XanthophyteMask:叶黄面具
+		XanthophytePlate:叶黄装甲
+		CorruptedBar:腐败锭
+		DarkMatterDaiquiri:暗物质代基里酒
+		/*1.4 item end*/
+        }
+
 		ItemTooltip:
         {
-		/*1.3 item stats*/
+		/*1.4 itemtooltip start*/
+
+		QuantumClaymore:
+		'''
+		'穿越时间撕裂你的敌人'
+		发射穿透性的量子光束
+		真近战攻击会召唤额外的非穿透光束
+		[c/C39FDD:10 周年竞赛获胜者 - Waasephi]
+		'''
+		ShadowCharm:
+		'''
+		持有时移动有残像
+		[c/C39FDD:10 周年竞赛获胜者 - QuibopWon]
+		'''
+		PhantasmalBullet:
+		'''
+		穿透普通方块
+		[c/C39FDD:10 周年竞赛获胜者 - QuibopWon]
+		'''
+		SpectralBullet:
+		'''
+		穿透普通方块
+		[c/C39FDD:10 周年竞赛获胜者 - QuibopWon]
+		'''
+		AeroforceGuardia:
+		'''
+		增加6%召唤伤害
+		+1召唤栏
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		AeroforceProtector:
+		'''
+		增加10%召唤伤害
+		+1召唤栏
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		AeroforceLeggings:
+		'''
+		增加10%召唤伤害
+		增加20%的移动加速度和跳跃速度
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		EarthsplitterHelm:
+		'''
+		发光药水效果
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		EarthsplitterChestpiece:
+		'''
+		夜猫子药水效果
+		抓钩可以抓住5个方块并增加25%的射程
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		EarthsplitterLeggings:
+		'''
+		增加跳跃高度
+		采矿速度提高15%
+		[c/C39FDD:10 周年竞赛获胜者 - Crabby]
+		'''
+		CrystalUnity:
+		'''
+		'混乱的力量彻底击败了你的敌人'
+		[c/C39FDD:10 周年竞赛获胜者 - FractureACBF]
+		'''
+		PulseCharm:
+		'''
+		持有时有脉冲的轮廓
+		'''
+		ShadowPulse:
+		'''
+		持有时有脉冲的轮廓
+		持有者移动时有残像
+		'''
+		ShadowPulseBag:
+		'''
+		在你移动时,会有很多颗粒覆盖你
+		持有时有脉冲的轮廓
+		持有者移动时有残像
+		'''
+		XanthophyteBullet:
+		'''
+		击中方块时分裂成受重力影响的子弹
+		'''
+		TombMirror:
+		'''
+		用于返回你上次死亡的地方
+		'凝视镜子，你看到了前世的自己'
+		'''
+		CaesiumSpear:
+		'''
+		每次命中都会爆炸
+		'戳！'
+		'''
+		CaesiumMace:
+		'''
+		每次命中都会爆炸
+		'''
+		SkyInsignia:
+		'''
+		
+		'''
+		XanthophyteHat:
+		'''
+		增加100点魔力值，降低15%魔力消耗
+		增加18%魔法伤害
+		'''
+		XanthophyteHelm:
+		'''
+		增加18%近战伤害
+		增加7%近战暴击率
+		'''
+		XanthophyteLeggings:
+		'''
+		增加9%暴击率
+		增加10%移动速度
+		'''
+		XanthophyteMask:
+		'''
+		增加20%远程伤害
+		有20%的概率不消耗弹药
+		'''
+		XanthophytePlate:
+		'''
+		增加7%的伤害
+		增加8%暴击率
+		'''
+		DarkMatterDaiquiri:
+		'''
+		召唤小型末日史莱姆
+		'''
+		/*1.4 itemtooltip end*/
+		
+		
+		/*1.3 itemtooltip start*/
 AdventuresandMishaps:
 '''
 书册
@@ -1334,7 +1506,7 @@ AstrallineArtifact:
 在星体投射时接触敌人时会标记它们
 被标记的敌人将受到三倍伤害，持续30秒
 '''
-BadgeofBacteria:
+BadgeOfBacteria:
 '''
 受伤时会增加8点伤害
 攻击者也会在你受伤后短时间内受到伤害
@@ -1436,7 +1608,7 @@ CloakofAssists:
 在受伤时增加移动速度，并释放蜜蜂
 受伤时会坠下落星和雷电
 '''
-CloudGlove:
+CloudGloves:
 '''
 穿戴者可在空中放置方块和墙壁
 '''
@@ -1675,7 +1847,7 @@ ObsidianRoseShield:
 '''
 Omnibag:
 '''
-在你移动时会使很多颗粒覆盖你
+在你移动时,会有很多颗粒覆盖你
 '''
 OnyxHook:
 '''
@@ -1733,7 +1905,7 @@ ShadowRing:
 使隐形盔甲的视觉隐身失效
 在装饰栏生效
 '''
-600WattLightbulb:
+SixHundredWattLightbulb:
 '''
 对黑视Debuff免疫
 '''
@@ -1882,219 +2054,219 @@ ZirconAmulet:
 '''
 增加5%投掷伤害
 '''
-AmmoReservationElixir:
+AdvAmmoReservationPotion:
 '''
 有30%的概率不消耗弹药
 '''
-ArcheryElixir:
+AdvArcheryPotion:
 '''
 增加40%箭的速度和伤害
 '''
-BattleElixir:
+AdvBattlePotion:
 '''
 增加敌人生成速度
 '''
-BloodCastElixir:
+AdvBloodCastPotion:
 '''
 将最大生命值增加至你的最大魔力值中
 '''
-BuilderElixir:
+AdvBuilderPotion:
 '''
 增加放置速度和范围
 '''
-CalmingElixir:
+AdvCalmingPotion:
 '''
 降低敌人的攻击性和生成速度
 '''
-CrateElixir:
+AdvCratePotion:
 '''
 增加获得板条箱的概率
 '''
-AuraElixir:
+AdvCrimsonPotion:
 '''
 使屏幕上的敌人都受到伤害
 '''
-DangersenseElixir:
+AdvDangersensePotion:
 '''
 使你能看到附近的陷阱
 '''
-EnduranceElixir:
+AdvEndurancePotion:
 '''
 降低20%所受伤害
 '''
-FeatherfallElixir:
+AdvFeatherfallPotion:
 '''
 减缓坠落速度
 '''
-FishingElixir:
+AdvFishingPotion:
 '''
 增加钓鱼技能
 '''
-FlipperElixir:
+AdvFlipperPotion:
 '''
 使你在液体中快速移动
 '''
-ForceFieldElixir:
+AdvForceFieldPotion:
 '''
 可使力场反射弹幕
 '''
-FuryElixir:
+AdvFuryPotion:
 '''
 增加40%暴击伤害
 '''
-GauntletElixir:
+AdvGauntletPotion:
 '''
 降低6点防御值，增加25%近战伤害
 '''
-GillsElixir:
+AdvGillsPotion:
 '''
 将空气呼吸代替为水下呼吸
 '''
-GPSElixir:
+AdvGPSPotion:
 '''
 获得全球定位系统的效果
 '''
-GravitationElixir:
+AdvGravitationPotion:
 '''
 可控制重力
 '''
-HeartreachElixir:
+AdvHeartreachPotion:
 '''
 增加生命之心的拾取范围
 '''
-HunterElixir:
+AdvHunterPotion:
 '''
 显示敌人的位置
 '''
-InfernoElixir:
+AdvInfernoPotion:
 '''
 会点燃附近敌人
 '''
-InvincibilityElixir:
+AdvInvincibilityPotion:
 '''
 获得无敌效果
 '''
-InvisibilityElixir:
+AdvInvisibilityPotion:
 '''
 获得隐身效果
 '''
-IronskinElixir:
+AdvIronskinPotion:
 '''
 增加16点防御值
 '''
-LeapingElixir:
+AdvLeapingPotion:
 '''
 增加垂直加速度
 '''
-LifeforceElixir:
+AdvLifeforcePotion:
 '''
 增加40%最大生命值
 '''
-LuckElixir:
+AdvLuckPotion:
 '''
 稀有物的掉率翻倍
 '''
-MagicPowerElixir:
+AdvMagicPowerPotion:
 '''
 增加40%魔法伤害
 '''
-ManaRegenerationElixir:
+AdvManaRegenerationPotion:
 '''
 增加魔力再生
 '''
-MiningElixir:
+AdvMiningPotion:
 '''
 增加采矿速度
 '''
-NightOwlElixir:
+AdvNightOwlPotion:
 '''
 增加夜视能力
 '''
-ObsidianSkinElixir:
+AdvObsidianSkinPotion:
 '''
 {$ItemTooltip.ObsidianSkinPotion}
 '''
-RageElixir:
+AdvRagePotion:
 '''
 增加20%暴击率
 '''
-RegenerationElixir:
+AdvRegenerationPotion:
 '''
 {$ItemTooltip.RegenerationPotion}
 '''
-RogueElixir:
+AdvRoguePotion:
 '''
 降低5%远程伤害，有25%的概率不消耗弹药
 '''
-ShadowElixir:
+AdvShadowPotion:
 '''
 可传送至鼠标处
 '''
-ShineElixir:
+AdvShinePotion:
 '''
 散发出一道光环
 '''
-ShockwaveElixir:
+AdvShockwavePotion:
 '''
 当你着陆时敌人会受到伤害
 '''
-SonarElixir:
+AdvSonarPotion:
 '''
 探测上钩的鱼
 '''
-SpelunkerElixir:
+AdvSpelunkerPotion:
 '''
 显示宝藏和矿石的位置
 '''
-StarbrightElixir:
+AdvStarbrightPotion:
 '''
 增加坠落之星的坠落频率
 '''
-StrengthElixir:
+AdvStrengthPotion:
 '''
 增加所有属性
 '''
-SummoningElixir:
+AdvSummoningPotion:
 '''
 +2召唤栏
 '''
-SupersonicElixir:
+AdvSupersonicPotion:
 '''
 将移动速度增加至最大
 '''
-SwiftnessElixir:
+AdvSwiftnessPotion:
 '''
 增加50%移动速度
 '''
-ThornsElixir:
+AdvThornsPotion:
 '''
 攻击者也会受到伤害
 '''
-TitanElixir:
+AdvTitanPotion:
 '''
 增加击退力
 '''
-TitanskinElixir:
+AdvTitanskinPotion:
 '''
 增加20点防御，降低6%伤害
 '''
-VisionElixir:
+AdvVisionPotion:
 '''
 点亮开放洞穴
 '''
-WarmthElixir:
+AdvWarmthPotion:
 '''
 降低来自冷源的伤害
 '''
-WaterWalkingElixir:
+AdvWaterWalkingPotion:
 '''
 获得在液体上行走的能力
 '''
-WisdomElixir:
+AdvWisdomPotion:
 '''
 降低4%魔法伤害，增加120点魔力值
 '''
-WrathElixir:
+AdvWrathPotion:
 '''
 增加20%伤害
 '''
@@ -2127,7 +2299,7 @@ CrystalSeed:
 '''
 与吹管同时使用
 '''
-CursedSeed:
+CursedTooth:
 '''
 与吹管同时使用
 '''
@@ -2151,7 +2323,7 @@ FrostCanister:
 '''
 
 '''
-LimeSolution:
+LimeGreenSolution:
 '''
 由环境改造枪使用
 蔓延丛林
@@ -2303,7 +2475,7 @@ BlahsCuisses:
 远程弹幕有概率分裂为两个
 可传送至鼠标处
 '''
-BlahsCuisses:
+BlahsGreaves:
 '''
 近战武器有概率立即杀死生物
 远程弹幕有概率分裂为两个
@@ -2345,7 +2517,7 @@ CaesiumGreaves:
 '''
 增加15%近战攻速和移动速度
 '''
-CaesiumGalea:
+CaesiumHeadpiece:
 '''
 增加8%近战伤害
 '''
@@ -2491,7 +2663,7 @@ HellsteelHood:
 增加16%召唤伤害
 +1召唤栏
 '''
-HellsteelGreaves:
+HellsteelPants:
 '''
 增加14%移动速度
 +1召唤栏
@@ -2528,6 +2700,10 @@ MiloticSkinplate:
 '''
 增加30%召唤击退
 +2召唤栏
+'''
+MoltenCap:
+'''
+召唤师头盔
 '''
 MoltenCrown:
 '''
@@ -3031,7 +3207,7 @@ EyeofOblivion:
 召唤远古遗忘
 小心使用
 '''
-Eyes'Pamphlet:
+EyesPamphlet:
 '''
 召唤三只克苏鲁之眼
 '''
@@ -3102,7 +3278,7 @@ Ickfish:
 '''
 
 '''
-Nau-Sea-aFish:
+NauSeaaFish:
 '''
 '明白?'
 '''
@@ -3738,7 +3914,7 @@ ShadewoodBeam:
 '''
 
 '''
-AncientWorkBench:
+AncientWorkbench:
 '''
 用于制作旧式物品
 '''
@@ -4106,7 +4282,7 @@ BismuthChandelier:
 '''
 
 '''
-CandleofBlight:
+BlightCandle:
 '''
 
 '''
@@ -4134,7 +4310,7 @@ DarkSlimeLantern:
 '''
 
 '''
-CandleofDelight:
+DelightCandle:
 '''
 使附近玩家增加生命再生力
 '''
@@ -4158,11 +4334,11 @@ EctoplasmLantern:
 '''
 
 '''
-CandleofFlight:
+FlightCandle:
 '''
 使附近玩家降低重力
 '''
-CandleofFright:
+FrightCandle:
 '''
 使附近玩家增加5点防御值
 '''
@@ -4182,11 +4358,11 @@ HeartstoneLantern:
 '''
 
 '''
-CandleofHumidity:
+HumidityCandle:
 '''
 使附近玩家获得耐寒性
 '''
-CandleofIce:
+IceCandle:
 '''
 使附近的方块变滑
 '''
@@ -4194,7 +4370,7 @@ JungleTorch:
 '''
 
 '''
-CandleofLight:
+LightCandle:
 '''
 散发出大量光芒
 '''
@@ -4202,11 +4378,11 @@ LimeTorch:
 '''
 
 '''
-CandleofMight:
+MightCandle:
 '''
 使附近玩家增加10%伤害
 '''
-CandleofNight:
+NightCandle:
 '''
 使附近玩家变为狼人
 '''
@@ -4250,7 +4426,7 @@ ResistantWoodLantern:
 '''
 
 '''
-CandleofSight:
+SightCandle:
 '''
 使附近玩家能看到附近敌人和陷阱
 '''
@@ -4258,11 +4434,11 @@ SlimeTorch:
 '''
 
 '''
-CandleofTime:
+TimeCandle:
 '''
 使附近玩家显示时间
 '''
-CandleofTorture:
+TortureCandle:
 '''
 使附近玩家增加4%暴击率
 '''
@@ -4350,7 +4526,7 @@ CrimsonSeed:
 '''
 与吹管同时使用
 '''
-HellstoneDart:
+HellstoneSeed:
 '''
 与吹管同时使用
 '''
@@ -5279,7 +5455,7 @@ CandyCane:
 '''
 
 '''
-AuraPotion:
+CrimsonPotion:
 '''
 使屏幕上的敌人都受到伤害
 '''
@@ -5323,7 +5499,7 @@ LesserStaminaPotion:
 '''
 恢复35点耐力值
 '''
-LuckPotion:
+CloverPotion:
 '''
 稀有物的掉率翻倍
 '''
@@ -5642,7 +5818,7 @@ SonicScrewdriverMkIII:
 显示宝藏，矿石，生物，和危险物
 显示时间和位置，并可打开所有的锁
 '''
-Banhammer:
+TheBanhammer:
 '''
 强大到足以摧毁神圣祭坛
 '''
@@ -6040,7 +6216,7 @@ ElementalExcalibur:
 '''
 
 '''
-ExaliburNet:
+ExcaliburNet:
 '''
 
 '''
@@ -6250,7 +6426,7 @@ BronzeBow:
 '''
 
 '''
-CaesiumCrossbow:
+CaesiumRepeater:
 '''
 将木箭转化为狱炎箭
 '''
@@ -6351,7 +6527,7 @@ Shurikerang:
 '''
 
 '''
-SolariumBow:
+SolarFlareBow:
 '''
 
 '''
@@ -6588,11 +6764,15 @@ BlackWhetstone:
 '''
 增加10点护甲穿透
 '''
-ThornedHeartAmulet:
+ThornHeartAmulet:
 '''
 你的生命值越低，伤害就越高
 '''
-		/*1.3 item stats*/
+StrongVenom:
+'''
+在某些野兽体内发现的物质
+'''
+		/*1.3 itemtooltip end*/
 		}
     }
 }

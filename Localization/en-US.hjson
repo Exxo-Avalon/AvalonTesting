@@ -1,6 +1,7 @@
 Mods: {
 	Avalon: {
-		
+		CommonItemTooltip.TomeMaterial:Tome material
+
 		#This is what displays during all of an NPC's happiness levels. Note that the localization key for these should always be "TownNPCMood.*NPCName*.*Mood*" or else it won't display properly.
 		TownNPCMood: {
 			Iceman: {
