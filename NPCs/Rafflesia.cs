@@ -1,4 +1,5 @@
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using System;
 using Avalon.Players;
 using Avalon.Items.Material;
@@ -35,10 +36,14 @@ public class Rafflesia : ModNPC
         SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Tropics>().Type };
         //DrawOffsetY = 10;
     }
-
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new FlavorTextBestiaryInfoElement(""),
+        });
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Root>(), 2, 1, 2));
     }
     public override float SpawnChance(NPCSpawnInfo spawnInfo)
     {
@@ -49,7 +54,7 @@ public class Rafflesia : ModNPC
                 //!Main.tile[spawnInfo.SpawnTileX + 1, spawnInfo.SpawnTileY].HasTile && !Main.tile[spawnInfo.SpawnTileX, spawnInfo.SpawnTileY].HasTile &&
                 //!Main.tile[spawnInfo.SpawnTileX - 1, spawnInfo.SpawnTileY].HasTile)
             {
-                return 1f;
+                return 0.7f;
             }
         }
         return 0;

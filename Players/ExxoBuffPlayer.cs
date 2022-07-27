@@ -41,6 +41,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool FrostGauntlet;
     public bool EarthInsignia;
     public bool TerraClaws;
+    public int TimeSlowCounter;
 
     public bool SkyBlessing;
     public int SkyStacks = 1;

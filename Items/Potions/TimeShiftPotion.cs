@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,14 +9,14 @@ class TimeShiftPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Time Shift Potion");
-        Tooltip.SetDefault("Slows time down\nCurrently not functional");
+        Tooltip.SetDefault("Slows time down");
         SacrificeTotal = 20;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        //item.buffType = ModContent.BuffType<Buffs.TimeShift>();
+        Item.buffType = ModContent.BuffType<Buffs.TimeShift>();
         Item.consumable = true;
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
@@ -31,6 +31,12 @@ class TimeShiftPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(5).AddIngredient(ItemID.BottledWater).AddIngredient(ItemID.BottledHoney, 5).AddIngredient(ItemID.Feather, 8).AddIngredient(ItemID.FastClock).AddTile(TileID.Bottles).Register();
+        CreateRecipe(5)
+            .AddIngredient(ItemID.BottledWater)
+            .AddIngredient(ItemID.BottledHoney, 5)
+            .AddIngredient(ItemID.Feather, 8)
+            .AddIngredient(ItemID.FastClock)
+            .AddTile(TileID.Bottles)
+            .Register();
     }
 }
