@@ -127,6 +127,9 @@ public class DesertBeak : ModNPC
             {
                 case 0:
 
+                    NPC.spriteDirection = NPC.direction;
+                    NPC.rotation = NPC.velocity.X * 0.1f;
+
                     lockon_player = player.Center;
                     NPC.alpha += 8;
                     NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(0, -300));
@@ -155,6 +158,10 @@ public class DesertBeak : ModNPC
 
 
                 case 1:
+
+
+                    NPC.spriteDirection = NPC.direction;
+                    NPC.rotation = NPC.velocity.X * 0.1f;
 
                     switch (dive)
                     {
@@ -256,6 +263,10 @@ public class DesertBeak : ModNPC
                     break;
 
                 case 2:
+
+                    NPC.spriteDirection = NPC.direction;
+                    NPC.rotation = NPC.velocity.X * 0.1f;
+
 
                     if (Main.player[NPC.target].position.X < NPC.position.X)
                     {
@@ -360,6 +371,9 @@ public class DesertBeak : ModNPC
             {
                 case 0:
 
+                    NPC.spriteDirection = NPC.direction;
+                    NPC.rotation = NPC.velocity.X * 0.1f;
+
                     NPC.velocity = new Vector2(0, 0);
 
                     NPC.alpha += 8;
@@ -375,6 +389,9 @@ public class DesertBeak : ModNPC
 
                 case 1:
                     // Quickly dashes to a random location above the player and fires a spread of 3 feathers
+
+                    NPC.spriteDirection = NPC.direction;
+                    NPC.rotation = NPC.velocity.X * 0.1f;
 
                     if (NPC.alpha <= 100)
                     {
@@ -451,7 +468,9 @@ public class DesertBeak : ModNPC
 
                 case 2:
 
-                    if(NPC.Center.X > player.Center.X)
+                    NPC.spriteDirection = NPC.direction;
+                    
+                    if (NPC.Center.X > player.Center.X)
                     {
                         NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(500, 0)) * 6;
                     }
@@ -514,8 +533,7 @@ public class DesertBeak : ModNPC
     public override void FindFrame(int frameHeight)
     {
         {
-            NPC.spriteDirection = NPC.direction;
-            NPC.rotation = NPC.velocity.X * 0.1f;
+            
             if (NPC.velocity.X == 0f && NPC.velocity.Y == 0f)
             {
                 NPC.frame.Y = 0;
