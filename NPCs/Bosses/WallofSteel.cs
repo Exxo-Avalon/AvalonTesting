@@ -58,7 +58,7 @@ public class WallofSteel : ModNPC
         NPC.boss = NPC.noTileCollide = NPC.noGravity = NPC.behindTiles = true;
         NPC.npcSlots = 100f;
         NPC.damage = 150;
-        NPC.lifeMax = 87000;
+        NPC.lifeMax = 152000;
         NPC.timeLeft = 750000;
         NPC.defense = 55;
         NPC.aiStyle = -1;

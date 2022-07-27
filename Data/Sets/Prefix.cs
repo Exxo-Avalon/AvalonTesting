@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Avalon.Prefixes;
 using Terraria.ModLoader;
 
@@ -5,7 +6,7 @@ namespace Avalon.Data.Sets;
 
 public class Prefix
 {
-    public static readonly int[] ArmorPrefixes =
+    public static readonly List<int> ArmorPrefixes = new List<int>
     {
         ModContent.PrefixType<Barbaric>(), ModContent.PrefixType<Boosted>(), ModContent.PrefixType<Busted>(),
         ModContent.PrefixType<Bloated>(), ModContent.PrefixType<Disgusting>(), ModContent.PrefixType<Fluidic>(),

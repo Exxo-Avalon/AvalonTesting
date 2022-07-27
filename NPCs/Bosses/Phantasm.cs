@@ -29,8 +29,8 @@ public class Phantasm : ModNPC
         NPC.boss = NPC.noTileCollide = NPC.noGravity = true;
         NPC.npcSlots = 100f;
         NPC.damage = 95;
-        NPC.lifeMax = 62700;
-        NPC.defense = 60;
+        NPC.lifeMax = 92700;
+        NPC.defense = 80;
         NPC.aiStyle = -1;
         NPC.value = 100000f;
         NPC.knockBackResist = 0f;

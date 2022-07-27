@@ -730,7 +730,7 @@ public class AvalonGlobalItem : GlobalItem
 
         if (!item.social && PrefixLoader.GetPrefix(item.prefix) is ExxoPrefix exxoPrefix)
         {
-            if (exxoPrefix.Category == PrefixCategory.Accessory)
+            if (exxoPrefix.Category == PrefixCategory.Accessory || Prefix.ArmorPrefixes.Contains(exxoPrefix.Type))
                 tooltips.AddRange(exxoPrefix.TooltipLines);
         }
 
@@ -1054,6 +1054,6 @@ public class AvalonGlobalItem : GlobalItem
         return base.CanUseItem(item, player);
     }
     public override int ChoosePrefix(Terraria.Item item, UnifiedRandom rand) => item.IsArmor()
-        ? Prefix.ArmorPrefixes[rand.Next(Prefix.ArmorPrefixes.Length)]
+        ? Prefix.ArmorPrefixes[rand.Next(Prefix.ArmorPrefixes.Count)]
         : base.ChoosePrefix(item, rand);
 }
