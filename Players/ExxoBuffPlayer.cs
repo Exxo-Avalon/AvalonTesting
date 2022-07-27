@@ -285,7 +285,7 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit,
                                  ref bool customDamage,
-                                 ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource, ref int cooldown)
+                                 ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
     {
         if (Player.HasBuff<SpectrumBlur>() && Player.whoAmI == Main.myPlayer && Main.rand.Next(10) == 0)
         {
@@ -295,7 +295,7 @@ public class ExxoBuffPlayer : ModPlayer
 
         return base.PreHurt(pvp, quiet, ref damage, ref hitDirection, ref crit,
             ref customDamage,
-            ref playSound, ref genGore, ref damageSource, ref cooldown);
+            ref playSound, ref genGore, ref damageSource);
     }
 
     public override void PostUpdateRunSpeeds() => FloorVisualsAvalon();
