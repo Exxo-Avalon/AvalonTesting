@@ -311,6 +311,7 @@ public class ExxoPlayer : ModPlayer
 
     public override void UpdateEquips()
     {
+        //Main.NewText(Main.ScreenSize.Y);
         if (tomeItem.stack > 0)
         {
             Player.VanillaUpdateEquip(tomeItem);

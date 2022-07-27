@@ -66,7 +66,7 @@ public class Avalon : Mod
         {
             hook.ApplyHook();
         }
-
+        Hooks.AvalonReflection.Init();
         if (Main.netMode == NetmodeID.Server)
         {
             return;
@@ -85,7 +85,7 @@ public class Avalon : Mod
     public override void Unload()
     {
         Mod = null!;
-
+        Hooks.AvalonReflection.Unload();
         if (Main.netMode == NetmodeID.Server)
         {
             return;

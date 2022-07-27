@@ -25,7 +25,6 @@ public class AvalonGlobalItemInstance : GlobalItem
         clone.TomeMaterial = TomeMaterial;
         return clone;
     }
-
     public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
     {
         TooltipLine? tooltipLine = tooltips.Find(x => x.Name == "ItemName" && x.Mod == "Terraria");

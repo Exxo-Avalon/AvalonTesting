@@ -51,6 +51,10 @@ public class AvalonGlobalItem : GlobalItem
         {
             ItemID.Sets.CanGetPrefixes[item.type] = true;
         }
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+        {
+            item.accessory = true;
+        }
 
         if (item.accessory)
         {
@@ -441,8 +445,13 @@ public class AvalonGlobalItem : GlobalItem
             }
         }
     }
-    public override bool CanEquipAccessory(Terraria.Item item, Player player, int slot, bool modded) =>
-        !item.IsArmor() && base.CanEquipAccessory(item, player, slot, modded);
+    public override bool CanEquipAccessory(Terraria.Item item, Player player, int slot, bool modded)
+    {
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome && slot < 12 && !modded)
+            return false;
+        return !item.IsArmor() && base.CanEquipAccessory(item, player, slot, modded);
+    }
+       
 
     public override void PickAmmo(Terraria.Item weapon, Terraria.Item ammo, Player player, ref int type,
                                   ref float speed, ref StatModifier damage, ref float knockback)
@@ -659,6 +668,14 @@ public class AvalonGlobalItem : GlobalItem
     {
         TooltipLine? tooltipLine = tooltips.Find(x => x.Name == "ItemName" && x.Mod == "Terraria");
         TooltipLine? tooltipMat = tooltips.Find(x => x.Name == "Material" && x.Mod == "Terraria");
+        TooltipLine? tooltipEquip = tooltips.Find(x => x.Name == "Equipable" && x.Mod == "Terraria");
+        if (tooltipEquip != null)
+        {
+            if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+            {
+                tooltips.RemoveAt(tooltips.FindIndex(x => x.Name == "Equipable" && x.Mod == "Terraria"));
+            }
+        }
         if (tooltipMat != null)
         {
             if (item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial)
