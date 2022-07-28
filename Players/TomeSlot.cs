@@ -40,23 +40,27 @@ public class TomeSlot : ModAccessorySlot
         {
             p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47, 362 - 47 * 4);
         }
-        float scaleMod = 1f;
-        float thing = 7;
+
+        int cX = TextureAssets.InventoryBack3.Value.Width / 2;
+        int cY = TextureAssets.InventoryBack3.Value.Height / 2;
+        int endX = cX;
+        int endY = cY;
+
         if (item.type != 0)
         {
-            if (TextureAssets.Item[item.type].Value.Width * TextureAssets.Item[item.type].Value.Height > 1280)
-            {
-                scaleMod = 0.85f;
-                thing = 9;
-            }
+            cX -= TextureAssets.Item[item.type].Value.Width / 2;
+            cY -= TextureAssets.Item[item.type].Value.Height / 2;
+
+            endX = TextureAssets.Item[item.type].Value.Width - cX;
+            endY = TextureAssets.Item[item.type].Value.Height - cY;
         }
+
         Main.spriteBatch.Draw(TextureAssets.InventoryBack3.Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);
         if (item.type == 0)
             Main.spriteBatch.Draw(ModContent.Request<Texture2D>(FunctionalTexture).Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);
         else
-            Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, p + new Vector2(thing), null, Color.White, 0f, default, Main.inventoryScale * scaleMod, SpriteEffects.None, 1f);
-            //Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, new Rectangle((int)p.X + 5, (int)p.Y + 5, (int)(TextureAssets.Item[item.type].Value.Width * Main.inventoryScale) - 10, (int)(TextureAssets.Item[item.type].Value.Height * Main.inventoryScale)), Color.White);
-        //ItemSlot.Draw(Main.spriteBatch, ref item, 10, p);
+            Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, new Rectangle((int)p.X + cX, (int)p.Y + cY, endX, endY), Color.White);
+            //Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, p + new Vector2(thing), null, Color.White, 0f, default, Main.inventoryScale * scaleMod, SpriteEffects.None, 1f);
         return false;
     }
     //public override void ApplyEquipEffects()

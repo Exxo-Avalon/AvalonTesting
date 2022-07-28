@@ -50,7 +50,7 @@ public class VirulentScythe : ModProjectile
         if (Projectile.ai[0] != 0)
         {
             counter++;
-            if (counter == 20)
+            if (counter >= 20)
             {
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VirulentExtraScythe>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[p].rotation = Projectile.rotation + 1.95f;
@@ -59,7 +59,11 @@ public class VirulentScythe : ModProjectile
                     Main.projectile[p].velocity.X = 1f;
                     Main.projectile[p].rotation = Projectile.rotation + 3.5f;
                 }
+                Projectile.alpha--;
+                if (Projectile.alpha < 40)
+                    Projectile.Kill();
             }
+
         }
     }
     public override bool PreDraw(ref Color lightColor)
