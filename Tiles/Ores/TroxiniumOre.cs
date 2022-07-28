@@ -1,4 +1,4 @@
-﻿using Avalon.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -24,6 +24,7 @@ public class TroxiniumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 150;
         DustType = ModContent.DustType<TroxiniumDust>();
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override bool CanExplode(int i, int j)

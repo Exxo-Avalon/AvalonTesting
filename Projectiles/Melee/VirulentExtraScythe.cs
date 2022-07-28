@@ -45,6 +45,11 @@ public class VirulentExtraScythe : ModProjectile
 
     public override void AI()
     {
+        if (Projectile.velocity.X == 1)
+        {
+            Projectile.direction = 1;
+        }
+
         Projectile.ai[0]++;
         if (Projectile.ai[0] > 1)
             Projectile.velocity *= 0f;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -22,5 +22,6 @@ public class IridiumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 60;
         DustType = ModContent.DustType<Dusts.IridiumDust>();
+        TileID.Sets.Ore[Type] = true;
     }
 }

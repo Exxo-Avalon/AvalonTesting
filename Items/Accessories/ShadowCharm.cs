@@ -78,21 +78,21 @@ class ShadowCharm : ModItem
 
         CreateRecipe(1)
             .AddIngredient(ModContent.ItemType<Material.Booger>(), 3)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 5)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 5)
             .AddIngredient(ItemID.NinjaHood)
             .AddTile(TileID.Anvils)
             .Register();
 
         CreateRecipe(1)
             .AddIngredient(ModContent.ItemType<Material.Booger>(), 3)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 5)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 5)
             .AddIngredient(ItemID.NinjaShirt)
             .AddTile(TileID.Anvils)
             .Register();
 
         CreateRecipe(1)
             .AddIngredient(ModContent.ItemType<Material.Booger>(), 3)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 5)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 5)
             .AddIngredient(ItemID.NinjaPants)
             .AddTile(TileID.Anvils)
             .Register();

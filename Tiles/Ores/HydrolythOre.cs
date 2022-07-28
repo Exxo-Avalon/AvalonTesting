@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -19,6 +19,7 @@ public class HydrolythOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 300;
         DustType = DustID.MagicMirror;
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override bool CanExplode(int i, int j)

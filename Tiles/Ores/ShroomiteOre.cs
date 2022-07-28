@@ -25,5 +25,6 @@ public class ShroomiteOre : ModTile
         TileID.Sets.ChecksForMerge[Type] = true;
         TileID.Sets.OreMergesWithMud[Type] = true;
         TileID.Sets.Ore[Type] = true;
+        TileID.Sets.Ore[Type] = true;
     }
 }

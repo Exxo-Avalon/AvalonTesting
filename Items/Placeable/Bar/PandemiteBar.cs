@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Placeable.Bar;
 
-class BacciliteBar : ModItem
+class PandemiteBar : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Baccilite Bar");
+        DisplayName.SetDefault("Pandemite Bar");
         SacrificeTotal = 25;
     }
 
@@ -33,6 +33,6 @@ class BacciliteBar : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<BacciliteOre>(), 3).AddTile(TileID.Furnaces).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<PandemiteOre>(), 3).AddTile(TileID.Furnaces).Register();
     }
 }

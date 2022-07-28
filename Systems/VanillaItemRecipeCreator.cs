@@ -99,10 +99,10 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.AncientBattleArmorShirt).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 20).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
         Recipe.Create(ItemID.AncientBattleArmorPants).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.TroxiniumBar>(), 16).AddIngredient(ItemID.AncientBattleArmorMaterial).AddTile(TileID.MythrilAnvil).Register();
 		Recipe.Create(ItemID.GravediggerShovel).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.NickelBar>(), 12).AddRecipeGroup("Wood", 3).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
-		Recipe.Create(ItemID.Magiluminescence).AddIngredient(ItemID.Topaz, 5).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BacciliteBar>(), 12).AddTile(TileID.Anvils).Register();
+		Recipe.Create(ItemID.Magiluminescence).AddIngredient(ItemID.Topaz, 5).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.PandemiteBar>(), 12).AddTile(TileID.Anvils).Register();
         Recipe.Create(ItemID.FlinxStaff).AddIngredient(ItemID.FlinxFur, 6).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 10).AddTile(TileID.WorkBenches).Register();
         Recipe.Create(ItemID.FlinxFurCoat).AddIngredient(ItemID.Silk, 10).AddIngredient(ItemID.FlinxFur, 8).AddIngredient(ModContent.ItemType<Items.Placeable.Bar.BismuthBar>(), 8).AddTile(TileID.Loom).Register();
-        Recipe.Create(ItemID.DeerThing).AddIngredient(ItemID.FlinxFur, 3).AddIngredient(ModContent.ItemType<BacciliteOre>(), 5).AddIngredient(ItemID.Lens).AddTile(TileID.DemonAltar).Register();
+        Recipe.Create(ItemID.DeerThing).AddIngredient(ItemID.FlinxFur, 3).AddIngredient(ModContent.ItemType<PandemiteOre>(), 5).AddIngredient(ItemID.Lens).AddTile(TileID.DemonAltar).Register();
         Recipe.Create(ItemID.MonsterLasagna).AddIngredient(ModContent.ItemType<YuckyBit>(), 8).AddTile(TileID.CookingPots).Register();
         Recipe.Create(ItemID.CoffinMinecart).AddRecipeGroup("IronBar", 5).AddRecipeGroup("Wood", 10).AddIngredient(ModContent.ItemType<YuckyBit>(), 10).AddTile(TileID.Anvils).AddCondition(Recipe.Condition.InGraveyardBiome).Register();
         Recipe.Create(ItemID.VoidLens).AddIngredient(ItemID.Bone, 30).AddIngredient(ItemID.JungleSpores, 15).AddIngredient(ModContent.ItemType<Booger>(), 30).AddTile(TileID.DemonAltar).Register();

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -23,6 +23,7 @@ public class VorazylcumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 250;
         DustType = DustID.VilePowder;
+        TileID.Sets.Ore[Type] = true;
     }
     public override bool CanExplode(int i, int j)
     {

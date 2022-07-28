@@ -1549,32 +1549,32 @@ public class AvalonWorld : ModSystem
                         NetMessage.SendTileSquare(-1, num5, num9, 1);
                     }
                 }
-                bool flag2 = false;
-                for (int m = num7; m < num8; m++)
-                {
-                    for (int n = num9; n < num10; n++)
-                    {
-                        if ((num5 != m || num6 != n) && Main.tile[m, n].HasTile)
-                        {
-                            if (Main.tile[m, n].TileType == ModContent.TileType<Loam>())
-                            {
-                                WorldGen.SpreadGrass(m, n, ModContent.TileType<Loam>(), ModContent.TileType<TropicalGrass>(), false,
-                                    Main.tile[num5, num6].TileColor);
-                            }
+                //bool flag2 = false;
+                //for (int m = num7; m < num8; m++)
+                //{
+                //    for (int n = num9; n < num10; n++)
+                //    {
+                //        if ((num5 != m || num6 != n) && Main.tile[m, n].HasTile)
+                //        {
+                //            if (Main.tile[m, n].TileType == ModContent.TileType<Loam>())
+                //            {
+                //                WorldGen.SpreadGrass(m, n, ModContent.TileType<Loam>(), ModContent.TileType<TropicalGrass>(), false,
+                //                    Main.tile[num5, num6].TileColor);
+                //            }
 
-                            if (Main.tile[m, n].TileType == num14)
-                            {
-                                //WorldGen.SquareTileFrame(m, n);
-                                flag2 = true;
-                            }
-                        }
-                    }
-                }
+                //            if (Main.tile[m, n].TileType == num14)
+                //            {
+                //                //WorldGen.SquareTileFrame(m, n);
+                //                flag2 = true;
+                //            }
+                //        }
+                //    }
+                //}
 
-                if (Main.netMode == NetmodeID.Server && flag2)
-                {
-                    NetMessage.SendTileSquare(-1, num5, num6, 3);
-                }
+                //if (Main.netMode == NetmodeID.Server && flag2)
+                //{
+                //    NetMessage.SendTileSquare(-1, num5, num6, 3);
+                //}
             }
             #endregion tropical grass
 

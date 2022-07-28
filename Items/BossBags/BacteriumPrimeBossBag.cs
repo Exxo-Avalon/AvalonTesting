@@ -46,7 +46,7 @@ public class BacteriumPrimeBossBag : ModItem
     {
         //player.TryGettingDevArmor();
 
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BacciliteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PandemiteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Booger>(), Main.rand.Next(10, 20));
         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BadgeOfBacteria>());
     }

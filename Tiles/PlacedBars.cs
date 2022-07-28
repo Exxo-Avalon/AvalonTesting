@@ -92,7 +92,7 @@ public class PlacedBars : ModTile
                 DustType = ModContent.DustType<Dusts.TroxiniumDust>();
                 break;
             case 12:
-                toDrop = ModContent.ItemType<BacciliteBar>();
+                toDrop = ModContent.ItemType<PandemiteBar>();
                 DustType = DustID.JungleSpore;
                 break;
             case 13:

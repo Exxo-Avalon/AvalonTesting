@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -23,5 +23,6 @@ public class RhodiumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 60;
         DustType = DustID.t_LivingWood;
+        TileID.Sets.Ore[Type] = true;
     }
 }

@@ -34,6 +34,6 @@ class AxeofSickness : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 10).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 10).AddTile(TileID.Anvils).Register();
     }
 }

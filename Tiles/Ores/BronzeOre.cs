@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -21,5 +21,6 @@ public class BronzeOre : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BronzeOre>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.BronzeDust>();
+        TileID.Sets.Ore[Type] = true;
     }
 }
