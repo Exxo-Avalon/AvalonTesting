@@ -32,7 +32,7 @@ public class XanthophyteBullet : ModProjectile
     }
     public override void AI()
     {
-        if (Projectile.alpha < 255)
+        if (Projectile.alpha < 95)
         {
             for (int num26 = 0; num26 < 10; num26++)
             {

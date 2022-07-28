@@ -23,7 +23,7 @@ public class TropicalBlade : ModItem
         Item.useTime = Item.useAnimation = 24;
         Item.damage = 21;
         Item.knockBack = 2;
-        Item.scale = 1f;
+        Item.scale = 1.4f;
         Item.UseSound = SoundID.Item1;
         Item.rare = ItemRarityID.Orange;
         Item.DamageType = DamageClass.Melee;
@@ -35,7 +35,8 @@ public class TropicalBlade : ModItem
             new Vector2(hitbox.X, hitbox.Y),
             hitbox.Width,
             hitbox.Height,
-            ModContent.DustType<Dusts.TropicalDust>(),
+            //DustID.Blood,
+            ModContent.DustType<Dusts.MosquitoDust>(),
             (player.velocity.X * 0.2f) + (player.direction * 3),
             player.velocity.Y * 0.2f,
             0,
