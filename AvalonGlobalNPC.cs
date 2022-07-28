@@ -1526,6 +1526,18 @@ public class AvalonGlobalNPC : GlobalNPC
 
         switch (npc.type)
         {
+            case NPCID.Unicorn:
+            case NPCID.BloodJelly:
+            case NPCID.LightMummy:
+            case NPCID.DarkMummy:
+            case NPCID.BloodMummy:
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HiddenBlade>(), 50));
+                break;
+            case NPCID.Mummy:
+            case NPCID.FungoFish:
+            case NPCID.Clinger:
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<AmmoMagazine>(), 50));
+                break;
             case NPCID.Golem:
                 // Get main drops and duplicate
                 OneFromRulesRule? oneFromRulesRule = null;

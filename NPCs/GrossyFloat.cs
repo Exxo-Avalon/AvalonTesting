@@ -90,6 +90,10 @@ public class GrossyFloat : ModNPC
             return (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && spawnInfo.Player.ZoneRockLayerHeight) ? 1f : 0f;
         return 0f;
     }
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
+    {
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Accessories.AmmoMagazine>(), 50));
+    }
     public override void HitEffect(int hitDirection, double damage)
     {
         if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)
