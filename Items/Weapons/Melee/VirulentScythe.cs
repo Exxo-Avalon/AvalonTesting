@@ -37,8 +37,8 @@ internal class VirulentScythe : ModItem
         Item.UseSound = SoundID.Item39;
     }
 
-    public override bool CanUseItem(Player player)
-    {
-        return player.ownedProjectileCounts[Item.shoot] < 6;
-    }
+    //public override bool CanUseItem(Player player)
+    //{
+    //    return player.ownedProjectileCounts[Item.shoot] < 6;
+    //}
 }
