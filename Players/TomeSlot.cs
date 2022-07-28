@@ -63,13 +63,8 @@ public class TomeSlot : ModAccessorySlot
             //Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, p + new Vector2(thing), null, Color.White, 0f, default, Main.inventoryScale * scaleMod, SpriteEffects.None, 1f);
         return false;
     }
-    //public override void ApplyEquipEffects()
-    //{
-
-    //}
     public override void OnMouseHover(AccessorySlotType context)
     {
-        // We will modify the hover text while an item is not in the slot, so that it says "Wings".
         switch (context)
         {
             default:
