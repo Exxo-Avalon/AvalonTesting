@@ -23,6 +23,7 @@ public class BloodyTear : ModProjectile
         Projectile.DamageType = DamageClass.Magic;
         Projectile.timeLeft = 70;
         Projectile.scale = 1.4f;
+        Projectile.alpha = -100;
     }
     public override void AI()
     {

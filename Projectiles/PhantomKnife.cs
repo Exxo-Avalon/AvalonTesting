@@ -16,18 +16,19 @@ public class PhantomKnife : ModProjectile
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Projectile.width = 30;
-        Projectile.height = 30;
+        Projectile.width = dims.Width * 8 / 30;
+        Projectile.height = dims.Height * 8 / 30 / Main.projFrames[Projectile.type];
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = 1;
         Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
         Projectile.extraUpdates = 0;
+        Projectile.alpha = -1000;
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 70 / 255, 130 / 255f, 130 / 255f);
+        Lighting.AddLight(Projectile.position, 35 / 255f, 67 / 255f, 67 / 255f);
         return true;
     }
     public override void AI()
@@ -113,6 +114,19 @@ public class PhantomKnife : ModProjectile
             num7 *= num9;
             num8 *= num9;
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Position, new Vector2(num7, num8), ModContent.ProjectileType<Projectiles.SpectreSplit>(), num, 0f, Projectile.owner, num2);
+        }
+    }
+
+    public override void Kill(int timeLeft)
+    {
+        for (int num461 = 0; num461 < 3; num461++)
+        {
+            int num462 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 250, default, 0.8f);
+            Main.dust[num462].noGravity = true;
+            Dust dust = Main.dust[num462];
+            dust.velocity *= 1.2f;
+            dust = Main.dust[num462];
+            dust.velocity -= Projectile.oldVelocity * 0.3f;
         }
     }
 }

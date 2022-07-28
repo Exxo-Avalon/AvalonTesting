@@ -23,6 +23,7 @@ public class Tear : ModProjectile
         Projectile.DamageType = DamageClass.Magic;
         Projectile.timeLeft = 50;
         Projectile.scale = 1.4f;
+        Projectile.alpha = -100;
     }
     public override void AI()
     {
