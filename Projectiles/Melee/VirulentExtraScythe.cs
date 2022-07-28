@@ -47,13 +47,14 @@ public class VirulentExtraScythe : ModProjectile
     {
         if (Projectile.velocity.X == 1)
         {
-            Projectile.direction = 1;
+            Projectile.spriteDirection = -1;
+            Projectile.ai[1] = 1;
         }
 
         Projectile.ai[0]++;
         if (Projectile.ai[0] > 1)
             Projectile.velocity *= 0f;
-        Projectile.rotation -= 0.33f;
+        Projectile.rotation -= 0.33f * (Projectile.ai[1] == 1 ? -1 : 1);
         if (Projectile.ai[0] > 10)
             Projectile.Kill();
     }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,7 +8,7 @@ class LargeHolybirdSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Holybird Seed");
+        DisplayName.SetDefault("Large Holybird Seeds");
         SacrificeTotal = 10;
     }
 

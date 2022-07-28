@@ -26,8 +26,8 @@ public class FlySmall : ModNPC
         NPC.noGravity = true;
         NPC.width = 10;
         NPC.aiStyle = 5;
+        AIType = NPCID.EaterofSouls;
         NPC.npcSlots = 1f;
-        NPC.value = 110f;
         NPC.height = 14;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;

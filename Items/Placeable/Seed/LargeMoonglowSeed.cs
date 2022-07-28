@@ -8,7 +8,7 @@ class LargeMoonglowSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Moonglow Seed");
+        DisplayName.SetDefault("Large Moonglow Seeds");
         SacrificeTotal = 10;
     }
 

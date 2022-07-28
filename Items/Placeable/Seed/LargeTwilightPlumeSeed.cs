@@ -8,7 +8,7 @@ class LargeTwilightPlumeSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Twilight Plume Seed");
+        DisplayName.SetDefault("Large Twilight Plume Seeds");
         SacrificeTotal = 10;
     }
 

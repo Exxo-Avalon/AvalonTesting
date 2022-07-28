@@ -8,7 +8,7 @@ class LargeShiverthornSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Shiverthorn Seed");
+        DisplayName.SetDefault("Large Shiverthorn Seeds");
         SacrificeTotal = 10;
     }
 

@@ -8,7 +8,7 @@ class LargeBarfbushSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Barfbush Seed");
+        DisplayName.SetDefault("Large Barfbush Seeds");
         SacrificeTotal = 10;
     }
 
