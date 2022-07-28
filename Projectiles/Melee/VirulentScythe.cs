@@ -57,6 +57,7 @@ public class VirulentScythe : ModProjectile
                 if (Projectile.velocity.X > 0)
                 {
                     Main.projectile[p].velocity.X = 1f;
+                    Main.projectile[p].rotation = Projectile.rotation + 3.5f;
                 }
             }
         }
@@ -69,9 +70,9 @@ public class VirulentScythe : ModProjectile
         Vector2 offset = new Vector2(Projectile.width / 2 - frameOrigin.X, Projectile.height - frame.Height);
         Vector2 drawPos = Projectile.position - Main.screenPosition + frameOrigin + offset;
 
-        for (int i = 0; i < 7; i += 3)
+        for (int i = 0; i < 7; i += 2)
         {
-            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * -i, Projectile.velocity.Y * -i), frame, new Color(0, 255 - 255 / 7 * i, 0, 100), Projectile.rotation, frameOrigin, Projectile.scale - 0.01f * i, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * -i, Projectile.velocity.Y * -i), frame, new Color(0, 255 - 255 / 7 * i, 0, 100 - 50 / 7 * i), Projectile.rotation, frameOrigin, Projectile.scale - 0.01f * i, SpriteEffects.None, 0);
         }
         Main.EntitySpriteDraw(texture, drawPos, frame, Color.White, Projectile.rotation, frameOrigin, Projectile.scale, SpriteEffects.None, 0);
         return false;

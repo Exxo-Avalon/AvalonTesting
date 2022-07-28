@@ -8,7 +8,7 @@ class LargeBlinkrootSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Blinkroot Seed");
+        DisplayName.SetDefault("Large Blinkroot Seeds");
         SacrificeTotal = 10;
     }
 

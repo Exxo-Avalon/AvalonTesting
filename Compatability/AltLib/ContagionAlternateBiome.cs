@@ -259,6 +259,9 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         #region find the points for making the tunnels to the outer circles
 
+        int fiftyRand = WorldGen.genRand.Next(30, 60);
+        int tfRand = WorldGen.genRand.Next(15, 35);
+
         for (int m = 0; m < 16; m++)
         {
             double positionAroundCircle = WorldGen.genRand.Next(0, 62831852) / 10000000;
@@ -266,6 +269,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 center.Y + (int)Math.Round(radiusModifier * Math.Sin(positionAroundCircle)));
             posToPlaceAnotherCircle = randPoint;
             Vector2 item2 = center;
+
             if (randPoint.X > center.X)
             {
                 if (randPoint.X > center.X + (radius / 2))
@@ -274,7 +278,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     {
                         if (randPoint.Y > center.Y + (radius / 2))
                         {
-                            item2 = new Vector2(randPoint.X + 50f, randPoint.Y + 50f);
+                            item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + fiftyRand);
                             if (WorldGen.genRand.Next(2) == 0)
                             {
                                 outerCircles.Add(item2);
@@ -284,7 +288,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                         }
                         else
                         {
-                            item2 = new Vector2(randPoint.X + 50f, randPoint.Y + 25f);
+                            item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + tfRand);
                             if (WorldGen.genRand.Next(2) == 0)
                             {
                                 outerCircles.Add(item2);
@@ -295,7 +299,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     }
                     else if (randPoint.Y < center.Y - (radius / 2))
                     {
-                        item2 = new Vector2(randPoint.X + 50f, randPoint.Y - 50f);
+                        item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - fiftyRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -305,7 +309,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     }
                     else
                     {
-                        item2 = new Vector2(randPoint.X + 50f, randPoint.Y - 25f);
+                        item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - tfRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -318,7 +322,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 {
                     if (randPoint.Y > center.Y + (radius / 2))
                     {
-                        item2 = new Vector2(randPoint.X + 25f, randPoint.Y + 50f);
+                        item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + fiftyRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -328,7 +332,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     }
                     else
                     {
-                        item2 = new Vector2(randPoint.X + 25f, randPoint.Y + 25f);
+                        item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + tfRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -339,7 +343,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 }
                 else if (randPoint.Y < center.Y - (radius / 2))
                 {
-                    item2 = new Vector2(randPoint.X + 25f, randPoint.Y - 50f);
+                    item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - fiftyRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -349,7 +353,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 }
                 else
                 {
-                    item2 = new Vector2(randPoint.X + 25f, randPoint.Y - 25f);
+                    item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - tfRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -364,7 +368,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 {
                     if (randPoint.Y > center.Y + (radius / 2))
                     {
-                        item2 = new Vector2(randPoint.X - 50f, randPoint.Y + 50f);
+                        item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + fiftyRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -374,7 +378,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     }
                     else
                     {
-                        item2 = new Vector2(randPoint.X - 50f, randPoint.Y + 25f);
+                        item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + tfRand);
                         if (WorldGen.genRand.Next(2) == 0)
                         {
                             outerCircles.Add(item2);
@@ -385,7 +389,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 }
                 else if (randPoint.Y < center.Y - (radius / 2))
                 {
-                    item2 = new Vector2(randPoint.X - 50f, randPoint.Y - 50f);
+                    item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - fiftyRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -395,7 +399,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 }
                 else
                 {
-                    item2 = new Vector2(randPoint.X - 50f, randPoint.Y - 25f);
+                    item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - tfRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -408,7 +412,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             {
                 if (randPoint.Y > center.Y + (radius / 2))
                 {
-                    item2 = new Vector2(randPoint.X - 25f, randPoint.Y + 50f);
+                    item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + fiftyRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -418,7 +422,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 }
                 else
                 {
-                    item2 = new Vector2(randPoint.X - 25f, randPoint.Y + 25f);
+                    item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + tfRand);
                     if (WorldGen.genRand.Next(2) == 0)
                     {
                         outerCircles.Add(item2);
@@ -429,7 +433,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             }
             else if (randPoint.Y < center.Y - (radius / 2))
             {
-                item2 = new Vector2(randPoint.X - 25f, randPoint.Y - 50f);
+                item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - fiftyRand);
                 if (WorldGen.genRand.Next(2) == 0)
                 {
                     outerCircles.Add(item2);
@@ -439,7 +443,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             }
             else
             {
-                item2 = new Vector2(randPoint.X - 25f, randPoint.Y - 25f);
+                item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - tfRand);
                 if (WorldGen.genRand.Next(2) == 0)
                 {
                     outerCircles.Add(item2);
@@ -474,6 +478,8 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     new Vector2(
                         outerCircles[z].X + (int)Math.Round(outerTunnelsRadiusMod * Math.Cos(pointsAroundCircle2)),
                         outerCircles[z].Y + (int)Math.Round(outerTunnelsRadiusMod * Math.Sin(pointsAroundCircle2)));
+                int fifteenRand = WorldGen.genRand.Next(-15, 15);
+                int sevenRand = WorldGen.genRand.Next(-7, 7);
                 for (int m = 0; m < 16; m++)
                 {
                     Vector2 endpoint = secondaryCircles[z];
@@ -745,7 +751,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             }
         }
 
-        double num22 = Main.worldSurface + 40.0;
+        /*double num22 = Main.worldSurface + 40.0;
         for (int l = evilBiomePositionWestBound; l < evilBiomePositionEastBound; l++)
         {
             num22 += WorldGen.genRand.Next(-2, 3);
@@ -858,7 +864,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     flag5 = true;
                 }
             }
-        }
+        }*/
     }
     /// <summary>
     ///     A helper method to generate a tunnel using MakeCircle().

@@ -8,7 +8,7 @@ class LargeWaterleafSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Waterleaf Seed");
+        DisplayName.SetDefault("Large Waterleaf Seeds");
         SacrificeTotal = 10;
     }
 

@@ -8,7 +8,7 @@ class LargeFireblossomSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Fireblossom Seed");
+        DisplayName.SetDefault("Large Fireblossom Seeds");
         SacrificeTotal = 10;
     }
 

@@ -32,41 +32,6 @@ public class AvalonGlobalTile : GlobalTile
                 noItem = true;
             }
         }
-        #region earthsplitter armor ore duping
-        //if (Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && IsOre(type) && Main.rand.NextBool(3))
-        //{
-        //    int drop = 0;
-        //    if (type == TileID.Copper) drop = ItemID.CopperOre;
-        //    if (type == TileID.Tin) drop = ItemID.TinOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.BronzeOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.BronzeOre>();
-        //    if (type == TileID.Iron) drop = ItemID.IronOre;
-        //    if (type == TileID.Lead) drop = ItemID.LeadOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.NickelOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.NickelOre>();
-        //    if (type == TileID.Silver) drop = ItemID.SilverOre;
-        //    if (type == TileID.Tungsten) drop = ItemID.TungstenOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.ZincOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.ZincOre>();
-        //    if (type == TileID.Gold) drop = ItemID.GoldOre;
-        //    if (type == TileID.Platinum) drop = ItemID.PlatinumOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.BismuthOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
-        //    if (type == TileID.Demonite) drop = ItemID.DemoniteOre;
-        //    if (type == TileID.Crimtane) drop = ItemID.CrimtaneOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.BacciliteOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.BacciliteOre>();
-        //    if (type == ModContent.TileType<Tiles.Ores.RhodiumOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
-        //    if (type == ModContent.TileType<Tiles.Ores.OsmiumOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
-        //    if (type == ModContent.TileType<Tiles.Ores.IridiumOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
-        //    if (type == TileID.Cobalt) drop = ItemID.CobaltOre;
-        //    if (type == TileID.Palladium) drop = ItemID.PalladiumOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.DurataniumOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.DurataniumOre>();
-        //    if (type == TileID.Mythril) drop = ItemID.MythrilOre;
-        //    if (type == TileID.Orichalcum) drop = ItemID.OrichalcumOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.NaquadahOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.NaquadahOre>();
-        //    if (type == TileID.Adamantite) drop = ItemID.AdamantiteOre;
-        //    if (type == TileID.Titanium) drop = ItemID.TitaniumOre;
-        //    if (type == ModContent.TileType<Tiles.Ores.TroxiniumOre>()) drop = ModContent.ItemType<Items.Placeable.Tile.TroxiniumOre>();
-        //    if (type == TileID.Hellstone) drop = ItemID.Hellstone;
-        //    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
-        //}
-        #endregion earthsplitter armor ore duping
         // Prevent Locked Impervious door from being broken from the block below or above
         if (Main.tile[i, j - 1].TileType == ModContent.TileType<LockedImperviousDoor>() ||
             Main.tile[i, j + 1].TileType == ModContent.TileType<LockedImperviousDoor>())

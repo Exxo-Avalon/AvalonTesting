@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,32 +16,34 @@ public class AdvSupersonic : ModBuff
     public override void Update(Player player, ref int buffIndex)
     {
         player.accRunSpeed = 18.29f;
-        if (player.controlLeft)
+        if (!player.setVortex && !player.vortexStealthActive)
         {
-            if (player.velocity.X > -5f)
+            if (player.controlLeft)
             {
-                player.velocity.X = player.velocity.X - 0.61f;
+                if (player.velocity.X > -5f)
+                {
+                    player.velocity.X = player.velocity.X - 0.61f;
+                }
+
+                if (player.velocity.X < -5f && player.velocity.X > -18f)
+                {
+                    player.velocity.X = player.velocity.X - 0.59f;
+                }
             }
 
-            if (player.velocity.X < -5f && player.velocity.X > -18f)
+            if (player.controlRight)
             {
-                player.velocity.X = player.velocity.X - 0.59f;
+                if (player.velocity.X < 5f)
+                {
+                    player.velocity.X = player.velocity.X + 0.61f;
+                }
+
+                if (player.velocity.X > 5f && player.velocity.X < 18f)
+                {
+                    player.velocity.X = player.velocity.X + 0.59f;
+                }
             }
         }
-
-        if (player.controlRight)
-        {
-            if (player.velocity.X < 5f)
-            {
-                player.velocity.X = player.velocity.X + 0.61f;
-            }
-
-            if (player.velocity.X > 5f && player.velocity.X < 18f)
-            {
-                player.velocity.X = player.velocity.X + 0.59f;
-            }
-        }
-
         if (player.velocity.X > 6f || player.velocity.X < -6f)
         {
             var newColor = default(Color);

@@ -8,7 +8,7 @@ class LargeDaybloomSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Daybloom Seed");
+        DisplayName.SetDefault("Large Daybloom Seeds");
         SacrificeTotal = 10;
     }
 

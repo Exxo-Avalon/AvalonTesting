@@ -8,7 +8,7 @@ class LargeBloodberrySeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Bloodberry Seed");
+        DisplayName.SetDefault("Large Bloodberry Seeds");
         SacrificeTotal = 10;
     }
 

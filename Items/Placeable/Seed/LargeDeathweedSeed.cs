@@ -8,7 +8,7 @@ class LargeDeathweedSeed : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Large Deathweed Seed");
+        DisplayName.SetDefault("Large Deathweed Seeds");
         SacrificeTotal = 10;
     }
 
