@@ -5,7 +5,6 @@ using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -64,7 +63,7 @@ public class HerbologyUIState : ExxoUIState
         titleRow.Append(titleText);
 
         helpToggle =
-            new ExxoUIImageButtonToggle(Main.Assets.Request<Texture2D>("Images/UI/ButtonRename", AssetRequestMode.ImmediateLoad),
+            new ExxoUIImageButtonToggle(Main.Assets.Request<Texture2D>("Images/UI/ButtonRename"),
                 Color.White * 0.7f, Color.White) { Scale = 2, Tooltip = "Help" };
         titleRow.Append(helpToggle);
         helpToggle.OnToggle += (toggled) =>

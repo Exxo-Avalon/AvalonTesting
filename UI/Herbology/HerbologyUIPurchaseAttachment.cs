@@ -2,7 +2,6 @@
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.UI;
@@ -53,7 +52,7 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         tokenCostContainer.Width.Set(0, 1);
         DifferenceContainer.InnerElement.Append(tokenCostContainer);
 
-        balanceIcon = new ExxoUIImage(null);
+        balanceIcon = new ExxoUIImage();
         tokenCostContainer.Append(balanceIcon);
 
         subBalance = new ExxoUIText("");
@@ -70,7 +69,7 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         herbCountCostContainer.Width.Set(0, 1);
         DifferenceContainer.InnerElement.Append(herbCountCostContainer);
 
-        herbTypeIcon = new ExxoUIImage(null);
+        herbTypeIcon = new ExxoUIImage();
         herbCountCostContainer.Append(herbTypeIcon);
 
         subHerbCountBalance = new ExxoUIText("");
@@ -104,15 +103,13 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         if (HerbologyData.ItemIsHerb(AttachmentHolder.Item))
         {
             balance = modPlayer.HerbTotal;
-            balanceIcon.SetImage(
-                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed", AssetRequestMode.ImmediateLoad));
+            balanceIcon.SetImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"));
             balanceIcon.Inset = new Vector2(11, 11);
         }
         else
         {
             balance = modPlayer.PotionTotal;
-            balanceIcon.SetImage(
-                Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption", AssetRequestMode.ImmediateLoad));
+            balanceIcon.SetImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"));
             balanceIcon.Inset = new Vector2(8, 5);
         }
 

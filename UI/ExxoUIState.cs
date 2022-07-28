@@ -1,15 +1,13 @@
 ﻿using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.UI;
 
 namespace Avalon.UI;
 
 public abstract class ExxoUIState : UIState
 {
-    private bool mouseWasOver;
-
-    private int oldFocusRecipe;
     protected virtual bool DisableRecipeScrolling => true;
     protected virtual bool FocusInteractionsToUI => true;
     protected virtual bool HideItemHoverIcon => true;
@@ -17,13 +15,13 @@ public abstract class ExxoUIState : UIState
     public override void Update(GameTime gameTime)
     {
         base.Update(gameTime);
-        if (mouseWasOver)
+        if (IsMouseHovering)
         {
             Main.LocalPlayer.cursorItemIconEnabled = !HideItemHoverIcon;
             Main.LocalPlayer.mouseInterface = FocusInteractionsToUI;
             if (DisableRecipeScrolling)
             {
-                Main.focusRecipe = oldFocusRecipe;
+                PlayerInput.LockVanillaMouseScroll("Avalon/ExxoUIState");
             }
         }
     }
@@ -40,25 +38,8 @@ public abstract class ExxoUIState : UIState
         OnInitialize(); //TODO: REMOVE
     }
 
-    public override void MouseOver(UIMouseEvent evt)
-    {
-        base.MouseOver(evt);
-        if (evt.Target != this && !mouseWasOver)
-        {
-            mouseWasOver = true;
-            oldFocusRecipe = Main.focusRecipe;
-        }
-    }
-
-    public override void MouseOut(UIMouseEvent evt)
-    {
-        base.MouseOut(evt);
-        if (!ChildrenContainsPoint(evt.MousePosition))
-        {
-            mouseWasOver = false;
-        }
-    }
-
+    /// <inheritdoc />
+    public override bool ContainsPoint(Vector2 point) => ChildrenContainsPoint(point);
 
     public bool ChildrenContainsPoint(Vector2 point) => Elements.Any(element => element.ContainsPoint(point));
 }

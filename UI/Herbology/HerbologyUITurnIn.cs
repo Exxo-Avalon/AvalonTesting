@@ -3,7 +3,6 @@ using System.Linq;
 using Avalon.Data;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -27,7 +26,7 @@ internal class HerbologyUITurnIn : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.FitWidthToContent = true;
         InnerElement.ContentHAlign = UIAlign.Center;
 
-        Button = new ExxoUIImageButton(Avalon.Mod.Assets.Request<Texture2D>("Sprites/HerbButton", AssetRequestMode.ImmediateLoad))
+        Button = new ExxoUIImageButton(Avalon.Mod.Assets.Request<Texture2D>("Sprites/HerbButton"))
         {
             Tooltip = "Consume Herbs/Potions",
         };

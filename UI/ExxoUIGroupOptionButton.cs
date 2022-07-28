@@ -30,9 +30,9 @@ public class ExxoUIGroupOptionButton<T> : ExxoUIElement
         Description = description;
         Width = StyleDimension.FromPixels(44f);
         Height = StyleDimension.FromPixels(34f);
-        basePanelTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/PanelGrayscale", AssetRequestMode.ImmediateLoad);
-        selectedBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelHighlight", AssetRequestMode.ImmediateLoad);
-        hoveredBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelBorder", AssetRequestMode.ImmediateLoad);
+        basePanelTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/PanelGrayscale");
+        selectedBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelHighlight");
+        hoveredBorderTexture = Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelBorder");
 
         SelectedColor = Colors.InventoryDefaultColor;
         UnselectedColor = SelectedColor;

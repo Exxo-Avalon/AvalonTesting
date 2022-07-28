@@ -1,16 +1,11 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
+using Terraria;
 using Terraria.UI;
 
 namespace Avalon.UI;
 
 internal class ExxoUINumberInputWithButtons : ExxoUIList
 {
-    public readonly ExxoUINumberInput NumberInput;
-    private readonly ExxoUIList buttonColumn;
-    private readonly ExxoUIImageButton decrementButton;
-    private readonly ExxoUIImageButton incrementButton;
-
     public ExxoUINumberInputWithButtons(int amountNumbers = 3)
     {
         Direction = Direction.Horizontal;
@@ -21,22 +16,20 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
         NumberInput = new ExxoUINumberInput(amountNumbers);
         Append(NumberInput);
 
-        buttonColumn = new ExxoUIList
+        var buttonColumn = new ExxoUIList
         {
             FitWidthToContent = true, FitHeightToContent = true, Justification = Justification.Center,
         };
 
-        incrementButton =
-            new ExxoUIImageButton(
-                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn", AssetRequestMode.ImmediateLoad));
+        var incrementButton = new ExxoUIImageButton(
+            Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomIn"));
         incrementButton.OnClick += delegate
         {
             NumberInput.Number++;
         };
         buttonColumn.Append(incrementButton);
-        decrementButton =
-            new ExxoUIImageButton(
-                Terraria.Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut", AssetRequestMode.ImmediateLoad));
+        var decrementButton =
+            new ExxoUIImageButton(Main.Assets.Request<Texture2D>("Images/UI/Minimap/Default/MinimapButton_ZoomOut"));
         decrementButton.OnClick += delegate
         {
             NumberInput.Number--;
@@ -44,4 +37,6 @@ internal class ExxoUINumberInputWithButtons : ExxoUIList
         buttonColumn.Append(decrementButton);
         Append(buttonColumn);
     }
+
+    public ExxoUINumberInput NumberInput { get; }
 }

@@ -1,7 +1,6 @@
 ﻿using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using Terraria;
 using Terraria.UI;
 
@@ -45,7 +44,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(HerbTotalContainer);
 
         herbTotalIcon =
-            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed", AssetRequestMode.ImmediateLoad))
+            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"))
             {
                 Inset = new Vector2(7, 7),
             };
@@ -65,7 +64,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         InnerElement.Append(PotionTotalContainer);
 
         potionTotalIcon =
-            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption", AssetRequestMode.ImmediateLoad))
+            new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"))
             {
                 Inset = new Vector2(4, 5),
             };
