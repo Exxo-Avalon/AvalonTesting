@@ -1,11 +1,10 @@
 ﻿using Terraria;
-using Terraria.ModLoader;
 
 namespace Avalon.Prefixes;
 
 public class Slimy : ExxoPrefix
 {
-    public override PrefixCategory Category => PrefixCategory.Custom;
+    public override ExxoPrefixCategory ExxoCategory => ExxoPrefixCategory.Armor;
 
     public override float RollChance(Item item) => 3f;
 

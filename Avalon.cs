@@ -4,6 +4,7 @@ using System.IO;
 using Avalon.Assets;
 using Avalon.Common;
 using Avalon.Effects;
+using Avalon.Hooks;
 using Avalon.Network;
 using Avalon.Systems;
 using Microsoft.Xna.Framework.Graphics;
@@ -66,7 +67,8 @@ public class Avalon : Mod
         {
             hook.ApplyHook();
         }
-        Hooks.AvalonReflection.Init();
+
+        AvalonReflection.Init();
         if (Main.netMode == NetmodeID.Server)
         {
             return;
@@ -75,7 +77,7 @@ public class Avalon : Mod
         // ----------- Client Only ----------- //
         ReplaceVanillaTextures();
         Asset<Effect> shader =
-            ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad);
+            ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader");
         SkyManager.Instance["Avalon:DarkMatter"] = new DarkMatterSky();
         Filters.Scene["Avalon:DarkMatter"] = new Filter(
             new DarkMatterScreenShader(new Ref<Effect>(shader.Value), "DarkMatterSky")
@@ -85,7 +87,7 @@ public class Avalon : Mod
     public override void Unload()
     {
         Mod = null!;
-        Hooks.AvalonReflection.Unload();
+        AvalonReflection.Unload();
         if (Main.netMode == NetmodeID.Server)
         {
             return;
@@ -134,7 +136,8 @@ public class Avalon : Mod
         itemReplacer.ReplaceAsset(ItemID.AngryTrapperBanner, Assets.Request<Texture2D>("Sprites/AngryTrapperBanner"));
         itemReplacer.ReplaceAsset(ItemID.Deathweed, Assets.Request<Texture2D>("Sprites/Deathweed"));
         itemReplacer.ReplaceAsset(ItemID.WaterleafSeeds, Assets.Request<Texture2D>("Sprites/WaterleafSeeds"));
-        itemReplacer.ReplaceAsset(ItemID.ShroomiteDiggingClaw, Assets.Request<Texture2D>("Assets/Vanilla/Items/ShroomiteDiggingClaws"));
+        itemReplacer.ReplaceAsset(ItemID.ShroomiteDiggingClaw,
+            Assets.Request<Texture2D>("Assets/Vanilla/Items/ShroomiteDiggingClaws"));
 
         var tileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Tile);
         assetReplacers.Add(tileReplacer);
