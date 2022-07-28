@@ -1032,9 +1032,9 @@ public class AvalonGlobalItem : GlobalItem
              player.HasBuff(ModContent.BuffType<BloodCast>())) ||
             (item.type == ModContent.ItemType<BloodCastPotion>() &&
              player.HasBuff(ModContent.BuffType<AdvBloodCast>())) ||
-            (item.type == ModContent.ItemType<AdvCrimsonPotion>() &&
+            (item.type == ModContent.ItemType<AdvAuraPotion>() &&
              player.HasBuff(ModContent.BuffType<CrimsonDrain>())) ||
-            (item.type == ModContent.ItemType<CrimsonPotion>() && player.HasBuff(ModContent.BuffType<AdvCrimson>())) ||
+            (item.type == ModContent.ItemType<AuraPotion>() && player.HasBuff(ModContent.BuffType<AdvCrimson>())) ||
             (item.type == ModContent.ItemType<AdvForceFieldPotion>() &&
              player.HasBuff(ModContent.BuffType<ForceField>())) ||
             (item.type == ModContent.ItemType<ForceFieldPotion>() &&

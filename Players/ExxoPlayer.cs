@@ -1361,6 +1361,7 @@ public class ExxoPlayer : ModPlayer
 
     public override void PostUpdateMiscEffects()
     {
+        WOSTongue();
         Player.statManaMax2 = actualStatManaMax2;
         DashMovement();
         DoubleJumps();
@@ -2270,7 +2271,7 @@ public class ExxoPlayer : ModPlayer
             {
                 num -= 96f;
             }
-
+            //Main.NewText(Main.npc[AvalonWorld.WallOfSteel].direction);
             if (Player.position.X + Player.width > num && Player.position.X < num + 140f && Player.gross)
             {
                 Player.noKnockback = false;
@@ -2282,6 +2283,7 @@ public class ExxoPlayer : ModPlayer
                 Player.position.X < num + 1920f)
             {
                 Player.AddBuff(37, 10);
+                Player.gross = true;
                 //Main.PlaySound(4, (int)Main.npc[AvalonWorld.wos].position.X, (int)Main.npc[AvalonWorld.wos].position.Y, 10);
             }
 
@@ -2329,7 +2331,7 @@ public class ExxoPlayer : ModPlayer
                 float num4 = (float)Math.Sqrt((num2 * num2) + (num3 * num3));
                 if (num4 > 3000f)
                 {
-                    //player.lastPosBeforeDeath = this.position;
+                    Player.lastDeathPostion = Player.position;
                     Player.KillMe(PlayerDeathReason.ByNPC(AvalonWorld.WallOfSteel), 1000.0, 0);
                     return;
                 }
@@ -2337,7 +2339,7 @@ public class ExxoPlayer : ModPlayer
                 if (Main.npc[AvalonWorld.WallOfSteel].position.X < 608f ||
                     Main.npc[AvalonWorld.WallOfSteel].position.X > (Main.maxTilesX - 38) * 16)
                 {
-                    //this.lastPosBeforeDeath = this.position;
+                    Player.lastDeathPostion = Player.position;
                     Player.KillMe(PlayerDeathReason.ByNPC(AvalonWorld.WallOfSteel), 1000.0, 0);
                 }
             }
