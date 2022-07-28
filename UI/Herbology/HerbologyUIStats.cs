@@ -19,7 +19,6 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
 
     public HerbologyUIStats() : base(new ExxoUIList())
     {
-        FitMinToInnerElement = true;
         Height.Set(0, 1);
 
         InnerElement.FitWidthToContent = true;
@@ -35,7 +34,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
 
         HerbTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList())
         {
-            FitMinToInnerElement = true, Tooltip = "Herb credits",
+            Tooltip = "Herb credits",
         };
         HerbTotalContainer.InnerElement.Direction = Direction.Horizontal;
         HerbTotalContainer.InnerElement.FitHeightToContent = true;
@@ -55,7 +54,7 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
 
         PotionTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList())
         {
-            FitMinToInnerElement = true, Tooltip = "Potion credits",
+            Tooltip = "Potion credits",
         };
         PotionTotalContainer.InnerElement.Direction = Direction.Horizontal;
         PotionTotalContainer.InnerElement.FitHeightToContent = true;

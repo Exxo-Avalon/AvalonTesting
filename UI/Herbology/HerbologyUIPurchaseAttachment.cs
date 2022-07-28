@@ -21,8 +21,6 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
 
     public HerbologyUIPurchaseAttachment() : base(new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList()))
     {
-        AttachmentElement.FitMinToInnerElement = true;
-
         AttachmentElement.InnerElement.FitHeightToContent = true;
         AttachmentElement.InnerElement.FitWidthToContent = true;
         AttachmentElement.InnerElement.ContentHAlign = UIAlign.Center;
@@ -38,7 +36,7 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         DifferenceContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList
         {
             FitHeightToContent = true, FitWidthToContent = true, ListPadding = 10,
-        }) { FitMinToInnerElement = true };
+        });
         AttachmentElement.InnerElement.Append(DifferenceContainer);
 
         var tokenCostContainer = new ExxoUIList
@@ -75,9 +73,9 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         subHerbCountBalance = new ExxoUIText("");
         herbCountCostContainer.Append(subHerbCountBalance);
 
-        Button = new ExxoUIPanelButton<ExxoUIText>(new ExxoUIText("Exchange"), false)
+        Button = new ExxoUIPanelButton<ExxoUIText>(new ExxoUIText("Exchange"))
         {
-            HAlign = UIAlign.Center, FitMinToInnerElement = true,
+            HAlign = UIAlign.Center,
         };
         Button.Width.Set(0, 1);
         Button.InnerElement.HAlign = UIAlign.Center;

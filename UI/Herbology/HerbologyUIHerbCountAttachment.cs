@@ -14,7 +14,6 @@ internal class HerbologyUIHerbCountAttachment : ExxoUIAttachment<ExxoUIItemSlot,
 
     public HerbologyUIHerbCountAttachment() : base(new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList()))
     {
-        AttachmentElement.FitMinToInnerElement = true;
         Color newColor = AttachmentElement.BackgroundColor;
         newColor.A = 255;
         AttachmentElement.BackgroundColor = newColor;

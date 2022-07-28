@@ -12,7 +12,7 @@ internal class ExxoUIPanelButton<T> : ExxoUIPanelWrapper<T> where T : UIElement
     private float visibilityActive = 1f;
     private float visibilityInactive = 0.4f;
 
-    public ExxoUIPanelButton(T uiElement, bool autoSize = true) : base(uiElement, autoSize) =>
+    public ExxoUIPanelButton(T uiElement) : base(uiElement) =>
         inactiveColor = BackgroundColor;
 
     public override void MouseOver(UIMouseEvent evt)

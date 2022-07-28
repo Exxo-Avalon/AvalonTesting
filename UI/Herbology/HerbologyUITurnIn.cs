@@ -18,7 +18,6 @@ internal class HerbologyUITurnIn : ExxoUIPanelWrapper<ExxoUIList>
 
     public HerbologyUITurnIn() : base(new ExxoUIList())
     {
-        FitMinToInnerElement = true;
         Height.Set(0, 1);
 
         InnerElement.Height.Set(0, 1);

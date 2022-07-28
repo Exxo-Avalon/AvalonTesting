@@ -7,7 +7,7 @@ namespace Avalon.UI.Herbology;
 
 internal class HerbologyUIHerbExchange : ExxoUIPanelWrapper<ExxoUIList>
 {
-    public readonly ExxoUIElementWrapper<ExxoUIListGrid> Grid;
+    public readonly ExxoUIListGrid Grid;
     public readonly ExxoUIScrollbar Scrollbar;
     public readonly ExxoUIImageButtonToggle Toggle;
     private readonly ExxoUIList list;
@@ -42,18 +42,18 @@ internal class HerbologyUIHerbExchange : ExxoUIPanelWrapper<ExxoUIList>
         horizontalRule.Width.Set(0, 1);
         list.Append(horizontalRule);
 
-        Grid = new ExxoUIElementWrapper<ExxoUIListGrid>(new ExxoUIListGrid()) { OverflowHidden = true };
-        Grid.Width.Set(0, 1);
-        Grid.InnerElement.HAlign = UIAlign.Center;
-        Grid.InnerElement.FitWidthToContent = true;
-        list.Append(Grid, new ExxoUIList.ElementParams(true, false));
+        var gridWrapper = new ExxoUIEmpty() { OverflowHidden = true };
+        gridWrapper.Width = StyleDimension.Fill;
+        list.Append(gridWrapper, new ExxoUIList.ElementParams(true, false));
+        Grid = new ExxoUIListGrid() { HAlign = UIAlign.Center, FitWidthToContent = true, };
+        gridWrapper.Append(Grid);
 
         Scrollbar = new ExxoUIScrollbar();
         Scrollbar.VAlign = UIAlign.Center;
         Scrollbar.Height = StyleDimension.Fill;
         Scrollbar.SetPadding(0);
         InnerElement.Append(Scrollbar);
-        Grid.InnerElement.ScrollBar = Scrollbar;
-        OnScrollWheel += Grid.InnerElement.ScrollWheelListener;
+        Grid.ScrollBar = Scrollbar;
+        OnScrollWheel += Grid.ScrollWheelListener;
     }
 }

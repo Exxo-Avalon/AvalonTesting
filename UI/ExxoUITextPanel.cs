@@ -18,14 +18,12 @@ internal class ExxoUITextPanel : ExxoUIPanel
     protected ExxoUITextPanel(ExxoUIText textElement)
     {
         TextElement = textElement;
-        TextElement.VAlign = UIAlign.Center;
-        TextElement.HAlign = UIAlign.Center;
-        Append(TextElement);
         TextElement.OnInternalTextChange += () =>
         {
             MinWidth.Pixels = TextElement.MinWidth.Pixels + PaddingLeft + PaddingRight;
             MinHeight.Pixels = TextElement.MinHeight.Pixels + PaddingBottom + PaddingTop;
         };
+        Append(TextElement);
     }
 
     public ExxoUIText TextElement { get; }

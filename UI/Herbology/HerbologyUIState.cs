@@ -263,7 +263,7 @@ public class HerbologyUIState : ExxoUIState
 
     private void RefreshHerbList(bool displayLargeSeed)
     {
-        herbExchange.Grid.InnerElement.Clear();
+        herbExchange.Grid.Clear();
         var items = new List<int>();
         if (displayLargeSeed)
         {
@@ -274,8 +274,8 @@ public class HerbologyUIState : ExxoUIState
             items.AddRange(HerbologyData.LargeHerbSeedIdByHerbSeedId.Keys);
         }
 
-        herbExchange.Grid.InnerElement.RemoveAllChildren();
-        herbExchange.Grid.InnerElement.Clear();
+        herbExchange.Grid.RemoveAllChildren();
+        herbExchange.Grid.Clear();
 
         var elements = new List<UIElement>();
         foreach (int itemID in items)
@@ -287,7 +287,7 @@ public class HerbologyUIState : ExxoUIState
                 herbCountAttachment.AttachTo(listeningElement as ExxoUIItemSlot);
                 purchaseAttachment.NumberInputWithButtons.NumberInput.MaxNumber = herbItem.Item.maxStack;
             };
-            herbExchange.Grid.InnerElement.Append(herbItem);
+            herbExchange.Grid.Append(herbItem);
         }
 
         //herbExchange.Grid.InnerElement.AddRange(elements);
@@ -295,7 +295,7 @@ public class HerbologyUIState : ExxoUIState
 
     private void RefreshPotionList(bool displayElixirs)
     {
-        potionExchange.Grid.InnerElement.Clear();
+        potionExchange.Grid.Clear();
         var items = new List<int>();
         if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Master)
@@ -328,8 +328,8 @@ public class HerbologyUIState : ExxoUIState
             items.Add(ModContent.ItemType<BlahPotion>());
         }
 
-        potionExchange.Grid.InnerElement.RemoveAllChildren();
-        potionExchange.Grid.InnerElement.Clear();
+        potionExchange.Grid.RemoveAllChildren();
+        potionExchange.Grid.Clear();
 
         foreach (int itemID in items)
         {
@@ -345,7 +345,7 @@ public class HerbologyUIState : ExxoUIState
                 potionItem.SetImage(TextureAssets.InventoryBack7);
             }
 
-            potionExchange.Grid.InnerElement.Append(potionItem);
+            potionExchange.Grid.Append(potionItem);
         }
 
         //potionExchange.Grid.InnerElement.AddRange(elements);
