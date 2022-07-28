@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 namespace Avalon.Items.Armor;
 
 [AutoloadEquip(EquipType.Legs)]
-class MosquitoLeggings : ModItem
+class CordycepsLeggings : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Mosquito Leggings");
+        DisplayName.SetDefault("Cordyceps Leggings");
         Tooltip.SetDefault("Increases minion damage by 4%\nIncreases your max number of minions by 1");
         SacrificeTotal = 1;
     }
