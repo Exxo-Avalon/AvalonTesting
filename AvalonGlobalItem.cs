@@ -919,7 +919,7 @@ public class AvalonGlobalItem : GlobalItem
                     int randomQuantity = Main.rand.Next(20) + 10;
                     randomQuantity += Main.rand.Next(20) + 10;
                     randomQuantity += Main.rand.Next(20) + 10;
-                    player.QuickSpawnItem(openItemSource, ModContent.ItemType<BacciliteOre>(), randomQuantity);
+                    player.QuickSpawnItem(openItemSource, ModContent.ItemType<PandemiteOre>(), randomQuantity);
 
                     randomQuantity = Main.rand.Next(3) + 1;
                     player.QuickSpawnItem(openItemSource, ModContent.ItemType<IckgrassSeeds>(), randomQuantity);

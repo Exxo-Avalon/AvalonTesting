@@ -37,14 +37,16 @@ class Shurikerang : ModItem
     }
     public override bool CanUseItem(Player player)
     {
-        int stack = Item.stack;
-        bool canuse = true;
-        for (int m = 0; m < 1000; m++)
-        {
-            if (Main.projectile[m].active && Main.projectile[m].owner == Main.myPlayer && Main.projectile[m].type == Item.shoot)
-                stack -= 1;
-        }
-        if (stack <= 0) canuse = false;
-        return canuse;
+        return player.ownedProjectileCounts[Item.shoot] < Item.stack;
+
+        //int stack = Item.stack;
+        //bool canuse = true;
+        //for (int m = 0; m < 1000; m++)
+        //{
+        //    if (Main.projectile[m].active && Main.projectile[m].owner == Main.myPlayer && Main.projectile[m].type == Item.shoot)
+        //        stack -= 1;
+        //}
+        //if (stack <= 0) canuse = false;
+        //return canuse;
     }
 }

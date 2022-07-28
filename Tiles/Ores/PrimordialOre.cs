@@ -139,7 +139,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                oren = ModContent.ItemType<Items.Placeable.Tile.BacciliteOre>();
+                oren = ModContent.ItemType<Items.Placeable.Tile.PandemiteOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 2, false);

@@ -1,8 +1,10 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ObjectData;
 
 namespace Avalon.Tiles;
 
@@ -17,6 +19,11 @@ public class ContagionShortGrass : ModTile
         Main.tileLavaDeath[Type] = true;
         Main.tileWaterDeath[Type] = true;
         Main.tileFrameImportant[Type] = true;
+        TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+        TileObjectData.newTile.AnchorValidTiles = new int[1] { ModContent.TileType<Ickgrass>() };
+        TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
+        TileObjectData.newTile.LavaDeath = true;
+        TileObjectData.addTile(Type);
         DustType = ModContent.DustType<Dusts.ContagionDust>();
         HitSound = SoundID.Grass;
         AddMapEntry(new Color(133, 150, 39));

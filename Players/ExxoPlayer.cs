@@ -2276,7 +2276,6 @@ public class ExxoPlayer : ModPlayer
             {
                 num -= 96f;
             }
-            //Main.NewText(Main.npc[AvalonWorld.WallOfSteel].direction);
             if (Player.position.X + Player.width > num && Player.position.X < num + 140f && Player.gross)
             {
                 Player.noKnockback = false;

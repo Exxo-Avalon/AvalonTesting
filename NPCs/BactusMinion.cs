@@ -44,7 +44,7 @@ public class BactusMinion : ModNPC
             if (Main.rand.Next(3) != 0)
             {
                 Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                    ModContent.ItemType<BacciliteOre>(), Main.rand.Next(4, 11));
+                    ModContent.ItemType<PandemiteOre>(), Main.rand.Next(4, 11));
             }
 
             if (Main.rand.Next(2) == 0 &&

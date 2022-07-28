@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -22,6 +22,7 @@ public class HallowedOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 185;
         DustType = DustID.Enchanted_Gold;
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override bool CanExplode(int i, int j)

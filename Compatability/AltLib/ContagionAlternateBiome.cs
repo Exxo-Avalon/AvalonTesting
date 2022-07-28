@@ -29,14 +29,14 @@ internal class ContagionAlternateBiome : AltBiome
         BiomeIce = ModContent.TileType<YellowIce>();
         BiomeSandstone = ModContent.TileType<Snotsandstone>();
         BiomeHardenedSand = ModContent.TileType<HardenedSnotsand>();
-        BiomeOre = ModContent.TileType<BacciliteOre>();
+        BiomeOre = ModContent.TileType<PandemiteOre>();
         BiomeOreBrick = ModContent.TileType<ChunkstoneBrick>(); //Change to Baccilite Brick when its finished
         AltarTile = ModContent.TileType<IckyAltar>();
 
         GenPassName.SetDefault("Making the world gross");
         EvilBiomeGenerationPass = new ContagionGeneration();
 
-        BiomeOreItem = ModContent.ItemType<Items.Placeable.Tile.BacciliteOre>();
+        BiomeOreItem = ModContent.ItemType<Items.Placeable.Tile.PandemiteOre>();
         SeedType = ModContent.ItemType<IckgrassSeeds>();
 
         BiomeChestItem = ModContent.ItemType<VirulentScythe>();

@@ -34,6 +34,6 @@ class MucusHammer : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 11).AddIngredient(ModContent.ItemType<Material.Booger>(), 4).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 11).AddIngredient(ModContent.ItemType<Material.Booger>(), 4).AddTile(TileID.Anvils).Register();
     }
 }

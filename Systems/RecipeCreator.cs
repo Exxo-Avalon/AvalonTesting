@@ -1543,7 +1543,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Barfbush>(), 5)
             .AddIngredient(ItemID.SoulofNight, 20)
             .AddIngredient(ModContent.ItemType<Booger>(), 20)
-            .AddIngredient(ModContent.ItemType<BacciliteBar>(), 25)
+            .AddIngredient(ModContent.ItemType<PandemiteBar>(), 25)
             .AddTile(TileID.MythrilAnvil).Register();
 
         Recipe.Create(ItemID.BattlePotion)
@@ -1645,7 +1645,7 @@ public class RecipeCreator : ModSystem
         //end wood
         //evil ores
         Recipe.Create(ItemID.DemoniteOre, 40)
-            .AddIngredient(ModContent.ItemType<BacciliteOre>(), 40)
+            .AddIngredient(ModContent.ItemType<PandemiteOre>(), 40)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
@@ -1654,7 +1654,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
-        Recipe.Create(ModContent.ItemType<BacciliteOre>(), 40)
+        Recipe.Create(ModContent.ItemType<PandemiteOre>(), 40)
             .AddIngredient(ItemID.CrimtaneOre, 40)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
@@ -1707,7 +1707,7 @@ public class RecipeCreator : ModSystem
         //end hardmode ores
         //evil bars
         Recipe.Create(ItemID.DemoniteBar, 10)
-            .AddIngredient(ModContent.ItemType<BacciliteBar>(), 10)
+            .AddIngredient(ModContent.ItemType<PandemiteBar>(), 10)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
@@ -1716,7 +1716,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
 
-        Recipe.Create(ModContent.ItemType<BacciliteBar>(), 10)
+        Recipe.Create(ModContent.ItemType<PandemiteBar>(), 10)
             .AddIngredient(ItemID.CrimtaneBar, 10)
             .AddIngredient(ModContent.ItemType<Sulphur>())
             .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();

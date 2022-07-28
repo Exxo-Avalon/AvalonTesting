@@ -45,7 +45,7 @@ public class ContagionWorldGen : ModHook
                 WorldGen.TileRunner(
                     WorldGen.genRand.Next(0, Main.maxTilesX),
                     WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY), WorldGen.genRand.Next(3, 6),
-                    WorldGen.genRand.Next(4, 8), ModContent.TileType<BacciliteOre>());
+                    WorldGen.genRand.Next(4, 8), ModContent.TileType<PandemiteOre>());
             }
         });
 
@@ -66,7 +66,7 @@ public class ContagionWorldGen : ModHook
                     WorldGen.TileRunner(
                         WorldGen.genRand.Next(0, Main.maxTilesX),
                         WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY), WorldGen.genRand.Next(3, 6),
-                        WorldGen.genRand.Next(4, 8), ModContent.TileType<BacciliteOre>());
+                        WorldGen.genRand.Next(4, 8), ModContent.TileType<PandemiteOre>());
                 }
             }
         });

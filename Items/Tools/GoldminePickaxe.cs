@@ -35,7 +35,7 @@ class GoldminePickaxe : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 12)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 12)
             .AddIngredient(ModContent.ItemType<Material.Booger>(), 6)
             .AddTile(TileID.Anvils)
             .Register();

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -21,6 +21,7 @@ public class FeroziumOre : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.FeroziumOre>();
         HitSound = SoundID.Tink;
         MinPick = 180;
+        TileID.Sets.Ore[Type] = true;
         DustType = DustID.UltraBrightTorch;
     }
     public override bool CanExplode(int i, int j)

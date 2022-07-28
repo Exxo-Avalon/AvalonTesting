@@ -54,6 +54,10 @@ public class VirulentScythe : ModProjectile
             {
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VirulentExtraScythe>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[p].rotation = Projectile.rotation + 1.95f;
+                if (Projectile.velocity.X > 0)
+                {
+                    Main.projectile[p].velocity.X = 1f;
+                }
             }
         }
     }

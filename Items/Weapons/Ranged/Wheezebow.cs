@@ -33,6 +33,6 @@ class Wheezebow : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BacciliteBar>(), 9).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 9).AddTile(TileID.Anvils).Register();
     }
 }
