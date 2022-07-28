@@ -278,7 +278,7 @@ class PlatinumCrate : ModItem
                 }
                 else if (num15 == 2)
                 {
-                    num15 = ModContent.ItemType<CrimsonPotion>();
+                    num15 = ModContent.ItemType<AuraPotion>();
                 }
                 else if (num15 == 3)
                 {

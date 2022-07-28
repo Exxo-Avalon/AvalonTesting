@@ -653,7 +653,7 @@ class LavaShrine
                         }
                         else if (rand >= 21 && rand <= 40)
                         {
-                            Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<CrimsonPotion>(), false);
+                            Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<AuraPotion>(), false);
                             Main.chest[num2].item[1].stack = WorldGen.genRand.Next(3) + 1;
                         }
                         else if (rand >= 41 && rand <= 50)

@@ -60,7 +60,7 @@ public class ContagionPot : ModTile
                     {
                         if (Main.hardMode && WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.AuraPotion>(), 1, false, 0, false);
                         }
                         else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
                     }
@@ -116,7 +116,7 @@ public class ContagionPot : ModTile
                     {
                         if (WorldGen.genRand.Next(2) == 0)
                         {
-                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.CrimsonPotion>(), 1, false, 0, false);
+                            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Potions.AuraPotion>(), 1, false, 0, false);
                         }
                         else Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, 298, 1, false, 0, false);
                     }

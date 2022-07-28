@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ class AdvFuryPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fury Elixir");
-        Tooltip.SetDefault("Increases critical strike damage by 40%");
+        Tooltip.SetDefault("Increases critical strike damage by 300%");
         SacrificeTotal = 30;
     }
 

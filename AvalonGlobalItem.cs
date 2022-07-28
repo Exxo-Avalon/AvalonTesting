@@ -993,8 +993,8 @@ public class AvalonGlobalItem : GlobalItem
             item.type == ItemID.WrathPotion && player.HasBuff(ModContent.BuffType<AdvWrath>()) ||
             item.type == ModContent.ItemType<AdvBloodCastPotion>() && player.HasBuff(ModContent.BuffType<BloodCast>()) ||
             item.type == ModContent.ItemType<BloodCastPotion>() && player.HasBuff(ModContent.BuffType<AdvBloodCast>()) ||
-            item.type == ModContent.ItemType<AdvCrimsonPotion>() && player.HasBuff(ModContent.BuffType<CrimsonDrain>()) ||
-            item.type == ModContent.ItemType<CrimsonPotion>() && player.HasBuff(ModContent.BuffType<AdvCrimson>()) ||
+            item.type == ModContent.ItemType<AdvAuraPotion>() && player.HasBuff(ModContent.BuffType<CrimsonDrain>()) ||
+            item.type == ModContent.ItemType<AuraPotion>() && player.HasBuff(ModContent.BuffType<AdvCrimson>()) ||
             item.type == ModContent.ItemType<AdvForceFieldPotion>() && player.HasBuff(ModContent.BuffType<ForceField>()) ||
             item.type == ModContent.ItemType<ForceFieldPotion>() && player.HasBuff(ModContent.BuffType<AdvForceField>()) ||
             item.type == ModContent.ItemType<AdvFuryPotion>() && player.HasBuff(ModContent.BuffType<Fury>()) ||

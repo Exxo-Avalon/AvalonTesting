@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.AdvancedPotions;
 
-class AdvCrimsonPotion : ModItem
+class AdvAuraPotion : ModItem
 {
     public override void SetStaticDefaults()
     {

@@ -197,7 +197,7 @@ class RedPresent : ModItem
                 int y = Main.rand.Next(30);
                 if (y < 15)
                 {
-                    item = Item.NewItem(player.GetSource_OpenItem(Item.type), (int)player.position.X, (int)player.position.Y, player.width, player.height, ModContent.ItemType<CrimsonPotion>(), Main.rand.Next(2, 4), false, 0, false);
+                    item = Item.NewItem(player.GetSource_OpenItem(Item.type), (int)player.position.X, (int)player.position.Y, player.width, player.height, ModContent.ItemType<AuraPotion>(), Main.rand.Next(2, 4), false, 0, false);
                 }
                 else if (y >= 15 && y <= 28)
                 {

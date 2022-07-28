@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Fish;
+using Avalon.Items.Fish;
 using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -12,7 +12,7 @@ public class FuryPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fury Potion");
-        Tooltip.SetDefault("Increases critical strike damage by 20%");
+        Tooltip.SetDefault("Increases critical strike damage by 200%");
         SacrificeTotal = 20;
     }
 

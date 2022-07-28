@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -66,6 +66,9 @@ public class LargeHerbsStage4 : ModTile
                 break;
             case 10:
                 item = ModContent.ItemType<LargeHolybird>();
+                break;
+            case 11:
+                item = ModContent.ItemType<LargeTwilightPlume>();
                 break;
         }
         if (item > 0) Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, item);

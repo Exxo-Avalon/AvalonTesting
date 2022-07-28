@@ -1817,7 +1817,7 @@ public class AvalonGlobalNPC : GlobalNPC
             npcLoot.Add(ItemDropRule.OneFromOptions(600, ItemID.EndurancePotion, ItemID.GravitationPotion,
                 ItemID.InfernoPotion,
                 ModContent.ItemType<StarbrightPotion>(), ModContent.ItemType<StrengthPotion>(),
-                ModContent.ItemType<CrimsonPotion>(), ItemID.IronskinPotion, ItemID.SwiftnessPotion,
+                ModContent.ItemType<AuraPotion>(), ItemID.IronskinPotion, ItemID.SwiftnessPotion,
                 ModContent.ItemType<ShockwavePotion>(), ItemID.MiningPotion, ItemID.ObsidianSkinPotion,
                 ItemID.NightOwlPotion, ItemID.RagePotion, ItemID.RegenerationPotion, ItemID.SpelunkerPotion,
                 ItemID.SonarPotion, ItemID.WrathPotion, ItemID.SummoningPotion, ItemID.HunterPotion,

@@ -36,12 +36,14 @@ public class TropicalShortGrass : ModTile
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
         AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(277, 41, 75), LanguageManager.Instance.GetText("Tropical Shroom"));
+        var name = CreateMapEntryName();
+        name.SetDefault("Tropical Shroom");
+        AddMapEntry(new Color(277, 41, 75), name);
     }
-    public override ushort GetMapOption(int i, int j)
-    {
-        return (ushort)(Main.tile[i, j].TileFrameX / 18);
-    }
+    //public override ushort GetMapOption(int i, int j)
+    //{
+    //    return (ushort)(Main.tile[i, j].TileFrameX / 18);
+    //}
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
         if (Main.tile[i, j].TileFrameX / 18 == 8)

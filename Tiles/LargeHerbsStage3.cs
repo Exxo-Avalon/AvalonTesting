@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Seed;
+using Avalon.Items.Placeable.Seed;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -63,6 +63,9 @@ public class LargeHerbsStage3 : ModTile
                 break;
             case 10:
                 item = ModContent.ItemType<LargeHolybirdSeed>();
+                break;
+            case 11:
+                item = ModContent.ItemType<LargeTwilightPlumeSeed>();
                 break;
         }
         if (item > 0) Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 48, item);
