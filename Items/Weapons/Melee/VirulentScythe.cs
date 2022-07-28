@@ -12,7 +12,7 @@ internal class VirulentScythe : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Virulent Scythe");
-        Tooltip.SetDefault("???");
+        Tooltip.SetDefault("Shoots a scythe that lashes out at enemies\nInflicts Virulent on your enemies");
         SacrificeTotal = 1;
     }
 
