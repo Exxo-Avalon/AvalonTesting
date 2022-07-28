@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Placeable.Tile;
 
-class BacciliteOre : ModItem
+class PandemiteOre : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -18,7 +18,7 @@ class BacciliteOre : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.Ores.BacciliteOre>();
+        Item.createTile = ModContent.TileType<Tiles.Ores.PandemiteOre>();
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.useTime = 10;

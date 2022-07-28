@@ -1,4 +1,4 @@
-﻿using Avalon.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -23,5 +23,6 @@ public class OsmiumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 60;
         DustType = ModContent.DustType<OsmiumDust>();
+        TileID.Sets.Ore[Type] = true;
     }
 }

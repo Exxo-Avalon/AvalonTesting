@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -22,6 +22,7 @@ public class PyroscoricOre : ModTile
         HitSound = SoundID.Tink;
         DustType = DustID.InfernoFork;
         MinPick = 210;
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override bool CanExplode(int i, int j)

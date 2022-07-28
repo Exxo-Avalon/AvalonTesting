@@ -1,4 +1,4 @@
-﻿using Avalon.Dusts;
+using Avalon.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -23,6 +23,7 @@ public class TritanoriumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.Stone;
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override bool CanExplode(int i, int j)

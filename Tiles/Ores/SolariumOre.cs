@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -23,6 +23,7 @@ public class SolariumOre : ModTile
         HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.SolarFlare;
+        TileID.Sets.Ore[Type] = true;
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
