@@ -41,4 +41,17 @@ class CordycepsHat : ModItem
         player.setBonus = "9% increased minion damage";
         player.GetDamage(DamageClass.Summon) += 0.09f;
     }
+    public override void PreUpdateVanitySet(Player player)
+    {
+        if (Main.rand.NextBool(30))
+        {
+            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDust>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            Main.dust[dust].noGravity = true;
+        }
+        if (Main.rand.NextBool(70))
+        {
+            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDustImmortal>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            Main.dust[dust].noGravity = true;
+        }
+    }
 }
