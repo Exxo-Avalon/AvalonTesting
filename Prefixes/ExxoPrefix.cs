@@ -11,6 +11,8 @@ namespace Avalon.Prefixes;
 
 public abstract class ExxoPrefix : ModPrefix
 {
+    public static readonly Dictionary<ExxoPrefixCategory, List<ExxoPrefix>> ExxoCategoryPrefixes = new();
+
     private static readonly Dictionary<DamageClass, string> DamageClassesToCheck = new()
     {
         { DamageClass.Generic, string.Empty },
@@ -25,9 +27,20 @@ public abstract class ExxoPrefix : ModPrefix
         .GetMethod("SetupPlayer", BindingFlags.NonPublic | BindingFlags.Static)!
         .CreateDelegate(typeof(Action<Player>), null);
 
+    public virtual ExxoPrefixCategory ExxoCategory => ExxoPrefixCategory.None;
+
     [NotNull] public ReadOnlyCollection<TooltipLine>? TooltipLines { get; private set; }
 
-    public override void SetStaticDefaults() => CacheToolTips();
+    public override void SetStaticDefaults()
+    {
+        if (!ExxoCategoryPrefixes.ContainsKey(ExxoCategory))
+        {
+            ExxoCategoryPrefixes[ExxoCategory] = new List<ExxoPrefix>();
+        }
+
+        ExxoCategoryPrefixes[ExxoCategory].Add(this);
+        CacheToolTips();
+    }
 
     public virtual void UpdateOwnerPlayer(Player player)
     {
@@ -142,4 +155,10 @@ public abstract class ExxoPrefix : ModPrefix
             list.Add(new TooltipLine(Mod, prefix, identifier) { IsModifier = true, IsModifierBad = isBad });
         }
     }
+}
+
+public enum ExxoPrefixCategory
+{
+    None = 0,
+    Armor = 1,
 }

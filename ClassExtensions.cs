@@ -233,10 +233,10 @@ public static class ClassExtensions
             position.X, position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, p.whoAmI, num2, num);
     }
 
-    public static T GetRandomValue<T>(this T[] array)
+    public static T GetRandomValue<T>(this IList<T> array)
     {
         var random = new Random();
-        return array[random.Next(array.Length)];
+        return array[random.Next(array.Count)];
     }
 
     private static Action<Player, int, int, int> CacheOpenChestAction()
