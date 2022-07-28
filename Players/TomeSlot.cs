@@ -9,7 +9,7 @@ namespace Avalon.Players;
 public class TomeSlot : ModAccessorySlot
 {
     public override bool IsEnabled() => true;
-    public override bool IsHidden() => Main.EquipPage != 2;
+    public override bool IsHidden() => Main.EquipPage != 0;
     public override bool DrawDyeSlot => false;
     public override bool DrawVanitySlot => false;
     public override string FunctionalTexture => "Avalon/Assets/Textures/UI/TomeSlot";
@@ -20,12 +20,12 @@ public class TomeSlot : ModAccessorySlot
         {
             int top = Hooks.AvalonReflection.Main_mH + 174;
             Rectangle r = new(0, 0, (int)(TextureAssets.InventoryBack.Width() * Main.inventoryScale), (int)(TextureAssets.InventoryBack.Height() * Main.inventoryScale));
-            r.Y = top + 0 * 47;
+            r.Y = top + 5 * 47 + 7;
 
-            Vector2 p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47, r.Top);
+            Vector2 p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47 - 47, r.Top);
             if (Main.mapStyle is 0 or 2)
             {
-                p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47, 362 - 47 * 4);
+                p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47 - 47, 362 + 54);
             }
             return p;
         }
@@ -34,11 +34,11 @@ public class TomeSlot : ModAccessorySlot
     {
         int top = Hooks.AvalonReflection.Main_mH + 174;
         Rectangle r = new(0, 0, (int)(TextureAssets.InventoryBack.Width() * Main.inventoryScale), (int)(TextureAssets.InventoryBack.Height() * Main.inventoryScale));
-        r.Y = top + 0 * 47;
-        Vector2 p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47, r.Top);
+        r.Y = top + 5 * 47 + 7;
+        Vector2 p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47 - 47, r.Top);
         if (Main.mapStyle is 0 or 2)
         {
-            p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47, 362 - 47 * 4);
+            p = new Vector2(Main.screenWidth - 64 - 28 - 47 - 47 - 47, 362 + 54);
         }
 
         int cX = TextureAssets.InventoryBack3.Value.Width / 2;
@@ -50,8 +50,16 @@ public class TomeSlot : ModAccessorySlot
         {
             cX -= TextureAssets.Item[item.type].Value.Width / 2;
             cY -= TextureAssets.Item[item.type].Value.Height / 2;
-            endX = TextureAssets.Item[item.type].Value.Width - (cY - cY / 4);
-            endY = TextureAssets.Item[item.type].Value.Height - (cY - cY / 4);
+            if (TextureAssets.Item[item.type].Value.Width >= TextureAssets.Item[item.type].Value.Height)
+            {
+                endX = TextureAssets.Item[item.type].Value.Width - (cY - cY / 4);
+                endY = TextureAssets.Item[item.type].Value.Height - (cY - cY / 4);
+            }
+            else
+            {
+                endX = (int)(TextureAssets.Item[item.type].Value.Width / 1.05f) - (cX - cX / 8);
+                endY = (int)(TextureAssets.Item[item.type].Value.Height / 1.05f) - (cX - cX / 8);
+            }
         }
 
         Main.spriteBatch.Draw(TextureAssets.InventoryBack3.Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);

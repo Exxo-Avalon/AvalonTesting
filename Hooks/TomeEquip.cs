@@ -17,7 +17,7 @@ internal class TomeEquip : ModHook
         orig(item);
         if (item.type > ItemID.None && item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
         {
-            Main.EquipPage = 2;
+            Main.EquipPage = 0;
         }
     }
 }
