@@ -50,9 +50,8 @@ public class TomeSlot : ModAccessorySlot
         {
             cX -= TextureAssets.Item[item.type].Value.Width / 2;
             cY -= TextureAssets.Item[item.type].Value.Height / 2;
-
-            endX = TextureAssets.Item[item.type].Value.Width - cX;
-            endY = TextureAssets.Item[item.type].Value.Height - cY;
+            endX = TextureAssets.Item[item.type].Value.Width - (cY - cY / 4);
+            endY = TextureAssets.Item[item.type].Value.Height - (cY - cY / 4);
         }
 
         Main.spriteBatch.Draw(TextureAssets.InventoryBack3.Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);

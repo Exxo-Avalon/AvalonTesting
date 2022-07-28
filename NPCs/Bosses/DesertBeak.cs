@@ -22,7 +22,7 @@ public class DesertBeak : ModNPC
     {
         DisplayName.SetDefault("Desert Beak");
         Main.npcFrameCount[NPC.type] = 3;
-        NPCID.Sets.DebuffImmunitySets[Type] = new NPCDebuffImmunityData { SpecificallyImmuneTo = new[] { ModContent.BuffType<Frozen>() } };
+        NPCID.Sets.DebuffImmunitySets[Type] = new NPCDebuffImmunityData { SpecificallyImmuneTo = new[] { ModContent.BuffType<Frozen>(), BuffID.Confused } };
     }
     private bool transformed;
     private Vector2 lockon_player;
