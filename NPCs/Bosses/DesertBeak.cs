@@ -54,8 +54,8 @@ public class DesertBeak : ModNPC
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
-        NPC.lifeMax = (int)(NPC.lifeMax * 0.58f * bossLifeScale);
-        NPC.damage = (int)(NPC.damage * 0.50f);
+        NPC.lifeMax = (int)(NPC.lifeMax * 0.66f * bossLifeScale);
+        NPC.damage = (int)(NPC.damage * 0.58f);
     }
 
     public override void OnKill()
