@@ -103,33 +103,31 @@ internal class BlahsWings : ModItem
                 }
             }
         }
-
-        if (player.controlLeft)
+        if (!player.setVortex && !player.vortexStealthActive)
         {
-            if (player.velocity.X > -5f)
+            if (player.controlLeft)
             {
-                player.velocity.X = player.velocity.X - 0.31f;
+                if (player.velocity.X > -5f)
+                {
+                    player.velocity.X -= 0.31f;
+                }
+                if (player.velocity.X is < -5f and > -10f)
+                {
+                    player.velocity.X -= 0.29f;
+                }
             }
-
-            if (player.velocity.X < -5f && player.velocity.X > -10f)
+            if (player.controlRight)
             {
-                player.velocity.X = player.velocity.X - 0.29f;
+                if (player.velocity.X < 5f)
+                {
+                    player.velocity.X += 0.31f;
+                }
+                if (player.velocity.X is > 5f and < 10f)
+                {
+                    player.velocity.X += 0.29f;
+                }
             }
         }
-
-        if (player.controlRight)
-        {
-            if (player.velocity.X < 5f)
-            {
-                player.velocity.X = player.velocity.X + 0.31f;
-            }
-
-            if (player.velocity.X > 5f && player.velocity.X < 10f)
-            {
-                player.velocity.X = player.velocity.X + 0.29f;
-            }
-        }
-
         if (player.velocity.X > 6f || player.velocity.X < -6f)
         {
             var newColor2 = default(Color);

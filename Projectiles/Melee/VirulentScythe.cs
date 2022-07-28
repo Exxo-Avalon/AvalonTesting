@@ -29,7 +29,20 @@ public class VirulentScythe : ModProjectile
         Projectile.timeLeft = 2400;
         counter = 0;
     }
-
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        if (Main.rand.NextBool(4))
+        {
+            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
+        }
+    }
+    public override void OnHitPvp(Player target, int damage, bool crit)
+    {
+        if (Main.rand.NextBool(4))
+        {
+            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
+        }
+    }
     public override void AI()
     {
         //Main.NewText(Projectile.velocity);

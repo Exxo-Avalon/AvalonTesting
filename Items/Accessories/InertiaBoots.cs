@@ -77,29 +77,31 @@ class InertiaBoots : ModItem
         //        }
         //    }
         //}
-
+        //if (!player.setVortex && !player.vortexStealthActive)
+        //{
         if (player.controlLeft)
         {
-            if (player.velocity.X > -5f)
+            if (player.velocity.X > (player.vortexStealthActive ? -1f : -5f))
             {
-                player.velocity.X -= player.setVortex ? 0.11f : 0.31f;
+                player.velocity.X -= player.vortexStealthActive ? 0.06f : 0.31f;
             }
-            if (player.velocity.X is < -5f and > -10f)
+            if (player.velocity.X < (player.vortexStealthActive ? -1f : -5f) && player.velocity.X > (player.vortexStealthActive ? -2f : -10f))
             {
-                player.velocity.X -= player.setVortex ? 0.09f : 0.29f;
+                player.velocity.X -= player.vortexStealthActive ? 0.04f : 0.29f;
             }
         }
         if (player.controlRight)
         {
-            if (player.velocity.X < 5f)
+            if (player.velocity.X < (player.vortexStealthActive ? 1f : 5f))
             {
-                player.velocity.X += player.setVortex ? 0.11f : 0.31f;
+                player.velocity.X += player.vortexStealthActive ? 0.06f : 0.31f;
             }
-            if (player.velocity.X is > 5f and < 10f)
+            if (player.velocity.X > (player.vortexStealthActive ? 1f : 5f) && player.velocity.X < (player.vortexStealthActive ? 2f : 10f))
             {
-                player.velocity.X += player.setVortex ? 0.09f : 0.29f;
+                player.velocity.X += player.vortexStealthActive ? 0.04f : 0.29f;
             }
         }
+        //}
         if (player.velocity.X is > 6f or < -6f)
         {
             var newColor = default(Color);

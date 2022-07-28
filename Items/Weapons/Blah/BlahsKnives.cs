@@ -29,12 +29,12 @@ internal class BlahsKnives : ModItem
         Item.noMelee = true;
         Item.rare = ModContent.RarityType<BlahRarity>();
         Item.width = dims.Width;
-        Item.useTime = 18;
+        Item.useTime = 14;
         Item.knockBack = 3.75f;
         Item.shoot = ModContent.ProjectileType<BlahKnife>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 50);
-        Item.useAnimation = 18;
+        Item.useAnimation = 14;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item39;
     }

@@ -24,6 +24,20 @@ public class VirulentExtraScythe : ModProjectile
         Projectile.extraUpdates = 0;
         Projectile.timeLeft = 120;
     }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        if (Main.rand.NextBool(4))
+        {
+            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
+        }
+    }
+    public override void OnHitPvp(Player target, int damage, bool crit)
+    {
+        if (Main.rand.NextBool(4))
+        {
+            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
+        }
+    }
     public override Color? GetAlpha(Color lightColor)
     {
         return new Color(255, 255, 255, 0);
