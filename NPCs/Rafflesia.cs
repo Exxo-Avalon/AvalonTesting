@@ -66,6 +66,17 @@ public class Rafflesia : ModNPC
     }
     public override void AI()
     {
+        if (Main.rand.NextBool(15))
+        {
+            int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.MosquitoDust>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            Main.dust[dust].noGravity = true;
+        }
+        if (Main.rand.NextBool(45))
+        {
+            int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, ModContent.DustType<Dusts.MosquitoDustImmortal>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            Main.dust[dust].noGravity = true;
+        }
+
         NPC.ai[0]++;
         if (NPC.ai[0] >= 240)
         {
