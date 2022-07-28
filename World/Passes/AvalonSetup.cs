@@ -22,7 +22,7 @@ public class AvalonSetup : GenPass
         progress.Message = "Setting up Avalonian World Gen";
 
         ModContent.GetInstance<ExxoWorldGen>().CopperOre ??=
-            Enum.GetValues<ExxoWorldGen.CopperVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.CopperVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().CopperOre)
         {
@@ -43,7 +43,7 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().IronOre ??=
-            Enum.GetValues<ExxoWorldGen.IronVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.IronVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().IronOre)
         {
@@ -64,7 +64,7 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().SilverOre ??=
-            Enum.GetValues<ExxoWorldGen.SilverVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.SilverVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().SilverOre)
         {
@@ -85,7 +85,7 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().GoldOre ??=
-            Enum.GetValues<ExxoWorldGen.GoldVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.GoldVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().GoldOre)
         {
@@ -106,10 +106,10 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().RhodiumOre ??=
-            Enum.GetValues<ExxoWorldGen.RhodiumVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.RhodiumVariant>());
 
         ModContent.GetInstance<ExxoWorldGen>().CobaltOre ??=
-            Enum.GetValues<ExxoWorldGen.CobaltVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.CobaltVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().CobaltOre)
         {
@@ -127,7 +127,7 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().MythrilOre ??=
-            Enum.GetValues<ExxoWorldGen.MythrilVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.MythrilVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().MythrilOre)
         {
@@ -146,7 +146,7 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre ??=
-            Enum.GetValues<ExxoWorldGen.AdamantiteVariant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.AdamantiteVariant>());
 
         switch (ModContent.GetInstance<ExxoWorldGen>().AdamantiteOre)
         {
@@ -165,9 +165,9 @@ public class AvalonSetup : GenPass
         }
 
         ModContent.GetInstance<ExxoWorldGen>().SHMTier1Ore ??=
-            Enum.GetValues<ExxoWorldGen.SHMTier1Variant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.SHMTier1Variant>());
 
         ModContent.GetInstance<ExxoWorldGen>().SHMTier2Ore ??=
-            Enum.GetValues<ExxoWorldGen.SHMTier2Variant>().GetRandomValue();
+            Main.rand.Next(Enum.GetValues<ExxoWorldGen.SHMTier2Variant>());
     }
 }

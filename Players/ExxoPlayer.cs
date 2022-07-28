@@ -51,12 +51,17 @@ public class ExxoPlayer : ModPlayer
             Main.screenPosition += Main.rand.NextVector2Circular(20, 20);
         }
     }
+
     public override void ResetEffects()
     {
         //Main.NewText("" + trapImmune.ToString());
         //Main.NewText("" + slimeBand.ToString());
         HookBonus = false;
-        //DarkMatterMonolith = false;
+        if (DarkMatterTimeOut-- < 0)
+        {
+            DarkMatterMonolith = false;
+        }
+
         oreDupe = false;
         skyBlessing = false;
         snotOrb = false;
@@ -2790,6 +2795,7 @@ public class ExxoPlayer : ModPlayer
         Team,
     }
     public bool DarkMatterMonolith;
+    public int DarkMatterTimeOut = 20;
     public bool quackJump;
     public bool jumpAgainQuack;
     public bool armorStealth;

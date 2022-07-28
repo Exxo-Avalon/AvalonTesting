@@ -228,6 +228,7 @@ public class DarkMatterSky : CustomSky
         {
             skyActive = false;
         }
+
         if (skyActive && opacity < 1f)
         {
             opacity += 0.02f;
