@@ -32,10 +32,16 @@ public class ReplaceChestItems : GenPass
                     if (WorldBiomeManager.WorldJungle == "Avalon/TropicsAlternateBiome")
                     {
                         if (i != null && i.type == ItemID.Boomstick)
+                        {
                             i.SetDefaults(ModContent.ItemType<Thompson>());
+                            i.Prefix(-1);
+                        }
                     }
                     if (i != null && i.type == ItemID.StaffofRegrowth && WorldGen.genRand.Next(2) == 0)
+                    {
                         i.SetDefaults(ModContent.ItemType<FlowerofTheJungle>());
+                        i.Prefix(-1);
+                    }
                 }
             }
         }
