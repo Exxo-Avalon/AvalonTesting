@@ -13,9 +13,6 @@ namespace Avalon.UI.Herbology;
 
 internal class HerbologyUITurnIn : ExxoUIPanelWrapper<ExxoUIList>
 {
-    public readonly ExxoUIImageButton Button;
-    public readonly ExxoUIItemSlot ItemSlot;
-
     public HerbologyUITurnIn() : base(new ExxoUIList())
     {
         Height.Set(0, 1);
@@ -44,13 +41,14 @@ internal class HerbologyUITurnIn : ExxoUIPanelWrapper<ExxoUIList>
                   HerbologyData.ElixirIds.Contains(Main.mouseItem.type))))
             {
                 SoundEngine.PlaySound(SoundID.Grab);
-                Item item6 = Main.mouseItem;
-                Main.mouseItem = ItemSlot.Item;
-                ItemSlot.Item = item6;
+                (Main.mouseItem, ItemSlot.Item) = (ItemSlot.Item, Main.mouseItem);
                 Recipe.FindRecipes();
             }
         };
     }
+
+    public ExxoUIImageButton Button { get; }
+    public ExxoUIItemSlot ItemSlot { get; }
 
     protected override void UpdateSelf(GameTime gameTime)
     {

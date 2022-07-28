@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.UI;
@@ -20,9 +21,7 @@ internal class ExxoUIImageButtonToggle : ExxoUIImageButton
         OpacityInactive = 0.7f;
     }
 
-    public delegate void ToggleEvent(bool toggled);
-
-    public event ToggleEvent? OnToggle;
+    public event EventHandler<ToggleEventArgs>? OnToggle;
 
     public bool Toggled
     {
@@ -30,7 +29,7 @@ internal class ExxoUIImageButtonToggle : ExxoUIImageButton
         set
         {
             toggled = value;
-            OnToggle?.Invoke(toggled);
+            OnToggle?.Invoke(this, new ToggleEventArgs(toggled));
         }
     }
 
@@ -44,5 +43,11 @@ internal class ExxoUIImageButtonToggle : ExxoUIImageButton
     {
         Color = Toggled ? activeColor : inactiveColor;
         base.DrawSelf(spriteBatch);
+    }
+
+    public class ToggleEventArgs : EventArgs
+    {
+        public ToggleEventArgs(bool toggled) => Toggled = toggled;
+        public bool Toggled { get; }
     }
 }

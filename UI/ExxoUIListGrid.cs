@@ -29,6 +29,13 @@ public class ExxoUIListGrid : ExxoUIList
         base.RecalculateChildren();
     }
 
+    /// <inheritdoc />
+    public override void Clear()
+    {
+        base.Clear();
+        gridElements.Clear();
+    }
+
     public new void Append(UIElement item) => gridElements.Add(item);
 
     private void DealWithItem(UIElement item)
@@ -54,20 +61,15 @@ public class ExxoUIListGrid : ExxoUIList
 
     private ExxoUIList AddNewInnerList()
     {
-        var list = new ExxoUIList();
-        list.Direction = Direction.Horizontal;
-        list.FitHeightToContent = true;
-        list.FitWidthToContent = true;
-        list.Width.Set(0, 1);
-        list.ListPadding = ListPadding;
+        var list = new ExxoUIList
+        {
+            Direction = Direction.Horizontal,
+            FitHeightToContent = true,
+            FitWidthToContent = true,
+            Width = StyleDimension.Fill,
+            ListPadding = ListPadding,
+        };
         base.Append(list);
         return list;
-    }
-
-    /// <inheritdoc />
-    public override void Clear()
-    {
-        base.Clear();
-        gridElements.Clear();
     }
 }

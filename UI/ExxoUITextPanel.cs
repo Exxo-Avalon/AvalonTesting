@@ -1,5 +1,4 @@
 ﻿using Terraria.Localization;
-using Terraria.UI;
 
 namespace Avalon.UI;
 
@@ -18,10 +17,15 @@ internal class ExxoUITextPanel : ExxoUIPanel
     protected ExxoUITextPanel(ExxoUIText textElement)
     {
         TextElement = textElement;
-        TextElement.OnInternalTextChange += () =>
+        TextElement.OnInternalTextChange += (sender, _) =>
         {
-            MinWidth.Pixels = TextElement.MinWidth.Pixels + PaddingLeft + PaddingRight;
-            MinHeight.Pixels = TextElement.MinHeight.Pixels + PaddingBottom + PaddingTop;
+            if (sender is not ExxoUIText text)
+            {
+                return;
+            }
+
+            MinWidth.Pixels = text.MinWidth.Pixels + PaddingLeft + PaddingRight;
+            MinHeight.Pixels = text.MinHeight.Pixels + PaddingBottom + PaddingTop;
         };
         Append(TextElement);
     }

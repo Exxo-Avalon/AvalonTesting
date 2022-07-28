@@ -21,10 +21,10 @@ public class ExxoUIText : ExxoUIAdapter<UIText>
         {
             MinWidth = ChildBase.MinWidth;
             MinHeight = ChildBase.MinHeight;
-            OnInternalTextChange?.Invoke();
+            OnInternalTextChange?.Invoke(this, EventArgs.Empty);
         };
 
-    public event Action? OnInternalTextChange;
+    public event EventHandler<EventArgs>? OnInternalTextChange;
 
     public string Text => ChildBase.Text;
 

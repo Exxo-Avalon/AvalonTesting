@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.GameInput;
-using Terraria.UI;
 
 namespace Avalon.UI;
 
@@ -14,7 +14,7 @@ internal class ExxoUINumberInput : ExxoUIList
     private double lastActiveFlicker;
     private int maxNumber = int.MaxValue;
     private int number;
-    private ExxoUITextPanel[] numbers;
+    private ExxoUITextPanel[] numbers = Array.Empty<ExxoUITextPanel>();
 
     public ExxoUINumberInput(int amountNumbers = 3)
     {
@@ -26,12 +26,8 @@ internal class ExxoUINumberInput : ExxoUIList
         Resize(amountNumbers);
     }
 
-    public delegate void KeyboardEvent(UIElement target, KeyboardState keyboardState);
-
-    public delegate void NumberChangedEventHandler(ExxoUINumberInput sender, EventArgs e);
-
-    public event KeyboardEvent OnKeyboardUpdate;
-    public event NumberChangedEventHandler OnNumberChanged;
+    public event EventHandler<KeyboardUpdateArgs>? OnKeyboardUpdate;
+    public event EventHandler<EventArgs>? OnNumberChanged;
 
     public int MaxNumber
     {
@@ -44,7 +40,7 @@ internal class ExxoUINumberInput : ExxoUIList
             }
 
             maxNumber = value;
-            Resize(maxNumber.ToString().Length);
+            Resize(maxNumber.ToString(CultureInfo.InvariantCulture).Length);
         }
     }
 
@@ -55,9 +51,9 @@ internal class ExxoUINumberInput : ExxoUIList
         get => number;
         set
         {
-            string oldString = number.ToString();
+            string oldString = number.ToString(CultureInfo.InvariantCulture);
             number = (int)MathHelper.Clamp(value, 0, MaxNumber);
-            SetActiveIndex(activeNumberIndex + number.ToString().Length - oldString.Length);
+            SetActiveIndex(activeNumberIndex + number.ToString(CultureInfo.InvariantCulture).Length - oldString.Length);
             OnNumberChanged?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -70,12 +66,12 @@ internal class ExxoUINumberInput : ExxoUIList
 
         PlayerInput.WritingText = true;
         Main.instance.HandleIME();
-        string currentString = Number.ToString();
+        string currentString = Number.ToString(CultureInfo.InvariantCulture);
         string newString = Main.GetInputText(currentString);
 
         if (int.TryParse(newString, out int newNumber))
         {
-            if (Number != newNumber && newNumber.ToString().Length <= AmountNumbers)
+            if (Number != newNumber && newNumber.ToString(CultureInfo.InvariantCulture).Length <= AmountNumbers)
             {
                 Number = newNumber;
             }
@@ -85,20 +81,13 @@ internal class ExxoUINumberInput : ExxoUIList
             Number = 0;
         }
 
-        OnKeyboardUpdate.Invoke(this, Main.inputText);
+        OnKeyboardUpdate?.Invoke(this, new KeyboardUpdateArgs(Main.inputText));
 
-        string numString = number.ToString();
+        string numString = number.ToString(CultureInfo.InvariantCulture);
 
         for (int i = 0; i < AmountNumbers; i++)
         {
-            if (i < numString.Length)
-            {
-                numbers[i].TextElement.SetText(numString[i].ToString());
-            }
-            else
-            {
-                numbers[i].TextElement.SetText("");
-            }
+            numbers[i].TextElement.SetText(i < numString.Length ? numString[i].ToString() : "");
         }
 
         if (gameTime.TotalGameTime.TotalSeconds - lastActiveFlicker > 0.5f)
@@ -130,10 +119,10 @@ internal class ExxoUINumberInput : ExxoUIList
 
         for (int i = 0; i < amountNumbers; i++)
         {
-            var number = new ExxoUITextPanel("") { Width = textSize.MinWidth };
-            number.Height.Pixels = textSize.MinHeight.Pixels * 2;
-            Append(number);
-            numbers[i] = number;
+            var num = new ExxoUITextPanel("") { Width = textSize.MinWidth };
+            num.Height.Pixels = textSize.MinHeight.Pixels * 2;
+            Append(num);
+            numbers[i] = num;
         }
 
         SetActiveIndex(0);
@@ -148,5 +137,11 @@ internal class ExxoUINumberInput : ExxoUIList
             activeNumberIndex = index;
             ActiveNumberElement.BackgroundColor = oldColor;
         }
+    }
+
+    public class KeyboardUpdateArgs : EventArgs
+    {
+        public KeyboardUpdateArgs(KeyboardState keyboardState) => KeyboardState = keyboardState;
+        public KeyboardState KeyboardState { get; }
     }
 }

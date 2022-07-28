@@ -1,4 +1,5 @@
-﻿using Avalon.Players;
+﻿using System.Globalization;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,13 +9,7 @@ namespace Avalon.UI.Herbology;
 
 internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
 {
-    public readonly ExxoUITextPanel HerbTierText;
-    public readonly ExxoUIPanelWrapper<ExxoUIList> HerbTotalContainer;
-    public readonly ExxoUIPanelWrapper<ExxoUIList> PotionTotalContainer;
-    public readonly ExxoUITextPanel RankTitleText;
-    private readonly ExxoUIImage herbTotalIcon;
     private readonly ExxoUIText herbTotalText;
-    private readonly ExxoUIImage potionTotalIcon;
     private readonly ExxoUIText potionTotalText;
 
     public HerbologyUIStats() : base(new ExxoUIList())
@@ -32,17 +27,14 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         HerbTierText = new ExxoUITextPanel("");
         InnerElement.Append(HerbTierText);
 
-        HerbTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList())
-        {
-            Tooltip = "Herb credits",
-        };
+        HerbTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList()) { Tooltip = "Herb credits" };
         HerbTotalContainer.InnerElement.Direction = Direction.Horizontal;
         HerbTotalContainer.InnerElement.FitHeightToContent = true;
         HerbTotalContainer.InnerElement.FitWidthToContent = true;
         HerbTotalContainer.InnerElement.ContentVAlign = UIAlign.Center;
         InnerElement.Append(HerbTotalContainer);
 
-        herbTotalIcon =
+        var herbTotalIcon =
             new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconRandomSeed"))
             {
                 Inset = new Vector2(7, 7),
@@ -52,17 +44,14 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         herbTotalText = new ExxoUIText("");
         HerbTotalContainer.InnerElement.Append(herbTotalText);
 
-        PotionTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList())
-        {
-            Tooltip = "Potion credits",
-        };
+        PotionTotalContainer = new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList()) { Tooltip = "Potion credits" };
         PotionTotalContainer.InnerElement.Direction = Direction.Horizontal;
         PotionTotalContainer.InnerElement.FitHeightToContent = true;
         PotionTotalContainer.InnerElement.FitWidthToContent = true;
         PotionTotalContainer.InnerElement.ContentVAlign = UIAlign.Center;
         InnerElement.Append(PotionTotalContainer);
 
-        potionTotalIcon =
+        var potionTotalIcon =
             new ExxoUIImage(Main.Assets.Request<Texture2D>("Images/UI/WorldCreation/IconEvilCorruption"))
             {
                 Inset = new Vector2(4, 5),
@@ -72,6 +61,11 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         potionTotalText = new ExxoUIText("");
         PotionTotalContainer.InnerElement.Append(potionTotalText);
     }
+
+    public ExxoUITextPanel HerbTierText { get; }
+    public ExxoUIPanelWrapper<ExxoUIList> HerbTotalContainer { get; }
+    public ExxoUIPanelWrapper<ExxoUIList> PotionTotalContainer { get; }
+    public ExxoUITextPanel RankTitleText { get; }
 
     protected override void UpdateSelf(GameTime gameTime)
     {
@@ -86,10 +80,10 @@ internal class HerbologyUIStats : ExxoUIPanelWrapper<ExxoUIList>
         string tier = $"Tier {(int)modPlayer.Tier + 1} Herbologist";
         HerbTierText.TextElement.SetText(tier);
 
-        string herbTotal = modPlayer.HerbTotal.ToString();
+        string herbTotal = modPlayer.HerbTotal.ToString(CultureInfo.CurrentCulture);
         herbTotalText.SetText(herbTotal);
 
-        string potionTotal = modPlayer.PotionTotal.ToString();
+        string potionTotal = modPlayer.PotionTotal.ToString(CultureInfo.CurrentCulture);
         potionTotalText.SetText(potionTotal);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,13 +10,10 @@ namespace Avalon.UI;
 public abstract class ExxoUIElement : UIElement
 {
     private bool mouseWasOver;
-
-    public delegate void ExxoUIElementEvent(ExxoUIElement sender);
-
     public event MouseEvent? OnFirstMouseOver;
     public event MouseEvent? OnLastMouseOut;
     public event MouseEvent? OnMouseHovering;
-    public event ExxoUIElementEvent? OnRecalculateFinish;
+    public event EventHandler<EventArgs>? OnRecalculateFinish;
     public Queue<UIElement> ElementsForRemoval { get; } = new();
 
     public bool IsVisible => Active && !Hidden && GetOuterDimensions().Width > 0 && GetOuterDimensions().Height > 0;
@@ -156,6 +154,6 @@ public abstract class ExxoUIElement : UIElement
             }
         }
 
-        OnRecalculateFinish?.Invoke(this);
+        OnRecalculateFinish?.Invoke(this, EventArgs.Empty);
     }
 }

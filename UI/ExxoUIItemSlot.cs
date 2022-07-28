@@ -1,23 +1,19 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.UI;
 
 namespace Avalon.UI;
 
 internal class ExxoUIItemSlot : ExxoUIImageButton
 {
-    public readonly ExxoUIImage InnerImage;
-    public bool HoverItemDrawStack = true;
     private Item item;
 
-    public ExxoUIItemSlot(Asset<Texture2D> backgroundTexture, int itemID) : base(backgroundTexture)
+    public ExxoUIItemSlot(Asset<Texture2D> backgroundTexture, int itemType) : base(backgroundTexture)
     {
         item = new Item();
-        item.netDefaults(itemID);
+        item.netDefaults(itemType);
         item.stack = 1;
 
         InnerImage = new ExxoUIImage(TextureAssets.Item[item.type])
@@ -26,6 +22,8 @@ internal class ExxoUIItemSlot : ExxoUIImageButton
         };
         Append(InnerImage);
     }
+
+    public ExxoUIImage InnerImage { get; }
 
     public Item Item
     {

@@ -7,105 +7,26 @@ namespace Avalon.UI;
 
 public class ExxoUIList : ExxoUIElement
 {
-    public delegate bool ElementSearchMethod(UIElement element);
-
-    protected readonly List<ElementParams> ElementParamsList = new();
-    public float ContentHAlign;
-    public float ContentVAlign;
-    public Direction Direction = Direction.Vertical;
-    public bool FitHeightToContent;
-    public bool FitWidthToContent;
-
-    public Justification Justification = Justification.Start;
-
-    public float ListPadding = 5f;
     private StyleDimension origHeight;
     private StyleDimension origWidth;
 
-    public override bool IsDynamicallySized => FitHeightToContent || FitWidthToContent;
+    public delegate bool ElementSearchMethod(UIElement element);
 
-    public ExxoUIScrollbar ScrollBar { get; set; }
+    public override bool IsDynamicallySized => FitHeightToContent || FitWidthToContent;
+    public float ContentHAlign { get; set; }
+    public float ContentVAlign { get; set; }
+    public Direction Direction { get; set; } = Direction.Vertical;
+    public bool FitHeightToContent { get; set; }
+    public bool FitWidthToContent { get; set; }
+
+    public Justification Justification { get; set; } = Justification.Start;
+
+    public float ListPadding { get; set; } = 5f;
+
+    public ExxoUIScrollbar? ScrollBar { get; set; }
     public float TotalLength { get; set; }
 
-    public void ScrollTo(ElementSearchMethod searchMethod)
-    {
-        int num;
-        for (num = 0; num < Elements.Count; num++)
-        {
-            if (searchMethod(Elements[num]))
-            {
-                break;
-            }
-        }
-
-        ScrollBar.ViewPosition = Elements[num].Top.Pixels;
-    }
-
-    public new void Append(UIElement item)
-    {
-        Append(item, new ElementParams(false, false));
-    }
-
-    public void Append(UIElement item, ElementParams elementParams)
-    {
-        ElementParamsList.Add(elementParams);
-        base.Append(item);
-    }
-
-    public virtual void AddRange(IEnumerable<UIElement> items)
-    {
-        foreach (UIElement item in items)
-        {
-            base.Append(item);
-            ElementParamsList.Add(new ElementParams());
-        }
-    }
-
-    public virtual void Remove(UIElement item)
-    {
-        for (int i = 0; i < Elements.Count; i++)
-        {
-            if (Elements[i] == item)
-            {
-                ElementParamsList.RemoveAt(i);
-                break;
-            }
-        }
-
-        RemoveChild(item);
-    }
-
-    public virtual void Clear()
-    {
-        ElementParamsList.Clear();
-        Elements.Clear();
-    }
-
-    protected override void PreRecalculate()
-    {
-        base.PreRecalculate();
-        if (FitHeightToContent)
-        {
-            MinHeight.Set(0, 0);
-            origHeight = Height;
-            Height.Set(0, 1);
-        }
-
-        if (FitWidthToContent)
-        {
-            MinWidth.Set(0, 0);
-            origWidth = Width;
-            Width.Set(0, 1);
-        }
-    }
-
-    public void ScrollWheelListener(UIScrollWheelEvent evt, UIElement _)
-    {
-        if (ScrollBar != null)
-        {
-            ScrollBar.ViewPosition -= evt.ScrollWheelValue;
-        }
-    }
+    protected List<ElementParams> ElementParamsList { get; } = new();
 
     public override void RecalculateChildren()
     {
@@ -249,7 +170,7 @@ public class ExxoUIList : ExxoUIElement
         for (int i = 0; i < Elements.Count; i++)
         {
             if (Elements[i] is ExxoUIElement exxoElement &&
-                (exxoElement?.Hidden == true || exxoElement?.Active == false))
+                (exxoElement.Hidden || !exxoElement.Active))
             {
                 continue;
             }
@@ -316,6 +237,88 @@ public class ExxoUIList : ExxoUIElement
         return false;
     }
 
+    public void ScrollTo(ElementSearchMethod searchMethod)
+    {
+        if (ScrollBar == null)
+        {
+            return;
+        }
+
+        int num;
+        for (num = 0; num < Elements.Count; num++)
+        {
+            if (searchMethod(Elements[num]))
+            {
+                break;
+            }
+        }
+
+        ScrollBar.ViewPosition = Elements[num].Top.Pixels;
+    }
+
+    public new void Append(UIElement item) => Append(item, new ElementParams(false, false));
+
+    public void Append(UIElement item, ElementParams elementParams)
+    {
+        ElementParamsList.Add(elementParams);
+        base.Append(item);
+    }
+
+    public virtual void AddRange(IEnumerable<UIElement> items)
+    {
+        foreach (UIElement item in items)
+        {
+            base.Append(item);
+            ElementParamsList.Add(new ElementParams());
+        }
+    }
+
+    public virtual void Remove(UIElement item)
+    {
+        for (int i = 0; i < Elements.Count; i++)
+        {
+            if (Elements[i] == item)
+            {
+                ElementParamsList.RemoveAt(i);
+                break;
+            }
+        }
+
+        RemoveChild(item);
+    }
+
+    public virtual void Clear()
+    {
+        ElementParamsList.Clear();
+        Elements.Clear();
+    }
+
+    public void ScrollWheelListener(UIScrollWheelEvent evt, UIElement _)
+    {
+        if (ScrollBar != null)
+        {
+            ScrollBar.ViewPosition -= evt.ScrollWheelValue;
+        }
+    }
+
+    protected override void PreRecalculate()
+    {
+        base.PreRecalculate();
+        if (FitHeightToContent)
+        {
+            MinHeight.Set(0, 0);
+            origHeight = Height;
+            Height.Set(0, 1);
+        }
+
+        if (FitWidthToContent)
+        {
+            MinWidth.Set(0, 0);
+            origWidth = Width;
+            Width.Set(0, 1);
+        }
+    }
+
     protected override void UpdateSelf(GameTime gameTime)
     {
         base.UpdateSelf(gameTime);
@@ -347,7 +350,7 @@ public class ExxoUIList : ExxoUIElement
             IgnoreContentAlign = ignoreContentAlign;
         }
 
-        public readonly bool FillLength;
-        public readonly bool IgnoreContentAlign;
+        public bool FillLength { get; }
+        public bool IgnoreContentAlign { get; }
     }
 }

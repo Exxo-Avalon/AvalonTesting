@@ -7,9 +7,8 @@ using Terraria.UI;
 
 namespace Avalon.UI;
 
-internal class ExxoUIContentLockPanel : ExxoUIPanel
+public class ExxoUIContentLockPanel : ExxoUIPanel
 {
-    public LockStatusChangedEventHandler OnLockStatusChanged;
     private readonly UIElement contentHolder;
     private readonly UIElement elementToLock;
     private readonly ExxoUIList list;
@@ -61,8 +60,7 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
         Hidden = !Locked;
     }
 
-    public delegate void LockStatusChangedEventHandler(ExxoUIContentLockPanel sender, EventArgs e);
-
+    public event EventHandler<LockStatusChangedEventArgs>? OnLockStatusChanged;
     public bool Locked => !unlockCondition();
 
     private bool ListIsOversize => listOuterDimensions.Width > elementToLock.GetInnerDimensions().Width ||
@@ -113,6 +111,13 @@ internal class ExxoUIContentLockPanel : ExxoUIPanel
     protected virtual void LockStatusChanged()
     {
         Hidden = !Locked;
-        OnLockStatusChanged?.Invoke(this, EventArgs.Empty);
+        OnLockStatusChanged?.Invoke(this, new LockStatusChangedEventArgs(Locked));
+    }
+
+    public class LockStatusChangedEventArgs : EventArgs
+    {
+        public LockStatusChangedEventArgs(bool locked) => Locked = locked;
+
+        public bool Locked { get; }
     }
 }

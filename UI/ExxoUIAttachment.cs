@@ -5,18 +5,6 @@ using Terraria.UI;
 
 namespace Avalon.UI;
 
-public class PositionAttachmentEventArgs : EventArgs
-{
-    public PositionAttachmentEventArgs(Vector2 position) => Position = position;
-    public Vector2 Position { get; set; }
-}
-
-public class AttachToEventArgs : EventArgs
-{
-    public AttachToEventArgs(ExxoUIElement? attachmentHolder) => AttachmentHolder = attachmentHolder;
-    public ExxoUIElement? AttachmentHolder { get; }
-}
-
 public class ExxoUIAttachment<THolder, TAttachment> : ExxoUIElement
     where THolder : ExxoUIElement where TAttachment : ExxoUIElement
 {
@@ -68,5 +56,17 @@ public class ExxoUIAttachment<THolder, TAttachment> : ExxoUIElement
         var args = new PositionAttachmentEventArgs(position);
         OnPositionAttachment?.Invoke(this, args);
         position = args.Position;
+    }
+
+    public class PositionAttachmentEventArgs : EventArgs
+    {
+        public PositionAttachmentEventArgs(Vector2 position) => Position = position;
+        public Vector2 Position { get; set; }
+    }
+
+    public class AttachToEventArgs : EventArgs
+    {
+        public AttachToEventArgs(ExxoUIElement? attachmentHolder) => AttachmentHolder = attachmentHolder;
+        public ExxoUIElement? AttachmentHolder { get; }
     }
 }

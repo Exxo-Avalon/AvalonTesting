@@ -7,18 +7,12 @@ namespace Avalon.UI.Herbology;
 
 internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
 {
-    public readonly ExxoUIListGrid Grid;
-    public readonly ExxoUIScrollbar Scrollbar;
-    public readonly ExxoUIImageButtonToggle Toggle;
-    private readonly ExxoUIList list;
-    private readonly ExxoUIText title;
-
     public HerbologyUIPotionExchange() : base(new ExxoUIList())
     {
         Height.Set(0, 1);
         InnerElement.Direction = Direction.Horizontal;
 
-        list = new ExxoUIList();
+        var list = new ExxoUIList();
         list.Height.Set(0, 1);
         InnerElement.Append(list, new ExxoUIList.ElementParams(true, false));
 
@@ -28,7 +22,7 @@ internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
         herbExchangeTitleContainer.Justification = Justification.Center;
         list.Append(herbExchangeTitleContainer);
 
-        title = new ExxoUIText("Potion Exchange");
+        var title = new ExxoUIText("Potion Exchange");
         herbExchangeTitleContainer.Append(title);
 
         Toggle = new ExxoUIImageButtonToggle(
@@ -40,10 +34,10 @@ internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
         horizontalRule.Width.Set(0, 1);
         list.Append(horizontalRule);
 
-        var gridWrapper = new ExxoUIEmpty() { OverflowHidden = true };
+        var gridWrapper = new ExxoUIEmpty { OverflowHidden = true };
         gridWrapper.Width = StyleDimension.Fill;
         list.Append(gridWrapper, new ExxoUIList.ElementParams(true, false));
-        Grid = new ExxoUIListGrid() { HAlign = UIAlign.Center, FitWidthToContent = true, };
+        Grid = new ExxoUIListGrid { HAlign = UIAlign.Center, FitWidthToContent = true };
         gridWrapper.Append(Grid);
 
         Scrollbar = new ExxoUIScrollbar();
@@ -54,4 +48,8 @@ internal class HerbologyUIPotionExchange : ExxoUIPanelWrapper<ExxoUIList>
         Grid.ScrollBar = Scrollbar;
         OnScrollWheel += Grid.ScrollWheelListener;
     }
+
+    public ExxoUIListGrid Grid { get; }
+    public ExxoUIScrollbar Scrollbar { get; }
+    public ExxoUIImageButtonToggle Toggle { get; }
 }
