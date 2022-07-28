@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Weapons.Melee;
 
-internal class VirulentKnives : ModItem
+internal class VirulentScythe : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Virulent Knives");
-        Tooltip.SetDefault("Throws homing knives");
+        DisplayName.SetDefault("Virulent Scythe");
+        Tooltip.SetDefault("???");
         SacrificeTotal = 1;
     }
 
@@ -21,15 +21,14 @@ internal class VirulentKnives : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item1;
         Item.damage = 46;
-        Item.noUseGraphic = true;
         Item.autoReuse = true;
-        Item.shootSpeed = 11f;
+        Item.shootSpeed = 14f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Yellow;
         Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 3f;
-        Item.shoot = ModContent.ProjectileType<YuckyKnife>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VirulentScythe>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 20);
@@ -38,17 +37,8 @@ internal class VirulentKnives : ModItem
         Item.UseSound = SoundID.Item39;
     }
 
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
-                               int type, int damage, float knockback)
+    public override bool CanUseItem(Player player)
     {
-        int numberProjectiles = Main.rand.Next(1, 5);
-        for (int i = 0; i < numberProjectiles; i++)
-        {
-            Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(20));
-            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage,
-                knockback, player.whoAmI);
-        }
-
-        return false;
+        return player.ownedProjectileCounts[Item.shoot] < 6;
     }
 }

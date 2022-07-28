@@ -39,7 +39,7 @@ internal class ContagionAlternateBiome : AltBiome
         BiomeOreItem = ModContent.ItemType<Items.Placeable.Tile.BacciliteOre>();
         SeedType = ModContent.ItemType<IckgrassSeeds>();
 
-        BiomeChestItem = ModContent.ItemType<VirulentKnives>();
+        BiomeChestItem = ModContent.ItemType<VirulentScythe>();
         BiomeChestTile = ModContent.TileType<LockedContagionChest>();
         BiomeChestTileStyle = 0;
 
