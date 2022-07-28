@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AltLibrary">
-      <HintPath>..\AltLibrary.dll</HintPath>
+      <HintPath>..\..\ModReader\AltLibrary\AltLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
