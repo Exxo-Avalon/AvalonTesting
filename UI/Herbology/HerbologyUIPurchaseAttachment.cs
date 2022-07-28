@@ -10,9 +10,6 @@ namespace Avalon.UI.Herbology;
 
 internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, ExxoUIPanelWrapper<ExxoUIList>>
 {
-    public readonly ExxoUIPanelButton<ExxoUIText> Button;
-    public readonly ExxoUIPanelWrapper<ExxoUIList> DifferenceContainer;
-    public readonly ExxoUINumberInputWithButtons NumberInputWithButtons;
     private readonly ExxoUIImage balanceIcon;
     private readonly ExxoUIList herbCountCostContainer;
     private readonly ExxoUIImage herbTypeIcon;
@@ -25,10 +22,8 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         AttachmentElement.InnerElement.FitWidthToContent = true;
         AttachmentElement.InnerElement.ContentHAlign = UIAlign.Center;
         Color newColor = AttachmentElement.BackgroundColor;
-        newColor.A = 255;
+        newColor.A = byte.MaxValue;
         AttachmentElement.BackgroundColor = newColor;
-
-        OnPositionAttachment += (sender, e) => e.Position.Y += sender.AttachmentHolder.MinHeight.Pixels;
 
         NumberInputWithButtons = new ExxoUINumberInputWithButtons();
         AttachmentElement.InnerElement.Append(NumberInputWithButtons);
@@ -73,31 +68,50 @@ internal class HerbologyUIPurchaseAttachment : ExxoUIAttachment<ExxoUIItemSlot, 
         subHerbCountBalance = new ExxoUIText("");
         herbCountCostContainer.Append(subHerbCountBalance);
 
-        Button = new ExxoUIPanelButton<ExxoUIText>(new ExxoUIText("Exchange"))
-        {
-            HAlign = UIAlign.Center,
-        };
+        Button = new ExxoUIPanelButton<ExxoUIText>(new ExxoUIText("Exchange")) { HAlign = UIAlign.Center };
         Button.Width.Set(0, 1);
         Button.InnerElement.HAlign = UIAlign.Center;
 
         AttachmentElement.InnerElement.Append(Button);
+    }
 
-        OnAttachTo += delegate
+    public ExxoUIPanelButton<ExxoUIText> Button { get; }
+    public ExxoUIPanelWrapper<ExxoUIList> DifferenceContainer { get; }
+    public ExxoUINumberInputWithButtons NumberInputWithButtons { get; }
+
+    /// <inheritdoc />
+    public override void AttachTo(ExxoUIItemSlot? attachmentHolder)
+    {
+        base.AttachTo(attachmentHolder);
+        if (attachmentHolder != null)
         {
             NumberInputWithButtons.NumberInput.Number = 1;
-        };
+        }
+    }
+
+    /// <inheritdoc />
+    protected override void PositionAttachment(ref Vector2 position)
+    {
+        base.PositionAttachment(ref position);
+        position.Y += AttachmentHolder!.MinHeight.Pixels;
     }
 
     protected override void UpdateSelf(GameTime gameTime)
     {
         base.UpdateSelf(gameTime);
 
-        Player player = Main.LocalPlayer;
-        ExxoHerbologyPlayer modPlayer = player.GetModPlayer<ExxoHerbologyPlayer>();
+        if (AttachmentHolder == null)
+        {
+            Avalon.Mod.Logger.Debug("A");
+            return;
+        }
+
+        ExxoHerbologyPlayer modPlayer = Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>();
 
         int balance;
         bool showHerbCount = HerbologyData.LargeHerbSeedIdByHerbSeedId.ContainsValue(AttachmentHolder.Item.type);
         herbCountCostContainer.Hidden = !showHerbCount;
+
         if (HerbologyData.ItemIsHerb(AttachmentHolder.Item))
         {
             balance = modPlayer.HerbTotal;

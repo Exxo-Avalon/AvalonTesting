@@ -1,56 +1,65 @@
-﻿using Avalon.Data;
+﻿using System.Globalization;
+using Avalon.Data;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.UI;
 
 namespace Avalon.UI.Herbology;
 
 internal class HerbologyUIHerbCountAttachment : ExxoUIAttachment<ExxoUIItemSlot, ExxoUIPanelWrapper<ExxoUIList>>
 {
-    public readonly ExxoUIImage Image;
-    public readonly ExxoUIText Text;
-
     public HerbologyUIHerbCountAttachment() : base(new ExxoUIPanelWrapper<ExxoUIList>(new ExxoUIList()))
     {
         Color newColor = AttachmentElement.BackgroundColor;
-        newColor.A = 255;
+        newColor.A = byte.MaxValue;
         AttachmentElement.BackgroundColor = newColor;
 
         AttachmentElement.InnerElement.FitHeightToContent = true;
         AttachmentElement.InnerElement.FitWidthToContent = true;
         AttachmentElement.InnerElement.Direction = Direction.Horizontal;
 
-        Image = new ExxoUIImage(null);
+        Image = new ExxoUIImage();
         AttachmentElement.InnerElement.Append(Image);
 
-        Text = new ExxoUIText("") { VAlign = UIAlign.Center };
+        Text = new ExxoUIText(LocalizedText.Empty) { VAlign = UIAlign.Center };
         AttachmentElement.InnerElement.Append(Text);
+    }
 
-        OnPositionAttachment += (sender, e) => e.Position.Y -= sender.AttachmentElement.MinHeight.Pixels;
+    public ExxoUIImage Image { get; }
+    public ExxoUIText Text { get; }
+
+    /// <inheritdoc />
+    protected override void PositionAttachment(ref Vector2 position)
+    {
+        base.PositionAttachment(ref position);
+        position.Y -= AttachmentElement.MinHeight.Pixels;
     }
 
     protected override void UpdateSelf(GameTime gameTime)
     {
         base.UpdateSelf(gameTime);
 
-        Player player = Main.LocalPlayer;
-        ExxoHerbologyPlayer modPlayer = player.GetModPlayer<ExxoHerbologyPlayer>();
+        if (AttachmentHolder == null)
+        {
+            return;
+        }
+
+        ExxoHerbologyPlayer modPlayer = Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>();
 
         int herbType = HerbologyData.GetBaseHerbType(AttachmentHolder.Item);
-        if (herbType != -1)
-        {
-            if (modPlayer.HerbCounts.ContainsKey(herbType))
-            {
-                Text.SetText(modPlayer.HerbCounts[herbType].ToString());
-            }
-            else
-            {
-                Text.SetText("0");
-            }
 
-            Image.SetImage(TextureAssets.Item[herbType]);
+        if (herbType == -1)
+        {
+            return;
         }
+
+        Text.SetText(modPlayer.HerbCounts.ContainsKey(herbType)
+            ? modPlayer.HerbCounts[herbType].ToString(CultureInfo.CurrentCulture)
+            : "0");
+
+        Image.SetImage(TextureAssets.Item[herbType]);
     }
 }

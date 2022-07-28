@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace Avalon.UI.Herbology;
 
@@ -7,13 +8,11 @@ internal class HerbologyUIHelpAttachment : ExxoUIAttachment<ExxoUIElement, ExxoU
     private bool attachedThisUpdate;
     private bool enabled;
 
-    public HerbologyUIHelpAttachment() : base(new ExxoUITextPanel(""))
+    public HerbologyUIHelpAttachment() : base(new ExxoUITextPanel(LocalizedText.Empty))
     {
         Color newColor = AttachmentElement.BackgroundColor;
-        newColor.A = 255;
+        newColor.A = byte.MaxValue;
         AttachmentElement.BackgroundColor = newColor;
-
-        OnPositionAttachment += (sender, e) => e.Position.Y -= sender.AttachmentElement.GetOuterDimensions().Height;
     }
 
     public bool Enabled
@@ -29,23 +28,20 @@ internal class HerbologyUIHelpAttachment : ExxoUIAttachment<ExxoUIElement, ExxoU
         }
     }
 
-    public override void AttachTo(ExxoUIElement attachmentHolder)
+    public override void AttachTo(ExxoUIElement? attachmentHolder)
     {
         if (attachmentHolder != AttachmentHolder)
         {
-            if (AttachmentHolder is ExxoUIPanel panel)
+            if (AttachmentHolder is ExxoUIPanel oldHolder)
             {
-                panel.BorderColor = ExxoUIPanel.DefaultBorderColor;
+                oldHolder.ResetColor();
             }
         }
 
         base.AttachTo(attachmentHolder);
-        if (AttachmentHolder != null)
+        if (AttachmentHolder is ExxoUIPanel newHolder)
         {
-            if (AttachmentHolder is ExxoUIPanel panel)
-            {
-                panel.BorderColor = Color.Gold;
-            }
+            newHolder.BorderColor = Color.Gold;
         }
     }
 
@@ -67,6 +63,13 @@ internal class HerbologyUIHelpAttachment : ExxoUIAttachment<ExxoUIElement, ExxoU
                 AttachTo(null);
             }
         };
+    }
+
+    /// <inheritdoc />
+    protected override void PositionAttachment(ref Vector2 position)
+    {
+        base.PositionAttachment(ref position);
+        position.Y -= AttachmentElement.GetOuterDimensions().Height;
     }
 
     protected override void UpdateSelf(GameTime gameTime)

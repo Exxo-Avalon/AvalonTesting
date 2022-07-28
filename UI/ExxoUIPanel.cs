@@ -21,4 +21,10 @@ public class ExxoUIPanel : ExxoUIAdapter<UIPanel>
         get => ChildBase.BackgroundColor;
         set => ChildBase.BackgroundColor = value;
     }
+
+    public void ResetColor()
+    {
+        BorderColor = DefaultBorderColor;
+        BackgroundColor = DefaultBackgroundColor;
+    }
 }
