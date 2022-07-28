@@ -1118,6 +1118,6 @@ public class AvalonGlobalItem : GlobalItem
     }
 
     public override int ChoosePrefix(Item item, UnifiedRandom rand) => item.IsArmor()
-        ? ExxoPrefix.ExxoCategoryPrefixes[ExxoPrefixCategory.Armor].GetRandomValue().Type
+        ? Main.rand.Next(ExxoPrefix.ExxoCategoryPrefixes[ExxoPrefixCategory.Armor]).Type
         : base.ChoosePrefix(item, rand);
 }
