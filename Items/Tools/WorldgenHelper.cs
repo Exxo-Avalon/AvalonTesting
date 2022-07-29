@@ -48,7 +48,7 @@ class WorldgenHelper : ModItem
         //World.Passes.HallowedAltars.Generate();
         //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
         //Task.Run(AvalonWorld.GenerateSkyFortress);
-        //World.Structures.HellCastle.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
+        //World.Structures.SkyFortress.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
         return true;
     }
     //public static void GetXCoord(int x, int y, int ylength, ref int xCoord)

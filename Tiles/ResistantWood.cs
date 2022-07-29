@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +13,7 @@ public class ResistantWood : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileSpelunker[Type] = true;
+        Main.tileBrick[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ResistantWood>();
         DustType = DustID.Wraith;
     }

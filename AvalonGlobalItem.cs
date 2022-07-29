@@ -64,6 +64,10 @@ public class AvalonGlobalItem : GlobalItem
         if (item.accessory)
         {
             item.canBePlacedInVanityRegardlessOfConditions = true;
+            if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+            {
+                item.canBePlacedInVanityRegardlessOfConditions = false;
+            }
         }
 
         switch (item.type)
