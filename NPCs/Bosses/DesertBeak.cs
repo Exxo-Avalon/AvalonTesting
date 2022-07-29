@@ -94,42 +94,30 @@ public class DesertBeak : ModNPC
     public override void AI()
     {
         Player player = Main.player[NPC.target];
-
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
         {
             NPC.TargetClosest();
         }
-
         if (Main.player[NPC.target].dead)
         {
-            NPC.velocity.Y = NPC.velocity.Y - 0.04f;
+            NPC.velocity.Y -= 0.04f;
             if (NPC.timeLeft > 10)
             {
                 NPC.timeLeft = 10;
                 return;
             }
         }
-
-        if(NPC.alpha > 200)
-        {
-            NPC.dontTakeDamage = true;
-        }
-        else
-        {
-            NPC.dontTakeDamage = false;
-        }
+        NPC.dontTakeDamage = NPC.alpha > 200;
 
 
-        if (NPC.life > (int)NPC.lifeMax * 0.45f  && !Main.player[NPC.target].dead)
+        if (NPC.life >= (int)NPC.lifeMax * 0.45f  && !Main.player[NPC.target].dead)
         {
             NPC.TargetClosest();
             switch (mode)
             {
                 case 0:
-
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
-
                     lockon_player = player.Center;
                     NPC.alpha += 8;
                     NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(0, -300));
@@ -153,20 +141,14 @@ public class DesertBeak : ModNPC
                         }
 
                     }
-
                     break;
-
-
                 case 1:
-
-
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
 
                     switch (dive)
                     {
                         case 1:
-
                             if (NPC.alpha <= 100)
                             {
                                 NPC.alpha = 0;
@@ -177,7 +159,7 @@ public class DesertBeak : ModNPC
                                 }
                                 else
                                 {
-                                    if (divebomb == false)
+                                    if (!divebomb)
                                     {
                                         for (int i = 0; i < 3; i++)
                                         {
@@ -194,7 +176,7 @@ public class DesertBeak : ModNPC
                             }
                             else
                             {
-                                //curently alpha is used a a trigger for the dive but it can be changed
+                                //curently alpha is used as a trigger for the dive but it can be changed
                                 lockon_player = player.Center + (player.velocity * 5);
                                 NPC.alpha -= 8;
                                 NPC.velocity = new Vector2(0, 0);
@@ -207,14 +189,8 @@ public class DesertBeak : ModNPC
                                 NPC.alpha = 0;
                                 NPC.velocity = new Vector2(0, 0);
                             }
-
-
                             break;
-
-
-
                         default:
-
                             if (NPC.alpha <= 100)
                             {
                                 NPC.alpha = 0;
@@ -225,7 +201,7 @@ public class DesertBeak : ModNPC
                                 }
                                 else
                                 {
-                                    if (divebomb == false)
+                                    if (!divebomb)
                                     {
                                         for (int i = 0; i < 3; i++)
                                         {
@@ -258,12 +234,8 @@ public class DesertBeak : ModNPC
 
                             break;
                     }
-
-
                     break;
-
                 case 2:
-
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
 
@@ -323,8 +295,6 @@ public class DesertBeak : ModNPC
                         for (int i = 0; i < NumProjectiles; i++)
                         {
                             Vector2 newVelocity = perturbedSpeed.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (NumProjectiles - 1f)));
-                            
-
                             Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30, 0, player.whoAmI);
                         }
                         divetimer = 0;
@@ -335,10 +305,7 @@ public class DesertBeak : ModNPC
                         mode = 0;
                         divetimer = 0;
                     }
-
-
                     break;
-
             }
         }
         else if (NPC.life < (int)NPC.lifeMax * 0.45f && !Main.player[NPC.target].dead)
@@ -355,7 +322,6 @@ public class DesertBeak : ModNPC
                 divetimer = 0;
                 modetimer = 0;
             }
-
             for (int i = 0; i < 15; i++)
             {
                 int dustType = DustID.SandstormInABottle;
@@ -363,19 +329,14 @@ public class DesertBeak : ModNPC
 
 
             }
-
-
             player.AddBuff(BuffID.Darkness, 60);
 
             switch (mode)
             {
                 case 0:
-
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
-
                     NPC.velocity = new Vector2(0, 0);
-
                     NPC.alpha += 8;
 
                     if (NPC.alpha >= 254)
@@ -383,21 +344,16 @@ public class DesertBeak : ModNPC
                         NPC.Center = player.Center + new Vector2(Main.rand.Next(-100, 100),Main.rand.Next(-350, -250));
                         mode = 1;
                     }
-
                     break;
-
-
                 case 1:
                     // Quickly dashes to a random location above the player and fires a spread of 3 feathers
-
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
 
                     if (NPC.alpha <= 100)
                     {
                         NPC.alpha = 0;
-
-                        if((Main.masterMode || Main.expertMode) && teleports == 9)
+                        if(teleports == 9)
                         {
                             SoundEngine.PlaySound(SoundID.NPCHit28);
 
@@ -408,8 +364,7 @@ public class DesertBeak : ModNPC
                             position += Vector2.Normalize(direction) * 2f;
                             Vector2 perturbedSpeed = direction * 0.2f;
 
-                            const int NumProjectiles = 25;
-
+                            int NumProjectiles = (Main.expertMode || Main.masterMode) ? 30 : 20;
                             float rotation = MathHelper.ToRadians(180);
 
                             for (int i = 0; i < NumProjectiles; i++)
@@ -432,7 +387,6 @@ public class DesertBeak : ModNPC
                             Vector2 perturbedSpeed = direction * 0.27f;
 
                             const int NumProjectiles = 3;
-
                             float rotation = MathHelper.ToRadians(25);
 
                             for (int i = 0; i < NumProjectiles; i++)
@@ -443,11 +397,9 @@ public class DesertBeak : ModNPC
                                 Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30, 0, player.whoAmI);
                             }
                         }
-                        
+                        teleports++;
 
-                        teleports += 1;
-
-                        if(teleports == 10)
+                        if(teleports == ((Main.expertMode || Main.masterMode) ? 5 : 10))
                         {
                             mode = 2;
                             NPC.alpha = 0;
@@ -456,58 +408,47 @@ public class DesertBeak : ModNPC
                         {
                             mode = 0;
                         }
-
                     }
                     else
                     {
                         NPC.alpha -= 8;
                     }
-
-
                     break;
-
                 case 2:
-
                     NPC.spriteDirection = NPC.direction;
-                    
                     if (NPC.Center.X > player.Center.X)
                     {
-                        NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(500, 0)) * 6;
+                        NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(500, 0)) * 4;
                     }
                     else
                     {
-                        NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(-500, 0)) * 6;
+                        NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(500, 0)) * 4;
                     }
 
                     modetimer++;
                     divetimer++;
 
-                    if (divetimer >= 150)
+                    if (divetimer >= (Main.expertMode || Main.masterMode ? 110 : 150))
                     {
+                        float speed = (Main.expertMode || Main.masterMode ? 14f : 11f);
                         if (NPC.Center.X > player.Center.X)
                         {
                             Vector2 position = NPC.Center;
-
                             const int NumProjectiles = 1;
-
-                            float rotation = MathHelper.ToRadians(25);
 
                             for (int i = 0; i < NumProjectiles; i++)
                             {
-                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(-11f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
+                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(-speed, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
                             }
                         }
                         else
                         {
                             Vector2 position = NPC.Center;
-
                             const int NumProjectiles = 1;
-
-                            float rotation = MathHelper.ToRadians(25);
 
                             for (int i = 0; i < NumProjectiles; i++)
                             {
-                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(11f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
+                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(speed, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
                             }
                         }
 
@@ -516,7 +457,7 @@ public class DesertBeak : ModNPC
                         divetimer = 0;
                     }
 
-                    if (modetimer >= 600)
+                    if (modetimer >= (Main.expertMode || Main.masterMode ? 450 : 600))
                     {
                         modetimer = 0;
                         mode = 0;
@@ -532,27 +473,24 @@ public class DesertBeak : ModNPC
 
     public override void FindFrame(int frameHeight)
     {
+        if (NPC.velocity == Vector2.Zero)
         {
-            
-            if (NPC.velocity.X == 0f && NPC.velocity.Y == 0f)
+            NPC.frame.Y = 0;
+            NPC.frameCounter = 0.0;
+        }
+        else
+        {
+            NPC.frameCounter++;
+            if (NPC.frameCounter < 4.0)
             {
-                NPC.frame.Y = 0;
-                NPC.frameCounter = 0.0;
+                NPC.frame.Y = frameHeight;
             }
             else
             {
-                NPC.frameCounter += 1.0;
-                if (NPC.frameCounter < 4.0)
+                NPC.frame.Y = frameHeight * 2;
+                if (NPC.frameCounter >= 7.0)
                 {
-                    NPC.frame.Y = frameHeight;
-                }
-                else
-                {
-                    NPC.frame.Y = frameHeight * 2;
-                    if (NPC.frameCounter >= 7.0)
-                    {
-                        NPC.frameCounter = 0.0;
-                    }
+                    NPC.frameCounter = 0.0;
                 }
             }
         }

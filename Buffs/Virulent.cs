@@ -25,10 +25,11 @@ public class Virulent : ModBuff
     }
     public override void Update(NPC npc, ref int buffIndex)
     {
+        npc.lifeRegen -= 8;
         for (int i = 0; i < Main.npc.Length; i++)
         {
             NPC n2 = Main.npc[i];
-            if (n2.townNPC || n2.friendly)
+            if (n2.townNPC || n2.friendly || n2.whoAmI == npc.whoAmI)
             {
                 continue;
             }
