@@ -8,7 +8,7 @@ public class EbonstoneColumn : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(73, 51, 36));
+        AddMapEntry(new Color(85, 62, 94));
         //Main.tileBeam[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Beam.EbonstoneColumn>();
         HitSound = SoundID.Tink;

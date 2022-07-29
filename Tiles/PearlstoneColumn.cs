@@ -8,7 +8,7 @@ public class PearlstoneColumn : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(73, 51, 36));
+        AddMapEntry(new Color(181, 172, 190));
         ItemDrop = ModContent.ItemType<Items.Placeable.Beam.PearlstoneColumn>();
         TileID.Sets.IsBeam[Type] = true;
         HitSound = SoundID.Tink;

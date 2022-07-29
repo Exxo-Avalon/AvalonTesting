@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.Placeable.Beam;
 
-public class CrystalColumn : ModItem
+public class CrystalPillar : ModItem
 {
     public override void SetStaticDefaults()
     {
