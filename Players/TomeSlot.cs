@@ -63,9 +63,9 @@ public class TomeSlot : ModAccessorySlot
             }
         }
 
-        Main.spriteBatch.Draw(TextureAssets.InventoryBack3.Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);
+        Main.spriteBatch.Draw(TextureAssets.InventoryBack3.Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), new Color(212, 212, 212, 212));
         if (item.type == ItemID.None)
-            Main.spriteBatch.Draw(ModContent.Request<Texture2D>(FunctionalTexture).Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), Color.White);
+            Main.spriteBatch.Draw(ModContent.Request<Texture2D>(FunctionalTexture).Value, new Rectangle((int)p.X, (int)p.Y, (int)(52 * Main.inventoryScale), (int)(52 * Main.inventoryScale)), new Color(90, 90, 90, 90));
         else
             Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, new Rectangle((int)p.X + cX, (int)p.Y + cY, endX, endY), Color.White);
             //Main.spriteBatch.Draw(TextureAssets.Item[item.type].Value, p + new Vector2(thing), null, Color.White, 0f, default, Main.inventoryScale * scaleMod, SpriteEffects.None, 1f);

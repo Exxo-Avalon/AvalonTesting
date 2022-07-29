@@ -31,6 +31,11 @@ class CordycepsHat : ModItem
             .AddTile(TileID.Anvils)
             .Register();
     }
+    public override void UpdateEquip(Player player)
+    {
+        player.GetDamage(DamageClass.Summon) += 0.04f;
+        player.maxMinions += 1;
+    }
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {
         return body.type == ModContent.ItemType<CordycepsWrappings>() && legs.type == ModContent.ItemType<CordycepsLeggings>();

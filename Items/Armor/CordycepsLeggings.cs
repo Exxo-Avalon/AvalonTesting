@@ -24,6 +24,11 @@ class CordycepsLeggings : ModItem
         Item.value = Item.sellPrice(silver: 60);
         Item.height = dims.Height;
     }
+    public override void UpdateEquip(Player player)
+    {
+        player.GetDamage(DamageClass.Summon) += 0.04f;
+        player.maxMinions += 1;
+    }
     public override void AddRecipes()
     {
         CreateRecipe(1)
