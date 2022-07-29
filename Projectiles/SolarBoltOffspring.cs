@@ -24,9 +24,10 @@ public class SolarBoltOffspring : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.penetrate = 3;
         Projectile.light = 0.1f;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 60;
 
         color = new Color(255, 50, 0) * 0.4f;
-        dustId = 152;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
@@ -50,37 +51,47 @@ public class SolarBoltOffspring : ModProjectile
         }
         return false;
     }
+
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        target.AddBuff(BuffID.OnFire3, 120);
+    }
+    public override void OnHitPvp(Player target, int damage, bool crit)
+    {
+        target.AddBuff(BuffID.OnFire3, 120);
+    }
     public override void AI()
     {
-        Lighting.AddLight(Projectile.position, 0.75f, 0.4f, 0);
-        for (var i = 0; i < 2; i++)
+        Projectile.velocity.Y += 0.1f;
+        Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 10);
+        int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.InfernoFork, Projectile.velocity.X, Projectile.velocity.Y, 50, color, 1f);
+        Main.dust[dust].noGravity = true;
+        Main.dust[dust].velocity *= 0.3f;
+        if (Main.rand.NextBool(10))
         {
-            var dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dustId, Projectile.velocity.X, Projectile.velocity.Y, 50, color, 1.2f);
-            Main.dust[dust].noGravity = true;
-            Main.dust[dust].velocity *= 0.3f;
+            int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)),
+                Main.rand.Next(61, 64));
+            Gore gore40 = Main.gore[num161];
+            gore40.velocity *= 0.3f;
+            gore40.scale = Main.rand.NextFloat(0.5f, 1f);
+            gore40.alpha = 150;
+            Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
+            Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
         }
-        if (Projectile.ai[1] == 0f)
-        {
-            Projectile.ai[1] = 1f;
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
-        }
-
-        Lighting.AddLight(new Vector2((int)((Projectile.position.X + (float)(Projectile.width / 2)) / 16f), (int)((Projectile.position.Y + (float)(Projectile.height / 2)) / 16f)), color.ToVector3());
     }
-
+    public override bool? CanHitNPC(NPC target)
+    {
+        return Projectile.timeLeft <= 290;
+    }
     public override void Kill(int timeLeft)
     {
-        SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
-        for (int num453 = 0; num453 < 15; num453++)
-        {
-            int num454 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, dustId, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 50, color, 1.2f);
-            Main.dust[num454].noGravity = true;
-            Dust dust152 = Main.dust[num454];
-            Dust dust226 = dust152;
-            dust226.scale *= 1.25f;
-            dust152 = Main.dust[num454];
-            dust226 = dust152;
-            dust226.velocity *= 0.5f;
-        }
+        int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)),
+                Main.rand.Next(61, 64));
+        Gore gore40 = Main.gore[num161];
+        gore40.velocity *= 0.3f;
+        gore40.scale = Main.rand.NextFloat(0.5f, 1f);
+        gore40.alpha = 150;
+        Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
+        Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
     }
 }
