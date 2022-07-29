@@ -11,7 +11,7 @@ public class Loam : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(95, 38, 12));
+        AddMapEntry(new Color(113, 58, 29));
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;

@@ -21,7 +21,7 @@ class TritanoriumPickaxe : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.15f;
-        Item.pick = 260;
+        Item.pick = 245;
         Item.rare = ModContent.RarityType<BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 13;
