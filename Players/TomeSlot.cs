@@ -58,8 +58,8 @@ public class TomeSlot : ModAccessorySlot
             }
             else
             {
-                endX = (int)(TextureAssets.Item[item.type].Value.Width / 1.05f) - (cX - cX / 8);
-                endY = (int)(TextureAssets.Item[item.type].Value.Height / 1.05f) - (cX - cX / 8);
+                endX = (int)(TextureAssets.Item[item.type].Value.Width / 1.05f) - (cX - cX / 4);
+                endY = (int)(TextureAssets.Item[item.type].Value.Height / 1.05f) - (cX - cX / 4);
             }
         }
 

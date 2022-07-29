@@ -35,7 +35,7 @@ public class DesertBeak : ModNPC
         NPC.boss = true;
         NPC.noTileCollide = true;
         NPC.lifeMax = 3650;
-        NPC.defense = 18;
+        NPC.defense = 30;
         NPC.noGravity = true;
         NPC.width = 130;
         NPC.aiStyle = -1;
@@ -182,7 +182,7 @@ public class DesertBeak : ModNPC
                                         for (int i = 0; i < 3; i++)
                                         {
 
-                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, 30 / (Main.expertMode || Main.masterMode ? 4 : 2), 0, player.whoAmI);
+                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, 30, 0, player.whoAmI);
 
                                         }
                                         divebomb = true;
@@ -230,7 +230,7 @@ public class DesertBeak : ModNPC
                                         for (int i = 0; i < 3; i++)
                                         {
 
-                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, 30 / (Main.expertMode || Main.masterMode ? 4 : 2), 0, player.whoAmI);
+                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, 30, 0, player.whoAmI);
 
                                         }
                                         divebomb = true;
@@ -325,7 +325,7 @@ public class DesertBeak : ModNPC
                             Vector2 newVelocity = perturbedSpeed.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (NumProjectiles - 1f)));
                             
 
-                            Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30 / (Main.expertMode || Main.masterMode ? 4 : 2), 0, player.whoAmI);
+                            Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30, 0, player.whoAmI);
                         }
                         divetimer = 0;
                     }
@@ -417,7 +417,7 @@ public class DesertBeak : ModNPC
                                 Vector2 newVelocity = perturbedSpeed.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (NumProjectiles - 1f)));
 
 
-                                Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30 / (Main.expertMode || Main.masterMode ? 4 : 2), 0, player.whoAmI);
+                                Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30, 0, player.whoAmI);
                             }
                         }
                         else
@@ -440,7 +440,7 @@ public class DesertBeak : ModNPC
                                 Vector2 newVelocity = perturbedSpeed.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (NumProjectiles - 1f)));
 
 
-                                Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30 / (Main.expertMode || Main.masterMode ? 4 : 2), 0, player.whoAmI);
+                                Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, newVelocity * 0.1f, ModContent.ProjectileType<Projectiles.Hostile.DesertBeakFeather>(), 30, 0, player.whoAmI);
                             }
                         }
                         
@@ -494,7 +494,7 @@ public class DesertBeak : ModNPC
 
                             for (int i = 0; i < NumProjectiles; i++)
                             {
-                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(-9.5f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40 / (Main.expertMode || Main.masterMode ? 4 : 2), 10, player.whoAmI);
+                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(-11f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
                             }
                         }
                         else
@@ -507,7 +507,7 @@ public class DesertBeak : ModNPC
 
                             for (int i = 0; i < NumProjectiles; i++)
                             {
-                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(9.5f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40 / (Main.expertMode || Main.masterMode ? 4 : 2), 10, player.whoAmI);
+                                Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromAI(), position, new Vector2(11f, 0), ModContent.ProjectileType<Projectiles.Hostile.DesertBeakSandstorm>(), 40, 10, player.whoAmI);
                             }
                         }
 
