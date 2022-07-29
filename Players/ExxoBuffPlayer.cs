@@ -52,7 +52,10 @@ public class ExxoBuffPlayer : ModPlayer
     public float StingerProbeRotation { get; set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
-    public int AstralCooldown { get; private set; }
+
+    public int AstralCooldown = 3600;
+
+    public const int MaxAstralCooldown = 3600; //constraint cooldow, make it no more than max.
 
     public override void Load()
     {
@@ -121,7 +124,10 @@ public class ExxoBuffPlayer : ModPlayer
         {
             FrameCount++;
             ShadowCooldown++;
-            AstralCooldown++;
+            if (AstralCooldown > 0)
+            {
+                AstralCooldown--;
+            }
         }
     }
     public override void PostUpdateEquips()
@@ -194,9 +200,9 @@ public class ExxoBuffPlayer : ModPlayer
             if (Player.HasBuff<AstralProjecting>())
             {
                 Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
-                AstralCooldown = 0;
+                AstralCooldown = MaxAstralCooldown;
             }
-            else if (AstralCooldown >= 3600)
+            else if (AstralCooldown == 0)
             {
                 Player.AddBuff(ModContent.BuffType<AstralProjecting>(), 15 * 60);
             }
