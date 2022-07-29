@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Avalon.Buffs;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -32,7 +31,7 @@ public class AstrallineArtifact : ModItem
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "AstralCooldown: " + $"{AstralCooldown}");
+        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "AstralCooldown: " + AstralCooldown);
         tooltips.Add(AstralCooldownInfo);
     }
 
