@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using AltLibrary.Common.Systems;
 using Avalon.Assets;
 using Avalon.Common;
 using Avalon.Effects;
@@ -122,7 +124,10 @@ public class Avalon : Mod
             SushiRecipes.CreateRecipes(ImkSushisMod);
         }
     }
-
+    public override void PostSetupContent()
+    {
+        AvalonCall.Support();
+    }
     private void ReplaceVanillaTextures()
     {
         var itemReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Item);

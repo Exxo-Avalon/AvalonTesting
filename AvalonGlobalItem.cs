@@ -452,10 +452,32 @@ public class AvalonGlobalItem : GlobalItem
             }
         }
     }
+    //public override bool CanRightClick(Item item)
+    //{
+    //    if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+    //    {
+    //        return true;
+    //    }
+    //    return base.CanRightClick(item);
+    //}
+    public override void RightClick(Item item, Player player)
+    {
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+        {
+            if (ModContent.GetInstance<TomeSlot>().FunctionalItem.type > ItemID.None && ModContent.GetInstance<TomeSlot>().FunctionalItem.type != item.type)
+            {
+                Item temp = new Item();
+                temp.netDefaults(item.netID);
+                temp = temp.CloneWithModdedDataFrom(item);
 
+                ModContent.GetInstance<TomeSlot>().FunctionalItem.SetDefaults(temp.type);
+                item.SetDefaults(ModContent.GetInstance<TomeSlot>().FunctionalItem.type);
+            }
+        }
+    }
     public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
     {
-        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome && slot < 12 && !modded)
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome && slot < 19 && !modded)
         {
             return false;
         }
