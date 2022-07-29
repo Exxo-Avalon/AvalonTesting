@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using MonoMod.Cil;
 using System;
-using Mono.Cecil.Cil;
 
 namespace Avalon.Hooks;
 
@@ -46,7 +45,7 @@ public class IslandHouse : ModHook
                             return ModContent.WallType<Walls.TwilightWall>();
                         return i;
                     });
-                } 
+                }
             }
         }
         catch (Exception e)
