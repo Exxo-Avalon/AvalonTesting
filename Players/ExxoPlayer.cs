@@ -808,10 +808,6 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
-        // if (tag.ContainsKey("Avalon:TomeSlot"))
-        // {
-        //     tomeItem = ItemIO.Load(tag.Get<TagCompound>("Avalon:TomeSlot"));
-        // }
         // if (tag.ContainsKey("Avalon:Stamina"))
         // {
         //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("Avalon:Stamina");
@@ -860,10 +856,25 @@ public class ExxoPlayer : ModPlayer
         //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
         // }
     }
-
     public override void PostUpdate()
     {
         //Main.worldRate = 7;
+        //Main.NewText(Player.position.Y);
+        //if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress && Player.ZoneSkyHeight)
+        //{
+        //    //Main.NewText(Player.gravity);
+
+        //    // CODE FOR ARMA MAYBE?
+
+        //    //float num39 = Main.maxTilesX / 4200;
+        //    //num39 *= num39;
+        //    //float gravity = (float)((double)(Player.position.Y / 16f - (60f + 10f * num39)) / (Main.worldSurface / 6.0));
+        //    //Main.NewText(-gravity);
+        //    //Player.velocity.Y += -gravity * 3;
+
+        //    // END
+
+        //}
         #region player sensor
         int pposX = (int)(Player.position.X / 16);
         int pposY = (int)(Player.position.Y / 16);
@@ -1526,6 +1537,21 @@ public class ExxoPlayer : ModPlayer
 
     public override void PreUpdate()
     {
+        if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
+        {
+            float num39 = Main.maxTilesX / 4200;
+            num39 *= num39;
+            float gravity = (float)((double)(Player.position.Y / 16f - (60f + 10f * num39)) / (Main.worldSurface / 6.0));
+            if ((double)gravity < 0.25)
+            {
+                gravity = 0.25f;
+            }
+            if (gravity > 1f)
+            {
+                gravity = 1f;
+            }
+            Player.gravity /= gravity;
+        }
         WOSTongue();
         tpStam = !teleportV;
         if (teleportV)
