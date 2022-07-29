@@ -32,7 +32,13 @@ class FeroziumPickaxe : ModItem
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.FeroziumBar>(), 16)
+            .AddIngredient(ModContent.ItemType<Material.FrigidShard>())
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void HoldItem(Player player)
     {
         if (player.inventory[player.selectedItem].type == Mod.Find<ModItem>("FeroziumPickaxe").Type)

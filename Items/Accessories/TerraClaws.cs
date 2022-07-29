@@ -1,6 +1,7 @@
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.Accessories;
@@ -31,5 +32,18 @@ class TerraClaws : ModItem
         player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.autoReuseGlove = true;
         player.meleeScaleGlove = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.FireGauntlet)
+            .AddIngredient(ItemID.Ichor, 20)
+            .AddIngredient(ItemID.CursedFlame, 20)
+            .AddIngredient(ItemID.SpiderFang, 20)
+            .AddIngredient(ItemID.Stinger, 20)
+            .AddIngredient(ModContent.ItemType<Material.FrostShard>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.Pathogen>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

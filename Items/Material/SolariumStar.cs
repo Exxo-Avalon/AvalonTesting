@@ -22,4 +22,10 @@ class SolariumStar : ModItem
         Item.maxStack = 999;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.SolariumOre>(), 2)
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+    }
 }

@@ -31,4 +31,11 @@ class PearlsandBomb : ModItem
         Item.useAnimation = 25;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 2)
+            .AddIngredient(ItemID.Bomb, 2)
+            .AddIngredient(ItemID.PearlsandBlock, 30)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

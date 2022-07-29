@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,15 +20,22 @@ class FrigidShard : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.maxStack = 999;
-        //Item.consumable = true;
-        //Item.createTile = ModContent.TileType<Tiles.Shards>();
-        //Item.placeStyle = 1;
+        Item.consumable = true;
+        Item.createTile = ModContent.TileType<Tiles.Shards>();
+        Item.placeStyle = 1;
         Item.rare = ItemRarityID.Pink;
         Item.width = dims.Width;
-        //Item.useTime = 10;
-        //Item.useStyle = ItemUseStyleID.Swing;
+        Item.useTime = 10;
+        Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 0, 12, 0);
-        //Item.useAnimation = 15;
+        Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<FrostShard>(), 2)
+            .AddIngredient(ModContent.ItemType<SoulofIce>())
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

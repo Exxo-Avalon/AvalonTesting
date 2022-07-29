@@ -24,4 +24,10 @@ class FineLumber : ModItem
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 15)
+            .AddRecipeGroup("Wood", 40)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

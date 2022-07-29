@@ -31,4 +31,11 @@ class DemonicShard : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<UndeadShard>(), 2)
+            .AddIngredient(ModContent.ItemType<RottenFlesh>())
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

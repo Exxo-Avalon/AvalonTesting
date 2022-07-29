@@ -27,7 +27,13 @@ internal class BestialBand : ModItem
         Item.accessory = true;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CelestialShell)
+            .AddIngredient(ModContent.ItemType<HadesCross>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         if (hideVisual)

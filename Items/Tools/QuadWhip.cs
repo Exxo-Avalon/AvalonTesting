@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,14 @@ class QuadWhip : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.DualHook)
+            .AddIngredient(ItemID.IvyWhip)
+            .AddIngredient(ItemID.Chain, 2)
+            .AddIngredient(ItemID.Hook, 2)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

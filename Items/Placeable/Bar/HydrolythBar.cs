@@ -32,4 +32,12 @@ internal class HydrolythBar : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Tile.HydrolythOre>(), 5)
+            .AddIngredient(ModContent.ItemType<Tile.SolariumOre>())
+            .AddIngredient(ModContent.ItemType<Tile.FeroziumOre>())
+            .AddTile(ModContent.TileType<CaesiumForge>()).Register();
+    }
 }

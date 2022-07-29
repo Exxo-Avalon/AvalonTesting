@@ -22,4 +22,11 @@ class IceGel : ModItem
         Item.maxStack = 999;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type, 2)
+            .AddIngredient(ItemID.Gel, 5)
+            .AddIngredient(ItemID.IceBlock, 2)
+            .AddTile(TileID.WorkBenches).Register();
+    }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,13 @@ class NaturesEndowment : ModItem
     {
         player.manaCost -= 0.25f;
         player.statManaMax2 += 20;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.NaturesGift, 4)
+            .AddIngredient(ItemID.JungleRose)
+            .AddIngredient(ModContent.ItemType<Material.ArcaneShard>(), 2)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

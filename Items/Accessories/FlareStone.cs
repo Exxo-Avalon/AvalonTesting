@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,13 @@ class FlareStone : ModItem
         player.lavaRose = true;
         player.fireWalk = true;
         player.magmaStone = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.ObsidianSkull)
+            .AddIngredient(ItemID.ObsidianRose)
+            .AddIngredient(ItemID.MagmaStone)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

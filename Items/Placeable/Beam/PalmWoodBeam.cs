@@ -25,4 +25,10 @@ class PalmWoodBeam : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type, 2)
+            .AddIngredient(ItemID.PalmWood)
+            .AddTile(TileID.Sawmill).Register();
+    }
 }

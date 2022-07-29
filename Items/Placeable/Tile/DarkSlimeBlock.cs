@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -25,5 +26,12 @@ class DarkSlimeBlock : ModItem
         Item.maxStack = 999;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SlimeBlock, 5)
+            .AddIngredient(ItemID.SoulofNight)
+            .AddTile(TileID.Solidifier).Register();
     }
 }

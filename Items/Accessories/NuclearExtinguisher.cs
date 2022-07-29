@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,12 @@ class NuclearExtinguisher : ModItem
     {
         player.buffImmune[BuffID.Blackout] = true;
         player.buffImmune[BuffID.CursedInferno] = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<GreekExtinguisher>())
+            .AddIngredient(ModContent.ItemType<SixHundredWattLightbulb>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -28,5 +28,12 @@ class ChaosEmblem : ModItem
     {
         player.Avalon().CritDamageMult += 1.75f;
         player.GetDamage(DamageClass.Generic) += 0.1f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<ChaosCrystal>())
+            .AddIngredient(ItemID.AvengerEmblem)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

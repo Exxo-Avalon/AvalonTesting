@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,5 +28,12 @@ class FeroziumBullet : ModItem
         Item.maxStack = 2000;
         Item.value = 200;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 70)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.FeroziumBar>())
+            .AddIngredient(ItemID.MusketBall, 70)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

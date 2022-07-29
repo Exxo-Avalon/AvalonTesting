@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,5 +31,12 @@ class FeroziumWaraxe : ModItem
         Item.useAnimation = 20;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.FeroziumBar>(), 17)
+            .AddIngredient(ModContent.ItemType<Material.FrigidShard>())
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

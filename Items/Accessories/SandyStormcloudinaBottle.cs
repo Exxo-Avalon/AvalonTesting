@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,13 @@ class SandyStormcloudinaBottle : ModItem
         player.hasJumpOption_Cloud = true;
         player.hasJumpOption_Blizzard = true;
         player.hasJumpOption_Sandstorm = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CloudinaBottle)
+            .AddIngredient(ItemID.BlizzardinaBottle)
+            .AddIngredient(ItemID.SandstorminaBottle)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

@@ -546,6 +546,8 @@ public class AvalonWorld : ModSystem
     {
         int index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Good"));
         list.Insert(index + 1, new PassLegacy("Exxo Avalon Origins: Hardmode Good (Hallowed Altars)", new WorldGenLegacyMethod(World.Passes.HallowedAltars.Method)));
+        index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Evil"));
+        list.Insert(index + 1, new PassLegacy("Exxo Avalon Origins: Hardmode Evil (Contagion Grass Walls)", new WorldGenLegacyMethod(World.Passes.ContagionGrassWalls.Method)));
     }
     public override void PostUpdateEverything()
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -26,5 +26,14 @@ class SonicScrewdriverMkII : ModItem
         Item.useAnimation = 70;
         Item.height = dims.Height;
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SonicScrewdriver");
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<SonicScrewdriverMkI>())
+            .AddIngredient(ItemID.Sapphire, 7)
+            .AddIngredient(ItemID.Wire, 10)
+            .AddIngredient(ItemID.GPS)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

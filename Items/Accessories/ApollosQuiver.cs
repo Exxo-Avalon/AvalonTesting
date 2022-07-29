@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +23,13 @@ class ApollosQuiver : ModItem
         Item.value = Item.sellPrice(0, 7);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.DestroyerEmblem)
+            .AddIngredient(ItemID.MagicQuiver)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.magicQuiver = true;

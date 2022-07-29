@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,5 +27,13 @@ class OxygenTank : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.buffImmune[BuffID.Suffocation] = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
+            .AddIngredient(ItemID.ChlorophyteBar, 20)
+            .AddIngredient(ItemID.GillsPotion, 2)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

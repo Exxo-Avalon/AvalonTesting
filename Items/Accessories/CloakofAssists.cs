@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,26 @@ class CloakofAssists : ModItem
         player.honeyCombItem = Item;
         player.starCloakItem = Item;
         player.panic = player.Avalon().LightningInABottle = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.StarCloak)
+            .AddIngredient(ItemID.PanicNecklace)
+            .AddIngredient(ItemID.HoneyComb)
+            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.StarCloak)
+            .AddIngredient(ItemID.SweetheartNecklace)
+            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.BeeCloak)
+            .AddIngredient(ItemID.PanicNecklace)
+            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

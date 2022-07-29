@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +23,13 @@ class StickyCharm : ModItem
         Item.value = 200000;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.RoyalGel)
+            .AddIngredient(ModContent.ItemType<BandofSlime>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.endurance += 0.05f;

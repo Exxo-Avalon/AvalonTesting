@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,5 +34,15 @@ class BuildersToolbelt : ModItem
         player.accWatch = 3;
         player.accCompass = 1;
         player.accDepthMeter = 1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<GoblinToolbelt>())
+            .AddIngredient(ItemID.PortableCementMixer)
+            .AddIngredient(ItemID.BrickLayer)
+            .AddIngredient(ItemID.ExtendoGrip)
+            .AddIngredient(ItemID.FlyingCarpet)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

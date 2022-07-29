@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,5 +29,31 @@ class AngerTalisman : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetDamage(DamageClass.Generic) += 0.27f;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.AvengerEmblem)
+            .AddIngredient(ItemID.Cobweb, 30)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
+            .AddIngredient(ItemID.SilverOre, 5)
+            .AddIngredient(ItemID.SoulofFright, 15)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.AvengerEmblem)
+            .AddIngredient(ItemID.Cobweb, 30)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
+            .AddIngredient(ItemID.TungstenOre, 5)
+            .AddIngredient(ItemID.SoulofFright, 15)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.AvengerEmblem)
+            .AddIngredient(ItemID.Cobweb, 30)
+            .AddRecipeGroup("Avalon:GoldBar", 5)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.ZincOre>(), 5)
+            .AddIngredient(ItemID.SoulofFright, 15)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

@@ -31,4 +31,11 @@ class CoreShard : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<EarthShard>(), 2)
+            .AddIngredient(ItemID.DirtBlock, 10)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

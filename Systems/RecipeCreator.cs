@@ -29,19 +29,6 @@ public class RecipeCreator : ModSystem
 {
     public override void AddRecipes()
     {
-        Recipe.Create(ItemID.BrokenHeroSword)
-            .AddIngredient(ModContent.ItemType<BrokenVigilanteTome>())
-            .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
-
-        Recipe.Create(ModContent.ItemType<DarkSlimeBlock>(), 5)
-            .AddIngredient(ItemID.SlimeBlock, 5)
-            .AddIngredient(ItemID.SoulofNight)
-            .AddTile(TileID.Solidifier).Register();
-
-        Recipe.Create(ModContent.ItemType<SlimeTorch>(), 33)
-            .AddIngredient(ItemID.Torch, 33)
-            .AddIngredient(ItemID.SlimeBlock).Register();
-
         Recipe.Create(ModContent.ItemType<DarkSlimeBathtub>())
             .AddIngredient(ModContent.ItemType<DarkSlimeBlock>(), 14)
             .AddTile(TileID.WorkBenches).Register();
@@ -437,41 +424,8 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Torch, 3)
             .AddTile(TileID.WorkBenches).Register();
 
-        Recipe.Create(ModContent.ItemType<EbonwoodBeam>(), 2)
-            .AddIngredient(ItemID.Ebonwood)
-            .AddTile(TileID.Sawmill).Register();
+        
 
-        Recipe.Create(ModContent.ItemType<ShadewoodBeam>(), 2)
-            .AddIngredient(ItemID.Shadewood)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<PearlwoodBeam>(), 2)
-            .AddIngredient(ItemID.Pearlwood)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<PalmWoodBeam>(), 2)
-            .AddIngredient(ItemID.PalmWood)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<CoughwoodBeam>(), 2)
-            .AddIngredient(ModContent.ItemType<Coughwood>())
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<PearlstoneColumn>(), 2)
-            .AddIngredient(ItemID.PearlstoneBlock)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<CrimstoneColumn>(), 2)
-            .AddIngredient(ItemID.CrimstoneBlock)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<EbonstoneColumn>(), 2)
-            .AddIngredient(ItemID.EbonstoneBlock)
-            .AddTile(TileID.Sawmill).Register();
-
-        Recipe.Create(ModContent.ItemType<ChunkstoneColumn>(), 2)
-            .AddIngredient(ModContent.ItemType<ChunkstoneBlock>())
-            .AddTile(TileID.Sawmill).Register();
 
         Recipe.Create(ModContent.ItemType<CoughwoodHelmet>())
             .AddIngredient(ModContent.ItemType<Coughwood>(), 25)
@@ -505,186 +459,20 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<DarkSlimeBlock>())
             .AddTile(TileID.WorkBenches).Register();
 
-        Recipe.Create(ItemID.BlueBrickWall, 4)
-            .AddIngredient(ItemID.BlueBrick)
-            .AddTile(TileID.BoneWelder).Register();
-
-        Recipe.Create(ItemID.GreenBrickWall, 4)
-            .AddIngredient(ItemID.GreenBrick)
-            .AddTile(TileID.BoneWelder).Register();
-
-        Recipe.Create(ItemID.PinkBrickWall, 4)
-            .AddIngredient(ItemID.PinkBrick)
-            .AddTile(TileID.BoneWelder).Register();
+        
 
         Recipe.Create(ModContent.ItemType<BlueLihzahrdStatue>())
             .AddIngredient(ModContent.ItemType<BlueLihzahrdBrick>(), 25)
             .AddTile(TileID.WorkBenches).Register();
 
-        Recipe.Create(ModContent.ItemType<Sandstone>(), 5)
-            .AddIngredient(ItemID.SandBlock, 10)
-            .AddIngredient(ItemID.StoneBlock, 10)
-            .AddTile(TileID.Hellforge).Register();
+        
 
         Recipe.Create(ModContent.ItemType<HellstoneSeed>(), 25)
             .AddIngredient(ItemID.Seed, 25)
             .AddIngredient(ItemID.HellstoneBar)
             .AddTile(TileID.Hellforge).Register();
 
-        Recipe.Create(ModContent.ItemType<Gravel>(), 15)
-            .AddIngredient(ItemID.SiltBlock, 20)
-            .AddIngredient(ItemID.StoneBlock, 5)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<Gravel>(), 15)
-            .AddIngredient(ItemID.SlushBlock, 20)
-            .AddIngredient(ItemID.StoneBlock, 5)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<FineLumber>(), 15)
-            .AddRecipeGroup("Wood", 40)
-            .AddTile(TileID.Anvils).Register();
-
-        // hi
-
-        Recipe.Create(ModContent.ItemType<BlastShard>())
-            .AddIngredient(ModContent.ItemType<FireShard>(), 2)
-            .AddIngredient(ItemID.LivingFireBlock, 10)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<FrigidShard>())
-            .AddIngredient(ModContent.ItemType<FrostShard>(), 2)
-            .AddIngredient(ModContent.ItemType<SoulofIce>())
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<VenomShard>())
-            .AddIngredient(ModContent.ItemType<ToxinShard>(), 2)
-            .AddIngredient(ItemID.Stinger)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<CoreShard>())
-            .AddIngredient(ModContent.ItemType<EarthShard>(), 2)
-            .AddIngredient(ItemID.DirtBlock, 10)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<TornadoShard>())
-            .AddIngredient(ModContent.ItemType<BreezeShard>(), 2)
-            .AddIngredient(ItemID.SoulofFlight)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<DemonicShard>())
-            .AddIngredient(ModContent.ItemType<UndeadShard>(), 2)
-            .AddIngredient(ModContent.ItemType<RottenFlesh>())
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<WickedShard>())
-            .AddIngredient(ModContent.ItemType<CorruptShard>(), 2)
-            .AddIngredient(ItemID.SoulofNight, 2)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<SacredShard>())
-            .AddIngredient(ModContent.ItemType<ArcaneShard>(), 2)
-            .AddIngredient(ItemID.SoulofLight, 2)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<ElementShard>(), 10)
-            .AddIngredient(ModContent.ItemType<BlastShard>(), 3)
-            .AddIngredient(ModContent.ItemType<TornadoShard>(), 3)
-            .AddIngredient(ModContent.ItemType<VenomShard>(), 3)
-            .AddIngredient(ModContent.ItemType<WickedShard>(), 3)
-            .AddIngredient(ModContent.ItemType<SacredShard>(), 3)
-            .AddIngredient(ModContent.ItemType<CoreShard>(), 3)
-            .AddIngredient(ModContent.ItemType<TorrentShard>(), 3)
-            .AddIngredient(ModContent.ItemType<DemonicShard>(), 3)
-            .AddIngredient(ModContent.ItemType<FrigidShard>(), 3)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-
-
-        Recipe.Create(ModContent.ItemType<FeroziumBar>())
-            .AddIngredient(ModContent.ItemType<FeroziumOre>(), 6)
-            .AddTile(TileID.AdamantiteForge).Register();
-
-        Recipe.Create(ModContent.ItemType<FeroziumArrow>(), 70)
-            .AddIngredient(ModContent.ItemType<FeroziumBar>())
-            .AddIngredient(ItemID.WoodenArrow, 70)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<FeroziumBullet>(), 70)
-            .AddIngredient(ModContent.ItemType<FeroziumBar>())
-            .AddIngredient(ItemID.MusketBall, 70)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<FeroziumPickaxe>())
-            .AddIngredient(ModContent.ItemType<FeroziumBar>(), 16)
-            .AddIngredient(ModContent.ItemType<FrigidShard>())
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<FeroziumIceSword>())
-            .AddIngredient(ModContent.ItemType<FeroziumBar>(), 18)
-            .AddIngredient(ModContent.ItemType<FrigidShard>())
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<FeroziumWaraxe>())
-            .AddIngredient(ModContent.ItemType<FeroziumBar>(), 17)
-            .AddIngredient(ModContent.ItemType<FrigidShard>())
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<SpectreHeadgear>())
-            .AddIngredient(ItemID.Ectoplasm, 12)
-            .AddIngredient(ItemID.ChlorophyteBar, 12)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-
-
-        Recipe.Create(ModContent.ItemType<ShadowRing>())
-            .AddIngredient(ItemID.ShroomiteBar, 5)
-            .AddIngredient(ModContent.ItemType<Onyx>(), 2)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<SolariumStar>())
-            .AddIngredient(ModContent.ItemType<SolariumOre>(), 2)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
-        Recipe.Create(ModContent.ItemType<IceGel>(), 2)
-            .AddIngredient(ItemID.Gel, 5)
-            .AddIngredient(ItemID.IceBlock, 2)
-            .AddTile(TileID.WorkBenches).Register();
-
-        Recipe.Create(ModContent.ItemType<PrimeStaff>())
-            .AddIngredient(ItemID.Bone, 50)
-            .AddIngredient(ItemID.HallowedBar, 12)
-            .AddIngredient(ItemID.SoulofFright, 20)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<SandBomb>(), 2)
-            .AddIngredient(ItemID.Bomb, 2)
-            .AddIngredient(ItemID.SandBlock, 30)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<EbonsandBomb>(), 2)
-            .AddIngredient(ItemID.Bomb, 2)
-            .AddIngredient(ItemID.EbonsandBlock, 30)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<CrimsandBomb>(), 2)
-            .AddIngredient(ItemID.Bomb, 2)
-            .AddIngredient(ItemID.CrimsandBlock, 30)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<PearlsandBomb>(), 2)
-            .AddIngredient(ItemID.Bomb, 2)
-            .AddIngredient(ItemID.PearlsandBlock, 30)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<SnotsandBomb>(), 2)
-            .AddIngredient(ItemID.Bomb, 2)
-            .AddIngredient(ModContent.ItemType<SnotsandBlock>(), 30)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ItemID.Cannonball)
-            .AddIngredient(ItemID.Bomb, 5)
-            .AddTile(TileID.TinkerersWorkbench).Register();
+        
 
         Recipe.Create(ModContent.ItemType<PurityBomb>())
             .AddIngredient(ItemID.GreenSolution, 15)
@@ -735,225 +523,11 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Explosives)
             .AddTile(TileID.TinkerersWorkbench).Register();
 
-        Recipe.Create(ModContent.ItemType<StickyCharm>())
-            .AddIngredient(ItemID.RoyalGel)
-            .AddIngredient(ModContent.ItemType<BandofSlime>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<SouloftheGolem>())
-            .AddIngredient(ModContent.ItemType<EtherealHeart>())
-            .AddIngredient(ModContent.ItemType<HeartoftheGolem>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<SandyStormcloudinaBottle>())
-            .AddIngredient(ItemID.CloudinaBottle)
-            .AddIngredient(ItemID.BlizzardinaBottle)
-            .AddIngredient(ItemID.SandstorminaBottle)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ItemID.BundleofBalloons)
-            .AddIngredient(ModContent.ItemType<SandyStormcloudinaBottle>())
-            .AddIngredient(ItemID.ShinyRedBalloon, 3)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-
-        Recipe.Create(ModContent.ItemType<CloakofAssists>())
-            .AddIngredient(ItemID.StarCloak)
-            .AddIngredient(ItemID.PanicNecklace)
-            .AddIngredient(ItemID.HoneyComb)
-            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<CloakofAssists>())
-            .AddIngredient(ItemID.StarCloak)
-            .AddIngredient(ItemID.SweetheartNecklace)
-            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<CloakofAssists>())
-            .AddIngredient(ItemID.BeeCloak)
-            .AddIngredient(ItemID.PanicNecklace)
-            .AddIngredient(ModContent.ItemType<LightninginaBottle>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        // vanilla items
-
-        // end vanilla items
-
-        Recipe.Create(ModContent.ItemType<NaturesEndowment>())
-            .AddIngredient(ItemID.NaturesGift, 4)
-            .AddIngredient(ItemID.JungleRose)
-            .AddIngredient(ModContent.ItemType<ArcaneShard>(), 2)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<GiftofStarpower>())
-            .AddIngredient(ItemID.ManaFlower)
-            .AddIngredient(ItemID.BandofStarpower, 2)
-            .AddIngredient(ModContent.ItemType<NaturesEndowment>())
-            .AddIngredient(ItemID.SorcererEmblem)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ForsakenCross>())
-            .AddIngredient(ModContent.ItemType<ForsakenRelic>())
-            .AddIngredient(ItemID.CrossNecklace)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ChaosEye>())
-            .AddIngredient(ModContent.ItemType<ChaosCharm>())
-            .AddIngredient(ItemID.EyeoftheGolem)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<FlareStone>())
-            .AddIngredient(ItemID.ObsidianSkull)
-            .AddIngredient(ItemID.ObsidianRose)
-            .AddIngredient(ItemID.MagmaStone)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ShadowMirror>())
-            .AddIngredient(ItemID.CellPhone)
-            .AddIngredient(ItemID.MagicConch)
-            .AddIngredient(ItemID.DemonConch)
-            .AddIngredient(ItemID.FallenStar, 40)
-            .AddIngredient(ItemID.Diamond, 20)
-            .AddIngredient(ItemID.ChlorophyteBar, 7)
-            .AddIngredient(ItemID.Ectoplasm, 10)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ApollosQuiver>())
-            .AddIngredient(ItemID.DestroyerEmblem)
-            .AddIngredient(ItemID.MagicQuiver)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<CrystalEdge>())
-            .AddIngredient(ItemID.CrystalShard, 50)
-            .AddIngredient(ItemID.SoulofMight, 10)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ChaosEmblem>())
-            .AddIngredient(ModContent.ItemType<ChaosCrystal>())
-            .AddIngredient(ItemID.AvengerEmblem)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<ReflexCharm>())
-            .AddIngredient(ItemID.CobaltShield)
-            .AddIngredient(ItemID.SoulofSight, 8)
-            .AddIngredient(ItemID.LightShard, 3)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<NuclearExtinguisher>())
-            .AddIngredient(ModContent.ItemType<GreekExtinguisher>())
-            .AddIngredient(ModContent.ItemType<SixHundredWattLightbulb>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<DullingTalisman>())
-            .AddIngredient(ItemID.Shackle, 6)
-            .AddIngredient(ItemID.BandofRegeneration)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<AngerTalisman>())
-            .AddIngredient(ItemID.AvengerEmblem)
-            .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("Avalon:GoldBar", 5)
-            .AddIngredient(ItemID.SilverOre, 5)
-            .AddIngredient(ItemID.SoulofFright, 15)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<AngerTalisman>())
-            .AddIngredient(ItemID.AvengerEmblem)
-            .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("Avalon:GoldBar", 5)
-            .AddIngredient(ItemID.TungstenOre, 5)
-            .AddIngredient(ItemID.SoulofFright, 15)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<AngerTalisman>())
-            .AddIngredient(ItemID.AvengerEmblem)
-            .AddIngredient(ItemID.Cobweb, 30)
-            .AddRecipeGroup("Avalon:GoldBar", 5)
-            .AddIngredient(ModContent.ItemType<ZincOre>(), 5)
-            .AddIngredient(ItemID.SoulofFright, 15)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<GoblinToolbelt>())
-            .AddIngredient(ItemID.Toolbelt)
-            .AddIngredient(ItemID.GPS)
-            .AddIngredient(ItemID.GoldCoin)
-            .AddIngredient(ItemID.TinkerersWorkshop)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        Recipe.Create(ModContent.ItemType<BuildersToolbelt>())
-            .AddIngredient(ModContent.ItemType<GoblinToolbelt>())
-            .AddIngredient(ItemID.PortableCementMixer)
-            .AddIngredient(ItemID.BrickLayer)
-            .AddIngredient(ItemID.ExtendoGrip)
-            .AddIngredient(ItemID.FlyingCarpet)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
+        
         Recipe.Create(ModContent.ItemType<SandCastle>())
             .AddIngredient(ItemID.SandBlock, 50)
             .AddIngredient(ItemID.SandstoneBrick, 5)
             .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<TerraClaws>())
-            .AddIngredient(ItemID.FireGauntlet)
-            .AddIngredient(ItemID.Ichor, 20)
-            .AddIngredient(ItemID.CursedFlame, 20)
-            .AddIngredient(ItemID.SpiderFang, 20)
-            .AddIngredient(ItemID.Stinger, 20)
-            .AddIngredient(ModContent.ItemType<FrostShard>(), 20)
-            .AddIngredient(ModContent.ItemType<Pathogen>(), 20)
-            .AddIngredient(ModContent.ItemType<SoulofBlight>(), 5)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<HadesCross>())
-            .AddIngredient(ItemID.LavaWaders)
-            .AddIngredient(ItemID.Hellstone, 20)
-            .AddIngredient(ItemID.LavaBucket)
-            .AddIngredient(ItemID.SoulofFright, 6)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<BestialBand>())
-            .AddIngredient(ItemID.CelestialShell)
-            .AddIngredient(ModContent.ItemType<HadesCross>())
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<SonicScrewdriverMkI>())
-            .AddIngredient(ItemID.Ruby, 10)
-            .AddIngredient(ItemID.MeteoriteBar, 5)
-            .AddIngredient(ItemID.Wire, 30)
-            .AddIngredient(ItemID.HunterPotion, 3)
-            .AddIngredient(ItemID.SpelunkerPotion, 3)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<SonicScrewdriverMkII>())
-            .AddIngredient(ModContent.ItemType<SonicScrewdriverMkI>())
-            .AddIngredient(ItemID.Sapphire, 7)
-            .AddIngredient(ItemID.Wire, 10)
-            .AddIngredient(ItemID.GPS)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<SonicScrewdriverMkIII>())
-            .AddIngredient(ModContent.ItemType<SonicScrewdriverMkII>())
-            .AddIngredient(ItemID.Emerald, 10)
-            .AddIngredient(ItemID.Wire, 20)
-            .AddIngredient(ItemID.SoulofMight, 5)
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddIngredient(ItemID.SoulofSight, 5)
-            .AddIngredient(ModContent.ItemType<Onyx>(), 10)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<QuadWhip>())
-            .AddIngredient(ItemID.DualHook)
-            .AddIngredient(ItemID.IvyWhip)
-            .AddIngredient(ItemID.Chain, 2)
-            .AddIngredient(ItemID.Hook, 2)
-            .AddTile(TileID.TinkerersWorkbench).Register();
-
-        Recipe.Create(ModContent.ItemType<OxygenTank>())
-            .AddIngredient(ModContent.ItemType<LifeDew>(), 5)
-            .AddIngredient(ItemID.ChlorophyteBar, 20)
-            .AddIngredient(ItemID.GillsPotion, 2)
-            .AddTile(TileID.TinkerersWorkbench).Register();
 
         Recipe.Create(ModContent.ItemType<CursedFlamelash>())
             .AddIngredient(ItemID.Flamelash)
@@ -1037,14 +611,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Heartstone>(), 45)
             .AddTile(TileID.Furnaces).Register();
 
-        Recipe.Create(ModContent.ItemType<Lifestone>(), 30)
-            .AddIngredient(ItemID.LifeFruit)
-            .AddTile(TileID.AdamantiteForge).Register();
-
-        Recipe.Create(ItemID.LifeFruit)
-            .AddIngredient(ModContent.ItemType<Lifestone>(), 30)
-            .AddTile(TileID.AdamantiteForge).Register();
-
         Recipe.Create(ModContent.ItemType<Shurikerang>())
             .AddIngredient(ItemID.EnchantedBoomerang)
             .AddIngredient(ItemID.Shuriken, 50)
@@ -1078,11 +644,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.Stinger, 15)
             .AddTile(TileID.DemonAltar).Register();
 
-        Recipe.Create(ItemID.MechanicalWorm)
-            .AddIngredient(ModContent.ItemType<YuckyBit>(), 6)
-            .AddRecipeGroup("IronBar", 5)
-            .AddIngredient(ItemID.SoulofNight, 6)
-            .AddTile(TileID.MythrilAnvil).Register();
+        
 
         Recipe.Create(ModContent.ItemType<OddFertilizer>())
             .AddIngredient(ModContent.ItemType<LifeDew>(), 5)
@@ -1092,11 +654,7 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.SoulofFright, 5)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(ItemID.PirateMap)
-            .AddIngredient(ItemID.SoulofFright, 5)
-            .AddIngredient(ItemID.Coral, 15)
-            .AddIngredient(ItemID.SharkFin)
-            .AddTile(TileID.MythrilAnvil).Register();
+        
 
         Recipe.Create(ModContent.ItemType<TimechangerMkII>())
             .AddIngredient(ModContent.ItemType<SoulofTime>(), 40)
@@ -1104,39 +662,14 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Timechanger>())
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(ModContent.ItemType<Moonphaser>())
-            .AddIngredient(ItemID.Lens, 5)
-            .AddIngredient(ItemID.SoulofLight, 10)
-            .AddIngredient(ItemID.SoulofNight, 10)
-            .AddRecipeGroup("Avalon:GoldBar", 20)
-            .AddIngredient(ItemID.BlackLens)
-            .AddIngredient(ModContent.ItemType<BloodshotLens>(), 4)
-            .AddTile(TileID.WorkBenches).Register();
+        
 
         Recipe.Create(ModContent.ItemType<OblivionBrick>())
             .AddIngredient(ItemID.StoneBlock)
             .AddIngredient(ModContent.ItemType<OblivionOre>())
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
 
-        Recipe.Create(ModContent.ItemType<ImperviousBrick>(), 5)
-            .AddIngredient(ItemID.SoulofMight)
-            .AddIngredient(ItemID.BlueBrick, 5)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
-        Recipe.Create(ModContent.ItemType<ImperviousBrick>(), 5)
-            .AddIngredient(ItemID.SoulofMight)
-            .AddIngredient(ItemID.PinkBrick, 5)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
-        Recipe.Create(ModContent.ItemType<ImperviousBrick>(), 5)
-            .AddIngredient(ItemID.SoulofMight)
-            .AddIngredient(ItemID.GreenBrick, 5)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-
-        Recipe.Create(ModContent.ItemType<ImperviousBrick>(), 5)
-            .AddIngredient(ItemID.SoulofMight)
-            .AddIngredient(ModContent.ItemType<OrangeBrick>(), 5)
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+        
 
         Recipe.Create(ModContent.ItemType<PyroscoricBrick>(), 3)
             .AddIngredient(ModContent.ItemType<PyroscoricOre>())
@@ -1360,11 +893,7 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
 
-        Recipe.Create(ModContent.ItemType<HydrolythBar>())
-            .AddIngredient(ModContent.ItemType<HydrolythOre>(), 5)
-            .AddIngredient(ModContent.ItemType<SolariumOre>())
-            .AddIngredient(ModContent.ItemType<FeroziumOre>())
-            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+        
 
         Recipe.Create(ModContent.ItemType<MiloticCrown>())
             .AddIngredient(ModContent.ItemType<HydrolythBar>(), 20)
@@ -1546,22 +1075,9 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<PandemiteBar>(), 25)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(ItemID.BattlePotion)
-            .AddIngredient(ItemID.BottledWater)
-            .AddIngredient(ModContent.ItemType<Bloodberry>())
-            .AddIngredient(ItemID.RottenChunk)
-            .AddTile(TileID.Bottles).Register();
+        
 
-        Recipe.Create(ItemID.BattlePotion)
-            .AddIngredient(ItemID.BottledWater)
-            .AddIngredient(ModContent.ItemType<Barfbush>())
-            .AddIngredient(ModContent.ItemType<YuckyBit>())
-            .AddTile(TileID.Bottles).Register();
-
-        Recipe.Create(ModContent.ItemType<BeetleBar>())
-            .AddIngredient(ItemID.BeetleHusk)
-            .AddIngredient(ItemID.ChlorophyteBar, 3)
-            .AddTile(TileID.Autohammer).Register();
+        
 
         Recipe.Create(ModContent.ItemType<SunsShadow>())
             .AddIngredient(ItemID.BeetleHusk, 8)

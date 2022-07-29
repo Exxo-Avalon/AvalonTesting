@@ -31,4 +31,11 @@ class TornadoShard : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.BreezeShard>(), 2)
+            .AddIngredient(ItemID.SoulofFlight)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

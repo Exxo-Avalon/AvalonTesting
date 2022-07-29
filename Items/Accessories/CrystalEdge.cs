@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,5 +27,12 @@ class CrystalEdge : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.Avalon().crystalEdge = true;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CrystalShard, 50)
+            .AddIngredient(ItemID.SoulofMight, 10)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

@@ -26,4 +26,15 @@ class Moonphaser : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Lens, 5)
+            .AddIngredient(ItemID.SoulofLight, 10)
+            .AddIngredient(ItemID.SoulofNight, 10)
+            .AddRecipeGroup("Avalon:GoldBar", 20)
+            .AddIngredient(ItemID.BlackLens)
+            .AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 4)
+            .AddTile(TileID.WorkBenches).Register();
+    }
 }

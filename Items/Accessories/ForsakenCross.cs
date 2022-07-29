@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,5 +32,12 @@ class ForsakenCross : ModItem
             player.GetCritChance(DamageClass.Generic) += 7;
             player.GetDamage(DamageClass.Generic) += 0.07f;
         }
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<ForsakenRelic>())
+            .AddIngredient(ItemID.CrossNecklace)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

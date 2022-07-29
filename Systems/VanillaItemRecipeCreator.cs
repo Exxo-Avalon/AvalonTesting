@@ -114,6 +114,10 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ItemID.Vertebrae, 15).AddTile(TileID.DemonAltar).Register();
         Recipe.Create(ItemID.VoidVault).AddIngredient(ItemID.Bone, 15).AddIngredient(ModContent.ItemType<TropicalShroomCap>(), 8).AddIngredient(ModContent.ItemType<Booger>(), 15).AddTile(TileID.DemonAltar).Register();
 
+        Recipe.Create(ItemID.BrokenHeroSword)
+            .AddIngredient(ModContent.ItemType<BrokenVigilanteTome>())
+            .AddTile(ModContent.TileType<Tiles.Catalyzer>()).Register();
+
         Recipe.Create(ItemID.NimbusRod)
             .AddIngredient(ModContent.ItemType<LivingLightningBlock>(), 80)
             .AddIngredient(ItemID.Cloud, 50)
@@ -149,5 +153,50 @@ public class VanillaItemRecipeCreator : ModSystem
             .AddIngredient(ItemID.ChlorophyteGreaves)
             .AddIngredient(ItemID.TurtleShell)
             .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.BlueBrickWall, 4)
+            .AddIngredient(ItemID.BlueBrick)
+            .AddTile(TileID.BoneWelder).Register();
+
+        Recipe.Create(ItemID.GreenBrickWall, 4)
+            .AddIngredient(ItemID.GreenBrick)
+            .AddTile(TileID.BoneWelder).Register();
+
+        Recipe.Create(ItemID.PinkBrickWall, 4)
+            .AddIngredient(ItemID.PinkBrick)
+            .AddTile(TileID.BoneWelder).Register();
+
+        Recipe.Create(ItemID.Cannonball)
+            .AddIngredient(ItemID.Bomb, 5)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(ItemID.BundleofBalloons)
+            .AddIngredient(ModContent.ItemType<SandyStormcloudinaBottle>())
+            .AddIngredient(ItemID.ShinyRedBalloon, 3)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+
+        Recipe.Create(ItemID.MechanicalWorm)
+            .AddIngredient(ModContent.ItemType<YuckyBit>(), 6)
+            .AddRecipeGroup("IronBar", 5)
+            .AddIngredient(ItemID.SoulofNight, 6)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.PirateMap)
+            .AddIngredient(ItemID.SoulofFright, 5)
+            .AddIngredient(ItemID.Coral, 15)
+            .AddIngredient(ItemID.SharkFin)
+            .AddTile(TileID.MythrilAnvil).Register();
+
+        Recipe.Create(ItemID.BattlePotion)
+            .AddIngredient(ItemID.BottledWater)
+            .AddIngredient(ModContent.ItemType<Bloodberry>())
+            .AddIngredient(ItemID.RottenChunk)
+            .AddTile(TileID.Bottles).Register();
+
+        Recipe.Create(ItemID.BattlePotion)
+            .AddIngredient(ItemID.BottledWater)
+            .AddIngredient(ModContent.ItemType<Barfbush>())
+            .AddIngredient(ModContent.ItemType<YuckyBit>())
+            .AddTile(TileID.Bottles).Register();
     }
 }

@@ -37,6 +37,14 @@ public class HadesCross : ModItem
         player.fireWalk = true;
         player.ignoreWater = true;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.LavaWaders)
+            .AddIngredient(ItemID.Hellstone, 20)
+            .AddIngredient(ItemID.LavaBucket)
+            .AddIngredient(ItemID.SoulofFright, 6)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override bool IsVanitySet(int head, int body, int legs) => true;
 }

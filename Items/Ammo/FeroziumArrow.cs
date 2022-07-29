@@ -29,4 +29,11 @@ class FeroziumArrow : ModItem
         Item.maxStack = 2000;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 70)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.FeroziumBar>())
+            .AddIngredient(ItemID.WoodenArrow, 70)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

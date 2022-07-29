@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,6 +22,13 @@ class ShadowRing : ModItem
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.ShroomiteBar, 5)
+            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 2)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void UpdateVanity(Player player)
     {

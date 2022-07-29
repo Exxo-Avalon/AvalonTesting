@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,5 +30,14 @@ class GoblinToolbelt : ModItem
         player.accWatch = 3;
         player.accCompass = 1;
         player.accDepthMeter = 1;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Toolbelt)
+            .AddIngredient(ItemID.GPS)
+            .AddIngredient(ItemID.GoldCoin)
+            .AddIngredient(ItemID.TinkerersWorkshop)
+            .AddTile(TileID.MythrilAnvil).Register();
     }
 }

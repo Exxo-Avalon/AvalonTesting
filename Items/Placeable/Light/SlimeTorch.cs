@@ -26,6 +26,12 @@ class SlimeTorch : ModItem
         Item.flame = true;
         Item.ammo = 8;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 33)
+            .AddIngredient(ItemID.Torch, 33)
+            .AddIngredient(ItemID.SlimeBlock).Register();
+    }
     public override void HoldItem(Player player)
     {
         if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,5 +28,27 @@ class ImperviousBrick : ModItem
         Item.value = 0;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SoulofMight)
+            .AddIngredient(ItemID.BlueBrick, 5)
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SoulofMight)
+            .AddIngredient(ItemID.PinkBrick, 5)
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SoulofMight)
+            .AddIngredient(ItemID.GreenBrick, 5)
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SoulofMight)
+            .AddIngredient(ModContent.ItemType<OrangeBrick>(), 5)
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
     }
 }

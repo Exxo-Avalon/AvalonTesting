@@ -23,4 +23,16 @@ class Gravel : ModItem
         Item.maxStack = 999;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 15)
+            .AddIngredient(ItemID.SiltBlock, 20)
+            .AddIngredient(ItemID.StoneBlock, 5)
+            .AddTile(TileID.Anvils).Register();
+
+        Recipe.Create(Type, 15)
+            .AddIngredient(ItemID.SlushBlock, 20)
+            .AddIngredient(ItemID.StoneBlock, 5)
+            .AddTile(TileID.Anvils).Register();
+    }
 }

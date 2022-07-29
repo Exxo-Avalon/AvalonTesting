@@ -25,7 +25,7 @@ class FeroziumChunk : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(ModContent.ItemType<Placeable.Bar.FeroziumBar>())
-            .AddIngredient(Type, 6)
+            .AddIngredient(Type, 5)
             .AddTile(TileID.WorkBenches)
             .Register();
 

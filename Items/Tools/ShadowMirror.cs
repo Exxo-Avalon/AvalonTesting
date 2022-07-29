@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -28,6 +28,18 @@ class ShadowMirror : ModItem
         Item.UseSound = SoundID.Item6;
         Item.useAnimation = 90;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CellPhone)
+            .AddIngredient(ItemID.MagicConch)
+            .AddIngredient(ItemID.DemonConch)
+            .AddIngredient(ItemID.FallenStar, 40)
+            .AddIngredient(ItemID.Diamond, 20)
+            .AddIngredient(ItemID.ChlorophyteBar, 7)
+            .AddIngredient(ItemID.Ectoplasm, 10)
+            .AddTile(TileID.TinkerersWorkbench).Register();
     }
     public override void UpdateInventory(Player player)
     {

@@ -31,4 +31,11 @@ class SacredShard : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.ArcaneShard>(), 2)
+            .AddIngredient(ItemID.SoulofLight, 2)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
 }

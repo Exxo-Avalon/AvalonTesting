@@ -24,7 +24,13 @@ class SpectreHeadgear : ModItem
         Item.value = 375000;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.Ectoplasm, 12)
+            .AddIngredient(ItemID.ChlorophyteBar, 12)
+            .AddTile(TileID.MythrilAnvil).Register();
+    }
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Magic) += 0.1f;

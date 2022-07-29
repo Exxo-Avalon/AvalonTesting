@@ -29,4 +29,11 @@ class SouloftheGolem : ModItem
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().EthHeart = true;
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().HeartGolem = true;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<EtherealHeart>())
+            .AddIngredient(ModContent.ItemType<HeartoftheGolem>())
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
 }

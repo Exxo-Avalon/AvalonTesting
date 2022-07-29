@@ -29,4 +29,11 @@ class ChaosEye : ModItem
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().ChaosCharm = true;
         player.GetCritChance(DamageClass.Generic) += 8;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<ChaosCharm>())
+            .AddIngredient(ItemID.EyeoftheGolem)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
 }

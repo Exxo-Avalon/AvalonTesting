@@ -25,4 +25,10 @@ class CoughwoodBeam : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Terraria.Recipe.Create(Type, 2)
+            .AddIngredient(ModContent.ItemType<Tile.Coughwood>())
+            .AddTile(TileID.Sawmill).Register();
+    }
 }

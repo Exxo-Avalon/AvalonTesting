@@ -24,4 +24,11 @@ class Sandstone : ModItem
         Item.height = dims.Height;
         Item.GetGlobalItem<AvalonGlobalItemInstance>().TomeMaterial = true;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 5)
+            .AddIngredient(ItemID.SandBlock, 10)
+            .AddIngredient(ItemID.StoneBlock, 10)
+            .AddTile(TileID.Hellforge).Register();
+    }
 }

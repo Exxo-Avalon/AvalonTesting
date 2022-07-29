@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -26,7 +26,14 @@ internal class ReflexCharm : ModItem
         Item.value = Item.sellPrice(0, 1, 8);
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.CobaltShield)
+            .AddIngredient(ItemID.SoulofSight, 8)
+            .AddIngredient(ItemID.LightShard, 3)
+            .AddTile(TileID.TinkerersWorkbench).Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         var playerWS = new Rectangle((int)player.Center.X - 32, (int)player.Center.Y - 32, 64, 64);
