@@ -1,4 +1,5 @@
-﻿using Avalon.Players;
+using System.Collections.Generic;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -7,6 +8,8 @@ namespace Avalon.Items.Accessories;
 
 public class AstrallineArtifact : ModItem
 {
+    public int AstralCooldown;
+
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Astralline Artifact");
@@ -26,8 +29,15 @@ public class AstrallineArtifact : ModItem
         Item.expert = true;
     }
 
+    public override void ModifyTooltips(List<TooltipLine> tooltips)
+    {
+        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "AstralCooldown: " + AstralCooldown);
+        tooltips.Add(AstralCooldownInfo);
+    }
+
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<ExxoBuffPlayer>().AstralProject = true;
+        AstralCooldown = player.GetModPlayer<Players.ExxoBuffPlayer>().AstralCooldown;
     }
 }
