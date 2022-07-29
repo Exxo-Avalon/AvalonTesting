@@ -31,19 +31,22 @@ public class TropicalBlade : ModItem
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
-        int dust = Dust.NewDust(
-            new Vector2(hitbox.X, hitbox.Y),
-            hitbox.Width,
-            hitbox.Height,
-            //DustID.Blood,
-            ModContent.DustType<Dusts.MosquitoDust>(),
-            (player.velocity.X * 0.2f) + (player.direction * 3),
-            player.velocity.Y * 0.2f,
-            0,
-            new Color(),
-            1f
-        );
-        Main.dust[dust].noGravity = true;
+        if (Main.rand.NextBool(3))
+        {
+            int dust = Dust.NewDust(
+                new Vector2(hitbox.X, hitbox.Y),
+                hitbox.Width,
+                hitbox.Height,
+                //DustID.Blood,
+                ModContent.DustType<Dusts.MosquitoDust>(),
+                (player.velocity.X * 0.2f) + (player.direction * 3),
+                player.velocity.Y * 0.2f,
+                0,
+                new Color(),
+                1f
+            );
+            Main.dust[dust].noGravity = true;
+        }
     }
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
