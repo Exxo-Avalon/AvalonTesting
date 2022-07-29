@@ -82,14 +82,17 @@ public class AvalonGlobalProjectile : GlobalProjectile
     }
     public override void AI(Projectile projectile)
     {
-        if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Buffs.Piercing>()) && projectile.penetrate != -1)
-        {
-            if (!projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp)
-            {
-                projectile.penetrate++;
-                projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp = true;
-            }
-        }
+        //if (projectile.owner!= -1)
+        //{
+            //if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Piercing>()) && projectile.penetrate != -1)
+            //{
+            //    if (!projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp)
+            //    {
+            //        projectile.penetrate++;
+            //        projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp = true;
+            //    }
+            //}
+        //}
     }
     public override void NumGrappleHooks(Projectile projectile, Player player, ref int numHooks)
     {

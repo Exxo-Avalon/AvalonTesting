@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
@@ -28,7 +28,7 @@ class TheBeak : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.DesertBeak>());
+        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.DesertBeak>()) && player.ZoneDesert;
     }
 
     public override bool? UseItem(Player player)
