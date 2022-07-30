@@ -9,7 +9,7 @@ class PointingLaser : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pointing Laser");
-        Tooltip.SetDefault("Used for crafting the Eye of Oblivion");
+        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\nCan be pointed");
         SacrificeTotal = 25;
         Terraria.Item.staff[Item.type] = true;
     }

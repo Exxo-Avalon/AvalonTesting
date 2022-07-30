@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -8,7 +9,7 @@ public class ArrowBeam : ModProjectile
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Arrow Beam");
+        DisplayName.SetDefault("Pointing Laser");
     }
 
     public override void SetDefaults()
@@ -35,8 +36,8 @@ public class ArrowBeam : ModProjectile
         Player p = Main.player[Projectile.owner];
         if (Projectile.ai[0] > 4f)
         {
-            if ((Projectile.position.X > Main.MouseWorld.X && Projectile.position.X < p.position.X) ||
-                (Projectile.position.X < Main.MouseWorld.X && Projectile.position.X > p.position.X))
+            if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
+                (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
             {
                 for (var num617 = 0; num617 < 4; num617++)
                 {
