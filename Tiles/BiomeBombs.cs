@@ -66,9 +66,28 @@ public class BiomeBombs : ModTile
         else if (tile.TileFrameX >= 324 && tile.TileFrameX <= 376) typeC = 2;
         else if (tile.TileFrameX >= 378 && tile.TileFrameX <= 430) typeC = 7;
         BCBConvert(i, j, typeC, 75);
-        for (int x = i - 1; x <= i + 1; x++)
+        int num = j;
+        Tile tile3 = Main.tile[i, j];
+        int num6 = 36;
+        int num7 = tile3.TileFrameY / num6;
+        tile3 = Main.tile[i, j];
+        int num8 = tile3.TileFrameY % num6;
+        num -= num8 / 18;
+        tile3 = Main.tile[i, j];
+        int num9 = tile3.TileFrameX / 18;
+        int num10 = 0;
+        while (num9 > 2)
         {
-            for (int y = j - 1; y <= j; y++)
+            num9 -= 3;
+            num10++;
+        }
+        num9 = i - num9;
+        int num11 = num10 * 54;
+        int num12 = num + 2;
+
+        for (int x = num9; x < num9 + 3; x++)
+        {
+            for (int y = num; y < num12; y++)
             {
                 Tile t = Main.tile[x, y];
                 t.HasTile = false;
@@ -124,9 +143,29 @@ public class BiomeBombs : ModTile
         else if (tile.TileFrameX >= 324 && tile.TileFrameX <= 376) typeC = 2;
         else if (tile.TileFrameX >= 378 && tile.TileFrameX <= 430) typeC = 7;
         BCBConvert(i, j, typeC, 75);
-        for (int x = i - 1; x <= i + 1; x++)
+
+        int num = j;
+        Tile tile3 = Main.tile[i, j];
+        int num6 = 36;
+        int num7 = tile3.TileFrameY / num6;
+        tile3 = Main.tile[i, j];
+        int num8 = tile3.TileFrameY % num6;
+        num -= num8 / 18;
+        tile3 = Main.tile[i, j];
+        int num9 = tile3.TileFrameX / 18;
+        int num10 = 0;
+        while (num9 > 2)
         {
-            for (int y = j - 1; y <= j; y++)
+            num9 -= 3;
+            num10++;
+        }
+        num9 = i - num9;
+        int num11 = num10 * 54;
+        int num12 = num + 2;
+
+        for (int x = num9; x < num9 + 3; x++)
+        {
+            for (int y = num; y < num12; y++)
             {
                 Tile t = Main.tile[x, y];
                 t.HasTile = false;
@@ -581,6 +620,12 @@ public class BiomeBombs : ModTile
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
                         else if (WallID.Sets.Conversion.Sandstone[wall] && wall != ModContent.WallType<Walls.TropicalMudWall>())
+                        {
+                            Main.tile[k, l].WallType = (ushort)ModContent.WallType<Walls.TropicalMudWall>();
+                            WorldGen.SquareWallFrame(k, l);
+                            NetMessage.SendTileSquare(-1, k, l, 1);
+                        }
+                        else if (wall is WallID.DirtUnsafe or WallID.MudUnsafe or WallID.DirtUnsafe1 or WallID.DirtUnsafe2 or WallID.DirtUnsafe4)
                         {
                             Main.tile[k, l].WallType = (ushort)ModContent.WallType<Walls.TropicalMudWall>();
                             WorldGen.SquareWallFrame(k, l);

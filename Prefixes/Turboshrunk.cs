@@ -11,7 +11,7 @@ public class Turboshrunk : ExxoPrefix
 
     public override bool CanRoll(Item item)
     {
-        return item.useTime > 15;
+        return item.useTime > 10;
     }
 
     public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult,
