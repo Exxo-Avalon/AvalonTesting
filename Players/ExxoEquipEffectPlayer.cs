@@ -371,11 +371,11 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void MeleeEffects(Item item, Rectangle hitbox)
     {
-        if (FrostGauntlet && Main.rand.NextBool(5))
+        if (FrostGauntlet)
         {
             for (int i = 0; i < 2; i++)
             {
-                int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Frost, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 1f);
+                int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 1.7f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 2f;
             }

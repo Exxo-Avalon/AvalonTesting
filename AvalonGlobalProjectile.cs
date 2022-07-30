@@ -83,12 +83,12 @@ public class AvalonGlobalProjectile : GlobalProjectile
     public override void AI(Projectile projectile)
     {
         Player p = Main.player[projectile.owner];
-        if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee && Main.rand.NextBool(5))
+        if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
         {
             Rectangle hitbox = projectile.Hitbox;
             for (int i = 0; i < 2; i++)
             {
-                int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Frost, p.velocity.X * 0.2f + p.direction * 3, p.velocity.Y * 0.2f, 100, default, 1f);
+                int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, p.velocity.X * 0.2f + p.direction * 3, p.velocity.Y * 0.2f, 100, default, 1.7f);
                 Main.dust[d].noGravity = true;
                 Main.dust[d].velocity *= 2f;
             }
