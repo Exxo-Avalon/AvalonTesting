@@ -9,7 +9,6 @@ using Avalon.Items.Consumables;
 using Avalon.Items.Material;
 using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Seed;
-using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Potions;
 using Avalon.Network;
 using Avalon.Players;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.Utilities;
@@ -71,7 +72,6 @@ public class AvalonGlobalItemInstance : GlobalItem
             lineSpeed.Text = "Slowpoke speed";
         }
     }
-
     public override bool? PrefixChance(Item item, int pre, UnifiedRandom rand)
     {
         if (item.IsArmor() && pre == -3)
