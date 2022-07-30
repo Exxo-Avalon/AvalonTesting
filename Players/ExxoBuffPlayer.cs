@@ -55,7 +55,7 @@ public class ExxoBuffPlayer : ModPlayer
 
     public int AstralCooldown = 3600;
 
-    public const int MaxAstralCooldown = 3600; //constraint cooldow, make it no more than max.
+    public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
 
     public override void Load()
     {
