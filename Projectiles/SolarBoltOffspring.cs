@@ -24,6 +24,7 @@ public class SolarBoltOffspring : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.penetrate = 3;
         Projectile.light = 0.1f;
+        Projectile.friendly = true;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
 

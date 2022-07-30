@@ -32,9 +32,9 @@ public class ArrowBeam : ModProjectile
     }
     public override void AI()
     {
-        Projectile.ai[0]++;
+        Projectile.localAI[0]++;
         Player p = Main.player[Projectile.owner];
-        if (Projectile.ai[0] > 4f)
+        if (Projectile.localAI[0] > 4f)
         {
             if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
                 (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))

@@ -1,3 +1,4 @@
+using System;
 using Avalon.Buffs;
 using Avalon.Buffs.AdvancedBuffs;
 using Avalon.Network;
@@ -128,7 +129,52 @@ public class ExxoBuffPlayer : ModPlayer
             Player.merman = true;
         }
     }
-    
+    public override void PreUpdate()
+    {
+        if (Player.tongued)
+        {
+            bool flag14 = false;
+            if (AvalonWorld.WallOfSteel >= 0)
+            {
+                float num75 = Main.npc[AvalonWorld.WallOfSteel].position.X + Main.npc[AvalonWorld.WallOfSteel].width / 2;
+                num75 += Main.npc[AvalonWorld.WallOfSteel].direction * 200;
+                float num104 = Main.npc[AvalonWorld.WallOfSteel].position.Y + Main.npc[AvalonWorld.WallOfSteel].height / 2;
+                Vector2 center = Player.Center;
+                float num76 = num75 - center.X;
+                float num77 = num104 - center.Y;
+                float num78 = (float)Math.Sqrt(num76 * num76 + num77 * num77);
+                float num79 = 11f;
+                float num80 = num78;
+                if (num78 > num79)
+                {
+                    num80 = num79 / num78;
+                }
+                else
+                {
+                    num80 = 1f;
+                    flag14 = true;
+                }
+                num76 *= num80;
+                num77 *= num80;
+                Player.velocity.X = num76;
+                Player.velocity.Y = num77;
+            }
+            else
+            {
+                flag14 = true;
+            }
+            if (flag14 && Main.myPlayer == Player.whoAmI)
+            {
+                for (int num81 = 0; num81 < Player.MaxBuffs; num81++)
+                {
+                    if (Player.buffType[num81] == 38)
+                    {
+                        Player.DelBuff(num81);
+                    }
+                }
+            }
+        }
+    }
     public override void PostUpdateBuffs()
     {
         OldFallStart = Player.fallStart;

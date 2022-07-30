@@ -371,7 +371,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void MeleeEffects(Item item, Rectangle hitbox)
     {
-        if (FrostGauntlet)
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
         {
             for (int i = 0; i < 2; i++)
             {
