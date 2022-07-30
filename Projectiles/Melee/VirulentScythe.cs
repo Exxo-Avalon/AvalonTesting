@@ -1,15 +1,13 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Projectiles.Melee;
 
 public class VirulentScythe : ModProjectile
 {
-    private byte counter;
+    public float seconds = 0.5f;
+    public float returnSpeed = 2.5f;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Virulent Scythe");
@@ -17,68 +15,73 @@ public class VirulentScythe : ModProjectile
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
         Projectile.Size = new Vector2(32);
-        Projectile.aiStyle = ProjAIStyleID.Boomerang;
-        //AIType = ProjectileID.EnchantedBoomerang
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
         Projectile.ignoreWater = true;
-        Projectile.extraUpdates = 0;
+        DrawOffsetX = -8;
+        DrawOriginOffsetY = -8;
         Projectile.timeLeft = 2400;
-        counter = 0;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 10;
     }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        if (Main.rand.NextBool(4))
-        {
-            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
-        }
-    }
-    public override void OnHitPvp(Player target, int damage, bool crit)
-    {
-        if (Main.rand.NextBool(4))
-        {
-            target.AddBuff(ModContent.BuffType<Buffs.Virulent>(), 60 * 5);
-        }
-    }
+
+    public float timer;
+    public float time;
+    public bool willReturn;
+    public bool runOnce;
+    public float nextCloud;
     public override void AI()
     {
-        //Main.NewText(Projectile.velocity);
+        Vector2 startPosition = Projectile.Center;
+        Vector2 target = Main.player[Projectile.owner].Center;
 
-        if (Projectile.ai[0] != 0)
+        Projectile.spriteDirection = Projectile.direction;
+        Projectile.rotation += 0.5f * Projectile.spriteDirection;
+
+        timer++;
+        if (willReturn)
         {
-            counter++;
-            if (counter >= 20)
-            {
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VirulentExtraScythe>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[p].rotation = Projectile.rotation + 1.95f;
-                if (Projectile.velocity.X > 0)
-                {
-                    Main.projectile[p].velocity.X = 1f;
-                    Main.projectile[p].rotation = Projectile.rotation + 3.5f;
-                }
-                Projectile.alpha--;
-                if (Projectile.alpha < 40)
-                    Projectile.Kill();
-            }
+            Projectile.Center = Vector2.SmoothStep(startPosition, target, time);
 
+            time += (returnSpeed / 100);
+            time = MathHelper.Clamp(time, 0f, 1f);
+            Projectile.velocity *= 0f;
+
+            if (Main.player[Projectile.owner].getRect().Intersects(Projectile.getRect()))
+            {
+                Projectile.Kill();
+            }
+        }
+        if (timer == (60f * seconds))
+        {
+            willReturn = true;
+        }
+        int dust1 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Dusts.ContagionDust>(), Projectile.velocity.X * 0, Projectile.velocity.Y * 0, default, default, 1f);
+        Main.dust[dust1].noGravity = true;
+        Main.dust[dust1].alpha = 128;
+
+        nextCloud++;
+        int randomCloud = Main.rand.Next(new int[] { ModContent.ProjectileType<VirulentCloud>(), ModContent.ProjectileType<VirulentCloudSmall>() });
+
+        if (nextCloud > 5 + Main.rand.Next(25))
+        {
+            Vector2 randomDir = new Vector2(Main.rand.NextFloat(-100f, 100f), Main.rand.NextFloat(-100f, 100f));
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Normalize(randomDir) * 1.5f, randomCloud, 0, 0, Main.player[Projectile.owner].whoAmI);
+            nextCloud = 0;
         }
     }
-    public override bool PreDraw(ref Color lightColor)
+    public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
-        Rectangle frame = texture.Frame();
-        Vector2 frameOrigin = frame.Size() / 2f;
-        Vector2 offset = new Vector2(Projectile.width / 2 - frameOrigin.X, Projectile.height - frame.Height);
-        Vector2 drawPos = Projectile.position - Main.screenPosition + frameOrigin + offset;
-
-        for (int i = 0; i < 7; i += 2)
+        if (Projectile.velocity.X != oldVelocity.X)
         {
-            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * -i, Projectile.velocity.Y * -i), frame, new Color(0, 255 - 255 / 7 * i, 0, 100 - 50 / 7 * i), Projectile.rotation, frameOrigin, Projectile.scale - 0.01f * i, SpriteEffects.None, 0);
+            Projectile.velocity.X = -oldVelocity.X;
         }
-        Main.EntitySpriteDraw(texture, drawPos, frame, Color.White, Projectile.rotation, frameOrigin, Projectile.scale, SpriteEffects.None, 0);
+        if (Projectile.velocity.Y != oldVelocity.Y)
+        {
+            Projectile.velocity.Y = -oldVelocity.Y;
+        }
         return false;
     }
 }
