@@ -44,6 +44,7 @@ public class Soul : ModProjectile
     {
         return degrees / 57.2957795f;
     }
+
     public override void AI()
     {
         float num4 = 400f;
