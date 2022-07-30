@@ -86,12 +86,9 @@ public class AvalonGlobalProjectile : GlobalProjectile
         if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
         {
             Rectangle hitbox = projectile.Hitbox;
-            for (int i = 0; i < 2; i++)
-            {
-                int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, p.velocity.X * 0.2f + p.direction * 3, p.velocity.Y * 0.2f, 100, default, 1.7f);
-                Main.dust[d].noGravity = true;
-                Main.dust[d].velocity *= 2f;
-            }
+            int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, 0f, 0f, 100, default, 2.2f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 2f;
         }
         if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Piercing>()) && projectile.penetrate != -1)
         {

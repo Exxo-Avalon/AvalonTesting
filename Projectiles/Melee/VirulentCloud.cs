@@ -18,7 +18,7 @@ public class VirulentCloud : ModProjectile
         Projectile.friendly = true;
         Projectile.hostile = false;
         Projectile.penetrate = -1;
-        Projectile.DamageType = DamageClass.Melee;
+        //Projectile.DamageType = DamageClass.Melee;
         Projectile.ignoreWater = true;
         Projectile.timeLeft = 9000;
         Projectile.alpha = 150;
@@ -84,7 +84,7 @@ public class VirulentCloudSmall : ModProjectile
         Projectile.friendly = true;
         Projectile.hostile = false;
         Projectile.penetrate = -1;
-        Projectile.DamageType = DamageClass.Melee;
+        //Projectile.DamageType = DamageClass.Melee;
         Projectile.ignoreWater = true;
         Projectile.timeLeft = 9000;
         Projectile.alpha = 150;
