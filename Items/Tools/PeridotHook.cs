@@ -33,7 +33,7 @@ class PeridotHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Peridot>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.Peridot>(), 15)
             .AddTile(TileID.Anvils).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -33,7 +33,7 @@ public class NaquadahSlime : ModNPC
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NaquadahOre>(), 1, 15, 22));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.NaquadahOre>(), 1, 15, 22));
 
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]

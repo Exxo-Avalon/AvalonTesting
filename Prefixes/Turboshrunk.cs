@@ -20,5 +20,7 @@ public class Turboshrunk : ExxoPrefix
     {
         scaleMult = 0.5f;
         useTimeMult = 0.5f;
+        damageMult = 0.75f;
+        shootSpeedMult = 0.8f;
     }
 }

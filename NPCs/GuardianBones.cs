@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Items.Accessories;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Systems;
@@ -43,7 +43,7 @@ public class GuardianBones : ModNPC
     public override void ModifyNPCLoot(NPCLoot loot)
     {
         loot.Add(ItemDropRule.Common(ModContent.ItemType<AegisofAges>(), 20));
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<Phantoplasm>(), 10));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Material.Phantoplasm>(), 10));
     }
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>

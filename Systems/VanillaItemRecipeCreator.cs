@@ -1,5 +1,6 @@
 using Avalon.Items.Accessories;
 using Avalon.Items.Material;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Items.Weapons.Throw;

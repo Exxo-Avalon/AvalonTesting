@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -32,7 +32,7 @@ class OpalGemsparkBlock : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(20).AddIngredient(ItemID.Glass, 20).AddIngredient(ModContent.ItemType<Opal>()).AddTile(TileID.WorkBenches).Register();
+        CreateRecipe(20).AddIngredient(ItemID.Glass, 20).AddIngredient(ModContent.ItemType<Material.Opal>()).AddTile(TileID.WorkBenches).Register();
     }
     public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
     {

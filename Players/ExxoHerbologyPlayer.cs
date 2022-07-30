@@ -35,6 +35,7 @@ public class ExxoHerbologyPlayer : ModPlayer
         // Herbology bench distance check
         if (DisplayHerbologyMenu)
         {
+            UpdateHerbTier();
             int num9 = (int)((Player.position.X + (Player.width * 0.5)) / 16.0);
             int num10 = (int)((Player.position.Y + (Player.height * 0.5)) / 16.0);
             if (num9 < HerbX - Player.lastTileRangeX || num9 > HerbX + Player.lastTileRangeX + 1 ||
@@ -165,6 +166,10 @@ public class ExxoHerbologyPlayer : ModPlayer
         if (HerbologyData.RestorationIDs.Contains(item.type))
         {
             potionAddition = HerbologyData.RestorationPotionCost;
+        }
+        if (HerbologyData.SuperRestorationIDs.Contains(item.type))
+        {
+            potionAddition = HerbologyData.RestorationPotionCost * 2;
         }
 
         if (potionAddition > 0)

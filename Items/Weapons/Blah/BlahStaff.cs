@@ -42,7 +42,7 @@ public class BlahStaff : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 45).AddIngredient(ModContent.ItemType<Placeable.Bar.SuperhardmodeBar>(), 40).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 45).AddIngredient(ItemID.LunarFlareBook).AddIngredient(ModContent.ItemType<SolariumStaff>()).AddIngredient(ModContent.ItemType<OpalStaff>()).AddIngredient(ModContent.ItemType<OnyxStaff>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 45).AddIngredient(ModContent.ItemType<Placeable.Bar.SuperhardmodeBar>(), 40).AddIngredient(ModContent.ItemType<Material.SoulofTorture>(), 45).AddIngredient(ItemID.LunarFlareBook).AddIngredient(ModContent.ItemType<SolariumStaff>()).AddIngredient(ModContent.ItemType<OpalStaff>()).AddIngredient(ModContent.ItemType<OnyxStaff>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

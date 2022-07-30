@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Avalon.Items.Weapons.Magic;
 using Avalon.Systems;
 using Terraria;
@@ -48,15 +48,15 @@ public class DesertBeakBossBag : ModItem
         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DesertFeather>(), Main.rand.Next(18, 24));
         if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Rhodium)
         {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.RhodiumOre>(), Main.rand.Next(40, 61));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.RhodiumOre>(), Main.rand.Next(40, 61));
         }
         else if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Osmium)
         {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.OsmiumOre>(), Main.rand.Next(40, 61));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.OsmiumOre>(), Main.rand.Next(40, 61));
         }
         else if (ModContent.GetInstance<ExxoWorldGen>().RhodiumOre == ExxoWorldGen.RhodiumVariant.Iridium)
         {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Placeable.Tile.IridiumOre>(), Main.rand.Next(40, 61));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.IridiumOre>(), Main.rand.Next(40, 61));
         }
         if (Main.rand.Next(3) == 0)
         {

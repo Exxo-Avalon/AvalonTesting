@@ -19,7 +19,7 @@ public class UnvolanditeOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 2100;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.UnvolanditeOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.UnvolanditeOre>();
         HitSound = SoundID.Tink;
         MinPick = 250;
         TileID.Sets.Ore[Type] = true;

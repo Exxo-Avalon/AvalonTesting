@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Items.Material;
 using Avalon.Items.Placeable.Bar;
 using Avalon.Items.Weapons.Ranged;
@@ -45,7 +45,7 @@ internal class SpraynBlah : ModItem
     }
 
     public override void AddRecipes() => CreateRecipe()
-        .AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 45)
+        .AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 45)
         .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40)
         .AddIngredient(ModContent.ItemType<SoulofTorture>(), 45).AddIngredient(ModContent.ItemType<PlanterasFury>())
         .AddIngredient(ItemID.ChainGun).AddIngredient(ItemID.Megashark).AddTile(ModContent.TileType<SolariumAnvil>())

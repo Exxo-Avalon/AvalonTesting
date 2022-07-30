@@ -36,7 +36,7 @@ class SonicScrewdriverMkIII : ModItem
             .AddIngredient(ItemID.SoulofMight, 5)
             .AddIngredient(ItemID.SoulofFright, 5)
             .AddIngredient(ItemID.SoulofSight, 5)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 10)
+            .AddIngredient(ModContent.ItemType<Material.Onyx>(), 10)
             .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

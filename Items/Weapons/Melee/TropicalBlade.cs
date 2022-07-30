@@ -21,9 +21,9 @@ public class TropicalBlade : ModItem
         Item.height = dims.Height;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = Item.useAnimation = 24;
-        Item.damage = 21;
+        Item.damage = 25;
         Item.knockBack = 2;
-        Item.scale = 1.4f;
+        Item.scale = 1.1f;
         Item.UseSound = SoundID.Item1;
         Item.rare = ItemRarityID.Orange;
         Item.DamageType = DamageClass.Melee;

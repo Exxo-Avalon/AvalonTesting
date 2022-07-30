@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,6 +30,6 @@ class HeartstoneBrick : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Heartstone>()).AddIngredient(ItemID.StoneBlock).AddTile(TileID.Furnaces).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.Heartstone>()).AddIngredient(ItemID.StoneBlock).AddTile(TileID.Furnaces).Register();
     }
 }

@@ -35,7 +35,7 @@ internal class BlahsWings : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe().AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 40)
+        CreateRecipe().AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 40)
             .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 20)
             .AddIngredient(ModContent.ItemType<SoulofTorture>(), 25).AddIngredient(ModContent.ItemType<InertiaBoots>())
             .AddIngredient(ModContent.ItemType<GuardianBoots>()).AddIngredient(ItemID.PhilosophersStone)

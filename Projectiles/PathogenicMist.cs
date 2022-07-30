@@ -51,7 +51,7 @@ public class PathogenicMist : ModProjectile
         }
         foreach (NPC n in Main.npc)
         {
-            if (n.active && n.life > 0 && n.lifeMax > 5 && !n.dontTakeDamage)
+            if (n.active && n.life > 0 && n.lifeMax > 5 && !n.dontTakeDamage && !n.townNPC)
             {
                 if (n.getRect().Intersects(Projectile.getRect()))
                 {

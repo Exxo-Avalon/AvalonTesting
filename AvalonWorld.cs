@@ -230,7 +230,7 @@ public class AvalonWorld : ModSystem
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Opal>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Opal>());
         }
 
         // onyx
@@ -238,7 +238,7 @@ public class AvalonWorld : ModSystem
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Onyx>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Onyx>());
         }
 
         // kunzite
@@ -247,7 +247,7 @@ public class AvalonWorld : ModSystem
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
             WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4),
-                (ushort)ModContent.TileType<Kunzite>());
+                (ushort)ModContent.TileType<Tiles.Ores.Kunzite>());
         }
 
         // primordial ore

@@ -15,7 +15,7 @@ public class Heartstone : ModTile
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Heartstone>();
+        ItemDrop = ModContent.ItemType<Items.Material.Heartstone>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }

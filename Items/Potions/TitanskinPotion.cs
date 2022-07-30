@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,7 +30,7 @@ class TitanskinPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Placeable.Tile.RhodiumOre>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.SoulofMight).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Placeable.Tile.OsmiumOre>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.SoulofMight).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Ore.RhodiumOre>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.SoulofMight).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Ore.OsmiumOre>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.SoulofMight).AddTile(TileID.Bottles).Register();
     }
 }

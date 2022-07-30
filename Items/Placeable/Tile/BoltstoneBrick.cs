@@ -31,7 +31,7 @@ class BoltstoneBrick : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(1)
-            .AddIngredient(ModContent.ItemType<Boltstone>())
+            .AddIngredient(ModContent.ItemType<Material.Boltstone>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();

@@ -33,6 +33,6 @@ public class XanthophyteBar : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Tile.XanthophyteOre>(), 5).AddTile(TileID.AdamantiteForge).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Ore.XanthophyteOre>(), 5).AddTile(TileID.AdamantiteForge).Register();
     }
 }

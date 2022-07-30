@@ -27,7 +27,7 @@ class ShadowRing : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.ShroomiteBar, 5)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 2)
+            .AddIngredient(ModContent.ItemType<Material.Onyx>(), 2)
             .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void UpdateVanity(Player player)

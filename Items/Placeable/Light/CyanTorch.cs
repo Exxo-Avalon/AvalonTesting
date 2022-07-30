@@ -28,7 +28,7 @@ class CyanTorch : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(3).AddIngredient(ItemID.Torch, 3).AddIngredient(ModContent.ItemType<Tile.Tourmaline>()).Register();
+        CreateRecipe(3).AddIngredient(ItemID.Torch, 3).AddIngredient(ModContent.ItemType<Material.Tourmaline>()).Register();
     }
     public override void HoldItem(Player player)
     {

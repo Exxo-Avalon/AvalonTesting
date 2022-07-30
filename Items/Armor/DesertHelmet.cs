@@ -1,3 +1,4 @@
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -45,7 +46,7 @@ class DesertHelmet : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 75)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ModContent.ItemType<Beak>(), 2)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 2)
             .AddIngredient(ItemID.GoldHelmet)
@@ -53,7 +54,7 @@ class DesertHelmet : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 75)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ModContent.ItemType<Beak>(), 2)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 10)
             .AddIngredient(ItemID.PlatinumHelmet)
@@ -61,7 +62,7 @@ class DesertHelmet : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 75)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 2)
+            .AddIngredient(ModContent.ItemType<Beak>(), 2)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 2)
             .AddIngredient(ModContent.ItemType<BismuthHelmet>())

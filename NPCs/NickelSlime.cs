@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -40,7 +40,7 @@ public class NickelSlime : ModNPC
         });
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NickelOre>(), 1, 15, 25));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.NickelOre>(), 1, 15, 25));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

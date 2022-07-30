@@ -32,7 +32,7 @@ class TourmalineHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Tourmaline>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.Tourmaline>(), 15)
             .AddTile(TileID.Anvils).Register();
     }
 }

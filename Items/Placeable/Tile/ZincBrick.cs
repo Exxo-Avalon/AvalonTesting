@@ -31,7 +31,7 @@ class ZincBrick : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<ZincOre>())
+            .AddIngredient(ModContent.ItemType<Ore.ZincOre>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();

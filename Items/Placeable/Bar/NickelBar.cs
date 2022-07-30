@@ -32,7 +32,7 @@ class NickelBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.NickelOre>(), 3)
+            .AddIngredient(ModContent.ItemType<Ore.NickelOre>(), 3)
             .AddTile(TileID.Furnaces)
             .Register();
     }

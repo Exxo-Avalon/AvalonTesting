@@ -17,7 +17,7 @@ using Avalon.Items.Tools;
 using Avalon.Items.Weapons.Magic;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Items.Weapons.Ranged;
-using Avalon.Items.Weapons.Summon;
+using Avalon.Items.Ore;
 using Avalon.Items.Weapons.Throw;
 using Terraria;
 using Terraria.ID;
@@ -566,13 +566,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Onyx>(), 20)
             .AddTile(TileID.Bookcases).Register();
 
-        Recipe.Create(ModContent.ItemType<FreezeBolt>())
-            .AddIngredient(ModContent.ItemType<SoulofIce>(), 20)
-            .AddIngredient(ItemID.WaterBolt)
-            .AddIngredient(ModContent.ItemType<IceGel>(), 50)
-            .AddIngredient(ItemID.FrostCore, 2)
-            .AddTile(TileID.Bookcases).Register();
-
         //replaceme11111
         //.AddIngredient(ItemID.SpellTome)
         //.AddIngredient(ItemID.Emerald, 15)
@@ -666,7 +659,7 @@ public class RecipeCreator : ModSystem
 
         Recipe.Create(ModContent.ItemType<OblivionBrick>())
             .AddIngredient(ItemID.StoneBlock)
-            .AddIngredient(ModContent.ItemType<OblivionOre>())
+            .AddIngredient(ModContent.ItemType<Items.Ore.OblivionOre>())
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
 
         

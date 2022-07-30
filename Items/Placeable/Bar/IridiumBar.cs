@@ -32,7 +32,7 @@ class IridiumBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.IridiumOre>(), 4)
+            .AddIngredient(ModContent.ItemType<Ore.IridiumOre>(), 4)
             .AddTile(TileID.Furnaces)
             .Register();
     }

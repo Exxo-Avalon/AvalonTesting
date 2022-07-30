@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
@@ -50,7 +50,7 @@ public class CometTail : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<HydrolythOre>(), 40));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.HydrolythOre>(), 40));
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

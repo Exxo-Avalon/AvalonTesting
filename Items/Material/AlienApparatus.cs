@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,6 +24,6 @@ public class AlienApparatus : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 3).AddIngredient(ModContent.ItemType<SoulofDelight>(), 5).AddIngredient(ModContent.ItemType<DarkMatterGel>(), 20).AddIngredient(ModContent.ItemType<AlienDevice>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<DragonScale>(), 3).AddIngredient(ModContent.ItemType<SoulofDelight>(), 5).AddIngredient(ModContent.ItemType<DarkMatterGel>(), 20).AddIngredient(ModContent.ItemType<AlienDevice>()).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

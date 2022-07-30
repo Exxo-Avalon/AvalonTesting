@@ -38,7 +38,7 @@ internal class ContagionAlternateBiome : AltBiome
         GenPassName.SetDefault("Making the world gross");
         EvilBiomeGenerationPass = new ContagionGeneration();
 
-        BiomeOreItem = ModContent.ItemType<Items.Placeable.Tile.PandemiteOre>();
+        BiomeOreItem = ModContent.ItemType<Items.Ore.PandemiteOre>();
         SeedType = ModContent.ItemType<IckgrassSeeds>();
 
         BiomeChestItem = ModContent.ItemType<VirulentScythe>();

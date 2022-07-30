@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -44,7 +44,7 @@ class MechanicalWasp : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Stinger, 9).AddIngredient(ItemID.HallowedBar, 10).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 2).AddIngredient(ItemID.SoulofFlight, 15).AddTile(ModContent.TileType<Tiles.HallowedAltar>()).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.MosquitoProboscis>(), 9).AddIngredient(ItemID.HallowedBar, 10).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 2).AddIngredient(ItemID.SoulofFlight, 15).AddTile(ModContent.TileType<Tiles.HallowedAltar>()).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Stinger, 9).AddIngredient(ItemID.HallowedBar, 10).AddIngredient(ModContent.ItemType<Material.DragonScale>(), 2).AddIngredient(ItemID.SoulofFlight, 15).AddTile(ModContent.TileType<Tiles.HallowedAltar>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.MosquitoProboscis>(), 9).AddIngredient(ItemID.HallowedBar, 10).AddIngredient(ModContent.ItemType<Material.DragonScale>(), 2).AddIngredient(ItemID.SoulofFlight, 15).AddTile(ModContent.TileType<Tiles.HallowedAltar>()).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -40,7 +40,7 @@ public class BismuthSlime : ModNPC
         });
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BismuthOre>(), 2, 15, 25));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.BismuthOre>(), 2, 15, 25));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

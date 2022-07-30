@@ -151,10 +151,14 @@ public static class HerbologyData
         // Magnet Potion
     };
 
+    public static readonly int[] SuperRestorationIDs =
+    {
+        ItemID.SuperHealingPotion, ItemID.SuperManaPotion, ModContent.ItemType<SuperStaminaPotion>(), ModContent.ItemType<SuperRestorationPotion>()
+    };
+
     public static readonly int[] RestorationIDs =
     {
-        ItemID.HealingPotion, ItemID.ManaPotion, ModContent.ItemType<StaminaPotion>(), ItemID.SuperHealingPotion,
-        ItemID.SuperManaPotion, ModContent.ItemType<SuperStaminaPotion>(),
+        ItemID.HealingPotion, ItemID.ManaPotion, ModContent.ItemType<StaminaPotion>(), ItemID.RestorationPotion
     };
 
     public static int GetBaseHerbType(Item item)
@@ -207,6 +211,11 @@ public static class HerbologyData
         if (RestorationIDs.Contains(item.type))
         {
             return amount * RestorationPotionCost;
+        }
+
+        if (SuperRestorationIDs.Contains(item.type))
+        {
+            return amount * RestorationPotionCost * 2;
         }
 
         return 0;

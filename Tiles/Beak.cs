@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -12,7 +12,7 @@ public class Beak : ModTile
     {
         AddMapEntry((Color.DarkOrange), LanguageManager.Instance.GetText("Beak"));
         Main.tileSolid[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Beak>();
+        ItemDrop = ModContent.ItemType<Items.Material.Beak>();
         HitSound = SoundID.NPCHit2;
     }
 }

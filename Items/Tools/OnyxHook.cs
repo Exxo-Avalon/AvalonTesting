@@ -35,7 +35,7 @@ class OnyxHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.Onyx>(), 20)
             .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }

@@ -30,7 +30,7 @@ class OnyxStoneBlock : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Onyx>())
+            .AddIngredient(ModContent.ItemType<Material.Onyx>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.HeavyWorkBench)
             .AddCondition(Recipe.Condition.InGraveyardBiome)

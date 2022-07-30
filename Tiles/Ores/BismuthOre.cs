@@ -18,7 +18,7 @@ public class BismuthOre : ModTile
         Main.tileOreFinderPriority[Type] = 275;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.BismuthOre>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.BismuthDust>();
         TileID.Sets.Ore[Type] = true;

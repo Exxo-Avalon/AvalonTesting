@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -37,7 +37,7 @@ public class DurantiumSlime : ModNPC
         });
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DurataniumOre>(), 1, 20, 32));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.DurataniumOre>(), 1, 20, 32));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

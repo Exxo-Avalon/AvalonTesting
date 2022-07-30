@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -40,7 +40,7 @@ public class TroxiniumSlime : ModNPC
         });
 
     public override void ModifyNPCLoot(NPCLoot loot) =>
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<TroxiniumOre>(), 1, 10, 16));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.TroxiniumOre>(), 1, 10, 16));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

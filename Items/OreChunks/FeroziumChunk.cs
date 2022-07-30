@@ -32,7 +32,7 @@ class FeroziumChunk : ModItem
         Recipe.Create(ModContent.ItemType<Placeable.Bar.HydrolythBar>())
             .AddIngredient(ModContent.ItemType<HydrolythChunk>(), 5)
             .AddIngredient(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.SolariumOre>())
+            .AddIngredient(ModContent.ItemType<Ore.SolariumOre>())
             .AddTile(TileID.WorkBenches)
             .Register();
     }

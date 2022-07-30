@@ -51,7 +51,7 @@ public class EvilVulture : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot loot)
     {
-        loot.Add(ItemDropRule.Common(ModContent.ItemType<Beak>(), 2));
+        loot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Material.Beak>(), 2));
     }
 
     //public override void AI()

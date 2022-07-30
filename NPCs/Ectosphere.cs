@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Projectiles;
@@ -54,7 +54,7 @@ public class Ectosphere : ModNPC
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ItemID.Ectoplasm, 1, 2, 5));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Phantoplasm>(), 4, 3, 6));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Material.Phantoplasm>(), 4, 3, 6));
     }
 
     public override void AI()

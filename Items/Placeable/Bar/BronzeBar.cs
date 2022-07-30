@@ -32,7 +32,7 @@ class BronzeBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.BronzeOre>(), 3)
+            .AddIngredient(ModContent.ItemType<Ore.BronzeOre>(), 3)
             .AddTile(TileID.Furnaces)
             .Register();
     }

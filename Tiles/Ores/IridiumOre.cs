@@ -18,7 +18,7 @@ public class IridiumOre : ModTile
         Main.tileOreFinderPriority[Type] = 440;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.IridiumOre>();
         HitSound = SoundID.Tink;
         MinPick = 60;
         DustType = ModContent.DustType<Dusts.IridiumDust>();

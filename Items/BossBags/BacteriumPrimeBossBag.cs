@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Accessories;
+using Avalon.Items.Accessories;
 using Avalon.Items.Material;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Consumables;
@@ -46,7 +46,7 @@ public class BacteriumPrimeBossBag : ModItem
     {
         //player.TryGettingDevArmor();
 
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<PandemiteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
+        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.PandemiteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Booger>(), Main.rand.Next(10, 20));
         player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BadgeOfBacteria>());
     }

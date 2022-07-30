@@ -1,5 +1,6 @@
-﻿using Avalon.Items.Accessories;
+using Avalon.Items.Accessories;
 using Avalon.Items.Fish;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Bar;
 using Avalon.Items.Placeable.Tile;
 using Terraria;

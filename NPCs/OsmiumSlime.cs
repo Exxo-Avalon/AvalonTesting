@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Systems;
 using Terraria;
@@ -41,7 +41,7 @@ public class OsmiumSlime : ModNPC
         });
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OsmiumOre>(), 1, 10, 16));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.OsmiumOre>(), 1, 10, 16));
 
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -36,8 +36,8 @@ class GauntletPotion : ModItem
         CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Bloodberry>()).AddIngredient(ItemID.LeadOre, 3).AddTile(TileID.Bottles).Register();
         CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Barfbush>()).AddIngredient(ItemID.IronOre, 3).AddTile(TileID.Bottles).Register();
         CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Barfbush>()).AddIngredient(ItemID.LeadOre, 3).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.Deathweed).AddIngredient(ModContent.ItemType<Placeable.Tile.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Bloodberry>()).AddIngredient(ModContent.ItemType<Placeable.Tile.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Barfbush>()).AddIngredient(ModContent.ItemType<Placeable.Tile.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ItemID.Deathweed).AddIngredient(ModContent.ItemType<Ore.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Bloodberry>()).AddIngredient(ModContent.ItemType<Ore.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddIngredient(ModContent.ItemType<Material.Sweetstem>()).AddIngredient(ModContent.ItemType<Material.Barfbush>()).AddIngredient(ModContent.ItemType<Ore.NickelOre>(), 3).AddTile(TileID.Bottles).Register();
     }
 }

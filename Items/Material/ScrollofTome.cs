@@ -10,7 +10,7 @@ class ScrollofTome : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Scroll of Tome");
-        Tooltip.SetDefault("Vital in the creation of mid-to-lategame tomes");
+        Tooltip.SetDefault("Vital in the creation of powerful tomes");
         SacrificeTotal = 2;
     }
 

@@ -28,6 +28,6 @@ class CarbonSteel : ModItem
     {
         CreateRecipe(10).AddIngredient(ItemID.IronOre, 30).AddTile(TileID.Hellforge).Register();
         CreateRecipe(10).AddIngredient(ItemID.LeadOre, 30).AddTile(TileID.Hellforge).Register();
-        CreateRecipe(10).AddIngredient(ModContent.ItemType<Placeable.Tile.NickelOre>(), 30).AddTile(TileID.Hellforge).Register();
+        CreateRecipe(10).AddIngredient(ModContent.ItemType<Ore.NickelOre>(), 30).AddTile(TileID.Hellforge).Register();
     }
 }

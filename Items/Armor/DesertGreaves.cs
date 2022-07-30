@@ -1,3 +1,4 @@
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -33,7 +34,7 @@ class DesertGreaves : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 50)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ModContent.ItemType<Beak>(), 3)
             .AddIngredient(ItemID.AntlionMandible)
             .AddIngredient(ItemID.Topaz)
             .AddIngredient(ItemID.GoldGreaves)
@@ -41,7 +42,7 @@ class DesertGreaves : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 50)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ModContent.ItemType<Beak>(), 3)
             .AddIngredient(ItemID.AntlionMandible)
             .AddIngredient(ItemID.Topaz, 5)
             .AddIngredient(ItemID.PlatinumGreaves)
@@ -49,7 +50,7 @@ class DesertGreaves : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 50)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 3)
+            .AddIngredient(ModContent.ItemType<Beak>(), 3)
             .AddIngredient(ItemID.AntlionMandible)
             .AddIngredient(ItemID.Topaz)
             .AddIngredient(ModContent.ItemType<BismuthGreaves>())

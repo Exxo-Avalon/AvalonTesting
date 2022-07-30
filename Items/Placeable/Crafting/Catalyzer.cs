@@ -36,7 +36,7 @@ internal class Catalyzer : ModItem
     {
         Recipe.Create(Type)
             .AddRecipeGroup(RecipeGroupID.Wood, 20)
-            .AddIngredient(ModContent.ItemType<Sulphur>(), 30)
+            .AddIngredient(ModContent.ItemType<Material.Sulphur>(), 30)
             .AddRecipeGroup("IronBar", 15)
             .AddRecipeGroup("Avalon:WorkBenches")
             .AddTile(TileID.Anvils)

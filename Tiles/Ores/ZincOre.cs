@@ -18,7 +18,7 @@ public class ZincOre : ModTile
         Main.tileOreFinderPriority[Type] = 255;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.ZincOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.ZincOre>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.ZincDust>();
         TileID.Sets.Ore[Type] = true;

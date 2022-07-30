@@ -20,7 +20,7 @@ public class DurataniumOre : ModTile
         Main.tileOreFinderPriority[Type] = 615;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 925;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DurataniumOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.DurataniumOre>();
         HitSound = SoundID.Tink;
         MinPick = 100;
         DustType = ModContent.DustType<DurataniumDust>();

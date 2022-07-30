@@ -34,7 +34,7 @@ class OblivionBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.OblivionOre>(), 7)
+            .AddIngredient(ModContent.ItemType<Ore.OblivionOre>(), 7)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
             .Register();
     }

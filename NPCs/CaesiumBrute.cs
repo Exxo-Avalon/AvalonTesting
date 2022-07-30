@@ -56,7 +56,7 @@ public class CaesiumBrute : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.DownedAllMechBosses(), ModContent.ItemType<CaesiumOre>(), 6, 3, 7));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.DownedAllMechBosses(), ModContent.ItemType<Items.Ore.CaesiumOre>(), 6, 3, 7));
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {

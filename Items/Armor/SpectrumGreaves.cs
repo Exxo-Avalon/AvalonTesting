@@ -33,7 +33,7 @@ class SpectrumGreaves : ModItem
             .AddIngredient(ModContent.ItemType<Material.DarkMatterGel>(), 40)
             .AddIngredient(ModContent.ItemType<AncientLeggings>())
             .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 3)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Opal>(), 10)
+            .AddIngredient(ModContent.ItemType<Material.Opal>(), 10)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
             .Register();
     }

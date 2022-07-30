@@ -29,7 +29,7 @@ class TwiliplateBlock : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type, 2)
-            .AddIngredient(ModContent.ItemType<BismuthOre>())
+            .AddIngredient(ModContent.ItemType<Ore.BismuthOre>())
             .AddIngredient(ItemID.Cloud)
             .AddTile(TileID.Furnaces).Register();
     }

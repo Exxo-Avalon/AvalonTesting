@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -31,9 +31,9 @@ class GPSPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
     }
 }

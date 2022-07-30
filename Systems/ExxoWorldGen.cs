@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Reflection;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Tiles;
 using Avalon.World.Passes;

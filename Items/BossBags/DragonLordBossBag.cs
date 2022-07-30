@@ -1,9 +1,10 @@
-﻿using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
+using Avalon.Items.Material;
 
 namespace Avalon.Items.BossBags;
 

@@ -31,7 +31,7 @@ class BronzeBrick : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<BronzeOre>())
+            .AddIngredient(ModContent.ItemType<Items.Ore.BronzeOre>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();
