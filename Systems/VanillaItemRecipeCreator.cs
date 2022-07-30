@@ -199,5 +199,29 @@ public class VanillaItemRecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Barfbush>())
             .AddIngredient(ModContent.ItemType<YuckyBit>())
             .AddTile(TileID.Bottles).Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ItemID.LightsBane)
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ItemID.BloodButcherer)
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ModContent.ItemType<Snotsabre>())
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
     }
 }

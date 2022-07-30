@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -8,6 +9,8 @@ public class AvalonGlobalNPCInstance : GlobalNPC
     public override bool InstancePerEntity => true;
     public bool AstigSpawned { get; set; }
     public int BleedStacks { get; set; } = 1;
+    public bool Bleeding { get; set; }
+    public bool IsBleedingHMBleed { get; set; }
     public int BreathCd { get; set; } = 45;
     public bool DlBreath { get; set; }
     public bool Electrified { get; set; }
@@ -16,6 +19,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
     public bool JugRunOnce { get; set; }
     public bool LavaWalk { get; set; }
     public bool Malaria { get; set; }
+    public bool NecroticDrain { get; set; }
     public bool NoOneHitKill { get; set; }
     public int ORebirth { get; set; }
     public bool Silenced { get; set; }
@@ -23,8 +27,14 @@ public class AvalonGlobalNPCInstance : GlobalNPC
     public bool Slowed { get; set; }
     public int SpikeTimer { get; set; }
 
-    public override void ResetEffects(NPC npc) => Malaria = false;
-
+    public override void ResetEffects(NPC npc)
+    {
+        NecroticDrain = false;
+        Malaria = false;
+        Electrified = false;
+        Bleeding = false;
+        BleedStacks = 1;
+    }
     public override void UpdateLifeRegen(NPC npc, ref int damage)
     {
         if (Malaria)
@@ -35,9 +45,53 @@ public class AvalonGlobalNPCInstance : GlobalNPC
             }
 
             npc.lifeRegen -= 30;
-            if (damage < 2)
+            if (damage < 4)
             {
-                damage = 2;
+                damage = 4;
+            }
+        }
+        if (NecroticDrain)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+
+            npc.lifeRegen -= 90;
+            if (damage < 3)
+            {
+                damage = 3;
+            }
+        }
+        if (Electrified)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+            if (npc.velocity != Vector2.Zero)
+                npc.lifeRegen -= 30;
+            npc.lifeRegen -= 40;
+            if (damage < 6)
+            {
+                damage = 6;
+            }
+        }
+        if (Bleeding)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+            int mult = 4;
+            if (IsBleedingHMBleed)
+            {
+                mult = 6;
+            }
+            npc.lifeRegen -= mult * BleedStacks;
+            if (damage < BleedStacks)
+            {
+                damage = BleedStacks;
             }
         }
     }

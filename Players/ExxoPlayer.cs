@@ -308,9 +308,9 @@ public class ExxoPlayer : ModPlayer
         {
             tomeItem.SetDefaults();
         }
-
+        player.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown = 0;
         Main.NewText("You are using Exxo Avalon: Origins " + Avalon.Mod.Version);
-        Main.NewText("Please note that Exxo Avalon: Origins is in Beta; it may have many bugs");
+        Main.NewText("Please note that Exxo Avalon: Origins is in beta - it will have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
     }
 

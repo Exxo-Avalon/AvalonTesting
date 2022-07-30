@@ -210,7 +210,7 @@ public class DesertBeak : ModNPC
                                             int dmg = 30;
                                             if (Main.expertMode) dmg = 22;
                                             if (Main.masterMode) dmg = 18;
-                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, dmg, 0, NPC.whoAmI);
+                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, dmg, 0);
 
                                         }
                                         divebomb = true;

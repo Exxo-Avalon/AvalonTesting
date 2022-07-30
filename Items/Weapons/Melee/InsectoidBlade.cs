@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Weapons.Melee;
 
-public class TropicalBlade : ModItem
+public class InsectoidBlade : ModItem
 {
     public override void SetStaticDefaults()
     {

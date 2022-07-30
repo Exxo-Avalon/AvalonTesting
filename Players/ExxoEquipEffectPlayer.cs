@@ -11,6 +11,7 @@ using Avalon.NPCs.Bosses;
 using Avalon.Projectiles;
 using Avalon.Tiles.Ores;
 using Terraria.Localization;
+using Avalon.Systems;
 
 namespace Avalon.Players;
 public class ExxoEquipEffectPlayer : ModPlayer
@@ -30,7 +31,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool LuckTome;
     public bool ThornHeartAmulet;
     public bool EarthInsig;
-
+    public bool BloodyWhetstone;
     public bool ChaosCharm;
     public bool CobShield;
     public bool PallShield;
@@ -47,10 +48,17 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool EthHeart;
     public bool ShadowRing;
     public bool HideVarefolk;
+    public bool FrostGauntlet;
+    public bool EarthInsignia;
+    public bool TerraClaws;
+    public bool BadgeOfBacteria;
+    public bool AstralProject;
     #endregion accessories
 
     #region extras
     public int bubbleCD;
+    public int AstralCooldown = 3600;
+    public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
     #endregion extras
 
     #region armor
@@ -98,7 +106,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
         BubbleBoost = false;
         ShadowRing = false;
         HideVarefolk = false;
-
+        FrostGauntlet = false;
+        BloodyWhetstone = false;
+        BadgeOfBacteria = false;
+        AstralProject = false;
 
 
         HyperMagic = false;
@@ -169,16 +180,84 @@ public class ExxoEquipEffectPlayer : ModPlayer
             }
         }
     }
-    public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
+    public override void ProcessTriggers(TriggersSet triggersSet)
     {
-        //if (ShadowRing || BlahArmor)
-        //{
-        //    drawInfo.stealth -= 0.97f;
-        //    drawInfo.shadow -= 10;
-        //}
+        if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
+        {
+            if (Player.HasBuff<AstralProjecting>())
+            {
+                Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+                AstralCooldown = MaxAstralCooldown;
+            }
+            else if (AstralCooldown == 0)
+            {
+                Player.AddBuff(ModContent.BuffType<AstralProjecting>(), 15 * 60);
+            }
+        }
+    }
+    public override void OnHitPvp(Item item, Player target, int damage, bool crit)
+    {
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
+    }
+    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
+    {
+        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && proj.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
     }
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
+        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
+        {
+            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
+            npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
+        }
         if (AuraThorns && !Player.immune && !npc.dontTakeDamage)
         {
             int x = (int)Player.position.X;
@@ -222,6 +301,40 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<AncientSandnado>(), 0, 0);
         }
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (item.DamageType == DamageClass.Melee && BloodyWhetstone)
+        {
+            if (!target.HasBuff<Bleeding>())
+            {
+                target.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks = 1;
+            }
+
+            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
+        }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
@@ -230,9 +343,51 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
         }
+        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && proj.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
+    }
+    public override void MeleeEffects(Item item, Rectangle hitbox)
+    {
+        if (FrostGauntlet)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Frost, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 2.5f);
+                Main.dust[d].noGravity = true;
+                Main.dust[d].velocity *= 2f;
+            }
+        }
     }
     public override void PostUpdateEquips()
     {
+        if (!AstralProject && Player.HasBuff<AstralProjecting>())
+        {
+            Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+        }
+
         #region inertia boots/blah's wings
         if (InertiaBoots || BlahWings)
         {

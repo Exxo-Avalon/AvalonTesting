@@ -19,13 +19,13 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AccLavaMerman;
     public bool AdvancedBattle;
     public bool AdvancedCalming;
-    public bool AstralProject;
+    
 
     public bool Unloaded;
     public bool BrokenWeaponry;
     public bool Electrified;
-    public bool BadgeOfBacteria;
-    public bool BloodyWhetstone;
+    
+    
     public int DeleriumCount;
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
@@ -37,10 +37,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool DarkInferno;
     public bool NoSticky;
     public int OldFallStart;
-    public bool ShadowCharm;
-    public bool FrostGauntlet;
-    public bool EarthInsignia;
-    public bool TerraClaws;
+    
     public int TimeSlowCounter;
 
     public bool SkyBlessing;
@@ -53,9 +50,7 @@ public class ExxoBuffPlayer : ModPlayer
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
 
-    public int AstralCooldown = 3600;
-
-    public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
+    
 
     public override void Load()
     {
@@ -96,24 +91,19 @@ public class ExxoBuffPlayer : ModPlayer
     {
         AdvancedBattle = false;
         AdvancedCalming = false;
-        AstralProject = false;
-        EarthInsignia = false;
+        
         Lucky = false;
         Malaria = false;
         Melting = false;
-        BadgeOfBacteria = false;
         NoSticky = false;
         AccLavaMerman = false;
         lavaMerman = false;
-        BloodyWhetstone = false;
         SkyBlessing = false;
         Unloaded = false;
         BrokenWeaponry = false;
         DarkInferno = false;
         CaesiumPoison = false;
         Electrified = false;
-        ShadowCharm = false;
-        FrostGauntlet = false;
     }
 
     public override void PreUpdateBuffs()
@@ -124,53 +114,21 @@ public class ExxoBuffPlayer : ModPlayer
         {
             FrameCount++;
             ShadowCooldown++;
-            if (AstralCooldown > 0)
+            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown > 0)
             {
-                AstralCooldown--;
+                Player.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown--;
             }
         }
     }
     public override void PostUpdateEquips()
     {
-        if (!AstralProject && Player.HasBuff<AstralProjecting>())
-        {
-            Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
-        }
-
         if (AccLavaMerman && !Player.GetModPlayer<ExxoEquipEffectPlayer>().HideVarefolk && Collision.LavaCollision(Player.position, Player.width, Player.height))
         {
             lavaMerman = true;
             Player.merman = true;
         }
     }
-    public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
-    {
-        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
-        {
-            target.AddBuff(BuffID.Frostburn, 60 * 4);
-        }
-        if (TerraClaws && proj.DamageType == DamageClass.Melee)
-        {
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                    target.AddBuff(BuffID.OnFire, 7 * 60);
-                    break;
-                case 1:
-                    target.AddBuff(BuffID.Poisoned, 7 * 60);
-                    break;
-                case 2:
-                    target.AddBuff(BuffID.Venom, 7 * 60);
-                    break;
-                case 3:
-                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
-                    break;
-                case 4:
-                    target.AddBuff(BuffID.Ichor, 7 * 60);
-                    break;
-            }
-        }
-    }
+    
     public override void PostUpdateBuffs()
     {
         OldFallStart = Player.fallStart;
@@ -195,20 +153,8 @@ public class ExxoBuffPlayer : ModPlayer
         {
             return;
         }
-        if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
-        {
-            if (Player.HasBuff<AstralProjecting>())
-            {
-                Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
-                AstralCooldown = MaxAstralCooldown;
-            }
-            else if (AstralCooldown == 0)
-            {
-                Player.AddBuff(ModContent.BuffType<AstralProjecting>(), 15 * 60);
-            }
-        }
+        
     }
-
     public override void UpdateBadLifeRegen()
     {
         if (DarkInferno)
@@ -337,108 +283,17 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
-        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
-        {
-            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
-            npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
-        }
+        
     }
-    public override void OnHitPvp(Item item, Player target, int damage, bool crit)
-    {
-        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
-        {
-            target.AddBuff(BuffID.Frostburn, 60 * 4);
-        }
-        if (TerraClaws && item.DamageType == DamageClass.Melee)
-        {
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                    target.AddBuff(BuffID.OnFire, 7 * 60);
-                    break;
-                case 1:
-                    target.AddBuff(BuffID.Poisoned, 7 * 60);
-                    break;
-                case 2:
-                    target.AddBuff(BuffID.Venom, 7 * 60);
-                    break;
-                case 3:
-                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
-                    break;
-                case 4:
-                    target.AddBuff(BuffID.Ichor, 7 * 60);
-                    break;
-            }
-        }
-    }
-    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
-    {
-        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
-        {
-            target.AddBuff(BuffID.Frostburn, 60 * 4);
-        }
-        if (TerraClaws && proj.DamageType == DamageClass.Melee)
-        {
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                    target.AddBuff(BuffID.OnFire, 7 * 60);
-                    break;
-                case 1:
-                    target.AddBuff(BuffID.Poisoned, 7 * 60);
-                    break;
-                case 2:
-                    target.AddBuff(BuffID.Venom, 7 * 60);
-                    break;
-                case 3:
-                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
-                    break;
-                case 4:
-                    target.AddBuff(BuffID.Ichor, 7 * 60);
-                    break;
-            }
-        }
-    }
+    
+    
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
         if (Player.whoAmI != Main.myPlayer)
         {
             return;
         }
-        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
-        {
-            target.AddBuff(BuffID.Frostburn, 60 * 4);
-        }
-        if (item.DamageType == DamageClass.Melee && BloodyWhetstone)
-        {
-            if (!target.HasBuff<Bleeding>())
-            {
-                target.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks = 1;
-            }
-
-            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
-        }
-        if (TerraClaws && item.DamageType == DamageClass.Melee)
-        {
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                    target.AddBuff(BuffID.OnFire, 7 * 60);
-                    break;
-                case 1:
-                    target.AddBuff(BuffID.Poisoned, 7 * 60);
-                    break;
-                case 2:
-                    target.AddBuff(BuffID.Venom, 7 * 60);
-                    break;
-                case 3:
-                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
-                    break;
-                case 4:
-                    target.AddBuff(BuffID.Ichor, 7 * 60);
-                    break;
-            }
-        }
+        
     }
 
     public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a,
@@ -449,10 +304,6 @@ public class ExxoBuffPlayer : ModPlayer
             Player.head = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Head);
             Player.body = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Body);
             Player.legs = EquipLoader.GetEquipSlot(Mod, LavaMermanName, EquipType.Legs);
-        }
-        if (ShadowCharm)
-        {
-
         }
     }
 

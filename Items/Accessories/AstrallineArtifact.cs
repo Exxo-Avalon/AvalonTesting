@@ -8,13 +8,14 @@ namespace Avalon.Items.Accessories;
 
 public class AstrallineArtifact : ModItem
 {
-    public int AstralCooldown;
+    private int AstralCooldown;
 
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Astralline Artifact");
-        Tooltip.SetDefault(
-            "Allows you to astral project\nRun into enemies to mark them while astral projecting\nEnemies marked will take triple damage for 45 seconds");
+        Tooltip.SetDefault("Allows you to astral project\n" +
+            "Run into enemies to mark them while astral projecting\n" +
+            "Enemies marked will take triple damage for 45 seconds");
         SacrificeTotal = 1;
     }
 
@@ -31,13 +32,13 @@ public class AstrallineArtifact : ModItem
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "AstralCooldown: " + AstralCooldown);
+        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "Time before you can astral project: " + AstralCooldown / 60 + " seconds");
         tooltips.Add(AstralCooldownInfo);
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().AstralProject = true;
-        AstralCooldown = player.GetModPlayer<Players.ExxoBuffPlayer>().AstralCooldown;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().AstralProject = true;
+        AstralCooldown = player.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown;
     }
 }

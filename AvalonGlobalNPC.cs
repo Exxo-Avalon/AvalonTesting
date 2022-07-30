@@ -38,6 +38,7 @@ public class AvalonGlobalNPC : GlobalNPC
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,
         NPCID.HornetStingy,
     };
+    public static int BleedTime = 60 * 7;
 
     public static List<int> SHMMobs = new List<int>
     {
@@ -117,7 +118,10 @@ public class AvalonGlobalNPC : GlobalNPC
 
         return 0;
     }
+    public override void UpdateLifeRegen(NPC npc, ref int damage)
+    {
 
+    }
     /// <summary>
     ///     A method to choose a random Town NPC death messages.
     /// </summary>

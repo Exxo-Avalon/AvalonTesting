@@ -16,6 +16,7 @@ public class BuffEffects : ModHook
         On.Terraria.Projectile.FishingCheck_RollDropLevels += OnFishingCheckRollDropLevels;
         CommonCode.DropItemForEachInteractingPlayerOnThePlayer += OnDropItemForEachInteractingPlayerOnThePlayer;
         On.Terraria.Player.AddBuff += OnAddBuff;
+        On.Terraria.NPC.AddBuff += OnAddBuffNPC;
     }
 
     private static void OnAddBuff(On.Terraria.Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet = true, bool foodHack = false)
@@ -82,6 +83,35 @@ public class BuffEffects : ModHook
             }
         }
         orig(self, type, timeToAdd, quiet, foodHack);
+    }
+
+    private static void OnAddBuffNPC(On.Terraria.NPC.orig_AddBuff orig, NPC self, int type, int time, bool quiet = false)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (self.buffType[j] == type)
+            {
+                if (type == ModContent.BuffType<Buffs.Bleeding>())
+                {
+                    self.buffTime[j] += time;
+                    if (self.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks < 3)
+                    {
+                        self.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks++;
+                    }
+                    if (self.buffTime[j] > AvalonGlobalNPC.BleedTime)
+                    {
+                        self.buffTime[j] = AvalonGlobalNPC.BleedTime;
+                        return;
+                    }
+                }
+                else if (self.buffTime[j] < time)
+                {
+                    self.buffTime[j] = time;
+                }
+                return;
+            }
+        }
+        orig(self, type, time, quiet);
     }
 
     private static void OnFishingCheckRollDropLevels(
