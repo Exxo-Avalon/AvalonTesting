@@ -373,12 +373,9 @@ public class ExxoEquipEffectPlayer : ModPlayer
     {
         if (FrostGauntlet)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 1.7f);
-                Main.dust[d].noGravity = true;
-                Main.dust[d].velocity *= 2f;
-            }
+            int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 2.2f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 2f;
         }
     }
     public override void PostUpdateEquips()
