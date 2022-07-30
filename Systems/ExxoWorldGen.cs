@@ -5,6 +5,7 @@ using Avalon.Items.Placeable.Tile;
 using Avalon.Tiles;
 using Avalon.World.Passes;
 using Terraria;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -125,7 +126,11 @@ public class ExxoWorldGen : ModSystem
             WorldEvil = (EvilBiome)WorldGen.WorldGenParam_Evil;
         }
     }
-
+    public override void ModifyHardmodeTasks(List<GenPass> list)
+    {
+        int index = list.FindIndex(genpass => genpass.Name.Equals("Hardmode Good"));
+        list.Insert(index + 2, new PassLegacy("Hardmode snow ore generation", new WorldGenLegacyMethod(SnowHardMode.Method)));
+    }
     public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
     {
         GenPass currentPass;
