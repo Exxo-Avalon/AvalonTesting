@@ -52,6 +52,7 @@ internal class Shrines : GenPass
             var x10 = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
             var y6 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 300);
             if (q == 2) y6 = WorldGen.genRand.Next(WorldGen.lavaLine - 50, Main.maxTilesY - 250);
+            // causes making cave walls freeze somehow
             while (noTiles.Contains(Main.tile[x10, y6].TileType) || noWalls.Contains(Main.tile[x10, y6].WallType))
             {
                 if (x10 > (Main.maxTilesY / 2))

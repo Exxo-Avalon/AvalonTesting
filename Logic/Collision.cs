@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 
 namespace Avalon.Logic;
 
@@ -36,7 +37,7 @@ public static class Collision
             for (int j = num3; j < num4; j++)
             {
                 if (Main.tile[i, j] != null && !Main.tile[i, j].IsActuated && Main.tile[i, j].HasTile &&
-                    Main.tileSolid[Main.tile[i, j].TileType] && !Main.tileSolidTop[Main.tile[i, j].TileType])
+                    Main.tileSolid[Main.tile[i, j].TileType] && (!Main.tileSolidTop[Main.tile[i, j].TileType] || TileID.Sets.Platforms[Main.tile[i, j].TileType]))
                 {
                     Vector2 vector;
                     vector.X = i * 16;

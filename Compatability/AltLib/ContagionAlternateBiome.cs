@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
+using AltLibrary.Common.Systems;
 using AltLibrary.Core.Generation;
 using Avalon.Items.Placeable.Seed;
 using Avalon.Items.Weapons.Melee;
@@ -141,10 +142,12 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 if (dungeonSide < 0 && evilBiomePositionWestBound < 400)
                 {
                     evilBiomePositionWestBound = 400;
+                    evilBiomePosition = (evilBiomePositionEastBound - evilBiomePositionWestBound) / 2;
                 }
                 else if (dungeonSide > 0 && evilBiomePositionWestBound > Main.maxTilesX - 400)
                 {
                     evilBiomePositionWestBound = Main.maxTilesX - 400;
+                    evilBiomePosition = Main.maxTilesX - (evilBiomePositionEastBound - evilBiomePositionWestBound) / 2;
                 }
             }
             //DIFFERENCE 2 END
@@ -195,6 +198,28 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 JungleBoundMinX++;
                 JungleBoundMaxX--;
                 FoundEvilLocation = false;
+            }
+            bool thing = false;
+            for (int q = 100; q < Main.maxTilesY - 230; q++)
+            {
+                if (Main.tile[evilBiomePosition, q].TileType == TileID.JungleGrass || Main.tile[evilBiomePosition, q].TileType == ModContent.TileType<TropicalGrass>())
+                {
+                    thing = true;
+                    break;
+                }
+            }
+            if (thing)
+            {
+                if (evilBiomePosition > Main.maxTilesX / 2)
+                {
+                    evilBiomePosition--;
+                    FoundEvilLocation = false;
+                }
+                else if (evilBiomePosition < Main.maxTilesX / 2)
+                {
+                    evilBiomePosition++;
+                    FoundEvilLocation = false;
+                }
             }
         }
         GenerateEvil2(evilBiomePosition, evilBiomePositionWestBound, evilBiomePositionEastBound);
@@ -752,7 +777,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             }
         }
 
-        /*double num22 = Main.worldSurface + 40.0;
+        double num22 = Main.worldSurface + 40.0;
         for (int l = evilBiomePositionWestBound; l < evilBiomePositionEastBound; l++)
         {
             num22 += WorldGen.genRand.Next(-2, 3);
@@ -813,6 +838,13 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                         Main.tile[i2, num23].TileType = (ushort)ModContent.TileType<HardenedSnotsand>();
                     }
                 }
+                else
+                {
+                    if (Main.tile[i2, num23].WallType == WallID.DirtUnsafe)
+                    {
+                        Main.tile[i2, num23].WallType = (ushort)ModContent.WallType<Walls.ContagionGrassWall>();
+                    }
+                }
                 num23++;
             }
         }
@@ -865,7 +897,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                     flag5 = true;
                 }
             }
-        }*/
+        }
     }
     /// <summary>
     ///     A helper method to generate a tunnel using MakeCircle().

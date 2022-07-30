@@ -10,7 +10,7 @@ public class TropicalGrass : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(56, 215, 29));
+        AddMapEntry(new Color(115, 159, 57));
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;

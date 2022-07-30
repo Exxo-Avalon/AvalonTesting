@@ -66,12 +66,12 @@ public class BiomeBombs : ModTile
         else if (tile.TileFrameX >= 324 && tile.TileFrameX <= 376) typeC = 2;
         else if (tile.TileFrameX >= 378 && tile.TileFrameX <= 430) typeC = 7;
         BCBConvert(i, j, typeC, 75);
-        //WorldGen.KillTile(i, j, noItem: true);
         for (int x = i - 1; x <= i + 1; x++)
         {
             for (int y = j - 1; y <= j; y++)
             {
-                WorldGen.KillTile(x, y, noItem: true);
+                Tile t = Main.tile[x, y];
+                t.HasTile = false;
                 if (!Main.tile[x, y].HasTile && Main.netMode != NetmodeID.SinglePlayer)
                 {
                     NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, x, y);
@@ -124,12 +124,12 @@ public class BiomeBombs : ModTile
         else if (tile.TileFrameX >= 324 && tile.TileFrameX <= 376) typeC = 2;
         else if (tile.TileFrameX >= 378 && tile.TileFrameX <= 430) typeC = 7;
         BCBConvert(i, j, typeC, 75);
-        //WorldGen.KillTile(i, j, noItem: true);
         for (int x = i - 1; x <= i + 1; x++)
         {
             for (int y = j - 1; y <= j; y++)
             {
-                WorldGen.KillTile(x, y, noItem: true);
+                Tile t = Main.tile[x, y];
+                t.HasTile = false;
                 if (!Main.tile[x, y].HasTile && Main.netMode != NetmodeID.SinglePlayer)
                 {
                     NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, x, y);
