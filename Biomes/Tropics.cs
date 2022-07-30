@@ -10,7 +10,15 @@ public class Tropics : ModBiome
     public override SceneEffectPriority Priority => SceneEffectPriority.BiomeMedium;
     public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/TropicsWaterStyle");
     public override string BestiaryIcon => base.BestiaryIcon;
-    public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
+    public override int Music
+    {
+        get
+        {
+            if (Main.dayTime) return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
+            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/NightTropics");
+        }
+    }
+
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>
         ModContent.GetInstance<TropicsSurfaceBackground>();
