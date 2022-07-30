@@ -26,6 +26,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
     public int SlimeHitCounter { get; set; }
     public bool Slowed { get; set; }
     public int SpikeTimer { get; set; }
+    public bool Virulent { get; set; }
 
     public override void ResetEffects(NPC npc)
     {
@@ -33,6 +34,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
         Malaria = false;
         Electrified = false;
         Bleeding = false;
+        Virulent = false;
         BleedStacks = 1;
     }
     public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -92,6 +94,19 @@ public class AvalonGlobalNPCInstance : GlobalNPC
             if (damage < BleedStacks)
             {
                 damage = BleedStacks;
+            }
+        }
+        if (Virulent)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+
+            npc.lifeRegen -= 100;
+            if (damage < 10)
+            {
+                damage = 10;
             }
         }
     }
