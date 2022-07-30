@@ -26,6 +26,7 @@ class SolariumStaff : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 9f;
         Item.mana = 19;
+        Item.UseSound = SoundID.Item45;
         Item.rare = ItemRarityID.Cyan;
         Item.knockBack = 6f;
         Item.useTime = 36;
