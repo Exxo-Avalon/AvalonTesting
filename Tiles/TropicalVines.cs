@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +17,7 @@ public class TropicalVines : ModTile
         HitSound = SoundID.Grass;
         DustType = DustID.Grass;
 
-        AddMapEntry(new Color(45, 153, 26));
+        AddMapEntry(new Color(61, 100, 22));
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

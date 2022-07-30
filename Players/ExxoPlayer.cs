@@ -1024,7 +1024,20 @@ public class ExxoPlayer : ModPlayer
         {
             screenShakeTimer--;
         }
-
+        Vector2 pposTile = Player.Center / 16;
+        for (int xpos = (int)pposTile.X - 4; xpos <= (int)pposTile.X + 4; xpos++)
+        {
+            for (int ypos = (int)pposTile.Y - 4; ypos <= (int)pposTile.Y + 4; ypos++)
+            {
+                if (Main.tile[xpos, ypos].TileType == (ushort)ModContent.TileType<TritanoriumOre>() || Main.tile[xpos, ypos].TileType == (ushort)ModContent.TileType<PyroscoricOre>())
+                {
+                    if (!Player.GetModPlayer<ExxoEquipEffectPlayer>().LuckTome && !Player.GetModPlayer<ExxoEquipEffectPlayer>().BlahWings)
+                    {
+                        Player.AddBuff(ModContent.BuffType<Melting>(), 60);
+                    }
+                }
+            }
+        }
 
 
         if (Player.GetModPlayer<ExxoBiomePlayer>().ZoneFlight)
