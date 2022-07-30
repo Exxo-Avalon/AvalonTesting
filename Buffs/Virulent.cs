@@ -12,20 +12,9 @@ public class Virulent : ModBuff
         Description.SetDefault("Losing life and spreading infection");
         Main.debuff[Type] = true;
     }
-
-    public override void Update(Player player, ref int buffIndex)
-    {
-        if (player.lifeRegen > 0)
-        {
-            player.lifeRegen = 0;
-        }
-
-        player.lifeRegenTime = 0;
-        player.lifeRegen -= 16;
-    }
     public override void Update(NPC npc, ref int buffIndex)
     {
-        npc.lifeRegen -= 8;
+        npc.GetGlobalNPC<AvalonGlobalNPCInstance>().Virulent = true;
         for (int i = 0; i < Main.npc.Length; i++)
         {
             NPC n2 = Main.npc[i];
@@ -38,7 +27,7 @@ public class Virulent : ModBuff
             {
                 n2.AddBuff(Type, 540);
             }
-        }
+        } 
         if (Main.rand.NextBool(3))
         {
             int num10 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.PoisonStaff, 0f, 0f, 0, default, 1.8f);
