@@ -83,7 +83,7 @@ public class AvalonGlobalProjectile : GlobalProjectile
     public override void AI(Projectile projectile)
     {
         Player p = Main.player[projectile.owner];
-        if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
+        if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee && Main.rand.NextBool(5))
         {
             Rectangle hitbox = projectile.Hitbox;
             for (int i = 0; i < 2; i++)
