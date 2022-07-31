@@ -206,6 +206,7 @@ public abstract class Worm : ModNPC
     public bool tail;
     public int tailType;
     public float turnSpeed;
+    public bool snake;
 
     public override void AI()
     {
@@ -318,12 +319,11 @@ public abstract class Worm : ModNPC
             {
                 for (int num185 = num182; num185 < num183; num185++)
                 {
-                    if (Main.tile[num184, num185] != null && ((Main.tile[num184, num185].HasUnactuatedTile &&
-                                                               (Main.tileSolid[Main.tile[num184, num185].TileType] ||
-                                                                (Main.tileSolidTop
-                                                                     [Main.tile[num184, num185].TileType] &&
-                                                                 Main.tile[num184, num185].TileFrameY == 0))) ||
-                                                              Main.tile[num184, num185].LiquidAmount > 64))
+                    if (((Main.tile[num184, num185].HasUnactuatedTile &&
+                        (Main.tileSolid[Main.tile[num184, num185].TileType] ||
+                        (Main.tileSolidTop[Main.tile[num184, num185].TileType] &&
+                            Main.tile[num184, num185].TileFrameY == 0))) ||
+                        Main.tile[num184, num185].LiquidAmount > 64))
                     {
                         Vector2 vector17;
                         vector17.X = num184 * 16;
@@ -416,8 +416,8 @@ public abstract class Worm : ModNPC
             num191 *= num193;
             num192 *= num193;
             NPC.velocity = Vector2.Zero;
-            NPC.position.X = NPC.position.X + num191;
-            NPC.position.Y = NPC.position.Y + num192;
+            NPC.position.X += num191;
+            NPC.position.Y += num192;
             if (directional)
             {
                 if (num191 < 0f)
@@ -436,7 +436,7 @@ public abstract class Worm : ModNPC
             if (!flag18)
             {
                 NPC.TargetClosest();
-                NPC.velocity.Y = NPC.velocity.Y + 0.11f;
+                NPC.velocity.Y += 0.11f;
                 if (NPC.velocity.Y > num188)
                 {
                     NPC.velocity.Y = num188;
@@ -450,14 +450,14 @@ public abstract class Worm : ModNPC
                     }
                     else
                     {
-                        NPC.velocity.X = NPC.velocity.X + (num189 * 1.1f);
+                        NPC.velocity.X += (num189 * 1.1f);
                     }
                 }
                 else if (NPC.velocity.Y == num188)
                 {
                     if (NPC.velocity.X < num191)
                     {
-                        NPC.velocity.X = NPC.velocity.X + num189;
+                        NPC.velocity.X += num189;
                     }
                     else if (NPC.velocity.X > num191)
                     {
@@ -468,7 +468,7 @@ public abstract class Worm : ModNPC
                 {
                     if (NPC.velocity.X < 0f)
                     {
-                        NPC.velocity.X = NPC.velocity.X + (num189 * 0.9f);
+                        NPC.velocity.X += (num189 * 0.9f);
                     }
                     else
                     {
@@ -566,16 +566,16 @@ public abstract class Worm : ModNPC
                         {
                             if (NPC.velocity.X == 0f)
                             {
-                                NPC.velocity.X = NPC.velocity.X - NPC.direction;
+                                NPC.velocity.X -= NPC.direction;
                             }
 
-                            NPC.velocity.X = NPC.velocity.X * 1.1f;
+                            NPC.velocity.X *= 1.1f;
                         }
                         else
                         {
                             if (NPC.velocity.Y > -num188)
                             {
-                                NPC.velocity.Y = NPC.velocity.Y - num189;
+                                NPC.velocity.Y -= num189;
                             }
                         }
                     }
