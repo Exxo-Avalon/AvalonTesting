@@ -12,6 +12,7 @@ class PyroscoricRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Repeater");
+        Tooltip.SetDefault("Fires a burst of 3 arrows\nWooden arrows are converted into pyroscoric bolts, which do extra damage\n on the consecutive hits and explode.");
         SacrificeTotal = 1;
     }
 
@@ -32,9 +33,9 @@ class PyroscoricRepeater : ModItem
         Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.height = dims.Height;
         Item.consumeAmmoOnFirstShotOnly = true;
-        Item.reuseDelay = 14;
-        Item.useAnimation = 24;
-        Item.useTime = 8;
+        Item.reuseDelay = 15;
+        Item.useAnimation = 30;
+        Item.useTime = 10;
     }
 
     public override Vector2? HoldoutOffset()
@@ -44,6 +45,7 @@ class PyroscoricRepeater : ModItem
     public int HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
     public float NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
     public Vector2 shoothere;
+    public int HeyLookAtThatThingOverThereJustDontMakeItObviousBro = 0;
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -61,10 +63,12 @@ class PyroscoricRepeater : ModItem
         if(HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
         {
             shoothere = velocity;
+            HeyLookAtThatThingOverThereJustDontMakeItObviousBro = player.direction;
         }
         velocity = shoothere;
+        player.direction = HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
 
-        if(type == ProjectileID.WoodenArrowFriendly)
+        if (type == ProjectileID.WoodenArrowFriendly)
         {
             type = ModContent.ProjectileType<Projectiles.Ranged.PyroBolt>();
         }
