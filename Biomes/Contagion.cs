@@ -17,12 +17,7 @@ public class Contagion : ModBiome
     {
         get
         {
-            //if (Main.LocalPlayer.ZoneNormalUnderground || Main.LocalPlayer.ZoneNormalCaverns)
-            //{
-            //    return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion");
-            //}
-
-            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Contagion");
+            return Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Contagion") : MusicID.Crimson;
         }
     }
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle

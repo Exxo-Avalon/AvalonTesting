@@ -1,6 +1,7 @@
 using Avalon.Backgrounds;
 using Avalon.Players;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Biomes;
@@ -14,8 +15,9 @@ public class Tropics : ModBiome
     {
         get
         {
-            if (Main.dayTime) return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DayTropics");
-            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/NightTropics");
+            if (Main.dayTime)
+                return Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DayTropics") : MusicID.Jungle;
+            return Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/NightTropics") : MusicID.JungleNight;
         }
     }
 

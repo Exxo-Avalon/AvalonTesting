@@ -46,7 +46,7 @@ public class DesertBeak : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit28;
         NPC.DeathSound = SoundID.NPCDeath31;
-        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak");
+        Music = Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DesertBeak") : MusicID.Boss4;
         NPC.Center = player.Center + new Vector2(300, -600);
         transformed = false;
         NPC.scale = 1.3f;
