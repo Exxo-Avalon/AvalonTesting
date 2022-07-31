@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -19,6 +19,7 @@ public class BlahKnifeSplit : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.alpha = 255;
         Projectile.tileCollide = false;
+        Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
         Projectile.friendly = false;
         Projectile.hostile = false;

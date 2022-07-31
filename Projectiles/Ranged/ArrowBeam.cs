@@ -25,7 +25,7 @@ public class ArrowBeam : ModProjectile
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.MaxUpdates = 100;
-        Projectile.extraUpdates = 2;
+        Projectile.extraUpdates = 100;
         Projectile.timeLeft = 100;
         Projectile.damage = 0;
         Projectile.penetrate = -1;
