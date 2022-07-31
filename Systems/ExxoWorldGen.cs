@@ -205,8 +205,7 @@ public class ExxoWorldGen : ModSystem
     }
 
     public override void PostWorldGen() =>
-        JungleX =
-            (int)typeof(WorldGen).GetField("JungleX", BindingFlags.NonPublic | BindingFlags.Static)!.GetValue(null)!;
+        JungleX = WorldGen.JungleX;
 
     public override void SaveWorldData(TagCompound tag)
     {

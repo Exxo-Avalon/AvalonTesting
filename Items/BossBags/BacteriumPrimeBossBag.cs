@@ -18,6 +18,7 @@ public class BacteriumPrimeBossBag : ModItem
         Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         SacrificeTotal = 3;
         ItemID.Sets.BossBag[Type] = true;
+        ItemID.Sets.PreHardmodeLikeBossBag[Type] = true;
     }
 
     public override void SetDefaults()
@@ -35,21 +36,21 @@ public class BacteriumPrimeBossBag : ModItem
         return true;
     }
 
-    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    public override void ModifyItemLoot(ItemLoot itemLoot)
     {
-        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BacciliteOre>(), 1, 30, 43));
+        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Ore.PandemiteOre>(), 1, 30, 43));
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Booger>(), 1, 10, 21));
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BadgeOfBacteria>(), 1));
-    }*/
-
-    public override void OpenBossBag(Player player)
-    {
-        //player.TryGettingDevArmor();
-
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.PandemiteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Booger>(), Main.rand.Next(10, 20));
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BadgeOfBacteria>());
     }
 
-    public override int BossBagNPC => ModContent.NPCType<NPCs.BacteriumPrime>();
+    //public override void OpenBossBag(Player player)
+    //{
+    //    //player.TryGettingDevArmor();
+
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Ore.PandemiteOre>(), Main.rand.Next(15, 41) + Main.rand.Next(15, 41));
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Booger>(), Main.rand.Next(10, 20));
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BadgeOfBacteria>());
+    //}
+
+    //public override int BossBagNPC => ModContent.NPCType<NPCs.BacteriumPrime>();
 }

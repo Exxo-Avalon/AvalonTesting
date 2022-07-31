@@ -23,9 +23,9 @@ public class ContagionWorldGen : ModHook
 
     protected override void Apply()
     {
-        ModContent.GetInstance<GenPasses>().HookGenPassReset += ILGenPassReset;
-        ModContent.GetInstance<GenPasses>().HookGenPassAltars += ILGenPassAltars;
-        ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
+        //ModContent.GetInstance<GenPasses>().HookGenPassReset += ILGenPassReset;
+        //ModContent.GetInstance<GenPasses>().HookGenPassAltars += ILGenPassAltars;
+        //ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
     }
 
     private static void ILGenPassShinies(ILContext il)

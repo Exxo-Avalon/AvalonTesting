@@ -5,7 +5,6 @@ using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.Items.BossBags;
@@ -35,17 +34,17 @@ public class ArmageddonSlimeBossBag : ModItem
         return true;
     }
 
-    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    public override void ModifyItemLoot(ItemLoot itemLoot)
     {
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarkMatterSoilBlock>(), 1, 100, 211));
-    }*/
-
-    public override void OpenBossBag(Player player)
-    {
-        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
-
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DarkMatterSoilBlock>(), Main.rand.Next(100, 210));
     }
 
-    public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>();
+    //public override void OpenBossBag(Player player)
+    //{
+    //    player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
+
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<DarkMatterSoilBlock>(), Main.rand.Next(100, 210));
+    //}
+
+    //public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>();
 }

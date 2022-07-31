@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,35 +32,35 @@ public class MechastingBossBag : ModItem
         return true;
     }
 
-    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    public override void ModifyItemLoot(ItemLoot itemLoot)
     {
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofDelight>(), 1, 20, 41));
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Accessories.AIController>(), 1));
 
         itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Accessories.StingerPack>(),
             ModContent.ItemType<Weapons.Ranged.HeatSeeker>(), ModContent.ItemType<Weapons.Magic.Mechazapinator>() }));
-    }*/
-
-    public override void OpenBossBag(Player player)
-    {
-        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
-
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SoulofDelight>(), Main.rand.Next(20, 41));
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Items.Accessories.AIController>(), 1);
-        int rn = Main.rand.Next(4);
-        if (rn == 0)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Accessories.StingerPack>());
-        }
-        if (rn == 1)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Magic.Mechazapinator>());
-        }
-        if (rn == 2)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Ranged.HeatSeeker>());
-        }
     }
 
-    public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.Mechasting>();
+    //public override void OpenBossBag(Player player)
+    //{
+    //    player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
+
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SoulofDelight>(), Main.rand.Next(20, 41));
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Items.Accessories.AIController>(), 1);
+    //    int rn = Main.rand.Next(4);
+    //    if (rn == 0)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Accessories.StingerPack>());
+    //    }
+    //    if (rn == 1)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Magic.Mechazapinator>());
+    //    }
+    //    if (rn == 2)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<Weapons.Ranged.HeatSeeker>());
+    //    }
+    //}
+
+    //public override int BossBagNPC => ModContent.NPCType<NPCs.Bosses.Mechasting>();
 }

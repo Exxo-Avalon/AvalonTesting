@@ -1293,7 +1293,7 @@ public class ExxoPlayer : ModPlayer
 
     public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit,
                                  ref bool customDamage, ref bool playSound, ref bool genGore,
-                                 ref PlayerDeathReason damageSource) =>
+                                 ref PlayerDeathReason damageSource, ref int cooldownCounter) =>
         //if (Avalon.GodMode)
         //{
         //    return false;

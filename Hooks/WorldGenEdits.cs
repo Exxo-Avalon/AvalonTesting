@@ -24,7 +24,7 @@ public class WorldGenEdits : ModHook
 
     protected override void Apply()
     {
-        ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
+        //ModContent.GetInstance<GenPasses>().HookGenPassShinies += ILGenPassShinies;
         WorldGen.AddBuriedChest_int_int_int_bool_int_bool_ushort += AddAllAltarAlternativeChecks;
         WorldGen.Place3x2 += AddAllAltarAlternativeChecks;
         WorldGen.Check3x2 += ILCheck3X2;

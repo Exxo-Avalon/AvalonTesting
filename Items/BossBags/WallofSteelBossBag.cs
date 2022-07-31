@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Accessories;
+using Avalon.Items.Accessories;
 using Avalon.Items.Consumables;
 using Avalon.Items.Material;
 using Avalon.Items.Weapons.Magic;
@@ -39,7 +39,7 @@ public class WallofSteelBossBag : ModItem
         return true;
     }
 
-    /*public override void ModifyItemLoot(ItemLoot itemLoot)
+    public override void ModifyItemLoot(ItemLoot itemLoot)
     {
         itemLoot.Add(ItemDropRule.ByCondition(new DropConditions.NotUsedMechHeart(), ModContent.ItemType<MechanicalHeart>()));
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofBlight>(), 1, 40, 56));
@@ -47,37 +47,37 @@ public class WallofSteelBossBag : ModItem
 
         itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<FleshBoiler>(),
             ModContent.ItemType<MagicCleaver>(), ModContent.ItemType<BubbleBoost>() }));
-    }*/
-
-    public override void OpenBossBag(Player player)
-    {
-        player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
-
-        if ((player.extraAccessorySlots == 0 && !Main.expertMode) ||
-            (player.extraAccessorySlots == 1 && Main.expertMode))
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MechanicalHeart>());
-        }
-
-        int drop = Main.rand.Next(5);
-        if (drop == 0)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FleshBoiler>());
-        }
-
-        if (drop == 1)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MagicCleaver>());
-        }
-
-        if (drop == 2)
-        {
-            player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BubbleBoost>());
-        }
-
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SoulofBlight>(),
-            Main.rand.Next(40, 56));
-        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<HellsteelPlate>(),
-            Main.rand.Next(20, 31));
     }
+
+    //public override void OpenBossBag(Player player)
+    //{
+    //    player.TryGettingDevArmor(player.GetSource_OpenItem(Item.type));
+
+    //    if ((player.extraAccessorySlots == 0 && !Main.expertMode) ||
+    //        (player.extraAccessorySlots == 1 && Main.expertMode))
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MechanicalHeart>());
+    //    }
+
+    //    int drop = Main.rand.Next(5);
+    //    if (drop == 0)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<FleshBoiler>());
+    //    }
+
+    //    if (drop == 1)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<MagicCleaver>());
+    //    }
+
+    //    if (drop == 2)
+    //    {
+    //        player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<BubbleBoost>());
+    //    }
+
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<SoulofBlight>(),
+    //        Main.rand.Next(40, 56));
+    //    player.QuickSpawnItem(player.GetSource_OpenItem(Item.type), ModContent.ItemType<HellsteelPlate>(),
+    //        Main.rand.Next(20, 31));
+    //}
 }
