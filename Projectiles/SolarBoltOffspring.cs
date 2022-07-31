@@ -25,6 +25,7 @@ public class SolarBoltOffspring : ModProjectile
         Projectile.penetrate = 3;
         Projectile.light = 0.1f;
         Projectile.friendly = true;
+        Projectile.DamageType = DamageClass.Magic;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
 
@@ -55,11 +56,11 @@ public class SolarBoltOffspring : ModProjectile
 
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
-        target.AddBuff(BuffID.OnFire3, 120);
+        target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 120);
     }
     public override void OnHitPvp(Player target, int damage, bool crit)
     {
-        target.AddBuff(BuffID.OnFire3, 120);
+        target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 120);
     }
     public override void AI()
     {

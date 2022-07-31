@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,10 +32,22 @@ public class Inferno : ModBuff
             }
         }
 
-        if (Main.rand.NextBool(5))
+        if (Main.rand.NextBool(2))
         {
-            int num10 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Torch, 0f, 0f, 0, default, 1.8f);
+            int num10 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.InfernoFork, 0f, -2f, 0, default, 2f);
             Main.dust[num10].noGravity = true;
+            if (Main.rand.NextBool(10))
+            {
+                int num161 = Gore.NewGore(npc.GetSource_FromThis(), npc.position, new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-2f, 0f)),
+                    Main.rand.Next(61, 64));
+                Gore gore30 = Main.gore[num161];
+                Gore gore40 = gore30;
+                gore40.velocity *= 0.3f;
+                gore40.scale = Main.rand.NextFloat(0.5f, 1f);
+                gore40.alpha = 100;
+                Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
+                Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
+            }
         }
     }
 }

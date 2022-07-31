@@ -25,6 +25,7 @@ public class SolarBolt : ModProjectile
         Projectile.penetrate = 6;
         Projectile.light = 0.2f;
         Projectile.friendly = true;
+        Projectile.DamageType = DamageClass.Magic;
     }
 
     public override void AI()
@@ -60,7 +61,7 @@ public class SolarBolt : ModProjectile
     {
         if (Main.rand.NextBool(Projectile.penetrate + 1))
         {
-            target.AddBuff(BuffID.OnFire3, 180);
+            target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 120);
         }
         if(Projectile.penetrate == 2)
         {
@@ -71,7 +72,7 @@ public class SolarBolt : ModProjectile
     {
         if (Main.rand.NextBool(Projectile.penetrate + 1))
         {
-            target.AddBuff(BuffID.OnFire3, 180);
+            target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 120);
         }
         if (Projectile.penetrate == 2)
         {

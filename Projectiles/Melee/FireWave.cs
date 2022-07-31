@@ -28,6 +28,14 @@ public class FireWave : ModProjectile
         Projectile.penetrate = -1;
         DrawOffsetX = -24;
     }
+
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        if (Main.rand.NextBool(2, 3))
+        {
+            target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 120);
+        }
+    }
     public override void AI()
     {
         Projectile.alpha += 20;
