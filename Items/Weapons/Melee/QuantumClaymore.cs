@@ -30,9 +30,13 @@ public class QuantumClaymore : ModItem
         Item.useAnimation = 17;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item15;
-        Item.scale = 1.5f;
+        Item.scale = 1.2f;
         Item.shootSpeed = 10;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.QuantumBeam>();
+    }
+    public override Color? GetAlpha(Color lightColor)
+    {
+        return Color.White;
     }
     public override void AddRecipes()
     {

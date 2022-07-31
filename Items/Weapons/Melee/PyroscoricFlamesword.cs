@@ -27,7 +27,7 @@ class PyroscoricFlamesword : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.3f;
-        Item.rare = ModContent.RarityType<BlueRarity>();
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.useAnimation = 20;
@@ -52,9 +52,5 @@ class PyroscoricFlamesword : ModItem
             int num162 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, 0f, 0f, 0, default(Color), 2f);
             Main.dust[num162].noGravity = true;
         }
-    }
-    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
-    {
-        target.AddBuff(BuffID.Daybreak, 180);
     }
 }

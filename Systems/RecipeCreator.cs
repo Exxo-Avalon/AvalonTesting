@@ -712,7 +712,6 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
         Recipe.Create(ModContent.ItemType<UnvolanditeKunziteWaveStaff>())
-            .AddIngredient(ModContent.ItemType<SolariumStaff>())
             .AddIngredient(ModContent.ItemType<UnvolanditeBar>(), 15)
             .AddIngredient(ModContent.ItemType<Kunzite>(), 9)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
@@ -750,7 +749,6 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
         Recipe.Create(ModContent.ItemType<VorazylcumKunziteBoltStaff>())
-            .AddIngredient(ModContent.ItemType<SolariumStaff>())
             .AddIngredient(ModContent.ItemType<VorazylcumBar>(), 15)
             .AddIngredient(ModContent.ItemType<Kunzite>(), 9)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
