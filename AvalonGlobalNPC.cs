@@ -1495,13 +1495,17 @@ public class AvalonGlobalNPC : GlobalNPC
     internal static int[] Emblems;
     public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
     {
-        if (Avalon.ImkSushisMod != null && ModContent.GetInstance<DownedBossSystem>().DownedPhantasm)
+        if (Avalon.ImkSushisMod != null)
         {
-            npcLoot.RemoveWhere(
-                rule => rule is ItemDropWithConditionRule drop &&
+            List<IItemDropRule> rules = npcLoot.Get(false);
+            rules = rules.Where(x => x is ItemDropWithConditionRule drop &&
                 (drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("PostMartiansLootToken").Type ||
                 drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("PostPlanteraLootToken").Type ||
-                drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type));
+                drop.itemId == Avalon.ImkSushisMod.Find<ModItem>("HardmodeLootToken").Type)).ToList();
+            foreach (ItemDropWithConditionRule rule in rules)
+            {
+                rule.condition = new Combine(true, null, rule.condition, new PostPhantasmDrop());
+            }
         }
         var hardModeCondition = new HardmodeOnly();
         var preHardModeCondition = new Invert(hardModeCondition);
@@ -1900,18 +1904,18 @@ public class AvalonGlobalNPC : GlobalNPC
         if (Avalon.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
         {
             npcLoot.Add(ItemDropRule.ByCondition(
-                new PostPhantasmHellcastleDrop(),
+                new PostPhantasmHellcastleTokenDrop(),
                 ModContent.ItemType<HellcastleToken>(), 15));
             npcLoot.Add(ItemDropRule.ByCondition(
-                new SuperhardmodePreArmaDrop(),
+                new SuperhardmodePreArmaTokenDrop(),
                 ModContent.ItemType<SuperhardmodeToken>(), 15));
-            npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonDrop(), ModContent.ItemType<DarkMatterToken>(),
+            npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonTokenDrop(), ModContent.ItemType<DarkMatterToken>(),
                 15));
-            npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingDrop(), ModContent.ItemType<MechastingToken>(),
+            npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingTokenDrop(), ModContent.ItemType<MechastingToken>(),
                 15));
-            npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropics(), ModContent.ItemType<TropicsToken>(), 15));
+            npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropicsToken(), ModContent.ItemType<TropicsToken>(), 15));
             npcLoot.Add(ItemDropRule.ByCondition(
-                undergroundHardmodeContagionCondition,
+                new UndergroundHardmodeContagionTokenDrop(undergroundContagionCondition, hardModeCondition),
                 ModContent.ItemType<ContagionToken>(), 15));
         }
     }
