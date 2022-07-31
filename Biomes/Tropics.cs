@@ -14,7 +14,7 @@ public class Tropics : ModBiome
     {
         get
         {
-            if (Main.dayTime) return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics");
+            if (Main.dayTime) return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DayTropics");
             return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/NightTropics");
         }
     }

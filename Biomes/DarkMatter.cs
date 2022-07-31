@@ -8,7 +8,7 @@ namespace Avalon.Biomes;
 
 public class DarkMatter : ModBiome
 {
-    public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
+    public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
     public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/DarkMatterWaterStyle");
     public override string BestiaryIcon => base.BestiaryIcon;
     public override string BackgroundPath => base.BackgroundPath;
