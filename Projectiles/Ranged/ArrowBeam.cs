@@ -26,7 +26,7 @@ public class ArrowBeam : ModProjectile
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.MaxUpdates = 100;
         Projectile.extraUpdates = 100;
-        Projectile.timeLeft = 100;
+        Projectile.timeLeft = 300;
         Projectile.damage = 0;
         Projectile.penetrate = -1;
     }
@@ -95,7 +95,7 @@ public class ArrowBeam : ModProjectile
                 {
                     ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(p));
                 }
-                for (var num617 = 0; num617 < 4; num617++)
+                for (var num617 = 0; num617 < 1; num617++)
                 {
                     var value12 = Projectile.position;
                     value12 -= Projectile.velocity * num617 * 0.25f;
