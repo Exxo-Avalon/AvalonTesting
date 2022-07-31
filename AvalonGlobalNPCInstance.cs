@@ -27,6 +27,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
     public bool Slowed { get; set; }
     public int SpikeTimer { get; set; }
     public bool Virulent { get; set; }
+    public bool Inferno { get; set; }
 
     public override void ResetEffects(NPC npc)
     {
@@ -35,6 +36,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
         Electrified = false;
         Bleeding = false;
         Virulent = false;
+        Inferno = false;
         BleedStacks = 1;
     }
     public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -50,6 +52,19 @@ public class AvalonGlobalNPCInstance : GlobalNPC
             if (damage < 4)
             {
                 damage = 4;
+            }
+        }
+        if (Inferno)
+        {
+            if (npc.lifeRegen > 0)
+            {
+                npc.lifeRegen = 0;
+            }
+
+            npc.lifeRegen -= 40;
+            if (damage < 6)
+            {
+                damage = 6;
             }
         }
         if (NecroticDrain)

@@ -42,45 +42,40 @@ public class ArrowBeam : ModProjectile
         {
             if (Projectile.ai[0] > 9f)
             {
-                if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
-                    (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
+                if (Vector2.Distance(Projectile.position, p.position) < Vector2.Distance(p.GetModPlayer<ExxoPlayer>().MousePosition, p.position))
                 {
-                    if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
-                        (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
+                    if (Main.netMode != NetmodeID.SinglePlayer)
                     {
-                        if (Main.netMode != NetmodeID.SinglePlayer)
+                        ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(p));
+                    }
+                    for (var num617 = 0; num617 < 1; num617++)
+                    {
+                        var value12 = Projectile.position;
+                        value12 -= Projectile.velocity * num617 * 0.25f;
+                        Color c = Color.White;
+                        if (p.team == (int)Terraria.Enums.Team.Pink)
                         {
-                            ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(p));
+                            c = new Color(171, 59, 218);
                         }
-                        for (var num617 = 0; num617 < 1; num617++)
+                        else if (p.team == (int)Terraria.Enums.Team.Green)
                         {
-                            var value12 = Projectile.position;
-                            value12 -= Projectile.velocity * num617 * 0.25f;
-                            Color c = Color.White;
-                            if (p.team == (int)Terraria.Enums.Team.Pink)
-                            {
-                                c = new Color(171, 59, 218);
-                            }
-                            else if (p.team == (int)Terraria.Enums.Team.Green)
-                            {
-                                c = new Color(59, 218, 85);
-                            }
-                            else if (p.team == (int)Terraria.Enums.Team.Blue)
-                            {
-                                c = new Color(59, 149, 218);
-                            }
-                            else if (p.team == (int)Terraria.Enums.Team.Yellow)
-                            {
-                                c = new Color(218, 183, 59);
-                            }
-                            else if (p.team == (int)Terraria.Enums.Team.Red)
-                            {
-                                c = new Color(218, 59, 59);
-                            }
-                            Dust d = Dust.NewDustDirect(value12, 1, 1, ModContent.DustType<Dusts.PointingDust>(), 0f, 0f, 0, c, 1f);
-                            d.velocity *= 0.2f;
-                            d.noGravity = true;
+                            c = new Color(59, 218, 85);
                         }
+                        else if (p.team == (int)Terraria.Enums.Team.Blue)
+                        {
+                            c = new Color(59, 149, 218);
+                        }
+                        else if (p.team == (int)Terraria.Enums.Team.Yellow)
+                        {
+                            c = new Color(218, 183, 59);
+                        }
+                        else if (p.team == (int)Terraria.Enums.Team.Red)
+                        {
+                            c = new Color(218, 59, 59);
+                        }
+                        Dust d = Dust.NewDustDirect(value12, 1, 1, ModContent.DustType<Dusts.PointingDust>(), 0f, 0f, 0, c, 1f);
+                        d.velocity *= 0.2f;
+                        d.noGravity = true;
                     }
                 }
             }
@@ -92,8 +87,7 @@ public class ArrowBeam : ModProjectile
         Player p = Main.player[Projectile.owner];
         if (Projectile.ai[0] > 9f)
         {
-            if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X <= p.position.X) ||
-                (Projectile.position.X <= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X >= p.position.X))
+            if (Vector2.Distance(Projectile.position, p.position) < Vector2.Distance(p.GetModPlayer<ExxoPlayer>().MousePosition, p.position))
             {
                 if (Main.netMode != NetmodeID.SinglePlayer)
                 {
