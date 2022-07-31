@@ -76,9 +76,9 @@ public class BlahBeam : ModProjectile
         }
         return false;
     }
-    public float maxSpeed = 14f;
+    public float maxSpeed = 10f + Main.rand.NextFloat(10f);
     public float homeDistance = 600;
-    public float homeStrenght = 5f;
+    public float homeStrength = 5f;
     public float homeDelay;
     public override void AI()
     {
@@ -100,7 +100,7 @@ public class BlahBeam : ModProjectile
         {
             Vector2 target = Main.npc[closest].Center;
             float distance = Vector2.Distance(target, startPosition);
-            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrenght));
+            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
 
             Projectile.velocity += goTowards;
 
