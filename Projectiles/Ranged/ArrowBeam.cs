@@ -14,7 +14,6 @@ public class ArrowBeam : ModProjectile
     {
         DisplayName.SetDefault("Pointing Laser");
     }
-
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -55,7 +54,7 @@ public class ArrowBeam : ModProjectile
                         Color c = Color.White;
                         if (p.team == (int)Terraria.Enums.Team.Pink)
                         {
-                            c = Color.Pink; // new Color(171, 59, 218);
+                            c = new Color(171, 59, 218);
                         }
                         else if (p.team == (int)Terraria.Enums.Team.Green)
                         {
@@ -102,7 +101,7 @@ public class ArrowBeam : ModProjectile
                     Color c = Color.White;
                     if (p.team == (int)Terraria.Enums.Team.Pink)
                     {
-                        c = Color.Pink; // new Color(171, 59, 218);
+                        c = new Color(171, 59, 218);
                     }
                     else if (p.team == (int)Terraria.Enums.Team.Green)
                     {
