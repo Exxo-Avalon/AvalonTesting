@@ -1,6 +1,9 @@
+using Avalon.Network;
+using Avalon.Network.Handlers;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Projectiles.Ranged;
@@ -39,6 +42,10 @@ public class ArrowBeam : ModProjectile
             if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
                 (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
             {
+                if (Main.netMode != NetmodeID.SinglePlayer)
+                {
+                    ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(p));
+                }
                 for (var num617 = 0; num617 < 4; num617++)
                 {
                     var value12 = Projectile.position;
