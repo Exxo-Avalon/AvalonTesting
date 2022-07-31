@@ -17,7 +17,7 @@ public abstract class ExxoUIState : UIState
         base.Update(gameTime);
         if (IsMouseHovering)
         {
-            Main.LocalPlayer.cursorItemIconEnabled = !HideItemHoverIcon;
+            Main.LocalPlayer.cursorItemIconEnabled = Main.LocalPlayer.cursorItemIconEnabled && !HideItemHoverIcon;
             Main.LocalPlayer.mouseInterface = FocusInteractionsToUI;
             if (DisableRecipeScrolling)
             {

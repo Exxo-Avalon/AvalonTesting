@@ -16,13 +16,17 @@ public class ExxoUIText : ExxoUIAdapter<UIText>
     {
     }
 
-    protected ExxoUIText(UIText childBase) : base(childBase) =>
+    protected ExxoUIText(UIText childBase) : base(childBase)
+    {
         ChildBase.OnInternalTextChange += () =>
         {
             MinWidth = ChildBase.MinWidth;
             MinHeight = ChildBase.MinHeight;
             OnInternalTextChange?.Invoke(this, EventArgs.Empty);
         };
+        MinWidth = ChildBase.MinWidth;
+        MinHeight = ChildBase.MinHeight;
+    }
 
     public event EventHandler<EventArgs>? OnInternalTextChange;
 

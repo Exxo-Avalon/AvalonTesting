@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.GameInput;
+using Terraria.UI;
 
 namespace Avalon.UI;
 
@@ -119,8 +120,14 @@ internal class ExxoUINumberInput : ExxoUIList
 
         for (int i = 0; i < amountNumbers; i++)
         {
-            var num = new ExxoUITextPanel("") { Width = textSize.MinWidth };
-            num.Height.Pixels = textSize.MinHeight.Pixels * 2;
+            var num = new ExxoUITextPanel("");
+            num.TextElement.OnInternalTextChange += (_, _) =>
+            {
+                num.MinWidth = textSize.MinWidth;
+                num.MinHeight.Pixels = textSize.MinHeight.Pixels * 2;
+            };
+            num.TextElement.VAlign = UIAlign.Center;
+            num.TextElement.HAlign = UIAlign.Center;
             Append(num);
             numbers[i] = num;
         }
