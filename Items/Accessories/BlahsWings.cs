@@ -53,6 +53,7 @@ internal class BlahsWings : ModItem
             player.GetModPlayer<ExxoEquipEffectPlayer>().HeartGolem =
                 player.GetModPlayer<ExxoEquipEffectPlayer>().EthHeart =
                     player.GetModPlayer<ExxoPlayer>().longInvince2 = true;
+        player.buffImmune[ModContent.BuffType<Buffs.Melting>()] = true;
         player.wingTime = 1000;
         if (player.immune)
         {

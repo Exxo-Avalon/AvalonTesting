@@ -18,8 +18,8 @@ public class TropicalSlime : ModNPC
 
     public override void SetDefaults()
     {
-        NPC.SetDefaults(NPCID.BlueSlime);
         NPC.damage = 19;
+        NPC.alpha = 175;
         NPC.lifeMax = 60;
         NPC.defense = 1;
         NPC.width = 36;
