@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxBacteriumPrime : ModItem
     {
         DisplayName.SetDefault("Music Box (Bacterium Prime)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/BacteriumPrime"), ModContent.ItemType<MusicBoxBacteriumPrime>(), ModContent.TileType<Tiles.MusicBoxes>(), 36);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/BacteriumPrime"), ModContent.ItemType<MusicBoxBacteriumPrime>(), ModContent.TileType<Tiles.MusicBoxes>(), 36);
     }
 
     public override void SetDefaults()

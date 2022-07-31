@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxPhantasm : ModItem
     {
         DisplayName.SetDefault("Music Box (Phantasm)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Phantasm"), ModContent.ItemType<MusicBoxPhantasm>(), ModContent.TileType<Tiles.MusicBoxes>(), 216);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Phantasm"), ModContent.ItemType<MusicBoxPhantasm>(), ModContent.TileType<Tiles.MusicBoxes>(), 216);
     }
 
     public override void SetDefaults()

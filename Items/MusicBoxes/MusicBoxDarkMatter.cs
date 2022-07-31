@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxDarkMatter : ModItem
     {
         DisplayName.SetDefault("Music Box (Dark Matter)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DarkMatter"), ModContent.ItemType<MusicBoxDarkMatter>(), ModContent.TileType<Tiles.MusicBoxes>(), 252);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DarkMatter"), ModContent.ItemType<MusicBoxDarkMatter>(), ModContent.TileType<Tiles.MusicBoxes>(), 252);
     }
 
     public override void SetDefaults()

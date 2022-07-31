@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxUndergroundContagion : ModItem
     {
         DisplayName.SetDefault("Music Box (Underground Contagion)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion"), ModContent.ItemType<MusicBoxUndergroundContagion>(), ModContent.TileType<Tiles.MusicBoxes>(), 144);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/UndergroundContagion"), ModContent.ItemType<MusicBoxUndergroundContagion>(), ModContent.TileType<Tiles.MusicBoxes>(), 144);
     }
 
     public override void SetDefaults()

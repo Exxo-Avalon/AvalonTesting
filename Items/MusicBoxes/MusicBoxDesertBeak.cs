@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxDesertBeak : ModItem
     {
         DisplayName.SetDefault("Music Box (Desert Beak)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DesertBeak"), ModContent.ItemType<MusicBoxDesertBeak>(), ModContent.TileType<Tiles.MusicBoxes>(), 108);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DesertBeak"), ModContent.ItemType<MusicBoxDesertBeak>(), ModContent.TileType<Tiles.MusicBoxes>(), 108);
     }
 
     public override void SetDefaults()

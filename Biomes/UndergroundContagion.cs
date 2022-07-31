@@ -16,7 +16,7 @@ public class UndergroundContagion : ModBiome
     {
         get
         {
-            return MusicLoader.GetMusicSlot(Mod, "Sounds/Music/UndergroundContagion");
+            return Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/UndergroundContagion") : MusicID.UndergroundCrimson;
         }
     }
 

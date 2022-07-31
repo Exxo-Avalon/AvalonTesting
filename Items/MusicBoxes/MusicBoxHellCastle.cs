@@ -11,7 +11,8 @@ class MusicBoxHellCastle : ModItem
     {
         DisplayName.SetDefault("Music Box (Hellcastle)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Hellcastle"), ModContent.ItemType<MusicBoxHellCastle>(), ModContent.TileType<Tiles.MusicBoxes>(), 288);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Hellcastle"), ModContent.ItemType<MusicBoxHellCastle>(), ModContent.TileType<Tiles.MusicBoxes>(), 288);
     }
 
     public override void SetDefaults()

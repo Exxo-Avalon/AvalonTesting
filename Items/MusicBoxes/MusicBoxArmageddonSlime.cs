@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxArmageddonSlime : ModItem
     {
         DisplayName.SetDefault("Music Box (Armageddon Slime)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ArmageddonSlime"), ModContent.ItemType<MusicBoxArmageddonSlime>(), ModContent.TileType<Tiles.MusicBoxes>(), 72);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/ArmageddonSlime"), ModContent.ItemType<MusicBoxArmageddonSlime>(), ModContent.TileType<Tiles.MusicBoxes>(), 72);
     }
 
     public override void SetDefaults()

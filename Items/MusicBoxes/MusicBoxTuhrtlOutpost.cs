@@ -11,7 +11,8 @@ class MusicBoxTuhrtlOutpost : ModItem
     {
         DisplayName.SetDefault("Music Box (Tuhrtl Outpost)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/TuhrtlOutpost"), ModContent.ItemType<MusicBoxTuhrtlOutpost>(), ModContent.TileType<Tiles.MusicBoxes>(), 324);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/TuhrtlOutpost"), ModContent.ItemType<MusicBoxTuhrtlOutpost>(), ModContent.TileType<Tiles.MusicBoxes>(), 324);
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +11,8 @@ class MusicBoxTropics : ModItem
     {
         DisplayName.SetDefault("Music Box (Tropics)");
         SacrificeTotal = 1;
-        MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Tropics"), ModContent.ItemType<MusicBoxTropics>(), ModContent.TileType<Tiles.MusicBoxes>(), 180);
+        if (Avalon.MusicMod != null)
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Tropics"), ModContent.ItemType<MusicBoxTropics>(), ModContent.TileType<Tiles.MusicBoxes>(), 180);
     }
 
     public override void SetDefaults()
