@@ -40,12 +40,12 @@ public class ArrowBeam : ModProjectile
 
         if (Main.netMode != NetmodeID.SinglePlayer)
         {
-            if (Projectile.ai[0] > 30f)
+            if (Projectile.ai[0] > 9f)
             {
-                if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
+                if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
                     (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
                 {
-                    if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
+                    if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
                         (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
                     {
                         if (Main.netMode != NetmodeID.SinglePlayer)
@@ -90,10 +90,10 @@ public class ArrowBeam : ModProjectile
     {
         Projectile.ai[0]++;
         Player p = Main.player[Projectile.owner];
-        if (Projectile.ai[0] > 30f)
+        if (Projectile.ai[0] > 9f)
         {
-            if ((Projectile.position.X > p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X < p.position.X) ||
-                (Projectile.position.X < p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X > p.position.X))
+            if ((Projectile.position.X >= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X <= p.position.X) ||
+                (Projectile.position.X <= p.GetModPlayer<ExxoPlayer>().MousePosition.X && Projectile.position.X >= p.position.X))
             {
                 if (Main.netMode != NetmodeID.SinglePlayer)
                 {
@@ -122,7 +122,7 @@ public class ArrowBeam : ModProjectile
                     {
                         c = new Color(218, 183, 59);
                     }
-                    else if (p.team == (int)Terraria.Enums.Team.Red)
+                    else if (p.team == (int)Terraria.Enums.Team.Red || Main.netMode == NetmodeID.SinglePlayer)
                     {
                         c = new Color(218, 59, 59);
                     }

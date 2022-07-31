@@ -20,7 +20,7 @@ public class Inferno : ModBuff
         for (int i = 0; i < Main.npc.Length; i++)
         {
             NPC N2 = Main.npc[i];
-            if (N2.townNPC || N2.friendly)
+            if (N2.townNPC || N2.friendly || N2.whoAmI == npc.whoAmI)
             {
                 continue;
             }
