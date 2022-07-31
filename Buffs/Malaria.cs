@@ -1,6 +1,7 @@
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Avalon.Buffs;
@@ -35,6 +36,10 @@ public class Malaria : ModBuff
             }
             player.statLife -= amt;
             CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.LifeRegen, amt, dramatic: false, dot: true);
+            if (player.statLife <= 0)
+            {
+                player.KillMe(PlayerDeathReason.ByCustomReason(" was bitten by a mosquito."), 10, 0);
+            }
         }
         player.lifeRegenTime = 0;
         if (player.buffTime[buffIndex] == 0)

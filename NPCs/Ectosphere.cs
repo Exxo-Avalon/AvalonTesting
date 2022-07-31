@@ -30,7 +30,7 @@ public class Ectosphere : ModNPC
         NPC.aiStyle = -1;
         NPC.value = 20000f;
         NPC.height = 46;
-        NPC.knockBackResist = 0.5f;
+        NPC.knockBackResist = 0.05f;
         NPC.HitSound = SoundID.NPCHit36;
         NPC.DeathSound = SoundID.NPCDeath39;
         Banner = NPC.type;

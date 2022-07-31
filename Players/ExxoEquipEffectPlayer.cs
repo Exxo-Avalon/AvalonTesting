@@ -379,6 +379,31 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Main.dust[d].noGravity = true;
             Main.dust[d].velocity *= 2f;
         }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            int rn = Main.rand.Next(5);
+            switch (rn)
+            {
+                case 0:
+                    rn = DustID.Poisoned;
+                    break;
+                case 1:
+                    rn = DustID.IceTorch;
+                    break;
+                case 2:
+                    rn = DustID.Torch;
+                    break;
+                case 3:
+                    rn = DustID.VenomStaff;
+                    break;
+                case 4:
+                    rn = DustID.IchorTorch;
+                    break;
+            }
+            int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, rn, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 2.2f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 2f;
+        }
     }
     public override void PostUpdateEquips()
     {

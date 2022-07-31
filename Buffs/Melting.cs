@@ -1,6 +1,7 @@
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Avalon.Buffs;
@@ -27,6 +28,10 @@ public class Melting : ModBuff
         {
             player.statLife -= 4;
             CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.LifeRegen, 4, dramatic: false, dot: true);
+            if (player.statLife <= 0)
+            {
+                player.KillMe(PlayerDeathReason.ByCustomReason(" melted away."), 10, 0);
+            }
         }
         player.lifeRegenTime = 0;
         player.GetModPlayer<ExxoBuffPlayer>().Melting = true;

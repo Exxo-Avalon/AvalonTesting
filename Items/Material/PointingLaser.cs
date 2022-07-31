@@ -22,7 +22,7 @@ class PointingLaser : ModItem
         Item.useTime = 15;
         Item.autoReuse = true;
         Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.ArrowBeam>();
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 6f;
         Item.width = dims.Width;
         Item.channel = true;
         Item.useStyle = ItemUseStyleID.Shoot;
