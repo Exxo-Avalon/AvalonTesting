@@ -1330,22 +1330,6 @@ public class AvalonWorld : ModSystem
             if (Main.tile[num5, num6].TileType == ModContent.TileType<Ickgrass>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
-                //if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
-                //    !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                //    WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())
-                //{
-                //    WorldGen.PlaceTile(num5, num9, ModContent.TileType<ContagionShortGrass>(), true);
-                //    Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 11) * 18);
-                //    if (Main.tile[num5, num9].HasTile)
-                //    {
-                //        Tile t = Main.tile[num5, num9];
-                //        t.TileColor = Main.tile[num5, num6].TileColor;
-                //    }
-                //    if (Main.netMode == NetmodeID.Server && Main.tile[num5, num9].HasTile)
-                //    {
-                //        NetMessage.SendTileSquare(-1, num5, num9, 1);
-                //    }
-                //}
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
                     WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())

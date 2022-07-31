@@ -1,4 +1,4 @@
-﻿using Avalon.Buffs;
+using Avalon.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -39,7 +39,10 @@ public class PlatinumDaggerStaff : ModItem
         Item.buffType = ModContent.BuffType<PlatinumDagger>();
         Item.shoot = ModContent.ProjectileType<Projectiles.Summon.PlatinumDagger>();
     }
-
+    public override bool CanUseItem(Player player)
+    {
+        return (player.ownedProjectileCounts[Item.shoot] < player.maxMinions);
+    }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {

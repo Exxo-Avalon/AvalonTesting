@@ -24,6 +24,7 @@ public class SolarBolt : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.penetrate = 6;
         Projectile.light = 0.2f;
+        Projectile.friendly = true;
     }
 
     public override void AI()

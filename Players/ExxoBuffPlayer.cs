@@ -20,13 +20,13 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AccLavaMerman;
     public bool AdvancedBattle;
     public bool AdvancedCalming;
-    
+
 
     public bool Unloaded;
     public bool BrokenWeaponry;
     public bool Electrified;
-    
-    
+
+
     public int DeleriumCount;
     public int FracturingArmorLastRecord;
     public int FracturingArmorLevel;
@@ -38,7 +38,7 @@ public class ExxoBuffPlayer : ModPlayer
     public bool DarkInferno;
     public bool NoSticky;
     public int OldFallStart;
-    
+
     public int TimeSlowCounter;
 
     public bool SkyBlessing;
@@ -48,6 +48,7 @@ public class ExxoBuffPlayer : ModPlayer
     private bool lavaMerman;
     public float DaggerStaffRotation { get; set; }
     public float StingerProbeRotation { get; set; }
+    public float ReflectorStaffRotation { get; set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
 
@@ -111,6 +112,7 @@ public class ExxoBuffPlayer : ModPlayer
     {
         StingerProbeRotation = (StingerProbeRotation % MathHelper.TwoPi) + 0.01f;
         DaggerStaffRotation = (DaggerStaffRotation % MathHelper.TwoPi) + 0.01f;
+        ReflectorStaffRotation = (ReflectorStaffRotation % MathHelper.TwoPi) + 0.01f;
         if (Player.active)
         {
             FrameCount++;
