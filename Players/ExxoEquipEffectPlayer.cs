@@ -40,6 +40,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool SlimeBand;
     public bool CobOmegaShield;
     public bool PallOmegaShield;
+    public bool DuraOmegaShield;
     public bool TrapImmune;
     public bool ConfusionTal;
     public bool VampireTeeth;
@@ -110,8 +111,9 @@ public class ExxoEquipEffectPlayer : ModPlayer
         BloodyWhetstone = false;
         BadgeOfBacteria = false;
         AstralProject = false;
-
-
+        DuraOmegaShield = false;
+        BlahWings = false;
+        LuckTome = false;
         HyperMagic = false;
         HyperMelee = false;
         HyperRanged = false;
@@ -384,6 +386,40 @@ public class ExxoEquipEffectPlayer : ModPlayer
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
+
+        #region royal gel avalon fix
+        for (int i = 3; i < Player.armor.Length; i++)
+        {
+            if (Player.armor[i].type == ItemID.RoyalGel)
+            {
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.CopperSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TinSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.BronzeSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.IronSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.LeadSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.NickelSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.SilverSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TungstenSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.ZincSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.GoldSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.PlatinumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.BismuthSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.RhodiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.OsmiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.IridiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.CobaltSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.PalladiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.DurantiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.MythrilSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.OrichalcumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.NaquadahSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.AdamantiteSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TitaniumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TroxiniumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.DarkMatterSlime>()] = true;
+            }
+        }
+        #endregion royal gel avalon fix
 
         #region inertia boots/blah's wings
         if (InertiaBoots || BlahWings)

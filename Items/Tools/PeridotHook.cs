@@ -24,7 +24,7 @@ class PeridotHook : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 7f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.PeridotHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.PeridotHook>();
         Item.value = Item.sellPrice(0, 0, 54, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;

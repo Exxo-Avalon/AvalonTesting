@@ -21,11 +21,9 @@ public class ExxoBuffPlayer : ModPlayer
     public bool AdvancedBattle;
     public bool AdvancedCalming;
 
-
     public bool Unloaded;
     public bool BrokenWeaponry;
     public bool Electrified;
-
 
     public int DeleriumCount;
     public int FracturingArmorLastRecord;
@@ -51,8 +49,6 @@ public class ExxoBuffPlayer : ModPlayer
     public float ReflectorStaffRotation { get; set; }
     public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
-
-    
 
     public override void Load()
     {
@@ -93,7 +89,6 @@ public class ExxoBuffPlayer : ModPlayer
     {
         AdvancedBattle = false;
         AdvancedCalming = false;
-        
         Lucky = false;
         Malaria = false;
         Melting = false;
@@ -201,78 +196,45 @@ public class ExxoBuffPlayer : ModPlayer
         {
             return;
         }
-        
     }
-    public override void UpdateBadLifeRegen()
+    public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
     {
-        if (DarkInferno)
+        if (Malaria)
         {
-            if (Player.lifeRegen > 0)
-            {
-                Player.lifeRegen = 0;
-            }
-            Player.lifeRegenTime = 0;
-            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Main.rand.NextBool(6))
-            {
-                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 6 : 4;
-            }
-            else
-            {
-                Player.lifeRegen -= 16;
-            }
-        }
-        if (CaesiumPoison)
-        {
-            if (Player.lifeRegen > 0)
-            {
-                Player.lifeRegen = 0;
-            }
-            Player.lifeRegenTime = 0;
-            if (Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Main.rand.NextBool(6))
-            {
-                Player.lifeRegen += Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>()) ? 3 : 2;
-            }
-            else
-            {
-                Player.lifeRegen -= 20;
-            }
+            damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was bitten by a mosquito.");
         }
         if (Melting)
         {
-            if (Player.lifeRegen > 0)
-            {
-                Player.lifeRegen = 0;
-            }
-
-            Player.lifeRegenTime = 0;
-            Player.lifeRegen -= 32;
+            damageSource = PlayerDeathReason.ByCustomReason(Player.name + " melted away.");
         }
-        if (Malaria)
+        if (DarkInferno)
         {
-            if (Player.lifeRegen > 0)
-            {
-                Player.lifeRegen = 0;
-            }
-
-            Player.lifeRegenTime = 0;
-            Player.lifeRegen -= 30;
+            damageSource = PlayerDeathReason.ByCustomReason(Player.name + " withered away in the dark flames.");
         }
+        if (Electrified)
+        {
+            damageSource = PlayerDeathReason.ByCustomReason(Player.name + " had an electrifying personality.");
+        }
+        return true;
+    }
+    public override void UpdateBadLifeRegen()
+    {
         if (Electrified)
         {
             if (Player.lifeRegen > 0)
             {
                 Player.lifeRegen = 0;
             }
-            Player.lifeRegenTime = 0;
-            int minus = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumShield>()) ? 4 :
-                Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 6 : 8;
-            int minus2 = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>())
-                ? 16 : Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 24 : 32;
-            Player.lifeRegen -= minus;
-            if (Player.velocity.X != 0)
-            {
-                Player.lifeRegen -= minus2;
-            }
+            //Player.lifeRegenTime = 0;
+            //int minus = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumShield>()) ? 4 :
+            //    Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 6 : 8;
+            //int minus2 = Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield && Player.HasItemInArmor(ModContent.ItemType<Items.Accessories.DurataniumOmegaShield>())
+            //    ? 16 : Player.GetModPlayer<ExxoEquipEffectPlayer>().DuraShield ? 24 : 32;
+            //Player.lifeRegen -= minus;
+            //if (Player.velocity.X != 0)
+            //{
+            //    Player.lifeRegen -= minus2;
+            //}
         }
     }
 

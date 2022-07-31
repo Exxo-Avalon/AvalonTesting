@@ -30,6 +30,7 @@ class DurataniumOmegaShield : ModItem
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CobShield = true;
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().PallShield = true;
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DuraShield = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DuraOmegaShield = true;
         player.noKnockback = true;
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().SpikeImmune = true;
     }

@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Projectiles;
+namespace Avalon.Projectiles.Tools;
 
 internal class QuadHook : ModProjectile
 {
@@ -204,7 +204,7 @@ internal class QuadHook : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        Asset<Texture2D> texture = ModContent.Request<Texture2D>("Avalon/Projectiles/QuadHook_Chain");
+        Asset<Texture2D> texture = ModContent.Request<Texture2D>("Avalon/Projectiles/Tools/QuadHook_Chain");
 
         Vector2 position = Projectile.Center;
         Vector2 mountedCenter = Main.player[Projectile.owner].MountedCenter;

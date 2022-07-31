@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Projectiles;
+namespace Avalon.Projectiles.Tools;
 
 public class OnyxHook : ModProjectile
 {

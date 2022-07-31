@@ -78,7 +78,6 @@ public class ExxoPlayer : ModPlayer
         bloodCast = false;
         magnet = false;
         darkInferno = false;
-        melting = false;
         dragonsBondage = false;
         necroticAura = false;
         defDebuff = false;
@@ -107,12 +106,6 @@ public class ExxoPlayer : ModPlayer
         reflectorMinion = false;
         iceGolem = false;
         caesiumPoison = false;
-        goldDagger = false;
-        platinumDagger = false;
-        bismuthDagger = false;
-        adamantiteDagger = false;
-        titaniumDagger = false;
-        troxiniumDagger = false;
         UltraHMinion = false;
         UltraRMinion = false;
         UltraLMinion = false;
@@ -120,12 +113,6 @@ public class ExxoPlayer : ModPlayer
         ReckoningBonus = false;
         bonusKB = 1f;
         miniArma = false;
-
-        //if (shmAcc)
-        //{
-        //    Player.extraAccessory = true;
-        //    Player.extraAccessorySlots++;
-        //}
 
         CritDamageMult = 1f;
 
@@ -178,43 +165,6 @@ public class ExxoPlayer : ModPlayer
 
             Player.GetDamage(DamageClass.Melee) += (1f - Player.stealth) * 0.4f;
             Player.GetCritChance(DamageClass.Melee) += (int)((1f - Player.stealth) * 8f);
-            Player.GetDamage(DamageClass.Ranged) += (1f - Player.stealth) * 0.6f;
-            Player.GetCritChance(DamageClass.Ranged) += (int)((1f - Player.stealth) * 10f);
-            Player.aggro -= (int)((1f - Player.stealth) * 750f);
-            if (Player.stealthTimer > 0)
-            {
-                Player.stealthTimer--;
-            }
-        }
-        else if (armorStealth)
-        {
-            if (Player.itemAnimation > 0)
-            {
-                Player.stealthTimer = 5;
-            }
-
-            if (Player.velocity.X > -0.1 && Player.velocity.X < 0.1 && Player.velocity.Y > -0.1 &&
-                Player.velocity.Y < 0.1)
-            {
-                if (Player.stealthTimer == 0)
-                {
-                    Player.stealth -= 0.015f;
-                    if (Player.stealth < 0.0)
-                    {
-                        Player.stealth = 0f;
-                    }
-                }
-            }
-            else
-            {
-                float num24 = Math.Abs(Player.velocity.X) + Math.Abs(Player.velocity.Y);
-                Player.stealth += num24 * 0.0075f;
-                if (Player.stealth > 1f)
-                {
-                    Player.stealth = 1f;
-                }
-            }
-
             Player.GetDamage(DamageClass.Ranged) += (1f - Player.stealth) * 0.6f;
             Player.GetCritChance(DamageClass.Ranged) += (int)((1f - Player.stealth) * 10f);
             Player.aggro -= (int)((1f - Player.stealth) * 750f);
@@ -2787,7 +2737,6 @@ public class ExxoPlayer : ModPlayer
     // buff stuff
     public bool beeRepel = false;
     public bool lucky;
-    public bool melting;
     public bool enemySpawns2;
     public int crimsonCount = 0;
     public bool darkInferno;
@@ -2807,12 +2756,6 @@ public class ExxoPlayer : ModPlayer
     public bool gastroMinion;
     public bool hungryMinion;
     public bool iceGolem;
-    public bool goldDagger;
-    public bool platinumDagger;
-    public bool bismuthDagger;
-    public bool adamantiteDagger;
-    public bool titaniumDagger;
-    public bool troxiniumDagger;
     public bool primeMinion;
 
     public bool reflectorMinion;

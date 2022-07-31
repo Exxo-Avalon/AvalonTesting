@@ -23,7 +23,7 @@ class TourmalineHook : ModItem
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 20;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TourmalineHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.TourmalineHook>();
         Item.value = Item.sellPrice(0, 0, 54, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;

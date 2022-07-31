@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Projectiles;
+namespace Avalon.Projectiles.Tools;
 
 public class ZirconHook : ModProjectile
 {
@@ -29,7 +29,7 @@ public class ZirconHook : ModProjectile
     }
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("Avalon/Projectiles/ZirconHook_Chain");
+        var texture = ModContent.Request<Texture2D>("Avalon/Projectiles/Tools/ZirconHook_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

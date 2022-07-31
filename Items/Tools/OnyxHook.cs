@@ -25,7 +25,7 @@ class OnyxHook : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 25f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.OnyxHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.OnyxHook>();
         Item.value = Item.sellPrice(0, 9, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
