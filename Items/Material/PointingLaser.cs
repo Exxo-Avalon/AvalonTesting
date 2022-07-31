@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +11,7 @@ class PointingLaser : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pointing Laser");
-        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\nCan be pointed");
+        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\nCan be pointed\nBeam changes color based on your team");
         SacrificeTotal = 25;
         Item.staff[Item.type] = true;
     }
@@ -30,5 +31,31 @@ class PointingLaser : ModItem
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;
+    }
+    public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+    {
+        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Material/PointingLaser_Glow").Value;
+        Color c = Color.White;
+        if (Main.LocalPlayer.team == (int)Terraria.Enums.Team.Red || Main.netMode == NetmodeID.SinglePlayer)
+        {
+            c = new Color(218, 59, 59);
+        }
+        if (Main.LocalPlayer.team == (int)Terraria.Enums.Team.Yellow)
+        {
+            c = new Color(218, 183, 59);
+        }
+        if (Main.LocalPlayer.team == (int)Terraria.Enums.Team.Green)
+        {
+            c = new Color(59, 218, 85);
+        }
+        if (Main.LocalPlayer.team == (int)Terraria.Enums.Team.Blue)
+        {
+            c = new Color(59, 149, 218);
+        }
+        if (Main.LocalPlayer.team == (int)Terraria.Enums.Team.Pink)
+        {
+            c = new Color(171, 59, 218);
+        }
+        spriteBatch.Draw(texture, position, frame, c, 0f, origin, scale, SpriteEffects.None, 0f);
     }
 }
