@@ -33,8 +33,8 @@ class CorruptedBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type, 3)
-            .AddIngredient(ModContent.ItemType<Tile.WickedShard>(), 2)
-            .AddIngredient(ModContent.ItemType<Tile.HallowedOre>(), 12)
+            .AddIngredient(ModContent.ItemType<Material.WickedShard>(), 2)
+            .AddIngredient(ModContent.ItemType<Ore.HallowedOre>(), 12)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
             .Register();
     }

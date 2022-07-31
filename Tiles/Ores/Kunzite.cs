@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -18,7 +18,7 @@ public class Kunzite : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Kunzite>();
+        ItemDrop = ModContent.ItemType<Items.Material.Kunzite>();
         HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.PinkFairy;

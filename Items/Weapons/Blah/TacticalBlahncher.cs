@@ -46,7 +46,7 @@ internal class TacticalBlahncher : ModItem
     }
 
     public override void AddRecipes() => CreateRecipe()
-        .AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 45)
+        .AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 45)
         .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40)
         .AddIngredient(ModContent.ItemType<SoulofTorture>(), 45).AddIngredient(ModContent.ItemType<TacticalExpulsor>())
         .AddIngredient(ItemID.RocketLauncher).AddIngredient(ItemID.GrenadeLauncher).AddIngredient(ItemID.Stynger)

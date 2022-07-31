@@ -30,7 +30,7 @@ class KunziteStoneBlock : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Kunzite>())
+            .AddIngredient(ModContent.ItemType<Material.Kunzite>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.HeavyWorkBench)
             .AddCondition(Recipe.Condition.InGraveyardBiome)

@@ -1,4 +1,6 @@
-﻿using Terraria;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,12 +18,12 @@ public class ReflectorStaff : ModItem
     {
         Item.useStyle = 1;
         Item.shootSpeed = 14f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Reflector>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Summon.Reflector>();
         Item.damage = 120;
         Item.width = 38;
         Item.height = 36;
         Item.UseSound = SoundID.Item44;
-        //item.buffType = ModContent.BuffType<Buffs.Reflector>();
+        Item.buffType = ModContent.BuffType<Buffs.Reflector>();
         Item.useAnimation = 30;
         Item.useTime = 30;
         Item.noMelee = true;
@@ -31,5 +33,16 @@ public class ReflectorStaff : ModItem
         Item.DamageType = DamageClass.Summon;
         Item.mana = 30;
         //item.buffTime = 3600;
+    }
+    public override bool CanUseItem(Player player)
+    {
+        return (player.ownedProjectileCounts[Item.shoot] < player.maxMinions);
+    }
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
+                               int type, int damage, float knockback)
+    {
+        player.AddBuff(Item.buffType, 2);
+        player.SpawnMinionOnCursor(source, player.whoAmI, type, damage, knockback);
+        return false;
     }
 }

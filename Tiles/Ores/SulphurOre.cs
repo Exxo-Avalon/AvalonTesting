@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,7 +14,7 @@ public class SulphurOre : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Sulphur>();
+        ItemDrop = ModContent.ItemType<Items.Material.Sulphur>();
         HitSound = SoundID.Tink;
         DustType = DustID.Enchanted_Gold;
     }

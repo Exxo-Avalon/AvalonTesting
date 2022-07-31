@@ -20,7 +20,7 @@ public class NaquadahOre : ModTile
         Main.tileOreFinderPriority[Type] = 635;
         Main.tileShine2[Type] = true;
         Main.tileShine[Type] = 900;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.NaquadahOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.NaquadahOre>();
         HitSound = SoundID.Tink;
         MinPick = 110;
         DustType = ModContent.DustType<NaquadahDust>();

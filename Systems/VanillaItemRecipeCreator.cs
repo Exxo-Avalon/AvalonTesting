@@ -1,5 +1,6 @@
 using Avalon.Items.Accessories;
 using Avalon.Items.Material;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Items.Weapons.Throw;
@@ -198,5 +199,29 @@ public class VanillaItemRecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<Barfbush>())
             .AddIngredient(ModContent.ItemType<YuckyBit>())
             .AddTile(TileID.Bottles).Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ItemID.LightsBane)
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ItemID.BloodButcherer)
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
+
+        Recipe.Create(ItemID.NightsEdge)
+            .AddIngredient(ModContent.ItemType<Snotsabre>())
+            .AddIngredient(ItemID.Muramasa)
+            .AddIngredient(ModContent.ItemType<InsectoidBlade>())
+            .AddIngredient(ItemID.FieryGreatsword)
+            .AddTile(TileID.DemonAltar)
+            .Register();
     }
 }

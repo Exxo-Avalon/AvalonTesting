@@ -31,7 +31,7 @@ class NickelBrick : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<NickelOre>())
+            .AddIngredient(ModContent.ItemType<Ore.NickelOre>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();

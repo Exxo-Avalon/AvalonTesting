@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Items.Banners;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Projectiles;
@@ -30,7 +30,7 @@ public class Ectosphere : ModNPC
         NPC.aiStyle = -1;
         NPC.value = 20000f;
         NPC.height = 46;
-        NPC.knockBackResist = 0.5f;
+        NPC.knockBackResist = 0.05f;
         NPC.HitSound = SoundID.NPCHit36;
         NPC.DeathSound = SoundID.NPCDeath39;
         Banner = NPC.type;
@@ -54,7 +54,7 @@ public class Ectosphere : ModNPC
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.Common(ItemID.Ectoplasm, 1, 2, 5));
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Phantoplasm>(), 4, 3, 6));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Material.Phantoplasm>(), 4, 3, 6));
     }
 
     public override void AI()

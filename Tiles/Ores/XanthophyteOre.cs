@@ -21,7 +21,7 @@ public class XanthophyteOre : ModTile
         Main.tileOreFinderPriority[Type] = 705;
         Main.tileMerge[Type][ModContent.TileType<Loam>()] = true;
         Main.tileMerge[ModContent.TileType<Loam>()][Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.XanthophyteOre>();
         HitSound = SoundID.Tink;
         DustType = DustID.Confetti_Yellow;
         MinPick = 200;

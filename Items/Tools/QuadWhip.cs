@@ -24,7 +24,7 @@ class QuadWhip : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 7f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.QuadHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.QuadHook>();
         Item.value = Item.sellPrice(0, 12, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;

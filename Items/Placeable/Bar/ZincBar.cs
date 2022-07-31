@@ -32,7 +32,7 @@ class ZincBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.ZincOre>(), 4)
+            .AddIngredient(ModContent.ItemType<Ore.ZincOre>(), 4)
             .AddTile(TileID.Furnaces)
             .Register();
     }

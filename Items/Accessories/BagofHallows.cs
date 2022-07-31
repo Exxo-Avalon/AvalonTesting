@@ -39,7 +39,7 @@ internal class BagofHallows : ModItem
             .AddIngredient(ItemID.HallowedBar, 15)
             .AddIngredient(ItemID.PixieDust, 10)
             .AddIngredient(ItemID.UnicornHorn, 2)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.SacredShard>(), 2)
+            .AddIngredient(ModContent.ItemType<Material.SacredShard>(), 2)
             .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void UpdateVanity(Player player)

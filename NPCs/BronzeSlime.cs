@@ -1,4 +1,5 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Tile;
 using Terraria;
 using Terraria.GameContent.Bestiary;

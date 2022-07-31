@@ -230,7 +230,7 @@ public class AvalonWorld : ModSystem
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Opal>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Opal>());
         }
 
         // onyx
@@ -238,7 +238,7 @@ public class AvalonWorld : ModSystem
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
-            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Onyx>());
+            WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4), (ushort)ModContent.TileType<Tiles.Ores.Onyx>());
         }
 
         // kunzite
@@ -247,7 +247,7 @@ public class AvalonWorld : ModSystem
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 200);
             WorldGen.OreRunner(x, y, Main.rand.Next(4, 7), Main.rand.Next(1, 4),
-                (ushort)ModContent.TileType<Kunzite>());
+                (ushort)ModContent.TileType<Tiles.Ores.Kunzite>());
         }
 
         // primordial ore
@@ -1330,22 +1330,6 @@ public class AvalonWorld : ModSystem
             if (Main.tile[num5, num6].TileType == ModContent.TileType<Ickgrass>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
-                //if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
-                //    !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                //    WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())
-                //{
-                //    WorldGen.PlaceTile(num5, num9, ModContent.TileType<ContagionShortGrass>(), true);
-                //    Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 11) * 18);
-                //    if (Main.tile[num5, num9].HasTile)
-                //    {
-                //        Tile t = Main.tile[num5, num9];
-                //        t.TileColor = Main.tile[num5, num6].TileColor;
-                //    }
-                //    if (Main.netMode == NetmodeID.Server && Main.tile[num5, num9].HasTile)
-                //    {
-                //        NetMessage.SendTileSquare(-1, num5, num9, 1);
-                //    }
-                //}
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
                     WorldGen.genRand.NextBool(5) && num14 == ModContent.TileType<Ickgrass>())
@@ -1532,13 +1516,16 @@ public class AvalonWorld : ModSystem
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<TropicalShortGrass>(), true);
                     Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 8) * 18);
-                    if (WorldGen.genRand.NextBool(30))
+                    if (num9 > Main.rockLayer)
                     {
-                        Main.tile[num5, num9].TileFrameX = 18 * 8; // shroom cap
-                    }
-                    else if (WorldGen.genRand.NextBool(110))
-                    {
-                        Main.tile[num5, num9].TileFrameX = 18 * 9; // nature's gift
+                        if (WorldGen.genRand.NextBool(60))
+                        {
+                            Main.tile[num5, num9].TileFrameX = 18 * 8; // shroom cap
+                        }
+                        else if (WorldGen.genRand.NextBool(230))
+                        {
+                            Main.tile[num5, num9].TileFrameX = 18 * 9; // nature's gift
+                        }
                     }
                     if (Main.tile[num5, num9].HasTile)
                     {

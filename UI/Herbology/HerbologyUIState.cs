@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Avalon.Data;
 using Avalon.Items.Potions;
 using Avalon.Players;
@@ -310,17 +310,13 @@ public class HerbologyUIState : ExxoUIState
         if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Master)
         {
-            items.Add(ItemID.SuperHealingPotion);
-            items.Add(ItemID.SuperManaPotion);
-            items.Add(ModContent.ItemType<SuperStaminaPotion>());
+            items.AddRange(HerbologyData.SuperRestorationIDs);
         }
 
         if (Main.LocalPlayer.GetModPlayer<ExxoHerbologyPlayer>().Tier >=
             ExxoHerbologyPlayer.HerbTier.Expert)
         {
-            items.Add(ItemID.HealingPotion);
-            items.Add(ItemID.ManaPotion);
-            items.Add(ModContent.ItemType<StaminaPotion>());
+            items.AddRange(HerbologyData.RestorationIDs);
         }
 
         items.AddRange(displayElixirs ? HerbologyData.ElixirIds : HerbologyData.PotionIds);

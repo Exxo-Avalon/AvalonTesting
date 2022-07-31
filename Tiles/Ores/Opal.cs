@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,7 +14,7 @@ public class Opal : ModTile
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Opal>();
+        ItemDrop = ModContent.ItemType<Items.Material.Opal>();
         Main.tileSpelunker[Type] = true;
         Main.tileMerge[TileID.Stone][Type] = true;
         Main.tileMerge[Type][TileID.Stone] = true;

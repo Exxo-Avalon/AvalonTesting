@@ -25,7 +25,7 @@ class OnyxHook : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 25f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.OnyxHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.OnyxHook>();
         Item.value = Item.sellPrice(0, 9, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
@@ -35,7 +35,7 @@ class OnyxHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 20)
+            .AddIngredient(ModContent.ItemType<Material.Onyx>(), 20)
             .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,6 +28,6 @@ class TroxiniumBrick : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<TroxiniumOre>()).AddIngredient(ItemID.StoneBlock).AddTile(TileID.Furnaces).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Ore.TroxiniumOre>()).AddIngredient(ItemID.StoneBlock).AddTile(TileID.Furnaces).Register();
     }
 }

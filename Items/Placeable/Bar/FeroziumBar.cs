@@ -33,7 +33,7 @@ class FeroziumBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.FeroziumOre>(), 5)
+            .AddIngredient(ModContent.ItemType<Ore.FeroziumOre>(), 5)
             .AddTile(TileID.AdamantiteForge).Register();
     }
 }

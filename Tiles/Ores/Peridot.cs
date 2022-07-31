@@ -12,7 +12,7 @@ public class Peridot : ModTile
     {
         AddMapEntry(Color.Lime, LanguageManager.Instance.GetText("Peridot"));
         Main.tileSolid[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Peridot>();
+        ItemDrop = ModContent.ItemType<Items.Material.Peridot>();
         Main.tileBlockLight[Type] = true;
         Main.tileSpelunker[Type] = true;
         Main.tileMerge[Type][TileID.Stone] = true;

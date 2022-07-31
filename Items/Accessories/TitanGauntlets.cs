@@ -50,7 +50,7 @@ class TitanGauntlets : ModItem
         {
             player.AddBuff(62, 5, true);
         }
-        player.GetModPlayer<Players.ExxoBuffPlayer>().FrostGauntlet = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().FrostGauntlet = true;
         player.kbGlove = true;
         player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.GetDamage(DamageClass.Melee) += 0.1f;

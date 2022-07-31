@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +18,7 @@ public class Impvines : ModTile
         DustType = DustID.Torch;
         TileID.Sets.IsVine[Type] = true;
         TileID.Sets.VineThreads[Type] = true;
-        AddMapEntry(new Color(238, 102, 70));
+        AddMapEntry(new Color(214, 91, 64));
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

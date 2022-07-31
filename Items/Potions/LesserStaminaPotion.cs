@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -32,7 +32,7 @@ class LesserStaminaPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Placeable.Tile.Boltstone>()).AddIngredient(ItemID.Cactus, 2).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Boltstone>()).AddIngredient(ItemID.Cactus, 2).AddTile(TileID.Bottles).Register();
     }
     public override bool CanUseItem(Player player)
     {

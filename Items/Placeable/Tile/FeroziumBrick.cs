@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,6 +28,6 @@ class FeroziumBrick : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<FeroziumOre>()).AddIngredient(ItemID.IceBlock).AddTile(TileID.Furnaces).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Ore.FeroziumOre>()).AddIngredient(ItemID.IceBlock).AddTile(TileID.Furnaces).Register();
     }
 }

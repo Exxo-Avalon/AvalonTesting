@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,7 +26,7 @@ class BerserkerCuisses : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BerserkerBar>(), 17).AddIngredient(ModContent.ItemType<AncientLeggings>()).AddIngredient(ModContent.ItemType<Placeable.Tile.Onyx>(), 15).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BerserkerBar>(), 17).AddIngredient(ModContent.ItemType<AncientLeggings>()).AddIngredient(ModContent.ItemType<Material.Onyx>(), 15).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
     public override void UpdateEquip(Player player)
     {

@@ -19,6 +19,7 @@ public class SoulsinaBottle : ModTile
         Main.tileNoAttach[Type] = false;
         Main.tileFrameImportant[Type] = true;
         TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);
+        TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.addTile(Type);
         DustType = DustID.Glass;
     }

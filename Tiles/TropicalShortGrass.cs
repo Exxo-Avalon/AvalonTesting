@@ -28,22 +28,23 @@ public class TropicalShortGrass : ModTile
         TileObjectData.addTile(Type);
         DustType = ModContent.DustType<Dusts.TropicalDust>();
         HitSound = SoundID.Grass;
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
-        AddMapEntry(new Color(58, 188, 32));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
+        AddMapEntry(new Color(82, 123, 35));
         var name = CreateMapEntryName();
         name.SetDefault("Tropical Shroom");
         AddMapEntry(new Color(277, 41, 75), name);
+        AddMapEntry(new Color(76, 150, 216));
     }
-    //public override ushort GetMapOption(int i, int j)
-    //{
-    //    return (ushort)(Main.tile[i, j].TileFrameX / 18);
-    //}
+    public override ushort GetMapOption(int i, int j)
+    {
+        return (ushort)(Main.tile[i, j].TileFrameX / 18);
+    }
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
         if (Main.tile[i, j].TileFrameX / 18 == 8)

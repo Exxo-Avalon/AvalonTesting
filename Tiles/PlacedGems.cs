@@ -36,19 +36,19 @@ public class PlacedGems : ModTile
         switch (Main.tile[i, j].TileFrameX / 18)
         {
             case 0:
-                toDrop = ModContent.ItemType<Items.Placeable.Tile.Opal>();
+                toDrop = ModContent.ItemType<Items.Material.Opal>();
                 break;
             case 1:
-                toDrop = ModContent.ItemType<Items.Placeable.Tile.Onyx>();
+                toDrop = ModContent.ItemType<Items.Material.Onyx>();
                 break;
             case 2:
-                toDrop = ModContent.ItemType<Items.Placeable.Tile.Kunzite>();
+                toDrop = ModContent.ItemType<Items.Material.Kunzite>();
                 break;
             case 3:
-                toDrop = ModContent.ItemType<Items.Placeable.Tile.Tourmaline>();
+                toDrop = ModContent.ItemType<Items.Material.Tourmaline>();
                 break;
             case 4:
-                toDrop = ModContent.ItemType<Items.Placeable.Tile.Peridot>();
+                toDrop = ModContent.ItemType<Items.Material.Peridot>();
                 break;
             case 5:
                 toDrop = ModContent.ItemType<Items.Material.Zircon>();

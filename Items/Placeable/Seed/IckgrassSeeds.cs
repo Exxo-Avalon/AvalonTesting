@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,6 +28,6 @@ class IckgrassSeeds : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(2).AddIngredient(ItemID.GrassSeeds, 2).AddIngredient(ModContent.ItemType<Tile.ChunkstoneBlock>(), 5).AddIngredient(ModContent.ItemType<Tile.PandemiteOre>(), 3).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
+        CreateRecipe(2).AddIngredient(ItemID.GrassSeeds, 2).AddIngredient(ModContent.ItemType<Tile.ChunkstoneBlock>(), 5).AddIngredient(ModContent.ItemType<Ore.PandemiteOre>(), 3).AddIngredient(ItemID.Seed, 8).AddTile(ModContent.TileType<Tiles.SeedFabricator>()).Register();
     }
 }

@@ -56,7 +56,7 @@ public class CaesiumSeekerHead : CaesiumSeekerWorm
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.DownedAllMechBosses(), ModContent.ItemType<CaesiumOre>(), 10, 2, 5));
+        npcLoot.Add(ItemDropRule.ByCondition(new Conditions.DownedAllMechBosses(), ModContent.ItemType<Items.Ore.CaesiumOre>(), 10, 2, 5));
     }
     public override void HitEffect(int hitDirection, double damage)
     {

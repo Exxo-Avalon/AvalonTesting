@@ -25,7 +25,7 @@ class SolariumStar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.SolariumOre>(), 2)
+            .AddIngredient(ModContent.ItemType<Ore.SolariumOre>(), 2)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
     }
 }

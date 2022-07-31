@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,6 +37,6 @@ class MagmafrostBolt : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<FreezeBolt>()).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 50).AddIngredient(ItemID.LivingFireBlock, 40).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<FreezeBolt>()).AddIngredient(ModContent.ItemType<Material.DragonScale>(), 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 50).AddIngredient(ItemID.LivingFireBlock, 40).AddTile(TileID.MythrilAnvil).Register();
     }
 }

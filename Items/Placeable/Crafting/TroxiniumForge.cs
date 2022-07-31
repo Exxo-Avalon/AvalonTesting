@@ -32,7 +32,7 @@ class TroxiniumForge : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.TroxiniumOre>(), 30)
+            .AddIngredient(ModContent.ItemType<Ore.TroxiniumOre>(), 30)
             .AddIngredient(ItemID.Hellforge)
             .AddTile(TileID.MythrilAnvil).Register();
     }

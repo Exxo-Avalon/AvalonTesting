@@ -2,7 +2,7 @@
 
 namespace Avalon.UI;
 
-internal class ExxoUITextPanel : ExxoUIPanel
+public class ExxoUITextPanel : ExxoUIPanel
 {
     public ExxoUITextPanel(string text, float textScale = 1f, bool large = false) : this(new ExxoUIText(text, textScale,
         large))

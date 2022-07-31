@@ -20,7 +20,7 @@ class BlahsHeadguard : ModItem
         Item.defense = 100;
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
         Item.width = dims.Width;
-        Item.value = Item.sellPrice(2, 0, 0, 0);
+        Item.value = Item.sellPrice(2);
         Item.height = dims.Height;
     }
     public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -31,7 +31,7 @@ class BlahsHeadguard : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor = true;
-        player.setBonus = "Melee Stealth, Ranged Stealth, Attackers also take double full damage, and Spectre Heal";
+        player.setBonus = "Melee and Ranged Stealth, Attackers also take double full damage, and Spectre Heal and Silence";
         player.Avalon().meleeStealth = true;
         player.shroomiteStealth = true;
         player.Avalon().doubleDamage = true;

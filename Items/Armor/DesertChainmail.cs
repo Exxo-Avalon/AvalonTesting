@@ -34,7 +34,7 @@ class DesertChainmail : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 100)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.Beak>(), 5)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 2)
             .AddIngredient(ItemID.GoldChainmail)
@@ -42,7 +42,7 @@ class DesertChainmail : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 100)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.Beak>(), 5)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 5)
             .AddIngredient(ItemID.PlatinumChainmail)
@@ -50,7 +50,7 @@ class DesertChainmail : ModItem
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.SandBlock, 100)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.Beak>(), 5)
             .AddIngredient(ItemID.AntlionMandible, 2)
             .AddIngredient(ItemID.Topaz, 2)
             .AddIngredient(ModContent.ItemType<BismuthChainmail>())

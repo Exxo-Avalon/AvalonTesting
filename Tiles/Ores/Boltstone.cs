@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,7 +17,7 @@ public class Boltstone : ModTile
         Main.tileShine[Type] = 775;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Boltstone>();
+        ItemDrop = ModContent.ItemType<Items.Material.Boltstone>();
         HitSound = SoundID.Tink;
         DustType = DustID.GreenTorch;
     }

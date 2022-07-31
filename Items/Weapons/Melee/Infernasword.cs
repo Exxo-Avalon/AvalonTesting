@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,6 +34,6 @@ class Infernasword : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.EnchantedSword).AddIngredient(ItemID.LivingFireBlock, 100).AddIngredient(ItemID.SoulofMight, 16).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 7).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe(1).AddIngredient(ItemID.EnchantedSword).AddIngredient(ItemID.LivingFireBlock, 100).AddIngredient(ItemID.SoulofMight, 16).AddIngredient(ModContent.ItemType<Material.DragonScale>(), 7).AddTile(TileID.MythrilAnvil).Register();
     }
 }

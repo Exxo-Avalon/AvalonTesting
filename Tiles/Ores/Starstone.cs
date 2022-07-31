@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -17,7 +17,7 @@ public class Starstone : ModTile
         Main.tileShine[Type] = 775;
         Main.tileSpelunker[Type] = true;
         Main.tileBlockLight[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Starstone>();
+        ItemDrop = ModContent.ItemType<Items.Material.Starstone>();
         HitSound = SoundID.Tink;
         DustType = DustID.BlueTorch;
     }

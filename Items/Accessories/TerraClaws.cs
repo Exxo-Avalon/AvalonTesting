@@ -27,7 +27,7 @@ class TerraClaws : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().TerraClaws = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().TerraClaws = true;
         player.GetDamage(DamageClass.Melee) += 0.1f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.autoReuseGlove = true;

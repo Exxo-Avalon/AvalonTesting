@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -23,6 +23,7 @@ public class GuardianHammer : ModProjectile
         Projectile.penetrate = -1;
         Projectile.ignoreWater = true;
         Projectile.tileCollide = true;
+        Projectile.DamageType = DamageClass.Melee;
         Projectile.MaxUpdates = 2;
         AIType = 301;
     }

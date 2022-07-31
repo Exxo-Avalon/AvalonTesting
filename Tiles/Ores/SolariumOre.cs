@@ -19,7 +19,7 @@ public class SolariumOre : ModTile
         Main.tileSpelunker[Type] = true;
         Main.tileOreFinderPriority[Type] = 730;
         Main.tileShine[Type] = 1150;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.SolariumOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.SolariumOre>();
         HitSound = SoundID.Tink;
         MinPick = 210;
         DustType = DustID.SolarFlare;

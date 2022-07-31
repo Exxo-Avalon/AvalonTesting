@@ -46,7 +46,7 @@ class XanthophyteHat : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.XanthophyteBar>(), 12)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.VenomShard>())
+            .AddIngredient(ModContent.ItemType<Material.VenomShard>())
             .AddTile(TileID.MythrilAnvil)
             .Register();
     }

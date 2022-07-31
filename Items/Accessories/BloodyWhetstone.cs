@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -27,6 +27,6 @@ internal class BloodyWhetstone : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().BloodyWhetstone = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().BloodyWhetstone = true;
     }
 }

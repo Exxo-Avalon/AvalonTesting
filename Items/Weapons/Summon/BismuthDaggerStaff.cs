@@ -1,4 +1,4 @@
-﻿using Avalon.Buffs;
+using Avalon.Buffs;
 using Avalon.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -40,7 +40,10 @@ public class BismuthDaggerStaff : ModItem
         Item.buffType = ModContent.BuffType<BismuthDagger>();
         Item.shoot = ModContent.ProjectileType<Projectiles.Summon.BismuthDagger>();
     }
-
+    public override bool CanUseItem(Player player)
+    {
+        return (player.ownedProjectileCounts[Item.shoot] < player.maxMinions);
+    }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity,
                                int type, int damage, float knockback)
     {

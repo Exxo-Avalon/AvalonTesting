@@ -1,4 +1,4 @@
-﻿using Avalon.Logic;
+using Avalon.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -83,6 +83,6 @@ public class Terraspin : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<DevilsScythe>()).AddIngredient(ModContent.ItemType<TheGoldenFlames>()).AddIngredient(ItemID.RazorbladeTyphoon).AddIngredient(ModContent.ItemType<Material.BrokenVigilanteTome>()).AddIngredient(ModContent.ItemType<Placeable.Tile.DragonScale>(), 5).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<DevilsScythe>()).AddIngredient(ModContent.ItemType<TheGoldenFlames>()).AddIngredient(ItemID.RazorbladeTyphoon).AddIngredient(ModContent.ItemType<Material.BrokenVigilanteTome>()).AddIngredient(ModContent.ItemType<Material.DragonScale>(), 5).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }

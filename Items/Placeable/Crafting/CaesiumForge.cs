@@ -34,17 +34,17 @@ class CaesiumForge : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.AdamantiteForge)
-            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Ore.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
 
         Recipe.Create(Type)
             .AddIngredient(ItemID.TitaniumForge)
-            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Ore.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
 
         Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<TroxiniumForge>())
-            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 40)
+            .AddIngredient(ModContent.ItemType<Ore.CaesiumOre>(), 40)
             .AddTile(TileID.MythrilAnvil).Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,7 +40,7 @@ class TourmalineRobe : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Robe).AddIngredient(ModContent.ItemType<Placeable.Tile.Tourmaline>(), 10).AddTile(TileID.Loom).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Robe).AddIngredient(ModContent.ItemType<Material.Tourmaline>(), 10).AddTile(TileID.Loom).Register();
     }
     public override void UpdateArmorSet(Player player)
     {

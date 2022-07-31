@@ -23,6 +23,7 @@ public static class Projectile
         ProjectileID.StickyGlowstick,
         ProjectileID.WaterGun,
         ProjectileID.SlimeGun,
+        ProjectileID.SandnadoHostile,
         ModContent.ProjectileType<Ghostflame>(),
         ModContent.ProjectileType<WallofSteelLaser>(),
         ModContent.ProjectileType<ElectricBolt>(),

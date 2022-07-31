@@ -23,7 +23,7 @@ class TourmalineHook : ModItem
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 20;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TourmalineHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.TourmalineHook>();
         Item.value = Item.sellPrice(0, 0, 54, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
@@ -32,7 +32,7 @@ class TourmalineHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Tourmaline>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.Tourmaline>(), 15)
             .AddTile(TileID.Anvils).Register();
     }
 }

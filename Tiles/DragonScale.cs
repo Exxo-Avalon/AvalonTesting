@@ -13,7 +13,7 @@ public class DragonScale : ModTile
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.DragonScale>();
+        ItemDrop = ModContent.ItemType<Items.Material.DragonScale>();
         DustType = DustID.MagicMirror;
     }
 }

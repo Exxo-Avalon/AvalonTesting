@@ -2,13 +2,14 @@ using Avalon.Backgrounds;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Biomes;
 
 public class DarkMatter : ModBiome
 {
-    public override SceneEffectPriority Priority => SceneEffectPriority.BiomeHigh;
+    public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
     public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/DarkMatterWaterStyle");
     public override string BestiaryIcon => base.BestiaryIcon;
     public override string BackgroundPath => base.BackgroundPath;
@@ -17,7 +18,7 @@ public class DarkMatter : ModBiome
     public override int Music =>
         Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith
             ? Main.curMusic
-            : MusicLoader.GetMusicSlot(Mod, "Sounds/Music/DarkMatter");
+            : Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DarkMatter") : MusicID.Eclipse;
 
     public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<DarkMatterBackground>();
 

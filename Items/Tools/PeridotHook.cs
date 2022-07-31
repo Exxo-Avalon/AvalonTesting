@@ -24,7 +24,7 @@ class PeridotHook : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 7f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.PeridotHook>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.PeridotHook>();
         Item.value = Item.sellPrice(0, 0, 54, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 20;
@@ -33,7 +33,7 @@ class PeridotHook : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Peridot>(), 15)
+            .AddIngredient(ModContent.ItemType<Material.Peridot>(), 15)
             .AddTile(TileID.Anvils).Register();
     }
 }

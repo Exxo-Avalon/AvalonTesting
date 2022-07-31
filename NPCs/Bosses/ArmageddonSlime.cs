@@ -50,7 +50,7 @@ public class ArmageddonSlime : ModNPC
         NPC.boss = true;
         NPC.netAlways = true;
         NPC.scale = 1.8f;
-        NPC.lifeMax = 66000;
+        NPC.lifeMax = 95600;
         NPC.defense = 72;
         NPC.width = 170;
         NPC.aiStyle = -1;
@@ -61,7 +61,7 @@ public class ArmageddonSlime : ModNPC
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ArmageddonSlime");
+        Music = Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/ArmageddonSlime") : MusicID.Boss5;
         //music = mod.GetSoundSlot(SoundType.Music, "Music/ArmageddonSlime");
         //bossBag = ModContent.ItemType<Items.BossBags.ArmageddonSlimeBossBag>();
 
@@ -444,6 +444,7 @@ public class ArmageddonSlime : ModNPC
                 Main.npc[newNPC].velocity.X = Main.rand.Next(-15, 16) * 0.1f;
                 Main.npc[newNPC].velocity.Y = Main.rand.Next(-30, 1) * 0.1f;
                 Main.npc[newNPC].ai[1] = Main.rand.Next(3);
+                if (Main.expertMode || Main.masterMode) NPC.NewNPC(NPC.GetSource_FromAI(), x2, y2, ModContent.NPCType<DarkMatterSlimer>(), 0);
                 if (i == 1) // seems to be doing multiple projectile attacks sometimes because of the for loop, this is the fix I made
                 {
                     int rand = Main.rand.Next(1, 4);

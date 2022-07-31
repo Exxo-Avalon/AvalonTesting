@@ -1,3 +1,4 @@
+using Avalon.Items.Ore;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameInput;
@@ -203,13 +204,13 @@ class CompressedExtractBlock : ModItem
 					itemType = ItemID.Diamond;
 					break;
 				case 6:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.Tourmaline>();
+					itemType = ModContent.ItemType<Material.Tourmaline>();
 					break;
 				case 7:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.Peridot>();
+					itemType = ModContent.ItemType<Material.Peridot>();
 					break;
 				case 8:
-					itemType = ModContent.ItemType<Items.Material.Zircon>();
+					itemType = ModContent.ItemType<Material.Zircon>();
 					break;
 			}
 			if (Main.rand.NextBool(20))
@@ -377,34 +378,34 @@ class CompressedExtractBlock : ModItem
 					itemType = ItemID.PlatinumOre;
 					break;
 				case 8:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.BronzeOre>();
+					itemType = ModContent.ItemType<BronzeOre>();
 					break;
 				case 9:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.NickelOre>();
+					itemType = ModContent.ItemType<NickelOre>();
 					break;
 				case 10:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.ZincOre>();
+					itemType = ModContent.ItemType<ZincOre>();
 					break;
 				case 11:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
+					itemType = ModContent.ItemType<BismuthOre>();
 					break;
 				case 12:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.Heartstone>();
+					itemType = ModContent.ItemType<Material.Heartstone>();
 					break;
 				case 13:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.Boltstone>();
+					itemType = ModContent.ItemType<Material.Boltstone>();
 					break;
 				case 14:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.Starstone>();
+					itemType = ModContent.ItemType<Material.Starstone>();
 					break;
 				case 15:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
+					itemType = ModContent.ItemType<RhodiumOre>();
 					break;
 				case 16:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
+					itemType = ModContent.ItemType<OsmiumOre>();
 					break;
 				case 17:
-					itemType = ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
+					itemType = ModContent.ItemType<IridiumOre>();
 					break;
 			}
 			if (Main.rand.NextBool(20))

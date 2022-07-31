@@ -7,8 +7,8 @@ using Avalon.Items.AdvancedPotions;
 using Avalon.Items.Ammo;
 using Avalon.Items.Consumables;
 using Avalon.Items.Material;
+using Avalon.Items.Ore;
 using Avalon.Items.Placeable.Seed;
-using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Potions;
 using Avalon.Network;
 using Avalon.Players;
@@ -48,7 +48,6 @@ public class AvalonGlobalItem : GlobalItem
         ModContent.TileType<LivingLightning>(),
         ModContent.TileType<VineRope>(),
     };
-
     public override void SetDefaults(Item item)
     {
         if (item.IsArmor())
@@ -1094,6 +1093,8 @@ public class AvalonGlobalItem : GlobalItem
              player.HasBuff(ModContent.BuffType<AdvTitanskin>())) ||
             (item.type == ModContent.ItemType<AdvVisionPotion>() && player.HasBuff(ModContent.BuffType<Vision>())) ||
             (item.type == ModContent.ItemType<VisionPotion>() && player.HasBuff(ModContent.BuffType<AdvVision>())) ||
+            (item.type == ModContent.ItemType<AdvMagnetPotion>() && player.HasBuff(ModContent.BuffType<Magnet>())) ||
+            (item.type == ModContent.ItemType<MagnetPotion>() && player.HasBuff(ModContent.BuffType<AdvMagnet>())) ||
             (item.type == ModContent.ItemType<AdvTimeShiftPotion>() &&
              player.HasBuff(ModContent.BuffType<TimeShift>())) ||
             (item.type == ModContent.ItemType<TimeShiftPotion>() &&

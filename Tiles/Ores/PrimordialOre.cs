@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -63,7 +63,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.BronzeOre>();
+                ore = ModContent.ItemType<Items.Ore.BronzeOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), x * 16, y * 16, 16, 16, ore, 5, false);
@@ -82,7 +82,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.NickelOre>();
+                ore = ModContent.ItemType<Items.Ore.NickelOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 4, false);
@@ -101,7 +101,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.ZincOre>();
+                ore = ModContent.ItemType<Items.Ore.ZincOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.SilverOre : ItemID.TungstenOre, 3, false);
@@ -120,7 +120,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.BismuthOre>();
+                ore = ModContent.ItemType<Items.Ore.BismuthOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, Main.rand.Next(2) == 0 ? ItemID.GoldOre : ItemID.PlatinumOre, 2, false);
@@ -139,7 +139,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                oren = ModContent.ItemType<Items.Placeable.Tile.PandemiteOre>();
+                oren = ModContent.ItemType<Items.Ore.PandemiteOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 2, false);
@@ -173,7 +173,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                oren = ModContent.ItemType<Items.Placeable.Tile.DurataniumOre>();
+                oren = ModContent.ItemType<Items.Ore.DurataniumOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
@@ -192,7 +192,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                oren = ModContent.ItemType<Items.Placeable.Tile.NaquadahOre>();
+                oren = ModContent.ItemType<Items.Ore.NaquadahOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
@@ -211,7 +211,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                oren = ModContent.ItemType<Items.Placeable.Tile.TroxiniumOre>();
+                oren = ModContent.ItemType<Items.Ore.TroxiniumOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, oren, 1, false);
@@ -219,7 +219,7 @@ public class PrimordialOre : ModTile
         }
         else if (result == 11)
         {
-            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.CaesiumOre>(), 2);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Ore.CaesiumOre >(), 2);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 12)
@@ -227,15 +227,15 @@ public class PrimordialOre : ModTile
             int ore = Main.rand.Next(3);
             if (ore == 0)
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.RhodiumOre>();
+                ore = ModContent.ItemType<Items.Ore.RhodiumOre>();
             }
             else if (ore == 1)
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.OsmiumOre>();
+                ore = ModContent.ItemType<Items.Ore.OsmiumOre>();
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.IridiumOre>();
+                ore = ModContent.ItemType<Items.Ore.IridiumOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 3);
@@ -243,12 +243,12 @@ public class PrimordialOre : ModTile
         }
         else if (result == 13)
         {
-            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.HydrolythOre>(), 2);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Ore.HydrolythOre>(), 2);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 14)
         {
-            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.Heartstone>(), 3);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Material.Heartstone>(), 3);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 15)
@@ -260,7 +260,7 @@ public class PrimordialOre : ModTile
             }
             else
             {
-                ore = ModContent.ItemType<Items.Placeable.Tile.XanthophyteOre>();
+                ore = ModContent.ItemType<Items.Ore.XanthophyteOre>();
             }
 
             a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ore, 1);
@@ -268,12 +268,12 @@ public class PrimordialOre : ModTile
         }
         else if (result == 16)
         {
-            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.FeroziumOre>(), 1);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Ore.FeroziumOre>(), 1);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         else if (result == 17)
         {
-            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Placeable.Tile.ShroomiteOre>(), 1);
+            a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j),x * 16, y * 16, 16, 16, ModContent.ItemType<Items.Ore.ShroomiteOre>(), 1);
             NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
         }
         return base.Drop(i, j);

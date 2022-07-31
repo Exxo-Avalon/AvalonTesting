@@ -35,9 +35,9 @@ internal class HydrolythBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.HydrolythOre>(), 5)
-            .AddIngredient(ModContent.ItemType<Tile.SolariumOre>())
-            .AddIngredient(ModContent.ItemType<Tile.FeroziumOre>())
+            .AddIngredient(ModContent.ItemType<Ore.HydrolythOre>(), 5)
+            .AddIngredient(ModContent.ItemType<Ore.SolariumOre>())
+            .AddIngredient(ModContent.ItemType<Ore.FeroziumOre>())
             .AddTile(ModContent.TileType<CaesiumForge>()).Register();
     }
 }

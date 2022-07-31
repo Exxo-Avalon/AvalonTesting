@@ -43,6 +43,6 @@ class SpikeRailgun : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<SpikeCannon>()).AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 25).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 15).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<SpikeCannon>()).AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 25).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 15).AddTile(TileID.TinkerersWorkbench).Register();
     }
 }

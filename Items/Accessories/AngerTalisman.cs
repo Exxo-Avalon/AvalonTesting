@@ -52,7 +52,7 @@ class AngerTalisman : ModItem
             .AddIngredient(ItemID.AvengerEmblem)
             .AddIngredient(ItemID.Cobweb, 30)
             .AddRecipeGroup("Avalon:GoldBar", 5)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.ZincOre>(), 5)
+            .AddIngredient(ModContent.ItemType<Ore.ZincOre>(), 5)
             .AddIngredient(ItemID.SoulofFright, 15)
             .AddTile(TileID.TinkerersWorkbench).Register();
     }

@@ -33,7 +33,7 @@ class DurataniumBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.DurataniumOre>(), 3)
+            .AddIngredient(ModContent.ItemType<Ore.DurataniumOre>(), 3)
             .AddTile(TileID.Furnaces).Register();
     }
 }

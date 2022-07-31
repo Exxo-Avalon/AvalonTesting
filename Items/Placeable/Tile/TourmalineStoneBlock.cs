@@ -30,7 +30,7 @@ class TourmalineStoneBlock : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tourmaline>())
+            .AddIngredient(ModContent.ItemType<Material.Tourmaline>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.HeavyWorkBench)
             .AddCondition(Recipe.Condition.InGraveyardBiome)

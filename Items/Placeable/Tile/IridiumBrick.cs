@@ -31,7 +31,7 @@ class IridiumBrick : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<IridiumOre>())
+            .AddIngredient(ModContent.ItemType<Ore.IridiumOre>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();

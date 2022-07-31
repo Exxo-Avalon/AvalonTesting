@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -36,7 +36,7 @@ class PeridotRobe : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Robe).AddIngredient(ModContent.ItemType<Placeable.Tile.Peridot>(), 10).AddTile(TileID.Loom).Register();
+        CreateRecipe(1).AddIngredient(ItemID.Robe).AddIngredient(ModContent.ItemType<Material.Peridot>(), 10).AddTile(TileID.Loom).Register();
     }
     public override bool IsArmorSet(Item head, Item body, Item legs)
     {

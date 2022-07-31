@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -60,19 +60,19 @@ public class Shockwave : ModBuff
                     // on screen
                     numOfNPCs++;
                     int multiplier = 2;
-                    if (player.GetModPlayer<ExxoBuffPlayer>().EarthInsignia && Main.hardMode)
+                    if (player.GetModPlayer<ExxoEquipEffectPlayer>().EarthInsignia && Main.hardMode)
                     {
                         multiplier = 6;
                     }
-                    else if (!player.GetModPlayer<ExxoBuffPlayer>().EarthInsignia && Main.hardMode)
+                    else if (!player.GetModPlayer<ExxoEquipEffectPlayer>().EarthInsignia && Main.hardMode)
                     {
                         multiplier = 4;
                     }
-                    else if (player.GetModPlayer<ExxoBuffPlayer>().EarthInsignia && !Main.hardMode)
+                    else if (player.GetModPlayer<ExxoEquipEffectPlayer>().EarthInsignia && !Main.hardMode)
                     {
                         multiplier = 3;
                     }
-                    else if (!player.GetModPlayer<ExxoBuffPlayer>().EarthInsignia && !Main.hardMode)
+                    else if (!player.GetModPlayer<ExxoEquipEffectPlayer>().EarthInsignia && !Main.hardMode)
                     {
                         multiplier = 2;
                     }

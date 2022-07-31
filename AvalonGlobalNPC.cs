@@ -38,6 +38,7 @@ public class AvalonGlobalNPC : GlobalNPC
         NPCID.Hornet, NPCID.MossHornet, NPCID.HornetFatty, NPCID.HornetHoney, NPCID.HornetLeafy, NPCID.HornetSpikey,
         NPCID.HornetStingy,
     };
+    public static int BleedTime = 60 * 7;
 
     public static List<int> SHMMobs = new List<int>
     {
@@ -117,7 +118,10 @@ public class AvalonGlobalNPC : GlobalNPC
 
         return 0;
     }
+    public override void UpdateLifeRegen(NPC npc, ref int damage)
+    {
 
+    }
     /// <summary>
     ///     A method to choose a random Town NPC death messages.
     /// </summary>
@@ -1943,8 +1947,17 @@ public class AvalonGlobalNPC : GlobalNPC
         }
         if (npc.HasBuff(ModContent.BuffType<Virulent>()))
         {
-            int proj = Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, npc.velocity, ModContent.ProjectileType<Projectiles.PathogenicMist>(), 0, 0);
-            //Main.projectile[proj].velocity
+            for (int i = 0; i < 3 + Main.rand.Next(3); i++)
+            {
+                Vector2 randomDir = new Vector2(Main.rand.NextFloat(-100f, 100f), Main.rand.NextFloat(-100f, 100f));
+                Projectile.NewProjectile(npc.GetSource_FromThis(), npc.position, Vector2.Normalize(randomDir) * (1f + Main.rand.NextFloat(2f)), ModContent.ProjectileType<Projectiles.Melee.VirulentCloud>(), default, 0, Main.player[0].whoAmI);
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                int greencum = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.ContagionSpray>(), 0f, 0f, default, default, 1.2f);
+                Main.dust[greencum].noGravity = true;
+                Main.dust[greencum].velocity *= 3f + Main.rand.NextFloat(3f);
+            }
         }
         if (npc.type == NPCID.SkeletronHead && !NPC.downedBoss3)
         {

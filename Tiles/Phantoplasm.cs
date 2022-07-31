@@ -12,7 +12,7 @@ public class Phantoplasm : ModTile
     {
         AddMapEntry(Color.Red);
         Main.tileSolid[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.Phantoplasm>();
+        ItemDrop = ModContent.ItemType<Items.Material.Phantoplasm>();
         DustType = DustID.TheDestroyer;
     }
 

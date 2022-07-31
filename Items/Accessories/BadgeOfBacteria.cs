@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -28,6 +28,6 @@ public class BadgeOfBacteria : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.GetModPlayer<ExxoBuffPlayer>().BadgeOfBacteria = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().BadgeOfBacteria = true;
     }
 }

@@ -29,7 +29,7 @@ class HeartstonePlatform : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(2).AddIngredient(ModContent.ItemType<Heartstone>()).Register();
-        Recipe.Create(ModContent.ItemType<Heartstone>()).AddIngredient(this, 2).Register();
+        CreateRecipe(2).AddIngredient(ModContent.ItemType<Material.Heartstone>()).Register();
+        Recipe.Create(ModContent.ItemType<Material.Heartstone>()).AddIngredient(this, 2).Register();
     }
 }

@@ -1,5 +1,6 @@
 using Avalon.Players;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Biomes;
@@ -8,7 +9,7 @@ public class Hellcastle : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
-    public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Hellcastle");
+    public override int Music => Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Hellcastle") : MusicID.Dungeon;
     public override string BestiaryIcon => base.BestiaryIcon;
     public override string BackgroundPath => base.BackgroundPath;
     public override string MapBackground => BackgroundPath;

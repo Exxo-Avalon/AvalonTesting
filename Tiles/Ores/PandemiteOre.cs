@@ -19,7 +19,7 @@ public class PandemiteOre : ModTile
         Main.tileBlockLight[Type] = true;
         Main.tileOreFinderPriority[Type] = 320;
         Main.tileLighted[Type] = true;
-        ItemDrop = ModContent.ItemType<Items.Placeable.Tile.PandemiteOre>();
+        ItemDrop = ModContent.ItemType<Items.Ore.PandemiteOre>();
         HitSound = SoundID.Tink;
         DustType = DustID.JungleSpore;
         MinPick = 55;

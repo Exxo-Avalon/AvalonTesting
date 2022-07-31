@@ -30,7 +30,7 @@ class OpalStoneBlock : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Opal>())
+            .AddIngredient(ModContent.ItemType<Material.Opal>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.HeavyWorkBench)
             .AddCondition(Recipe.Condition.InGraveyardBiome)

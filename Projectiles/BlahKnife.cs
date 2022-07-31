@@ -21,7 +21,7 @@ public class BlahKnife : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = 1;
-        Projectile.DamageType = DamageClass.Melee;
+        Projectile.DamageType = DamageClass.Magic;
         Projectile.ignoreWater = true;
         Projectile.extraUpdates = 0;
     }

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Avalon.Items.Accessories;
 using Avalon.Items.BossBags;
+using Avalon.Items.Material;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Placeable.Trophy;
 using Avalon.Items.Potions;
@@ -81,47 +82,21 @@ public class DragonLordHead : ModNPC
             spriteBatch.Draw(texture, new Vector2(npc.oldPos[num99].X - Main.screenPosition.X + (float)(npc.width / 2) - (float)texture.Width * npc.scale / 2f + vector2.X * npc.scale, npc.oldPos[num99].Y - Main.screenPosition.Y + (float)npc.height - (float)texture.Height * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector2.Y * npc.scale), npc.frame, color24, npc.rotation, vector2, npc.scale, SpriteEffects.None, 0f);
         }
     }*/
-    public override void ModifyNPCLoot(NPCLoot npcLoot)
+    public override void OnKill()
     {
-        if (Main.rand.Next(7) == 0)
-        {
-            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                ModContent.ItemType<DragonLordTrophy>());
-        }
-
-        npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DragonLordBossBag>()));
-        if (!Main.expertMode)
-        {
-            int rand = Main.rand.Next(5);
-            if (rand == 0)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<DragonStone>());
-            }
-            else if (rand == 1)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<Infernasword>());
-            }
-            else if (rand == 2)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<QuadroCannon>());
-            }
-            else if (rand == 3)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<MagmafrostBolt>());
-            }
-            else if (rand == 4)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.position, ModContent.ItemType<ReflectorStaff>());
-            }
-
-            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                ModContent.ItemType<DragonScale>(), Main.rand.Next(8, 16));
-        }
-
         if (!ModContent.GetInstance<DownedBossSystem>().DownedDragonLord)
         {
             ModContent.GetInstance<DownedBossSystem>().DownedDragonLord = true;
         }
+    }
+    public override void ModifyNPCLoot(NPCLoot npcLoot)
+    {
+        LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DragonLordTrophy>(), 7));
+        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<DragonStone>(), ModContent.ItemType<Infernasword>(), ModContent.ItemType<QuadroCannon>(), ModContent.ItemType<MagmafrostBolt>(), ModContent.ItemType<ReflectorStaff>() }));
+        notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DragonScale>(), 1, 8, 17));
+        npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DragonLordBossBag>()));
     }
 
     public override void AI()

@@ -35,7 +35,7 @@ internal class BlahsWings : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe().AddIngredient(ModContent.ItemType<Placeable.Tile.Phantoplasm>(), 40)
+        CreateRecipe().AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 40)
             .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 20)
             .AddIngredient(ModContent.ItemType<SoulofTorture>(), 25).AddIngredient(ModContent.ItemType<InertiaBoots>())
             .AddIngredient(ModContent.ItemType<GuardianBoots>()).AddIngredient(ItemID.PhilosophersStone)
@@ -53,6 +53,7 @@ internal class BlahsWings : ModItem
             player.GetModPlayer<ExxoEquipEffectPlayer>().HeartGolem =
                 player.GetModPlayer<ExxoEquipEffectPlayer>().EthHeart =
                     player.GetModPlayer<ExxoPlayer>().longInvince2 = true;
+        player.buffImmune[ModContent.BuffType<Buffs.Melting>()] = true;
         player.wingTime = 1000;
         if (player.immune)
         {

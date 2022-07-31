@@ -35,7 +35,7 @@ class DesertLongSword : ModItem
         Recipe.Create(Type)
             .AddIngredient(ItemID.AntlionMandible)
             .AddIngredient(ItemID.SandBlock, 60)
-            .AddIngredient(ModContent.ItemType<Placeable.Tile.Beak>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.Beak>(), 5)
             .AddIngredient(ItemID.Topaz, 5)
             .AddTile(TileID.Anvils).Register();
     }

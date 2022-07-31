@@ -11,6 +11,7 @@ using Avalon.NPCs.Bosses;
 using Avalon.Projectiles;
 using Avalon.Tiles.Ores;
 using Terraria.Localization;
+using Avalon.Systems;
 
 namespace Avalon.Players;
 public class ExxoEquipEffectPlayer : ModPlayer
@@ -30,7 +31,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool LuckTome;
     public bool ThornHeartAmulet;
     public bool EarthInsig;
-
+    public bool BloodyWhetstone;
     public bool ChaosCharm;
     public bool CobShield;
     public bool PallShield;
@@ -39,6 +40,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool SlimeBand;
     public bool CobOmegaShield;
     public bool PallOmegaShield;
+    public bool DuraOmegaShield;
     public bool TrapImmune;
     public bool ConfusionTal;
     public bool VampireTeeth;
@@ -47,10 +49,17 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool EthHeart;
     public bool ShadowRing;
     public bool HideVarefolk;
+    public bool FrostGauntlet;
+    public bool EarthInsignia;
+    public bool TerraClaws;
+    public bool BadgeOfBacteria;
+    public bool AstralProject;
     #endregion accessories
 
     #region extras
     public int bubbleCD;
+    public int AstralCooldown = 3600;
+    public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
     #endregion extras
 
     #region armor
@@ -98,9 +107,14 @@ public class ExxoEquipEffectPlayer : ModPlayer
         BubbleBoost = false;
         ShadowRing = false;
         HideVarefolk = false;
-
-
-
+        FrostGauntlet = false;
+        BloodyWhetstone = false;
+        BadgeOfBacteria = false;
+        AstralProject = false;
+        DuraOmegaShield = false;
+        BlahWings = false;
+        LuckTome = false;
+        TerraClaws = false;
         HyperMagic = false;
         HyperMelee = false;
         HyperRanged = false;
@@ -169,16 +183,84 @@ public class ExxoEquipEffectPlayer : ModPlayer
             }
         }
     }
-    public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
+    public override void ProcessTriggers(TriggersSet triggersSet)
     {
-        //if (ShadowRing || BlahArmor)
-        //{
-        //    drawInfo.stealth -= 0.97f;
-        //    drawInfo.shadow -= 10;
-        //}
+        if (AstralProject && KeybindSystem.AstralHotkey.JustPressed)
+        {
+            if (Player.HasBuff<AstralProjecting>())
+            {
+                Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+                AstralCooldown = MaxAstralCooldown;
+            }
+            else if (AstralCooldown == 0)
+            {
+                Player.AddBuff(ModContent.BuffType<AstralProjecting>(), 15 * 60);
+            }
+        }
+    }
+    public override void OnHitPvp(Item item, Player target, int damage, bool crit)
+    {
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
+    }
+    public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
+    {
+        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && proj.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
     }
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
+        if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
+        {
+            Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
+            npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
+        }
         if (AuraThorns && !Player.immune && !npc.dontTakeDamage)
         {
             int x = (int)Player.position.X;
@@ -222,6 +304,40 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<AncientSandnado>(), 0, 0);
         }
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (item.DamageType == DamageClass.Melee && BloodyWhetstone)
+        {
+            if (!target.HasBuff<Bleeding>())
+            {
+                target.GetGlobalNPC<AvalonGlobalNPCInstance>().BleedStacks = 1;
+            }
+
+            target.AddBuff(ModContent.BuffType<Bleeding>(), 120);
+        }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
@@ -230,9 +346,113 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
         }
+        if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
+        {
+            target.AddBuff(BuffID.Frostburn, 60 * 4);
+        }
+        if (TerraClaws && proj.DamageType == DamageClass.Melee)
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0:
+                    target.AddBuff(BuffID.OnFire, 7 * 60);
+                    break;
+                case 1:
+                    target.AddBuff(BuffID.Poisoned, 7 * 60);
+                    break;
+                case 2:
+                    target.AddBuff(BuffID.Venom, 7 * 60);
+                    break;
+                case 3:
+                    target.AddBuff(BuffID.Frostburn2, 7 * 60);
+                    break;
+                case 4:
+                    target.AddBuff(BuffID.Ichor, 7 * 60);
+                    break;
+            }
+        }
+    }
+    public override void MeleeEffects(Item item, Rectangle hitbox)
+    {
+        if (FrostGauntlet && item.DamageType == DamageClass.Melee)
+        {
+            int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 2.2f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 2f;
+        }
+        if (TerraClaws && item.DamageType == DamageClass.Melee)
+        {
+            float s = 1.5f;
+            int rn = Main.rand.Next(5);
+            switch (rn)
+            {
+                case 0:
+                    rn = DustID.Poisoned;
+                    s = 1.4f;
+                    break;
+                case 1:
+                    rn = DustID.IceTorch;
+                    s = 1.4f;
+                    break;
+                case 2:
+                    rn = DustID.Torch;
+                    s = 1.4f;
+                    break;
+                case 3:
+                    rn = DustID.VenomStaff;
+                    s = 1.4f;
+                    break;
+                case 4:
+                    rn = DustID.IchorTorch;
+                    s = 1.4f;
+                    break;
+            }
+            int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, rn, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, s);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 2f;
+        }
     }
     public override void PostUpdateEquips()
     {
+        if (!AstralProject && Player.HasBuff<AstralProjecting>())
+        {
+            Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
+        }
+
+        #region royal gel avalon fix
+        for (int i = 3; i < Player.armor.Length; i++)
+        {
+            if (Player.armor[i].type == ItemID.RoyalGel)
+            {
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.CopperSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TinSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.BronzeSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.IronSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.LeadSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.NickelSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.SilverSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TungstenSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.ZincSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.GoldSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.PlatinumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.BismuthSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.RhodiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.OsmiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.IridiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.CobaltSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.PalladiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.DurantiumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.MythrilSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.OrichalcumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.NaquadahSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.AdamantiteSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TitaniumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.TroxiniumSlime>()] = true;
+                Player.npcTypeNoAggro[ModContent.NPCType<NPCs.DarkMatterSlime>()] = true;
+            }
+        }
+        #endregion royal gel avalon fix
+
         #region inertia boots/blah's wings
         if (InertiaBoots || BlahWings)
         {

@@ -33,7 +33,7 @@ class CaesiumBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.CaesiumOre>(), 8)
+            .AddIngredient(ModContent.ItemType<Ore.CaesiumOre>(), 8)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
     }
 }

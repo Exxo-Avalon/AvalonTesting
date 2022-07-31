@@ -29,5 +29,6 @@ class LuckyPapyrus : ModItem
     {
         player.GetCritChance(DamageClass.Generic) += 7;
         player.Avalon().CritDamageMult += 0.4f;
+        player.buffImmune[ModContent.BuffType<Buffs.Melting>()] = true;
     }
 }

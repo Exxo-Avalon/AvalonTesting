@@ -625,7 +625,8 @@ public class BiomeBombs : ModTile
                             WorldGen.SquareWallFrame(k, l);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (wall is WallID.DirtUnsafe or WallID.MudUnsafe or WallID.DirtUnsafe1 or WallID.DirtUnsafe2 or WallID.DirtUnsafe4)
+                        else if (wall is WallID.DirtUnsafe or WallID.MudUnsafe or WallID.DirtUnsafe1 or WallID.DirtUnsafe2 or
+                            WallID.DirtUnsafe3 or WallID.DirtUnsafe4 or WallID.Cave6Unsafe)
                         {
                             Main.tile[k, l].WallType = (ushort)ModContent.WallType<Walls.TropicalMudWall>();
                             WorldGen.SquareWallFrame(k, l);

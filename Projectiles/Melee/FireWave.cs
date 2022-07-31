@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -72,10 +72,6 @@ public class FireWave : ModProjectile
             Main.gore[num161].velocity.X += Main.rand.Next(-1, 2);
             Main.gore[num161].velocity.Y += Main.rand.Next(-1, 2);
         }
-    }
-    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-    {
-        target.AddBuff(BuffID.Daybreak, 180);
     }
     public override void ModifyDamageHitbox(ref Rectangle hitbox)
     {

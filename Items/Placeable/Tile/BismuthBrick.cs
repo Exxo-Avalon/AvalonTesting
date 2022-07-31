@@ -31,7 +31,7 @@ class BismuthBrick : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<BismuthOre>())
+            .AddIngredient(ModContent.ItemType<Ore.BismuthOre>())
             .AddIngredient(ItemID.StoneBlock)
             .AddTile(TileID.Furnaces)
             .Register();

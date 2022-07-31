@@ -33,7 +33,7 @@ class NaquadahBar : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Tile.NaquadahOre>(), 4)
+            .AddIngredient(ModContent.ItemType<Ore.NaquadahOre>(), 4)
             .AddTile(TileID.Furnaces).Register();
     }
 }

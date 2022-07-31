@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -32,6 +32,6 @@ class PeridotAmulet : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Peridot>(), 12).AddIngredient(ItemID.Chain).AddTile(TileID.Anvils).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.Peridot>(), 12).AddIngredient(ItemID.Chain).AddTile(TileID.Anvils).Register();
     }
 }

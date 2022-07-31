@@ -56,7 +56,7 @@ public class ImpactWizard : ModNPC
     }
 
     public override void ModifyNPCLoot(NPCLoot npcLoot) =>
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Phantoplasm>(), 10));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Material.Phantoplasm>(), 10));
 
     public override float SpawnChance(NPCSpawnInfo spawnInfo) =>
         Main.hardMode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
