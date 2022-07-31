@@ -18,7 +18,7 @@ class XanthophyteArrow : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.damage = 15;
-        Item.shootSpeed = 9f;
+        Item.shootSpeed = 3f;
         Item.ammo = AmmoID.Arrow;
         Item.DamageType = DamageClass.Ranged;
         Item.consumable = true;
