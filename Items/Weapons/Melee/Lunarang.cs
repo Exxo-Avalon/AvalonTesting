@@ -19,14 +19,14 @@ internal class Lunarang : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item1;
-        Item.damage = 45;
+        Item.damage = 35;
         Item.autoReuse = true;
         Item.shootSpeed = 10f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
-        Item.useTime = 14;
-        Item.useAnimation = 14;
+        Item.useTime = 12;
+        Item.useAnimation = 12;
         Item.knockBack = 7f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.Lunarang>();
         Item.DamageType = DamageClass.Melee;
@@ -35,6 +35,17 @@ internal class Lunarang : ModItem
         Item.value = Item.sellPrice(0, 20);
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+    }
+    public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+    {
+        if (!Main.dayTime)
+        {
+            damage += 0.5f;
+        }
+    }
+    public override Color? GetAlpha(Color lightColor)
+    {
+        return lightColor;
     }
     public override bool CanUseItem(Player player)
     {

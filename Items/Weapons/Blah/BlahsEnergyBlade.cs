@@ -25,7 +25,7 @@ class BlahsEnergyBlade : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
-        Item.shootSpeed = 13f;
+        Item.shootSpeed = 14f;
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
         Item.width = dims.Width;
         Item.useTime = 14;

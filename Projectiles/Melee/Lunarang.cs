@@ -16,7 +16,6 @@ public class Lunarang : ModProjectile
     }
     public override void SetDefaults()
     {
-        //Rectangle dims = this.GetDims();
         Projectile.Size = new Vector2(22, 30);
         Projectile.aiStyle = 3;
         Projectile.friendly = true;
@@ -25,19 +24,24 @@ public class Lunarang : ModProjectile
         Projectile.penetrate = -1;
         Projectile.timeLeft = 9000;
         Projectile.extraUpdates = 1;
-        //DrawOffsetX = -9;
-        //DrawOriginOffsetY = -9;
     }
-    public override Color? GetAlpha(Color lightColor)
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
-        return new Color(255, 255, 255, Projectile.alpha);
+        if (!Main.dayTime)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                int dust = Dust.NewDust(target.position, target.width, target.height, DustID.Shadowflame, 0f, 0f, 100, default, 1.25f);
+                Main.dust[dust].velocity *= 3f;
+            }
+        }
     }
     public override void AI()
     {
-        if (Main.rand.NextBool(3))
+        if (Main.rand.NextBool(5))
         {
-            int dust = Dust.NewDust(Projectile.position, 22, 30, DustID.Enchanted_Pink, 0f, 0f, 200, default, 1.25f);
-            Main.dust[dust].velocity *= 0.2f;
+            int dust = Dust.NewDust(Projectile.position, 22, 30, DustID.Shadowflame, 0f, 0f, 100, default, 1.25f);
+            Main.dust[dust].velocity *= 0.4f;
         }
     }
 }
