@@ -114,6 +114,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         DuraOmegaShield = false;
         BlahWings = false;
         LuckTome = false;
+        TerraClaws = false;
         HyperMagic = false;
         HyperMelee = false;
         HyperRanged = false;
