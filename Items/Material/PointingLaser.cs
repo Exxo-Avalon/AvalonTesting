@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,5 +30,9 @@ class PointingLaser : ModItem
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;
+    }
+    public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+    {
+
     }
 }
