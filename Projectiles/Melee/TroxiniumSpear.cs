@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
@@ -69,7 +69,7 @@ public class TroxiniumSpear : ModProjectile
     public override void PostDraw(Color lightColor)
     {
         Player player = Main.player[Projectile.owner];
-        Texture2D texture = Mod.Assets.Request<Texture2D>("Projectiles/Melee/TroxiniumSpear_Glow").Value;
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         Vector2 drawOrigin = new Vector2(0, 0) + (Projectile.spriteDirection != 1 ? new Vector2(48, 0) : Vector2.Zero);
         Vector2 drawPos = Projectile.Center - Main.screenPosition;
         Color color = Color.White;
