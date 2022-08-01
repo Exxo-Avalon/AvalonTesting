@@ -19,7 +19,7 @@ public class TropicalSlime : ModNPC
     public override void SetDefaults()
     {
         NPC.damage = 19;
-        NPC.alpha = 175;
+        NPC.alpha = 75;
         NPC.lifeMax = 60;
         NPC.defense = 1;
         NPC.width = 36;
@@ -28,7 +28,7 @@ public class TropicalSlime : ModNPC
         NPC.knockBackResist = 0.4f;
         AnimationType = NPCID.BlueSlime;
         NPC.height = 24;
-        NPC.scale = 1.2f;
+        NPC.scale = 1.1f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
