@@ -28,7 +28,7 @@ class DevilsScythe : ModItem
         Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 4.75f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.DevilScythe>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.DevilScythe>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 40000;
         Item.useAnimation = 20;

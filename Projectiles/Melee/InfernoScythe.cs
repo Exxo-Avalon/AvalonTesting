@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -72,12 +72,12 @@ public class InfernoScythe : ModProjectile
                     var num306 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Shadowflame, 0f, 0f, 100, default(Color), 1f);
                     Main.dust[num306].noGravity = true;
                 }
-                else if (Projectile.type == ModContent.ProjectileType<DevilScythe>())
+                else if (Projectile.type == ModContent.ProjectileType<Magic.DevilScythe>())
                 {
                     var num307 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default(Color), 1f);
                     Main.dust[num307].noGravity = true;
                 }
-                else if (Projectile.type == ModContent.ProjectileType<TerraTyphoon>())
+                else if (Projectile.type == ModContent.ProjectileType<Magic.TerraTyphoon>())
                 {
                     var num308 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.TerraBlade, 0f, 0f, 100, default(Color), 1f);
                     Main.dust[num308].noGravity = true;

@@ -392,7 +392,7 @@ public class ArmageddonSlime : ModNPC
                 {
                     Vector2 origin = new Vector2(NPC.Center.X + Main.rand.Next(-(NPC.width / 2), (NPC.width / 2) + 1), NPC.Center.Y + (NPC.height / 2));
                     Vector2 velocity = new Vector2(NPC.velocity.X / 4, Main.rand.NextFloat(-3f, -5f)).RotatedBy(MathHelper.ToRadians(Main.rand.Next(-5, 6)));
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f, NPC.target);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), origin, velocity, ModContent.ProjectileType<Projectiles.Hostile.DarkCinder>(), NPC.damage / 4, 0.5f, NPC.target);
                 }
                 cindersOnce = true;
             }
@@ -488,14 +488,14 @@ public class ArmageddonSlime : ModNPC
                 var num1166 = (float)Math.Atan2(vector155.Y - (Main.player[NPC.target].position.Y + Main.player[NPC.target].height * 0.5f), vector155.X - (Main.player[NPC.target].position.X + Main.player[NPC.target].width * 0.5f));
                 for (var num1167 = 0f; num1167 <= 3.6f; num1167 += increment)
                 {
-                    var num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 + num1167) * 16f * -1.0), (float)(Math.Sin(num1166 + num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.DarkFlame>(), 60, 0f, NPC.target, 0f, 0f);
+                    var num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 + num1167) * 16f * -1.0), (float)(Math.Sin(num1166 + num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Hostile.DarkFlame>(), 60, 0f, NPC.target, 0f, 0f);
                     Main.projectile[num1168].timeLeft = 600;
                     Main.projectile[num1168].tileCollide = false;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.Empty, num1168);
                     }
-                    num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 - num1167) * 16f * -1.0), (float)(Math.Sin(num1166 - num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.DarkFlame>(), 60, 0f, NPC.target, 0f, 0f);
+                    num1168 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector155.X, vector155.Y, (float)(Math.Cos(num1166 - num1167) * 16f * -1.0), (float)(Math.Sin(num1166 - num1167) * 16f * -1.0), ModContent.ProjectileType<Projectiles.Hostile.DarkFlame>(), 60, 0f, NPC.target, 0f, 0f);
                     Main.projectile[num1168].timeLeft = 600;
                     Main.projectile[num1168].tileCollide = false;
                     if (Main.netMode != NetmodeID.SinglePlayer)
@@ -521,7 +521,7 @@ public class ArmageddonSlime : ModNPC
                 for (int i = 0; i < increments; i++)
                 {
                     Vector2 velocity = rotation.RotatedBy(MathHelper.ToRadians(((float)(degrees / 2f) * -1f) + ((float)(degrees / increments) * i) + offset)) * speed;
-                    int spray = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.DarkFlame>(), 70, 0f, NPC.target, 0f, 0f);
+                    int spray = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.Hostile.DarkFlame>(), 70, 0f, NPC.target, 0f, 0f);
                     Main.projectile[spray].timeLeft = 600;
                     Main.projectile[spray].tileCollide = false;
                     if (Main.netMode != NetmodeID.SinglePlayer)

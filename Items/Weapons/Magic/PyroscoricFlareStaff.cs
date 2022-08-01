@@ -31,7 +31,7 @@ class PyroscoricFlareStaff : ModItem
         Item.knockBack = 6f;
         Item.useTime = 32;
         Item.useAnimation = 32;
-        Item.shoot = ModContent.ProjectileType<Projectiles.SolarBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.SolarBolt>();
         Item.value = Item.sellPrice(0, 10, 0, 0);
     }
     public override Color? GetAlpha(Color lightColor)

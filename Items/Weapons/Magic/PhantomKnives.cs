@@ -1,4 +1,3 @@
-using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -31,7 +30,7 @@ internal class PhantomKnives : ModItem
         Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 3.75f;
-        Item.shoot = ModContent.ProjectileType<PhantomKnife>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.PhantomKnife>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 30);
         Item.useAnimation = 16;

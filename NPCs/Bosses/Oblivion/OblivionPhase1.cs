@@ -241,14 +241,14 @@ public class OblivionPhase1 : AdvancedModNPC<OblivionPhase1.MainState>
                 {
                     if (CurrentFrame == 1)
                     {
-                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.Hostile.DarkMatterFireball>(), 25, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 else
                 {
                     if (CurrentFrame < 5)
                     {
-                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + (unitVectorToNode * npc.height / 2), unitVectorToTarget * projectileSpeed, ModContent.ProjectileType<Projectiles.Hostile.DarkMatterFlamethrower>(), 30, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
             }

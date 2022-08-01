@@ -30,7 +30,7 @@ class OnyxStaff : ModItem
         Item.useTime = 19;
         Item.useAnimation = 19;
         Item.knockBack = 25.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.OnyxBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.OnyxBolt>();
         Item.value = Item.buyPrice(0, 35, 0, 0);
         Item.UseSound = SoundID.Item43;
     }

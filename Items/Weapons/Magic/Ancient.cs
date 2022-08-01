@@ -30,7 +30,7 @@ class Ancient : ModItem
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.AncientSandstorm>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.AncientSandstorm>();
         Item.UseSound = SoundID.Item34;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 25, 0, 0);

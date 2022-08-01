@@ -29,7 +29,7 @@ class PeridotStaff : ModItem
         Item.useTime = 31;
         Item.useAnimation = 31;
         Item.knockBack = 4.75f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.PeridotBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.PeridotBolt>();
         Item.value = Item.buyPrice(0, 3, 60, 0);
         Item.UseSound = SoundID.Item43;
     }

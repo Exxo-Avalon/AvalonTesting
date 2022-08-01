@@ -28,7 +28,7 @@ class Boomlash : ModItem
         Item.width = dims.Width;
         Item.knockBack = 12f;
         Item.useTime = 30;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Boomlash>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Boomlash>();
         Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 30;

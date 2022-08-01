@@ -25,7 +25,7 @@ class HallowedThorn : ModItem
         Item.width = dims.Width;
         Item.useTime = 28;
         Item.knockBack = 2f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.HallowedThorn>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.HallowedThorn>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 20000;
         Item.useAnimation = 28;

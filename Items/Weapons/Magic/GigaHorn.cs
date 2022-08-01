@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -31,7 +31,7 @@ class GigaHorn : ModItem
         Item.width = dims.Width;
         Item.knockBack = 4f;
         Item.useTime = 29;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Soundwave>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Soundwave>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/GigaHorn");
         Item.value = Item.sellPrice(0, 9, 0, 0);

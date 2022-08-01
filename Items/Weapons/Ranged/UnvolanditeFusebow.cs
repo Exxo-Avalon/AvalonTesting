@@ -30,7 +30,7 @@ class UnvolanditeFusebow : ModItem
         Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.UseSound = SoundID.Item75;
         Item.autoReuse = true;
-        Item.shoot = ModContent.ProjectileType<Projectiles.UnvolanditeBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.UnvolanditeBolt>();
         Item.shootSpeed = 14f;
         Item.useAmmo = AmmoID.Arrow;
         Item.height = dims.Height;
@@ -51,7 +51,7 @@ class UnvolanditeFusebow : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(15));
-            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.UnvolanditeBolt>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Magic.UnvolanditeBolt>(), damage, knockback, player.whoAmI);
         }
         return false;
     }

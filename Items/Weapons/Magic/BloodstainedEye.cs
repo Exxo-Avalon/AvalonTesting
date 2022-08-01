@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -31,7 +31,7 @@ class BloodstainedEye : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.knockBack = 2f;
         Item.mana = 3;
-        Item.shoot = ModContent.ProjectileType<Projectiles.BloodyTear>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.BloodyTear>();
         Item.shootSpeed = 14f;
         Item.UseSound = SoundID.NPCHit1;
         Item.value = Item.sellPrice(0, 1, 0, 0);

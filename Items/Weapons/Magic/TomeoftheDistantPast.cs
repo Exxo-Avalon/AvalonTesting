@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,7 +28,7 @@ class TomeoftheDistantPast : ModItem
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Bones>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Bones>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 27000;
         Item.useAnimation = 15;

@@ -28,7 +28,7 @@ class ElementalRod : ModItem
         Item.width = dims.Width;
         Item.useTime = 23;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ElementOrb>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.ElementOrb>();
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 23;

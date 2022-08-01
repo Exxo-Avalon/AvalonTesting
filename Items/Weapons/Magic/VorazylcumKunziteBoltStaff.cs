@@ -32,7 +32,7 @@ class VorazylcumKunziteBoltStaff : ModItem
         Item.knockBack = 3f;
         Item.useTime = 40;
         Item.useAnimation = 40;
-        Item.shoot = ModContent.ProjectileType<Projectiles.KunziteBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.KunziteBolt>();
         Item.value = Item.sellPrice(0, 60, 0, 0);
         Item.UseSound = SoundID.Item43;
     }

@@ -27,7 +27,7 @@ class FreezeBolt : ModItem
         Item.width = dims.Width;
         Item.useTime = 17;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.FreezeBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.FreezeBolt>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 50000;
         Item.useAnimation = 17;

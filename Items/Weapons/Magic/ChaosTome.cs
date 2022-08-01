@@ -28,7 +28,7 @@ class ChaosTome : ModItem
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ChaosBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.ChaosBolt>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 18400;
         Item.useAnimation = 25;

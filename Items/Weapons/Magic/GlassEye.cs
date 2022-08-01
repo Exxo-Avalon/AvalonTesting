@@ -29,7 +29,7 @@ class GlassEye : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.knockBack = 2f;
         Item.mana = 3;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Tear>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Tear>();
         Item.shootSpeed = 12f;
         Item.UseSound = SoundID.NPCHit1;
         Item.value = Item.sellPrice(0, 1, 0, 0);

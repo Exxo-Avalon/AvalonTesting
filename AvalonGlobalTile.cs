@@ -47,7 +47,7 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
-        if (type == ModContent.TileType<HallowedAltar>() && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 100)
+        if (type == ModContent.TileType<HallowedAltar>() && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 120)
         {
             fail = true;
         }

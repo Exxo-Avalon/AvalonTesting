@@ -27,7 +27,7 @@ class CursedFlamelash : ModItem
         Item.width = dims.Width;
         Item.useTime = 23;
         Item.knockBack = 4f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.CursedFlamelash>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.CursedFlamelash>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 250000;
         Item.useAnimation = 23;

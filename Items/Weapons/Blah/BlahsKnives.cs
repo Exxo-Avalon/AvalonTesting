@@ -1,4 +1,3 @@
-using Avalon.Projectiles;
 using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -31,7 +30,7 @@ internal class BlahsKnives : ModItem
         Item.width = dims.Width;
         Item.useTime = 14;
         Item.knockBack = 3.75f;
-        Item.shoot = ModContent.ProjectileType<BlahKnife>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.BlahKnife>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 50);
         Item.useAnimation = 14;

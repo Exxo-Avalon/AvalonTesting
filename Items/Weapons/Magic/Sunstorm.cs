@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -30,7 +30,7 @@ class Sunstorm : ModItem
         Item.width = dims.Width;
         Item.useTime = 60;
         Item.knockBack = 6f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.VerticalLaserBeam>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.VerticalLaserBeam>();
         Item.value = 999000;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 60;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -34,7 +34,7 @@ class SacredLyre : ModItem
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 1.75f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.SacredLyreShockwaveNote>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.SacredLyreShockwaveNote>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.holdStyle = 3;
         Item.value = 40000;
@@ -61,15 +61,15 @@ class SacredLyre : ModItem
         float dist = Vector2.Distance(new Vector2(Main.mouseX + Main.screenPosition.X, Main.mouseY + Main.screenPosition.Y), player.Center);
         if (dist % (16 * 30) < 160)
         {
-            type = ModContent.ProjectileType<Projectiles.SacredLyreShockwaveNote>();
+            type = ModContent.ProjectileType<Projectiles.Magic.SacredLyreShockwaveNote>();
         }
         else if (dist % (16 * 30) < 320)
         {
-            type = ModContent.ProjectileType<Projectiles.SacredLyreSplittingNote>();
+            type = ModContent.ProjectileType<Projectiles.Magic.SacredLyreSplittingNote>();
         }
         else
         {
-            type = ModContent.ProjectileType<Projectiles.SacredLyreHomingNote>();
+            type = ModContent.ProjectileType<Projectiles.Magic.SacredLyreHomingNote>();
         }
         num73 /= Main.screenHeight / 2;
         if (num73 > 1f)

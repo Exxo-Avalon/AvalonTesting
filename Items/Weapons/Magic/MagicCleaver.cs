@@ -27,7 +27,7 @@ class MagicCleaver : ModItem
         Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.MagicCleaver>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.MagicCleaver>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 36000;
         Item.useAnimation = 18;

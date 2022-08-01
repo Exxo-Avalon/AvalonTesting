@@ -19,7 +19,7 @@ class TheBanhammer : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 30;
         Item.autoReuse = true;
-        Item.hammer = 100;
+        Item.hammer = 120;
         Item.useTurn = true;
         Item.scale = 1f;
         Item.rare = ItemRarityID.Lime;

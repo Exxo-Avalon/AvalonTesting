@@ -29,7 +29,7 @@ class ZirconStaff : ModItem
         Item.useTime = 24;
         Item.useAnimation = 24;
         Item.knockBack = 4.75f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.ZirconBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.ZirconBolt>();
         Item.value = Item.buyPrice(0, 3, 60, 0);
         Item.UseSound = SoundID.Item43;
     }

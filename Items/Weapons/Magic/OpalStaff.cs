@@ -31,7 +31,7 @@ class OpalStaff : ModItem
         Item.useTime = 23;
         Item.useAnimation = 23;
         Item.knockBack = 7.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.OpalBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.OpalBolt>();
         Item.value = Item.buyPrice(0, 30, 0, 0);
         Item.UseSound = SoundID.Item43;
     }

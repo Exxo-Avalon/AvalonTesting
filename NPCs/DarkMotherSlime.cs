@@ -201,12 +201,12 @@ public class DarkMotherSlime : ModNPC
         }
         int bomb = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ProjectileID.Grenade, 50, 3f);
         Main.projectile[bomb].timeLeft = 1;
-        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, new Vector2(0, -5f), ModContent.ProjectileType<Projectiles.DarkGeyser>(), NPC.damage / 3, 1f);
+        Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, new Vector2(0, -5f), ModContent.ProjectileType<Projectiles.Hostile.DarkGeyser>(), NPC.damage / 3, 1f);
         for (int i = 0; i < 9; i++)
         {
             int rand = Main.rand.Next(-10, 11);
             Vector2 velocity = new Vector2(0, -5f).RotatedBy(MathHelper.ToRadians(rand));
-            int cinder = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.DarkCinder>(), NPC.damage / 4, 0.5f);
+            int cinder = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, velocity, ModContent.ProjectileType<Projectiles.Hostile.DarkCinder>(), NPC.damage / 4, 0.5f);
 
         }
         NPC.NPCLoot();

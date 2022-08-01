@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,7 +30,7 @@ class FocusBeam : ModItem
         Item.width = dims.Width;
         Item.useTime = 27;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.FocusBeam>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.FocusBeam>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 388500;
         Item.useAnimation = 27;

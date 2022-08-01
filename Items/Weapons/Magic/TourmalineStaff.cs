@@ -28,7 +28,7 @@ class TourmalineStaff : ModItem
         Item.useTime = 38;
         Item.useAnimation = 38;
         Item.knockBack = 3.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TourmalineBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.TourmalineBolt>();
         Item.value = Item.buyPrice(0, 3, 50, 0);
         Item.UseSound = SoundID.Item43;
     }

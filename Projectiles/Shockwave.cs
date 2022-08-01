@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -43,7 +43,7 @@ public class Shockwave : ModProjectile
     public override void AI()
     {
         Projectile.ai[0]++;
-        if (Projectile.type == ModContent.ProjectileType<Soundwave>())
+        if (Projectile.type == ModContent.ProjectileType<Magic.Soundwave>())
         {
             Projectile.scale = Math.Min(4f, 185.08197f * (float)Math.Pow(0.99111479520797729, Projectile.timeLeft));
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;

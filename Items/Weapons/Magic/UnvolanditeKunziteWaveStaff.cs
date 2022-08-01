@@ -30,7 +30,7 @@ class UnvolanditeKunziteWaveStaff : ModItem
         Item.width = dims.Width;
         Item.knockBack = 3f;
         Item.useTime = 25;
-        Item.shoot = ModContent.ProjectileType<Projectiles.KunziteShower>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.KunziteShower>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 60, 0, 0);
         Item.useAnimation = 25;

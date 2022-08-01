@@ -25,7 +25,7 @@ class FlowerofTheJungle : ModItem
         Item.width = dims.Width;
         Item.knockBack = 5f;
         Item.useTime = 16;
-        Item.shoot = ModContent.ProjectileType<Projectiles.JungleFire>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.JungleFire>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 0, 60, 0);
         Item.useAnimation = 16;

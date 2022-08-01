@@ -27,7 +27,7 @@ class TheGoldenFlames : ModItem
         Item.width = dims.Width;
         Item.knockBack = 7f;
         Item.useTime = 50;
-        Item.shoot = ModContent.ProjectileType<Projectiles.GoldenFire>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.GoldenFire>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 250000;
         Item.useAnimation = 50;

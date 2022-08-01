@@ -33,7 +33,7 @@ public class Terraspin : ModItem
         Item.width = dims.Width;
         Item.knockBack = 7f;
         Item.useTime = 30;
-        Item.shoot = ModContent.ProjectileType<Projectiles.TerraTyphoon>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.TerraTyphoon>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 50, 0, 0);
         Item.useAnimation = 30;

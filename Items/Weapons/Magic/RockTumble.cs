@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -30,7 +30,7 @@ class RockTumble : ModItem
         Item.noMelee = true;
         Item.mana = 25;
         Item.crit += 3;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Rock>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.Rock>();
         Item.UseSound = SoundID.Item20;
         Item.DamageType = DamageClass.Magic;
         Item.useStyle = ItemUseStyleID.Shoot;

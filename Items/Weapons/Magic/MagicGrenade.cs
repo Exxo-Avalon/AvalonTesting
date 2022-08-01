@@ -27,7 +27,7 @@ class MagicGrenade : ModItem
         Item.width = dims.Width;
         Item.knockBack = 8f;
         Item.useTime = 27;
-        Item.shoot = ModContent.ProjectileType<Projectiles.MagicGrenade>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.MagicGrenade>();
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 27;

@@ -28,7 +28,7 @@ class MagmafrostBolt : ModItem
         Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.MagmafrostBolt>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Magic.MagmafrostBolt>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.useAnimation = 15;
