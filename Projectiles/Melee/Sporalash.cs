@@ -27,6 +27,8 @@ public class Sporalash : ModProjectile
         Projectile.penetrate = -1;
         Projectile.DamageType = DamageClass.Melee;
         Projectile.scale = 0.8f;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 10;
     }
 
     public override bool OnTileCollide(Vector2 oldVelocity)
