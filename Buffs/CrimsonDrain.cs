@@ -18,18 +18,29 @@ public class CrimsonDrain : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        if (player.GetModPlayer<ExxoBuffPlayer>().FrameCount % FrameInterval != 0)
+        int pposX = (int)player.position.X;
+        int pposY = (int)player.position.Y;
+        for (int i = 0; i < Main.npc.Length; i++)
         {
-            return;
-        }
-
-        foreach (NPC npc in Main.npc)
-        {
-            if (!npc.townNPC && npc.active && !npc.dontTakeDamage && !npc.friendly && npc.life >= 1 &&
-                npc.position.Distance(player.position) < MaxDistance && !npc.boss && npc.realLife < 0 &&
-                npc.type != NPCID.GrayGrunt)
+            NPC n = Main.npc[i];
+            if (!n.townNPC && n.active && !n.dontTakeDamage && !n.friendly && n.life >= 1 &&
+                n.position.X >= pposX - 620 && n.position.X <= pposX + 620 && n.position.Y >= pposY - 620 &&
+                n.position.Y <= pposY + 620)
             {
-                npc.StrikeNPC(1, 0f, 1);
+                player.GetModPlayer<ExxoBuffPlayer>().FrameCount++;
+                if (player.GetModPlayer<ExxoBuffPlayer>().FrameCount % FrameInterval == 0)
+                {
+                    for (int j = 0; j < Main.npc.Length; j++)
+                    {
+                        NPC n2 = Main.npc[j];
+                        if (!n2.townNPC && n2.active && !n2.dontTakeDamage && !n2.friendly && n2.life >= 1 &&
+                            n2.position.X >= pposX - 620 && n2.position.X <= pposX + 620 && n2.position.Y >= pposY - 620 &&
+                            n2.position.Y <= pposY + 620)
+                        {
+                            n2.StrikeNPC(1, 0f, 1);
+                        }
+                    }
+                }
             }
         }
     }
