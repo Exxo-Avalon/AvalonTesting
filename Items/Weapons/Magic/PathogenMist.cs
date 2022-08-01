@@ -25,8 +25,8 @@ class PathogenMist : ModItem
         Item.rare = ItemRarityID.LightRed;
         Item.width = dims.Width;
         Item.useTime = 11;
-        Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.InfectedMist>();
+        Item.knockBack = 1.5f;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VirulentCloud>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 500000;
         Item.useAnimation = 11;
