@@ -47,7 +47,7 @@ public class ExxoBuffPlayer : ModPlayer
     public float DaggerStaffRotation { get; set; }
     public float StingerProbeRotation { get; set; }
     public float ReflectorStaffRotation { get; set; }
-    public int FrameCount { get; set; }
+    public int FrameCount { get; private set; }
     public int ShadowCooldown { get; private set; }
 
     public override void Load()

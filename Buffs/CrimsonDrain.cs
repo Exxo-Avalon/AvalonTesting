@@ -9,6 +9,7 @@ public class CrimsonDrain : ModBuff
 {
     private const int FrameInterval = 50;
     private const int MaxDistance = 620;
+    private int dmg;
 
     public override void SetStaticDefaults()
     {
@@ -18,28 +19,29 @@ public class CrimsonDrain : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
+        dmg = 1;
         int pposX = (int)player.position.X;
         int pposY = (int)player.position.Y;
+        for (int k = 0; k < Main.npc.Length; k++)
+        {
+            NPC n = Main.npc[k];
+            if (!n.townNPC && n.active && !n.dontTakeDamage && !n.friendly && n.type != NPCID.TargetDummy && n.life >= 1 && n.lifeMax > 5 &&
+                n.position.X >= pposX - MaxDistance && n.position.X <= pposX + MaxDistance && n.position.Y >= pposY - MaxDistance &&
+                n.position.Y <= pposY + MaxDistance && n.type != ModContent.NPCType<NPCs.Fly>() && n.type != ModContent.NPCType<NPCs.FlySmall>())
+            {
+                dmg++;
+            }
+        }
         for (int i = 0; i < Main.npc.Length; i++)
         {
             NPC n = Main.npc[i];
-            if (!n.townNPC && n.active && !n.dontTakeDamage && !n.friendly && n.life >= 1 &&
-                n.position.X >= pposX - 620 && n.position.X <= pposX + 620 && n.position.Y >= pposY - 620 &&
-                n.position.Y <= pposY + 620)
+            if (!n.townNPC && n.active && !n.dontTakeDamage && !n.friendly && n.type != NPCID.TargetDummy && n.life >= 1 && n.lifeMax > 5 &&
+                n.position.X >= pposX - MaxDistance && n.position.X <= pposX + MaxDistance && n.position.Y >= pposY - MaxDistance &&
+                n.position.Y <= pposY + MaxDistance && n.type != ModContent.NPCType<NPCs.Fly>() && n.type != ModContent.NPCType<NPCs.FlySmall>())
             {
-                player.GetModPlayer<ExxoBuffPlayer>().FrameCount++;
                 if (player.GetModPlayer<ExxoBuffPlayer>().FrameCount % FrameInterval == 0)
                 {
-                    for (int j = 0; j < Main.npc.Length; j++)
-                    {
-                        NPC n2 = Main.npc[j];
-                        if (!n2.townNPC && n2.active && !n2.dontTakeDamage && !n2.friendly && n2.life >= 1 &&
-                            n2.position.X >= pposX - 620 && n2.position.X <= pposX + 620 && n2.position.Y >= pposY - 620 &&
-                            n2.position.Y <= pposY + 620)
-                        {
-                            n2.StrikeNPC(1, 0f, 1);
-                        }
-                    }
+                    n.StrikeNPC(dmg + n.defense / 2, 0f, 1);
                 }
             }
         }

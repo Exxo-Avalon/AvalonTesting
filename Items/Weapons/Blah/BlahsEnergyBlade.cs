@@ -1,8 +1,9 @@
 using Avalon.Items.Material;
 using Avalon.Items.Placeable.Bar;
-using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Weapons.Melee;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -37,6 +38,10 @@ class BlahsEnergyBlade : ModItem
         Item.value = Item.sellPrice(3, 0, 0, 0);
         Item.useAnimation = 14;
         Item.height = dims.Height;
+        if (!Main.dedServ)
+        {
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        }
     }
     public override Color? GetAlpha(Color lightColor)
     {
@@ -53,6 +58,26 @@ class BlahsEnergyBlade : ModItem
             .AddIngredient(ModContent.ItemType<PumpkingsSword>())
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
             .Register();
+    }
+    public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+    {
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        spriteBatch.Draw
+        (
+            texture,
+            new Vector2
+            (
+                Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
+                Item.position.Y - Main.screenPosition.Y + Item.height * 0.5f
+            ),
+            new Rectangle(0, 0, texture.Width, texture.Height),
+            Color.White,
+            rotation,
+            texture.Size() * 0.5f,
+            scale,
+            SpriteEffects.None,
+            0f
+        );
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

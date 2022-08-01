@@ -1,5 +1,5 @@
-﻿using Avalon.Items.Placeable.Bar;
-using Avalon.Logic;
+using Avalon.Items.Placeable.Bar;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -36,12 +36,12 @@ public class BerserkerBlade : ModItem
         Item.height = dims.Height;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         }
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Weapons/Melee/BerserkerBlade_Glow").Value;
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         spriteBatch.Draw
         (
             texture,

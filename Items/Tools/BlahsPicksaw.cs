@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+using Avalon.PlayerDrawLayers;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,28 +36,37 @@ class BlahsPicksaw : ModItem
         Item.value = 1016000;
         Item.useAnimation = 7;
         Item.height = dims.Height;
+        if (!Main.dedServ)
+        {
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        }
     }
 
     public override void HoldItem(Player player)
     {
-        if (player.inventory[player.selectedItem].type == Mod.Find<ModItem>("BlahsPicksaw").Type)
+        if (player.inventory[player.selectedItem].type == Item.type)
         {
             player.pickSpeed -= 0.5f;
         }
     }
-
-    /*        public override bool UseItem(Player player)
-            {
-                if (Main.netMode != NetmodeID.Server)
-                {
-                    if (Main.tile[Player.tileTargetX, Player.tileTargetY].HasTile)
-                    {
-                        int tileId = player.hitTile.HitObject(Player.tileTargetX, Player.tileTargetY, 1);
-                        if (player.inventory[player.selectedItem].pick >= Avalon.minPick[Main.tile[Player.tileTargetX, Player.tileTargetY].type])
-                            player.hitTile.AddDamage(tileId, player.inventory[player.selectedItem].pick, true);
-                        return true;
-                    }
-                }
-                return false;
-            }*/
+    public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+    {
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        spriteBatch.Draw
+        (
+            texture,
+            new Vector2
+            (
+                Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
+                Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f + 2f
+            ),
+            new Rectangle(0, 0, texture.Width, texture.Height),
+            Color.White,
+            rotation,
+            texture.Size() * 0.5f,
+            scale,
+            SpriteEffects.None,
+            0f
+        );
+    }
 }

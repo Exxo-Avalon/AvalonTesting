@@ -1,4 +1,4 @@
-using Avalon.Logic;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -33,20 +33,20 @@ public class TroxiniumPickaxe : ModItem
         Item.value = Item.sellPrice(0, 2, 28, 0);
         Item.useAnimation = 25;
         Item.height = dims.Height;
-        //if (!Main.dedServ)
-        //{
-        //    Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        //}
+        if (!Main.dedServ)
+        {
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        }
     }
     public override void AddRecipes()
     {
-        Terraria.Recipe.Create(Type)
+        Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<Placeable.Bar.TroxiniumBar>(), 18)
             .AddTile(TileID.MythrilAnvil).Register();
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Tools/TroxiniumPickaxe_Glow").Value;
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         spriteBatch.Draw
         (
             texture,

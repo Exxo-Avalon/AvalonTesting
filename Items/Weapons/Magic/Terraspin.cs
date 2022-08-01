@@ -1,4 +1,4 @@
-using Avalon.Logic;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -40,10 +40,10 @@ public class Terraspin : ModItem
         Item.height = dims.Height;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         }
-        Item.GetGlobalItem<ItemUseGlow>().glowOffsetX = 2;
-        Item.GetGlobalItem<ItemUseGlow>().glowOffsetY = 0;
+        Item.GetGlobalItem<ItemGlowmask>().glowOffsetX = 2;
+        Item.GetGlobalItem<ItemGlowmask>().glowOffsetY = 0;
     }
     public override Vector2? HoldoutOffset()
     {

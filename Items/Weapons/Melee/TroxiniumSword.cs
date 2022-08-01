@@ -1,4 +1,4 @@
-using Avalon.Logic;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -34,7 +34,7 @@ public class TroxiniumSword : ModItem
         Item.height = dims.Height;
         if (!Main.dedServ)
         {
-            Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         }
     }
     public override void AddRecipes()

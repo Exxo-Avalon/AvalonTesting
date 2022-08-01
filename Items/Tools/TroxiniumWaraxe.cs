@@ -1,11 +1,11 @@
-using Avalon.Logic;
+using Avalon.PlayerDrawLayers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Items.Weapons.Melee;
+namespace Avalon.Items.Tools;
 
 public class TroxiniumWaraxe : ModItem
 {
@@ -32,10 +32,10 @@ public class TroxiniumWaraxe : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 28, 0);
         Item.height = dims.Height;
-        //if (!Main.dedServ)
-        //{
-        //    Item.GetGlobalItem<ItemUseGlow>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        //}
+        if (!Main.dedServ)
+        {
+            Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
+        }
     }
     public override void AddRecipes()
     {
@@ -45,7 +45,7 @@ public class TroxiniumWaraxe : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = Mod.Assets.Request<Texture2D>("Items/Weapons/Melee/TroxiniumWaraxe_Glow").Value;
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
         spriteBatch.Draw
         (
             texture,
