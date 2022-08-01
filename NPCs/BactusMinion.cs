@@ -3,6 +3,7 @@ using Avalon.Items.Material;
 using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,28 +34,8 @@ public class BactusMinion : ModNPC
 
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        if (NPC.AnyNPCs(ModContent.NPCType<BacteriumPrime>()))
-        {
-            if (Main.rand.Next(3) != 0)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                    ModContent.ItemType<Booger>(), Main.rand.Next(1, 4));
-            }
-
-            if (Main.rand.Next(3) != 0)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                    ModContent.ItemType<Items.Ore.PandemiteOre>(), Main.rand.Next(4, 11));
-            }
-
-            if (Main.rand.Next(2) == 0 &&
-                Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].statLife <
-                Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)].statLifeMax2)
-            {
-                Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height,
-                    ItemID.Heart);
-            }
-        }
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Booger>(), 2, 1, 4));
+        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Ore.PandemiteOre>(), 2, 4, 11));
     }
 
     public override void AI()

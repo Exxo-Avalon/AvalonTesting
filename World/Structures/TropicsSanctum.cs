@@ -120,7 +120,7 @@ namespace Avalon.World.Structures
                                         tile.Slope = SlopeType.Solid;
                                     if (tile.TileType != (ushort)ModContent.TileType<Tiles.TuhrtlBrick>())
                                         tile.IsHalfBlock = false;
-                                    if (tile.TileType != (ushort)ModContent.TileType<Tiles.TuhrtlBrick>())
+                                    if (tile.TileType != (ushort)ModContent.TileType<Tiles.TuhrtlBrick>() && confirmPlatforms == 1)
                                         WorldGen.AddBuriedChest(k, l, contain: WorldGen.GetNextJungleChestItem(), Style: 0, chestTileType: (ushort)ModContent.TileType<Tiles.PlatinumChest>());
                                     if (tile.TileType != (ushort)ModContent.TileType<Tiles.TuhrtlBrick>())
                                         tile.WallType = (ushort)ModContent.WallType<Walls.TropicalGrassWall>();

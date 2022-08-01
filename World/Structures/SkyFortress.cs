@@ -1266,10 +1266,13 @@ public class SkyFortress
                                 tile.IsHalfBlock = false;
                                 break;
                             case 84:
-                                tile.HasTile = false;
-                                tile.Slope = SlopeType.Solid;
-                                tile.IsHalfBlock = false;
-                                AddPlatinumChest(k, l);
+                                if (confirmPlatforms == 1)
+                                {
+                                    tile.HasTile = false;
+                                    tile.Slope = SlopeType.Solid;
+                                    tile.IsHalfBlock = false;
+                                    AddPlatinumChest(k, l);
+                                }
                                 break;
                             case 85:
                                 tile.HasTile = true;
@@ -1286,55 +1289,50 @@ public class SkyFortress
         #endregion tiles
         World.Utils.SquareTileFrameArea(x, y, 250);
     }
-    public static bool AddPlatinumChest(int i, int j, int contain = 0, bool notNearOtherChests = false, int Style = -1)
+    public static bool AddPlatinumChest(int i, int j, bool notNearOtherChests = false)
     {
         int k = j;
         while (k < Main.maxTilesY)
         {
-            if (Main.tile[i, k].HasTile && Main.tileSolid[(int)Main.tile[i, k].TileType])
+            if (Main.tile[i, k].HasTile && Main.tileSolid[Main.tile[i, k].TileType])
             {
                 int num = k;
                 int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.PlatinumChest>(), notNearOtherChests);
                 if (num2 >= 0)
                 {
-                    int num3 = 0;
-                    while (num3 == 0)
+                    Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Consumables.DragonBait>(), false);
+                    Main.chest[num2].item[0].stack = Main.rand.Next(2, 6);
+                    Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<Items.Placeable.Tile.SkyBrick>(), false);
+                    Main.chest[num2].item[1].stack = Main.rand.Next(200, 451);
+                    int rand = WorldGen.genRand.Next(3);
+                    if (rand == 0)
                     {
-                        Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Consumables.DragonBait>(), false);
-                        Main.chest[num2].item[0].stack = Main.rand.Next(2, 6);
-                        Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<Items.Placeable.Tile.SkyBrick>(), false);
-                        Main.chest[num2].item[1].stack = Main.rand.Next(200, 451);
-                        int rand = WorldGen.genRand.Next(3);
-                        if (rand == 0)
-                        {
-                            Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.SupersonicPotion>(), false);
-                            Main.chest[num2].item[2].stack = Main.rand.Next(2, 4);
-                        }
-                        if (rand == 1)
-                        {
-                            Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.LeapingPotion>(), false);
-                            Main.chest[num2].item[2].stack = Main.rand.Next(2, 5);
-                        }
-                        if (rand == 2)
-                        {
-                            Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.CloverPotion>(), false);
-                            Main.chest[num2].item[2].stack = Main.rand.Next(3) + 1;
-                        }
-                        int n2 = WorldGen.genRand.Next(2);
-                        if (n2 == 0)
-                        {
-                            Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.PyroscoricBar>(), false);
-                            Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
-                        }
-                        if (n2 == 1)
-                        {
-                            Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.TritanoriumBar>(), false);
-                            Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
-                        }
-                        Main.chest[num2].item[4].SetDefaults(ItemID.PlatinumCoin, false);
-                        Main.chest[num2].item[4].stack = Main.rand.Next(4) + 2;
-                        num3++;
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.SupersonicPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(2, 4);
                     }
+                    if (rand == 1)
+                    {
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.LeapingPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(2, 5);
+                    }
+                    if (rand == 2)
+                    {
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.CloverPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(3) + 1;
+                    }
+                    int n2 = WorldGen.genRand.Next(2);
+                    if (n2 == 0)
+                    {
+                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.PyroscoricBar>(), false);
+                        Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
+                    }
+                    if (n2 == 1)
+                    {
+                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.TritanoriumBar>(), false);
+                        Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
+                    }
+                    Main.chest[num2].item[4].SetDefaults(ItemID.PlatinumCoin, false);
+                    Main.chest[num2].item[4].stack = Main.rand.Next(4) + 2;
                     return true;
                 }
                 return false;
