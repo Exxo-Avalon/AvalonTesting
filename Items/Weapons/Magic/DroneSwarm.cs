@@ -21,7 +21,7 @@ class DroneSwarm : ModItem
         SacrificeTotal = 1;
         Item.staff[Type] = true;
     }
-    public override Vector2? HoldoutOffset() => new Vector2(-100, 0);
+    public override Vector2? HoldoutOrigin() => new Vector2(10f, 10f);
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();

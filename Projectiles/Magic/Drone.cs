@@ -17,25 +17,30 @@ public class Drone : ModProjectile
     }
     public override void SetDefaults()
     {
-        Projectile.width = 12;
-        Projectile.height = 12;
+        Projectile.width = 18;
+        Projectile.height = 18;
         Projectile.aiStyle = -1;
         Projectile.DamageType = DamageClass.Magic;
-        Projectile.penetrate = 5;
-        Projectile.alpha = 255;
+        Projectile.penetrate = -1;
+        Projectile.alpha = 0;
         Projectile.friendly = true;
         Projectile.usesLocalNPCImmunity = true;
-        Projectile.localNPCHitCooldown = 60;
+        Projectile.localNPCHitCooldown = 30;
+        Projectile.timeLeft = 120;
+        Projectile.ArmorPenetration = 15;
+        DrawOriginOffsetY = -2;
     }
     public override Color? GetAlpha(Color lightColor)
     {
-        return Color.White;
-        if (Projectile.localAI[1] >= 15f)
+        if(Projectile.timeLeft < 118)
         {
-            return new Color(255, 255, 255, Projectile.alpha);
+            return new Color(255, 255, 255, 200);
         }
-        int num7 = (int)((Projectile.localAI[1] - 5f) / 10f * 255f);
-        return new Color(num7, num7, num7, num7);
+        return new Color(0, 0, 0, 0);
+    }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        readyToHome = false;
     }
     public override void SendExtraAI(BinaryWriter writer)
     {
@@ -70,50 +75,56 @@ public class Drone : ModProjectile
         }
         return false;
     }
-    public float maxSpeed = 10f + Main.rand.NextFloat(10f);
-    public float homeDistance = 450;
+    public float maxSpeed = 10f + Main.rand.NextFloat(5f);
+    public float homeDistance = 400;
     public float homeStrength = 5f;
     public float homeDelay;
     public override void AI()
     {
-        Lighting.AddLight(Projectile.position, 219 / 255f, 205 / 255f, 79 / 255f);
-        //for (int num26 = 0; num26 < 4; num26++)
-        //{
-        //    float x2 = Projectile.position.X - Projectile.velocity.X / 10f * num26;
-        //    float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f * num26;
-        //    int num27 = Dust.NewDust(new Vector2(x2 + 5, y2 + 5), 5, 5, ModContent.DustType<Dusts.ContagionSpray>(), 0f, 0f, 0, default, 1f);
-        //    Main.dust[num27].alpha = Projectile.alpha;
-        //    Main.dust[num27].color.A = 0;
-        //    Main.dust[num27].scale *= 1f;
-        //    Main.dust[num27].position = new Vector2(x2, y2);
-        //    Main.dust[num27].velocity *= 0f;
-        //    Main.dust[num27].noGravity = true;
-        //}
+        Lighting.AddLight(Projectile.position, 219 / 510f, 205 / 510f, 79 / 510f);
+        if(Projectile.timeLeft < 118)
+        {
+            Dust dust = Dust.NewDustPerfect(Projectile.Center, ModContent.DustType<Dusts.DroneDust>(), Vector2.Zero, default, default, 1.2f);
+            dust.noGravity = true;
+        }
         Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         if (!readyToHome)
         {
             homeDelay++;
-            if(homeDelay >= 30)
+            if(homeDelay >= 15)
             {
                 readyToHome = true;
                 homeDelay = 0;
             }
+            Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 10);
         }
 
         Vector2 startPosition = Projectile.Center;
         int closest = Projectile.FindClosestNPC(homeDistance, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy || npc.type == NPCID.CultistBossClone || npc.friendly);
         if (closest != -1 && readyToHome)
         {
-            Vector2 target = Main.npc[closest].Center;
-            float distance = Vector2.Distance(target, startPosition);
-            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
-
-            Projectile.velocity += goTowards;
-
-            if (Projectile.velocity.Length() > maxSpeed)
+            if (Collision.CanHit(Main.npc[closest], Projectile))
             {
-                Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                Vector2 target = Main.npc[closest].Center;
+                float distance = Vector2.Distance(target, startPosition);
+                Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
+
+                Projectile.velocity += goTowards;
+
+                if (Projectile.velocity.Length() > maxSpeed)
+                {
+                    Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                }
             }
+        }
+    }
+    public override void Kill(int timeLeft)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, ModContent.DustType<Dusts.DroneDust>(), 0f, 0f, default, default, 1.2f);
+            Main.dust[dust].noGravity = true;
+            Main.dust[dust].velocity *= 1f;
         }
     }
 }
