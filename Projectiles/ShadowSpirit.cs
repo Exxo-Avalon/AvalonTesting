@@ -24,7 +24,7 @@ public class ShadowSpirit : ModProjectile
     }
     public float maxSpeed = 12.5f;
     public float homeDistance = 400;
-    public float homeStrenght = 5f;
+    public float homeStrength = 5f;
     public override void AI()
     {
         Vector2 startPosition = Projectile.Center;
@@ -33,7 +33,7 @@ public class ShadowSpirit : ModProjectile
         {
             Vector2 target = Main.npc[closest].Center;
             float distance = Vector2.Distance(target, startPosition);
-            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrenght));
+            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
 
             Projectile.velocity += goTowards;
 
