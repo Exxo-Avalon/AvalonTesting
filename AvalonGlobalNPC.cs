@@ -1349,6 +1349,11 @@ public class AvalonGlobalNPC : GlobalNPC
     }
     public override void DrawEffects(NPC npc, ref Color drawColor)
     {
+        if (npc.HasBuff<Plagued>())
+        {
+            Dust.NewDust(npc.position, npc.width, npc.height, DustID.VilePowder);
+        }
+
         if (npc.HasBuff<AstralCurse>())
         {
             Dust.NewDust(npc.position, npc.width, npc.height, DustID.DungeonSpirit);
