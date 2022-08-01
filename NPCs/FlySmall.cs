@@ -32,7 +32,7 @@ public class FlySmall : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         AnimationType = NPCID.BeeSmall;
-        NPC.knockBackResist = 0.5f;
+        NPC.knockBackResist = 0.01f;
         //Banner = NPC.type;
         //BannerItem = ModContent.ItemType<Items.Banners.BactusBanner>();
         //SpawnModBiomes = new int[] { ModContent.GetInstance<Biomes.Tropics>().Type };
