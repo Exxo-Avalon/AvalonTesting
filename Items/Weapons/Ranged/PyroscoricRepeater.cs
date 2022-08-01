@@ -54,7 +54,7 @@ class PyroscoricRepeater : ModItem
             HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1; NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
         }
         else
-        { HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant++; NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool += 0.2f;}
+        { HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant++; NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool += 0.4f;}
         SoundEngine.PlaySound(SoundID.Item102, player.position);
         return base.Shoot( player,  source,  position,  velocity,  type,  damage,  knockback);
     }
@@ -80,7 +80,7 @@ class PyroscoricRepeater : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Material.SolariumStar>(), 21)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PyroscoricBar>(), 21)
             .AddTile(TileID.MythrilAnvil).Register();
     }
 }
