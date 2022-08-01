@@ -519,7 +519,7 @@ public class ExxoPlayer : ModPlayer
             }
         }
 
-        if (roseMagic && proj.DamageType == DamageClass.Magic && Main.rand.NextBool(8) && roseMagicCooldown <= 0)
+        if (roseMagic && proj.DamageType == DamageClass.Magic && Main.rand.NextBool(8) && roseMagicCooldown <= 0 && target.lifeMax > 5 && target.type != NPCID.TargetDummy)
         {
             int num36 = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X,
                 (int)target.position.Y, target.width, target.height, ModContent.ItemType<Rosebud>());

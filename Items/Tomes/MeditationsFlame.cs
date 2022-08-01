@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -34,6 +34,6 @@ class MeditationsFlame : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<RubybeadHerb>(), 5).AddIngredient(ModContent.ItemType<FineLumber>(), 20).AddIngredient(ItemID.FallenStar, 60).AddIngredient(ItemID.MeteoriteBar, 10).AddIngredient(ModContent.ItemType<MysticalTomePage>(), 2).AddTile(ModContent.TileType<Tiles.TomeForge>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<RubybeadHerb>(), 5).AddIngredient(ModContent.ItemType<FineLumber>(), 20).AddIngredient(ItemID.FallenStar, 25).AddIngredient(ItemID.MeteoriteBar, 10).AddIngredient(ModContent.ItemType<MysticalTomePage>(), 2).AddTile(ModContent.TileType<Tiles.TomeForge>()).Register();
     }
 }
