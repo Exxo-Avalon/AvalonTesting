@@ -28,18 +28,21 @@ public class ShadowSpirit : ModProjectile
     public override void AI()
     {
         Vector2 startPosition = Projectile.Center;
-        int closest = Projectile.FindClosestNPC(homeDistance, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy || npc.type == NPCID.CultistBossClone);
+        int closest = Projectile.FindClosestNPC(homeDistance, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy || npc.type == NPCID.CultistBossClone || npc.friendly);
         if(closest != -1)
         {
-            Vector2 target = Main.npc[closest].Center;
-            float distance = Vector2.Distance(target, startPosition);
-            Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
-
-            Projectile.velocity += goTowards;
-
-            if (Projectile.velocity.Length() > maxSpeed)
+            if (Collision.CanHit(Main.npc[closest], Projectile))
             {
-                Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                Vector2 target = Main.npc[closest].Center;
+                float distance = Vector2.Distance(target, startPosition);
+                Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
+
+                Projectile.velocity += goTowards;
+
+                if (Projectile.velocity.Length() > maxSpeed)
+                {
+                    Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                }
             }
         }
 
