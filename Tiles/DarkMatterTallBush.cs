@@ -15,7 +15,7 @@ public class DarkMatterTallBush : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
         TileObjectData.newTile.Height = 3;
         TileObjectData.newTile.LavaDeath = true;
-        TileObjectData.newTile.CoordinateHeights = new[] {16, 16};
+        TileObjectData.newTile.CoordinateHeights = new[] {16, 16, 16};
         TileObjectData.addTile(Type);
         Main.tileFrameImportant[Type] = true;
         HitSound = SoundID.Grass;
