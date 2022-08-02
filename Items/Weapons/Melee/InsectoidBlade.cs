@@ -52,14 +52,14 @@ public class InsectoidBlade : ModItem
     {
         if (Main.rand.Next(4) == 0)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Malaria>(), 660);
+            target.AddBuff(ModContent.BuffType<Buffs.Malaria>(), 420);
         }
     }
     public override void OnHitPvp(Player player, Player target, int damage, bool crit)
     {
         if (Main.rand.Next(4) == 0)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Malaria>(), 660);
+            target.AddBuff(ModContent.BuffType<Buffs.Malaria>(), 420);
         }
     }
 

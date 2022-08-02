@@ -60,7 +60,7 @@ class MysteryTome : ModItem
         if (x == 2) // Tome of the Distant Past
         {
             SoundEngine.PlaySound(SoundID.Item8, player.position);
-            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.Magic.Bones>(), Item.damage, 4, player.whoAmI);
+            Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<Projectiles.Magic.Bone1>(), Item.damage, 4, player.whoAmI);
             return false;
         }
         if (x == 3) // The Golden Flames
