@@ -199,6 +199,19 @@ public class ExxoBuffPlayer : ModPlayer
     }
     public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
     {
+        if (Player.HasItem(ModContent.ItemType<Items.Potions.ImmortalityPotion>()) && !Player.HasBuff(ModContent.BuffType<ImmortalityCooldown>()))
+        {
+            Player.statLife = Player.statLifeMax2 / 3;
+            Player.AddBuff(ModContent.BuffType<ImmortalityCooldown>(), 60 * 60 * 3);
+            int i = Player.FindItem(ModContent.ItemType<Items.Potions.ImmortalityPotion>());
+            Player.inventory[i].stack--;
+            SoundEngine.PlaySound(SoundID.Item3, Player.position);
+            if (Player.inventory[i].stack <= 0)
+            {
+                Player.inventory[i].SetDefaults();
+            }
+            return false;
+        }
         if (Malaria)
         {
             damageSource = PlayerDeathReason.ByCustomReason(Player.name + " was bitten by a mosquito.");

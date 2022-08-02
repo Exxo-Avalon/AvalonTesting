@@ -1499,6 +1499,50 @@ public class AvalonGlobalNPC : GlobalNPC
         globalLoot.Add(ItemDropRule.ByCondition(hardmodeDungeonCondition, ModContent.ItemType<ACometHasStruckGround>(),
             RareChance));
         globalLoot.Add(ItemDropRule.ByCondition(eclipseCondition, ModContent.ItemType<EclipseofDoom>(), RareChance));
+
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.JungleKey);
+        LeadingConditionRule JungleKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        JungleKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.JungleKey, 1250, 1, 1, new Conditions.JungleKeyCondition()), true);
+        JungleKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.JungleKey, 2500, 1, 1, new Conditions.JungleKeyCondition()), true);
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.CorruptionKey);
+        LeadingConditionRule CorruptKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        CorruptKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.CorruptionKey, 1250, 1, 1, new Conditions.CorruptKeyCondition()), true);
+        CorruptKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.CorruptionKey, 2500, 1, 1, new Conditions.CorruptKeyCondition()), true);
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.FrozenKey);
+        LeadingConditionRule FrozenKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        FrozenKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.FrozenKey, 1250, 1, 1, new Conditions.FrozenKeyCondition()), true);
+        FrozenKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.FrozenKey, 2500, 1, 1, new Conditions.FrozenKeyCondition()), true);
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.CrimsonKey);
+        LeadingConditionRule CrimsonKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        CrimsonKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.CrimsonKey, 1250, 1, 1, new Conditions.CrimsonKeyCondition()), true);
+        CrimsonKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.CrimsonKey, 2500, 1, 1, new Conditions.CrimsonKeyCondition()), true);
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.HallowedKey);
+        LeadingConditionRule HallowKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        HallowKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.HallowedKey, 1250, 1, 1, new Conditions.HallowKeyCondition()), true);
+        HallowKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.HallowedKey, 2500, 1, 1, new Conditions.HallowKeyCondition()), true);
+
+        globalLoot.RemoveWhere(
+            rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.DungeonDesertKey);
+        LeadingConditionRule DesertKeyRule = new LeadingConditionRule(new CloverPotionActive());
+        DesertKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.DungeonDesertKey, 1250, 1, 1, new Conditions.DesertKeyCondition()), true);
+        DesertKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.DungeonDesertKey, 2500, 1, 1, new Conditions.DesertKeyCondition()), true);
+
+        globalLoot.Add(FrozenKeyRule);
+        globalLoot.Add(JungleKeyRule);
+        globalLoot.Add(CorruptKeyRule);
+        globalLoot.Add(HallowKeyRule);
+        globalLoot.Add(CrimsonKeyRule);
+        globalLoot.Add(DesertKeyRule);
     }
 
     internal static int[] Emblems;
@@ -1909,6 +1953,13 @@ public class AvalonGlobalNPC : GlobalNPC
         }
 
         #endregion group
+
+        //foreach (var rule in npcLoot.Get())
+        //{
+        //    // You must study the vanilla code to know what to objects to cast to.
+        //    if (rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.JungleKey && )
+        //        drop.chanceDenominator = 1250;
+        //}
 
         if (Avalon.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
         {

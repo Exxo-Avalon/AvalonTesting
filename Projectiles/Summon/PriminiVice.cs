@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Projectiles.Summon;
@@ -88,7 +89,7 @@ public class PriminiVice : ModProjectile
                     Projectile.velocity.X = -8f;
                 }
             }
-            var num959 = Projectile.FindClosestNPC(480, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5);
+            var num959 = Projectile.FindClosestNPC(480, npc => !npc.active || npc.townNPC || npc.dontTakeDamage || npc.lifeMax <= 5 || npc.type == NPCID.TargetDummy);
             if (num959 == -1)
             {
                 Projectile.rotation = -2.3561945f;
