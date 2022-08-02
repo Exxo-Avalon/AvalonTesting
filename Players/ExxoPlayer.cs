@@ -100,7 +100,6 @@ public class ExxoPlayer : ModPlayer
         avalonRetribution = false;
         curseOfIcarus = false;
         malaria = false;
-        primeMinion = false;
         hungryMinion = false;
         gastroMinion = false;
         reflectorMinion = false;
@@ -2756,7 +2755,6 @@ public class ExxoPlayer : ModPlayer
     public bool gastroMinion;
     public bool hungryMinion;
     public bool iceGolem;
-    public bool primeMinion;
 
     public bool reflectorMinion;
 

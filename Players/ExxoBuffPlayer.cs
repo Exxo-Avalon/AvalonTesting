@@ -253,9 +253,9 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
     {
-        if (Player.HasBuff<SpectrumBlur>())
+        if (drawInfo.drawPlayer.HasBuff<SpectrumBlur>())
         {
-            Player.eocDash = 1;
+            drawInfo.drawPlayer.eocDash = 1;
         }
     }
 
