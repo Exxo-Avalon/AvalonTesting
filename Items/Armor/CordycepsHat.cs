@@ -50,12 +50,12 @@ class CordycepsHat : ModItem
     {
         if (Main.rand.NextBool(30))
         {
-            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDust>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDust>(), Main.rand.NextFloat(-0.5f, 0.5f), Main.rand.NextFloat(-0.5f, 0.5f), 0, Color.White);
             Main.dust[dust].noGravity = true;
         }
         if (Main.rand.NextBool(70))
         {
-            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDustImmortal>(), Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-2, 2), 0, Color.White);
+            int dust = Dust.NewDust(player.position, player.width, player.height, ModContent.DustType<Dusts.MosquitoDustImmortal>(), Main.rand.NextFloat(-1, 1), Main.rand.NextFloat(-1, 1), 0, Color.White);
             Main.dust[dust].noGravity = true;
         }
     }

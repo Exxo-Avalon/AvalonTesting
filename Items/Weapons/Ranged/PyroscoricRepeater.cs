@@ -1,3 +1,4 @@
+using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -12,19 +13,19 @@ class PyroscoricRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Repeater");
-        Tooltip.SetDefault("Fires a burst of 3 arrows\nWooden arrows are converted into pyroscoric bolts, which do extra damage\n on the consecutive hits and explode.");
+        Tooltip.SetDefault("Fires a burst of 3 arrows\nWooden arrows are converted into pyroscoric bolts.\nPyroscoric bolts explode into fire when all 3 shots hit");
         SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 69;
+        Item.damage = 150;
         Item.autoReuse = true;
         Item.useAmmo = AmmoID.Arrow;
-        Item.shootSpeed = 13f;
+        Item.shootSpeed = 15f;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 7f;
@@ -34,8 +35,8 @@ class PyroscoricRepeater : ModItem
         Item.height = dims.Height;
         Item.consumeAmmoOnFirstShotOnly = true;
         Item.reuseDelay = 15;
-        Item.useAnimation = 30;
-        Item.useTime = 10;
+        Item.useAnimation = 36;
+        Item.useTime = 12;
     }
 
     public override Vector2? HoldoutOffset()
@@ -58,16 +59,28 @@ class PyroscoricRepeater : ModItem
         SoundEngine.PlaySound(SoundID.Item102, player.position);
         return base.Shoot( player,  source,  position,  velocity,  type,  damage,  knockback);
     }
+    public override Color? GetAlpha(Color lightColor)
+    {
+        return new Color(255, 255, 255, 200);
+    }
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
-        if(HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
+        Vector2 muzzleOffset = Vector2.Normalize(velocity) * 40f;
+        /* //broken thing for making all 3 shots go in the same directions
+        if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+        {
+            position += muzzleOffset;
+        }
+
+            if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
         {
             shoothere = velocity;
             HeyLookAtThatThingOverThereJustDontMakeItObviousBro = player.direction;
         }
         velocity = shoothere;
         player.direction = HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
-
+        position = player.MountedCenter + muzzleOffset;
+        */
         if (type == ProjectileID.WoodenArrowFriendly)
         {
             type = ModContent.ProjectileType<Projectiles.Ranged.PyroBolt>();

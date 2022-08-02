@@ -51,7 +51,7 @@ public class PyroBolt : ModProjectile
         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PyroBoltExplosion>(), Projectile.damage, 0, Projectile.owner, 0, 100);
         return true;
     }
-
+    private readonly int howlongtillnewarrows = 30;
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
         if (target.HasBuff(ModContent.BuffType<PyroBoltTier2>()))
@@ -63,8 +63,10 @@ public class PyroBolt : ModProjectile
                 int num10 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.InfernoFork, funnycircle.X, funnycircle.Y, 0, default, 2.5f);
                 Main.dust[num10].noGravity = true;
             }
+            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
             target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 300);
             target.RequestBuffRemoval(ModContent.BuffType<PyroBoltTier2>());
+            target.RequestBuffRemoval(ModContent.BuffType<PyroBoltTier1>());
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PyroBoltExplosion>(), Projectile.damage, 0, Projectile.owner, 1, 160);
         }
         else
@@ -78,7 +80,7 @@ public class PyroBolt : ModProjectile
                     int num10 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.InfernoFork, funnycircle.X, funnycircle.Y, 0, default, 2f);
                     Main.dust[num10].noGravity = true;
                 }
-                target.AddBuff(ModContent.BuffType<PyroBoltTier2>(), 60);
+                target.AddBuff(ModContent.BuffType<PyroBoltTier2>(), howlongtillnewarrows);
                 target.RequestBuffRemoval(ModContent.BuffType<PyroBoltTier1>());
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PyroBoltExplosion>(), Projectile.damage, 0, Projectile.owner, 0, 130);
             }
@@ -90,7 +92,7 @@ public class PyroBolt : ModProjectile
                     int num10 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.InfernoFork, funnycircle.X, funnycircle.Y, 0, default, 1.5f);
                     Main.dust[num10].noGravity = true;
                 }
-                target.AddBuff(ModContent.BuffType<PyroBoltTier1>(), 120);
+                target.AddBuff(ModContent.BuffType<PyroBoltTier1>(), howlongtillnewarrows);
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PyroBoltExplosion>(), Projectile.damage, 0, Projectile.owner, 0, 100);
             }
         }
@@ -153,7 +155,7 @@ public class PyroBoltExplosion : ModProjectile
         Projectile.aiStyle = 0;
         Projectile.penetrate = -1;
         Projectile.knockBack = 0;
-        Projectile.timeLeft = 30;
+        Projectile.timeLeft = 10;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
         Projectile.tileCollide = false;

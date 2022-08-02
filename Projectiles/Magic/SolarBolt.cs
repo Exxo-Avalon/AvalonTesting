@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using Terraria.DataStructures;
 
 namespace Avalon.Projectiles.Magic;
 
@@ -81,7 +82,7 @@ public class SolarBolt : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        Projectile.scale *= 20f;
+        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SolarBoltExplosion>(), Projectile.damage, 0, Projectile.owner, 0, 100);
         SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.position);
         for (int num453 = 0; num453 < 50; num453++)
         {
@@ -110,5 +111,35 @@ public class SolarBolt : ModProjectile
             int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, Projectile.velocity.X + (Main.rand.Next(-40, 41) * 0.1f), Projectile.velocity.Y + (Main.rand.Next(-40, 41) * 0.1f), ModContent.ProjectileType<SolarBoltOffspring>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
             Main.projectile[proj].timeLeft = Main.rand.Next(250,350);
         }
+    }
+}
+public class SolarBoltExplosion : ModProjectile
+{
+    public override string Texture => $"Terraria/Images/Buff_{BuffID.OnFire}";
+    public override void SetDefaults()
+    {
+        Projectile.Size = new Vector2(0);
+        Projectile.friendly = true;
+        Projectile.aiStyle = 0;
+        Projectile.penetrate = -1;
+        Projectile.knockBack = 0;
+        Projectile.timeLeft = 10;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 60;
+        Projectile.tileCollide = false;
+    }
+
+    public override void OnSpawn(IEntitySource source)
+    {
+        Projectile.position -= new Vector2(Projectile.ai[1] / 2);
+        Projectile.Size = new Vector2(Projectile.ai[1]);
+    }
+    public override bool PreDraw(ref Color lightColor)
+    {
+        return false;
+    }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+            target.AddBuff(ModContent.BuffType<Buffs.Inferno>(), 60);
     }
 }
