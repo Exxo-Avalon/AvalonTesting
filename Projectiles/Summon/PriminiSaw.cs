@@ -33,6 +33,11 @@ public class PriminiSaw : ModProjectile
     {
         return true;
     }
+    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    {
+        if (target.type == NPCID.TargetDummy)
+            damage = 0;
+    }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
         readyToHome = false;
@@ -54,12 +59,12 @@ public class PriminiSaw : ModProjectile
             Projectile.timeLeft = 2;
         }
         AvalonGlobalProjectile.ModifyProjectileStats(Projectile, ModContent.ProjectileType<PrimeArmsCounter>(),
-            50, 3, 1f, 0.15f);
+            50, 3, 1f, 0.1f);
         //Projectile.damage = (int)owner.GetDamage(DamageClass.Summon).ApplyTo(50);
         //Projectile.damage += owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()] * 3;
         //Projectile.scale = 1f;
         //Projectile.scale += 0.2f * owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()];
-        if (Projectile.position.Y > Main.player[Projectile.owner].Center.Y - Main.rand.Next(60, 80))
+        if (Projectile.position.Y > Main.player[Projectile.owner].Center.Y - Main.rand.Next(75, 95))
         {
             if (Projectile.velocity.Y > 0f)
             {
@@ -71,7 +76,7 @@ public class PriminiSaw : ModProjectile
                 Projectile.velocity.Y = 6f;
             }
         }
-        else if (Projectile.position.Y < Main.player[Projectile.owner].Center.Y - Main.rand.Next(60, 80))
+        else if (Projectile.position.Y < Main.player[Projectile.owner].Center.Y - Main.rand.Next(75, 95))
         {
             if (Projectile.velocity.Y < 0f)
             {

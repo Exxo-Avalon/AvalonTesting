@@ -34,7 +34,6 @@ public class PrimeArmsCounter : ModProjectile
         {
             owner.GetModPlayer<ExxoSummonPlayer>().PrimeMinion = false;
         }
-        //Main.NewText(owner.GetModPlayer<ExxoSummonPlayer>().PrimeMinion);
         if (owner.GetModPlayer<ExxoSummonPlayer>().PrimeMinion)
         {
             Projectile.timeLeft = 2;

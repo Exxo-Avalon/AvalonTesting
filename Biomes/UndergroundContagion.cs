@@ -35,6 +35,6 @@ public class UndergroundContagion : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return !player.ZoneDungeon && ModContent.GetInstance<Systems.BiomeTileCounts>().ContagionTiles > 200 && player.ZoneRockLayerHeight;
+        return !player.ZoneDungeon && ModContent.GetInstance<Systems.BiomeTileCounts>().ContagionTiles > 200 && (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight);
     }
 }

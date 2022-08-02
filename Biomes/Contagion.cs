@@ -48,6 +48,6 @@ public class Contagion : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !player.ZoneRockLayerHeight;
+        return player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !player.ZoneDirtLayerHeight && !player.ZoneRockLayerHeight;
     }
 }

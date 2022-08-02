@@ -29,7 +29,11 @@ public class PriminiLaser : ModProjectile
         Projectile.friendly = true;
         Main.projPet[Projectile.type] = true;
     }
-
+    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    {
+        if (target.type == NPCID.TargetDummy)
+            damage = 0;
+    }
     public override void AI()
     {
         Player owner = Main.player[Projectile.owner];
@@ -42,12 +46,12 @@ public class PriminiLaser : ModProjectile
             Projectile.timeLeft = 2;
         }
         AvalonGlobalProjectile.ModifyProjectileStats(Projectile, ModContent.ProjectileType<PrimeArmsCounter>(),
-            50, 3, 1f, 0.15f);
+            50, 3, 1f, 0.1f);
         //Projectile.damage = (int)owner.GetDamage(DamageClass.Summon).ApplyTo(50);
         //Projectile.damage += owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()] * 3;
         //Projectile.scale = 1f;
         //Projectile.scale += 0.2f * owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()];
-        if (Projectile.position.Y > Main.player[Projectile.owner].Center.Y + Main.rand.Next(-10, 0))
+        if (Projectile.position.Y > Main.player[Projectile.owner].Center.Y + Main.rand.Next(-5, 5))
         {
             if (Projectile.velocity.Y > 0f)
             {
@@ -59,7 +63,7 @@ public class PriminiLaser : ModProjectile
                 Projectile.velocity.Y = 6f;
             }
         }
-        else if (Projectile.position.Y < Main.player[Projectile.owner].Center.Y + Main.rand.Next(-10, 0))
+        else if (Projectile.position.Y < Main.player[Projectile.owner].Center.Y + Main.rand.Next(-5, 5))
         {
             if (Projectile.velocity.Y < 0f)
             {
@@ -71,7 +75,7 @@ public class PriminiLaser : ModProjectile
                 Projectile.velocity.Y = -6f;
             }
         }
-        if (Projectile.Center.X > Main.player[Projectile.owner].Center.X - Main.rand.Next(45, 65))
+        if (Projectile.Center.X > Main.player[Projectile.owner].Center.X - Main.rand.Next(35, 55))
         {
             if (Projectile.velocity.X > 0f)
             {
@@ -83,7 +87,7 @@ public class PriminiLaser : ModProjectile
                 Projectile.velocity.X = 9f;
             }
         }
-        if (Projectile.Center.X < Main.player[Projectile.owner].Center.X - Main.rand.Next(45, 65))
+        if (Projectile.Center.X < Main.player[Projectile.owner].Center.X - Main.rand.Next(35, 55))
         {
             if (Projectile.velocity.X < 0f)
             {

@@ -27,6 +27,6 @@ public class Tropics : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics;
+        return player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !player.ZoneDirtLayerHeight && !player.ZoneRockLayerHeight;
     }
 }

@@ -33,9 +33,11 @@ public class PriminiVice : ModProjectile
     {
         return true;
     }
-
-    
-
+    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    {
+        if (target.type == NPCID.TargetDummy)
+            damage = 0;
+    }
     public override void AI()
     {
         Player owner = Main.player[Projectile.owner];
@@ -48,7 +50,7 @@ public class PriminiVice : ModProjectile
             Projectile.timeLeft = 2;
         }
         AvalonGlobalProjectile.ModifyProjectileStats(Projectile, ModContent.ProjectileType<PrimeArmsCounter>(),
-            50, 3, 1f, 0.15f);
+            50, 3, 1f, 0.1f);
         //Projectile.damage = (int)owner.GetDamage(DamageClass.Summon).ApplyTo(50);
         //Projectile.damage += owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()] * 3;
         //Projectile.scale = 1f;

@@ -49,7 +49,7 @@ public class PriminiCannon : ModProjectile
             }
         }
         AvalonGlobalProjectile.ModifyProjectileStats(Projectile, ModContent.ProjectileType<PrimeArmsCounter>(),
-            50, 3, 1f, 0.15f);
+            50, 3, 1f, 0.1f);
         //Projectile.damage = (int)owner.GetDamage(DamageClass.Summon).ApplyTo(50);
         //Projectile.damage += owner.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()] * 3;
         //Projectile.scale = 1f;

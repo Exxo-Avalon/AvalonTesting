@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Avalon.Buffs;
 using Avalon.Items.BossBags;
 using Avalon.Items.Material;
@@ -90,7 +91,6 @@ public class DesertBeak : ModNPC
     private int dive;
     private int teleports;
     private int flightimer;
-
 
     public override void AI()
     {
