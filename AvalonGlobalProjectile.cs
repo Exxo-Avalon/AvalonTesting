@@ -10,6 +10,14 @@ namespace Avalon;
 
 public class AvalonGlobalProjectile : GlobalProjectile
 {
+    public static void ModifyProjectileStats(Projectile p, int ownedCounts, int origDmg, int dmgMod, float origScale, float scaleMod)
+    {
+        p.damage = (int)Main.player[p.owner].GetDamage(DamageClass.Summon).ApplyTo(origDmg);
+        p.damage += Main.player[p.owner].ownedProjectileCounts[ownedCounts] * dmgMod;
+        p.scale = origScale;
+        p.scale += scaleMod * Main.player[p.owner].ownedProjectileCounts[ownedCounts];
+    }
+
     public static int FindClosestHostile(Vector2 pos, float dist)
     {
         int closest = -1;

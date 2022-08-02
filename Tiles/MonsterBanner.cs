@@ -265,225 +265,228 @@ public class MonsterBanner : ModTile
             Player player = Main.LocalPlayer;
             int style = Main.tile[i, j].TileFrameX / 18;
             string type;
+            int t = 1;
             switch (style)
             {
                 case 0:
-                    type = "Mime";
+                    t = ModContent.NPCType<NPCs.Mime>();
                     break;
                 case 1:
-                    type = "DarkMatterSlime";
+                    t = ModContent.NPCType<NPCs.DarkMatterSlime>();
                     break;
                 case 2:
-                    type = "CursedMagmaSkeleton";
+                    t = ModContent.NPCType<NPCs.CursedMagmaSkeleton>();
                     break;
                 case 4:
-                    type = "VampireHarpy";
+                    t = ModContent.NPCType<NPCs.VampireHarpy>();
                     break;
                 case 5:
-                    type = "ArmoredWraith";
+                    t = ModContent.NPCType<NPCs.ArmoredWraith>();
                     break;
                 case 6:
-                    type = "RedAegisBones";
+                    t = ModContent.NPCType<NPCs.RedAegisBonesHelmet>();
                     break;
                 case 7:
-                    type = "BloodshotEye";
+                    t = ModContent.NPCType<NPCs.BloodshotEye>();
                     break;
                 case 8:
-                    type = "Dragonfly";
+                    t = ModContent.NPCType<NPCs.Dragonfly>();
                     break;
                 case 9:
-                    type = "Blaze";
+                    t = ModContent.NPCType<NPCs.Blaze>();
                     break;
                 case 10:
-                    type = "ArmoredHellTortoise";
+                    t = ModContent.NPCType<NPCs.ArmoredHellTortoise>();
                     break;
                 case 13:
-                    type = "ImpactWizard";
+                    t = ModContent.NPCType<NPCs.ImpactWizard>();
                     break;
                 case 14:
-                    type = "MechanicalDigger";
+                    t = ModContent.NPCType<NPCs.MechanicalDiggerHead>();
                     break;
                 case 15:
-                    type = "Cougher";
+                    t = ModContent.NPCType<NPCs.Cougher>();
                     break;
                 case 16:
-                    type = "Bactus";
+                    t = ModContent.NPCType<NPCs.Bactus>();
                     break;
                 case 17:
-                    type = "Ickslime";
+                    t = ModContent.NPCType<NPCs.Ickslime>();
                     break;
                 case 18:
-                    type = "GrossyFloat";
+                    t = ModContent.NPCType<NPCs.GrossyFloat>();
                     break;
                 case 19:
-                    type = "Pyrasite";
+                    t = ModContent.NPCType<NPCs.PyrasiteHead>();
                     break;
                 case 20:
-                    type = "EyeBones";
+                    t = ModContent.NPCType<NPCs.EyeBones>();
                     break;
                 case 21:
-                    type = "Ectosphere";
+                    t = ModContent.NPCType<NPCs.Ectosphere>();
                     break;
                 case 22:
-                    type = "BombSkeleton";
+                    t = ModContent.NPCType<NPCs.BombSkeleton>();
                     break;
                 case 23:
-                    type = "CopperSlime";
+                    t = ModContent.NPCType<NPCs.CopperSlime>();
                     break;
                 case 24:
-                    type = "TinSlime";
+                    t = ModContent.NPCType<NPCs.TinSlime>();
                     break;
                 case 25:
-                    type = "IronSlime";
+                    t = ModContent.NPCType<NPCs.IronSlime>();
                     break;
                 case 26:
-                    type = "LeadSlime";
+                    t = ModContent.NPCType<NPCs.LeadSlime>();
                     break;
                 case 27:
-                    type = "SilverSlime";
+                    t = ModContent.NPCType<NPCs.SilverSlime>();
                     break;
                 case 28:
-                    type = "TungstenSlime";
+                    t = ModContent.NPCType<NPCs.TungstenSlime>();
                     break;
                 case 29:
-                    type = "GoldSlime";
+                    t = ModContent.NPCType<NPCs.GoldSlime>();
                     break;
                 case 30:
-                    type = "PlatinumSlime";
+                    t = ModContent.NPCType<NPCs.PlatinumSlime>();
                     break;
                 case 31:
-                    type = "CobaltSlime";
+                    t = ModContent.NPCType<NPCs.CobaltSlime>();
                     break;
                 case 32:
-                    type = "PalladiumSlime";
+                    t = ModContent.NPCType<NPCs.PalladiumSlime>();
                     break;
                 case 33:
-                    type = "MythrilSlime";
+                    t = ModContent.NPCType<NPCs.MythrilSlime>();
                     break;
                 case 34:
-                    type = "OrichalcumSlime";
+                    t = ModContent.NPCType<NPCs.OrichalcumSlime>();
                     break;
                 case 35:
-                    type = "AdamantiteSlime";
+                    t = ModContent.NPCType<NPCs.AdamantiteSlime>();
                     break;
                 case 36:
-                    type = "TitaniumSlime";
+                    t = ModContent.NPCType<NPCs.TitaniumSlime>();
                     break;
                 case 37:
-                    type = "RhodiumSlime";
+                    t = ModContent.NPCType<NPCs.RhodiumSlime>();
                     break;
                 case 38:
-                    type = "OsmiumSlime";
+                    t = ModContent.NPCType<NPCs.OsmiumSlime>();
                     break;
                 case 39:
-                    type = "DurataniumSlime";
+                    t = ModContent.NPCType<NPCs.DurantiumSlime>();
                     break;
                 case 40:
-                    type = "NaquadahSlime";
+                    t = ModContent.NPCType<NPCs.NaquadahSlime>();
                     break;
                 case 41:
-                    type = "TroxiniumSlime";
+                    t = ModContent.NPCType<NPCs.TroxiniumSlime>();
                     break;
                 case 42:
-                    type = "UnstableAnomaly";
+                    t = ModContent.NPCType<NPCs.UnstableAnomaly>();
                     break;
                 case 43:
-                    type = "MatterMan";
+                    t = ModContent.NPCType<NPCs.MatterMan>();
                     break;
                 case 44:
-                    type = "BronzeSlime";
+                    t = ModContent.NPCType<NPCs.BronzeSlime>();
                     break;
                 case 45:
-                    type = "NickelSlime";
+                    t = ModContent.NPCType<NPCs.NickelSlime>();
                     break;
                 case 46:
-                    type = "ZincSlime";
+                    t = ModContent.NPCType<NPCs.ZincSlime>();
                     break;
                 case 47:
-                    type = "BismuthSlime";
+                    t = ModContent.NPCType<NPCs.BismuthSlime>();
                     break;
                 case 48:
-                    type = "IridiumSlime";
+                    t = ModContent.NPCType<NPCs.IridiumSlime>();
                     break;
                 case 49:
-                    type = "Hallowor";
+                    t = ModContent.NPCType<NPCs.Hallowor>();
                     break;
                 case 51:
-                    type = "IrateBones";
+                    t = ModContent.NPCType<NPCs.IrateBones>();
                     break;
                 case 55:
-                    type = "CursedScepter";
+                    t = ModContent.NPCType<NPCs.CursedScepter>();
                     break;
                 case 56:
-                    type = "EctoHand";
+                    t = ModContent.NPCType<NPCs.EctoHand>();
                     break;
                 case 57:
-                    type = "CloudBat";
+                    t = ModContent.NPCType<NPCs.CloudBat>();
                     break;
                 case 58:
-                    type = "Valkyrie";
+                    t = ModContent.NPCType<NPCs.Valkyrie>();
                     break;
                 case 59:
-                    type = "CaesiumSeeker";
+                    t = ModContent.NPCType<NPCs.CaesiumSeekerHead>();
                     break;
                 case 60:
-                    type = "CaesiumBrute";
+                    t = ModContent.NPCType<NPCs.CaesiumBrute>();
                     break;
                 case 61:
-                    type = "CaesiumStalker";
+                    t = ModContent.NPCType<NPCs.CaesiumStalker>();
                     break;
                 case 62:
-                    type = "Rafflesia";
+                    t = ModContent.NPCType<NPCs.Rafflesia>();
                     break;
                 case 63:
-                    type = "PoisonDartFrog";
+                    t = ModContent.NPCType<NPCs.PoisonDartFrog>();
                     break;
                 case 64:
-                    type = "CometTail";
+                    t = ModContent.NPCType<NPCs.CometTail>();
                     break;
                 case 65:
-                    type = "EvilVulture";
+                    t = ModContent.NPCType<NPCs.EvilVulture>();
                     break;
                 case 66:
-                    type = "CrystalBones";
+                    t = ModContent.NPCType<NPCs.CrystalBones>();
                     break;
                 case 67:
-                    type = "CrystalSpectre";
+                    t = ModContent.NPCType<NPCs.CrystalSpectre>();
                     break;
                 case 68:
-                    type = "CursedFlamer";
+                    t = ModContent.NPCType<NPCs.CursedFlamer>();
                     break;
                 case 69:
-                    type = "FallenHero";
+                    t = ModContent.NPCType<NPCs.FallenHero>();
                     break;
                 case 70:
-                    type = "QuickCaribe";
+                    t = ModContent.NPCType<NPCs.QuickCaribe>();
                     break;
                 case 71:
-                    type = "VorazylcumMite";
+                    t = ModContent.NPCType<NPCs.VorazylcumMite>();
                     break;
                 case 72:
-                    type = "UnvolanditeMite";
+                    t = ModContent.NPCType<NPCs.UnvolanditeMite>();
                     break;
                 case 73:
-                    type = "JuggernautSorcerer";
+                    t = ModContent.NPCType<NPCs.JuggernautSorcerer>();
                     break;
                 case 74:
-                    type = "JuggernautSwordsman";
+                    t = 0; // ModContent.NPCType<NPCs.JuggernautSwordsman>();
                     break;
                 case 75:
-                    type = "JuggernautBrute";
+                    t = 0; // ModContent.NPCType<NPCs.JuggernautBrute>();
                     break;
                 case 76:
-                    type = "GuardianCorruptor";
+                    t = ModContent.NPCType<NPCs.GuardianCorruptor>();
                     break;
                 case 77:
-                    type = "TropicalSlime";
+                    t = ModContent.NPCType<NPCs.TropicalSlime>();
                     break;
                 default:
+                    t = 0;
                     return;
             }
-            Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(type).Type] = true;
+            //Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(type).Type] = true;
+            Main.SceneMetrics.NPCBannerBuff[t] = true;
             //player.hasBannerBuff = true;
         }
     }

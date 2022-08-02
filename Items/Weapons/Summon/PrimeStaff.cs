@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -28,7 +29,7 @@ class PrimeStaff : ModItem
         Item.width = dims.Width;
         Item.useTime = 30;
         Item.knockBack = 6.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Summon.PriminiCannon>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Summon.PrimeArmsCounter>();
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.useAnimation = 30;
@@ -45,10 +46,7 @@ class PrimeStaff : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, player.Center.X - 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiCannon>(), damage, knockback, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(source, player.Center.X + 40f, player.Center.Y - 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiLaser>(), damage, knockback, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(source, player.Center.X - 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiSaw>(), damage, knockback, player.whoAmI, 0f, 0f);
-        Projectile.NewProjectile(source, player.Center.X + 40f, player.Center.Y + 40f, 0f, 0f, ModContent.ProjectileType<Projectiles.Summon.PriminiVice>(), damage, knockback, player.whoAmI, 0f, 0f);
-        return false;
+        player.GetModPlayer<ExxoSummonPlayer>().UpdatePrimeMinionStatus(source);
+        return true;
     }
 }

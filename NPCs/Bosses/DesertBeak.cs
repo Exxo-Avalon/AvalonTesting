@@ -127,7 +127,7 @@ public class DesertBeak : ModNPC
                     if (NPC.alpha >= 254)
                     {
                         divebomb = false;
-                        SoundEngine.PlaySound(SoundID.NPCHit28);
+                        SoundEngine.PlaySound(SoundID.NPCHit28, NPC.position);
                         NPC.velocity = new Vector2(0,0);
                         NPC.Center = lockon_player + new Vector2 (-500, -500);
                         mode = 1;
@@ -283,7 +283,7 @@ public class DesertBeak : ModNPC
 
                     if(divetimer >= 60)
                     {
-                        SoundEngine.PlaySound(SoundID.Item64);
+                        SoundEngine.PlaySound(SoundID.Item64, NPC.position);
 
                         Vector2 targetPosition = Main.player[NPC.target].position;
                         Vector2 position = NPC.Center;
@@ -355,7 +355,7 @@ public class DesertBeak : ModNPC
                         NPC.alpha = 0;
                         if(teleports == 9)
                         {
-                            SoundEngine.PlaySound(SoundID.NPCHit28);
+                            SoundEngine.PlaySound(SoundID.NPCHit28, NPC.position);
 
                             Vector2 targetPosition = Main.player[NPC.target].position;
                             Vector2 position = NPC.Center;
@@ -379,7 +379,7 @@ public class DesertBeak : ModNPC
                         }
                         else
                         {
-                            SoundEngine.PlaySound(SoundID.Item64);
+                            SoundEngine.PlaySound(SoundID.Item64, NPC.position);
 
                             Vector2 targetPosition = Main.player[NPC.target].position;
                             Vector2 position = NPC.Center;
@@ -456,7 +456,7 @@ public class DesertBeak : ModNPC
                             }
                         }
 
-                        SoundEngine.PlaySound(SoundID.Item64);
+                        SoundEngine.PlaySound(SoundID.Item82, NPC.position);
 
                         divetimer = 0;
                     }

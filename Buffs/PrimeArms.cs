@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Avalon.Projectiles.Summon;
 using Terraria;
 using Terraria.ModLoader;
@@ -14,21 +15,20 @@ public class PrimeArms : ModBuff
         Main.buffNoTimeDisplay[Type] = true;
         Main.buffNoSave[Type] = false;
     }
-
-
     public override void Update(Player player, ref int buffIndex)
     {
-        if (player.ownedProjectileCounts[ModContent.ProjectileType<PriminiCannon>()] > 0 ||
-            player.ownedProjectileCounts[ModContent.ProjectileType<PriminiLaser>()] > 0 ||
-            player.ownedProjectileCounts[ModContent.ProjectileType<PriminiSaw>()] > 0 ||
-            player.ownedProjectileCounts[ModContent.ProjectileType<PriminiVice>()] > 0)
+        if (player.ownedProjectileCounts[ModContent.ProjectileType<PrimeArmsCounter>()] > 0)
         {
-            player.buffTime[buffIndex] = 18000;
+            player.GetModPlayer<ExxoSummonPlayer>().PrimeMinion = true;
         }
-        else
+        if (!player.GetModPlayer<ExxoSummonPlayer>().PrimeMinion)
         {
             player.DelBuff(buffIndex);
             buffIndex--;
+        }
+        else
+        {
+            player.buffTime[buffIndex] = 18000;
         }
     }
 }
