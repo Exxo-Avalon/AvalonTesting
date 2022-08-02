@@ -48,10 +48,10 @@ public class AvalonGlobalNPCInstance : GlobalNPC
                 npc.lifeRegen = 0;
             }
 
-            npc.lifeRegen -= 30;
-            if (damage < 4)
+            npc.lifeRegen -= 6;
+            if (damage < 3)
             {
-                damage = 4;
+                damage = 3;
             }
         }
         if (Inferno)
