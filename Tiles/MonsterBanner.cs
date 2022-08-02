@@ -487,6 +487,7 @@ public class MonsterBanner : ModTile
             }
             //Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(type).Type] = true;
             Main.SceneMetrics.NPCBannerBuff[t] = true;
+            Main.SceneMetrics.hasBanner = true;
             //player.hasBannerBuff = true;
         }
     }

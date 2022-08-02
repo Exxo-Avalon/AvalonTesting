@@ -1543,6 +1543,24 @@ public class AvalonGlobalNPC : GlobalNPC
         globalLoot.Add(HallowKeyRule);
         globalLoot.Add(CrimsonKeyRule);
         globalLoot.Add(DesertKeyRule);
+
+        if (Avalon.ImkSushisMod != null)
+        {
+            globalLoot.Add(ItemDropRule.ByCondition(
+                new PostPhantasmHellcastleTokenDrop(),
+                ModContent.ItemType<HellcastleToken>(), 15));
+            globalLoot.Add(ItemDropRule.ByCondition(
+                new SuperhardmodePreArmaTokenDrop(),
+                ModContent.ItemType<SuperhardmodeToken>(), 15));
+            globalLoot.Add(ItemDropRule.ByCondition(new PostArmageddonTokenDrop(), ModContent.ItemType<DarkMatterToken>(),
+                15));
+            globalLoot.Add(ItemDropRule.ByCondition(new PostMechastingTokenDrop(), ModContent.ItemType<MechastingToken>(),
+                15));
+            globalLoot.Add(ItemDropRule.ByCondition(new ZoneTropicsToken(), ModContent.ItemType<TropicsToken>(), 15));
+            globalLoot.Add(ItemDropRule.ByCondition(
+                new UndergroundHardmodeContagionTokenDrop(contagionCondition),
+                ModContent.ItemType<ContagionToken>(), 15));
+        }
     }
 
     internal static int[] Emblems;
@@ -1961,23 +1979,23 @@ public class AvalonGlobalNPC : GlobalNPC
         //        drop.chanceDenominator = 1250;
         //}
 
-        if (Avalon.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
-        {
-            npcLoot.Add(ItemDropRule.ByCondition(
-                new PostPhantasmHellcastleTokenDrop(),
-                ModContent.ItemType<HellcastleToken>(), 15));
-            npcLoot.Add(ItemDropRule.ByCondition(
-                new SuperhardmodePreArmaTokenDrop(),
-                ModContent.ItemType<SuperhardmodeToken>(), 15));
-            npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonTokenDrop(), ModContent.ItemType<DarkMatterToken>(),
-                15));
-            npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingTokenDrop(), ModContent.ItemType<MechastingToken>(),
-                15));
-            npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropicsToken(), ModContent.ItemType<TropicsToken>(), 15));
-            npcLoot.Add(ItemDropRule.ByCondition(
-                new UndergroundHardmodeContagionTokenDrop(undergroundContagionCondition, hardModeCondition),
-                ModContent.ItemType<ContagionToken>(), 15));
-        }
+        //if (Avalon.ImkSushisMod != null && !NPCID.Sets.CountsAsCritter[npc.type] && !npc.townNPC)
+        //{
+        //    npcLoot.Add(ItemDropRule.ByCondition(
+        //        new PostPhantasmHellcastleTokenDrop(),
+        //        ModContent.ItemType<HellcastleToken>(), 75));
+        //    npcLoot.Add(ItemDropRule.ByCondition(
+        //        new SuperhardmodePreArmaTokenDrop(),
+        //        ModContent.ItemType<SuperhardmodeToken>(), 75));
+        //    npcLoot.Add(ItemDropRule.ByCondition(new PostArmageddonTokenDrop(), ModContent.ItemType<DarkMatterToken>(),
+        //        75));
+        //    npcLoot.Add(ItemDropRule.ByCondition(new PostMechastingTokenDrop(), ModContent.ItemType<MechastingToken>(),
+        //        75));
+        //    npcLoot.Add(ItemDropRule.ByCondition(new ZoneTropicsToken(), ModContent.ItemType<TropicsToken>(), 75));
+        //    npcLoot.Add(ItemDropRule.ByCondition(
+        //        new UndergroundHardmodeContagionTokenDrop(undergroundContagionCondition),
+        //        ModContent.ItemType<ContagionToken>(), 75));
+        //}
     }
 
     public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)

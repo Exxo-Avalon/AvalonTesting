@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Avalon.Systems;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
@@ -10,7 +10,8 @@ public class SoulofHumidityDrop : IItemDropRuleCondition, IProvideItemConditionD
     public bool CanDrop(DropAttemptInfo info)
     {
         return (info.player.ZoneJungle || info.player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics) &&
-               ModContent.GetInstance<AvalonWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon;
+               ModContent.GetInstance<AvalonWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
+               !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

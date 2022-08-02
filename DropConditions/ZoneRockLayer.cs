@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.DropConditions;
 
@@ -6,7 +6,7 @@ public class ZoneRockLayer : IItemDropRuleCondition, IProvideItemConditionDescri
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.ZoneRockLayerHeight;
+        return info.player.ZoneRockLayerHeight && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

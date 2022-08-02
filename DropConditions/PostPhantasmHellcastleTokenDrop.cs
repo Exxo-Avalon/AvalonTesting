@@ -11,7 +11,8 @@ public class PostPhantasmHellcastleTokenDrop : IItemDropRuleCondition, IProvideI
     public bool CanDrop(DropAttemptInfo info)
     {
         return info.player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle && NPC.downedMoonlord &&
-               ModContent.GetInstance<DownedBossSystem>().DownedPhantasm;
+               ModContent.GetInstance<DownedBossSystem>().DownedPhantasm && !info.IsInSimulation &&
+               info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -27,6 +27,7 @@ public static class ClassExtensions
     public static ExxoBiomePlayer AvalonBiome(this Player p) => p.GetModPlayer<ExxoBiomePlayer>();
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
+
 
     public static Asset<T> VanillaLoad<T>(this Asset<T> asset) where T : class
     {

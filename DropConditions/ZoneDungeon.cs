@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.DropConditions;
 
@@ -6,7 +6,7 @@ public class ZoneDungeon : IItemDropRuleCondition, IProvideItemConditionDescript
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.ZoneDungeon;
+        return info.player.ZoneDungeon && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

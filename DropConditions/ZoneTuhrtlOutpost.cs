@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.DropConditions;
@@ -7,7 +7,7 @@ public class OutpostDrop : IItemDropRuleCondition, IProvideItemConditionDescript
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.GetModPlayer<ExxoBiomePlayer>().ZoneTuhrtlOutpost;
+        return info.player.GetModPlayer<ExxoBiomePlayer>().ZoneTuhrtlOutpost && info.npc.value > 0 && !info.IsInSimulation;
     }
 
     public bool CanShowItemDropInUI()

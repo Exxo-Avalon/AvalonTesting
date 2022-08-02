@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Light;
+using Avalon.Items.Placeable.Light;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -39,10 +39,34 @@ public class Torches : ModTile
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         AddMapEntry(new Color(200, 200, 200));
-        DustType = DustID.JungleSpore;
+        //DustType = DustID.JungleSpore;
         AdjTiles = new int[] { TileID.Torches };
     }
-
+    public override bool CreateDust(int i, int j, ref int type)
+    {
+        switch (Main.tile[i, j].TileFrameX / 22)
+        {
+            case 0:
+                type = DustID.JungleSpore;
+                break;
+            case 1:
+                type = DustID.VenomStaff;
+                break;
+            case 2:
+                type = DustID.t_Slime;
+                break;
+            case 3:
+                type = ModContent.DustType<Dusts.TourmalineDust>();
+                break;
+            case 4:
+                type = ModContent.DustType<Dusts.PeridotDust>();
+                break;
+            case 5:
+                type = ModContent.DustType<Dusts.ZirconDust>();
+                break;
+        }
+        return true;
+    }
     public override bool Drop(int i, int j)
     {
         var style = Main.tile[i, j].TileFrameY / 22;
@@ -51,7 +75,7 @@ public class Torches : ModTile
         switch (style)
         {
             case 0:
-                toDrop = ModContent.ItemType<JungleTorch>();
+                toDrop = ModContent.ItemType<HoneyTorch>();
                 break;
             case 1:
                 toDrop = ModContent.ItemType<PathogenTorch>();
@@ -177,7 +201,7 @@ public class Torches : ModTile
         switch (style)
         {
             case 0:
-                player.cursorItemIconID = ModContent.ItemType<JungleTorch>();
+                player.cursorItemIconID = ModContent.ItemType<HoneyTorch>();
                 break;
             case 1:
                 player.cursorItemIconID = ModContent.ItemType<PathogenTorch>();

@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.DropConditions;
@@ -7,7 +7,7 @@ public class HardmodeOnly : IItemDropRuleCondition, IProvideItemConditionDescrip
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return CanShowItemDropInUI();
+        return CanShowItemDropInUI() && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

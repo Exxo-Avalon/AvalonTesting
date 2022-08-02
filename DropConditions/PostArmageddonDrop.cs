@@ -1,4 +1,4 @@
-﻿using Avalon.Systems;
+using Avalon.Systems;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
@@ -9,7 +9,7 @@ public class PostArmageddonDrop : IItemDropRuleCondition, IProvideItemConditionD
     public bool CanDrop(DropAttemptInfo info)
     {
         return ModContent.GetInstance<AvalonWorld>().SuperHardmode && ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
-               !ModContent.GetInstance<DownedBossSystem>().DownedMechasting;
+               !ModContent.GetInstance<DownedBossSystem>().DownedMechasting && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

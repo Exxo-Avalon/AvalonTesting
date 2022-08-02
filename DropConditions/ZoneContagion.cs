@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
 namespace Avalon.DropConditions;
@@ -6,7 +6,7 @@ public class ZoneContagion : IItemDropRuleCondition, IProvideItemConditionDescri
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.ZoneRockLayerHeight && info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion;
+        return info.player.ZoneRockLayerHeight && info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion && !info.IsInSimulation && info.npc.value > 0;
     }
     public bool CanShowItemDropInUI()
     {

@@ -1,11 +1,11 @@
-﻿using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Avalon.DropConditions;
 public class ZoneTropics : IItemDropRuleCondition, IProvideItemConditionDescription
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics;
+        return info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics && !info.IsInSimulation && info.npc.value > 0;
     }
     public bool CanShowItemDropInUI()
     {

@@ -168,6 +168,7 @@ public class BlackSolution : ModProjectile
                     if (replaceType != null)
                     {
                         Main.tile[k, l].TileType = (ushort)replaceType;
+                        WorldGen.SquareTileFrame(k, l);
                         WorldGen.SquareWallFrame(k, l);
                         NetMessage.SendTileSquare(-1, k, l, 1);
                     }

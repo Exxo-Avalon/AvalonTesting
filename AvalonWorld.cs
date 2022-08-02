@@ -21,6 +21,7 @@ using Avalon.Systems;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Avalon.World.Structures;
+using Terraria.Graphics.Light;
 
 namespace Avalon;
 
@@ -268,7 +269,14 @@ public class AvalonWorld : ModSystem
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
         {
-            backgroundColor = new Color(126, 71, 107) * 0.55f;
+            backgroundColor = new Color(126, 71, 107) * 0.2f;
+        }
+    }
+    public override void ModifyLightingBrightness(ref float scale)
+    {
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
+        {
+            scale = 0.8f;
         }
     }
     public override void SaveWorldData(TagCompound tag)
@@ -1463,7 +1471,7 @@ public class AvalonWorld : ModSystem
                 // regular bush (3x2)
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                    WorldGen.genRand.NextBool(25) && num14 == ModContent.TileType<DarkMatterGrass>())
+                    WorldGen.genRand.NextBool(35) && num14 == ModContent.TileType<DarkMatterGrass>())
                 {
                     WorldGen.Place3x2(num5, num9, (ushort)ModContent.TileType<DarkMatterBush>());
                     if (Main.tile[num5, num9].HasTile)
@@ -1481,7 +1489,7 @@ public class AvalonWorld : ModSystem
                 // tall bush (2x3)
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                    WorldGen.genRand.NextBool(30) && num14 == ModContent.TileType<DarkMatterGrass>())
+                    WorldGen.genRand.NextBool(40) && num14 == ModContent.TileType<DarkMatterGrass>())
                 {
                     WorldGen.Place2xX(num5, num9, (ushort)ModContent.TileType<DarkMatterTallBush>());
                     if (Main.tile[num5, num9].HasTile)
@@ -1499,7 +1507,7 @@ public class AvalonWorld : ModSystem
                 // where dark tallgrass would grow
                 if (!Main.tile[num5, num9].HasTile && Main.tile[num5, num9].LiquidAmount == 0 &&
                     !Main.tile[num5, num6].IsHalfBlock && Main.tile[num5, num6].Slope == SlopeType.Solid &&
-                    WorldGen.genRand.NextBool(14) && num14 == ModContent.TileType<DarkMatterGrass>())
+                    WorldGen.genRand.NextBool(1) && num14 == ModContent.TileType<DarkMatterGrass>())
                 {
                     WorldGen.PlaceTile(num5, num9, ModContent.TileType<DarkMatterShortGrass>(), true);
                     Main.tile[num5, num9].TileFrameX = (short)(WorldGen.genRand.Next(0, 9) * 18);

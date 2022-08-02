@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Avalon.Systems;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -11,7 +11,7 @@ public class PostPhantasmHellcastleDrop : IItemDropRuleCondition, IProvideItemCo
     public bool CanDrop(DropAttemptInfo info)
     {
         return info.player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle && NPC.downedMoonlord &&
-               ModContent.GetInstance<DownedBossSystem>().DownedPhantasm;
+               ModContent.GetInstance<DownedBossSystem>().DownedPhantasm && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

@@ -28,7 +28,7 @@ public class JungleTorch : ModProjectile
         SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         if (Projectile.aiStyle == 1)
         {
-            int it = ModContent.ItemType<Items.Placeable.Light.JungleTorch>();
+            int it = ModContent.ItemType<Items.Placeable.Light.HoneyTorch>();
             int style = 13;
             int TileX = (int)(Projectile.position.X + Projectile.width * 0.5f) / 16;
             int TileY = (int)(Projectile.position.Y + Projectile.height * 0.5f) / 16;

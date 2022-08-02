@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
@@ -8,7 +8,7 @@ public class HardmodePreSuperHardmode : IItemDropRuleCondition, IProvideItemCond
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return CanShowItemDropInUI();
+        return CanShowItemDropInUI() && info.npc.value > 0 && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

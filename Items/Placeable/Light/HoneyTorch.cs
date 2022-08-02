@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Placeable.Light;
 
-class JungleTorch : ModItem
+class HoneyTorch : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Jungle Torch");
+        DisplayName.SetDefault("Honey Torch");
         SacrificeTotal = 100;
     }
 
@@ -30,6 +30,7 @@ class JungleTorch : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(10).AddIngredient(ItemID.JungleSpores, 2).AddIngredient(ItemID.BeeWax, 2).Register();
+        CreateRecipe(10).AddIngredient(ModContent.ItemType<Material.TropicalShroomCap>(), 2).AddIngredient(ItemID.BeeWax, 2).Register();
     }
     public override void HoldItem(Player player)
     {
@@ -51,6 +52,6 @@ class JungleTorch : ModItem
 
     public override void AutoLightSelect(ref bool dryTorch, ref bool wetTorch, ref bool glowstick)
     {
-        dryTorch = true;
+        wetTorch = true;
     }
 }

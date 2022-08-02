@@ -11,7 +11,7 @@ public class DesertPostBeakDrop : IItemDropRuleCondition, IProvideItemConditionD
     {
         if (info.npc.lastInteraction != -1)
         {
-            return ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak && Main.player[info.npc.lastInteraction].ZoneDesert;
+            return ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak && Main.player[info.npc.lastInteraction].ZoneDesert && !info.IsInSimulation && info.npc.value > 0;
         }
         return false;
     }

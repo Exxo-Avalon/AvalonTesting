@@ -15,6 +15,8 @@ public class DarkMatterSoil : ModTile
         AddMapEntry(new Color(111, 77, 124));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
+        Main.tileMergeDirt[Type] = true;
+        Main.tileBlendAll[Type] = true;
         TileID.Sets.CanBeDugByShovel[Type] = true;
         TileID.Sets.ChecksForMerge[Type] = true;
         TileID.Sets.CanBeClearedDuringOreRunner[Type] = true;

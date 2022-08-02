@@ -12,7 +12,7 @@ public class PostPhantasmDrop : IItemDropRuleCondition, IProvideItemConditionDes
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return ModContent.GetInstance<DownedBossSystem>().DownedPhantasm;
+        return ModContent.GetInstance<DownedBossSystem>().DownedPhantasm && !info.IsInSimulation && info.npc.value > 0;
     }
 
     public bool CanShowItemDropInUI()

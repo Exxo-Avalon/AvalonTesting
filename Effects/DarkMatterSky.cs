@@ -5,6 +5,7 @@ using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Light;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -224,6 +225,7 @@ public class DarkMatterSky : CustomSky
     public override void Update(GameTime gameTime)
     {
         //Main.NewText(Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith);
+        //Main.eclipseLight = 1f;
         if (!Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter)
         {
             skyActive = false;
@@ -241,5 +243,9 @@ public class DarkMatterSky : CustomSky
 
     public override float GetCloudAlpha() => ((1f - opacity) * 0.97f) + 0.03f;
 
-    public override Color OnTileColor(Color inColor) => new(126, 71, 107);
+    public override Color OnTileColor(Color inColor)
+    {
+        return new Color(126, 71, 107) * 0.55f;
+    }
+
 }

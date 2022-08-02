@@ -1,4 +1,4 @@
-﻿Welcome to Exxo Avalon: Origins! Avalon is a vanilla-oriented mod, expanding on content while keeping to a generally vanilla feel. As of now, there are:
+Welcome to Exxo Avalon: Origins! Avalon is a vanilla-oriented mod, expanding on content while keeping to a generally vanilla feel. As of now, there are:
 - Over 1200 items
 - Over 100 NPCs, including 7 bosses and 2 town NPCs (plans for more eventually)
 - Several new structures, including Ice Shrines, the Evil Shrine, the Temple of the Observer, the Hellcastle, and the Sky Fortress
@@ -31,6 +31,6 @@ PhilCo for some sprites
 Dragonfly for the Tome sprites, and some others
 Yuyu for many sprites
 Jeo for some sprites and code
-The Avalon composers, Ennway, FatCat, Fuyuki, and musicman for, well, the music obviously
+The Avalon composers, Ennway, FatCat, Fuyuki, That One Kid, and musicman for, well, the music obviously
 All the beta testers for general help with testing the mod
 Relxs, Hadiros, and Lion8cake for assisting with the Sky Fortress construction

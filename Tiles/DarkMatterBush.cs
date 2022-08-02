@@ -17,7 +17,11 @@ public class DarkMatterBush : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] {16, 16};
         TileObjectData.addTile(Type);
         Main.tileFrameImportant[Type] = true;
-        HitSound = SoundID.Grass;
+        HitSound = new Terraria.Audio.SoundStyle($"{nameof(Avalon)}/Sounds/Item/DarkMatterBushKill");
         DustType = ModContent.DustType<Dusts.DarkMatterDust>();
+    }
+    public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height, ref short tileFrameX, ref short tileFrameY)
+    {
+        offsetY = 2;
     }
 }

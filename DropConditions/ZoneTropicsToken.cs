@@ -5,7 +5,7 @@ public class ZoneTropicsToken : IItemDropRuleCondition, IProvideItemConditionDes
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics;
+        return info.player.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics && info.npc.value > 0 && !info.IsInSimulation;
     }
     public bool CanShowItemDropInUI()
     {

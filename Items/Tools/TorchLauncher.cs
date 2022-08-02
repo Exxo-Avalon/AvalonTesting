@@ -23,7 +23,7 @@ internal class TorchLauncher : ModItem
         { ItemID.OrangeTorch, ModContent.ProjectileType<OrangeTorch>() },
         { ItemID.IchorTorch, ModContent.ProjectileType<IchorTorch>() },
         { ItemID.UltrabrightTorch, ModContent.ProjectileType<UltrabrightTorch>() },
-        { ModContent.ItemType<Placeable.Light.JungleTorch>(), ModContent.ProjectileType<JungleTorch>() },
+        { ModContent.ItemType<Placeable.Light.HoneyTorch>(), ModContent.ProjectileType<JungleTorch>() },
         { ModContent.ItemType<Placeable.Light.PathogenTorch>(), ModContent.ProjectileType<PathogenTorch>() },
         { ModContent.ItemType<Placeable.Light.SlimeTorch>(), ModContent.ProjectileType<SlimeTorch>() },
         { ModContent.ItemType<Placeable.Light.CyanTorch>(), ModContent.ProjectileType<CyanTorch>() },

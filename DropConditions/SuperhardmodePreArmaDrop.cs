@@ -1,4 +1,4 @@
-﻿using Avalon.Systems;
+using Avalon.Systems;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
 
@@ -7,7 +7,9 @@ public class SuperhardmodePreArmaDrop : IItemDropRuleCondition, IProvideItemCond
 {
     public bool CanDrop(DropAttemptInfo info)
     {
-        return ModContent.GetInstance<AvalonWorld>().SuperHardmode && !ModContent.GetInstance<DownedBossSystem>().DownedArmageddon;
+        return ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
+            !ModContent.GetInstance<DownedBossSystem>().DownedArmageddon &&
+            !info.IsInSimulation && info.npc.value > 0;
     }
     public bool CanShowItemDropInUI()
     {
