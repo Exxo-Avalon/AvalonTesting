@@ -129,7 +129,12 @@ public class BlackSolution : ModProjectile
                         WorldGen.SquareWallFrame(k, l);
                         replaceType = null;
                     }
-
+                    if (type == TileID.Plants || type == TileID.Plants2 || type == TileID.CorruptPlants || type == TileID.CrimsonPlants ||
+                        type == TileID.HallowedPlants || type == TileID.HallowedPlants2 || type == TileID.JunglePlants || type == TileID.JunglePlants2)
+                    {
+                        WorldGen.KillTile(k, l);
+                        //replaceType = (ushort)ModContent.TileType<DarkMatterShortGrass>();
+                    }
                     if (TileID.Sets.Conversion.Grass[type])
                     {
                         replaceType = (ushort)ModContent.TileType<DarkMatterGrass>();

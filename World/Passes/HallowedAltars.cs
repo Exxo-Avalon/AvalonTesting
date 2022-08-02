@@ -15,7 +15,9 @@ class HallowedAltars
     public static void Generate()
     {
         Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
-
+        int amt = 2;
+        if (Main.maxTilesX == 6300) amt = 4;
+        if (Main.maxTilesX == 8400) amt = 7;
         for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.3); a++)
         {
             int k = Main.rand.Next(100, Main.maxTilesX - 100);
@@ -26,7 +28,7 @@ class HallowedAltars
                 (Main.tile[k, l].TileType == TileID.Pearlstone || Main.tile[k, l].TileType == TileID.Pearlsand ||
                 Main.tile[k, l].TileType == TileID.HallowHardenedSand || Main.tile[k, l].TileType == TileID.HallowSandstone ||
                 Main.tile[k, l].TileType == TileID.HallowedGrass || Main.tile[k, l].TileType == TileID.HallowedIce) &&
-                l < Main.maxTilesY - 200 && Main.rand.NextBool(2))
+                l < Main.maxTilesY - 200 && Main.rand.NextBool(amt))
             {
                 Utils.PlaceHallowedAltar(k, l - 1);
             }
@@ -35,7 +37,9 @@ class HallowedAltars
     public static void Method(GenerationProgress progress, GameConfiguration configuration)
     {
         Main.rand ??= new UnifiedRandom((int)DateTime.Now.Ticks);
-
+        int amt = 2;
+        if (Main.maxTilesX == 6300) amt = 4;
+        if (Main.maxTilesX == 8400) amt = 7;
         for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.3); a++)
         {
             int k = Main.rand.Next(100, Main.maxTilesX - 100);
@@ -47,7 +51,7 @@ class HallowedAltars
                 (Main.tile[k, l].TileType == TileID.Pearlstone || Main.tile[k, l].TileType == TileID.Pearlsand ||
                 Main.tile[k, l].TileType == TileID.HallowHardenedSand || Main.tile[k, l].TileType == TileID.HallowSandstone ||
                 Main.tile[k, l].TileType == TileID.HallowedGrass || Main.tile[k, l].TileType == TileID.HallowedIce) &&
-                l < Main.maxTilesY - 200 && Main.rand.NextBool(2))
+                l < Main.maxTilesY - 200 && Main.rand.NextBool(amt))
             {
                 Utils.PlaceHallowedAltar(k, l - 1);
             }
