@@ -52,32 +52,33 @@ internal class Shrines : GenPass
             var x10 = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
             var y6 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 300);
             if (q == 2) y6 = WorldGen.genRand.Next(WorldGen.lavaLine - 50, Main.maxTilesY - 250);
-            // causes making cave walls freeze somehow
+            // causes making cave walls freeze somehow (MIGHT HAVE FIXED THIS)
             while (noTiles.Contains(Main.tile[x10, y6].TileType) || noWalls.Contains(Main.tile[x10, y6].WallType))
             {
-                if (x10 > (Main.maxTilesY / 2))
+                if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
                     x10++;
-
+                //if (x10 >= Main.maxTilesX / 2 - 10 && x10 <= Main.maxTilesX / 2 + 10)
+                //    break;
             }
             while (noTiles.Contains(Main.tile[x10 + 30, y6].TileType) || noWalls.Contains(Main.tile[x10 + 30, y6].WallType))
             {
-                if (x10 > (Main.maxTilesY / 2))
+                if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
                     x10++;
             }
             while (noTiles.Contains(Main.tile[x10, y6 + 20].TileType) || noWalls.Contains(Main.tile[x10, y6 + 20].WallType))
             {
-                if (x10 > (Main.maxTilesY / 2))
+                if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
                     x10++;
             }
             while (noTiles.Contains(Main.tile[x10 + 30, y6 + 20].TileType) || noWalls.Contains(Main.tile[x10 + 30, y6 + 20].WallType))
             {
-                if (x10 > (Main.maxTilesY / 2))
+                if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
                     x10++;

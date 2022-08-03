@@ -28,7 +28,10 @@ public static class ClassExtensions
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
 
-
+    public static float DegreesToRadians(this int degrees)
+    {
+        return degrees / 57.2957795f;
+    }
     public static Asset<T> VanillaLoad<T>(this Asset<T> asset) where T : class
     {
         try

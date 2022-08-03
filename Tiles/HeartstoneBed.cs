@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
@@ -19,9 +19,7 @@ public class HeartstoneBed : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
         TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
         TileObjectData.addTile(Type);
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Bed");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Beds };
         DustType = DustID.Confetti_Pink;

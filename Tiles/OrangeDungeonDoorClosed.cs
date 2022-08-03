@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Furniture;
+using Avalon.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -40,13 +40,11 @@ public class OrangeDungeonDoorClosed : ModTile
         TileObjectData.addAlternate(0);
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-        var name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Door Closed");
-        AddMapEntry(new Color(119, 105, 79), name);
+        AddMapEntry(new Color(119, 105, 79));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.ClosedDoor };
         OpenDoorID = ModContent.TileType<OrangeDungeonDoorOpen>();
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

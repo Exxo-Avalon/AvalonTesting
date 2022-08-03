@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
@@ -20,9 +20,7 @@ public class ResistantWoodBed : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] {16, 18};
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
-        ModTranslation name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Bed");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] {TileID.Beds};
         DustType = DustID.Wraith;

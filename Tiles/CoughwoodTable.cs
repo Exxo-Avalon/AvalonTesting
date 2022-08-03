@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,9 +19,7 @@ public class CoughwoodTable : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Coughwood Table");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         DustType = ModContent.DustType<Dusts.ContagionDust>();
     }
 

@@ -9,7 +9,7 @@ public class OrangeBrick : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(166, 87, 45));
+        AddMapEntry(new Color(135, 76, 56));// 166, 87, 45));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBrick[Type] = true;
@@ -19,6 +19,6 @@ public class OrangeBrick : ModTile
         Main.tileDungeon[Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OrangeBrick>();
         HitSound = SoundID.Tink;
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 }

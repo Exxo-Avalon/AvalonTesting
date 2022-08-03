@@ -14,6 +14,10 @@ public class DungeonRework : ModHook
     {
         On.Terraria.WorldGen.DungeonPitTrap += OnDungeonPitTrap;
     }
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<AvalonConfig>().RevertDungeonGen;
+    }
     private static bool OnDungeonPitTrap(On.Terraria.WorldGen.orig_DungeonPitTrap orig, int i, int j, ushort tileType, int wallType)
     {
         return true;
@@ -31,10 +35,17 @@ public class DungeonRemoveCrackedBricks : GenPass
         {
             for (int j = 100; j < Main.maxTilesY - 200; j++)
             {
-                if (Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick &&
-                    Main.tile[i, j].HasTile)
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
                 {
                     WorldGen.KillTile(i, j);
+                }
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && !ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
+                {
+                    Tile t = Main.tile[i, j];
+                    t.HasTile = false;
+                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrackedOrangeBrick>(), true);
                 }
                 if (WorldGen.genRand.NextBool(5))
                 {
@@ -68,7 +79,7 @@ public class DungeonRemoveCrackedBricks : GenPass
                         Main.tile[i, j].HasTile)
                     {
                         WorldGen.KillTile(i, j);
-                        WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonBathtub>(), mute: true);
+                        WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonBathtub>(), true);
                     }
                     if (Main.tile[i, j].TileType is TileID.Beds && Main.tile[i, j].TileFrameY is >= 180 and <= 270 &&
                         Main.tile[i, j].HasTile)
@@ -148,11 +159,23 @@ public class DungeonRemoveCrackedBricks : GenPass
                         WorldGen.KillTile(i, j);
                         WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonTable>(), mute: true);
                     }
-                    if (Main.tile[i, j].TileType is TileID.ClosedDoor && Main.tile[i, j].TileFrameX is >= 396 and <= 486 &&
+                    if (Main.tile[i, j].TileType is TileID.WorkBenches && Main.tile[i, j].TileFrameX is >= 396 and <= 486 &&
                         Main.tile[i, j].HasTile)
                     {
                         WorldGen.KillTile(i, j);
                         WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.OrangeDungeonWorkbench>(), mute: true);
+                    }
+                    if (Main.tile[i, j].TileType is TileID.Statues && Main.tile[i, j].TileFrameX is >= 1656 and <= 1746 &&
+                        Main.tile[i, j].TileFrameY <= 36 && Main.tile[i, j].HasTile)
+                    {
+                        WorldGen.KillTile(i, j);
+                        WorldGen.PlaceTile(i, j + 2, ModContent.TileType<Tiles.Statues>(), mute: true, style: 3);
+                    }
+                    if (Main.tile[i, j].TileType is TileID.GrandfatherClocks && Main.tile[i, j].TileFrameX is >= 1080 and <= 1152 &&
+                        Main.tile[i, j].HasTile)
+                    {
+                        WorldGen.KillTile(i, j);
+                        WorldGen.PlaceTile(i, j + 4, ModContent.TileType<Tiles.OrangeDungeonClock>(), mute: true);
                     }
                 }
             }

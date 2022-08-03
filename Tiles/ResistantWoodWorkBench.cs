@@ -20,9 +20,7 @@ public class ResistantWoodWorkBench : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Work Bench");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.WorkBenches };
         DustType = DustID.Wraith;

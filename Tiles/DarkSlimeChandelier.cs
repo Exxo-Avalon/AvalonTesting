@@ -26,9 +26,7 @@ public class DarkSlimeChandelier : ModTile
         DustType = -1;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         Main.tileLighted[Type] = true;
-        var name = CreateMapEntryName();
-        name.SetDefault("Dark Slime Chandelier");
-        AddMapEntry(new Color(235, 166, 135), name);
+        AddMapEntry(new Color(235, 166, 135));
         DustType = DustID.UnholyWater;
     }
 

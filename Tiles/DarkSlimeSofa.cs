@@ -17,9 +17,7 @@ public class DarkSlimeSofa : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-        var name = CreateMapEntryName();
-        name.SetDefault("Dark Slime Sofa");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         DustType = DustID.UnholyWater;
     }
 

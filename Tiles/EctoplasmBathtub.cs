@@ -16,9 +16,7 @@ public class EctoplasmBathtub : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Ectoplasm Bathtub");
-        AddMapEntry(new Color(144, 148, 144), name);
+        AddMapEntry(new Color(144, 148, 144));
         DustType = DustID.UltraBrightTorch;
     }
 

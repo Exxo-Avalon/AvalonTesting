@@ -30,7 +30,7 @@ public class HeartstoneClock : ModTile
         TileObjectData.newTile.Origin = new Point16(0, 4);
         TileObjectData.addTile(Type);
         var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Clock");
+        name.SetDefault("Clock");
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.GrandfatherClocks };

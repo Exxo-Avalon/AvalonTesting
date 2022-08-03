@@ -17,9 +17,7 @@ public class ResistantWoodBathtub : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Bathtub");
-        AddMapEntry(new Color(144, 148, 144), name);
+        AddMapEntry(new Color(144, 148, 144));
         DustType = DustID.Wraith;
     }
 

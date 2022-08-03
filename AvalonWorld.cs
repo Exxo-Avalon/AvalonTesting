@@ -33,6 +33,7 @@ public class AvalonWorld : ModSystem
     public static int WallOfSteelT { get; set; }
     public bool SuperHardmode { get; private set; }
     private static bool caesiumBreak;
+    private static bool crackedBrick;
 
 
 
@@ -334,6 +335,38 @@ public class AvalonWorld : ModSystem
             }
         }
         caesiumBreak = false;
+    }
+    public static void ShatterCrackedOrangeBricks(int i, int j, Tile tileCache, bool fail)
+    {
+        if (tileCache.TileType != ModContent.TileType<CrackedOrangeBrick>() || Main.netMode == NetmodeID.MultiplayerClient || crackedBrick || j < Main.maxTilesY - 200)
+        {
+            return;
+        }
+        crackedBrick = true;
+        for (int k = i - 4; k <= i + 4; k++)
+        {
+            for (int l = j - 4; l <= j + 4; l++)
+            {
+                int maxValue = 15;
+                if (!WorldGen.SolidTile(k, l + 1))
+                {
+                    maxValue = 4;
+                }
+                else if (k == i && l == j - 1 && !fail)
+                {
+                    maxValue = 4;
+                }
+                if ((k != i || l != j) && Main.tile[k, l].HasTile && Main.tile[k, l].TileType == ModContent.TileType<CrackedOrangeBrick>() && WorldGen.genRand.NextBool(maxValue))
+                {
+                    WorldGen.KillTile(k, l, fail: false, effectOnly: false, noItem: true);
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, k, l);
+                    }
+                }
+            }
+        }
+        crackedBrick = false;
     }
     public static void GenerateSkyFortress()
     {

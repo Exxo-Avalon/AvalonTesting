@@ -17,10 +17,8 @@ public class OrangeDungeonSofa : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-        var name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Sofa");
-        AddMapEntry(new Color(191, 142, 111), name);
-        DustType = DustID.Coralstone;
+        AddMapEntry(new Color(191, 142, 111));
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

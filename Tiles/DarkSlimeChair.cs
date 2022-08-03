@@ -25,9 +25,7 @@ public class DarkSlimeChair : ModTile
         TileObjectData.addAlternate(1);
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-        var name = CreateMapEntryName();
-        name.SetDefault("Dark Slime Chair");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Chairs };
         DustType = DustID.UnholyWater;

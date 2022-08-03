@@ -18,9 +18,7 @@ public class ResistantWoodSofa : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
-        var name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Sofa");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         DustType = DustID.Wraith;
     }
 

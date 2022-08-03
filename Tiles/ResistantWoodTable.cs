@@ -20,9 +20,7 @@ public class ResistantWoodTable : ModTile
         TileObjectData.newTile.LavaDeath = false;
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Table");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         DustType = DustID.Wraith;
     }
 

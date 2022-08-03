@@ -1,4 +1,4 @@
-﻿using Avalon.Common;
+using Avalon.Common;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +13,7 @@ public class OrangeDungeonDresser : ModDresser
     public override void SetStaticDefaults()
     {
         ContainerName.SetDefault("Orange Dungeon Dresser");
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
         base.SetStaticDefaults();
     }
 }

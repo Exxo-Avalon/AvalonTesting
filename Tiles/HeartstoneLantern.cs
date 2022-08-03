@@ -22,9 +22,7 @@ public class HeartstoneLantern : ModTile
         DustType = -1;
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Lantern");
-        AddMapEntry(new Color(251, 235, 127), name);
+        AddMapEntry(new Color(251, 235, 127));
         DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
