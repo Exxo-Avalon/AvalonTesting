@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
 using Avalon.Items.Material;
 using Terraria;
 using Terraria.DataStructures;

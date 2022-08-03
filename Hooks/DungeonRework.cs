@@ -47,7 +47,7 @@ public class DungeonRemoveCrackedBricks : GenPass
                     t.HasTile = false;
                     WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrackedOrangeBrick>(), true);
                 }
-                if (WorldGen.genRand.NextBool(1))
+                if (WorldGen.genRand.NextBool(5))
                 {
                     if (Main.tile[i, j].TileType is TileID.BlueDungeonBrick or TileID.GreenDungeonBrick or TileID.PinkDungeonBrick &&
                         Main.tile[i, j].HasTile)
