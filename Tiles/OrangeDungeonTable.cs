@@ -19,8 +19,6 @@ public class OrangeDungeonTable : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Table");
         AddMapEntry(new Color(191, 142, 111));
         DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }

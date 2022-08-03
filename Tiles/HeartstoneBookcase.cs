@@ -19,9 +19,7 @@ public class HeartstoneBookcase : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 16, 16 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Bookcase");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         DustType = DustID.Confetti_Pink;
     }
 

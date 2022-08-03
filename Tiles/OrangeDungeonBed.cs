@@ -21,9 +21,7 @@ public class OrangeDungeonBed : ModTile
         TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
         TileObjectData.newTile.CoordinateHeights = new[] {16, 18};
         TileObjectData.addTile(Type);
-        ModTranslation name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Bed");
-        AddMapEntry(new Color(191, 142, 111), name);
+        AddMapEntry(new Color(191, 142, 111));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] {TileID.Beds};
         DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();

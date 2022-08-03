@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Furniture;
+using Avalon.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -40,12 +40,10 @@ public class EctoplasmDoorClosed : ModTile
         TileObjectData.addAlternate(0);
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-        var name = CreateMapEntryName();
-        name.SetDefault("Ectoplasm Door Closed");
-        AddMapEntry(new Color(119, 105, 79), name);
+        AddMapEntry(new Color(119, 105, 79));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.ClosedDoor };
-        OpenDoorID = Mod.Find<ModTile>("EctoplasmDoorOpen").Type;
+        OpenDoorID = ModContent.TileType<EctoplasmDoorOpen>();
         DustType = DustID.UltraBrightTorch;
     }
 

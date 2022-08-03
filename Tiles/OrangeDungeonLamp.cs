@@ -20,9 +20,7 @@ public class OrangeDungeonLamp : ModTile
         TileObjectData.addTile(Type);
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        var name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Lamp");
-        AddMapEntry(new Color(253, 221, 3), name);
+        AddMapEntry(new Color(253, 221, 3));
         DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 

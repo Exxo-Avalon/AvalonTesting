@@ -16,9 +16,7 @@ public class HeartstoneBathtub : ModTile
         TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
         TileObjectData.addTile(Type);
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Bathtub");
-        AddMapEntry(new Color(144, 148, 144), name);
+        AddMapEntry(new Color(144, 148, 144));
         DustType = DustID.Confetti_Pink;
     }
 

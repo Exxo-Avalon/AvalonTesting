@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -27,9 +27,7 @@ public class BronzeChandelier : ModTile
         DustType = -1;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         Main.tileLighted[Type] = true;
-        var name = CreateMapEntryName();
-        name.SetDefault("Bronze Chandelier");
-        AddMapEntry(new Color(235, 166, 135), name);
+        AddMapEntry(new Color(235, 166, 135));
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

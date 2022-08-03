@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.ObjectInteractions;
@@ -29,7 +29,7 @@ public class DarkSlimeClock : ModTile
         };
         TileObjectData.newTile.Origin = new Point16(0, 4);
         TileObjectData.addTile(Type);
-        var name = CreateMapEntryName();
+        var name = CreateMapEntryName("Clock");
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.GrandfatherClocks };

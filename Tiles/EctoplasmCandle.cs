@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -22,9 +22,7 @@ public class EctoplasmCandle : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Light.EctoplasmCandle>();
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        ModTranslation name = CreateMapEntryName();
-        name.SetDefault("Ectoplasm Candle");
-        AddMapEntry(new Color(253, 221, 3), name);
+        AddMapEntry(new Color(253, 221, 3));
         DustType = DustID.UltraBrightTorch;
     }
 

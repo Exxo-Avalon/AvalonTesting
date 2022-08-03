@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -24,9 +24,7 @@ public class BismuthCandelabra : ModTile
         DustType = -1;
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        var name = CreateMapEntryName();
-        name.SetDefault("Bismuth Candelabra");
-        AddMapEntry(new Color(253, 221, 3), name);
+        AddMapEntry(new Color(253, 221, 3));
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

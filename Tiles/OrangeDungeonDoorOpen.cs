@@ -60,9 +60,7 @@ public class OrangeDungeonDoorOpen : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
         TileID.Sets.HasOutlines[Type] = true;
-        var name = CreateMapEntryName();
-        name.SetDefault("Orange Dungeon Door Open");
-        AddMapEntry(new Color(119, 105, 79), name);
+        AddMapEntry(new Color(119, 105, 79));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.OpenDoor };
         CloseDoorID = ModContent.TileType<OrangeDungeonDoorClosed>();

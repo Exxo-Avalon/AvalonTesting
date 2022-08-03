@@ -25,9 +25,7 @@ public class ResistantWoodLamp : ModTile
         DustType = 7;
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        var name = CreateMapEntryName();
-        name.SetDefault("Resistant Wood Lamp");
-        AddMapEntry(new Color(235, 166, 135), name);
+        AddMapEntry(new Color(235, 166, 135));
         DustType = DustID.Wraith;
     }
 

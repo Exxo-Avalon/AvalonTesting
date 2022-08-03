@@ -25,9 +25,7 @@ public class HeartstoneChandelier : ModTile
         DustType = -1;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         Main.tileLighted[Type] = true;
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Chandelier");
-        AddMapEntry(new Color(235, 166, 135), name);
+        AddMapEntry(new Color(235, 166, 135));
         DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 

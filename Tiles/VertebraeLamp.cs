@@ -21,9 +21,7 @@ public class VertebraeLamp : ModTile
         DustType = 7;
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-        var name = CreateMapEntryName();
-        name.SetDefault("Vertebrae Lamp");
-        AddMapEntry(new Color(253, 221, 3), name);
+        AddMapEntry(new Color(253, 221, 3));
         DustType = DustID.HeartCrystal;
     }
 

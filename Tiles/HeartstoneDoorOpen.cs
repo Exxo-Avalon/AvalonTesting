@@ -60,12 +60,10 @@ public class HeartstoneDoorOpen : ModTile
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
         TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
         TileID.Sets.HasOutlines[Type] = true;
-        var name = CreateMapEntryName();
-        name.SetDefault("Heartstone Door Open");
-        AddMapEntry(new Color(119, 105, 79), name);
+        AddMapEntry(new Color(119, 105, 79));
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.OpenDoor };
-        CloseDoorID = Mod.Find<ModTile>("HeartstoneDoorClosed").Type;
+        CloseDoorID = ModContent.TileType<HeartstoneDoorClosed>();
         DustType = ModContent.DustType<Dusts.HeartstoneDust>();
     }
 
