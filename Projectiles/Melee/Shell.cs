@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -50,62 +50,49 @@ public class Shell : ModProjectile
         }
         if (Projectile.velocity.Y >= 0f)
         {
-            int num97 = 0;
+            int direction = 0;
             if (Projectile.velocity.X < 0f)
             {
-                num97 = -1;
+                direction = -1;
             }
             if (Projectile.velocity.X > 0f)
             {
-                num97 = 1;
+                direction = 1;
             }
-            Vector2 vector10 = Projectile.position;
-            vector10.X += Projectile.velocity.X;
-            int num98 = (int)((vector10.X + (float)(Projectile.width / 2) + (float)((Projectile.width / 2 + 1) * num97)) / 16f);
-            int num99 = (int)((vector10.Y + (float)Projectile.height - 1f) / 16f);
-            // if (Main.tile[num98, num99] == null)
-            // {
-            //     Main.tile[num98, num99] = new Tile();
-            // }
-            // if (Main.tile[num98, num99 - 1] == null)
-            // {
-            //     Main.tile[num98, num99 - 1] = new Tile();
-            // }
-            // if (Main.tile[num98, num99 - 2] == null)
-            // {
-            //     Main.tile[num98, num99 - 2] = new Tile();
-            // }
-            // if (Main.tile[num98, num99 - 3] == null)
-            // {
-            //     Main.tile[num98, num99 - 3] = new Tile();
-            // }
-            // if (Main.tile[num98, num99 + 1] == null)
-            // {
-            //     Main.tile[num98, num99 + 1] = new Tile();
-            // }
-            // if (Main.tile[num98 - num97, num99 - 3] == null)
-            // {
-            //     Main.tile[num98 - num97, num99 - 3] = new Tile();
-            // }
-            if ((float)(num98 * 16) < vector10.X + (float)Projectile.width && (float)(num98 * 16 + 16) > vector10.X && ((Main.tile[num98, num99].HasUnactuatedTile && !Main.tile[num98, num99].TopSlope && !Main.tile[num98, num99 - 1].TopSlope && Main.tileSolid[(int)Main.tile[num98, num99].TileType] && !Main.tileSolidTop[(int)Main.tile[num98, num99].TileType]) || (Main.tile[num98, num99 - 1].IsHalfBlock && Main.tile[num98, num99 - 1].HasUnactuatedTile)) && (!Main.tile[num98, num99 - 1].HasUnactuatedTile || !Main.tileSolid[(int)Main.tile[num98, num99 - 1].TileType] || Main.tileSolidTop[(int)Main.tile[num98, num99 - 1].TileType] || (Main.tile[num98, num99 - 1].IsHalfBlock && (!Main.tile[num98, num99 - 4].HasUnactuatedTile || !Main.tileSolid[(int)Main.tile[num98, num99 - 4].TileType] || Main.tileSolidTop[(int)Main.tile[num98, num99 - 4].TileType]))) && (!Main.tile[num98, num99 - 2].HasUnactuatedTile || !Main.tileSolid[(int)Main.tile[num98, num99 - 2].TileType] || Main.tileSolidTop[(int)Main.tile[num98, num99 - 2].TileType]) && (!Main.tile[num98, num99 - 3].HasUnactuatedTile || !Main.tileSolid[(int)Main.tile[num98, num99 - 3].TileType] || Main.tileSolidTop[(int)Main.tile[num98, num99 - 3].TileType]) && (!Main.tile[num98 - num97, num99 - 3].HasUnactuatedTile || !Main.tileSolid[(int)Main.tile[num98 - num97, num99 - 3].TileType]))
+            Vector2 posMod = Projectile.position;
+            posMod.X += Projectile.velocity.X;
+            int xPos = (int)((posMod.X + (float)(Projectile.width / 2) + (float)((Projectile.width / 2 + 1) * direction)) / 16f);
+            int yPos = (int)((posMod.Y + (float)Projectile.height - 1f) / 16f);
+            if (xPos * 16 < posMod.X + Projectile.width &&
+                xPos * 16 + 16 > posMod.X &&
+                ((Main.tile[xPos, yPos].HasUnactuatedTile &&
+                !Main.tile[xPos, yPos].TopSlope &&
+                !Main.tile[xPos, yPos - 1].TopSlope &&
+                Main.tileSolid[Main.tile[xPos, yPos].TileType] &&
+                !Main.tileSolidTop[Main.tile[xPos, yPos].TileType]) ||
+                (Main.tile[xPos, yPos - 1].IsHalfBlock &&
+                Main.tile[xPos, yPos - 1].HasUnactuatedTile)) &&
+                (!Main.tile[xPos, yPos - 1].HasUnactuatedTile ||
+                !Main.tileSolid[Main.tile[xPos, yPos - 1].TileType] ||
+                Main.tileSolidTop[Main.tile[xPos, yPos - 1].TileType] || (Main.tile[xPos, yPos - 1].IsHalfBlock && (!Main.tile[xPos, yPos - 4].HasUnactuatedTile || !Main.tileSolid[Main.tile[xPos, yPos - 4].TileType] || Main.tileSolidTop[Main.tile[xPos, yPos - 4].TileType]))) && (!Main.tile[xPos, yPos - 2].HasUnactuatedTile || !Main.tileSolid[Main.tile[xPos, yPos - 2].TileType] || Main.tileSolidTop[Main.tile[xPos, yPos - 2].TileType]) && (!Main.tile[xPos, yPos - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[xPos, yPos - 3].TileType] || Main.tileSolidTop[Main.tile[xPos, yPos - 3].TileType]) && (!Main.tile[xPos - direction, yPos - 3].HasUnactuatedTile || !Main.tileSolid[Main.tile[xPos - direction, yPos - 3].TileType]))
             {
-                float num100 = (float)(num99 * 16);
-                if (Main.tile[num98, num99].IsHalfBlock)
+                float yPosPixel = yPos * 16;
+                if (Main.tile[xPos, yPos].IsHalfBlock)
                 {
-                    num100 += 8f;
+                    yPosPixel += 8f;
                 }
-                if (Main.tile[num98, num99 - 1].IsHalfBlock)
+                if (Main.tile[xPos, yPos - 1].IsHalfBlock)
                 {
-                    num100 -= 8f;
+                    yPosPixel -= 8f;
                 }
-                if (num100 < vector10.Y + (float)Projectile.height)
+                if (yPosPixel < posMod.Y + Projectile.height)
                 {
-                    float num101 = vector10.Y + (float)Projectile.height - num100;
+                    float num101 = posMod.Y + Projectile.height - yPosPixel;
                     float num102 = 16.1f;
                     if (num101 <= num102)
                     {
-                        Projectile.gfxOffY += Projectile.position.Y + (float)Projectile.height - num100;
-                        Projectile.position.Y = num100 - (float)Projectile.height;
+                        Projectile.gfxOffY += Projectile.position.Y + Projectile.height - yPosPixel;
+                        Projectile.position.Y = yPosPixel - Projectile.height;
                         if (num101 < 9f)
                         {
                             Projectile.stepSpeed = 1f;
