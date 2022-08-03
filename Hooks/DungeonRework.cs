@@ -31,23 +31,11 @@ public class DungeonRemoveCrackedBricks : GenPass
     }
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
-        for (int i = 100; i < Main.maxTilesX - 100; i++)
+        if (WorldGen.genRand.NextBool(5))
         {
-            for (int j = 100; j < Main.maxTilesY - 200; j++)
+            for (int i = 100; i < Main.maxTilesX - 100; i++)
             {
-                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
-                    Main.tile[i, j].HasTile && ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
-                {
-                    WorldGen.KillTile(i, j);
-                }
-                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
-                    Main.tile[i, j].HasTile && !ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
-                {
-                    Tile t = Main.tile[i, j];
-                    t.HasTile = false;
-                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrackedOrangeBrick>(), true);
-                }
-                if (WorldGen.genRand.NextBool(5))
+                for (int j = 100; j < Main.maxTilesY - 200; j++)
                 {
                     if (Main.tile[i, j].TileType is TileID.BlueDungeonBrick or TileID.GreenDungeonBrick or TileID.PinkDungeonBrick &&
                         Main.tile[i, j].HasTile)
@@ -177,6 +165,24 @@ public class DungeonRemoveCrackedBricks : GenPass
                         WorldGen.KillTile(i, j);
                         WorldGen.PlaceTile(i, j + 4, ModContent.TileType<Tiles.OrangeDungeonClock>(), mute: true);
                     }
+                }
+            }
+        }
+        for (int i = 100; i < Main.maxTilesX - 100; i++)
+        {
+            for (int j = 100; j < Main.maxTilesY - 200; j++)
+            {
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
+                {
+                    WorldGen.KillTile(i, j);
+                }
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && !ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
+                {
+                    Tile t = Main.tile[i, j];
+                    t.HasTile = false;
+                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrackedOrangeBrick>(), true);
                 }
             }
         }
