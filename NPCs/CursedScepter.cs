@@ -1,4 +1,5 @@
-﻿using Avalon.Items.Banners;
+using Avalon.Items.Banners;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Bestiary;
@@ -24,11 +25,10 @@ public class CursedScepter : ModNPC
         NPC.lifeMax = 226;
         NPC.defense = 18;
         NPC.lavaImmune = true;
-        NPC.width = 18;
+        NPC.Size = new Vector2(32, 32);
         NPC.aiStyle = 23;
         NPC.value = 1000f;
-        NPC.scale = 1.3f;
-        NPC.height = 40;
+        NPC.scale = 1.1f;
         NPC.knockBackResist = 0.3f;
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath6;
@@ -49,8 +49,10 @@ public class CursedScepter : ModNPC
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
 
-    public override void AI() => Lighting.AddLight((int)((NPC.position.X + (NPC.width / 2)) / 16f),
-        (int)((NPC.position.Y + (NPC.height / 2)) / 16f), 0.55f, 0.99f, 0.28f);
+    public override Color? GetAlpha(Color drawColor)
+    {
+        return Color.White;
+    }
 
     public override void FindFrame(int frameHeight)
     {
