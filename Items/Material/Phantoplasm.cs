@@ -30,4 +30,8 @@ class Phantoplasm : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override Color? GetAlpha(Color lightColor)
+    {
+        return new Color(200, 200, 200, 0);
+    }
 }

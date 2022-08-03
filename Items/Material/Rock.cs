@@ -9,7 +9,7 @@ class Rock : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Rock");
-        Tooltip.SetDefault("Used for crafting the Eye of Oblivion");
+        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\nThrowable\n'Don't throw it at a window!'");
         SacrificeTotal = 25;
     }
 
@@ -21,5 +21,11 @@ class Rock : ModItem
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;
+        Item.shoot = ModContent.ProjectileType<Projectiles.ThrowingRock>();
+        Item.shootSpeed = 7f;
+        Item.useTime = 25;
+        Item.useAnimation = 25;
+        Item.UseSound = SoundID.Item20;
+        Item.useStyle = ItemUseStyleID.Swing;
     }
 }

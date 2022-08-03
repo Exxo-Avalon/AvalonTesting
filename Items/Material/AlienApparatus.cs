@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +10,7 @@ public class AlienApparatus : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Alien Apparatus");
-        Tooltip.SetDefault("Used for crafting the Eye of Oblivion");
+        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\n'It says \"hello.\" I think...'");
         SacrificeTotal = 10;
     }
 
@@ -21,6 +22,10 @@ public class AlienApparatus : ModItem
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;
+        Item.useTime = 60;
+        Item.useAnimation = 60;
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Vwomp");
+        Item.useStyle = ItemUseStyleID.Thrust;
     }
     public override void AddRecipes()
     {

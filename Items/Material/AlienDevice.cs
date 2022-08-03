@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +10,7 @@ public class AlienDevice : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Alien Device");
-        Tooltip.SetDefault("Used for crafting the Eye of Oblivion");
+        Tooltip.SetDefault("Used for crafting the Eye of Oblivion\n'Beep boop'");
         SacrificeTotal = 10;
     }
 
@@ -21,5 +22,9 @@ public class AlienDevice : ModItem
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;
+        Item.useTime = 60;
+        Item.useAnimation = 60;
+        Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Beeping");
+        Item.useStyle = ItemUseStyleID.Thrust;
     }
 }
