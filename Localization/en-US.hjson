@@ -1,6 +1,14 @@
 Mods: {
 	Avalon: {
 		CommonItemTooltip.TomeMaterial:Tome material
+        Config: {
+			ItemHeader: Items
+			
+			DungeonRevert: {
+				Label: Dungeon Generation Revert
+				Tooltip: Reverts the normal Dungeon generation to pre-1.4
+			}
+		}
 		MapObject: {
 				Tropics_Pylon: "{$Mods.Avalon.ItemName.TropicsPylon}"
 		}

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,6 +34,12 @@ class DionysusAmulet : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<PygmyShield>()).AddIngredient(ModContent.ItemType<PeridotAmulet>()).AddIngredient(ItemID.SharkToothNecklace).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<PygmyShield>())
+            .AddIngredient(ModContent.ItemType<PeridotAmulet>())
+            .AddIngredient(ItemID.SharkToothNecklace)
+            .AddIngredient(ItemID.HallowedBar, 5)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 }

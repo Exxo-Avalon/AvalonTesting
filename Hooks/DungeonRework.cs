@@ -14,9 +14,13 @@ public class DungeonRework : ModHook
     {
         On.Terraria.WorldGen.DungeonPitTrap += OnDungeonPitTrap;
     }
+    public override bool IsLoadingEnabled(Mod mod)
+    {
+        return ModContent.GetInstance<AvalonConfig>().RevertDungeonGen;
+    }
     private static bool OnDungeonPitTrap(On.Terraria.WorldGen.orig_DungeonPitTrap orig, int i, int j, ushort tileType, int wallType)
     {
-        return true; // TODO: CONFIG OPTION TO DISABLE THESE
+        return true;
     }
 }
 public class DungeonRemoveCrackedBricks : GenPass
@@ -31,10 +35,17 @@ public class DungeonRemoveCrackedBricks : GenPass
         {
             for (int j = 100; j < Main.maxTilesY - 200; j++)
             {
-                if (Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick &&
-                    Main.tile[i, j].HasTile)
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
                 {
                     WorldGen.KillTile(i, j);
+                }
+                if ((Main.tile[i, j].TileType is TileID.CrackedBlueDungeonBrick or TileID.CrackedGreenDungeonBrick or TileID.CrackedPinkDungeonBrick) &&
+                    Main.tile[i, j].HasTile && !ModContent.GetInstance<AvalonConfig>().RevertDungeonGen)
+                {
+                    Tile t = Main.tile[i, j];
+                    t.HasTile = false;
+                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrackedOrangeBrick>(), true);
                 }
                 if (WorldGen.genRand.NextBool(1))
                 {
@@ -68,7 +79,7 @@ public class DungeonRemoveCrackedBricks : GenPass
                         Main.tile[i, j].HasTile)
                     {
                         WorldGen.KillTile(i, j);
-                        WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonBathtub>(), mute: true);
+                        WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonBathtub>(), true);
                     }
                     if (Main.tile[i, j].TileType is TileID.Beds && Main.tile[i, j].TileFrameY is >= 180 and <= 270 &&
                         Main.tile[i, j].HasTile)

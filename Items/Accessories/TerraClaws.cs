@@ -11,7 +11,7 @@ class TerraClaws : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Terra Claws");
-        Tooltip.SetDefault("Increases melee damage and speed by 10%\nMelee attacks will burn, poison, envenom, frostbite, or ichor your enemies\nEnables auto swing for melee weapons and increases the size of melee weapons");
+        Tooltip.SetDefault("Increases melee damage and speed by 14%\nMelee attacks will burn, poison, envenom, frostbite, or ichor your enemies\nEnables auto swing for melee weapons and increases the size of melee weapons");
         SacrificeTotal = 1;
     }
 
@@ -28,8 +28,8 @@ class TerraClaws : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<ExxoEquipEffectPlayer>().TerraClaws = true;
-        player.GetDamage(DamageClass.Melee) += 0.1f;
-        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
+        player.GetDamage(DamageClass.Melee) += 0.14f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.14f;
         player.autoReuseGlove = true;
         player.meleeScaleGlove = true;
     }
@@ -43,7 +43,7 @@ class TerraClaws : ModItem
             .AddIngredient(ItemID.Stinger, 20)
             .AddIngredient(ModContent.ItemType<Material.FrostShard>(), 20)
             .AddIngredient(ModContent.ItemType<Material.Pathogen>(), 20)
-            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
             .AddTile(TileID.TinkerersWorkbench).Register();
     }
 }
