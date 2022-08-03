@@ -184,6 +184,10 @@ public class ExxoWorldGen : ModSystem
             currentPass = new TropicsVines();
             tasks.Insert(vines + 2, currentPass);
             totalWeight += currentPass.Weight;
+
+            currentPass = new Hooks.DungeonRemoveCrackedBricks();
+            tasks.Insert(vines + 3, currentPass);
+            totalWeight += currentPass.Weight;
         }
         int weeds = tasks.FindIndex(genPass => genPass.Name == "Weeds");
         if (weeds != -1)

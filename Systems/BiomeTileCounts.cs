@@ -30,6 +30,7 @@ public class BiomeTileCounts : ModSystem
     public int HumidityTiles { get; private set; }
     public int DelightTiles { get; private set; }
     public int SightTiles { get; private set; }
+    public int DungeonAltTiles { get; private set; }
 
     public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
     {
@@ -54,7 +55,7 @@ public class BiomeTileCounts : ModSystem
                     tileCounts[ModContent.TileType<HardenedDarkSand>()] +
                     tileCounts[ModContent.TileType<Darksandstone>()] +
                     tileCounts[ModContent.TileType<DarkMatterGrass>()];
-
+        DungeonAltTiles += tileCounts[ModContent.TileType<OrangeBrick>()];
         CaesiumTiles = tileCounts[ModContent.TileType<BlastedStone>()];
         SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];

@@ -29,6 +29,7 @@ public class ExxoBiomePlayer : ModPlayer
     public bool ZoneHumidity { get; private set; }
     public bool ZoneDelight { get; private set; }
     public bool ZoneSight { get; private set; }
+    public bool ZoneAltDungeon { get; private set; }
 
     public void UpdateZones(BiomeTileCounts biomeTileCounts)
     {
@@ -58,5 +59,11 @@ public class ExxoBiomePlayer : ModPlayer
         ZoneHumidity = biomeTileCounts.HumidityTiles > 1;
         ZoneDelight = biomeTileCounts.DelightTiles > 1;
         ZoneSight = biomeTileCounts.SightTiles > 1;
+        ZoneAltDungeon = biomeTileCounts.DungeonAltTiles > 250 && Main.wallDungeon[wallType] && tileCoordinates.Y > Main.worldSurface;
+    }
+    public override void PostUpdate()
+    {
+        if (ZoneAltDungeon)
+            Player.ZoneDungeon = true;
     }
 }

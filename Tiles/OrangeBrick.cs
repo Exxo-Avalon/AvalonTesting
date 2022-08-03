@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +9,7 @@ public class OrangeBrick : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(163, 66, 14));
+        AddMapEntry(new Color(166, 87, 45));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBrick[Type] = true;
