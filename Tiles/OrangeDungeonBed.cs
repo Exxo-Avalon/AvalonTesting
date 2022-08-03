@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.ObjectInteractions;
@@ -26,7 +26,7 @@ public class OrangeDungeonBed : ModTile
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] {TileID.Beds};
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

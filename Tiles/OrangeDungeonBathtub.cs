@@ -19,7 +19,7 @@ public class OrangeDungeonBathtub : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Bathtub");
         AddMapEntry(new Color(144, 148, 144), name);
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -25,7 +25,7 @@ public class OrangeDungeonCandle : ModTile
         ModTranslation name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Candle");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void MouseOver(int i, int j)

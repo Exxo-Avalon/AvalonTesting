@@ -32,7 +32,7 @@ public class OrangeBrickPlatform : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OrangeBrickPlatform>();
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Platforms };
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void PostSetDefaults()

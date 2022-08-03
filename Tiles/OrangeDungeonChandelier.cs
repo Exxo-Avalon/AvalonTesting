@@ -22,13 +22,12 @@ public class OrangeDungeonChandelier : ModTile
         TileObjectData.newTile.StyleWrapLimit = 111;
         TileObjectData.newTile.Origin = new Point16(1, 0);
         TileObjectData.addTile(Type);
-        DustType = -1;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         Main.tileLighted[Type] = true;
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Chandelier");
         AddMapEntry(new Color(235, 166, 135), name);
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

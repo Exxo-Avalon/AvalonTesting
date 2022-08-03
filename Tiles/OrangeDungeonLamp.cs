@@ -18,13 +18,12 @@ public class OrangeDungeonLamp : ModTile
         TileObjectData.newTile.StyleHorizontal = true;
         TileObjectData.newTile.StyleWrapLimit = 36;
         TileObjectData.addTile(Type);
-        DustType = 7;
         Main.tileLighted[Type] = true;
         AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Lamp");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

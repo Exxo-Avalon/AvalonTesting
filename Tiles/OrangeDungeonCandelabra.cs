@@ -24,7 +24,7 @@ public class OrangeDungeonCandelabra : ModTile
         var name = CreateMapEntryName();
         name.SetDefault("Orange Dungeon Candelabra");
         AddMapEntry(new Color(253, 221, 3), name);
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

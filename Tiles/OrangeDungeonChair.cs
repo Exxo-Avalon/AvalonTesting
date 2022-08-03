@@ -30,7 +30,7 @@ public class OrangeDungeonChair : ModTile
         AddMapEntry(new Color(191, 142, 111), name);
         TileID.Sets.DisableSmartCursor[Type] = true;
         AdjTiles = new int[] { TileID.Chairs };
-        DustType = DustID.Coralstone;
+        DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
     }
 
     public override void KillMultiTile(int i, int j, int frameX, int frameY)

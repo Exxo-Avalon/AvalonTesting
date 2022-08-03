@@ -16,7 +16,7 @@ public class DungeonRework : ModHook
     }
     private static bool OnDungeonPitTrap(On.Terraria.WorldGen.orig_DungeonPitTrap orig, int i, int j, ushort tileType, int wallType)
     {
-        return true;
+        return true; // TODO: CONFIG OPTION TO DISABLE THESE
     }
 }
 public class DungeonRemoveCrackedBricks : GenPass
@@ -36,7 +36,7 @@ public class DungeonRemoveCrackedBricks : GenPass
                 {
                     WorldGen.KillTile(i, j);
                 }
-                if (WorldGen.genRand.NextBool(5))
+                if (WorldGen.genRand.NextBool(1))
                 {
                     if (Main.tile[i, j].TileType is TileID.BlueDungeonBrick or TileID.GreenDungeonBrick or TileID.PinkDungeonBrick &&
                         Main.tile[i, j].HasTile)
@@ -148,11 +148,23 @@ public class DungeonRemoveCrackedBricks : GenPass
                         WorldGen.KillTile(i, j);
                         WorldGen.PlaceTile(i + 1, j + 1, ModContent.TileType<Tiles.OrangeDungeonTable>(), mute: true);
                     }
-                    if (Main.tile[i, j].TileType is TileID.ClosedDoor && Main.tile[i, j].TileFrameX is >= 396 and <= 486 &&
+                    if (Main.tile[i, j].TileType is TileID.WorkBenches && Main.tile[i, j].TileFrameX is >= 396 and <= 486 &&
                         Main.tile[i, j].HasTile)
                     {
                         WorldGen.KillTile(i, j);
                         WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.OrangeDungeonWorkbench>(), mute: true);
+                    }
+                    if (Main.tile[i, j].TileType is TileID.Statues && Main.tile[i, j].TileFrameX is >= 1656 and <= 1746 &&
+                        Main.tile[i, j].TileFrameY <= 36 && Main.tile[i, j].HasTile)
+                    {
+                        WorldGen.KillTile(i, j);
+                        WorldGen.PlaceTile(i, j + 2, ModContent.TileType<Tiles.Statues>(), mute: true, style: 3);
+                    }
+                    if (Main.tile[i, j].TileType is TileID.GrandfatherClocks && Main.tile[i, j].TileFrameX is >= 1080 and <= 1152 &&
+                        Main.tile[i, j].HasTile)
+                    {
+                        WorldGen.KillTile(i, j);
+                        WorldGen.PlaceTile(i, j + 4, ModContent.TileType<Tiles.OrangeDungeonClock>(), mute: true);
                     }
                 }
             }
