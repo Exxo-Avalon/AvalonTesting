@@ -39,9 +39,29 @@ public class ThrowingRock : ModProjectile
         {
             Projectile.velocity.X = oldVelocity.X * -0.75f;
         }
-        if (Projectile.velocity.Y != oldVelocity.Y && (double)oldVelocity.Y > 1.5)
+        if (Projectile.velocity.Y != oldVelocity.Y && oldVelocity.Y > 1.5)
         {
             Projectile.velocity.Y = oldVelocity.Y * -0.7f;
+        }
+        Point tile = Projectile.Center.ToTileCoordinates();
+        if (tile.X < 10)
+            tile.X = 10;
+        if (tile.X > Main.maxTilesX - 10)
+            tile.X = Main.maxTilesX - 10;
+        if (tile.Y < 10)
+            tile.Y = 10;
+        if (tile.Y > Main.maxTilesY - 10)
+            tile.Y = Main.maxTilesY - 10;
+        for (int i = tile.X - 2; i < tile.X + 2; i++)
+        {
+            for (int j = tile.Y - 2; j < tile.Y + 2; j++)
+            {
+                if (Main.tile[i, j].HasTile && Main.tile[i, j].TileType == TileID.Glass)
+                {
+                    WorldGen.KillTile(i, j);
+                    Projectile.ai[1] = 1;
+                }
+            }
         }
         return false;
     }
@@ -53,5 +73,9 @@ public class ThrowingRock : ModProjectile
         }
         Projectile.rotation += Projectile.velocity.X * 0.1f;
         Projectile.velocity.Y += 0.2f;
+        if (Projectile.ai[1] == 1)
+        {
+            Projectile.Kill();
+        }
     }
 }
