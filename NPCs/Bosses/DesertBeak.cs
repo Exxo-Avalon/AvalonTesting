@@ -189,7 +189,7 @@ public class DesertBeak : ModNPC
                                     for (int i = 0; i < 3; i++)
                                     {
 
-                                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 5).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, 30, 0, player.whoAmI);
+                                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 5).RotatedByRandom(5), ModContent.ProjectileType<Projectiles.Hostile.VultureEgg>(), 30, 0, player.whoAmI);
 
                                     }
                                     divebomb = true;
@@ -219,7 +219,7 @@ public class DesertBeak : ModNPC
                                             int dmg = 30;
                                             if (Main.expertMode) dmg = 22;
                                             if (Main.masterMode) dmg = 18;
-                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ProjectileID.BombSkeletronPrime, dmg, 0);
+                                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 1).RotatedByRandom(5), ModContent.ProjectileType<Projectiles.Hostile.VultureEgg>(), dmg, 0);
 
                                         }
                                         divebomb = true;
