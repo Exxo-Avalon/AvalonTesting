@@ -17,7 +17,7 @@ class DarkSlimeClock : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeClock>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeClock>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

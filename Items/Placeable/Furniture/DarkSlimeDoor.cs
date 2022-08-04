@@ -16,7 +16,7 @@ class DarkSlimeDoor : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeDoorClosed>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeDoorClosed>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

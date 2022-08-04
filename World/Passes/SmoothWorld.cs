@@ -1,4 +1,4 @@
-﻿using Avalon.Tiles;
+using Avalon.Tiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.IO;
@@ -21,7 +21,7 @@ internal class SmoothWorld : GenPass
         {
             for (int j = y; j <= y + 99; j++)
             {
-                if (Main.tile[i, j].TileType != (ushort)ModContent.TileType<ResistantWoodPlatform>())
+                if (Main.tile[i, j].TileType != (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPlatform>())
                 {
                     Tile t = Main.tile[i, j];
                     t.IsHalfBlock = false;

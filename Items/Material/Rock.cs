@@ -24,8 +24,9 @@ class Rock : ModItem
         Item.shoot = ModContent.ProjectileType<Projectiles.ThrowingRock>();
         Item.shootSpeed = 7f;
         Item.useTime = 25;
+        Item.noUseGraphic = true;
         Item.useAnimation = 25;
-        Item.UseSound = SoundID.Item20;
+        Item.UseSound = SoundID.Item1;
         Item.useStyle = ItemUseStyleID.Swing;
     }
 }

@@ -18,7 +18,7 @@ class ResistantWoodWorkBench : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodWorkBench>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodWorkBench>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

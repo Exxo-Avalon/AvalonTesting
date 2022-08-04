@@ -21,7 +21,6 @@ public class ThrowingRock : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
-        Projectile.light = 0.9f;
         Projectile.alpha = 0;
         Projectile.scale = 1f;
         Projectile.timeLeft = 600;

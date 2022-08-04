@@ -17,7 +17,7 @@ class EctoplasmLantern : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmLantern>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmLantern>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

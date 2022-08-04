@@ -18,7 +18,7 @@ class DarkSlimeCandle : ModItem
         Item.autoReuse = true;
         Item.noWet = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeCandle>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeCandle>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

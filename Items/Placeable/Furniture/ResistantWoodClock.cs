@@ -17,7 +17,7 @@ class ResistantWoodClock : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodClock>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodClock>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

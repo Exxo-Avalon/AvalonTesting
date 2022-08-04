@@ -17,7 +17,7 @@ class DarkSlimeBookcase : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeBookcase>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeBookcase>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -1,0 +1,19 @@
+using Avalon.Common;
+using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Avalon.Tiles.Furniture.Heartstone;
+
+public class HeartstoneDresser : ModDresser
+{
+    protected override int DresserItemId => ModContent.ItemType<Items.Placeable.Storage.HeartstoneDresser>();
+    protected override Color MapColor => new(191, 142, 111);
+
+    public override void SetStaticDefaults()
+    {
+        ContainerName.SetDefault("Heartstone Dresser");
+        DustType = ModContent.DustType<Dusts.HeartstoneDust>();
+        base.SetStaticDefaults();
+    }
+}

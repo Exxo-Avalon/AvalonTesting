@@ -17,7 +17,7 @@ class DarkSlimePiano : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimePiano>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimePiano>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -18,7 +18,7 @@ class ResistantWoodCandle : ModItem
         Item.autoReuse = true;
         Item.noWet = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodCandle>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodCandle>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

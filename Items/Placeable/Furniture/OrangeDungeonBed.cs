@@ -16,7 +16,7 @@ class OrangeDungeonBed : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.OrangeDungeonBed>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.OrangeDungeon.OrangeDungeonBed>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ class ResistantWoodBookcase : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodBookcase>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodBookcase>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

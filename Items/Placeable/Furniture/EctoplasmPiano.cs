@@ -17,7 +17,7 @@ class EctoplasmPiano : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmPiano>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmPiano>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

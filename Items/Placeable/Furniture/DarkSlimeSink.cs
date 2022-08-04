@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ public class DarkSlimeSink : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeSink>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeSink>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

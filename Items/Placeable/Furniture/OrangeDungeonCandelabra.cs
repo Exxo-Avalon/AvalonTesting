@@ -17,7 +17,7 @@ class OrangeDungeonCandelabra : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.OrangeDungeonCandelabra>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.OrangeDungeon.OrangeDungeonCandelabra>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

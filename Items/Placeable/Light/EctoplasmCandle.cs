@@ -18,7 +18,7 @@ class EctoplasmCandle : ModItem
         Item.autoReuse = true;
         Item.noWet = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmCandle>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmCandle>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

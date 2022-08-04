@@ -18,7 +18,7 @@ class HeartstoneCandle : ModItem
         Item.autoReuse = true;
         Item.noWet = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneCandle>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneCandle>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

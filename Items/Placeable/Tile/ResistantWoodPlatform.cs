@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +16,7 @@ class ResistantWoodPlatform : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodPlatform>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPlatform>();
         Item.consumable = true;
         Item.width = dims.Width;
         Item.useTurn = true;

@@ -17,7 +17,7 @@ class ResistantWoodDresser : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodDresser>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodDresser>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

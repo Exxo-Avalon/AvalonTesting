@@ -20,7 +20,7 @@ class OrangeDungeonCandle : ModItem
         Item.useTurn = true;
         Item.maxStack = 99;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.OrangeDungeonCandle>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.OrangeDungeon.OrangeDungeonCandle>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;

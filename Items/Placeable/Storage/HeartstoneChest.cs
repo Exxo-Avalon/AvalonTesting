@@ -17,7 +17,7 @@ class HeartstoneChest : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneChest>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneChest>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

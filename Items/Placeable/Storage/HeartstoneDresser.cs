@@ -17,7 +17,7 @@ class HeartstoneDresser : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneDresser>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneDresser>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

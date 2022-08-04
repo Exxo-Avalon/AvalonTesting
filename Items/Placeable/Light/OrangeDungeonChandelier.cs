@@ -17,7 +17,7 @@ class OrangeDungeonChandelier : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.OrangeDungeonChandelier>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.OrangeDungeon.OrangeDungeonChandelier>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

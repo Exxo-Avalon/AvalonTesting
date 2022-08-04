@@ -17,7 +17,7 @@ class OrangeBrickPlatform : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.OrangeBrickPlatform>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.OrangeDungeon.OrangeBrickPlatform > ();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

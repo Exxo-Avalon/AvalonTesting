@@ -17,7 +17,7 @@ class HeartstonePiano : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstonePiano>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstonePiano>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

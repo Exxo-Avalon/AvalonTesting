@@ -17,7 +17,7 @@ class HeartstoneChair : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneChair>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneChair>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

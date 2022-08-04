@@ -17,7 +17,7 @@ class EctoplasmChair : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmChair>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmChair>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

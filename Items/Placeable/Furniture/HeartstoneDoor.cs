@@ -16,7 +16,7 @@ class HeartstoneDoor : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneDoorClosed>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneDoorClosed>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

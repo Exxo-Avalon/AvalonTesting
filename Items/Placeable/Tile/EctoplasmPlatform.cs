@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ class EctoplasmPlatform : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmPlatform>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmPlatform>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

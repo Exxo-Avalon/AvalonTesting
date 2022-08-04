@@ -17,7 +17,7 @@ class ResistantWoodLamp : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodLamp>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodLamp>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

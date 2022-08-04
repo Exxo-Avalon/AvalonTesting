@@ -206,7 +206,7 @@ class HellCastle
                             case 8:
                                 if (confirmPlatforms == 0)
                                     tile.HasTile = false;
-                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.ResistantWoodPlatform>());
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPlatform>());
                                 tile.Slope = SlopeType.Solid;
                                 tile.IsHalfBlock = false;
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
@@ -217,7 +217,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.ResistantWoodBookcase>(), true, true, -1, 0);
+                                    WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodBookcase>(), true, true, -1, 0);
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -311,7 +311,7 @@ class HellCastle
                             case 16:
                                 if (confirmPlatforms == 0)
                                     tile.HasTile = false;
-                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.ResistantWoodPlatform>());
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPlatform>());
                                 tile.Slope = SlopeType.SlopeDownRight;
                                 tile.IsHalfBlock = false;
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
@@ -322,7 +322,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodClock>()); // clocks
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodClock>()); // clocks
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -332,7 +332,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodDresser>()); // dressers
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodDresser>()); // dressers
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -342,7 +342,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodChair>()); // chairs
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChair>()); // chairs
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -352,7 +352,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodTable>()); // tables
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodTable>()); // tables
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -362,14 +362,14 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodPiano>()); // pianos
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPiano>()); // pianos
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
                             case 22:
                                 if (confirmPlatforms == 0)
                                     tile.HasTile = false;
-                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.ResistantWoodPlatform>());
+                                WorldGen.PlaceTile(k, l, ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodPlatform>());
                                 tile.Slope = SlopeType.SlopeDownLeft;
                                 tile.IsHalfBlock = false;
                                 tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
@@ -380,7 +380,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBed>()); // beds
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodBed>()); // beds
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -390,7 +390,7 @@ class HellCastle
                                     tile.HasTile = false;
                                     tile.Slope = SlopeType.Solid;
                                     tile.IsHalfBlock = false;
-                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.ResistantWoodBathtub>());
+                                    WorldGen.PlaceTile(k, l, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodBathtub>());
                                     tile.WallType = (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
                                 }
                                 break;
@@ -565,7 +565,7 @@ class HellCastle
             if (Main.tile[i, k].HasTile && Main.tileSolid[(int)Main.tile[i, k].TileType])
             {
                 int num = k;
-                int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.ResistantWoodChest>(), notNearOtherChests);
+                int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChest>(), notNearOtherChests);
                 if (num2 >= 0)
                 {
                     int num3 = 0;

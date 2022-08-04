@@ -24,7 +24,7 @@ public class CrackedOrangeBrick : ModTile
     }
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        if (!fail) AvalonWorld.ShatterCrackedOrangeBricks(i, j, Main.tile[i, j], true);
+        if (!fail) AvalonWorld.ShatterCrackedBricks(i, j, Main.tile[i, j], true);
         SoundEngine.PlaySound(SoundID.Item127, new(i * 16, j * 16));
     }
 }

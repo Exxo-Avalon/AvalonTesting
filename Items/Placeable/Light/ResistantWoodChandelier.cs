@@ -17,7 +17,7 @@ class ResistantWoodChandelier : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodChandelier>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChandelier>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -17,7 +17,7 @@ class HeartstoneCandelabra : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.HeartstoneCandelabra>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Heartstone.HeartstoneCandelabra>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -17,7 +17,7 @@ class ResistantWoodTable : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.ResistantWoodTable>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodTable>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

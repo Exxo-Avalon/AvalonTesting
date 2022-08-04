@@ -18,7 +18,7 @@ class DarkSlimeWorkBench : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.DarkSlimeWorkbench>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.DarkSlime.DarkSlimeWorkbench>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

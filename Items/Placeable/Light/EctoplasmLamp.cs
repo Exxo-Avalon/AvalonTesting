@@ -17,7 +17,7 @@ class EctoplasmLamp : ModItem
         Rectangle dims = this.GetDims();
         Item.autoReuse = true;
         Item.consumable = true;
-        Item.createTile = ModContent.TileType<Tiles.EctoplasmLamp>();
+        Item.createTile = ModContent.TileType<Tiles.Furniture.Ectoplasm.EctoplasmLamp>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;
