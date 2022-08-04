@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Avalon.Buffs;
 using Avalon.Items.BossBags;
 using Avalon.Items.Material;
@@ -95,8 +96,34 @@ public class DesertBeak : ModNPC
     private int no_teleport;
     private Vector2 target;
     private bool afterImage;
+    private Vector2 posStored = Vector2.Zero;
+    private byte divetimer2;
+    private Vector2 lockOnDivePos = Vector2.Zero;
 
-
+    public override void SendExtraAI(BinaryWriter writer)
+    {
+        writer.Write(mode);
+        writer.Write(divetimer);
+        writer.Write(modetimer);
+        writer.Write(divebomb);
+        writer.Write(dive);
+        writer.Write(teleports);
+        writer.Write(no_teleport);
+        writer.WriteVector2(target);
+        writer.Write(afterImage);
+    }
+    public override void ReceiveExtraAI(BinaryReader reader)
+    {
+        mode = reader.ReadInt32();
+        divetimer = reader.ReadInt32();
+        modetimer = reader.ReadInt32();
+        divebomb = reader.ReadBoolean();
+        dive = reader.ReadInt32();
+        teleports = reader.ReadInt32();
+        no_teleport = reader.ReadInt32();
+        target = reader.ReadVector2();
+        afterImage = reader.ReadBoolean();
+    }
     public override void AI()
     {
         afterImage = true;
@@ -116,7 +143,6 @@ public class DesertBeak : ModNPC
             }
         }
         NPC.dontTakeDamage = NPC.alpha > 200;
-
 
         if (NPC.life >= (int)NPC.lifeMax * 0.45f  && !Main.player[NPC.target].dead)
         {
@@ -167,7 +193,6 @@ public class DesertBeak : ModNPC
                                 }
                                 else
                                 {
-                                   
                                     //the closer to 1 the less vertical speed decay
                                     divetimer--;
                                     NPC.velocity = new Vector2(9, (float)(-9 * Math.Pow(0.98, divetimer)));
@@ -338,34 +363,52 @@ public class DesertBeak : ModNPC
                 NPC.velocity = new Vector2(0, 0);
                 divetimer = 0;
                 modetimer = 0;
+                
             }
-
+            //Main.NewText(mode);
             switch (mode)
             {
                 case 0:
 
-                    target = player.Center + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-350, -250));
+                    target = player.Center + new Vector2(Main.rand.Next(-100, 100), Main.rand.Next(-250, -150));
+                    posStored = target;
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = NPC.velocity.X * 0.1f;
-                    NPC.velocity = new Vector2(0, 0);
-                    no_teleport += 8;
-
-                    if (no_teleport >= 254)
+                    NPC.velocity *= 0f;
+                    no_teleport = 1;
+                    mode = 3;
+                    //Main.NewText(no_teleport);
+                    //if (no_teleport >= 57)
+                    //{
+                    //    mode = 1;
+                    //}
+                    return;
+                case 3:
+                    no_teleport++;
+                    NPC.velocity *= 0f;
+                    NPC.velocity = NPC.DirectionTo(target) * 8;
+                    if (no_teleport >= 48)
                     {
                         mode = 1;
                     }
+                    return;
+                case 4:
+
+
+                    NPC.velocity *= 0.95f;
                     break;
                 case 1:
                     // Quickly dashes to a random location above the player and fires a spread of 3 feathers
                     NPC.spriteDirection = NPC.direction;
                     NPC.rotation = 0;
-
-                    if (no_teleport <= 100)
+                    //NPC.velocity *= 0f;
+                    if (no_teleport <= 12)
                     {
-                        NPC.velocity = new Vector2(0, 0);
+                        NPC.velocity = Vector2.Zero;
+                        //NPC.velocity *= 0f;
                         no_teleport = 0;
-                        no_teleport = 0;
-                        if (teleports == 9)
+                        //no_teleport++;
+                        if (teleports == ((Main.expertMode || Main.masterMode) ? 4 : 9))
                         {
                             SoundEngine.PlaySound(SoundID.NPCHit28, NPC.position);
 
@@ -419,16 +462,23 @@ public class DesertBeak : ModNPC
                         {
                             mode = 2;
                             no_teleport = 0;
+                            //return;
                         }
                         else
                         {
                             mode = 0;
+                            //return;
                         }
                     }
                     else
                     {
-                        NPC.velocity = NPC.DirectionTo(target) * 25;
-                        no_teleport -= 8;
+                        if (Vector2.Distance(target, NPC.position) > 0)
+                        {
+                            //NPC.velocity = NPC.DirectionTo(target) * 25;
+                            afterImage = true;
+                        }
+                        //NPC.velocity *= 0f;
+                        no_teleport--;
                     }
                     break;
                 case 2:
@@ -439,7 +489,7 @@ public class DesertBeak : ModNPC
                     }
                     else
                     {
-                        NPC.velocity = NPC.DirectionTo(player.Center + new Vector2(250, 0)) * 3;
+                        NPC.velocity = NPC.DirectionTo(player.Center - new Vector2(250, 0)) * 3;
                     }
 
                     NPC.alpha = 0;
@@ -483,17 +533,14 @@ public class DesertBeak : ModNPC
                         teleports = 0;
                         no_teleport = 0;
                     }
-
-
                     break;
-
             }
         }
     }
 
     public override void FindFrame(int frameHeight)
     {
-        if (NPC.velocity == Vector2.Zero)
+        if (NPC.velocity == Vector2.Zero || mode == 1)
         {
             NPC.frame.Y = 0;
             NPC.frameCounter = 0.0;
@@ -530,7 +577,7 @@ public class DesertBeak : ModNPC
     }
     public override bool PreDraw(SpriteBatch spriteBatch, Vector2 v, Color lightColor) // Not flipping? Not sure why it's not
     {
-        if (afterImage == true)
+        if (afterImage)
         {
             Vector2 drawOrigin = TextureAssets.Npc[NPC.type].Size() / new Vector2(2, (Main.npcFrameCount[NPC.type] * 2));
 
