@@ -31,6 +31,7 @@ public class DungeonRemoveCrackedBricks : GenPass
     }
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
+        int RandDungeonColour = (WorldGen.genRand.Next(2));
         if (WorldGen.genRand.NextBool(5))
         {
             for (int i = 100; i < Main.maxTilesX - 100; i++)
@@ -40,12 +41,28 @@ public class DungeonRemoveCrackedBricks : GenPass
                     if (Main.tile[i, j].TileType is TileID.BlueDungeonBrick or TileID.GreenDungeonBrick or TileID.PinkDungeonBrick &&
                         Main.tile[i, j].HasTile)
                     {
-                        Main.tile[i, j].TileType = (ushort)ModContent.TileType<Tiles.OrangeBrick>();
+                        switch (RandDungeonColour)
+                        {
+                            case 0:
+                                Main.tile[i, j].TileType = (ushort)ModContent.TileType<Tiles.OrangeBrick>();
+                                break;
+                            case 1:
+                                Main.tile[i, j].TileType = (ushort)ModContent.TileType<Tiles.PurpleBrick>();
+                                break;
+                        }
                     }
                     if (Main.tile[i, j].WallType is WallID.GreenDungeonUnsafe or WallID.BlueDungeonUnsafe or
                         WallID.PinkDungeonUnsafe)
                     {
-                        Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.OrangeBrickUnsafe>();
+                        switch (RandDungeonColour)
+                        {
+                            case 0:
+                                Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.OrangeBrickUnsafe>();
+                                break;
+                            case 1:
+                                Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.PurpleBrickUnsafe>();
+                                break;
+                        }
                     }
                     if (Main.tile[i, j].WallType is WallID.GreenDungeonSlabUnsafe or WallID.BlueDungeonSlabUnsafe or
                         WallID.PinkDungeonSlabUnsafe)
