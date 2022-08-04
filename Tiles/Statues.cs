@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Avalon.Items.Placeable.Furniture;
@@ -112,6 +112,9 @@ public class Statues : ModTile
             case 11:
             case 12:
                 item = ModContent.ItemType<TurretStatue>();
+                break;
+            case 13:
+                item = ModContent.ItemType<PurpleDungeonVase>();
                 break;
         }
         if (item > 0)
