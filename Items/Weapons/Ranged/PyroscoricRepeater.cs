@@ -13,7 +13,7 @@ class PyroscoricRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Pyroscoric Repeater");
-        Tooltip.SetDefault("Fires a burst of 3 arrows\nWooden arrows are converted into pyroscoric bolts.\nPyroscoric bolts explode into fire when all 3 shots hit");
+        Tooltip.SetDefault("Fires a burst of 3 arrows\nWooden arrows are converted into Pyroscoric bolts\nPyroscoric bolts explode into fire when all 3 shots hit");
         SacrificeTotal = 1;
     }
 
@@ -43,19 +43,24 @@ class PyroscoricRepeater : ModItem
     {
         return new Vector2(-10f, 0f);
     }
-    public int HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
-    public float NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
-    public Vector2 shoothere;
-    public int HeyLookAtThatThingOverThereJustDontMakeItObviousBro = 0;
+    private int HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
+    private float NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
+    private Vector2 shoothere;
+    private Vector2 muzzleOffset = Vector2.One;
+    private int HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant > 2)
         {
-            HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1; NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
+            HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
+            NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
         }
         else
-        { HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant++; NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool += 0.4f;}
+        {
+            HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant++;
+            NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool += 0.4f;
+        }
         SoundEngine.PlaySound(SoundID.Item102, player.position);
         return base.Shoot( player,  source,  position,  velocity,  type,  damage,  knockback);
     }
@@ -65,22 +70,27 @@ class PyroscoricRepeater : ModItem
     }
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
-        Vector2 muzzleOffset = Vector2.Normalize(velocity) * 40f;
-        /* //broken thing for making all 3 shots go in the same directions
-        if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+        // check if the first shot
+        if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
         {
-            position += muzzleOffset;
-        }
-
-            if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
-        {
-            shoothere = velocity;
+            muzzleOffset = Vector2.Normalize(velocity) * 40f; // assign the velocity to the muzzleOffset field
+            shoothere = velocity; // assign the velocity to the shoothere field
+            // assign the player's direction to force them to look in the same direction for all shots later on
             HeyLookAtThatThingOverThereJustDontMakeItObviousBro = player.direction;
         }
-        velocity = shoothere;
-        player.direction = HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
-        position = player.MountedCenter + muzzleOffset;
-        */
+        // if not the first shot
+        else
+        {
+            velocity = shoothere; // reassign the velocity
+            player.direction = HeyLookAtThatThingOverThereJustDontMakeItObviousBro; // reassign the direction
+            position = player.MountedCenter + muzzleOffset; // assign the position
+
+            // if the bolts can hit the position plus the muzzle offset, add the muzzle offset to the position
+            if (Collision.CanHit(position, 1, 1, position + muzzleOffset, 1, 1))
+            {
+                position += muzzleOffset;
+            }
+        }
         if (type == ProjectileID.WoodenArrowFriendly)
         {
             type = ModContent.ProjectileType<Projectiles.Ranged.PyroBolt>();
