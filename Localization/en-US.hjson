@@ -8,6 +8,10 @@ Mods: {
 				Label: Dungeon Generation Revert
 				Tooltip: Reverts the normal Dungeon generation to pre-1.4
 			}
+            VanillaTextureReplacement: {
+				Label: Vanilla Texture Replacement
+				Tooltip: Changes some vanilla textures
+			}
 		}
 		MapObject: {
 				Tropics_Pylon: "{$Mods.Avalon.ItemName.TropicsPylon}"

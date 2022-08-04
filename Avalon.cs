@@ -77,7 +77,10 @@ public class Avalon : Mod
         }
 
         // ----------- Client Only ----------- //
-        ReplaceVanillaTextures();
+        if (ModContent.GetInstance<AvalonConfig>().VanillaTextureReplacement)
+        {
+            ReplaceVanillaTextures();
+        }
         Asset<Effect> shader =
             ModContent.Request<Effect>("Avalon/Effects/DarkMatterSkyShader", AssetRequestMode.ImmediateLoad);
         SkyManager.Instance["Avalon:DarkMatter"] = new DarkMatterSky();
