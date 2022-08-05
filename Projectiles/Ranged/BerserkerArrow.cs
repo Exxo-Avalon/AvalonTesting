@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -16,6 +16,7 @@ public class BerserkerArrow : ModProjectile
 
     public override void SetDefaults()
     {
+        Projectile.arrow = true;
         Rectangle dims = this.GetDims();
         Projectile.penetrate = 4;
         Projectile.width = dims.Width * 10 / 32;
