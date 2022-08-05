@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Consumables;
+using Avalon.Items.Consumables;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,10 +9,10 @@ class IceShrine
 {
     public static void Generate(int x, int y)
     {
-        int mult = 2;
+        int mult = 2; // overall shrine width modifier
         int rn = WorldGen.genRand.Next(3);
-        int width = 0;
-        int mod1 = WorldGen.genRand.Next(9, 13);
+        int width = 0; // width of towers, modified below
+        int mod1 = WorldGen.genRand.Next(9, 13); // height of the shrine
         switch (rn)
         {
             case 0: width = 6; break;
@@ -169,7 +169,7 @@ class IceShrine
         }
         #endregion
         #region pyramid
-        int pstep = 1;
+        int pstep = 1; // width of pyramid at the top
         for (int pyY = y; pyY <= y + mult + 4; pyY++)
         {
             for (int pyX = x - pstep + 1; pyX <= x + pstep + 1; pyX++)
@@ -186,6 +186,7 @@ class IceShrine
                         World.Utils.SquareTileFrame(pyX, pyY + mod1, resetSlope: true);
                     }
                 }
+                #region torches
                 if (pyY == y + mult + 4 && (pyX == x - pstep + 2))
                 {
                     Tile tile = Main.tile[pyX, pyY + mod1];
@@ -194,6 +195,8 @@ class IceShrine
                     tile.TileFrameY = 198;
                     Utils.SquareTileFrame(pyX, pyY + mod1, resetSlope: true);
                 }
+                #endregion torches
+                #region platforms
                 if (pyY == y + mult + 4 && (pyX >= x - pstep + 4 && pyX <= x + pstep))
                 {
                     Tile tile = Main.tile[pyX, pyY + mod1];
@@ -202,11 +205,14 @@ class IceShrine
                     tile.TileFrameY = 0;
                     World.Utils.SquareTileFrame(pyX, pyY + mod1, resetSlope: true);
                 }
+                #endregion platforms
+                #region ice blocks in center of pyramid
                 if (pyY >= y + 3 && pyY <= y + 4 && (pyX >= x - 1 && pyX <= x + 5))
                 {
                     Main.tile[pyX, pyY].TileType = TileID.IceBlock;
                     World.Utils.SquareTileFrame(pyX, pyY, resetSlope: true);
                 }
+                #endregion
             }
             pstep++;
         }

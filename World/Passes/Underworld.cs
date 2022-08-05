@@ -1,4 +1,4 @@
-﻿using Avalon.Tiles;
+using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Avalon.World.Structures;
 using Terraria;

@@ -159,13 +159,13 @@ public class ExxoWorldGen : ModSystem
             totalWeight += currentPass.Weight;
         }
 
-        int smoothWorld = tasks.FindIndex(genPass => genPass.Name == "Smooth World");
-        if (smoothWorld != -1)
-        {
-            currentPass = new SmoothWorld();
-            tasks.Insert(smoothWorld + 1, currentPass);
-            totalWeight += currentPass.Weight;
-        }
+        //int smoothWorld = tasks.FindIndex(genPass => genPass.Name == "Smooth World");
+        //if (smoothWorld != -1)
+        //{
+        //    currentPass = new Underworld();
+        //    tasks.Insert(smoothWorld + 1, currentPass);
+        //    totalWeight += currentPass.Weight;
+        //}
 
         int iceWalls = tasks.FindIndex(genPass => genPass.Name == "Cave Walls");
         if (iceWalls != -1)

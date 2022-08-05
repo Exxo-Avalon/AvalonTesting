@@ -18,7 +18,7 @@ namespace Avalon.Compatability.AltLib;
 
 internal class ContagionAlternateBiome : AltBiome
 {
-    public override Color NameColor => new(0, 255, 128);
+    public override Color NameColor => new(107, 232, 0);
     private int xLoc;
     public override void SetStaticDefaults()
     {

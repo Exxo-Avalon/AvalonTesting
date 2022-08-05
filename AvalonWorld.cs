@@ -265,8 +265,19 @@ public class AvalonWorld : ModSystem
     {
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion)
         {
-            //backgroundColor = new Color(95, 140, 108);
+            backgroundColor = new Color(212, 255, 127); // 152 215 96
             //Main.ColorOfTheSkies = new Color(97, 122, 87);
+        }
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics)
+        {
+            if (Main.dayTime)
+            {
+                backgroundColor = new Color(255, 140, 0);
+            }
+            else
+            {
+                backgroundColor = new Color(50, 20, 0);
+            }
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
         {
@@ -278,6 +289,18 @@ public class AvalonWorld : ModSystem
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
         {
             scale = 0.8f;
+        }
+    }
+    public static void MakeTempOutpost(int x, int y)
+    {
+        for (int i = x; i < x + 25; i++)
+        {
+            for (int j = y; j < y + 25; j++)
+            {
+                Tile t = Main.tile[i, j];
+                t.HasTile = true;
+                t.TileType = (ushort)ModContent.TileType<TuhrtlBrick>();
+            }
         }
     }
     public override void SaveWorldData(TagCompound tag)

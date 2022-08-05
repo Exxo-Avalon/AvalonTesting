@@ -47,7 +47,26 @@ public static class ClassExtensions
 
         return asset;
     }
-
+    public static Vector2 Clamp(this Vector2 input, Vector2 clampTo, float distance)
+    {
+        if (input.X > clampTo.X)
+        {
+            input.X = MathHelper.Clamp(input.X, clampTo.X - distance, clampTo.X);
+        }
+        else
+        {
+            input.X = MathHelper.Clamp(input.X, clampTo.X, clampTo.X + distance);
+        }
+        if (input.Y > clampTo.Y)
+        {
+            input.Y = MathHelper.Clamp(input.Y, clampTo.Y - distance, clampTo.Y);
+        }
+        else
+        {
+            input.Y = MathHelper.Clamp(input.Y, clampTo.Y, clampTo.Y + distance);
+        }
+        return input;
+    }
     public static int FindClosestNPC(this Entity entity, float maxDistance, Func<NPC, bool> invalidNPCPredicate)
     {
         int closest = -1;

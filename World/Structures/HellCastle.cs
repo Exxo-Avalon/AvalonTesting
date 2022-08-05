@@ -512,12 +512,12 @@ class HellCastle
                 }
                 Tile t = Main.tile[noHellHousesX, noHellHousesY];
                 t.LiquidType = LiquidID.Water;
-                if (noHellHousesX >= x && noHellHousesX <= x + 210 && noHellHousesY >= y && noHellHousesY <= y + 90)
-                {
-                    Tile q = Main.tile[noHellHousesX, noHellHousesY];
-                    q.Slope = SlopeType.Solid;
-                    q.IsHalfBlock = false;
-                }
+                //if (noHellHousesX >= x && noHellHousesX <= x + 210 && noHellHousesY >= y && noHellHousesY <= y + 90)
+                //{
+                //    Tile q = Main.tile[noHellHousesX, noHellHousesY];
+                //    q.Slope = SlopeType.Solid;
+                //    q.IsHalfBlock = false;
+                //}
             }
         }
     }

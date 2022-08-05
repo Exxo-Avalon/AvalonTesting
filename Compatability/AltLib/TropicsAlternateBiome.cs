@@ -1,6 +1,5 @@
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
-using Avalon.Items.Weapons.Melee;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
@@ -12,7 +11,7 @@ namespace Avalon.Compatability.AltLib;
 
 internal class TropicsAlternateBiome : AltBiome
 {
-    public override Color NameColor => new(107, 232, 0);
+    public override Color NameColor => new(255, 140, 0);
 
     public override void SetStaticDefaults()
     {
@@ -32,6 +31,7 @@ internal class TropicsAlternateBiome : AltBiome
         BiomeGrassWall = ModContent.WallType<Walls.TropicalGrassWall>();
         BiomeJunglePlants = ModContent.TileType<TropicalShortGrass>();
         HiveGenerationPass = new World.Passes.WaspNest();
+        TempleGenPass = new World.Passes.TuhrtlOutpost();
         BiomeJungleBushes = ModContent.TileType<TropicsBushes>();
         //BiomeShrineChestType = ModContent.TileType<PlatinumChest>();
 

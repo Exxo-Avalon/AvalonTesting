@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Generation;
@@ -6,6 +6,87 @@ using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
 namespace Avalon.World.Structures;
+
+public class CaesiumSpikeShape : GenShape
+{
+    private float _angle;
+
+    private float _startingSize;
+
+    private float _endingSize;
+
+    private float _distance;
+    public CaesiumSpikeShape(float angle, float distance = 10f, float startingSize = 4f, float endingSize = 1f)
+    {
+        _angle = angle;
+        _distance = distance;
+        _startingSize = startingSize;
+        _endingSize = endingSize;
+    }
+    public override bool Perform(Point origin, GenAction action)
+    {
+        return DoSpike(origin, action, _angle, _distance, _startingSize);
+    }
+
+    private bool DoSpike(Point origin, GenAction action, float angle, float distance, float startingSize)
+    {
+        float num = origin.X;
+        float num2 = origin.Y;
+        for (float num3 = 0f; num3 < distance * 0.85f; num3++)
+        {
+            float num4 = num3 / distance;
+            float num5 = MathHelper.Lerp(startingSize, _endingSize, num4);
+            //Main.NewText(num5);
+            num += (float)Math.Cos(angle);
+            num2 += (float)Math.Sin(angle);
+            angle += (_random.NextFloat() - _random.NextFloat(0.5f, 10) + _random.NextFloat(-10, 10) * (_angle - (float)Math.PI / 4f) * -0.1f * (1f - num4));
+            angle = -angle * 0.2f + 0.85f * MathHelper.Clamp(angle, _angle - 0.5f * (1f - 0.5f * num4), _angle + 2f * (1f - 1f * num4));// + MathHelper.Lerp(_angle, (float)Math.PI / 2f, num4) * 0.15f;
+
+            for (int i = 0; i < (int)num5; i++)
+            {
+                for (int j = 0; j < (int)num5; j++)
+                {
+                    if (!UnitApply(action, origin, (int)num + i, (int)num2 + j) && _quitOnFail)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+
+            //int num6 = -(int)num5;
+            //Main.NewText(num6);
+            //if (num6 < 0)
+            //{
+            //    for (int i = num6; i < 0; i++)
+            //    {
+            //        for (int j = num6; j < 0; j++)
+            //        {
+            //            if (!UnitApply(action, origin, (int)num + i, (int)num2 + j) && _quitOnFail)
+            //            {
+            //                return false;
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < (int)num5; i++)
+            //    {
+            //        for (int j = 0; j < (int)num5; j++)
+            //        {
+            //            if (!UnitApply(action, origin, (int)num + i, (int)num2 + j) && _quitOnFail)
+            //            {
+            //                return false;
+            //            }
+            //        }
+            //    }
+            //}
+
+        }
+        return true;
+    }
+}
 
 class CaesiumSpike
 {
@@ -74,23 +155,25 @@ class CaesiumSpike
 
     public static bool CreateSpikeDown(int x, int y, ushort type, bool down = false)
     {
-        if (!WorldUtils.Find(new Point(x, y), Searches.Chain(new Searches.Down(10), new Conditions.IsSolid().AreaAnd(6, 1)), out var result))
+        if (!WorldUtils.Find(new Point(x, y), Searches.Chain(new Searches.Down(10), new Conditions.IsSolid().AreaAnd(4, 1)), out var result))
         {
             return false;
         }
-        float angle = 1 / 3f * 2f + 0.57075f;
-        WorldUtils.Gen(result, new ShapeRoot(angle, WorldGen.genRand.Next(25, 35), 6, 2), new Actions.SetTile(type, setSelfFrames: true));
+        float rn = WorldGen.genRand.NextFloat(1.5f, 4.5f);
+        float angle = rn / 3f * 2f - 0.57075f;
+        WorldUtils.Gen(result, new CaesiumSpikeShape(angle, WorldGen.genRand.Next(45, 55), 8, 1), new Actions.SetTile(type, setSelfFrames: true));
         return true;
     }
 
     public static bool CreateSpikeUp(int x, int y, ushort type)
     {
-        if (!WorldUtils.Find(new Point(x, y), Searches.Chain(new Searches.Down(10), new Conditions.IsSolid().AreaAnd(6, 1)), out var result))
+        if (!WorldUtils.Find(new Point(x, y), Searches.Chain(new Searches.Down(10), new Conditions.IsSolid().AreaAnd(4, 1)), out var result))
         {
             return false;
         }
-        float angle = -(1 / 3f * 2f + 0.57075f * 2);
-        WorldUtils.Gen(result, new ShapeRoot(angle, WorldGen.genRand.Next(35, 45), 8, 3), new Actions.SetTile(type, setSelfFrames: true));
+        float rn = WorldGen.genRand.NextFloat(1.5f, 4.5f);
+        float angle = -(rn / 3f * 2f + 0.57075f * 2);
+        WorldUtils.Gen(result, new CaesiumSpikeShape(angle, WorldGen.genRand.Next(45, 55), 8, 1), new Actions.SetTile(type, setSelfFrames: true));
         return true;
     }
 

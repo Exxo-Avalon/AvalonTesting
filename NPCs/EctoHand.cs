@@ -44,7 +44,7 @@ public class EctoHand : ModNPC
     {
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
-            new FlavorTextBestiaryInfoElement("They reach out, as if to touch their lost life.")
+            new FlavorTextBestiaryInfoElement("They reach out, as if to touch their lost life. Or maybe they just want to give you a high-five?")
         });
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
