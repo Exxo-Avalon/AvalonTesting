@@ -27,7 +27,7 @@ class PyroscoricFlamesword : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.3f;
-        Item.rare = ModContent.RarityType<FireOrangeRarity>();
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.width = dims.Width;
         Item.useTime = 25;
         Item.useAnimation = 20;

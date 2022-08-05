@@ -20,7 +20,7 @@ class TritanoriumChunk : ModItem
         Item.maxStack = 999;
         Item.value = 100;
         Item.height = dims.Height;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<Rarities.MagentaRarity>();
     }
     public override void AddRecipes()
     {

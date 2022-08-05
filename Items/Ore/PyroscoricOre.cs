@@ -19,7 +19,7 @@ class PyroscoricOre : ModItem
         Item.autoReuse = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.Ores.PyroscoricOre>();
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<Rarities.MagentaRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.useTurn = true;

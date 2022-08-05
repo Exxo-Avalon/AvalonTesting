@@ -25,7 +25,7 @@ class PyroscoricRepeater : ModItem
         Item.useAmmo = AmmoID.Arrow;
         Item.shootSpeed = 15f;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ModContent.RarityType<FireOrangeRarity>();
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 7f;

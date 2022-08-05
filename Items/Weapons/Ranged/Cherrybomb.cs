@@ -11,7 +11,7 @@ class Cherrybomb : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Firecracker");
+        DisplayName.SetDefault("Cherrybomb");
         //Tooltip.SetDefault("");
     }
     public override void SetDefaults()

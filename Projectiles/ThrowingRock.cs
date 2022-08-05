@@ -42,6 +42,7 @@ public class ThrowingRock : ModProjectile
         {
             Projectile.velocity.Y = oldVelocity.Y * -0.7f;
         }
+        SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
         Point tile = Projectile.Center.ToTileCoordinates();
         if (tile.X < 10)
             tile.X = 10;

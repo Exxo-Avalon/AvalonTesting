@@ -23,9 +23,9 @@ class TacticalExpulsor : ModItem
         Item.useTurn = false;
         Item.useAmmo = AmmoID.Bullet;
         Item.shootSpeed = 7f;
-        Item.crit += 1;
+        Item.crit++;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.MagentaRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 3f;
@@ -41,9 +41,10 @@ class TacticalExpulsor : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ItemID.TacticalShotgun, 2)
-            .AddIngredient(ItemID.Ectoplasm, 50)
-            .AddIngredient(ItemID.ShroomiteBar, 30)
+            .AddIngredient(ItemID.TacticalShotgun)
+            .AddIngredient(ItemID.Ectoplasm, 40)
+            .AddIngredient(ItemID.ShroomiteBar, 25)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
     public override Vector2? HoldoutOffset()

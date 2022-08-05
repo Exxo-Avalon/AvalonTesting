@@ -11,7 +11,7 @@ class DroneSwarm : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Drone Swarm");
-        Tooltip.SetDefault("Casts a spread of three homing drones\n'Thousands of bright yellow...!'");
+        Tooltip.SetDefault("Casts a spread of nine homing drones\n'Thousands of bright yellow...!'");
         SacrificeTotal = 1;
         Item.staff[Type] = true;
     }
