@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -30,6 +31,7 @@ class GoblinToolbelt : ModItem
         player.accWatch = 3;
         player.accCompass = 1;
         player.accDepthMeter = 1;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().GoblinToolbelt = true;
     }
     public override void AddRecipes()
     {

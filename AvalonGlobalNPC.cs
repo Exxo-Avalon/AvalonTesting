@@ -1307,7 +1307,8 @@ public class AvalonGlobalNPC : GlobalNPC
         #region shm mob scaling
         if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
-            if (!SHMMobs.Contains(npc.type))
+            if (Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
+            //if (!SHMMobs.Contains(npc.type))
             {
                 if (Main.expertMode)
                 {
@@ -1798,14 +1799,14 @@ public class AvalonGlobalNPC : GlobalNPC
 
         if (npc.type is NPCID.Crimera or NPCID.FaceMonster or NPCID.BloodCrawler or NPCID.BloodCrawlerWall)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 15));
         }
 
         if (npc.type is NPCID.PincushionZombie or NPCID.SlimedZombie or NPCID.SwampZombie or NPCID.TwiggyZombie
             or NPCID.Zombie
             or NPCID.ZombieEskimo or NPCID.FemaleZombie or NPCID.ZombieRaincoat)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenFlesh>(), 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenFlesh>(), 15));
         }
 
         if (npc.type is NPCID.Clinger or NPCID.Spazmatism)
@@ -1828,7 +1829,7 @@ public class AvalonGlobalNPC : GlobalNPC
         if (npc.type is NPCID.GiantTortoise or NPCID.IceTortoise or NPCID.Vulture or NPCID.FlyingFish
             or NPCID.Unicorn)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementDust>(), 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementDust>(), 15));
         }
 
         if (npc.type is NPCID.Corruptor or NPCID.SeekerHead)
@@ -1838,8 +1839,8 @@ public class AvalonGlobalNPC : GlobalNPC
 
         if (npc.type is NPCID.Harpy or NPCID.CaveBat or NPCID.GiantBat or NPCID.JungleBat)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RubybeadHerb>(), 7));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MysticalClaw>(), 9));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RubybeadHerb>(), 15));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MysticalClaw>(), 20));
         }
 
         if (npc.type is NPCID.Hornet or NPCID.BlackRecluse or NPCID.MossHornet or NPCID.HornetFatty
@@ -1847,12 +1848,12 @@ public class AvalonGlobalNPC : GlobalNPC
             or NPCID.HornetLeafy or NPCID.HornetSpikey or NPCID.HornetStingy or NPCID.JungleCreeper
             or NPCID.JungleCreeperWall or NPCID.BlackRecluseWall)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrongVenom>(), 7));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StrongVenom>(), 15));
         }
 
         if (npc.type is NPCID.Retinazer or NPCID.Spazmatism or NPCID.SkeletronPrime or NPCID.TheDestroyer)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScrollofTome>(), 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ScrollofTome>(), 8));
         }
 
         if (npc.type is NPCID.CorruptSlime or NPCID.Gastropod or NPCID.IlluminantSlime or NPCID.ToxicSludge

@@ -54,6 +54,9 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool TerraClaws;
     public bool BadgeOfBacteria;
     public bool AstralProject;
+    public bool GoblinToolbelt;
+    public bool GoblinAK;
+    public bool BuilderBelt;
     #endregion accessories
 
     #region extras
@@ -80,6 +83,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     #endregion armor
     public override void ResetEffects()
     {
+        // accessories
         ShadowCharm = false;
         PulseCharm = false;
         BagOfBlood = false;
@@ -115,6 +119,11 @@ public class ExxoEquipEffectPlayer : ModPlayer
         BlahWings = false;
         LuckTome = false;
         TerraClaws = false;
+        GoblinToolbelt = false;
+        GoblinAK = false;
+        BuilderBelt = false;
+
+        // armor
         HyperMagic = false;
         HyperMelee = false;
         HyperRanged = false;

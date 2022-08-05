@@ -18,6 +18,14 @@ public class AvalonConfig : ModConfig
     [DefaultValue(true)]
     [ReloadRequired]
     public bool VanillaTextureReplacement;
+
+    [Header("$Mods.Avalon.Config.ItemHeader")]
+    [Label("$Mods.Avalon.Config.Renames.Label")]
+    [Tooltip("$Mods.Avalon.Config.Renames.Tooltip")]
+    [DefaultValue(true)]
+    [ReloadRequired]
+    public bool VanillaRenames;
+
 }
 //public class AvalonTextureReplacementConfig : ModConfig
 //{

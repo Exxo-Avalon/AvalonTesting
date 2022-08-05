@@ -25,6 +25,7 @@ class SonicScrewdriverMkIII : ModItem
         Item.useStyle = ItemUseStyleID.Thrust;
         Item.useAnimation = 70;
         Item.height = dims.Height;
+        Item.scale = 0.7f;
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SonicScrewdriver");
     }
     public override void AddRecipes()

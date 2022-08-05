@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -455,21 +456,6 @@ public class AvalonGlobalItem : GlobalItem
             }
         }
     }
-    //public override void RightClick(Item item, Player player)
-    //{
-    //    if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
-    //    {
-    //        if (ModContent.GetInstance<TomeSlot>().FunctionalItem.type > ItemID.None && ModContent.GetInstance<TomeSlot>().FunctionalItem.type != item.type)
-    //        {
-    //            Item temp = new Item();
-    //            temp.netDefaults(item.netID);
-    //            temp = temp.CloneWithModdedDataFrom(item);
-
-    //            ModContent.GetInstance<TomeSlot>().FunctionalItem.SetDefaults(temp.type);
-    //            item.SetDefaults(ModContent.GetInstance<TomeSlot>().FunctionalItem.type);
-    //        }
-    //    }
-    //}
     public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
     {
         if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome && slot < 19 && !modded)
@@ -733,46 +719,31 @@ public class AvalonGlobalItem : GlobalItem
             }
         }
 
-        if (tooltipLine != null)
+        if (tooltipLine != null && ModContent.GetInstance<AvalonConfig>().VanillaRenames)
         {
             if (item.type == ItemID.CoinGun)
             {
                 tooltipLine.Text = "Spend Shot";
             }
-
             if (item.type == ItemID.PurpleMucos)
             {
                 tooltipLine.Text = "Purple Mucus";
             }
-
             if (item.type == ItemID.HighTestFishingLine)
             {
                 tooltipLine.Text = tooltipLine.Text.Replace("Test", "Tensile");
             }
-
             if (item.type == ItemID.BlueSolution)
             {
                 tooltipLine.Text = "Cyan Solution";
             }
-
             if (item.type == ItemID.DarkBlueSolution)
             {
                 tooltipLine.Text = "Blue Solution";
             }
-
             if (item.type == ItemID.FrostsparkBoots)
             {
                 tooltipLine.Text = tooltipLine.Text.Replace("Frostspark", "Sparkfrost");
-            }
-
-            if (item.type == ItemID.BossMaskCultist)
-            {
-                tooltipLine.Text = "Lunatic Cultist Mask";
-            }
-
-            if (item.type == ItemID.AncientCultistTrophy)
-            {
-                tooltipLine.Text = "Lunatic Cultist Trophy";
             }
         }
 
@@ -798,7 +769,6 @@ public class AvalonGlobalItem : GlobalItem
                         tooltip.Text = "Can mine Rhodium, Osmium, and Iridium";
                     }
                 }
-
                 break;
             case ItemID.Seed:
                 foreach (TooltipLine tooltip in tooltips)
@@ -808,7 +778,6 @@ public class AvalonGlobalItem : GlobalItem
                         tooltip.Text = "For use with Blowpipes";
                     }
                 }
-
                 break;
             case ItemID.PoisonDart:
                 foreach (TooltipLine tooltip in tooltips)
@@ -818,7 +787,6 @@ public class AvalonGlobalItem : GlobalItem
                         tooltip.Text = "For use with Blowpipes and Blowgun";
                     }
                 }
-
                 break;
             case ItemID.CoinGun:
                 foreach (TooltipLine tooltip in tooltips)
@@ -827,13 +795,11 @@ public class AvalonGlobalItem : GlobalItem
                     {
                         tooltip.Text = "Uses coins for ammo - Higher valued coins do more damage";
                     }
-
                     if (tooltip.Name == "Tooltip1")
                     {
                         tooltip.Text = "'Knocks some cents into your enemies'";
                     }
                 }
-
                 break;
             case ItemID.PickaxeAxe:
                 foreach (TooltipLine tooltip in tooltips)
@@ -842,13 +808,11 @@ public class AvalonGlobalItem : GlobalItem
                     {
                         tooltip.Text = "'Not to be confused with a hamdrill'";
                     }
-
                     if (tooltip.Name == "Tooltip1")
                     {
                         tooltip.Text = "Can mine Chlorophyte, Xanthophyte, and Caesium Ore";
                     }
                 }
-
                 break;
             case ItemID.Drax:
                 foreach (TooltipLine tooltip in tooltips)
@@ -857,13 +821,11 @@ public class AvalonGlobalItem : GlobalItem
                     {
                         tooltip.Text = "'Not to be confused with a picksaw'";
                     }
-
                     if (tooltip.Name == "Tooltip1")
                     {
                         tooltip.Text = "Can mine Chlorophyte, Xanthophyte, and Caesium Ore";
                     }
                 }
-
                 break;
         }
     }
@@ -876,7 +838,7 @@ public class AvalonGlobalItem : GlobalItem
         }
     }
 
-    /*
+
     public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
     {
         if (ItemID.Sets.BossBag[item.type])
@@ -893,7 +855,7 @@ public class AvalonGlobalItem : GlobalItem
             itemLoot.Add(ItemDropRule.Common(ItemID.ChlorophyteOre, 1, 60, 121));
         }
     }
-    */
+
 
     public override void OpenVanillaBag(string context, Player player, int arg)
     {
@@ -904,27 +866,8 @@ public class AvalonGlobalItem : GlobalItem
             return;
         }
 
-        if (Main.rand.NextBool(4))
-        {
-            player.QuickSpawnItem(openItemSource, ModContent.ItemType<StaminaCrystal>());
-        }
-
         switch (arg)
         {
-            case ItemID.WallOfFleshBossBag:
-                NPCLoader.blockLoot.Add(ItemID.RangerEmblem);
-                NPCLoader.blockLoot.Add(ItemID.SummonerEmblem);
-                NPCLoader.blockLoot.Add(ItemID.WarriorEmblem);
-                NPCLoader.blockLoot.Add(ItemID.SorcererEmblem);
-                player.QuickSpawnItem(openItemSource, ModContent.ItemType<NullEmblem>());
-                break;
-            case ItemID.KingSlimeBossBag when Main.rand.NextBool(3):
-                player.QuickSpawnItem(openItemSource, ModContent.ItemType<BandofSlime>());
-                break;
-            case ItemID.PlanteraBossBag:
-                player.QuickSpawnItem(openItemSource, ModContent.ItemType<LifeDew>(), Main.rand.Next(15, 22));
-                player.QuickSpawnItem(openItemSource, ItemID.ChlorophyteOre, Main.rand.Next(60, 121));
-                break;
             case ItemID.EyeOfCthulhuBossBag:
             {
                 if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Avalon.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -42,8 +43,8 @@ class GoblinArmyKnife : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.tileSpeed += 1f;
-        player.wallSpeed += 1f;
+        player.tileSpeed++;
+        player.wallSpeed++;
         Player.tileRangeX += 4;
         Player.tileRangeY += 4;
         player.accWatch = 3;
@@ -59,5 +60,6 @@ class GoblinArmyKnife : ModItem
         player.manaRegenBonus += 25;
         player.GetDamage(DamageClass.Generic) += 0.07f;
         player.GetCritChance(DamageClass.Generic) += 2;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().GoblinAK = true;
     }
 }
