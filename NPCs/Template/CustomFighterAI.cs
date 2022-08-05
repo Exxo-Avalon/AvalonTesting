@@ -19,6 +19,7 @@ public abstract class CustomFighterAI : ModNPC
         Player player = Main.player[NPC.FindClosestPlayer()];
         float upOrDown = NPC.Center.Y - player.Center.Y;
 
+        //if the player is under the npc then fall through the platform, should maybe check for canhitline but vanilla doesn't do that so idk
         return NPC.collideY && upOrDown < -15;
     }
     public override void SendExtraAI(BinaryWriter writer)
@@ -54,6 +55,7 @@ public abstract class CustomFighterAI : ModNPC
 
         dir = Math.Sign(dir);
 
+        //movement stuff you don't need to worry about... unless you do then just figure it out lol
         float moveSpeedMulti = NPC.velocity.X + (Acceleration * -dir);
         float airSpeedMulti = NPC.velocity.X + (AirAcceleration * -dir);
         moveSpeedMulti = Math.Clamp(moveSpeedMulti, -MaxMoveSpeed, MaxMoveSpeed);
@@ -71,6 +73,7 @@ public abstract class CustomFighterAI : ModNPC
         {
             NPC.velocity.X = airSpeedMulti;
         }
+        //if the player is above the npc and in range (JumpRadius) and there is also a line between the player and the npc
         if(distanceBetweenPlayer < JumpRadius && NPC.collideY && upOrDown > 1 && Collision.CanHitLine(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
         {
             Jump(MaxJumpHeight);
@@ -78,8 +81,10 @@ public abstract class CustomFighterAI : ModNPC
 
         Point a = NPC.Bottom.ToTileCoordinates();
         float height = 0;
+        // if its on the ground and touching a wall
         if ((NPC.collideY || Main.tileSolid[Main.tile[a.X, a.Y].TileType] && Main.tile[a.X, a.Y].HasTile) && NPC.collideX)
         {
+            //check for the height of the wall infront
             for (int i = 0; i < 10; i++)
             {
                 if(Main.tile[a.X + 1 * -(int)dir, a.Y - i].HasTile && Main.tileSolid[Main.tile[a.X + 1 * -(int)dir, a.Y - i].TileType])
@@ -87,10 +92,13 @@ public abstract class CustomFighterAI : ModNPC
                     height = i + 1;
                 }
             }
+            //jumps with the right height
             Jump(height);
         }
+        //if its on the ground
         if (NPC.collideY || Main.tileSolid[Main.tile[a.X, a.Y].TileType] && Main.tile[a.X, a.Y].HasTile)
         {
+            //enable stepup when on the ground
             Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
             isInJump = false;
             isHit = false;
@@ -98,6 +106,7 @@ public abstract class CustomFighterAI : ModNPC
             {
                 jumpdelay--;
             }
+            //if the tile under and infront is air then jump
             if((!Main.tileSolid[Main.tile[a.X + 1 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 1 * -(int)dir, a.Y].HasTile) && (!Main.tileSolid[Main.tile[a.X + 2 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 2 * -(int)dir, a.Y].HasTile) && upOrDown > -20)
             {
                 Jump(MaxJumpHeight);
@@ -109,6 +118,7 @@ public abstract class CustomFighterAI : ModNPC
             {
                 isInJump = true;
             }
+            //enable step up if at peak of the jump
             if (NPC.velocity.Y > 0)
             {
                 Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
@@ -118,6 +128,7 @@ public abstract class CustomFighterAI : ModNPC
     }
     public void Jump(float height)
     {
+        //do the jump, if the height is higher than the maxjump then just set it to maxjumpheight
         if(jumpdelay == 0)
         {
             height = Math.Clamp(height + 2.5f, 0f, MaxJumpHeight);
