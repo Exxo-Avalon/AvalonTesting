@@ -14,6 +14,7 @@ public abstract class CustomFighterAI : ModNPC
     public virtual float AirAcceleration { get; set; } = 0.1f;
     public virtual float MaxJumpHeight{ get; set; } = 8f;
     public virtual float JumpRadius { get; set; } = 150;
+    public virtual bool JumpOverDrop { get; set; } = true;
     public override bool? CanFallThroughPlatforms()
     {
         Player player = Main.player[NPC.FindClosestPlayer()];
@@ -107,7 +108,7 @@ public abstract class CustomFighterAI : ModNPC
                 jumpdelay--;
             }
             //if the tile under and infront is air then jump
-            if((!Main.tileSolid[Main.tile[a.X + 1 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 1 * -(int)dir, a.Y].HasTile) && (!Main.tileSolid[Main.tile[a.X + 2 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 2 * -(int)dir, a.Y].HasTile) && upOrDown > -20)
+            if((!Main.tileSolid[Main.tile[a.X + 1 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 1 * -(int)dir, a.Y].HasTile) && (!Main.tileSolid[Main.tile[a.X + 2 * -(int)dir, a.Y].TileType] || !Main.tile[a.X + 2 * -(int)dir, a.Y].HasTile) && upOrDown > -20 && JumpOverDrop)
             {
                 Jump(MaxJumpHeight);
             }

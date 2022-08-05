@@ -47,6 +47,7 @@ public class GuardianBones : CustomFighterAI
     public override float Acceleration { get; set; } = 0.2f;
     public override float MaxMoveSpeed { get; set; } = 4f;
     public override float JumpRadius { get; set; } = 250f;
+    public override bool JumpOverDrop { get; set; } = false;
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
