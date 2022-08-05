@@ -17,7 +17,7 @@ class FeroziumIceSword : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 50;
         Item.autoReuse = true;
-        Item.useTurn = true;
+        Item.useTurn = false;
         Item.scale = 1.5f;
         Item.shootSpeed = 15f;
         Item.crit += 2;

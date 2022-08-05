@@ -103,7 +103,7 @@ class PyroscoricRepeater : ModItem
     public override void AddRecipes()
     {
         Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.PyroscoricBar>(), 21)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PyroscoricBar>(), 20)
             .AddTile(TileID.MythrilAnvil).Register();
     }
 }

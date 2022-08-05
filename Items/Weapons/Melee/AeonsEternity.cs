@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ public class AeonsEternity : ModItem
         Item.scale = 1.1f;
         Item.DamageType = DamageClass.Melee;
         Item.autoReuse = true;
-        Item.useTurn = true;
+        Item.useTurn = false;
         Item.rare = ItemRarityID.Pink;
         Item.width = dims.Width;
         Item.height = dims.Height;

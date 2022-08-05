@@ -31,6 +31,7 @@ class ElementalExcalibur : ModItem
         Item.value = Item.sellPrice(0, 90, 0, 0);
         Item.useAnimation = 10;
         Item.height = dims.Height;
+        Item.useTurn = false;
     }
     public override Color? GetAlpha(Color lightColor)
     {
