@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -19,6 +20,24 @@ public abstract class CustomFighterAI : ModNPC
         float upOrDown = NPC.Center.Y - player.Center.Y;
 
         return NPC.collideY && upOrDown < -15;
+    }
+    public override void SendExtraAI(BinaryWriter writer)
+    {
+        writer.Write(MaxMoveSpeed);
+        writer.Write(MaxAirSpeed);
+        writer.Write(MaxJumpHeight);
+        writer.Write(JumpRadius);
+        writer.Write(Acceleration);
+        writer.Write(AirAcceleration);
+    }
+    public override void ReceiveExtraAI(BinaryReader reader)
+    {
+        MaxMoveSpeed = reader.ReadSingle();
+        MaxAirSpeed = reader.ReadSingle();
+        MaxJumpHeight = reader.ReadSingle();
+        JumpRadius = reader.ReadSingle();
+        Acceleration = reader.ReadSingle();
+        AirAcceleration = reader.ReadSingle();
     }
     public virtual void CustomBehavior()
     {
