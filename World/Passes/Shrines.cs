@@ -23,6 +23,10 @@ internal class Shrines : GenPass
             ModContent.TileType<Tiles.OrangeBrick>(),
             ModContent.TileType<Tiles.TropicalGrass>(),
             ModContent.TileType<Tiles.Loam>(),
+            ModContent.TileType<Tiles.OrangeBrick>(),
+            ModContent.TileType<Tiles.PurpleBrick>(),
+            ModContent.TileType<Tiles.CrackedOrangeBrick>(),
+            ModContent.TileType<Tiles.CrackedPurpleBrick>(),
             TileID.Mud,
             TileID.JungleGrass,
             TileID.CrimtaneBrick,
@@ -45,6 +49,9 @@ internal class Shrines : GenPass
             ModContent.WallType<Walls.OrangeBrickUnsafe>(),
             ModContent.WallType<Walls.OrangeTiledUnsafe>(),
             ModContent.WallType<Walls.OrangeSlabUnsafe>(),
+            ModContent.WallType<Walls.PurpleBrickUnsafe>(),
+            ModContent.WallType<Walls.PurpleSlabWallUnsafe>(),
+            ModContent.WallType<Walls.PurpleTiledWallUnsafe>(),
             WallID.IceBrick
         };
         for (int q = 0; q < 4; q++)
@@ -52,9 +59,13 @@ internal class Shrines : GenPass
             var x10 = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
             var y6 = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY - 300);
             if (q == 2) y6 = WorldGen.genRand.Next(WorldGen.lavaLine - 50, Main.maxTilesY - 250);
-            // causes making cave walls freeze somehow (MIGHT HAVE FIXED THIS)
+            // causes making cave walls freeze somehow (MIGHT HAVE FIXED THIS (NOPE))
             while (noTiles.Contains(Main.tile[x10, y6].TileType) || noWalls.Contains(Main.tile[x10, y6].WallType))
             {
+                if (x10 == Main.maxTilesX / 2)
+                {
+                    break;
+                }
                 if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
@@ -64,6 +75,10 @@ internal class Shrines : GenPass
             }
             while (noTiles.Contains(Main.tile[x10 + 30, y6].TileType) || noWalls.Contains(Main.tile[x10 + 30, y6].WallType))
             {
+                if (x10 == Main.maxTilesX / 2)
+                {
+                    break;
+                }
                 if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
@@ -71,6 +86,10 @@ internal class Shrines : GenPass
             }
             while (noTiles.Contains(Main.tile[x10, y6 + 20].TileType) || noWalls.Contains(Main.tile[x10, y6 + 20].WallType))
             {
+                if (x10 == Main.maxTilesX / 2)
+                {
+                    break;
+                }
                 if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
@@ -78,6 +97,10 @@ internal class Shrines : GenPass
             }
             while (noTiles.Contains(Main.tile[x10 + 30, y6 + 20].TileType) || noWalls.Contains(Main.tile[x10 + 30, y6 + 20].WallType))
             {
+                if (x10 == Main.maxTilesX / 2)
+                {
+                    break;
+                }
                 if (x10 > (Main.maxTilesX / 2))
                     x10--;
                 else
