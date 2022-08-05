@@ -1,6 +1,7 @@
 using System;
 using Avalon.Items.Accessories;
 using Avalon.Items.Placeable.Tile;
+using Avalon.NPCs.Template;
 using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -11,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.NPCs;
 
-public class GuardianBones : ModNPC
+public class GuardianBones : CustomFighterAI
 {
     private int timer;
     public override void SetStaticDefaults()
@@ -32,7 +33,7 @@ public class GuardianBones : ModNPC
         NPC.lifeMax = 9000;
         NPC.defense = 120;
         NPC.width = 31;
-        NPC.aiStyle = 3;
+        NPC.aiStyle = -1;
         NPC.npcSlots = 4f;
         NPC.value = 10000f;
         NPC.timeLeft = 10050;
@@ -42,7 +43,10 @@ public class GuardianBones : ModNPC
         NPC.HitSound = SoundID.NPCHit2;
         NPC.DeathSound = SoundID.NPCDeath2;
     }
-
+    public override float MaxJumpHeight { get; set; } = 12f;
+    public override float Acceleration { get; set; } = 0.2f;
+    public override float MaxMoveSpeed { get; set; } = 4f;
+    public override float JumpRadius { get; set; } = 250f;
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
@@ -60,36 +64,69 @@ public class GuardianBones : ModNPC
         ModContent.GetInstance<AvalonWorld>().SuperHardmode
             ? 0.083f * AvalonGlobalNPC.EndoSpawnRate
             : 0f;
-    
-    public static bool CheckIfLineCanBeDrawn(Vector2 startPos, Vector2 startDimensions, Vector2 targetPos, Vector2 targetDimensions)
+    public override void CustomBehavior()
     {
-        Point start = startPos.ToTileCoordinates();
-        Point startDims = (startPos + startDimensions).ToTileCoordinates();
-        Point target = targetPos.ToTileCoordinates();
-        Point targetDims = (targetPos + targetDimensions).ToTileCoordinates();
-        for (int i = (int)startPos.X; i < (int)(startPos.X + startDimensions.X); i++)
+        NPC.ai[0]++;
+        Player targ = Main.player[NPC.target];
+
+        if (NPC.ai[0] > 240 && Collision.CanHit(NPC, targ))
         {
-            for (int j = (int)startPos.Y; j < (int)(startPos.Y + startDimensions.Y); j++)
+            if (NPC.ai[0] % 45 == 0)
             {
-                if (Collision.CanHitLine(new Vector2(i, j), 1, 1, targetPos, 1, 1))
-                {
-                    return true;
-                }
+                int p = Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.position, new Vector2(1), ModContent.ProjectileType<Projectiles.Hostile.Skeleton>(), 100, 4f);
+                Main.projectile[p].velocity = Vector2.Normalize(targ.position - NPC.position) * 10f;
+            }
+            if (NPC.ai[0] > 400)
+            {
+                NPC.ai[0] = 0;
             }
         }
-        for (int i = (int)targetPos.X; i < (int)(targetPos.X + targetDimensions.X); i++)
+        if ((NPC.velocity.X < 0f && NPC.spriteDirection == -1) || (NPC.velocity.X > 0f && NPC.spriteDirection == 1))
         {
-            for (int j = (int)targetPos.Y; j < (int)(targetPos.Y + targetDimensions.Y); j++)
+            if (NPC.collideX)
             {
-                if (Collision.CanHitLine(startPos, 1, 1, new Vector2(i, j), 1, 1))
-                {
-                    return true;
-                }
+                NPC.velocity.Y *= 1.03f;
+                NPC.netUpdate = true;
             }
         }
-        return false;
+        if (NPC.collideY)
+        {
+            if (NPC.spriteDirection == -1)
+            {
+                NPC.velocity.X -= 0.6f;
+            }
+            else
+            {
+                NPC.velocity.X += 0.6f;
+            }
+        }
+        if (Vector2.Distance(NPC.position, targ.position) < 20)
+        {
+            NPC.noTileCollide = NPC.noGravity = false;
+        }
+        if (AvalonGlobalNPC.CheckIfLineCanBeDrawn(NPC.position, new Vector2(NPC.width, NPC.height), targ.position, new Vector2(targ.width, targ.height)) &&
+            !NPC.justHit)
+        {
+            Point tile = NPC.position.ToTileCoordinates();
+            Tile t = Main.tile[tile.X, tile.Y];
+            if (!t.HasTile || !Main.tileSolid[t.TileType])
+            {
+                if (Vector2.Distance(NPC.position, targ.position) > 700)
+                {
+                    NPC.noGravity = true;
+                    NPC.velocity += Vector2.Normalize(targ.position - NPC.position);
+                    NPC.velocity.Y += 0.3f;
+                    NPC.noGravity = false;
+                }
+            }
+            else if (t.HasTile || Vector2.Distance(NPC.position, targ.position) < 300)
+            {
+                NPC.velocity.Y += 0.3f;
+                NPC.noTileCollide = NPC.noGravity = false;
+            }
+        }
     }
-    public override void AI()
+    /*public override void AI()
     {
         timer++;
         NPC.TargetClosest();
@@ -151,7 +188,7 @@ public class GuardianBones : ModNPC
                 NPC.noTileCollide = NPC.noGravity = false;
             }
         }
-    }
+    }*/
     public override void FindFrame(int frameHeight)
     {
         if (NPC.velocity.Y == 0f)

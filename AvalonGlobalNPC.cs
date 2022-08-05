@@ -2058,4 +2058,33 @@ public class AvalonGlobalNPC : GlobalNPC
             }
         }
     }
+
+    public static bool CheckIfLineCanBeDrawn(Vector2 startPos, Vector2 startDimensions, Vector2 targetPos, Vector2 targetDimensions)
+    {
+        Point start = startPos.ToTileCoordinates();
+        Point startDims = (startPos + startDimensions).ToTileCoordinates();
+        Point target = targetPos.ToTileCoordinates();
+        Point targetDims = (targetPos + targetDimensions).ToTileCoordinates();
+        for (int i = (int)startPos.X; i < (int)(startPos.X + startDimensions.X); i++)
+        {
+            for (int j = (int)startPos.Y; j < (int)(startPos.Y + startDimensions.Y); j++)
+            {
+                if (Collision.CanHitLine(new Vector2(i, j), 1, 1, targetPos, 1, 1))
+                {
+                    return true;
+                }
+            }
+        }
+        for (int i = (int)targetPos.X; i < (int)(targetPos.X + targetDimensions.X); i++)
+        {
+            for (int j = (int)targetPos.Y; j < (int)(targetPos.Y + targetDimensions.Y); j++)
+            {
+                if (Collision.CanHitLine(startPos, 1, 1, new Vector2(i, j), 1, 1))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
