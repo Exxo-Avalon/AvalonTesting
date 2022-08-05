@@ -31,3 +31,5 @@ class VoraylzumKatana : ModItem
         Item.UseSound = SoundID.Item1;
     }
 }
+
+//TODO When the recipe gets put here add like 7 kunzite to it kthxbye
