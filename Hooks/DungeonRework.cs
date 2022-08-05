@@ -52,6 +52,9 @@ public class DungeonRemoveCrackedBricks : GenPass
                             case 1:
                                 Main.tile[i, j].TileType = (ushort)ModContent.TileType<Tiles.PurpleBrick>();
                                 break;
+                            case 2:
+                                Main.tile[i, j].TileType = (ushort)ModContent.TileType<Tiles.YellowBrick>();
+                                break;
                         }
                     }
                     if (Main.tile[i, j].WallType is WallID.GreenDungeonUnsafe or WallID.BlueDungeonUnsafe or
@@ -64,6 +67,9 @@ public class DungeonRemoveCrackedBricks : GenPass
                                 break;
                             case 1:
                                 Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.PurpleBrickUnsafe>();
+                                break;
+                            case 2:
+                                Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.YellowBrickUnsafe>();
                                 break;
                         }
                     }
@@ -78,6 +84,9 @@ public class DungeonRemoveCrackedBricks : GenPass
                             case 1:
                                 Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.PurpleSlabWallUnsafe>();
                                 break;
+                            case 2:
+                                Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.YellowSlabWallUnsafe>();
+                                break;
                         }
                     }
                     if (Main.tile[i, j].WallType is WallID.GreenDungeonTileUnsafe or WallID.BlueDungeonTileUnsafe or
@@ -90,6 +99,9 @@ public class DungeonRemoveCrackedBricks : GenPass
                                 break;
                             case 1:
                                 Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.PurpleTiledWallUnsafe>();
+                                break;
+                            case 2:
+                                Main.tile[i, j].WallType = (ushort)ModContent.WallType<Walls.YellowTiledWallUnsafe>();
                                 break;
                         }
                     }
