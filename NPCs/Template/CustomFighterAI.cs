@@ -83,7 +83,7 @@ public abstract class CustomFighterAI : ModNPC
         Point a = NPC.Bottom.ToTileCoordinates();
         float height = 0;
         // if its on the ground and touching a wall
-        if ((NPC.collideY || Main.tileSolid[Main.tile[a.X, a.Y].TileType] && Main.tile[a.X, a.Y].HasTile) && NPC.collideX)
+        if ((NPC.collideY || Main.tileSolid[Main.tile[a.X, a.Y].TileType] && Main.tile[a.X, a.Y].HasTile && !Main.tileSolidTop[Main.tile[a.X, a.Y].TileType]) && NPC.collideX)
         {
             //check for the height of the wall infront
             for (int i = 0; i < 10; i++)

@@ -27,6 +27,7 @@ public class Ectosphere : ModNPC
         NPC.lifeMax = 13000;
         NPC.defense = 110;
         NPC.noGravity = true;
+        NPC.noTileCollide = true;
         NPC.aiStyle = -1;
         NPC.value = 20000f;
         NPC.Size = new Vector2(72, 80);

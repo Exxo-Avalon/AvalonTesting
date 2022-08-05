@@ -45,6 +45,6 @@ class VorazylcumPicksaw : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.VorazylcumBar>(), 20).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.VorazylcumBar>(), 20).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 5).AddIngredient(ModContent.ItemType<Material.Kunzite>(), 7).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
     }
 }
