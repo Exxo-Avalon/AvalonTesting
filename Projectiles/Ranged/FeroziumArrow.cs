@@ -15,6 +15,7 @@ public class FeroziumArrow : ModProjectile
 
     public override void SetDefaults()
     {
+        Projectile.arrow = true;
         Rectangle dims = this.GetDims();
         Projectile.width = dims.Width * 10 / 32;
         Projectile.height = dims.Height * 10 / 32 / Main.projFrames[Projectile.type];

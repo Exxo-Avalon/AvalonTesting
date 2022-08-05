@@ -30,6 +30,7 @@ class Infernasword : ModItem
         Item.useAnimation = 20;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+        Item.useTurn = false;
     }
 
     public override void AddRecipes()

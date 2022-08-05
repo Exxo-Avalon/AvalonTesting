@@ -17,6 +17,7 @@ public class PyroBolt : ModProjectile
 
     public override void SetDefaults()
     {
+        Projectile.arrow = true;
         Rectangle dims = this.GetDims();
         Projectile.Size = new Vector2(8);
         Projectile.aiStyle = 1;

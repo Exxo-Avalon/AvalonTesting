@@ -18,6 +18,7 @@ public class XanthophyteArrowSplit : ModProjectile
 
     public override void SetDefaults()
     {
+        Projectile.arrow = true;
         Rectangle dims = this.GetDims();
         Projectile.penetrate = 4;
         Projectile.width = dims.Width * 10 / 32;
