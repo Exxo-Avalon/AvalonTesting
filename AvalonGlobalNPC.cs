@@ -1164,6 +1164,33 @@ public class AvalonGlobalNPC : GlobalNPC
 
         return base.CanHitPlayer(npc, target, ref cooldownSlot);
     }
+    public override bool PreAI(NPC npc)
+    {
+        if (Main.netMode != NetmodeID.MultiplayerClient)
+        {
+            if (Main.rand.NextBool(300) && !Main.npcChatRelease)
+            {
+                for (int i = 0; i < 255; i++)
+                {
+                    if (Main.player[i].active && Main.player[i].talkNPC == npc.whoAmI && npc.type == NPCID.SkeletonMerchant)
+                    {
+                        Item.NewItem(npc.GetSource_FromThis(), npc.position, ItemID.Banana);
+                        Utils.PoofOfSmoke(npc.position);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            Main.NewText("You walk up to a skeleton, and it turns into banana.", 230, 230, 0);
+                        }
+                        else
+                        {
+                            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("You walk up to a skeleton, and it turns into banana."), new Color(230, 230, 0));
+                        }
+                        npc.active = false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
     public override void SetupShop(int type, Chest shop, ref int nextSlot)
     {
         if (type == NPCID.Steampunker)

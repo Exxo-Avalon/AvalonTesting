@@ -463,11 +463,11 @@ public class AvalonWorld : ModSystem
         //    return;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
-            Main.NewText("The otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
+            Main.NewText("Otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
         }
         else if (Main.netMode == NetmodeID.Server)
         {
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("The otherworldly crystals begin to grow..."), new Color(176, 153, 214));
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Otherworldly crystals begin to grow..."), new Color(176, 153, 214));
         }
         float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
         int amtOfBiomes = 3;
