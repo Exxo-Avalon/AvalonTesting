@@ -29,6 +29,7 @@ class VoraylzumKatana : ModItem
         Item.useAnimation = 17;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
+        Item.scale = 1.3f;
     }
 }
 
