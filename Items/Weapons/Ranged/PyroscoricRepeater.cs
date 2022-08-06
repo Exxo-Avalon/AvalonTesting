@@ -45,9 +45,11 @@ class PyroscoricRepeater : ModItem
     }
     private int HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
     private float NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
+    // DO NOT DELETE THESE 3
     private Vector2 shoothere;
     private Vector2 muzzleOffset = Vector2.One;
     private int HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
+    // END DON'T DELETE
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
