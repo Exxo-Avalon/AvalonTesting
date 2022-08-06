@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Placeable.Tile;
+using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -38,6 +38,17 @@ public class CrystalStone : ModTile
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.CrystalDust>();
     }
+
+    //public override void NearbyEffects(int i, int j, bool closer)
+    //{
+    //    if (Main.rand.NextBool(60))
+    //    {
+    //        int num162 = Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, 57, 0f, 0f, 0, default,
+    //            1.5f);
+    //        Main.dust[num162].noGravity = true;
+    //        Main.dust[num162].velocity *= 1f;
+    //    }
+    //}
     public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawInfo)
     {
         if (i % 14 == 0 || i % 14 == 13)

@@ -55,7 +55,10 @@ public class BiomeTileCounts : ModSystem
                     tileCounts[ModContent.TileType<HardenedDarkSand>()] +
                     tileCounts[ModContent.TileType<Darksandstone>()] +
                     tileCounts[ModContent.TileType<DarkMatterGrass>()];
-        DungeonAltTiles += tileCounts[ModContent.TileType<OrangeBrick>()];
+        DungeonAltTiles += tileCounts[ModContent.TileType<OrangeBrick>()] +
+            tileCounts[ModContent.TileType<PurpleBrick>()] +
+            tileCounts[ModContent.TileType<CrackedOrangeBrick>()] +
+            tileCounts[ModContent.TileType<CrackedPurpleBrick>()];
         CaesiumTiles = tileCounts[ModContent.TileType<BlastedStone>()];
         SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];

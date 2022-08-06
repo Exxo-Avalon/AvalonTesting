@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace Avalon;
 
@@ -45,11 +46,12 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
-        if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
+        if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
         {
             fail = true;
         }
-        if (type == ModContent.TileType<HallowedAltar>() && Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 120)
+        if (type == ModContent.TileType<HallowedAltar>() && !ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
+            Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 120)
         {
             fail = true;
         }

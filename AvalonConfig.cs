@@ -12,14 +12,12 @@ public class AvalonConfig : ModConfig
     [ReloadRequired] // Marking it with [ReloadRequired] makes tModLoader force a mod reload if the option is changed. It should be used for things like item toggles, which only take effect during mod loading
     public bool RevertDungeonGen;
 
-    [Header("$Mods.Avalon.Config.ItemHeader")]
     [Label("$Mods.Avalon.Config.VanillaTextureReplacement.Label")]
     [Tooltip("$Mods.Avalon.Config.VanillaTextureReplacement.Tooltip")]
     [DefaultValue(true)]
     [ReloadRequired]
     public bool VanillaTextureReplacement;
 
-    [Header("$Mods.Avalon.Config.ItemHeader")]
     [Label("$Mods.Avalon.Config.Renames.Label")]
     [Tooltip("$Mods.Avalon.Config.Renames.Tooltip")]
     [DefaultValue(true)]

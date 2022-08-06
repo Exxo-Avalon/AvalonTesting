@@ -272,7 +272,7 @@ public class AvalonWorld : ModSystem
         {
             if (Main.dayTime)
             {
-                backgroundColor = new Color(255, 140, 0);
+                backgroundColor = new Color(255, 160, 60);
             }
             else
             {
@@ -373,11 +373,11 @@ public class AvalonWorld : ModSystem
                 int maxValue = 15;
                 if (!WorldGen.SolidTile(k, l + 1))
                 {
-                    maxValue = 4;
+                    maxValue = 7;
                 }
                 else if (k == i && l == j - 1 && !fail)
                 {
-                    maxValue = 4;
+                    maxValue = 7;
                 }
                 if ((k != i || l != j) && Main.tile[k, l].HasTile && (Main.tile[k, l].TileType == ModContent.TileType<CrackedOrangeBrick>() || Main.tile[k, l].TileType == ModContent.TileType<CrackedPurpleBrick>()) && WorldGen.genRand.NextBool(maxValue))
                 {
@@ -459,8 +459,8 @@ public class AvalonWorld : ModSystem
     }
     public void CrystalMinesCallback(object threadContext)
     {
-        if (!SuperHardmode)
-            return;
+        //if (!SuperHardmode)
+        //    return;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("The otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
@@ -478,19 +478,21 @@ public class AvalonWorld : ModSystem
         //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
         float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
         int num614 = 0;
-        while (num614 < amtOfBiomes)
+        while (num614 < amtOfBiomes) // amtofbiomes
         {
             float num615 = (float)num614 / amtOfBiomes;
-            Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 200);
+            Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 250);
             //CrystalMinesRunner(point.X, point.Y, 150, 150);
             //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
             //num614++;
             WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
             World.Biomes.CrystalMines crystalMines = config.CreateBiome<World.Biomes.CrystalMines>();
-            if (crystalMines.Place(point, null))
+            if (crystalMines.Place(point, null))//World.Biomes.CrystalMinesTest
             {
                 World.Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<World.Biomes.CrystalMinesHouseBiome>();
-                crystalHouse.Place(new Point(point.X, point.Y + 15), null);
+                int xpos = WorldGen.genRand.Next(point.X + 20, point.X + 30);
+                int ypos = WorldGen.genRand.Next(point.Y + 20, point.Y + 30);
+                crystalHouse.Place(new Point(xpos, ypos), null);
                 num614++;
             }
         }

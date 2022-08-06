@@ -1,0 +1,348 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.WorldBuilding;
+
+namespace Avalon.World.Biomes;
+internal class CrystalMinesTest
+{
+    private static int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>(),
+            ModContent.TileType<Tiles.OrangeBrick>(), ModContent.TileType<Tiles.PurpleBrick>(), ModContent.TileType<Tiles.CrackedOrangeBrick>(),
+            ModContent.TileType<Tiles.CrackedPurpleBrick>() };
+    private static int[] blacklistedWalls = new int[]
+    {
+        WallID.BlueDungeonSlabUnsafe,
+        WallID.BlueDungeonTileUnsafe,
+        WallID.BlueDungeonUnsafe,
+        WallID.GreenDungeonSlabUnsafe,
+        WallID.GreenDungeonTileUnsafe,
+        WallID.GreenDungeonUnsafe,
+        WallID.PinkDungeonSlabUnsafe,
+        WallID.PinkDungeonTileUnsafe,
+        WallID.PinkDungeonUnsafe,
+        WallID.LihzahrdBrickUnsafe,
+        ModContent.WallType<Walls.TuhrtlBrickWallUnsafe>(),
+        ModContent.WallType<Walls.OrangeBrickUnsafe>(),
+        ModContent.WallType<Walls.OrangeTiledUnsafe>(),
+        ModContent.WallType<Walls.OrangeSlabUnsafe>(),
+        ModContent.WallType<Walls.PurpleBrickUnsafe>(),
+        ModContent.WallType<Walls.PurpleSlabWallUnsafe>(),
+        ModContent.WallType<Walls.PurpleTiledWallUnsafe>()
+    };
+
+    public static bool Place(Point origin)
+    {
+        int width = WorldGen.genRand.Next(100, 120);
+        int height = 90;// WorldGen.genRand.Next(70, 90);
+
+        bool doCap1 = WorldGen.genRand.NextBool(3);
+        bool doCap2 = WorldGen.genRand.NextBool(3);
+        bool doCap3 = WorldGen.genRand.NextBool(3);
+        bool doCap4 = WorldGen.genRand.NextBool(3);
+        bool doCap5 = WorldGen.genRand.NextBool(3);
+        bool doCap6 = WorldGen.genRand.NextBool(3);
+        bool doCap7 = WorldGen.genRand.NextBool(3);
+        bool doCap8 = WorldGen.genRand.NextBool(3);
+
+        int tunnelHeight = 10;
+
+        // horizontal tunnel 1
+        int tunnel1YPos = WorldGen.genRand.Next(5, 11);
+
+        // horizontal tunnel 2
+        int tunnel2YPos = WorldGen.genRand.Next(20, 28);
+
+        // horizontal tunnel 3
+        int tunnel3YPos = WorldGen.genRand.Next(39, 51);
+
+        // horizontal tunnel 4
+        int tunnel4YPos = WorldGen.genRand.Next(60, 70);
+
+        // horizontal tunnel 5
+        int tunnel5YPos = WorldGen.genRand.Next(74, 79);
+
+        //Main.NewText(tunnel3YPos);
+        //Main.NewText(tunnel4YPos);
+
+        // first vertical tunnel
+        int vTunnel1Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel1PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 - vTunnel1Width, width / 3 - vTunnel1Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel1PosEnd = vTunnel1PosStart + vTunnel1Width; //WorldGen.genRand.Next(width / 3 + vTunnel1Width, width / 3 + vTunnel1Width + 5) + WorldGen.genRand.Next(-10, 10);
+
+        // second vertical tunnel
+        int vTunnel2Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel2PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel2PosEnd = vTunnel2PosStart + vTunnel2Width; //origin.X + WorldGen.genRand.Next(width / 3 * 2 + vTunnel2Width, width / 3 * 2 + vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+
+        // third vertical tunnel
+        int vTunnel3Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel3PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel3PosEnd = vTunnel3PosStart + vTunnel3Width;
+
+        // fourth vertical tunnel
+        int vTunnel4Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel4PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel4PosEnd = vTunnel4PosStart + vTunnel4Width;
+
+        // caps
+        int cap1X = origin.X + width - 7;
+        int cap2X = origin.X + 7;
+
+        WorldGen.stopDrops = true;
+        for (int i = origin.X; i < origin.X + width; i++)
+        {
+            for (int j = origin.Y; j < origin.Y + height; j++)
+            {
+                Tile tile = Main.tile[i, j];
+                Tile tileBelow = Main.tile[i, j + 1];
+                if (i > origin.X && i < origin.X + width - 1 && j > origin.Y && j < origin.Y + height - 1 && !Main.wallDungeon[tile.WallType] && tile.WallType != WallID.LihzahrdBrickUnsafe)
+                {
+                    tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                    WorldGen.SquareWallFrame(i, j);
+                }
+                tile.LiquidAmount = 0;
+                if (tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 || tile.TileType == TileID.Pots || tile.TileType == TileID.Heart ||
+                    tile.TileType == TileID.ShadowOrbs || tile.TileType == TileID.DemonAltar || tile.TileType == ModContent.TileType<Tiles.HallowedAltar>() ||
+                    tile.TileType == ModContent.TileType<Tiles.SnotOrb>() || tile.TileType == TileID.LihzahrdBrick || tile.TileType == TileID.BlueDungeonBrick ||
+                    tile.TileType == TileID.PinkDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() ||
+                    tile.TileType == TileID.Statues || tile.TileType == ModContent.TileType<Tiles.PurpleBrick>() || tile.TileType == ModContent.TileType<Tiles.OrangeBrick>() ||
+                    tile.TileType == ModContent.TileType<Tiles.CrackedOrangeBrick>() || tile.TileType == ModContent.TileType<Tiles.CrackedPurpleBrick>() ||
+                    tile.WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[tile.WallType] || tile.TileType == TileID.Painting2X3 || tile.TileType == TileID.Painting3X2 ||
+                    tile.TileType == TileID.Painting3X3 || tile.TileType == TileID.Painting4X3 || tile.TileType == TileID.Painting6X4 || tile.TileType == ModContent.TileType<Tiles.Statues>())
+                {
+                    if (!Main.tileSolid[tile.TileType] || Main.tileFrameImportant[tile.TileType] || Main.tileDungeon[tile.TileType] ||
+                        tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() || tile.TileType == TileID.LihzahrdBrick ||
+                        Main.wallDungeon[tile.WallType] || ((tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2) && tileBelow.HasTile))
+                    {
+                        continue;
+                    }
+                    //else
+                    //if (tile.TileType != TileID.Dirt)
+                    //    tile.ResetToType(tile.TileType);
+                    //WorldGen.noTileActions = false;
+                    //continue;
+                }
+                else if (tile.TileType == TileID.Cobweb)
+                {
+                    WorldGen.KillTile(i, j, noItem: true);
+                    tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                }
+                else
+                {
+                    tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                }
+                if (tile.WallType != WallID.LihzahrdBrickUnsafe && tile.WallType != ModContent.WallType<Walls.TuhrtlBrickWallUnsafe>() && !Main.wallDungeon[tile.WallType])
+                {
+                    if (i > origin.X && i < origin.X + width - 1 && j > origin.Y && j < origin.Y + height - 1)
+                    {
+                        tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                    }
+                }
+                #region horizontal tunnels
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel5YPos && j <= origin.Y + tunnel5YPos + tunnelHeight)
+                {
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        WorldGen.stopDrops = true;
+                        WorldGen.KillTile(i, j, noItem: true);
+                        WorldGen.stopDrops = false;
+                    }
+                    WorldGen.noTileActions = false;
+                }
+                #endregion horizontal tunnels
+
+                #region vertical tunnels
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel2YPos &&
+                    i >= vTunnel1PosStart && i <= vTunnel1PosEnd)
+                {
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                        tile.HasTile = false;
+                    WorldGen.noTileActions = false;
+                }
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel3YPos &&
+                    i >= vTunnel2PosStart && i <= vTunnel2PosEnd)
+                {
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                        tile.HasTile = false;
+                    WorldGen.noTileActions = false;
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel4YPos &&
+                    i >= vTunnel3PosStart && i <= vTunnel3PosEnd)
+                {
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                        tile.HasTile = false;
+                    WorldGen.noTileActions = false;
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel5YPos &&
+                    i >= vTunnel4PosStart && i <= vTunnel4PosEnd)
+                {
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                        tile.HasTile = false;
+                    WorldGen.noTileActions = false;
+                }
+                #endregion vertical tunnels
+
+                #region caps
+                // right side caps
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight &&
+                    i >= cap1X && doCap1)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight &&
+                    i >= cap1X && doCap4)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight &&
+                    i >= cap1X && doCap5)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight &&
+                    i >= cap1X && doCap7)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                // left side caps
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight &&
+                    i <= cap2X && doCap3)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight &&
+                    i <= cap2X && doCap2)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight &&
+                    i <= cap2X && doCap6)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight &&
+                    i <= cap2X && doCap8)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+
+
+
+                #endregion caps
+
+            }
+        }
+        int spacingFloor1 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor2 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor3 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor4 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor5 = WorldGen.genRand.Next(10, 14);
+        for (int i = origin.X; i < origin.X + width; i++)
+        {
+            for (int j = origin.Y; j < origin.Y + height; j++)
+            {
+                #region pillars
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor1 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel1YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].TileType])
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor2 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel2YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].TileType])
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor3 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel3YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].TileType])
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor4 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel4YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].TileType])
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel5YPos && j <= origin.Y + tunnel5YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor5 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel5YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].TileType])
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (!Main.tile[i, j].HasTile && Main.tile[i, j - 1].HasTile && Main.tile[i, j - 1].TileType == ModContent.TileType<Tiles.CrystalColumn>())
+                {
+                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                }
+                #endregion pillars
+                if (!Main.tile[i, j].HasTile && Main.tile[i, j - 1].HasTile && Main.tile[i, j - 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i, j + 1].HasTile && Main.tile[i, j + 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i - 1, j].HasTile && Main.tile[i - 1, j].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i + 1, j].HasTile && Main.tile[i + 1, j].TileType == ModContent.TileType<Tiles.CrystalStone>())
+                {
+                    if (Main.tile[i, j].TileType != TileID.Crystals)
+                    {
+                        if (WorldGen.genRand.NextBool(8))
+                        {
+                            WorldGen.PlaceTile(i, j, TileID.Crystals);
+                        }
+                    }
+                }
+            }
+        }
+        Utils.SquareTileFrameArea(origin.X, origin.Y, width, height);
+        WorldGen.stopDrops = false;
+        return true;
+    }
+}
