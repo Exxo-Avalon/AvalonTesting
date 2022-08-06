@@ -70,6 +70,7 @@ class PyroscoricRepeater : ModItem
     }
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
+        /* CODE TO FORCE PLAYER TO LOOK IN DIRECTION YOU FIRE FOR 3 SHOTS
         // check if the first shot
         if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
         {
@@ -90,7 +91,7 @@ class PyroscoricRepeater : ModItem
             {
                 position += muzzleOffset;
             }
-        }
+        }*/
         if (type == ProjectileID.WoodenArrowFriendly)
         {
             type = ModContent.ProjectileType<Projectiles.Ranged.PyroBolt>();
