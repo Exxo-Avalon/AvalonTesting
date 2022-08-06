@@ -22,7 +22,7 @@ class TheBanhammer : ModItem
         Item.hammer = 120;
         Item.useTurn = true;
         Item.scale = 1f;
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 12f;

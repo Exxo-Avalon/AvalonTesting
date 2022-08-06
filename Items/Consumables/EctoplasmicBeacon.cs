@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Avalon.NPCs.Bosses;
 using Avalon.Players;
 using Avalon.Tiles;
@@ -30,7 +30,7 @@ internal class EctoplasmicBeacon : ModItem
         Item.maxStack = 20;
         Item.useAnimation = 45;
         Item.height = dims.Height;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
     }
 
     public override bool CanUseItem(Player player)

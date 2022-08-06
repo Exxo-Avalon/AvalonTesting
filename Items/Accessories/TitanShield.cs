@@ -20,7 +20,7 @@ class TitanShield : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 12;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 50, 0, 0);
         Item.accessory = true;

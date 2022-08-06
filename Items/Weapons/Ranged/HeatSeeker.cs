@@ -25,7 +25,7 @@ class HeatSeeker : ModItem
         Item.shootSpeed = 10f;
         Item.crit += 3;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.YellowGreenRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 5f;

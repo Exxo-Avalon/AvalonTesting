@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -26,7 +26,7 @@ internal class QuadroCannon : ModItem
         Item.shootSpeed = 14f;
         Item.useAmmo = AmmoID.Bullet;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.YellowGreenRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 4;

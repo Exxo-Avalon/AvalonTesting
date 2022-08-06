@@ -22,7 +22,7 @@ class EnergyRevolver : ModItem
         Item.shootSpeed = 15f;
         Item.mana = 6;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Orange;
+        Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.knockBack = 2f;
         Item.useTime = 6;

@@ -26,7 +26,7 @@ class VorazylcumKunziteBoltStaff : ModItem
         Item.height = dims.Height;
         Item.damage = 92;
         Item.autoReuse = true;
-        Item.shootSpeed = 6f;
+        Item.shootSpeed = 12f;
         Item.mana = 37;
         Item.rare = ModContent.RarityType<FireOrangeRarity>();
         Item.knockBack = 3f;

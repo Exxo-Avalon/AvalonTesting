@@ -19,7 +19,7 @@ class DarkMatterChunk : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.consumable = true;
-        Item.rare = ItemRarityID.Pink;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.useStyle = ItemUseStyleID.HoldUp;

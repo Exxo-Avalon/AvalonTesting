@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +22,7 @@ class BerserkerBar : ModItem
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.PlacedBars>();
         Item.placeStyle = 17;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = Item.sellPrice(0, 1, 0, 0);

@@ -124,5 +124,9 @@ public class DarkMatterSlime : ModNPC
     public override void OnHitPlayer(Player target, int damage, bool crit)
     {
         target.AddBuff(ModContent.BuffType<Buffs.DarkInferno>(), 300);
+        if (Main.rand.NextBool(3))
+        {
+            target.AddBuff(BuffID.Blackout, 90);
+        }
     }
 }

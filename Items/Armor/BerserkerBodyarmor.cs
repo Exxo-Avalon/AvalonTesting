@@ -21,7 +21,7 @@ class BerserkerBodyarmor : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 42;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 60, 0, 0);
         Item.height = dims.Height;

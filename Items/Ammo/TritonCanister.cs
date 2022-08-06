@@ -18,7 +18,7 @@ public class TritonCanister : ModItem
         Item.maxStack = 999;
         Item.consumable = true;
         Item.value = 10;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.MagentaRarity>();
         Item.ammo = ModContent.ItemType<Canister>();
         Item.shoot = ModContent.ProjectileType<Projectiles.TritonFire>();
     }

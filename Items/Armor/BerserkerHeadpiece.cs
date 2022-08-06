@@ -19,7 +19,7 @@ class BerserkerHeadpiece : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 36;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 55, 0, 0);
         Item.height = dims.Height;

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +16,7 @@ class DragonBait : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.value = 1000;

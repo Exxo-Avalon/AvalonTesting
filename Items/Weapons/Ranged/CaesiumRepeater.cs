@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,7 @@ class CaesiumRepeater : ModItem
         Item.shootSpeed = 16f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Pink;
+        Item.rare = ItemRarityID.Lime;
         Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 2.75f;

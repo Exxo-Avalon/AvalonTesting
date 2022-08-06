@@ -24,7 +24,7 @@ class SpikeCannon : ModItem
         Item.shootSpeed = 14f;
         Item.crit += 2;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.LightRed;
+        Item.rare = ItemRarityID.Pink;
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 8f;
@@ -42,6 +42,11 @@ class SpikeCannon : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.Shotgun).AddIngredient(ItemID.Spike, 100).AddIngredient(ItemID.SoulofMight, 20).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1)
+            .AddIngredient(ItemID.Shotgun)
+            .AddIngredient(ItemID.Spike, 100)
+            .AddIngredient(ItemID.SoulofMight, 20)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 }

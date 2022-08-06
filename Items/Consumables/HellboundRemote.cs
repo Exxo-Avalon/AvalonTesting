@@ -17,7 +17,7 @@ class HellboundRemote : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.LightPurple;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.maxStack = 1;
         Item.value = 0;

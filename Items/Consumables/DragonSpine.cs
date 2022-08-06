@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +17,7 @@ class DragonSpine : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = 0;
         Item.maxStack = 20;

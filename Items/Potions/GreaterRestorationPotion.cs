@@ -11,7 +11,7 @@ class GreaterRestorationPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Greater Restoration Potion");
-        Tooltip.SetDefault("Restores 110 life\nReduced potion cooldown");
+        Tooltip.SetDefault("Reduced potion cooldown");
         SacrificeTotal = 30;
     }
 

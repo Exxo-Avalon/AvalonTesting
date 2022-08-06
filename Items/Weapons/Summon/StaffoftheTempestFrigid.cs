@@ -1,4 +1,4 @@
-﻿using Avalon.Projectiles.Summon;
+using Avalon.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -22,7 +22,7 @@ class StaffoftheTempestFrigid : ModItem
         Item.shootSpeed = 14f;
         Item.mana = 30;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.FireOrangeRarity>();
         Item.width = dims.Width;
         Item.useTime = 30;
         Item.knockBack = 8.5f;
@@ -36,6 +36,13 @@ class StaffoftheTempestFrigid : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.StaffoftheFrostHydra).AddIngredient(ModContent.ItemType<Material.SoulofIce>(), 75).AddIngredient(ItemID.FrostCore, 10).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20).AddIngredient(ModContent.ItemType<Placeable.Bar.HydrolythBar>(), 40).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1)
+            .AddIngredient(ItemID.StaffoftheFrostHydra)
+            .AddIngredient(ModContent.ItemType<Material.SoulofIce>(), 75)
+            .AddIngredient(ItemID.FrostCore, 10)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.HydrolythBar>(), 40)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
     }
 }

@@ -29,7 +29,7 @@ class SacredLyre : ModItem
         Item.scale = 1f;
         Item.shootSpeed = 4.5f;
         Item.mana = 16;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<Rarities.DarkGreenRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 10;

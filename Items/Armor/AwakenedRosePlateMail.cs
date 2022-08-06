@@ -21,7 +21,7 @@ internal class AwakenedRosePlateMail : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 21;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 40);
         Item.height = dims.Height;

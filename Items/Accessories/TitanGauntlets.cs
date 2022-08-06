@@ -25,7 +25,7 @@ class TitanGauntlets : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 14;
-        Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 30, 0, 0);

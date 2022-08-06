@@ -19,7 +19,7 @@ public class AegisofAges : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 25);
         Item.accessory = true;

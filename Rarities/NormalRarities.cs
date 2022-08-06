@@ -101,7 +101,7 @@ namespace Avalon.Rarities
         }
     }
     /// <summary>
-    /// Rarity 16. Used for mid-Superhardmode stuff
+    /// Rarity 16. Used for mid-Superhardmode/post Dragon Lord stuff
     /// </summary>
     public class FireOrangeRarity : ModRarity //16
     {
@@ -133,7 +133,7 @@ namespace Avalon.Rarities
         }
     }
     /// <summary>
-    /// Rarity 17. Used for late Superhardmode stuff
+    /// Rarity 17. Used for late Superhardmode/post Mechasting stuff
     /// </summary>
     public class YellowGreenRarity : ModRarity //17
     {
@@ -197,7 +197,7 @@ namespace Avalon.Rarities
         }
     }
     /// <summary>
-    /// Rarity 19. Currently unused.
+    /// Rarity 19. Post Oblivion stuff
     /// </summary>
     public class DarkGreenRarity : ModRarity //19
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
@@ -26,7 +26,7 @@ class SoulofHumidity : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.value = 70000;

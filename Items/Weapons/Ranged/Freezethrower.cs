@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,7 @@ internal class Freezethrower : ModItem
         Item.shootSpeed = 8.5f;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 5;
         Item.knockBack = 0.625f;
