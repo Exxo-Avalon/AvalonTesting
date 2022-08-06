@@ -23,7 +23,7 @@ class UnvolanditeKunziteWaveStaff : ModItem
         Item.DamageType = DamageClass.Magic;
         Item.damage = 90;
         Item.autoReuse = true;
-        Item.shootSpeed = 15f;
+        Item.shootSpeed = 20f;
         Item.mana = 30;
         Item.noMelee = true;
         Item.rare = ModContent.RarityType<FireOrangeRarity>();

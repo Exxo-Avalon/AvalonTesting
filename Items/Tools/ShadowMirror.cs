@@ -19,7 +19,7 @@ class ShadowMirror : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.useTime = 90;
         Item.useTurn = true;

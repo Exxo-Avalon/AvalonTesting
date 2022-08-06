@@ -25,7 +25,7 @@ public class BerserkerBlade : ModItem
         Item.UseSound = SoundID.Item1;
         Item.useTurn = true;
         Item.scale = 1.2f;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 5f;

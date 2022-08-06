@@ -14,7 +14,7 @@ class TritanoriumRepeater : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Tritanorium Repeater");
-        Tooltip.SetDefault("Becomes more accurate and the longer you fire\nTaking the damage will throw off your aim.");
+        Tooltip.SetDefault("Becomes more accurate the longer it is fired\nTaking damage reduces accuracy");
         SacrificeTotal = 1;
     }
 
@@ -26,7 +26,7 @@ class TritanoriumRepeater : ModItem
         Item.useAmmo = AmmoID.Arrow;
         Item.shootSpeed = 15f;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ModContent.RarityType<FireOrangeRarity>();
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 7f;

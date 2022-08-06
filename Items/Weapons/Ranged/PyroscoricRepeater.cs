@@ -45,9 +45,11 @@ class PyroscoricRepeater : ModItem
     }
     private int HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant = 1;
     private float NoSpecialArrowHowSadDamageModifierThingymadoohickeyRealOnGodSuperCoolAmazingWowieZowieWubzieBubzieSuperCool = 1;
+    // DO NOT DELETE THESE 3
     private Vector2 shoothere;
     private Vector2 muzzleOffset = Vector2.One;
     private int HeyLookAtThatThingOverThereJustDontMakeItObviousBro;
+    // END DON'T DELETE
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
@@ -70,6 +72,7 @@ class PyroscoricRepeater : ModItem
     }
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
     {
+        /* CODE TO FORCE PLAYER TO LOOK IN DIRECTION YOU FIRE FOR 3 SHOTS
         // check if the first shot
         if (HowManyTimesHasTheFunnyArrowsBeenShotPleaseTellMeItsImportant == 1)
         {
@@ -90,7 +93,7 @@ class PyroscoricRepeater : ModItem
             {
                 position += muzzleOffset;
             }
-        }
+        }*/
         if (type == ProjectileID.WoodenArrowFriendly)
         {
             type = ModContent.ProjectileType<Projectiles.Ranged.PyroBolt>();

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ class AncientBodyplate : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 35;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;

@@ -22,7 +22,7 @@ class PyroscoricBullet : ModItem
         Item.ammo = AmmoID.Bullet;
         Item.DamageType = DamageClass.Ranged;
         Item.consumable = true;
-        Item.rare = ModContent.RarityType<FireOrangeRarity>();
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.width = dims.Width;
         Item.knockBack = 4f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.PyroscoricBullet>();

@@ -29,7 +29,7 @@ public class ReflectorStaff : ModItem
         Item.noMelee = true;
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.knockBack = 8.5f;
-        Item.rare = 8;
+        Item.rare = ModContent.RarityType<Rarities.FireOrangeRarity>();
         Item.DamageType = DamageClass.Summon;
         Item.mana = 30;
         //item.buffTime = 3600;

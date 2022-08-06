@@ -21,7 +21,7 @@ class HauntedCross : ModItem
         Item.autoReuse = true;
         Item.shootSpeed = 12f;
         Item.mana = 15;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 19;
@@ -49,6 +49,12 @@ class HauntedCross : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.InfernoFork).AddIngredient(ItemID.SpectreStaff).AddIngredient(ItemID.ShadowbeamStaff).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        CreateRecipe(1)
+            .AddIngredient(ItemID.InfernoFork)
+            .AddIngredient(ItemID.SpectreStaff)
+            .AddIngredient(ItemID.ShadowbeamStaff)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 20)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
     }
 }

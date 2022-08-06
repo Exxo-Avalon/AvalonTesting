@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +20,7 @@ class AwakenedRoseSubligar : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 20;
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.height = dims.Height;

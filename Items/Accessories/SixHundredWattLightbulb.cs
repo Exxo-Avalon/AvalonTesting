@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +17,7 @@ class SixHundredWattLightbulb : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.LightPurple;
+        Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = 100000;

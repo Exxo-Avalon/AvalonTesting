@@ -17,7 +17,7 @@ class VampireTeeth : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 10, 0, 0);

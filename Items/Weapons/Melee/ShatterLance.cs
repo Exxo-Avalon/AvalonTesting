@@ -22,7 +22,7 @@ class ShatterLance : ModItem
         Item.noUseGraphic = true;
         Item.scale = 1.1f;
         Item.shootSpeed = 5f;
-        Item.rare = ItemRarityID.Pink;
+        Item.rare = ModContent.RarityType<Rarities.DarkGreenRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.useTime = 16;

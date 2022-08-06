@@ -11,7 +11,7 @@ class SuperRestorationPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Super Restoration Potion");
-        Tooltip.SetDefault("Restores 130 life\nReduced potion cooldown");
+        Tooltip.SetDefault("Reduced potion cooldown");
         SacrificeTotal = 30;
     }
 

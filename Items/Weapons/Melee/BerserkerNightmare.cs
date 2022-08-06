@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +23,7 @@ class BerserkerNightmare : ModItem
         Item.scale = 1.1f;
         Item.shootSpeed = 10f;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.DarkGreenRarity>();
         Item.width = dims.Width;
         Item.useTime = 38;
         Item.knockBack = 10f;

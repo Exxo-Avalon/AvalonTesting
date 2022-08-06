@@ -18,7 +18,7 @@ class FrostGauntlet : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 10, 0, 0);

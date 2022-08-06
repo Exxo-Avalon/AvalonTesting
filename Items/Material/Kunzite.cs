@@ -21,7 +21,7 @@ class Kunzite : ModItem
         Item.createTile = ModContent.TileType<Tiles.PlacedGems>();
         Item.placeStyle = 2;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Purple;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 10;
         Item.value = 50000;

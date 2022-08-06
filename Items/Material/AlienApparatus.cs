@@ -17,7 +17,7 @@ public class AlienApparatus : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Red;
+        Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.width = dims.Width;
         Item.maxStack = 999;
         Item.value = 0;

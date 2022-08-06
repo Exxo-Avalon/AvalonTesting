@@ -20,5 +20,6 @@ public class OrangeBrick : ModTile
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.OrangeBrick>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.OrangeDungeonDust>();
+        TileID.Sets.GeneralPlacementTiles[Type] = false;
     }
 }

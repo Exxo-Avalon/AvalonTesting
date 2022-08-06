@@ -27,7 +27,7 @@ class PyroscoricFlareStaff : ModItem
         Item.shootSpeed = 12f;
         Item.mana = 19;
         Item.UseSound = SoundID.Item45;
-        Item.rare = ModContent.RarityType<FireOrangeRarity>();
+        Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.knockBack = 6f;
         Item.useTime = 32;
         Item.useAnimation = 32;

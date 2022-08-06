@@ -29,7 +29,7 @@ public class Terraspin : ModItem
         Item.crit += 9;
         Item.mana = 26;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.FireOrangeRarity>();
         Item.width = dims.Width;
         Item.knockBack = 7f;
         Item.useTime = 30;

@@ -26,7 +26,7 @@ internal class PhantomKnives : ModItem
         Item.shootSpeed = 15f;
         Item.mana = 18;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 3.75f;

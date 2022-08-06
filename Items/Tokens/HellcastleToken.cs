@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +16,7 @@ class HellcastleToken : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.width = dims.Width;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ItemRarityID.Blue;
         Item.maxStack = 999;
         Item.value = 0;
         Item.height = dims.Height;

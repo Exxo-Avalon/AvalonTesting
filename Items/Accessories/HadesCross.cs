@@ -22,7 +22,7 @@ public class HadesCross : ModItem
         Item.accessory = true;
         Item.defense = 3;
         Item.value = Item.buyPrice(0, 9, 72);
-        Item.rare = ItemRarityID.LightPurple;
+        Item.rare = ItemRarityID.Yellow;
         Item.canBePlacedInVanityRegardlessOfConditions = true;
     }
 

@@ -20,7 +20,7 @@ class InertiaBoots : ModItem
     public override void SetDefaults()
     {
         Item.defense = 4;
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = 30;
         Item.value = Item.sellPrice(0, 16, 45, 0);
         Item.accessory = true;

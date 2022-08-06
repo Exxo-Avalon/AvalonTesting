@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +17,7 @@ class DragonStone : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<Rarities.FireOrangeRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 4, 0, 0);
         Item.accessory = true;

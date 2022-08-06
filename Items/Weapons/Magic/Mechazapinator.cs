@@ -23,7 +23,7 @@ class Mechazapinator : ModItem
         Item.shootSpeed = 15f;
         Item.mana = 20;
         Item.noMelee = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.YellowGreenRarity>();
         Item.width = dims.Width;
         Item.knockBack = 2f;
         Item.useTime = 20;

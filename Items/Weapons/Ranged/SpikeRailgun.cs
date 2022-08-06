@@ -25,7 +25,7 @@ class SpikeRailgun : ModItem
         Item.shootSpeed = 23f;
         Item.crit += 2;
         Item.DamageType = DamageClass.Ranged;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
         Item.knockBack = 8f;
@@ -43,6 +43,11 @@ class SpikeRailgun : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<SpikeCannon>()).AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 25).AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 15).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<SpikeCannon>())
+            .AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 25)
+            .AddIngredient(ModContent.ItemType<Material.SoulofBlight>(), 15)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -22,7 +22,7 @@ class SoulEdge : ModItem
         Item.autoReuse = true;
         Item.scale = 1.1f;
         Item.shootSpeed = 5f;
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.noMelee = false;
         Item.width = dims.Width;
         Item.useTime = 20;

@@ -22,7 +22,7 @@ internal class AncientHeadpiece : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.defense = 30;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 50);
         Item.height = dims.Height;
