@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,7 +12,7 @@ class BerserkerCuisses : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserker Cuisses");
-        Tooltip.SetDefault("Melee stealth when standing still\nLightning strikes when damaged");
+        Tooltip.SetDefault("Allows the Frenzy stance, double tap DOWN to activate\nLightning strikes when damaged");
         SacrificeTotal = 1;
     }
 
@@ -31,6 +32,6 @@ class BerserkerCuisses : ModItem
     public override void UpdateEquip(Player player)
     {
         player.Avalon().LightningInABottle = true;
-        player.Avalon().meleeStealth = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().FrenzyStance = true;
     }
 }

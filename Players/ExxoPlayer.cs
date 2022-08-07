@@ -121,7 +121,7 @@ public class ExxoPlayer : ModPlayer
             MousePosition = Main.MouseWorld;
         }
     }
-
+    
     public override void PostUpdateEquips()
     {
         //Main.NewText(EquipLoader.GetEquipTexture(EquipType.Head, Player.head).Name);

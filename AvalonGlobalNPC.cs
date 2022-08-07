@@ -1533,37 +1533,37 @@ public class AvalonGlobalNPC : GlobalNPC
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.JungleKey);
         LeadingConditionRule JungleKeyRule = new LeadingConditionRule(new CloverPotionActive());
         JungleKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.JungleKey, 1250, 1, 1, new Conditions.JungleKeyCondition()), true);
-        JungleKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.JungleKey, 2500, 1, 1, new Conditions.JungleKeyCondition()), true);
+        JungleKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.JungleKey, 2500, 1, 1, new Conditions.JungleKeyCondition()), true);
 
         globalLoot.RemoveWhere(
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.CorruptionKey);
         LeadingConditionRule CorruptKeyRule = new LeadingConditionRule(new CloverPotionActive());
         CorruptKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.CorruptionKey, 1250, 1, 1, new Conditions.CorruptKeyCondition()), true);
-        CorruptKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.CorruptionKey, 2500, 1, 1, new Conditions.CorruptKeyCondition()), true);
+        CorruptKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.CorruptionKey, 2500, 1, 1, new Conditions.CorruptKeyCondition()), true);
 
         globalLoot.RemoveWhere(
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.FrozenKey);
         LeadingConditionRule FrozenKeyRule = new LeadingConditionRule(new CloverPotionActive());
         FrozenKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.FrozenKey, 1250, 1, 1, new Conditions.FrozenKeyCondition()), true);
-        FrozenKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.FrozenKey, 2500, 1, 1, new Conditions.FrozenKeyCondition()), true);
+        FrozenKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.FrozenKey, 2500, 1, 1, new Conditions.FrozenKeyCondition()), true);
 
         globalLoot.RemoveWhere(
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.CrimsonKey);
         LeadingConditionRule CrimsonKeyRule = new LeadingConditionRule(new CloverPotionActive());
         CrimsonKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.CrimsonKey, 1250, 1, 1, new Conditions.CrimsonKeyCondition()), true);
-        CrimsonKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.CrimsonKey, 2500, 1, 1, new Conditions.CrimsonKeyCondition()), true);
+        CrimsonKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.CrimsonKey, 2500, 1, 1, new Conditions.CrimsonKeyCondition()), true);
 
         globalLoot.RemoveWhere(
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.HallowedKey);
         LeadingConditionRule HallowKeyRule = new LeadingConditionRule(new CloverPotionActive());
         HallowKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.HallowedKey, 1250, 1, 1, new Conditions.HallowKeyCondition()), true);
-        HallowKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.HallowedKey, 2500, 1, 1, new Conditions.HallowKeyCondition()), true);
+        HallowKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.HallowedKey, 2500, 1, 1, new Conditions.HallowKeyCondition()), true);
 
         globalLoot.RemoveWhere(
             rule => rule is ItemDropWithConditionRule drop && drop.itemId == ItemID.DungeonDesertKey);
         LeadingConditionRule DesertKeyRule = new LeadingConditionRule(new CloverPotionActive());
         DesertKeyRule.OnSuccess(new ItemDropWithConditionRule(ItemID.DungeonDesertKey, 1250, 1, 1, new Conditions.DesertKeyCondition()), true);
-        DesertKeyRule.OnFailedRoll(new ItemDropWithConditionRule(ItemID.DungeonDesertKey, 2500, 1, 1, new Conditions.DesertKeyCondition()), true);
+        DesertKeyRule.OnFailedConditions(new ItemDropWithConditionRule(ItemID.DungeonDesertKey, 2500, 1, 1, new Conditions.DesertKeyCondition()), true);
 
         globalLoot.Add(FrozenKeyRule);
         globalLoot.Add(JungleKeyRule);

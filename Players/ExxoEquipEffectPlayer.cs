@@ -80,6 +80,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool AncientSandVortex;
 
     public bool BlahArmor;
+
+    public bool GoBerserk;
+    public bool FrenzyStance;
+    public bool FrenzyStanceActive;
     #endregion armor
     public override void ResetEffects()
     {
@@ -133,6 +137,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
         AncientGunslinger = false;
         AncientMinionGuide = false;
         AncientSandVortex = false;
+        FrenzyStance = false;
+        FrenzyStanceActive = false;
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
@@ -421,12 +427,45 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Main.dust[d].velocity *= 2f;
         }
     }
+
+    public void KeyDoubleTap(int keyDir)
+    {
+        int num = 0;
+        if (Main.ReversedUpDownArmorSetBonuses)
+        {
+            num = 1;
+        }
+        if (keyDir != num)
+        {
+            return;
+        }
+        if (GoBerserk && !Player.mount.Active)
+        {
+            FrenzyStanceActive = !FrenzyStanceActive;
+        }
+    }
+
     public override void PostUpdateEquips()
     {
         if (!AstralProject && Player.HasBuff<AstralProjecting>())
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
+
+        bool flag23 = Player.controlDown && Player.releaseDown;
+        if (flag23)
+        {
+            if (Player.doubleTapCardinalTimer[0] > 0)
+            {
+                KeyDoubleTap(0);
+            }
+            else
+            {
+                Player.doubleTapCardinalTimer[0] = 15;
+            }
+        }
+
+
 
         #region royal gel avalon fix
         for (int i = 3; i < Player.armor.Length; i++)
@@ -685,6 +724,21 @@ public class ExxoEquipEffectPlayer : ModPlayer
                         Player.AddBuff(ModContent.BuffType<Melting>(), 60);
                     }
                 }
+            }
+        }
+        if (FrenzyStanceActive)
+        {
+            Player.GetCritChance(DamageClass.Melee) -= 10;
+            Player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
+        }
+    }
+    public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
+    {
+        if (GoBerserk)
+        {
+            if (damage > 50)
+            {
+                Player.AddBuff(ModContent.BuffType<Berserk>(), 180);
             }
         }
     }

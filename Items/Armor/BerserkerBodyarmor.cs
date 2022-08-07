@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -13,7 +14,7 @@ class BerserkerBodyarmor : ModItem
         DisplayName.SetDefault("Berserker Bodyarmor");
         Tooltip.SetDefault("Enemies are more likely to target you"
                            + "\nTaking heavy damage will give you the 'Berserk!' buff"
-                           + "\nThis buff greatly increases the critical strike damage of true melee weapons");
+                           + "\nThis buff greatly increases the critical strike damage of true melee weapons\n");
         SacrificeTotal = 1;
     }
 
@@ -33,6 +34,6 @@ class BerserkerBodyarmor : ModItem
     public override void UpdateEquip(Player player)
     {
         player.aggro += 600;
-        player.Avalon().goBerserk = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().GoBerserk = true;
     }
 }
