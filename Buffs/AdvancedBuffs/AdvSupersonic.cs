@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -15,8 +16,15 @@ public class AdvSupersonic : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.accRunSpeed = 18.29f;
-        if (!player.setVortex && !player.vortexStealthActive)
+        if (!player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoostActive)
+        {
+            player.accRunSpeed = 18.29f;
+        }
+        else
+        {
+            player.accRunSpeed = 7f;
+        }
+        if (!player.vortexStealthActive && !player.GetModPlayer<Players.ExxoEquipEffectPlayer>().CaesiumBoostActive)
         {
             if (player.controlLeft)
             {

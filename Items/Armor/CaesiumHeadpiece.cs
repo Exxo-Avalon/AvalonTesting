@@ -2,6 +2,9 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Avalon.Players;
+using Terraria.Localization;
+using System.Collections.Generic;
 
 namespace Avalon.Items.Armor;
 
@@ -41,11 +44,12 @@ class CaesiumHeadpiece : ModItem
     }
     public override void UpdateArmorSet(Player player)
     {
-        player.setBonus = "Melee Stealth and increased stats";
+        player.setBonus = "Increased stats\nDouble tap " + Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN") +
+            " to activate Caesium Boosting stance\n" +
+            "This stance reduces movement speed and increases damage reduction";
         player.GetDamage(DamageClass.Melee) += 0.05f;
-        //player.thorns = true;
         player.statDefense += 4;
-        player.Avalon().meleeStealth = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoost = true;
     }
     public override void UpdateEquip(Player player)
     {

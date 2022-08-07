@@ -5,6 +5,7 @@ using Avalon.Rarities;
 using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -19,6 +20,7 @@ internal class BlahsWings : ModItem
         Tooltip.SetDefault("Allows flight and slow fall and the wearer can run incredibly fast\n" +
             "The wearer has a chance to dodge attacks and negates fall damage\nOther various effects");
         SacrificeTotal = 1;
+        ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(1000, 9f, 1.2f, true);
     }
 
     public override void SetDefaults()
@@ -60,13 +62,20 @@ internal class BlahsWings : ModItem
             player.GetDamage(DamageClass.Generic) += 0.07f;
         }
 
-        player.accRunSpeed = 10.29f;
+        if (!player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoostActive)
+        {
+            player.accRunSpeed = 10.29f;
+        }
+        else
+        {
+            player.accRunSpeed = 5f;
+        }
         player.rocketBoots = 2;
         player.GetAttackSpeed(DamageClass.Melee) += 0.15f;
         player.noFallDmg = true;
         player.blackBelt = true;
         player.iceSkate = true;
-
+        player.empressBrooch = true;
         if (player.controlUp && player.controlJump)
         {
             player.velocity.Y = player.velocity.Y - (1f * player.gravDir);
@@ -103,7 +112,7 @@ internal class BlahsWings : ModItem
                 }
             }
         }
-        if (!player.setVortex && !player.vortexStealthActive)
+        if (!player.vortexStealthActive && !player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoostActive)
         {
             if (player.controlLeft)
             {

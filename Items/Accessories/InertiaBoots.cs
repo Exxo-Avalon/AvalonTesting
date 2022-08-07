@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -29,13 +30,26 @@ class InertiaBoots : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddRecipeGroup("Avalon:Wings").AddIngredient(ItemID.FrostsparkBoots).AddIngredient(ItemID.BlackBelt).AddIngredient(ItemID.LunarBar, 2).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1)
+            .AddRecipeGroup("Avalon:Wings")
+            .AddIngredient(ItemID.FrostsparkBoots)
+            .AddIngredient(ItemID.BlackBelt)
+            .AddIngredient(ItemID.LunarBar, 2)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         //player.Avalon().noSticky = true;
-        player.accRunSpeed = 10.29f;
+        if (!player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoostActive)
+        {
+            player.accRunSpeed = 10.29f;
+        }
+        else
+        {
+            player.accRunSpeed = 5f;
+        }
         player.rocketBoots = 3;
         player.noFallDmg = true;
         player.blackBelt = true;
@@ -77,31 +91,31 @@ class InertiaBoots : ModItem
         //        }
         //    }
         //}
-        //if (!player.setVortex && !player.vortexStealthActive)
-        //{
-        if (player.controlLeft)
+        if (!player.vortexStealthActive && !player.GetModPlayer<ExxoEquipEffectPlayer>().CaesiumBoostActive)
         {
-            if (player.velocity.X > (player.vortexStealthActive ? -1f : -5f))
+            if (player.controlLeft)
             {
-                player.velocity.X -= player.vortexStealthActive ? 0.06f : 0.31f;
+                if (player.velocity.X > (player.vortexStealthActive ? -1f : -5f))
+                {
+                    player.velocity.X -= player.vortexStealthActive ? 0.06f : 0.31f;
+                }
+                if (player.velocity.X < (player.vortexStealthActive ? -1f : -5f) && player.velocity.X > (player.vortexStealthActive ? -2f : -10f))
+                {
+                    player.velocity.X -= player.vortexStealthActive ? 0.04f : 0.29f;
+                }
             }
-            if (player.velocity.X < (player.vortexStealthActive ? -1f : -5f) && player.velocity.X > (player.vortexStealthActive ? -2f : -10f))
+            if (player.controlRight)
             {
-                player.velocity.X -= player.vortexStealthActive ? 0.04f : 0.29f;
+                if (player.velocity.X < (player.vortexStealthActive ? 1f : 5f))
+                {
+                    player.velocity.X += player.vortexStealthActive ? 0.06f : 0.31f;
+                }
+                if (player.velocity.X > (player.vortexStealthActive ? 1f : 5f) && player.velocity.X < (player.vortexStealthActive ? 2f : 10f))
+                {
+                    player.velocity.X += player.vortexStealthActive ? 0.04f : 0.29f;
+                }
             }
         }
-        if (player.controlRight)
-        {
-            if (player.velocity.X < (player.vortexStealthActive ? 1f : 5f))
-            {
-                player.velocity.X += player.vortexStealthActive ? 0.06f : 0.31f;
-            }
-            if (player.velocity.X > (player.vortexStealthActive ? 1f : 5f) && player.velocity.X < (player.vortexStealthActive ? 2f : 10f))
-            {
-                player.velocity.X += player.vortexStealthActive ? 0.04f : 0.29f;
-            }
-        }
-        //}
         if (player.velocity.X is > 6f or < -6f)
         {
             var newColor = default(Color);

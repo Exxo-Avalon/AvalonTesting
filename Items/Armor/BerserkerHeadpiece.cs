@@ -11,7 +11,7 @@ class BerserkerHeadpiece : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Berserker Headpiece");
-        Tooltip.SetDefault("32% increased melee damage and 20% increased melee speed\n5% increased melee critical strike chance");
+        Tooltip.SetDefault("32% increased melee damage and 10% increased melee speed\n5% increased melee critical strike chance");
         SacrificeTotal = 1;
     }
 
@@ -44,7 +44,7 @@ class BerserkerHeadpiece : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Melee) += 0.32f;
-        player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
+        player.GetAttackSpeed(DamageClass.Melee) += 0.1f;
         player.GetCritChance(DamageClass.Melee) += 5;
     }
 }

@@ -63,6 +63,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public int bubbleCD;
     public int AstralCooldown = 3600;
     public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
+    private int[] doubleTapTimer = new int[2];
     #endregion extras
 
     #region armor
@@ -84,6 +85,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool GoBerserk;
     public bool FrenzyStance;
     public bool FrenzyStanceActive;
+    public bool CaesiumBoost;
+    public bool CaesiumBoostActive;
     #endregion armor
     public override void ResetEffects()
     {
@@ -138,7 +141,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         AncientMinionGuide = false;
         AncientSandVortex = false;
         FrenzyStance = false;
-        FrenzyStanceActive = false;
+        CaesiumBoost = false;
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
@@ -439,9 +442,13 @@ public class ExxoEquipEffectPlayer : ModPlayer
         {
             return;
         }
-        if (GoBerserk && !Player.mount.Active)
+        if (FrenzyStance && !Player.mount.Active)
         {
             FrenzyStanceActive = !FrenzyStanceActive;
+        }
+        if (CaesiumBoost && !Player.mount.Active)
+        {
+            CaesiumBoostActive = !CaesiumBoostActive;
         }
     }
 
@@ -452,16 +459,36 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
 
-        bool flag23 = Player.controlDown && Player.releaseDown;
-        if (flag23)
+        for (int m = 0; m < 2; m++)
         {
-            if (Player.doubleTapCardinalTimer[0] > 0)
+            doubleTapTimer[m]--;
+            if (doubleTapTimer[m] < 0)
             {
-                KeyDoubleTap(0);
+                doubleTapTimer[m] = 0;
             }
-            else
+        }
+        for (int m = 0; m < 2; m++)
+        {
+            bool keyPressedAndReleased = false;
+            switch (m)
             {
-                Player.doubleTapCardinalTimer[0] = 15;
+                case 0:
+                    keyPressedAndReleased = Player.controlDown && Player.releaseDown;
+                    break;
+                case 1:
+                    keyPressedAndReleased = Player.controlUp && Player.releaseUp;
+                    break;
+            }
+            if (keyPressedAndReleased)
+            {
+                if (doubleTapTimer[m] > 0)
+                {
+                    KeyDoubleTap(m);
+                }
+                else
+                {
+                    doubleTapTimer[m] = 15;
+                }
             }
         }
 
@@ -728,8 +755,21 @@ public class ExxoEquipEffectPlayer : ModPlayer
         }
         if (FrenzyStanceActive)
         {
-            Player.GetCritChance(DamageClass.Melee) -= 10;
-            Player.GetAttackSpeed(DamageClass.Melee) += 0.2f;
+            Player.GetCritChance(DamageClass.Melee) -= 12;
+        }
+        if (CaesiumBoostActive)
+        {
+            Player.endurance += 0.2f;
+            Player.accRunSpeed *= 0.3f;
+            Player.maxRunSpeed *= 0.3f;
+        }
+        if (!FrenzyStance)
+        {
+            FrenzyStanceActive = false;
+        }
+        if (!CaesiumBoost)
+        {
+            CaesiumBoostActive = false;
         }
     }
     public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)
