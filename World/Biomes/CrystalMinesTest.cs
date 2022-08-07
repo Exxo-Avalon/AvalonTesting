@@ -130,19 +130,19 @@ internal class CrystalMinesTest
                     WorldGen.SquareWallFrame(i, j);
                 }
                 tile.LiquidAmount = 0;
-                if (Main.tileFrameImportant[tile.TileType] && tileBelow.HasTile ||
-                    Main.tileFrameImportant[tileAbove.TileType] && tile.HasTile) //Main.tileFrameImportant[tile.TileType]
-                {
-                    continue;
-                }
-                if (tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 || tile.TileType == TileID.Pots || tile.TileType == TileID.Heart ||
-                    tile.TileType == TileID.ShadowOrbs || tile.TileType == TileID.DemonAltar || tile.TileType == ModContent.TileType<Tiles.HallowedAltar>() ||
+                //if (Main.tileFrameImportant[tile.TileType] && tileBelow.HasTile ||
+                //    Main.tileFrameImportant[tileAbove.TileType] && tile.HasTile) //Main.tileFrameImportant[tile.TileType]
+                //{
+                //    continue;
+                //}
+                if (tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 ||
+                    tile.TileType == TileID.ShadowOrbs || tile.TileType == TileID.DemonAltar ||
                     tile.TileType == ModContent.TileType<Tiles.SnotOrb>() || tile.TileType == TileID.LihzahrdBrick || tile.TileType == TileID.BlueDungeonBrick ||
                     tile.TileType == TileID.PinkDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() ||
                     tile.TileType == TileID.Statues || tile.TileType == ModContent.TileType<Tiles.PurpleBrick>() || tile.TileType == ModContent.TileType<Tiles.OrangeBrick>() ||
                     tile.TileType == ModContent.TileType<Tiles.CrackedOrangeBrick>() || tile.TileType == ModContent.TileType<Tiles.CrackedPurpleBrick>() ||
                     tile.WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[tile.WallType] || tile.TileType == TileID.Painting2X3 || tile.TileType == TileID.Painting3X2 ||
-                    tile.TileType == TileID.Painting3X3 || tile.TileType == TileID.Painting4X3 || tile.TileType == TileID.Painting6X4 || tile.TileType == ModContent.TileType<Tiles.Statues>())
+                    tile.TileType == TileID.Painting3X3 || tile.TileType == TileID.Painting4X3 || tile.TileType == TileID.Painting6X4)
                 {
                     //if (tile.HasTile && (tileAbove.TileType == TileID.Containers || tileAbove.TileType == TileID.Containers2 || Main.tileContainer[tileAbove.TileType]))
                     //{

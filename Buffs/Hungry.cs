@@ -1,4 +1,6 @@
-﻿using Terraria;
+using Avalon.Players;
+using Avalon.Projectiles.Summon;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Avalon.Buffs;
@@ -16,14 +18,18 @@ public class Hungry : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        // if (player.ownedProjectileCounts[ModContent.ProjectileType<HungrySummon>()] > 0)
-        // {
-        //     player.buffTime[buffIndex] = 18000;
-        // }
-        // else
-        // {
-        //     player.DelBuff(buffIndex);
-        //     buffIndex--;
-        // }
+        if (player.ownedProjectileCounts[ModContent.ProjectileType<HungrySummon>()] > 0)
+        {
+            player.GetModPlayer<ExxoSummonPlayer>().HungryMinion = true;
+        }
+        if (!player.GetModPlayer<ExxoSummonPlayer>().HungryMinion)
+        {
+            player.DelBuff(buffIndex);
+            buffIndex--;
+        }
+        else
+        {
+            player.buffTime[buffIndex] = 18000;
+        }
     }
 }

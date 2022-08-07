@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
@@ -22,6 +22,7 @@ public class CrystalBits : ModTile
         TileObjectData.addTile(Type);
         Main.tileSolid[Type] = false;
         HitSound = SoundID.Item27;
+        MinPick = 400;
     }
     public override void NumDust(int i, int j, bool fail, ref int num)
     {

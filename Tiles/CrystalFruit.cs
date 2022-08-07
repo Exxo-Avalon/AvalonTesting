@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -25,6 +25,7 @@ public class CrystalFruit : ModTile
         AddMapEntry(new Color(159, 190, 224), LanguageManager.Instance.GetText("Crystal Fruit"));
         TileID.Sets.DisableSmartCursor[Type] = true;
         HitSound = SoundID.Shatter;
+        MinPick = 400;
         //DustType = DustID.BlueCrystalShard;
     }
     //public override void NumDust(int i, int j, bool fail, ref int num)

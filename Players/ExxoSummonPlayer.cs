@@ -11,6 +11,7 @@ public class ExxoSummonPlayer : ModPlayer
     public LinkedList<int> StingerProbes { get; } = new();
     public LinkedList<int> Reflectors { get; } = new();
     public bool PrimeMinion;
+    public bool HungryMinion;
     protected override bool CloneNewInstances => false;
 
     public LinkedListNode<int> HandleDaggerSummon() => DaggerSummons.AddLast(DaggerSummons.Count);
@@ -19,6 +20,7 @@ public class ExxoSummonPlayer : ModPlayer
     public override void ResetEffects()
     {
         PrimeMinion = false;
+        HungryMinion = false;
     }
     public void UpdatePrimeMinionStatus(EntitySource_ItemUse_WithAmmo source)
     {

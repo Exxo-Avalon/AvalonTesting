@@ -10,7 +10,6 @@ namespace Avalon.World;
 
 class Utils
 {
-
     public static void TileRunnerCrystalMines(int i, int j, double strength, int steps, int type, bool addTile = false, float speedX = 0f, float speedY = 0f, bool noYChange = false, bool overRide = true, int ignoreTileType = -1)
     {
         if (WorldGen.drunkWorldGen)
@@ -88,41 +87,11 @@ class Utils
                     {
                         continue;
                     }
-                    //if (WorldGen.mudWall && l > Main.worldSurface && Main.tile[k, l - 1].WallType != 2 && l < Main.maxTilesY - 210 - WorldGen.genRand.Next(3) && (double)(Math.Abs(k - vector.X) + Math.Abs(l - vector.Y)) < strength * 0.45 * (1.0 + WorldGen.genRand.Next(-10, 11) * 0.01))
+                    //if (Main.tileFrameImportant[Main.tile[k, l - 1].TileType] && Main.tile[k, l].HasTile ||
+                    //    Main.tileFrameImportant[Main.tile[k, l].TileType] && Main.tile[k, l + 1].HasTile)
                     //{
-                    //    if (l > WorldGen.lavaLine - WorldGen.genRand.Next(0, 4) - 50)
-                    //    {
-                    //        if (Main.tile[k, l - 1].WallType != 64 && Main.tile[k, l + 1].WallType != 64 && Main.tile[k - 1, l].WallType != 64 && Main.tile[k + 1, l].WallType != 64)
-                    //        {
-                    //            WorldGen.PlaceWall(k, l, 15, mute: true);
-                    //        }
-                    //    }
-                    //    else if (Main.tile[k, l - 1].WallType != 15 && Main.tile[k, l + 1].WallType != 15 && Main.tile[k - 1, l].WallType != 15 && Main.tile[k + 1, l].WallType != 15)
-                    //    {
-                    //        WorldGen.PlaceWall(k, l, 64, mute: true);
-                    //    }
+                    //    continue;
                     //}
-                    /*
-                     if (Main.tile[k, l - 1].TileType == TileID.Statues && Main.tile[k, l].HasTile ||
-                        Main.tile[k, l].TileType == TileID.Statues && Main.tile[k, l + 1].HasTile)
-                     */
-                    if (Main.tileFrameImportant[Main.tile[k, l - 1].TileType] && Main.tile[k, l].HasTile ||
-                        Main.tileFrameImportant[Main.tile[k, l].TileType] && Main.tile[k, l + 1].HasTile)
-                    {
-                        continue;
-                        //Tile t = Main.tile[k, l];
-                        //t.HasTile = false;
-                        //t = Main.tile[k + 1, l];
-                        //t.HasTile = false;
-                        //t = Main.tile[k, l + 1];
-                        //t.HasTile = false;
-                        //t = Main.tile[k + 1, l + 1];
-                        //t.HasTile = false;
-                        //t = Main.tile[k, l + 2];
-                        //t.HasTile = false;
-                        //t = Main.tile[k + 1, l + 2];
-                        //t.HasTile = false;
-                    }
                     if (type < 0)
                     {
                         if (Main.tile[k, l].TileType == 53)
@@ -154,10 +123,7 @@ class Utils
                     {
                         WorldGen.PlaceWall(k, l, 178, mute: true);
                     }
-                    //if (!Main.tile[k, l].HasTile)
-                    //{
 
-                    //}
                     if (overRide || !Main.tile[k, l].HasTile)
                     {
                         Tile tile = Main.tile[k, l];

@@ -13,5 +13,6 @@ public class CrystalColumn : ModTile
         HitSound = SoundID.Tink;
         TileID.Sets.IsBeam[Type] = true;
         DustType = DustID.PinkCrystalShard;
+        MinPick = 400;
     }
 }

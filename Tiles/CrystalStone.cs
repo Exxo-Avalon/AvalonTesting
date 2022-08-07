@@ -37,6 +37,7 @@ public class CrystalStone : ModTile
         ItemDrop = ModContent.ItemType<CrystalStoneBlock>();
         HitSound = SoundID.Tink;
         DustType = ModContent.DustType<Dusts.CrystalDust>();
+        MinPick = 400;
     }
 
     //public override void NearbyEffects(int i, int j, bool closer)

@@ -487,8 +487,8 @@ public class AvalonWorld : ModSystem
     }
     public void CrystalMinesCallback(object threadContext)
     {
-        //if (!SuperHardmode)
-        //    return;
+        if (!SuperHardmode)
+            return;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("Otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
@@ -496,33 +496,6 @@ public class AvalonWorld : ModSystem
         else if (Main.netMode == NetmodeID.Server)
         {
             ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Otherworldly crystals begin to grow..."), new Color(176, 153, 214));
-        }
-        float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
-        int amtOfBiomes = 3;
-        if (Main.maxTilesX == 6300)
-            amtOfBiomes = 4;
-        if (Main.maxTilesX == 8400)
-            amtOfBiomes = 5;
-        //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
-        float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
-        int num614 = 0;
-        while (num614 < 1) // amtofbiomes
-        {
-            float num615 = (float)num614 / amtOfBiomes;
-            Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 250);
-            //CrystalMinesRunner(point.X, point.Y, 150, 150);
-            //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
-            //num614++;
-            WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
-            World.Biomes.CrystalMines crystalMines = config.CreateBiome<World.Biomes.CrystalMines>();
-            if (World.Biomes.CrystalMinesTest.Place(point))//World.Biomes.CrystalMinesTest
-            {
-                World.Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<World.Biomes.CrystalMinesHouseBiome>();
-                int xpos = WorldGen.genRand.Next(point.X + 20, point.X + 30);
-                int ypos = WorldGen.genRand.Next(point.Y + 20, point.Y + 30);
-                crystalHouse.Place(new Point(xpos, ypos), null);
-                num614++;
-            }
         }
     }
     public static void ChangeRain()

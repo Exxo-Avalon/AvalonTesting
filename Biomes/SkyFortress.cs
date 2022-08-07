@@ -13,6 +13,6 @@ public class SkyFortress : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return ModContent.GetInstance<Systems.BiomeTileCounts>().SkyFortressTiles > 75 && player.ZoneSkyHeight;
+        return ModContent.GetInstance<Systems.BiomeTileCounts>().SkyFortressTiles > 75;
     }
 }

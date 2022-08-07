@@ -1715,7 +1715,8 @@ public class ExxoPlayer : ModPlayer
         //    Main.NewText(!activateBubble ? "Bubble Boost Off" : "Bubble Boost On");
         //}
         #endregion
-        if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() &&
+        if ((Player.inventory[Player.selectedItem].type == ModContent.ItemType<AccelerationDrill>() ||
+            Player.inventory[Player.selectedItem].type == ModContent.ItemType<AccelerationPickaxe>()) &&
             KeybindSystem.ModeChangeHotkey.JustPressed)
         {
             AccelerationSpeed = !AccelerationSpeed;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -20,7 +20,8 @@ public class HungrySummon : ModProjectile
         Projectile.netImportant = true;
         Projectile.width = 22;
         Projectile.height = 36;
-        //projectile.aiStyle = -1;
+        Projectile.aiStyle = ProjAIStyleID.MiniTwins;
+        AIType = ProjectileID.Spazmamini;
         Projectile.penetrate = -1;
         Projectile.timeLeft *= 5;
         Projectile.minion = true;
@@ -41,6 +42,21 @@ public class HungrySummon : ModProjectile
         {
             if (Main.player[Projectile.owner].dead)
             {
+                Main.player[Projectile.owner].GetModPlayer<Players.ExxoSummonPlayer>().HungryMinion = false;
+            }
+            if (Main.player[Projectile.owner].GetModPlayer<Players.ExxoSummonPlayer>().HungryMinion)
+            {
+                Projectile.timeLeft = 2;
+            }
+        }
+    }
+    /*public override void AI()
+    {
+        Main.player[Projectile.owner].AddBuff(ModContent.BuffType<Buffs.Hungry>(), 3600);
+        if (Projectile.type == ModContent.ProjectileType<HungrySummon>())
+        {
+            if (Main.player[Projectile.owner].dead)
+            {
                 Main.player[Projectile.owner].Avalon().hungryMinion = false;
             }
             if (Main.player[Projectile.owner].Avalon().hungryMinion)
@@ -55,25 +71,25 @@ public class HungrySummon : ModProjectile
             {
                 if (Projectile.position.X < Main.projectile[num821].position.X)
                 {
-                    Projectile.velocity.X = Projectile.velocity.X - num820;
+                    Projectile.velocity.X -= num820;
                 }
                 else
                 {
-                    Projectile.velocity.X = Projectile.velocity.X + num820;
+                    Projectile.velocity.X += num820;
                 }
                 if (Projectile.position.Y < Main.projectile[num821].position.Y)
                 {
-                    Projectile.velocity.Y = Projectile.velocity.Y - num820;
+                    Projectile.velocity.Y -= num820;
                 }
                 else
                 {
-                    Projectile.velocity.Y = Projectile.velocity.Y + num820;
+                    Projectile.velocity.Y += num820;
                 }
             }
         }
         if (Projectile.ai[0] == 2f && (Projectile.type == ModContent.ProjectileType<HungrySummon>()))
         {
-            Projectile.ai[1] += 1f;
+            Projectile.ai[1]++;
             Projectile.MaxUpdates = 1;
             Projectile.rotation = Projectile.velocity.ToRotation() + 3.14159274f;
             Projectile.frameCounter++;
@@ -240,5 +256,5 @@ public class HungrySummon : ModProjectile
                 }
             }
         }
-    }
+    }*/
 }
