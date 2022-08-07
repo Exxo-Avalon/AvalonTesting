@@ -1410,7 +1410,7 @@ public class AvalonGlobalNPC : GlobalNPC
             pool.Add(ModContent.NPCType<CloudBat>(), 0.9f);
         }
 
-        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone())
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !spawnInfo.Player.InPillarZone()) //
         {
             pool.Clear();
             pool.Add(ModContent.NPCType<Bactus>(), 1f);

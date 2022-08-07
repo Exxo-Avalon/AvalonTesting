@@ -34,6 +34,7 @@ public class DungeonRemoveCrackedBricks : GenPass
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
         int RandDungeonColour = (WorldGen.genRand.Next(2));
+        //RandDungeonColour = 1;
         bool otherColors = WorldGen.genRand.NextBool(2);
         if (otherColors)
         {

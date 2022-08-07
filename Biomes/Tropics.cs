@@ -27,6 +27,6 @@ public class Tropics : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics && !player.ZoneDirtLayerHeight && !player.ZoneRockLayerHeight;
+        return ModContent.GetInstance<Systems.BiomeTileCounts>().TropicsTiles > 200 && player.ZoneOverworldHeight;
     }
 }

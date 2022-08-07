@@ -42,7 +42,7 @@ class HungryStaff : ModItem
         float posX = (float)Main.mouseX + Main.screenPosition.X;
         float posY = (float)Main.mouseY + Main.screenPosition.Y;
         int num227 = Projectile.NewProjectile(source, posX, posY, 0f, 0f, type, damage, knockback, player.whoAmI, 0f, 0f);
-        if (player.Avalon().fleshLaser)
+        if (player.Avalon().FleshArmor)
         {
             Main.projectile[num227].minionSlots = 0.25f;
         }

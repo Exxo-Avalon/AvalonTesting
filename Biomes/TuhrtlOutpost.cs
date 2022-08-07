@@ -1,7 +1,9 @@
+using Microsoft.Xna.Framework;
 using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Avalon.Walls;
 
 namespace Avalon.Biomes;
 
@@ -13,6 +15,8 @@ public class TuhrtlOutpost : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneTuhrtlOutpost;
+        Point tileCoordinates = player.Center.ToTileCoordinates();
+        ushort wallType = Main.tile[tileCoordinates.X, tileCoordinates.Y].WallType;
+        return ModContent.GetInstance<Systems.BiomeTileCounts>().TropicsTiles > 200 && wallType == ModContent.WallType<TuhrtlBrickWallUnsafe>();
     }
 }

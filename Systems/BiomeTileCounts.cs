@@ -31,6 +31,7 @@ public class BiomeTileCounts : ModSystem
     public int DelightTiles { get; private set; }
     public int SightTiles { get; private set; }
     public int DungeonAltTiles { get; private set; }
+    public int DarkMonolithTiles { get; private set; }
 
     public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
     {
@@ -73,7 +74,8 @@ public class BiomeTileCounts : ModSystem
         HumidityTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.HumidityCandle>()];
         DelightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.DelightCandle>()];
         SightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.SightCandle>()];
-        Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().UpdateZones(this);
+        DarkMonolithTiles = tileCounts[ModContent.TileType<DarkMatterMonolith>()];
+        //Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().UpdateZones(this);
     }
 
     public override void SaveWorldData(TagCompound tag)

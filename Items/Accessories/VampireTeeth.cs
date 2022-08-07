@@ -10,7 +10,7 @@ class VampireTeeth : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Vampire Teeth");
-        Tooltip.SetDefault("Grants the ability for true melee attacks to lifesteal");
+        Tooltip.SetDefault("Grants the ability for true melee attacks to lifesteal\nLess effective against bosses");
         SacrificeTotal = 1;
     }
 

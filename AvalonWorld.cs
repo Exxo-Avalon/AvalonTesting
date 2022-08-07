@@ -265,19 +265,47 @@ public class AvalonWorld : ModSystem
     {
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneContagion)
         {
-            backgroundColor = new Color(212, 255, 127); // 152 215 96
-            //Main.ColorOfTheSkies = new Color(97, 122, 87);
+            float Strength = ModContent.GetInstance<BiomeTileCounts>().ContagionTiles / 350f;
+            Strength = Math.Min(Strength, 1f);
+
+            int sunR = backgroundColor.R;
+            int sunG = backgroundColor.G;
+            int sunB = backgroundColor.B;
+            sunR -= (int)(212f * Strength / 2 * (backgroundColor.R / 255f));
+            sunB -= (int)(255f * Strength / 2 * (backgroundColor.B / 255f));
+            sunG -= (int)(127f * Strength / 2 * (backgroundColor.G / 255f));
+            sunR = Utils.Clamp(sunR, 15, 255);
+            sunG = Utils.Clamp(sunG, 15, 255);
+            sunB = Utils.Clamp(sunB, 15, 255);
+            backgroundColor.R = (byte)sunR;
+            backgroundColor.G = (byte)sunG;
+            backgroundColor.B = (byte)sunB;
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneTropics)
         {
-            if (Main.dayTime)
-            {
-                backgroundColor = new Color(255, 160, 60);
-            }
-            else
-            {
-                backgroundColor = new Color(50, 20, 0);
-            }
+            float Strength = ModContent.GetInstance<BiomeTileCounts>().TropicsTiles / 200f;
+            Strength = Math.Min(Strength, 1f);
+            // DOES NOT MAKE SKY ORANGE
+            int sunR = backgroundColor.R;
+            int sunG = backgroundColor.G;
+            int sunB = backgroundColor.B;
+            sunR -= (int)(0f * Strength * 2 * (backgroundColor.R / 255f));
+            sunB -= (int)(200f * Strength * 2 * (backgroundColor.B / 255f));
+            sunG -= (int)(50f * Strength * 2 * (backgroundColor.G / 255f));
+            sunR = Utils.Clamp(sunR, 15, 255);
+            sunG = Utils.Clamp(sunG, 15, 255);
+            sunB = Utils.Clamp(sunB, 15, 255);
+            backgroundColor.R = (byte)sunR;
+            backgroundColor.G = (byte)sunG;
+            backgroundColor.B = (byte)sunB;
+            //if (Main.dayTime)
+            //{
+            //    backgroundColor = new Color(255, 160, 60);
+            //}
+            //else
+            //{
+            //    backgroundColor = new Color(50, 20, 0);
+            //}
         }
         if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
         {
@@ -478,7 +506,7 @@ public class AvalonWorld : ModSystem
         //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
         float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
         int num614 = 0;
-        while (num614 < amtOfBiomes) // amtofbiomes
+        while (num614 < 1) // amtofbiomes
         {
             float num615 = (float)num614 / amtOfBiomes;
             Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 250);
@@ -487,7 +515,7 @@ public class AvalonWorld : ModSystem
             //num614++;
             WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
             World.Biomes.CrystalMines crystalMines = config.CreateBiome<World.Biomes.CrystalMines>();
-            if (crystalMines.Place(point, null))//World.Biomes.CrystalMinesTest
+            if (World.Biomes.CrystalMinesTest.Place(point))//World.Biomes.CrystalMinesTest
             {
                 World.Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<World.Biomes.CrystalMinesHouseBiome>();
                 int xpos = WorldGen.genRand.Next(point.X + 20, point.X + 30);

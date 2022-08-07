@@ -1,4 +1,5 @@
 using Avalon.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,6 +17,10 @@ public class Hellcastle : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle;
+        Point tileCoordinates = player.Center.ToTileCoordinates();
+        ushort wallType = Main.tile[tileCoordinates.X, tileCoordinates.Y].WallType;
+
+        return ModContent.GetInstance<Systems.BiomeTileCounts>().HellCastleTiles > 350 &&
+            wallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() && player.ZoneUnderworldHeight;
     }
 }

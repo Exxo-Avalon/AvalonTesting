@@ -1718,8 +1718,8 @@ public class ExxoPlayer : ModPlayer
         if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Items.Tools.AccelerationDrill>() &&
             KeybindSystem.ModeChangeHotkey.JustPressed)
         {
-            speed = !speed;
-            if (!speed)
+            AccelerationSpeed = !AccelerationSpeed;
+            if (!AccelerationSpeed)
             {
                 Main.NewText("Acceleration Drill Mode: Normal");
             }
@@ -2798,21 +2798,7 @@ public class ExxoPlayer : ModPlayer
     public bool qsDone;
     public bool qsIsNDown;
 
-    public bool speed;
-    public bool Nd;
-    public bool oldNd;
-    public bool Fd;
-    public bool oldFd;
-    public bool Bud;
-    public bool oldBud;
-    public bool Ld;
-    public bool oldLd;
-    public bool Gd;
-    public bool oldGd;
-    public bool Brd;
-    public bool oldBrd;
-    public bool Kd;
-    public bool oldKd;
+    public bool AccelerationSpeed;
     public bool activateBubble;
     public bool activateSprint;
     public bool activateSwim;
@@ -2822,7 +2808,7 @@ public class ExxoPlayer : ModPlayer
     public bool quintJump;
     public bool shadowRing;
     public static bool SpawnDL = false;
-    public bool fleshLaser;
+    public bool FleshArmor;
     public int teleportToPlayer = -1;
     public bool dashIntoMob;
     public bool dashTemp;

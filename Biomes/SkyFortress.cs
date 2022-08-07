@@ -9,10 +9,10 @@ public class SkyFortress : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 
-    public override int Music => Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/SkyFortress") : MusicID.Crimson;
+    public override int Music => Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/SkyFortress") : MusicID.OtherworldlySpace;
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress;
+        return ModContent.GetInstance<Systems.BiomeTileCounts>().SkyFortressTiles > 75 && player.ZoneSkyHeight;
     }
 }

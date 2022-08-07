@@ -36,7 +36,7 @@ class FleshCap : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "Hungry minions can be summoned up to 10";
-        player.Avalon().fleshLaser = true;
+        player.Avalon().FleshArmor = true;
     }
 
     public override void UpdateEquip(Player player)

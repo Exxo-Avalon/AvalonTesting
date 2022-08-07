@@ -8,11 +8,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Tools;
 
-public class AccelerationDrill : ModItem
+public class AccelerationPickaxe : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Acceleration Drill");
+        DisplayName.SetDefault("Acceleration Pickaxe");
         Tooltip.SetDefault("'Vroom vroom'");
         SacrificeTotal = 1;
     }
@@ -20,26 +20,34 @@ public class AccelerationDrill : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 25;
-        Item.noUseGraphic = true;
+        Item.damage = 28;
         Item.autoReuse = true;
-        Item.channel = true;
         Item.scale = 1f;
-        Item.shootSpeed = 32f;
         Item.pick = 400;
         Item.rare = ModContent.RarityType<Rarities.DarkGreenRarity>();
         Item.noMelee = true;
         Item.width = dims.Width;
-        Item.useTime = 7;
-        Item.knockBack = 1f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Tools.AccelerationDrill>();
-        Item.UseSound = SoundID.Item23;
+        Item.useTime = 12;
+        Item.knockBack = 2f;
+        Item.UseSound = SoundID.Item1;
         Item.DamageType = DamageClass.Melee;
         Item.tileBoost += 6;
-        Item.useStyle = ItemUseStyleID.Shoot;
+        Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 1016000;
-        Item.useAnimation = 9;
+        Item.useAnimation = 12;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<AccelerationDrill>())
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
+
+        Recipe.Create(ModContent.ItemType<AccelerationDrill>())
+            .AddIngredient(Type)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -49,7 +57,7 @@ public class AccelerationDrill : ModItem
         var assignedKeyInfo = new TooltipLine(Mod, "Controls:PromptKey", "Press " + (assignedKeys.Count > 0 ? string.Join(", ", assignedKeys) : "[c/565656:<Unbound>]") + " to change mining modes");
         tooltips.Add(assignedKeyInfo);
 
-        if (!(assignedKeys.Count > 0))
+        if (assignedKeys.Count <= 0)
         {
             var unboundKeyInfo = new TooltipLine(Mod, "Controls:PromptKeyInfo", "[c/900C3F:Please bind hotkey in the settings to change mining modes!]");
             tooltips.Add(unboundKeyInfo);

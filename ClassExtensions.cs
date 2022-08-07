@@ -27,10 +27,17 @@ public static class ClassExtensions
     public static ExxoBiomePlayer AvalonBiome(this Player p) => p.GetModPlayer<ExxoBiomePlayer>();
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
-
     public static float DegreesToRadians(this int degrees)
     {
         return degrees / 57.2957795f;
+    }
+    public static Color MultiplyByColor(this Color c, Color c2)
+    {
+        float r1 = (c.R + (c2.R - c.R) / 2f);
+        Main.NewText(r1);
+        float g1 = (c.G + (c2.G - c.G) / 2f);
+        float b1 = (c.B + (c2.B - c.B) / 2f);
+        return new Color(r1, g1, b1);
     }
     public static Asset<T> VanillaLoad<T>(this Asset<T> asset) where T : class
     {

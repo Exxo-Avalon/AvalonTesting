@@ -1,5 +1,6 @@
 using Avalon.Backgrounds;
 using Avalon.Players;
+using Avalon.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -48,6 +49,7 @@ public class Contagion : ModBiome
 
     public override bool IsBiomeActive(Player player)
     {
-        return player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !player.ZoneDirtLayerHeight && !player.ZoneRockLayerHeight;
+        return ModContent.GetInstance<BiomeTileCounts>().ContagionTiles > 350 && player.ZoneOverworldHeight;
+        //return player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion && !player.ZoneDirtLayerHeight && !player.ZoneRockLayerHeight;
     }
 }
