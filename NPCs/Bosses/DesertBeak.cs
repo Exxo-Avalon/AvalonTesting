@@ -66,7 +66,7 @@ public class DesertBeak : ModNPC
         Terraria.GameContent.Events.Sandstorm.StopSandstorm();
         if (!ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak)
         {
-            ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak = true;
+            NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak, -1);
         }
     }
 
