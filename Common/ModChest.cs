@@ -171,7 +171,7 @@ public abstract class ModChest : ModTile
 
         return true;
     }
-
+    
     public override void SetStaticDefaults()
     {
         // Properties

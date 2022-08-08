@@ -20,7 +20,7 @@ public class CrystalStone : ModTile
     Color c8 = new Color(227, 123, 203);
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(185, 115, 168));
+        AddMapEntry(new Color(154, 149, 247));
         Main.tileSolid[Type] = true;
         Main.tileMergeDirt[Type] = true;
         Main.tileBlockLight[Type] = true;
@@ -40,16 +40,17 @@ public class CrystalStone : ModTile
         MinPick = 400;
     }
 
-    //public override void NearbyEffects(int i, int j, bool closer)
-    //{
-    //    if (Main.rand.NextBool(60))
-    //    {
-    //        int num162 = Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, 57, 0f, 0f, 0, default,
-    //            1.5f);
-    //        Main.dust[num162].noGravity = true;
-    //        Main.dust[num162].velocity *= 1f;
-    //    }
-    //}
+    public override void NearbyEffects(int i, int j, bool closer)
+    {
+        if (Main.rand.NextBool(7000))
+        {
+            int num162 = Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, ModContent.DustType<Dusts.CrystalDust>(), 0f, 0f, 0, default,
+                0.75f);
+            Main.dust[num162].noGravity = true;
+            Main.dust[num162].velocity *= 0.8f;
+            Main.dust[num162].scale *= 1.5f;
+        }
+    }
     public override void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref TileDrawInfo drawInfo)
     {
         if (i % 14 == 0 || i % 14 == 13)

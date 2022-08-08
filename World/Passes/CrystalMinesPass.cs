@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.IO;
@@ -15,12 +10,9 @@ internal class CrystalMinesPass : GenPass
 
     protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
     {
+        progress.Message = "Growing crystals";
         float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
-        int amtOfBiomes = 3;
-        if (Main.maxTilesX == 6300)
-            amtOfBiomes = 4;
-        if (Main.maxTilesX == 8400)
-            amtOfBiomes = 5;
+        int amtOfBiomes = (int)((float)(Main.maxTilesX / 4200) * 2 + 1);
         //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
         float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
         int num614 = 0;
@@ -32,7 +24,7 @@ internal class CrystalMinesPass : GenPass
             //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
             //num614++;
             WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
-            World.Biomes.CrystalMines crystalMines = config.CreateBiome<Biomes.CrystalMines>();
+            //World.Biomes.CrystalMines crystalMines = config.CreateBiome<Biomes.CrystalMines>();
             if (Biomes.CrystalMinesTest.Place(point))//World.Biomes.CrystalMinesTest
             {
                 Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<Biomes.CrystalMinesHouseBiome>();

@@ -133,7 +133,7 @@ class Utils
                         {
                             flag3 = true;
                         }
-                        if (tile.TileType is TileID.Granite or TileID.Marble)
+                        if (tile.TileType is TileID.Granite or TileID.Marble or TileID.Sandstone or TileID.HardenedSand) // remove hard sand and sandstone later, make this not gen in the UG desert
                             flag3 = false;
                         switch (tile.TileType)
                         {
@@ -181,7 +181,7 @@ class Utils
                             WorldGen.SquareTileFrame(k, l);
                             WorldGen.SquareWallFrame(k, l);
                         }
-                        if (tile.TileType == TileID.Cobweb || Main.tileFrameImportant[tile.TileType])
+                        if ((tile.TileType == TileID.Cobweb || Main.tileFrameImportant[tile.TileType]) && !Main.wallDungeon[tile.WallType])
                         {
                             tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
                             WorldGen.SquareWallFrame(k, l);

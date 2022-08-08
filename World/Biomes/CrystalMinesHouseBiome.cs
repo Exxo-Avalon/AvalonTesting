@@ -178,7 +178,7 @@ public class CrystalMinesHouseBiome : MicroBiome
             if (Main.tile[i, k].HasTile && Main.tileSolid[Main.tile[i, k].TileType])
             {
                 int num = k;
-                int num2 = WorldGen.PlaceChest(i - 1, num - 1, TileID.Containers2, notNearOtherChests);
+                int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.CrystalMinesChest>(), notNearOtherChests, 1);
                 if (num2 >= 0)
                 {
                     int num3 = 0;

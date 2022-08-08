@@ -93,10 +93,6 @@ public class LockedContagionChest : ModTile
     }
     public static void Unlock(int X, int Y)
     {
-        if (Main.tile[X, Y] == null)
-        {
-            return;
-        }
         SoundEngine.PlaySound(SoundID.Unlock, new Vector2(X * 16, Y * 16));
         for (int i = X; i <= X + 1; i++)
         {
@@ -105,7 +101,7 @@ public class LockedContagionChest : ModTile
                 Main.tile[i, j].TileType = (ushort)ModContent.TileType<ContagionChest>();
                 for (int k = 0; k < 4; k++)
                 {
-                    Dust.NewDust(new Vector2((float)(i * 16), (float)(j * 16)), 16, 16, DustID.Torch, 0f, 0f, 0, default(Color), 1f);
+                    Dust.NewDust(new Vector2(i * 16, j * 16), 16, 16, DustID.Torch, 0f, 0f, 0, default, 1f);
                 }
             }
         }
