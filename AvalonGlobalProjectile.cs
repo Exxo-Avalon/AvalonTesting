@@ -88,6 +88,13 @@ public class AvalonGlobalProjectile : GlobalProjectile
             int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
         }
     }
+    public override void OnHitPlayer(Projectile projectile, Player target, int damage, bool crit)
+    {
+        if (target.GetModPlayer<ExxoEquipEffectPlayer>().Dimlight && Main.rand.NextBool(25) && !target.HasBuff(ModContent.BuffType<Untargetable>()))
+        {
+            target.AddBuff(ModContent.BuffType<Untargetable>(), 60 * 5);
+        }
+    }
     public override void AI(Projectile projectile)
     {
         Player p = Main.player[projectile.owner];

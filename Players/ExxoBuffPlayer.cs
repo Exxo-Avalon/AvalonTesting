@@ -293,7 +293,6 @@ public class ExxoBuffPlayer : ModPlayer
             damage += 8;
         }
     }
-
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
         if (target.HasBuff(ModContent.BuffType<AstralCurse>()))
@@ -309,7 +308,7 @@ public class ExxoBuffPlayer : ModPlayer
 
     public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
     {
-        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(10) &&
+        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(100) &&
             !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()))
         {
             Player.AddBuff(ModContent.BuffType<BenevolentWard>(), 8 * 60);
@@ -322,7 +321,7 @@ public class ExxoBuffPlayer : ModPlayer
     }
     public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
     {
-        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(10) &&
+        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(100) &&
             !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()))
         {
             Player.AddBuff(ModContent.BuffType<BenevolentWard>(), 8 * 60);

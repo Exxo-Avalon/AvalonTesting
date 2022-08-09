@@ -57,6 +57,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool GoblinToolbelt;
     public bool GoblinAK;
     public bool BuilderBelt;
+    public bool Dimlight;
     #endregion accessories
 
     #region extras
@@ -129,6 +130,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         GoblinToolbelt = false;
         GoblinAK = false;
         BuilderBelt = false;
+        Dimlight = false;
 
         // armor
         HyperMagic = false;
@@ -274,6 +276,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
+        if (Dimlight && Main.rand.NextBool(10) && !Player.HasBuff(ModContent.BuffType<Untargetable>()))
+        {
+            Player.AddBuff(ModContent.BuffType<Untargetable>(), 60 * 5);
+        }
         if (Player.whoAmI == Main.myPlayer && BadgeOfBacteria)
         {
             Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
