@@ -36,6 +36,8 @@ public class ExxoBuffPlayer : ModPlayer
     public bool DarkInferno;
     public bool NoSticky;
     public int OldFallStart;
+    public bool Ward;
+    public int WardCurseDOT;
 
     public int TimeSlowCounter;
 
@@ -101,6 +103,7 @@ public class ExxoBuffPlayer : ModPlayer
         DarkInferno = false;
         CaesiumPoison = false;
         Electrified = false;
+        Ward = false;
     }
 
     public override void PreUpdateBuffs()
@@ -304,12 +307,33 @@ public class ExxoBuffPlayer : ModPlayer
         }
     }
 
-    public override void OnHitByNPC(NPC npc, int damage, bool crit)
+    public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
     {
-        
+        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(2) &&
+            !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()))
+        {
+            Player.AddBuff(ModContent.BuffType<BenevolentWard>(), 8 * 60);
+        }
+        if (Ward)
+        {
+            WardCurseDOT += damage;
+            damage = 1;
+        }
     }
-    
-    
+    public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+    {
+        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(2) &&
+            !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()))
+        {
+            Player.AddBuff(ModContent.BuffType<BenevolentWard>(), 8 * 60);
+        }
+        if (Ward)
+        {
+            WardCurseDOT += damage;
+            Main.NewText(WardCurseDOT);
+            damage = 1;
+        }
+    }
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
         if (Player.whoAmI != Main.myPlayer)
