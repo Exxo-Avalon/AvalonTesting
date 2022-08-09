@@ -179,6 +179,7 @@ internal class CrystalMinesTest
                         WorldGen.SquareWallFrame(i, j);
                     }
                 }
+
                 #region horizontal tunnels
                 if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight ||
                     j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight ||
@@ -190,19 +191,34 @@ internal class CrystalMinesTest
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         WorldGen.stopDrops = true;
-                        WorldGen.KillTile(i, j, noItem: true);
+                        tile.HasTile = false;
+                        //WorldGen.KillTile(i, j, noItem: true);
                         WorldGen.stopDrops = false;
                     }
                     WorldGen.noTileActions = false;
                 }
                 #endregion horizontal tunnels
 
+                #region wood
+                if (j == origin.Y + tunnel1YPos ||
+                    j == origin.Y + tunnel2YPos ||
+                    j == origin.Y + tunnel3YPos ||
+                    j == origin.Y + tunnel4YPos)
+                {
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        WorldGen.PlaceTile(i, j, TileID.WoodBlock, true);
+                    }
+                }
+                #endregion
+
                 #region vertical tunnels
                 if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel2YPos &&
                     i >= vTunnel1PosStart && i <= vTunnel1PosEnd)
                 {
                     WorldGen.noTileActions = true;
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
+                         tile.TileType != TileID.WoodBlock)
                         tile.HasTile = false;
                     WorldGen.noTileActions = false;
                 }
@@ -210,7 +226,8 @@ internal class CrystalMinesTest
                     i >= vTunnel2PosStart && i <= vTunnel2PosEnd)
                 {
                     WorldGen.noTileActions = true;
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
+                         tile.TileType != TileID.WoodBlock)
                         tile.HasTile = false;
                     WorldGen.noTileActions = false;
                 }
@@ -218,7 +235,8 @@ internal class CrystalMinesTest
                     i >= vTunnel3PosStart && i <= vTunnel3PosEnd)
                 {
                     WorldGen.noTileActions = true;
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
+                         tile.TileType != TileID.WoodBlock)
                         tile.HasTile = false;
                     WorldGen.noTileActions = false;
                 }
@@ -226,7 +244,8 @@ internal class CrystalMinesTest
                     i >= vTunnel4PosStart && i <= vTunnel4PosEnd)
                 {
                     WorldGen.noTileActions = true;
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
+                         tile.TileType != TileID.WoodBlock)
                         tile.HasTile = false;
                     WorldGen.noTileActions = false;
                 }

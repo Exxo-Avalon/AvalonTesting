@@ -1403,6 +1403,17 @@ public class AvalonGlobalNPC : GlobalNPC
 
     public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
     {
+        if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics)
+        {
+            pool.Clear();
+            pool.Add(ModContent.NPCType<Rafflesia>(), 0.6f);
+            pool.Add(ModContent.NPCType<TropicalSlime>(), 0.9f);
+            if (Main.hardMode)
+            {
+                pool.Add(ModContent.NPCType<PoisonDartFrog>(), 0.9f);
+            }
+        }
+
         if (spawnInfo.Player.GetModPlayer<ExxoBiomePlayer>().ZoneSkyFortress)
         {
             pool.Clear();
@@ -1468,6 +1479,11 @@ public class AvalonGlobalNPC : GlobalNPC
 
     public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
     {
+        if (player.GetModPlayer<ExxoBiomePlayer>().ZoneTropics)
+        {
+            spawnRate = (int)(spawnRate * 0.4f);
+            maxSpawns = (int)(maxSpawns * 1.5f);
+        }
         if (player.GetModPlayer<ExxoBuffPlayer>().AdvancedBattle)
         {
             spawnRate = (int)(spawnRate * AdvBattle.RateMultiplier);

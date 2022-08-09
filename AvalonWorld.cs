@@ -285,13 +285,12 @@ public class AvalonWorld : ModSystem
         {
             float Strength = ModContent.GetInstance<BiomeTileCounts>().TropicsTiles / 200f;
             Strength = Math.Min(Strength, 1f);
-            // DOES NOT MAKE SKY ORANGE
             int sunR = backgroundColor.R;
             int sunG = backgroundColor.G;
             int sunB = backgroundColor.B;
             sunR -= (int)(0f * Strength * 2 * (backgroundColor.R / 255f));
-            sunB -= (int)(200f * Strength * 2 * (backgroundColor.B / 255f));
-            sunG -= (int)(50f * Strength * 2 * (backgroundColor.G / 255f));
+            sunB -= (int)(100f * Strength * 1.85f * (backgroundColor.B / 255f)); // 200
+            sunG -= (int)(50f * Strength * 1.85f * (backgroundColor.G / 255f)); // 50
             sunR = Utils.Clamp(sunR, 15, 255);
             sunG = Utils.Clamp(sunG, 15, 255);
             sunB = Utils.Clamp(sunB, 15, 255);
@@ -487,8 +486,8 @@ public class AvalonWorld : ModSystem
     }
     public void CrystalMinesCallback(object threadContext)
     {
-        if (!SuperHardmode)
-            return;
+        //if (!SuperHardmode)
+        //    return;
         if (Main.netMode == NetmodeID.SinglePlayer)
         {
             Main.NewText("Otherworldly crystals begin to grow...", 176, 153, 214); // [c/7BBAE4:The ot][c/90ABDD:herwo][c/A3A0D9:rldly] [c/B099D6:cryst][c/BA92D4:als] [c/BA92D4:be][c/C88AD1:gin to] [c/D881CD:grow][c/E37BCB:...]
@@ -496,6 +495,29 @@ public class AvalonWorld : ModSystem
         else if (Main.netMode == NetmodeID.Server)
         {
             ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Otherworldly crystals begin to grow..."), new Color(176, 153, 214));
+        }
+        float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
+        int amtOfBiomes = (int)((float)(Main.maxTilesX / 4200) * 2 + 1);
+        //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
+        float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
+        int num614 = 0;
+        while (num614 < amtOfBiomes) // amtofbiomes
+        {
+            float num615 = (float)num614 / amtOfBiomes;
+            Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 250);
+            //CrystalMinesRunner(point.X, point.Y, 150, 150);
+            //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
+            //num614++;
+            WorldGenConfiguration config = WorldGenConfiguration.FromEmbeddedPath("Terraria.GameContent.WorldBuilding.Configuration.json");
+            //World.Biomes.CrystalMines crystalMines = config.CreateBiome<Biomes.CrystalMines>();
+            if (World.Biomes.CrystalMinesTest.Place(point))//World.Biomes.CrystalMinesTest
+            {
+                World.Biomes.CrystalMinesHouseBiome crystalHouse = config.CreateBiome<World.Biomes.CrystalMinesHouseBiome>();
+                int xpos = WorldGen.genRand.Next(point.X + 20, point.X + 30);
+                int ypos = WorldGen.genRand.Next(point.Y + 20, point.Y + 30);
+                crystalHouse.Place(new Point(xpos, ypos), null);
+                num614++;
+            }
         }
     }
     public static void ChangeRain()
