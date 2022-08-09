@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Items.Banners;
 using Avalon.Items.Material;
 using Terraria;
@@ -6,6 +6,7 @@ using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace Avalon.NPCs;
 
@@ -85,10 +86,15 @@ public class BloodshotEye : ModNPC
     {
         if (NPC.life <= 0)
         {
+            for(int i = 0; i < 20; i++)
+            {
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood, Main.rand.NextFloat(-3,3),Main.rand.NextFloat(-3,6), 0, default, Main.rand.NextFloat(1.7f,2.3f));
+            }
             if (Main.netMode != NetmodeID.Server)
             {
-                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye1").Type);
-                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity, Mod.Find<ModGore>("BloodshotEye2").Type);
+                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity.RotatedByRandom(MathHelper.Pi / 16), Mod.Find<ModGore>("BloodshotEye1").Type);
+                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity.RotatedByRandom(MathHelper.Pi / 16), Mod.Find<ModGore>("BloodshotEye2").Type);
+                Gore.NewGore(NPC.GetSource_FromThis(), NPC.position, NPC.velocity.RotatedByRandom(MathHelper.Pi / 16), Mod.Find<ModGore>("BloodshotEye3").Type);
             }
         }
     }
