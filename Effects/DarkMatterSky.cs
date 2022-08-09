@@ -32,6 +32,7 @@ public class DarkMatterSky : CustomSky
     private float scAdj;
     private bool skyActive;
 
+    //public EffectPriority priority => EffectPriority.VeryHigh;
     public override void OnLoad()
     {
         darkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");

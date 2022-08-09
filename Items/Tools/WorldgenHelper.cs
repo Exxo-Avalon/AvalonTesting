@@ -48,7 +48,7 @@ class WorldgenHelper : ModItem
         //World.Passes.HallowedAltars.Generate();
         //NPC.SetEventFlagCleared(ref ModContent.GetInstance<DownedBossSystem>().DownedArmageddon, -1);
         //Task.Run(AvalonWorld.GenerateSkyFortress);
-        ModContent.GetInstance<AvalonWorld>().GenerateCrystalMines();
+        //ModContent.GetInstance<AvalonWorld>().GenerateCrystalMines();
         //World.Tests.MakeZigZag(x, y, TileID.Titanium, WallID.Wood);
         //World.Structures.CaesiumSpike.CreateSpikeUp((int)player.position.X / 16, (int)player.position.Y / 16, (ushort)ModContent.TileType<Tiles.Ores.CaesiumOre>());
         //World.Structures.IceShrine.Generate((int)player.position.X / 16, (int)player.position.Y / 16);

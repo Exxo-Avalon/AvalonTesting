@@ -46,14 +46,14 @@ internal class CrystalMinesTest
             {
                 if (i == origin.X || i == origin.X + width - 1)
                 {
-                    if (j % 5 == 0)
+                    if (j % 12 == 0)
                     {
                         Utils.TileRunnerCrystalMines(i, j, WorldGen.genRand.Next(35, 45), WorldGen.genRand.Next(35, 45), ModContent.TileType<Tiles.CrystalStone>());
                     }
                 }
                 if (j == origin.Y || j == origin.Y + height - 1)
                 {
-                    if (i % 5 == 0)
+                    if (i % 12 == 0)
                     {
                         Utils.TileRunnerCrystalMines(i, j, WorldGen.genRand.Next(35, 45), WorldGen.genRand.Next(35, 45), ModContent.TileType<Tiles.CrystalStone>());
                     }

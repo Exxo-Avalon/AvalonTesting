@@ -496,7 +496,7 @@ public class AvalonWorld : ModSystem
         {
             ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Otherworldly crystals begin to grow..."), new Color(176, 153, 214));
         }
-        float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
+        /*float num611 = Main.maxTilesX * Main.maxTilesY / 5040000f;
         int amtOfBiomes = (int)((float)(Main.maxTilesX / 4200) * 2 + 1);
         //int num612 = (int)(WorldGen.genRand.Next(2, 4) * num611);
         float num613 = (Main.maxTilesX - 160) / amtOfBiomes;
@@ -518,7 +518,7 @@ public class AvalonWorld : ModSystem
                 crystalHouse.Place(new Point(xpos, ypos), null);
                 num614++;
             }
-        }
+        }*/
     }
     public static void ChangeRain()
     {

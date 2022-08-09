@@ -7,6 +7,8 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Bestiary;
+using Terraria.Enums;
+using Terraria.DataStructures;
 
 namespace Avalon.NPCs;
 
@@ -25,8 +27,7 @@ public class FlySmall : ModNPC
         NPC.defense = 2;
         NPC.noGravity = true;
         NPC.width = 10;
-        NPC.aiStyle = 5;
-        AIType = NPCID.EaterofSouls;
+        NPC.aiStyle = -1;
         NPC.npcSlots = 1f;
         NPC.height = 14;
         NPC.HitSound = SoundID.NPCHit1;
@@ -70,7 +71,85 @@ public class FlySmall : ModNPC
             NPC.frame.Y = 0;
         }
     }
-
+    public override void AI()
+    {
+        if (NPC.target < 0 || NPC.target <= 255 || Main.player[NPC.target].dead)
+        {
+            NPC.TargetClosest();
+        }
+        NPCAimedTarget targetData = NPC.GetTargetData();
+        bool flag = false;
+        if (targetData.Type == NPCTargetType.Player)
+        {
+            flag = Main.player[NPC.target].dead;
+        }
+        float num = 6f;
+        float num11 = 0.05f;
+        Vector2 vector = NPC.Center;
+        float num17 = targetData.Position.X + targetData.Width / 2;
+        float num18 = targetData.Position.Y + targetData.Height / 2;
+        num17 = (int)(num17 / 8f) * 8;
+        num18 = (int)(num18 / 8f) * 8;
+        vector.X = (int)(vector.X / 8f) * 8;
+        vector.Y = (int)(vector.Y / 8f) * 8;
+        num17 -= vector.X;
+        num18 -= vector.Y;
+        float num19 = (float)Math.Sqrt(num17 * num17 + num18 * num18);
+        float num20 = num19;
+        bool flag2 = false;
+        if (num19 > 600f)
+        {
+            flag2 = true;
+        }
+        if (num19 == 0f)
+        {
+            num17 = NPC.velocity.X;
+            num18 = NPC.velocity.Y;
+        }
+        else
+        {
+            num19 = num / num19;
+            num17 *= num19;
+            num18 *= num19;
+        }
+        if (NPC.velocity.X < num17)
+        {
+            NPC.velocity.X += num11;
+            if (NPC.velocity.X < 0f && num17 > 0f)
+            {
+                NPC.velocity.X += num11;
+            }
+        }
+        else if (NPC.velocity.X > num17)
+        {
+            NPC.velocity.X -= num11;
+            if (NPC.velocity.X > 0f && num17 < 0f)
+            {
+                NPC.velocity.X -= num11;
+            }
+        }
+        if (NPC.velocity.Y < num18)
+        {
+            NPC.velocity.Y += num11;
+            if (NPC.velocity.Y < 0f && num18 > 0f)
+            {
+                NPC.velocity.Y += num11;
+            }
+        }
+        else if (NPC.velocity.Y > num18)
+        {
+            NPC.velocity.Y -= num11;
+            if (NPC.velocity.Y > 0f && num18 < 0f)
+            {
+                NPC.velocity.Y -= num11;
+            }
+        }
+        NPC.rotation = (float)Math.Atan2(NPC.velocity.Y, NPC.velocity.X) - 1.57f;
+        if (((NPC.velocity.X > 0f && NPC.oldVelocity.X < 0f) || (NPC.velocity.X < 0f && NPC.oldVelocity.X > 0f) || (NPC.velocity.Y > 0f && NPC.oldVelocity.Y < 0f) || (NPC.velocity.Y < 0f && NPC.oldVelocity.Y > 0f)) && !NPC.justHit)
+        {
+            NPC.netUpdate = true;
+        }
+    }
     //public override void HitEffect(int hitDirection, double damage)
     //{
     //    if (NPC.life <= 0 && Main.netMode != NetmodeID.Server)

@@ -78,19 +78,23 @@ public class Rafflesia : ModNPC
         }
 
         NPC.ai[0]++;
-        if (NPC.ai[0] >= 240)
+        if (NPC.ai[0] >= 168) // 240
         {
             NPC.ai[1] = 1;
 
         }
         if (NPC.ai[1] == 1)
         {
-            NPC.ai[2]++;
+            NPC.ai[2]++; // += 2
             int type = ModContent.NPCType<FlySmall>();
             if (Main.rand.NextBool(3))
                 type = ModContent.NPCType<Fly>();
-            if (NPC.ai[2] is 60 or 120 or 180) NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.position.Y + 8, type, Target: NPC.target);
-            if (NPC.ai[2] == 188)
+            if (NPC.ai[2] is 18 or 48 or 78)
+            {
+                int n = NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.Center.X, (int)NPC.position.Y + 8, type, Target: NPC.target);
+                Main.npc[n].velocity.Y = -2f;
+            }
+            if (NPC.ai[2] == 90) // 188
             {
                 NPC.ai[2] = 0;
                 NPC.ai[0] = 0;
@@ -108,13 +112,13 @@ public class Rafflesia : ModNPC
         {
             NPC.frameCounter++;
             // start, slower
-            if (NPC.ai[0] < 180)
+            if (NPC.ai[0] < 96)
             {
-                if (NPC.frameCounter < 16)
+                if (NPC.frameCounter < 12)
                 {
                     NPC.frame.Y = 0;
                 }
-                else if (NPC.frameCounter < 32)
+                else if (NPC.frameCounter < 24)
                 {
                     NPC.frame.Y = frameHeight;
                 }
@@ -126,11 +130,11 @@ public class Rafflesia : ModNPC
             // faster
             else
             {
-                if (NPC.frameCounter < 8)
+                if (NPC.frameCounter < 6)
                 {
                     NPC.frame.Y = 0;
                 }
-                else if (NPC.frameCounter < 16)
+                else if (NPC.frameCounter < 12)
                 {
                     NPC.frame.Y = frameHeight;
                 }
@@ -142,15 +146,28 @@ public class Rafflesia : ModNPC
         }
         else if (NPC.ai[1] == 1)
         {
-            if (NPC.ai[2] is < 40 or >= 60 and < 100 or >= 120 and < 160 ) // squish frame
+            //if (NPC.ai[2] is < 40 or >= 60 and < 100 or >= 120 and < 160 ) // squish frame
+            //{
+            //    NPC.frame.Y = frameHeight;
+            //}
+            //else if (NPC.ai[2] is >= 40 and < 50 or >= 100 and < 110 or >= 160 and < 170)
+            //{
+            //    NPC.frame.Y = frameHeight * 2;
+            //}
+            //else if (NPC.ai[2] is >= 50 and < 60 or >= 110 and < 120 or >= 170 and < 180)
+            //{
+            //    NPC.frame.Y = frameHeight * 3;
+            //}
+
+            if (NPC.ai[2] is < 9 or >= 30 and < 39 or >= 60 and < 69) // squish frame
             {
                 NPC.frame.Y = frameHeight;
             }
-            else if (NPC.ai[2] is >= 40 and < 50 or >= 100 and < 110 or >= 160 and < 170)
+            else if (NPC.ai[2] is >= 9 and < 18 or >= 39 and < 48 or >= 69 and < 78)
             {
                 NPC.frame.Y = frameHeight * 2;
             }
-            else if (NPC.ai[2] is >= 50 and < 60 or >= 110 and < 120 or >= 170 and < 180)
+            else if (NPC.ai[2] is >= 18 and < 30 or >= 48 and < 60 or >= 78 and < 90)
             {
                 NPC.frame.Y = frameHeight * 3;
             }
