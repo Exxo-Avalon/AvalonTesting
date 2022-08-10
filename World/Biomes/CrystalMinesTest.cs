@@ -210,46 +210,65 @@ internal class CrystalMinesTest
                         WorldGen.PlaceTile(i, j, TileID.WoodBlock, true);
                     }
                 }
-                #endregion
+                #endregion wood
 
                 #region vertical tunnels
-                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel2YPos &&
+                WorldGen.noTileActions = true;
+                if (j >= origin.Y + tunnel1YPos + tunnelHeight && j <= origin.Y + tunnel2YPos + 1 &&
                     i >= vTunnel1PosStart && i <= vTunnel1PosEnd)
                 {
-                    WorldGen.noTileActions = true;
+                    if (j == origin.Y + tunnel1YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
                          tile.TileType != TileID.WoodBlock)
+                    {
                         tile.HasTile = false;
-                    WorldGen.noTileActions = false;
+                    }
                 }
-                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel3YPos &&
+                if (j >= origin.Y + tunnel2YPos + tunnelHeight && j <= origin.Y + tunnel3YPos + 1 &&
                     i >= vTunnel2PosStart && i <= vTunnel2PosEnd)
                 {
-                    WorldGen.noTileActions = true;
+                    if (j == origin.Y + tunnel2YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
                          tile.TileType != TileID.WoodBlock)
+                    {
                         tile.HasTile = false;
-                    WorldGen.noTileActions = false;
+                    }
                 }
-                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel4YPos &&
+                if (j >= origin.Y + tunnel3YPos + tunnelHeight && j <= origin.Y + tunnel4YPos + 1 &&
                     i >= vTunnel3PosStart && i <= vTunnel3PosEnd)
                 {
-                    WorldGen.noTileActions = true;
+                    if (j == origin.Y + tunnel3YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
                          tile.TileType != TileID.WoodBlock)
+                    {
                         tile.HasTile = false;
-                    WorldGen.noTileActions = false;
+                    }
                 }
-                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel5YPos &&
+                if (j >= origin.Y + tunnel4YPos + tunnelHeight && j <= origin.Y + tunnel5YPos + 1 &&
                     i >= vTunnel4PosStart && i <= vTunnel4PosEnd)
                 {
-                    WorldGen.noTileActions = true;
+                    if (j == origin.Y + tunnel4YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
                          tile.TileType != TileID.WoodBlock)
+                    {
                         tile.HasTile = false;
-                    WorldGen.noTileActions = false;
+                    }
                 }
+                WorldGen.noTileActions = false;
                 #endregion vertical tunnels
+
 
                 #region caps
                 // right side caps
