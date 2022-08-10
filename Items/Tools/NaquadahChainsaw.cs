@@ -14,7 +14,8 @@ class NaquadahChainsaw : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 46;
         Item.damage = 29;
         Item.noUseGraphic = true;
         Item.channel = true;
@@ -22,7 +23,6 @@ class NaquadahChainsaw : ModItem
         Item.shootSpeed = 40f;
         Item.rare = ItemRarityID.LightRed;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 6;
         Item.knockBack = 4.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Tools.NaquadahChainsaw>();
@@ -30,7 +30,6 @@ class NaquadahChainsaw : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 102500;
         Item.useAnimation = 25;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item23;
     }
     public override void AddRecipes()

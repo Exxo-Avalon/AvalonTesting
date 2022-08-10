@@ -14,15 +14,14 @@ namespace Avalon.Items.Weapons.Melee
         }
         public override void SetDefaults()
         {
-            Rectangle dims = this.GetDims();
+            Item.width = 34;
+            Item.height = 36;
             Item.damage = 24;
             Item.scale = 1.3f;
             Item.DamageType = DamageClass.Melee;
             Item.autoReuse = true;
             Item.useTurn = true;
             Item.rare = ItemRarityID.Orange;
-            Item.width = dims.Width;
-            Item.height = dims.Height;
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Swing;

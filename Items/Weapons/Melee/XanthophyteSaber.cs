@@ -16,21 +16,20 @@ class XanthophyteSaber : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 32;
+        Item.height = 36;
         Item.UseSound = SoundID.Item1;
         Item.damage = 60;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1f;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 4.2f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 5, 52, 0);
         Item.useAnimation = 15;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

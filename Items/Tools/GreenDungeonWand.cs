@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,15 +16,14 @@ class GreenDungeonWand : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 24;
+        Item.height = 28;
         Item.autoReuse = true;
         Item.rare = ItemRarityID.Blue;
-        Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 7;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

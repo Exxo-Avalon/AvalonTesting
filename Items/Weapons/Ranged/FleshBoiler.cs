@@ -18,10 +18,10 @@ public class FleshBoiler : ModItem
 
     public override void SetDefaults()
     {
+        Item.width = 48;
+        Item.height = 24;
         Item.damage = 55;
         Item.DamageType = DamageClass.Ranged;
-        Item.width = 74;
-        Item.height = 34;
         Item.useTime = 4;
         Item.useAnimation = 20;
         Item.useStyle = ItemUseStyleID.Shoot;

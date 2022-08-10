@@ -18,7 +18,8 @@ class BlahsPicksaw : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 38;
         Item.UseSound = SoundID.Item1;
         Item.damage = 50;
         Item.autoReuse = true;
@@ -27,7 +28,6 @@ class BlahsPicksaw : ModItem
         Item.axe = 50;
         Item.pick = 425;
         Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
-        Item.width = dims.Width;
         Item.useTime = 7;
         Item.knockBack = 7f;
         Item.DamageType = DamageClass.Melee;
@@ -35,7 +35,6 @@ class BlahsPicksaw : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 1016000;
         Item.useAnimation = 7;
-        Item.height = dims.Height;
         if (!Main.dedServ)
         {
             Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
@@ -51,22 +50,11 @@ class BlahsPicksaw : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        spriteBatch.Draw
-        (
-            texture,
-            new Vector2
-            (
-                Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                Item.position.Y - Main.screenPosition.Y + Item.height - texture.Height * 0.5f
-            ),
-            new Rectangle(0, 0, texture.Width, texture.Height),
-            Color.White,
-            rotation,
-            texture.Size() * 0.5f,
-            scale,
-            SpriteEffects.None,
-            0f
-        );
+        Rectangle dims = this.GetDims();
+        Vector2 vector = dims.Size() / 2f;
+        Vector2 value = new Vector2((float)(Item.width / 2) - vector.X, Item.height - dims.Height);
+        Vector2 vector2 = Item.position - Main.screenPosition + vector + value;
+        float num = Item.velocity.X * 0.2f;
+        spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>(Texture + "_Glow"), vector2, dims, new Color(250, 250, 250, 250), num, vector, scale, SpriteEffects.None, 0f);
     }
 }

@@ -15,7 +15,8 @@ internal class OsmiumLongbow : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 14;
+        Item.height = 34;
         Item.UseSound = SoundID.Item5;
         Item.damage = 24;
         Item.scale = 1f;
@@ -23,7 +24,6 @@ internal class OsmiumLongbow : ModItem
         Item.useAmmo = AmmoID.Arrow;
         Item.DamageType =
             DamageClass.Ranged; // item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
-        Item.width = dims.Width;
         Item.useTime = 17;
         Item.knockBack = 1.4f;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
@@ -31,7 +31,6 @@ internal class OsmiumLongbow : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.value = Item.sellPrice(0, 0, 50);
         Item.useAnimation = 17;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

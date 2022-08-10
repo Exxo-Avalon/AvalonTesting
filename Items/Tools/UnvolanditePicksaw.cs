@@ -17,7 +17,8 @@ class UnvolanditePicksaw : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 38;
         Item.damage = 30;
         Item.autoReuse = true;
         Item.useTurn = true;
@@ -25,7 +26,6 @@ class UnvolanditePicksaw : ModItem
         Item.axe = 22;
         Item.pick = 300;
         Item.rare = ModContent.RarityType<FireOrangeRarity>();
-        Item.width = dims.Width;
         Item.useTime = 9;
         Item.knockBack = 5.5f;
         Item.DamageType = DamageClass.Melee;
@@ -33,7 +33,6 @@ class UnvolanditePicksaw : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 416000;
         Item.useAnimation = 11;
-        Item.height = dims.Height;
     }
     public override void HoldItem(Player player)
     {

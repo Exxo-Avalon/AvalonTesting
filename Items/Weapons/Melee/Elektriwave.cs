@@ -16,20 +16,19 @@ class Elektriwave : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 38;
+        Item.height = 40;
         Item.damage = 106;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1f;
         Item.rare = ModContent.RarityType<TealRarity>();
-        Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 6f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 616000;
         Item.useAnimation = 15;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item15;
     }
 }

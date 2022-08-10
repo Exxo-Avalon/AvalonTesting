@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,19 +17,18 @@ internal class ExcaliburNet : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 46;
         Item.damage = 43;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.rare = ItemRarityID.LightRed;
-        Item.width = dims.Width;
         Item.knockBack = 4.2f;
         Item.useTime = 23;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.buyPrice(0, 3);
         Item.useAnimation = 23;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 

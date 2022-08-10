@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -34,14 +34,13 @@ class GemWand : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 22;
+        Item.height = 26;
         Item.autoReuse = true;
-        Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 15;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

@@ -16,18 +16,17 @@ class UnvolanditeGreatsword : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 52;
+        Item.height = 54;
         Item.damage = 109;
         Item.autoReuse = true;
         Item.rare = ModContent.RarityType<FireOrangeRarity>();
-        Item.width = dims.Width;
         Item.knockBack = 7f;
         Item.useTime = 22;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 87, 65);
         Item.useAnimation = 22;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 }

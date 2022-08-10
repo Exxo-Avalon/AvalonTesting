@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +14,8 @@ class AxeofSickness : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 30;
+        Item.height = 28;
         Item.UseSound = SoundID.Item1;
         Item.damage = 24;
         Item.autoReuse = true;
@@ -22,7 +23,6 @@ class AxeofSickness : ModItem
         Item.scale = 1.2f;
         Item.axe = 15;
         Item.rare = ItemRarityID.Blue;
-        Item.width = dims.Width;
         Item.useTime = 34;
         Item.knockBack = 6f;
         Item.DamageType = DamageClass.Melee;
@@ -30,7 +30,6 @@ class AxeofSickness : ModItem
         Item.value = Item.sellPrice(0, 0, 36, 0);
         Item.UseSound = SoundID.Item1;
         Item.useAnimation = 34;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

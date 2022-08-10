@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +14,8 @@ class RhodiumLongbow : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 14;
+        Item.height = 32;
         Item.UseSound = SoundID.Item5;
         Item.damage = 21;
         Item.scale = 1f;
@@ -22,7 +23,6 @@ class RhodiumLongbow : ModItem
         Item.useAmmo = AmmoID.Arrow;
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true; /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
-        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 1.3f;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
@@ -30,7 +30,6 @@ class RhodiumLongbow : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.value = Item.sellPrice(0, 0, 50);
         Item.useAnimation = 18;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

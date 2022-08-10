@@ -14,7 +14,8 @@ class FeroziumWaraxe : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 44;
+        Item.height = 48;
         Item.damage = 30;
         Item.autoReuse = true;
         Item.useTurn = true;
@@ -22,14 +23,12 @@ class FeroziumWaraxe : ModItem
         Item.axe = 24;
         Item.crit += 2;
         Item.rare = ItemRarityID.Lime;
-        Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 8f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 350000;
         Item.useAnimation = 20;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

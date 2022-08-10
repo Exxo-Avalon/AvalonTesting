@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,7 +16,8 @@ class BlahsWarhammer : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 44;
+        Item.height = 48;
         Item.UseSound = SoundID.Item1;
         Item.damage = 80;
         Item.autoReuse = true;
@@ -24,7 +25,6 @@ class BlahsWarhammer : ModItem
         Item.useTurn = true;
         Item.scale = 1.15f;
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
-        Item.width = dims.Width;
         Item.useTime = 9;
         Item.knockBack = 20f;
         Item.DamageType = DamageClass.Melee;
@@ -32,7 +32,6 @@ class BlahsWarhammer : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 1016000;
         Item.useAnimation = 9;
-        Item.height = dims.Height;
     }
     public override void HoldItem(Player player)
     {

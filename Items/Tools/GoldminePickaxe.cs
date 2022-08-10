@@ -15,7 +15,8 @@ class GoldminePickaxe : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 24;
+        Item.height = 28;
         Item.UseSound = SoundID.Item1;
         Item.damage = 10;
         Item.autoReuse = true;
@@ -23,14 +24,12 @@ class GoldminePickaxe : ModItem
         Item.scale = 1.15f;
         Item.pick = 69;
         Item.rare = ItemRarityID.Blue;
-        Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 3f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 0, 36, 0);
         Item.useAnimation = 21;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

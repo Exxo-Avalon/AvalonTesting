@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +14,8 @@ public class StarlightCannon : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 18;
         Item.damage = 350;
         Item.scale = 1.1f;
         Item.DamageType = DamageClass.Magic;
@@ -22,9 +23,7 @@ public class StarlightCannon : ModItem
         Item.useTurn = true;
         Item.rare = ItemRarityID.Lime;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.channel = true;
-        Item.height = dims.Height;
         Item.mana = 50;
         Item.useTime = 40;
         Item.useAnimation = 40;

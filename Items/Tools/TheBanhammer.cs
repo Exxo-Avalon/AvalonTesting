@@ -16,21 +16,20 @@ class TheBanhammer : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 44;
+        Item.height = 48;
         Item.damage = 30;
         Item.autoReuse = true;
         Item.hammer = 120;
         Item.useTurn = true;
         Item.scale = 1f;
         Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
-        Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 12f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.useAnimation = 17;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

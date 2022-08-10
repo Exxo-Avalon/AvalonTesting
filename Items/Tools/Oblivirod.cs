@@ -18,9 +18,8 @@ internal class Oblivirod : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
-        Item.width = dims.Width;
-        Item.height = dims.Height;
+        Item.width = 34;
+        Item.height = 40;
         Item.shootSpeed = 15.5f;
         Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.useTime = 8;

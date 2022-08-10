@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,13 +16,13 @@ class CaesiumScimitar : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 42;
         Item.UseSound = SoundID.Item1;
         Item.damage = 66;
         Item.useTurn = true;
         Item.scale = 1.3f;
         Item.rare = ItemRarityID.Lime;
-        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 8f;
         Item.DamageType = DamageClass.Melee;
@@ -30,7 +30,6 @@ class CaesiumScimitar : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.useAnimation = 18;
-        Item.height = dims.Height;
     }
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {

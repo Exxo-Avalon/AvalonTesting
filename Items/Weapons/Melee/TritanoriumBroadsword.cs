@@ -20,20 +20,19 @@ class TritanoriumBroadsword : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 42;
         Item.damage = 110;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
         Item.rare = ModContent.RarityType<MagentaRarity>();
-        Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 15f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 8, 0, 0);
         Item.useAnimation = 16;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.TritonWave>();
         Item.shootSpeed = 20;

@@ -22,13 +22,13 @@ class PyroscoricFlamesword : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 30;
+        Item.height = 36;
         Item.damage = 131;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.3f;
         Item.rare = ModContent.RarityType<MagentaRarity>();
-        Item.width = dims.Width;
         Item.useTime = 25;
         Item.useAnimation = 20;
         Item.knockBack = 7f;
@@ -37,7 +37,6 @@ class PyroscoricFlamesword : ModItem
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.FireWave>();
         Item.shootSpeed = 25f;
         Item.value = Item.sellPrice(0, 7, 63, 0);
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

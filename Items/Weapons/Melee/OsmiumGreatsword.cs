@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,21 +14,20 @@ class OsmiumGreatsword : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 38;
         Item.damage = 28;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.5f;
         Item.crit += 5;
         Item.rare = ItemRarityID.Orange;
-        Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 5f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 50000;
         Item.useAnimation = 20;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

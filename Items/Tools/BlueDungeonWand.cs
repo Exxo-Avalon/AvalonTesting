@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,16 +16,15 @@ class BlueDungeonWand : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 24;
+        Item.height = 28;
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.rare = ItemRarityID.Blue;
-        Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useAnimation = 15;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

@@ -20,9 +20,8 @@ public class AdamantiteDaggerStaff : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
-        Item.width = dims.Width;
-        Item.height = dims.Height;
+        Item.width = 36;
+        Item.height = 38;
 
         Item.damage = 26;
         Item.mana = 8;

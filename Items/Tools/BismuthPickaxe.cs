@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,21 +13,20 @@ class BismuthPickaxe : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 28;
+        Item.height = 28;
         Item.UseSound = SoundID.Item1;
         Item.damage = 6;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1f;
         Item.pick = 59;
-        Item.width = dims.Width;
         Item.useTime = 10;
         Item.knockBack = 2f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 14000;
         Item.useAnimation = 14;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

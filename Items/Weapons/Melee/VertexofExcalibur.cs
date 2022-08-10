@@ -15,21 +15,20 @@ class VertexofExcalibur : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 44;
         Item.UseSound = SoundID.Item1;
         Item.damage = 97;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 5f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 63, 0);
         Item.useAnimation = 18;
-        Item.height = dims.Height;
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {

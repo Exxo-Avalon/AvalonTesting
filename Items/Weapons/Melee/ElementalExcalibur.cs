@@ -14,7 +14,8 @@ class ElementalExcalibur : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 46;
         Item.damage = 190;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
@@ -22,7 +23,6 @@ class ElementalExcalibur : ModItem
         Item.shootSpeed = 13f;
         Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.noMelee = false;
-        Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 8.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ElementBeam>();
@@ -30,7 +30,6 @@ class ElementalExcalibur : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 90, 0, 0);
         Item.useAnimation = 10;
-        Item.height = dims.Height;
         Item.useTurn = false;
     }
     public override Color? GetAlpha(Color lightColor)

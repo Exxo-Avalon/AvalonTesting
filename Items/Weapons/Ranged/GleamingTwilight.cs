@@ -17,7 +17,8 @@ class GleamingTwilight : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 38;
+        Item.height = 26;
         Item.damage = 90;
         Item.autoReuse = true;
         Item.useAmmo = AmmoID.Arrow;
@@ -25,14 +26,12 @@ class GleamingTwilight : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
         Item.rare = ModContent.RarityType<BlueRarity>();
-        Item.width = dims.Width;
         Item.useTime = 15;
         Item.knockBack = 4.5f;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 1000000;
         Item.useAnimation = 15;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item5;
     }
     public override void AddRecipes()

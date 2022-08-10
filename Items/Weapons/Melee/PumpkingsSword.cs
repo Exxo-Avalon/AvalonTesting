@@ -17,13 +17,13 @@ class PumpkingsSword : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 46;
         Item.damage = 105;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
         Item.scale = 1.15f;
         Item.rare = ModContent.RarityType<BlueRarity>();
-        Item.width = dims.Width;
         Item.useTime = 36;
         Item.useAnimation = 16;
         Item.knockBack = 8f;
@@ -32,7 +32,6 @@ class PumpkingsSword : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 40, 0, 0);
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

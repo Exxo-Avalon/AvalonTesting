@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,7 +14,8 @@ class OsmiumHamaxe : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 38;
         Item.damage = 19;
         Item.autoReuse = true;
         Item.hammer = 70;
@@ -23,14 +24,12 @@ class OsmiumHamaxe : ModItem
         Item.axe = 20;
         Item.crit += 5;
         Item.rare = ItemRarityID.Orange;
-        Item.width = dims.Width;
         Item.useTime = 14;
         Item.knockBack = 2.2f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 50000;
         Item.useAnimation = 14;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,21 +16,20 @@ class OsmiumPickaxe : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 38;
         Item.damage = 13;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.crit += 6;
         Item.pick = 82;
         Item.rare = ItemRarityID.Orange;
-        Item.width = dims.Width;
         Item.useTime = 13;
         Item.knockBack = 3f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 50000;
         Item.useAnimation = 13;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

@@ -21,14 +21,14 @@ class BlahsEnergyBlade : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 50;
+        Item.height = 54;
         Item.damage = 250;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
         Item.shootSpeed = 14f;
         Item.rare = ModContent.RarityType<Rarities.BlahRarity>();
-        Item.width = dims.Width;
         Item.useTime = 14;
         Item.knockBack = 20f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.BlahBeam>();
@@ -37,7 +37,6 @@ class BlahsEnergyBlade : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(3, 0, 0, 0);
         Item.useAnimation = 14;
-        Item.height = dims.Height;
         if (!Main.dedServ)
         {
             Item.GetGlobalItem<ItemGlowmask>().glowTexture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
@@ -61,23 +60,12 @@ class BlahsEnergyBlade : ModItem
     }
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Glow").Value;
-        spriteBatch.Draw
-        (
-            texture,
-            new Vector2
-            (
-                Item.position.X - Main.screenPosition.X + Item.width * 0.5f,
-                Item.position.Y - Main.screenPosition.Y + Item.height * 0.5f
-            ),
-            new Rectangle(0, 0, texture.Width, texture.Height),
-            Color.White,
-            rotation,
-            texture.Size() * 0.5f,
-            scale,
-            SpriteEffects.None,
-            0f
-        );
+        Rectangle dims = this.GetDims();
+        Vector2 vector = dims.Size() / 2f;
+        Vector2 value = new Vector2((float)(Item.width / 2) - vector.X, Item.height - dims.Height);
+        Vector2 vector2 = Item.position - Main.screenPosition + vector + value;
+        float num = Item.velocity.X * 0.2f;
+        spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>(Texture + "_Glow"), vector2, dims, new Color(250, 250, 250, 250), num, vector, scale, SpriteEffects.None, 0f);
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

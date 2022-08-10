@@ -16,21 +16,20 @@ class XanthophyteClub : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 38;
+        Item.height = 40;
         Item.UseSound = SoundID.Item1;
         Item.damage = 97;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 24;
         Item.knockBack = 6.1f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 5, 52, 0);
         Item.useAnimation = 24;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

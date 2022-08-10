@@ -14,7 +14,8 @@ class FeroziumIceSword : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 46;
+        Item.height = 50;
         Item.damage = 50;
         Item.autoReuse = true;
         Item.useTurn = false;
@@ -22,7 +23,6 @@ class FeroziumIceSword : ModItem
         Item.shootSpeed = 15f;
         Item.crit += 2;
         Item.rare = ItemRarityID.Lime;
-        Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 6f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Icicle>();
@@ -30,7 +30,6 @@ class FeroziumIceSword : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 350000;
         Item.useAnimation = 20;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

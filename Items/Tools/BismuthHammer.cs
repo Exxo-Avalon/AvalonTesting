@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,20 +14,19 @@ class BismuthHammer : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 28;
+        Item.height = 28;
         Item.damage = 11;
         Item.autoReuse = true;
         Item.hammer = 61;
         Item.useTurn = true;
         Item.scale = 1.2f;
-        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 4.5f;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 11000;
         Item.useAnimation = 28;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

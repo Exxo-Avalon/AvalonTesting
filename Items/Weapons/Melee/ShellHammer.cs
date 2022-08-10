@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,7 +16,8 @@ public class ShellHammer : ModItem
     }
     public override void SetDefaults()
     {
-        Item.width = Item.height = 56;
+        Item.width = 40;
+        Item.height = 42;
         Item.knockBack = 12f;
         Item.useTurn = Item.autoReuse = true;
         Item.DamageType = DamageClass.Melee;

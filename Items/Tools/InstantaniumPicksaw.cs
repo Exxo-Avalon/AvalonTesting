@@ -17,7 +17,8 @@ class InstantaniumPicksaw : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 38;
         Item.damage = 30;
         Item.autoReuse = true;
         Item.useTurn = true;
@@ -25,7 +26,6 @@ class InstantaniumPicksaw : ModItem
         Item.axe = 35;
         Item.pick = 350;
         Item.rare = ModContent.RarityType<DarkRedRarity>();
-        Item.width = dims.Width;
         Item.useTime = 5;
         Item.knockBack = 5.5f;
         Item.DamageType = DamageClass.Melee;
@@ -33,7 +33,6 @@ class InstantaniumPicksaw : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = 416000;
         Item.useAnimation = 11;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 

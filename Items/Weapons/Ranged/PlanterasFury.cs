@@ -20,7 +20,8 @@ class PlanterasFury : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 46;
+        Item.height = 24;
         Item.damage = 35;
         Item.autoReuse = true;
         Item.useTurn = false;
@@ -30,14 +31,12 @@ class PlanterasFury : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.rare = ModContent.RarityType<BlueRarity>();
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.knockBack = 3f;
         Item.useTime = 4;
         Item.shoot = ProjectileID.Bullet;
         Item.value = Item.sellPrice(0, 30, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 4;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item41;
     }
     public override void AddRecipes()

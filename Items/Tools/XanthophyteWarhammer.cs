@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +15,8 @@ class XanthophyteWarhammer : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 40;
         Item.UseSound = SoundID.Item1;
         Item.damage = 83;
         Item.autoReuse = true;
@@ -23,7 +24,6 @@ class XanthophyteWarhammer : ModItem
         Item.scale = 1f;
         Item.hammer = 90;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 35;
         Item.knockBack = 8f;
         Item.DamageType = DamageClass.Melee;
@@ -31,7 +31,6 @@ class XanthophyteWarhammer : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 4, 32);
         Item.useAnimation = 35;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Avalon.Systems;
 using Microsoft.Xna.Framework;
@@ -21,8 +21,8 @@ public class QuadSunfury : ModItem
     }
     public override void SetDefaults()
     {
-        Item.width = 52;
-        Item.height = 48;
+        Item.width = 36;
+        Item.height = 36;
         Item.useStyle = 5;
         Item.useTime = Item.useAnimation = 61;
         Item.channel = true;

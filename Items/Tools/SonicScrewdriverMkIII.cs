@@ -17,14 +17,13 @@ class SonicScrewdriverMkIII : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 32;
+        Item.height = 36;
         Item.rare = ItemRarityID.Cyan;
-        Item.width = dims.Width;
         Item.useTime = 70;
         Item.value = Item.sellPrice(0, 10, 0, 0);
         Item.useStyle = ItemUseStyleID.Thrust;
         Item.useAnimation = 70;
-        Item.height = dims.Height;
         Item.scale = 0.7f;
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SonicScrewdriver");
     }

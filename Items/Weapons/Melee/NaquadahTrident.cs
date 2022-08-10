@@ -14,7 +14,8 @@ class NaquadahTrident : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 38;
         Item.UseSound = SoundID.Item1;
         Item.damage = 35;
         Item.noUseGraphic = true;
@@ -22,7 +23,6 @@ class NaquadahTrident : ModItem
         Item.shootSpeed = 5f;
         Item.rare = ItemRarityID.LightRed;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 26;
         Item.knockBack = 5.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.NaquadahTrident>();
@@ -30,7 +30,6 @@ class NaquadahTrident : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 86000;
         Item.useAnimation = 26;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override void AddRecipes()

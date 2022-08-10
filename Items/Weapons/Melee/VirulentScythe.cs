@@ -17,14 +17,14 @@ internal class VirulentScythe : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 36;
         Item.UseSound = SoundID.Item1;
         Item.damage = 50;
         Item.autoReuse = true;
         Item.shootSpeed = 15f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 2.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VirulentScythe>();
@@ -33,7 +33,6 @@ internal class VirulentScythe : ModItem
         Item.noUseGraphic = true;
         Item.value = Item.sellPrice(0, 20);
         Item.useAnimation = 18;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 }

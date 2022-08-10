@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,14 +13,14 @@ class BismuthAxe : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 28;
+        Item.height = 24;
         Item.UseSound = SoundID.Item1;
         Item.damage = 9;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.05f;
         Item.axe = 13;
-        Item.width = dims.Width;
         Item.useTime = 17;
         Item.knockBack = 4f;
         Item.DamageType = DamageClass.Melee;
@@ -28,7 +28,6 @@ class BismuthAxe : ModItem
         Item.value = 11000;
         Item.UseSound = SoundID.Item1;
         Item.useAnimation = 25;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

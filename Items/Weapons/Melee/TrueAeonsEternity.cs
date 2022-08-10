@@ -18,7 +18,8 @@ class TrueAeonsEternity : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 38;
         Item.damage = 63;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
@@ -26,7 +27,6 @@ class TrueAeonsEternity : ModItem
         Item.scale = 1.1f;
         Item.shootSpeed = 11f;
         Item.rare = ItemRarityID.Yellow;
-        Item.width = dims.Width;
         Item.useTime = 35;
         Item.knockBack = 5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.AeonBeam>();
@@ -34,7 +34,6 @@ class TrueAeonsEternity : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 3, 0, 0);
         Item.useAnimation = 20;
-        Item.height = dims.Height;
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {

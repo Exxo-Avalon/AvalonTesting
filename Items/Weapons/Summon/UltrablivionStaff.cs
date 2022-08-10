@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +23,10 @@ public class UltrablivionStaff : ModItem
 
     public override void SetDefaults()
     {
+        Item.width = 50;
+        Item.height = 54;
         Item.DamageType = DamageClass.Summon;
         Item.mana = 5;
-        Item.width = 152;
-        Item.height = 152;
         Item.useAnimation = 30;
         Item.useTime = 30;
         Item.useStyle = 1;

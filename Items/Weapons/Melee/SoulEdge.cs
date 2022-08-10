@@ -16,7 +16,8 @@ class SoulEdge : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 42;
         Item.UseSound = SoundID.Item1;
         Item.damage = 83;
         Item.autoReuse = true;
@@ -24,7 +25,6 @@ class SoulEdge : ModItem
         Item.shootSpeed = 5f;
         Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.noMelee = false;
-        Item.width = dims.Width;
         Item.useTime = 20;
         Item.knockBack = 6.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Soul>(); //ProjectileID.LostSoulFriendly;
@@ -32,7 +32,6 @@ class SoulEdge : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 80, 0, 0);
         Item.useAnimation = 15;
-        Item.height = dims.Height;
     }
     public override Color? GetAlpha(Color lightColor)
     {

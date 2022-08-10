@@ -15,7 +15,8 @@ class XanthophyteSpear : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 40;
         Item.UseSound = SoundID.Item1;
         Item.damage = 52;
         Item.noUseGraphic = true;
@@ -23,7 +24,6 @@ class XanthophyteSpear : ModItem
         Item.shootSpeed = 5.4f;
         Item.rare = ItemRarityID.Yellow;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 22;
         Item.useAnimation = 22;
         Item.knockBack = 5.5f;
@@ -32,7 +32,6 @@ class XanthophyteSpear : ModItem
         Item.autoReuse = true;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 40, 0, 0);
-        Item.height = dims.Height;
     }
     public override bool CanUseItem(Player player)
     {

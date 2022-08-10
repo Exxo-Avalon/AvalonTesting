@@ -15,7 +15,8 @@ class CaesiumSpear : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 38;
+        Item.height = 40;
         Item.damage = 120;
         Item.UseSound = SoundID.Item1;
         Item.noUseGraphic = true;
@@ -23,7 +24,6 @@ class CaesiumSpear : ModItem
         Item.shootSpeed = 7.5f;
         Item.rare = ItemRarityID.Lime;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 14;
         Item.useAnimation = 14;
         Item.knockBack = 4.5f;
@@ -32,7 +32,6 @@ class CaesiumSpear : ModItem
         Item.autoReuse = true;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 20, 0, 0);
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override bool CanUseItem(Player player)

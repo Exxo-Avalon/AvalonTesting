@@ -16,7 +16,8 @@ class OblivionGlaive : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 46;
+        Item.height = 50;
         Item.damage = 120;
         Item.UseSound = SoundID.Item1;
         Item.noUseGraphic = true;
@@ -24,7 +25,6 @@ class OblivionGlaive : ModItem
         Item.shootSpeed = 5f;
         Item.rare = ModContent.RarityType<DarkRedRarity>();
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 14;
         Item.useAnimation = 14;
         Item.knockBack = 4.5f;
@@ -33,7 +33,6 @@ class OblivionGlaive : ModItem
         Item.autoReuse = true;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 20, 0, 0);
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
     public override bool CanUseItem(Player player)

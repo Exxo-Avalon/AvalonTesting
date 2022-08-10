@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +15,8 @@ class VirulentPike : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 34;
+        Item.height = 38;
         Item.damage = 18;
         Item.UseSound = SoundID.Item1;
         Item.noUseGraphic = true;
@@ -23,7 +24,6 @@ class VirulentPike : ModItem
         Item.shootSpeed = 3.6f;
         Item.rare = ItemRarityID.Blue;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 24;
         Item.useAnimation = 24;
         Item.knockBack = 2.5f;
@@ -31,6 +31,5 @@ class VirulentPike : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 0, 36, 0);
-        Item.height = dims.Height;
     }
 }

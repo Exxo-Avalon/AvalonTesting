@@ -16,7 +16,8 @@ class SpikeCannon : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 36;
+        Item.height = 20;
         Item.damage = 65;
         Item.autoReuse = true;
         Item.useTurn = false;
@@ -26,14 +27,12 @@ class SpikeCannon : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.rare = ItemRarityID.Pink;
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.knockBack = 8f;
         Item.useTime = 25;
         Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
         Item.value = Item.sellPrice(0, 5, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 25;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item11;
     }
     public override Vector2? HoldoutOffset()

@@ -16,9 +16,8 @@ public class InsectoidBlade : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
-        Item.width = dims.Width;
-        Item.height = dims.Height;
+        Item.width = 38;
+        Item.height = 40;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.useTime = Item.useAnimation = 24;
         Item.damage = 25;

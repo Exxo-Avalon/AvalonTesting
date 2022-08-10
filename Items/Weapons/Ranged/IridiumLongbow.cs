@@ -14,7 +14,8 @@ class IridiumLongbow : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 16;
+        Item.height = 36;
         Item.UseSound = SoundID.Item5;
         Item.damage = 25;
         Item.scale = 1f;
@@ -22,7 +23,6 @@ class IridiumLongbow : ModItem
         Item.useAmmo = AmmoID.Arrow;
         Item.DamageType = DamageClass.Ranged;
         ; // item.noMelee = true /* tModPorter - this is redundant, for more info see https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide#damage-classes */ ;
-        Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 2f;
         Item.shoot = ProjectileID.WoodenArrowFriendly;
@@ -30,7 +30,6 @@ class IridiumLongbow : ModItem
         Item.rare = ItemRarityID.LightRed;
         Item.value = 25000;
         Item.useAnimation = 16;
-        Item.height = dims.Height;
     }
     public override void AddRecipes()
     {

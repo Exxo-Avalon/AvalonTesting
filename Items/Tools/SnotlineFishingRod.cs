@@ -1,4 +1,4 @@
-﻿using Avalon.Projectiles;
+using Avalon.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
@@ -18,9 +18,8 @@ internal class SnotlineFishingRod : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
-        Item.width = dims.Width;
-        Item.height = dims.Height;
+        Item.width = 34;
+        Item.height = 28;
         Item.shootSpeed = 16.5f;
         Item.rare = ItemRarityID.Orange;
         Item.useTime = 8;

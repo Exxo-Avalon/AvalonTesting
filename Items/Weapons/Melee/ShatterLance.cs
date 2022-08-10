@@ -16,7 +16,8 @@ class ShatterLance : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 42;
         Item.UseSound = SoundID.Item1;
         Item.damage = 171;
         Item.noUseGraphic = true;
@@ -24,7 +25,6 @@ class ShatterLance : ModItem
         Item.shootSpeed = 5f;
         Item.rare = ModContent.RarityType<Rarities.DarkGreenRarity>();
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 16;
         Item.knockBack = 5.6f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ShatterLance>();
@@ -32,7 +32,6 @@ class ShatterLance : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 105000;
         Item.useAnimation = 16;
-        Item.height = dims.Height;
         Item.autoReuse = true;
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

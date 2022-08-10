@@ -20,7 +20,8 @@ internal class QuadroCannon : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 16;
         Item.damage = 15;
         Item.autoReuse = true;
         Item.shootSpeed = 14f;
@@ -28,7 +29,6 @@ internal class QuadroCannon : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.rare = ModContent.RarityType<Rarities.YellowGreenRarity>();
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.useTime = 4;
         Item.knockBack = 5f;
         Item.shoot = ProjectileID.Bullet;
@@ -36,7 +36,6 @@ internal class QuadroCannon : ModItem
         Item.value = 780000;
         Item.reuseDelay = 14;
         Item.useAnimation = 16;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item11;
     }
 

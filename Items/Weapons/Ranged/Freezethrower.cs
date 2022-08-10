@@ -16,7 +16,8 @@ internal class Freezethrower : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 18;
         Item.UseSound = SoundID.Item34;
         Item.damage = 70;
         Item.autoReuse = true;
@@ -25,14 +26,12 @@ internal class Freezethrower : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.noMelee = true;
         Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
-        Item.width = dims.Width;
         Item.useTime = 5;
         Item.knockBack = 0.625f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Freezethrower>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = 1000000;
         Item.useAnimation = 30;
-        Item.height = dims.Height;
     }
 
     public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

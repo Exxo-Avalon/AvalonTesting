@@ -17,18 +17,17 @@ public class QuantumClaymore : ModItem
     }
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 40;
+        Item.height = 42;
         Item.damage = 88;
         Item.autoReuse = true;
         Item.rare = ModContent.RarityType<Rarities.QuantumRarity>();
-        Item.width = dims.Width;
         Item.knockBack = 10f;
         Item.useTime = 17;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 10, 90, 0);
         Item.useAnimation = 17;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item15;
         Item.scale = 1.2f;
         Item.shootSpeed = 10;

@@ -18,7 +18,8 @@ class UnvolanditeFusebow : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 16;
+        Item.height = 36;
         Item.damage = 98;
         Item.DamageType = DamageClass.Ranged;
         Item.useTime = 15;
@@ -33,8 +34,6 @@ class UnvolanditeFusebow : ModItem
         Item.shoot = ModContent.ProjectileType<Projectiles.Magic.UnvolanditeBolt>();
         Item.shootSpeed = 14f;
         Item.useAmmo = AmmoID.Arrow;
-        Item.height = dims.Height;
-        Item.width = dims.Width;
     }
 
     //      public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

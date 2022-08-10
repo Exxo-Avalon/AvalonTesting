@@ -19,19 +19,18 @@ internal class Oblivionet : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 38;
+        Item.height = 40;
         Item.damage = 70;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.rare = ModContent.RarityType<DarkRedRarity>();
-        Item.width = dims.Width;
         Item.knockBack = 6.2f;
         Item.useTime = 21;
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.buyPrice(0, 5);
         Item.useAnimation = 21;
-        Item.height = dims.Height;
         Item.UseSound = SoundID.Item1;
     }
 

@@ -17,7 +17,8 @@ class SpikeRailgun : ModItem
 
     public override void SetDefaults()
     {
-        Rectangle dims = this.GetDims();
+        Item.width = 42;
+        Item.height = 24;
         Item.damage = 120;
         Item.autoReuse = true;
         Item.useTurn = false;
@@ -27,14 +28,12 @@ class SpikeRailgun : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.rare = ModContent.RarityType<Rarities.TealRarity>();
         Item.noMelee = true;
-        Item.width = dims.Width;
         Item.knockBack = 8f;
         Item.useTime = 9;
         Item.shoot = ModContent.ProjectileType<Projectiles.Ranged.SpikeCannon>();
         Item.value = Item.sellPrice(0, 20, 0, 0);
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.useAnimation = 9;
-        Item.height = dims.Height;
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Railgun");
     }
     public override Vector2? HoldoutOffset()
