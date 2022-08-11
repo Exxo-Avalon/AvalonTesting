@@ -97,7 +97,7 @@ public class PlayerUseItemGlowmask : PlayerDrawLayer
                         DrawData value = new DrawData(texture,
                             new Vector2((int)(value2.X - Main.screenPosition.X + zero3.X + num105), (int)(value2.Y - Main.screenPosition.Y + num106)),
                             new Rectangle?(new Rectangle(0, 0, TextureAssets.Item[item.type].Value.Width, TextureAssets.Item[item.type].Value.Height)),
-                            c, num104, zero3, item.scale * drawInfo.drawPlayer.GetAdjustedItemScale(heldItem), drawInfo.itemEffect, 0);
+                            c, num104, zero3, drawInfo.drawPlayer.GetAdjustedItemScale(heldItem), drawInfo.itemEffect, 0);
                         drawInfo.DrawDataCache.Add(value);
 
                     }
@@ -124,7 +124,7 @@ public class PlayerUseItemGlowmask : PlayerDrawLayer
                         //Main.playerDrawData.Add(value);
 
 
-                        DrawData value = new DrawData(texture, new Vector2((int)(value2.X - Main.screenPosition.X + vector10.X), (int)(value2.Y - Main.screenPosition.Y + vector10.Y)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, TextureAssets.Item[item.type].Value.Width, TextureAssets.Item[item.type].Value.Height)), Color.White, drawPlayer.itemRotation, origin5, item.scale * drawInfo.drawPlayer.GetAdjustedItemScale(heldItem), drawInfo.itemEffect, 0);
+                        DrawData value = new DrawData(texture, new Vector2((int)(value2.X - Main.screenPosition.X + vector10.X), (int)(value2.Y - Main.screenPosition.Y + vector10.Y)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, TextureAssets.Item[item.type].Value.Width, TextureAssets.Item[item.type].Value.Height)), Color.White, drawPlayer.itemRotation, origin5, drawInfo.drawPlayer.GetAdjustedItemScale(heldItem), drawInfo.itemEffect, 0);
                         drawInfo.DrawDataCache.Add(value);
                     }
                 }
@@ -136,7 +136,7 @@ public class PlayerUseItemGlowmask : PlayerDrawLayer
                         Color.White,
                         drawPlayer.itemRotation,
                         new Vector2(texture.Width * 0.5f - texture.Width * 0.5f * drawPlayer.direction, drawPlayer.gravDir == -1 ? 0f : texture.Height),
-                        item.scale * drawInfo.drawPlayer.GetAdjustedItemScale(heldItem),
+                        drawInfo.drawPlayer.GetAdjustedItemScale(heldItem),
                         drawInfo.itemEffect,
                         0);
 
