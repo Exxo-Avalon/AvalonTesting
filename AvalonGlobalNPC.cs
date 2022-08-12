@@ -40,59 +40,6 @@ public class AvalonGlobalNPC : GlobalNPC
     };
     public static int BleedTime = 60 * 7;
 
-    public static List<int> SHMMobs = new List<int>
-    {
-        NPCID.Creeper,
-        NPCID.Pumpking,
-        NPCID.SantaNK1,
-        ModContent.NPCType<AegisHallowor>(),
-        ModContent.NPCType<NPCs.Bosses.ArmageddonSlime>(),
-        ModContent.NPCType<ArmoredHellTortoise>(),
-        ModContent.NPCType<ArmoredWraith>(),
-        ModContent.NPCType<BactusMinion>(), // remove later
-        ModContent.NPCType<BombBones>(),
-        ModContent.NPCType<BombSkeleton>(),
-        ModContent.NPCType<CloudBat>(),
-        ModContent.NPCType<CometTail>(),
-        ModContent.NPCType<CrystalBones>(),
-        ModContent.NPCType<CrystalSpectre>(),
-        ModContent.NPCType<CursedMagmaSkeleton>(),
-        ModContent.NPCType<DarkMatterSlime>(),
-        ModContent.NPCType<DarkMotherSlime>(),
-        ModContent.NPCType<Dragonfly>(),
-        ModContent.NPCType<DragonLordBody>(),
-        ModContent.NPCType<DragonLordBody2>(),
-        ModContent.NPCType<DragonLordBody3>(),
-        ModContent.NPCType<DragonLordHead>(),
-        ModContent.NPCType<DragonLordLegs>(),
-        ModContent.NPCType<DragonLordTail>(),
-        ModContent.NPCType<Ectosphere>(),
-        ModContent.NPCType<EyeBones>(),
-        ModContent.NPCType<GuardianBones>(),
-        ModContent.NPCType<GuardianCorruptor>(),
-        ModContent.NPCType<ImpactWizard>(),
-        ModContent.NPCType<Juggernaut>(),
-        ModContent.NPCType<JuggernautSorcerer>(),
-        ModContent.NPCType<MatterMan>(),
-        ModContent.NPCType<MechanicalDiggerBody>(),
-        ModContent.NPCType<MechanicalDiggerHead>(),
-        ModContent.NPCType<MechanicalDiggerTail>(),
-        ModContent.NPCType<NPCs.Bosses.Mechasting>(),
-        ModContent.NPCType<ProtectorWheel>(),
-        ModContent.NPCType<QuickCaribe>(),
-        ModContent.NPCType<RedAegisBonesHelmet>(),
-        ModContent.NPCType<RedAegisBonesHorned>(),
-        ModContent.NPCType<RedAegisBonesSparta>(),
-        ModContent.NPCType<RedAegisBonesSpike>(),
-        ModContent.NPCType<UnstableAnomaly>(),
-        ModContent.NPCType<UnvolanditeMite>(),
-        ModContent.NPCType<UnvolanditeMiteDigger>(),
-        ModContent.NPCType<Valkyrie>(),
-        ModContent.NPCType<VampireHarpy>(),
-        ModContent.NPCType<VorazylcumMite>(),
-        ModContent.NPCType<VorazylcumMiteDigger>(),
-    };
-
     private const int RareChance = 700;
     private const int UncommonChance = 50;
     private const int VeryRareChance = 1000;
@@ -1335,7 +1282,6 @@ public class AvalonGlobalNPC : GlobalNPC
         if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
             if (Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
-            //if (!SHMMobs.Contains(npc.type))
             {
                 if (Main.expertMode)
                 {

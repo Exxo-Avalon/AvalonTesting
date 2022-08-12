@@ -1,9 +1,10 @@
-﻿using Avalon.Buffs;
+using Avalon.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace Avalon.Players;
 
@@ -93,6 +94,42 @@ public class ExxoStaminaPlayer : ModPlayer
         if (potionToBeUsed.stack <= 0)
         {
             potionToBeUsed.type = 0;
+        }
+    }
+    public override void SaveData(TagCompound tag)
+    {
+        tag["Avalon:Stamina"] = StatStamMax;
+        tag["Avalon:RocketJumpUnlocked"] = StatStamMax;
+        tag["Avalon:TeleportUnlocked"] = StatStamMax;
+        tag["Avalon:SwimmingUnlocked"] = StatStamMax;
+        tag["Avalon:SprintUnlocked"] = StatStamMax;
+        tag["Avalon:FlightRestoreUnlocked"] = StatStamMax;
+    }
+    public override void LoadData(TagCompound tag)
+    {
+        if (tag.ContainsKey("Avalon:Stamina"))
+        {
+            StatStamMax = tag.GetAsInt("Avalon:Stamina");
+        }
+        if (tag.ContainsKey("Avalon:RocketJumpUnlocked"))
+        {
+            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("Avalon:RocketJumpUnlocked");
+        }
+        if (tag.ContainsKey("Avalon:TeleportUnlocked"))
+        {
+            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("Avalon:TeleportUnlocked");
+        }
+        if (tag.ContainsKey("Avalon:SwimmingUnlocked"))
+        {
+            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("Avalon:SwimmingUnlocked");
+        }
+        if (tag.ContainsKey("Avalon:SprintUnlocked"))
+        {
+            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("Avalon:SprintUnlocked");
+        }
+        if (tag.ContainsKey("Avalon:FlightRestoreUnlocked"))
+        {
+            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
         }
     }
     public void StaminaHealEffect(int healAmount, bool broadcast = true)

@@ -9,6 +9,7 @@ using Avalon.Effects;
 using Avalon.Hooks;
 using Avalon.Network;
 using Avalon.Systems;
+using Avalon.UI;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
@@ -16,6 +17,7 @@ using Terraria.GameContent;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 
 namespace Avalon;
 
@@ -28,6 +30,9 @@ public class Avalon : Mod
     ///     The path for texture assets of the mod.
     /// </summary>
     public const string TextureAssetsPath = "Assets/Textures";
+    private UserInterface staminaInterface;
+    private StaminaBar staminaBar;
+
 
     /// <summary>
     ///     Gets the instance of the imkSushi's mod.
@@ -77,6 +82,9 @@ public class Avalon : Mod
         }
 
         // ----------- Client Only ----------- //
+        staminaInterface = new UserInterface();
+        staminaBar = new StaminaBar();
+        staminaInterface.SetState(staminaBar);
         if (ModContent.GetInstance<AvalonConfig>().VanillaTextureReplacement)
         {
             ReplaceVanillaTextures();

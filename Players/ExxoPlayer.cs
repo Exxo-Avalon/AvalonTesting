@@ -757,53 +757,7 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
-        // if (tag.ContainsKey("Avalon:Stamina"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax = tag.GetAsInt("Avalon:Stamina");
-        // }
-        // if (tag.ContainsKey("Avalon:HerbTier"))
-        // {
-        //     herbTier = (HerbTier)tag.GetAsInt("Avalon:HerbTier");
-        // }
-        // if (tag.ContainsKey("Avalon:HerbTotal"))
-        // {
-        //     herbTotal = tag.GetAsInt("Avalon:HerbTotal");
-        // }
-        // if (tag.ContainsKey("Avalon:PotionTotal"))
-        // {
-        //     potionTotal = tag.GetAsInt("Avalon:PotionTotal");
-        // }
-        // if (tag.ContainsKey("Avalon:HerbCounts"))
-        // {
-        //     try
-        //     {
-        //         herbCounts.Load(tag.Get<TagCompound>("Avalon:HerbCounts"));
-        //     }
-        //     catch
-        //     {
-        //         herbCounts = new Dictionary<int, int>();
-        //     }
-        // }
-        // if (tag.ContainsKey("Avalon:RocketJumpUnlocked"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("Avalon:RocketJumpUnlocked");
-        // }
-        // if (tag.ContainsKey("Avalon:TeleportUnlocked"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("Avalon:TeleportUnlocked");
-        // }
-        // if (tag.ContainsKey("Avalon:SwimmingUnlocked"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("Avalon:SwimmingUnlocked");
-        // }
-        // if (tag.ContainsKey("Avalon:SprintUnlocked"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("Avalon:SprintUnlocked");
-        // }
-        // if (tag.ContainsKey("Avalon:FlightRestoreUnlocked"))
-        // {
-        //     Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
-        // }
+        
     }
     public override void PostUpdate()
     {
