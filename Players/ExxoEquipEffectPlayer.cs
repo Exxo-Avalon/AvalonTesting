@@ -465,10 +465,6 @@ public class ExxoEquipEffectPlayer : ModPlayer
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
-        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()))
-        {
-            PocketBench = true;
-        }
         for (int m = 0; m < 2; m++)
         {
             doubleTapTimer[m]--;

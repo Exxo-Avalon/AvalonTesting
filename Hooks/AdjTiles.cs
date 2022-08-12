@@ -15,19 +15,17 @@ internal class AdjTiles : ModHook
         On.Terraria.Player.AdjTiles += OnAdjTiles;
         On.Terraria.Player.AdjTiles += OnAdjTilesPocketBench;
     }
-
-    // DOES NOT WORK. It doesn't reset the adjTile to false if you remove the tile item from your inventory/void vault.
     private static void OnAdjTilesPocketBench(On.Terraria.Player.orig_AdjTiles orig, Player self)
     {
-        if (Array.Exists(self.bank4.item, element => Data.Sets.Item.Stations.Contains(element.createTile)) && self.GetModPlayer<ExxoEquipEffectPlayer>().PocketBench)
+        if (Array.Exists(self.bank.item, element => Data.Sets.Item.Stations.Contains(element.createTile)) && self.GetModPlayer<ExxoEquipEffectPlayer>().PocketBench)
         {
-            for (int o = 0; o < self.bank4.item.Length; o++)
+            for (int o = 0; o < self.bank.item.Length; o++)
             {
-                if (self.bank4.item[o].createTile > -1)
+                if (self.bank.item[o].createTile > -1)
                 {
-                    if (!self.adjTile[self.bank4.item[o].createTile])
+                    if (!self.adjTile[self.bank.item[o].createTile])
                     {
-                        self.adjTile[self.bank4.item[o].createTile] = true;
+                        self.adjTile[self.bank.item[o].createTile] = true;
                     }
                 }
             }
