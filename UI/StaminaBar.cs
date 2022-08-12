@@ -31,8 +31,8 @@ namespace Avalon.UI
 
             labelDimensions = FontAssets.MouseText.Value.MeasureString(labelText);
 
-            //Top.Set(textYOffset + labelDimensions.Y, 0);
-            //Width.Set(staminaTexture1.Width, 0);
+            Top.Set(textYOffset + labelDimensions.Y, 0);
+            Width.Set(staminaTexture1.Width, 0);
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
