@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -58,6 +57,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool GoblinAK;
     public bool BuilderBelt;
     public bool Dimlight;
+    public bool PocketBench;
     #endregion accessories
 
     #region extras
@@ -131,6 +131,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         GoblinAK = false;
         BuilderBelt = false;
         Dimlight = false;
+        PocketBench = false;
 
         // armor
         HyperMagic = false;
@@ -464,7 +465,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
         {
             Player.ClearBuff(ModContent.BuffType<AstralProjecting>());
         }
-
+        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()))
+        {
+            PocketBench = true;
+        }
         for (int m = 0; m < 2; m++)
         {
             doubleTapTimer[m]--;
@@ -498,9 +502,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
             }
         }
 
-
-
         #region royal gel avalon fix
+        // doesn't work for modded accessory slots :pensive:
         for (int i = 3; i < Player.armor.Length; i++)
         {
             if (Player.armor[i].type == ItemID.RoyalGel)

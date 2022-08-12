@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Avalon.Items.Placeable.Seed;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,6 +20,17 @@ public static class Item
         ModContent.ItemType<SweetstemSeeds>(),
         ModContent.ItemType<HolybirdSeeds>(),
         ModContent.ItemType<TwilightPlumeSeeds>());
+
+    /// <summary>
+    /// not finished
+    /// </summary>
+    public static readonly List<int> Stations = new List<int>
+    {
+        TileID.WorkBenches, TileID.TinkerersWorkbench, TileID.Furnaces, TileID.Hellforge, TileID.AdamantiteForge,
+        TileID.Anvils, TileID.MythrilAnvil, TileID.HeavyWorkBench, TileID.Sawmill, TileID.Bottles, ModContent.TileType<Tiles.NaquadahAnvil>(),
+        ModContent.TileType<Tiles.SolariumAnvil>(), ModContent.TileType<Tiles.TroxiniumForge>(),
+        ModContent.TileType<Tiles.NaquadahAnvil>()
+    };
 
     public static readonly bool[] StackTo2000 = ItemID.Sets.Factory.CreateBoolSet(
         ItemID.WoodenArrow, ItemID.FlamingArrow, ItemID.UnholyArrow, ItemID.JestersArrow, ItemID.MusketBall,

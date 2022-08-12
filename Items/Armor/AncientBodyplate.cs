@@ -26,10 +26,41 @@ class AncientBodyplate : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.SolarFlareBreastplate).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.NebulaBreastplate).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.StardustBreastplate).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ItemID.FragmentVortex, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
-        CreateRecipe(1).AddIngredient(ItemID.VortexBreastplate).AddIngredient(ItemID.FragmentNebula, 10).AddIngredient(ItemID.FragmentStardust, 10).AddIngredient(ItemID.FragmentSolar, 10).AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5).AddIngredient(ModContent.ItemType<Material.GhostintheMachine>()).AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
+        CreateRecipe(1)
+            .AddIngredient(ItemID.SolarFlareBreastplate)
+            .AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10)
+            .AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.GhostintheMachine>())
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
+            .Register();
+
+        CreateRecipe(1).AddIngredient(ItemID.NebulaBreastplate).AddIngredient(ItemID.FragmentSolar, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10)
+            .AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.GhostintheMachine>())
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
+            .Register();
+
+        CreateRecipe(1).AddIngredient(ItemID.StardustBreastplate)
+            .AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentSolar, 10)
+            .AddIngredient(ItemID.FragmentVortex, 10)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.GhostintheMachine>())
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
+            .Register();
+
+        CreateRecipe(1).AddIngredient(ItemID.VortexBreastplate)
+            .AddIngredient(ItemID.FragmentNebula, 10)
+            .AddIngredient(ItemID.FragmentStardust, 10)
+            .AddIngredient(ItemID.FragmentSolar, 10)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>(), 5)
+            .AddIngredient(ModContent.ItemType<Material.GhostintheMachine>())
+            .AddTile(ModContent.TileType<Tiles.CaesiumForge>())
+            .Register();
     }
     public override void UpdateEquip(Player player)
     {

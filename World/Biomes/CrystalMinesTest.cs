@@ -217,7 +217,7 @@ internal class CrystalMinesTest
                 if (j >= origin.Y + tunnel1YPos + tunnelHeight && j <= origin.Y + tunnel2YPos + 1 &&
                     i >= vTunnel1PosStart && i <= vTunnel1PosEnd)
                 {
-                    if (j == origin.Y + tunnel1YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (j == origin.Y + tunnel2YPos + 1 && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -230,7 +230,7 @@ internal class CrystalMinesTest
                 if (j >= origin.Y + tunnel2YPos + tunnelHeight && j <= origin.Y + tunnel3YPos + 1 &&
                     i >= vTunnel2PosStart && i <= vTunnel2PosEnd)
                 {
-                    if (j == origin.Y + tunnel2YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (j == origin.Y + tunnel3YPos + 1 && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -243,7 +243,7 @@ internal class CrystalMinesTest
                 if (j >= origin.Y + tunnel3YPos + tunnelHeight && j <= origin.Y + tunnel4YPos + 1 &&
                     i >= vTunnel3PosStart && i <= vTunnel3PosEnd)
                 {
-                    if (j == origin.Y + tunnel3YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (j == origin.Y + tunnel3YPos + tunnelHeight && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -256,7 +256,7 @@ internal class CrystalMinesTest
                 if (j >= origin.Y + tunnel4YPos + tunnelHeight && j <= origin.Y + tunnel5YPos + 1 &&
                     i >= vTunnel4PosStart && i <= vTunnel4PosEnd)
                 {
-                    if (j == origin.Y + tunnel4YPos && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    if (j == origin.Y + tunnel4YPos + tunnelHeight && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
