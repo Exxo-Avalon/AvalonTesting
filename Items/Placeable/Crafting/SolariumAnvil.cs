@@ -19,7 +19,7 @@ class SolariumAnvil : ModItem
         Item.autoReuse = true;
         Item.consumable = true;
         Item.createTile = ModContent.TileType<Tiles.SolariumAnvil>();
-        Item.rare = ItemRarityID.Lime;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

@@ -20,7 +20,7 @@ public class ImperviousKey : ModItem
         Item.width = dims.Width;
         Item.value = 0;
         Item.height = dims.Height;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
     }
     public override void AddRecipes()
     {
