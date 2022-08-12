@@ -99,11 +99,11 @@ public class ExxoStaminaPlayer : ModPlayer
     public override void SaveData(TagCompound tag)
     {
         tag["Avalon:Stamina"] = StatStamMax;
-        tag["Avalon:RocketJumpUnlocked"] = StatStamMax;
-        tag["Avalon:TeleportUnlocked"] = StatStamMax;
-        tag["Avalon:SwimmingUnlocked"] = StatStamMax;
-        tag["Avalon:SprintUnlocked"] = StatStamMax;
-        tag["Avalon:FlightRestoreUnlocked"] = StatStamMax;
+        tag["Avalon:RocketJumpUnlocked"] = RocketJumpUnlocked;
+        tag["Avalon:TeleportUnlocked"] = TeleportUnlocked;
+        tag["Avalon:SwimmingUnlocked"] = SwimmingUnlocked;
+        tag["Avalon:SprintUnlocked"] = SprintUnlocked;
+        tag["Avalon:FlightRestoreUnlocked"] = FlightRestoreUnlocked;
     }
     public override void LoadData(TagCompound tag)
     {
@@ -113,23 +113,23 @@ public class ExxoStaminaPlayer : ModPlayer
         }
         if (tag.ContainsKey("Avalon:RocketJumpUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().RocketJumpUnlocked = tag.Get<bool>("Avalon:RocketJumpUnlocked");
+            RocketJumpUnlocked = tag.Get<bool>("Avalon:RocketJumpUnlocked");
         }
         if (tag.ContainsKey("Avalon:TeleportUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().TeleportUnlocked = tag.Get<bool>("Avalon:TeleportUnlocked");
+            TeleportUnlocked = tag.Get<bool>("Avalon:TeleportUnlocked");
         }
         if (tag.ContainsKey("Avalon:SwimmingUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SwimmingUnlocked = tag.Get<bool>("Avalon:SwimmingUnlocked");
+            SwimmingUnlocked = tag.Get<bool>("Avalon:SwimmingUnlocked");
         }
         if (tag.ContainsKey("Avalon:SprintUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().SprintUnlocked = tag.Get<bool>("Avalon:SprintUnlocked");
+            SprintUnlocked = tag.Get<bool>("Avalon:SprintUnlocked");
         }
         if (tag.ContainsKey("Avalon:FlightRestoreUnlocked"))
         {
-            Player.GetModPlayer<ExxoStaminaPlayer>().FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
+            FlightRestoreUnlocked = tag.Get<bool>("Avalon:FlightRestoreUnlocked");
         }
     }
     public void StaminaHealEffect(int healAmount, bool broadcast = true)

@@ -30,8 +30,8 @@ public class Avalon : Mod
     ///     The path for texture assets of the mod.
     /// </summary>
     public const string TextureAssetsPath = "Assets/Textures";
-    private UserInterface staminaInterface;
-    private StaminaBar staminaBar;
+    internal UserInterface staminaInterface;
+    internal StaminaBar staminaBar;
 
 
     /// <summary>

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Avalon.Common;
+using Avalon.UI;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -10,6 +12,15 @@ public class InterfaceLayerSystem : ModSystem
     /// <inheritdoc />
     public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
     {
+        int staminaBarIndex = layers.FindIndex((GameInterfaceLayer layer) => layer.Name == "Vanilla: Resource Bars");
+        if (staminaBarIndex != -1)
+        {
+            layers.Insert(staminaBarIndex, new LegacyGameInterfaceLayer("Stamina Bar", delegate
+            {
+                Avalon.Mod.staminaInterface.Draw(Main.spriteBatch, Main._drawInterfaceGameTime);
+                return true;
+            }, InterfaceScaleType.UI));
+        }
         layers.Insert(0, new LegacyGameInterfaceLayer(
             $"{Mod.DisplayName}: Update Interfaces",
             delegate
@@ -18,7 +29,7 @@ public class InterfaceLayerSystem : ModSystem
                 {
                     modInterfaceLayer.Update();
                 }
-
+                Avalon.Mod.staminaInterface.Update(Main._drawInterfaceGameTime);
                 return true;
             },
             InterfaceScaleType.UI)

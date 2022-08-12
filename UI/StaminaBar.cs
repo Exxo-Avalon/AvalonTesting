@@ -31,8 +31,8 @@ namespace Avalon.UI
 
             labelDimensions = FontAssets.MouseText.Value.MeasureString(labelText);
 
-            Top.Set(textYOffset + labelDimensions.Y, 0);
-            Width.Set(staminaTexture1.Width, 0);
+            //Top.Set(textYOffset + labelDimensions.Y, 0);
+            //Width.Set(staminaTexture1.Width, 0);
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
@@ -46,7 +46,7 @@ namespace Avalon.UI
             // Draw labelText above stamina bar
             DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, FontAssets.MouseText.Value, labelText, new Vector2((Main.screenWidth - labelDimensions.X + 15), textYOffset), new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor), 0f, default(Vector2), 0.7f, SpriteEffects.None, 0f);
 
-            var player = Main.player[Main.myPlayer].GetModPlayer<Players.ExxoStaminaPlayer>();
+            var player = Main.LocalPlayer.GetModPlayer<Players.ExxoStaminaPlayer>();
 
             int stamBars = player.StatStamMax2 / staminaPerBar;
             if (stamBars > maxStaminaBars)
