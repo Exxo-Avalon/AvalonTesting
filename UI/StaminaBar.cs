@@ -32,9 +32,9 @@ namespace Avalon.UI
             labelDimensions = FontAssets.MouseText.Value.MeasureString(labelText);
 
             Top.Set(textYOffset + labelDimensions.Y, 0);
-            Width.Set(staminaTexture1.Width, 0);
+            Width.Set(ModContent.Request<Texture2D>("Avalon/Sprites/Stamina").Value.Width, 0);
         }
-
+        
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             if (Main.player[Main.myPlayer].ghost)
@@ -113,19 +113,19 @@ namespace Avalon.UI
                 switch (statLevel)
                 {
                     case 1:
-                        texture = staminaTexture1;
+                        texture = ModContent.Request<Texture2D>("Avalon/Sprites/Stamina").Value;
                         break;
 
                     case 2:
-                        texture = staminaTexture2;
+                        texture = ModContent.Request<Texture2D>("Avalon/Sprites/Stamina2").Value;
                         break;
 
                     case 3:
-                        texture = staminaTexture3;
+                        texture = ModContent.Request<Texture2D>("Avalon/Sprites/Stamina3").Value;
                         break;
 
                     default:
-                        texture = staminaTexture1;
+                        texture = ModContent.Request<Texture2D>("Avalon/Sprites/Stamina").Value;
                         break;
                 }
 
@@ -140,11 +140,12 @@ namespace Avalon.UI
             if (IsMouseHovering)
             {
                 string mouseText = string.Format("{0}/{1}", player.StatStam, player.StatStamMax2);
-                Main.instance.MouseTextHackZoom(mouseText);
+                Main.instance.MouseText(mouseText);
             }
 
-            Left.Set(Main.screenWidth - 25 - (staminaTexture1.Width / 2f), 0);
+            Left.Set(Main.screenWidth - 25 - (ModContent.Request<Texture2D>("Avalon/Sprites/Stamina").Value.Width / 2f), 0);
             Height.Set(barSpacing * stamBars, 0);
+            Width.Set(ModContent.Request<Texture2D>("Avalon/Sprites/Stamina").Value.Width, 0);
 
             base.DrawSelf(spriteBatch);
         }
