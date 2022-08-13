@@ -44,7 +44,7 @@ public abstract class CustomFighterAI : ModNPC
     public virtual void CustomBehavior()
     {
     }
-    private bool isHit;
+    //private bool isHit;
     private bool isInJump;
     private float jumpdelay = 3;
     public override void AI()
@@ -60,10 +60,7 @@ public abstract class CustomFighterAI : ModNPC
         float moveSpeedMulti = NPC.velocity.X + (Acceleration * -dir);
         float airSpeedMulti = NPC.velocity.X + (AirAcceleration * -dir);
         moveSpeedMulti = Math.Clamp(moveSpeedMulti, -MaxMoveSpeed, MaxMoveSpeed);
-        if (!isHit)
-        {
-            airSpeedMulti = Math.Clamp(airSpeedMulti, -MaxAirSpeed, MaxAirSpeed);
-        }
+        airSpeedMulti = Math.Clamp(airSpeedMulti, -MaxAirSpeed, MaxAirSpeed);
         NPC.spriteDirection = -(int)dir;
 
         if (NPC.velocity.Y == 0)
@@ -102,7 +99,7 @@ public abstract class CustomFighterAI : ModNPC
             //enable stepup when on the ground
             Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
             isInJump = false;
-            isHit = false;
+            //isHit = false;
             if(jumpdelay != 0)
             {
                 jumpdelay--;
@@ -137,12 +134,12 @@ public abstract class CustomFighterAI : ModNPC
             jumpdelay = 3;
         }
     }
-    public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+    /*public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
     {
         isHit = true;
     }
     public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
     {
         isHit = true;
-    }
+    }*/
 }

@@ -33,6 +33,10 @@ class WorldgenHelper : ModItem
     {
         int x = (int)player.position.X / 16;
         int y = (int)player.position.Y / 16;
+
+        Task.Run(AvalonWorld.GenerateHellcastle);
+
+        return true;
         //int xStored = x;
         //List<int> l = new List<int>()
         //{
@@ -52,7 +56,6 @@ class WorldgenHelper : ModItem
         //World.Tests.MakeZigZag(x, y, TileID.Titanium, WallID.Wood);
         //World.Structures.CaesiumSpike.CreateSpikeUp((int)player.position.X / 16, (int)player.position.Y / 16, (ushort)ModContent.TileType<Tiles.Ores.CaesiumOre>());
         //World.Structures.IceShrine.Generate((int)player.position.X / 16, (int)player.position.Y / 16);
-        return true;
     }
     //public static void GetXCoord(int x, int y, int ylength, ref int xCoord)
     //{

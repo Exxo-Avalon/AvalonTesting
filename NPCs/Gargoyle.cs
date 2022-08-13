@@ -27,8 +27,8 @@ public class Gargoyle : ModNPC
         NPC.damage = 105;
         NPC.netAlways = true;
         NPC.scale = 1.1f;
-        NPC.lifeMax = 2400;
-        NPC.defense = 30;
+        NPC.lifeMax = 3400;
+        NPC.defense = 70;
         NPC.lavaImmune = true;
         NPC.width = 34;
         NPC.aiStyle = -1;
@@ -48,9 +48,13 @@ public class Gargoyle : ModNPC
             new FlavorTextBestiaryInfoElement("Made of stone, they resemble mythical creatures. They guard the Hellcastle and its treasures.")
         });
     }
+    public override bool? CanFallThroughPlatforms()
+    {
+        return true;
+    }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
-        NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
+        //NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
     public override void AI()

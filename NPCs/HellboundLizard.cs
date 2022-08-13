@@ -26,21 +26,23 @@ public class HellboundLizard : CustomFighterAI
         };
         NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
     }
-    public override float MaxMoveSpeed { get; set; } = 2.5f;
-    public override float Acceleration { get; set; } = 0.1f;
-    public override float AirAcceleration { get; set; } = 0.1f;
+    public override float MaxMoveSpeed { get; set; } = 3f;
+    public override float Acceleration { get; set; } = 0.25f;
+    public override float AirAcceleration { get; set; } = 0.15f;
     public override float MaxAirSpeed { get; set; } = 3.5f;
+    public override float JumpRadius { get; set; } = 225;
+    public override float MaxJumpHeight { get; set; } = 9f;
     public override void SetDefaults()
     {
         NPC.damage = 90;
-        NPC.lifeMax = 780;
-        NPC.defense = 20;
+        NPC.lifeMax = 2040;
+        NPC.defense = 40;
         NPC.lavaImmune = true;
         NPC.width = 18;
         NPC.aiStyle = -1;
         NPC.value = 1000f;
         NPC.height = 40;
-        NPC.knockBackResist = 0.02f;
+        NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
         Banner = NPC.type;
@@ -57,7 +59,7 @@ public class HellboundLizard : CustomFighterAI
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
-        NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
+        //NPC.lifeMax = (int)(NPC.lifeMax * 0.55f);
         NPC.damage = (int)(NPC.damage * 0.85f);
     }
     public override Color? GetAlpha(Color lightColor)

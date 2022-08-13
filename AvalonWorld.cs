@@ -171,6 +171,11 @@ public class AvalonWorld : ModSystem
         }
         Main.tileSolidTop[ModContent.TileType<FallenStarTile>()] = Main.dayTime;
     }
+    public static void GenerateHellcastle()
+    {
+        Point p = Main.LocalPlayer.position.ToTileCoordinates();
+        Hellcastle.GenerateHellcastle(p.X, p.Y);
+    }
     public static void GenerateSolarium()
     {
         for (int a = 0; a < (int)(Main.maxTilesX * Main.maxTilesY * 0.00008); a++)

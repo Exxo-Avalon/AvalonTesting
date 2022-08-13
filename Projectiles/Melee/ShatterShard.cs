@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -24,6 +24,7 @@ public class ShatterShard : ModProjectile
         Projectile.hostile = false;
         Projectile.timeLeft = 45;
         Projectile.scale = 1.2f;
+        Projectile.DamageType = DamageClass.Melee;
     }
     public override void AI()
     {

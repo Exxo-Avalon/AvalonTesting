@@ -148,7 +148,7 @@ internal class Underworld : GenPass
             ashenRight = (Main.maxTilesX / 3) + 500;
         }
 
-        HellCastle.Generate(hellcastleOriginX, Main.maxTilesY - 140);
+        //HellCastle.Generate(hellcastleOriginX, Main.maxTilesY - 140);
         for (int hbx = ashenLeft; hbx < ashenRight; hbx++)
         {
             for (int hby = Main.maxTilesY - 200; hby < Main.maxTilesY - 50; hby++)
