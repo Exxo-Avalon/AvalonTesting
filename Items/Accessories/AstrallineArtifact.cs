@@ -22,7 +22,7 @@ public class AstrallineArtifact : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = -12;
+        Item.rare = 1;
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 15);
