@@ -474,7 +474,7 @@ public class AvalonWorld : ModSystem
         {
             int x = Main.rand.Next(100, Main.maxTilesX - 100);
             int y = Main.rand.Next((int)Main.rockLayer, Main.maxTilesY - 150);
-            WorldGen.OreRunner(x, y, Main.rand.Next(7, 9), Main.rand.Next(5, 7),
+            WorldGen.OreRunner(x, y, Main.rand.Next(3, 6), Main.rand.Next(3, 5),
                 (ushort)ModContent.TileType<SulphurOre>());
         }
 
@@ -618,7 +618,6 @@ public class AvalonWorld : ModSystem
         ChangeRain();
         Main.raining = true;
     }
-
     public static void StopRain()
     {
         Main.rainTime = 0;
@@ -808,7 +807,7 @@ public class AvalonWorld : ModSystem
                     WorldGen.SquareTileFrame(num6, num7, true);
                 }
             }
-            if (type == (ushort)ModContent.TileType<XanthophyteOre>() && WorldGen.genRand.Next(3) != 0)
+            if (type == (ushort)ModContent.TileType<XanthophyteOre>() && !WorldGen.genRand.NextBool(3))
             {
                 int num8 = x;
                 int num9 = y;

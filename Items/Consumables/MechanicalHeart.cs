@@ -20,7 +20,7 @@ class MechanicalHeart : ModItem
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item4;
         Item.consumable = true;
-        Item.rare = ItemRarityID.Cyan;
+        Item.rare = ModContent.RarityType<Rarities.BlueRarity>();
         Item.width = dims.Width;
         Item.useTime = 30;
         Item.maxStack = 999;

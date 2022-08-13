@@ -32,11 +32,13 @@ public class BiomeTileCounts : ModSystem
     public int SightTiles { get; private set; }
     public int DungeonAltTiles { get; private set; }
     public int DarkMonolithTiles { get; private set; }
+    public int ContagionDesertTiles { get; private set; }
 
     public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
     {
         Main.SceneMetrics.JungleTileCount += tileCounts[ModContent.TileType<GreenIce>()];
         Main.SceneMetrics.SandTileCount += tileCounts[ModContent.TileType<Snotsand>()];
+        ContagionDesertTiles += tileCounts[ModContent.TileType<Snotsand>()];
         ContagionTiles = tileCounts[ModContent.TileType<Chunkstone>()] +
                          tileCounts[ModContent.TileType<HardenedSnotsand>()] +
                          tileCounts[ModContent.TileType<Snotsandstone>()] +

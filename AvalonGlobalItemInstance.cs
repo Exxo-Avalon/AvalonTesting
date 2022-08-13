@@ -50,7 +50,7 @@ public class AvalonGlobalItemInstance : GlobalItem
             {
                 lineKnockback.Text = "Godly knockback";
             }
-            if (item.type == Terraria.ID.ItemID.BatBat)
+            if (item.type == ItemID.BatBat)
             {
                 lineKnockback.Text = lineKnockback.Text.Replace("knockback", "knockbat");
             }

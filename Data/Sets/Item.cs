@@ -29,7 +29,7 @@ public static class Item
         TileID.WorkBenches, TileID.TinkerersWorkbench, TileID.Furnaces, TileID.Hellforge, TileID.AdamantiteForge,
         TileID.Anvils, TileID.MythrilAnvil, TileID.HeavyWorkBench, TileID.Sawmill, TileID.Bottles, ModContent.TileType<Tiles.NaquadahAnvil>(),
         ModContent.TileType<Tiles.SolariumAnvil>(), ModContent.TileType<Tiles.TroxiniumForge>(),
-        ModContent.TileType<Tiles.NaquadahAnvil>()
+        ModContent.TileType<Tiles.NaquadahAnvil>(), TileID.Bookcases, TileID.Loom, TileID.Sinks, TileID.DyeVat
     };
 
     public static readonly bool[] StackTo2000 = ItemID.Sets.Factory.CreateBoolSet(

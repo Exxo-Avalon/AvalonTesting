@@ -1,5 +1,4 @@
 using Avalon.Systems;
-using Avalon.Walls;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -33,6 +32,7 @@ public class ExxoBiomePlayer : ModPlayer
     public bool ZoneDelight { get; private set; }
     public bool ZoneSight { get; private set; }
     public bool ZoneAltDungeon => Player.InModBiome(ModContent.GetInstance<DungeonAltColors>());
+    public bool ZoneContagionDesert => Player.InModBiome(ModContent.GetInstance<ContagionDesert>());
 
     public void UpdateZones(BiomeTileCounts biomeTileCounts)
     {
@@ -68,5 +68,11 @@ public class ExxoBiomePlayer : ModPlayer
     {
         if (ZoneAltDungeon)
             Player.ZoneDungeon = true;
+        //if (ZoneContagionDesert)
+        //{
+        //    Player.ZoneDesert = true;
+        //    Terraria.Graphics.Effects.Filters.Scene["Sandstorm"].Activate(Player.position);
+        //} 
+        //Main.NewText(Player.ZoneDesert);
     }
 }
