@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -45,6 +45,7 @@ class SuperStaminaPotion : ModItem
     {
         player.GetModPlayer<ExxoStaminaPlayer>().StatStam += 120;
         player.GetModPlayer<ExxoStaminaPlayer>().StaminaHealEffect(120, true);
+        player.AddBuff(ModContent.BuffType<Buffs.StaminaDrain>(), 60 * 9);
         if (player.GetModPlayer<ExxoStaminaPlayer>().StatStam > player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2)
         {
             player.GetModPlayer<ExxoStaminaPlayer>().StatStam = player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2;

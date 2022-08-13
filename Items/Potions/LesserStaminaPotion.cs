@@ -43,6 +43,7 @@ class LesserStaminaPotion : ModItem
     {
         player.GetModPlayer<ExxoStaminaPlayer>().StatStam += 35;
         player.GetModPlayer<ExxoStaminaPlayer>().StaminaHealEffect(35, true);
+        player.AddBuff(ModContent.BuffType<Buffs.StaminaDrain>(), 60 * 9);
         if (player.GetModPlayer<ExxoStaminaPlayer>().StatStam > player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2)
         {
             player.GetModPlayer<ExxoStaminaPlayer>().StatStam = player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2;
