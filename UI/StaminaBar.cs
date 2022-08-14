@@ -207,7 +207,7 @@ class StaminaBar : UIState
     }
     private void DrawStaminaBarFancy(SpriteBatch spriteBatch)
     {
-        Vector2 vector = new Vector2(Main.screenWidth - 40, 28 * 11 + 30);
+        Vector2 vector = new Vector2(Main.screenWidth - 40, 28 * 9 + 10);
         _ = fancyStamCount;
         bool isHovered = false;
         ResourceDrawSettings resourceDrawSettings = default;
