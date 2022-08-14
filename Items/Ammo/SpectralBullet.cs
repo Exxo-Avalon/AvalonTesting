@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,7 +11,7 @@ class SpectralBullet : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Spectral Bullet");
-        Tooltip.SetDefault("Passes through normal tiles\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
+        Tooltip.SetDefault("Phases through normal tiles\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
         SacrificeTotal = 99;
     }
 
@@ -28,5 +30,11 @@ class SpectralBullet : ModItem
         Item.maxStack = 2000;
         Item.value = 1200;
         Item.height = dims.Height;
+    }
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Vector2 pos = player.Center + new Vector2(1000, 0).RotatedBy(player.AngleTo(Main.MouseWorld));
+        Projectile.NewProjectile(source, pos.X, pos.Y, velocity.X * 3, velocity.Y * 3, Type, damage, knockback);
+        return false;
     }
 }

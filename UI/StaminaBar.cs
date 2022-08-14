@@ -302,7 +302,7 @@ class StaminaBar : UIState
             SpriteBatch sb = Main.spriteBatch;
             int xpos = 16;
             int ypos = 66;
-            int finalXPos = Main.screenWidth - 150 - 22 + xpos;
+            int finalXPos = Main.screenWidth - 135 - 22 + xpos;
             Vector2 vector = new Vector2(finalXPos, ypos);
             vector.X += (maxSegmentCount - stamSegmentsBarsCount) * panelMiddleStam.Value.Width;
             bool isHovered = false;

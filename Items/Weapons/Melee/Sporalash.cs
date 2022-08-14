@@ -11,12 +11,13 @@ class Sporalash : ModItem
         DisplayName.SetDefault("Sporalash");
         Tooltip.SetDefault("Has a chance to poison");
         SacrificeTotal = 1;
+        ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 52;
+        Item.damage = 26;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;

@@ -498,30 +498,6 @@ public class Cell : ModProjectile
             // This example shows how Flaming Mace works. It checks chainCount and changes chainTexture and draw color at different values
 
             var chainTextureToDraw = chainTexture;
-            if (chainCount >= 4)
-            {
-                // Use normal chainTexture and lighting, no changes
-            }
-            else if (chainCount >= 2)
-            {
-                // Near to the ball, we draw a custom chain texture and slightly make it glow if unlit.
-                chainTextureToDraw = chainTextureExtra;
-                byte minValue = 140;
-                if (chainDrawColor.R < minValue)
-                    chainDrawColor.R = minValue;
-
-                if (chainDrawColor.G < minValue)
-                    chainDrawColor.G = minValue;
-
-                if (chainDrawColor.B < minValue)
-                    chainDrawColor.B = minValue;
-            }
-            else
-            {
-                // Close to the ball, we draw a custom chain texture and draw it at full brightness glow.
-                chainTextureToDraw = chainTextureExtra;
-                chainDrawColor = Color.White;
-            }
 
             // Here, we draw the chain texture at the coordinates
             Main.spriteBatch.Draw(chainTextureToDraw.Value, chainDrawPosition - Main.screenPosition, chainSourceRectangle, chainDrawColor, chainRotation, chainOrigin, 1f, SpriteEffects.None, 0f);

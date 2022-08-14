@@ -12,12 +12,13 @@ class CaesiumMace : ModItem
         DisplayName.SetDefault("Caesium Mace");
         Tooltip.SetDefault("Explodes with each hit");
         SacrificeTotal = 1;
+        ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 97;
+        Item.damage = 49;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;

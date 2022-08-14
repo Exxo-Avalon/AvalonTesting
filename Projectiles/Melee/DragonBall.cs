@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -194,7 +194,7 @@ public class DragonBall : ModProjectile
 
     public override bool PreDraw(ref Color lightColor)
     {
-        var texture = ModContent.Request<Texture2D>("Avalon/Projectiles/Cell_Chain");
+        var texture = ModContent.Request<Texture2D>("Avalon/Projectiles/Melee/Cell_Chain");
 
         var position = Projectile.Center;
         var mountedCenter = Main.player[Projectile.owner].MountedCenter;

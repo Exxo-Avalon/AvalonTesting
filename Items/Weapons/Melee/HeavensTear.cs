@@ -11,18 +11,20 @@ class HeavensTear : ModItem
         DisplayName.SetDefault("Heaven's Tear");
         Tooltip.SetDefault("'Heaven splits with each swing'");
         SacrificeTotal = 1;
+        ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.damage = 54;
+        Item.damage = 57;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;
         Item.shootSpeed = 12f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Pink;
+        Item.crit += 3;
         Item.width = dims.Width;
         Item.useTime = 45;
         Item.knockBack = 8f;

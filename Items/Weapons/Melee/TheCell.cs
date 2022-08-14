@@ -10,13 +10,14 @@ class TheCell : ModItem
     {
         DisplayName.SetDefault("The Cell");
         SacrificeTotal = 1;
+        ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item1;
-        Item.damage = 36;
+        Item.damage = 18;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1f;

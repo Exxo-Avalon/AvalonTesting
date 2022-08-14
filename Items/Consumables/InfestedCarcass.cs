@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -31,7 +31,9 @@ class InfestedCarcass : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.BacteriumPrime>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion;
+        return !NPC.AnyNPCs(ModContent.NPCType<NPCs.BacteriumPrime>()) &&
+            (player.GetModPlayer<ExxoBiomePlayer>().ZoneUndergroundContagion ||
+            player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion);
     }
 
     public override bool? UseItem(Player player)

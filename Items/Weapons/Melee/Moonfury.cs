@@ -10,12 +10,13 @@ class Moonfury : ModItem
     {
         DisplayName.SetDefault("Moonfury");
         SacrificeTotal = 1;
+        ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
     }
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
         Item.UseSound = SoundID.Item1;
-        Item.damage = 71;
+        Item.damage = 35;
         Item.noUseGraphic = true;
         Item.channel = true;
         Item.scale = 1.1f;

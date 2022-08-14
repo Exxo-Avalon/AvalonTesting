@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -17,14 +18,14 @@ public class PhantasmalBullet : ModProjectile
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Projectile.width = dims.Width * 4 / 20;
-        Projectile.height = dims.Height * 4 / 20 / Main.projFrames[Projectile.type];
+        Projectile.width = 6;
+        Projectile.height = 6;
         Projectile.aiStyle = 1;
         Projectile.friendly = true;
         AIType = ProjectileID.CursedBullet;
         Projectile.penetrate = 2;
         //Projectile.light = 0.8f;
-        Projectile.alpha = 0;
+        Projectile.alpha = 255;
         Projectile.scale = 1.2f;
         Projectile.tileCollide = false;
         Projectile.timeLeft = 600;
@@ -80,7 +81,7 @@ public class PhantasmalBullet : ModProjectile
             Projectile.Center = Projectile.position;
         }
 
-        SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_6"), Projectile.position);
+        SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_6") with { Volume = 0.5f, Pitch = -0.5f }, Projectile.position);
         for (int i = 0; i < 10; i++)
         {
             Dust dust = Dust.NewDustDirect(Projectile.position - Projectile.velocity, Projectile.width, Projectile.height, DustID.VampireHeal, 0, 0, 100, Color.Black, 0.8f);
@@ -112,6 +113,14 @@ public class PhantasmalBullet : ModProjectile
     public bool CurveDirection;
     public override void AI()
     {
+        if (Projectile.alpha > 0)
+        {
+            Projectile.alpha -= 2;
+        }
+        if (Projectile.alpha < 0)
+        {
+            Projectile.alpha = 0;
+        }
         Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         if (CurveDirectionStart)
         {
@@ -141,5 +150,21 @@ public class PhantasmalBullet : ModProjectile
         //var num308 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.FireworksRGB, 0f, 0f, 100, new Color(140, 20, 40), 1f);
         //Main.dust[num308].noGravity = true;
         //Main.dust[num308].velocity *= 0;
+    }
+    public override bool PreDraw(ref Color lightColor)
+    {
+        Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Trail").Value;
+        Texture2D bulletTex = ModContent.Request<Texture2D>(Texture).Value;
+        Rectangle frame = texture.Frame();
+        Vector2 frameOrigin = frame.Size() / 2f;
+        Vector2 offset = new Vector2(Projectile.width / 2 - frameOrigin.X, Projectile.height - frameOrigin.Y - 4);
+        Vector2 drawPos = Projectile.position - Main.screenPosition + frameOrigin + offset;
+
+        for (int i = 0; i < 3; i++)
+        {
+            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * -i, Projectile.velocity.Y * -i), frame, new Color(255 - 255 / 7 * i, 0, 0, 100), Projectile.rotation, frameOrigin, Projectile.scale - 0.01f * i, SpriteEffects.None, 0);
+        }
+        Main.EntitySpriteDraw(bulletTex, drawPos, frame, Color.White, Projectile.rotation, frameOrigin, Projectile.scale, SpriteEffects.None, 0);
+        return false;
     }
 }

@@ -59,7 +59,7 @@ public class Moonfury : ModProjectile
         // Vanilla flails all use aiStyle 15, but the code isn't customizable so an adaption of that aiStyle is used in the AI method
     }
 
-    // This AI code was adapted from vanilla code: Terraria.Projectile.AI_015_Flails() 
+    // This AI code was adapted from vanilla code: Terraria.Projectile.AI_015_Flails()
     public override void AI()
     {
         Player player = Main.player[Projectile.owner];
@@ -127,7 +127,7 @@ public class Moonfury : ModProjectile
                         break;
                     }
                 }
-                SpinningStateTimer += 1f;
+                SpinningStateTimer++;
                 // This line creates a unit vector that is constantly rotated around the player. 10f controls how fast the projectile visually spins around the player
                 Vector2 offsetFromPlayer = new Vector2(player.direction).RotatedBy((float)Math.PI * 10f * (SpinningStateTimer / 60f) * player.direction);
 
@@ -498,30 +498,30 @@ public class Moonfury : ModProjectile
             // This example shows how Flaming Mace works. It checks chainCount and changes chainTexture and draw color at different values
 
             var chainTextureToDraw = chainTexture;
-            if (chainCount >= 4)
-            {
-                // Use normal chainTexture and lighting, no changes
-            }
-            else if (chainCount >= 2)
-            {
-                // Near to the ball, we draw a custom chain texture and slightly make it glow if unlit.
-                chainTextureToDraw = chainTextureExtra;
-                byte minValue = 140;
-                if (chainDrawColor.R < minValue)
-                    chainDrawColor.R = minValue;
+            //if (chainCount >= 4)
+            //{
+            //    // Use normal chainTexture and lighting, no changes
+            //}
+            //else if (chainCount >= 2)
+            //{
+            //    // Near to the ball, we draw a custom chain texture and slightly make it glow if unlit.
+            //    chainTextureToDraw = chainTextureExtra;
+            //    byte minValue = 140;
+            //    if (chainDrawColor.R < minValue)
+            //        chainDrawColor.R = minValue;
 
-                if (chainDrawColor.G < minValue)
-                    chainDrawColor.G = minValue;
+            //    if (chainDrawColor.G < minValue)
+            //        chainDrawColor.G = minValue;
 
-                if (chainDrawColor.B < minValue)
-                    chainDrawColor.B = minValue;
-            }
-            else
-            {
-                // Close to the ball, we draw a custom chain texture and draw it at full brightness glow.
-                chainTextureToDraw = chainTextureExtra;
-                chainDrawColor = Color.White;
-            }
+            //    if (chainDrawColor.B < minValue)
+            //        chainDrawColor.B = minValue;
+            //}
+            //else
+            //{
+            //    // Close to the ball, we draw a custom chain texture and draw it at full brightness glow.
+            //    chainTextureToDraw = chainTextureExtra;
+            //    chainDrawColor = Color.White;
+            //}
 
             // Here, we draw the chain texture at the coordinates
             Main.spriteBatch.Draw(chainTextureToDraw.Value, chainDrawPosition - Main.screenPosition, chainSourceRectangle, chainDrawColor, chainRotation, chainOrigin, 1f, SpriteEffects.None, 0f);
