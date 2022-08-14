@@ -23,7 +23,7 @@ public class PhantasmalBullet : ModProjectile
         Projectile.friendly = true;
         AIType = ProjectileID.CursedBullet;
         Projectile.penetrate = 2;
-        Projectile.light = 0.8f;
+        //Projectile.light = 0.8f;
         Projectile.alpha = 0;
         Projectile.scale = 1.2f;
         Projectile.tileCollide = false;
@@ -31,6 +31,11 @@ public class PhantasmalBullet : ModProjectile
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
+    }
+    public override bool PreAI()
+    {
+        Lighting.AddLight(Projectile.position, 75 / 255f, 15 / 255f, 35 / 255f);
+        return true;
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
     {
@@ -102,5 +107,39 @@ public class PhantasmalBullet : ModProjectile
         Projectile.position.X -= Projectile.width / 2;
         Projectile.position.Y -= Projectile.height / 2;
         Projectile.active = false;
+    }
+    public bool CurveDirectionStart = true;
+    public bool CurveDirection;
+    public override void AI()
+    {
+        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+        if (CurveDirectionStart)
+        {
+            Projectile.velocity = Projectile.velocity.RotatedBy(0.096f);
+            CurveDirectionStart = false;
+        }
+        if (!CurveDirection && !CurveDirectionStart)
+        {
+            Projectile.ai[0]++;
+            Projectile.velocity = Projectile.velocity.RotatedBy(-0.024f);
+            if (Projectile.ai[0] >= 8)
+            {
+                CurveDirection = true;
+                Projectile.ai[0] = 0;
+            }
+        }
+        if (CurveDirection && !CurveDirectionStart)
+        {
+            Projectile.ai[0]++;
+            Projectile.velocity = Projectile.velocity.RotatedBy(0.024f);
+            if (Projectile.ai[0] >= 8)
+            {
+                CurveDirection = false;
+                Projectile.ai[0] = 0;
+            }
+        }
+        //var num308 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.FireworksRGB, 0f, 0f, 100, new Color(140, 20, 40), 1f);
+        //Main.dust[num308].noGravity = true;
+        //Main.dust[num308].velocity *= 0;
     }
 }
