@@ -55,7 +55,7 @@ public class BlahStaff : ModItem
             for (int num9 = 0; num9 < 1; num9++)
             {
                 Vector2 vector = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                vector.X = (vector.X + player.Center.X) / 2f + (float)Main.rand.Next(-200, 201);
+                vector.X = (vector.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
                 vector.Y -= 100 * num9;
                 float num311 = Main.mouseX + Main.screenPosition.X - vector.X;
                 float num312 = Main.mouseY + Main.screenPosition.Y - vector.Y;

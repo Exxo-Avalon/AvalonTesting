@@ -31,10 +31,10 @@ class SpectralBullet : ModItem
         Item.value = 1200;
         Item.height = dims.Height;
     }
-    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-    {
-        Vector2 pos = player.Center + new Vector2(1000, 0).RotatedBy(player.AngleTo(Main.MouseWorld));
-        Projectile.NewProjectile(source, pos.X, pos.Y, velocity.X * 3, velocity.Y * 3, Type, damage, knockback);
-        return false;
-    }
+    //public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    //{
+    //    Vector2 pos = player.Center + new Vector2(1000, 0).RotatedBy(player.AngleTo(Main.MouseWorld));
+    //    Projectile.NewProjectile(source, pos.X, pos.Y, velocity.X * 3, velocity.Y * 3, Type, damage, knockback);
+    //    return false;
+    //}
 }

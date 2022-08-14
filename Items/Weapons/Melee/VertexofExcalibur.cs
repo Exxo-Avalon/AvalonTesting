@@ -18,7 +18,7 @@ class VertexofExcalibur : ModItem
         Item.width = 42;
         Item.height = 44;
         Item.UseSound = SoundID.Item1;
-        Item.damage = 97;
+        Item.damage = 90;
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
@@ -48,6 +48,7 @@ class VertexofExcalibur : ModItem
             .AddIngredient(ItemID.BrokenHeroSword)
             .AddIngredient(ItemID.DarkShard)
             .AddIngredient(ItemID.LightShard)
+            .AddIngredient(ItemID.LunarBar, 4)
             .AddTile(TileID.AdamantiteForge).Register();
     }
     public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
@@ -63,8 +64,8 @@ class VertexofExcalibur : ModItem
         }
         if (hasDebuff)
         {
-            if (target.boss) damage = (int)(damage * 1.5);
-            else damage = (int)(damage * 1.9);
+            if (target.boss) damage = (int)(damage * 1.3);
+            else damage = (int)(damage * 1.6);
         }
     }
 }

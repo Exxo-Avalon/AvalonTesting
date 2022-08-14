@@ -25,8 +25,10 @@ internal class Shrines : GenPass
             ModContent.TileType<Tiles.Loam>(),
             ModContent.TileType<Tiles.OrangeBrick>(),
             ModContent.TileType<Tiles.PurpleBrick>(),
+            ModContent.TileType<Tiles.YellowBrick>(),
             ModContent.TileType<Tiles.CrackedOrangeBrick>(),
             ModContent.TileType<Tiles.CrackedPurpleBrick>(),
+            //ModContent.TileType<Tiles.CrackedYellowBrick>(),
             TileID.Mud,
             TileID.JungleGrass,
             TileID.CrimtaneBrick,
@@ -52,6 +54,9 @@ internal class Shrines : GenPass
             ModContent.WallType<Walls.PurpleBrickUnsafe>(),
             ModContent.WallType<Walls.PurpleSlabWallUnsafe>(),
             ModContent.WallType<Walls.PurpleTiledWallUnsafe>(),
+            ModContent.WallType<Walls.YellowBrickUnsafe>(),
+            ModContent.WallType<Walls.YellowSlabWallUnsafe>(),
+            ModContent.WallType<Walls.YellowTiledWallUnsafe>(),
             WallID.IceBrick
         };
         for (int q = 0; q < 4; q++)

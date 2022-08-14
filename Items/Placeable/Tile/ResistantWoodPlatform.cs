@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,6 +35,6 @@ class ResistantWoodPlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<ResistantWood>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).Register();
+        Recipe.Create(ModContent.ItemType<ResistantWood>()).AddIngredient(this, 2).Register();
     }
 }

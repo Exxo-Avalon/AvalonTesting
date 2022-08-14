@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,6 +30,6 @@ class VertebraePlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ItemID.Vertebrae).Register();
-        CreateRecipe(1).AddIngredient(this, 2).Register();
+        Recipe.Create(ItemID.Vertebrae).AddIngredient(this, 2).Register();
     }
 }

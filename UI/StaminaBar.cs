@@ -112,9 +112,9 @@ class StaminaBar : UIState
     public StaminaBar()
     {
         // FOR SOME REASON THIS DOES NOT LOAD THE TEXTURES
-        staminaTexture1 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina").Value;
-        staminaTexture2 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina2").Value;
-        staminaTexture3 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina3").Value;
+        staminaTexture1 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina", AssetRequestMode.ImmediateLoad).Value;
+        staminaTexture2 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina2", AssetRequestMode.ImmediateLoad).Value;
+        staminaTexture3 = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina3", AssetRequestMode.ImmediateLoad).Value;
 
         int manaStarSpacing = 28;
         textYOffset = manaStarSpacing * 11 + 30;
@@ -428,19 +428,19 @@ class StaminaBar : UIState
                 switch (statLevel)
                 {
                     case 1:
-                        texture = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina").Value;
+                        texture = staminaTexture1;
                         break;
 
                     case 2:
-                        texture = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina2").Value;
+                        texture = staminaTexture2;
                         break;
 
                     case 3:
-                        texture = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina3").Value;
+                        texture = staminaTexture3;
                         break;
 
                     default:
-                        texture = ModContent.Request<Texture2D>("Avalon/Assets/Textures/UI/Stamina").Value;
+                        texture = staminaTexture1;
                         break;
                 }
 

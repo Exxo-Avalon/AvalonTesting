@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,6 +30,6 @@ class CoughwoodPlatform : ModItem
     public override void AddRecipes()
     {
         CreateRecipe(2).AddIngredient(ModContent.ItemType<Coughwood>()).Register();
-        CreateRecipe(1).AddIngredient(this, 2).Register();
+        Recipe.Create(ModContent.ItemType<Coughwood>()).AddIngredient(this, 2).Register();
     }
 }

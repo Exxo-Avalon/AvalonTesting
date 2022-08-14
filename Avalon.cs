@@ -143,29 +143,29 @@ public class Avalon : Mod
     {
         var itemReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Item);
         assetReplacers.Add(itemReplacer);
-        itemReplacer.ReplaceAsset(ItemID.HallowedKey, Assets.Request<Texture2D>("Sprites/HallowedKey"));
-        itemReplacer.ReplaceAsset(ItemID.MagicDagger, Assets.Request<Texture2D>("Sprites/MagicDagger"));
-        itemReplacer.ReplaceAsset(ItemID.PaladinBanner, Assets.Request<Texture2D>("Sprites/PaladinBanner"));
+        itemReplacer.ReplaceAsset(ItemID.HallowedKey, Assets.Request<Texture2D>("Assets/Vanilla/Items/HallowedKey"));
+        itemReplacer.ReplaceAsset(ItemID.MagicDagger, Assets.Request<Texture2D>("Assets/Vanilla/Items/MagicDagger"));
+        itemReplacer.ReplaceAsset(ItemID.PaladinBanner, Assets.Request<Texture2D>("Assets/Vanilla/Items/PaladinBanner"));
         itemReplacer.ReplaceAsset(ItemID.PossessedArmorBanner,
-            Assets.Request<Texture2D>("Sprites/PossessedArmorBanner"));
-        itemReplacer.ReplaceAsset(ItemID.BoneLeeBanner, Assets.Request<Texture2D>("Sprites/BoneLeeBanner"));
-        itemReplacer.ReplaceAsset(ItemID.AngryTrapperBanner, Assets.Request<Texture2D>("Sprites/AngryTrapperBanner"));
-        itemReplacer.ReplaceAsset(ItemID.Deathweed, Assets.Request<Texture2D>("Sprites/Deathweed"));
-        itemReplacer.ReplaceAsset(ItemID.WaterleafSeeds, Assets.Request<Texture2D>("Sprites/WaterleafSeeds"));
+            Assets.Request<Texture2D>("Assets/Vanilla/Items/PossessedArmorBanner"));
+        itemReplacer.ReplaceAsset(ItemID.BoneLeeBanner, Assets.Request<Texture2D>("Assets/Vanilla/Items/BoneLeeBanner"));
+        itemReplacer.ReplaceAsset(ItemID.AngryTrapperBanner, Assets.Request<Texture2D>("Assets/Vanilla/Items/AngryTrapperBanner"));
+        itemReplacer.ReplaceAsset(ItemID.Deathweed, Assets.Request<Texture2D>("Assets/Vanilla/Items/Deathweed"));
+        itemReplacer.ReplaceAsset(ItemID.WaterleafSeeds, Assets.Request<Texture2D>("Assets/Vanilla/Items/WaterleafSeeds"));
         itemReplacer.ReplaceAsset(ItemID.ShroomiteDiggingClaw,
             Assets.Request<Texture2D>("Assets/Vanilla/Items/ShroomiteDiggingClaws"));
 
         var tileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Tile);
         assetReplacers.Add(tileReplacer);
-        tileReplacer.ReplaceAsset(TileID.CopperCoinPile, Assets.Request<Texture2D>("Sprites/CopperCoin"));
-        tileReplacer.ReplaceAsset(TileID.SilverCoinPile, Assets.Request<Texture2D>("Sprites/SilverCoin"));
-        tileReplacer.ReplaceAsset(TileID.GoldCoinPile, Assets.Request<Texture2D>("Sprites/GoldCoin"));
-        tileReplacer.ReplaceAsset(TileID.PlatinumCoinPile, Assets.Request<Texture2D>("Sprites/PlatinumCoin"));
-        tileReplacer.ReplaceAsset(TileID.Banners, Assets.Request<Texture2D>("Sprites/VanillaBanners"));
-        tileReplacer.ReplaceAsset(TileID.Containers, Assets.Request<Texture2D>("Sprites/VanillaChests"));
+        tileReplacer.ReplaceAsset(TileID.CopperCoinPile, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/CopperCoin"));
+        tileReplacer.ReplaceAsset(TileID.SilverCoinPile, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/SilverCoin"));
+        tileReplacer.ReplaceAsset(TileID.GoldCoinPile, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/GoldCoin"));
+        tileReplacer.ReplaceAsset(TileID.PlatinumCoinPile, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/PlatinumCoin"));
+        tileReplacer.ReplaceAsset(TileID.Banners, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/VanillaBanners"));
+        tileReplacer.ReplaceAsset(TileID.Containers, Assets.Request<Texture2D>("Assets/Vanilla/Tiles/VanillaChests"));
 
         var projectileReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Projectile);
         assetReplacers.Add(projectileReplacer);
-        projectileReplacer.ReplaceAsset(ProjectileID.MagicDagger, Assets.Request<Texture2D>("Sprites/MagicDagger"));
+        projectileReplacer.ReplaceAsset(ProjectileID.MagicDagger, Assets.Request<Texture2D>("Assets/Vanilla/Items/MagicDagger"));
     }
 }
