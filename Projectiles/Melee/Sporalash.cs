@@ -47,6 +47,7 @@ public class Sporalash : ModProjectile
 
     public override void SetDefaults()
     {
+        Rectangle dims = this.GetDims();
         Projectile.netImportant = true; // This ensures that the projectile is synced when other players join the world.
         Projectile.width = 24; // The width of your projectile
         Projectile.height = 24; // The height of your projectile
@@ -55,6 +56,8 @@ public class Sporalash : ModProjectile
         Projectile.DamageType = DamageClass.Melee; // Deals melee damage
         Projectile.usesLocalNPCImmunity = true; // Used for hit cooldown changes in the ai hook
         Projectile.localNPCHitCooldown = 10; // This facilitates custom hit cooldown logic
+        DrawOffsetX = -(int)((dims.Width / 2) - (Projectile.Size.X / 2));
+        DrawOriginOffsetY = -(int)((dims.Width / 2) - (Projectile.Size.Y / 2));
 
         // Vanilla flails all use aiStyle 15, but the code isn't customizable so an adaption of that aiStyle is used in the AI method
     }
