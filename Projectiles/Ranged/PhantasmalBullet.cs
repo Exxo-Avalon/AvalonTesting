@@ -111,6 +111,7 @@ public class PhantasmalBullet : ModProjectile
     }
     public bool CurveDirectionStart = true;
     public bool CurveDirection;
+    public int maxSpeed = 25;
     public override void AI()
     {
         if (Projectile.alpha > 0)
@@ -130,7 +131,7 @@ public class PhantasmalBullet : ModProjectile
         if (!CurveDirection && !CurveDirectionStart)
         {
             Projectile.ai[0]++;
-            Projectile.velocity = Projectile.velocity.RotatedBy(-0.024f);
+            Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(-0.024f);
             if (Projectile.ai[0] >= 8)
             {
                 CurveDirection = true;
@@ -140,12 +141,16 @@ public class PhantasmalBullet : ModProjectile
         if (CurveDirection && !CurveDirectionStart)
         {
             Projectile.ai[0]++;
-            Projectile.velocity = Projectile.velocity.RotatedBy(0.024f);
+            Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(0.024f);
             if (Projectile.ai[0] >= 8)
             {
                 CurveDirection = false;
                 Projectile.ai[0] = 0;
             }
+        }
+        if (Projectile.velocity.Length() > maxSpeed)
+        {
+            Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
         }
         //var num308 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.FireworksRGB, 0f, 0f, 100, new Color(140, 20, 40), 1f);
         //Main.dust[num308].noGravity = true;
