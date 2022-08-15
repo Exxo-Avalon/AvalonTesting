@@ -39,7 +39,8 @@ public static class Item
         ItemID.RocketIV, ItemID.FrostburnArrow, ItemID.ChlorophyteBullet, ItemID.StyngerBolt,
         ItemID.HighVelocityBullet, ItemID.IchorArrow, ItemID.IchorBullet, ItemID.VenomArrow, ItemID.VenomBullet,
         ItemID.PartyBullet, ItemID.NanoBullet, ItemID.ExplodingBullet, ItemID.GoldenBullet, ItemID.BlueSolution,
-        ItemID.DarkBlueSolution, ItemID.GreenSolution, ItemID.PurpleSolution, ItemID.RedSolution);
+        ItemID.DarkBlueSolution, ItemID.GreenSolution, ItemID.PurpleSolution, ItemID.RedSolution, ItemID.ChlorophyteArrow,
+        ItemID.BoneArrow, ItemID.MoonlordArrow);
 
     public static readonly bool[] StackTo999 = ItemID.Sets.Factory.CreateBoolSet(
         ItemID.Mushroom, ItemID.Torch, ItemID.GoldBar, ItemID.CopperBar, ItemID.SilverBar, ItemID.IronBar,

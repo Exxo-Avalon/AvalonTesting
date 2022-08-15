@@ -1281,7 +1281,7 @@ public class AvalonGlobalNPC : GlobalNPC
         #region shm mob scaling
         if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
-            if (Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
+            if (!Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
             {
                 if (Main.expertMode)
                 {
