@@ -28,10 +28,11 @@ public class PhantasmalBullet : ModProjectile
         Projectile.alpha = 255;
         Projectile.scale = 1.2f;
         Projectile.tileCollide = false;
-        Projectile.timeLeft = 600;
+        Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
+        Projectile.MaxUpdates = 2;
     }
     public override bool PreAI()
     {
@@ -111,7 +112,7 @@ public class PhantasmalBullet : ModProjectile
     }
     public bool CurveDirectionStart = true;
     public bool CurveDirection;
-    public int maxSpeed = 25;
+    public int maxSpeed = 13;
     public override void AI()
     {
         if (Projectile.alpha > 0)
