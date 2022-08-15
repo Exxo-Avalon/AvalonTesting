@@ -3,6 +3,7 @@ using Avalon.Buffs;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -95,8 +96,25 @@ public class AvalonGlobalProjectile : GlobalProjectile
             target.AddBuff(ModContent.BuffType<Untargetable>(), 60 * 5);
         }
     }
+    public override bool PreAI(Projectile projectile)
+    {
+        if (projectile.type == ProjectileID.TerraBeam && projectile.ai[1] == 0)
+        {
+            projectile.ai[1] = -2;
+            return true;
+        }
+        return base.PreAI(projectile);
+    }
     public override void AI(Projectile projectile)
     {
+        if (projectile.type == ProjectileID.TerraBeam)
+        {
+            if (projectile.ai[1] == -2)
+            {
+                projectile.ai[1] = -1;
+                SoundEngine.PlaySound(SoundID.Item8, projectile.position);
+            }
+        }
         Player p = Main.player[projectile.owner];
         if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
         {

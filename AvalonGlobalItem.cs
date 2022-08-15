@@ -779,6 +779,15 @@ public class AvalonGlobalItem : GlobalItem
                     }
                 }
                 break;
+            case ItemID.TempleKey:
+                foreach (TooltipLine tooltip in tooltips)
+                {
+                    if (tooltip.Name == "Tooltip0")
+                    {
+                        tooltip.Text = "Opens the lihzahrd temple door";
+                    }
+                }
+                break;
             case ItemID.PoisonDart:
                 foreach (TooltipLine tooltip in tooltips)
                 {

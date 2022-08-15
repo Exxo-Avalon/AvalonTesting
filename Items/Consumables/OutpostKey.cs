@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Items.Material;
+namespace Avalon.Items.Consumables;
 
 public class OutpostKey : ModItem
 {
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Outpost Key");
-        Tooltip.SetDefault("Opens the Tuhrtl Outpost door");
+        Tooltip.SetDefault("Opens the tuhrtl outpost door");
         SacrificeTotal = 1;
     }
 

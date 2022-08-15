@@ -467,7 +467,7 @@ public class RecipeCreator : ModSystem
 
         
 
-        Recipe.Create(ModContent.ItemType<HellstoneSeed>(), 25)
+        Recipe.Create(ModContent.ItemType<HellstoneDart>(), 25)
             .AddIngredient(ItemID.Seed, 25)
             .AddIngredient(ItemID.HellstoneBar)
             .AddTile(TileID.Hellforge).Register();

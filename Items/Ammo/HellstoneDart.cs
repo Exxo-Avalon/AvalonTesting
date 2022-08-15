@@ -2,9 +2,9 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Items.Placeable.Seed;
+namespace Avalon.Items.Ammo;
 
-class HellstoneSeed : ModItem
+class HellstoneDart : ModItem
 {
     public override void SetStaticDefaults()
     {
@@ -23,7 +23,7 @@ class HellstoneSeed : ModItem
         Item.rare = ItemRarityID.Green;
         Item.width = dims.Width;
         Item.shoot = ModContent.ProjectileType<Projectiles.HellstoneSeed>();
-        Item.maxStack = 999;
+        Item.maxStack = 2000;
         Item.height = dims.Height;
     }
 }
