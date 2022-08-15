@@ -28,7 +28,7 @@ public class SpectralBullet : ModProjectile
         Projectile.scale = 1.2f;
         Projectile.alpha = 255;
         Projectile.tileCollide = false;
-        Projectile.timeLeft = 96;
+        Projectile.timeLeft = 90;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
@@ -112,7 +112,7 @@ public class SpectralBullet : ModProjectile
     }
     public bool CurveDirectionStart = true;
     public bool CurveDirection;
-    public int maxSpeed = 10;
+    public int maxSpeed = 11;
     public override void AI()
     {
         if (Projectile.alpha > 0)

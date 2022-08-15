@@ -112,7 +112,7 @@ public class PhantasmalBullet : ModProjectile
     }
     public bool CurveDirectionStart = true;
     public bool CurveDirection;
-    public int maxSpeed = 13;
+    public int maxSpeed = 15;
     public override void AI()
     {
         if (Projectile.alpha > 0)
