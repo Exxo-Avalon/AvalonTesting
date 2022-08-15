@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -19,7 +19,11 @@ class BismuthWatch : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BismuthBar>(), 10).AddIngredient(ItemID.Chain).AddTile(TileID.WorkBenches).AddTile(TileID.Chairs).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BismuthBar>(), 10)
+            .AddIngredient(ItemID.Chain)
+            .AddTile(TileID.Tables)
+            .AddTile(TileID.Chairs).Register();
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

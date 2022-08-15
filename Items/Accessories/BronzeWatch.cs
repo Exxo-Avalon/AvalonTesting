@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,7 +24,12 @@ class BronzeWatch : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 10).AddIngredient(ItemID.Chain).AddTile(TileID.WorkBenches).AddTile(TileID.Chairs).Register();
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BronzeBar>(), 10)
+            .AddIngredient(ItemID.Chain)
+            .AddTile(TileID.Tables)
+            .AddTile(TileID.Chairs)
+            .Register();
     }
     public override void UpdateInventory(Player player)
     {

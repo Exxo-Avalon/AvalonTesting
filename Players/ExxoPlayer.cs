@@ -438,6 +438,8 @@ public class ExxoPlayer : ModPlayer
         if (item.type == ItemID.TerraBlade)
         {
             damage = (int)((int)(Player.GetDamage(DamageClass.Melee).ApplyTo(item.damage)) * 1.25f);
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Player.whoAmI);
+            return false;
         }
         #endregion
         return base.Shoot(item, source, position, velocity, type, damage, knockback);
