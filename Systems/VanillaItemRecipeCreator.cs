@@ -223,5 +223,10 @@ public class VanillaItemRecipeCreator : ModSystem
             .AddIngredient(ItemID.FieryGreatsword)
             .AddTile(TileID.DemonAltar)
             .Register();
+
+        Recipe.Create(ItemID.PoisonedKnife, 50)
+            .AddIngredient(ItemID.ThrowingKnife, 50)
+            .AddIngredient(ModContent.ItemType<VirulentPowder>())
+            .Register();
     }
 }
