@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using Avalon.Players;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,7 +28,7 @@ class BlahsGreaves : ModItem
 
     public override void UpdateEquip(Player player)
     {
-        player.Avalon().oblivionKill = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().OblivionKill = true;
         player.Avalon().splitProj = true;
         player.Avalon().teleportV = true;
     }

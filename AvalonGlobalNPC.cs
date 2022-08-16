@@ -1987,7 +1987,18 @@ public class AvalonGlobalNPC : GlobalNPC
         //        ModContent.ItemType<ContagionToken>(), 75));
         //}
     }
-
+    public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+    {
+        if (!npc.boss && Main.rand.NextBool(35) &&
+            player.GetModPlayer<ExxoEquipEffectPlayer>().OblivionKill &&
+            !Data.Sets.NPC.VanillaNoOneHitKill.Contains(npc.type))
+        {
+            Utils.PoofOfSmoke(npc.position);
+            npc.life = 0;
+            npc.NPCLoot();
+            npc.checkDead();
+        }
+    }
     public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
     {
         if (npc.type is NPCID.BloodJelly or NPCID.Unicorn or NPCID.DarkMummy or NPCID.LightMummy && Main.rand.NextBool(9))

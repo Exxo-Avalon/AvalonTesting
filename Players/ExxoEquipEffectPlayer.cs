@@ -82,12 +82,17 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool AncientSandVortex;
 
     public bool BlahArmor;
+    public bool DoubleDamage;
+
+    public bool OblivionKill;
 
     public bool GoBerserk;
     public bool FrenzyStance;
     public bool FrenzyStanceActive;
     public bool CaesiumBoost;
     public bool CaesiumBoostActive;
+    public bool AvalonRetribution;
+    public bool AvalonRestoration;
     #endregion armor
     public override void ResetEffects()
     {
@@ -145,6 +150,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
         AncientSandVortex = false;
         FrenzyStance = false;
         CaesiumBoost = false;
+        OblivionKill = false;
+        DoubleDamage = false;
+        AvalonRetribution = false;
+        AvalonRestoration = false;
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
@@ -221,6 +230,13 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitPvp(Item item, Player target, int damage, bool crit)
     {
+        if (crit)
+        {
+            if (AvalonRestoration)
+            {
+                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
+            }
+        }
         if (FrostGauntlet && item.DamageType == DamageClass.Melee)
         {
             target.AddBuff(BuffID.Frostburn, 60 * 4);
@@ -249,6 +265,13 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
     {
+        if (crit)
+        {
+            if (AvalonRestoration)
+            {
+                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
+            }
+        }
         if (FrostGauntlet && proj.DamageType == DamageClass.Melee)
         {
             target.AddBuff(BuffID.Frostburn, 60 * 4);
@@ -286,6 +309,14 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Player.AddBuff(ModContent.BuffType<BacteriaEndurance>(), 6 * 60);
             npc.AddBuff(ModContent.BuffType<BacteriaInfection>(), 6 * 60);
         }
+        if (DoubleDamage && !Player.immune && !npc.dontTakeDamage)
+        {
+            npc.StrikeNPC(npc.damage * 2, 2f, 1);
+        }
+        if (AvalonRetribution && damage > 0)
+        {
+            npc.AddBuff(ModContent.BuffType<CurseofAvalon>(), 100);
+        }
         if (AuraThorns && !Player.immune && !npc.dontTakeDamage)
         {
             int x = (int)Player.position.X;
@@ -313,6 +344,13 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
+        if (crit)
+        {
+            if (AvalonRestoration)
+            {
+                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
+            }
+        }
         if (VampireTeeth && item.DamageType == DamageClass.Melee)
         {
             if (target.boss)
@@ -366,6 +404,13 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
     {
+        if (crit)
+        {
+            if (AvalonRestoration)
+            {
+                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
+            }
+        }
         if (target.life <= 0 && AncientGunslinger && proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
         {
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,

@@ -496,11 +496,6 @@ public class ExxoPlayer : ModPlayer
             {
                 reckoningLevel++;
             }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
-            }
         }
     }
 
@@ -543,11 +538,6 @@ public class ExxoPlayer : ModPlayer
             {
                 reckoningLevel++;
             }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
-            }
         }
     }
 
@@ -559,13 +549,8 @@ public class ExxoPlayer : ModPlayer
             {
                 if (Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
                 {
-                    reckoningLevel += 1;
+                    reckoningLevel++;
                 }
-            }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
             }
         }
     }
@@ -588,11 +573,6 @@ public class ExxoPlayer : ModPlayer
                 {
                     reckoningLevel += 1;
                 }
-            }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
             }
         }
     }
@@ -631,18 +611,6 @@ public class ExxoPlayer : ModPlayer
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), proj);
                 }
             }
-        }
-
-
-
-        if (doubleDamage && !Player.immune && !npc.dontTakeDamage)
-        {
-            npc.StrikeNPC(npc.damage * 2, 2f, 1);
-        }
-
-        if (avalonRetribution && damage > 0)
-        {
-            npc.AddBuff(ModContent.BuffType<CurseofAvalon>(), 100);
         }
     }
 

@@ -1,3 +1,4 @@
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -36,7 +37,7 @@ class BerserkerHeadpiece : ModItem
     public override void UpdateArmorSet(Player player)
     {
         player.setBonus = "Melee weapons have a chance to instantly kill your enemies";
-        player.Avalon().oblivionKill = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().OblivionKill = true;
         player.armorEffectDrawOutlines = true;
         player.meleeScaleGlove = true;
     }
