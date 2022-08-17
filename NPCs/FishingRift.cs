@@ -12,7 +12,7 @@ public class FishingRift : ModNPC
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Fishing Rift"); //make it not have text when hovering cursor
+        DisplayName.SetDefault(" ");
         Main.npcFrameCount[NPC.type] = 1;
     }
 
