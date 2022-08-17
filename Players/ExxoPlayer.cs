@@ -1022,6 +1022,32 @@ public class ExxoPlayer : ModPlayer
                 }
             }
         }*/
+        if (Player.ZoneCrimson || Player.ZoneCorrupt || Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
+        {
+            if (Main.rand.Next(15) == 0 && riftGoggles) //Make it not possible for multiple to spawn nearby each other
+            {
+                Vector2 pposTile2 = Player.position + new Vector2(Main.rand.Next(-30 * 16, 21 * 16), Main.rand.Next(-30 * 16, 21 * 16));
+                Point pt = pposTile2.ToTileCoordinates();
+                //can spawn underwater if there's an overhang, needs to be fixed
+                if (Main.tile[pt.X, pt.Y].LiquidType == LiquidID.Water && Main.tile[pt.X, pt.Y].LiquidAmount > 100 && Main.tile[pt.X, pt.Y - 3].LiquidAmount == 0 && Main.tile[pt.X, pt.Y - 2].LiquidAmount > 1)
+                {
+                    int proj = NPC.NewNPC(Player.GetSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.FishingRift>(), 0);
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, proj);
+                    }
+
+                    for (int i = 0; i < 20; i++)
+                    {
+                        int num893 = Dust.NewDust(Main.npc[proj].position, Main.npc[proj].width, Main.npc[proj].height, DustID.Enchanted_Pink, 0f, 0f, 0, default, 1f);
+                        Main.dust[num893].velocity *= 2f;
+                        Main.dust[num893].scale = 0.9f;
+                        Main.dust[num893].noGravity = true;
+                        Main.dust[num893].fadeIn = 3f;
+                    }
+                }
+            }
+        }
         #endregion rift goggles
 
         if (Player.tongued)
