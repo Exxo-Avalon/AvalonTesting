@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Avalon.Items.Placeable.Tile;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -28,7 +28,7 @@ class RiftGoggles : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().riftGoggles = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().RiftGoggles = true;
     }
 
     public override void AddRecipes()

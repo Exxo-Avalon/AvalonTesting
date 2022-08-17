@@ -1,9 +1,10 @@
-﻿using Avalon.Systems;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using AltLibrary.Common.Systems;
 
 namespace Avalon.NPCs;
 
@@ -45,9 +46,9 @@ public class Rift : ModNPC
             if (NPC.ai[0] % 60 == 0)
             {
                 Player p = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)];
-                if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Corruption)
+                if (WorldBiomeManager.IsCorruption)
                 {
-                    if (Main.rand.Next(2) == 0) // crimson mobs
+                    if (Main.rand.NextBool(2)) // crimson mobs
                     {
                         if (Main.hardMode)
                         {
@@ -98,9 +99,9 @@ public class Rift : ModNPC
                         }
                     }
                 }
-                else if (ModContent.GetInstance<ExxoWorldGen>().WorldEvil == ExxoWorldGen.EvilBiome.Contagion) // contagion world
+                else if (WorldBiomeManager.WorldEvil == "Avalon/ContagionAlternateBiome") // contagion world
                 {
-                    if (Main.rand.Next(2) == 0) // crimson mobs
+                    if (Main.rand.NextBool(2)) // crimson mobs
                     {
                         if (Main.hardMode)
                         {
@@ -155,7 +156,7 @@ public class Rift : ModNPC
                 }
                 else if (WorldGen.crimson) // crimson
                 {
-                    if (Main.rand.Next(2) == 0) // corruption mobs
+                    if (Main.rand.NextBool(2)) // corruption mobs
                     {
                         if (Main.hardMode)
                         {
