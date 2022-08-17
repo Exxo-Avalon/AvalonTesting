@@ -32,15 +32,10 @@ public class FishingRift : ModNPC
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath39;
     }
-    public static bool BobberCollision(NPC n1, Projectile n2)
+    public override bool PreAI()
     {
-        Rectangle rectangle = new Rectangle((int)n1.position.X, (int)n1.position.Y, n1.width, n1.height);
-        Rectangle value = new Rectangle((int)n2.position.X, (int)n2.position.Y, n2.width, n2.height);
-        if (rectangle.Intersects(value))
-        {
-            return true;
-        }
-        return false;
+        Lighting.AddLight(NPC.position, 100 / 255f, 67 / 255f, 100 / 255f);
+        return true;
     }
 
     public override void AI() //Needs to despawn after x amount of time
