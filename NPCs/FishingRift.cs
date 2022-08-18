@@ -18,7 +18,8 @@ public class FishingRift : ModNPC
 
     public override void SetDefaults()
     {
-        NPC.width = NPC.height = 70;
+        NPC.width = 60;
+        NPC.height = 42;
         NPC.noTileCollide = NPC.noGravity = true;
         NPC.npcSlots = 0f;
         NPC.damage = 0;
@@ -47,7 +48,7 @@ public class FishingRift : ModNPC
             {
                 continue;
             }
-            if (projectile.Hitbox.Intersects(NPC.Hitbox))
+            if (projectile.Hitbox.Intersects(NPC.Hitbox)) //If colliding with the hitbox, the bobber should be gradually pulled towards the centre of the rift
             {
                 Player p = Main.player[Player.FindClosest(NPC.position, NPC.width, NPC.height)];
                 //This whole section needs to somehow be done in a different way so that the biome isn't actually being changed, no clue how

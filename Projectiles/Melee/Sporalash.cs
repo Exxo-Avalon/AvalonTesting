@@ -38,7 +38,7 @@ public class Sporalash : ModProjectile
 
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Heaven's Tear");
+        DisplayName.SetDefault("Sporalash");
 
         // These lines facilitate the trail drawing
         ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
