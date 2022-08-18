@@ -24,7 +24,6 @@ class TritanoriumBroadsword : ModItem
         Item.height = 42;
         Item.damage = 110;
         Item.autoReuse = true;
-        Item.useTurn = true;
         Item.scale = 1.2f;
         Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.useTime = 16;
