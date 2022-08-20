@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.Accessories;
 
-class UndeadTalisman : ModItem
+class SoullessLocket : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Undead Talisman");
+        DisplayName.SetDefault("Soulless Locket");
         Tooltip.SetDefault("Provides 20 defense against undead monsters");
         SacrificeTotal = 1;
     }
@@ -26,6 +26,6 @@ class UndeadTalisman : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().undeadTalisman = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().UndeadImmune = true;
     }
 }

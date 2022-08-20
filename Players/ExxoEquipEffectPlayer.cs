@@ -11,6 +11,7 @@ using Avalon.Projectiles;
 using Avalon.Tiles.Ores;
 using Terraria.Localization;
 using Avalon.Systems;
+using Avalon.Items.Accessories;
 
 namespace Avalon.Players;
 public class ExxoEquipEffectPlayer : ModPlayer
@@ -59,6 +60,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool Dimlight;
     public bool PocketBench;
     public bool RiftGoggles;
+    public bool UndeadImmune;
+    public bool LightningInABottle;
     #endregion accessories
 
     #region extras
@@ -94,6 +97,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool CaesiumBoostActive;
     public bool AvalonRetribution;
     public bool AvalonRestoration;
+    public bool LeafStorm;
     #endregion armor
     public override void ResetEffects()
     {
@@ -139,6 +143,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
         Dimlight = false;
         PocketBench = false;
         RiftGoggles = false;
+        UndeadImmune = false;
+        LightningInABottle = false;
 
         // armor
         HyperMagic = false;
@@ -156,6 +162,27 @@ public class ExxoEquipEffectPlayer : ModPlayer
         DoubleDamage = false;
         AvalonRetribution = false;
         AvalonRestoration = false;
+        LeafStorm = false;
+    }
+    public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+    {
+        if (UndeadImmune)
+        {
+            int dmgPlaceholder = npc.damage;
+            if (Data.Sets.NPC.Undead[npc.type])
+            {
+                if (damage - ((Player.statDefense / 2) - 10) <= 0)
+                {
+                    damage = 0;
+                    //Player.immune = true;
+                    //Player.immuneAlpha = 0;
+                }
+                else
+                {
+                    damage = dmgPlaceholder - ((Player.statDefense / 2) - 10);
+                }
+            }
+        }
     }
     public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
     {
@@ -845,7 +872,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         // fishing
         if (Player.ZoneCrimson || Player.ZoneCorrupt || Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
         {
-            if (Main.rand.NextBool(15) && RiftGoggles) //Make it not possible for multiple to spawn nearby each other
+            if (Main.rand.NextBool(15) && RiftGoggles)
             {
                 Vector2 pposTile2 = Player.position + new Vector2(Main.rand.Next(-30 * 16, 21 * 16), Main.rand.Next(-30 * 16, 21 * 16));
                 Point pt = pposTile2.ToTileCoordinates();
@@ -917,6 +944,77 @@ public class ExxoEquipEffectPlayer : ModPlayer
             if (damage > 50)
             {
                 Player.AddBuff(ModContent.BuffType<Berserk>(), 180);
+            }
+        }
+
+        if (LeafStorm)
+        {
+            if (damage > 0 && Main.rand.NextBool(5))
+            {
+                var pos = new Vector2(Player.Center.X + Main.rand.Next(-500, 501), Player.Center.Y);
+                while (Main.tile[(int)(pos.X / 16), (int)(pos.Y / 16)].HasTile)
+                {
+                    pos.Y--;
+                }
+
+                Projectile.NewProjectile(Player.GetSource_FromThis(), pos, Vector2.Zero,
+                    ModContent.ProjectileType<LeafStorm>(), 80, 0.6f, Main.myPlayer);
+            }
+        }
+        if (damage > 0)
+        {
+            if (LightningInABottle)
+            {
+                var cloudPosition = new Vector2(Player.Center.X + 0f, Player.Center.Y - 150f);
+                var targetPosition = new Vector2(Player.Center.X /* + (-20f * hitDirection)*/, Player.Center.Y);
+                var targetPosition2 = new Vector2(Player.Center.X + Main.rand.Next(-40, -20), Player.Center.Y);
+                var targetPosition3 = new Vector2(Player.Center.X + Main.rand.Next(-40, -20), Player.Center.Y);
+                if (Main.rand.Next(2) == 0)
+                {
+                    targetPosition2 = new Vector2(Player.Center.X + Main.rand.Next(20, 40), Player.Center.Y);
+                }
+
+                if (Main.rand.Next(2) == 0)
+                {
+                    targetPosition3 = new Vector2(Player.Center.X + Main.rand.Next(20, 40), Player.Center.Y);
+                }
+
+                Projectile.NewProjectile(
+                    Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
+                    Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, Player.whoAmI);
+
+                for (int i = 0; i < 1; i++)
+                {
+                    Vector2 vectorBetween = targetPosition - cloudPosition;
+                    float randomSeed = Main.rand.Next(100);
+                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
+                    Projectile.NewProjectile(
+                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
+                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
+                        vectorBetween.ToRotation(), randomSeed);
+                }
+
+                for (int i = 0; i < 1; i++)
+                {
+                    Vector2 vectorBetween = targetPosition2 - cloudPosition;
+                    float randomSeed = Main.rand.Next(100);
+                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
+                    Projectile.NewProjectile(
+                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
+                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
+                        vectorBetween.ToRotation(), randomSeed);
+                }
+
+                for (int i = 0; i < 1; i++)
+                {
+                    Vector2 vectorBetween = targetPosition3 - cloudPosition;
+                    float randomSeed = Main.rand.Next(100);
+                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
+                    Projectile.NewProjectile(
+                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
+                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
+                        vectorBetween.ToRotation(), randomSeed);
+                }
             }
         }
     }

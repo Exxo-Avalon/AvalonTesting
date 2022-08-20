@@ -1896,7 +1896,7 @@ public class AvalonGlobalNPC : GlobalNPC
 
         if (Data.Sets.NPC.Undead[npc.type])
         {
-            ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<UndeadTalisman>(), 550);
+            ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<SoullessLocket>(), 550);
         }
 
         if (npc.lifeMax >= 100)
