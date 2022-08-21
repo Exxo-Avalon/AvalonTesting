@@ -1087,7 +1087,14 @@ public class AvalonGlobalItem : GlobalItem
 
         return base.CanUseItem(item, player);
     }
-
+    public override bool AllowPrefix(Item item, int pre)
+    {
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome)
+        {
+            return false;
+        }
+        return base.AllowPrefix(item, pre);
+    }
     public override int ChoosePrefix(Item item, UnifiedRandom rand) => item.IsArmor()
         ? Main.rand.Next(ExxoPrefix.ExxoCategoryPrefixes[ExxoPrefixCategory.Armor]).Type
         : base.ChoosePrefix(item, rand);

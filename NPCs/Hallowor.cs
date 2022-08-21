@@ -50,7 +50,7 @@ public class Hallowor : ModNPC
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheHallow,
-            new FlavorTextBestiaryInfoElement("A guardian of light, this being shoots spit that purifies the world.")
+            new FlavorTextBestiaryInfoElement("A guardian of light, this being spits a substance that purifies the world.")
         });
     }
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -71,12 +71,17 @@ public class Hallowor : ModNPC
     {
         if (NPC.ai[3] == 0)
         {
-            int amt = Main.rand.Next(2, 4);
-            for (int i = 0; i < amt; i++)
-            {
-                int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
-                Main.npc[n].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
-            }
+            int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
+            Main.npc[n].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.X -= 0.5f;
+
+            int n2 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
+            Main.npc[n2].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.Y -= 0.5f;
+
+            int n3 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
+            Main.npc[n3].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.X += 0.5f;
             NPC.ai[3] = 1;
         }
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)

@@ -30,6 +30,7 @@ public class FishingRift : ModNPC
         NPC.value = 0;
         NPC.knockBackResist = 0f;
         NPC.scale = 1f;
+        NPC.timeLeft = 7200;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath39;
     }
