@@ -28,7 +28,7 @@ class CloakofAssists : ModItem
     {
         player.honeyCombItem = Item;
         player.starCloakItem = Item;
-        player.panic = player.Avalon().LightningInABottle = true;
+        player.panic = player.GetModPlayer<Players.ExxoEquipEffectPlayer>().LightningInABottle = true;
     }
     public override void AddRecipes()
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,12 +26,12 @@ class ImmunityCharm : ModItem
 
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<StickyCharm>()).AddIngredient(ModContent.ItemType<UndeadTalisman>()).AddIngredient(ModContent.ItemType<DragonStone>()).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<NobleSlimeBand>()).AddIngredient(ModContent.ItemType<SoullessLocket>()).AddIngredient(ModContent.ItemType<DragonStone>()).AddTile(TileID.TinkerersWorkbench).Register();
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().undeadTalisman = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().UndeadImmune = true;
         player.endurance += 0.1f;
         player.noFallDmg = true;
         player.npcTypeNoAggro[1] = true;

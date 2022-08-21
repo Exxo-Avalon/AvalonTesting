@@ -53,6 +53,6 @@ internal class AvalonHelmet : ModItem
         player.GetDamage(DamageClass.Generic) += 0.32f;
         player.manaCost -= 0.20f;
         player.statManaMax2 += 280;
-        player.Avalon().leafStorm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().LeafStorm = true;
     }
 }
