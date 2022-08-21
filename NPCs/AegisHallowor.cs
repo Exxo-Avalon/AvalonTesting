@@ -27,8 +27,8 @@ public class AegisHallowor : ModNPC
     public override void SetDefaults()
     {
         NPC.npcSlots = 1;
-        NPC.width = 70;
-        NPC.height = 100;
+        NPC.width = 50;
+        NPC.height = 50;
         NPC.aiStyle = -1;
         NPC.timeLeft = 1750;
         AnimationType = 75;
@@ -69,6 +69,22 @@ public class AegisHallowor : ModNPC
 
     public override void AI()
     {
+        if (NPC.ai[3] == 0)
+        {
+            int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<Hallowor>());
+            Main.npc[n].AddBuff(ModContent.BuffType<PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.X -= 0.5f;
+
+            int n2 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<Hallowor>());
+            Main.npc[n2].AddBuff(ModContent.BuffType<PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.Y -= 0.5f;
+
+            int n3 = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, ModContent.NPCType<Hallowor>());
+            Main.npc[n3].AddBuff(ModContent.BuffType<PixieHalloworBuff>(), 60 * 15);
+            Main.npc[n].velocity.X += 0.5f;
+            NPC.ai[3] = 1;
+        }
+
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)
         {
             NPC.TargetClosest();
