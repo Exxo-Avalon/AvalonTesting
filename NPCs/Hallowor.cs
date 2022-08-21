@@ -77,6 +77,7 @@ public class Hallowor : ModNPC
                 int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
                 Main.npc[n].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
             }
+            NPC.ai[3] = 1;
         }
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)
         {
