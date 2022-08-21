@@ -44,6 +44,7 @@ public class AvalonGlobalNPC : GlobalNPC
     private const int UncommonChance = 50;
     private const int VeryRareChance = 1000;
 
+    public static int PhantasmBoss = -1;
     public static int BoogerBoss { get; set; }
     public static float EndoSpawnRate { get; set; } = 0.25f;
     public static bool SavedIceman { get; set; }
