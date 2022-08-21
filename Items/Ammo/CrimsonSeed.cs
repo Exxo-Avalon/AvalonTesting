@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Items.Placeable.Seed;
+namespace Avalon.Items.Ammo;
 
 class CrimsonSeed : ModItem
 {
@@ -23,7 +23,7 @@ class CrimsonSeed : ModItem
         Item.rare = ItemRarityID.Blue;
         Item.width = dims.Width;
         Item.shoot = ModContent.ProjectileType<Projectiles.CrimsonSeed>();
-        Item.maxStack = 999;
+        Item.maxStack = 2000;
         Item.height = dims.Height;
     }
 }

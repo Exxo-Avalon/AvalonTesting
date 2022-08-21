@@ -23,7 +23,6 @@ class TrueAeonsEternity : ModItem
         Item.damage = 63;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
-        Item.useTurn = true;
         Item.scale = 1.1f;
         Item.shootSpeed = 11f;
         Item.rare = ItemRarityID.Yellow;

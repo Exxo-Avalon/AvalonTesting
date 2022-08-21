@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -30,6 +30,6 @@ class AvalonCuisses : ModItem
     {
         player.moveSpeed += 0.15f;
         player.GetAttackSpeed(DamageClass.Melee) += 0.10f;
-        player.Avalon().LightningInABottle = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().LightningInABottle = true;
     }
 }

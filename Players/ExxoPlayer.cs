@@ -71,7 +71,6 @@ public class ExxoPlayer : ModPlayer
         crystalEdge = false;
         tpStam = true;
         riftGoggles = false;
-        undeadTalisman = false;
         noSticky = false;
         lucky = false;
         enemySpawns2 = false;
@@ -83,7 +82,6 @@ public class ExxoPlayer : ModPlayer
         defDebuff = false;
         defDebuffBonusDef = 0;
         frozen = false;
-        LightningInABottle = false;
         reckoning = false;
 
 
@@ -93,7 +91,6 @@ public class ExxoPlayer : ModPlayer
         spectrumSpeed = false;
         spectrumBlur = false;
         minionFreeze = false;
-        leafStorm = false;
         thornMagic = false;
         roseMagic = false;
         avalonRestoration = false;
@@ -104,7 +101,6 @@ public class ExxoPlayer : ModPlayer
         gastroMinion = false;
         reflectorMinion = false;
         iceGolem = false;
-        caesiumPoison = false;
         UltraHMinion = false;
         UltraRMinion = false;
         UltraLMinion = false;
@@ -434,6 +430,14 @@ public class ExxoPlayer : ModPlayer
             }
         }
         #endregion
+        #region terra blade nerf
+        if (item.type == ItemID.TerraBlade)
+        {
+            damage = (int)((int)(Player.GetDamage(DamageClass.Melee).ApplyTo(item.damage)) * 1.25f);
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Player.whoAmI);
+            return false;
+        }
+        #endregion
         return base.Shoot(item, source, position, velocity, type, damage, knockback);
     }
 
@@ -488,11 +492,6 @@ public class ExxoPlayer : ModPlayer
             {
                 reckoningLevel++;
             }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
-            }
         }
     }
 
@@ -535,11 +534,6 @@ public class ExxoPlayer : ModPlayer
             {
                 reckoningLevel++;
             }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
-            }
         }
     }
 
@@ -551,13 +545,8 @@ public class ExxoPlayer : ModPlayer
             {
                 if (Player.whoAmI == Main.myPlayer && reckoningTimeLeft > 0 && reckoningLevel < 10)
                 {
-                    reckoningLevel += 1;
+                    reckoningLevel++;
                 }
-            }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
             }
         }
     }
@@ -580,11 +569,6 @@ public class ExxoPlayer : ModPlayer
                 {
                     reckoningLevel += 1;
                 }
-            }
-
-            if (avalonRestoration)
-            {
-                Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
             }
         }
     }
@@ -623,18 +607,6 @@ public class ExxoPlayer : ModPlayer
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, NetworkText.FromLiteral(""), proj);
                 }
             }
-        }
-
-
-
-        if (doubleDamage && !Player.immune && !npc.dontTakeDamage)
-        {
-            npc.StrikeNPC(npc.damage * 2, 2f, 1);
-        }
-
-        if (avalonRetribution && damage > 0)
-        {
-            npc.AddBuff(ModContent.BuffType<CurseofAvalon>(), 100);
         }
     }
 
@@ -997,56 +969,6 @@ public class ExxoPlayer : ModPlayer
         {
             Player.GetArmorPenetration(DamageClass.Generic) += 10;
         }
-
-        #region rift goggles
-        /*if (Player.ZoneCrimson || Player.ZoneCorrupt || Player.GetModPlayer<ExxoBiomePlayer>().ZoneContagion)
-        {
-            if (Main.rand.Next(3000) == 0 && riftGoggles)
-            {
-                Vector2 pposTile2 = Player.position + new Vector2(Main.rand.Next(-20 * 16, 21 * 16), Main.rand.Next(-20 * 16, 21 * 16));
-                Point pt = pposTile2.ToTileCoordinates();
-                if (!Main.tile[pt.X, pt.Y].HasTile)
-                {
-                    int proj = NPC.NewNPC(Player.GetSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), 0);
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, proj);
-                    }
-
-                    for (int i = 0; i < 20; i++)
-                    {
-                        int num893 = Dust.NewDust(Main.npc[proj].position, Main.npc[proj].width, Main.npc[proj].height, DustID.Enchanted_Pink, 0f, 0f, 0, default, 1f);
-                        Main.dust[num893].velocity *= 2f;
-                        Main.dust[num893].scale = 0.9f;
-                        Main.dust[num893].noGravity = true;
-                        Main.dust[num893].fadeIn = 3f;
-                    }
-                }
-            }
-        }
-        if (riftGoggles && Main.rand.Next(5000) == 0)
-        {
-            if (Player.ZoneRockLayerHeight)
-            {
-                Vector2 pposTile2 = Player.position + new Vector2(Main.rand.Next(-35 * 16, 35 * 16), Main.rand.Next(-35 * 16, 35 * 16));
-                Point pt = pposTile2.ToTileCoordinates();
-                int proj = NPC.NewNPC(Player.GetSource_TileInteraction(pt.X, pt.Y), pt.X * 16, pt.Y * 16, ModContent.NPCType<NPCs.Rift>(), ai1: 1);
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, proj);
-                }
-
-                for (int i = 0; i < 20; i++)
-                {
-                    int num893 = Dust.NewDust(Main.npc[proj].position, Main.npc[proj].width, Main.npc[proj].height, DustID.Enchanted_Pink, 0f, 0f, 0, default, 1f);
-                    Main.dust[num893].velocity *= 2f;
-                    Main.dust[num893].scale = 0.9f;
-                    Main.dust[num893].noGravity = true;
-                    Main.dust[num893].fadeIn = 3f;
-                }
-            }
-        }*/
-        #endregion rift goggles
 
         if (Player.tongued)
         {
@@ -1791,85 +1713,7 @@ public class ExxoPlayer : ModPlayer
 
     public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
     {
-        if (damage > 0)
-        {
-            if (LightningInABottle)
-            {
-                var cloudPosition = new Vector2(Player.Center.X + 0f, Player.Center.Y - 150f);
-                var targetPosition = new Vector2(Player.Center.X /* + (-20f * hitDirection)*/, Player.Center.Y);
-                var targetPosition2 = new Vector2(Player.Center.X + Main.rand.Next(-40, -20), Player.Center.Y);
-                var targetPosition3 = new Vector2(Player.Center.X + Main.rand.Next(-40, -20), Player.Center.Y);
-                if (Main.rand.Next(2) == 0)
-                {
-                    targetPosition2 = new Vector2(Player.Center.X + Main.rand.Next(20, 40), Player.Center.Y);
-                }
-
-                if (Main.rand.Next(2) == 0)
-                {
-                    targetPosition3 = new Vector2(Player.Center.X + Main.rand.Next(20, 40), Player.Center.Y);
-                }
-
-                Projectile.NewProjectile(
-                    Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
-                    Vector2.Zero, ModContent.ProjectileType<LightningCloud>(), 0, 0f, Player.whoAmI);
-
-                for (int i = 0; i < 1; i++)
-                {
-                    Vector2 vectorBetween = targetPosition - cloudPosition;
-                    float randomSeed = Main.rand.Next(100);
-                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(
-                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
-                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
-                        vectorBetween.ToRotation(), randomSeed);
-                }
-
-                for (int i = 0; i < 1; i++)
-                {
-                    Vector2 vectorBetween = targetPosition2 - cloudPosition;
-                    float randomSeed = Main.rand.Next(100);
-                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(
-                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
-                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
-                        vectorBetween.ToRotation(), randomSeed);
-                }
-
-                for (int i = 0; i < 1; i++)
-                {
-                    Vector2 vectorBetween = targetPosition3 - cloudPosition;
-                    float randomSeed = Main.rand.Next(100);
-                    Vector2 startVelocity = Vector2.Normalize(vectorBetween.RotatedByRandom(0.78539818525314331)) * 27f;
-                    Projectile.NewProjectile(
-                        Player.GetSource_Accessory(new Item(ModContent.ItemType<LightninginaBottle>())), cloudPosition,
-                        startVelocity, ModContent.ProjectileType<Lightning>(), 47, 0f, Main.myPlayer,
-                        vectorBetween.ToRotation(), randomSeed);
-                }
-            }
-
-            if (goBerserk)
-            {
-                if (damage > 50)
-                {
-                    Player.AddBuff(ModContent.BuffType<Berserk>(), 180);
-                }
-            }
-
-            if (leafStorm)
-            {
-                if (damage > 0 && Main.rand.Next(5) == 0)
-                {
-                    var pos = new Vector2(Player.Center.X + Main.rand.Next(-500, 501), Player.Center.Y);
-                    while (Main.tile[(int)(pos.X / 16), (int)(pos.Y / 16)].HasTile)
-                    {
-                        pos.Y--;
-                    }
-
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), pos, Vector2.Zero,
-                        ModContent.ProjectileType<LeafStorm>(), 80, 0.6f, Main.myPlayer);
-                }
-            }
-        }
+        
     }
 
     public override void UpdateDead() => jumpAgainQuack = false;
@@ -1889,45 +1733,6 @@ public class ExxoPlayer : ModPlayer
             itemDrop = ModContent.ItemType<NauSeaFish>();
         }
         #endregion Contagion Fish
-    }
-
-    public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
-    {
-        if (undeadTalisman)
-        {
-            int dmgPlaceholder = npc.damage;
-            if (Data.Sets.NPC.Undead[npc.type])
-            {
-                if (damage - ((Player.statDefense / 2) - 10) <= 0)
-                {
-                    damage = 0;
-                    Player.immune = true;
-                    Player.immuneAlpha = 0;
-                }
-                else
-                {
-                    damage = dmgPlaceholder - ((Player.statDefense / 2) - 10);
-                }
-            }
-        }
-
-        if (Player.HasBuff(ModContent.BuffType<ShadowCurse>()))
-        {
-            damage *= 2;
-        }
-
-        if (caesiumPoison)
-        {
-            damage = (int)(damage * 1.15f);
-        }
-    }
-
-    public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
-    {
-        if (Player.HasBuff(ModContent.BuffType<ShadowCurse>()))
-        {
-            damage *= 2;
-        }
     }
 
     public void WOSTongue()
@@ -2334,7 +2139,6 @@ public class ExxoPlayer : ModPlayer
     public bool spectrumSpeed;
     public bool spectrumBlur;
     public bool minionFreeze;
-    public bool leafStorm;
     public bool thornMagic;
     public bool roseMagic;
     public int roseMagicCooldown;
@@ -2351,7 +2155,6 @@ public class ExxoPlayer : ModPlayer
     public bool meleeStealth;
 
     public bool ammoCost70;
-    public bool LightningInABottle;
     public bool longInvince2;
     public float kbIncrease;
     public bool accDivingSuit;
@@ -2370,11 +2173,9 @@ public class ExxoPlayer : ModPlayer
     public bool ReckoningBonus;
     public int reckoningHit;
     public bool curseOfIcarus;
-    public bool undeadTalisman;
     public bool noSticky;
     public bool riftGoggles;
     public bool malaria;
-    public bool caesiumPoison;
     public int caesiumTimer;
     public bool cloudGloves;
     public bool crystalEdge;

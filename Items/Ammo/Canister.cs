@@ -15,7 +15,7 @@ public class Canister : ModItem
         Item.DamageType = DamageClass.Ranged;
         Item.width = 14;
         Item.height = 18;
-        Item.maxStack = 999;
+        Item.maxStack = 2000;
         Item.consumable = true;
         Item.value = 10;
         Item.rare = ItemRarityID.Red;

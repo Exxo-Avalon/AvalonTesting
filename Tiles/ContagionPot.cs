@@ -1,4 +1,4 @@
-﻿using Avalon.Systems;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria;
@@ -218,11 +218,11 @@ public class ContagionPot : ModTile
                         {
                             if (WorldGen.silverBar == ItemID.TungstenBar)
                             {
-                                type2 = ModContent.ItemType<Items.Ammo.TungstenBullet>();
+                                type2 = ItemID.TungstenBullet;
                             }
                             else if (WorldGen.silverBar == ModContent.ItemType<Items.Placeable.Bar.ZincBar>())
                             {
-                                type2 = ModContent.ItemType<Items.Ammo.TungstenBullet>();
+                                type2 = ItemID.TungstenBullet;
                             }
                             else type2 = ItemID.SilverBullet;
                         }

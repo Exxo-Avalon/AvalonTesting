@@ -1282,7 +1282,7 @@ public class AvalonGlobalNPC : GlobalNPC
         #region shm mob scaling
         if (ModContent.GetInstance<AvalonWorld>().SuperHardmode)
         {
-            if (Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
+            if (!Data.Sets.NPC.SuperHardmodeMobs.Contains(npc.type))
             {
                 if (Main.expertMode)
                 {
@@ -1897,7 +1897,7 @@ public class AvalonGlobalNPC : GlobalNPC
 
         if (Data.Sets.NPC.Undead[npc.type])
         {
-            ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<UndeadTalisman>(), 550);
+            ItemDropRule.ByCondition(hardModeCondition, ModContent.ItemType<SoullessLocket>(), 550);
         }
 
         if (npc.lifeMax >= 100)
@@ -1988,7 +1988,18 @@ public class AvalonGlobalNPC : GlobalNPC
         //        ModContent.ItemType<ContagionToken>(), 75));
         //}
     }
-
+    public override void OnHitByItem(NPC npc, Player player, Item item, int damage, float knockback, bool crit)
+    {
+        if (!npc.boss && Main.rand.NextBool(35) &&
+            player.GetModPlayer<ExxoEquipEffectPlayer>().OblivionKill &&
+            !Data.Sets.NPC.VanillaNoOneHitKill.Contains(npc.type))
+        {
+            Utils.PoofOfSmoke(npc.position);
+            npc.life = 0;
+            npc.NPCLoot();
+            npc.checkDead();
+        }
+    }
     public override void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
     {
         if (npc.type is NPCID.BloodJelly or NPCID.Unicorn or NPCID.DarkMummy or NPCID.LightMummy && Main.rand.NextBool(9))

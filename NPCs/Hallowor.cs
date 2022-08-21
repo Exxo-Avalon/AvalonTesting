@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -69,19 +69,29 @@ public class Hallowor : ModNPC
     }
     public override void AI()
     {
+        if (NPC.ai[3] == 0)
+        {
+            int amt = Main.rand.Next(2, 4);
+            for (int i = 0; i < amt; i++)
+            {
+                int n = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.position.X, (int)NPC.position.Y, NPCID.Pixie);
+                Main.npc[n].AddBuff(ModContent.BuffType<Buffs.PixieHalloworBuff>(), 60 * 15);
+            }
+            NPC.ai[3] = 1;
+        }
         if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead)
         {
             NPC.TargetClosest(true);
         }
         float num73 = 4.2f;
         float num74 = 0.022f;
-        Vector2 vector11 = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)NPC.height * 0.5f);
-        float num75 = Main.player[NPC.target].position.X + (float)(Main.player[NPC.target].width / 2);
-        float num76 = Main.player[NPC.target].position.Y + (float)(Main.player[NPC.target].height / 2);
-        num75 = (float)((int)(num75 / 8f) * 8);
-        num76 = (float)((int)(num76 / 8f) * 8);
-        vector11.X = (float)((int)(vector11.X / 8f) * 8);
-        vector11.Y = (float)((int)(vector11.Y / 8f) * 8);
+        Vector2 vector11 = new Vector2(NPC.position.X + NPC.width * 0.5f, NPC.position.Y + NPC.height * 0.5f);
+        float num75 = Main.player[NPC.target].position.X + Main.player[NPC.target].width / 2;
+        float num76 = Main.player[NPC.target].position.Y + Main.player[NPC.target].height / 2;
+        num75 = (int)(num75 / 8f) * 8;
+        num76 = (int)(num76 / 8f) * 8;
+        vector11.X = (int)(vector11.X / 8f) * 8;
+        vector11.Y = (int)(vector11.Y / 8f) * 8;
         num75 -= vector11.X;
         num76 -= vector11.Y;
         float num77 = (float)Math.Sqrt((double)(num75 * num75 + num76 * num76));
@@ -97,69 +107,69 @@ public class Hallowor : ModNPC
             num75 *= num77;
             num76 *= num77;
         }
-        NPC.ai[0] += 1f;
+        NPC.ai[0]++;
         if (NPC.ai[0] > 0f)
         {
-            NPC.velocity.Y = NPC.velocity.Y + 0.023f;
+            NPC.velocity.Y += 0.023f;
         }
         else
         {
-            NPC.velocity.Y = NPC.velocity.Y - 0.023f;
+            NPC.velocity.Y -= 0.023f;
         }
-        if (NPC.ai[0] < -100f || NPC.ai[0] > 100f)
+        if (NPC.ai[0] is < -100f or > 100f)
         {
-            NPC.velocity.X = NPC.velocity.X + 0.023f;
+            NPC.velocity.X += 0.023f;
         }
         else
         {
-            NPC.velocity.X = NPC.velocity.X - 0.023f;
+            NPC.velocity.X -= 0.023f;
         }
         if (NPC.ai[0] > 200f)
         {
             NPC.ai[0] = -200f;
         }
-        NPC.velocity.X = NPC.velocity.X + num75 * 0.007f;
-        NPC.velocity.Y = NPC.velocity.Y + num76 * 0.007f;
+        NPC.velocity.X += num75 * 0.007f;
+        NPC.velocity.Y += num76 * 0.007f;
         if (Main.player[NPC.target].dead)
         {
-            num75 = (float)NPC.direction * num73 / 2f;
+            num75 = NPC.direction * num73 / 2f;
             num76 = -num73 / 2f;
         }
         if (NPC.velocity.X < num75)
         {
-            NPC.velocity.X = NPC.velocity.X + num74;
+            NPC.velocity.X += num74;
             if (NPC.velocity.X < 0f && num75 > 0f)
             {
-                NPC.velocity.X = NPC.velocity.X + num74;
+                NPC.velocity.X += num74;
             }
         }
         else
         {
             if (NPC.velocity.X > num75)
             {
-                NPC.velocity.X = NPC.velocity.X - num74;
+                NPC.velocity.X -= num74;
                 if (NPC.velocity.X > 0f && num75 < 0f)
                 {
-                    NPC.velocity.X = NPC.velocity.X - num74;
+                    NPC.velocity.X -= num74;
                 }
             }
         }
         if (NPC.velocity.Y < num76)
         {
-            NPC.velocity.Y = NPC.velocity.Y + num74;
+            NPC.velocity.Y += num74;
             if (NPC.velocity.Y < 0f && num76 > 0f)
             {
-                NPC.velocity.Y = NPC.velocity.Y + num74;
+                NPC.velocity.Y += num74;
             }
         }
         else
         {
             if (NPC.velocity.Y > num76)
             {
-                NPC.velocity.Y = NPC.velocity.Y - num74;
+                NPC.velocity.Y -= num74;
                 if (NPC.velocity.Y > 0f && num76 < 0f)
                 {
-                    NPC.velocity.Y = NPC.velocity.Y - num74;
+                    NPC.velocity.Y -= num74;
                 }
             }
         }
@@ -182,31 +192,29 @@ public class Hallowor : ModNPC
         {
             NPC.netUpdate = true;
             NPC.velocity.Y = NPC.oldVelocity.Y * -num83;
-            if (NPC.velocity.Y > 0f && (double)NPC.velocity.Y < 1.5)
+            if (NPC.velocity.Y is > 0f and < 1.5f)
             {
                 NPC.velocity.Y = 2f;
             }
-            if (NPC.velocity.Y < 0f && (double)NPC.velocity.Y > -1.5)
+            if (NPC.velocity.Y is < 0f and > -1.5f)
             {
                 NPC.velocity.Y = -2f;
             }
         }
-        if (Main.rand.Next(20) == 0)
+        if (Main.rand.NextBool(20))
         {
             // Was originally vile dust but I changed it
-            int num85 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + (float)NPC.height * 0.25f), NPC.width, (int)((float)NPC.height * 0.5f), DustID.Pixie, NPC.velocity.X, 2f, 75, NPC.color, NPC.scale);
-            Dust expr_5B51_cp_0 = Main.dust[num85];
-            expr_5B51_cp_0.velocity.X = expr_5B51_cp_0.velocity.X * 0.5f;
-            Dust expr_5B6F_cp_0 = Main.dust[num85];
-            expr_5B6F_cp_0.velocity.Y = expr_5B6F_cp_0.velocity.Y * 0.1f;
+            int num85 = Dust.NewDust(new Vector2(NPC.position.X, NPC.position.Y + NPC.height * 0.25f), NPC.width, (int)(NPC.height * 0.5f), DustID.Pixie, NPC.velocity.X, 2f, 75, NPC.color, NPC.scale);
+            Main.dust[num85].velocity.X *= 0.5f;
+            Main.dust[num85].velocity.Y *= 0.1f;
         }
         if (NPC.wet)
         {
             if (NPC.velocity.Y > 0f)
             {
-                NPC.velocity.Y = NPC.velocity.Y * 0.95f;
+                NPC.velocity.Y *= 0.95f;
             }
-            NPC.velocity.Y = NPC.velocity.Y - 0.3f;
+            NPC.velocity.Y -= 0.3f;
             if (NPC.velocity.Y < -2f)
             {
                 NPC.velocity.Y = -2f;
@@ -218,12 +226,12 @@ public class Hallowor : ModNPC
             {
                 NPC.localAI[0] = 0f;
             }
-            NPC.localAI[0] += 1f;
+            NPC.localAI[0]++;
             if (NPC.localAI[0] == 180f)
             {
                 if (Collision.CanHit(NPC.position, NPC.width, NPC.height, Main.player[NPC.target].position, Main.player[NPC.target].width, Main.player[NPC.target].height))
                 {
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + (float)(NPC.width / 2) + NPC.velocity.X), (int)(NPC.position.Y + (float)(NPC.height / 2) + NPC.velocity.Y), ModContent.NPCType<NPCs.HallowSpit>(), 0);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.position.X + NPC.width / 2 + NPC.velocity.X), (int)(NPC.position.Y + NPC.height / 2 + NPC.velocity.Y), ModContent.NPCType<HallowSpit>(), 0);
                 }
                 NPC.localAI[0] = 0f;
             }

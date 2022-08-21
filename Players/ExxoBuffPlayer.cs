@@ -318,6 +318,10 @@ public class ExxoBuffPlayer : ModPlayer
             WardCurseDOT += damage;
             damage = 1;
         }
+        if (Player.HasBuff(ModContent.BuffType<ShadowCurse>()))
+        {
+            damage *= 2;
+        }
     }
     public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
     {
@@ -332,6 +336,15 @@ public class ExxoBuffPlayer : ModPlayer
             Main.NewText(WardCurseDOT);
             damage = 1;
         }
+        if (Player.HasBuff(ModContent.BuffType<ShadowCurse>()))
+        {
+            damage *= 2;
+        }
+
+        if (CaesiumPoison)
+        {
+            damage = (int)(damage * 1.15f);
+        }
     }
     public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
     {
@@ -339,7 +352,6 @@ public class ExxoBuffPlayer : ModPlayer
         {
             return;
         }
-        
     }
 
     public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a,

@@ -33,7 +33,7 @@ class BerserkerCuisses : ModItem
     }
     public override void UpdateEquip(Player player)
     {
-        player.Avalon().LightningInABottle = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().LightningInABottle = true;
         player.GetModPlayer<ExxoEquipEffectPlayer>().FrenzyStance = true;
         if (player.GetModPlayer<ExxoEquipEffectPlayer>().FrenzyStanceActive)
         {

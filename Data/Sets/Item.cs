@@ -36,16 +36,19 @@ public static class Item
         ItemID.WoodenArrow, ItemID.FlamingArrow, ItemID.UnholyArrow, ItemID.JestersArrow, ItemID.MusketBall,
         ItemID.MeteorShot, ItemID.HellfireArrow, ItemID.SilverBullet, ItemID.CrystalBullet, ItemID.HolyArrow,
         ItemID.CursedArrow, ItemID.CursedBullet, ItemID.RocketI, ItemID.RocketII, ItemID.RocketIII,
-        ItemID.RocketIV, ItemID.FrostburnArrow, ItemID.ChlorophyteBullet, ItemID.StyngerBolt,
+        ItemID.RocketIV, ItemID.FrostburnArrow, ItemID.ChlorophyteBullet, ItemID.StyngerBolt, ItemID.Nail,
         ItemID.HighVelocityBullet, ItemID.IchorArrow, ItemID.IchorBullet, ItemID.VenomArrow, ItemID.VenomBullet,
         ItemID.PartyBullet, ItemID.NanoBullet, ItemID.ExplodingBullet, ItemID.GoldenBullet, ItemID.BlueSolution,
-        ItemID.DarkBlueSolution, ItemID.GreenSolution, ItemID.PurpleSolution, ItemID.RedSolution);
+        ItemID.DarkBlueSolution, ItemID.GreenSolution, ItemID.PurpleSolution, ItemID.RedSolution, ItemID.ChlorophyteArrow,
+        ItemID.BoneArrow, ItemID.MoonlordArrow, ItemID.CandyCorn, ItemID.ExplosiveJackOLantern, ItemID.Stake,
+        ItemID.MoonlordBullet, ItemID.ClusterRocketI, ItemID.ClusterRocketII, ItemID.WetRocket, ItemID.LavaRocket,
+        ItemID.HoneyRocket, ItemID.MiniNukeI, ItemID.MiniNukeII, ItemID.DryRocket, ItemID.TungstenBullet);
 
     public static readonly bool[] StackTo999 = ItemID.Sets.Factory.CreateBoolSet(
         ItemID.Mushroom, ItemID.Torch, ItemID.GoldBar, ItemID.CopperBar, ItemID.SilverBar, ItemID.IronBar,
         ItemID.Acorn, ItemID.LifeCrystal, ItemID.Bottle, ItemID.Lens, ItemID.DemoniteBar, ItemID.CorruptSeeds,
         ItemID.VileMushroom, ItemID.GrassSeeds, ItemID.Sunflower, ItemID.PurificationPowder, ItemID.VilePowder,
-        ItemID.RottenChunk, ItemID.WormTooth, ItemID.FallenStar, ItemID.ShadowScale, ItemID.WoodPlatform,
+        ItemID.RottenChunk, ItemID.WormTooth, ItemID.FallenStar, ItemID.ShadowScale,
         ItemID.ManaCrystal, ItemID.MeteoriteBar, ItemID.Hook, ItemID.Book, ItemID.Bomb, ItemID.Grenade,
         ItemID.HellstoneBar, ItemID.MushroomGrassSeeds, ItemID.JungleGrassSeeds, ItemID.Stinger, ItemID.Vine,
         ItemID.StickyBomb, ItemID.BlackLens, ItemID.BlackThread, ItemID.GreenThread, ItemID.Leather,
@@ -57,27 +60,21 @@ public static class Item
         ItemID.MythrilBar, ItemID.AdamantiteBar, ItemID.BlueTorch, ItemID.RedTorch, ItemID.GreenTorch,
         ItemID.PurpleTorch, ItemID.WhiteTorch, ItemID.YellowTorch, ItemID.DemonTorch, ItemID.PixieDust,
         ItemID.CursedFlame, ItemID.CursedTorch, ItemID.UnicornHorn, ItemID.DarkShard, ItemID.LightShard,
-        ItemID.EbonwoodPlatform, ItemID.RichMahoganyPlatform, ItemID.PearlwoodPlatform, ItemID.BonePlatform,
-        ItemID.TinBar, ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar, ItemID.ShadewoodPlatform,
+        ItemID.TinBar, ItemID.LeadBar, ItemID.TungstenBar, ItemID.PlatinumBar, ItemID.StickyGrenade,
         ItemID.Marshmallow, ItemID.IceTorch, ItemID.PinkThread, ItemID.ChlorophyteBar, ItemID.TealMushroom,
         ItemID.GreenMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp,
         ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.RedHusk, ItemID.CyanHusk, ItemID.VioletHusk,
         ItemID.PurpleMucos, ItemID.BlackInk, ItemID.TempleKey, ItemID.PalladiumBar, ItemID.OrichalcumBar,
         ItemID.TitaniumBar, ItemID.HallowedBar, ItemID.ChlorophyteArrow, ItemID.OrangeTorch, ItemID.CrimtaneBar,
         ItemID.LifeFruit, ItemID.LihzahrdPowerCell, ItemID.TurtleShell, ItemID.TissueSample, ItemID.Vertebrae,
-        ItemID.Ichor, ItemID.IchorTorch, ItemID.VialofVenom, ItemID.BlueBrickPlatform, ItemID.PinkBrickPlatform,
-        ItemID.GreenBrickPlatform, ItemID.MetalShelf, ItemID.BrassShelf, ItemID.WoodShelf, ItemID.DungeonShelf,
-        ItemID.ObsidianPlatform, ItemID.Ectoplasm, ItemID.GiantHarpyFeather, ItemID.BoneFeather,
+        ItemID.Ichor, ItemID.IchorTorch, ItemID.VialofVenom, ItemID.Ectoplasm, ItemID.GiantHarpyFeather, ItemID.BoneFeather,
         ItemID.FireFeather, ItemID.IceFeather, ItemID.BrokenBatWing, ItemID.TatteredBeeWing, ItemID.JungleKey,
         ItemID.CorruptionKey, ItemID.CrimsonKey, ItemID.HallowedKey, ItemID.FrozenKey, ItemID.ShroomiteBar,
         ItemID.BrokenHeroSword, ItemID.ButterflyDust, ItemID.GlassPlatform, ItemID.GoodieBag,
         ItemID.JungleKeyMold, ItemID.CorruptionKeyMold, ItemID.CrimsonKeyMold, ItemID.HallowedKeyMold,
-        ItemID.FrozenKeyMold, ItemID.BlackFairyDust, ItemID.SpookyPlatform, ItemID.PumpkinSeed,
+        ItemID.FrozenKeyMold, ItemID.BlackFairyDust, ItemID.PumpkinSeed, ItemID.SpiderFang,
         ItemID.SpookyTwig, ItemID.Holly, ItemID.Coal, ItemID.CrimsonSeeds, ItemID.BeetleHusk,
-        ItemID.UltrabrightTorch, ItemID.ShiverthornSeeds, ItemID.Shiverthorn, ItemID.BeeWax,
-        ItemID.PalmWoodPlatform, ItemID.MushroomPlatform, ItemID.BorealWoodPlatform, ItemID.SlimePlatform,
-        ItemID.StickyGrenade, ItemID.SpiderFang, ItemID.SteampunkPlatform, ItemID.SkywarePlatform,
-        ItemID.LivingWoodPlatform, ItemID.HoneyPlatform, ItemID.CactusPlatform);
+        ItemID.UltrabrightTorch, ItemID.ShiverthornSeeds, ItemID.Shiverthorn, ItemID.BeeWax);
 
     public static readonly bool[] StackTo100 = ItemID.Sets.Factory.CreateBoolSet(
         ItemID.BottledWater, ItemID.Dynamite, ItemID.ObsidianSkinPotion, ItemID.RegenerationPotion,
@@ -92,5 +89,6 @@ public static class Item
         ItemID.TrapsightPotion, ItemID.AmmoReservationPotion, ItemID.LifeforcePotion, ItemID.EndurancePotion,
         ItemID.RagePotion, ItemID.InfernoPotion, ItemID.WrathPotion, ItemID.RecallPotion,
         ItemID.TeleportationPotion, ItemID.LovePotion, ItemID.StinkPotion, ItemID.FishingPotion,
-        ItemID.SonarPotion, ItemID.CratePotion);
+        ItemID.SonarPotion, ItemID.CratePotion, ItemID.WarmthPotion, ItemID.GenderChangePotion, ItemID.WormholePotion,
+        ItemID.LuckPotion, ItemID.LuckPotionGreater, ItemID.LuckPotionLesser, ItemID.PotionOfReturn, ItemID.RedPotion);
 }

@@ -42,6 +42,6 @@ class AwakenedRoseCrown : ModItem
     {
         player.GetDamage(DamageClass.Magic) += 0.2f;
         player.GetCritChance(DamageClass.Magic) += 5;
-        player.Avalon().leafStorm = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().LeafStorm = true;
     }
 }

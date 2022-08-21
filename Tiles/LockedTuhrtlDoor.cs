@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Material;
+using Avalon.Items.Material;
 using Avalon.Items.Placeable.Furniture;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Audio;
 using Terraria.GameContent.ObjectInteractions;
+using Avalon.Items.Consumables;
 
 namespace Avalon.Tiles;
 

@@ -31,6 +31,17 @@ public static class ClassExtensions
     {
         return degrees / 57.2957795f;
     }
+    public static bool CanSpawnFishingRift(Vector2 pos, int type, int range)
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            if (Main.npc[i].type == type && Main.npc[i].active && Vector2.Distance(pos, Main.npc[i].position) < range)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public static Color MultiplyByColor(this Color c, Color c2)
     {
         float r1 = (c.R + (c2.R - c.R) / 2f);

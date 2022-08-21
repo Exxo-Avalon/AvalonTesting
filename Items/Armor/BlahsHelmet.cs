@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,7 +24,22 @@ class BlahsHelmet : ModItem
         Item.value = Item.sellPrice(1, 0, 0, 0);
         Item.height = dims.Height;
     }
+    public override bool IsArmorSet(Item head, Item body, Item legs)
+    {
+        return body.type == ModContent.ItemType<BlahsBodyarmor>() && legs.type == ModContent.ItemType<BlahsGreaves>();
+    }
 
+    public override void UpdateArmorSet(Player player)
+    {
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().BlahArmor = true;
+        player.setBonus = "Melee and Ranged Stealth, Attackers also take double full damage, and Spectre Heal and Silence";
+        player.Avalon().meleeStealth = true;
+        player.shroomiteStealth = true;
+        player.GetModPlayer<Players.ExxoEquipEffectPlayer>().DoubleDamage = true;
+        player.ghostHeal = true;
+        //player.thorns = true;
+        player.Avalon().ghostSilence = true;
+    }
     public override void UpdateEquip(Player player)
     {
         player.GetDamage(DamageClass.Generic) += 0.29f;

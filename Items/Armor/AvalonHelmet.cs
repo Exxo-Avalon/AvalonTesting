@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -44,8 +44,8 @@ internal class AvalonHelmet : ModItem
                           + "\nEnemies who strike you are marked for their destruction"
                           + "\nThey will take quadruple damage from your next attack";
 
-        modPlayer.avalonRestoration = true;
-        modPlayer.avalonRetribution = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().AvalonRestoration = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().AvalonRetribution = true;
     }
 
     public override void UpdateEquip(Player player)
@@ -53,6 +53,6 @@ internal class AvalonHelmet : ModItem
         player.GetDamage(DamageClass.Generic) += 0.32f;
         player.manaCost -= 0.20f;
         player.statManaMax2 += 280;
-        player.Avalon().leafStorm = true;
+        player.GetModPlayer<ExxoEquipEffectPlayer>().LeafStorm = true;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Avalon.NPCs;
+using Avalon.NPCs;
 using Avalon.NPCs.Bosses;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -71,6 +71,17 @@ public static class NPC
         NPCID.SnowFlinx,
         NPCID.IcyMerman,
         NPCID.IceGolem);
+
+    public static readonly int[] VanillaNoOneHitKill = new int[]
+    {
+        NPCID.Everscream,
+        NPCID.IceQueen,
+        NPCID.SantaNK1,
+        NPCID.MourningWood,
+        NPCID.Pumpking,
+        NPCID.PumpkingBlade,
+        NPCID.DungeonGuardian
+    };
 
     public static readonly bool[] Slimes = NPCID.Sets.Factory.CreateBoolSet(
         NPCID.BlueSlime,

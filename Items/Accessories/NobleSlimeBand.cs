@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Accessories;
 
-class StickyCharm : ModItem
+class NobleSlimeBand : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Sticky Charm");
+        DisplayName.SetDefault("Noble Slime Band");
         Tooltip.SetDefault("Reduces damage taken by 5% and negates fall damage\nProvides immunity to slimes");
         SacrificeTotal = 1;
     }

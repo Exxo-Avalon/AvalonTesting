@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,7 +22,7 @@ class CursedTooth : ModItem
         Item.rare = ItemRarityID.Orange;
         Item.width = dims.Width;
         Item.shoot = ModContent.ProjectileType<Projectiles.CursedTooth>();
-        Item.maxStack = 999;
+        Item.maxStack = 2000;
         Item.height = dims.Height;
     }
 
