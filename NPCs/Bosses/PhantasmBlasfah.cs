@@ -60,7 +60,7 @@ public class PhantasmBlasfah : ModNPC
     public int timeTillNextAttack = 180;
     public int dashTimer;
     public Vector2 dashDir = Vector2.Zero;
-    public int dashCounter;
+    public bool hasDashed;
     public override void AI()
     {
         AvalonGlobalNPC.PhantasmBoss = NPC.whoAmI;
@@ -102,16 +102,16 @@ public class PhantasmBlasfah : ModNPC
             if (NPC.ai[0] == 3)
             {
                 NPC.ai[3] = 25;
-                dashCounter = 0;
             }
+            //NPC.ai[0] = 3;
             NPC.ai[1] = 0;
         }
 
-        //glowing eyes wip
+        //glowing eyes wip idk
 
-        /*Dust dust = Dust.NewDustPerfect(NPC.Center - new Vector2(20f, -30f), DustID.DungeonSpirit, Vector2.Zero, 0, default, 2f);
+        /*Dust dust = Dust.NewDustPerfect(NPC.Center - new Vector2(20f, -30f).RotatedBy(NPC.rotation), DustID.DungeonSpirit, Vector2.Zero, 0, default, 2f);
         dust.noGravity = true;
-        Dust dust1 = Dust.NewDustPerfect(NPC.Center - new Vector2(-20f, -30f), DustID.DungeonSpirit, Vector2.Zero, 0, default, 2f);
+        Dust dust1 = Dust.NewDustPerfect(NPC.Center - new Vector2(-20f, -30f).RotatedBy(NPC.rotation), DustID.DungeonSpirit, Vector2.Zero, 0, default, 2f);
         dust1.noGravity = true;*/
 
         //attack types
@@ -274,7 +274,7 @@ public class PhantasmBlasfah : ModNPC
                 Main.dust[num893].noGravity = true;
             }
         }*/
-        if (NPC.ai[0] == 3)
+        /*if (NPC.ai[0] == 3)
         {
             oldPhase = 3;
             timeTillNextAttack = 180;
@@ -317,6 +317,60 @@ public class PhantasmBlasfah : ModNPC
             if (NPC.velocity.Length() < 10f)
             {
                 NPC.velocity = Vector2.Normalize(NPC.velocity) * 10f;
+            }
+        }*/
+        if(NPC.ai[0] == 3)
+        {
+            timeTillNextAttack = 320;
+            oldPhase = 3;
+            Vector2 goToPos = Vector2.Normalize(player.Center - NPC.Center) * 300;
+            NPC.rotation = towardsPlayer.ToRotation() - MathHelper.PiOver2;
+            if (!hasDashed)
+            {
+                NPC.ai[3]++;
+                NPC.velocity += Vector2.Normalize(towardsPlayer - goToPos) * 1f;
+            }
+            if (NPC.ai[3] == 60)
+            {
+                NPC.velocity = Vector2.Normalize(towardsPlayer) * 30f;
+                NPC.ai[3] = 0;
+                hasDashed = true;
+                for (int i = 0; i < 40; i++)
+                {
+                    int num893 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[num893].velocity *= 6f;
+                    Main.dust[num893].scale = 1.5f;
+                    Main.dust[num893].noGravity = true;
+                }
+            }
+            if(hasDashed)
+            {
+                if (NPC.velocity.Length() > 35f)
+                {
+                    NPC.velocity = Vector2.Normalize(NPC.velocity) * 35f;
+                }
+                NPC.velocity *= 0.98f;
+                dashTimer++;
+                if(dashTimer == 30)
+                {
+                    hasDashed = false;
+                    dashTimer = 0;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    int num893 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1f);
+                    Main.dust[num893].velocity *= 2f;
+                    Main.dust[num893].scale = 1.5f;
+                    Main.dust[num893].noGravity = true;
+                }
+            }
+            else
+            {
+                if (NPC.velocity.Length() > 15f)
+                {
+                    NPC.velocity = Vector2.Normalize(NPC.velocity) * 15f;
+                }
+
             }
         }
     }

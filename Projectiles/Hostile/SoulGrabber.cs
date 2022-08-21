@@ -21,7 +21,6 @@ public class SoulGrabber : ModProjectile
         Projectile.width = 26;
         Projectile.height = 26;
         Projectile.aiStyle = -1;
-        Projectile.DamageType = DamageClass.Melee;
         Projectile.tileCollide = false;
         Projectile.alpha = 0;
         Projectile.friendly = false;

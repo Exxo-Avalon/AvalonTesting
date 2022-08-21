@@ -24,7 +24,6 @@ public class SoulDagger : ModProjectile
         Projectile.width = 9;
         Projectile.height = 9;
         Projectile.aiStyle = -1;
-        Projectile.DamageType = DamageClass.Melee;
         Projectile.tileCollide = false;
         Projectile.alpha = 0;
         Projectile.friendly = false;
