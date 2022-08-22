@@ -61,6 +61,7 @@ public class PhantasmBlasfah : ModNPC
     public int dashTimer;
     public Vector2 dashDir = Vector2.Zero;
     public bool hasDashed;
+    public float rotDir;
     public override void AI()
     {
         AvalonGlobalNPC.PhantasmBoss = NPC.whoAmI;
@@ -98,6 +99,8 @@ public class PhantasmBlasfah : ModNPC
             if (NPC.ai[0] == 2)
             {
                 radius = Vector2.Normalize(player.Center - NPC.Center) * radius.Length();
+                rotDir = NPC.Center.X - player.Center.X;
+                rotDir = Math.Sign(rotDir);
             }
             if (NPC.ai[0] == 3)
             {
@@ -155,7 +158,7 @@ public class PhantasmBlasfah : ModNPC
             }
             else
             {
-                NPC.velocity += Vector2.Normalize(towardsPlayer + new Vector2(400f * playerDir, 0)) * 1f;
+                NPC.velocity += Vector2.Normalize(towardsPlayer + new Vector2(450f * playerDir, 0)) * 1f;
                 if (NPC.velocity.Length() > 14f)
                 {
                     NPC.velocity = Vector2.Normalize(NPC.velocity) * 14f;
@@ -184,9 +187,9 @@ public class PhantasmBlasfah : ModNPC
             }
             oldPhase = 2;
             timeTillNextAttack = 180;
-            radius = radius.RotatedBy(-0.085f);
+            radius = radius.RotatedBy(-0.085f * rotDir);
             NPC.rotation = NPC.velocity.ToRotation() - MathHelper.PiOver2;
-            NPC.velocity = radius.RotatedBy(90 * (Math.PI / 180));
+            NPC.velocity = radius.RotatedBy((90 * rotDir) * (Math.PI / 180));
             NPC.Center = Vector2.Lerp(NPC.Center, player.Center - radius, 0.05f);
             if (NPC.velocity.Length() > 20f)
             {
@@ -321,7 +324,7 @@ public class PhantasmBlasfah : ModNPC
         }*/
         if(NPC.ai[0] == 3)
         {
-            timeTillNextAttack = 320;
+            timeTillNextAttack = 310;
             oldPhase = 3;
             Vector2 goToPos = Vector2.Normalize(player.Center - NPC.Center) * 300;
             NPC.rotation = towardsPlayer.ToRotation() - MathHelper.PiOver2;
@@ -330,7 +333,7 @@ public class PhantasmBlasfah : ModNPC
                 NPC.ai[3]++;
                 NPC.velocity += Vector2.Normalize(towardsPlayer - goToPos) * 1f;
             }
-            if (NPC.ai[3] == 60)
+            if (NPC.ai[3] == 40)
             {
                 NPC.velocity = Vector2.Normalize(towardsPlayer) * 30f;
                 NPC.ai[3] = 0;
