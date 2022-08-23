@@ -10,7 +10,7 @@ class AdvFuryPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fury Elixir");
-        Tooltip.SetDefault("Increases critical strike damage by 300%");
+        Tooltip.SetDefault("Increases critical strike damage by 75%");
         SacrificeTotal = 30;
     }
 

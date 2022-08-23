@@ -16,6 +16,6 @@ public class AdvFury : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 3f;
+        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.75f;
     }
 }

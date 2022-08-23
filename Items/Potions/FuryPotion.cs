@@ -12,7 +12,7 @@ public class FuryPotion : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Fury Potion");
-        Tooltip.SetDefault("Increases critical strike damage by 200%");
+        Tooltip.SetDefault("Increases critical strike damage by 50%");
         SacrificeTotal = 20;
     }
 

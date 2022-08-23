@@ -10,7 +10,7 @@ class HellsteelEmblem : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hellsteel Emblem");
-        Tooltip.SetDefault("160% increased critical strike damage\n15% increased damage\nProvides immunity to traps");
+        Tooltip.SetDefault("50% increased critical strike damage\n15% increased damage\nProvides immunity to traps");
         SacrificeTotal = 1;
     }
 
@@ -27,7 +27,7 @@ class HellsteelEmblem : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetDamage(DamageClass.Generic) += 0.15f;
-        player.Avalon().CritDamageMult += 1.6f;
+        player.Avalon().CritDamageMult += 0.5f;
         player.GetModPlayer<Players.ExxoEquipEffectPlayer>().TrapImmune = true;
     }
     public override void AddRecipes()
