@@ -10,7 +10,7 @@ class ChaosEmblem : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Chaos Emblem");
-        Tooltip.SetDefault("175% increased critical strike damage\n10% increased damage");
+        Tooltip.SetDefault("60% increased critical strike damage\n10% increased damage");
         SacrificeTotal = 1;
     }
 
@@ -26,7 +26,7 @@ class ChaosEmblem : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().CritDamageMult += 1.75f;
+        player.Avalon().CritDamageMult += 0.6f;
         player.GetDamage(DamageClass.Generic) += 0.1f;
     }
     public override void AddRecipes()
