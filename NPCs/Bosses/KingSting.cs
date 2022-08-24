@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -40,7 +40,7 @@ public class KingSting : ModNPC
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("King Sting");
-        Main.npcFrameCount[NPC.type] = 3;
+        Main.npcFrameCount[NPC.type] = 8;
 
         NPCID.Sets.TrailCacheLength[NPC.type] = 4;
         NPCID.Sets.TrailingMode[NPC.type] = 3;
@@ -49,8 +49,7 @@ public class KingSting : ModNPC
     public override void SetDefaults()
     {
         NPC.npcSlots = 150f;
-        AnimationType = NPCID.Hornet;
-        NPC.height = 174;
+        NPC.height = 140;
         NPC.width = 88;
         NPC.knockBackResist = 0f;
         NPC.netAlways = true;
@@ -449,5 +448,45 @@ public class KingSting : ModNPC
             }
         }
         return true;
+    }
+    public override void FindFrame(int frameHeight)
+    {
+        NPC.frameCounter++;
+        if (NPC.frameCounter < 3.0)
+        {
+            NPC.frame.Y = 0;
+        }
+        else if (NPC.frameCounter < 6.0)
+        {
+            NPC.frame.Y = frameHeight;
+        }
+        else if (NPC.frameCounter < 9.0)
+        {
+            NPC.frame.Y = frameHeight * 2;
+        }
+        else if (NPC.frameCounter < 12.0)
+        {
+            NPC.frame.Y = frameHeight * 3;
+        }
+        else if (NPC.frameCounter < 15.0)
+        {
+            NPC.frame.Y = frameHeight * 4;
+        }
+        else if (NPC.frameCounter < 18.0)
+        {
+            NPC.frame.Y = frameHeight * 5;
+        }
+        else if (NPC.frameCounter < 21.0)
+        {
+            NPC.frame.Y = frameHeight * 6;
+        }
+        else if (NPC.frameCounter < 24.0)
+        {
+            NPC.frame.Y = frameHeight * 7;
+        }
+        else
+        {
+            NPC.frameCounter = 0.0;
+        }
     }
 }
