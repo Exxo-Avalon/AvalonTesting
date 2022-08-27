@@ -50,7 +50,7 @@ public class SlinkySlime : ModNPC
         NPC.spriteDirection = NPC.direction;
         NPC.TargetClosest(false);
 
-        if (NPC.collideY || Main.tileSolid[Main.tile[npcBottom.X, npcBottom.Y].TileType] && Main.tile[npcBottom.X, npcBottom.Y].HasTile || Main.tileSolid[Main.tile[npcBottom.X + 1, npcBottom.Y].TileType] && Main.tile[npcBottom.X + 1, npcBottom.Y].HasTile || Main.tileSolid[Main.tile[npcBottom.X - 1, npcBottom.Y].TileType] && Main.tile[npcBottom.X - 1, npcBottom.Y].HasTile)
+        if (NPC.collideY || Main.tileSolid[Main.tile[npcBottom.X, npcBottom.Y].TileType] && Main.tile[npcBottom.X, npcBottom.Y].HasTile || NPC.velocity.Length() == 0)
         {
             jumpTimer++;
             NPC.velocity.X *= 0.85f;
@@ -87,7 +87,7 @@ public class SlinkySlime : ModNPC
             }
             if(NPC.velocity.Y > 0 && NPC.velocity.X == 0)
             {
-                NPC.velocity.X = NPC.velocity.Y * playerDir;
+                NPC.velocity.X = (NPC.velocity.Y * playerDir) * 2;
             }
             if(NPC.velocity.Y > 0)
             {
@@ -107,7 +107,7 @@ public class SlinkySlime : ModNPC
 
         NPC.rotation = NPC.velocity.Y * 0.02f * -jumpPlayerDir;
 
-        float maxVelX = 15f;
+        float maxVelX = 14f;
         float maxVelY = 20f;
 
         if (NPC.velocity.X > maxVelX)
