@@ -23,13 +23,12 @@ public class SlinkySlime : ModNPC
         NPC.damage = 90;
         NPC.lifeMax = 5600;
         NPC.defense = 60;
-        NPC.Size = new Vector2(48);
+        NPC.Size = new Vector2(30, 40);
         NPC.aiStyle = -1;
         NPC.value = 1000f;
         NPC.knockBackResist = 0f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath1;
-        NPC.alpha = 60;
         //Banner = NPC.type;
         //BannerItem = ModContent.ItemType<SilverSlimeBanner>();
     }
@@ -80,31 +79,35 @@ public class SlinkySlime : ModNPC
         if (isInJump)
         {
             NPC.ai[1] = 0;
-            NPC.height = 90;
+            NPC.height = 70;
             if (NPC.ai[0] == 0)
             {
-                NPC.Center = new Vector2(NPC.Center.X, NPC.Center.Y - 42f);
+                NPC.Center = new Vector2(NPC.Center.X, NPC.Center.Y - 30f);
                 NPC.ai[0]++;
             }
             if(NPC.velocity.Y > 0 && NPC.velocity.X == 0)
             {
                 NPC.velocity.X = NPC.velocity.Y * playerDir;
             }
+            if(NPC.velocity.Y > 0)
+            {
+                NPC.velocity.X *= 0.99f;
+            }
         }
         if (!isInJump)
         {
             NPC.ai[0] = 0;
-            NPC.height = 48;
+            NPC.height = 40;
             if (NPC.ai[1] == 0)
             {
-                NPC.Center = new Vector2(NPC.Center.X, NPC.Center.Y + 42f);
+                NPC.Center = new Vector2(NPC.Center.X, NPC.Center.Y + 30f);
                 NPC.ai[1]++;
             }
         }
 
         NPC.rotation = NPC.velocity.Y * 0.02f * -jumpPlayerDir;
 
-        float maxVelX = 14f;
+        float maxVelX = 15f;
         float maxVelY = 20f;
 
         if (NPC.velocity.X > maxVelX)
@@ -119,6 +122,10 @@ public class SlinkySlime : ModNPC
         {
             NPC.velocity.Y = -maxVelY;
         }
+    }
+    public override Color? GetAlpha(Color drawColor)
+    {
+        return Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f);
     }
 
     public override bool? CanFallThroughPlatforms()
