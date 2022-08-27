@@ -38,11 +38,13 @@ public class SlinkySlime : ModNPC
     public float jumpPlayerDir;
     public bool isInJump;
     public float playerDir;
+    public float upOrDown;
     public override void AI()
     {
         Player player = Main.player[NPC.FindClosestPlayer()];
         playerDir = player.Center.X - NPC.Center.X;
         Point npcBottom = NPC.Bottom.ToTileCoordinates();
+        upOrDown = NPC.Center.Y - player.Center.Y;
 
         playerDir = Math.Sign(playerDir);
 
@@ -69,7 +71,7 @@ public class SlinkySlime : ModNPC
             {
                 playerVelX = -playerVelX;
             }
-            NPC.velocity.Y -= 7f + -((player.Center.Y - NPC.Center.Y) / 50);
+            NPC.velocity.Y -= 8f + -((player.Center.Y - NPC.Center.Y) / 50);
             NPC.velocity.X += (disX / 50 + playerVelX) * playerDir;
             jumpPlayerDir = playerDir;
             jumpTimer = 0;
@@ -119,9 +121,14 @@ public class SlinkySlime : ModNPC
         }
     }
 
+    public override bool? CanFallThroughPlatforms()
+    {
+        return isInJump && upOrDown < -50;
+    }
+
     public override void FindFrame(int frameHeight)
     {
-        if (isInJump)
+        if (NPC.oldVelocity == NPC.velocity)
         {
             NPC.frame.Y = frameHeight;
         }
