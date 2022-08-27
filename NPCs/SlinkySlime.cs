@@ -104,7 +104,7 @@ public class SlinkySlime : ModNPC
 
         NPC.rotation = NPC.velocity.Y * 0.02f * -jumpPlayerDir;
 
-        float maxVelX = 12f;
+        float maxVelX = 14f;
         float maxVelY = 20f;
 
         if (NPC.velocity.X > maxVelX)
