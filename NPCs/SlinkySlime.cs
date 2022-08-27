@@ -136,10 +136,7 @@ public class SlinkySlime : ModNPC
         {
             for (int i = 0; i < 60; i++)
             {
-                int slime = Dust.NewDust(NPC.position, NPC.width, NPC.height, 14, 0f, 0f, 150, Color.Pink, 1f);
-                Main.dust[slime].velocity *= 1.5f;
-                Main.dust[slime].velocity.Y *= -3;
-                //Main.dust[slime].noGravity = true;
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.t_Slime, NPC.velocity.X * Main.rand.NextFloat(-0.1f,1f), NPC.velocity.Y * Main.rand.NextFloat(0.8f,1.2f) - 3, 150, Color.Magenta, 1f);
             }
         }
     }
