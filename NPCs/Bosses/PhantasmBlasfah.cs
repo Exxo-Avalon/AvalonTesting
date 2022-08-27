@@ -32,7 +32,7 @@ public class PhantasmBlasfah : ModNPC
         NPC.boss = NPC.noTileCollide = NPC.noGravity = true;
         NPC.npcSlots = 100f;
         NPC.damage = 95;
-        NPC.lifeMax = 92700;
+        NPC.lifeMax = 160000;
         NPC.defense = 80;
         NPC.aiStyle = -1;
         NPC.value = 100000f;
@@ -406,11 +406,9 @@ public class PhantasmBlasfah : ModNPC
             Vector2 drawPosOld = NPC.oldPos[i] - Main.screenPosition + frameOrigin + offset;
             Main.EntitySpriteDraw(texture, drawPosOld, sourceRectangle, new Color(255, 125, 255, 225) * (1 - (i * 0.25f)) * 0.2f, NPC.rotation, frameOrigin, NPC.scale, SpriteEffects.None, 0);
         }
-
         Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, new Color(255, 255, 255, 225) * 0.3f, NPC.rotation, frameOrigin, NPC.scale * 1.1f, SpriteEffects.None, 0);
         Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, new Color(255, 255, 255, 225) * 0.15f, NPC.rotation, frameOrigin, NPC.scale * 1.2f, SpriteEffects.None, 0);
-
-        Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, new Color(255, 255, 255, 225), NPC.rotation, frameOrigin, NPC.scale, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, new Color(255, 255, 255, 225), NPC.rotation, frameOrigin, new Vector2(NPC.scale, NPC.scale), SpriteEffects.None, 0);
         return false;
     }
 }
