@@ -50,6 +50,7 @@ internal class Hellcastle
             lastPath = givePurpose;
             givePurpose = Main.rand.Next(2);
             int randStairHeight = Main.rand.Next(12, 20);
+            randStairHeight = 15;
             int randHallwayLength = 30;
 
             if (givePurpose == 0 && lastPath == 0)

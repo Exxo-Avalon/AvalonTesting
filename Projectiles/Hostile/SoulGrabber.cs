@@ -18,8 +18,8 @@ public class SoulGrabber : ModProjectile
     public int alpha = 255;
     public override void SetDefaults()
     {
-        Projectile.width = 26;
-        Projectile.height = 26;
+        Projectile.width = 24;
+        Projectile.height = 24;
         Projectile.aiStyle = -1;
         Projectile.tileCollide = false;
         Projectile.alpha = 0;
@@ -79,7 +79,7 @@ public class SoulGrabber : ModProjectile
         }
         Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 9f), Projectile.scale, SpriteEffects.None, 0);
         auraScale -= 0.01f;
-        Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.3f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 10f), Projectile.scale * auraScale, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.15f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 10f), Projectile.scale * auraScale, SpriteEffects.None, 0);
         return false;
     }
 }

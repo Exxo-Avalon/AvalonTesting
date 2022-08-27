@@ -4,10 +4,12 @@ using IL.Terraria.Graphics.CameraModifiers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Avalon.NPCs.Bosses;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
 
 namespace Avalon.Projectiles.Hostile;
 
@@ -16,7 +18,6 @@ public class SoulDagger : ModProjectile
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Soul Dagger");
-        Main.projFrames[Projectile.type] = 3;
     }
     public int alpha = 255;
     public override void SetDefaults()
@@ -35,76 +36,140 @@ public class SoulDagger : ModProjectile
     public Vector2 towardsBoss;
     public bool isIdle = true;
     public int count;
+    public Vector2 spawnPos = new Vector2(0, -125f);
+    public bool runOnce;
+    public int shootTimer;
+    public float lerpAmount;
+    public float rotTo;
     public override void AI()
     {
         if (AvalonGlobalNPC.PhantasmBoss != -1)
         {
-            float timing = 60 + (Projectile.ai[1] * 20);
-
             NPC boss = Main.npc[AvalonGlobalNPC.PhantasmBoss];
+            PhantasmBlasfah phantasm = (PhantasmBlasfah)boss.ModNPC;
             Player player = GetClosestTo(Projectile.Center);
 
-            Projectile.frame = Main.rand.Next(3);
+            float timing = 60 + (Projectile.ai[1] * 20);
 
-            if (boss.ai[0] == 1)
+            if(Projectile.ai[1] <= 6)
             {
-                if (Projectile.ai[0] == 1)
+                if (isIdle)
                 {
-                    Projectile.rotation = Vector2.Normalize(player.Center - Projectile.Center).ToRotation() + MathHelper.PiOver2;
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (Projectile.ai[1] == i)
+                        {
+                            double rotateAmount = 60 * i * (MathHelper.Pi / 180);
+                            Projectile.Center = boss.Center + spawnPos.RotatedBy(rotateAmount);
+                            spawnPos = spawnPos.RotatedBy(0.1);
+                        }
+                    }
+                    Projectile.rotation = Vector2.Normalize(boss.Center - Projectile.Center).ToRotation() - MathHelper.PiOver2;
                 }
-                count++;
-                if(count == timing)
-                {
-                    isIdle = false;
-                }
-            }
-            else
-            {
-                Projectile.rotation = Vector2.Normalize(boss.Center - Projectile.Center).ToRotation() - MathHelper.PiOver2;
-            }
 
-            if (Projectile.ai[0] == 0)
-            {
-                towardsBoss = Projectile.Center - boss.Center;
-                for (int i = 0; i < 20; i++)
+                if (!isIdle)
                 {
-                    int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[num893].velocity *= 2f;
-                    Main.dust[num893].scale = 1.5f;
-                    Main.dust[num893].noGravity = true;
+                    if (Projectile.ai[0] == 0)
+                    {
+                        Projectile.rotation = Vector2.Normalize(player.Center - Projectile.Center).ToRotation() + MathHelper.PiOver2;
+                        Projectile.velocity = Vector2.Normalize(player.Center - Projectile.Center) * 35f;
+                        Projectile.timeLeft = 60;
+                        Projectile.ai[0]++;
+                        for (int i = 0; i < 30; i++)
+                        {
+                            int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1.5f);
+                            Main.dust[num893].velocity *= 3f;
+                            Main.dust[num893].noGravity = true;
+                        }
+                    }
+                    if (Main.rand.NextBool((60 - Projectile.timeLeft + 10) / 10))
+                    {
+                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1.5f);
+                        Main.dust[num893].velocity *= 0f;
+                        Main.dust[num893].noGravity = true;
+                    }
+                    if (Projectile.timeLeft < 30)
+                    {
+                        Projectile.tileCollide = true;
+                    }
+                    if (Projectile.timeLeft < 20)
+                    {
+                        alpha -= 15;
+                    }
+                    if (alpha <= 0)
+                    {
+                        Projectile.Kill();
+                    }
                 }
-                Projectile.ai[0]++;
-            }
-            if (isIdle)
-            {
-                towardsBoss = towardsBoss.RotatedBy(0.1);
-                Projectile.Center = Vector2.Lerp(Projectile.Center, boss.Center - towardsBoss, 0.5f);
-            }
-            else
-            {
-                if (Projectile.ai[0] == 1)
+
+                if (boss.ai[0] == 1)
                 {
-                    Projectile.timeLeft = 50;
-                    Projectile.velocity = Vector2.Normalize(player.Center - Projectile.Center) * 35f;
-                    Projectile.ai[0]++;
+                    count++;
+                    if (count == timing)
+                    {
+                        isIdle = false;
+                    }
+                    if (isIdle)
+                    {
+                        Projectile.rotation = Vector2.Normalize(player.Center - Projectile.Center).ToRotation() + MathHelper.PiOver2;
+                    }
+                }
+
+                if (!runOnce)
+                {
                     for (int i = 0; i < 20; i++)
                     {
-                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1f);
+                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1.5f);
                         Main.dust[num893].velocity *= 2f;
-                        Main.dust[num893].scale = 1.5f;
                         Main.dust[num893].noGravity = true;
                     }
-                    for (int i = 0; i < 10; i++)
+                    runOnce = true;
+                }
+            }
+            if(Projectile.ai[1] == 7)
+            {
+                if(shootTimer == 0)
+                {
+                    Projectile.rotation = boss.velocity.ToRotation() + MathHelper.PiOver2;
+                    Projectile.rotation += 90 * (MathHelper.Pi / 180) * -phantasm.playerDir;
+                }
+                shootTimer++;
+
+                if (shootTimer == 30)
+                {
+                    Projectile.velocity = Vector2.Normalize(player.Center - Projectile.Center) * 30f;
+                    rotTo = Vector2.Normalize(player.Center - Projectile.Center).ToRotation() + MathHelper.PiOver2;
+                    Projectile.timeLeft = 60;
+                    for (int i = 0; i < 30; i++)
                     {
-                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1f);
-                        Main.dust[num893].velocity *= 4f;
-                        Main.dust[num893].scale = 1.5f;
+                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1.5f);
+                        Main.dust[num893].velocity *= 3f;
                         Main.dust[num893].noGravity = true;
                     }
                 }
-                if (Projectile.timeLeft < 15)
+                if(shootTimer > 30)
                 {
-                    alpha -= 20;
+                    lerpAmount += 0.05f;
+                    lerpAmount = MathHelper.Clamp(lerpAmount, 0f, 1f);
+                    Projectile.rotation = Projectile.rotation.AngleLerp(rotTo, lerpAmount);
+                    if (Main.rand.NextBool((60 - Projectile.timeLeft + 10) / 10))
+                    {
+                        int num893 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.DungeonSpirit, 0f, 0f, 0, default(Color), 1.5f);
+                        Main.dust[num893].velocity *= 0f;
+                        Main.dust[num893].noGravity = true;
+                    }
+                    if (Projectile.timeLeft < 30)
+                    {
+                        Projectile.tileCollide = true;
+                    }
+                    if (Projectile.timeLeft < 20)
+                    {
+                        alpha -= 15;
+                    }
+                    if (alpha <= 0)
+                    {
+                        Projectile.Kill();
+                    }
                 }
             }
         }
@@ -150,6 +215,11 @@ public class SoulDagger : ModProjectile
         Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 20f), Projectile.scale, SpriteEffects.None, 0);
         Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.3f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 14f), Projectile.scale * 1.3f, SpriteEffects.None, 0);
         Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.15f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 10f), Projectile.scale * 1.6f, SpriteEffects.None, 0);
+        return false;
+    }
+    public override bool OnTileCollide(Vector2 oldVelocity)
+    {
+        Projectile.velocity *= 0f;
         return false;
     }
 }

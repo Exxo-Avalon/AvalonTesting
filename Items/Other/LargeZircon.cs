@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -19,8 +19,8 @@ class LargeZircon : ModItem
     {
         Item.CloneDefaults(ItemID.LargeAmber);
         Item.rare = ItemRarityID.Blue;
-        Item.width = 20;
-        Item.height = 20;
+        Item.width = 32;
+        Item.height = 32;
     }
     public override void AddRecipes()
     {
