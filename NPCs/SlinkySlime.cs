@@ -17,7 +17,6 @@ public class SlinkySlime : ModNPC
         DisplayName.SetDefault("Slinky Slime");
         Main.npcFrameCount[NPC.type] = 2;
     }
-
     public override void SetDefaults()
     {
         NPC.damage = 90;
@@ -32,7 +31,6 @@ public class SlinkySlime : ModNPC
         //Banner = NPC.type;
         //BannerItem = ModContent.ItemType<SilverSlimeBanner>();
     }
-
     public int jumpTimer;
     public float jumpPlayerDir;
     public bool isInJump;
@@ -105,7 +103,7 @@ public class SlinkySlime : ModNPC
             }
         }
 
-        NPC.rotation = NPC.velocity.Y * 0.02f * -jumpPlayerDir;
+        NPC.rotation = NPC.velocity.Y * 0.03f * -jumpPlayerDir;
 
         float maxVelX = 14f;
         float maxVelY = 20f;
@@ -123,16 +121,10 @@ public class SlinkySlime : ModNPC
             NPC.velocity.Y = -maxVelY;
         }
     }
-    public override Color? GetAlpha(Color drawColor)
-    {
-        return Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f);
-    }
-
     public override bool? CanFallThroughPlatforms()
     {
         return isInJump && upOrDown < -50;
     }
-
     public override void FindFrame(int frameHeight)
     {
         if (NPC.oldVelocity == NPC.velocity)
@@ -154,24 +146,49 @@ public class SlinkySlime : ModNPC
             }
         }
     }
-    /*public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+    public float squishX = 1f;
+    public float squishY = 1f;
+    public int squishTimer;
+    public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
     {
         Texture2D texture = ModContent.Request<Texture2D>("Avalon/NPCs/SlinkySlime").Value;
-        int frameHeight = texture.Height / Main.projFrames[NPC.type];
+        int frameHeight = texture.Height / Main.npcFrameCount[NPC.type];
         Rectangle sourceRectangle = new Rectangle(0, NPC.frame.Y, texture.Width, frameHeight);
         Vector2 frameOrigin = sourceRectangle.Size() / 2f;
         Vector2 offset = new Vector2(NPC.width / 2 - frameOrigin.X, NPC.height - sourceRectangle.Height);
 
         Vector2 drawPos = NPC.position - Main.screenPosition + frameOrigin + offset;
 
-        if(playerDir == -1)
+        if(jumpPlayerDir == 1)
         {
-            Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, drawColor, NPC.rotation, frameOrigin - new Vector2(0, 11), new Vector2(NPC.scale, NPC.scale), SpriteEffects.None, 0);
+            if (!isInJump)
+            {
+                squishX = MathHelper.Lerp(squishX, 1.75f, 0.2f);
+                squishY = MathHelper.Lerp(squishY, 0.75f, 0.1f);
+                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f), NPC.rotation, frameOrigin - new Vector2(0, 3f), new Vector2(NPC.scale * squishX, NPC.scale * squishY), SpriteEffects.FlipHorizontally, 0);
+            }
+            if (isInJump)
+            {
+                squishX = MathHelper.Lerp(squishX, 0.9f, 0.1f);
+                squishY = MathHelper.Lerp(squishY, 1.1f, 0.1f);
+                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f), NPC.rotation, frameOrigin, new Vector2(NPC.scale * squishX, NPC.scale * squishY), SpriteEffects.FlipHorizontally, 0);
+            }
         }
         else
         {
-            Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, drawColor, NPC.rotation, frameOrigin - new Vector2(0, 11), new Vector2(NPC.scale, NPC.scale), SpriteEffects.FlipHorizontally, 0);
+            if (!isInJump)
+            {
+                squishX = MathHelper.Lerp(squishX, 1.75f, 0.2f);
+                squishY = MathHelper.Lerp(squishY, 0.75f, 0.1f);
+                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f), NPC.rotation, frameOrigin - new Vector2(0, 3f), new Vector2(NPC.scale * squishX, NPC.scale * squishY), SpriteEffects.None, 0);
+            }
+            if (isInJump)
+            {
+                squishX = MathHelper.Lerp(squishX, 0.9f, 0.1f);
+                squishY = MathHelper.Lerp(squishY, 1.1f, 0.1f);
+                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, Color.Lerp(drawColor, new Color(255, 255, 255, 70), 0.5f), NPC.rotation, frameOrigin, new Vector2(NPC.scale * squishX, NPC.scale * squishY), SpriteEffects.None, 0);
+            }
         }
         return false;
-    }*/
+    }
 }
