@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,7 +29,7 @@ public class SpectralBullet : ModProjectile
         Projectile.scale = 1.2f;
         Projectile.alpha = 255;
         Projectile.tileCollide = false;
-        Projectile.timeLeft = 90;
+        Projectile.timeLeft = 75;
         Projectile.DamageType = DamageClass.Ranged;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
@@ -97,7 +98,7 @@ public class SpectralBullet : ModProjectile
             Main.dust[dustIndex].noGravity = true;
             Main.dust[dustIndex].velocity *= 1.5f;
             Main.dust[dustIndex].scale *= 0.7f;
-            dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, ModContent.DustType<Dusts.IceBeamDust>(), 0f, 0f, 100, default(Color), 2f);
+            dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, ModContent.DustType<Dusts.IceBeamDust>(), 0f, 0f, 100, default(Color), 1.2f);
             Main.dust[dustIndex].velocity *= 1.5f;
             Main.dust[dustIndex].scale *= 0.7f;
         }
@@ -110,9 +111,13 @@ public class SpectralBullet : ModProjectile
         Projectile.position.Y -= Projectile.height / 2;
         Projectile.active = false;
     }
-    public bool CurveDirectionStart = true;
-    public bool CurveDirection;
-    public int maxSpeed = 11;
+    //public bool CurveDirectionStart = true;
+    //public bool CurveDirection;
+    //public int maxSpeed = 22;
+    public override void OnSpawn(IEntitySource source)
+    {
+        Projectile.velocity *= 0.8f;
+    }
     public override void AI()
     {
         if (Projectile.alpha > 0)
@@ -123,55 +128,68 @@ public class SpectralBullet : ModProjectile
         {
             Projectile.alpha = 0;
         }
-        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-        if (CurveDirectionStart)
-        {
-            Projectile.velocity = Projectile.velocity.RotatedBy(0.096f);
-            CurveDirectionStart = false;
-        }
-        if (!CurveDirection && !CurveDirectionStart)
-        {
-            Projectile.ai[0]++;
-            Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(-0.024f);
-            if (Projectile.ai[0] >= 8)
-            {
-                CurveDirection = true;
-                Projectile.ai[0] = 0;
-            }
-        }
-        if (CurveDirection && !CurveDirectionStart)
-        {
-            Projectile.ai[0]++;
-            Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(0.024f);
-            if (Projectile.ai[0] >= 8)
-            {
-                CurveDirection = false;
-                Projectile.ai[0] = 0;
-            }
-        }
-        if (Projectile.velocity.Length() > maxSpeed)
-        {
-            Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
-        }
+
+        int num = 0;
+        Projectile.localAI[num]++;
+        Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f;
+        float x = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(Projectile.localAI[num] * ((float)Math.PI / Main.rand.Next(10, 15))).X;
+        Vector2 value = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(1.5707963705062866);
+        //Projectile.position += value * x * Main.rand.NextFloat(1f, 1.5f)
+        Projectile.position += value * x * Main.rand.NextFloat(5f, 10.5f); //exaggerated sine wave to test trail
+
+
+        //Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+        //if (CurveDirectionStart)
+        //{
+        //    Projectile.velocity = Projectile.velocity.RotatedBy(0.096f);
+        //    CurveDirectionStart = false;
+        //}
+        //if (!CurveDirection && !CurveDirectionStart)
+        //{
+        //    Projectile.ai[0]++;
+        //    Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(-0.024f);
+        //    if (Projectile.ai[0] >= 8)
+        //    {
+        //        CurveDirection = true;
+        //        Projectile.ai[0] = 0;
+        //    }
+        //}
+        //if (CurveDirection && !CurveDirectionStart)
+        //{
+        //    Projectile.ai[0]++;
+        //    Projectile.velocity = Projectile.velocity.Length() * Projectile.velocity.RotatedBy(0.024f);
+        //    if (Projectile.ai[0] >= 8)
+        //    {
+        //        CurveDirection = false;
+        //        Projectile.ai[0] = 0;
+        //    }
+        //}
+        //if (Projectile.velocity.Length() > maxSpeed)
+        //{
+        //    Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+        //}
         //var num308 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.FireworksRGB, 0f, 0f, 100, new Color(35, 90, 140), 1f);
         //Main.dust[num308].noGravity = true;
         //Main.dust[num308].velocity *= 0;
     }
-
+    public int alpha = 255;
     public override bool PreDraw(ref Color lightColor)
     {
         Texture2D texture = ModContent.Request<Texture2D>(Texture + "_Trail").Value;
         Texture2D bulletTex = ModContent.Request<Texture2D>(Texture).Value;
         Rectangle frame = texture.Frame();
-        Vector2 frameOrigin = frame.Size() / 2f;
-        Vector2 offset = new Vector2(Projectile.width / 2 - frameOrigin.X, Projectile.height - frameOrigin.Y - 4);
-        Vector2 drawPos = Projectile.position - Main.screenPosition + frameOrigin + offset;
-
-        for (int i = 0; i < 3; i++)
+        Vector2 drawPos = Projectile.position - Main.screenPosition;
+        Color color = new Color(alpha, alpha, alpha, (alpha / 4) * 3);
+        for (int i = 1; i < 4; i++)
         {
-            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * -i, Projectile.velocity.Y * -i), frame, new Color(0, 255 - 255 / 7 * i, 255, 100), Projectile.rotation, frameOrigin, Projectile.scale - 0.01f * i, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, drawPos + new Vector2(Projectile.velocity.X * (-i * 1), Projectile.velocity.Y * (-i * 1)), frame, (color * (1 - (i * 0.25f))) * 0.75f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 20f), Projectile.scale, SpriteEffects.None, 0);
         }
-        Main.EntitySpriteDraw(bulletTex, drawPos, frame, Color.White, Projectile.rotation, frameOrigin, Projectile.scale, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, color, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 20f), Projectile.scale, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.3f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 14f), Projectile.scale * 1.3f, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, color * 0.15f, Projectile.rotation, texture.Size() / 2f - new Vector2(0, 10f), Projectile.scale * 1.6f, SpriteEffects.None, 0);
+        Vector2 vector48 = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
+        Vector2 origin22 = frame.Size() / 2f;
+        Main.EntitySpriteDraw(bulletTex, vector48, frame, Color.AliceBlue, Projectile.rotation, origin22, Projectile.scale, SpriteEffects.None, 0);
         return false;
     }
 }
