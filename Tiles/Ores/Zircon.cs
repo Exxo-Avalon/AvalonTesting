@@ -23,9 +23,4 @@ public class Zircon : ModTile
         HitSound = SoundID.Tink;
         //MinPick = 55;
     }
-
-    public override bool CanExplode(int i, int j)
-    {
-        return false;
-    }
 }

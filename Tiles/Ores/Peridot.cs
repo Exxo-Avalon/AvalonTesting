@@ -23,9 +23,4 @@ public class Peridot : ModTile
         //MinPick = 55;
         DustType = DustID.Grass;
     }
-
-    public override bool CanExplode(int i, int j)
-    {
-        return false;
-    }
 }

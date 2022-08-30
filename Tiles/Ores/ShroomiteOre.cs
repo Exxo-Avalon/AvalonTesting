@@ -27,4 +27,9 @@ public class ShroomiteOre : ModTile
         TileID.Sets.Ore[Type] = true;
         TileID.Sets.Ore[Type] = true;
     }
+
+    public override bool CanExplode(int i, int j)
+    {
+        return false;
+    }
 }

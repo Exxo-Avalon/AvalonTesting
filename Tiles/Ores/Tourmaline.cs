@@ -23,9 +23,4 @@ public class Tourmaline : ModTile
         //MinPick = 55;
         DustType = DustID.Stone;
     }
-
-    public override bool CanExplode(int i, int j)
-    {
-        return false;
-    }
 }
