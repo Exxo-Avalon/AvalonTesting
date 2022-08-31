@@ -39,7 +39,6 @@ public class BloodshotEye : ModNPC
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
-            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Times.NightTime,
             new FlavorTextBestiaryInfoElement("The bloodiest of eyes, this creature exists in a state of fear."),
         });
 

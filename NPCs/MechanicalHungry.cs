@@ -1,4 +1,4 @@
-﻿using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Bestiary;
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,6 +13,11 @@ public class MechanicalHungry : ModNPC
     {
         DisplayName.SetDefault("Mechanical Hungry");
         Main.npcFrameCount[NPC.type] = 4;
+        var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+        { // Influences how the NPC looks in the Bestiary
+            Position = new Vector2(0f, 14f)
+        };
+        NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, drawModifier);
     }
 
     public override void SetDefaults()
@@ -29,6 +34,12 @@ public class MechanicalHungry : ModNPC
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath14;
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) =>
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
+            new FlavorTextBestiaryInfoElement("The Wall of Steel's many mouths, attached by steel cables. As a last resort, they can detach and precisely chase down threats."),
+        });
     public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
     {
         NPC.lifeMax = (int)(NPC.lifeMax * 0.66f);
