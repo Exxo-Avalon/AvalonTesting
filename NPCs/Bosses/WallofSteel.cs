@@ -601,6 +601,13 @@ public class WallofSteel : ModNPC
             }
         }
     }
+    public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+    {
+        bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
+        {
+            new FlavorTextBestiaryInfoElement("A rather secret and unusual recreation of a being from the past, capable of attacks seen from other creations while having some of its own unique ones. At least a certain individual out there would be thankful that the calling of such thing does not result in a fiery death.")
+        });
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
