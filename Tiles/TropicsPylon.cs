@@ -23,12 +23,14 @@ namespace Avalon.Tiles
         public const int CrystalFrameHeight = 64;
 
         public Asset<Texture2D> crystalTexture;
+        public Asset<Texture2D> crystalHighlightTexture;
         public Asset<Texture2D> mapIcon;
 
         public override void Load()
         {
             // We'll need these textures for later, it's best practice to cache them on load instead of continually requesting every draw call.
             crystalTexture = ModContent.Request<Texture2D>(Texture + "_Crystal");
+            crystalHighlightTexture = ModContent.Request<Texture2D>(Texture + "_CrystalHighlight");
             mapIcon = ModContent.Request<Texture2D>(Texture + "_MapIcon");
         }
 
@@ -105,7 +107,8 @@ namespace Avalon.Tiles
         public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
         {
             // We want to draw the pylon crystal the exact same way vanilla does, so we can use this built in method in ModPylon for default crystal drawing:
-            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, Color.White, CrystalFrameHeight, CrystalHorizontalFrameCount, CrystalVerticalFrameCount);
+            DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -13f), new Color(255, 236, 167, 50) * 0.15f, Color.SaddleBrown, 10, CrystalVerticalFrameCount);
+            //DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -18f), Main.DiscoColor * 0.1f, Main.DiscoColor, 1, CrystalVerticalFrameCount);
         }
 
         public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale)
