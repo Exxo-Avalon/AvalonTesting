@@ -81,7 +81,7 @@ public class WallofSteel : ModNPC
         bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
         {
             BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld,
-            new FlavorTextBestiaryInfoElement("A crude recreation of the lord of the underworld. Built with the scraps of Cthulhu's failed mechanical body, it holds within it the power of Cthulhu's soul.")
+            new FlavorTextBestiaryInfoElement("An abandoned creation designed to accomplish what the original Guardian of the Underworld could not - prevent the Terrarian from further destabilizing the world.")
         });
     }
 
