@@ -31,9 +31,11 @@ class GPSPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.RottenEye>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
-        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ItemID.RottenChunk).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ItemID.RottenChunk).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ItemID.Vertebrae).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ItemID.Vertebrae).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.IronOre).AddIngredient(ModContent.ItemType<Material.YuckyBit>()).AddTile(TileID.Bottles).Register();
+        CreateRecipe(1).AddIngredient(ItemID.BottledWater).AddIngredient(ModContent.ItemType<Material.Beak>()).AddIngredient(ItemID.LeadOre).AddIngredient(ModContent.ItemType<Material.YuckyBit>()).AddTile(TileID.Bottles).Register();
     }
 }

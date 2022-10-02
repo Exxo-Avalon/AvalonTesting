@@ -1688,7 +1688,6 @@ public class AvalonGlobalNPC : GlobalNPC
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Quack>(), VeryRareChance));
                 break;
             case NPCID.EaterofSouls:
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenEye>(), 7));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EvilOuroboros>(), RareChance));
                 break;
             case NPCID.DialatedEye:
@@ -1697,9 +1696,6 @@ public class AvalonGlobalNPC : GlobalNPC
             case NPCID.UndeadMiner:
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinersPickaxe>(), 30));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinersSword>(), 30));
-                break;
-            case NPCID.FloatyGross:
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 5, 1, 2));
                 break;
             case NPCID.RaggedCaster:
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SixHundredWattLightbulb>(), UncommonChance));
@@ -1787,11 +1783,6 @@ public class AvalonGlobalNPC : GlobalNPC
 
         #region group
 
-        if (npc.type is NPCID.Crimera or NPCID.FaceMonster or NPCID.BloodCrawler or NPCID.BloodCrawlerWall)
-        {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Patella>(), 15));
-        }
-
         if (npc.type is NPCID.PincushionZombie or NPCID.SlimedZombie or NPCID.SwampZombie or NPCID.TwiggyZombie
             or NPCID.Zombie
             or NPCID.ZombieEskimo or NPCID.FemaleZombie or NPCID.ZombieRaincoat)
@@ -1820,11 +1811,6 @@ public class AvalonGlobalNPC : GlobalNPC
             or NPCID.Unicorn)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementDust>(), 15));
-        }
-
-        if (npc.type is NPCID.Corruptor or NPCID.SeekerHead)
-        {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenEye>(), 3, 1, 2));
         }
 
         if (npc.type is NPCID.Harpy or NPCID.CaveBat or NPCID.GiantBat or NPCID.JungleBat)

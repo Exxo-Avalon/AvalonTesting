@@ -42,7 +42,8 @@ internal class QuadroCannon : ModItem
     public override void AddRecipes() => CreateRecipe().AddIngredient(ItemID.ClockworkAssaultRifle)
         .AddIngredient(ItemID.Shotgun).AddIngredient(ModContent.ItemType<DragonScale>(), 10)
         .AddIngredient(ItemID.SoulofFright).AddIngredient(ItemID.SoulofSight).AddIngredient(ItemID.SoulofMight)
-        .AddIngredient(ModContent.ItemType<LensApparatus>()).AddIngredient(ModContent.ItemType<Onyx>(), 25)
+        .AddIngredient(ItemID.Lens, 10).AddIngredient(ModContent.ItemType<BloodshotLens>(), 5)
+        .AddIngredient(ItemID.BlackLens).AddIngredient(ModContent.ItemType<Onyx>(), 25)
         .AddTile(TileID.MythrilAnvil).Register();
 
     public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

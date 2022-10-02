@@ -41,7 +41,9 @@ class EnergyRevolver : ModItem
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.LaserRifle)
-            .AddIngredient(ModContent.ItemType<Material.LensApparatus>())
+            .AddIngredient(ItemID.Lens, 10)
+            .AddIngredient(ModContent.ItemType<Material.BloodshotLens>(), 5)
+            .AddIngredient(ItemID.BlackLens)
             .AddIngredient(ItemID.SoulofFright, 16)
             .AddTile(TileID.MythrilAnvil).Register();
     }

@@ -52,9 +52,6 @@ public class SoulsinaBottle : ModTile
             case 3:
                 itemToDrop = ModContent.ItemType<SoulofIceinaBottle>();
                 break;
-            case 4:
-                itemToDrop = ModContent.ItemType<SoulofTimeinaBottle>();
-                break;
             case 5:
                 itemToDrop = ModContent.ItemType<SoulofHumidityinaBottle>();
                 break;

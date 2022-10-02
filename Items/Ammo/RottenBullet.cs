@@ -31,6 +31,6 @@ class RottenBullet : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(25).AddIngredient(ItemID.MusketBall, 25).AddIngredient(ModContent.ItemType<Material.RottenEye>(), 5).AddIngredient(ItemID.CursedFlame).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe(25).AddIngredient(ItemID.MusketBall, 25).AddIngredient(ItemID.RottenChunk, 5).AddIngredient(ItemID.CursedFlame).AddTile(TileID.MythrilAnvil).Register();
     }
 }

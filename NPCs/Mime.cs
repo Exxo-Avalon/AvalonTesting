@@ -50,7 +50,6 @@ public class Mime : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SoulofTime>(), 3, 1, 5));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ManaCompromise>(), 100));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ConfusionTalisman>(), 8));
     }

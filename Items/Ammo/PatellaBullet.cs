@@ -31,6 +31,6 @@ class PatellaBullet : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(25).AddIngredient(ItemID.MusketBall, 25).AddIngredient(ModContent.ItemType<Material.Patella>(), 5).AddIngredient(ItemID.Ichor).AddTile(TileID.MythrilAnvil).Register();
+        CreateRecipe(25).AddIngredient(ItemID.MusketBall, 25).AddIngredient(ItemID.Vertebrae, 5).AddIngredient(ItemID.Ichor).AddTile(TileID.MythrilAnvil).Register();
     }
 }

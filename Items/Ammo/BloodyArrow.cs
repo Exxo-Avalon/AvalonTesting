@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,6 +31,6 @@ class BloodyArrow : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(5).AddIngredient(ItemID.WoodenArrow, 5).AddIngredient(ModContent.ItemType<Material.Patella>()).AddTile(TileID.Anvils).Register();
+        CreateRecipe(5).AddIngredient(ItemID.WoodenArrow, 5).AddIngredient(ItemID.Vertebrae).AddTile(TileID.Anvils).Register();
     }
 }

@@ -540,12 +540,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.SoulofNight, 15)
             .AddTile(TileID.Bookcases).Register();
 
-        Recipe.Create(ModContent.ItemType<LensApparatus>())
-            .AddIngredient(ItemID.Lens, 20)
-            .AddIngredient(ModContent.ItemType<BloodshotLens>(), 10)
-            .AddIngredient(ItemID.BlackLens)
-            .AddTile(TileID.Bookcases).Register();
-
         Recipe.Create(ModContent.ItemType<DevilsScythe>())
             .AddIngredient(ItemID.DemonScythe)
             .AddIngredient(ItemID.Fireblossom, 20)
@@ -557,7 +551,9 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.SpellTome)
             .AddIngredient(ItemID.SoulofMight, 20)
             .AddIngredient(ModContent.ItemType<Tourmaline>(), 15)
-            .AddIngredient(ModContent.ItemType<LensApparatus>())
+            .AddIngredient(ItemID.Lens, 10)
+            .AddIngredient(ModContent.ItemType<BloodshotLens>(), 5)
+            .AddIngredient(ItemID.BlackLens)
             .AddTile(TileID.Bookcases).Register();
 
         Recipe.Create(ModContent.ItemType<GigaHorn>())
@@ -650,8 +646,7 @@ public class RecipeCreator : ModSystem
         
 
         Recipe.Create(ModContent.ItemType<TimechangerMkII>())
-            .AddIngredient(ModContent.ItemType<SoulofTime>(), 40)
-            .AddIngredient(ModContent.ItemType<SoulofBlight>())
+            .AddIngredient(ModContent.ItemType<SoulofBlight>(), 25)
             .AddIngredient(ModContent.ItemType<Timechanger>())
             .AddTile(TileID.MythrilAnvil).Register();
 
@@ -1025,11 +1020,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ModContent.ItemType<HydrolythBar>(), 25)
             .AddTile(ModContent.TileType<Tiles.CaesiumForge>()).Register();
 
-        Recipe.Create(ModContent.ItemType<FieryBladeofGrass>())
-            .AddIngredient(ItemID.BladeofGrass)
-            .AddIngredient(ItemID.FieryGreatsword)
-            .AddTile(TileID.Anvils).Register();
-
         Recipe.Create(ModContent.ItemType<HallowedAltar>())
             .AddIngredient(ItemID.HallowedBar, 10)
             .AddIngredient(ItemID.LightShard, 2)
@@ -1064,16 +1054,6 @@ public class RecipeCreator : ModSystem
             .AddIngredient(ItemID.SoulofNight, 20)
             .AddIngredient(ModContent.ItemType<Booger>(), 20)
             .AddIngredient(ModContent.ItemType<PandemiteBar>(), 25)
-            .AddTile(TileID.MythrilAnvil).Register();
-
-        
-
-        
-
-        Recipe.Create(ModContent.ItemType<SunsShadow>())
-            .AddIngredient(ItemID.BeetleHusk, 8)
-            .AddIngredient(ItemID.TurtleShell)
-            .AddIngredient(ItemID.ChlorophyteBar, 3)
             .AddTile(TileID.MythrilAnvil).Register();
 
         #region catalyzer

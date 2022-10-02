@@ -65,7 +65,6 @@ public class BiomeTileCounts : ModSystem
         CaesiumTiles = tileCounts[ModContent.TileType<BlastedStone>()];
         SkyFortressTiles = tileCounts[ModContent.TileType<SkyBrick>()];
         CrystalTiles = tileCounts[ModContent.TileType<CrystalStone>()];
-        TimeTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.TimeCandle>()];
         BlightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.BlightCandle>()];
         FrightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.FrightCandle>()];
         MightTiles = tileCounts[ModContent.TileType<Tiles.SoulCandles.MightCandle>()];
