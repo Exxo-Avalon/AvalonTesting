@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -66,6 +67,36 @@ class ElementalExcalibur : ModItem
         else if (randomNum == 6) target.AddBuff(BuffID.Ichor, 300);
         else if (randomNum == 7) target.AddBuff(BuffID.Frozen, 60);
     }
+    //public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    //{
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        float vX = velocity.X + Main.rand.Next(-80, 81) * 0.05f;
+    //        float vY = velocity.Y + Main.rand.Next(-80, 81) * 0.05f;
+    //        Vector2 v = new Vector2(vX, vY);
+    //        if (i == 0)
+    //        {
+    //            Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, v, ModContent.ProjectileType<Projectiles.Melee.ElementEarthBeam>(), damage, knockback);
+    //        }
+    //        if (i == 1)
+    //        {
+    //            Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, v, ModContent.ProjectileType<Projectiles.Melee.ElementFireBeam>(), damage, knockback);
+    //        }
+    //        if (i == 2)
+    //        {
+    //            Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, v, ModContent.ProjectileType<Projectiles.Melee.ElementMetalBeam>(), damage, knockback);
+    //        }
+    //        if (i == 3)
+    //        {
+    //            Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, v, ModContent.ProjectileType<Projectiles.Melee.ElementWaterBeam>(), damage, knockback);
+    //        }
+    //        if (i == 4)
+    //        {
+    //            Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, v, ModContent.ProjectileType<Projectiles.Melee.ElementWoodBeam>(), damage, knockback);
+    //        }
+    //    }
+    //    return true;
+    //}
     public override void AddRecipes()
     {
         CreateRecipe(1).AddIngredient(ItemID.TerraBlade).AddIngredient(ModContent.ItemType<VertexofExcalibur>()).AddIngredient(ModContent.ItemType<Material.SoulofDelight>(), 20).AddIngredient(ModContent.ItemType<Material.ElementShard>(), 10).AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();

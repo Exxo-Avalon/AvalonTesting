@@ -1,4 +1,4 @@
-﻿using Avalon.Items.Accessories;
+using Avalon.Items.Accessories;
 using Avalon.Items.Material;
 using Avalon.Items.Placeable.Painting;
 using Avalon.Items.Placeable.Tile;
@@ -43,15 +43,6 @@ class RedPresent : ModItem
         if (Main.rand.Next(25) == 0 && Main.hardMode)
         {
             int number = Item.NewItem(player.GetSource_OpenItem(Item.type), (int)player.position.X, (int)player.position.Y, player.width, player.height, ModContent.ItemType<SackofToys>(), 1, false, 0, false);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), number, 1f, 0f, 0f, 0);
-                return;
-            }
-        }
-        else if (Main.rand.Next(30) == 0)
-        {
-            int number = Item.NewItem(player.GetSource_OpenItem(Item.type), (int)player.position.X, (int)player.position.Y, player.width, player.height, ModContent.ItemType<SantasBeard>(), 1, false, 0, false);
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), number, 1f, 0f, 0f, 0);

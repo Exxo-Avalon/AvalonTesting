@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -31,6 +27,13 @@ internal class Hellcastle
         AddFurniture(x, y, 400, 150);
         AddChests(x, y, 400, 150);
         AddPots(x, y, 400, 150);
+        MakeEntranceArea(x + 200, y + 135);
+    }
+    public static void MakeEntranceArea(int x, int y)
+    {
+        MakeBox(x - 10, y + 13, 20, 25, ModContent.TileType<Tiles.ImperviousBrick>(), (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>());
+        MakeBox(x - 7, y, 14, 40, ushort.MaxValue, (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>());
+        MakeBox(x - 7, y + 34, 14, 4, ModContent.TileType<Tiles.UltraResistantWood>(), (ushort)ModContent.WallType<Walls.ImperviousBrickWallUnsafe>());
     }
     public static void MakePath(int x, int y, int start)
     {
@@ -129,6 +132,9 @@ internal class Hellcastle
             }
         }
     }
+    /// <summary>
+    /// Destroys a box of tiles.
+    /// </summary>
     public static void DestroyBox(int x, int y, int width, int height)
     {
         int a = -(width / 2);

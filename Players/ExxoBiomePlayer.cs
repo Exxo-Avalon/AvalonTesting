@@ -51,7 +51,6 @@ public class ExxoBiomePlayer : ModPlayer
         //ZoneTropics = biomeTileCounts.TropicsTiles > 200;
         //ZoneTuhrtlOutpost = ZoneTropics && wallType == ModContent.WallType<TuhrtlBrickWallUnsafe>() &&
         //                    Player.ZoneRockLayerHeight;
-        ZoneTime = biomeTileCounts.TimeTiles > 1;
         ZoneBlight = biomeTileCounts.BlightTiles > 1;
         ZoneFright = biomeTileCounts.FrightTiles > 1;
         ZoneMight = biomeTileCounts.MightTiles > 1;

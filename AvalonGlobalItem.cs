@@ -146,6 +146,9 @@ public class AvalonGlobalItem : GlobalItem
             case 4700:
                 item.rare = ItemRarityID.Blue;
                 break;
+            case ItemID.LaserDrill:
+                item.pick = 220;
+                break;
             // case ItemID.Goldfish:
             //    item.makeNPC = (short)ModContent.NPCType<NPCs.ImpactWizard>();
             //    break;

@@ -19,7 +19,6 @@ public class BiomeTileCounts : ModSystem
     public int CaesiumTiles { get; private set; }
     public int SkyFortressTiles { get; private set; }
     public int CrystalTiles { get; private set; }
-    public int TimeTiles { get; private set; }
     public int BlightTiles { get; private set; }
     public int FrightTiles { get; private set; }
     public int MightTiles { get; private set; }
