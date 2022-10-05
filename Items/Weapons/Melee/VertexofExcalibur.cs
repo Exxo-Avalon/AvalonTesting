@@ -22,6 +22,7 @@ class VertexofExcalibur : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.2f;
+        Item.noMelee = true;
         Item.rare = ItemRarityID.Yellow;
         Item.useTime = 18;
         Item.knockBack = 5f;
@@ -29,6 +30,7 @@ class VertexofExcalibur : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 63, 0);
         Item.useAnimation = 18;
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VertexSlash>();
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {
