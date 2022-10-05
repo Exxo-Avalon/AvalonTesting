@@ -21,7 +21,7 @@ public class VorazylcumOre : ModTile
         Main.tileShine[Type] = 1900;
         ItemDrop = ModContent.ItemType<Items.Ore.VorazylcumOre>();
         HitSound = SoundID.Tink;
-        MinPick = 250;
+        MinPick = 245;
         DustType = DustID.VilePowder;
         TileID.Sets.Ore[Type] = true;
     }
