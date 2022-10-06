@@ -135,10 +135,6 @@ public class Avalon : Mod
             SushiRecipes.CreateRecipes(ImkSushisMod);
         }
     }
-    public override void PostSetupContent()
-    {
-        AvalonCall.Support();
-    }
     private void ReplaceVanillaTextures()
     {
         var itemReplacer = new VanillaAssetReplacer<Texture2D>(() => TextureAssets.Item);

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AltLibrary.Common.Systems;
 using Avalon.Items.Consumables;
 using Avalon.Items.MusicBoxes;
@@ -11,14 +7,20 @@ using Avalon.Items.Vanity;
 using Avalon.Systems;
 using Terraria.ModLoader;
 
-namespace Avalon;
-internal class AvalonCall
+namespace Avalon.Compatability.BossChecklist;
+
+public class BossChecklistSystem : ModSystem
 {
-    public static void Support()
+    /// <inheritdoc />
+    public override void PostSetupContent()
     {
-        ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
+        if (!ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
+        {
+            return;
+        }
+
         // bacterium prime
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Bacterium Prime",
@@ -34,7 +36,7 @@ internal class AvalonCall
                 "Avalon/NPCs/BacteriumPrime_Head_Boss");
 
         // desert beak
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Desert Beak",
@@ -50,7 +52,7 @@ internal class AvalonCall
                 "Avalon/NPCs/Bosses/DesertBeak_Head_Boss");
 
         // phantasm
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Phantasm",
@@ -66,7 +68,7 @@ internal class AvalonCall
                 "Avalon/NPCs/Bosses/Phantasm_Head_Boss");
 
         // wall of steel
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Wall of Steel",
@@ -82,7 +84,7 @@ internal class AvalonCall
                 "Avalon/NPCs/Bosses/WallofSteel_Head_Boss");
 
         // armageddon slime
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Armageddon Slime",
@@ -98,7 +100,7 @@ internal class AvalonCall
                 "Avalon/NPCs/Bosses/ArmageddonSlime_Head_Boss");
 
         // dragon lord
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Dragon Lord",
@@ -114,7 +116,7 @@ internal class AvalonCall
                 "Avalon/NPCs/DragonLordHead_Head_Boss");
 
         // mechasting
-        bossChecklist?.Call(
+        bossChecklist.Call(
                 "AddBoss",
                 Avalon.Mod,
                 "Mechasting",
