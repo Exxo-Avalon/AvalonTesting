@@ -38,7 +38,7 @@ public class DarkMatterMonolith : ModTile
         if (Main.tile[i, j].TileFrameX >= 36)
         {
             Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith = true;
-            Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterTimeOut = 20;
+            Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterTimeOut = 2;
         }
     }
 

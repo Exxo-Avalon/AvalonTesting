@@ -2,10 +2,10 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 
 namespace Avalon.Effects;
+
 public class DarkMatterScreenShader : ScreenShaderData
 {
     public DarkMatterScreenShader(Ref<Effect> shader, string passName) : base(shader, passName)
@@ -18,13 +18,5 @@ public class DarkMatterScreenShader : ScreenShaderData
         vec *= 0.4f;
         UseOpacity(Math.Max(vec.X, Math.Max(vec.Y, vec.Z)));
         base.Apply();
-    }
-
-    public override void Update(GameTime gameTime)
-    {
-        if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
-        {
-            Filters.Scene["Avalon:DarkMatter"].Deactivate();
-        }
     }
 }

@@ -1,8 +1,8 @@
+using Avalon.Biomes;
 using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Avalon.Biomes;
 
 namespace Avalon.Players;
 
@@ -19,7 +19,8 @@ public class ExxoBiomePlayer : ModPlayer
     public bool ZoneTuhrtlOutpost => Player.InModBiome(ModContent.GetInstance<TuhrtlOutpost>());
     public bool ZoneUndergroundContagion => Player.InModBiome(ModContent.GetInstance<UndergroundContagion>());
     public bool ZoneUndergroundTropics => Player.InModBiome(ModContent.GetInstance<UndergroundTropics>());
-    public bool ZoneDarkMonolith => Player.InModBiome(ModContent.GetInstance<DarkMatterMonolith>());
+    public bool ZoneAltDungeon => Player.InModBiome(ModContent.GetInstance<DungeonAltColors>());
+    public bool ZoneContagionDesert => Player.InModBiome(ModContent.GetInstance<ContagionDesert>());
     public bool ZoneTime { get; private set; }
     public bool ZoneBlight { get; private set; }
     public bool ZoneFright { get; private set; }
@@ -31,8 +32,20 @@ public class ExxoBiomePlayer : ModPlayer
     public bool ZoneHumidity { get; private set; }
     public bool ZoneDelight { get; private set; }
     public bool ZoneSight { get; private set; }
-    public bool ZoneAltDungeon => Player.InModBiome(ModContent.GetInstance<DungeonAltColors>());
-    public bool ZoneContagionDesert => Player.InModBiome(ModContent.GetInstance<ContagionDesert>());
+
+    public override void PostUpdate()
+    {
+        if (ZoneAltDungeon)
+        {
+            Player.ZoneDungeon = true;
+        }
+        //if (ZoneContagionDesert)
+        //{
+        //    Player.ZoneDesert = true;
+        //    Terraria.Graphics.Effects.Filters.Scene["Sandstorm"].Activate(Player.position);
+        //}
+        //Main.NewText(Player.ZoneDesert);
+    }
 
     public void UpdateZones(BiomeTileCounts biomeTileCounts)
     {
@@ -62,16 +75,5 @@ public class ExxoBiomePlayer : ModPlayer
         ZoneDelight = biomeTileCounts.DelightTiles > 1;
         ZoneSight = biomeTileCounts.SightTiles > 1;
         //ZoneAltDungeon = biomeTileCounts.DungeonAltTiles > 250 && Main.wallDungeon[wallType] && tileCoordinates.Y > Main.worldSurface;
-    }
-    public override void PostUpdate()
-    {
-        if (ZoneAltDungeon)
-            Player.ZoneDungeon = true;
-        //if (ZoneContagionDesert)
-        //{
-        //    Player.ZoneDesert = true;
-        //    Terraria.Graphics.Effects.Filters.Scene["Sandstorm"].Activate(Player.position);
-        //} 
-        //Main.NewText(Player.ZoneDesert);
     }
 }

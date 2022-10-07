@@ -1,34 +1,31 @@
 using Avalon.Common;
-using Terraria;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
+using On.Terraria;
 using Terraria.ModLoader;
 
 namespace Avalon.Hooks;
+
+[Autoload(Side = ModSide.Client)]
 public class DarkMatterRemoveSun : ModHook
 {
-    protected override void Apply()
-    {
-        On.Terraria.Main.DrawSunAndMoon += OnDrawSunAndMoon;
-    }
-    private static void OnDrawSunAndMoon(On.Terraria.Main.orig_DrawSunAndMoon orig, Main self, Main.SceneArea sceneArea, Color moonColor, Color sunColor, float tempMushroomInfluence)
-    {
-        if (!Main.gameMenu)
-        {
-            if (!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter && !Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
-            {
-                orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
-            }
-        }
-        else
-            orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+    protected override void Apply() => Main.DrawSunAndMoon += OnDrawSunAndMoon;
 
-        //if (Main.LocalPlayer != null)
-        //{
-        //    if (ModContent.GetInstance<Systems.BiomeTileCounts>().DarkTiles < 300)//!Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
-        //    {
-        //        orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
-        //    }
-        //}
-        //else orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+    private static void OnDrawSunAndMoon(Main.orig_DrawSunAndMoon orig, Terraria.Main self,
+                                         Terraria.Main.SceneArea sceneArea, Color moonColor, Color sunColor,
+                                         float tempMushroomInfluence)
+    {
+        if (Terraria.Main.gameMenu)
+        {
+            orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
+            return;
+        }
+
+        if (Terraria.Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter)
+        {
+            return;
+        }
+
+        orig(self, sceneArea, moonColor, sunColor, tempMushroomInfluence);
     }
 }

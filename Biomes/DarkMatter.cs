@@ -1,5 +1,6 @@
 using Avalon.Backgrounds;
 using Avalon.Players;
+using Avalon.Systems;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,28 +12,38 @@ public class DarkMatter : ModBiome
 {
     public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
     public override ModWaterStyle WaterStyle => ModContent.Find<ModWaterStyle>("Avalon/DarkMatterWaterStyle");
-    public override string BestiaryIcon => base.BestiaryIcon;
-    public override string BackgroundPath => base.BackgroundPath;
     public override string MapBackground => BackgroundPath;
 
-    public override int Music =>
-        Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith
-            ? Main.curMusic
-            : Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DarkMatter") : MusicID.Eclipse;
-
-    public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle => ModContent.GetInstance<DarkMatterBackground>();
-
-    public override void SpecialVisuals(Player player, bool isActive)
+    /// <inheritdoc />
+    public override int Music
     {
-        if (isActive)
+        get
         {
-            Main.ColorOfTheSkies = new Color(126, 71, 107);
-            player.ManageSpecialBiomeVisuals("Avalon:DarkMatter", isActive);
+            if (Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith)
+            {
+                return Main.curMusic;
+            }
+
+            return Avalon.MusicMod != null
+                ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/DarkMatter")
+                : MusicID.Eclipse;
         }
     }
 
-    public override bool IsBiomeActive(Player player)
+    public override ModSurfaceBackgroundStyle SurfaceBackgroundStyle =>
+        ModContent.GetInstance<DarkMatterSurfaceBackgroundStyle>();
+
+    public override void SpecialVisuals(Player player, bool isActive)
     {
-        return ModContent.GetInstance<Systems.BiomeTileCounts>().DarkTiles > 450;
+        if (!isActive)
+        {
+            return;
+        }
+
+        Main.ColorOfTheSkies = new Color(126, 71, 107);
+        player.ManageSpecialBiomeVisuals("Avalon:DarkMatter", isActive);
     }
+
+    public override bool IsBiomeActive(Player player) => ModContent.GetInstance<BiomeTileCounts>().DarkTiles > 450 ||
+                                                         player.GetModPlayer<ExxoPlayer>().DarkMatterMonolith;
 }

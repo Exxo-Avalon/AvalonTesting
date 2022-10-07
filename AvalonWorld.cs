@@ -311,14 +311,14 @@ public class AvalonWorld : ModSystem
             //    backgroundColor = new Color(50, 20, 0);
             //}
         }
-        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
-            backgroundColor = new Color(126, 71, 107) * 0.2f;
+            backgroundColor = new Color(126, 71, 107);
         }
     }
     public override void ModifyLightingBrightness(ref float scale)
     {
-        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter || Main.LocalPlayer.GetModPlayer<Players.ExxoPlayer>().DarkMatterMonolith)
+        if (Main.LocalPlayer.GetModPlayer<Players.ExxoBiomePlayer>().ZoneDarkMatter)
         {
             scale = 0.8f;
         }

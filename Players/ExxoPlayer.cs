@@ -117,7 +117,7 @@ public class ExxoPlayer : ModPlayer
             MousePosition = Main.MouseWorld;
         }
     }
-    
+
     public override void PostUpdateEquips()
     {
         //Main.NewText(EquipLoader.GetEquipTexture(EquipType.Head, Player.head).Name);
@@ -729,7 +729,7 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
-        
+
     }
     public override void PostUpdate()
     {
@@ -1711,11 +1711,6 @@ public class ExxoPlayer : ModPlayer
         }
     }
 
-    public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
-    {
-        
-    }
-
     public override void UpdateDead() => jumpAgainQuack = false;
 
     public override void PostUpdateRunSpeeds()
@@ -1848,7 +1843,7 @@ public class ExxoPlayer : ModPlayer
 
     public void UpdateMana() => Player.statManaMax2 += spiritPoppyUseCount * 20;
 
-    
+
 
     public void FloorVisualsAvalon(bool falling)
     {
@@ -2087,7 +2082,7 @@ public class ExxoPlayer : ModPlayer
         Checkpoints,
         Team,
     }
-    public bool DarkMatterMonolith;
+    public bool DarkMatterMonolith { get; set; }
     public int DarkMatterTimeOut = 20;
     public bool quackJump;
     public bool jumpAgainQuack;
@@ -2122,7 +2117,7 @@ public class ExxoPlayer : ModPlayer
     public bool dashTemp;
     public bool rocketJumpRO = true;
 
-    
+
     public byte staminaCD3;
 
     public bool shadowTele;

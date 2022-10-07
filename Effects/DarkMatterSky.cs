@@ -13,31 +13,21 @@ namespace Avalon.Effects;
 
 public class DarkMatterSky : CustomSky
 {
-    private static float bgScale;
     private static int blackHoleCounter;
     private static int blackHoleFrame;
     private static int surfaceFrame;
     private static int surfaceFrameCounter;
     private readonly Asset<Texture2D>[] darkMatterBackgrounds = new Asset<Texture2D>[25];
-    private int bgLoops;
-    private int bgStartX;
-    private int bgTopY;
-    private int bgWidthScaled;
     private Asset<Texture2D>? darkMatterBlackHole;
     private Asset<Texture2D>? darkMatterBlackHole2;
-    private Asset<Texture2D>? darkMatterFloatingRocks;
     private Asset<Texture2D>? darkMatterSky;
     private float opacity;
-    private double parallax;
-    private float scAdj;
     private bool skyActive;
 
-    //public EffectPriority priority => EffectPriority.VeryHigh;
     public override void OnLoad()
     {
         darkMatterSky = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterSky");
         darkMatterBlackHole = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole");
-        darkMatterFloatingRocks = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/FloatingRocks");
         darkMatterBlackHole2 = ModContent.Request<Texture2D>("Avalon/Backgrounds/DarkMatter/DarkMatterBGBlackHole2");
         for (int i = 0; i < darkMatterBackgrounds.Length; i++)
         {
@@ -46,9 +36,17 @@ public class DarkMatterSky : CustomSky
         }
     }
 
-    public override void Activate(Vector2 position, params object[] args) => skyActive = true;
+    public override void Activate(Vector2 position, params object[] args)
+    {
+        Filters.Scene.Activate("Avalon:DarkMatter");
+        skyActive = true;
+    }
 
-    public override void Deactivate(params object[] args) => skyActive = false;
+    public override void Deactivate(params object[] args)
+    {
+        Filters.Scene.Deactivate("Avalon:DarkMatter");
+        skyActive = false;
+    }
 
     public override void Reset() => skyActive = false;
 
@@ -212,20 +210,19 @@ public class DarkMatterSky : CustomSky
         //}
 
         // Draw the floating rocks
-        spriteBatch.Draw(darkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null,
-            new Color(255, 255, 255, 255), 0f,
-            new Vector2(darkMatterFloatingRocks.Width() >> 1, darkMatterFloatingRocks.Height() >> 1), 1f,
-            SpriteEffects.None, 1f);
-        spriteBatch.Draw(darkMatterFloatingRocks.Value,
-            new Vector2(xPos + darkMatterFloatingRocks.Value.Width, yPos + 200), null,
-            new Color(255, 255, 255, 255), 0f,
-            new Vector2(darkMatterFloatingRocks.Width() >> 1, darkMatterFloatingRocks.Height() >> 1), 1f,
-            SpriteEffects.None, 1f);
+        // spriteBatch.Draw(darkMatterFloatingRocks.Value, new Vector2(xPos, yPos + 200), null,
+        //     new Color(255, 255, 255, 255), 0f,
+        //     new Vector2(darkMatterFloatingRocks.Width() >> 1, darkMatterFloatingRocks.Height() >> 1), 1f,
+        //     SpriteEffects.None, 1f);
+        // spriteBatch.Draw(darkMatterFloatingRocks.Value,
+        //     new Vector2(xPos + darkMatterFloatingRocks.Value.Width, yPos + 200), null,
+        //     new Color(255, 255, 255, 255), 0f,
+        //     new Vector2(darkMatterFloatingRocks.Width() >> 1, darkMatterFloatingRocks.Height() >> 1), 1f,
+        //     SpriteEffects.None, 1f);
     }
 
     public override void Update(GameTime gameTime)
     {
-        //Main.NewText(Main.LocalPlayer.GetModPlayer<ExxoPlayer>().DarkMatterMonolith);
         //Main.eclipseLight = 1f;
         if (!Main.LocalPlayer.GetModPlayer<ExxoBiomePlayer>().ZoneDarkMatter)
         {
