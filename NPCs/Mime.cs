@@ -50,7 +50,6 @@ public class Mime : ModNPC
     }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
-        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ManaCompromise>(), 100));
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ConfusionTalisman>(), 8));
     }
     public override void FindFrame(int frameHeight)

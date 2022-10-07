@@ -6,9 +6,13 @@ using Avalon.Projectiles.Templates;
 using System;
 
 namespace Avalon.Projectiles.Melee;
-public abstract class VertexSlash : SwordSwingGeneric
+public class VertexSlash : ModProjectile
 {
     public bool CanCutTile { get; set; }
+    public override void SetStaticDefaults()
+    {
+        Main.projFrames[Type] = 4;
+    }
     public override void SetDefaults()
     {
         CanCutTile = true;
@@ -27,4 +31,13 @@ public abstract class VertexSlash : SwordSwingGeneric
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 30;
     }
+    //public override void PostDraw(Color lightColor)
+    //{
+    //    DrawProj_Excalibur(Projectile);
+    //}
+    //public override bool PreDraw(ref Color lightColor)
+    //{
+        
+    //    return true;
+    //}
 }

@@ -30,7 +30,7 @@ class VertexofExcalibur : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 63, 0);
         Item.useAnimation = 18;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VertexSlash>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Templates.SwordSwingGeneric>();
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,24 +10,32 @@ class ManaCompromise : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Mana Compromise");
-        Tooltip.SetDefault("Increases maximum mana by 100\n10% decreased magic damage and 7% decreased mana usage");
+        Tooltip.SetDefault("\n12% decreased magic damage and 8% decreased mana usage\nAutomatically use mana potions when needed\nProvides immunity to Mana Sickness");
         SacrificeTotal = 1;
     }
 
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = ItemRarityID.Yellow;
+        Item.rare = ItemRarityID.LightPurple;
         Item.width = dims.Width;
         Item.value = Item.sellPrice(0, 6, 70, 0);
         Item.accessory = true;
         Item.height = dims.Height;
     }
-
+    public override void AddRecipes()
+    {
+        CreateRecipe(1)
+            .AddIngredient(ItemID.ManaFlower)
+            .AddIngredient(ItemID.ManaRegenerationBand)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
+    }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.statManaMax2 += 100;
-        player.GetDamage(DamageClass.Magic) -= 0.1f;
-        player.manaCost -= 0.07f;
+        player.buffImmune[BuffID.ManaSickness] = true;
+        player.manaFlower = true;
+        player.GetDamage(DamageClass.Magic) -= 0.12f;
+        player.manaCost -= 0.08f;
     }
 }

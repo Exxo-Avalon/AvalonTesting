@@ -31,6 +31,17 @@ public static class ClassExtensions
     {
         return degrees / 57.2957795f;
     }
+    public static bool IntersectsCone(this Rectangle targetRect, Vector2 coneCenter, float coneLength, float coneRotation, float maximumAngle)
+    {
+        Vector2 point = coneCenter + coneRotation.ToRotationVector2() * coneLength;
+        Vector2 spinningpoint = targetRect.ClosestPointInRect(point) - coneCenter;
+        float num = spinningpoint.RotatedBy(0f - coneRotation).ToRotation();
+        if (num < 0f - maximumAngle || num > maximumAngle)
+        {
+            return false;
+        }
+        return spinningpoint.Length() < coneLength;
+    }
     public static bool CanSpawnFishingRift(Vector2 pos, int type, int range)
     {
         for (int i = 0; i < 200; i++)
