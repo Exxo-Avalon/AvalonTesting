@@ -60,7 +60,7 @@ public class TropicalVines : ModTile
                 {
                     break;
                 }
-                else if (!testTile.HasTile || testTile.TileType != ModContent.TileType<Impgrass>())
+                else if (!testTile.HasTile || testTile.TileType != ModContent.TileType<Ectograss>())
                 {
                     yTest--;
                     continue;

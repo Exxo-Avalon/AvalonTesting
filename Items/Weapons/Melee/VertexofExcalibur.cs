@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -20,7 +21,6 @@ class VertexofExcalibur : ModItem
         Item.UseSound = SoundID.Item1;
         Item.damage = 90;
         Item.autoReuse = true;
-        Item.useTurn = true;
         Item.scale = 1.2f;
         Item.noMelee = true;
         Item.rare = ItemRarityID.Yellow;
@@ -30,7 +30,12 @@ class VertexofExcalibur : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 63, 0);
         Item.useAnimation = 18;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Templates.SwordSwingGeneric>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VertexSlash>();
+    }
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        return false;
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)
     {

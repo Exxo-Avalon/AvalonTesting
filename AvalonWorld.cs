@@ -1638,7 +1638,7 @@ public class AvalonWorld : ModSystem
             #endregion dark matter grass
 
             #region impgrass
-            if (Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>())
+            if (Main.tile[num5, num6].TileType == ModContent.TileType<Ectograss>())
             {
                 int num14 = Main.tile[num5, num6].TileType;
                 bool flag2 = false;
@@ -1650,7 +1650,7 @@ public class AvalonWorld : ModSystem
                         {
                             if (Main.tile[m, n].TileType == TileID.Ash)
                             {
-                                WorldGen.SpreadGrass(m, n, TileID.Ash, ModContent.TileType<Impgrass>(), false,
+                                WorldGen.SpreadGrass(m, n, TileID.Ash, ModContent.TileType<Ectograss>(), false,
                                     Main.tile[num5, num6].TileColor);
                             }
 
@@ -1749,8 +1749,8 @@ public class AvalonWorld : ModSystem
             #endregion tropical grass
 
             #region impvines growing
-            if ((Main.tile[num5, num6].TileType == ModContent.TileType<Impgrass>() ||
-                 Main.tile[num5, num6].TileType == ModContent.TileType<Impvines>()) &&
+            if ((Main.tile[num5, num6].TileType == ModContent.TileType<Ectograss>() ||
+                 Main.tile[num5, num6].TileType == ModContent.TileType<Ectovines>()) &&
                 WorldGen.genRand.NextBool(15) && !Main.tile[num5, num6 + 1].HasTile && // change back to NextBool(15)
                 Main.tile[num5, num6 + 1].LiquidType != LiquidID.Lava)
             {
@@ -1764,7 +1764,7 @@ public class AvalonWorld : ModSystem
                     }
 
                     if (Main.tile[num5, num47].HasTile &&
-                        Main.tile[num5, num47].TileType == ModContent.TileType<Impgrass>() &&
+                        Main.tile[num5, num47].TileType == ModContent.TileType<Ectograss>() &&
                         !Main.tile[num5, num47].BottomSlope)
                     {
                         flag10 = true;
@@ -1776,7 +1776,7 @@ public class AvalonWorld : ModSystem
                 {
                     int num48 = num5;
                     int num49 = num6 + 1;
-                    Main.tile[num48, num49].TileType = (ushort)ModContent.TileType<Impvines>();
+                    Main.tile[num48, num49].TileType = (ushort)ModContent.TileType<Ectovines>();
 
                     Tile t = Main.tile[num48, num49];
                     t.HasTile = true;

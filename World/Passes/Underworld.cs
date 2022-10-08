@@ -150,7 +150,7 @@ internal class Underworld : GenPass
         //    ashenRight = (Main.maxTilesX / 3) + 500;
         //}
 
-        Hellcastle.GenerateHellcastle(hellcastleOriginX, Main.maxTilesY - 360);
+        Hellcastle.GenerateHellcastle(hellcastleOriginX, Main.maxTilesY - 350);
         for (int hbx = ashenLeft; hbx < ashenRight; hbx++)
         {
             for (int hby = Main.maxTilesY - 200; hby < Main.maxTilesY - 50; hby++)
@@ -162,7 +162,7 @@ internal class Underworld : GenPass
                 {
                     if (Main.tile[hbx, hby].TileType == TileID.Ash)
                     {
-                        Main.tile[hbx, hby].TileType = (ushort)ModContent.TileType<Impgrass>();
+                        Main.tile[hbx, hby].TileType = (ushort)ModContent.TileType<Ectograss>();
                         if (WorldGen.genRand.Next(1) == 0)
                         {
                             WorldGen.GrowTree(hbx, hby - 1);

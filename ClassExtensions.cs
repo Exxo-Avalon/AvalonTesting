@@ -27,9 +27,41 @@ public static class ClassExtensions
     public static ExxoBiomePlayer AvalonBiome(this Player p) => p.GetModPlayer<ExxoBiomePlayer>();
 
     public static bool Exists(this Item item) => item.type > ItemID.None && item.stack > 0;
-    public static float DegreesToRadians(this int degrees)
+    public static bool IntersectsConeSlowMoreAccurate(this Rectangle targetRect, Vector2 coneCenter, float coneLength, float coneRotation, float maximumAngle)
     {
-        return degrees / 57.2957795f;
+        Vector2 point = coneCenter + coneRotation.ToRotationVector2() * coneLength;
+        if (DoesFitInCone(targetRect.ClosestPointInRect(point), coneCenter, coneLength, coneRotation, maximumAngle))
+        {
+            return true;
+        }
+        if (DoesFitInCone(targetRect.TopLeft(), coneCenter, coneLength, coneRotation, maximumAngle))
+        {
+            return true;
+        }
+        if (DoesFitInCone(targetRect.TopRight(), coneCenter, coneLength, coneRotation, maximumAngle))
+        {
+            return true;
+        }
+        if (DoesFitInCone(targetRect.BottomLeft(), coneCenter, coneLength, coneRotation, maximumAngle))
+        {
+            return true;
+        }
+        if (DoesFitInCone(targetRect.BottomRight(), coneCenter, coneLength, coneRotation, maximumAngle))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool DoesFitInCone(Vector2 point, Vector2 coneCenter, float coneLength, float coneRotation, float maximumAngle)
+    {
+        Vector2 spinningpoint = point - coneCenter;
+        float num = spinningpoint.RotatedBy(0f - coneRotation).ToRotation();
+        if (num < 0f - maximumAngle || num > maximumAngle)
+        {
+            return false;
+        }
+        return spinningpoint.Length() < coneLength;
     }
     public static bool IntersectsCone(this Rectangle targetRect, Vector2 coneCenter, float coneLength, float coneRotation, float maximumAngle)
     {

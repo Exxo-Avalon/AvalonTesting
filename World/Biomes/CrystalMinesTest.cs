@@ -13,7 +13,7 @@ internal class CrystalMinesTest
 {
     private static int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>(),
             ModContent.TileType<Tiles.OrangeBrick>(), ModContent.TileType<Tiles.PurpleBrick>(), ModContent.TileType<Tiles.CrackedOrangeBrick>(),
-            ModContent.TileType<Tiles.CrackedPurpleBrick>() };
+            ModContent.TileType<Tiles.CrackedPurpleBrick>(), TileID.WoodenSpikes };
     private static int[] blacklistedWalls = new int[]
     {
         WallID.BlueDungeonSlabUnsafe,

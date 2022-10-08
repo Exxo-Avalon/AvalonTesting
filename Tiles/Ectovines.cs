@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Avalon.Tiles;
 
-public class Impvines : ModTile
+public class Ectovines : ModTile
 {
     public override void SetStaticDefaults()
     {
@@ -14,6 +14,7 @@ public class Impvines : ModTile
         Main.tileLavaDeath[Type] = false;
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
+        Main.tileLighted[Type] = true;
         HitSound = SoundID.Grass;
         DustType = DustID.DungeonSpirit;
         TileID.Sets.IsVine[Type] = true;
@@ -29,7 +30,12 @@ public class Impvines : ModTile
             WorldGen.KillTile(i, j + 1);
         }
     }
-
+    public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+    {
+        r = 35f / 255f;
+        g = 200f / 255f;
+        b = 254f / 255f;
+    }
     public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
     {
         Tile tileAbove = Framing.GetTileSafely(i, j - 1);
@@ -39,7 +45,7 @@ public class Impvines : ModTile
             type = tileAbove.TileType;
         }
 
-        if (type == ModContent.TileType<Impgrass>() || type == Type)
+        if (type == ModContent.TileType<Ectograss>() || type == Type)
         {
             return true;
         }
@@ -62,7 +68,7 @@ public class Impvines : ModTile
                 {
                     break;
                 }
-                else if (!testTile.HasTile || testTile.TileType != ModContent.TileType<Impgrass>())
+                else if (!testTile.HasTile || testTile.TileType != ModContent.TileType<Ectograss>())
                 {
                     yTest--;
                     continue;

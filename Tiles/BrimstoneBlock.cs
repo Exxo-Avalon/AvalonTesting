@@ -12,8 +12,8 @@ public class BrimstoneBlock : ModTile
         AddMapEntry(new Color(165, 80, 98));
         Main.tileSolid[Type] = true;
         Main.tileBlockLight[Type] = true;
-        Main.tileMerge[Type][ModContent.TileType<Impgrass>()] = true;
-        Main.tileMerge[ModContent.TileType<Impgrass>()][Type] = true;
+        Main.tileMerge[Type][ModContent.TileType<Ectograss>()] = true;
+        Main.tileMerge[ModContent.TileType<Ectograss>()][Type] = true;
         ItemDrop = ModContent.ItemType<Items.Placeable.Tile.BrimstoneBlock>();
         HitSound = SoundID.Tink;
         DustType = DustID.HeartCrystal;

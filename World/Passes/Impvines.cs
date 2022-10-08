@@ -1,4 +1,4 @@
-﻿using Avalon.Tiles;
+using Avalon.Tiles;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
@@ -19,7 +19,7 @@ internal class Impvines : GenPass
             {
                 if (num587 > 0 && !Main.tile[num586, num589].HasTile)
                 {
-                    Main.tile[num586, num589].TileType = (ushort)ModContent.TileType<Tiles.Impvines>();
+                    Main.tile[num586, num589].TileType = (ushort)ModContent.TileType<Ectovines>();
                     Tile t = Main.tile[num586, num589];
                     t.HasTile = true;
                     num587--;
@@ -30,7 +30,7 @@ internal class Impvines : GenPass
                 }
 
                 if (Main.tile[num586, num589].HasTile &&
-                    Main.tile[num586, num589].TileType == (ushort)ModContent.TileType<Impgrass>() &&
+                    Main.tile[num586, num589].TileType == (ushort)ModContent.TileType<Ectograss>() &&
                     !Main.tile[num586, num589].BottomSlope && WorldGen.genRand.Next(5) < 3)
                 {
                     num587 = WorldGen.genRand.Next(1, 10);
