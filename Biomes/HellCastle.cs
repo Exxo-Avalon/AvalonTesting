@@ -21,6 +21,6 @@ public class Hellcastle : ModBiome
         ushort wallType = Main.tile[tileCoordinates.X, tileCoordinates.Y].WallType;
 
         return ModContent.GetInstance<Systems.BiomeTileCounts>().HellCastleTiles > 350 &&
-            wallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() && player.ZoneUnderworldHeight;
+            wallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>();
     }
 }

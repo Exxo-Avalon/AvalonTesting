@@ -9,7 +9,7 @@ public class Impgrass : ModTile
 {
     public override void SetStaticDefaults()
     {
-        AddMapEntry(new Color(238, 102, 70));
+        AddMapEntry(new Color(27, 194, 254));
         Main.tileSolid[Type] = true;
         Main.tileBrick[Type] = true;
         Main.tileBlockLight[Type] = true;

@@ -15,10 +15,10 @@ public class Impvines : ModTile
         Main.tileNoFail[Type] = true;
         Main.tileNoAttach[Type] = true;
         HitSound = SoundID.Grass;
-        DustType = DustID.Torch;
+        DustType = DustID.DungeonSpirit;
         TileID.Sets.IsVine[Type] = true;
         TileID.Sets.VineThreads[Type] = true;
-        AddMapEntry(new Color(214, 91, 64));
+        AddMapEntry(new Color(18, 176, 229));
     }
 
     public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)

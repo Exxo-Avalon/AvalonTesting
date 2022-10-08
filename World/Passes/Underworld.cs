@@ -137,18 +137,20 @@ internal class Underworld : GenPass
         }
         #endregion
         progress.Message = "Generating Hellcastle and Ashen Overgrowth";
-        int hellcastleOriginX = (Main.maxTilesX / 5) - 210;
-        int ashenLeft = (Main.maxTilesX / 5) - 450;
-        int ashenRight = (Main.maxTilesX / 5) + 500;
+        int hellcastleOriginX = (Main.maxTilesX / 2) - 100;
+        int ashenLeft = hellcastleOriginX - 100;
+        int ashenRight = hellcastleOriginX + 500;
+        // TODO: make impervious brick pillars
 
-        if (Main.drunkWorld)
-        {
-            hellcastleOriginX = (Main.maxTilesX / 3) - 210;
-            ashenLeft = (Main.maxTilesX / 3) - 450;
-            ashenRight = (Main.maxTilesX / 3) + 500;
-        }
 
-        //HellCastle.Generate(hellcastleOriginX, Main.maxTilesY - 140);
+        //if (Main.drunkWorld)
+        //{
+        //    hellcastleOriginX = (Main.maxTilesX / 3) - 210;
+        //    ashenLeft = (Main.maxTilesX / 3) - 450;
+        //    ashenRight = (Main.maxTilesX / 3) + 500;
+        //}
+
+        Hellcastle.GenerateHellcastle(hellcastleOriginX, Main.maxTilesY - 360);
         for (int hbx = ashenLeft; hbx < ashenRight; hbx++)
         {
             for (int hby = Main.maxTilesY - 200; hby < Main.maxTilesY - 50; hby++)
@@ -161,7 +163,7 @@ internal class Underworld : GenPass
                     if (Main.tile[hbx, hby].TileType == TileID.Ash)
                     {
                         Main.tile[hbx, hby].TileType = (ushort)ModContent.TileType<Impgrass>();
-                        if (WorldGen.genRand.Next(2) == 0)
+                        if (WorldGen.genRand.Next(1) == 0)
                         {
                             WorldGen.GrowTree(hbx, hby - 1);
                         }

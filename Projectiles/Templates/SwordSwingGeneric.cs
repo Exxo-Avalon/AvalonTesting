@@ -31,7 +31,6 @@ public class SwordSwingGeneric : ModProjectile
         Projectile.ownerHitCheckDistance = 300f;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 30;
-        Projectile.alpha = 255;
     }
     public override void AI()
     {
