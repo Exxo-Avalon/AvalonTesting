@@ -35,11 +35,21 @@ class BloodBarrage : ModItem
         Item.reuseDelay = 20;
         Item.height = dims.Height;
     }
+    public SoundStyle note = new SoundStyle("Terraria/Sounds/NPC_Hit_18")
+    {
+        Volume = 0.5f,
+        Pitch = -0.5f,
+        PitchVariance = 0.5f,
+        MaxInstances = 10,
+    };
     public override bool? UseItem(Player player)
     {
         int healthSucked = 4;
         CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, healthSucked, dramatic: false, dot: false);
         player.statLife -= healthSucked;
+
+        SoundEngine.PlaySound(note, player.Center);
+
         return true;
     }
     public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
