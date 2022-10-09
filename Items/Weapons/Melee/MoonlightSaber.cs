@@ -30,7 +30,7 @@ class MoonlightSaber : ModItem
         Item.height = dims.Height;
         Item.useTime = Item.useAnimation = 14;
         Item.knockBack = 5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.test>();
+        //Item.shoot = ModContent.ProjectileType<Projectiles.Melee.test>();
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.value = Item.sellPrice(0, 0, 40, 0);
     }

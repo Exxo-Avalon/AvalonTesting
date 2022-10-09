@@ -1678,7 +1678,7 @@ public class AvalonGlobalNPC : GlobalNPC
             case NPCID.AngryBones or NPCID.AngryBonesBig or NPCID.AngryBonesBigHelmet
                 or NPCID.AngryBonesBigMuscle:
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlackWhetstone>(), 100));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MarrowMasher>(), 100));
+                //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MarrowMasher>(), 100));
                 break;
             case NPCID.KingSlime:
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BandofSlime>(),
