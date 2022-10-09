@@ -10,7 +10,7 @@ namespace Avalon.Items.Weapons.Melee
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sanguine Katana");
-            Tooltip.SetDefault("Uses 1 life \nReturns life on hit");
+            Tooltip.SetDefault("Uses 2 life \nReturns life on hit");
         }
         public override void SetDefaults()
         {
@@ -33,14 +33,16 @@ namespace Avalon.Items.Weapons.Melee
         {
             if(target.type != NPCID.TargetDummy)
             {
-                player.HealEffect(2, true);
-                player.statLife += 2;
+                int healAmount = Main.rand.Next(4) + 2;
+                player.HealEffect(healAmount, true);
+                player.statLife += healAmount;
             }
         }
         public override bool? UseItem(Player player)
         {
-            CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, -1, dramatic: false, dot: false);
-            player.statLife--;
+            int healthSucked = 2;
+            CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, healthSucked, dramatic: false, dot: false);
+            player.statLife -= healthSucked;
             return true;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)

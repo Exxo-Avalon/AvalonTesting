@@ -1678,6 +1678,7 @@ public class AvalonGlobalNPC : GlobalNPC
             case NPCID.AngryBones or NPCID.AngryBonesBig or NPCID.AngryBonesBigHelmet
                 or NPCID.AngryBonesBigMuscle:
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BlackWhetstone>(), 100));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MarrowMasher>(), 100));
                 break;
             case NPCID.KingSlime:
                 npcLoot.Add(ItemDropRule.ByCondition(notExpertCondition, ModContent.ItemType<BandofSlime>(),
@@ -1788,6 +1789,13 @@ public class AvalonGlobalNPC : GlobalNPC
             or NPCID.ZombieEskimo or NPCID.FemaleZombie or NPCID.ZombieRaincoat)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RottenFlesh>(), 15));
+        }
+
+        if(npc.type is NPCID.BloodZombie or NPCID.Drippler)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SanguineKatana>(), 30));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodBarrage>(), 30));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Armor.Vanity.SanguineKabuto>(), 30));
         }
 
         if (npc.type is NPCID.Clinger or NPCID.Spazmatism)

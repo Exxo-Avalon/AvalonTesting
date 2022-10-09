@@ -10,6 +10,7 @@ class GlacierStaff : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Glacier Staff");
+        Tooltip.SetDefault("Shoots a fragile ball of ice");
         SacrificeTotal = 1;
         Item.staff[Item.type] = true;
     }
@@ -17,14 +18,14 @@ class GlacierStaff : ModItem
     {
         Item.width = 32;
         Item.height = 32;
-        Item.damage = 23;
+        Item.damage = 27;
         Item.DamageType = DamageClass.Magic;
-        Item.mana = 8;
+        Item.mana = 10;
         Item.rare = ItemRarityID.Blue;
         Item.useStyle = ItemUseStyleID.Shoot;
-        Item.useTime = 40;
-        Item.useAnimation = 40;
-        Item.knockBack = 3.5f;
+        Item.useTime = 50;
+        Item.useAnimation = 50;
+        Item.knockBack = 5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Magic.GlacierBall>();
         Item.autoReuse = false;
         Item.shootSpeed = 10f;

@@ -30,12 +30,27 @@ public class GlacierBall : ModProjectile
     public override void AI()
     {
         Projectile.ai[0]++;
+        if(Projectile.ai[0] == 4)
+        {
+            for (int i = 0; i < Main.rand.Next(3) + 15; i++)
+            {
+                int dust = Dust.NewDust(Projectile.position, Projectile.height, Projectile.width, 92, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, default, default, 1.2f);
+                Main.dust[dust].noGravity = true;
+            }
+        }
         if(Projectile.ai[0] > 10)
         {
             Projectile.velocity.Y += 0.3f;
             Projectile.velocity.X *= 0.99f;
         }
         Projectile.rotation += Projectile.velocity.Length() * 0.05f * Projectile.direction;
+
+        if (Main.rand.NextBool(3))
+        {
+            int dust1 = Dust.NewDust(Projectile.position + new Vector2(DrawOffsetX, DrawOriginOffsetY), Projectile.height * 2, Projectile.width * 2, 92, 0, 0, default, default, 1.2f);
+            Main.dust[dust1].noGravity = true;
+            Main.dust[dust1].velocity *= 0.5f;
+        }
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
@@ -57,8 +72,12 @@ public class GlacierBall : ModProjectile
         for (int i = 0; i < Main.rand.Next(3) + 5; i++)
         {
             int dust = Dust.NewDust(Projectile.position, Projectile.height, Projectile.width, DustID.IceRod, 0f, 0f, default, default, 1.25f);
-            Main.dust[dust].velocity *= 1.5f;
+            Main.dust[dust].velocity *= 2f;
             Main.dust[dust].noGravity = true;
+            if (Main.rand.NextBool(3))
+            {
+                Main.dust[dust].velocity *= 3f;
+            }
         }
         return false;
     }
@@ -86,7 +105,14 @@ public class GlacierBall : ModProjectile
     }
     public override Color? GetAlpha(Color lightColor)
     {
-        return new Color(255, 255, 255, 200);
+        if(Projectile.ai[0] > 3)
+        {
+            return new Color(255, 255, 255, 200);
+        }
+        else
+        {
+            return new Color(0, 0, 0, 0);
+        }
     }
     public override void ModifyDamageHitbox(ref Rectangle hitbox)
     {
