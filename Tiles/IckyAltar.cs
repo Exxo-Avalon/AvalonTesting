@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -19,7 +19,7 @@ public class IckyAltar : ModTile
         Main.tileHammer[Type] = true;
         Main.tileLighted[Type] = true;
         Main.tileFrameImportant[Type] = true;
-        AdjTiles = new int[] {TileID.DemonAltar};
+        AdjTiles = new int[] { TileID.DemonAltar };
         TileID.Sets.PreventsTileRemovalIfOnTopOfIt[Type] = true;
         TileID.Sets.InteractibleByNPCs[Type] = true;
     }

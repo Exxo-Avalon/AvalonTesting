@@ -19,7 +19,7 @@ class VertexofExcalibur : ModItem
         Item.width = 42;
         Item.height = 44;
         Item.UseSound = SoundID.Item1;
-        Item.damage = 90;
+        Item.damage = 78;
         Item.autoReuse = true;
         Item.scale = 1.2f;
         Item.noMelee = true;

@@ -12,7 +12,7 @@ class BloodBarrage : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Blood Barrage");
-        Tooltip.SetDefault("Uses 4 life \nReturns life on hit");
+        Tooltip.SetDefault("Uses 4 life\nReturns life on hit");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()
