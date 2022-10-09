@@ -38,5 +38,23 @@ public class VertexSlash : SwordSwingGeneric
         Projectile.localNPCHitCooldown = 30;
         Projectile.alpha = 255;
     }
-
+    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+    {
+        bool hasDebuff = false;
+        for (int i = 0; i < target.buffType.Length; i++)
+        {
+            if (Main.debuff[target.buffType[i]])
+            {
+                hasDebuff = true;
+                break;
+            }
+        }
+        if (hasDebuff)
+        {
+            if (target.boss)
+                damage = (int)(damage * 1.3);
+            else
+                damage = (int)(damage * 1.6);
+        }
+    }
 }
