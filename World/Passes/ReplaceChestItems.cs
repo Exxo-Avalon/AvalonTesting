@@ -24,6 +24,15 @@ public class ReplaceChestItems : GenPass
             {
                 foreach (Item i in c.item)
                 {
+                    if (i != null && (i.type == ItemID.IceMirror || i.type == ItemID.Fish ||
+                        i.type == ItemID.IceBlade || i.type == ItemID.SnowballCannon ||
+                        i.type == ItemID.IceBoomerang || i.type == ItemID.IceSkates ||
+                        i.type == ItemID.BlizzardinaBottle || i.type == ItemID.FlurryBoots) &&
+                        WorldGen.genRand.NextBool(4))
+                    {
+                        i.SetDefaults(ModContent.ItemType<GlacierStaff>());
+                        i.Prefix(-1);
+                    }
                     if (i != null && i.type == ItemID.EnchantedBoomerang)
                     {
                         i.SetDefaults(ModContent.ItemType<EnchantedBar>());
@@ -37,7 +46,7 @@ public class ReplaceChestItems : GenPass
                             i.Prefix(-1);
                         }
                     }
-                    if (i != null && i.type == ItemID.StaffofRegrowth && WorldGen.genRand.Next(2) == 0)
+                    if (i != null && i.type == ItemID.StaffofRegrowth && WorldGen.genRand.NextBool(2))
                     {
                         i.SetDefaults(ModContent.ItemType<FlowerofTheJungle>());
                         i.Prefix(-1);
