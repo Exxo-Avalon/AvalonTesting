@@ -11,10 +11,10 @@ using ReLogic.Content;
 namespace Avalon.Projectiles.Melee;
 public class VertexSlash : SwordSwingGeneric
 {
-    public override Color color1 => new Color(236, 200, 19);
-    public override Color color2 => new Color(139, 42, 156);
-    public override Color color3 => new Color(179, 179, 179);
-    public override float scalemod => 2f;
+    public override Color color1 => new Color(139, 42, 156);
+    public override Color color2 => new Color(236, 200, 19);
+    public override Color color3 => color1;
+    public override float scalemod => 1f;
     public override bool CanCutTile => true;
     public override void SetStaticDefaults()
     {
@@ -31,7 +31,6 @@ public class VertexSlash : SwordSwingGeneric
         Projectile.usesLocalNPCImmunity = true;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.localNPCHitCooldown = -1;
         Projectile.ownerHitCheck = true;
         Projectile.ownerHitCheckDistance = 300f;
         Projectile.scale = 2f;

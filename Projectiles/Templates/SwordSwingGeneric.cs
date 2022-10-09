@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.Drawing;
 using Terraria.ModLoader;
 
 namespace Avalon.Projectiles.Templates;
@@ -26,7 +27,6 @@ public abstract class SwordSwingGeneric : ModProjectile
         Projectile.usesLocalNPCImmunity = true;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
-        Projectile.localNPCHitCooldown = -1;
         Projectile.scale = 2f;
         Projectile.ownerHitCheck = true;
         Projectile.ownerHitCheckDistance = 300f;
@@ -41,22 +41,27 @@ public abstract class SwordSwingGeneric : ModProjectile
         float num2 = Projectile.ai[0];
         float num3 = Projectile.velocity.ToRotation();
         Projectile.rotation = (float)Math.PI * num2 * num + num3 + num2 * (float)Math.PI + player.fullRotation;
-        float num5 = 0.2f;
-        float num6 = 1f;
+        float num5 = 1f;
+        float num6 = 1.2f;
 
         Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
         Projectile.scale = num6 + num * num5;
 
+        if (!Projectile.noEnchantmentVisuals)
+        {
+            UpdateEnchantmentVisuals();
+        }
+
         float num8 = Projectile.rotation + Main.rand.NextFloatDirection() * ((float)Math.PI / 2f) * 0.7f;
         Vector2 vector2 = Projectile.Center + num8.ToRotationVector2() * 84f * Projectile.scale;
         Vector2 vector3 = (num8 + Projectile.ai[0] * ((float)Math.PI / 2f)).ToRotationVector2();
-        if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
+        //if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
         {
             Dust dust2 = Dust.NewDustPerfect(Projectile.Center + num8.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), 278, vector3 * 1f, 100, Color.Lerp(Color.Gold, Color.White, Main.rand.NextFloat() * 0.3f), 0.4f);
             dust2.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
             dust2.noGravity = true;
         }
-        if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
+        //if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
         {
             Dust.NewDustPerfect(vector2, 43, vector3 * 1f, 100, Color.White * Projectile.Opacity, 1.2f * Projectile.Opacity);
         }
@@ -66,13 +71,27 @@ public abstract class SwordSwingGeneric : ModProjectile
             Projectile.Kill();
         }
     }
+    public override void CutTiles()
+    {
+        Vector2 vector2 = (Projectile.rotation - (float)Math.PI / 4f).ToRotationVector2() * 60f * Projectile.scale;
+        Vector2 vector3 = (Projectile.rotation + (float)Math.PI / 4f).ToRotationVector2() * 60f * Projectile.scale;
+        float num2 = 60f * Projectile.scale;
+        Utils.PlotTileLine(Projectile.Center + vector2, Projectile.Center + vector3, num2, DelegateMethods.CutTiles);
+    }
     public override bool PreDraw(ref Color lightColor)
     {
         DrawProj_Excalibur(Projectile);
         return true;
     }
-    public override bool? CanCutTiles() => CanCutTile;
-
+    public override bool? CanCutTiles() => true;
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        Vector2 positionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox);
+        ParticleOrchestraSettings particleOrchestraSettings = default(ParticleOrchestraSettings);
+        particleOrchestraSettings.PositionInWorld = positionInWorld;
+        ParticleOrchestraSettings settings = particleOrchestraSettings;
+        ParticleOrchestrator.RequestParticleSpawn(false, ParticleOrchestraType.Keybrand, settings, Projectile.owner);
+    }
     public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
     {
         float coneLength2 = 94f * Projectile.scale;
@@ -106,8 +125,8 @@ public abstract class SwordSwingGeneric : ModProjectile
         Vector2 vector2 = new Vector2(fatness.Y * 0.5f, scale.Y) * num;
         color *= num;
         color2 *= num;
-        Main.EntitySpriteDraw(value, drawpos, null, Color.White, (float)Math.PI / 2f + rotation, origin, vector, dir, 0);
-        Main.EntitySpriteDraw(value, drawpos, null, Color.White, 0f + rotation, origin, vector2, dir, 0);
+        Main.EntitySpriteDraw(value, drawpos, null, Color.LightGoldenrodYellow, (float)Math.PI / 2f + rotation, origin, vector, dir, 0);
+        Main.EntitySpriteDraw(value, drawpos, null, Color.LightGoldenrodYellow, 0f + rotation, origin, vector2, dir, 0);
         Main.EntitySpriteDraw(value, drawpos, null, color2, (float)Math.PI / 2f + rotation, origin, vector * 0.6f, dir, 0);
         Main.EntitySpriteDraw(value, drawpos, null, color2, 0f + rotation, origin, vector2 * 0.6f, dir, 0);
     }
@@ -131,8 +150,8 @@ public abstract class SwordSwingGeneric : ModProjectile
         color5.G = (byte)(color5.G * fromValue);
         color5.B = (byte)(color5.R * (0.25f + fromValue * 0.75f));
         Main.spriteBatch.Draw(val.Value, vector, rectangle, color5 * 0.15f, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color3 * fromValue * num3 * 0.3f, proj.rotation, origin, num * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color2 * fromValue * num3 * 0.5f, proj.rotation, origin, num * num4 * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val.Value, vector, rectangle, color3 * 0.4f, proj.rotation, origin, num * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val.Value, vector, rectangle, color2 * 0.4f, proj.rotation, origin, num * num4 * scalemod, effects, 0f);
         Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.6f * num3, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
         Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.5f * num3, proj.rotation + proj.ai[0] * -0.05f, origin, num * 0.8f * scalemod, effects, 0f);
         Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.4f * num3, proj.rotation + proj.ai[0] * -0.1f, origin, num * 0.6f * scalemod, effects, 0f);
@@ -145,15 +164,149 @@ public abstract class SwordSwingGeneric : ModProjectile
         }
         Vector2 drawpos2 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Value.Width * 0.5f - 4f) * num;
         DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * num3 * 0.5f, color3, num2, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(num2, 0f, 1f, 4f, 1f)) * num, Vector2.One * num);
-
-        for (float num5 = 0f; num5 < 8f; num5++)
+    }
+    private void UpdateEnchantmentVisuals()
+    {
+        if (Projectile.npcProj)
         {
-            float num6 = proj.rotation + proj.ai[0] * num5 * ((float)Math.PI * -2f) * 0.025f + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0];
-            Vector2 drawpos = vector + num6.ToRotationVector2() * (val.Value.Width - 8f) * num;
-            float num7 = num5 / 9f;
-            DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * num3 * num7, color3, num2, 0f, 0.5f, 0.5f, 1f, num6, new Vector2(0f, Utils.Remap(num2, 0f, 1f, 3f, 0f)) * num, Vector2.One * num);
+            return;
         }
-        Vector2 drawpos3 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Value.Width - 6f) * num;
-        DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos3, new Color(255, 255, 255, 0) * num3 * 0.5f, color3, num2, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(num2, 0f, 1f, 4f, 1f)) * num, Vector2.One * num);
+        Vector2 boxPosition = Projectile.position;
+        int boxWidth = Projectile.width;
+        int boxHeight = Projectile.height;
+        for (float num = -(float)Math.PI / 4f; num <= (float)Math.PI / 4f; num += (float)Math.PI / 2f)
+        {
+            Rectangle r = Utils.CenteredRectangle(Projectile.Center + (Projectile.rotation + num).ToRotationVector2() * 70f * Projectile.scale, new Vector2(60f * Projectile.scale, 60f * Projectile.scale));
+            EmitEnchantmentVisualsAt(r.TopLeft(), r.Width, r.Height);
+        }
+    }
+    public void EmitEnchantmentVisualsAt(Vector2 boxPosition, int boxWidth, int boxHeight)
+    {
+        Player player = Main.player[Projectile.owner];
+        if (player.frostBurn && (Projectile.DamageType == DamageClass.Melee || Projectile.DamageType == DamageClass.Ranged) && Projectile.friendly && !Projectile.hostile && !Projectile.noEnchantments && Main.rand.Next(2 * (1 + Projectile.extraUpdates)) == 0)
+        {
+            int num = Dust.NewDust(boxPosition, boxWidth, boxHeight, 135, Projectile.velocity.X * 0.2f + (float)(Projectile.direction * 3), Projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+            Main.dust[num].noGravity = true;
+            Main.dust[num].velocity *= 0.7f;
+            Main.dust[num].velocity.Y -= 0.5f;
+        }
+        if (Projectile.DamageType == DamageClass.Melee && player.magmaStone && !Projectile.noEnchantments && Main.rand.Next(3) != 0)
+        {
+            int num2 = Dust.NewDust(new Vector2(boxPosition.X - 4f, boxPosition.Y - 4f), boxWidth + 8, boxHeight + 8, 6, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+            if (Main.rand.Next(2) == 0)
+            {
+                Main.dust[num2].scale = 1.5f;
+            }
+            Main.dust[num2].noGravity = true;
+            Main.dust[num2].velocity.X *= 2f;
+            Main.dust[num2].velocity.Y *= 2f;
+        }
+        if (Projectile.DamageType != DamageClass.Melee || player.meleeEnchant <= 0 || Projectile.noEnchantments)
+        {
+            return;
+        }
+        if (player.meleeEnchant == 1 && Main.rand.Next(3) == 0)
+        {
+            int num3 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 171, 0f, 0f, 100);
+            Main.dust[num3].noGravity = true;
+            Main.dust[num3].fadeIn = 1.5f;
+            Main.dust[num3].velocity *= 0.25f;
+        }
+        if (player.meleeEnchant == 1)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                int num4 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 171, 0f, 0f, 100);
+                Main.dust[num4].noGravity = true;
+                Main.dust[num4].fadeIn = 1.5f;
+                Main.dust[num4].velocity *= 0.25f;
+            }
+        }
+        else if (player.meleeEnchant == 2)
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                int num5 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 75, Projectile.velocity.X * 0.2f + (float)(Projectile.direction * 3), Projectile.velocity.Y * 0.2f, 100, default(Color), 2.5f);
+                Main.dust[num5].noGravity = true;
+                Main.dust[num5].velocity *= 0.7f;
+                Main.dust[num5].velocity.Y -= 0.5f;
+            }
+        }
+        else if (player.meleeEnchant == 3)
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                int num6 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 6, Projectile.velocity.X * 0.2f + (float)(Projectile.direction * 3), Projectile.velocity.Y * 0.2f, 100, default(Color), 2.5f);
+                Main.dust[num6].noGravity = true;
+                Main.dust[num6].velocity *= 0.7f;
+                Main.dust[num6].velocity.Y -= 0.5f;
+            }
+        }
+        else if (player.meleeEnchant == 4)
+        {
+            int num7 = 0;
+            if (Main.rand.Next(2) == 0)
+            {
+                num7 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 57, Projectile.velocity.X * 0.2f + (float)(Projectile.direction * 3), Projectile.velocity.Y * 0.2f, 100, default(Color), 1.1f);
+                Main.dust[num7].noGravity = true;
+                Main.dust[num7].velocity.X /= 2f;
+                Main.dust[num7].velocity.Y /= 2f;
+            }
+        }
+        else if (player.meleeEnchant == 5)
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                int num8 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 169, 0f, 0f, 100);
+                Main.dust[num8].velocity.X += Projectile.direction;
+                Main.dust[num8].velocity.Y += 0.2f;
+                Main.dust[num8].noGravity = true;
+            }
+        }
+        else if (player.meleeEnchant == 6)
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                int num9 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 135, 0f, 0f, 100);
+                Main.dust[num9].velocity.X += Projectile.direction;
+                Main.dust[num9].velocity.Y += 0.2f;
+                Main.dust[num9].noGravity = true;
+            }
+        }
+        else if (player.meleeEnchant == 7)
+        {
+            Vector2 vector = Projectile.velocity;
+            if (vector.Length() > 4f)
+            {
+                vector *= 4f / vector.Length();
+            }
+            if (Main.rand.Next(20) == 0)
+            {
+                int num10 = Main.rand.Next(139, 143);
+                int num11 = Dust.NewDust(boxPosition, boxWidth, boxHeight, num10, vector.X, vector.Y, 0, default(Color), 1.2f);
+                Main.dust[num11].velocity.X *= 1f + (float)Main.rand.Next(-50, 51) * 0.01f;
+                Main.dust[num11].velocity.Y *= 1f + (float)Main.rand.Next(-50, 51) * 0.01f;
+                Main.dust[num11].velocity.X += (float)Main.rand.Next(-50, 51) * 0.05f;
+                Main.dust[num11].velocity.Y += (float)Main.rand.Next(-50, 51) * 0.05f;
+                Main.dust[num11].scale *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+            }
+            if (Main.rand.Next(40) == 0)
+            {
+                int num12 = Main.rand.Next(276, 283);
+                int num13 = Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.position, vector, num12);
+                Main.gore[num13].velocity.X *= 1f + (float)Main.rand.Next(-50, 51) * 0.01f;
+                Main.gore[num13].velocity.Y *= 1f + (float)Main.rand.Next(-50, 51) * 0.01f;
+                Main.gore[num13].scale *= 1f + (float)Main.rand.Next(-20, 21) * 0.01f;
+                Main.gore[num13].velocity.X += (float)Main.rand.Next(-50, 51) * 0.05f;
+                Main.gore[num13].velocity.Y += (float)Main.rand.Next(-50, 51) * 0.05f;
+            }
+        }
+        else if (player.meleeEnchant == 8 && Main.rand.Next(4) == 0)
+        {
+            int num14 = Dust.NewDust(boxPosition, boxWidth, boxHeight, 46, 0f, 0f, 100);
+            Main.dust[num14].noGravity = true;
+            Main.dust[num14].fadeIn = 1.5f;
+            Main.dust[num14].velocity *= 0.25f;
+        }
     }
 }
