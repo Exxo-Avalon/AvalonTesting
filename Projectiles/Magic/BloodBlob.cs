@@ -93,14 +93,13 @@ public class BloodBlob : ModProjectile
     public override bool PreDraw(ref Color lightColor)
     {
         Texture2D texture = ModContent.Request<Texture2D>("Avalon/Projectiles/Magic/BloodBlob").Value;
-        Texture2D glow = ModContent.Request<Texture2D>("Avalon/Projectiles/Magic/BloodBlob_glow").Value;
         int frameHeight = texture.Height / Main.projFrames[Projectile.type];
         Rectangle frame = new Rectangle(0, frameHeight * Projectile.frame, texture.Width, frameHeight);
         Vector2 drawPos = Projectile.Center - Main.screenPosition;
 
-        Main.EntitySpriteDraw(texture, drawPos, frame, Color.White * 0.3f, Projectile.rotation, new Vector2(texture.Width, frameHeight) / 2, Projectile.scale * 1.2f, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, Color.White * 0.25f, Projectile.rotation, new Vector2(texture.Width, frameHeight) / 2, Projectile.scale * 1.2f, Projectile.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
-        Main.EntitySpriteDraw(texture, drawPos, frame, Color.Lerp(Color.White, lightColor, 0.5f), Projectile.rotation, new Vector2(texture.Width, frameHeight) / 2, Projectile.scale, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, drawPos, frame, Color.Lerp(Color.White, lightColor, 0.6f), Projectile.rotation, new Vector2(texture.Width, frameHeight) / 2, Projectile.scale, Projectile.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0);
 
         return false;
     }
@@ -116,7 +115,7 @@ public class BloodBlob : ModProjectile
     public override void Kill(int timeLeft)
     {
         SoundEngine.PlaySound(SoundID.NPCDeath9, Projectile.position);
-        for (int num237 = 0; num237 < 20; num237++)
+        /*for (int num237 = 0; num237 < 20; num237++)
         {
             Vector2 randv = new Vector2(Projectile.oldVelocity.X * 0.2f, Projectile.oldVelocity.Y * 0.2f).RotatedByRandom(MathHelper.PiOver2);
             int num239 = Dust.NewDust(Projectile.position - new Vector2(Projectile.width / 2f, Projectile.height / 2f), Projectile.width * 2, Projectile.height * 2, DustID.Blood, -randv.X * Main.rand.NextFloat(-0.5f, 1.5f), -randv.Y * Main.rand.NextFloat(-0.5f, 1.5f), 50, default(Color), 0.5f * Main.rand.NextFloat(0, 3));
@@ -129,6 +128,19 @@ public class BloodBlob : ModProjectile
             {
                 Main.dust[num239].fadeIn = 1.25f;
             }
+        }*/
+        for (int num237 = 0; num237 < 30; num237++)
+        {
+            int num239 = Dust.NewDust(Projectile.position - new Vector2(Projectile.width / 2f, Projectile.height / 2f), Projectile.width * 2, Projectile.height * 2, DustID.Blood, 0f, 0f, 50, default(Color), 0.5f * Main.rand.NextFloat(0, 3));
+            Main.dust[num239].noGravity = true;
+            Main.dust[num239].velocity *= 1.5f;
+            Main.dust[num239].fadeIn = 0.5f;
+        }
+        for (int num237 = 0; num237 < 40; num237++)
+        {
+            int num239 = Dust.NewDust(Projectile.position - new Vector2(Projectile.width / 2f, Projectile.height / 2f), Projectile.width * 2, Projectile.height * 2, DustID.Blood, -Projectile.oldVelocity.X * Main.rand.NextFloat(-0.1f, -0.3f), Projectile.oldVelocity.Y * Main.rand.NextFloat(-0.1f, -0.4f), 50, default(Color), 0.5f * Main.rand.NextFloat(0, 3));
+            Main.dust[num239].noGravity = false;
+            Main.dust[num239].fadeIn = 0.75f;
         }
     }
 }

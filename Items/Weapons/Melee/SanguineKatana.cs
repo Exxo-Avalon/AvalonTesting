@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Avalon.Dusts;
 
 namespace Avalon.Items.Weapons.Melee
 {
