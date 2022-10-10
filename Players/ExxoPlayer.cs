@@ -272,8 +272,7 @@ public class ExxoPlayer : ModPlayer
                                int type, int damage, float knockback)
     {
         #region spike cannon logic
-        if (item.type == ModContent.ItemType<SpikeCannon>() ||
-            item.type == ModContent.ItemType<SpikeRailgun>())
+        if (item.type == ModContent.ItemType<SpikeCannon>()) //  || item.type == ModContent.ItemType<SpikeRailgun>()
         {
             var item2 = new Item();
             bool flag7 = false;
@@ -348,26 +347,26 @@ public class ExxoPlayer : ModPlayer
 
                     if (t > 0)
                     {
-                        if (item.type == ModContent.ItemType<SpikeRailgun>())
-                        {
-                            float num87 = MathHelper.Pi / 10;
-                            int num88 = 3;
-                            Vector2 vector2 = velocity;
-                            vector2.Normalize();
-                            vector2 *= 40f;
-                            for (int num89 = 0; num89 < num88; num89++)
-                            {
-                                float num90 = num89 - ((num88 - 1f) / 2f);
-                                Vector2 vector3 = vector2.Rotate(num87 * num90);
-                                int num91 = Projectile.NewProjectile(
-                                    Player.GetSource_ItemUse_WithPotentialAmmo(
-                                        ModContent.GetInstance<SpikeRailgun>().Item,
-                                        ModContent.GetInstance<SpikeRailgun>().Item.ammo), position.X + vector3.X,
-                                    position.Y + vector3.Y, velocity.X, velocity.Y, t, damage + dmgAdd, knockback,
-                                    Player.whoAmI);
-                            }
-                            return false;
-                        }
+                        //if (item.type == ModContent.ItemType<SpikeRailgun>())
+                        //{
+                        //    float num87 = MathHelper.Pi / 10;
+                        //    int num88 = 3;
+                        //    Vector2 vector2 = velocity;
+                        //    vector2.Normalize();
+                        //    vector2 *= 40f;
+                        //    for (int num89 = 0; num89 < num88; num89++)
+                        //    {
+                        //        float num90 = num89 - ((num88 - 1f) / 2f);
+                        //        Vector2 vector3 = vector2.Rotate(num87 * num90);
+                        //        int num91 = Projectile.NewProjectile(
+                        //            Player.GetSource_ItemUse_WithPotentialAmmo(
+                        //                ModContent.GetInstance<SpikeRailgun>().Item,
+                        //                ModContent.GetInstance<SpikeRailgun>().Item.ammo), position.X + vector3.X,
+                        //            position.Y + vector3.Y, velocity.X, velocity.Y, t, damage + dmgAdd, knockback,
+                        //            Player.whoAmI);
+                        //    }
+                        //    return false;
+                        //}
 
                         Projectile.NewProjectile(
                             Player.GetSource_ItemUse_WithPotentialAmmo(

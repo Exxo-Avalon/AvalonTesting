@@ -510,14 +510,14 @@ internal class Hellcastle
 
     public static void MakeTunnel(int x, int y, Vector2 beginPoint, Vector2 endPoint, int thickness = 20)
     {
-        BoreTunnel2(x + (int)beginPoint.X, y + (int)beginPoint.Y, x + (int)endPoint.X, y + (int)endPoint.Y, thickness, ushort.MaxValue, 0);
+        BoreTunnel(x + (int)beginPoint.X, y + (int)beginPoint.Y, x + (int)endPoint.X, y + (int)endPoint.Y, thickness, ushort.MaxValue, 0);
     }
     public static void MakeTunnelHollow(int x, int y, Vector2 beginPoint, Vector2 endPoint, int thicknessTunnel = 20, int thicknessHollow = 10)
     {
         int offset = (thicknessTunnel / 2) - (thicknessHollow / 2);
-        BoreTunnel2(x + (int)beginPoint.X + offset, y + (int)beginPoint.Y + offset, x + (int)endPoint.X + offset, y + (int)endPoint.Y + offset, thicknessHollow, ushort.MaxValue, WallID.Wood);
+        BoreTunnel(x + (int)beginPoint.X + offset, y + (int)beginPoint.Y + offset, x + (int)endPoint.X + offset, y + (int)endPoint.Y + offset, thicknessHollow, ushort.MaxValue, WallID.Wood);
     }
-    public static void BoreTunnel2(int x0, int y0, int x1, int y1, float r, ushort type, ushort walltype)
+    public static void BoreTunnel(int x0, int y0, int x1, int y1, float r, ushort type, ushort walltype)
     {
         bool flag = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
         if (flag)
@@ -555,5 +555,69 @@ internal class Hellcastle
                 num3 += num;
             }
         }
+    }
+
+    public static bool AddHellcastleChest(int i, int j, bool notNearOtherChests = false)
+    {
+        int k = j;
+        while (k < Main.maxTilesY)
+        {
+            if (Main.tile[i, k].HasTile && Main.tileSolid[Main.tile[i, k].TileType])
+            {
+                int num = k;
+                int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChest>(), notNearOtherChests);
+                if (num2 >= 0)
+                {
+                    int loot = WorldGen.genRand.Next(4);
+                    if (loot == 0)
+                    {
+                        Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Weapons.Magic.Boomlash>(), false);
+                        Main.chest[num2].item[0].Prefix(-1);
+                    }
+                    if (loot == 1)
+                    {
+
+                    }
+                    Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<Items.Placeable.Tile.ImperviousBrick>(), false);
+                    Main.chest[num2].item[1].stack = Main.rand.Next(200, 451);
+                    int rand = WorldGen.genRand.Next(3);
+                    if (rand == 0)
+                    {
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.SupersonicPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(2, 4);
+                    }
+                    if (rand == 1)
+                    {
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.LeapingPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(2, 5);
+                    }
+                    if (rand == 2)
+                    {
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.CloverPotion>(), false);
+                        Main.chest[num2].item[2].stack = Main.rand.Next(3) + 1;
+                    }
+                    int n2 = WorldGen.genRand.Next(2);
+                    if (n2 == 0)
+                    {
+                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.PyroscoricBar>(), false);
+                        Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
+                    }
+                    if (n2 == 1)
+                    {
+                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.TritanoriumBar>(), false);
+                        Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
+                    }
+                    Main.chest[num2].item[4].SetDefaults(ItemID.PlatinumCoin, false);
+                    Main.chest[num2].item[4].stack = Main.rand.Next(4) + 2;
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                k++;
+            }
+        }
+        return false;
     }
 }

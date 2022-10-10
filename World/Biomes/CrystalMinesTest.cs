@@ -1,20 +1,18 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace Avalon.World.Biomes;
 internal class CrystalMinesTest
 {
-    private static int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>(),
+    private static readonly int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>(),
             ModContent.TileType<Tiles.OrangeBrick>(), ModContent.TileType<Tiles.PurpleBrick>(), ModContent.TileType<Tiles.CrackedOrangeBrick>(),
-            ModContent.TileType<Tiles.CrackedPurpleBrick>(), TileID.WoodenSpikes };
-    private static int[] blacklistedWalls = new int[]
+            ModContent.TileType<Tiles.CrackedPurpleBrick>(), TileID.WoodenSpikes, ModContent.TileType<Tiles.ImperviousBrick>(),
+            ModContent.TileType<Tiles.VenomSpike>() };
+    private static readonly int[] blacklistedWalls = new int[]
     {
         WallID.BlueDungeonSlabUnsafe,
         WallID.BlueDungeonTileUnsafe,
@@ -32,7 +30,8 @@ internal class CrystalMinesTest
         ModContent.WallType<Walls.OrangeSlabUnsafe>(),
         ModContent.WallType<Walls.PurpleBrickUnsafe>(),
         ModContent.WallType<Walls.PurpleSlabWallUnsafe>(),
-        ModContent.WallType<Walls.PurpleTiledWallUnsafe>()
+        ModContent.WallType<Walls.PurpleTiledWallUnsafe>(),
+        ModContent.WallType<Walls.ImperviousBrickWallUnsafe>()
     };
 
     public static bool Place(Point origin)
@@ -203,7 +202,8 @@ internal class CrystalMinesTest
                 if (j == origin.Y + tunnel1YPos ||
                     j == origin.Y + tunnel2YPos ||
                     j == origin.Y + tunnel3YPos ||
-                    j == origin.Y + tunnel4YPos)
+                    j == origin.Y + tunnel4YPos ||
+                    j == origin.Y + tunnel5YPos)
                 {
                     if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
@@ -221,8 +221,7 @@ internal class CrystalMinesTest
                     {
                         tile.HasTile = false;
                     }
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
-                         tile.TileType != TileID.WoodBlock)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -234,8 +233,7 @@ internal class CrystalMinesTest
                     {
                         tile.HasTile = false;
                     }
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
-                         tile.TileType != TileID.WoodBlock)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -247,8 +245,7 @@ internal class CrystalMinesTest
                     {
                         tile.HasTile = false;
                     }
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
-                         tile.TileType != TileID.WoodBlock)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }
@@ -260,8 +257,7 @@ internal class CrystalMinesTest
                     {
                         tile.HasTile = false;
                     }
-                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick &&
-                         tile.TileType != TileID.WoodBlock)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
                         tile.HasTile = false;
                     }

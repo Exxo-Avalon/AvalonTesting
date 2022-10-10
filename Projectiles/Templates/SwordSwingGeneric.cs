@@ -78,6 +78,7 @@ public abstract class SwordSwingGeneric : ModProjectile
         float num2 = 60f * Projectile.scale;
         Utils.PlotTileLine(Projectile.Center + vector2, Projectile.Center + vector3, num2, DelegateMethods.CutTiles);
     }
+    
     public override bool PreDraw(ref Color lightColor)
     {
         DrawProj_Excalibur(Projectile);

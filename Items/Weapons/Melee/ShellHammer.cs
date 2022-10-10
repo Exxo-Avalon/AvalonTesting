@@ -7,7 +7,7 @@ namespace Avalon.Items.Weapons.Melee;
 
 public class ShellHammer : ModItem
 {
-    int fireDelay = 90;
+    private int fireDelay = 90;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shell Hammer");
