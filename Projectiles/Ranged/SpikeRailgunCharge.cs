@@ -65,7 +65,7 @@ internal class SpikeRailgunCharge : ModProjectile
             SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Railgun"), O.position);
             //Main.PlaySound(2, (int)P.position.X, (int)P.position.Y, 62);
         }
-        if (CHARGE > 101)
-            CHARGE = 101;
+        if (CHARGE > 90)
+            Projectile.Kill();
     }
 }

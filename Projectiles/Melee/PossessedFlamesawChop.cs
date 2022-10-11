@@ -7,7 +7,7 @@ using Terraria.Audio;
 
 namespace Avalon.Projectiles.Melee;
 
-public class PossessedFlamesaw : ModProjectile
+public class PossessedFlamesawChop : ModProjectile
 {
     public override void SetStaticDefaults()
     {
@@ -18,8 +18,8 @@ public class PossessedFlamesaw : ModProjectile
     {
         Rectangle dims = this.GetDims();
         Projectile.light = 0.9f;
-        Projectile.width = dims.Width * 30 / 62;
-        Projectile.height = dims.Height * 30 / 62 / Main.projFrames[Projectile.type];
+        Projectile.width = 10;
+        Projectile.height = 10;
         Projectile.aiStyle = -1;
         Projectile.friendly = true;
         Projectile.penetrate = 10;
@@ -37,7 +37,7 @@ public class PossessedFlamesaw : ModProjectile
         if (Projectile.ai[0] == 0f)
         {
             Projectile.ai[1] += 1f;
-            if (Projectile.type == ModContent.ProjectileType<PossessedFlamesaw>())
+            if (Projectile.type == ModContent.ProjectileType<PossessedFlamesawChop>())
             {
                 if (Main.rand.Next(2) == 0)
                 {
@@ -126,6 +126,10 @@ public class PossessedFlamesaw : ModProjectile
                         Projectile.velocity.Y = Projectile.velocity.Y - num96 * 2f;
                     }
                 }
+                if (Projectile.type == ModContent.ProjectileType<PossessedFlamesawChop>() && Main.tile[(int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f)].HasTile && Main.tile[(int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f)].TileType == 5)
+                {
+                    WorldGen.KillTile((int)(Projectile.position.X / 16f), (int)(Projectile.position.Y / 16f), false, false, false);
+                }
             }
             else if (Projectile.ai[1] >= 30f)
             {
@@ -139,7 +143,7 @@ public class PossessedFlamesaw : ModProjectile
             Projectile.tileCollide = false;
             var num100 = 9f;
             var num101 = 0.4f;
-            if (Projectile.type == ModContent.ProjectileType<PossessedFlamesaw>())
+            if (Projectile.type == ModContent.ProjectileType<PossessedFlamesawChop>())
             {
                 num100 = 16f;
                 num101 = 1.2f;

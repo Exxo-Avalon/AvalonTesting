@@ -177,7 +177,8 @@ internal class Hellcastle
                         if(Main.rand.NextBool(80) && maxAmount > 0)
                         {
                             maxAmount--;
-                            WorldGen.PlaceChest(x + i, y + j - 1, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChest>());
+                            AddHellcastleChest(x + i + 1, y + j);
+                            //WorldGen.PlaceChest(x + i, y + j - 1, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChest>());
                         }
                     }
                 }
@@ -568,7 +569,7 @@ internal class Hellcastle
                 int num2 = WorldGen.PlaceChest(i - 1, num - 1, (ushort)ModContent.TileType<Tiles.Furniture.ResistantWood.ResistantWoodChest>(), notNearOtherChests);
                 if (num2 >= 0)
                 {
-                    int loot = WorldGen.genRand.Next(4);
+                    int loot = WorldGen.genRand.Next(3); // add ranged and summon weapon maybe
                     if (loot == 0)
                     {
                         Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Weapons.Magic.Boomlash>(), false);
@@ -576,14 +577,20 @@ internal class Hellcastle
                     }
                     if (loot == 1)
                     {
-
+                        Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Accessories.GrowlingPendant>(), false);
+                        Main.chest[num2].item[0].Prefix(-1);
+                    }
+                    if (loot == 2)
+                    {
+                        Main.chest[num2].item[0].SetDefaults(ModContent.ItemType<Items.Weapons.Melee.PossessedFlamesaw>(), false);
+                        Main.chest[num2].item[0].Prefix(-1);
                     }
                     Main.chest[num2].item[1].SetDefaults(ModContent.ItemType<Items.Placeable.Tile.ImperviousBrick>(), false);
                     Main.chest[num2].item[1].stack = Main.rand.Next(200, 451);
                     int rand = WorldGen.genRand.Next(3);
                     if (rand == 0)
                     {
-                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.SupersonicPotion>(), false);
+                        Main.chest[num2].item[2].SetDefaults(ModContent.ItemType<Items.Potions.BloodCastPotion>(), false);
                         Main.chest[num2].item[2].stack = Main.rand.Next(2, 4);
                     }
                     if (rand == 1)
@@ -599,16 +606,16 @@ internal class Hellcastle
                     int n2 = WorldGen.genRand.Next(2);
                     if (n2 == 0)
                     {
-                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.PyroscoricBar>(), false);
-                        Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
+                        Main.chest[num2].item[3].SetDefaults(ItemID.LunarBar, false);
+                        Main.chest[num2].item[3].stack = Main.rand.Next(5, 11);
                     }
                     if (n2 == 1)
                     {
-                        Main.chest[num2].item[3].SetDefaults(ModContent.ItemType<Items.Placeable.Bar.TritanoriumBar>(), false);
+                        Main.chest[num2].item[3].SetDefaults(ItemID.LunarOre, false);
                         Main.chest[num2].item[3].stack = Main.rand.Next(11, 25);
                     }
-                    Main.chest[num2].item[4].SetDefaults(ItemID.PlatinumCoin, false);
-                    Main.chest[num2].item[4].stack = Main.rand.Next(4) + 2;
+                    Main.chest[num2].item[4].SetDefaults(ItemID.GoldCoin, false);
+                    Main.chest[num2].item[4].stack = Main.rand.Next(5) + 3;
                     return true;
                 }
                 return false;

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -55,6 +56,11 @@ class SpikeRailgun : ModItem
         {
             float velX = Main.mouseX + Main.screenPosition.X - player.Center.X;
             float velY = Main.mouseY + Main.screenPosition.Y - player.Center.Y;
+            float num72 = (float)Math.Sqrt((double)(velX * velX + velY * velY));
+            float num73 = num72;
+            num72 = Item.shootSpeed / num72;
+            velX *= num72;
+            velY *= num72;
             //if (player.gravDir == -1f)
             //{
             //    velY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - player.Center.Y;
