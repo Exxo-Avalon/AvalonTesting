@@ -169,7 +169,7 @@ internal class Underworld : GenPass
                         }
                     }
                 }
-                if (WorldGen.genRand.Next(70) == 0)
+                if (WorldGen.genRand.NextBool(70))
                 {
                     WorldGen.OreRunner(hbx, hby, 4, 4, (ushort)ModContent.TileType<BrimstoneBlock>());
                 }

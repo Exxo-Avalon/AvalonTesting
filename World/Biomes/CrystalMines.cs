@@ -1,50 +1,18 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace Avalon.World.Biomes;
-
-public class CrystalMines : MicroBiome
+internal class CrystalMines
 {
-    private struct Magma
-    {
-        public readonly float Pressure;
-
-        public readonly float Resistance;
-
-        public readonly bool IsActive;
-
-        private Magma(float pressure, float resistance, bool active)
-        {
-            Pressure = pressure;
-            Resistance = resistance;
-            IsActive = active;
-        }
-
-        public Magma ToFlow()
-        {
-            return new Magma(Pressure, Resistance, active: true);
-        }
-
-        public static Magma CreateFlow(float pressure, float resistance = 0f)
-        {
-            return new Magma(pressure, resistance, active: true);
-        }
-
-        public static Magma CreateEmpty(float resistance = 0f)
-        {
-            return new Magma(0f, resistance, active: false);
-        }
-    }
-
-    private int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>()};
-    private int[] blacklistedWalls = new int[]
+    private static readonly int[] blacklistedTiles = new int[] { 225, 41, 43, 44, 226, 203, 112, 25, 151, ModContent.TileType<Tiles.TuhrtlBrick>(),
+            ModContent.TileType<Tiles.OrangeBrick>(), ModContent.TileType<Tiles.PurpleBrick>(), ModContent.TileType<Tiles.CrackedOrangeBrick>(),
+            ModContent.TileType<Tiles.CrackedPurpleBrick>(), TileID.WoodenSpikes, ModContent.TileType<Tiles.ImperviousBrick>(),
+            ModContent.TileType<Tiles.VenomSpike>() };
+    private static readonly int[] blacklistedWalls = new int[]
     {
         WallID.BlueDungeonSlabUnsafe,
         WallID.BlueDungeonTileUnsafe,
@@ -59,265 +27,392 @@ public class CrystalMines : MicroBiome
         ModContent.WallType<Walls.TuhrtlBrickWallUnsafe>(),
         ModContent.WallType<Walls.OrangeBrickUnsafe>(),
         ModContent.WallType<Walls.OrangeTiledUnsafe>(),
-        ModContent.WallType<Walls.OrangeSlabUnsafe>()
+        ModContent.WallType<Walls.OrangeSlabUnsafe>(),
+        ModContent.WallType<Walls.PurpleBrickUnsafe>(),
+        ModContent.WallType<Walls.PurpleSlabWallUnsafe>(),
+        ModContent.WallType<Walls.PurpleTiledWallUnsafe>(),
+        ModContent.WallType<Walls.ImperviousBrickWallUnsafe>()
     };
-    private const int MAX_MAGMA_ITERATIONS = 300;
 
-    private static Magma[,] _sourceMagmaMap = new Magma[160, 160];
-
-    private static Magma[,] _targetMagmaMap = new Magma[160, 160];
-
-    public override bool Place(Point origin, StructureMap structures)
+    public static bool Place(Point origin)
     {
-        if (_tiles[origin.X, origin.Y].HasTile)
+        int width = WorldGen.genRand.Next(100, 120);
+        int height = 90;// WorldGen.genRand.Next(70, 90);
+
+        for (int i = origin.X; i < origin.X + width; i++)
         {
-            return false;
-        }
-        int length = _sourceMagmaMap.GetLength(0);
-        int length2 = _sourceMagmaMap.GetLength(1);
-        int num = length / 2;
-        int num12 = length2 / 2;
-        origin.X -= num;
-        origin.Y -= num12;
-        for (int i = 0; i < length; i++)
-        {
-            for (int j = 0; j < length2; j++)
+            for (int j = origin.Y; j < origin.Y + height; j++)
             {
-                int i2 = i + origin.X;
-                int j2 = j + origin.Y;
-                _sourceMagmaMap[i, j] = Magma.CreateEmpty(WorldGen.SolidTile(i2, j2) ? 4f : 1f);
-                _targetMagmaMap[i, j] = _sourceMagmaMap[i, j];
+                if (i == origin.X || i == origin.X + width - 1)
+                {
+                    if (j % 12 == 0)
+                    {
+                        Utils.TileRunnerCrystalMines(i, j, WorldGen.genRand.Next(35, 45), WorldGen.genRand.Next(35, 45), ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j == origin.Y || j == origin.Y + height - 1)
+                {
+                    if (i % 12 == 0)
+                    {
+                        Utils.TileRunnerCrystalMines(i, j, WorldGen.genRand.Next(35, 45), WorldGen.genRand.Next(35, 45), ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
             }
         }
-        int num20 = num;
-        int num21 = num;
-        int num22 = num12;
-        int num23 = num12;
-        for (int k = 0; k < 300; k++)
+
+
+        bool doCap1 = WorldGen.genRand.NextBool(3);
+        bool doCap2 = WorldGen.genRand.NextBool(3);
+        bool doCap3 = WorldGen.genRand.NextBool(3);
+        bool doCap4 = WorldGen.genRand.NextBool(3);
+        bool doCap5 = WorldGen.genRand.NextBool(3);
+        bool doCap6 = WorldGen.genRand.NextBool(3);
+        bool doCap7 = WorldGen.genRand.NextBool(3);
+        bool doCap8 = WorldGen.genRand.NextBool(3);
+
+        int tunnelHeight = 10;
+
+        // horizontal tunnel 1
+        int tunnel1YPos = WorldGen.genRand.Next(5, 11);
+
+        // horizontal tunnel 2
+        int tunnel2YPos = WorldGen.genRand.Next(20, 28);
+
+        // horizontal tunnel 3
+        int tunnel3YPos = WorldGen.genRand.Next(39, 51);
+
+        // horizontal tunnel 4
+        int tunnel4YPos = WorldGen.genRand.Next(60, 70);
+
+        // horizontal tunnel 5
+        int tunnel5YPos = WorldGen.genRand.Next(74, 79);
+
+        //Main.NewText(tunnel3YPos);
+        //Main.NewText(tunnel4YPos);
+
+        // first vertical tunnel
+        int vTunnel1Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel1PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 - vTunnel1Width, width / 3 - vTunnel1Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel1PosEnd = vTunnel1PosStart + vTunnel1Width; //WorldGen.genRand.Next(width / 3 + vTunnel1Width, width / 3 + vTunnel1Width + 5) + WorldGen.genRand.Next(-10, 10);
+
+        // second vertical tunnel
+        int vTunnel2Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel2PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel2PosEnd = vTunnel2PosStart + vTunnel2Width; //origin.X + WorldGen.genRand.Next(width / 3 * 2 + vTunnel2Width, width / 3 * 2 + vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+
+        // third vertical tunnel
+        int vTunnel3Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel3PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel3PosEnd = vTunnel3PosStart + vTunnel3Width;
+
+        // fourth vertical tunnel
+        int vTunnel4Width = WorldGen.genRand.Next(6, 11);
+        int vTunnel4PosStart = origin.X + WorldGen.genRand.Next(12, width - 24); //origin.X + WorldGen.genRand.Next(width / 3 * 2 - vTunnel2Width, width / 3 * 2 - vTunnel2Width + 5) + WorldGen.genRand.Next(-10, 10);
+        int vTunnel4PosEnd = vTunnel4PosStart + vTunnel4Width;
+
+        // caps
+        int cap1X = origin.X + width - 7;
+        int cap2X = origin.X + 7;
+
+        WorldGen.stopDrops = true;
+        for (int i = origin.X; i < origin.X + width; i++)
         {
-            for (int l = num20; l <= num21; l++)
+            for (int j = origin.Y; j < origin.Y + height; j++)
             {
-                for (int m = num22; m <= num23; m++)
+                Tile tile = Main.tile[i, j];
+                Tile tileBelow = Main.tile[i, j + 1];
+                Tile tileAbove = Main.tile[i, j - 1];
+                if (i > origin.X && i < origin.X + width && j > origin.Y && j < origin.Y + height && !Main.wallDungeon[tile.WallType] &&
+                    tile.WallType != WallID.LihzahrdBrickUnsafe)
                 {
-                    Magma magma = _sourceMagmaMap[l, m];
-                    if (!magma.IsActive)
+                    tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                    WorldGen.SquareWallFrame(i, j);
+                }
+                tile.LiquidAmount = 0;
+                //if (Main.tileFrameImportant[tile.TileType] && tileBelow.HasTile ||
+                //    Main.tileFrameImportant[tileAbove.TileType] && tile.HasTile) //Main.tileFrameImportant[tile.TileType]
+                //{
+                //    continue;
+                //}
+                if (tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 ||
+                    tile.TileType == TileID.ShadowOrbs || tile.TileType == TileID.DemonAltar ||
+                    tile.TileType == ModContent.TileType<Tiles.SnotOrb>() || tile.TileType == TileID.LihzahrdBrick || tile.TileType == TileID.BlueDungeonBrick ||
+                    tile.TileType == TileID.PinkDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() ||
+                    tile.TileType == TileID.Statues || tile.TileType == ModContent.TileType<Tiles.PurpleBrick>() || tile.TileType == ModContent.TileType<Tiles.OrangeBrick>() ||
+                    tile.TileType == ModContent.TileType<Tiles.CrackedOrangeBrick>() || tile.TileType == ModContent.TileType<Tiles.CrackedPurpleBrick>() ||
+                    tile.WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[tile.WallType] || tile.TileType == TileID.Painting2X3 || tile.TileType == TileID.Painting3X2 ||
+                    tile.TileType == TileID.Painting3X3 || tile.TileType == TileID.Painting4X3 || tile.TileType == TileID.Painting6X4)
+                {
+                    //if (tile.HasTile && (tileAbove.TileType == TileID.Containers || tileAbove.TileType == TileID.Containers2 || Main.tileContainer[tileAbove.TileType]))
+                    //{
+                    //    continue;
+                    //}
+                    if (!Main.tileSolid[tile.TileType] || Main.tileFrameImportant[tile.TileType] || Main.tileDungeon[tile.TileType] ||
+                        tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() || tile.TileType == TileID.LihzahrdBrick ||
+                        Main.wallDungeon[tile.WallType] || ((tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 || Main.tileContainer[tile.TileType]) && tileBelow.HasTile))
                     {
                         continue;
                     }
-                    float num24 = 0f;
-                    Vector2 zero = Vector2.Zero;
-                    for (int n = -1; n <= 1; n++)
+                    //else
+                    //if (tile.TileType != TileID.Dirt)
+                    //    tile.ResetToType(tile.TileType);
+                    //WorldGen.noTileActions = false;
+                    //continue;
+                }
+                else if (tile.TileType == TileID.Cobweb)
+                {
+                    tile.TileType = (ushort)ModContent.TileType<Tiles.CrystalStone>();
+                    //WorldGen.KillTile(i, j, noItem: true);
+                    //tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                }
+                else
+                {
+                    tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                }
+                if (tile.WallType != WallID.LihzahrdBrickUnsafe && tile.WallType != ModContent.WallType<Walls.TuhrtlBrickWallUnsafe>() &&
+                    !Main.wallDungeon[tile.WallType] && tile.WallType != WallID.LihzahrdBrickUnsafe)
+                {
+                    if (i > origin.X && i < origin.X + width && j > origin.Y && j < origin.Y + height)
                     {
-                        for (int num25 = -1; num25 <= 1; num25++)
-                        {
-                            if (n == 0 && num25 == 0)
-                            {
-                                continue;
-                            }
-                            Vector2 value = new Vector2(n, num25);
-                            value.Normalize();
-                            Magma magma2 = _sourceMagmaMap[l + n, m + num25];
-                            if (magma.Pressure > 0.01f && !magma2.IsActive)
-                            {
-                                if (n == -1)
-                                {
-                                    num20 = Terraria.Utils.Clamp(l + n, 1, num20);
-                                }
-                                else
-                                {
-                                    num21 = Terraria.Utils.Clamp(l + n, num21, length - 2);
-                                }
-                                if (num25 == -1)
-                                {
-                                    num22 = Terraria.Utils.Clamp(m + num25, 1, num22);
-                                }
-                                else
-                                {
-                                    num23 = Terraria.Utils.Clamp(m + num25, num23, length2 - 2);
-                                }
-                                _targetMagmaMap[l + n, m + num25] = magma2.ToFlow();
-                            }
-                            float pressure = magma2.Pressure;
-                            num24 += pressure;
-                            zero += pressure * value;
-                        }
-                    }
-                    num24 /= 8f;
-                    if (num24 > magma.Resistance)
-                    {
-                        float num26 = zero.Length() / 8f;
-                        float val = Math.Max(num24 - num26 - magma.Pressure, 0f) + num26 + magma.Pressure * 0.875f - magma.Resistance;
-                        val = Math.Max(0f, val);
-                        _targetMagmaMap[l, m] = Magma.CreateFlow(val, Math.Max(0f, magma.Resistance - val * 0.02f));
+                        tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                        WorldGen.SquareWallFrame(i, j);
                     }
                 }
-            }
-            if (k < 2)
-            {
-                _targetMagmaMap[num, num12] = Magma.CreateFlow(25f);
-            }
-            Utils.Swap(ref _sourceMagmaMap, ref _targetMagmaMap);
-        }
-        bool flag = origin.Y + num12 > WorldGen.lavaLine - 30;
-        bool flag2 = false;
-        for (int num2 = -40; num2 < 40; num2++)
-        {
-            if (flag2)
-            {
-                break;
-            }
-            for (int num3 = -40; num3 < 40; num3++)
-            {
-                if (flag2)
+
+                #region horizontal tunnels
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight ||
+                    j >= origin.Y + tunnel5YPos && j <= origin.Y + tunnel5YPos + tunnelHeight)
                 {
-                    break;
-                }
-                if (_tiles[origin.X + num + num2, origin.Y + num12 + num3].HasTile)
-                {
-                    ushort type = _tiles[origin.X + num + num2, origin.Y + num12 + num3].TileType;
-                    if (type == 147 || (uint)(type - 161) <= 2u || type == 200)
+                    WorldGen.noTileActions = true;
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
-                        flag = false;
-                        flag2 = true;
+                        WorldGen.stopDrops = true;
+                        tile.HasTile = false;
+                        //WorldGen.KillTile(i, j, noItem: true);
+                        WorldGen.stopDrops = false;
+                    }
+                    WorldGen.noTileActions = false;
+                }
+                #endregion horizontal tunnels
+
+                #region wood
+                if (j == origin.Y + tunnel1YPos ||
+                    j == origin.Y + tunnel2YPos ||
+                    j == origin.Y + tunnel3YPos ||
+                    j == origin.Y + tunnel4YPos ||
+                    j == origin.Y + tunnel5YPos)
+                {
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        WorldGen.PlaceTile(i, j, TileID.WoodBlock, true);
                     }
                 }
-            }
-        }
-        for (int num4 = num20; num4 <= num21; num4++)
-        {
-            for (int num5 = num22; num5 <= num23; num5++)
-            {
-                Magma magma3 = _sourceMagmaMap[num4, num5];
-                if (!magma3.IsActive)
+                #endregion wood
+
+                #region vertical tunnels
+                WorldGen.noTileActions = true;
+                if (j >= origin.Y + tunnel1YPos + tunnelHeight && j <= origin.Y + tunnel2YPos + 1 &&
+                    i >= vTunnel1PosStart && i <= vTunnel1PosEnd)
                 {
-                    continue;
+                    if (j == origin.Y + tunnel2YPos + 1 && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
                 }
-                Tile tile = GenBase._tiles[origin.X + num4, origin.Y + num5];
-                float num6 = (float)Math.Sin((float)(origin.Y + num5) * 0.4f) * 0.7f + 1.2f;
-                float num7 = 0.2f + 0.5f / (float)Math.Sqrt(Math.Max(0f, magma3.Pressure - magma3.Resistance));
-                if (Math.Max(1f - Math.Max(0f, num6 * num7), magma3.Pressure / 15f) > 0.35f + (WorldGen.SolidTile(origin.X + num4, origin.Y + num5) ? 0f : 0.5f))
+                if (j >= origin.Y + tunnel2YPos + tunnelHeight && j <= origin.Y + tunnel3YPos + 1 &&
+                    i >= vTunnel2PosStart && i <= vTunnel2PosEnd)
                 {
-                    if (TileID.Sets.Ore[tile.TileType])
+                    if (j == origin.Y + tunnel3YPos + 1 && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
-                        tile.ResetToType(tile.TileType);
+                        tile.HasTile = false;
                     }
-                    else if (tile.TileType == TileID.Pots || tile.TileType == TileID.Containers || tile.TileType == TileID.Containers2 || tile.TileType == TileID.Heart ||
-                        tile.TileType == TileID.ShadowOrbs || tile.TileType == TileID.DemonAltar || tile.TileType == ModContent.TileType<Tiles.HallowedAltar>() ||
-                        tile.TileType == ModContent.TileType<Tiles.SnotOrb>() || tile.TileType == TileID.LihzahrdBrick || tile.TileType == TileID.BlueDungeonBrick ||
-                        tile.TileType == TileID.PinkDungeonBrick || tile.TileType == TileID.GreenDungeonBrick || tile.TileType == ModContent.TileType<Tiles.TuhrtlBrick>() ||
-                        tile.TileType == TileID.Statues)
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
                     {
-                        tile.ResetToType(tile.TileType);
+                        tile.HasTile = false;
                     }
-                    else
+                }
+                if (j >= origin.Y + tunnel3YPos + tunnelHeight && j <= origin.Y + tunnel4YPos + 1 &&
+                    i >= vTunnel3PosStart && i <= vTunnel3PosEnd)
+                {
+                    if (j == origin.Y + tunnel3YPos + tunnelHeight && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos + tunnelHeight && j <= origin.Y + tunnel5YPos + 1 &&
+                    i >= vTunnel4PosStart && i <= vTunnel4PosEnd)
+                {
+                    if (j == origin.Y + tunnel4YPos + tunnelHeight && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
+                    if (!Main.tileDungeon[tile.TileType] && !Main.wallDungeon[tile.WallType] && tile.TileType != TileID.LihzahrdBrick)
+                    {
+                        tile.HasTile = false;
+                    }
+                }
+                WorldGen.noTileActions = false;
+                #endregion vertical tunnels
+
+
+                #region caps
+                // right side caps
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight &&
+                    i >= cap1X && doCap1)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
                     {
                         tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
                     }
-                    if (tile.WallType != WallID.LihzahrdBrickUnsafe && tile.WallType != ModContent.WallType<Walls.TuhrtlBrickWallUnsafe>() && !Main.wallDungeon[tile.WallType])
+                }
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight &&
+                    i >= cap1X && doCap4)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
                     {
-                        tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
                     }
                 }
-                else if (magma3.Resistance < 0.01f)
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight &&
+                    i >= cap1X && doCap5)
                 {
-                    WorldUtils.ClearTile(origin.X + num4, origin.Y + num5);
-                    if (!blacklistedWalls.Contains(tile.WallType))
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
                     {
-                        tile.WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
                     }
                 }
-                if (tile.LiquidAmount > 0 && flag)
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight &&
+                    i >= cap1X && doCap7)
                 {
-                    tile.LiquidAmount = 0;
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
                 }
+                // left side caps
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight &&
+                    i <= cap2X && doCap3)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight &&
+                    i <= cap2X && doCap2)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight &&
+                    i <= cap2X && doCap6)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight &&
+                    i <= cap2X && doCap8)
+                {
+                    if (!blacklistedTiles.Contains(tile.TileType) && !blacklistedWalls.Contains(tile.WallType))
+                    {
+                        tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
+                    }
+                }
+
+
+
+                #endregion caps
+
             }
         }
-        List<Point16> list = new List<Point16>();
-        for (int num8 = num20; num8 <= num21; num8++)
+        int spacingFloor1 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor2 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor3 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor4 = WorldGen.genRand.Next(10, 14);
+        int spacingFloor5 = WorldGen.genRand.Next(10, 14);
+        for (int i = origin.X; i < origin.X + width; i++)
         {
-            for (int num9 = num22; num9 <= num23; num9++)
+            for (int j = origin.Y; j < origin.Y + height; j++)
             {
-                if (!_sourceMagmaMap[num8, num9].IsActive)
+                #region pillars
+                if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight)
                 {
-                    continue;
-                }
-                int num10 = 0;
-                int num11 = num8 + origin.X;
-                int num13 = num9 + origin.Y;
-                if (!WorldGen.SolidTile(num11, num13))
-                {
-                    continue;
-                }
-                for (int num14 = -1; num14 <= 1; num14++)
-                {
-                    for (int num15 = -1; num15 <= 1; num15++)
+                    if (i % spacingFloor1 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel1YPos - 1].HasTile)
                     {
-                        if (WorldGen.SolidTile(num11 + num14, num13 + num15))
+                        if (!Main.wallDungeon[Main.tile[i, j].WallType] && !blacklistedWalls.Contains(Main.tile[i, j].WallType))
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel2YPos && j <= origin.Y + tunnel2YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor2 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel2YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].WallType] && !blacklistedWalls.Contains(Main.tile[i, j].WallType))
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel3YPos && j <= origin.Y + tunnel3YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor3 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel3YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].WallType] && !blacklistedWalls.Contains(Main.tile[i, j].WallType))
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel4YPos && j <= origin.Y + tunnel4YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor4 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel4YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].WallType] && !blacklistedWalls.Contains(Main.tile[i, j].WallType))
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (j >= origin.Y + tunnel5YPos && j <= origin.Y + tunnel5YPos + tunnelHeight)
+                {
+                    if (i % spacingFloor5 == 0 && !Main.tile[i, j].HasTile && Main.tile[i, origin.Y + tunnel5YPos - 1].HasTile)
+                    {
+                        if (!Main.wallDungeon[Main.tile[i, j].WallType] && !blacklistedWalls.Contains(Main.tile[i, j].WallType))
+                            WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                    }
+                }
+                if (!Main.tile[i, j].HasTile && Main.tile[i, j - 1].HasTile && Main.tile[i, j - 1].TileType == ModContent.TileType<Tiles.CrystalColumn>())
+                {
+                    WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.CrystalColumn>(), true);
+                }
+                #endregion pillars
+                if (!Main.tile[i, j].HasTile && Main.tile[i, j - 1].HasTile && Main.tile[i, j - 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i, j + 1].HasTile && Main.tile[i, j + 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i - 1, j].HasTile && Main.tile[i - 1, j].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
+                    !Main.tile[i, j].HasTile && Main.tile[i + 1, j].HasTile && Main.tile[i + 1, j].TileType == ModContent.TileType<Tiles.CrystalStone>())
+                {
+                    if (Main.tile[i, j].TileType != TileID.Crystals)
+                    {
+                        if (WorldGen.genRand.NextBool(8))
                         {
-                            num10++;
+                            WorldGen.PlaceTile(i, j, TileID.Crystals, style: WorldGen.genRand.Next(3));
                         }
                     }
                 }
-                if (num10 < 3)
-                {
-                    list.Add(new Point16(num11, num13));
-                }
             }
         }
-        foreach (Point16 item in list)
-        {
-            int x = item.X;
-            int y = item.Y;
-            WorldUtils.ClearTile(x, y, frameNeighbors: true);
-            if (!blacklistedWalls.Contains(_tiles[x, y].WallType))
-            {
-                _tiles[x, y].WallType = (ushort)ModContent.WallType<Walls.CrystalStoneWall>();
-            }
-        }
-        list.Clear();
-        for (int num16 = num20; num16 <= num21; num16++)
-        {
-            for (int num17 = num22; num17 <= num23; num17++)
-            {
-                Magma magma4 = _sourceMagmaMap[num16, num17];
-                int num18 = num16 + origin.X;
-                int num19 = num17 + origin.Y;
-                if (!magma4.IsActive)
-                {
-                    continue;
-                }
-                WorldUtils.TileFrame(num18, num19);
-                WorldGen.SquareWallFrame(num18, num19);
-                //if (GenBase._random.Next(8) == 0 && GenBase._tiles[num18, num19].HasTile)
-                //{
-                //    if (!GenBase._tiles[num18, num19 + 1].HasTile)
-                //    {
-                //        WorldGen.PlaceTight(num18, num19 + 1, 165);
-                //    }
-                //    if (!GenBase._tiles[num18, num19 - 1].HasTile)
-                //    {
-                //        WorldGen.PlaceTight(num18, num19 - 1, 165);
-                //    }
-                //}
-                if (!Main.tile[num18, num19].HasTile && Main.tile[num18, num19 - 1].HasTile && Main.tile[num18, num19 - 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
-                    !Main.tile[num18, num19].HasTile && Main.tile[num18, num19 + 1].HasTile && Main.tile[num18, num19 + 1].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
-                    !Main.tile[num18, num19].HasTile && Main.tile[num18 - 1, num19].HasTile && Main.tile[num18 - 1, num19].TileType == ModContent.TileType<Tiles.CrystalStone>() ||
-                    !Main.tile[num18, num19].HasTile && Main.tile[num18 + 1, num19].HasTile && Main.tile[num18 + 1, num19].TileType == ModContent.TileType<Tiles.CrystalStone>())
-                {
-                    if (Main.tile[num18, num19].TileType != TileID.Crystals)
-                    {
-                        if (WorldGen.genRand.Next(8) == 0)
-                        {
-                            WorldGen.PlaceTile(num18, num19, TileID.Crystals);
-                        }
-                    }
-                }
-                if (GenBase._random.Next(2) == 0)
-                {
-                    Tile.SmoothSlope(num18, num19);
-                }
-            }
-        }
+        Utils.SquareTileFrameArea(origin.X, origin.Y, width, height);
+        WorldGen.stopDrops = false;
         return true;
     }
 }

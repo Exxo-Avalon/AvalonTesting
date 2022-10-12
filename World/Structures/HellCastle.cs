@@ -27,7 +27,46 @@ internal class Hellcastle
         AddFurniture(x, y, 400, 150);
         AddChests(x, y, 400, 150);
         AddPots(x, y, 400, 150);
+        UnsmoothTiles(x, y, 400, 150);
+        AddDevilsScythes(x, y, 400, 150);
         MakeEntranceArea(x + 200, y + 135);
+
+    }
+    public static void AddDevilsScythes(int x, int y, int width, int height)
+    {
+        int booksPlaced = 0;
+        while (booksPlaced < 3)
+        {
+            for (int i = x; i < x + width; i++)
+            {
+                for (int j = y; j < y + height; j++)
+                {
+                    Tile t = Main.tile[i, j];
+                    if (t.TileType == TileID.Books && WorldGen.genRand.NextBool(50))
+                    {
+                        WorldGen.KillTile(i, j);
+                        WorldGen.PlaceTile(i, j, ModContent.TileType<Tiles.DevilsScythe>());
+                        booksPlaced++;
+                    }
+                }
+                if (booksPlaced > 2) return;
+            }
+        }
+    }
+    public static void UnsmoothTiles(int x, int y, int width, int height)
+    {
+        for (int i = x; i < x + width; i++)
+        {
+            for (int j = y; j < y + height; j++)
+            {
+                Tile t = Main.tile[i, j];
+                if (t.TileType == ModContent.TileType<Tiles.VenomSpike>() ||
+                    t.TileType == ModContent.TileType<Tiles.ImperviousBrick>())
+                {
+                    t.Slope = SlopeType.Solid;
+                }
+            }
+        }
     }
     public static void MakeEntranceArea(int x, int y)
     {
@@ -174,7 +213,7 @@ internal class Hellcastle
                 {
                     if (Main.tile[x + i, y + j].HasTile && !Main.tile[x + i, y + j - 1].HasTile && !Main.tile[x + i + 1, y + j - 1].HasTile)
                     {
-                        if(Main.rand.NextBool(80) && maxAmount > 0)
+                        if(Main.rand.NextBool(50) && maxAmount > 0)
                         {
                             maxAmount--;
                             AddHellcastleChest(x + i + 1, y + j);
@@ -508,7 +547,6 @@ internal class Hellcastle
             }
         }
     }
-
     public static void MakeTunnel(int x, int y, Vector2 beginPoint, Vector2 endPoint, int thickness = 20)
     {
         BoreTunnel(x + (int)beginPoint.X, y + (int)beginPoint.Y, x + (int)endPoint.X, y + (int)endPoint.Y, thickness, ushort.MaxValue, 0);
@@ -557,7 +595,6 @@ internal class Hellcastle
             }
         }
     }
-
     public static bool AddHellcastleChest(int i, int j, bool notNearOtherChests = false)
     {
         int k = j;

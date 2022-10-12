@@ -143,11 +143,15 @@ public class ExxoWorldGen : ModSystem
             totalWeight += currentPass.Weight;
         }
 
-        int underworld = tasks.FindIndex(genPass => genPass.Name == "Underworld");
+        int underworld = tasks.FindIndex(genPass => genPass.Name == "Micro Biomes");
         if (underworld != -1)
         {
             currentPass = new Underworld();
             tasks.Insert(underworld + 1, currentPass);
+            totalWeight += currentPass.Weight;
+
+            currentPass = new Impvines();
+            tasks.Insert(underworld + 2, currentPass);
             totalWeight += currentPass.Weight;
         }
 

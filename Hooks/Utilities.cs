@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq.Expressions;
+using System.Reflection;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 
@@ -76,6 +77,22 @@ public static class Utilities
             c.Index--;
             c.EmitDelegate<Func<ushort, ushort>>(id => predicate.Invoke(id) ? origId : id);
             c.Index += 2;
+        }
+    }
+
+    public static void SoftReplaceAllMatchingInstructionsWithMethod(ILContext il, Instruction i1, MethodBase method)
+    {
+        var c = new ILCursor(il);
+
+        while (c.TryGotoNext(i => i.OpCode == i1.OpCode && (i1.Operand == null || i.Operand == i1.Operand)))
+        {
+            // Ensure not replacing anything added by an IL hook
+            if (c.Next.Offset != 0)
+            {
+                c.Index++;
+                c.Emit(OpCodes.Pop);
+                c.Emit(OpCodes.Call, method);
+            }
         }
     }
 }
