@@ -226,13 +226,12 @@ internal class Hellcastle
             {
                 if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
                 {
-
                 }
                 else
                 {
                     if (Main.tile[x + i, y + j].HasTile && !Main.tile[x + i, y + j - 1].HasTile && !Main.tile[x + i + 1, y + j - 1].HasTile)
                     {
-                        if(Main.rand.NextBool(50) && maxAmount > 0)
+                        if(Main.rand.NextBool(10) && maxAmount > 0)
                         {
                             maxAmount--;
                             AddHellcastleChest(x + i + 1, y + j);

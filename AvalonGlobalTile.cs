@@ -41,11 +41,10 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
-        
         if (Main.tile[i, j - 1].TileType == ModContent.TileType<IckyAltar>() && Main.tile[i, j].TileType != ModContent.TileType<IckyAltar>() ||
             Main.tile[i, j - 1].TileType == ModContent.TileType<HallowedAltar>() && Main.tile[i, j].TileType != ModContent.TileType<HallowedAltar>())
         {
-            if (Main.tile[i, j].HasTile) fail = true;
+            if (Main.tile[i, j].HasTile) fail = true; // test this
         }
         if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
         {
