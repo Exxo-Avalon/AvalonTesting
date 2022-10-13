@@ -162,7 +162,10 @@ internal class Underworld : GenPass
                 {
                     if (Main.tile[hbx, hby].TileType == TileID.Ash)
                     {
-                        Main.tile[hbx, hby].TileType = (ushort)ModContent.TileType<Ectograss>();
+                        SlopeType s = Main.tile[hbx, hby].Slope;
+                        Tile t = Main.tile[hbx, hby];
+                        t.TileType = (ushort)ModContent.TileType<Ectograss>();
+                        t.Slope = s;
                         if (WorldGen.genRand.Next(1) == 0)
                         {
                             WorldGen.GrowTree(hbx, hby - 1);

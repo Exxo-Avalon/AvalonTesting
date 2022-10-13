@@ -7,11 +7,11 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Tools;
 
-internal class SnotlineFishingRod : ModItem
+internal class ColdCatcher : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Snotline Fishing Rod");
+        DisplayName.SetDefault("Cold Catcher");
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         SacrificeTotal = 1;
     }
@@ -28,5 +28,12 @@ internal class SnotlineFishingRod : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 40);
         Item.useAnimation = 8;
+    }
+    public override void AddRecipes()
+    {
+        CreateRecipe(1)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.PandemiteBar>(), 10)
+            .AddTile(TileID.Anvils)
+            .Register();
     }
 }

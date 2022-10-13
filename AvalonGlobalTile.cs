@@ -22,7 +22,7 @@ public class AvalonGlobalTile : GlobalTile
     }
     public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        if (Main.player[Player.FindClosest(new Microsoft.Xna.Framework.Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && TileID.Sets.Ore[Main.tile[i, j].TileType])
+        if (Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && TileID.Sets.Ore[Main.tile[i, j].TileType])
         {
             if (Data.Sets.Tile.OresToChunks.ContainsKey(Main.tile[i, j].TileType))
             {
@@ -41,10 +41,11 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
+        
         if (Main.tile[i, j - 1].TileType == ModContent.TileType<IckyAltar>() && Main.tile[i, j].TileType != ModContent.TileType<IckyAltar>() ||
             Main.tile[i, j - 1].TileType == ModContent.TileType<HallowedAltar>() && Main.tile[i, j].TileType != ModContent.TileType<HallowedAltar>())
         {
-            fail = true;
+            if (Main.tile[i, j].HasTile) fail = true;
         }
         if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
         {

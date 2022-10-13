@@ -17,20 +17,39 @@ internal class Hellcastle
         MakePath(x, y, -1);
         MakePath(x, y, 1);
 
+        // large room
         MakeTunnel((int)castleBottomCenterL.X - 25, (int)castleBottomCenterL.Y - 115, Vector2.Zero, Vector2.Zero, 50);
         MakeTunnel((int)castleBottomCenterR.X + 25, (int)castleBottomCenterR.Y - 115, Vector2.Zero, Vector2.Zero, 50);
 
+        // remove random floating tiles
         RefineStructure(x, y, 400, 150);
-
+        // place the trapezoid shape and the library altar on top of it, at the bottom of the large room
+        AddLibraryAltar((int)castleBottomCenterL.X, (int)castleBottomCenterL.Y - 85);
+        // add platforms in various places
         AddPlatforms(x, y, 400, 150);
         AddSpikes(x, y, 400, 150);
         AddFurniture(x, y, 400, 150);
         AddChests(x, y, 400, 150);
         AddPots(x, y, 400, 150);
+        // unsmooth tiles such as the spikes and impervious bricks
         UnsmoothTiles(x, y, 400, 150);
+        // place up to 3 devil's scythes on the shelves/platforms
         AddDevilsScythes(x, y, 400, 150);
         MakeEntranceArea(x + 200, y + 135);
 
+    }
+    public static void AddLibraryAltar(int x, int y)
+    {
+        int pyramidStep = 3;
+        for (int pyramidY = y - 4; pyramidY <= y + 1; pyramidY++)
+        {
+            for (int pyramidX = x - pyramidStep + 1; pyramidX <= x + pyramidStep + 1; pyramidX++)
+            {
+                WorldGen.PlaceTile(pyramidX + 1, pyramidY, ModContent.TileType<Tiles.ImperviousBrick>());
+            }
+            pyramidStep++;
+        }
+        WorldGen.PlaceTile(x + 2, y - 5, ModContent.TileType<Tiles.LibraryAltar>());
     }
     public static void AddDevilsScythes(int x, int y, int width, int height)
     {
@@ -252,7 +271,7 @@ internal class Hellcastle
                             if (!Main.tile[x + i, y + j - k].HasTile)
                             {
                                 DestroyBox(x + i, y + j - k + (size / 2), size * 2, size + 1);
-                                size = 0;
+                                //size = 0;
                                 break;
                             }
                         }
@@ -269,7 +288,7 @@ internal class Hellcastle
                             if (!Main.tile[x + i, y + j + k].HasTile)
                             {
                                 DestroyBox(x + i, y + j + k - (size / 2), size * 2, size + 1);
-                                size = 0;
+                                //size = 0;
                                 break;
                             }
                         }
@@ -295,7 +314,7 @@ internal class Hellcastle
                 {
                     countTo = 5 + Main.rand.Next(5);
                     randLength = Main.rand.Next(2, 8);
-                    if(Main.tile[x + i, y + j].HasTile)
+                    if (Main.tile[x + i, y + j].HasTile)
                     {
                         if (!Main.tile[x + i - 1, y + j].HasTile && Main.tile[x + i, y + j + 1].HasTile && Main.tile[x + i, y + j - 1].HasTile && Main.tile[x + i + 1, y + j].HasTile)
                         {
@@ -535,7 +554,6 @@ internal class Hellcastle
             {
                 if (i == 0 || i == width - 1 || j == 0 || j == height - 1)
                 {
-
                 }
                 else
                 {
