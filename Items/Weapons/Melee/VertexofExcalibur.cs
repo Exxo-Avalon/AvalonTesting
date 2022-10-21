@@ -34,7 +34,9 @@ class VertexofExcalibur : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        //Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Melee.VertexSlash2>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Melee.VertexSlash>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
         return false;
     }
     public override void MeleeEffects(Player player, Rectangle hitbox)

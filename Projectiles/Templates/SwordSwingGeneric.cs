@@ -13,6 +13,11 @@ public abstract class SwordSwingGeneric : ModProjectile
     public abstract Color color1 { get; } // new Color(139, 42, 156); // purpley
     public abstract Color color2 { get; } // new Color(236, 200, 19); // yellow
     public abstract Color color3 { get; } // = new Color(179, 179, 179); // light gray
+    public abstract Color SparkleColor { get; } // = LightGoldenrodYellow
+    public abstract Color BigSparkleColor { get; } // = LightGoldenrodYellow
+    public abstract int Dust1 { get; }
+    public abstract Color Dust1Color { get; }
+    public abstract int Dust2 { get; }
     public abstract float scalemod { get; }
 
     public abstract bool CanCutTile { get; }
@@ -57,13 +62,13 @@ public abstract class SwordSwingGeneric : ModProjectile
         Vector2 vector3 = (num8 + Projectile.ai[0] * ((float)Math.PI / 2f)).ToRotationVector2();
         //if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
         {
-            Dust dust2 = Dust.NewDustPerfect(Projectile.Center + num8.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), 278, vector3 * 1f, 100, Color.Lerp(Color.Gold, Color.White, Main.rand.NextFloat() * 0.3f), 0.4f);
+            Dust dust2 = Dust.NewDustPerfect(Projectile.Center + num8.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), 278, vector3 * 1f, Dust1, Dust1Color, 0.4f);
             dust2.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
             dust2.noGravity = true;
         }
         //if (Main.rand.NextFloat() * 1.5f < Projectile.Opacity)
         {
-            Dust.NewDustPerfect(vector2, 43, vector3 * 1f, 100, Color.White * Projectile.Opacity, 1.2f * Projectile.Opacity);
+            Dust.NewDustPerfect(vector2, Dust2, vector3 * 1f, 100, Color.White * Projectile.Opacity, 1.2f * Projectile.Opacity);
         }
         //Projectile.scale *= Projectile.ai[2];
         if (Projectile.localAI[0] >= Projectile.ai[1])
@@ -78,7 +83,6 @@ public abstract class SwordSwingGeneric : ModProjectile
         float num2 = 60f * Projectile.scale;
         Utils.PlotTileLine(Projectile.Center + vector2, Projectile.Center + vector3, num2, DelegateMethods.CutTiles);
     }
-    
     public override bool PreDraw(ref Color lightColor)
     {
         DrawProj_Excalibur(Projectile);
@@ -114,7 +118,7 @@ public abstract class SwordSwingGeneric : ModProjectile
         }
         return false;
     }
-    private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
+    private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, Color SparkleColor, Color BigSparkleColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
     {
         Texture2D value = ModContent.Request<Texture2D>("Avalon/Assets/Textures/Sparkly").Value;
         Color color = shineColor * opacity * 0.5f;
@@ -126,10 +130,10 @@ public abstract class SwordSwingGeneric : ModProjectile
         Vector2 vector2 = new Vector2(fatness.Y * 0.5f, scale.Y) * num;
         color *= num;
         color2 *= num;
-        Main.EntitySpriteDraw(value, drawpos, null, Color.LightGoldenrodYellow, (float)Math.PI / 2f + rotation, origin, vector, dir, 0);
-        Main.EntitySpriteDraw(value, drawpos, null, Color.LightGoldenrodYellow, 0f + rotation, origin, vector2, dir, 0);
-        Main.EntitySpriteDraw(value, drawpos, null, color2, (float)Math.PI / 2f + rotation, origin, vector * 0.6f, dir, 0);
-        Main.EntitySpriteDraw(value, drawpos, null, color2, 0f + rotation, origin, vector2 * 0.6f, dir, 0);
+        Main.EntitySpriteDraw(value, drawpos, null, SparkleColor, (float)Math.PI / 2f + rotation, origin, vector, dir, 0); 
+        Main.EntitySpriteDraw(value, drawpos, null, SparkleColor, 0f + rotation, origin, vector2, dir, 0);
+        Main.EntitySpriteDraw(value, drawpos, null, SparkleColor, (float)Math.PI / 2f + rotation, origin, vector * 0.6f, dir, 0);
+        Main.EntitySpriteDraw(value, drawpos, null, SparkleColor, 0f + rotation, origin, vector2 * 0.6f, dir, 0);
     }
     public void DrawProj_Excalibur(Projectile proj)
     {
@@ -159,12 +163,12 @@ public abstract class SwordSwingGeneric : ModProjectile
         for (float num5 = 0f; num5 < 8f; num5++)
         {
             float num6 = proj.rotation + proj.ai[0] * num5 * ((float)Math.PI * -2f) * 0.025f + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0];
-            Vector2 drawpos = vector + num6.ToRotationVector2() * (val.Value.Width * 0.5f - 6f) * num;
+            Vector2 drawpos = vector + num6.ToRotationVector2() * (val.Value.Width * 0.5f - 6f) * num * scalemod;
             float num7 = num5 / 9f;
-            DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * num3 * num7, color3, num2, 0f, 0.5f, 0.5f, 1f, num6, new Vector2(0f, Utils.Remap(num2, 0f, 1f, 3f, 0f)) * num, Vector2.One * num);
+            DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * num3 * num7, color3, SparkleColor, BigSparkleColor, num2, 0f, 0.5f, 0.5f, 1f, num6, new Vector2(0f, Utils.Remap(num2, 0f, 1f, 3f, 0f)) * num, Vector2.One * num);
         }
-        Vector2 drawpos2 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Value.Width * 0.5f - 4f) * num;
-        DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * num3 * 0.5f, color3, num2, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(num2, 0f, 1f, 4f, 1f)) * num, Vector2.One * num);
+        Vector2 drawpos2 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Value.Width * 0.5f - 4f) * num * scalemod;
+        DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * num3 * 0.5f, color3, BigSparkleColor, BigSparkleColor, num2, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(num2, 0f, 1f, 4f, 1f)) * num, Vector2.One * num);
     }
     private void UpdateEnchantmentVisuals()
     {
