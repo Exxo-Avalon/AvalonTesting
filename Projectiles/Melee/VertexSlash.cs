@@ -70,7 +70,7 @@ public class VertexSlash : SwordSwingGeneric
 public class VertexSlash : SwordSwingGeneric
 {
     public override Color SparkleColor => new Color(25, 25, 25, 0);
-    public override Color BigSparkleColor => new Color(150, 150, 100, 0);
+    public override Color BigSparkleColor => new Color(150, 70, 100, 0);
     public override Color color1 => new Color(128, 42, 0);
     public override Color color2 => new Color(255, 200, 0);
     public override Color color3 => color1;
@@ -129,7 +129,7 @@ public class VertexSlash : SwordSwingGeneric
 
 public class VertexSlash2 : SwordSwingGeneric
 {
-    public override Color BigSparkleColor => new Color(100, 150, 150, 0);
+    public override Color BigSparkleColor => new Color(100, 70, 150, 0);
     public override Color color1 => new Color(139, 42, 156);
     public override Color color2 => new Color(100, 50, 255);
     public override Color color3 => color1;
