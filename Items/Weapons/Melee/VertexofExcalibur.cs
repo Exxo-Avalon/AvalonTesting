@@ -19,7 +19,7 @@ class VertexofExcalibur : ModItem
         Item.width = 42;
         Item.height = 44;
         Item.UseSound = SoundID.Item1;
-        Item.damage = 78;
+        Item.damage = 90;
         Item.autoReuse = true;
         Item.scale = 1.2f;
         Item.noMelee = true;
@@ -57,24 +57,44 @@ class VertexofExcalibur : ModItem
             .AddIngredient(ItemID.BrokenHeroSword)
             .AddIngredient(ItemID.DarkShard)
             .AddIngredient(ItemID.LightShard)
-            .AddIngredient(ItemID.LunarBar, 4)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.BeetleBar>(), 4)
             .AddTile(TileID.AdamantiteForge).Register();
     }
     public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
     {
-        bool hasDebuff = false;
+        int debuffCount = 0;
         for (int i = 0; i < target.buffType.Length; i++)
         {
             if (Main.debuff[target.buffType[i]])
             {
-                hasDebuff = true;
-                break;
+                debuffCount++;
             }
         }
-        if (hasDebuff)
+        if (debuffCount > 0)
         {
-            if (target.boss) damage = (int)(damage * 1.3);
-            else damage = (int)(damage * 1.6);
+            if (target.boss)
+            {
+                damage = (int)(damage * 1.2 * debuffCount);
+            }
+            else
+            {
+                damage = (int)(damage * 1.45 * debuffCount);
+            }
         }
+
+        //bool hasDebuff = false;
+        //for (int i = 0; i < target.buffType.Length; i++)
+        //{
+        //    if (Main.debuff[target.buffType[i]])
+        //    {
+        //        hasDebuff = true;
+        //        break;
+        //    }
+        //}
+        //if (hasDebuff)
+        //{
+        //    if (target.boss) damage = (int)(damage * 1.35);
+        //    else damage = (int)(damage * 1.65);
+        //}
     }
 }

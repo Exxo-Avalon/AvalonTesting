@@ -3,10 +3,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Avalon.Projectiles.Templates;
-using System;
-using Terraria.GameContent;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 
 namespace Avalon.Projectiles.Melee;
 /*
@@ -108,22 +104,42 @@ public class VertexSlash : SwordSwingGeneric
     }
     public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        bool hasDebuff = false;
+        int debuffCount = 0;
         for (int i = 0; i < target.buffType.Length; i++)
         {
             if (Main.debuff[target.buffType[i]])
             {
-                hasDebuff = true;
-                break;
+                debuffCount++;
             }
         }
-        if (hasDebuff)
+        if (debuffCount > 0)
         {
             if (target.boss)
-                damage = (int)(damage * 1.3);
+            {
+                damage = (int)(damage * 1.2 * debuffCount);
+            }
             else
-                damage = (int)(damage * 1.6);
+            {
+                damage = (int)(damage * 1.45 * debuffCount);
+            }
         }
+
+        //bool hasDebuff = false;
+        //for (int i = 0; i < target.buffType.Length; i++)
+        //{
+        //    if (Main.debuff[target.buffType[i]])
+        //    {
+        //        hasDebuff = true;
+        //        break;
+        //    }
+        //}
+        //if (hasDebuff)
+        //{
+        //    if (target.boss)
+        //        damage = (int)(damage * 1.3);
+        //    else
+        //        damage = (int)(damage * 1.6);
+        //}
     }
 }
 
@@ -164,21 +180,24 @@ public class VertexSlash2 : SwordSwingGeneric
     }
     public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
     {
-        bool hasDebuff = false;
+        int debuffCount = 0;
         for (int i = 0; i < target.buffType.Length; i++)
         {
             if (Main.debuff[target.buffType[i]])
             {
-                hasDebuff = true;
-                break;
+                debuffCount++;
             }
         }
-        if (hasDebuff)
+        if (debuffCount > 0)
         {
             if (target.boss)
-                damage = (int)(damage * 1.3);
+            {
+                damage = (int)(damage * 1.2 * debuffCount);
+            }
             else
-                damage = (int)(damage * 1.6);
+            {
+                damage = (int)(damage * 1.45 * debuffCount);
+            }
         }
     }
 }
