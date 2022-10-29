@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -16,7 +16,7 @@ public class OblivionGlaive : ModProjectile
     {
         Projectile.width = 18;
         Projectile.height = 18;
-        Projectile.aiStyle = 19;
+        Projectile.aiStyle = ProjAIStyleID.Spear;
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.tileCollide = false;

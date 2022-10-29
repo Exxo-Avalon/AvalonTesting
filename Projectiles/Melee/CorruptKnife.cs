@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -43,7 +43,7 @@ public class CorruptKnife : ModProjectile
 
     public override void Kill(int timeLeft)
     {
-        for (int num84 = 0; num84 < 2; num84++)
+        for (int num84 = 0; num84 < 1; num84++)
         {
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, Projectile.velocity.X, Projectile.velocity.Y, ProjectileID.TinyEater, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
         }

@@ -30,7 +30,7 @@ internal class KnivesoftheCorruptor : ModItem
         Item.useTime = 16;
         Item.knockBack = 5.75f;
         Item.shoot = ModContent.ProjectileType<CorruptKnife>();
-        Item.DamageType = DamageClass.Melee;
+        Item.DamageType = DamageClass.MeleeNoSpeed;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 50);
         Item.useAnimation = 16;

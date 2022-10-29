@@ -419,7 +419,7 @@ public class ExxoStaminaPlayer : ModPlayer
                 Player.GetModPlayer<ExxoStaminaPlayer>().StaminaRegenCount = 0;
                 if (StaminaSprintCooldown >= 30)
                 {
-                    int amt = 2;
+                    int amt = 10;
                     if (Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrain)
                     {
                         amt *= (int)(Player.GetModPlayer<ExxoStaminaPlayer>().StaminaDrainStacks *

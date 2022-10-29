@@ -78,6 +78,10 @@ public class AvalonGlobalItemInstance : GlobalItem
         {
             return true;
         }
+        if (item.GetGlobalItem<AvalonGlobalItemInstance>().Tome && (pre == -1 || pre == -3))
+        {
+            return false;
+        }
 
         return base.PrefixChance(item, pre, rand);
     }

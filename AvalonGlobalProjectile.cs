@@ -84,6 +84,15 @@ public class AvalonGlobalProjectile : GlobalProjectile
     }
     public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
     {
+        if (Main.player[projectile.owner].GetModPlayer<ExxoEquipEffectPlayer>().VampireTeeth && projectile.DamageType == DamageClass.Melee &&
+            projectile.aiStyle == ProjAIStyleID.Spear)
+        {
+            if (target.boss)
+            {
+                Main.player[projectile.owner].VampireHeal(damage / 2, target.Center);
+            }
+            else Main.player[projectile.owner].VampireHeal(damage, target.Center);
+        }
         if (Main.player[projectile.owner].Avalon().skyBlessing && Main.rand.NextBool(15) && projectile.minion)
         {
             int item = Item.NewItem(target.GetSource_DropAsItem(), projectile.getRect(), ModContent.ItemType<Items.Other.SkyInsignia>());
