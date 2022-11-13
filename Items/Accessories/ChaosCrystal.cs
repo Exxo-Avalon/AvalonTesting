@@ -10,7 +10,7 @@ class ChaosCrystal : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Chaos Crystal");
-        Tooltip.SetDefault("75% increased critical strike damage");
+        Tooltip.SetDefault("50% increased critical strike damage");
         SacrificeTotal = 1;
     }
 
@@ -25,6 +25,6 @@ class ChaosCrystal : ModItem
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().CritDamageMult += 0.75f;
+        player.Avalon().CritDamageMult += 0.50f;
     }
 }

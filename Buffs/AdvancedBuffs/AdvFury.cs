@@ -6,7 +6,7 @@ namespace Avalon.Buffs.AdvancedBuffs;
 
 public class AdvFury : ModBuff
 {
-    private const int PercentIncrease = 300;
+    private const int PercentIncrease = 30;
 
     public override void SetStaticDefaults()
     {
@@ -16,6 +16,6 @@ public class AdvFury : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.75f;
+        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.30f;
     }
 }

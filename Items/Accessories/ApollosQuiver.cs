@@ -10,7 +10,7 @@ class ApollosQuiver : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Apollo's Quiver");
-        Tooltip.SetDefault("20% chance to not consume arrows and 15% increased arrow damage\nIncreases arrow speed by 10% and critical strike chance by 5%\nIncreases critical strike damage by 40%");
+        Tooltip.SetDefault("20% chance to not consume arrows and 15% increased arrow damage\nIncreases arrow speed by 10% and critical strike chance by 5%\nIncreases critical strike damage by 25%");
         SacrificeTotal = 1;
     }
 
@@ -35,6 +35,6 @@ class ApollosQuiver : ModItem
         player.magicQuiver = true;
         player.arrowDamage += 0.15f;
         player.GetCritChance(DamageClass.Ranged) += 5;
-        player.GetModPlayer<Players.ExxoPlayer>().CritDamageMult += 0.4f;
+        player.GetModPlayer<Players.ExxoPlayer>().CritDamageMult += 0.25f;
     }
 }

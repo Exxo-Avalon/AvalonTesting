@@ -11,7 +11,7 @@ class LuckyPapyrus : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Lucky Papyrus");
-        Tooltip.SetDefault("Provides immunity to Pyroscoric and Tritanorium burns\n7% increased critical strike chance\n40% increased critical strike damage");
+        Tooltip.SetDefault("Provides immunity to Pyroscoric and Tritanorium burns\n7% increased critical strike chance\n25% increased critical strike damage");
         SacrificeTotal = 1;
     }
 
@@ -28,7 +28,7 @@ class LuckyPapyrus : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetCritChance(DamageClass.Generic) += 7;
-        player.Avalon().CritDamageMult += 0.4f;
+        player.Avalon().CritDamageMult += 0.25f;
         player.buffImmune[ModContent.BuffType<Buffs.Melting>()] = true;
     }
 }

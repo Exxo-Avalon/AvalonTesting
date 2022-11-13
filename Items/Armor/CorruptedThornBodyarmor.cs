@@ -12,7 +12,7 @@ class CorruptedThornBodyarmor : ModItem
     {
         DisplayName.SetDefault("Corrupted Thorn Bodyarmor");
         Tooltip.SetDefault("10% increased critical strike chance" +
-                           "\n20% increased critical damage" +
+                           "\n14% increased critical damage" +
                            "\nMax life increased by 40");
         SacrificeTotal = 1;
     }
@@ -42,7 +42,7 @@ class CorruptedThornBodyarmor : ModItem
         player.GetCritChance(DamageClass.Melee) += 10;
         player.GetCritChance(DamageClass.Ranged) += 10;
         player.GetCritChance(DamageClass.Throwing) += 10;
-        player.Avalon().CritDamageMult += 0.2f;
+        player.Avalon().CritDamageMult += 0.14f;
         player.statLifeMax2 += 40;
     }
 }
