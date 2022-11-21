@@ -33,7 +33,7 @@ class NickelAxe : ModItem
     public override void AddRecipes()
     {
         Terraria.Recipe.Create(Type)
-            .AddIngredient(ModContent.ItemType<Placeable.Bar.ZincBar>(), 9)
+            .AddIngredient(ModContent.ItemType<Placeable.Bar.NickelBar>(), 9)
             .AddRecipeGroup(RecipeGroupID.Wood, 3)
             .AddTile(TileID.Anvils)
             .Register();
