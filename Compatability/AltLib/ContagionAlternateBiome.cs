@@ -252,8 +252,10 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         for (int k = evilBiomePosition - radius; k <= evilBiomePosition + radius; k++)
         {
+
             for (int l = j - radius; l <= j + radius; l++)
             {
+
                 float dist = Vector2.Distance(new Vector2(k, l), new Vector2(evilBiomePosition, j));
                 if (dist <= radius && dist >= radius - 29)
                 {
@@ -618,12 +620,13 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 continue;
             }
 
-            BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 10f,
-                (ushort)ModContent.TileType<Chunkstone>());
-            BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 5f, 65535);
-            MakeEndingCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 13f,
-                (ushort)ModContent.TileType<Chunkstone>());
-            MakeCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 8f, 65535);
+                BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 10f,
+                    (ushort)ModContent.TileType<Chunkstone>());
+                BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 5f, 65535);
+                MakeEndingCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 13f,
+                    (ushort)ModContent.TileType<Chunkstone>());
+                MakeCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 8f, 65535);
+
         }
 
         if (outerCircles.Count != 0)
@@ -932,11 +935,11 @@ public class ContagionGeneration : EvilBiomeGenerationPass
         {
             if (flag)
             {
-                MakeCircle(num5, i, r, type);
+                MakeCircle(num5 + Main.rand.Next(-5,5), i + Main.rand.Next(-5, 5), r, type);
             }
             else
             {
-                MakeCircle(i, num5, r, type);
+                MakeCircle(i + Main.rand.Next(-5, 5), num5 + Main.rand.Next(-5, 5), r, type);
             }
 
             num3 -= num2;
