@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
-using AltLibrary.Common.Systems;
 using AltLibrary.Core.Generation;
 using Avalon.Items.Placeable.Seed;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Avalon.Walls;
+using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -292,7 +292,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         for (int m = 0; m < 16; m++)
         {
-            double positionAroundCircle = WorldGen.genRand.Next(0, 62831852) / 10000000;
+            double positionAroundCircle = WorldGen.genRand.Next(0, 6283) / 1000;
             var randPoint = new Vector2(center.X + (int)Math.Round(radiusModifier * Math.Cos(positionAroundCircle)),
                 center.Y + (int)Math.Round(radiusModifier * Math.Sin(positionAroundCircle)));
             posToPlaceAnotherCircle = randPoint;
@@ -620,12 +620,12 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 continue;
             }
 
-                BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 10f,
-                    (ushort)ModContent.TileType<Chunkstone>());
-                BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 5f, 65535);
-                MakeEndingCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 13f,
-                    (ushort)ModContent.TileType<Chunkstone>());
-                MakeCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 8f, 65535);
+            BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 10f,
+                (ushort)ModContent.TileType<Chunkstone>());
+            BoreTunnel2((int)points[n].X, (int)points[n].Y, (int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 5f, 65535);
+            MakeEndingCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 13f,
+                (ushort)ModContent.TileType<Chunkstone>());
+            MakeCircle((int)pointsToGoTo[n].X, (int)pointsToGoTo[n].Y, 8f, 65535);
 
         }
 
@@ -911,8 +911,10 @@ public class ContagionGeneration : EvilBiomeGenerationPass
     /// <param name="y1">Ending y coordinate.</param>
     /// <param name="r">Radius.</param>
     /// <param name="type">Type to generate.</param>
-    public static void BoreTunnel2(int x0, int y0, int x1, int y1, float r, ushort type)
+    public static void BoreTunnel2(int x0, int y0, int x1, int y1, float r, ushort type) // Code for making tunnels.. crazy
     {
+
+
         bool flag = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
         if (flag)
         {
@@ -926,28 +928,32 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             Utils.Swap(ref y0, ref y1);
         }
 
-        int num = x1 - x0;
-        int num2 = Math.Abs(y1 - y0);
-        int num3 = num / 2;
-        int num4 = y0 < y1 ? 1 : -1;
-        int num5 = y0;
+        int XDifference = x1 - x0;
+        int AbsoluteXLegnth = Math.Abs(y1 - y0);
+        int XDifferenceHalved = XDifference / 2;
+        int IsY0Smaller = y0 < y1 ? 1 : -1;
+        int OriginalY = y0;
+
         for (int i = x0; i <= x1; i++)
+
         {
             if (flag)
             {
-                MakeCircle(num5 + Main.rand.Next(-5,5), i + Main.rand.Next(-5, 5), r, type);
+                MakeCircle(OriginalY + Main.rand.Next(-5, 5), i + Main.rand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
             }
             else
             {
-                MakeCircle(i + Main.rand.Next(-5, 5), num5 + Main.rand.Next(-5, 5), r, type);
+                MakeCircle(i + Main.rand.Next(-5, 5), OriginalY + Main.rand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
             }
 
-            num3 -= num2;
-            if (num3 < 0)
+            XDifferenceHalved -= AbsoluteXLegnth;
+            if (XDifferenceHalved < 0)
             {
-                num5 += num4;
-                num3 += num;
+                OriginalY += IsY0Smaller;
+                XDifferenceHalved += XDifference;
             }
+
+
         }
     }
 
