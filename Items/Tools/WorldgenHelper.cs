@@ -34,7 +34,9 @@ class WorldgenHelper : ModItem
         int x = (int)player.position.X / 16;
         int y = (int)player.position.Y / 16;
 
-        Task.Run(AvalonWorld.GenerateHellcastle);
+        
+        
+        
 
         return true;
         //int xStored = x;

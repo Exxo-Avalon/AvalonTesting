@@ -236,8 +236,10 @@ public class ContagionGeneration : EvilBiomeGenerationPass
         int rad2 = WorldGen.genRand.Next(20, 26);
         int j = World.Utils.TileCheck(evilBiomePosition) + radius + 50;
         var center = new Vector2(evilBiomePosition, j);
-        var points = new List<Vector2>();
-        var pointsToGoTo = new List<Vector2>();
+
+        var points = new List<Vector2>(); //List of Points from where to Generate Main tunnels
+        var pointsToGoTo = new List<Vector2>(); //List of Points where the Main Tunnels end
+
         var angles = new List<double>();
         var outerCircles = new List<Vector2>(); // the circles at the ends of the first tunnels
         var secondaryCircles = new List<Vector2>(); // the circles at the ends of the outer circles
@@ -287,203 +289,225 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         #region find the points for making the tunnels to the outer circles
 
-        int fiftyRand = WorldGen.genRand.Next(30, 60);
-        int tfRand = WorldGen.genRand.Next(15, 35);
+        // Variables for how far Main Tunnels go and how many spawn
+        int MainSpawnRadius = WorldGen.genRand.Next(30, 70); //Length of Tunnel
 
-        for (int m = 0; m < 16; m++)
+        int MainTunnels = WorldGen.genRand.Next(3, 6); //How many Tunnels per Contagion Opening
+
+        float RandAngle = MathHelper.ToRadians(-135); //Starting Angle for Tunnel spawn
+        //
+
+        for (int TunnelNumber = 0; TunnelNumber <= MainTunnels; TunnelNumber++)
         {
-            double positionAroundCircle = WorldGen.genRand.Next(0, 6283) / 1000;
-            var randPoint = new Vector2(center.X + (int)Math.Round(radiusModifier * Math.Cos(positionAroundCircle)),
-                center.Y + (int)Math.Round(radiusModifier * Math.Sin(positionAroundCircle)));
-            posToPlaceAnotherCircle = randPoint;
-            Vector2 item2 = center;
 
-            if (randPoint.X > center.X)
-            {
-                if (randPoint.X > center.X + (radius / 2))
-                {
-                    if (randPoint.Y > center.Y)
-                    {
-                        if (randPoint.Y > center.Y + (radius / 2))
-                        {
-                            item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + fiftyRand);
-                            if (WorldGen.genRand.Next(2) == 0)
-                            {
-                                outerCircles.Add(item2);
-                                secondaryCircles.Add(item2);
-                                excludedPointsForOuterTunnels.Add(randPoint);
-                            }
-                        }
-                        else
-                        {
-                            item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + tfRand);
-                            if (WorldGen.genRand.Next(2) == 0)
-                            {
-                                outerCircles.Add(item2);
-                                secondaryCircles.Add(item2);
-                                excludedPointsForOuterTunnels.Add(randPoint);
-                            }
-                        }
-                    }
-                    else if (randPoint.Y < center.Y - (radius / 2))
-                    {
-                        item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - fiftyRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                    else
-                    {
-                        item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - tfRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                }
-                else if (randPoint.Y > center.Y)
-                {
-                    if (randPoint.Y > center.Y + (radius / 2))
-                    {
-                        item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + fiftyRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                    else
-                    {
-                        item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + tfRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                }
-                else if (randPoint.Y < center.Y - (radius / 2))
-                {
-                    item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - fiftyRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-                else
-                {
-                    item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - tfRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-            }
-            else if (randPoint.X < center.X - (radius / 2))
-            {
-                if (randPoint.Y > center.Y)
-                {
-                    if (randPoint.Y > center.Y + (radius / 2))
-                    {
-                        item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + fiftyRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                    else
-                    {
-                        item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + tfRand);
-                        if (WorldGen.genRand.Next(2) == 0)
-                        {
-                            outerCircles.Add(item2);
-                            secondaryCircles.Add(item2);
-                            excludedPointsForOuterTunnels.Add(randPoint);
-                        }
-                    }
-                }
-                else if (randPoint.Y < center.Y - (radius / 2))
-                {
-                    item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - fiftyRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-                else
-                {
-                    item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - tfRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-            }
-            else if (randPoint.Y > center.Y)
-            {
-                if (randPoint.Y > center.Y + (radius / 2))
-                {
-                    item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + fiftyRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-                else
-                {
-                    item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + tfRand);
-                    if (WorldGen.genRand.Next(2) == 0)
-                    {
-                        outerCircles.Add(item2);
-                        secondaryCircles.Add(item2);
-                        excludedPointsForOuterTunnels.Add(randPoint);
-                    }
-                }
-            }
-            else if (randPoint.Y < center.Y - (radius / 2))
-            {
-                item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - fiftyRand);
-                if (WorldGen.genRand.Next(2) == 0)
-                {
-                    outerCircles.Add(item2);
-                    secondaryCircles.Add(item2);
-                    excludedPointsForOuterTunnels.Add(randPoint);
-                }
-            }
-            else
-            {
-                item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - tfRand);
-                if (WorldGen.genRand.Next(2) == 0)
-                {
-                    outerCircles.Add(item2);
-                    secondaryCircles.Add(item2);
-                    excludedPointsForOuterTunnels.Add(randPoint);
-                }
-            }
+            points.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle)));
+            pointsToGoTo.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle) + MainSpawnRadius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle) + MainSpawnRadius * (float)Math.Cos((double)RandAngle)));
 
-            points.Add(randPoint);
-            pointsToGoTo.Add(item2);
-            angles.Add(positionAroundCircle);
+            RandAngle = MathHelper.ToRadians(-135 + ((270 / MainTunnels) * TunnelNumber) + WorldGen.genRand.Next(-15, 16));
+            MainSpawnRadius = WorldGen.genRand.Next(30, 70);
         }
+
+
+        #region Old Point Find Code
+
+        //int fiftyRand = WorldGen.genRand.Next(30, 60);
+        //int tfRand = WorldGen.genRand.Next(15, 35);
+
+        //for (int m = 0; m < 16; m++)
+        //{
+        //    double positionAroundCircle = WorldGen.genRand.Next(0, 6283) / 1000;
+        //    var randPoint = new Vector2(center.X + (int)Math.Round(radiusModifier * Math.Cos(positionAroundCircle)),
+        //        center.Y + (int)Math.Round(radiusModifier * Math.Sin(positionAroundCircle)));
+        //    posToPlaceAnotherCircle = randPoint;
+        //    Vector2 item2 = center;
+
+        //    if (randPoint.X > center.X)
+        //    {
+        //        if (randPoint.X > center.X + (radius / 2))
+        //        {
+        //            if (randPoint.Y > center.Y)
+        //            {
+        //                if (randPoint.Y > center.Y + (radius / 2))
+        //                {
+        //                    item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + fiftyRand);
+        //                    if (WorldGen.genRand.Next(2) == 0)
+        //                    {
+        //                        outerCircles.Add(item2);
+        //                        secondaryCircles.Add(item2);
+        //                        excludedPointsForOuterTunnels.Add(randPoint);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y + tfRand);
+        //                    if (WorldGen.genRand.Next(2) == 0)
+        //                    {
+        //                        outerCircles.Add(item2);
+        //                        secondaryCircles.Add(item2);
+        //                        excludedPointsForOuterTunnels.Add(randPoint);
+        //                    }
+        //                }
+        //            }
+        //            else if (randPoint.Y < center.Y - (radius / 2))
+        //            {
+        //                item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - fiftyRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                item2 = new Vector2(randPoint.X + fiftyRand, randPoint.Y - tfRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //        }
+        //        else if (randPoint.Y > center.Y)
+        //        {
+        //            if (randPoint.Y > center.Y + (radius / 2))
+        //            {
+        //                item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + fiftyRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                item2 = new Vector2(randPoint.X + tfRand, randPoint.Y + tfRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //        }
+        //        else if (randPoint.Y < center.Y - (radius / 2))
+        //        {
+        //            item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - fiftyRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            item2 = new Vector2(randPoint.X + tfRand, randPoint.Y - tfRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //    }
+        //    else if (randPoint.X < center.X - (radius / 2))
+        //    {
+        //        if (randPoint.Y > center.Y)
+        //        {
+        //            if (randPoint.Y > center.Y + (radius / 2))
+        //            {
+        //                item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + fiftyRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y + tfRand);
+        //                if (WorldGen.genRand.Next(2) == 0)
+        //                {
+        //                    outerCircles.Add(item2);
+        //                    secondaryCircles.Add(item2);
+        //                    excludedPointsForOuterTunnels.Add(randPoint);
+        //                }
+        //            }
+        //        }
+        //        else if (randPoint.Y < center.Y - (radius / 2))
+        //        {
+        //            item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - fiftyRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            item2 = new Vector2(randPoint.X - fiftyRand, randPoint.Y - tfRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //    }
+        //    else if (randPoint.Y > center.Y)
+        //    {
+        //        if (randPoint.Y > center.Y + (radius / 2))
+        //        {
+        //            item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + fiftyRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            item2 = new Vector2(randPoint.X - tfRand, randPoint.Y + tfRand);
+        //            if (WorldGen.genRand.Next(2) == 0)
+        //            {
+        //                outerCircles.Add(item2);
+        //                secondaryCircles.Add(item2);
+        //                excludedPointsForOuterTunnels.Add(randPoint);
+        //            }
+        //        }
+        //    }
+        //    else if (randPoint.Y < center.Y - (radius / 2))
+        //    {
+        //        item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - fiftyRand);
+        //        if (WorldGen.genRand.Next(2) == 0)
+        //        {
+        //            outerCircles.Add(item2);
+        //            secondaryCircles.Add(item2);
+        //            excludedPointsForOuterTunnels.Add(randPoint);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        item2 = new Vector2(randPoint.X - tfRand, randPoint.Y - tfRand);
+        //        if (WorldGen.genRand.Next(2) == 0)
+        //        {
+        //            outerCircles.Add(item2);
+        //            secondaryCircles.Add(item2);
+        //            excludedPointsForOuterTunnels.Add(randPoint);
+        //        }
+        //    }
+
+        //    points.Add(randPoint);
+        //    pointsToGoTo.Add(item2);
+        //    angles.Add(positionAroundCircle);
+        //}
+        #endregion
 
         #endregion
 
