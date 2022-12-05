@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using AltLibrary;
 using AltLibrary.Common.AltBiomes;
 using AltLibrary.Core.Generation;
@@ -243,8 +244,8 @@ public class ContagionGeneration : EvilBiomeGenerationPass
         var angles = new List<double>();
         var outerCircles = new List<Vector2>(); // the circles at the ends of the first tunnels
         var secondaryCircles = new List<Vector2>(); // the circles at the ends of the outer circles
-        var secondCircleStartPoints = new List<Vector2>();
-        var secondCircleEndpoints = new List<Vector2>();
+        var secondCircleStartPoints = new List<Vector2>(); //Starts points for secondary Tunnels
+        var secondCircleEndpoints = new List<Vector2>(); //Ends points for secondary Tunnels
         var secondCirclePointsAroundCircle = new List<double>();
         var exclusions = new List<Vector2>();
         var excludedPointsForOuterTunnels = new List<Vector2>();
@@ -287,24 +288,46 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             radius - 7; // makes the tunnels go deeper into the main circle (more subtracted means further in)
         Vector2 posToPlaceAnotherCircle = Vector2.Zero;
 
-        #region find the points for making the tunnels to the outer circles
+        #region find the points for making the main Tunnels
 
-        // Variables for how far Main Tunnels go and how many spawn
+        // Variables for how far Tunnels go and how many spawn
         int MainSpawnRadius = WorldGen.genRand.Next(30, 70); //Length of Tunnel
+        int InnerSpawnRadius = WorldGen.genRand.Next(-45, -30); //Length of Inwards going Tunnel
 
-        int MainTunnels = WorldGen.genRand.Next(3, 6); //How many Tunnels per Contagion Opening
+        int MainTunnelN = WorldGen.genRand.Next(3, 6); //How many Tunnels per Contagion Opening
 
-        float RandAngle = MathHelper.ToRadians(-135); //Starting Angle for Tunnel spawn
+        float RandAngle = MathHelper.ToRadians(-180); //Starting Angle for Tunnel spawn
         //
 
-        for (int TunnelNumber = 0; TunnelNumber <= MainTunnels; TunnelNumber++)
+        for (int TunnelNumber = 0; TunnelNumber <= MainTunnelN; TunnelNumber++)
+        {
+
+            points.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle)));        
+            pointsToGoTo.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle) + MainSpawnRadius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle) + MainSpawnRadius * (float)Math.Cos((double)RandAngle)));
+
+            //TemporaryPointStart is used for Tunnels that connect to the end of other tunnels
+            Vector2 TemporaryPointStart = new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle) + MainSpawnRadius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle) + MainSpawnRadius * (float)Math.Cos((double)RandAngle));
+
+            RandAngle = MathHelper.ToRadians(-180 + ((360 / MainTunnelN) * TunnelNumber) + WorldGen.genRand.Next(-15, 16));
+            MainSpawnRadius = WorldGen.genRand.Next(30, 70);
+
+            if (WorldGen.genRand.Next(0, 2) == 1) //50% Chance to Create an extra branching path
+            {
+                points.Add(TemporaryPointStart);
+                pointsToGoTo.Add(new Vector2(TemporaryPointStart.X + (float)Math.Sin((double)RandAngle) * MainSpawnRadius, TemporaryPointStart.Y + (float)Math.Cos((double)RandAngle) * MainSpawnRadius));
+            }
+
+        }
+
+        for (int TunnelNumber = 0; TunnelNumber <= MainTunnelN; TunnelNumber++)
         {
 
             points.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle)));
-            pointsToGoTo.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle) + MainSpawnRadius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle) + MainSpawnRadius * (float)Math.Cos((double)RandAngle)));
+            pointsToGoTo.Add(new Vector2(center.X + radius * (float)Math.Sin((double)RandAngle) + InnerSpawnRadius * (float)Math.Sin((double)RandAngle), center.Y + radius * (float)Math.Cos((double)RandAngle) + InnerSpawnRadius * (float)Math.Cos((double)RandAngle)));
 
-            RandAngle = MathHelper.ToRadians(-135 + ((270 / MainTunnels) * TunnelNumber) + WorldGen.genRand.Next(-15, 16));
-            MainSpawnRadius = WorldGen.genRand.Next(30, 70);
+            RandAngle = MathHelper.ToRadians(-180 + ((360 / MainTunnelN) * TunnelNumber) + WorldGen.genRand.Next(-15, 16));
+            InnerSpawnRadius = WorldGen.genRand.Next(-45, -30);
+
         }
 
 
@@ -511,7 +534,36 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         #endregion
 
-        // make outer circles
+        #region find the points for making the secondary Tunnels // BUGGY 
+
+        //// Variables for how far Tunnels go and how many spawn
+        //int SecondarySpawnRadius = WorldGen.genRand.Next(15, 30); //Length of Tunnel
+
+        //int SecondaryTunnelN = 1; //Amount of secondary Tunnels
+
+        //float SetAngle = 0f; //Set to Angle of the Tunnel, used to prevent Secondary tunnels from spawning on top of Main tunnels
+
+        //float RandSecondaryTunnelAngle = 0f; //Starting Angle for Tunnel spawn
+        ////
+
+        //for (int n = 0; n < pointsToGoTo.Count; n++)
+        //{
+        //    SetAngle = (float)Math.Atan2((double)points[n].Y - (double)pointsToGoTo[n].Y, (double)points[n].X - (double)pointsToGoTo[n].X);
+
+        //    for (int SecondaryTunnelCounter = 0; SecondaryTunnelCounter <= SecondaryTunnelN; SecondaryTunnelCounter++)
+        //    {
+        //        RandSecondaryTunnelAngle = MathHelper.ToRadians(WorldGen.genRand.Next((int)SetAngle + 20, (int)SetAngle + 340));
+        //        SecondarySpawnRadius = WorldGen.genRand.Next(15, 30);
+
+        //        secondCircleStartPoints.Add(pointsToGoTo[n]);
+        //        secondCircleEndpoints.Add(new Vector2(pointsToGoTo[n].X + SecondarySpawnRadius * (float)Math.Sin((double)RandSecondaryTunnelAngle), pointsToGoTo[n].Y + SecondarySpawnRadius * (float)Math.Cos((double)RandSecondaryTunnelAngle)));
+
+        //    }
+
+        //    SecondaryTunnelN = WorldGen.genRand.Next(1, 3);
+        //}
+
+        #endregion
 
         #region outer circles and tunnels
 
