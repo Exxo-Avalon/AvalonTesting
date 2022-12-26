@@ -233,19 +233,21 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
     public void GenerateEvil2(int evilBiomePosition, int evilBiomePositionWestBound, int evilBiomePositionEastBound)
     {
-        int radius = WorldGen.genRand.Next(50, 61);
+        int radius = WorldGen.genRand.Next(65, 70); //Radius for Main Circle
         int rad2 = WorldGen.genRand.Next(20, 26);
+
         int j = World.Utils.TileCheck(evilBiomePosition) + radius + 50;
         var center = new Vector2(evilBiomePosition, j);
 
         var points = new List<Vector2>(); //List of Points from where to Generate Main tunnels
         var pointsToGoTo = new List<Vector2>(); //List of Points where the Main Tunnels end
 
-        var angles = new List<double>();
+        
         var outerCircles = new List<Vector2>(); // the circles at the ends of the first tunnels
         var secondaryCircles = new List<Vector2>(); // the circles at the ends of the outer circles
         var secondCircleStartPoints = new List<Vector2>(); //Starts points for secondary Tunnels
         var secondCircleEndpoints = new List<Vector2>(); //Ends points for secondary Tunnels
+
         var secondCirclePointsAroundCircle = new List<double>();
         var exclusions = new List<Vector2>();
         var excludedPointsForOuterTunnels = new List<Vector2>();
@@ -292,7 +294,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         // Variables for how far Tunnels go and how many spawn
         int MainSpawnRadius = WorldGen.genRand.Next(30, 70); //Length of Tunnel
-        int InnerSpawnRadius = WorldGen.genRand.Next(-45, -30); //Length of Inwards going Tunnel
+        int InnerSpawnRadius = WorldGen.genRand.Next(-50, -35); //Length of Inwards going Tunnel
 
         int MainTunnelN = WorldGen.genRand.Next(3, 6); //How many Tunnels per Contagion Opening
 
@@ -567,124 +569,126 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         #region outer circles and tunnels
 
-        if (secondaryCircles.Count != 0)
-        {
-            for (int z = 0; z < secondaryCircles.Count; z++)
-            {
-                if (secondaryCircles[z].Y < center.Y - 10)
-                {
-                    continue;
-                }
+        #region old Outer Circle Code
+        //if (secondaryCircles.Count != 0)
+        //{
+        //    for (int z = 0; z < secondaryCircles.Count; z++)
+        //    {
+        //        if (secondaryCircles[z].Y < center.Y - 10)
+        //        {
+        //            continue;
+        //        }
 
-                int outerTunnelsRadiusMod = rad2 - 6;
-                double pointsAroundCircle2 = WorldGen.genRand.Next(0, 62831852) / 10000000;
-                var randPointAroundCircle =
-                    new Vector2(
-                        outerCircles[z].X + (int)Math.Round(outerTunnelsRadiusMod * Math.Cos(pointsAroundCircle2)),
-                        outerCircles[z].Y + (int)Math.Round(outerTunnelsRadiusMod * Math.Sin(pointsAroundCircle2)));
-                int fifteenRand = WorldGen.genRand.Next(-15, 15);
-                int sevenRand = WorldGen.genRand.Next(-7, 7);
-                for (int m = 0; m < 16; m++)
-                {
-                    Vector2 endpoint = secondaryCircles[z];
+        //        int outerTunnelsRadiusMod = rad2 - 6;
+        //        double pointsAroundCircle2 = WorldGen.genRand.Next(0, 62831852) / 10000000;
+        //        var randPointAroundCircle =
+        //            new Vector2(
+        //                outerCircles[z].X + (int)Math.Round(outerTunnelsRadiusMod * Math.Cos(pointsAroundCircle2)),
+        //                outerCircles[z].Y + (int)Math.Round(outerTunnelsRadiusMod * Math.Sin(pointsAroundCircle2)));
+        //        int fifteenRand = WorldGen.genRand.Next(-15, 15);
+        //        int sevenRand = WorldGen.genRand.Next(-7, 7);
+        //        for (int m = 0; m < 16; m++)
+        //        {
+        //            Vector2 endpoint = secondaryCircles[z];
 
-                    #region endpoint calculation
+        //            #region endpoint calculation
 
-                    if (randPointAroundCircle.X > outerCircles[z].X)
-                    {
-                        if (randPointAroundCircle.X > outerCircles[z].X + (rad2 / 2))
-                        {
-                            if (randPointAroundCircle.Y > outerCircles[z].Y)
-                            {
-                                if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
-                                {
-                                    endpoint = new Vector2(randPointAroundCircle.X + 15f,
-                                        randPointAroundCircle.Y + 15f);
-                                }
-                                else
-                                {
-                                    endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y + 7f);
-                                }
-                            }
-                            else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y - 15f);
-                            }
-                            else
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y - 7f);
-                            }
-                        }
-                        else if (randPointAroundCircle.Y > outerCircles[z].Y)
-                        {
-                            if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y + 15f);
-                            }
-                            else
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y + 7f);
-                            }
-                        }
-                        else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y - 15f);
-                        }
-                        else
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y - 7f);
-                        }
-                    }
-                    else if (randPointAroundCircle.X < outerCircles[z].X - (rad2 / 2))
-                    {
-                        if (randPointAroundCircle.Y > outerCircles[z].Y)
-                        {
-                            if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y + 15f);
-                            }
-                            else
-                            {
-                                endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y + 7f);
-                            }
-                        }
-                        else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y - 15f);
-                        }
-                        else
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y - 7f);
-                        }
-                    }
-                    else if (randPointAroundCircle.Y > outerCircles[z].Y)
-                    {
-                        if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y + 15f);
-                        }
-                        else
-                        {
-                            endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y + 7f);
-                        }
-                    }
-                    else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
-                    {
-                        endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y - 15f);
-                    }
-                    else
-                    {
-                        endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y - 7f);
-                    }
+        //            if (randPointAroundCircle.X > outerCircles[z].X)
+        //            {
+        //                if (randPointAroundCircle.X > outerCircles[z].X + (rad2 / 2))
+        //                {
+        //                    if (randPointAroundCircle.Y > outerCircles[z].Y)
+        //                    {
+        //                        if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
+        //                        {
+        //                            endpoint = new Vector2(randPointAroundCircle.X + 15f,
+        //                                randPointAroundCircle.Y + 15f);
+        //                        }
+        //                        else
+        //                        {
+        //                            endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y + 7f);
+        //                        }
+        //                    }
+        //                    else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y - 15f);
+        //                    }
+        //                    else
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X + 15f, randPointAroundCircle.Y - 7f);
+        //                    }
+        //                }
+        //                else if (randPointAroundCircle.Y > outerCircles[z].Y)
+        //                {
+        //                    if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y + 15f);
+        //                    }
+        //                    else
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y + 7f);
+        //                    }
+        //                }
+        //                else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y - 15f);
+        //                }
+        //                else
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X + 7f, randPointAroundCircle.Y - 7f);
+        //                }
+        //            }
+        //            else if (randPointAroundCircle.X < outerCircles[z].X - (rad2 / 2))
+        //            {
+        //                if (randPointAroundCircle.Y > outerCircles[z].Y)
+        //                {
+        //                    if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y + 15f);
+        //                    }
+        //                    else
+        //                    {
+        //                        endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y + 7f);
+        //                    }
+        //                }
+        //                else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y - 15f);
+        //                }
+        //                else
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X - 15f, randPointAroundCircle.Y - 7f);
+        //                }
+        //            }
+        //            else if (randPointAroundCircle.Y > outerCircles[z].Y)
+        //            {
+        //                if (randPointAroundCircle.Y > outerCircles[z].Y + (rad2 / 2))
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y + 15f);
+        //                }
+        //                else
+        //                {
+        //                    endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y + 7f);
+        //                }
+        //            }
+        //            else if (randPointAroundCircle.Y < outerCircles[z].Y - (rad2 / 2))
+        //            {
+        //                endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y - 15f);
+        //            }
+        //            else
+        //            {
+        //                endpoint = new Vector2(randPointAroundCircle.X - 7f, randPointAroundCircle.Y - 7f);
+        //            }
 
-                    #endregion
+        //            #endregion
 
-                    secondCircleStartPoints.Add(randPointAroundCircle);
-                    secondCircleEndpoints.Add(endpoint);
-                    secondCirclePointsAroundCircle.Add(pointsAroundCircle2);
-                }
-            }
-        }
+        //            secondCircleStartPoints.Add(randPointAroundCircle);
+        //            secondCircleEndpoints.Add(endpoint);
+        //            secondCirclePointsAroundCircle.Add(pointsAroundCircle2);
+        //        }
+        //    }
+        //}
+        #endregion
 
         #endregion
 
@@ -1015,12 +1019,24 @@ public class ContagionGeneration : EvilBiomeGenerationPass
         {
             if (flag)
             {
-                MakeCircle(OriginalY + Main.rand.Next(-5, 5), i + Main.rand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
+                MakeCircle(OriginalY + WorldGen.genRand.Next(-5, 5), i + WorldGen.genRand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
+
+                //if (WorldGen.genRand.Next(0, 16) == 15)
+                //{
+                //    MakeCircle(OriginalY + WorldGen.genRand.Next(-8, 9), i + WorldGen.genRand.Next(-8, 9), WorldGen.genRand.Next(6, 13), type);
+                //}
             }
             else
             {
-                MakeCircle(i + Main.rand.Next(-5, 5), OriginalY + Main.rand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
+                MakeCircle(i + WorldGen.genRand.Next(-5, 5), OriginalY + WorldGen.genRand.Next(-5, 5), r + (int)(4 * Math.Sin((double)i / 10)), type);
+
+                //if (WorldGen.genRand.Next(0, 16) == 15)
+                //{
+                //    MakeCircle(i + WorldGen.genRand.Next(-8, 9), OriginalY + WorldGen.genRand.Next(-8, 9), WorldGen.genRand.Next(6, 13), type);
+                //}
             }
+
+            
 
             XDifferenceHalved -= AbsoluteXLegnth;
             if (XDifferenceHalved < 0)
