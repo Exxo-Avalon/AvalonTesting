@@ -22,19 +22,19 @@ public class AvalonGlobalTile : GlobalTile
     }
     public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
     {
-        if (Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && TileID.Sets.Ore[Main.tile[i, j].TileType])
-        {
-            if (Data.Sets.Tile.OresToChunks.ContainsKey(Main.tile[i, j].TileType))
-            {
-                int drop = Data.Sets.Tile.OresToChunks[Main.tile[i, j].TileType];
-                if (Main.rand.NextBool(3))
-                {
-                    Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
-                }
-                Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
-                noItem = true;
-            }
-        }
+        //if (Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].GetModPlayer<ExxoPlayer>().oreDupe && TileID.Sets.Ore[Main.tile[i, j].TileType])
+        //{
+        //    if (Data.Sets.Tile.OresToChunks.ContainsKey(Main.tile[i, j].TileType))
+        //    {
+        //        int drop = Data.Sets.Tile.OresToChunks[Main.tile[i, j].TileType];
+        //        if (Main.rand.NextBool(3))
+        //        {
+        //            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
+        //        }
+        //        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop);
+        //        noItem = true;
+        //    }
+        //}
         // Prevent Locked Impervious door from being broken from the block below or above
         if (Main.tile[i, j - 1].TileType == ModContent.TileType<LockedImperviousDoor>() ||
             Main.tile[i, j + 1].TileType == ModContent.TileType<LockedImperviousDoor>())

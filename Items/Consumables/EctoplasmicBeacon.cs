@@ -35,13 +35,13 @@ internal class EctoplasmicBeacon : ModItem
 
     public override bool CanUseItem(Player player)
     {
-        return !NPC.AnyNPCs(ModContent.NPCType<Phantasm>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle &&
+        return !NPC.AnyNPCs(ModContent.NPCType<PhantasmBlasfah>()) && player.GetModPlayer<ExxoBiomePlayer>().ZoneHellcastle &&
                NPC.downedMoonlord && Main.hardMode;
     }
 
     public override bool? UseItem(Player player)
     {
-        NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<Phantasm>());
+        NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<PhantasmBlasfah>());
         SoundEngine.PlaySound(SoundID.Roar, player.position);
         return true;
     }
