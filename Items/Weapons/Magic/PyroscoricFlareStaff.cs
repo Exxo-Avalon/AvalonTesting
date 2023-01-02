@@ -24,7 +24,7 @@ class PyroscoricFlareStaff : ModItem
         Item.height = dims.Height;
         Item.damage = 145;
         Item.autoReuse = true;
-        Item.shootSpeed = 12f;
+        Item.shootSpeed = 6f;
         Item.mana = 19;
         Item.UseSound = SoundID.Item45;
         Item.rare = ModContent.RarityType<MagentaRarity>();
