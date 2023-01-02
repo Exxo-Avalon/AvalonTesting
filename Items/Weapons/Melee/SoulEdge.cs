@@ -39,7 +39,7 @@ class SoulEdge : ModItem
     {
         return new Color(255, 255, 255, 150);
     }
-    public override void AddRecipes()
+    /*public override void AddRecipes()
     {
         Recipe.Create(Type)
             .AddIngredient(ItemID.TerraBlade)
@@ -48,7 +48,7 @@ class SoulEdge : ModItem
             .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 5)
             .AddIngredient(ItemID.Ectoplasm, 60)
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
-    }
+    }*/
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
         Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash2>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);

@@ -42,7 +42,8 @@ public class PhantasmBossBag : ModItem
         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GhostintheMachine>(), 1, 4, 6));
 
         itemLoot.Add(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<VampireTeeth>(),
-            ModContent.ItemType<PhantomKnives>(), ModContent.ItemType<EtherealHeart>() }));
+            ModContent.ItemType<PhantomKnives>(), ModContent.ItemType<EtherealHeart>(),
+            ModContent.ItemType<Weapons.Melee.SoulEdge>() }));
     }
 
     public override Color? GetAlpha(Color lightColor)
