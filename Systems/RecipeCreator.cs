@@ -817,13 +817,7 @@ public class RecipeCreator : ModSystem
             .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
 
 
-        Recipe.Create(ModContent.ItemType<SoulEdge>())
-            .AddIngredient(ItemID.TerraBlade)
-            .AddIngredient(ItemID.SpectreStaff)
-            .AddIngredient(ModContent.ItemType<SoulofBlight>(), 40)
-            .AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 5)
-            .AddIngredient(ItemID.Ectoplasm, 60)
-            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>()).Register();
+        
 
         Recipe.Create(ModContent.ItemType<OblivionGlaive>())
             .AddIngredient(ModContent.ItemType<OblivionBar>(), 30)

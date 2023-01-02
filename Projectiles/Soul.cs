@@ -24,9 +24,16 @@ public class Soul : ModProjectile
         Projectile.width = 24;
         Projectile.height = 28;
     }
+    public SoundStyle soul = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SoulEdgeHitTile")
+    {
+        Volume = 0.2f,
+        Pitch = -0.2f,
+        PitchVariance = 0.2f,
+        MaxInstances = 10,
+    };
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SoulEdgeHitTile"), Projectile.position);
+        SoundEngine.PlaySound(soul, Projectile.position);
         return true;
     }
     public override void Kill(int timeLeft)
@@ -47,6 +54,12 @@ public class Soul : ModProjectile
 
     public override void AI()
     {
+        // turn the projectile around if it gets too far from the player
+        if (Vector2.Distance(Projectile.position, Main.player[Projectile.owner].position) > 16 * 40 && Projectile.ai[0] < 3)
+        {
+            Projectile.velocity *= -1;
+            Projectile.ai[0]++;
+        }
         float num4 = 400f;
         Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
         Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 30);
