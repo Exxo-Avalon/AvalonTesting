@@ -21,7 +21,7 @@ class SoulEdge : ModItem
         Item.UseSound = SoundID.Item1;
         Item.damage = 83;
         Item.autoReuse = true;
-        Item.scale = 1.1f;
+        Item.scale = 1f;
         Item.shootSpeed = 5f;
         Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.noMelee = false;

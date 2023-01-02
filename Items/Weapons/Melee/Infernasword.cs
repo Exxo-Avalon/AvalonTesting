@@ -9,7 +9,7 @@ class Infernasword : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Infernasword");
+        DisplayName.SetDefault("Infernascythe");
         SacrificeTotal = 1;
     }
 

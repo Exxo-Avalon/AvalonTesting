@@ -21,7 +21,7 @@ class CaesiumScimitar : ModItem
         Item.UseSound = SoundID.Item1;
         Item.damage = 66;
         Item.useTurn = true;
-        Item.scale = 1.3f;
+        Item.scale = 1f;
         Item.rare = ItemRarityID.Lime;
         Item.useTime = 18;
         Item.knockBack = 8f;

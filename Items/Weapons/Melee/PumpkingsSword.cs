@@ -22,7 +22,7 @@ class PumpkingsSword : ModItem
         Item.damage = 105;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
-        Item.scale = 1.15f;
+        Item.scale = 1f;
         Item.rare = ModContent.RarityType<BlueRarity>();
         Item.useTime = 36;
         Item.useAnimation = 16;
