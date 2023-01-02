@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 namespace Avalon.Projectiles;
 public class Soul : ModProjectile
 {
+    public bool readyToHome = true;
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Soul Edge");
@@ -36,6 +37,10 @@ public class Soul : ModProjectile
         SoundEngine.PlaySound(soul, Projectile.position);
         return true;
     }
+    public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+    {
+        readyToHome = false;
+    }
     public override void Kill(int timeLeft)
     {
         
@@ -51,72 +56,115 @@ public class Soul : ModProjectile
     {
         return degrees / 57.2957795f;
     }
-
+    public float maxSpeed = 10f + Main.rand.NextFloat(10f);
+    public float homeDistance = 1200;
+    public float homeStrength = 5f;
+    public float homeDelay;
     public override void AI()
     {
         // turn the projectile around if it gets too far from the player
-        if (Vector2.Distance(Projectile.position, Main.player[Projectile.owner].position) > 16 * 40 && Projectile.ai[0] < 3)
+        //if (Vector2.Distance(Projectile.position, Main.player[Projectile.owner].position) > 16 * 40 && Projectile.ai[0] < 3)
+        //{
+        //    Projectile.velocity *= -1;
+        //    Projectile.ai[0]++;
+        //}
+        Projectile.ai[0]++;
+        if (Projectile.ai[0] < 120)
         {
-            Projectile.velocity *= -1;
-            Projectile.ai[0]++;
-        }
-        float num4 = 400f;
-        Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
-        Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 30);
+            float num4 = 400f;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
+            Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 30);
 
-        for (int num26 = 0; num26 < 8; num26++)
-        {
-            int rn = Main.rand.Next(2);
-            if (rn == 0) rn = -1;
-            float x2 = Projectile.position.X - Projectile.velocity.X / 10f * num26;
-            float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f * num26;
-            int num27 = Dust.NewDust(new Vector2(x2 + 5, y2 + 5), 16, 16, DustID.DungeonSpirit, 0f, 0f, 0, default, 1f);
-            Main.dust[num27].alpha = Projectile.alpha;
-            Main.dust[num27].color.A = 0;
-            Main.dust[num27].scale *= 1f;
-            //Main.dust[num27].position.X = x2;
-            //Main.dust[num27].position.Y = y2;
-            Main.dust[num27].velocity *= 0f;
-            Main.dust[num27].noGravity = true;
-        }
-
-        Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
-
-        float num383 = Projectile.Center.X;
-        float num384 = Projectile.Center.Y;
-        float num385 = 500f;
-        bool flag = false;
-        int num386 = 0;
-        for (int num387 = 0; num387 < 200; num387++)
-        {
-            if (Main.npc[num387].CanBeChasedBy(this) && Projectile.Distance(Main.npc[num387].Center) < num385 && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num387].Center, 1, 1))
+            for (int num26 = 0; num26 < 8; num26++)
             {
-                float num388 = Main.npc[num387].position.X + Main.npc[num387].width / 2;
-                float num389 = Main.npc[num387].position.Y + Main.npc[num387].height / 2;
-                float num392 = Math.Abs(Projectile.Center.X - num388) + Math.Abs(Projectile.Center.Y - num389);
-                if (num392 < num385)
+                int rn = Main.rand.Next(2);
+                if (rn == 0)
+                    rn = -1;
+                float x2 = Projectile.position.X - Projectile.velocity.X / 10f * num26;
+                float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f * num26;
+                int num27 = Dust.NewDust(new Vector2(x2 + 5, y2 + 5), 16, 16, DustID.DungeonSpirit, 0f, 0f, 0, default, 1f);
+                Main.dust[num27].alpha = Projectile.alpha;
+                Main.dust[num27].color.A = 0;
+                Main.dust[num27].scale *= 1f;
+                //Main.dust[num27].position.X = x2;
+                //Main.dust[num27].position.Y = y2;
+                Main.dust[num27].velocity *= 0f;
+                Main.dust[num27].noGravity = true;
+            }
+
+            Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
+
+            float num383 = Projectile.Center.X;
+            float num384 = Projectile.Center.Y;
+            float num385 = 500f;
+            bool flag = false;
+            int num386 = 0;
+            for (int num387 = 0; num387 < 200; num387++)
+            {
+                if (Main.npc[num387].CanBeChasedBy(this) && Projectile.Distance(Main.npc[num387].Center) < num385 && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num387].Center, 1, 1))
                 {
-                    num385 = num392;
-                    num383 = num388;
-                    num384 = num389;
-                    flag = true;
-                    num386 = num387;
+                    float num388 = Main.npc[num387].position.X + Main.npc[num387].width / 2;
+                    float num389 = Main.npc[num387].position.Y + Main.npc[num387].height / 2;
+                    float num392 = Math.Abs(Projectile.Center.X - num388) + Math.Abs(Projectile.Center.Y - num389);
+                    if (num392 < num385)
+                    {
+                        num385 = num392;
+                        num383 = num388;
+                        num384 = num389;
+                        flag = true;
+                        num386 = num387;
+                    }
                 }
             }
+            if (flag)
+            {
+                float num397 = 6f;
+                Vector2 vector22 = Projectile.Center;
+                float num398 = num383 - vector22.X;
+                float num399 = num384 - vector22.Y;
+                float num400 = (float)Math.Sqrt(num398 * num398 + num399 * num399);
+                float num401 = num400;
+                num400 = num397 / num400;
+                num398 *= num400;
+                num399 *= num400;
+                Projectile.velocity.X = (Projectile.velocity.X * 20f + num398) / 21f;
+                Projectile.velocity.Y = (Projectile.velocity.Y * 20f + num399) / 21f;
+            }
         }
-        if (flag)
+        else
         {
-            float num397 = 6f;
-            Vector2 vector22 = Projectile.Center;
-            float num398 = num383 - vector22.X;
-            float num399 = num384 - vector22.Y;
-            float num400 = (float)Math.Sqrt(num398 * num398 + num399 * num399);
-            float num401 = num400;
-            num400 = num397 / num400;
-            num398 *= num400;
-            num399 *= num400;
-            Projectile.velocity.X = (Projectile.velocity.X * 20f + num398) / 21f;
-            Projectile.velocity.Y = (Projectile.velocity.Y * 20f + num399) / 21f;
+            if (Vector2.Distance(Projectile.position, Main.MouseScreen) < 5)
+            {
+                readyToHome = false;
+            }
+            if (!readyToHome)
+            {
+                homeDelay++;
+                if (homeDelay >= 200)
+                {
+                    readyToHome = true;
+                    homeDelay = 0;
+                }
+            }
+            if (readyToHome)
+            {
+                Vector2 startPosition = Projectile.position - Main.screenPosition;
+                if (Collision.CanHitLine(Projectile.position - Main.screenPosition, Projectile.width, Projectile.height, Main.MouseScreen, 1, 1))
+                {
+                    //Main.NewText("Mouse Screen: " + Main.MouseScreen);
+                    //Main.NewText(Projectile.position / 32);
+                    Vector2 target = Main.MouseScreen;
+                    float distance = Vector2.Distance(target, startPosition);
+                    Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
+
+                    Projectile.velocity += goTowards;
+
+                    if (Projectile.velocity.Length() > maxSpeed)
+                    {
+                        Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                    }
+                }
+            }
         }
     }
 }
