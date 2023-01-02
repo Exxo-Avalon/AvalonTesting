@@ -28,7 +28,7 @@ public class SolarBoltOffspring : ModProjectile
         Projectile.DamageType = DamageClass.Magic;
         Projectile.usesLocalNPCImmunity = true;
         Projectile.localNPCHitCooldown = 60;
-
+        Projectile.extraUpdates = 1;
         color = new Color(255, 50, 0) * 0.4f;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -64,12 +64,12 @@ public class SolarBoltOffspring : ModProjectile
     }
     public override void AI()
     {
-        Projectile.velocity.Y += 0.1f;
-        Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 10);
+        Projectile.velocity.Y += 0.05f;
+        Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 20);
         int dust = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.InfernoFork, Projectile.velocity.X, Projectile.velocity.Y, 50, color, 1f);
         Main.dust[dust].noGravity = true;
         Main.dust[dust].velocity *= 0.3f;
-        if (Main.rand.NextBool(10))
+        if (Main.rand.NextBool(20))
         {
             int num161 = Gore.NewGore(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)),
                 Main.rand.Next(61, 64));

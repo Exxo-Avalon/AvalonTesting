@@ -367,7 +367,7 @@ public class PhantasmBlasfah : ModNPC
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
-        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Items.Weapons.Magic.PhantomKnives>(), ModContent.ItemType<Items.Accessories.EtherealHeart>(), ModContent.ItemType<Items.Accessories.VampireTeeth>(), ModContent.ItemType<Items.Weapons.Melee.SoulEdge>() }));
+        notExpertRule.OnSuccess(ItemDropRule.OneFromOptions(1, new int[] { ModContent.ItemType<Items.Weapons.Magic.PhantomKnives>(), ModContent.ItemType<Items.Accessories.EtherealHeart>(), ModContent.ItemType<Items.Accessories.VampireTeeth>() }));
         notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<GhostintheMachine>(), 1, 3, 6));
         npcLoot.Add(notExpertRule);
         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantasmTrophy>(), 10));
