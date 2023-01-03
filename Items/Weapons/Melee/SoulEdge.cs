@@ -57,7 +57,7 @@ class SoulEdge : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(25));
-            int spirit = Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Soul>(), damage, knockback, player.whoAmI);
+            int spirit = Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Melee.Soul>(), damage, knockback, player.whoAmI);
             Main.projectile[spirit].DamageType = DamageClass.Melee;
         }
         return false; // return false because we don't want tmodloader to shoot projectile

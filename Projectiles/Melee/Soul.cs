@@ -5,7 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Projectiles;
+namespace Avalon.Projectiles.Melee;
 public class Soul : ModProjectile
 {
     public bool readyToHome = true;
@@ -140,7 +140,7 @@ public class Soul : ModProjectile
             if (!readyToHome)
             {
                 homeDelay++;
-                if (homeDelay >= 40)
+                if (homeDelay >= 30)
                 {
                     readyToHome = true;
                     homeDelay = 0;
