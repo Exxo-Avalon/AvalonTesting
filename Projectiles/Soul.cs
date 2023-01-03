@@ -133,14 +133,14 @@ public class Soul : ModProjectile
         }
         else
         {
-            if (Vector2.Distance(Projectile.position, Main.MouseScreen) < 5)
+            if (Vector2.Distance(Projectile.position - Main.screenPosition, Main.MouseScreen) < 5)
             {
                 readyToHome = false;
             }
             if (!readyToHome)
             {
                 homeDelay++;
-                if (homeDelay >= 200)
+                if (homeDelay >= 40)
                 {
                     readyToHome = true;
                     homeDelay = 0;
