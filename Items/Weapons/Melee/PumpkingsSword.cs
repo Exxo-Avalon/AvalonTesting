@@ -2,6 +2,7 @@ using System;
 using Avalon.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,18 +15,17 @@ class PumpkingsSword : ModItem
         DisplayName.SetDefault("Pumpking's Sword");
         SacrificeTotal = 1;
     }
-
     public override void SetDefaults()
     {
         Item.width = 42;
         Item.height = 46;
-        Item.damage = 105;
+        Item.damage = 175;
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
         Item.scale = 1f;
         Item.rare = ModContent.RarityType<BlueRarity>();
-        Item.useTime = 36;
-        Item.useAnimation = 16;
+        Item.useTime = 16;
+        Item.useAnimation = 32;
         Item.knockBack = 8f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.PumpkingsBeam>();
         Item.shootSpeed = 12f;
@@ -45,6 +45,15 @@ class PumpkingsSword : ModItem
     public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
     {
         pumpkinSword(target.whoAmI, (int)(damage * 2), knockBack, player);
+    }
+
+    public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    {
+        //Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        Projectile.NewProjectile(source, position, new Vector2(player.direction,0), ModContent.ProjectileType<Projectiles.Melee.PumpkingSwordSlash>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        //Projectile.NewProjectile(source, position, new Vector2(player.direction, 0).RotatedBy(MathHelper.Pi / 3 * -player.direction), ModContent.ProjectileType<Projectiles.Melee.PumpkingSwordSlash>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+     
+        return false;
     }
     private void pumpkinSword(int i, int dmg, float kb, Player p)
     {
