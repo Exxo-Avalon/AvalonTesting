@@ -46,9 +46,9 @@ public class ExxoPlayer : ModPlayer
 
     public override void ModifyScreenPosition()
     {
-        if (screenShakeTimer > 0)
+        if (screenShakeTimer > 0 && !ModContent.GetInstance<AvalonClientConfig>().ScreenshakeEnabled)
         {
-            Main.screenPosition += Main.rand.NextVector2Circular(20, 20);
+            Main.screenPosition += Main.rand.NextVector2Circular(screenShakeTimer * 2.2f, screenShakeTimer * 2.2f);
         }
     }
 

@@ -16,6 +16,10 @@ Mods: {
 				Label: Vanilla Item Renames
 				Tooltip: Renames some vanilla items
 			}
+            Screenshake: {
+				Label: No Screenshake
+				Tooltip: Disables any effects that shake the screen.
+			}
 		}
 		MapObject: {
 				Tropics_Pylon: "{$Mods.Avalon.ItemName.TropicsPylon}"
