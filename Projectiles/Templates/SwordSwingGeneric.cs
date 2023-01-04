@@ -138,7 +138,7 @@ public abstract class SwordSwingGeneric : ModProjectile
     public void DrawProj_Excalibur(Projectile proj)
     {
         Vector2 vector = proj.Center - Main.screenPosition;
-        Asset<Texture2D> val = ModContent.Request<Texture2D>("Avalon/Projectiles/Melee/VertexSlash");
+        Texture2D val = TextureAssets.Projectile[Projectile.type].Value;
         Rectangle rectangle = val.Frame(1, 4);
         Vector2 origin = rectangle.Size() / 2f;
         float num = proj.scale * 1.1f;
@@ -148,26 +148,26 @@ public abstract class SwordSwingGeneric : ModProjectile
         float num4 = 0.975f;
         float fromValue = Lighting.GetColor(proj.Center.ToTileCoordinates()).ToVector3().Length() / (float)Math.Sqrt(3.0);
         fromValue = Utils.Remap(fromValue, 0.2f, 1f, 0f, 1f);
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color1 * fromValue * num3, proj.rotation + proj.ai[0] * ((float)Math.PI / 4f) * -1f * (1f - num2), origin, num, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, rectangle, color1 * fromValue * num3, proj.rotation + proj.ai[0] * ((float)Math.PI / 4f) * -1f * (1f - num2), origin, num, effects, 0f);
         Color questionmarkcolor = Color.White * num3 * 0.5f;
         questionmarkcolor.A = (byte)(questionmarkcolor.A * (1f - fromValue));
         Color color5 = questionmarkcolor * fromValue * 0.5f;
         color5.G = (byte)(color5.G * fromValue);
         color5.B = (byte)(color5.R * (0.25f + fromValue * 0.75f));
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color5 * 0.15f, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color3 * 0.4f, proj.rotation, origin, num * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, rectangle, color2 * 0.4f, proj.rotation, origin, num * num4 * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.6f * num3, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.5f * num3, proj.rotation + proj.ai[0] * -0.05f, origin, num * 0.8f * scalemod, effects, 0f);
-        Main.spriteBatch.Draw(val.Value, vector, val.Frame(1, 4, 0, 3), Color.White * 0.4f * num3, proj.rotation + proj.ai[0] * -0.1f, origin, num * 0.6f * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, rectangle, color5 * 0.15f, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, rectangle, color3 * 0.4f, proj.rotation, origin, num * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, rectangle, color2 * 0.4f, proj.rotation, origin, num * num4 * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, val.Frame(1, 4, 0, 3), Color.White * 0.6f * num3, proj.rotation + proj.ai[0] * 0.01f, origin, num * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, val.Frame(1, 4, 0, 3), Color.White * 0.5f * num3, proj.rotation + proj.ai[0] * -0.05f, origin, num * 0.8f * scalemod, effects, 0f);
+        Main.spriteBatch.Draw(val, vector, val.Frame(1, 4, 0, 3), Color.White * 0.4f * num3, proj.rotation + proj.ai[0] * -0.1f, origin, num * 0.6f * scalemod, effects, 0f);
         for (float num5 = 0f; num5 < 8f; num5++)
         {
             float num6 = proj.rotation + proj.ai[0] * num5 * ((float)Math.PI * -2f) * 0.025f + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0];
-            Vector2 drawpos = vector + num6.ToRotationVector2() * (val.Value.Width * 0.5f - 6f) * num * scalemod;
+            Vector2 drawpos = vector + num6.ToRotationVector2() * (val.Width * 0.5f - 6f) * num * scalemod;
             float num7 = num5 / 9f;
             DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos, new Color(255, 255, 255, 0) * num3 * num7, color3, SparkleColor, BigSparkleColor, num2, 0f, 0.5f, 0.5f, 1f, num6, new Vector2(0f, Utils.Remap(num2, 0f, 1f, 3f, 0f)) * num, Vector2.One * num);
         }
-        Vector2 drawpos2 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Value.Width * 0.5f - 4f) * num * scalemod;
+        Vector2 drawpos2 = vector + (proj.rotation + Utils.Remap(num2, 0f, 1f, 0f, (float)Math.PI / 4f) * proj.ai[0]).ToRotationVector2() * (val.Width * 0.5f - 4f) * num * scalemod;
         DrawPrettyStarSparkle(proj.Opacity, SpriteEffects.None, drawpos2, new Color(255, 255, 255, 0) * num3 * 0.5f, color3, BigSparkleColor, BigSparkleColor, num2, 0f, 0.5f, 0.5f, 1f, 0f, new Vector2(2f, Utils.Remap(num2, 0f, 1f, 4f, 1f)) * num, Vector2.One * num);
     }
     private void UpdateEnchantmentVisuals()
