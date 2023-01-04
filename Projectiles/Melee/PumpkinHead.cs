@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -26,23 +27,27 @@ public class PumpkinHead : ModProjectile
         Projectile.DamageType = DamageClass.Melee;
         Projectile.tileCollide = false;
         Projectile.ignoreWater = true;
+        Projectile.extraUpdates = 1;
     }
-
+    public SoundStyle ExplodyOverlapEdition = new SoundStyle("Terraria/Sounds/Item_14")
+    {
+        Volume = 0.6f,
+        PitchVariance = 0.2f,
+        MaxInstances = 15,
+    };
+    public override void Kill(int timeLeft)
+    {
+        //SoundEngine.PlaySound(ExplodyOverlapEdition, Projectile.Center);
+       
+        for (int j = 0; j <= 20; j++)
+        {
+            int d = Dust.NewDust(Projectile.Center, 0, 0, DustID.InfernoFork, Main.rand.NextVector2Circular(5, 5).X, Main.rand.NextVector2Circular(5, 5).Y);
+            Main.dust[d].fadeIn = Main.rand.NextFloat(0.3f, 1.2f);
+            Main.dust[d].noGravity = true;
+        }
+    }
     public override void AI()
     {
-        if (Projectile.type == ProjectileID.FlamingJack)
-        {
-            Projectile.frameCounter++;
-            if (Projectile.frameCounter > 0)
-            {
-                Projectile.frame++;
-                Projectile.frameCounter = 0;
-                if (Projectile.frame > 2)
-                {
-                    Projectile.frame = 0;
-                }
-            }
-        }
         if (Projectile.velocity.X < 0f)
         {
             Projectile.spriteDirection = -1;
@@ -88,12 +93,11 @@ public class PumpkinHead : ModProjectile
                 }
             }
             var num720 = 8;
-            var num721 = Dust.NewDust(new Vector2(Projectile.position.X + num720, Projectile.position.Y + num720), Projectile.width - num720 * 2, Projectile.height - num720 * 2, DustID.Torch, 0f, 0f, 0, default(Color), 1f);
+            var num721 = Dust.NewDust(new Vector2(Projectile.position.X + num720, Projectile.position.Y + num720), Projectile.width - num720 * 2, Projectile.height - num720 * 2, DustID.InfernoFork, 0f, 0f, 255, default(Color), 1f);
             Main.dust[num721].velocity *= 0.5f;
             Main.dust[num721].velocity += Projectile.velocity * 0.5f;
             Main.dust[num721].noGravity = true;
             Main.dust[num721].noLight = true;
-            Main.dust[num721].scale = 1.4f;
         }
         else
         {

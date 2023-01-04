@@ -25,6 +25,15 @@ public class AvalonConfig : ModConfig
     public bool VanillaRenames;
 
 }
+public class AvalonClientConfig : ModConfig
+{
+    public override ConfigScope Mode => ConfigScope.ClientSide;
+    [Header("$Mods.Avalon.Config.ItemHeader")]
+    [Label("$Mods.Avalon.Config.Screenshake.Label")]
+    [Tooltip("$Mods.Avalon.Config.Screenshake.Tooltip")]
+    [DefaultValue(false)]
+    public bool ScreenshakeEnabled;
+}
 //public class AvalonTextureReplacementConfig : ModConfig
 //{
 //    public override ConfigScope Mode => ConfigScope.ClientSide;

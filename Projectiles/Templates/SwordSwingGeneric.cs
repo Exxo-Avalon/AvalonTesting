@@ -99,7 +99,7 @@ public abstract class SwordSwingGeneric : ModProjectile
     }
     public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
     {
-        float coneLength2 = 94f * Projectile.scale;
+        float coneLength2 = 94f * Projectile.scale * (scalemod * 0.9f);
         float num3 = (float)Math.PI * 2f / 25f * Projectile.ai[0];
         float maximumAngle2 = (float)Math.PI / 4f;
         float num4 = Projectile.rotation + num3;
