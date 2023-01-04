@@ -31,12 +31,13 @@ public class PumpkinHead : ModProjectile
     }
     public SoundStyle ExplodyOverlapEdition = new SoundStyle("Terraria/Sounds/Item_14")
     {
-        Volume = 0.6f,
-        PitchVariance = 0.2f,
-        MaxInstances = 15,
+        Volume = 5f,
+        PitchVariance = 0.9f,
+        MaxInstances = 60,
     };
     public override void Kill(int timeLeft)
     {
+        //uncomment for funny loud noise :D
         //SoundEngine.PlaySound(ExplodyOverlapEdition, Projectile.Center);
        
         for (int j = 0; j <= 20; j++)

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
 using Terraria.ModLoader;
@@ -50,7 +51,7 @@ public abstract class SwordSwingGeneric : ModProjectile
         float num6 = 1.2f;
 
         Projectile.Center = player.RotatedRelativePoint(player.MountedCenter) - Projectile.velocity;
-        Projectile.scale = num6 + num * num5;
+        Projectile.scale = num6 + num * num5 * Main.player[Projectile.owner].GetAdjustedItemScale(Main.player[Projectile.owner].HeldItem);
 
         if (!Projectile.noEnchantmentVisuals)
         {
