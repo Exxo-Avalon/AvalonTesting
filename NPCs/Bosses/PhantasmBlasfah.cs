@@ -40,6 +40,7 @@ public class PhantasmBlasfah : ModNPC
         NPC.scale = 1.5f;
         NPC.HitSound = SoundID.NPCHit1;
         NPC.DeathSound = SoundID.NPCDeath39;
+        NPC.BossBar = ModContent.GetInstance<BossBars.PhantasmBossBar>();
         Music = Avalon.MusicMod != null ? MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/Phantasm") : MusicID.EmpressOfLight;
     }
     public override void BossLoot(ref string name, ref int potionType)
