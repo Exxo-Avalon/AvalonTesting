@@ -85,7 +85,8 @@ public class AvalonGlobalProjectile : GlobalProjectile
     public override void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
     {
         if (Main.player[projectile.owner].GetModPlayer<ExxoEquipEffectPlayer>().VampireTeeth && projectile.DamageType == DamageClass.Melee &&
-            projectile.aiStyle == ProjAIStyleID.Spear)
+            projectile.aiStyle == ProjAIStyleID.Spear || projectile.type == ModContent.ProjectileType<Projectiles.Melee.VertexSlash>() ||
+            projectile.type == ModContent.ProjectileType<Projectiles.Melee.VertexSlash2>())
         {
             if (target.boss)
             {

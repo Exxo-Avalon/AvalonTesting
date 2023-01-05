@@ -53,7 +53,8 @@ class HallowedAltars
                 Main.tile[k, l].TileType == TileID.HallowedGrass || Main.tile[k, l].TileType == TileID.HallowedIce) &&
                 l < Main.maxTilesY - 200 && Main.rand.NextBool(amt))
             {
-                Utils.PlaceHallowedAltar(k, l - 1);
+                if (!AvalonWorld.HallowedAltarNearby(k, l - 1))
+                    Utils.PlaceHallowedAltar(k, l - 1);
             }
         }
     }

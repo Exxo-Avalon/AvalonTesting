@@ -74,6 +74,7 @@ public class WallofSteel : ModNPC
         NPC.scale = 1.4f;
         NPC.HitSound = SoundID.NPCHit4;
         NPC.DeathSound = SoundID.NPCDeath14;
+        NPC.BossBar = ModContent.GetInstance<BossBars.WallofSteelBossBar>();
         Music = Avalon.MusicMod == null ? MusicID.Boss2 : MusicID.Boss2; // MusicLoader.GetMusicSlot(Avalon.MusicMod, "Sounds/Music/WallofSteel");
     }
     public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

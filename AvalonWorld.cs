@@ -886,6 +886,36 @@ public class AvalonWorld : ModSystem
             }
         }
     }
+
+    public static bool HallowedAltarNearby(int i, int j)
+    {
+        float num = 0f;
+        int num2 = 8;
+        if (i <= num2 + 5 || i >= Main.maxTilesX - num2 - 5)
+        {
+            return false;
+        }
+        if (j <= num2 + 5 || j >= Main.maxTilesY - num2 - 5)
+        {
+            return false;
+        }
+        for (int k = i - num2; k <= i + num2; k++)
+        {
+            for (int l = j - num2; l <= j + num2; l++)
+            {
+                if (Main.tile[k, l].HasTile && (Main.tile[k, l].TileType == ModContent.TileType<HallowedAltar>()))
+                {
+                    num++;
+                    if (num >= 4f)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return num > 0f && WorldGen.genRand.Next(5) < num;
+    }
+
     public void DarkMatterSpread(int i, int j)
     {
         if (!Main.hardMode || Main.tile[i, j].IsActuated)

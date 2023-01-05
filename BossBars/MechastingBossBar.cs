@@ -8,13 +8,12 @@ using Terraria.GameContent.UI.BigProgressBar;
 
 namespace Avalon.BossBars;
 
-public class PhantasmBossBar : ModBossBar
+public class MechastingBossBar : ModBossBar
 {
     private int bossHeadIndex = -1;
 
     public override Asset<Texture2D> GetIconTexture(ref Rectangle? iconFrame)
     {
-        // Display the previously assigned head index
         if (bossHeadIndex != -1)
         {
             return TextureAssets.NpcHeadBoss[bossHeadIndex];

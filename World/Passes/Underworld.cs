@@ -136,7 +136,7 @@ internal class Underworld : GenPass
             }
         }
         #endregion
-        progress.Message = "Generating Hellcastle and Ashen Overgrowth";
+        progress.Message = "Generating Hellcastle and Phantom Overgrowth";
         int hellcastleOriginX = (Main.maxTilesX / 2) - 100;
         int ashenLeft = hellcastleOriginX - 100;
         int ashenRight = hellcastleOriginX + 500;
