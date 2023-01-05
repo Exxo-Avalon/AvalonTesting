@@ -14,11 +14,12 @@ class PumpkingsSword : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Pumpking's Sword");
+        DisplayName.SetDefault("The Pumpking Carver");
         SacrificeTotal = 1;
     }
     public SoundStyle PumpkingSwordSwing = new SoundStyle("Terraria/Sounds/Custom/dd2_sonic_boom_blade_slash_1", SoundType.Sound)
     {
+        Volume = 0.5f,
         MaxInstances = 10,
         PitchVariance = 0.2f
     };

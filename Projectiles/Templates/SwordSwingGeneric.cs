@@ -87,7 +87,7 @@ public abstract class SwordSwingGeneric : ModProjectile
     public override bool PreDraw(ref Color lightColor)
     {
         DrawProj_Excalibur(Projectile);
-        return true;
+        return false;
     }
     public override bool? CanCutTiles() => true;
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

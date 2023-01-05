@@ -12,7 +12,7 @@ public class PumpkingSwordSlash : SwordSwingGeneric
 {
     public override Color SparkleColor => new Color(64, 32, 0, 0);
     public override Color BigSparkleColor => new Color(128, 64, 25, 0);
-    public override Color color1 => new Color(100, 25, 0);
+    public override Color color1 => new Color(160, 40, 0);
     public override Color color2 => new Color(255, 128, 0);
     public override Color color3 => color1;
     public override float scalemod => 1.3f;
