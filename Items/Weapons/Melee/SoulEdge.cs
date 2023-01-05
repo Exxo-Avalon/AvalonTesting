@@ -24,7 +24,7 @@ class SoulEdge : ModItem
         Item.damage = 92;
         Item.autoReuse = true;
         Item.scale = 1f;
-        Item.shootSpeed = 5f;
+        Item.shootSpeed = 6f;
         Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
         Item.noMelee = false;
         Item.useTime = 20;
@@ -58,8 +58,9 @@ class SoulEdge : ModItem
         for (int i = 0; i < numberProjectiles; i++)
         {
             Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(25));
-            int spirit = Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Melee.Soul>(), damage, knockback, player.whoAmI);
+            int spirit = Projectile.NewProjectile(source, position + new Vector2(30 * Item.scale, 0).RotatedBy(velocity.ToRotation()), perturbedSpeed, ModContent.ProjectileType<Projectiles.Melee.Soul>(), damage, knockback, player.whoAmI);
             Main.projectile[spirit].DamageType = DamageClass.Melee;
+            Main.projectile[spirit].timeLeft = Main.rand.Next(200, 400);
         }
         return false; // return false because we don't want tmodloader to shoot projectile
     }

@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,6 +14,8 @@ public class Soul : ModProjectile
     {
         DisplayName.SetDefault("Soul Edge");
         Main.projFrames[Type] = 1;
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
     }
 
     public override void SetDefaults()
@@ -24,7 +27,29 @@ public class Soul : ModProjectile
         Projectile.aiStyle = -1;
         Projectile.width = 24;
         Projectile.height = 28;
+        Projectile.alpha = 0;
     }
+    public override bool PreDraw(ref Color lightColor)
+    {
+        Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+        Rectangle frame = texture.Frame();
+        Vector2 frameOrigin = frame.Size() / 2f;
+        Color col = Color.Lerp(Color.White, Color.Blue, Main.masterColor);
+        col.A = 200;
+
+        Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.Lerp(col,Color.White,0.5f) * Projectile.Opacity, Projectile.rotation, frameOrigin, new Vector2(Projectile.scale * 1.1f - (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.005f), Projectile.scale * 1.1f + (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.05f)), SpriteEffects.None, 0);
+
+        for (int i = 1; i < Projectile.oldPos.Length; i++)
+        {
+            col.A = 0;
+            Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + frameOrigin;
+            //int col = (int)(128 - (i * 16) * Projectile.Opacity);
+            //Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col / i, col / i, col, 0), Projectile.oldRot[i], frameOrigin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col.R / i, col.G / i, col.B / i,0), Projectile.oldRot[i], frameOrigin, Projectile.scale + (i * 0.1f), SpriteEffects.None, 0);
+        }
+        return false;
+    }
+
     public SoundStyle soul = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/SoulEdgeHitTile")
     {
         Volume = 0.2f,
@@ -34,7 +59,7 @@ public class Soul : ModProjectile
     };
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        SoundEngine.PlaySound(soul, Projectile.position);
+        //SoundEngine.PlaySound(soul, Projectile.position);
         return true;
     }
     public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -43,25 +68,34 @@ public class Soul : ModProjectile
     }
     public override void Kill(int timeLeft)
     {
-        
+        SoundEngine.PlaySound(soul, Projectile.position);
         for (int i = 0; i < 15; i++)
         {
             int d = Dust.NewDust(Projectile.position, 8, 8, DustID.DungeonSpirit);
             Main.dust[d].noGravity = true;
             Main.dust[d].velocity *= 1.5f;
-            Main.dust[d].scale *= 0.7f;
+            Main.dust[d].scale *= 2.7f;
         }
     }
     public float DegreesToRadians(int degrees)
     {
         return degrees / 57.2957795f;
     }
-    public float maxSpeed = 10f + Main.rand.NextFloat(10f);
+    public float maxSpeed = 5f + Main.rand.NextFloat(7f);
     public float homeDistance = 1200;
-    public float homeStrength = 5f;
+    public float homeStrength = 2f;
     public float homeDelay;
     public override void AI()
     {
+        if (Projectile.alpha >= 0)
+        {
+            Projectile.alpha -= 5;
+        }
+        if(Projectile.timeLeft <= 60)
+        {
+            Projectile.scale -= 0.01f;
+        }
+
         // turn the projectile around if it gets too far from the player
         //if (Vector2.Distance(Projectile.position, Main.player[Projectile.owner].position) > 16 * 40 && Projectile.ai[0] < 3)
         //{
@@ -69,30 +103,28 @@ public class Soul : ModProjectile
         //    Projectile.ai[0]++;
         //}
         Projectile.ai[0]++;
+
+        int rn = Main.rand.Next(2);
+        if (rn == 0)
+            rn = -1;
+        float x2 = Projectile.position.X - Projectile.velocity.X / 10f;
+        float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f;
+        int num27 = Dust.NewDust(new Vector2(x2 + 5, y2 + 5), 16, 16, DustID.DungeonSpirit, 0f, 0f, 0, default, 2f);
+        //Main.dust[num27].alpha = Projectile.alpha;
+        Main.dust[num27].color.A = 0;
+        Main.dust[num27].scale = (255 - Projectile.alpha) / 200;
+        //Main.dust[num27].position.X = x2;
+        //Main.dust[num27].position.Y = y2;
+        Main.dust[num27].velocity = Projectile.velocity * 0.1f;
+        Main.dust[num27].noGravity = true;
+
+        Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
+        Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
+
         if (Projectile.ai[0] < 120)
         {
             float num4 = 400f;
-            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - 1.57f;
             Projectile.velocity = Projectile.velocity.RotatedByRandom(MathHelper.Pi / 30);
-
-            for (int num26 = 0; num26 < 8; num26++)
-            {
-                int rn = Main.rand.Next(2);
-                if (rn == 0)
-                    rn = -1;
-                float x2 = Projectile.position.X - Projectile.velocity.X / 10f * num26;
-                float y2 = Projectile.position.Y - Projectile.velocity.Y / 10f * num26;
-                int num27 = Dust.NewDust(new Vector2(x2 + 5, y2 + 5), 16, 16, DustID.DungeonSpirit, 0f, 0f, 0, default, 1f);
-                Main.dust[num27].alpha = Projectile.alpha;
-                Main.dust[num27].color.A = 0;
-                Main.dust[num27].scale *= 1f;
-                //Main.dust[num27].position.X = x2;
-                //Main.dust[num27].position.Y = y2;
-                Main.dust[num27].velocity *= 0f;
-                Main.dust[num27].noGravity = true;
-            }
-
-            Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);
 
             float num383 = Projectile.Center.X;
             float num384 = Projectile.Center.Y;
@@ -157,8 +189,8 @@ public class Soul : ModProjectile
                     float distance = Vector2.Distance(target, startPosition);
                     Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
 
-                    Projectile.velocity += goTowards;
-
+                    Projectile.velocity += goTowards / 3;
+                    maxSpeed -= 0.02f;
                     if (Projectile.velocity.Length() > maxSpeed)
                     {
                         Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
