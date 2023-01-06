@@ -69,7 +69,15 @@ public class DarkMatterSlime : ModNPC
         NPC.damage = (int)(NPC.damage * 0.5f);
     }
 
-
+    public override void PostAI()
+    {
+        NPC.TargetClosest(true);
+        NPC.ai[0] += 1;
+        if (NPC.ai[0] == -2000)
+        {
+            NPC.velocity.Y = -10;
+        }
+    }
     public override void ModifyNPCLoot(NPCLoot npcLoot)
     {
         npcLoot.Add(ItemDropRule.ByCondition(new DropConditions.DropIfNoArmaAlive(), ModContent.ItemType<DarkMatterGel>(), 1, 2, 4));

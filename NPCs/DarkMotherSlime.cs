@@ -64,6 +64,8 @@ public class DarkMotherSlime : ModNPC
 
     public override void AI()
     {
+        NPC.TargetClosest(true);
+        NPC.ai[0] += 2;
         if (NPC.life <= NPC.lifeMax / 4)
         {
             bool explode = false;
@@ -186,7 +188,7 @@ public class DarkMotherSlime : ModNPC
     }
     public void Explode()
     {
-        SoundEngine.PlaySound(SoundID.NPCDeath14);
+        SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode);
 
         for (int i = 0; i < 2; i++)
         {
