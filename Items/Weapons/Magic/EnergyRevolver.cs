@@ -17,7 +17,7 @@ class EnergyRevolver : ModItem
     {
         Rectangle dims = this.GetDims();
         Item.DamageType = DamageClass.Magic;
-        Item.damage = 57;
+        Item.damage = 36;
         Item.autoReuse = true;
         Item.shootSpeed = 15f;
         Item.mana = 6;

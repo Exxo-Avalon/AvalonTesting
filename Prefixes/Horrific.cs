@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Avalon.Prefixes;
@@ -7,7 +7,7 @@ public class Horrific : ExxoPrefix
 {
     public override PrefixCategory Category => PrefixCategory.Ranged;
 
-    public override void ModifyValue(ref float valueMult) => valueMult *= 0.9f;
+    public override void ModifyValue(ref float valueMult) => valueMult *= 0.775f;
 
     public override bool CanRoll(Item item) => true;
 

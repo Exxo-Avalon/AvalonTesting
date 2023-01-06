@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Avalon.Prefixes;
@@ -7,7 +7,7 @@ public class Marvelous : ExxoPrefix
 {
     public override PrefixCategory Category => PrefixCategory.AnyWeapon;
 
-    public override void ModifyValue(ref float valueMult) => valueMult *= 1.25f;
+    public override void ModifyValue(ref float valueMult) => valueMult *= 1.05f;
 
     public override bool CanRoll(Item item) => true;
 
