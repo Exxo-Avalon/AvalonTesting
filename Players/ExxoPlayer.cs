@@ -39,7 +39,8 @@ public class ExxoPlayer : ModPlayer
     public static Asset<Texture2D>[] spectrumArmorTextures;
     protected override bool CloneNewInstances => false;
 
-
+    public List<Vector2> wpMirrorLocations = new List<Vector2>();
+    public List<int> wpMirrorWorldIDs = new List<int>();
 
     public static int NumHookProj() => Main.projectile.Count(p =>
         Main.projHook[p.type] && p.active && p.ai[0] == 2f && p.owner == Main.myPlayer);
@@ -257,6 +258,10 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("You are using Exxo Avalon: Origins " + Avalon.Mod.Version);
         Main.NewText("Please note that Exxo Avalon: Origins is in beta - it will have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
+        foreach (Vector2 v in wpMirrorLocations)
+        {
+            Main.NewText(v.ToString());
+        }
     }
 
     public override void UpdateEquips()
@@ -706,13 +711,31 @@ public class ExxoPlayer : ModPlayer
 
     public override void SaveData(TagCompound tag)
     {
+        #region stuff2
         tag["CrystalHealth"] = CrystalHealth;
         tag["SHMAcc"] = shmAcc;
         tag["SpiritPoppyUseCount"] = spiritPoppyUseCount;
+        #endregion
+        //if (!wpMirrorWorldIDs.Contains(Main.worldID))
+        //{
+        //    wpMirrorWorldIDs.Add(Main.worldID);
+        //}
+        //tag["SavedWorldIDs"] = wpMirrorWorldIDs;
+        //List<Vector2> locs = new List<Vector2>();
+        //if (wpMirrorLocations.Count > 0)
+        //{
+        //    foreach (int i in wpMirrorWorldIDs)
+        //    {
+        //        locs.Add(wpMirrorLocations[wpMirrorWorldIDs.IndexOf(i)]);
+        //    }
+        //    wpMirrorLocations.AddRange(locs);
+        //    tag["SavedLocations2"] = wpMirrorLocations;
+        //}
     }
 
     public override void LoadData(TagCompound tag)
     {
+        #region stuff
         if (tag.ContainsKey("CrystalHealth"))
         {
             CrystalHealth = tag.Get<int>("CrystalHealth");
@@ -728,7 +751,19 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
+        #endregion
 
+        //if (tag.ContainsKey("SavedWorldIDs"))
+        //{
+        //    wpMirrorWorldIDs = tag.Get<List<int>>("SavedWorldIDs");
+        //}
+        //if (tag.ContainsKey("SavedLocations2"))
+        //{
+        //    if (wpMirrorWorldIDs.Contains(Main.worldID))
+        //    {
+        //        wpMirrorLocations.AddRange(tag.Get<List<Vector2>>("SavedLocations2"));
+        //    }
+        //}
     }
     public override void PostUpdate()
     {
@@ -1209,8 +1244,6 @@ public class ExxoPlayer : ModPlayer
             }
         }
     }
-
-
 
     public override void PostUpdateMiscEffects()
     {
@@ -1841,8 +1874,6 @@ public class ExxoPlayer : ModPlayer
     }
 
     public void UpdateMana() => Player.statManaMax2 += spiritPoppyUseCount * 20;
-
-
 
     public void FloorVisualsAvalon(bool falling)
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -8,8 +9,8 @@ using Terraria.ModLoader.IO;
 namespace Avalon.Items.Tools;
 public class WaypointMirror : ModItem
 {
-    public List<Vector2> savedLocations = new List<Vector2>();
-    public List<int> WorldIDs = new List<int>();
+    //public List<Vector2> savedLocations = new List<Vector2>();
+    //public List<int> WorldIDs = new List<int>();
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault("Right click to set a waypoint at your current location");
@@ -31,39 +32,42 @@ public class WaypointMirror : ModItem
     {
         return true;
     }
-    public override void SaveData(TagCompound tag)
-    {
-        if (!WorldIDs.Contains(Main.worldID))
-        {
-            WorldIDs.Add(Main.worldID);
-        }
-        tag["SavedWorldIDs"] = WorldIDs;
-        if (WorldIDs.IndexOf(Main.worldID) != -1)
-        {
-            tag["SavedLocations"] = savedLocations[WorldIDs.IndexOf(Main.worldID)];
-        }
-    }
-    public override void LoadData(TagCompound tag)
-    {
-        if (tag.ContainsKey("SavedWorldIDs"))
-        {
-            WorldIDs = tag.Get<List<int>>("SavedWorldIDs");
-            if (tag.ContainsKey("SavedLocations"))
-            {
-                if (WorldIDs.Contains(Main.worldID))
-                {
-                    savedLocations.Add(tag.Get<Vector2>("SavedLocations"));
-                }
-            }
-        }
-    }
+    //public override void SaveData(TagCompound tag)
+    //{
+    //    if (!WorldIDs.Contains(Main.worldID))
+    //    {
+    //        WorldIDs.Add(Main.worldID);
+    //    }
+    //    tag["SavedWorldIDs"] = WorldIDs;
+    //    List<Vector2> locs = new List<Vector2>();
+    //    foreach (int i in WorldIDs)
+    //    {
+    //        locs.Add(savedLocations[WorldIDs.IndexOf(i)]);
+    //    }
+    //    savedLocations.AddRange(locs);
+    //    tag["SavedLocations2"] = savedLocations;
+    //}
+    //public override void LoadData(TagCompound tag)
+    //{
+    //    if (tag.ContainsKey("SavedWorldIDs"))
+    //    {
+    //        WorldIDs = tag.Get<List<int>>("SavedWorldIDs");
+    //        if (tag.ContainsKey("SavedLocations2"))
+    //        {
+    //            if (WorldIDs.Contains(Main.worldID))
+    //            {
+    //                savedLocations.AddRange(tag.Get<List<Vector2>>("SavedLocations2"));
+    //            }
+    //        }
+    //    }
+    //}
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         if (player.altFunctionUse == 2 && player.itemTime == Item.useTime / 2)
         {
-            WorldIDs.Remove(Main.worldID);
-            WorldIDs.Add(Main.worldID);
-            savedLocations.Add(player.position);
+            player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.Remove(Main.worldID);
+            player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.Add(Main.worldID);
+            player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Add(player.position);
             Main.NewText("Set waypoint to current location.");
         }
         else
@@ -74,9 +78,8 @@ public class WaypointMirror : ModItem
             }
             else if (player.itemTime == Item.useTime / 2)
             {
-                int index = WorldIDs.IndexOf(Main.worldID);
-                Main.NewText(index);
-                Vector2 loc = savedLocations[index];
+                int index = player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.IndexOf(Main.worldID);
+                Vector2 loc = player.GetModPlayer<ExxoPlayer>().wpMirrorLocations[index];
                 if (loc != Vector2.Zero)
                 {
                     for (int num345 = 0; num345 < 70; num345++)
@@ -93,8 +96,8 @@ public class WaypointMirror : ModItem
                         }
                     }
                     player.Teleport(loc);
-                    savedLocations.Remove(loc);
-                    savedLocations.Add(loc);
+                    player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Remove(loc);
+                    player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Add(loc);
                     NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, loc.X, loc.Y, 0);
                     for (int num347 = 0; num347 < 70; num347++)
                     {
