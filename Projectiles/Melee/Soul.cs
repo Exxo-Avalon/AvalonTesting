@@ -14,7 +14,7 @@ public class Soul : ModProjectile
     {
         DisplayName.SetDefault("Soul Edge");
         Main.projFrames[Type] = 1;
-        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
         ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
     }
 
@@ -35,9 +35,8 @@ public class Soul : ModProjectile
         Rectangle frame = texture.Frame();
         Vector2 frameOrigin = frame.Size() / 2f;
         Color col = Color.Lerp(Color.White, Color.Blue, Main.masterColor);
-        col.A = 200;
-
-        Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.Lerp(col,Color.White,0.5f) * Projectile.Opacity, Projectile.rotation, frameOrigin, new Vector2(Projectile.scale * 1.1f - (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.005f), Projectile.scale * 1.1f + (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.05f)), SpriteEffects.None, 0);
+        Vector2 stretchscale = new Vector2(Projectile.scale - (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.01f), Projectile.scale + (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.1f));
+        
 
         for (int i = 1; i < Projectile.oldPos.Length; i++)
         {
@@ -45,8 +44,11 @@ public class Soul : ModProjectile
             Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + frameOrigin;
             //int col = (int)(128 - (i * 16) * Projectile.Opacity);
             //Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col / i, col / i, col, 0), Projectile.oldRot[i], frameOrigin, Projectile.scale, SpriteEffects.None, 0);
-            Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col.R / i, col.G / i, col.B / i,0), Projectile.oldRot[i], frameOrigin, Projectile.scale + (i * 0.1f), SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col.R / i, col.G / i, col.B / i,0), Projectile.oldRot[i], frameOrigin, new Vector2(stretchscale.X + (i * 0.1f), stretchscale.Y + (i * 0.1f)), SpriteEffects.None, 0);
         }
+        col.A = 200;
+        Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.Lerp(col, Color.White, 0.5f) * Projectile.Opacity, Projectile.rotation, frameOrigin, stretchscale * 1.1f, SpriteEffects.None, 0);
+
         return false;
     }
 
@@ -81,7 +83,7 @@ public class Soul : ModProjectile
     {
         return degrees / 57.2957795f;
     }
-    public float maxSpeed = 5f + Main.rand.NextFloat(7f);
+    public float maxSpeed = 6f + Main.rand.NextFloat(7f);
     public float homeDistance = 1200;
     public float homeStrength = 2f;
     public float homeDelay;
@@ -131,6 +133,8 @@ public class Soul : ModProjectile
             float num385 = 500f;
             bool flag = false;
             int num386 = 0;
+
+            Vector2 npcpos = new Vector2(0,0);
             for (int num387 = 0; num387 < 200; num387++)
             {
                 if (Main.npc[num387].CanBeChasedBy(this) && Projectile.Distance(Main.npc[num387].Center) < num385 && Collision.CanHit(Projectile.Center, 1, 1, Main.npc[num387].Center, 1, 1))
@@ -145,6 +149,8 @@ public class Soul : ModProjectile
                         num384 = num389;
                         flag = true;
                         num386 = num387;
+
+                        npcpos = new Vector2(num388, num389);
                     }
                 }
             }
@@ -190,7 +196,7 @@ public class Soul : ModProjectile
                     Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
 
                     Projectile.velocity += goTowards / 3;
-                    maxSpeed -= 0.02f;
+                    //maxSpeed = Vector2.Distance(Projectile.Center, target) * 0.01f;
                     if (Projectile.velocity.Length() > maxSpeed)
                     {
                         Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
