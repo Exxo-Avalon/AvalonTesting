@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -11,7 +11,7 @@ public class AdvLuck : ModBuff
     // TODO: OUTDATED DESCRIPTION
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Advanced Luck");
+        DisplayName.SetDefault("Advanced Clover");
         Description.SetDefault("Doubles rare drop chance");
     }
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +9,7 @@ class AdvLuckPotion : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Luck Elixir");
+        DisplayName.SetDefault("Clover Elixir");
         Tooltip.SetDefault("Doubles rare drop chance");
         SacrificeTotal = 30;
     }

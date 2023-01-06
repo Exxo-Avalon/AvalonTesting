@@ -1578,7 +1578,7 @@ public class AvalonGlobalNPC : GlobalNPC
         var notFromStatueCondition = new Conditions.NotFromStatue();
         var zoneRockLayerCondition = new ZoneRockLayer();
         var contagionCondition = new ZoneContagion();
-        var undergroundContagionCondition = new Combine(true, "Drops in the underground contagion", contagionCondition,
+        var undergroundContagionCondition = new Combine(true, "Drops in the Underground Contagion", contagionCondition,
             zoneRockLayerCondition);
         var undergroundHardmodeContagionCondition = new Combine(
             true,

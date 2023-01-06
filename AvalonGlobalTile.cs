@@ -46,10 +46,10 @@ public class AvalonGlobalTile : GlobalTile
         {
             if (Main.tile[i, j].HasTile) fail = true; // test this
         }
-        if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
-        {
-            fail = true;
-        }
+        //if (type == TileID.Hellstone && Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].pick < 70)
+        //{
+        //    fail = true;
+        //}
         if (type == ModContent.TileType<HallowedAltar>() && !ModContent.GetInstance<AvalonWorld>().SuperHardmode &&
             Main.player[Player.FindClosest(new Vector2(i * 16, j * 16), 16, 16)].inventory[Main.LocalPlayer.selectedItem].hammer < 120)
         {
