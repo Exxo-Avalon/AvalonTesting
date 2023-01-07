@@ -334,7 +334,9 @@ public class DesertBeak : ModNPC
                 if(modePartOne == PhaseOne.Minion_and_Projectile){//UNFINISHED
                     NPC.TargetClosest();
                     NPC.spriteDirection = NPC.direction;
-                    NPC.rotation = NPC.velocity.ToRotation();
+                    if(NPC.velocity.X => 0)NPC.rotation = NPC.velocity.ToRotation();
+                    else{NPC.rotation = NPC.velocity.ToRotation() + Math.Pi;}
+                    
                     Vector2 perturbed = Vector2.Distance(NPC.Center, player.Center) >= 150? Vector2.One*6 : Vector2.One; 
                     direction = NPC.DirectionTo(player.Center);
                     NPC.velocity = Vector2.Distance(NPC.Center, player.Center) >= 300 ? direction*12 : perturbed * direction ;
