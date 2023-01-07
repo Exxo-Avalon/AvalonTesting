@@ -46,7 +46,7 @@ public class Soul : ModProjectile
             //Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col / i, col / i, col, 0), Projectile.oldRot[i], frameOrigin, Projectile.scale, SpriteEffects.None, 0);
             Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col.R / i, col.G / i, col.B / i,0), Projectile.oldRot[i], frameOrigin, new Vector2(stretchscale.X + (i * 0.1f), stretchscale.Y + (i * 0.1f)), SpriteEffects.None, 0);
         }
-        col.A = 200;
+        col.A = 150;
         Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.Lerp(col, Color.White, 0.5f) * Projectile.Opacity, Projectile.rotation, frameOrigin, stretchscale * 1.1f, SpriteEffects.None, 0);
 
         return false;
@@ -117,7 +117,7 @@ public class Soul : ModProjectile
         Main.dust[num27].scale = (255 - Projectile.alpha) / 200;
         //Main.dust[num27].position.X = x2;
         //Main.dust[num27].position.Y = y2;
-        Main.dust[num27].velocity = Projectile.velocity * 0.1f;
+        Main.dust[num27].velocity = Projectile.velocity * 0.8f;
         Main.dust[num27].noGravity = true;
 
         Lighting.AddLight(Projectile.Center, 0.5f, 0.2f, 0.9f);

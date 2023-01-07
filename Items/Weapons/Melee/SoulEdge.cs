@@ -26,7 +26,7 @@ class SoulEdge : ModItem
         Item.scale = 1f;
         Item.shootSpeed = 6f;
         Item.rare = ModContent.RarityType<Rarities.DarkRedRarity>();
-        Item.noMelee = false;
+        Item.noMelee = true;
         Item.useTime = 20;
         Item.knockBack = 6.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash>(); //ProjectileID.LostSoulFriendly;

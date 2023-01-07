@@ -41,10 +41,6 @@ public class SoulEdgeSlash : SwordSwingGeneric
         Projectile.localNPCHitCooldown = 30;
         Projectile.alpha = 255;
     }
-    public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-    {
-        return false;
-    }
 }
 
 public class SoulEdgeSlash2 : SwordSwingGeneric
@@ -82,26 +78,9 @@ public class SoulEdgeSlash2 : SwordSwingGeneric
         Projectile.localNPCHitCooldown = 30;
         Projectile.alpha = 255;
     }
-    public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+
+    public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
     {
-        int debuffCount = 0;
-        for (int i = 0; i < target.buffType.Length; i++)
-        {
-            if (Main.debuff[target.buffType[i]])
-            {
-                debuffCount++;
-            }
-        }
-        if (debuffCount > 0)
-        {
-            if (target.boss)
-            {
-                damage = (int)(damage * 1.2 * debuffCount);
-            }
-            else
-            {
-                damage = (int)(damage * 1.45 * debuffCount);
-            }
-        }
+        return false;
     }
 }
