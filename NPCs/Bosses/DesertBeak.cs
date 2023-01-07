@@ -209,8 +209,7 @@ public class DesertBeak : ModNPC
                             maxTime = 270;
                             diveDelay = 0f;
                             eggcount = 1;
-                        }
-                        else
+                        }else
                         {
                             diveDelay = (float)Main.rand.Next(0,100);
                             maxTime = 150 + diveDelay;
@@ -334,9 +333,8 @@ public class DesertBeak : ModNPC
                 if(modePartOne == PhaseOne.Minion_and_Projectile){//UNFINISHED
                     NPC.TargetClosest();
                     NPC.spriteDirection = NPC.direction;
-                    if(NPC.velocity.X >= 0) NPC.rotation = NPC.velocity.ToRotation();
-                    else{NPC.rotation = NPC.velocity.ToRotation() + (float)Math.PI;}
-                    
+                    if(NPC.velocity.X < 0) NPC.rotation = NPC.velocity.ToRotation() + (float)Math.PI;
+                    else NPC.rotation = NPC.velocity.ToRotation();
                     Vector2 perturbed = Vector2.Distance(NPC.Center, player.Center) >= 150? Vector2.One*6 : Vector2.One; 
                     direction = NPC.DirectionTo(player.Center);
                     NPC.velocity = Vector2.Distance(NPC.Center, player.Center) >= 300 ? direction*12 : perturbed * direction ;
@@ -349,6 +347,7 @@ public class DesertBeak : ModNPC
                     
                        
                        
+                    
                 }
             
         }
@@ -608,4 +607,3 @@ public class DesertBeak : ModNPC
 
 
 }
-
