@@ -1,4 +1,4 @@
-using AltLibrary;
+/*using AltLibrary;
 using AltLibrary.Common.AltBiomes;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
@@ -44,10 +44,10 @@ internal class TropicsAlternateBiome : AltBiome
             .AddReplacement<ContagionNaturalWall1>(28, 1, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 188, 189, 190, 191, 192, 193, 194, 195, 61, 185, 212, 213, 214, 215, 3, 200, 201, 202, 203, 83)
             .AddReplacement<ContagionGrassWall>(63, 65, 66, 68, 69, 70, 81)
             .AddReplacement<ContagionNaturalWall2>(216, 217, 218, 219) //Sandstone walls
-            .AddReplacement<ContagionNaturalWall2>(197, 220, 221, 222); //Hardened sand walls*/
+            .AddReplacement<ContagionNaturalWall2>(197, 220, 221, 222); //Hardened sand walls
     }
 
     public override string WorldIcon => "Avalon/Assets/WorldIcons/Tropics";
     public override GenPass GetHiveGenerationPass() => new World.Passes.WaspNest();
-    public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";
+    public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";*/
 }
