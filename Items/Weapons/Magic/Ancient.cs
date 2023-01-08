@@ -24,7 +24,7 @@ class Ancient : ModItem
         Item.useTurn = true;
         Item.shootSpeed = 10f;
         Item.crit += 2;
-        Item.mana = 19;
+        Item.mana = 40;
         Item.rare = ItemRarityID.Yellow;
         Item.noMelee = true;
         Item.width = dims.Width;

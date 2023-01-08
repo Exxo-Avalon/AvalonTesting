@@ -4,6 +4,7 @@ using Avalon.Tiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Avalon.Items.Armor;
@@ -58,11 +59,12 @@ internal class AncientHeadpiece : ModItem
     {
         ExxoEquipEffectPlayer modPlayer = player.GetModPlayer<ExxoEquipEffectPlayer>();
         player.setBonus = "Ancient costs 50% less mana"
-                          + "\nEnemies killed with a ranged weapon violently explode"
-                          + "\nHas a chance to summon a sand vortex that pulls enemies in on true melee hits"
+                          + "\nDouble tap " + Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.UP" : "Key.DOWN")
+                                + " to activate Ranger's Wrath status"
+                          + "\nTrue melee hits have a chance to grant you a short period of invincibility"
                           + "\nRight-click and hold while holding a summon weapon to direct your minions";
         modPlayer.AncientLessCost = true;
-        modPlayer.AncientGunslinger = true;
+        modPlayer.AncientRangedBonus = true;
         modPlayer.AncientMinionGuide = true;
         modPlayer.AncientSandVortex = true;
     }

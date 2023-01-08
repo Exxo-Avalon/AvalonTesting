@@ -258,10 +258,6 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("You are using Exxo Avalon: Origins " + Avalon.Mod.Version);
         Main.NewText("Please note that Exxo Avalon: Origins is in beta - it will have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
-        foreach (Vector2 v in wpMirrorLocations)
-        {
-            Main.NewText(v.ToString());
-        }
     }
 
     public override void UpdateEquips()

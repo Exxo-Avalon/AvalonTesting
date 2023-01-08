@@ -9,28 +9,29 @@ using Avalon.Systems;
 
 namespace Avalon.Items.Tools;
 
-internal class WaypointSystem : ModSystem{
-        public static Vector2 savedLocation;
-        public override void OnWorldLoad(){
+internal class WaypointSystem : ModSystem
+{
+    public static Vector2 savedLocation;
+    public override void OnWorldLoad()
+    {
         savedLocation = Vector2.Zero;
-        }
-        public override void SaveWorldData(TagCompound tag)
-        {
-        tag["savedLocation"] = savedLocation;
-        }
-        public override void LoadWorldData(TagCompound tag)
-        {
-        savedLocation = tag.Get<Vector2>("savedLocation");
-        }
-    
     }
+    public override void SaveWorldData(TagCompound tag)
+    {
+        tag["savedLocation"] = savedLocation;
+    }
+    public override void LoadWorldData(TagCompound tag)
+    {
+        savedLocation = tag.Get<Vector2>("savedLocation");
+    }
+}
 public class WaypointMirror : ModItem
 {
-    
     public List<Vector2> savedLocations = new List<Vector2>();
     public List<int> WorldIDs = new List<int>();
     public override void SetStaticDefaults()
     {
+        DisplayName.SetDefault("Portable Pylon");
         Tooltip.SetDefault("Right click to set a waypoint at your current location");
     }
     public override void SetDefaults()
@@ -54,7 +55,7 @@ public class WaypointMirror : ModItem
     {
         if (player.altFunctionUse == 2 && player.itemTime == Item.useTime / 2)
         {
-            WaypointSystem.savedLocation = player.Center+ new Vector2(0, -15);
+            WaypointSystem.savedLocation = player.Center + new Vector2(0, -15);
             Main.NewText("Set waypoint to current location.");
         }
         else
@@ -65,7 +66,6 @@ public class WaypointMirror : ModItem
             }
             else if (player.itemTime == Item.useTime / 2)
             {
-                
                 if (WaypointSystem.savedLocation != Vector2.Zero)
                 {
                     for (int num345 = 0; num345 < 70; num345++)
