@@ -5,12 +5,30 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Avalon.Systems;
 
 namespace Avalon.Items.Tools;
+
+internal class WaypointSystem : ModSystem{
+        public static Vector2 savedLocation;
+        public override void OnWorldLoad(){
+        savedLocation = Vector2.Zero;
+        }
+        public override void SaveWorldData(TagCompound tag)
+        {
+        tag["savedLocation"] = savedLocation;
+        }
+        public override void LoadWorldData(TagCompound tag)
+        {
+        savedLocation = tag.Get<Vector2>("savedLocation");
+        }
+    
+    }
 public class WaypointMirror : ModItem
 {
-    //public List<Vector2> savedLocations = new List<Vector2>();
-    //public List<int> WorldIDs = new List<int>();
+    
+    public List<Vector2> savedLocations = new List<Vector2>();
+    public List<int> WorldIDs = new List<int>();
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault("Right click to set a waypoint at your current location");
@@ -32,42 +50,11 @@ public class WaypointMirror : ModItem
     {
         return true;
     }
-    //public override void SaveData(TagCompound tag)
-    //{
-    //    if (!WorldIDs.Contains(Main.worldID))
-    //    {
-    //        WorldIDs.Add(Main.worldID);
-    //    }
-    //    tag["SavedWorldIDs"] = WorldIDs;
-    //    List<Vector2> locs = new List<Vector2>();
-    //    foreach (int i in WorldIDs)
-    //    {
-    //        locs.Add(savedLocations[WorldIDs.IndexOf(i)]);
-    //    }
-    //    savedLocations.AddRange(locs);
-    //    tag["SavedLocations2"] = savedLocations;
-    //}
-    //public override void LoadData(TagCompound tag)
-    //{
-    //    if (tag.ContainsKey("SavedWorldIDs"))
-    //    {
-    //        WorldIDs = tag.Get<List<int>>("SavedWorldIDs");
-    //        if (tag.ContainsKey("SavedLocations2"))
-    //        {
-    //            if (WorldIDs.Contains(Main.worldID))
-    //            {
-    //                savedLocations.AddRange(tag.Get<List<Vector2>>("SavedLocations2"));
-    //            }
-    //        }
-    //    }
-    //}
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
         if (player.altFunctionUse == 2 && player.itemTime == Item.useTime / 2)
         {
-            player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.Remove(Main.worldID);
-            player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.Add(Main.worldID);
-            player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Add(player.position);
+            WaypointSystem.savedLocation = player.Center+ new Vector2(0, -15);
             Main.NewText("Set waypoint to current location.");
         }
         else
@@ -78,9 +65,8 @@ public class WaypointMirror : ModItem
             }
             else if (player.itemTime == Item.useTime / 2)
             {
-                int index = player.GetModPlayer<ExxoPlayer>().wpMirrorWorldIDs.IndexOf(Main.worldID);
-                Vector2 loc = player.GetModPlayer<ExxoPlayer>().wpMirrorLocations[index];
-                if (loc != Vector2.Zero)
+                
+                if (WaypointSystem.savedLocation != Vector2.Zero)
                 {
                     for (int num345 = 0; num345 < 70; num345++)
                     {
@@ -95,10 +81,8 @@ public class WaypointMirror : ModItem
                             Main.projectile[num346].Kill();
                         }
                     }
-                    player.Teleport(loc);
-                    player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Remove(loc);
-                    player.GetModPlayer<ExxoPlayer>().wpMirrorLocations.Add(loc);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, loc.X, loc.Y, 0);
+                    player.Teleport(WaypointSystem.savedLocation);
+                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, WaypointSystem.savedLocation.X, WaypointSystem.savedLocation.Y, 0);
                     for (int num347 = 0; num347 < 70; num347++)
                     {
                         Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.5f);
