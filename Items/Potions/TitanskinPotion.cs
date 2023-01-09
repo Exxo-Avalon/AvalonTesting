@@ -11,6 +11,10 @@ class TitanskinPotion : ModItem
         DisplayName.SetDefault("Titanskin Potion");
         Tooltip.SetDefault("-8% damage, +15 defense");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.LightGray
+        };
     }
 
     public override void SetDefaults()

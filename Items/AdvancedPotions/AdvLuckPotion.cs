@@ -12,6 +12,7 @@ class AdvLuckPotion : ModItem
         DisplayName.SetDefault("Clover Elixir");
         Tooltip.SetDefault("Doubles rare drop chance");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] { Color.Lime, Color.Yellow };
     }
 
     public override void SetDefaults()

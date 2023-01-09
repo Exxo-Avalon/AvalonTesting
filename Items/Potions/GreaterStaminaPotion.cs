@@ -13,6 +13,7 @@ class GreaterStaminaPotion : ModItem
         DisplayName.SetDefault("Greater Stamina Potion");
         Tooltip.SetDefault("Restores 95 stamina");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Green };
     }
 
     public override void SetDefaults()

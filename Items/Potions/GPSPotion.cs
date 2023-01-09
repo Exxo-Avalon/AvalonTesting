@@ -11,6 +11,11 @@ class GPSPotion : ModItem
         DisplayName.SetDefault("GPS Potion");
         Tooltip.SetDefault("GPS Effect");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2]
+        {
+            Color.Red,
+            Color.Blue
+        };
     }
 
     public override void SetDefaults()

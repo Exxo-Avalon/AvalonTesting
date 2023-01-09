@@ -12,6 +12,7 @@ class AdvTimeShiftPotion : ModItem
         DisplayName.SetDefault("Time Stop Elixir");
         Tooltip.SetDefault("Stops time");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Tan };
     }
 
     public override void SetDefaults()

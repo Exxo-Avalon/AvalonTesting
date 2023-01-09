@@ -11,6 +11,10 @@ class BlahPotion : ModItem
         DisplayName.SetDefault("Blah Potion");
         Tooltip.SetDefault("Various effects");
         SacrificeTotal = 1;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Orange
+        };
     }
 
     public override void SetDefaults()

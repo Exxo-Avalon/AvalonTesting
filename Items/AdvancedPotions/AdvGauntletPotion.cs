@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvGauntletPotion : ModItem
         DisplayName.SetDefault("Gauntlet Elixir");
         Tooltip.SetDefault("-6 defense, +25% melee damage");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.DarkSlateBlue };
     }
 
     public override void SetDefaults()

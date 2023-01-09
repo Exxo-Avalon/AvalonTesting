@@ -12,6 +12,7 @@ class AdvAuraPotion : ModItem
         DisplayName.SetDefault("Aura Elixir");
         Tooltip.SetDefault("On-screen enemies take damage");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Red };
     }
 
     public override void SetDefaults()

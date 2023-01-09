@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,12 @@ class AdvArcheryPotion : ModItem
         DisplayName.SetDefault("Archery Elixir");
         Tooltip.SetDefault("40% increased arrow speed and damage");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3]
+        {
+            new Color(164, 96, 16),
+            new Color(230, 129, 10),
+            new Color(255, 200, 134)
+        };
     }
 
     public override void SetDefaults()

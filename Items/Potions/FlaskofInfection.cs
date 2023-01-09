@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class FlaskofInfection : ModItem
         DisplayName.SetDefault("Flask of Infection");
         Tooltip.SetDefault("Melee attacks inflict Infected on enemies");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.LimeGreen };
     }
 
     public override void SetDefaults()

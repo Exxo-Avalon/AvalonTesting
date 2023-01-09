@@ -13,6 +13,7 @@ class SuperStaminaPotion : ModItem
         DisplayName.SetDefault("Super Stamina Potion");
         Tooltip.SetDefault("Restores 120 stamina");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Green };
     }
 
     public override void SetDefaults()

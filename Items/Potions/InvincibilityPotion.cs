@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,7 @@ class InvincibilityPotion : ModItem
         DisplayName.SetDefault("Invincibility Potion");
         Tooltip.SetDefault("Grants invincibility");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Indigo };
     }
 
     public override void SetDefaults()

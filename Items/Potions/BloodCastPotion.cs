@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,10 @@ class BloodCastPotion : ModItem
         DisplayName.SetDefault("Blood Cast Potion");
         Tooltip.SetDefault("Adds your max life to your max mana");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Red
+        };
     }
 
     public override void SetDefaults()

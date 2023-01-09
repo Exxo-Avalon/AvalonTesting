@@ -13,6 +13,7 @@ class SuperRestorationPotion : ModItem
         DisplayName.SetDefault("Super Restoration Potion");
         Tooltip.SetDefault("Reduced potion cooldown");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.HotPink };
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class StarbrightPotion : ModItem
         DisplayName.SetDefault("Starbright Potion");
         Tooltip.SetDefault("Fallen stars fall more frequently");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Blue
+        };
     }
 
     public override void SetDefaults()

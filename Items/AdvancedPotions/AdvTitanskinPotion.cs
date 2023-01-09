@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvTitanskinPotion : ModItem
         DisplayName.SetDefault("Titanskin Elixir");
         Tooltip.SetDefault("-6% damage, +20 defense");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Gray };
     }
 
     public override void SetDefaults()

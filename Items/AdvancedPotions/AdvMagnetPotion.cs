@@ -12,6 +12,7 @@ class AdvMagnetPotion : ModItem
         DisplayName.SetDefault("Magnet Elixir");
         Tooltip.SetDefault("Increases item grab range");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] { Color.Red, Color.Blue };
     }
 
     public override void SetDefaults()
