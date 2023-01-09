@@ -11,9 +11,10 @@ class StarbrightPotion : ModItem
         DisplayName.SetDefault("Starbright Potion");
         Tooltip.SetDefault("Fallen stars fall more frequently");
         SacrificeTotal = 20;
-        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2]
         {
-            Color.Blue
+            Color.Blue,
+            Color.Cyan
         };
     }
 

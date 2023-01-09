@@ -49,7 +49,7 @@ class GreaterRestorationPotion : ModItem
     public override bool? UseItem(Player player)
     {
         int seconds = 45;
-        if (player.pStone) seconds = (int)(seconds * 0.75); 
+        if (player.pStone) seconds = (int)(seconds * 0.75);
         player.AddBuff(BuffID.PotionSickness, seconds * 60);
         return true;
     }

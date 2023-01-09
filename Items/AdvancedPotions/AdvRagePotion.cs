@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvRagePotion : ModItem
         DisplayName.SetDefault("Rage Elixir");
         Tooltip.SetDefault("Increases critical strike chance by 20%");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(243, 11, 11),
+            new Color(255, 188, 55),
+            new Color(252, 136, 58)
+        };
     }
 
     public override void SetDefaults()

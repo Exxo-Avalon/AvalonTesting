@@ -11,7 +11,7 @@ class InvincibilityPotion : ModItem
         DisplayName.SetDefault("Invincibility Potion");
         Tooltip.SetDefault("Grants invincibility");
         SacrificeTotal = 20;
-        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Indigo };
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] { Color.Indigo, Color.Purple };
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvEndurancePotion : ModItem
         DisplayName.SetDefault("Endurance Elixir");
         Tooltip.SetDefault("Reduces damage taken by 20%");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(156, 157, 153),
+            new Color(99, 99, 99),
+            new Color(63, 62, 58)
+        };
     }
 
     public override void SetDefaults()

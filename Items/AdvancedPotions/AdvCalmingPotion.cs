@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvCalmingPotion : ModItem
         DisplayName.SetDefault("Calming Elixir");
         Tooltip.SetDefault("Reduces enemy aggression and spawn rate");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(21, 40, 138),
+            new Color(102, 101, 201),
+            new Color(122, 147, 196)
+        };
     }
 
     public override void SetDefaults()

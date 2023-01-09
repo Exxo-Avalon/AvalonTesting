@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvInfernoPotion : ModItem
         DisplayName.SetDefault("Inferno Elixir");
         Tooltip.SetDefault("Ignites nearby enemies");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(255, 227, 0),
+            new Color(255, 135, 0),
+            new Color(226, 56, 0)
+        };
     }
 
     public override void SetDefaults()

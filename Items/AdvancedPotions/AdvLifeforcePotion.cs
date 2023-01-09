@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvLifeforcePotion : ModItem
         DisplayName.SetDefault("Lifeforce Elixir");
         Tooltip.SetDefault("Increases max life by 40%");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(239, 17, 0),
+            new Color(209, 15, 0),
+            new Color(136, 9, 0)
+        };
     }
 
     public override void SetDefaults()

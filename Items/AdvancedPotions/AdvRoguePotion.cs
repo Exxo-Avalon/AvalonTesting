@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,9 @@ class AdvRoguePotion : ModItem
         DisplayName.SetDefault("Rogue Elixir");
         Tooltip.SetDefault("-5% ranged damage, 25% chance to not consume ammo");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] {
+            Color.Red
+        };
     }
 
     public override void SetDefaults()

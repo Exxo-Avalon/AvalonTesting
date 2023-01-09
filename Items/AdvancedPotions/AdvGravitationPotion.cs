@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvGravitationPotion : ModItem
         DisplayName.SetDefault("Gravitation Elixir");
         Tooltip.SetDefault("Allows the control of gravity");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(69, 13, 131),
+            new Color(134, 34, 246),
+            new Color(170, 95, 255)
+        };
     }
 
     public override void SetDefaults()

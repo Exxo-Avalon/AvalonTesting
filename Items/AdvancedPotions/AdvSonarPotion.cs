@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvSonarPotion : ModItem
         DisplayName.SetDefault("Sonar Elixir");
         Tooltip.SetDefault("Detects hooked fish");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(217, 254, 161),
+            new Color(69, 110, 9),
+            new Color(135, 219, 11)
+        };
     }
 
     public override void SetDefaults()

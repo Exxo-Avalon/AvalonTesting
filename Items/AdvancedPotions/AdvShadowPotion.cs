@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,10 @@ class AdvShadowPotion : ModItem
         DisplayName.SetDefault("Shadow Elixir");
         Tooltip.SetDefault("Enables teleportation to the cursor");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] {
+            Color.Black,
+            Color.DarkGray
+        };
     }
 
     public override void SetDefaults()

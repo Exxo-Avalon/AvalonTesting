@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvIronskinPotion : ModItem
         DisplayName.SetDefault("Ironskin Elixir");
         Tooltip.SetDefault("Increases defense by 16");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(164, 159, 16),
+            new Color(230, 222, 10),
+            new Color(255, 252, 159)
+        };
     }
 
     public override void SetDefaults()

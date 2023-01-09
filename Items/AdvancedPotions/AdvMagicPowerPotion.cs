@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvMagicPowerPotion : ModItem
         DisplayName.SetDefault("Magic Power Elixir");
         Tooltip.SetDefault("40% increased magic damage");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(66, 13, 137),
+            new Color(103, 10, 230),
+            new Color(163, 95, 255)
+        };
     }
 
     public override void SetDefaults()

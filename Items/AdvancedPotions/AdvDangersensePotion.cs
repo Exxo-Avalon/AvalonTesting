@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvDangersensePotion : ModItem
         DisplayName.SetDefault("Dangersense Elixir");
         Tooltip.SetDefault("Allows you to see nearby traps");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(251, 105, 29),
+            new Color(220, 73, 4),
+            new Color(140, 33, 10)
+        };
     }
 
     public override void SetDefaults()

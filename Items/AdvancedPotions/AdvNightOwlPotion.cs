@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvNightOwlPotion : ModItem
         DisplayName.SetDefault("Night Owl Elixir");
         Tooltip.SetDefault("Increases night vision");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(92, 137, 13),
+            new Color(121, 184, 11),
+            new Color(189, 255, 73)
+        };
     }
 
     public override void SetDefaults()

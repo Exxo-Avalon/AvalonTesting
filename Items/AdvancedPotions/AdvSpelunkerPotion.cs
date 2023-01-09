@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvSpelunkerPotion : ModItem
         DisplayName.SetDefault("Spelunker Elixir");
         Tooltip.SetDefault("Shows the location of treasure and ore");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(146, 102, 14),
+            new Color(225, 185, 22),
+            new Color(250, 213, 64)
+        };
     }
 
     public override void SetDefaults()

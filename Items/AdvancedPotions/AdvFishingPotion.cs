@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvFishingPotion : ModItem
         DisplayName.SetDefault("Fishing Elixir");
         Tooltip.SetDefault("Increases fishing skill");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(117, 233, 164),
+            new Color(40, 199, 103),
+            new Color(30, 120, 66)
+        };
     }
 
     public override void SetDefaults()

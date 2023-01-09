@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvHunterPotion : ModItem
         DisplayName.SetDefault("Hunter Elixir");
         Tooltip.SetDefault("Shows the location of enemies");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(137, 63, 13),
+            new Color(197, 87, 13),
+            new Color(230, 98, 10)
+        };
     }
 
     public override void SetDefaults()

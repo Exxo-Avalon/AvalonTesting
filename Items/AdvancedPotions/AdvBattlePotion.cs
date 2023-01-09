@@ -12,8 +12,7 @@ class AdvBattlePotion : ModItem
         DisplayName.SetDefault("Battle Elixir");
         Tooltip.SetDefault("Increases enemy spawn rate");
         SacrificeTotal = 30;
-        ItemID.Sets.DrinkParticleColors[Type] = new Color[3]
-        {
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
             new Color(81, 60, 120),
             new Color(127, 96, 184),
             new Color(165, 142, 208)

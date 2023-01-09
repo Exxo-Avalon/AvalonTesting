@@ -58,7 +58,7 @@ class SuperRestorationPotion : ModItem
     {
         int seconds = 45;
         if (player.pStone) seconds = (int)(seconds * 0.75);
-        player.AddBuff(BuffID.PotionSickness, seconds * 60 * 60);
+        player.AddBuff(BuffID.PotionSickness, seconds * 60);
         return true;
     }
 }

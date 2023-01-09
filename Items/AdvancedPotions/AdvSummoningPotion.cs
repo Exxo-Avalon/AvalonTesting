@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvSummoningPotion : ModItem
         DisplayName.SetDefault("Summoning Elixir");
         Tooltip.SetDefault("Increases your max number of minions");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(215, 241, 109),
+            new Color(150, 178, 31),
+            new Color(105, 124, 25)
+        };
     }
 
     public override void SetDefaults()
