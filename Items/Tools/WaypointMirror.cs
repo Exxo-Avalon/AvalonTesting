@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Avalon.Systems;
 
 namespace Avalon.Items.Tools;
 
@@ -32,7 +30,7 @@ public class WaypointMirror : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Portable Pylon");
-        Tooltip.SetDefault("Right click to set a waypoint at your current location");
+        Tooltip.SetDefault("Teleports you to the last saved location\nRight click to set a waypoint at your current location\nMaximum of 1 saved location");
     }
     public override void SetDefaults()
     {
