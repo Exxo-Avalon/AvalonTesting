@@ -11,7 +11,7 @@ class ShadowPulse : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shadow Pulse");
-        Tooltip.SetDefault("The holder has pulsing outlines\nThe holder has afterimages when moving");
+        Tooltip.SetDefault("The holder has pulsing outlines\nThe holder has afterimages when moving\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()

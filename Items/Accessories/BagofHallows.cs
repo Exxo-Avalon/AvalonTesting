@@ -10,7 +10,7 @@ internal class BagofHallows : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Hallows");
-        Tooltip.SetDefault("Hallow particles cover you when you move");
+        Tooltip.SetDefault("Hallow particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

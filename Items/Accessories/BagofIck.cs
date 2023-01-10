@@ -10,7 +10,7 @@ internal class BagofIck : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Ick");
-        Tooltip.SetDefault("Icky particles cover you when you move");
+        Tooltip.SetDefault("Icky particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

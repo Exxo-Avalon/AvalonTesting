@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ class ObsidianGlove : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Obsidian Glove");
-        Tooltip.SetDefault("The wearer can place blocks and walls in midair and in lava\nProvides immunity to fire blocks");
+        Tooltip.SetDefault("The wearer can place blocks and walls in midair and in lava\nProvides immunity to fire blocks\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 
