@@ -17,7 +17,7 @@ class NickelBroadsword : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 11;
         Item.useTurn = true;
-        Item.scale = 1.15f;
+        Item.scale = 1f;
         Item.width = dims.Width;
         Item.useTime = 21;
         Item.knockBack = 5.2f;

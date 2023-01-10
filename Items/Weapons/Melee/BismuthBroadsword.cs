@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +17,7 @@ class BismuthBroadsword : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 16;
         Item.useTurn = true;
-        Item.scale = 1.2f;
+        Item.scale = 1f;
         Item.width = dims.Width;
         Item.useTime = 18;
         Item.knockBack = 5.2f;

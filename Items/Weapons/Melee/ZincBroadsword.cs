@@ -17,7 +17,7 @@ class ZincBroadsword : ModItem
         Rectangle dims = this.GetDims();
         Item.damage = 13;
         Item.useTurn = true;
-        Item.scale = 1.12f;
+        Item.scale = 1f;
         Item.width = dims.Width;
         Item.useTime = 23;
         Item.knockBack = 5.2f;

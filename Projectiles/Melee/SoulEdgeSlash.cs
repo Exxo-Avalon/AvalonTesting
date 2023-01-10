@@ -6,14 +6,14 @@ using Avalon.Projectiles.Templates;
 
 namespace Avalon.Projectiles.Melee;
 
-public class SoulEdgeSlash : SwordSwingGeneric
+public class SoulEdgeSlash : SwordSwingSwirly
 {
-    public override Color SparkleColor => new Color(99, 89, 99, 0);
+    public override Color SparkleColor => new Color(10, 10, 10, 0);
     public override Color BigSparkleColor => new Color(3, 68, 116, 0);
     public override Color color1 => new Color(6, 101, 234);
     public override Color color2 => new Color(171, 237, 255);
     public override Color color3 => color1;
-    public override float scalemod => 0.8f;
+    public override float scalemod => 1f;
     public override bool CanCutTile => true;
 
     public override int Dust1 => DustID.FireworksRGB;
@@ -45,7 +45,7 @@ public class SoulEdgeSlash : SwordSwingGeneric
 
 public class SoulEdgeSlash2 : SwordSwingGeneric
 {
-    public override Color SparkleColor => new Color(99, 89, 99, 0);
+    public override Color SparkleColor => new Color(30, 30, 80, 0);
     public override Color BigSparkleColor => new Color(3, 68, 116, 0);
     public override Color color1 => new Color(6, 101, 234);
     public override Color color2 => new Color(171, 237, 255);
