@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ internal class CloudGloves : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Cloud Glove");
-        Tooltip.SetDefault("The wearer can place blocks and walls in midair");
+        Tooltip.SetDefault("The wearer can place blocks and walls in midair\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

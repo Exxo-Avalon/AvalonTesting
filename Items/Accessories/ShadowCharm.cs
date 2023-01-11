@@ -11,7 +11,7 @@ class ShadowCharm : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shadow Charm");
-        Tooltip.SetDefault("The holder has an afterimage when moving\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
+        Tooltip.SetDefault("The holder has afterimages when moving\nWorks in the vanity slot\n[c/C39FDD:10th Anniversary Contest Winner - QuibopWon]");
         SacrificeTotal = 1;
     }
     public override void SetDefaults()

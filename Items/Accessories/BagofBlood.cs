@@ -10,7 +10,7 @@ internal class BagofBlood : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Blood");
-        Tooltip.SetDefault("Blood particles cover you when you move");
+        Tooltip.SetDefault("Blood particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 
