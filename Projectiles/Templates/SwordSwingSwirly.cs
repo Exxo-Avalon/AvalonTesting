@@ -105,24 +105,25 @@ public abstract class SwordSwingSwirly : ModProjectile
     }
     public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
     {
-        float coneLength2 = 94f * Projectile.scale * (scalemod * 0.9f);
-        float num3 = (float)Math.PI * 2f / 25f * Projectile.ai[0];
-        float maximumAngle2 = (float)Math.PI / 4f;
-        float num4 = Projectile.rotation + num3;
-        if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength2, num4, maximumAngle2))
-        {
-            return true;
-        }
-        float num5 = Utils.Remap(Projectile.localAI[0], Projectile.ai[1] * 0.3f, Projectile.ai[1] * 0.5f, 1f, 0f);
-        if (num5 > 0f)
-        {
-            float coneRotation2 = num4 - (float)Math.PI / 4f * Projectile.ai[0] * num5;
-            if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength2, coneRotation2, maximumAngle2))
-            {
-                return true;
-            }
-        }
-        return false;
+        //float coneLength2 = 94f * Projectile.scale * (scalemod * 0.9f);
+        //float num3 = (float)Math.PI * 2f / 25f * Projectile.ai[0];
+        //float maximumAngle2 = (float)Math.PI / 4f;
+        //float num4 = Projectile.rotation + num3;
+        //if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength2, num4, maximumAngle2))
+        //{
+        //    return true;
+        //}
+        //float num5 = Utils.Remap(Projectile.localAI[0], Projectile.ai[1] * 0.3f, Projectile.ai[1] * 0.5f, 1f, 0f);
+        //if (num5 > 0f)
+        //{
+        //    float coneRotation2 = num4 - (float)Math.PI / 4f * Projectile.ai[0] * num5;
+        //    if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength2, coneRotation2, maximumAngle2))
+        //    {
+        //        return true;
+        //    }
+        //}
+        //return false;
+        return (Vector2.Distance(new Vector2(targetHitbox.X, targetHitbox.Y), Projectile.Center) <= (80 * scalemod * Projectile.scale));
     }
     private static void DrawPrettyStarSparkle(float opacity, SpriteEffects dir, Vector2 drawpos, Color drawColor, Color shineColor, Color SparkleColor, Color BigSparkleColor, float flareCounter, float fadeInStart, float fadeInEnd, float fadeOutStart, float fadeOutEnd, float rotation, Vector2 scale, Vector2 fatness)
     {
