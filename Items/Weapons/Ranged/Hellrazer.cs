@@ -13,7 +13,7 @@ public class Hellrazer : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Hellrazer");
-        Tooltip.SetDefault("Fires a powerful, high velocity bullet\nMusket Balls turn into Explosive rounds"); //Nusket
+        Tooltip.SetDefault("Musket Balls turn into Explosive rounds"); //Nusket
         SacrificeTotal = 1;
     }
     public override void SetDefaults()
