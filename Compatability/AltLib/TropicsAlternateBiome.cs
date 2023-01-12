@@ -3,6 +3,7 @@ using AltLibrary.Common.AltBiomes;
 using Avalon.Tiles;
 using Avalon.Tiles.Ores;
 using Microsoft.Xna.Framework;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
@@ -30,8 +31,8 @@ internal class TropicsAlternateBiome : AltBiome
         BiomeMudWall = ModContent.WallType<Walls.TropicalMudWall>();
         BiomeGrassWall = ModContent.WallType<Walls.TropicalGrassWall>();
         BiomeJunglePlants = ModContent.TileType<TropicalShortGrass>();
-        HiveGenerationPass = new World.Passes.WaspNest();
-        TempleGenPass = new World.Passes.TuhrtlOutpost();
+        HiveGenerationPass = new World.Passes.WaspNest().Apply;
+        TempleGenPass = new World.Passes.TuhrtlOutpost().Apply;
         BiomeJungleBushes = ModContent.TileType<TropicsBushes>();
         //BiomeShrineChestType = ModContent.TileType<PlatinumChest>();
 
@@ -48,6 +49,6 @@ internal class TropicsAlternateBiome : AltBiome
     }
 
     public override string WorldIcon => "Avalon/Assets/WorldIcons/Tropics";
-    public override GenPass GetHiveGenerationPass() => new World.Passes.WaspNest();
+    public override WorldGenLegacyMethod GetHiveGenerationPass() => new World.Passes.WaspNest().Apply;
     public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";
 }
