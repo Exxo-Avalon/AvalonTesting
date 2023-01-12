@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
+using System;
 
 namespace Avalon.Projectiles.Melee;
 
@@ -42,7 +43,7 @@ public class ElementFireBeam : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 252f, 3f, 0f);
+        Lighting.AddLight(Projectile.position, 252f / 255f, 3f / 255f, 0f / 255f);
         return true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -64,6 +65,8 @@ public class ElementFireBeam : ModProjectile
 
         DiscoRGB = new Vector3(252f, 3f, 0f);
         RGB = new Color(DiscoRGB.X, DiscoRGB.Y, DiscoRGB.Z);
+
+        Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f - 0.785f;
 
         if (Projectile.localAI[1] > 7f)
         {

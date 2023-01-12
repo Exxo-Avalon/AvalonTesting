@@ -53,7 +53,7 @@ public class ElementEarthBeam : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 170f, 78f, 17f);
+        Lighting.AddLight(Projectile.position, 170f / 255f, 78f / 255f, 17f / 255f);
         return true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -75,6 +75,8 @@ public class ElementEarthBeam : ModProjectile
 
         DiscoRGB = new Vector3(170f, 78f, 17f);
         RGB = new Color(DiscoRGB.X, DiscoRGB.Y, DiscoRGB.Z);
+
+        Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f - 0.785f;
 
         if (Projectile.localAI[1] > 7f)
         {
@@ -109,7 +111,7 @@ public class ElementEarthBeam : ModProjectile
                     Projectile.velocity.X *= num928;
                     Projectile.velocity.Y += num929;
                 }
-                Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f;
+                Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f - 0.785f;
             }
         }
         if (Projectile.ai[0] == 1f)

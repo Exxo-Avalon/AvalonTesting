@@ -45,7 +45,7 @@ public class ElementWoodBeam : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 104f, 170f, 17f);
+        Lighting.AddLight(Projectile.position, 104f / 255f, 170f / 255f, 17f / 255f);
         return true;
     }
     public override void SendExtraAI(BinaryWriter writer)

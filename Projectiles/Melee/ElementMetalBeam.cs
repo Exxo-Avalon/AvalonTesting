@@ -43,7 +43,7 @@ public class ElementMetalBeam : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 196f, 142f, 238f);
+        Lighting.AddLight(Projectile.position, 196f / 255f, 142f / 255f, 238f / 255f);
         return true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)

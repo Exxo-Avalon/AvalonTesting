@@ -44,7 +44,7 @@ public class ElementWaterBeam : ModProjectile
     }
     public override bool PreAI()
     {
-        Lighting.AddLight(Projectile.position, 106f, 210f, 255f);
+        Lighting.AddLight(Projectile.position, 106f / 255f, 210f / 255f, 1f);
         return true;
     }
     public override bool OnTileCollide(Vector2 oldVelocity)
@@ -81,11 +81,11 @@ public class ElementWaterBeam : ModProjectile
         }
         int num = 0;
         Projectile.localAI[num]++;
-        Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f + 0.785f;
+        Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f - 0.785f;
         float x = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(Projectile.localAI[num] * ((float)Math.PI / Main.rand.Next(10, 15))).X;
         Vector2 value = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(1.5707963705062866);
-        //Projectile.position += value * x * Main.rand.NextFloat(1f, 1.5f)
-        Projectile.position += value * x * Main.rand.NextFloat(5f, 10.5f); //exaggerated sine wave to test trail
+        Projectile.position += value * x * Main.rand.NextFloat(2f, 4.5f);
+        //Projectile.position += value * x * Main.rand.NextFloat(5f, 10.5f); //exaggerated sine wave to test trail
     }
     public override void Kill(int timeLeft)
     {
