@@ -55,7 +55,7 @@ public class WaypointMirror : ModItem
         Item.useStyle = ItemUseStyleID.HoldUp;
         Item.useAnimation = 25;
         Item.height = dims.Height;
-        Item.UseSound = SoundID.Item;
+        Item.UseSound = SoundID.Item6;
    }
     public override bool AltFunctionUse(Player player)
     {
