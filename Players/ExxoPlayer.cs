@@ -32,7 +32,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Avalon.Players;
+namespace Avalon.Players
+{
 
 public class ExxoPlayer : ModPlayer
 {
@@ -258,11 +259,10 @@ public class ExxoPlayer : ModPlayer
         Main.NewText("You are using Exxo Avalon: Origins " + Avalon.Mod.Version);
         Main.NewText("Please note that Exxo Avalon: Origins is in beta - it will have many bugs");
         Main.NewText("Please also note that Exxo Avalon: Origins will interact strangely with other large mods");
-        foreach (Vector2 v in wpMirrorLocations)
-        {
-            Main.NewText(v.ToString());
-        }
-    }
+	if(!WaypointSystem.wpDict.Keys.ToList().Any(x => x == player.name)){
+	WaypointSystem.wpDict.Add(player.name, Vector2.Zero);
+	}
+	    }
 
     public override void UpdateEquips()
     {
@@ -2228,4 +2228,5 @@ public class ExxoPlayer : ModPlayer
 
 
     #endregion fields
+}
 }

@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using Avalon.Players;
 using Microsoft.Xna.Framework;
@@ -6,33 +7,45 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Avalon.Systems;
+using System.Linq;
+using System.IO;
 
-namespace Avalon.Items.Tools;
+namespace Avalon.Items.Tools{
 
-internal class WaypointSystem : ModSystem{
-        public static Vector2 savedLocation;
+public class WaypointSystem : ModSystem{
+	
+       // public static Vector2 savedLocation;
+        //public static string playerName;
+        public static IDictionary<string, Vector2> wpDict = new Dictionary<string, Vector2>();
         public override void OnWorldLoad(){
-        savedLocation = Vector2.Zero;
-        }
+	wpDict.Clear();
+        } 
+	
         public override void SaveWorldData(TagCompound tag)
         {
-        tag["savedLocation"] = savedLocation;
+      	tag.Add("names", wpDict.Keys.ToList());
+	tag.Add("locations", wpDict.Values.ToList());
         }
         public override void LoadWorldData(TagCompound tag)
         {
-        savedLocation = tag.Get<Vector2>("savedLocation");
+	IList<string> names = tag.GetList<string>("names");
+	IList<Vector2> locations = tag.GetList<Vector2>("locations");
+	wpDict.Clear();
+	for(int i = 0;i<names.Count;i++){
+	wpDict.Add(names[i], locations[i]);
+	}
         }
+	
+        
     
     }
 public class WaypointMirror : ModItem
 {
     
-    public List<Vector2> savedLocations = new List<Vector2>();
-    public List<int> WorldIDs = new List<int>();
     public override void SetStaticDefaults()
     {
         Tooltip.SetDefault("Right click to set a waypoint at your current location");
-    }
+    }    
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
@@ -44,8 +57,8 @@ public class WaypointMirror : ModItem
         Item.useStyle = ItemUseStyleID.HoldUp;
         Item.useAnimation = 25;
         Item.height = dims.Height;
-        Item.UseSound = SoundID.Item6;
-    }
+        Item.UseSound = SoundID.Item;
+   }
     public override bool AltFunctionUse(Player player)
     {
         return true;
@@ -54,11 +67,11 @@ public class WaypointMirror : ModItem
     {
         if (player.altFunctionUse == 2 && player.itemTime == Item.useTime / 2)
         {
-            WaypointSystem.savedLocation = player.Center+ new Vector2(0, -15);
+		WaypointSystem.wpDict[player.name]= player.Center + new Vector2(0, -15);
+            
             Main.NewText("Set waypoint to current location.");
         }
-        else
-        {
+        else{
             if (player.itemTime == 0)
             {
                 player.itemTime = Item.useTime;
@@ -66,7 +79,7 @@ public class WaypointMirror : ModItem
             else if (player.itemTime == Item.useTime / 2)
             {
                 
-                if (WaypointSystem.savedLocation != Vector2.Zero)
+                if (WaypointSystem.wpDict[player.name] != Vector2.Zero)
                 {
                     for (int num345 = 0; num345 < 70; num345++)
                     {
@@ -81,8 +94,8 @@ public class WaypointMirror : ModItem
                             Main.projectile[num346].Kill();
                         }
                     }
-                    player.Teleport(WaypointSystem.savedLocation);
-                    NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, WaypointSystem.savedLocation.X, WaypointSystem.savedLocation.Y, 0);
+                    player.Teleport(WaypointSystem.wpDict[player.name]);
+                    //NetMessage.SendData(MessageID.Teleport, -1, -1, null, 0, player.whoAmI, WaypointSystem.savedLocation.X, WaypointSystem.savedLocation.Y, 0);
                     for (int num347 = 0; num347 < 70; num347++)
                     {
                         Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.5f);
@@ -95,4 +108,20 @@ public class WaypointMirror : ModItem
             }
         }
     }
+    public override void NetSend(BinaryWriter writer){
+	writer.Write(WaypointSystem.wpDict.Count);
+	foreach (KeyValuePair<string,Vector2> pair in WaypointSystem.wpDict)
+	{
+	writer.Write(pair.Key);
+ 	 writer.WriteVector2(pair.Value);
+	}
+	}
+	public override void NetReceive(BinaryReader reader){
+	int count = reader.ReadInt32();
+	for(int i = 0; i<count;i++){
+		WaypointSystem.wpDict.Add(reader.ReadString(), reader.ReadPackedVector2()); 
+	}		
+	}	
+
+}
 }
