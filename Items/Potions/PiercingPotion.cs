@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class PiercingPotion : ModItem
         DisplayName.SetDefault("Piercing Potion");
         Tooltip.SetDefault("Increases projectile penetration");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Teal
+        };
     }
 
     public override void SetDefaults()

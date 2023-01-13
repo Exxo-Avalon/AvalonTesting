@@ -10,7 +10,7 @@ class Omnibag : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Omnibag");
-        Tooltip.SetDefault("A lot of particles cover you when you move");
+        Tooltip.SetDefault("A lot of particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

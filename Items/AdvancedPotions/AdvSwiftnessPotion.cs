@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvSwiftnessPotion : ModItem
         DisplayName.SetDefault("Swiftness Elixir");
         Tooltip.SetDefault("50% increased movement speed");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(83, 137, 13),
+            new Color(100, 164, 16),
+            new Color(134, 230, 10)
+        };
     }
 
     public override void SetDefaults()

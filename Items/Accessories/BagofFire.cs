@@ -10,7 +10,7 @@ internal class BagofFire : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Fire");
-        Tooltip.SetDefault("Flame particles cover you when you move");
+        Tooltip.SetDefault("Flame particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

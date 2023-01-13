@@ -14,6 +14,10 @@ public class FuryPotion : ModItem
         DisplayName.SetDefault("Fury Potion");
         Tooltip.SetDefault("Increases critical strike damage by 50%");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.GreenYellow
+        };
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class SupersonicPotion : ModItem
         DisplayName.SetDefault("Supersonic Potion");
         Tooltip.SetDefault("Increases movement speed to the maximum");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Gray
+        };
     }
 
     public override void SetDefaults()

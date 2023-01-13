@@ -11,6 +11,10 @@ class TimeShiftPotion : ModItem
         DisplayName.SetDefault("Time Shift Potion");
         Tooltip.SetDefault("Slows time down");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Tan
+        };
     }
 
     public override void SetDefaults()

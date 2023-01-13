@@ -12,6 +12,11 @@ class AdvCratePotion : ModItem
         DisplayName.SetDefault("Crate Elixir");
         Tooltip.SetDefault("Increases chance to get a crate");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(233, 175, 117),
+            new Color(199, 120, 40),
+            new Color(143, 89, 36)
+        };
     }
 
     public override void SetDefaults()

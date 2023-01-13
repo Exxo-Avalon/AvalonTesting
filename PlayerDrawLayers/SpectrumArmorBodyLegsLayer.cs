@@ -71,6 +71,7 @@ public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
                     (int)(drawInfo.Position.X - Main.screenPosition.X - (p.bodyFrame.Width / 2) + (p.width / 2)),
                     (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.bodyFrame.Height + 4f)) +
                 p.headPosition + vector3, p.bodyFrame, rb, p.headRotation, vector3, 1f, spriteEffects, 0);
+            value.shader = drawInfo.cHead;
             drawInfo.DrawDataCache.Add(value);
         }
 
@@ -127,6 +128,7 @@ public class SpectrumArmorBodyLegsLayer : PlayerDrawLayer
                 new Vector2((int)(drawInfo.Position.X - Main.screenPosition.X - (p.legFrame.Width / 2) + (p.width / 2)),
                     (int)(drawInfo.Position.Y - Main.screenPosition.Y + p.height - p.legFrame.Height + 4f)) +
                 p.legPosition + vector2, p.legFrame, rb, p.legRotation, vector2, 1f, spriteEffects, 0);
+            value.shader = drawInfo.cLegs;
             drawInfo.DrawDataCache.Add(value);
         }
     }

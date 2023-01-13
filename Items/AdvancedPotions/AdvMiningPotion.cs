@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvMiningPotion : ModItem
         DisplayName.SetDefault("Mining Elixir");
         Tooltip.SetDefault("Increases mining speed");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(55, 92, 95),
+            new Color(84, 149, 154),
+            new Color(149, 196, 200)
+        };
     }
 
     public override void SetDefaults()

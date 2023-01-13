@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class VisionPotion : ModItem
         DisplayName.SetDefault("Vision Potion");
         Tooltip.SetDefault("Open caves light up\nCurrently not functional");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Green
+        };
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvWisdomPotion : ModItem
         DisplayName.SetDefault("Wisdom Elixir");
         Tooltip.SetDefault("-4% magic damage, +120 mana");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Maroon };
     }
 
     public override void SetDefaults()

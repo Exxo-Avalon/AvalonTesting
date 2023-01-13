@@ -1,6 +1,5 @@
 
 using System.Collections.Generic;
-using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -39,13 +38,22 @@ public class WaypointSystem : ModSystem{
         
     
     }
+    public override void SaveWorldData(TagCompound tag)
+    {
+        tag["savedLocation"] = savedLocation;
+    }
+    public override void LoadWorldData(TagCompound tag)
+    {
+        savedLocation = tag.Get<Vector2>("savedLocation");
+    }
+}
 public class WaypointMirror : ModItem
 {
-    
     public override void SetStaticDefaults()
     {
-        Tooltip.SetDefault("Right click to set a waypoint at your current location");
-    }    
+        DisplayName.SetDefault("Portable Pylon");
+        Tooltip.SetDefault("Teleports you to the last saved location\nRight click to set a waypoint at your current location\nMaximum of 1 saved location");
+    }
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();

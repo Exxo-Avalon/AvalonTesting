@@ -117,62 +117,62 @@ public class AvalonGlobalProjectile : GlobalProjectile
     }
     public override void AI(Projectile projectile)
     {
-        if (projectile.type == ProjectileID.TerraBeam)
-        {
-            if (projectile.ai[1] == -2)
-            {
-                projectile.ai[1] = -1;
-                SoundEngine.PlaySound(SoundID.Item8, projectile.position);
-            }
-        }
-        Player p = Main.player[projectile.owner];
-        if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
-        {
-            Rectangle hitbox = projectile.Hitbox;
-            int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, 0f, 0f, 100, default, 2.2f);
-            Main.dust[d].noGravity = true;
-            Main.dust[d].velocity *= 2f;
-        }
-        if (p.GetModPlayer<ExxoEquipEffectPlayer>().TerraClaws && projectile.DamageType == DamageClass.Melee)
-        {
-            Rectangle hitbox = projectile.Hitbox;
-            float s = 1.5f;
-            int rn = Main.rand.Next(5);
-            switch (rn)
-            {
-                case 0:
-                    rn = DustID.Poisoned;
-                    s =1.4f;
-                    break;
-                case 1:
-                    rn = DustID.IceTorch;
-                    s = 1.4f;
-                    break;
-                case 2:
-                    rn = DustID.Torch;
-                    s = 1.4f;
-                    break;
-                case 3:
-                    rn = DustID.VenomStaff;
-                    s = 1.4f;
-                    break;
-                case 4:
-                    rn = DustID.IchorTorch;
-                    s = 1.4f;
-                    break;
-            }
-            int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, rn, 0f, 0f, 100, default, s);
-            Main.dust[d].noGravity = true;
-            Main.dust[d].velocity *= 2f;
-        }
-        if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Piercing>()) && projectile.penetrate != -1)
-        {
-            if (!projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp)
-            {
-                projectile.penetrate++;
-                projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp = true;
-            }
-        }
+        //if (projectile.type == ProjectileID.TerraBeam)
+        //{
+        //    if (projectile.ai[1] == -2)
+        //    {
+        //        projectile.ai[1] = -1;
+        //        SoundEngine.PlaySound(SoundID.Item8, projectile.position);
+        //    }
+        //}
+        //Player p = Main.player[projectile.owner];
+        //if (p.GetModPlayer<ExxoEquipEffectPlayer>().FrostGauntlet && projectile.DamageType == DamageClass.Melee)
+        //{
+        //    Rectangle hitbox = projectile.Hitbox;
+        //    int d = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, 0f, 0f, 100, default, 2.2f);
+        //    Main.dust[d].noGravity = true;
+        //    Main.dust[d].velocity *= 2f;
+        //}
+        //if (p.GetModPlayer<ExxoEquipEffectPlayer>().TerraClaws && projectile.DamageType == DamageClass.Melee)
+        //{
+        //    Rectangle hitbox = projectile.Hitbox;
+        //    float s = 1.5f;
+        //    int rn = Main.rand.Next(5);
+        //    switch (rn)
+        //    {
+        //        case 0:
+        //            rn = DustID.Poisoned;
+        //            s = 1.4f;
+        //            break;
+        //        case 1:
+        //            rn = DustID.IceTorch;
+        //            s = 1.4f;
+        //            break;
+        //        case 2:
+        //            rn = DustID.Torch;
+        //            s = 1.4f;
+        //            break;
+        //        case 3:
+        //            rn = DustID.VenomStaff;
+        //            s = 1.4f;
+        //            break;
+        //        case 4:
+        //            rn = DustID.IchorTorch;
+        //            s = 1.4f;
+        //            break;
+        //    }
+        //    int d = Dust.NewDust(new(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, rn, 0f, 0f, 100, default, s);
+        //    Main.dust[d].noGravity = true;
+        //    Main.dust[d].velocity *= 2f;
+        //}
+        //if (Main.player[projectile.owner].HasBuff(ModContent.BuffType<Piercing>()) && projectile.penetrate != -1)
+        //{
+        //    if (!projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp)
+        //    {
+        //        projectile.penetrate++;
+        //        projectile.GetGlobalProjectile<AvalonGlobalProjectileInstance>().PiercingUp = true;
+        //    }
+        //}
     }
     public override void NumGrappleHooks(Projectile projectile, Player player, ref int numHooks)
     {

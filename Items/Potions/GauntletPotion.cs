@@ -11,6 +11,7 @@ class GauntletPotion : ModItem
         DisplayName.SetDefault("Gauntlet Potion");
         Tooltip.SetDefault("-6 defense, +12% melee damage");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.DarkSlateBlue };
     }
 
     public override void SetDefaults()

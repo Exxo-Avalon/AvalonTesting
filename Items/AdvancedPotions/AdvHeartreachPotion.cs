@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvHeartreachPotion : ModItem
         DisplayName.SetDefault("Heartreach Elixir");
         Tooltip.SetDefault("Increases pickup range for life hearts");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(91, 8, 106),
+            new Color(184, 9, 131),
+            new Color(250, 64, 188)
+        };
     }
 
     public override void SetDefaults()

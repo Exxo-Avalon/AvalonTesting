@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvLeapingPotion : ModItem
         DisplayName.SetDefault("Leaping Elixir");
         Tooltip.SetDefault("Increases vertical acceleration");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.DarkOrange };
     }
 
     public override void SetDefaults()

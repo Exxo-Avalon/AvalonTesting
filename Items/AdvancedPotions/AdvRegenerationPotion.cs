@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvRegenerationPotion : ModItem
         DisplayName.SetDefault("Regeneration Elixir");
         Tooltip.SetDefault("Increases life regeneration");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(174, 13, 97),
+            new Color(255, 156, 209),
+            new Color(255, 56, 162)
+        };
     }
     public override void SetDefaults()
     {

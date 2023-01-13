@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class LeapingPotion : ModItem
         DisplayName.SetDefault("Leaping Potion");
         Tooltip.SetDefault("Increases vertical acceleration");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.DarkOrange
+        };
     }
 
     public override void SetDefaults()

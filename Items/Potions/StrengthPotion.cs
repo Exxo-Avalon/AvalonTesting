@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class StrengthPotion : ModItem
         DisplayName.SetDefault("Strength Potion");
         Tooltip.SetDefault("Increases all stats");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.DarkBlue
+        };
     }
 
     public override void SetDefaults()

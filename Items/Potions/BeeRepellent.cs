@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,10 @@ class BeeRepellent : ModItem
         DisplayName.SetDefault("Bee Repellent");
         Tooltip.SetDefault("Provides immunity to Hornets");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Goldenrod
+        };
     }
 
     public override void SetDefaults()

@@ -12,6 +12,7 @@ class AdvFuryPotion : ModItem
         DisplayName.SetDefault("Fury Elixir");
         Tooltip.SetDefault("Increases critical strike damage by 75%");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Lime };
     }
 
     public override void SetDefaults()

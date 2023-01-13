@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvAmmoReservationPotion : ModItem
         DisplayName.SetDefault("Ammo Reservation Elixir");
         Tooltip.SetDefault("Gives 30% chance to not consume ammo");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(166, 166, 166),
+            new Color(255, 186, 0),
+            new Color(165, 58, 0)
+        };
     }
 
     public override void SetDefaults()

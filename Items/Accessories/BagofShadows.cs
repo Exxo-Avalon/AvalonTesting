@@ -10,7 +10,7 @@ internal class BagofShadows : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Shadows");
-        Tooltip.SetDefault("Shadow particles cover you when you move");
+        Tooltip.SetDefault("Shadow particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

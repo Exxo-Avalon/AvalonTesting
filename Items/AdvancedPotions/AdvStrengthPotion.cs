@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvStrengthPotion : ModItem
         DisplayName.SetDefault("Strength Elixir");
         Tooltip.SetDefault("Increases all stats");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] { Color.DarkBlue, Color.Indigo };
     }
 
     public override void SetDefaults()

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvTitanPotion : ModItem
         DisplayName.SetDefault("Titan Elixir");
         Tooltip.SetDefault("Increases knockback");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(159, 224, 124),
+            new Color(92, 175, 46),
+            new Color(51, 95, 27)
+        };
     }
 
     public override void SetDefaults()

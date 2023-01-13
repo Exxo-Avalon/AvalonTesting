@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvWarmthPotion : ModItem
         DisplayName.SetDefault("Warmth Elixir");
         Tooltip.SetDefault("Reduces damage from cold sources");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(255, 51, 0),
+            new Color(248, 184, 0),
+            new Color(255, 215, 0)
+        };
     }
 
     public override void SetDefaults()

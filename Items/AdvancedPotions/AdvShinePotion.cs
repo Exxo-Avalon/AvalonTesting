@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvShinePotion : ModItem
         DisplayName.SetDefault("Shine Elixir");
         Tooltip.SetDefault("Emits an aura of light");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(133, 137, 13),
+            new Color(222, 230, 10),
+            new Color(252, 254, 161)
+        };
     }
 
     public override void SetDefaults()

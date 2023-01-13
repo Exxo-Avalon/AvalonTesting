@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +10,7 @@ internal class BagofFrost : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Bag of Frost");
-        Tooltip.SetDefault("Frostburn particles cover you when you move");
+        Tooltip.SetDefault("Frostburn particles cover you when you move\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

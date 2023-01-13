@@ -12,6 +12,10 @@ class AuraPotion : ModItem
         DisplayName.SetDefault("Aura Potion");
         Tooltip.SetDefault("On-screen enemies take damage");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1]
+        {
+            Color.Red
+        };
     }
 
     public override void SetDefaults()

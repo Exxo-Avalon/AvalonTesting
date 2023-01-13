@@ -74,6 +74,9 @@ public class Starfall : ModItem
                 Vector2 vector3 = new Vector2(num311, num312) / 2f;
                 int p = Projectile.NewProjectile(player.GetSource_ItemUse(Item), vector.X, vector.Y, vector3.X, vector3.Y, ProjectileID.FallingStar, (int)(player.GetDamage(DamageClass.Magic).ApplyTo(Item.damage)), Item.knockBack, player.whoAmI, 0f, ai2);
                 Main.projectile[p].owner = player.whoAmI;
+                Main.projectile[p].velocity = new Vector2(18, 0).RotatedBy(Main.projectile[p].position.DirectionTo(Main.MouseWorld).ToRotation());
+                Main.projectile[p].usesLocalNPCImmunity = true;
+                Main.projectile[p].localNPCHitCooldown = 200;
             }
         }
         return true;

@@ -12,6 +12,7 @@ class ElixirofLife : ModItem
         DisplayName.SetDefault("Elixir of Life");
         Tooltip.SetDefault("'It refreshes you'");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[1] { Color.Red };
     }
 
     public override void SetDefaults()

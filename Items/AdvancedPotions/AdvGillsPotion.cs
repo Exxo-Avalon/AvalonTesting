@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvGillsPotion : ModItem
         DisplayName.SetDefault("Gills Elixir");
         Tooltip.SetDefault("Breathe water instead of air");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(13, 74, 137),
+            new Color(16, 89, 164),
+            new Color(10, 119, 230)
+        };
     }
 
     public override void SetDefaults()

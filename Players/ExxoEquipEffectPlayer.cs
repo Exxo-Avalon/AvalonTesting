@@ -84,6 +84,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool AncientGunslinger;
     public bool AncientMinionGuide;
     public bool AncientSandVortex;
+    public bool AncientRangedBonus;
+    public bool AncientRangedBonusActive;
 
     public bool BlahArmor;
     public bool DoubleDamage;
@@ -156,6 +158,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         AncientGunslinger = false;
         AncientMinionGuide = false;
         AncientSandVortex = false;
+        AncientRangedBonus = false;
         FrenzyStance = false;
         CaesiumBoost = false;
         OblivionKill = false;
@@ -393,8 +396,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
         }
         if (AncientSandVortex && Main.rand.NextBool(10))
         {
-            Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
-                ModContent.ProjectileType<AncientSandnado>(), 0, 0);
+            Player.immuneTime = 120;
+            //Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero, ModContent.ProjectileType<AncientSandnado>(), 0, 0);
         }
         if (FrostGauntlet && item.DamageType == DamageClass.Melee)
         {
@@ -440,7 +443,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
                 Player.AddBuff(ModContent.BuffType<BlessingofAvalon>(), 120);
             }
         }
-        if (target.life <= 0 && AncientGunslinger && proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
+        if (target.life <= 0 && AncientRangedBonusActive && proj.owner == Main.myPlayer && proj.DamageType == DamageClass.Ranged)
         {
             Projectile.NewProjectile(Player.GetSource_OnHit(target), target.position, Vector2.Zero,
                 ModContent.ProjectileType<SandyExplosion>(), damage * 2, knockback);
@@ -530,6 +533,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
         if (CaesiumBoost && !Player.mount.Active)
         {
             CaesiumBoostActive = !CaesiumBoostActive;
+        }
+        if (AncientRangedBonusActive && !Player.mount.Active)
+        {
+            AncientRangedBonusActive = !AncientRangedBonusActive;
         }
     }
 
@@ -928,6 +935,14 @@ public class ExxoEquipEffectPlayer : ModPlayer
             Player.accRunSpeed *= 0.3f;
             Player.maxRunSpeed *= 0.3f;
         }
+        if (AncientRangedBonusActive)
+        {
+            Player.GetDamage(DamageClass.Ranged) += 0.15f;
+            Player.GetCritChance(DamageClass.Ranged) += 10;
+            Player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.6f;
+            Player.endurance -= 0.075f;
+            Player.statDefense /= 2;
+        }
         if (!FrenzyStance)
         {
             FrenzyStanceActive = false;
@@ -935,6 +950,10 @@ public class ExxoEquipEffectPlayer : ModPlayer
         if (!CaesiumBoost)
         {
             CaesiumBoostActive = false;
+        }
+        if (!AncientRangedBonus)
+        {
+            AncientRangedBonusActive = false;
         }
     }
     public override void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit, int cooldownCounter)

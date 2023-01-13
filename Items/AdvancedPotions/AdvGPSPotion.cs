@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,7 @@ class AdvGPSPotion : ModItem
         DisplayName.SetDefault("GPS Elixir");
         Tooltip.SetDefault("GPS Effect");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2] { Color.Red, Color.Blue };
     }
 
     public override void SetDefaults()

@@ -11,6 +11,11 @@ class ImmortalityPotion : ModItem
         DisplayName.SetDefault("Immortality Potion");
         Tooltip.SetDefault("Resurrect in place with 33% life when you are killed\nHas a 180 second cooldown");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2]
+        {
+            Color.Red,
+            Color.Salmon
+        };
     }
 
     public override void SetDefaults()

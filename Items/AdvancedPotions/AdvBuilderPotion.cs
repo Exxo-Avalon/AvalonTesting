@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvBuilderPotion : ModItem
         DisplayName.SetDefault("Builder Elixir");
         Tooltip.SetDefault("Increased placement speed and range");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(100, 67, 50),
+            new Color(141, 93, 68),
+            new Color(182, 126, 97)
+        };
     }
 
     public override void SetDefaults()

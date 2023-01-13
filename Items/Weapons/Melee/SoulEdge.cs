@@ -52,8 +52,10 @@ class SoulEdge : ModItem
     }*/
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position, new Vector2(player.direction, 0), ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash2>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
-        Projectile.NewProjectile(source, position, new Vector2(player.direction, 0), ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+        Projectile.NewProjectile(source, position, new Vector2(0.1f,0).RotatedBy(velocity.ToRotation()), ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax * 1.3f);
+
+        int p1 = Projectile.NewProjectile(source, position, new Vector2(player.direction, 0), ModContent.ProjectileType<Projectiles.Melee.SoulEdgeSlash2>(), damage, knockback, player.whoAmI, player.direction * player.gravDir, player.itemAnimationMax);
+
         int numberProjectiles = 2 + Main.rand.Next(2); // 4 or 5 shots
         for (int i = 0; i < numberProjectiles; i++)
         {

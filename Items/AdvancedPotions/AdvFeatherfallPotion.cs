@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvFeatherfallPotion : ModItem
         DisplayName.SetDefault("Featherfall Elixir");
         Tooltip.SetDefault("Slows falling speed");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(13, 106, 137),
+            new Color(10, 176, 230),
+            new Color(146, 229, 255)
+        };
     }
 
     public override void SetDefaults()

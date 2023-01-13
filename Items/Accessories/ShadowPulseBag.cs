@@ -11,7 +11,7 @@ class ShadowPulseBag : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Shadow Pulse Bag");
-        Tooltip.SetDefault("A lot of particles cover you when you move\nThe holder has pulsing outlines\nThe holder has afterimages when moving");
+        Tooltip.SetDefault("A lot of particles cover you when you move\nThe holder has pulsing outlines\nThe holder has afterimages when moving\nWorks in the vanity slot");
         SacrificeTotal = 1;
     }
 

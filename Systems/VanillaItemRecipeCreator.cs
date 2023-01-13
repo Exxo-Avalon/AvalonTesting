@@ -122,12 +122,6 @@ public class VanillaItemRecipeCreator : ModSystem
             .AddIngredient(ItemID.RainCloud, 80)
             .AddTile(TileID.MythrilAnvil).Register();
 
-        Recipe.Create(ItemID.TerraBlade)
-            .AddIngredient(ModContent.ItemType<TrueAeonsEternity>())
-            .AddIngredient(ItemID.TrueExcalibur)
-            .AddIngredient(ItemID.BrokenHeroSword)
-            .AddTile(TileID.MythrilAnvil).Register();
-
         Recipe.Create(ItemID.LihzahrdPowerCell)
             .AddIngredient(ModContent.ItemType<SolariumStar>(), 5)
             .AddIngredient(ItemID.LihzahrdBrick, 10)

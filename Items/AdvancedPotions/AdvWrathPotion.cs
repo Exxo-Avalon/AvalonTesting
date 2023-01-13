@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvWrathPotion : ModItem
         DisplayName.SetDefault("Wrath Elixir");
         Tooltip.SetDefault("Increases damage by 20%");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(120, 36, 30),
+            new Color(216, 73, 63),
+            new Color(233, 125, 117)
+        };
     }
 
     public override void SetDefaults()

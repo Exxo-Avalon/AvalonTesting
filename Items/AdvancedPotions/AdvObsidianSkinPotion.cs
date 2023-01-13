@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvObsidianSkinPotion : ModItem
         DisplayName.SetDefault("Obsidian Skin Elixir");
         Tooltip.SetDefault("Provides immunity to lava");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(58, 48, 102),
+            new Color(90, 72, 168),
+            new Color(132, 116, 199)
+        };
     }
     public override void SetDefaults()
     {

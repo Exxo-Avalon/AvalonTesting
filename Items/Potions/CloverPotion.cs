@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +11,11 @@ class CloverPotion : ModItem
         DisplayName.SetDefault("Clover Potion");
         Tooltip.SetDefault("Doubles rare drop chance");
         SacrificeTotal = 20;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[2]
+        {
+            Color.Lime,
+            Color.Yellow
+        };
     }
 
     public override void SetDefaults()

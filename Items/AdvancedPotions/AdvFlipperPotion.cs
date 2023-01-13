@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvFlipperPotion : ModItem
         DisplayName.SetDefault("Flipper Elixir");
         Tooltip.SetDefault("Lets you move swiftly in liquids");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(95, 194, 255),
+            new Color(12, 109, 167),
+            new Color(13, 76, 115)
+        };
     }
 
     public override void SetDefaults()

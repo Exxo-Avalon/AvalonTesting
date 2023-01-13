@@ -14,7 +14,7 @@ internal class QuadroCannon : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Quadro Cannon");
-        Tooltip.SetDefault("Four round burst\nOnly the first shot consumes ammo and fires a spread of bullets");
+        Tooltip.SetDefault("Four round burst\nOnly the first shot consumes ammo\nFires a spread of bullets");
         SacrificeTotal = 1;
     }
 

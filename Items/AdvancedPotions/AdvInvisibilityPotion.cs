@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvInvisibilityPotion : ModItem
         DisplayName.SetDefault("Invisibility Elixir");
         Tooltip.SetDefault("Grants invisibility");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(9, 101, 110),
+            new Color(15, 164, 177),
+            new Color(34, 229, 246)
+        };
     }
 
     public override void SetDefaults()

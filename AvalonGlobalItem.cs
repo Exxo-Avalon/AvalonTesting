@@ -773,6 +773,15 @@ public class AvalonGlobalItem : GlobalItem
                     }
                 }
                 break;
+            case ItemID.HighTestFishingLine:
+                foreach (TooltipLine tooltip in tooltips)
+                {
+                    if (tooltip.Name == "Tooltip0")
+                    {
+                        tooltip.Text = "Fishing line will never break\nWorks in the vanity slot";
+                    }
+                }
+                break;
             case ItemID.Seed:
                 foreach (TooltipLine tooltip in tooltips)
                 {

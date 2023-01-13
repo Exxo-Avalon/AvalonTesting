@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,6 +12,11 @@ class AdvWaterWalkingPotion : ModItem
         DisplayName.SetDefault("Water Walking Elixir");
         Tooltip.SetDefault("Allows the ability to walk on liquids");
         SacrificeTotal = 30;
+        ItemID.Sets.DrinkParticleColors[Type] = new Color[3] {
+            new Color(12, 63, 131),
+            new Color(16, 79, 164),
+            new Color(34, 124, 246)
+        };
     }
 
     public override void SetDefaults()
