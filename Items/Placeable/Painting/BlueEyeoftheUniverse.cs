@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 
 namespace Avalon.Items.Placeable.Painting;
 
-class EyeoftheUniverse : ModItem
+class BlueEyeoftheUniverse : ModItem
 {
     public override void SetStaticDefaults()
     {
-        DisplayName.SetDefault("Eye of the Universe");
-        Tooltip.SetDefault("'The Nomai symbol for the center of the Universe'");
+        DisplayName.SetDefault("Energized Eye of the Universe");
+        Tooltip.SetDefault("'It came from the outer wilds'");
         SacrificeTotal = 1;
     }
 
@@ -21,7 +21,7 @@ class EyeoftheUniverse : ModItem
         Item.consumable = true;
         Item.rare = ModContent.RarityType<Rarities.MagentaRarity>();
         Item.createTile = ModContent.TileType<Tiles.EyeoftheUniverse>();
-        Item.placeStyle = 0;
+        Item.placeStyle = 1;
         Item.width = dims.Width;
         Item.useTurn = true;
         Item.useTime = 10;

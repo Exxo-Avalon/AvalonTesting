@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,8 +30,32 @@ public class EyeoftheUniverse : ModTile
         AddMapEntry(new Color(120, 85, 60), name);
     }
 
+    public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+    {
+        Tile tile = Main.tile[i, j];
+        var zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
+        if (Main.drawToScreen)
+        {
+            zero = Vector2.Zero;
+        }
+
+        Vector2 pos = new Vector2(i * 16, j * 16) + zero - Main.screenPosition;
+        var frame = new Rectangle(tile.TileFrameX, tile.TileFrameY, 16, 16);
+        Main.spriteBatch.Draw(Mod.Assets.Request<Texture2D>("Tiles/EyeoftheUniverse_Glow").Value, pos, frame,
+            Color.White);
+    }
+
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
-        Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, ModContent.ItemType<Items.Placeable.Painting.EyeoftheUniverse>());
+        int item = 0;
+        switch (frameY / 214)
+        {
+            case 0: item = ModContent.ItemType<Items.Placeable.Painting.EyeoftheUniverse>(); break;
+            case 1: item = ModContent.ItemType<Items.Placeable.Painting.BlueEyeoftheUniverse>(); break;
+        }
+        if (item > 0)
+        {
+            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 48, 48, item);
+        }
     }
 }
