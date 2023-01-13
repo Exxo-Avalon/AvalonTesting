@@ -49,5 +49,5 @@ internal class TropicsAlternateBiome : AltBiome
 
     public override string WorldIcon => "Avalon/Assets/WorldIcons/Tropics";
     public override GenPass GetHiveGenerationPass() => new World.Passes.WaspNest();
-    public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";*/
-}
+    public override string IconSmall => "Avalon/Assets/Bestiary/TropicsIcon";
+}*/
