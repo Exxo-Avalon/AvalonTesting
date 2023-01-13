@@ -27,7 +27,7 @@ class ElementalExcalibur : ModItem
         Item.noMelee = false;
         Item.useTime = 15;
         Item.knockBack = 8.5f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ElementWaterBeam>();
+        Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ElementEarthBeam>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 90, 0, 0);
@@ -92,6 +92,9 @@ class ElementalExcalibur : ModItem
             Projectile.NewProjectile(Terraria.Entity.GetSource_None(), position, velocity, ModContent.ProjectileType<Projectiles.Melee.ElementWoodBeam>(), damage, knockback, player.whoAmI);
         }
         else swingCounter = 0;
+
+
+
         //for (int i = 0; i < 5; i++)
         //{
         //    float vX = velocity.X + Main.rand.Next(-80, 81) * 0.05f;
