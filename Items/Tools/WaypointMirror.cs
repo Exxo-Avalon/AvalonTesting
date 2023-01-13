@@ -23,29 +23,19 @@ public class WaypointSystem : ModSystem{
         public override void SaveWorldData(TagCompound tag)
         {
       	tag.Add("names", wpDict.Keys.ToList());
-	tag.Add("locations", wpDict.Values.ToList());
+	    tag.Add("locations", wpDict.Values.ToList());
         }
         public override void LoadWorldData(TagCompound tag)
         {
-	IList<string> names = tag.GetList<string>("names");
-	IList<Vector2> locations = tag.GetList<Vector2>("locations");
-	wpDict.Clear();
-	for(int i = 0;i<names.Count;i++){
-	wpDict.Add(names[i], locations[i]);
-	}
+	    IList<string> names = tag.GetList<string>("names");
+	    IList<Vector2> locations = tag.GetList<Vector2>("locations");
+	    wpDict.Clear();
+	        for(int i = 0;i<names.Count;i++)
+            {
+	        wpDict.Add(names[i], locations[i]);
+	        }
         }
 	
-        
-    
-    }
-    public override void SaveWorldData(TagCompound tag)
-    {
-        tag["savedLocation"] = savedLocation;
-    }
-    public override void LoadWorldData(TagCompound tag)
-    {
-        savedLocation = tag.Get<Vector2>("savedLocation");
-    }
 }
 public class WaypointMirror : ModItem
 {
