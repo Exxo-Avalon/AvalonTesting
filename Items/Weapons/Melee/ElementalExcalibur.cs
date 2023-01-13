@@ -22,16 +22,16 @@ class ElementalExcalibur : ModItem
         Item.autoReuse = true;
         Item.UseSound = SoundID.Item1;
         Item.scale = 1.2f;
-        Item.shootSpeed = 13f;
+        Item.shootSpeed = 10f;
         Item.rare = ModContent.RarityType<Rarities.RainbowRarity>();
         Item.noMelee = false;
-        Item.useTime = 15;
+        Item.useTime = 22;
         Item.knockBack = 8.5f;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.ElementEarthBeam>();
         Item.DamageType = DamageClass.Melee;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 90, 0, 0);
-        Item.useAnimation = 10;
+        Item.useAnimation = 20;
         Item.useTurn = false;
     }
     public override Color? GetAlpha(Color lightColor)

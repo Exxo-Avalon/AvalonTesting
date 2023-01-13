@@ -84,7 +84,7 @@ public class ElementWaterBeam : ModProjectile
         Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2f - 0.785f;
         float x = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(Projectile.localAI[num] * ((float)Math.PI / Main.rand.Next(10, 15))).X;
         Vector2 value = Projectile.velocity.SafeNormalize(Vector2.Zero).RotatedBy(1.5707963705062866);
-        Projectile.position += value * x * Main.rand.NextFloat(2f, 4.5f);
+        Projectile.position += value * x * Main.rand.NextFloat(3f, 6f);
         //Projectile.position += value * x * Main.rand.NextFloat(5f, 10.5f); //exaggerated sine wave to test trail
     }
     public override void Kill(int timeLeft)
