@@ -8,8 +8,6 @@ namespace Avalon.Items.Accessories;
 
 public class AstrallineArtifact : ModItem
 {
-    private int AstralCooldown;
-
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Astralline Artifact");
@@ -22,7 +20,7 @@ public class AstrallineArtifact : ModItem
     public override void SetDefaults()
     {
         Rectangle dims = this.GetDims();
-        Item.rare = 1;
+        Item.rare = -12;
         Item.width = dims.Width;
         Item.accessory = true;
         Item.value = Item.sellPrice(0, 15);
@@ -32,13 +30,12 @@ public class AstrallineArtifact : ModItem
 
     public override void ModifyTooltips(List<TooltipLine> tooltips)
     {
-        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "Time before you can astral project: " + AstralCooldown / 60 + " seconds");
+        var AstralCooldownInfo = new TooltipLine(Mod, "Controls:AstralCooldown", "Time before you can astral project: " + Main.LocalPlayer.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown / 60 + " seconds");
         tooltips.Add(AstralCooldownInfo);
     }
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetModPlayer<ExxoEquipEffectPlayer>().AstralProject = true;
-        AstralCooldown = player.GetModPlayer<ExxoEquipEffectPlayer>().AstralCooldown;
     }
 }
