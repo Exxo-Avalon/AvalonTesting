@@ -55,12 +55,33 @@ public class AvalonGlobalTile : GlobalTile
         {
             fail = true;
         }
+        if (type == TileID.LargePiles)
+        {
+            if (Main.tile[i, j].TileFrameX == 6 * 54 || Main.tile[i, j].TileFrameY == 15 * 54)
+            {
+                if (WorldGen.genRand.NextBool(2))
+                {
+                    int a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
+                        ModContent.ItemType<BrokenHiltPiece>());
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
+                        Main.item[a].playerIndexTheItemIsReservedFor = Player.FindClosest(Main.item[a].position, 8, 8);
+                    }
+                }
+            }
+        }
         // Sometimes drop icicles from ice stalactites
         if (type == TileID.Stalactite && Main.tile[i, j].TileFrameX < 54 &&
             Main.tile[i, j].TileFrameY is 0 or 72 && Main.rand.NextBool(2))
         {
-            Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
+            int a = Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16,
                 ModContent.ItemType<Icicle>());
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.SyncItem, -1, -1, NetworkText.FromLiteral(""), a, 0f, 0f, 0f, 0);
+                Main.item[a].playerIndexTheItemIsReservedFor = Player.FindClosest(Main.item[a].position, 8, 8);
+            }
         }
         // four leaf clover drops
         if (type is TileID.CorruptPlants or TileID.JunglePlants or TileID.JunglePlants2 or TileID.CrimsonPlants or TileID.Plants)

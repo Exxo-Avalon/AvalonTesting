@@ -33,20 +33,20 @@ public class ReplaceChestItems : GenPass
                         i.SetDefaults(ModContent.ItemType<GlacierStaff>());
                         i.Prefix(-1);
                     }
-                    if (i != null && i.type == ItemID.EnchantedBoomerang)
-                    {
-                        i.SetDefaults(ModContent.ItemType<EnchantedBar>());
-                        i.stack = WorldGen.genRand.Next(35, 49);
-                    }
+                    //if (i != null && i.type == ItemID.EnchantedBoomerang)
+                    //{
+                    //    i.SetDefaults(ModContent.ItemType<EnchantedBar>());
+                    //    i.stack = WorldGen.genRand.Next(35, 49);
+                    //}
                     if (WorldBiomeManager.WorldJungle == "Avalon/TropicsAlternateBiome")
                     {
-                        if (i != null && i.type == ItemID.Boomstick)
+                        if (i?.type == ItemID.Boomstick)
                         {
                             i.SetDefaults(ModContent.ItemType<Thompson>());
                             i.Prefix(-1);
                         }
                     }
-                    if (i != null && i.type == ItemID.StaffofRegrowth && WorldGen.genRand.NextBool(2))
+                    if (i?.type == ItemID.StaffofRegrowth && WorldGen.genRand.NextBool(2))
                     {
                         i.SetDefaults(ModContent.ItemType<FlowerofTheJungle>());
                         i.Prefix(-1);

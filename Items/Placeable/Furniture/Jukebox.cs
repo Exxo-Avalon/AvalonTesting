@@ -30,4 +30,12 @@ class Jukebox : ModItem
         Item.useAnimation = 15;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.MusicBox, 3)
+            .AddIngredient(ItemID.PixieDust, 20)
+            .AddIngredient(ItemID.SoulofFlight, 10)
+            .AddTile(TileID.Bookcases).Register();
+    }
 }

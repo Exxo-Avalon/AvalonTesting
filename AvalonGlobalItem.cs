@@ -72,6 +72,11 @@ public class AvalonGlobalItem : GlobalItem
 
         switch (item.type)
         {
+            case ItemID.MagicMirror:
+            case ItemID.IceMirror:
+            case ItemID.CellPhone:
+                item.useTime = item.useAnimation = 30;
+                break;
             case ItemID.Mushroom:
                 item.potion = false;
                 item.healLife = 0;

@@ -1,6 +1,7 @@
 using Avalon.Items.Accessories;
 using Avalon.Items.Material;
 using Avalon.Items.Ore;
+using Avalon.Items.Placeable.Bar;
 using Avalon.Items.Placeable.Tile;
 using Avalon.Items.Weapons.Melee;
 using Avalon.Items.Weapons.Throw;
@@ -130,6 +131,11 @@ public class VanillaItemRecipeCreator : ModSystem
         Recipe.Create(ItemID.ShroomiteBar)
             .AddIngredient(ModContent.ItemType<ShroomiteOre>(), 5)
             .AddTile(TileID.AdamantiteForge).Register();
+
+        Recipe.Create(ItemID.EnchantedSword)
+            .AddIngredient(ModContent.ItemType<EnchantedBar>(), 20)
+            .AddIngredient(ModContent.ItemType<BrokenHiltPiece>(), 3)
+            .AddTile(TileID.Anvils).Register();
 
         Recipe.Create(ItemID.TurtleHelmet)
             .AddIngredient(ItemID.ChlorophyteMask)

@@ -19,11 +19,11 @@ class TeamMirror : ModItem
         Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.LightPurple;
         Item.width = dims.Width;
-        Item.useTime = 90;
+        Item.useTime = 30;
         Item.useTurn = true;
         Item.value = Item.sellPrice(0, 2, 0, 0);
         Item.useStyle = ItemUseStyleID.HoldUp;
-        Item.useAnimation = 90;
+        Item.useAnimation = 30;
         Item.height = dims.Height;
         Item.UseSound = SoundID.Item6;
     }

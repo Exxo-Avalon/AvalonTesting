@@ -21,12 +21,12 @@ class ShadowMirror : ModItem
         Rectangle dims = this.GetDims();
         Item.rare = ItemRarityID.Cyan;
         Item.width = dims.Width;
-        Item.useTime = 90;
+        Item.useTime = 30;
         Item.useTurn = true;
         Item.value = 500000;
         Item.useStyle = ItemUseStyleID.HoldUp;
         Item.UseSound = SoundID.Item6;
-        Item.useAnimation = 90;
+        Item.useAnimation = 30;
         Item.height = dims.Height;
     }
     public override void AddRecipes()

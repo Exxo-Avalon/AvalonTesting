@@ -1,4 +1,6 @@
+using Avalon.Items.Placeable.Bar;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,5 +31,11 @@ class EnchantedShuriken : ModItem
         Item.value = 30;
         Item.useAnimation = 15;
         Item.height = dims.Height;
+    }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type, 25)
+            .AddIngredient(ModContent.ItemType<EnchantedBar>())
+            .AddTile(TileID.Anvils).Register();
     }
 }

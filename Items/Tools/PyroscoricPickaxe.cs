@@ -24,7 +24,7 @@ class PyroscoricPickaxe : ModItem
         Item.autoReuse = true;
         Item.useTurn = true;
         Item.scale = 1.15f;
-        Item.pick = 240;
+        Item.pick = 245;
         Item.rare = ModContent.RarityType<MagentaRarity>();
         Item.width = dims.Width;
         Item.useTime = 9;

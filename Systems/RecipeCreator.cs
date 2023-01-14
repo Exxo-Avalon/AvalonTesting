@@ -571,27 +571,6 @@ public class RecipeCreator : ModSystem
         //.SetResult(ModContent.ItemType<Items.Venoshock>())
         //.AddRecipe()
 
-        Recipe.Create(ModContent.ItemType<MusicBoxEssence>())
-            .AddIngredient(ItemID.MusicBoxTitle)
-            .AddIngredient(ItemID.MusicBoxSnow)
-            .AddIngredient(ItemID.MusicBoxDesert)
-            .AddIngredient(ItemID.MusicBoxSpace)
-            .AddIngredient(ItemID.MusicBoxCrimson)
-            .AddIngredient(ItemID.MusicBoxDungeon)
-            .AddIngredient(ItemID.MusicBoxPlantera)
-            .AddIngredient(ItemID.MusicBoxTemple)
-            .AddIngredient(ItemID.MusicBoxEclipse)
-            .AddIngredient(ItemID.MusicBoxPumpkinMoon)
-            .AddIngredient(ItemID.MusicBoxFrostMoon)
-            .AddTile(TileID.Bookcases).Register();
-
-        Recipe.Create(ModContent.ItemType<Jukebox>())
-            .AddIngredient(ItemID.MusicBox, 2)
-            .AddIngredient(ItemID.PixieDust, 20)
-            .AddIngredient(ItemID.SoulofFlight, 10)
-            .AddIngredient(ModContent.ItemType<MusicBoxEssence>())
-            .AddTile(TileID.Bookcases).Register();
-
         Recipe.Create(ModContent.ItemType<Heartstone>(), 45)
             .AddIngredient(ItemID.LifeCrystal)
             .AddTile(TileID.Furnaces).Register();
@@ -603,19 +582,6 @@ public class RecipeCreator : ModSystem
         Recipe.Create(ModContent.ItemType<Shurikerang>())
             .AddIngredient(ItemID.EnchantedBoomerang)
             .AddIngredient(ItemID.Shuriken, 50)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ItemID.EnchantedBoomerang)
-            .AddIngredient(ModContent.ItemType<EnchantedBar>(), 12)
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ModContent.ItemType<EnchantedShuriken>(), 25)
-            .AddIngredient(ModContent.ItemType<EnchantedBar>())
-            .AddTile(TileID.Anvils).Register();
-
-        Recipe.Create(ItemID.EnchantedSword)
-            .AddIngredient(ModContent.ItemType<EnchantedBar>(), 20)
-            .AddIngredient(ModContent.ItemType<BrokenHiltPiece>(), 3)
             .AddTile(TileID.Anvils).Register();
 
         Recipe.Create(ModContent.ItemType<InfestedCarcass>())

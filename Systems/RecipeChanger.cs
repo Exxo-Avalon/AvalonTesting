@@ -33,6 +33,15 @@ public class RecipeChanger : ModSystem
                     }
                     break;
                 }
+                case ItemID.EnchantedBoomerang:
+                {
+                    if (recipe.TryGetIngredient(ItemID.FallenStar, out Item ing))
+                    {
+                        recipe.RemoveIngredient(ing);
+                        recipe.AddIngredient(ModContent.ItemType<EnchantedBar>());
+                    }
+                    break;
+                }
                 case ItemID.AnkhCharm:
                 {
                     recipe.AddIngredient(ModContent.ItemType<Items.Accessories.Bayonet>());
