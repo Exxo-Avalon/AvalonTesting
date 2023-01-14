@@ -1,4 +1,7 @@
 using System;
+using Avalon.Network;
+using Avalon.Network.Handlers;
+using Avalon.Players;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -171,7 +174,9 @@ public class Soul : ModProjectile
         }
         else
         {
-            if (Vector2.Distance(Projectile.position - Main.screenPosition, Main.MouseScreen) < 5)
+            Vector2 mousePos = Main.player[Projectile.owner].GetModPlayer<ExxoPlayer>().MousePosition;
+
+            if (Vector2.Distance(Projectile.position - Main.screenPosition, mousePos) < 5)
             {
                 readyToHome = false;
             }
@@ -187,11 +192,11 @@ public class Soul : ModProjectile
             if (readyToHome)
             {
                 Vector2 startPosition = Projectile.position - Main.screenPosition;
-                if (Collision.CanHitLine(Projectile.position - Main.screenPosition, Projectile.width, Projectile.height, Main.MouseScreen, 1, 1))
+                if (Collision.CanHitLine(Projectile.position - Main.screenPosition, Projectile.width, Projectile.height, mousePos, 1, 1))
                 {
                     //Main.NewText("Mouse Screen: " + Main.MouseScreen);
                     //Main.NewText(Projectile.position / 32);
-                    Vector2 target = Main.MouseScreen;
+                    Vector2 target = mousePos;
                     float distance = Vector2.Distance(target, startPosition);
                     Vector2 goTowards = Vector2.Normalize(target - startPosition) * ((homeDistance - distance) / (homeDistance / homeStrength));
 
@@ -200,6 +205,10 @@ public class Soul : ModProjectile
                     if (Projectile.velocity.Length() > maxSpeed)
                     {
                         Projectile.velocity = Vector2.Normalize(Projectile.velocity) * maxSpeed;
+                    }
+                    if (Main.netMode != NetmodeID.SinglePlayer)
+                    {
+                        ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(Main.player[Projectile.owner]));
                     }
                 }
             }
