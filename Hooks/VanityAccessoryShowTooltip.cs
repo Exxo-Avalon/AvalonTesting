@@ -20,7 +20,8 @@ internal class VanityAccessoryShowTooltip : ModHook
             item.type == ModContent.ItemType<Items.Accessories.BagofFire>() || item.type == ModContent.ItemType<Items.Accessories.BagofFrost>() ||
             item.type == ModContent.ItemType<Items.Accessories.BagofHallows>() || item.type == ModContent.ItemType<Items.Accessories.BagofIck>() ||
             item.type == ModContent.ItemType<Items.Accessories.BagofShadows>() || item.type == ModContent.ItemType<Items.Accessories.Omnibag>() ||
-            item.type == ModContent.ItemType<Items.Accessories.CloudGloves>() || item.type == ModContent.ItemType<Items.Accessories.ObsidianGlove>()))
+            item.type == ModContent.ItemType<Items.Accessories.CloudGloves>() || item.type == ModContent.ItemType<Items.Accessories.ObsidianGlove>() ||
+            item.type == ModContent.ItemType<Items.Accessories.PulseCharm>()))
         {
             item.social = false;
         }
