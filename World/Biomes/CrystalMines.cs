@@ -264,8 +264,6 @@ internal class CrystalMines
                 }
                 WorldGen.noTileActions = false;
                 #endregion vertical tunnels
-
-
                 #region caps
                 // right side caps
                 if (j >= origin.Y + tunnel1YPos && j <= origin.Y + tunnel1YPos + tunnelHeight &&
@@ -334,11 +332,7 @@ internal class CrystalMines
                         tile.ResetToType((ushort)ModContent.TileType<Tiles.CrystalStone>());
                     }
                 }
-
-
-
                 #endregion caps
-
             }
         }
         int spacingFloor1 = WorldGen.genRand.Next(10, 14);

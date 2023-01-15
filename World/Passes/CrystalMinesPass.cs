@@ -20,6 +20,7 @@ internal class CrystalMinesPass : GenPass
         {
             float num615 = (float)num614 / amtOfBiomes;
             Point point = WorldGen.RandomRectanglePoint((int)(num615 * (Main.maxTilesX - 160)) + 80, (int)Main.rockLayer + 20, (int)num613, Main.maxTilesY - ((int)Main.rockLayer + 40) - 275);
+            Utils.GetCMXCoord(point.X, point.Y, 120, 110, ref point.X);
             //CrystalMinesRunner(point.X, point.Y, 150, 150);
             //Biomes<World.Biomes.CrystalMinesHouseBiome>.Place(new Point(point.X, point.Y), null);
             //num614++;
