@@ -396,6 +396,48 @@ class Utils
         }
     }
 
+    public static void GetCMXCoord(int x, int y, int xLength, int ylength, ref int xCoord)
+    {
+        bool leftSideActive = false;
+        bool rightSideActive = false;
+        for (int i = y; i < y + ylength; i++)
+        {
+            if (Main.tile[x, i].HasTile && (Main.tile[x, i].TileType == TileID.LihzahrdBrick ||
+                Main.tile[x, i].TileType == ModContent.TileType<ImperviousBrick>() || Main.tileDungeon[Main.tile[x, i].TileType]) ||
+                Main.tile[x, i].WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[Main.tile[x, i].WallType])
+            {
+                leftSideActive = true;
+                break;
+            }
+        }
+        for (int i = y; i < y + ylength; i++)
+        {
+            if (Main.tile[x + xLength, i].HasTile && (Main.tile[x + xLength, i].TileType == TileID.LihzahrdBrick ||
+                Main.tile[x + xLength, i].TileType == ModContent.TileType<ImperviousBrick>() || Main.tileDungeon[Main.tile[x + xLength, i].TileType]) ||
+                Main.tile[x + xLength, i].WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[Main.tile[x + xLength, i].WallType])
+            {
+                rightSideActive = true;
+                break;
+            }
+        }
+        if (leftSideActive || rightSideActive)
+        {
+            if (xCoord > Main.maxTilesX / 2) xCoord--;
+            else xCoord++;
+            if (xCoord < 100)
+            {
+                xCoord = 100;
+                return;
+            }
+            if (xCoord > Main.maxTilesX - 100)
+            {
+                xCoord = Main.maxTilesX - 100;
+                return;
+            }
+            GetCMXCoord(xCoord, y, xLength, ylength, ref xCoord);
+        }
+    }
+
     /// <summary>
     /// Generic version of the Sky Fortress shift method. Does not currently work - will crash the game when used.
     /// </summary>
