@@ -10,7 +10,7 @@ class DimlightFigure : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Dimlight Figure");
-        Tooltip.SetDefault("You have a chance to become untargetable");
+        Tooltip.SetDefault("You have a chance to gain reduced aggro and become immune to nearby enemies");
         SacrificeTotal = 1;
     }
 

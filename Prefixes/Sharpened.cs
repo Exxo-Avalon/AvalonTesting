@@ -12,6 +12,6 @@ public class Sharpened : ExxoPrefix
 
     public override void UpdateOwnerPlayer(Player player)
     {
-        player.GetArmorPenetration(DamageClass.Generic)++;
+        player.GetArmorPenetration(DamageClass.Generic) += 2;
     }
 }

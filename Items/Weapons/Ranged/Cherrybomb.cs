@@ -4,6 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Avalon.Players;
+using Avalon.Network.Handlers;
+using Avalon.Network;
 
 namespace Avalon.Items.Weapons.Ranged;
 
@@ -50,9 +53,16 @@ class Cherrybomb : ModItem
     {
         SoundEngine.PlaySound(shoot, player.Center);
 
-        player.velocity += Vector2.Normalize(player.Center - Main.MouseWorld) * 7.5f;
+        Vector2 mousePos = player.GetModPlayer<ExxoPlayer>().MousePosition;
 
-        Vector2 pos = player.Center + new Vector2(10, -8 * player.direction).RotatedBy(player.AngleTo(Main.MouseWorld));
+        player.velocity += Vector2.Normalize(player.Center - mousePos) * 7.5f;
+
+        Vector2 pos = player.Center + new Vector2(10, -8 * player.direction).RotatedBy(player.AngleTo(mousePos));
+
+        if (Main.netMode != NetmodeID.SinglePlayer)
+        {
+            ModContent.GetInstance<SyncMouse>().Send(new BasicPlayerNetworkArgs(player));
+        }
 
         position.X = pos.X;
         position.Y = pos.Y;

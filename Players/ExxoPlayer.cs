@@ -707,31 +707,13 @@ public class ExxoPlayer : ModPlayer
 
     public override void SaveData(TagCompound tag)
     {
-        #region stuff2
         tag["CrystalHealth"] = CrystalHealth;
         tag["SHMAcc"] = shmAcc;
         tag["SpiritPoppyUseCount"] = spiritPoppyUseCount;
-        #endregion
-        //if (!wpMirrorWorldIDs.Contains(Main.worldID))
-        //{
-        //    wpMirrorWorldIDs.Add(Main.worldID);
-        //}
-        //tag["SavedWorldIDs"] = wpMirrorWorldIDs;
-        //List<Vector2> locs = new List<Vector2>();
-        //if (wpMirrorLocations.Count > 0)
-        //{
-        //    foreach (int i in wpMirrorWorldIDs)
-        //    {
-        //        locs.Add(wpMirrorLocations[wpMirrorWorldIDs.IndexOf(i)]);
-        //    }
-        //    wpMirrorLocations.AddRange(locs);
-        //    tag["SavedLocations2"] = wpMirrorLocations;
-        //}
     }
 
     public override void LoadData(TagCompound tag)
     {
-        #region stuff
         if (tag.ContainsKey("CrystalHealth"))
         {
             CrystalHealth = tag.Get<int>("CrystalHealth");
@@ -747,19 +729,6 @@ public class ExxoPlayer : ModPlayer
         {
             spiritPoppyUseCount = tag.Get<int>("SpiritPoppyUseCount");
         }
-        #endregion
-
-        //if (tag.ContainsKey("SavedWorldIDs"))
-        //{
-        //    wpMirrorWorldIDs = tag.Get<List<int>>("SavedWorldIDs");
-        //}
-        //if (tag.ContainsKey("SavedLocations2"))
-        //{
-        //    if (wpMirrorWorldIDs.Contains(Main.worldID))
-        //    {
-        //        wpMirrorLocations.AddRange(tag.Get<List<Vector2>>("SavedLocations2"));
-        //    }
-        //}
     }
     public override void PostUpdate()
     {

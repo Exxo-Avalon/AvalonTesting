@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +12,7 @@ class ReflexShield : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Reflex Shield");
-        Tooltip.SetDefault("Gives a chance to reflect projectiles and immunity to most debuffs\nGrants immunity to fire blocks and knockback");
+        Tooltip.SetDefault("The holder will reflect most projectiles\nGrants immunity to most debuffs\nGrants immunity to fire blocks and knockback");
         SacrificeTotal = 1;
     }
 
@@ -28,7 +28,7 @@ class ReflexShield : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<ReflexCharm>()).AddIngredient(ItemID.AnkhShield).AddIngredient(ModContent.ItemType<GoldenShield>()).AddIngredient(ModContent.ItemType<OxygenTank>()).AddIngredient(ModContent.ItemType<Vortex>()).AddIngredient(ModContent.ItemType<NuclearExtinguisher>()).AddIngredient(ItemID.PocketMirror).AddTile(TileID.TinkerersWorkbench).Register();
+        CreateRecipe(1).AddIngredient(ModContent.ItemType<ReflexCharm>()).AddIngredient(ItemID.AnkhShield).AddIngredient(ModContent.ItemType<GoldenShield>()).AddIngredient(ModContent.ItemType<OxygenTank>()).AddIngredient(ModContent.ItemType<Vortex>()).AddIngredient(ModContent.ItemType<NuclearExtinguisher>()).AddTile(TileID.TinkerersWorkbench).Register();
     }
     public override void UpdateAccessory(Player player, bool hideVisual)
     {

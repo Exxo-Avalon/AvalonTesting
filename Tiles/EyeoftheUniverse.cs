@@ -48,7 +48,7 @@ public class EyeoftheUniverse : ModTile
     public override void KillMultiTile(int i, int j, int frameX, int frameY)
     {
         int item = 0;
-        switch (frameY / 214)
+        switch (frameY / 160)
         {
             case 0: item = ModContent.ItemType<Items.Placeable.Painting.EyeoftheUniverse>(); break;
             case 1: item = ModContent.ItemType<Items.Placeable.Painting.BlueEyeoftheUniverse>(); break;

@@ -89,6 +89,8 @@ public abstract class ExxoPrefix : ModPrefix
             (player, damageClass) => player.GetKnockback(damageClass).Additive);
         StatModifierDifference(lines, "PrefixAccCritChance", "critical strike chance", origPlayer, modifiedPlayer,
             (player, damageClass) => player.GetCritChance(damageClass) / 100f);
+        BasicDifference(lines, "PrefixAccArmorPen", "armor penetration", (int)(modifiedPlayer.GetArmorPenetration(DamageClass.Generic) - origPlayer.GetArmorPenetration(DamageClass.Generic)), percentage: false);
+
         BasicDifference(lines, "PrefixAccEndurance", "damage taken", -(modifiedPlayer.endurance - origPlayer.endurance),
             true);
         BasicDifference(lines, "PrefixAccMaxMana", "mana", modifiedPlayer.statManaMax2 - origPlayer.statManaMax2);
