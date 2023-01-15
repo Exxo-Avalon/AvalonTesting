@@ -30,6 +30,8 @@ class TheSun : ModProjectile
         //projectile.ownerHitCheck = true;
         Projectile.tileCollide = false;
         Projectile.DamageType = DamageClass.Magic;
+        Projectile.localNPCHitCooldown = 60;
+        Projectile.usesLocalNPCImmunity= true;
     }
     public override bool PreDraw(ref Color lightColor)
     {
@@ -55,7 +57,7 @@ class TheSun : ModProjectile
         for (var num57 = 0; num57 < npc.Length; num57++)
         {
             var nPC = npc[num57];
-            if (nPC.active && !nPC.dontTakeDamage && !nPC.friendly && nPC.life >= 1 && nPC.getRect().Intersects(value2))
+            if (nPC.active && !nPC.dontTakeDamage && !nPC.friendly && nPC.life >= 1 && nPC.getRect().Intersects(value2) && Projectile.localNPCImmunity[nPC.whoAmI] == Projectile.localNPCHitCooldown)
             {
                 if (Projectile.ai[0] % 15 == 0) nPC.StrikeNPC(Projectile.damage, Projectile.knockBack, (nPC.Center.X < Projectile.Center.X) ? -1 : 1, false, false);
             }

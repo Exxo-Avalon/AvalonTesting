@@ -108,7 +108,7 @@ class ChargingStar : ModProjectile
         O.itemTime = 2;
         O.itemAnimation = 2;
         float Dist = 60;
-        P.position = new Vector2(O.itemLocation.X + (float)((float)Math.Cos(targetrotation) * Dist) * 0.66f, O.itemLocation.Y + (float)((float)Math.Sin(targetrotation) * Dist) * 0.66f);
+        P.Center = Main.player[Projectile.owner].Center + new Vector2(60,0).RotatedBy(Projectile.rotation); //new Vector2(O.itemLocation.X + (float)((float)Math.Cos(targetrotation) * Dist) * 0.66f, O.itemLocation.Y + (float)((float)Math.Sin(targetrotation) * Dist) * 0.66f);
         if (P.velocity.X < 0)
         {
             P.direction = -1;

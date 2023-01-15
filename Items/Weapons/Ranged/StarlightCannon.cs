@@ -34,5 +34,9 @@ public class StarlightCannon : ModItem
         Item.UseSound = new SoundStyle($"{nameof(Avalon)}/Sounds/Item/Charging");
         Item.value = 15500000;
     }
+    public override Vector2? HoldoutOffset()
+    {
+        return new Vector2(-4, 0);
+    }
 
 }
