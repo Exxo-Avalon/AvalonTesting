@@ -34,13 +34,13 @@ class TheSun : ModProjectile
     public override bool PreDraw(ref Color lightColor)
     {
         Main.spriteBatch.End();
-        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null);
+        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
         return true;
     }
     public override void PostDraw(Color lightColor)
     {
         Main.spriteBatch.End();
-        Main.spriteBatch.Begin();
+        Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
     }
     public override void AI()
     {
