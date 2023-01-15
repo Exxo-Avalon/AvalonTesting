@@ -346,6 +346,7 @@ public class AvalonGlobalNPC : GlobalNPC
             if (r == 3) result += " went over par.";
             if (r == 4) result += " fell in a hole.";
             if (r == 5) result += "'s club hit back.";
+            if (r == 6) result += " was sucked into hell.";
         }
         else if (type == NPCID.BestiaryGirl)
         {
