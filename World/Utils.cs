@@ -404,7 +404,9 @@ class Utils
         {
             if (Main.tile[x, i].HasTile && (Main.tile[x, i].TileType == TileID.LihzahrdBrick ||
                 Main.tile[x, i].TileType == ModContent.TileType<ImperviousBrick>() || Main.tileDungeon[Main.tile[x, i].TileType]) ||
-                Main.tile[x, i].WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[Main.tile[x, i].WallType])
+                Main.tile[x, i].WallType == WallID.LihzahrdBrickUnsafe ||
+                Main.tile[x, i].WallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() ||
+                Main.wallDungeon[Main.tile[x, i].WallType])
             {
                 leftSideActive = true;
                 break;
@@ -414,7 +416,9 @@ class Utils
         {
             if (Main.tile[x + xLength, i].HasTile && (Main.tile[x + xLength, i].TileType == TileID.LihzahrdBrick ||
                 Main.tile[x + xLength, i].TileType == ModContent.TileType<ImperviousBrick>() || Main.tileDungeon[Main.tile[x + xLength, i].TileType]) ||
-                Main.tile[x + xLength, i].WallType == WallID.LihzahrdBrickUnsafe || Main.wallDungeon[Main.tile[x + xLength, i].WallType])
+                Main.tile[x + xLength, i].WallType == WallID.LihzahrdBrickUnsafe ||
+                Main.tile[x + xLength, i].WallType == ModContent.WallType<Walls.ImperviousBrickWallUnsafe>() ||
+                Main.wallDungeon[Main.tile[x + xLength, i].WallType])
             {
                 rightSideActive = true;
                 break;
@@ -622,7 +626,7 @@ class Utils
     /// A helper method to find the actual surface of the world.
     /// </summary>
     /// <param name="positionX">The x position.</param>
-    /// <returns></returns>
+    /// <returns>The surface of the world.</returns>
     public static int TileCheck(int positionX)
     {
         for (int i = (int)(WorldGen.worldSurfaceLow - 30); i < Main.maxTilesY; i++)
@@ -641,7 +645,6 @@ class Utils
         {
             for (int j = y; j < y + 5; j++)
             {
-                
                 WorldGen.KillTile(i, j, noItem: true);
                 Main.tile[i, j].TileType = TileID.Stone;
                 Tile t = Main.tile[i, j];
