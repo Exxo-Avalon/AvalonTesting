@@ -325,8 +325,9 @@ public class ExxoBuffPlayer : ModPlayer
     }
     public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
     {
-        if (Player.HasItem(ModContent.ItemType<Items.Weapons.Blah.BlahsEnergyBlade>()) && Main.rand.NextBool(100) &&
-            !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()))
+        if (Player.GetModPlayer<ExxoEquipEffectPlayer>().BenevolentWard && Main.rand.NextBool(75) &&
+            !Player.HasBuff(ModContent.BuffType<BenevolentWard>()) && !Player.HasBuff(ModContent.BuffType<WardCurse>()) &&
+            Player.GetModPlayer<ExxoEquipEffectPlayer>().WardCD == 0)
         {
             Player.AddBuff(ModContent.BuffType<BenevolentWard>(), 8 * 60);
         }

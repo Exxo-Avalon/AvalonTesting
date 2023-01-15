@@ -62,6 +62,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public bool RiftGoggles;
     public bool UndeadImmune;
     public bool LightningInABottle;
+    public bool BenevolentWard;
     #endregion accessories
 
     #region extras
@@ -69,6 +70,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     public int AstralCooldown = 3600;
     public const int MaxAstralCooldown = 3600; //constraint cooldown, make it no more than max.
     private int[] doubleTapTimer = new int[2];
+    public int WardCD;
     #endregion extras
 
     #region armor
@@ -147,6 +149,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         RiftGoggles = false;
         UndeadImmune = false;
         LightningInABottle = false;
+        BenevolentWard = false;
 
         // armor
         HyperMagic = false;
@@ -332,7 +335,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
     }
     public override void OnHitByNPC(NPC npc, int damage, bool crit)
     {
-        if (Dimlight && Main.rand.NextBool(10) && !Player.HasBuff(ModContent.BuffType<Untargetable>()))
+        if (Dimlight && Main.rand.NextBool(25) && !Player.HasBuff(ModContent.BuffType<Untargetable>()))
         {
             Player.AddBuff(ModContent.BuffType<Untargetable>(), 60 * 5);
         }
@@ -909,6 +912,8 @@ public class ExxoEquipEffectPlayer : ModPlayer
         }
         #endregion rift goggles
 
+        WardCD--;
+        if (WardCD < 0) WardCD = 0;
 
         Vector2 pposTile = Player.Center / 16;
         for (int xpos = (int)pposTile.X - 4; xpos <= (int)pposTile.X + 4; xpos++)

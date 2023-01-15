@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,6 +36,13 @@ class SupersonicPotion : ModItem
     }
     public override void AddRecipes()
     {
-        CreateRecipe(1).AddIngredient(ModContent.ItemType<Material.Holybird>()).AddIngredient(ItemID.Cobweb, 5).AddIngredient(ItemID.Cloud).AddIngredient(ItemID.SoulofLight).AddIngredient(ModContent.ItemType<Material.BottledLava>()).AddTile(TileID.Bottles).Register();
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<Material.Holybird>())
+            .AddIngredient(ItemID.Cobweb, 5)
+            .AddIngredient(ItemID.Cloud)
+            .AddIngredient(ModContent.ItemType<Material.LifeDew>())
+            .AddIngredient(ModContent.ItemType<Material.BottledLava>())
+            .AddTile(TileID.Bottles)
+            .Register();
     }
 }

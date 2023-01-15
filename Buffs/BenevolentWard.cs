@@ -11,6 +11,8 @@ public class BenevolentWard : ModBuff
     {
         DisplayName.SetDefault("Benevolent Ward");
         Description.SetDefault("You are absorbing damage");
+        Main.debuff[Type] = true;
+        BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
     }
 
     public override void Update(Player player, ref int buffIndex)

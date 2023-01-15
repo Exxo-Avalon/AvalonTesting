@@ -25,6 +25,7 @@ public class WardCurse : ModBuff
         if (player.buffTime[buffIndex] == 0)
         {
             player.GetModPlayer<ExxoBuffPlayer>().WardCurseDOT = 0;
+            player.GetModPlayer<ExxoEquipEffectPlayer>().WardCD = 60 * 45;
         }
     }
 }
