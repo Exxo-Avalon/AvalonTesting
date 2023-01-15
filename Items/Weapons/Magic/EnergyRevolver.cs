@@ -35,7 +35,7 @@ class EnergyRevolver : ModItem
     }
     public override Vector2? HoldoutOffset()
     {
-        return new Vector2(-10f, 0f);
+        return new Vector2(-4f, 0);
     }
     public override void AddRecipes()
     {
