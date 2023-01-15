@@ -339,7 +339,7 @@ public class AvalonGlobalNPC : GlobalNPC
         }
         else if (type == NPCID.Golfer)
         {
-            int r = Main.rand.Next(6);
+            int r = Main.rand.Next(7);
             if (r == 0) result += " didn't yell \"fore!\"";
             if (r == 1) result += " was hit in the head by a golf ball.";
             if (r == 2) result += " got a triple bogey.";
