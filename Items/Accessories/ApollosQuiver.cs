@@ -35,6 +35,6 @@ class ApollosQuiver : ModItem
         player.magicQuiver = true;
         player.arrowDamage += 0.15f;
         player.GetCritChance(DamageClass.Ranged) += 5;
-        player.GetModPlayer<Players.ExxoPlayer>().CritDamageMult += 0.25f;
+        player.GetModPlayer<Players.ExxoPlayer>().RangedCritDamage += 0.25f;
     }
 }

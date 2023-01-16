@@ -14,6 +14,6 @@ public class Fury : ModBuff
 
     public override void Update(Player player, ref int buffIndex)
     {
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.2f;
+        player.GetModPlayer<ExxoPlayer>().AllCritDamage(0.2f);
     }
 }

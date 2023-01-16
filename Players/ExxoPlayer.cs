@@ -111,6 +111,9 @@ public class ExxoPlayer : ModPlayer
         miniArma = false;
 
         CritDamageMult = 1f;
+        MagicCritDamage = 1f;
+        MeleeCritDamage = 1f;
+        RangedCritDamage = 1f;
 
         Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax2 = Player.GetModPlayer<ExxoStaminaPlayer>().StatStamMax;
         if (Player.whoAmI == Main.myPlayer)
@@ -625,12 +628,12 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            damage += MultiplyCritDamage(damage, 2f);
+            damage += MultiplyMeleeCritDamage(damage, 2f);
         }
 
         if (crit)
         {
-            damage += MultiplyCritDamage(damage);
+            damage += MultiplyMeleeCritDamage(damage);
         }
     }
 
@@ -667,14 +670,34 @@ public class ExxoPlayer : ModPlayer
 
         if (target.HasBuff(ModContent.BuffType<Virulent>()) && crit)
         {
-            //int bonusDmg = -damage;
-            //bonusDmg += (int)(damage * (2.5f + 1f) / 2);
-            damage += MultiplyCritDamage(damage, 2f);
+            if (proj.DamageType == DamageClass.Magic)
+            {
+                damage += MultiplyMagicCritDamage(damage, 2f);
+            }
+            if (proj.DamageType == DamageClass.Melee)
+            {
+                damage += MultiplyMeleeCritDamage(damage, 2f);
+            }
+            if (proj.DamageType == DamageClass.Ranged)
+            {
+                damage += MultiplyRangedCritDamage(damage, 2f);
+            }
         }
 
         if (crit)
         {
-            damage += MultiplyCritDamage(damage);
+            if (proj.DamageType == DamageClass.Magic)
+            {
+                damage += MultiplyMagicCritDamage(damage);
+            }
+            if (proj.DamageType == DamageClass.Melee)
+            {
+                damage += MultiplyMeleeCritDamage(damage);
+            }
+            if (proj.DamageType == DamageClass.Ranged)
+            {
+                damage += MultiplyRangedCritDamage(damage);
+            }
         }
     }
 
@@ -682,7 +705,7 @@ public class ExxoPlayer : ModPlayer
     {
         if (crit)
         {
-            damage += MultiplyCritDamage(damage);
+            damage += MultiplyMeleeCritDamage(damage);
         }
     }
 
@@ -701,7 +724,18 @@ public class ExxoPlayer : ModPlayer
 
         if (crit)
         {
-            damage += MultiplyCritDamage(damage);
+            if (proj.DamageType == DamageClass.Magic)
+            {
+                damage += MultiplyMagicCritDamage(damage);
+            }
+            if (proj.DamageType == DamageClass.Melee)
+            {
+                damage += MultiplyMeleeCritDamage(damage);
+            }
+            if (proj.DamageType == DamageClass.Ranged)
+            {
+                damage += MultiplyRangedCritDamage(damage);
+            }
         }
     }
 
@@ -1817,6 +1851,31 @@ public class ExxoPlayer : ModPlayer
         return bonusDmg;
     }
 
+    public int MultiplyMagicCritDamage(int dmg, float mult = 0f) // dmg = damage before crit application
+    {
+        int bonusDmg = -dmg;
+        bonusDmg += (int)(dmg * ((mult == 0f ? MagicCritDamage : mult) + 1f) / 2);
+        return bonusDmg;
+    }
+
+    public int MultiplyMeleeCritDamage(int dmg, float mult = 0f) // dmg = damage before crit application
+    {
+        int bonusDmg = -dmg;
+        bonusDmg += (int)(dmg * ((mult == 0f ? MeleeCritDamage : mult) + 1f) / 2);
+        return bonusDmg;
+    }
+    public int MultiplyRangedCritDamage(int dmg, float mult = 0f) // dmg = damage before crit application
+    {
+        int bonusDmg = -dmg;
+        bonusDmg += (int)(dmg * ((mult == 0f ? RangedCritDamage : mult) + 1f) / 2);
+        return bonusDmg;
+    }
+    public void AllCritDamage(float value)
+    {
+        MagicCritDamage += value;
+        MeleeCritDamage += value;
+        RangedCritDamage += value;
+    }
     public void DoubleJumps()
     {
         if (NumHookProj() > 0 || Player.sliding || (Player.autoJump && Player.justJumped))
@@ -2190,6 +2249,9 @@ public class ExxoPlayer : ModPlayer
 
     // Crit damage multiplyer vars
     public float CritDamageMult = 1f;
+    public float MagicCritDamage = 1f;
+    public float MeleeCritDamage = 1f;
+    public float RangedCritDamage = 1f;
 
 
     #endregion fields

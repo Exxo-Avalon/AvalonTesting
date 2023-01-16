@@ -10,7 +10,7 @@ class ChaosEmblem : ModItem
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Chaos Emblem");
-        Tooltip.SetDefault("40% increased critical strike damage\n10% increased damage");
+        Tooltip.SetDefault("35% increased critical strike damage\n10% increased damage");
         SacrificeTotal = 1;
     }
 
@@ -26,7 +26,7 @@ class ChaosEmblem : ModItem
 
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
-        player.Avalon().CritDamageMult += 0.4f;
+        player.Avalon().AllCritDamage(0.35f);
         player.GetDamage(DamageClass.Generic) += 0.1f;
     }
     public override void AddRecipes()
@@ -34,6 +34,7 @@ class ChaosEmblem : ModItem
         Recipe.Create(Type)
             .AddIngredient(ModContent.ItemType<ChaosCrystal>())
             .AddIngredient(ItemID.AvengerEmblem)
-            .AddTile(TileID.TinkerersWorkbench).Register();
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
     }
 }

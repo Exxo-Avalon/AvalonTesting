@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +17,7 @@ public class Berserk : ModBuff
     {
         if (player.HeldItem.shoot == ProjectileID.None)
         {
-            player.GetModPlayer<ExxoPlayer>().CritDamageMult += 1.5f;
+            player.GetModPlayer<ExxoPlayer>().AllCritDamage(1.5f);
         }
     }
 }

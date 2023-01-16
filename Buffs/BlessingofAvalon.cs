@@ -49,7 +49,7 @@ public class BlessingofAvalon : ModBuff
         player.GetCritChance(DamageClass.Magic) += 10;
         player.GetCritChance(DamageClass.Ranged) += 10;
         player.GetCritChance(DamageClass.Throwing) += 10;
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.3f;
+        player.GetModPlayer<ExxoPlayer>().AllCritDamage(0.3f);
         player.statDefense += 10;
         player.lifeRegen += 3;
         player.manaRegen += 3;

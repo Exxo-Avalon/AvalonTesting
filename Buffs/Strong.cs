@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -18,6 +18,6 @@ public class Strong : ModBuff
         player.GetCritChance<GenericDamageClass>() += 1;
         player.statDefense += 5;
         player.lifeRegen++;
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.05f;
+        player.GetModPlayer<ExxoPlayer>().AllCritDamage(0.05f);
     }
 }

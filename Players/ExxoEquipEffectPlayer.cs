@@ -944,7 +944,7 @@ public class ExxoEquipEffectPlayer : ModPlayer
         {
             Player.GetDamage(DamageClass.Ranged) += 0.15f;
             Player.GetCritChance(DamageClass.Ranged) += 10;
-            Player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.6f;
+            Player.GetModPlayer<ExxoPlayer>().RangedCritDamage += 0.6f;
             Player.endurance -= 0.075f;
             Player.statDefense /= 2;
         }

@@ -1,4 +1,4 @@
-﻿using Avalon.Players;
+using Avalon.Players;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -22,6 +22,6 @@ public class AdvStrength : ModBuff
         player.GetCritChance<GenericDamageClass>() += CritChancePercentIncrease;
         player.statDefense += DefenseIncrease;
         player.lifeRegen++;
-        player.GetModPlayer<ExxoPlayer>().CritDamageMult += 0.1f;
+        player.GetModPlayer<ExxoPlayer>().AllCritDamage(0.1f);
     }
 }

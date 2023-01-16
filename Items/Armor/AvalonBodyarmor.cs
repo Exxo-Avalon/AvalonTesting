@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +29,7 @@ class AvalonBodyarmor : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Generic) += 10;
-        player.Avalon().CritDamageMult += 0.30f;
+        player.Avalon().AllCrit(0.3f);
         player.longInvince = true;
         player.starCloakItem = Item;
     }

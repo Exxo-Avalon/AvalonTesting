@@ -12,7 +12,7 @@ class DivineLightJerkin : ModItem
     {
         DisplayName.SetDefault("Divine Light Jerkin");
         Tooltip.SetDefault("10% increased ranged critical strike chance" +
-                           "\n50% increased critical damage");
+                           "\n50% increased ranged critical damage");
         SacrificeTotal = 1;
     }
 
@@ -37,6 +37,6 @@ class DivineLightJerkin : ModItem
     public override void UpdateEquip(Player player)
     {
         player.GetCritChance(DamageClass.Ranged) += 10;
-        player.Avalon().CritDamageMult += 0.5f;
+        player.Avalon().RangedCritDamage += 0.5f;
     }
 }

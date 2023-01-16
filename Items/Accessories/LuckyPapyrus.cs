@@ -28,7 +28,7 @@ class LuckyPapyrus : ModItem
     public override void UpdateAccessory(Player player, bool hideVisual)
     {
         player.GetCritChance(DamageClass.Generic) += 7;
-        player.Avalon().CritDamageMult += 0.25f;
+        player.Avalon().AllCritDamage(0.25f);
         player.buffImmune[ModContent.BuffType<Buffs.Melting>()] = true;
     }
 }
