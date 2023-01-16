@@ -106,7 +106,6 @@ public class AvalonGlobalNPCInstance : GlobalNPC
                 mult = 6;
             }
             npc.lifeRegen -= mult * BleedStacks;
-            Main.NewText(BleedStacks);
             if (damage < BleedStacks)
             {
                 damage = BleedStacks;
