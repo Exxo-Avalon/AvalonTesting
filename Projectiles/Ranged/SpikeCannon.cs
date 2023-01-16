@@ -13,6 +13,8 @@ public class SpikeCannon : ModProjectile
     public override void SetStaticDefaults()
     {
         DisplayName.SetDefault("Spike");
+        ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
+        ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
     }
 
     public override void SetDefaults()
@@ -25,7 +27,7 @@ public class SpikeCannon : ModProjectile
         Projectile.friendly = true;
         Projectile.penetrate = -1;
         Projectile.alpha = 0;
-        Projectile.MaxUpdates = 1;
+        //Projectile.MaxUpdates = 1;
         Projectile.scale = 1f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
@@ -37,7 +39,7 @@ public class SpikeCannon : ModProjectile
         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
         Rectangle frame = texture.Frame();
         Vector2 frameOrigin = frame.Size() / 2f;
-        Color col = Color.Lerp(Color.White, Color.Lavender, Main.masterColor);
+        Color col = Color.White;
         Vector2 stretchscale = new Vector2(Projectile.scale - (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.01f), Projectile.scale + (Vector2.Distance(Projectile.position, Projectile.oldPosition) * 0.1f));
 
 
@@ -48,7 +50,7 @@ public class SpikeCannon : ModProjectile
             Main.EntitySpriteDraw(texture, drawPos, frame, new Color(col.R / i, col.G / i, col.B / i, 0), Projectile.oldRot[i], frameOrigin, new Vector2(stretchscale.X + (i * 0.1f), stretchscale.Y + (i * 0.1f)), SpriteEffects.None, 0);
         }
         col.A = 150;
-        Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.Lerp(col, Color.White, 0.5f) * Projectile.Opacity, Projectile.rotation, frameOrigin, stretchscale * 1.1f, SpriteEffects.None, 0);
+        Main.EntitySpriteDraw(texture, Projectile.position - Main.screenPosition + frameOrigin, frame, Color.White * Projectile.Opacity, Projectile.rotation, frameOrigin, stretchscale * 1.1f, SpriteEffects.None, 0);
 
         return false;
     }
