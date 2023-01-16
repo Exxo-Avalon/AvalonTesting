@@ -36,6 +36,14 @@ public class RecipeSystem : ModSystem
         });
         RecipeGroup.RegisterGroup("Avalon:GemStaves", groupGemStaves);
 
+        var groupSilverBarMagicStorage = new RecipeGroup(() => "Any Silver Bar", new int[]
+        {
+            ItemID.SilverBar,
+            ItemID.TungstenBar,
+            ModContent.ItemType<ZincBar>()
+        });
+        RecipeGroup.RegisterGroup("MagicStorage:AnySilverBar", groupSilverBarMagicStorage);
+
         var groupTombstones = new RecipeGroup(() => "Any Tombstone", new int[]
         {
             ItemID.Gravestone,

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using AltLibrary.Common.Systems;
 using Avalon.Items.Consumables;
 using Avalon.Items.MusicBoxes;
@@ -36,20 +36,20 @@ public class BossChecklistSystem : ModSystem
                 "Avalon/NPCs/BacteriumPrime_Head_Boss");
 
         // desert beak
-        bossChecklist.Call(
-                "AddBoss",
-                Avalon.Mod,
-                "Desert Beak",
-                ModContent.NPCType<NPCs.Bosses.DesertBeak>(),
-                5.5f,
-                () => ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak,
-                () => true,
-                new List<int> { ModContent.ItemType<DesertBeakTrophy>(), ModContent.ItemType<DesertBeakMask>(), ModContent.ItemType<MusicBoxDesertBeak>() },
-                ModContent.ItemType<TheBeak>(),
-                "Use [i: " + ModContent.ItemType<TheBeak>() + "] in the Desert",
-                "Desert Beak has retreated into the sky",
-                "Avalon/Assets/Textures/BossChecklist/DesertBeakBossChecklist",
-                "Avalon/NPCs/Bosses/DesertBeak_Head_Boss");
+        //bossChecklist.Call(
+        //        "AddBoss",
+        //        Avalon.Mod,
+        //        "Desert Beak",
+        //        ModContent.NPCType<NPCs.Bosses.DesertBeak>(),
+        //        6f,
+        //        () => ModContent.GetInstance<DownedBossSystem>().DownedDesertBeak,
+        //        () => true,
+        //        new List<int> { ModContent.ItemType<DesertBeakTrophy>(), ModContent.ItemType<DesertBeakMask>(), ModContent.ItemType<MusicBoxDesertBeak>() },
+        //        ModContent.ItemType<TheBeak>(),
+        //        "Use [i: " + ModContent.ItemType<TheBeak>() + "] in the Desert",
+        //        "Desert Beak has retreated into the sky",
+        //        "Avalon/Assets/Textures/BossChecklist/DesertBeakBossChecklist",
+        //        "Avalon/NPCs/Bosses/DesertBeak_Head_Boss");
 
         // phantasm
         bossChecklist.Call(
