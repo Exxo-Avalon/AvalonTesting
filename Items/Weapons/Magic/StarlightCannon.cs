@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Avalon.Items.Weapons.Ranged;
+namespace Avalon.Items.Weapons.Magic;
 
 public class StarlightCannon : ModItem
 {
@@ -36,7 +36,7 @@ public class StarlightCannon : ModItem
     }
     public override Vector2? HoldoutOffset()
     {
-        return new Vector2(-4, 0);
+        return new Vector2(-8, -6);
     }
 
 }
