@@ -37,7 +37,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
         Bleeding = false;
         Virulent = false;
         Inferno = false;
-        BleedStacks = 1;
+        //BleedStacks = 1;
     }
     public override void UpdateLifeRegen(NPC npc, ref int damage)
     {
@@ -106,6 +106,7 @@ public class AvalonGlobalNPCInstance : GlobalNPC
                 mult = 6;
             }
             npc.lifeRegen -= mult * BleedStacks;
+            Main.NewText(BleedStacks);
             if (damage < BleedStacks)
             {
                 damage = BleedStacks;
