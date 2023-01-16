@@ -27,6 +27,8 @@ public class DemonSpikeScale : ModProjectile
         Projectile.scale = 1f;
         Projectile.timeLeft = 1200;
         Projectile.DamageType = DamageClass.Ranged;
+        Projectile.usesLocalNPCImmunity = true;
+        Projectile.localNPCHitCooldown = 15;
     }
     public override bool PreDraw(ref Color lightColor)
     {
