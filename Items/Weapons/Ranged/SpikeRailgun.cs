@@ -26,7 +26,7 @@ class SpikeRailgun : ModItem
         Item.autoReuse = true;
         Item.useTurn = false;
         Item.useAmmo = ItemID.Spike;
-        Item.shootSpeed = 30f;
+        Item.shootSpeed = 8;
         Item.crit += 2;
         Item.DamageType = DamageClass.Ranged;
         Item.rare = ModContent.RarityType<Rarities.TealRarity>();
@@ -119,9 +119,10 @@ class SpikeRailgun : ModItem
                 //damage += dmgAdd;
                 if (t > 0)
                 {
-                    Projectile.NewProjectile(
+                    int p = Projectile.NewProjectile(
                         player.GetSource_ItemUse_WithPotentialAmmo(Item, Item.ammo), player.Center,
                         velocity, t, Item.damage + dmgAdd, Item.knockBack, player.whoAmI, ai1: 1);
+                    Main.projectile[p].velocity *= 4;
                 }
             }
         }
