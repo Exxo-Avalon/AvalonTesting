@@ -62,29 +62,37 @@ public class HomingRocketFriendly : ModProjectile
             }
             int num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
-            Gore expr_A0B0_cp_0 = Main.gore[num346];
-            expr_A0B0_cp_0.velocity.X = expr_A0B0_cp_0.velocity.X + 1f;
-            Gore expr_A0D0_cp_0 = Main.gore[num346];
-            expr_A0D0_cp_0.velocity.Y = expr_A0D0_cp_0.velocity.Y + 1f;
+            Main.gore[num346].velocity.X++;
+            Main.gore[num346].velocity.Y++;
             num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
-            Gore expr_A153_cp_0 = Main.gore[num346];
-            expr_A153_cp_0.velocity.X = expr_A153_cp_0.velocity.X - 1f;
-            Gore expr_A173_cp_0 = Main.gore[num346];
-            expr_A173_cp_0.velocity.Y = expr_A173_cp_0.velocity.Y + 1f;
+            Main.gore[num346].velocity.X--;
+            Main.gore[num346].velocity.Y++;
             num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
-            Gore expr_A1F6_cp_0 = Main.gore[num346];
-            expr_A1F6_cp_0.velocity.X = expr_A1F6_cp_0.velocity.X + 1f;
-            Gore expr_A216_cp_0 = Main.gore[num346];
-            expr_A216_cp_0.velocity.Y = expr_A216_cp_0.velocity.Y - 1f;
+            Main.gore[num346].velocity.X++;
+            Main.gore[num346].velocity.Y--;
             num346 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X, Projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
             Main.gore[num346].velocity *= scaleFactor8;
-            Gore expr_A299_cp_0 = Main.gore[num346];
-            expr_A299_cp_0.velocity.X = expr_A299_cp_0.velocity.X - 1f;
-            Gore expr_A2B9_cp_0 = Main.gore[num346];
-            expr_A2B9_cp_0.velocity.Y = expr_A2B9_cp_0.velocity.Y - 1f;
+            Main.gore[num346].velocity.X--;
+            Main.gore[num346].velocity.Y--;
         }
+    }
+    public static int HowManyFireDebuffs(int npcIndex)
+    {
+        int fireDebuffCount = 0;
+        for (int i = 0; i < Main.npc[npcIndex].buffType.Length; i++)
+        {
+            if (Main.npc[npcIndex].buffType[i] == BuffID.OnFire || Main.npc[npcIndex].buffType[i] == BuffID.CursedInferno ||
+                Main.npc[npcIndex].buffType[i] == BuffID.OnFire3 || Main.npc[npcIndex].buffType[i] == BuffID.ShadowFlame ||
+                Main.npc[npcIndex].buffType[i] == BuffID.Frostburn || Main.npc[npcIndex].buffType[i] == BuffID.Frostburn2 ||
+                Main.npc[npcIndex].buffType[i] == ModContent.BuffType<Buffs.Inferno>() ||
+                Main.npc[npcIndex].buffType[i] == ModContent.BuffType<Buffs.DarkInferno>())
+            {
+                fireDebuffCount++;
+            }
+        }
+        return fireDebuffCount;
     }
     public override void AI()
     {
@@ -100,11 +108,11 @@ public class HomingRocketFriendly : ModProjectile
                     num266 = Projectile.velocity.Y * 0.5f;
                 }
                 int num267 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num265, Projectile.position.Y + 3f + num266) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Torch, 0f, 0f, 100, default(Color), 1f);
-                Main.dust[num267].scale *= 2f + (float)Main.rand.Next(10) * 0.1f;
+                Main.dust[num267].scale *= 2f + Main.rand.Next(10) * 0.1f;
                 Main.dust[num267].velocity *= 0.2f;
                 Main.dust[num267].noGravity = true;
                 num267 = Dust.NewDust(new Vector2(Projectile.position.X + 3f + num265, Projectile.position.Y + 3f + num266) - Projectile.velocity * 0.5f, Projectile.width - 8, Projectile.height - 8, DustID.Smoke, 0f, 0f, 100, default(Color), 0.5f);
-                Main.dust[num267].fadeIn = 1f + (float)Main.rand.Next(5) * 0.1f;
+                Main.dust[num267].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
                 Main.dust[num267].velocity *= 0.05f;
             }
         }
@@ -112,7 +120,7 @@ public class HomingRocketFriendly : ModProjectile
         {
             Projectile.velocity *= 1.1f;
         }
-        Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 1.57f;
+        Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 1.57f;
         for (int p = 0; p < Main.npc.Length; p++)
         {
             if (Main.npc[p].active)
@@ -126,12 +134,12 @@ public class HomingRocketFriendly : ModProjectile
         }
         if (Projectile.timeLeft <= 3)
         {
-            Projectile.position.X = Projectile.position.X + Projectile.width / 2;
-            Projectile.position.Y = Projectile.position.Y + Projectile.height / 2;
+            Projectile.position.X += Projectile.width / 2;
+            Projectile.position.Y += Projectile.height / 2;
             Projectile.width = 128;
             Projectile.height = 128;
-            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
-            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
+            Projectile.position.X -= Projectile.width / 2;
+            Projectile.position.Y -= Projectile.height / 2;
             Projectile.knockBack = 8f;
             Projectile.Kill();
         }
@@ -161,14 +169,17 @@ public class HomingRocketFriendly : ModProjectile
             {
                 if (Main.npc[npcArrayIndex].active && !Main.npc[npcArrayIndex].dontTakeDamage && !Main.npc[npcArrayIndex].friendly && Main.npc[npcArrayIndex].lifeMax > 5 && (Projectile.ai[1] == 0f || Projectile.ai[1] == npcArrayIndex + 1))
                 {
-                    var npcCenterX = Main.npc[npcArrayIndex].position.X + Main.npc[npcArrayIndex].width / 2;
-                    var npcCenterY = Main.npc[npcArrayIndex].position.Y + Main.npc[npcArrayIndex].height / 2;
-                    var num37 = Math.Abs(Projectile.position.X + Projectile.width / 2 - npcCenterX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - npcCenterY);
+                    Vector2 npcCenter = Main.npc[npcArrayIndex].Center;
+                    if (HowManyFireDebuffs(npcArrayIndex) > 0)
+                    {
+                        npcCenter = Vector2.Lerp(Main.npc[npcArrayIndex].Center, Projectile.Center, Math.Min(0.5f + HowManyFireDebuffs(npcArrayIndex) * 0.2f, 1f));
+                    }
+                    var num37 = Math.Abs(Projectile.position.X + Projectile.width / 2 - npcCenter.X) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - npcCenter.Y);
                     if (num37 < distance && Collision.CanHit(new Vector2(Projectile.position.X + Projectile.width / 2, Projectile.position.Y + Projectile.height / 2), 1, 1, Main.npc[npcArrayIndex].position, Main.npc[npcArrayIndex].width, Main.npc[npcArrayIndex].height))
                     {
                         distance = num37;
-                        projPosStoredX = npcCenterX;
-                        projPosStoredY = npcCenterY;
+                        projPosStoredX = npcCenter.X;
+                        projPosStoredY = npcCenter.Y;
                         flag = true;
                         npcArrayIndexStored = npcArrayIndex;
                     }

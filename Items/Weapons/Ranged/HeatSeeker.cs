@@ -38,20 +38,6 @@ class HeatSeeker : ModItem
         Item.UseSound = SoundID.Item11;
 
     }
-    //public override void AddRecipes()
-    //{
-    //    ModRecipe recipe = new ModRecipe(mod);
-    //    recipe.AddIngredient(ModContent.ItemType<Phantoplasm>(), 45);
-    //    recipe.AddIngredient(ModContent.ItemType<SuperhardmodeBar>(), 40);
-    //    recipe.AddIngredient(ModContent.ItemType<SoulofTorture>(), 45);
-    //    recipe.AddIngredient(ModContent.ItemType<TacticalExpulsor>());
-    //    recipe.AddIngredient(ItemID.RocketLauncher);
-    //    recipe.AddIngredient(ItemID.GrenadeLauncher);
-    //    recipe.AddIngredient(ItemID.Stynger);
-    //    recipe.AddTile(ModContent.TileType<Tiles.XeradonAnvil>());
-    //    recipe.SetResult(this);
-    //    recipe.AddRecipe();
-    //}
     public override Vector2? HoldoutOffset()
     {
         return new Vector2(-10f, 0f);
