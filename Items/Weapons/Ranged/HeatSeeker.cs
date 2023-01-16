@@ -44,7 +44,7 @@ class HeatSeeker : ModItem
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     {
-        Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<Projectiles.Ranged.HomingRocketFriendly>(), damage, knockback, player.whoAmI, 0f, 0f);
+        Projectile.NewProjectile(source, position + new Vector2(60,-6 * player.direction).RotatedBy(velocity.ToRotation()),velocity, ModContent.ProjectileType<Projectiles.Ranged.HomingRocketFriendly>(), damage, knockback, player.whoAmI, 0f, 0f);
         return false;
     }
 }
