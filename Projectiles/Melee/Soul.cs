@@ -174,7 +174,18 @@ public class Soul : ModProjectile
         }
         else
         {
-            Vector2 mousePos = Main.player[Projectile.owner].GetModPlayer<ExxoPlayer>().MousePosition;
+            Vector2 mousePos = Main.MouseScreen;
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                Main.player[Projectile.owner].Avalon().MousePosition = mousePos;
+                CursorPosition.SendPacket(mousePos, Projectile.owner);
+            }
+            else if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Main.player[Projectile.owner].Avalon().MousePosition = mousePos;
+            }
+
+            //Vector2 mousePos = Main.player[Projectile.owner].GetModPlayer<ExxoPlayer>().MousePosition;
 
             if (Vector2.Distance(Projectile.position - Main.screenPosition, mousePos) < 5)
             {

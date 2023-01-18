@@ -37,7 +37,16 @@ public class ShellHammer : ModItem
         if (fireDelay > 0 && player.itemAnimation > 0) fireDelay--;
         if (fireDelay == 0)
         {
-            Vector2 mousePos = player.GetModPlayer<ExxoPlayer>().MousePosition;
+            Vector2 mousePos = Main.MouseScreen;
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                player.Avalon().MousePosition = mousePos;
+                CursorPosition.SendPacket(mousePos, player.whoAmI);
+            }
+            else if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                player.Avalon().MousePosition = mousePos;
+            }
             float velX = mousePos.X + Main.screenPosition.X - player.Center.X;
             float velY = mousePos.Y + Main.screenPosition.Y - player.Center.Y;
             int ypos = (int)mousePos.Y;
