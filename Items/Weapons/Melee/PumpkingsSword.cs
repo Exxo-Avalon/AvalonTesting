@@ -41,7 +41,6 @@ class PumpkingsSword : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 40, 0, 0);
         Item.noMelee = true;
-        Item.reuseDelay = 2;
     }
     public override void AddRecipes()
     {

@@ -30,7 +30,6 @@ class VertexofExcalibur : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 9, 63, 0);
         Item.useAnimation = 18;
-        Item.reuseDelay = 2;
         Item.shoot = ModContent.ProjectileType<Projectiles.Melee.VertexSlash>();
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

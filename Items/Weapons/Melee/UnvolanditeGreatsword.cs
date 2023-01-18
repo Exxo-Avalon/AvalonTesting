@@ -31,7 +31,6 @@ class UnvolanditeGreatsword : ModItem
         Item.useAnimation = 22;
         Item.UseSound = SoundID.Item1;
         Item.shoot = ModContent.ProjectileType<UnvolanditeGreatswordSlash>();
-        Item.reuseDelay = 2;
         Item.noMelee = true;
     }
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
