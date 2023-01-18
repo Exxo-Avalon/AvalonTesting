@@ -28,9 +28,18 @@ public class ReplaceChestItems : GenPass
                         i.type == ItemID.IceBlade || i.type == ItemID.SnowballCannon ||
                         i.type == ItemID.IceBoomerang || i.type == ItemID.IceSkates ||
                         i.type == ItemID.BlizzardinaBottle || i.type == ItemID.FlurryBoots) &&
-                        WorldGen.genRand.NextBool(4))
+                        WorldGen.genRand.NextBool(5))
                     {
                         i.SetDefaults(ModContent.ItemType<GlacierStaff>());
+                        i.Prefix(-1);
+                    }
+                    if (i != null && (i.type == ItemID.IceMirror || i.type == ItemID.Fish ||
+                        i.type == ItemID.IceBlade || i.type == ItemID.SnowballCannon ||
+                        i.type == ItemID.IceBoomerang || i.type == ItemID.IceSkates ||
+                        i.type == ItemID.BlizzardinaBottle || i.type == ItemID.FlurryBoots) &&
+                        WorldGen.genRand.NextBool(5))
+                    {
+                        i.SetDefaults(ModContent.ItemType<FrozenLyre>());
                         i.Prefix(-1);
                     }
                     //if (i != null && i.type == ItemID.EnchantedBoomerang)

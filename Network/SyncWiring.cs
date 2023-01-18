@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

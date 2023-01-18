@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -35,7 +35,7 @@ public class BookcaseTeleporter : ModTile
         if (Main.tile[i, j].TileFrameX == 18 && Main.tile[i, j].TileFrameY == 36)
         {
             Trigger(i, j);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 ModPacket packet = Network.MessageHandler.GetPacket(Network.MessageID.SyncWiring);
                 packet.Write((short)i);
