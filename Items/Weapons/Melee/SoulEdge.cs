@@ -34,7 +34,6 @@ class SoulEdge : ModItem
         Item.useStyle = ItemUseStyleID.Swing;
         Item.value = Item.sellPrice(0, 80, 0, 0);
         Item.useAnimation = 20;
-        Item.reuseDelay = 2;
     }
     public override Color? GetAlpha(Color lightColor)
     {
