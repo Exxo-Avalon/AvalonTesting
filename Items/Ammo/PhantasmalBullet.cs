@@ -31,6 +31,14 @@ class PhantasmalBullet : ModItem
         Item.value = 1200;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ModContent.ItemType<SpectralBullet>(), 70)
+            .AddIngredient(ModContent.ItemType<Material.Phantoplasm>(), 2)
+            .AddTile(ModContent.TileType<Tiles.SolariumAnvil>())
+            .Register();
+    }
     //public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     //{
     //    Vector2 pos = player.Center + new Vector2(50, 0).RotatedBy(player.AngleTo(Main.MouseWorld));

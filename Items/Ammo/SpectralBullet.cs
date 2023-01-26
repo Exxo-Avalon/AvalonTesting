@@ -31,6 +31,14 @@ class SpectralBullet : ModItem
         Item.value = 1200;
         Item.height = dims.Height;
     }
+    public override void AddRecipes()
+    {
+        Recipe.Create(Type)
+            .AddIngredient(ItemID.MusketBall, 70)
+            .AddIngredient(ItemID.Ectoplasm, 2)
+            .AddTile(TileID.MythrilAnvil)
+            .Register();
+    }
     //public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
     //{
     //    Vector2 pos = player.Center + new Vector2(1000, 0).RotatedBy(player.AngleTo(Main.MouseWorld));

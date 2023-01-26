@@ -1,5 +1,8 @@
 using System.IO;
+using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Terraria.ID;
 
 namespace Avalon.Network;
 

@@ -35,12 +35,27 @@ public class BookcaseTeleporter : ModTile
         if (Main.tile[i, j].TileFrameX == 18 && Main.tile[i, j].TileFrameY == 36)
         {
             Trigger(i, j);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode != NetmodeID.SinglePlayer)
             {
-                ModPacket packet = Network.MessageHandler.GetPacket(Network.MessageID.SyncWiring);
-                packet.Write((short)i);
-                packet.Write((short)j);
-                packet.Send();
+                for (int p = 0; p < Main.player.Length; p++)
+                {
+                    Player q = Main.player[p];
+                    if (q.active && !q.dead)
+                    {
+                        Point tileC = q.position.ToTileCoordinates();
+                        if ((Main.tile[tileC.X, tileC.Y].HasTile && Main.tile[tileC.X, tileC.Y].TileType == Type) ||
+                            (Main.tile[tileC.X + 1, tileC.Y].HasTile && Main.tile[tileC.X + 1, tileC.Y].TileType == Type) ||
+                            (Main.tile[tileC.X, tileC.Y + 1].HasTile && Main.tile[tileC.X, tileC.Y + 1].TileType == Type) ||
+                            (Main.tile[tileC.X + 1, tileC.Y + 1].HasTile && Main.tile[tileC.X + 1, tileC.Y + 1].TileType == Type) ||
+                            (Main.tile[tileC.X, tileC.Y + 2].HasTile && Main.tile[tileC.X, tileC.Y + 2].TileType == Type) ||
+                            (Main.tile[tileC.X + 1, tileC.Y + 2].HasTile && Main.tile[tileC.X + 1, tileC.Y + 2].TileType == Type) ||
+                            (Main.tile[tileC.X, tileC.Y + 3].HasTile && Main.tile[tileC.X, tileC.Y + 3].TileType == Type) ||
+                            (Main.tile[tileC.X + 1, tileC.Y + 3].HasTile && Main.tile[tileC.X + 1, tileC.Y + 3].TileType == Type))
+                        {
+                            Network.SyncWiring.SendPacket(q.whoAmI, i, j);
+                        }
+                    }
+                }
             }
             return true;
         }
@@ -74,6 +89,7 @@ public class BookcaseTeleporter : ModTile
                         if (Main.netMode == NetmodeID.Server)
                         {
                             RemoteClient.CheckSection(p, new Vector2(i * 16, j * 16 - 16));
+                            NetMessage.SendTileSquare(-1, i, j, TileChangeType.None);
                         }
                         q.Teleport(new Vector2(i * 16, j * 16 - 16));
                         if (Main.netMode == NetmodeID.Server)
@@ -86,6 +102,7 @@ public class BookcaseTeleporter : ModTile
                         if (Main.netMode == NetmodeID.Server)
                         {
                             RemoteClient.CheckSection(p, new Vector2(i * 16, j * 16));
+                            NetMessage.SendTileSquare(-1, i, j, TileChangeType.None);
                         }
                         q.Teleport(new Vector2(i * 16, j * 16));
                         if (Main.netMode == NetmodeID.Server)
@@ -98,6 +115,7 @@ public class BookcaseTeleporter : ModTile
                         if (Main.netMode == NetmodeID.Server)
                         {
                             RemoteClient.CheckSection(p, new Vector2(i * 16, j * 16 - 32));
+                            NetMessage.SendTileSquare(-1, i, j, TileChangeType.None);
                         }
                         q.Teleport(new Vector2(i * 16, j * 16 - 32));
                         if (Main.netMode == NetmodeID.Server)
