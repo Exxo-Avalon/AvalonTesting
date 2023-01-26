@@ -19,7 +19,7 @@ class NickelHammer : ModItem
         Item.autoReuse = true;
         Item.hammer = 45;
         Item.useTurn = true;
-        Item.scale = 1.22f;
+        Item.scale = 1f;
         Item.width = dims.Width;
         Item.useTime = 17;
         Item.knockBack = 4.5f;

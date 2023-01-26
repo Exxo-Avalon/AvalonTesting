@@ -19,7 +19,7 @@ class BismuthAxe : ModItem
         Item.damage = 9;
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.scale = 1.05f;
+        Item.scale = 1;
         Item.axe = 13;
         Item.useTime = 17;
         Item.knockBack = 4f;

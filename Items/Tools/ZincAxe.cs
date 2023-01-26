@@ -19,7 +19,7 @@ class ZincAxe : ModItem
         Item.damage = 8;
         Item.autoReuse = true;
         Item.useTurn = true;
-        Item.scale = 1.05f;
+        Item.scale = 1;
         Item.axe = 11;
         Item.width = dims.Width;
         Item.useTime = 17;

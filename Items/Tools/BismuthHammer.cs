@@ -20,7 +20,7 @@ class BismuthHammer : ModItem
         Item.autoReuse = true;
         Item.hammer = 61;
         Item.useTurn = true;
-        Item.scale = 1.2f;
+        Item.scale = 1f;
         Item.useTime = 18;
         Item.knockBack = 4.5f;
         Item.DamageType = DamageClass.Melee;
