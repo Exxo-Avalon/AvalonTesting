@@ -21,7 +21,7 @@ class CoughwoodHammer : ModItem
         Item.autoReuse = true;
         Item.hammer = 42;
         Item.useTurn = true;
-        Item.scale = 1.2f;
+        Item.scale = 1;
         Item.useTime = 20;
         Item.knockBack = 5.5f;
         Item.DamageType = DamageClass.Melee;

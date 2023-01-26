@@ -1,5 +1,6 @@
 using Avalon.Rarities;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -30,5 +31,15 @@ class Elektriwave : ModItem
         Item.value = 616000;
         Item.useAnimation = 15;
         Item.UseSound = SoundID.Item15;
+    }
+    public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+    {
+        if(Main.rand.NextBool(3))
+        target.AddBuff(BuffID.Electrified, 180);
+    }
+    public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+    {
+        if (Main.rand.NextBool(3))
+            target.AddBuff(BuffID.Electrified, 180);
     }
 }
