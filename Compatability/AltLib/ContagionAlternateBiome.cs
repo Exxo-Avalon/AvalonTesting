@@ -982,15 +982,8 @@ public class ContagionGeneration : EvilBiomeGenerationPass
             }
         }
     }
-    /// <summary>
-    ///     A helper method to generate a tunnel using MakeCircle().
-    /// </summary>
-    /// <param name="x0">Starting x coordinate.</param>
-    /// <param name="y0">Starting y coordinate.</param>
-    /// <param name="x1">Ending x coordinate.</param>
-    /// <param name="y1">Ending y coordinate.</param>
-    /// <param name="r">Radius.</param>
-    /// <param name="type">Type to generate.</param>
+
+    #region Generate Tunnels
     public static void BoreTunnel2(int x0, int y0, int x1, int y1, float r, ushort type) // Code for making tunnels.. crazy
     {
 
@@ -1036,7 +1029,7 @@ public class ContagionGeneration : EvilBiomeGenerationPass
                 //}
             }
 
-            
+
 
             XDifferenceHalved -= AbsoluteXLegnth;
             if (XDifferenceHalved < 0)
@@ -1048,6 +1041,8 @@ public class ContagionGeneration : EvilBiomeGenerationPass
 
         }
     }
+
+    #endregion
 
     /// <summary>
     ///     Makes a circle for the Contagion generation. Fills all tiles with Chunkstone Walls.

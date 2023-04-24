@@ -1,4 +1,7 @@
 using System;
+using System.Reflection.Metadata;
+using Avalon.Buffs;
+using IL.Terraria.Chat;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -80,8 +83,11 @@ public class PhantasmalBullet : ModProjectile
             Projectile.position = Projectile.Center;
             Projectile.Size = new Vector2(10);
             Projectile.Center = Projectile.position;
+
+         
         }
 
+        
         SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_6") with { Volume = 0.5f, Pitch = -0.5f }, Projectile.position);
         for (int i = 0; i < 10; i++)
         {
@@ -110,11 +116,15 @@ public class PhantasmalBullet : ModProjectile
         Projectile.position.Y -= Projectile.height / 2;
         Projectile.active = false;
     }
+
+
     public bool CurveDirectionStart = true;
     public bool CurveDirection;
     public int maxSpeed = 15;
     public override void AI()
     {
+
+
         if (Projectile.alpha > 0)
         {
             Projectile.alpha -= 2;
@@ -123,7 +133,8 @@ public class PhantasmalBullet : ModProjectile
         {
             Projectile.alpha = 0;
         }
-        Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
+
         if (CurveDirectionStart)
         {
             Projectile.velocity = Projectile.velocity.RotatedBy(0.096f);
